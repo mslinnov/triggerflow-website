@@ -1,0 +1,735 @@
+{
+  "metadata": {
+    "title": "TriggerFlow | Automatisation relation client hôtelière",
+    "description": "Solution SaaS pour automatiser SMS, emails et fidélisation client dans l'hôtellerie."
+  },
+  "header": {
+    "features": "Fonctionnalités",
+    "examples": "Exemples",
+    "howItWorks": "Comment ça marche",
+    "pricing": "Tarifs",
+    "faq": "FAQ",
+    "login": "Connexion",
+    "demo": "Réserver une démo",
+    "product": "Produit",
+    "solutions": "Solutions",
+    "resources": "Ressources",
+    "integrations": "Intégrations",
+    "nav": {
+      "product": "Produit",
+      "solutions": "Solutions",
+      "resources": "Ressources",
+      "integrations": "Intégrations",
+      "overview": "Vue d'ensemble",
+      "overviewDesc": "Découvrez toutes les fonctionnalités de TriggerFlow"
+    },
+    "megaMenu": {
+      "product": {
+        "communication": {
+          "title": "Communication",
+          "sms": "SMS & Messages",
+          "smsDesc": "Envoyez des SMS personnalisés automatiquement",
+          "email": "Emails transactionnels",
+          "emailDesc": "Templates professionnels et personnalisables",
+          "whatsapp": "WhatsApp Business",
+          "whatsappDesc": "Communiquez sur le canal préféré de vos clients"
+        },
+        "automation": {
+          "title": "Automatisation",
+          "flows": "Flows automatiques",
+          "flowsDesc": "Créez des séquences intelligentes",
+          "triggers": "Déclencheurs",
+          "triggersDesc": "Automatisez selon vos règles",
+          "segments": "Segments clients",
+          "segmentsDesc": "Ciblez les bonnes audiences"
+        },
+        "marketing": {
+          "title": "Marketing",
+          "campaigns": "Campagnes",
+          "campaignsDesc": "Lancez des campagnes ciblées",
+          "newsletter": "Newsletter",
+          "newsletterDesc": "Fidélisez avec des contenus réguliers",
+          "loyalty": "Programme fidélité",
+          "loyaltyDesc": "Récompensez vos clients fidèles"
+        },
+        "tools": {
+          "title": "Outils",
+          "forms": "Formulaires",
+          "formsDesc": "Collectez les informations clients",
+          "crm": "Module CRM",
+          "crmDesc": "Gérez votre base clients",
+          "catalog": "Catalogue & Ventes",
+          "catalogDesc": "Vendez vos services additionnels"
+        },
+        "reputation": {
+          "title": "Réputation",
+          "surveys": "Enquêtes satisfaction",
+          "surveysDesc": "Mesurez la satisfaction client",
+          "reviews": "Gestion des avis",
+          "reviewsDesc": "Collectez et gérez les avis",
+          "analytics": "Statistiques",
+          "analyticsDesc": "Analysez vos performances"
+        }
+      },
+      "solutions": {
+        "byProperty": {
+          "title": "Par établissement",
+          "independent": "Hôtel indépendant",
+          "independentDesc": "Solution complète pour hôtels indépendants",
+          "group": "Groupe hôtelier",
+          "groupDesc": "Gestion multi-établissements centralisée",
+          "residence": "Résidence de tourisme",
+          "residenceDesc": "Adapté aux séjours longue durée",
+          "camping": "Camping & Plein air",
+          "campingDesc": "Pour l'hôtellerie de plein air"
+        },
+        "byGoal": {
+          "title": "Par objectif",
+          "communication": "Améliorer la communication",
+          "communicationDesc": "Automatisez vos messages clients",
+          "revenue": "Augmenter le RevPAR",
+          "revenueDesc": "Boostez vos ventes additionnelles",
+          "satisfaction": "Booster la satisfaction",
+          "satisfactionDesc": "Améliorez l'expérience client",
+          "loyalty": "Fidéliser les clients",
+          "loyaltyDesc": "Créez des relations durables"
+        }
+      },
+      "resources": {
+        "blog": "Blog",
+        "blogDesc": "Actualités et conseils hôteliers",
+        "caseStudies": "Cas clients",
+        "caseStudiesDesc": "Découvrez nos success stories",
+        "guides": "Guides & Ebooks",
+        "guidesDesc": "Ressources pour aller plus loin",
+        "helpCenter": "Centre d'aide",
+        "helpCenterDesc": "Documentation et tutoriels"
+      }
+    }
+  },
+  "hero": {
+    "badge": "Plateforme d'automatisation hôtelière",
+    "title": "Créez les automatisations que vous avez toujours imaginées pour votre hôtel",
+    "subtitle": "TriggerFlow s'adapte à votre façon de travailler. SMS, emails, WhatsApp, enquêtes, upsell... vous décidez quoi automatiser, quand et comment.",
+    "cta": "Réserver une démo",
+    "ctaSecondary": "Découvrir les modules",
+    "socialProof": {
+      "hotels": "200+ hôtels nous font confiance",
+      "rating": "Noté 4.8/5"
+    }
+  },
+  "heroDashboard": {
+    "title": "Tableau de bord",
+    "subtitle": "Vue d'ensemble de votre activité",
+    "stats": {
+      "emails": {
+        "value": "2,847",
+        "label": "Emails envoyés"
+      },
+      "sms": {
+        "value": "1,234",
+        "label": "SMS ce mois"
+      },
+      "openRate": {
+        "value": "68%",
+        "label": "Taux d'ouverture"
+      }
+    },
+    "workflows": {
+      "title": "Workflows récents",
+      "viewAll": "Voir tout",
+      "items": {
+        "confirmation": "Confirmation réservation",
+        "welcome": "SMS de bienvenue",
+        "satisfaction": "Enquête satisfaction"
+      },
+      "active": "Actif",
+      "paused": "Pause"
+    },
+    "floatingCards": {
+      "smsSent": "SMS envoyé",
+      "room": "Chambre",
+      "newReview": "+1 avis Google",
+      "emailOpened": "Email ouvert"
+    }
+  },
+  "logoCloud": {
+    "title": "Ils nous font confiance",
+    "metrics": {
+      "hotels": "hôtels équipés",
+      "basket": "de panier moyen",
+      "satisfaction": "de satisfaction client"
+    },
+    "cta": "Découvrir leurs témoignages"
+  },
+  "communicationFlow": {
+    "title": "Déclencheur → Action → Résultat",
+    "subtitle": "Choisissez un événement déclencheur, définissez l'action automatique, et laissez TriggerFlow s'occuper du reste",
+    "triggers": {
+      "label": "Déclencheurs",
+      "reservation": "Réservation",
+      "checkin": "Check-in",
+      "checkout": "Check-out",
+      "birthday": "Anniversaire",
+      "delay": "Délai"
+    },
+    "actions": {
+      "label": "Actions",
+      "email": "Email",
+      "sms": "SMS",
+      "whatsapp": "WhatsApp",
+      "form": "Formulaire",
+      "upsell": "Upsell"
+    },
+    "flow": {
+      "triggers": "déclenche",
+      "sends": "envoie"
+    },
+    "result": {
+      "title": "Client satisfait",
+      "subtitle": "Communication automatisée"
+    }
+  },
+  "journeyTimeline": {
+    "title": "Automatisez chaque étape du séjour",
+    "subtitle": "De la réservation au départ, TriggerFlow accompagne vos clients automatiquement",
+    "stages": {
+      "before": {
+        "title": "Avant",
+        "subtitle": "le séjour",
+        "actions": {
+          "confirmation": "Email de confirmation",
+          "prestay": "Formulaire pré-séjour"
+        }
+      },
+      "during": {
+        "title": "Pendant",
+        "subtitle": "le séjour",
+        "actions": {
+          "welcome": "SMS de bienvenue",
+          "upsell": "Offres personnalisées"
+        }
+      },
+      "after": {
+        "title": "Après",
+        "subtitle": "le séjour",
+        "actions": {
+          "review": "Demande d'avis",
+          "loyalty": "Programme fidélité"
+        }
+      }
+    },
+    "mockups": {
+      "email": {
+        "subject": "Votre réservation est confirmée",
+        "preview": "Bonjour M. Dupont, nous avons bien reçu votre réservation pour le 15 mars..."
+      },
+      "sms": {
+        "message": "Bienvenue M. Dupont ! Votre chambre 302 est prête. Wifi: HotelGuest / Code: 1234. Bonne arrivée !",
+        "sender": "Hotel Bellevue"
+      },
+      "review": {
+        "hotelName": "Hotel Bellevue"
+      }
+    }
+  },
+  "ecosystem": {
+    "title": "Une plateforme, tous vos besoins",
+    "subtitle": "Le CRM et l'automatisation au cœur, vos outils métier autour",
+    "center": {
+      "crm": "CRM Hôtelier",
+      "automation": "Automatisation"
+    },
+    "modules": {
+      "email": "Email",
+      "sms": "SMS",
+      "whatsapp": "WhatsApp",
+      "forms": "Formulaires",
+      "sales": "Ventes",
+      "analytics": "Analytics",
+      "newsletter": "Newsletter",
+      "reviews": "Avis",
+      "loyalty": "Fidélité"
+    },
+    "tooltips": {
+      "email": "Emails transactionnels automatiques",
+      "sms": "SMS personnalisés à chaque étape",
+      "whatsapp": "Communication sur WhatsApp Business",
+      "forms": "Collectez les infos clients",
+      "sales": "Boostez vos ventes additionnelles",
+      "analytics": "Analysez vos performances",
+      "newsletter": "Fidélisez avec des contenus",
+      "reviews": "Collectez et gérez les avis",
+      "loyalty": "Programme de fidélité intégré"
+    }
+  },
+  "valueProp": {
+    "title": "Automatisez tout ce que vous imaginez",
+    "subtitle": "Fini les outils rigides. Avec TriggerFlow, vous créez des workflows sur-mesure adaptés à VOTRE établissement.",
+    "bubbles": {
+      "welcomeSms": "SMS de bienvenue",
+      "preStayEmail": "Email pré-séjour",
+      "satisfactionSurvey": "Enquête satisfaction",
+      "spaOffer": "Offre spa personnalisée",
+      "googleReview": "Relance avis Google",
+      "loyaltyNewsletter": "Newsletter fidélité"
+    },
+    "workflow": {
+      "title": "Mon workflow personnalisé",
+      "subtitle": "Créé en 5 minutes",
+      "active": "Actif",
+      "trigger": "Déclencheur",
+      "triggerDesc": "Check-in client",
+      "condition": "Condition",
+      "conditionDesc": "Si première visite",
+      "action": "Action",
+      "actionDesc": "Envoyer SMS"
+    },
+    "cta": "Voir des exemples concrets"
+  },
+  "modules": {
+    "title": "Une plateforme complète pour votre relation client",
+    "subtitle": "Chaque module se configure selon vos besoins",
+    "learnMore": "En savoir plus",
+    "items": {
+      "communication": {
+        "title": "Communication multicanale",
+        "description": "Email, SMS, WhatsApp. Contactez vos clients sur leur canal préféré, au bon moment."
+      },
+      "marketing": {
+        "title": "Marketing & Fidélisation",
+        "description": "Transformez vos clients en habitués avec des campagnes ciblées et un programme de fidélité."
+      },
+      "automation": {
+        "title": "Automatisation intelligente",
+        "description": "Créez des workflows personnalisés qui se déclenchent automatiquement selon vos règles."
+      },
+      "tools": {
+        "title": "Outils métier",
+        "description": "CRM hôtelier, formulaires, ventes additionnelles, analytics. Tout ce qu'il vous faut."
+      }
+    }
+  },
+  "modulesShowcase": {
+    "learnMore": "En savoir plus",
+    "modules": {
+      "communication": {
+        "title": "Communication multicanale",
+        "description": "Atteignez vos clients là où ils sont. Email, SMS, WhatsApp - chaque message arrive au bon moment, sur le bon canal, avec le bon contenu personnalisé.",
+        "mockupLabel": "Mockup iPhone WhatsApp",
+        "features": {
+          "multicanal": "Email, SMS et WhatsApp dans une seule interface",
+          "templates": "Templates professionnels personnalisables",
+          "personalization": "Variables dynamiques (nom, dates, chambre...)"
+        }
+      },
+      "automation": {
+        "title": "Automatisation intelligente",
+        "description": "Créez des workflows sur-mesure sans coder. Définissez vos déclencheurs, conditions et actions, et laissez TriggerFlow travailler pour vous 24h/24.",
+        "mockupLabel": "Screenshot Workflow Builder",
+        "features": {
+          "triggers": "Déclencheurs automatiques (check-in, réservation...)",
+          "conditions": "Conditions avancées et segmentation",
+          "noCode": "Interface drag & drop sans code"
+        }
+      },
+      "marketing": {
+        "title": "Marketing & Fidélisation",
+        "description": "Transformez les visiteurs en habitués. Newsletters ciblées, programmes de fidélité et campagnes automatisées pour maximiser la valeur de chaque client.",
+        "mockupLabel": "Screenshot Campagne Email",
+        "features": {
+          "campaigns": "Campagnes email et SMS ciblées",
+          "newsletter": "Newsletter avec segmentation avancée",
+          "loyalty": "Programme de fidélité intégré"
+        }
+      },
+      "tools": {
+        "title": "Outils métier",
+        "description": "Tout ce dont vous avez besoin en un seul endroit. CRM hôtelier, formulaires de collecte, ventes additionnelles et analytics pour piloter votre activité.",
+        "mockupLabel": "Screenshot Dashboard Analytics",
+        "features": {
+          "crm": "CRM hôtelier avec historique client complet",
+          "forms": "Formulaires personnalisés (pré-séjour, satisfaction...)",
+          "analytics": "Tableaux de bord et rapports détaillés"
+        }
+      }
+    }
+  },
+  "howItWorks": {
+    "badge": "Comment ça marche",
+    "title": "Opérationnel en 48h",
+    "subtitle": "Trois étapes simples pour automatiser votre relation client",
+    "pmsIntegrations": "Intégrations PMS",
+    "templates": "Templates prêts à l'emploi",
+    "workflowBuilder": "Créateur de workflows",
+    "screenshotWorkflow": "Screenshot interface création",
+    "analytics": "Statistiques en temps réel",
+    "screenshotDashboard": "Screenshot dashboard analytics",
+    "autoRunning": "Automatisation active",
+    "autoRunningDesc": "24/7 sans intervention",
+    "cta": "Voir toutes les intégrations",
+    "steps": {
+      "connect": {
+        "title": "Connectez votre PMS",
+        "description": "Intégration en 1 clic avec Mews, Opera, Thaïs et 50+ autres."
+      },
+      "create": {
+        "title": "Créez vos automatisations",
+        "description": "Interface intuitive, templates prêts à l'emploi ou création sur-mesure."
+      },
+      "launch": {
+        "title": "Laissez la magie opérer",
+        "description": "TriggerFlow travaille 24/7, vous vous concentrez sur vos clients."
+      }
+    }
+  },
+  "solutions": {
+    "title": "Adapté à votre réalité",
+    "subtitle": "Que vous gériez un boutique-hôtel ou un groupe de 50 établissements",
+    "discover": "Découvrir",
+    "items": {
+      "independent": {
+        "title": "Hôtels indépendants",
+        "description": "Automatisez sans équipe technique"
+      },
+      "group": {
+        "title": "Groupes hôteliers",
+        "description": "Déployez à grande échelle avec contrôle centralisé"
+      },
+      "residence": {
+        "title": "Résidences de tourisme",
+        "description": "Gérez les séjours longs et la rotation"
+      },
+      "guesthouse": {
+        "title": "Maisons d'hôtes",
+        "description": "L'automatisation accessible aux petites structures"
+      }
+    }
+  },
+  "testimonialFeatured": {
+    "quote": "TriggerFlow a transformé notre façon de communiquer avec nos clients. Les enquêtes de satisfaction nous ont permis d'améliorer considérablement notre note sur les OTA. Nous gagnons un temps précieux chaque jour.",
+    "author": {
+      "name": "Sandrine Surrel",
+      "title": "Directrice, Nature Cathare",
+      "initials": "SS"
+    },
+    "metrics": {
+      "reviews": {
+        "value": "+45%",
+        "label": "d'avis clients"
+      },
+      "timeSaved": {
+        "value": "10h",
+        "label": "gagnées/semaine"
+      },
+      "otaScore": {
+        "value": "4.2 → 4.7",
+        "label": "Note OTA"
+      }
+    },
+    "cta": "Lire le cas client complet"
+  },
+  "pricingPreview": {
+    "title": "Des tarifs adaptés à votre taille",
+    "subtitle": "Du lancement à l'expansion, un plan pour chaque étape",
+    "perMonth": "mois",
+    "popular": "Populaire",
+    "cta": "Comparer les plans en détail",
+    "included": "Tous les plans incluent :",
+    "includedFeatures": {
+      "support": "Support 7j/7",
+      "setup": "Aide à la configuration",
+      "rgpd": "Conformité RGPD"
+    },
+    "plans": {
+      "discovery": {
+        "name": "Découverte",
+        "description": "Pour tester",
+        "features": "1 flow, 1000 emails"
+      },
+      "communication": {
+        "name": "Communication",
+        "description": "Pour démarrer",
+        "features": "5 flows, 5000 emails, SMS, WhatsApp"
+      },
+      "conversion": {
+        "name": "Conversion",
+        "description": "Pour performer",
+        "features": "10 flows, 15000 emails, Formulaires, Ventes"
+      },
+      "marketing": {
+        "name": "Marketing+",
+        "description": "Pour scaler",
+        "features": "Illimité, Newsletter, Fidélité"
+      }
+    }
+  },
+  "faq": {
+    "title": "Questions fréquentes",
+    "subtitle": "Tout ce que vous devez savoir sur TriggerFlow",
+    "contactCta": "Vous avez d'autres questions ? Contactez-nous",
+    "items": {
+      "setup": {
+        "question": "Combien de temps prend la mise en place ?",
+        "answer": "La mise en place est rapide et simple. En moyenne, nos clients sont opérationnels en moins de 48h. Notre équipe vous accompagne à chaque étape pour configurer vos premières automatisations."
+      },
+      "pms": {
+        "question": "TriggerFlow est-il compatible avec mon PMS ?",
+        "answer": "Nous sommes compatibles avec les principaux PMS du marché : Mews, Opera, Protel, Clock, Misterbooking, Asterio, Thaïs et bien d'autres. Si votre PMS n'est pas dans la liste, contactez-nous pour vérifier la compatibilité."
+      },
+      "customization": {
+        "question": "Puis-je personnaliser les messages envoyés ?",
+        "answer": "Absolument ! Tous les messages sont entièrement personnalisables. Vous pouvez utiliser des variables dynamiques (nom du client, dates de séjour, numéro de chambre...) et adapter le ton à votre établissement."
+      },
+      "marketing": {
+        "question": "Quelles actions marketing puis-je automatiser ?",
+        "answer": "TriggerFlow permet d'automatiser de nombreuses actions : SMS/emails de bienvenue, enquêtes satisfaction, offres de services additionnels, programmes de fidélité, relances post-séjour et bien plus encore."
+      },
+      "trial": {
+        "question": "Proposez-vous un essai gratuit ?",
+        "answer": "Oui, le plan Découverte est gratuit et vous permet de tester vos premiers scénarios. Pour les plans payants, nous proposons 14 jours d'essai sans engagement."
+      },
+      "support": {
+        "question": "Comment se passe l'accompagnement ?",
+        "answer": "Notre équipe vous accompagne à chaque étape : configuration initiale, formation de vos équipes, et support 7j/7 par chat, email ou téléphone."
+      }
+    }
+  },
+  "ctaSection": {
+    "title": "Prêt à créer vos premières automatisations ?",
+    "subtitle": "Rejoignez les 200+ hôtels qui ont repris le contrôle de leur relation client",
+    "ctaPrimary": "Réserver une démo",
+    "ctaSecondary": "Nous contacter"
+  },
+  "footer": {
+    "description": "TriggerFlow est la solution SaaS de référence pour l'automatisation de la relation client dans l'hôtellerie.",
+    "cta": {
+      "title": "Prêt à transformer votre relation client ?",
+      "subtitle": "Rejoignez les centaines d'hôteliers qui font confiance à TriggerFlow",
+      "button": "Réserver une démo"
+    },
+    "columns": {
+      "product": "Produit",
+      "solutions": "Solutions",
+      "resources": "Ressources",
+      "company": "Entreprise",
+      "legal": "Légal"
+    },
+    "product": {
+      "communication": "Communication",
+      "automation": "Automatisation",
+      "marketing": "Marketing",
+      "tools": "Outils",
+      "reputation": "Réputation",
+      "pricing": "Tarifs",
+      "integrations": "Intégrations"
+    },
+    "solutions": {
+      "independentHotel": "Hôtel indépendant",
+      "hotelGroup": "Groupe hôtelier",
+      "residence": "Résidence de tourisme",
+      "camping": "Camping & Plein air"
+    },
+    "resources": {
+      "blog": "Blog",
+      "caseStudies": "Cas clients",
+      "guides": "Guides & Ebooks",
+      "helpCenter": "Centre d'aide"
+    },
+    "company": {
+      "about": "À propos",
+      "contact": "Contact",
+      "careers": "Carrières"
+    },
+    "legal": {
+      "legalNotice": "Mentions légales",
+      "terms": "CGV",
+      "termsOfUse": "CGU",
+      "privacy": "Politique de confidentialité"
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "placeholder": "Votre email",
+      "disclaimer": "Pas de spam, uniquement des conseils hôteliers."
+    },
+    "bottom": {
+      "utelysSolution": "Une solution Utelys",
+      "designBy": "Design par"
+    },
+    "copyright": "© {year} TriggerFlow. Tous droits réservés."
+  },
+  "legalPages": {
+    "legalNotice": {
+      "meta": {
+        "title": "Mentions légales | TriggerFlow",
+        "description": "Mentions légales du site TriggerFlow - Informations sur l'éditeur, l'hébergeur et les conditions d'utilisation."
+      },
+      "title": "Mentions légales",
+      "sections": {
+        "editor": {
+          "title": "Éditeur du site",
+          "content": "Le site trigger-flow.com est édité par :",
+          "company": "Raison sociale :",
+          "address": "Adresse :",
+          "capital": "Capital social :",
+          "rcs": "RCS :",
+          "vat": "N° TVA :",
+          "director": "Directeur de publication :",
+          "email": "Email :"
+        },
+        "hosting": {
+          "title": "Hébergement",
+          "content": "Le site est hébergé par :",
+          "provider": "Hébergeur :",
+          "address": "Adresse :"
+        },
+        "intellectual": {
+          "title": "Propriété intellectuelle",
+          "content": "L'ensemble des contenus présents sur le site trigger-flow.com (textes, images, logos, vidéos, etc.) sont protégés par le droit de la propriété intellectuelle. Toute reproduction, représentation, modification ou exploitation non autorisée est interdite."
+        },
+        "data": {
+          "title": "Données personnelles",
+          "content": "Conformément à la loi Informatique et Libertés et au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données personnelles. Pour exercer ce droit, contactez-nous à contact@trigger-flow.com."
+        },
+        "cookies": {
+          "title": "Cookies",
+          "content": "Ce site utilise des cookies pour améliorer votre expérience de navigation et réaliser des statistiques de visites. Vous pouvez paramétrer l'utilisation des cookies dans les paramètres de votre navigateur."
+        }
+      }
+    },
+    "terms": {
+      "meta": {
+        "title": "Conditions Générales de Vente | TriggerFlow",
+        "description": "Conditions générales de vente des services TriggerFlow."
+      },
+      "title": "Conditions Générales de Vente",
+      "lastUpdate": "Dernière mise à jour",
+      "sections": {
+        "object": {
+          "title": "Objet",
+          "content": "Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre TriggerFlow SAS et ses clients."
+        },
+        "services": {
+          "title": "Services proposés",
+          "content": "TriggerFlow propose une plateforme SaaS permettant l'automatisation des communications client."
+        },
+        "pricing": {
+          "title": "Tarifs et facturation",
+          "content": "Les tarifs sont indiqués en euros hors taxes sur notre page tarifs."
+        },
+        "payment": {
+          "title": "Modalités de paiement",
+          "content": "Le paiement s'effectue par prélèvement automatique ou carte bancaire."
+        },
+        "duration": {
+          "title": "Durée et renouvellement",
+          "content": "L'abonnement est conclu pour une durée déterminée et se renouvelle tacitement."
+        },
+        "termination": {
+          "title": "Résiliation",
+          "content": "Le client peut résilier son abonnement à tout moment avec un préavis de 30 jours."
+        },
+        "liability": {
+          "title": "Responsabilité",
+          "content": "TriggerFlow s'engage à fournir un service de qualité."
+        },
+        "jurisdiction": {
+          "title": "Loi applicable et juridiction",
+          "content": "Les présentes CGV sont soumises au droit français."
+        }
+      }
+    },
+    "termsOfUse": {
+      "meta": {
+        "title": "Conditions Générales d'Utilisation | TriggerFlow",
+        "description": "Conditions générales d'utilisation de la plateforme TriggerFlow."
+      },
+      "title": "Conditions Générales d'Utilisation",
+      "lastUpdate": "Dernière mise à jour",
+      "sections": {
+        "acceptance": {
+          "title": "Acceptation des conditions",
+          "content": "L'accès et l'utilisation de la plateforme TriggerFlow impliquent l'acceptation sans réserve des présentes CGU."
+        },
+        "access": {
+          "title": "Accès au service",
+          "content": "TriggerFlow s'efforce de maintenir le service accessible 24h/24 et 7j/7."
+        },
+        "account": {
+          "title": "Compte utilisateur",
+          "content": "Pour utiliser nos services, vous devez créer un compte avec des informations exactes."
+        },
+        "usage": {
+          "title": "Utilisation du service",
+          "content": "Vous vous engagez à utiliser le service conformément à sa destination."
+        },
+        "prohibited": {
+          "title": "Utilisations interdites",
+          "content": "Sont strictement interdits : l'envoi de communications non sollicitées."
+        },
+        "intellectual": {
+          "title": "Propriété intellectuelle",
+          "content": "TriggerFlow conserve tous les droits de propriété intellectuelle sur la plateforme."
+        },
+        "modifications": {
+          "title": "Modifications des CGU",
+          "content": "TriggerFlow se réserve le droit de modifier ces CGU à tout moment."
+        },
+        "contact": {
+          "title": "Contact",
+          "content": "Pour toute question, contactez-nous à contact@trigger-flow.com."
+        }
+      }
+    },
+    "privacy": {
+      "meta": {
+        "title": "Politique de Confidentialité | TriggerFlow",
+        "description": "Politique de confidentialité TriggerFlow."
+      },
+      "title": "Politique de Confidentialité",
+      "lastUpdate": "Dernière mise à jour",
+      "sections": {
+        "introduction": {
+          "title": "Introduction",
+          "content": "TriggerFlow s'engage à protéger la vie privée de ses utilisateurs."
+        },
+        "dataCollected": {
+          "title": "Données collectées",
+          "content": "Nous collectons les données que vous nous fournissez."
+        },
+        "purpose": {
+          "title": "Finalités du traitement",
+          "content": "Vos données sont utilisées pour fournir nos services."
+        },
+        "legalBasis": {
+          "title": "Base légale",
+          "content": "Le traitement de vos données est fondé sur l'exécution du contrat."
+        },
+        "retention": {
+          "title": "Durée de conservation",
+          "content": "Vos données sont conservées pendant la durée de votre abonnement."
+        },
+        "sharing": {
+          "title": "Partage des données",
+          "content": "Nous ne vendons pas vos données."
+        },
+        "rights": {
+          "title": "Vos droits",
+          "content": "Vous disposez des droits d'accès, de rectification et d'effacement."
+        },
+        "cookies": {
+          "title": "Cookies",
+          "content": "Nous utilisons des cookies essentiels au fonctionnement du site."
+        },
+        "security": {
+          "title": "Sécurité",
+          "content": "Nous mettons en œuvre des mesures de sécurité appropriées."
+        },
+        "contact": {
+          "title": "Contact DPO",
+          "content": "Contactez notre DPO à dpo@trigger-flow.com."
+        }
+      }
+    }
+  }
+}
