@@ -731,5 +731,645 @@
         }
       }
     }
+  },
+  "pricing": {
+    "meta": {
+      "title": "Tarifs | TriggerFlow",
+      "description": "Découvrez nos plans adaptés à chaque taille d'établissement. Du plan gratuit au plan entreprise."
+    },
+    "hero": {
+      "title": "Des tarifs adaptés à votre taille",
+      "subtitle": "Du lancement à l'expansion, un plan pour chaque étape de votre croissance"
+    },
+    "perMonth": "mois",
+    "plans": {
+      "discovery": {
+        "name": "Découverte",
+        "badge": "Gratuit",
+        "description": "Pour tester et découvrir TriggerFlow",
+        "features": ["1 workflow", "1 000 emails/mois", "CRM basique", "Support email"]
+      },
+      "communication": {
+        "name": "Communication",
+        "description": "Pour démarrer l'automatisation",
+        "features": ["5 workflows", "5 000 emails/mois", "SMS & WhatsApp", "Hub messagerie", "Support prioritaire"]
+      },
+      "conversion": {
+        "name": "Conversion",
+        "badge": "Populaire",
+        "description": "Pour performer et convertir",
+        "features": ["10 workflows", "15 000 emails/mois", "500 SMS inclus", "Formulaires illimités", "Ventes additionnelles", "Analytics avancés"]
+      },
+      "marketing": {
+        "name": "Marketing+",
+        "description": "Pour scaler votre marketing",
+        "features": ["Workflows illimités", "Emails illimités", "1 000 SMS inclus", "Newsletter & Campagnes", "Programme fidélité", "Account manager dédié"]
+      }
+    },
+    "cta": {
+      "startFree": "Démarrer gratuitement",
+      "tryFree": "Essai gratuit 14 jours",
+      "contactSales": "Contacter l'équipe"
+    },
+    "comparison": {
+      "title": "Comparaison détaillée des plans",
+      "subtitle": "Trouvez le plan qui correspond à vos besoins",
+      "feature": "Fonctionnalité",
+      "categories": {
+        "communication": "Communication",
+        "automation": "Automatisation",
+        "marketing": "Marketing",
+        "tools": "Outils",
+        "support": "Support"
+      },
+      "features": {
+        "emails": "Emails par mois",
+        "sms": "SMS",
+        "whatsapp": "WhatsApp",
+        "hub": "Hub messagerie",
+        "workflows": "Workflows",
+        "triggers": "Déclencheurs automatiques",
+        "segmentation": "Segmentation avancée",
+        "newsletter": "Newsletter",
+        "campaigns": "Campagnes marketing",
+        "loyalty": "Programme fidélité",
+        "crm": "CRM hôtelier",
+        "forms": "Formulaires",
+        "upsell": "Ventes additionnelles",
+        "analytics": "Analytics",
+        "users": "Utilisateurs",
+        "supportType": "Type de support",
+        "onboarding": "Onboarding personnalisé"
+      }
+    },
+    "faq": {
+      "title": "Questions fréquentes sur nos tarifs",
+      "items": {
+        "changePlan": {
+          "question": "Puis-je changer de plan à tout moment ?",
+          "answer": "Oui, vous pouvez upgrader ou downgrader votre plan à tout moment. Le changement prend effet immédiatement et la facturation est ajustée au prorata."
+        },
+        "commitment": {
+          "question": "Y a-t-il un engagement minimum ?",
+          "answer": "Non, tous nos plans sont sans engagement. Vous pouvez résilier à tout moment avec un préavis de 30 jours."
+        },
+        "trial": {
+          "question": "Comment fonctionne l'essai gratuit ?",
+          "answer": "Vous bénéficiez de 14 jours d'essai gratuit sur les plans payants, avec accès à toutes les fonctionnalités. Aucune carte bancaire n'est requise pour commencer."
+        },
+        "groupRates": {
+          "question": "Proposez-vous des tarifs pour les groupes hôteliers ?",
+          "answer": "Oui, nous proposons des tarifs dégressifs pour les groupes multi-établissements. Contactez notre équipe commerciale pour un devis personnalisé."
+        },
+        "smsIncluded": {
+          "question": "Les SMS sont-ils inclus dans les forfaits ?",
+          "answer": "Les plans Conversion et Marketing+ incluent respectivement 500 et 1000 SMS par mois. Au-delà, les SMS sont facturés à 0.06€/SMS. Le plan Communication propose les SMS à 0.06€/SMS dès le premier message."
+        }
+      }
+    },
+    "groups": {
+      "title": "Vous gérez plusieurs établissements ?",
+      "description": "Bénéficiez de tarifs préférentiels et d'un accompagnement dédié pour déployer TriggerFlow à grande échelle.",
+      "cta": "Demander un devis groupe"
+    }
+  },
+  "contact": {
+    "meta": {
+      "title": "Contact | TriggerFlow",
+      "description": "Contactez l'équipe TriggerFlow. Nous sommes là pour répondre à vos questions."
+    },
+    "hero": {
+      "title": "Parlons de votre projet",
+      "subtitle": "Notre équipe est là pour répondre à vos questions et vous accompagner"
+    },
+    "form": {
+      "title": "Envoyez-nous un message",
+      "fields": {
+        "name": "Nom complet",
+        "email": "Email professionnel",
+        "phone": "Téléphone",
+        "hotelName": "Nom de l'établissement",
+        "rooms": "Nombre de chambres",
+        "message": "Votre message"
+      },
+      "placeholders": {
+        "name": "Jean Dupont",
+        "email": "jean@monhotel.com",
+        "phone": "+33 6 12 34 56 78",
+        "hotelName": "Hôtel Bellevue",
+        "rooms": "Sélectionnez une tranche",
+        "message": "Décrivez votre projet ou posez vos questions..."
+      },
+      "rooms": "chambres",
+      "submit": "Envoyer le message",
+      "submitting": "Envoi en cours...",
+      "success": {
+        "title": "Message envoyé !",
+        "message": "Merci pour votre message. Notre équipe vous répondra dans les 24h."
+      }
+    },
+    "info": {
+      "title": "Nos coordonnées",
+      "email": "Email",
+      "phone": "Téléphone",
+      "address": "Adresse",
+      "hours": "Horaires",
+      "hoursValue": "Lun - Ven, 9h - 18h",
+      "social": "Suivez-nous"
+    },
+    "demo": {
+      "title": "Préférez-vous une démo ?",
+      "description": "Réservez un créneau de 30 minutes avec notre équipe pour découvrir TriggerFlow en action.",
+      "cta": "Réserver une démo"
+    }
+  },
+  "about": {
+    "meta": {
+      "title": "À propos | TriggerFlow",
+      "description": "Découvrez l'histoire et l'équipe derrière TriggerFlow, la solution d'automatisation pour l'hôtellerie."
+    },
+    "hero": {
+      "title": "Notre mission : simplifier la vie des hôteliers",
+      "subtitle": "Nous croyons que la technologie doit servir l'humain, pas l'inverse"
+    },
+    "history": {
+      "title": "Notre histoire",
+      "p1": "TriggerFlow est né d'un constat simple : les hôteliers passent trop de temps sur des tâches répétitives qui pourraient être automatisées.",
+      "p2": "Fondée en 2020 par des passionnés de l'hôtellerie et du digital, notre entreprise s'est donnée pour mission de créer des outils simples et puissants pour transformer la relation client.",
+      "p3": "Aujourd'hui, TriggerFlow accompagne plus de 500 établissements en France et en Europe dans leur transformation digitale.",
+      "timeline": {
+        "2020": {
+          "title": "Création",
+          "description": "Lancement de TriggerFlow à Paris"
+        },
+        "2021": {
+          "title": "Croissance",
+          "description": "100 premiers clients et levée de fonds"
+        },
+        "2022": {
+          "title": "Expansion",
+          "description": "Ouverture à l'international"
+        },
+        "2024": {
+          "title": "Leadership",
+          "description": "500+ hôtels et 20 collaborateurs"
+        }
+      }
+    },
+    "stats": {
+      "hotels": "Hôtels équipés",
+      "messages": "Messages envoyés",
+      "countries": "Pays",
+      "team": "Collaborateurs"
+    },
+    "values": {
+      "title": "Nos valeurs",
+      "subtitle": "Ce qui nous guide au quotidien",
+      "items": {
+        "innovation": {
+          "title": "Innovation",
+          "description": "Nous repoussons les limites de la technologie pour créer des solutions toujours plus performantes et intuitives."
+        },
+        "proximity": {
+          "title": "Proximité",
+          "description": "Chaque client est unique. Nous construisons des relations durables basées sur l'écoute et l'accompagnement."
+        },
+        "excellence": {
+          "title": "Excellence",
+          "description": "Nous visons l'excellence dans tout ce que nous faisons, de notre code à notre service client."
+        }
+      }
+    },
+    "team": {
+      "title": "L'équipe",
+      "subtitle": "Les visages derrière TriggerFlow"
+    },
+    "cta": {
+      "title": "Envie de rejoindre l'aventure ?",
+      "description": "Nous recrutons des talents passionnés par l'hôtellerie et la tech.",
+      "demo": "Réserver une démo",
+      "contact": "Nous contacter"
+    }
+  },
+  "integrations": {
+    "meta": {
+      "title": "Intégrations | TriggerFlow",
+      "description": "Connectez TriggerFlow à plus de 50 outils : PMS (Mews, Opera, Thaïs), caisses, CRM, serrures connectées. Intégration native sans développement."
+    },
+    "hero": {
+      "title": "Connectez TriggerFlow à vos outils",
+      "subtitle": "Plus de 50 intégrations natives avec les PMS, logiciels de caisse, CRM et bien plus. Pas de développement nécessaire.",
+      "cta": "Vous ne trouvez pas votre outil ?"
+    },
+    "badges": {
+      "native": "Natif",
+      "api": "API"
+    },
+    "categories": {
+      "pms": {
+        "title": "PMS (Property Management System)",
+        "integrations": {
+          "mews": {
+            "name": "Mews",
+            "description": "Le PMS cloud nouvelle génération"
+          },
+          "opera": {
+            "name": "Opera Cloud",
+            "description": "La solution Oracle pour l'hôtellerie"
+          },
+          "thais": {
+            "name": "Thaïs-PMS",
+            "description": "Le PMS français de référence"
+          },
+          "dedge": {
+            "name": "D-Edge",
+            "description": "Distribution et PMS intégrés"
+          },
+          "misterbooking": {
+            "name": "Misterbooking",
+            "description": "PMS et Channel Manager"
+          },
+          "amenitiz": {
+            "name": "Amenitiz",
+            "description": "Solution tout-en-un pour indépendants"
+          },
+          "reservit": {
+            "name": "Reservit",
+            "description": "Moteur de réservation et PMS"
+          },
+          "medialog": {
+            "name": "Medialog",
+            "description": "PMS pour hôtels et résidences"
+          }
+        }
+      },
+      "pos": {
+        "title": "Logiciels de caisse",
+        "integrations": {
+          "lightspeed": {
+            "name": "Lightspeed",
+            "description": "Caisse restaurant et retail"
+          },
+          "sumup": {
+            "name": "SumUp",
+            "description": "Paiements et caisse simplifiés"
+          },
+          "zelty": {
+            "name": "Zelty",
+            "description": "Caisse restaurant connectée"
+          },
+          "addition": {
+            "name": "Addition",
+            "description": "Caisse pour CHR"
+          }
+        }
+      },
+      "crm": {
+        "title": "CRM & Marketing",
+        "integrations": {
+          "salesforce": {
+            "name": "Salesforce",
+            "description": "Le CRM leader mondial"
+          },
+          "hubspot": {
+            "name": "HubSpot",
+            "description": "CRM et marketing automation"
+          },
+          "mailchimp": {
+            "name": "Mailchimp",
+            "description": "Email marketing"
+          },
+          "brevo": {
+            "name": "Brevo",
+            "description": "Email, SMS et automation"
+          }
+        }
+      },
+      "locks": {
+        "title": "Serrures connectées",
+        "integrations": {
+          "sesame": {
+            "name": "Sesame",
+            "description": "Serrures intelligentes"
+          },
+          "nuki": {
+            "name": "Nuki",
+            "description": "Smart locks pour hôtels"
+          },
+          "assaabloy": {
+            "name": "ASSA ABLOY",
+            "description": "Solutions d'accès hôtelier"
+          },
+          "salto": {
+            "name": "Salto",
+            "description": "Contrôle d'accès électronique"
+          }
+        }
+      },
+      "channel": {
+        "title": "Channel Managers",
+        "integrations": {
+          "siteminder": {
+            "name": "SiteMinder",
+            "description": "Distribution hôtelière"
+          },
+          "cubilis": {
+            "name": "Cubilis",
+            "description": "Channel manager européen"
+          },
+          "wubook": {
+            "name": "WuBook",
+            "description": "Gestion des canaux"
+          }
+        }
+      },
+      "other": {
+        "title": "Autres",
+        "integrations": {
+          "zapier": {
+            "name": "Zapier",
+            "description": "Connectez 5000+ apps"
+          },
+          "make": {
+            "name": "Make (Integromat)",
+            "description": "Automatisation avancée"
+          },
+          "api": {
+            "name": "API REST",
+            "description": "Connectez n'importe quel outil"
+          }
+        }
+      }
+    },
+    "request": {
+      "title": "Vous ne trouvez pas votre outil ?",
+      "description": "Nous ajoutons régulièrement de nouvelles intégrations. Dites-nous quel outil vous utilisez et nous étudierons la possibilité de l'intégrer.",
+      "form": {
+        "toolPlaceholder": "Nom de l'outil",
+        "emailPlaceholder": "Votre email",
+        "submit": "Demander l'intégration",
+        "submitting": "Envoi..."
+      },
+      "success": {
+        "title": "Demande envoyée !",
+        "message": "Merci pour votre demande. Nous vous tiendrons informé de l'avancement."
+      }
+    },
+    "cta": {
+      "title": "Prêt à connecter vos outils ?",
+      "demo": "Réserver une démo",
+      "pricing": "Voir les tarifs"
+    }
+  },
+  "modulePage": {
+    "meta": {
+      "titleSuffix": "Module TriggerFlow"
+    },
+    "backToProduct": "Retour au produit",
+    "problemSolution": {
+      "title": "Avant / Après TriggerFlow",
+      "subtitle": "Découvrez comment ce module transforme votre quotidien",
+      "before": "Sans TriggerFlow",
+      "after": "Avec TriggerFlow"
+    },
+    "features": {
+      "title": "Fonctionnalités clés",
+      "subtitle": "Tout ce dont vous avez besoin pour réussir"
+    },
+    "useCases": {
+      "title": "Cas d'usage",
+      "subtitle": "Des exemples concrets d'utilisation"
+    },
+    "testimonial": {
+      "quote": "Ce module a transformé notre façon de travailler. Les résultats ont été immédiats et nos clients sont ravis.",
+      "author": "Marie Dupont",
+      "role": "Directrice, Hôtel Le Grand"
+    },
+    "related": {
+      "title": "Modules complémentaires",
+      "subtitle": "Découvrez les modules qui fonctionnent parfaitement ensemble"
+    },
+    "cta": {
+      "title": "Prêt à découvrir ce module ?",
+      "subtitle": "Réservez une démo personnalisée avec notre équipe",
+      "demo": "Réserver une démo",
+      "pricing": "Voir les tarifs",
+      "contact": "Nous contacter"
+    }
+  },
+  "product": {
+    "meta": {
+      "title": "Produit | TriggerFlow",
+      "description": "Découvrez la plateforme TriggerFlow : emails, SMS, WhatsApp, automatisations, CRM, formulaires, analytics. Tout pour votre relation client hôtelière."
+    },
+    "hero": {
+      "title": "Une plateforme complète pour votre relation client",
+      "subtitle": "Communication, automatisation, marketing, CRM... Tout ce dont vous avez besoin pour transformer l'expérience de vos clients.",
+      "cta": {
+        "demo": "Réserver une démo",
+        "pricing": "Voir les tarifs"
+      }
+    },
+    "modules": {
+      "title": "Découvrez nos modules",
+      "subtitle": "Chaque module se configure selon vos besoins",
+      "learnMore": "En savoir plus",
+      "items": {
+        "email": {
+          "title": "Email",
+          "description": "Emails transactionnels et marketing personnalisés"
+        },
+        "sms": {
+          "title": "SMS",
+          "description": "Messages SMS automatisés et campagnes"
+        },
+        "whatsapp": {
+          "title": "WhatsApp",
+          "description": "Communication WhatsApp Business"
+        },
+        "newsletter": {
+          "title": "Newsletter",
+          "description": "Campagnes email et newsletters"
+        },
+        "loyalty": {
+          "title": "Fidélité",
+          "description": "Programme de fidélité intégré"
+        },
+        "automation": {
+          "title": "Automatisations",
+          "description": "Workflows et triggers personnalisés"
+        },
+        "crm": {
+          "title": "CRM",
+          "description": "Base clients unifiée et segmentation"
+        },
+        "forms": {
+          "title": "Formulaires",
+          "description": "Enquêtes et formulaires personnalisés"
+        },
+        "reviews": {
+          "title": "Avis",
+          "description": "Collecte et gestion des avis clients"
+        },
+        "analytics": {
+          "title": "Analytics",
+          "description": "Tableaux de bord et statistiques"
+        }
+      }
+    },
+    "cta": {
+      "title": "Prêt à transformer votre relation client ?",
+      "demo": "Réserver une démo",
+      "pricing": "Voir les tarifs"
+    }
+  },
+  "solutionPage": {
+    "meta": {
+      "titleSuffix": "Solution TriggerFlow"
+    },
+    "backToHome": "Retour à l'accueil",
+    "challenges": {
+      "title": "Les défis que vous rencontrez",
+      "subtitle": "TriggerFlow répond à vos problématiques quotidiennes"
+    },
+    "features": {
+      "title": "Les fonctionnalités qui vous correspondent",
+      "subtitle": "Découvrez les modules adaptés à votre activité"
+    },
+    "useCases": {
+      "title": "Cas d'usage concrets",
+      "subtitle": "Comment TriggerFlow s'intègre dans votre quotidien"
+    },
+    "integrations": {
+      "title": "Intégrations compatibles",
+      "subtitle": "TriggerFlow se connecte à vos outils existants",
+      "viewAll": "Voir toutes les intégrations"
+    },
+    "cta": {
+      "title": "Prêt à transformer votre établissement ?",
+      "subtitle": "Réservez une démo personnalisée avec notre équipe",
+      "demo": "Réserver une démo",
+      "pricing": "Voir les tarifs",
+      "contact": "Nous contacter"
+    }
+  },
+  "blog": {
+    "meta": {
+      "title": "Blog | TriggerFlow",
+      "description": "Conseils, tendances et bonnes pratiques pour optimiser la relation client dans l'hôtellerie."
+    },
+    "hero": {
+      "title": "Le blog TriggerFlow",
+      "subtitle": "Conseils, tendances et bonnes pratiques pour optimiser votre relation client"
+    },
+    "featured": "Article à la une",
+    "comingSoon": "Article bientôt disponible",
+    "newsletter": {
+      "title": "Restez informé",
+      "subtitle": "Recevez nos derniers articles et conseils directement dans votre boîte mail",
+      "placeholder": "Votre email",
+      "button": "S'abonner",
+      "comingSoon": "Newsletter bientôt disponible"
+    }
+  },
+  "caseStudies": {
+    "meta": {
+      "title": "Cas clients | TriggerFlow",
+      "description": "Découvrez comment nos clients transforment leur relation client avec TriggerFlow."
+    },
+    "hero": {
+      "title": "Ils ont transformé leur relation client",
+      "subtitle": "Découvrez les success stories de nos clients hôteliers"
+    },
+    "filters": {
+      "type": "Type",
+      "objective": "Objectif"
+    },
+    "readMore": "Lire le cas client",
+    "comingSoon": "Cas client bientôt disponible",
+    "cta": {
+      "title": "Prêt à écrire votre success story ?",
+      "button": "Réserver une démo"
+    }
+  },
+  "guides": {
+    "meta": {
+      "title": "Guides & Ressources | TriggerFlow",
+      "description": "Téléchargez nos guides, ebooks et templates pour optimiser votre relation client hôtelière."
+    },
+    "hero": {
+      "title": "Guides & Ressources",
+      "subtitle": "Des contenus experts pour transformer votre relation client"
+    },
+    "download": "Télécharger",
+    "comingSoon": "Téléchargement bientôt disponible",
+    "newsletter": {
+      "title": "Recevez nos prochaines ressources",
+      "subtitle": "Soyez informé dès qu'un nouveau guide est disponible",
+      "placeholder": "Votre email",
+      "button": "S'inscrire",
+      "comingSoon": "Inscription bientôt disponible"
+    }
+  },
+  "helpCenter": {
+    "meta": {
+      "title": "Centre d'aide | TriggerFlow",
+      "description": "Trouvez des réponses à vos questions sur TriggerFlow. Documentation, tutoriels et FAQ."
+    },
+    "hero": {
+      "title": "Comment pouvons-nous vous aider ?",
+      "subtitle": "Trouvez des réponses à vos questions",
+      "searchPlaceholder": "Rechercher dans la documentation...",
+      "searchButton": "Rechercher"
+    },
+    "searchComingSoon": "Recherche bientôt disponible",
+    "comingSoon": "Contenu bientôt disponible",
+    "categories": {
+      "title": "Parcourir par catégorie",
+      "subtitle": "Explorez nos guides et tutoriels",
+      "articles": "articles"
+    },
+    "popular": {
+      "title": "Articles populaires",
+      "subtitle": "Les questions les plus fréquentes de nos utilisateurs"
+    },
+    "support": {
+      "title": "Vous ne trouvez pas votre réponse ?",
+      "subtitle": "Notre équipe support est là pour vous aider du lundi au vendredi, 9h-18h",
+      "chatButton": "Démarrer un chat",
+      "emailButton": "Envoyer un email"
+    }
+  },
+  "careers": {
+    "meta": {
+      "title": "Carrières | TriggerFlow",
+      "description": "Rejoignez l'équipe TriggerFlow et participez à la transformation de l'hôtellerie."
+    },
+    "hero": {
+      "badge": "Nous recrutons",
+      "title": "Rejoignez l'aventure TriggerFlow",
+      "subtitle": "Participez à la transformation digitale de l'hôtellerie aux côtés d'une équipe passionnée",
+      "cta": "Voir les postes ouverts"
+    },
+    "values": {
+      "title": "Nos valeurs",
+      "subtitle": "Ce qui nous anime au quotidien"
+    },
+    "benefits": {
+      "title": "Vos avantages",
+      "subtitle": "Ce que nous offrons à nos équipes"
+    },
+    "positions": {
+      "title": "Postes ouverts",
+      "subtitle": "Trouvez le poste qui vous correspond",
+      "apply": "Postuler",
+      "noOpenings": "Aucun poste ouvert actuellement. Envoyez-nous une candidature spontanée !"
+    },
+    "spontaneous": {
+      "title": "Votre profil n'est pas dans la liste ?",
+      "subtitle": "Nous sommes toujours à la recherche de talents. Envoyez-nous votre candidature spontanée !",
+      "cta": "Envoyer ma candidature"
+    },
+    "applyComingSoon": "Système de candidature bientôt disponible"
   }
 }

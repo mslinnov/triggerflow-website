@@ -731,5 +731,645 @@
         }
       }
     }
+  },
+  "pricing": {
+    "meta": {
+      "title": "Pricing | TriggerFlow",
+      "description": "Discover our plans adapted to every property size. From free to enterprise plans."
+    },
+    "hero": {
+      "title": "Pricing adapted to your size",
+      "subtitle": "From launch to expansion, a plan for every stage of your growth"
+    },
+    "perMonth": "month",
+    "plans": {
+      "discovery": {
+        "name": "Discovery",
+        "badge": "Free",
+        "description": "To test and discover TriggerFlow",
+        "features": ["1 workflow", "1,000 emails/month", "Basic CRM", "Email support"]
+      },
+      "communication": {
+        "name": "Communication",
+        "description": "To start automating",
+        "features": ["5 workflows", "5,000 emails/month", "SMS & WhatsApp", "Message hub", "Priority support"]
+      },
+      "conversion": {
+        "name": "Conversion",
+        "badge": "Popular",
+        "description": "To perform and convert",
+        "features": ["10 workflows", "15,000 emails/month", "500 SMS included", "Unlimited forms", "Additional sales", "Advanced analytics"]
+      },
+      "marketing": {
+        "name": "Marketing+",
+        "description": "To scale your marketing",
+        "features": ["Unlimited workflows", "Unlimited emails", "1,000 SMS included", "Newsletter & Campaigns", "Loyalty program", "Dedicated account manager"]
+      }
+    },
+    "cta": {
+      "startFree": "Start for free",
+      "tryFree": "14-day free trial",
+      "contactSales": "Contact sales"
+    },
+    "comparison": {
+      "title": "Detailed plan comparison",
+      "subtitle": "Find the plan that matches your needs",
+      "feature": "Feature",
+      "categories": {
+        "communication": "Communication",
+        "automation": "Automation",
+        "marketing": "Marketing",
+        "tools": "Tools",
+        "support": "Support"
+      },
+      "features": {
+        "emails": "Emails per month",
+        "sms": "SMS",
+        "whatsapp": "WhatsApp",
+        "hub": "Message hub",
+        "workflows": "Workflows",
+        "triggers": "Automatic triggers",
+        "segmentation": "Advanced segmentation",
+        "newsletter": "Newsletter",
+        "campaigns": "Marketing campaigns",
+        "loyalty": "Loyalty program",
+        "crm": "Hotel CRM",
+        "forms": "Forms",
+        "upsell": "Additional sales",
+        "analytics": "Analytics",
+        "users": "Users",
+        "supportType": "Support type",
+        "onboarding": "Personalized onboarding"
+      }
+    },
+    "faq": {
+      "title": "Frequently asked questions about pricing",
+      "items": {
+        "changePlan": {
+          "question": "Can I change plans at any time?",
+          "answer": "Yes, you can upgrade or downgrade your plan at any time. The change takes effect immediately and billing is adjusted pro-rata."
+        },
+        "commitment": {
+          "question": "Is there a minimum commitment?",
+          "answer": "No, all our plans are commitment-free. You can cancel at any time with 30 days notice."
+        },
+        "trial": {
+          "question": "How does the free trial work?",
+          "answer": "You get a 14-day free trial on paid plans, with access to all features. No credit card required to start."
+        },
+        "groupRates": {
+          "question": "Do you offer pricing for hotel groups?",
+          "answer": "Yes, we offer volume discounts for multi-property groups. Contact our sales team for a custom quote."
+        },
+        "smsIncluded": {
+          "question": "Are SMS included in the plans?",
+          "answer": "Conversion and Marketing+ plans include 500 and 1000 SMS per month respectively. Beyond that, SMS are billed at €0.06/SMS. The Communication plan offers SMS at €0.06/SMS from the first message."
+        }
+      }
+    },
+    "groups": {
+      "title": "Managing multiple properties?",
+      "description": "Benefit from preferential rates and dedicated support to deploy TriggerFlow at scale.",
+      "cta": "Request a group quote"
+    }
+  },
+  "contact": {
+    "meta": {
+      "title": "Contact | TriggerFlow",
+      "description": "Contact the TriggerFlow team. We're here to answer your questions."
+    },
+    "hero": {
+      "title": "Let's talk about your project",
+      "subtitle": "Our team is here to answer your questions and support you"
+    },
+    "form": {
+      "title": "Send us a message",
+      "fields": {
+        "name": "Full name",
+        "email": "Business email",
+        "phone": "Phone",
+        "hotelName": "Property name",
+        "rooms": "Number of rooms",
+        "message": "Your message"
+      },
+      "placeholders": {
+        "name": "John Smith",
+        "email": "john@myhotel.com",
+        "phone": "+1 555 123 4567",
+        "hotelName": "Hotel Bellevue",
+        "rooms": "Select a range",
+        "message": "Describe your project or ask your questions..."
+      },
+      "rooms": "rooms",
+      "submit": "Send message",
+      "submitting": "Sending...",
+      "success": {
+        "title": "Message sent!",
+        "message": "Thank you for your message. Our team will respond within 24 hours."
+      }
+    },
+    "info": {
+      "title": "Contact information",
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address",
+      "hours": "Hours",
+      "hoursValue": "Mon - Fri, 9am - 6pm",
+      "social": "Follow us"
+    },
+    "demo": {
+      "title": "Prefer a demo?",
+      "description": "Book a 30-minute slot with our team to see TriggerFlow in action.",
+      "cta": "Book a demo"
+    }
+  },
+  "about": {
+    "meta": {
+      "title": "About | TriggerFlow",
+      "description": "Discover the story and team behind TriggerFlow, the automation solution for hospitality."
+    },
+    "hero": {
+      "title": "Our mission: simplifying hoteliers' lives",
+      "subtitle": "We believe technology should serve people, not the other way around"
+    },
+    "history": {
+      "title": "Our story",
+      "p1": "TriggerFlow was born from a simple observation: hoteliers spend too much time on repetitive tasks that could be automated.",
+      "p2": "Founded in 2020 by hospitality and digital enthusiasts, our company set out to create simple and powerful tools to transform customer relationships.",
+      "p3": "Today, TriggerFlow supports over 500 properties across France and Europe in their digital transformation.",
+      "timeline": {
+        "2020": {
+          "title": "Founded",
+          "description": "TriggerFlow launched in Paris"
+        },
+        "2021": {
+          "title": "Growth",
+          "description": "First 100 customers and funding round"
+        },
+        "2022": {
+          "title": "Expansion",
+          "description": "International expansion"
+        },
+        "2024": {
+          "title": "Leadership",
+          "description": "500+ hotels and 20 team members"
+        }
+      }
+    },
+    "stats": {
+      "hotels": "Hotels equipped",
+      "messages": "Messages sent",
+      "countries": "Countries",
+      "team": "Team members"
+    },
+    "values": {
+      "title": "Our values",
+      "subtitle": "What guides us every day",
+      "items": {
+        "innovation": {
+          "title": "Innovation",
+          "description": "We push the boundaries of technology to create ever more powerful and intuitive solutions."
+        },
+        "proximity": {
+          "title": "Proximity",
+          "description": "Every customer is unique. We build lasting relationships based on listening and support."
+        },
+        "excellence": {
+          "title": "Excellence",
+          "description": "We strive for excellence in everything we do, from our code to our customer service."
+        }
+      }
+    },
+    "team": {
+      "title": "The team",
+      "subtitle": "The faces behind TriggerFlow"
+    },
+    "cta": {
+      "title": "Want to join the adventure?",
+      "description": "We're hiring talented people passionate about hospitality and tech.",
+      "demo": "Book a demo",
+      "contact": "Contact us"
+    }
+  },
+  "integrations": {
+    "meta": {
+      "title": "Integrations | TriggerFlow",
+      "description": "Connect TriggerFlow to over 50 tools: PMS (Mews, Opera, Thaïs), POS, CRM, smart locks. Native integration without development."
+    },
+    "hero": {
+      "title": "Connect TriggerFlow to your tools",
+      "subtitle": "Over 50 native integrations with PMS, point-of-sale systems, CRM and more. No development required.",
+      "cta": "Can't find your tool?"
+    },
+    "badges": {
+      "native": "Native",
+      "api": "API"
+    },
+    "categories": {
+      "pms": {
+        "title": "PMS (Property Management System)",
+        "integrations": {
+          "mews": {
+            "name": "Mews",
+            "description": "The next-generation cloud PMS"
+          },
+          "opera": {
+            "name": "Opera Cloud",
+            "description": "Oracle's hospitality solution"
+          },
+          "thais": {
+            "name": "Thaïs-PMS",
+            "description": "The French reference PMS"
+          },
+          "dedge": {
+            "name": "D-Edge",
+            "description": "Distribution and integrated PMS"
+          },
+          "misterbooking": {
+            "name": "Misterbooking",
+            "description": "PMS and Channel Manager"
+          },
+          "amenitiz": {
+            "name": "Amenitiz",
+            "description": "All-in-one for independents"
+          },
+          "reservit": {
+            "name": "Reservit",
+            "description": "Booking engine and PMS"
+          },
+          "medialog": {
+            "name": "Medialog",
+            "description": "PMS for hotels and residences"
+          }
+        }
+      },
+      "pos": {
+        "title": "Point of Sale",
+        "integrations": {
+          "lightspeed": {
+            "name": "Lightspeed",
+            "description": "Restaurant and retail POS"
+          },
+          "sumup": {
+            "name": "SumUp",
+            "description": "Simplified payments and POS"
+          },
+          "zelty": {
+            "name": "Zelty",
+            "description": "Connected restaurant POS"
+          },
+          "addition": {
+            "name": "Addition",
+            "description": "POS for hospitality"
+          }
+        }
+      },
+      "crm": {
+        "title": "CRM & Marketing",
+        "integrations": {
+          "salesforce": {
+            "name": "Salesforce",
+            "description": "The world's leading CRM"
+          },
+          "hubspot": {
+            "name": "HubSpot",
+            "description": "CRM and marketing automation"
+          },
+          "mailchimp": {
+            "name": "Mailchimp",
+            "description": "Email marketing"
+          },
+          "brevo": {
+            "name": "Brevo",
+            "description": "Email, SMS and automation"
+          }
+        }
+      },
+      "locks": {
+        "title": "Smart Locks",
+        "integrations": {
+          "sesame": {
+            "name": "Sesame",
+            "description": "Smart locks"
+          },
+          "nuki": {
+            "name": "Nuki",
+            "description": "Smart locks for hotels"
+          },
+          "assaabloy": {
+            "name": "ASSA ABLOY",
+            "description": "Hotel access solutions"
+          },
+          "salto": {
+            "name": "Salto",
+            "description": "Electronic access control"
+          }
+        }
+      },
+      "channel": {
+        "title": "Channel Managers",
+        "integrations": {
+          "siteminder": {
+            "name": "SiteMinder",
+            "description": "Hotel distribution"
+          },
+          "cubilis": {
+            "name": "Cubilis",
+            "description": "European channel manager"
+          },
+          "wubook": {
+            "name": "WuBook",
+            "description": "Channel management"
+          }
+        }
+      },
+      "other": {
+        "title": "Other",
+        "integrations": {
+          "zapier": {
+            "name": "Zapier",
+            "description": "Connect 5000+ apps"
+          },
+          "make": {
+            "name": "Make (Integromat)",
+            "description": "Advanced automation"
+          },
+          "api": {
+            "name": "REST API",
+            "description": "Connect any tool"
+          }
+        }
+      }
+    },
+    "request": {
+      "title": "Can't find your tool?",
+      "description": "We regularly add new integrations. Tell us which tool you use and we'll look into adding it.",
+      "form": {
+        "toolPlaceholder": "Tool name",
+        "emailPlaceholder": "Your email",
+        "submit": "Request integration",
+        "submitting": "Sending..."
+      },
+      "success": {
+        "title": "Request sent!",
+        "message": "Thank you for your request. We'll keep you updated on progress."
+      }
+    },
+    "cta": {
+      "title": "Ready to connect your tools?",
+      "demo": "Book a demo",
+      "pricing": "View pricing"
+    }
+  },
+  "modulePage": {
+    "meta": {
+      "titleSuffix": "TriggerFlow Module"
+    },
+    "backToProduct": "Back to product",
+    "problemSolution": {
+      "title": "Before / After TriggerFlow",
+      "subtitle": "Discover how this module transforms your daily operations",
+      "before": "Without TriggerFlow",
+      "after": "With TriggerFlow"
+    },
+    "features": {
+      "title": "Key Features",
+      "subtitle": "Everything you need to succeed"
+    },
+    "useCases": {
+      "title": "Use Cases",
+      "subtitle": "Concrete examples of usage"
+    },
+    "testimonial": {
+      "quote": "This module has transformed how we work. The results were immediate and our guests are delighted.",
+      "author": "Marie Dupont",
+      "role": "Director, Hotel Le Grand"
+    },
+    "related": {
+      "title": "Complementary Modules",
+      "subtitle": "Discover modules that work perfectly together"
+    },
+    "cta": {
+      "title": "Ready to discover this module?",
+      "subtitle": "Book a personalized demo with our team",
+      "demo": "Book a demo",
+      "pricing": "View pricing",
+      "contact": "Contact us"
+    }
+  },
+  "product": {
+    "meta": {
+      "title": "Product | TriggerFlow",
+      "description": "Discover the TriggerFlow platform: emails, SMS, WhatsApp, automations, CRM, forms, analytics. Everything for your hotel customer relationship."
+    },
+    "hero": {
+      "title": "A complete platform for your customer relationship",
+      "subtitle": "Communication, automation, marketing, CRM... Everything you need to transform your guests' experience.",
+      "cta": {
+        "demo": "Book a demo",
+        "pricing": "View pricing"
+      }
+    },
+    "modules": {
+      "title": "Discover our modules",
+      "subtitle": "Each module is configured to your needs",
+      "learnMore": "Learn more",
+      "items": {
+        "email": {
+          "title": "Email",
+          "description": "Personalized transactional and marketing emails"
+        },
+        "sms": {
+          "title": "SMS",
+          "description": "Automated SMS messages and campaigns"
+        },
+        "whatsapp": {
+          "title": "WhatsApp",
+          "description": "WhatsApp Business communication"
+        },
+        "newsletter": {
+          "title": "Newsletter",
+          "description": "Email campaigns and newsletters"
+        },
+        "loyalty": {
+          "title": "Loyalty",
+          "description": "Integrated loyalty program"
+        },
+        "automation": {
+          "title": "Automations",
+          "description": "Custom workflows and triggers"
+        },
+        "crm": {
+          "title": "CRM",
+          "description": "Unified customer base and segmentation"
+        },
+        "forms": {
+          "title": "Forms",
+          "description": "Custom surveys and forms"
+        },
+        "reviews": {
+          "title": "Reviews",
+          "description": "Customer review collection and management"
+        },
+        "analytics": {
+          "title": "Analytics",
+          "description": "Dashboards and statistics"
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to transform your customer relationship?",
+      "demo": "Book a demo",
+      "pricing": "View pricing"
+    }
+  },
+  "solutionPage": {
+    "meta": {
+      "titleSuffix": "TriggerFlow Solution"
+    },
+    "backToHome": "Back to home",
+    "challenges": {
+      "title": "The challenges you face",
+      "subtitle": "TriggerFlow addresses your daily issues"
+    },
+    "features": {
+      "title": "Features that fit your needs",
+      "subtitle": "Discover the modules adapted to your business"
+    },
+    "useCases": {
+      "title": "Concrete use cases",
+      "subtitle": "How TriggerFlow integrates into your daily operations"
+    },
+    "integrations": {
+      "title": "Compatible integrations",
+      "subtitle": "TriggerFlow connects to your existing tools",
+      "viewAll": "View all integrations"
+    },
+    "cta": {
+      "title": "Ready to transform your property?",
+      "subtitle": "Book a personalized demo with our team",
+      "demo": "Book a demo",
+      "pricing": "View pricing",
+      "contact": "Contact us"
+    }
+  },
+  "blog": {
+    "meta": {
+      "title": "Blog | TriggerFlow",
+      "description": "Tips, trends and best practices to optimize customer relationships in hospitality."
+    },
+    "hero": {
+      "title": "The TriggerFlow Blog",
+      "subtitle": "Tips, trends and best practices to optimize your customer relationship"
+    },
+    "featured": "Featured article",
+    "comingSoon": "Article coming soon",
+    "newsletter": {
+      "title": "Stay informed",
+      "subtitle": "Receive our latest articles and tips directly in your inbox",
+      "placeholder": "Your email",
+      "button": "Subscribe",
+      "comingSoon": "Newsletter coming soon"
+    }
+  },
+  "caseStudies": {
+    "meta": {
+      "title": "Case Studies | TriggerFlow",
+      "description": "Discover how our customers transform their customer relationships with TriggerFlow."
+    },
+    "hero": {
+      "title": "They transformed their customer relationship",
+      "subtitle": "Discover our hotel customers' success stories"
+    },
+    "filters": {
+      "type": "Type",
+      "objective": "Objective"
+    },
+    "readMore": "Read case study",
+    "comingSoon": "Case study coming soon",
+    "cta": {
+      "title": "Ready to write your success story?",
+      "button": "Book a demo"
+    }
+  },
+  "guides": {
+    "meta": {
+      "title": "Guides & Resources | TriggerFlow",
+      "description": "Download our guides, ebooks and templates to optimize your hotel customer relationships."
+    },
+    "hero": {
+      "title": "Guides & Resources",
+      "subtitle": "Expert content to transform your customer relationship"
+    },
+    "download": "Download",
+    "comingSoon": "Download coming soon",
+    "newsletter": {
+      "title": "Get our next resources",
+      "subtitle": "Be notified when a new guide is available",
+      "placeholder": "Your email",
+      "button": "Subscribe",
+      "comingSoon": "Registration coming soon"
+    }
+  },
+  "helpCenter": {
+    "meta": {
+      "title": "Help Center | TriggerFlow",
+      "description": "Find answers to your questions about TriggerFlow. Documentation, tutorials and FAQ."
+    },
+    "hero": {
+      "title": "How can we help you?",
+      "subtitle": "Find answers to your questions",
+      "searchPlaceholder": "Search documentation...",
+      "searchButton": "Search"
+    },
+    "searchComingSoon": "Search coming soon",
+    "comingSoon": "Content coming soon",
+    "categories": {
+      "title": "Browse by category",
+      "subtitle": "Explore our guides and tutorials",
+      "articles": "articles"
+    },
+    "popular": {
+      "title": "Popular articles",
+      "subtitle": "The most frequently asked questions from our users"
+    },
+    "support": {
+      "title": "Can't find your answer?",
+      "subtitle": "Our support team is here to help you Monday to Friday, 9am-6pm",
+      "chatButton": "Start a chat",
+      "emailButton": "Send an email"
+    }
+  },
+  "careers": {
+    "meta": {
+      "title": "Careers | TriggerFlow",
+      "description": "Join the TriggerFlow team and participate in the transformation of hospitality."
+    },
+    "hero": {
+      "badge": "We're hiring",
+      "title": "Join the TriggerFlow adventure",
+      "subtitle": "Participate in the digital transformation of hospitality alongside a passionate team",
+      "cta": "View open positions"
+    },
+    "values": {
+      "title": "Our values",
+      "subtitle": "What drives us every day"
+    },
+    "benefits": {
+      "title": "Your benefits",
+      "subtitle": "What we offer our teams"
+    },
+    "positions": {
+      "title": "Open positions",
+      "subtitle": "Find the position that suits you",
+      "apply": "Apply",
+      "noOpenings": "No open positions currently. Send us a spontaneous application!"
+    },
+    "spontaneous": {
+      "title": "Your profile is not in the list?",
+      "subtitle": "We are always looking for talent. Send us your spontaneous application!",
+      "cta": "Send my application"
+    },
+    "applyComingSoon": "Application system coming soon"
   }
 }

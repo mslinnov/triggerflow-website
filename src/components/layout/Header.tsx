@@ -50,39 +50,39 @@ const menuItems = {
       {
         title: 'Communication',
         items: [
-          { icon: Mail, label: 'Email', description: 'Campagnes email personnalisées', href: '#' },
-          { icon: MessageSquare, label: 'SMS', description: 'Messages texte automatisés', href: '#' },
-          { icon: MessageCircle, label: 'WhatsApp', description: 'Conversations WhatsApp', href: '#' },
-          { icon: Inbox, label: 'Hub messagerie', description: 'Centralisez vos échanges', href: '#' },
+          { icon: Mail, label: 'Email', description: 'Campagnes email personnalisées', href: '/produit/email' },
+          { icon: MessageSquare, label: 'SMS', description: 'Messages texte automatisés', href: '/produit/sms' },
+          { icon: MessageCircle, label: 'WhatsApp', description: 'Conversations WhatsApp', href: '/produit/whatsapp' },
+          { icon: Inbox, label: 'Hub messagerie', description: 'Centralisez vos échanges', href: '/produit/hub-messagerie' },
         ],
       },
       {
         title: 'Automatisation',
         items: [
-          { icon: Workflow, label: 'Workflows & Triggers', description: 'Scénarios automatiques', href: '#' },
-          { icon: Users, label: 'Segmentation client', description: 'Ciblez vos audiences', href: '#' },
+          { icon: Workflow, label: 'Workflows & Triggers', description: 'Scénarios automatiques', href: '/produit/automatisations' },
+          { icon: Users, label: 'CRM & Segments', description: 'Ciblez vos audiences', href: '/produit/crm' },
         ],
       },
       {
         title: 'Marketing',
         items: [
-          { icon: Newspaper, label: 'Newsletter & Campagnes', description: 'Diffusez vos actualités', href: '#' },
-          { icon: Heart, label: 'Programme fidélité', description: 'Récompensez vos clients', href: '#' },
+          { icon: Newspaper, label: 'Newsletter & Campagnes', description: 'Diffusez vos actualités', href: '/produit/newsletter' },
+          { icon: Heart, label: 'Programme fidélité', description: 'Récompensez vos clients', href: '/produit/fidelite' },
         ],
       },
       {
         title: 'Outils',
         items: [
-          { icon: Building2, label: 'CRM Hôtelier', description: 'Gestion relation client', href: '#' },
-          { icon: FileText, label: 'Formulaires', description: 'Collectez des données', href: '#' },
-          { icon: ShoppingBag, label: 'Ventes additionnelles', description: 'Boostez votre CA', href: '#' },
-          { icon: BarChart3, label: 'Analytics', description: 'Tableaux de bord', href: '#' },
+          { icon: Building2, label: 'CRM Hôtelier', description: 'Gestion relation client', href: '/produit/crm' },
+          { icon: FileText, label: 'Formulaires', description: 'Collectez des données', href: '/produit/formulaires' },
+          { icon: ShoppingBag, label: 'Ventes additionnelles', description: 'Boostez votre CA', href: '/produit/ventes-additionnelles' },
+          { icon: BarChart3, label: 'Analytics', description: 'Tableaux de bord', href: '/produit/analytics' },
         ],
       },
       {
         title: 'Réputation',
         items: [
-          { icon: Star, label: 'Gestion des avis', description: 'Améliorez votre e-réputation', href: '#' },
+          { icon: Star, label: 'Gestion des avis', description: 'Améliorez votre e-réputation', href: '/produit/avis' },
         ],
       },
     ],
@@ -90,7 +90,7 @@ const menuItems = {
       icon: LayoutGrid,
       label: 'Vue d\'ensemble',
       description: 'Découvrez toutes nos fonctionnalités',
-      href: '#features',
+      href: '/produit',
     },
   },
   solutions: {
@@ -99,19 +99,19 @@ const menuItems = {
       {
         title: 'Par établissement',
         items: [
-          { icon: Hotel, label: 'Hôtels indépendants', description: 'Solution sur mesure', href: '#' },
-          { icon: Building, label: 'Groupes hôteliers', description: 'Multi-établissements', href: '#' },
-          { icon: Home, label: 'Résidences', description: 'Locations saisonnières', href: '#' },
-          { icon: Tent, label: 'Campings', description: 'Hôtellerie de plein air', href: '#' },
+          { icon: Hotel, label: 'Hôtels indépendants', description: 'Solution sur mesure', href: '/solutions/hotels-independants' },
+          { icon: Building, label: 'Groupes hôteliers', description: 'Multi-établissements', href: '/solutions/groupes-hoteliers' },
+          { icon: Home, label: 'Résidences', description: 'Locations saisonnières', href: '/solutions/residences' },
+          { icon: Tent, label: 'Campings', description: 'Hôtellerie de plein air', href: '/solutions/campings' },
         ],
       },
       {
         title: 'Par objectif',
         items: [
-          { icon: Zap, label: 'Automatiser communication', description: 'Gagnez du temps', href: '#' },
-          { icon: ThumbsUp, label: 'Augmenter avis Google', description: 'Boostez votre réputation', href: '#' },
-          { icon: TrendingUp, label: 'Booster upsell', description: 'Augmentez votre CA', href: '#' },
-          { icon: UserPlus, label: 'Fidéliser clients', description: 'Créez des ambassadeurs', href: '#' },
+          { icon: Zap, label: 'Automatiser communication', description: 'Gagnez du temps', href: '/solutions/automatiser-communication' },
+          { icon: ThumbsUp, label: 'Augmenter avis Google', description: 'Boostez votre réputation', href: '/solutions/augmenter-avis' },
+          { icon: TrendingUp, label: 'Booster upsell', description: 'Augmentez votre CA', href: '/solutions/booster-upsell' },
+          { icon: UserPlus, label: 'Fidéliser clients', description: 'Créez des ambassadeurs', href: '/solutions/fideliser-clients' },
         ],
       },
     ],
@@ -123,9 +123,9 @@ const menuItems = {
         title: 'Ressources',
         items: [
           { icon: BookOpen, label: 'Blog', description: 'Articles et actualités', href: '/blog' },
-          { icon: Building2, label: 'Cas clients', description: 'Témoignages et succès', href: '/cas-clients' },
-          { icon: FileQuestion, label: 'Guides & Ebooks', description: 'Contenus téléchargeables', href: '/guides' },
-          { icon: HelpCircle, label: 'Centre d\'aide', description: 'FAQ et documentation', href: 'https://help.trigger-flow.com' },
+          { icon: Building2, label: 'Cas clients', description: 'Témoignages et succès', href: '/ressources/cas-clients' },
+          { icon: FileQuestion, label: 'Guides & Ebooks', description: 'Contenus téléchargeables', href: '/ressources/guides' },
+          { icon: HelpCircle, label: 'Centre d\'aide', description: 'FAQ et documentation', href: '/ressources/aide' },
         ],
       },
     ],
@@ -207,12 +207,12 @@ export function Header() {
               </div>
 
               {/* Intégrations Link */}
-              <a
-                href="#integrations"
+              <Link
+                href="/integrations"
                 className="flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-medium text-brand-dark transition-colors hover:bg-zinc-100"
               >
                 {t('integrations')}
-              </a>
+              </Link>
 
               {/* Solutions Dropdown */}
               <div
@@ -234,12 +234,12 @@ export function Header() {
               </div>
 
               {/* Tarifs Link */}
-              <a
-                href="#pricing"
+              <Link
+                href="/tarifs"
                 className="flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-medium text-brand-dark transition-colors hover:bg-zinc-100"
               >
                 {t('pricing')}
-              </a>
+              </Link>
 
               {/* Ressources Dropdown */}
               <div
@@ -367,8 +367,8 @@ function MegaMenuProduit() {
             <ul className="space-y-1">
               {column.items.map((item) => (
                 <li key={item.label}>
-                  <a
-                    href={item.href}
+                  <Link
+                    href={item.href as any}
                     className="group flex items-start gap-3 rounded-lg p-2 transition-colors hover:bg-brand-light/50"
                   >
                     <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-light group-hover:bg-brand-primary/10">
@@ -382,7 +382,7 @@ function MegaMenuProduit() {
                         {item.description}
                       </div>
                     </div>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -392,8 +392,8 @@ function MegaMenuProduit() {
 
       {/* Featured Link */}
       <div className="mt-8 pt-6 border-t border-zinc-100">
-        <a
-          href={menuItems.produit.featured.href}
+        <Link
+          href="/produit"
           className="group flex items-center gap-4 rounded-xl bg-gradient-to-r from-brand-light to-brand-light/50 p-4 transition-all hover:from-brand-light hover:to-brand-light"
         >
           <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-primary shadow-lg shadow-brand-primary/20">
@@ -408,7 +408,7 @@ function MegaMenuProduit() {
             </div>
           </div>
           <ArrowRight className="h-5 w-5 text-brand-primary transition-transform group-hover:translate-x-1" />
-        </a>
+        </Link>
       </div>
     </div>
   );
@@ -424,9 +424,9 @@ function MegaMenuSolutions() {
           </h3>
           <div className="grid grid-cols-2 gap-2">
             {column.items.map((item) => (
-              <a
+              <Link
                 key={item.label}
-                href={item.href}
+                href={item.href as any}
                 className="group flex items-start gap-3 rounded-lg p-3 transition-colors hover:bg-brand-light/50"
               >
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-light group-hover:bg-brand-primary/10">
@@ -440,7 +440,7 @@ function MegaMenuSolutions() {
                     {item.description}
                   </div>
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
@@ -534,28 +534,28 @@ function MobileMenu({ t, onClose }: MobileMenuProps) {
                   {column.title}
                 </div>
                 {column.items.map((item) => (
-                  <a
+                  <Link
                     key={item.label}
-                    href={item.href}
+                    href={item.href as any}
                     onClick={onClose}
                     className="flex items-center gap-3 rounded-lg px-2 py-2 text-sm text-brand-dark hover:bg-zinc-50"
                   >
                     <item.icon className="h-4 w-4 text-brand-primary" />
                     {item.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
             ))}
           </MobileAccordion>
 
           {/* Intégrations */}
-          <a
-            href="#integrations"
+          <Link
+            href="/integrations"
             onClick={onClose}
             className="flex items-center justify-between rounded-lg px-4 py-3 text-base font-medium text-brand-dark hover:bg-zinc-50"
           >
             {t('integrations')}
-          </a>
+          </Link>
 
           {/* Solutions */}
           <MobileAccordion
@@ -569,28 +569,28 @@ function MobileMenu({ t, onClose }: MobileMenuProps) {
                   {column.title}
                 </div>
                 {column.items.map((item) => (
-                  <a
+                  <Link
                     key={item.label}
-                    href={item.href}
+                    href={item.href as any}
                     onClick={onClose}
                     className="flex items-center gap-3 rounded-lg px-2 py-2 text-sm text-brand-dark hover:bg-zinc-50"
                   >
                     <item.icon className="h-4 w-4 text-brand-primary" />
                     {item.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
             ))}
           </MobileAccordion>
 
           {/* Tarifs */}
-          <a
-            href="#pricing"
+          <Link
+            href="/tarifs"
             onClick={onClose}
             className="flex items-center justify-between rounded-lg px-4 py-3 text-base font-medium text-brand-dark hover:bg-zinc-50"
           >
             {t('pricing')}
-          </a>
+          </Link>
 
           {/* Ressources */}
           <MobileAccordion

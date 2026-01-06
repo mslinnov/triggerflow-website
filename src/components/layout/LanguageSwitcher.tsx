@@ -21,7 +21,8 @@ export function LanguageSwitcher() {
   const pathname = usePathname();
 
   const handleLocaleChange = (newLocale: Locale) => {
-    router.replace(pathname, { locale: newLocale });
+    // Cast to any to handle dynamic routes like /produit/[slug]
+    router.replace(pathname as any, { locale: newLocale });
   };
 
   return (

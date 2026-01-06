@@ -139,3 +139,62 @@ export const defaultViewport = {
 export const getStaggerDelay = (index: number, baseDelay = 0) => ({
   delay: baseDelay + index * 0.1,
 });
+
+// Stagger item (for use with staggerContainer)
+export const staggerItem: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4 },
+  },
+};
+
+// Float animation for floating cards
+export const float = {
+  animate: {
+    y: [0, -10, 0],
+    transition: {
+      duration: 3,
+      repeat: Infinity,
+      ease: 'easeInOut',
+    },
+  },
+};
+
+// Get float animation with custom delay
+export const getFloatAnimation = (delay: number = 0) => ({
+  y: [0, -10, 0],
+  transition: {
+    duration: 3,
+    repeat: Infinity,
+    ease: 'easeInOut',
+    delay,
+  },
+});
+
+// Glow pulse animation for backgrounds
+export const glowPulse = {
+  animate: {
+    scale: [1, 1.05, 1],
+    opacity: [0.3, 0.5, 0.3],
+    transition: {
+      duration: 4,
+      repeat: Infinity,
+      ease: 'easeInOut',
+    },
+  },
+};
+
+// Number counter animation spring config
+export const numberSpring = {
+  type: 'spring' as const,
+  stiffness: 100,
+  damping: 20,
+};
+
+// Chevron rotation for FAQ
+export const chevronRotate = {
+  open: { rotate: 180 },
+  closed: { rotate: 0 },
+};

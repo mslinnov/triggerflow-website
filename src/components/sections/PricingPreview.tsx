@@ -1,10 +1,11 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Check, HeadphonesIcon, Settings, ShieldCheck } from 'lucide-react';
 import { Container, ButtonLink, Badge } from '@/components/ui';
 import { cn } from '@/lib/utils';
+import { fadeInUp, staggerContainer, staggerItem, cardHover, defaultViewport } from '@/lib/animations';
 
 const plans = [
   {
@@ -37,15 +38,17 @@ const includedFeatures = [
 
 export function PricingPreview() {
   const t = useTranslations('pricingPreview');
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <section id="pricing" className="bg-brand-light/30 py-16 md:py-24">
       <Container>
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          initial={prefersReducedMotion ? 'visible' : 'hidden'}
+          whileInView="visible"
+          variants={fadeInUp}
+          viewport={defaultViewport}
           className="text-center"
         >
           <h2 className="text-3xl font-bold tracking-tight text-brand-dark md:text-4xl lg:text-[2.75rem]">
@@ -56,29 +59,43 @@ export function PricingPreview() {
           </p>
         </motion.div>
 
-        {/* Pricing Cards */}
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {plans.map((plan, index) => (
+        {/* Pricing Cards with stagger */}
+        <motion.div
+          initial={prefersReducedMotion ? 'visible' : 'hidden'}
+          whileInView="visible"
+          variants={staggerContainer}
+          viewport={defaultViewport}
+          className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+        >
+          {plans.map((plan) => (
             <motion.div
               key={plan.key}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              variants={staggerItem}
+              whileHover={!prefersReducedMotion ? { scale: 1.02, y: -5 } : {}}
               className={cn(
-                'relative rounded-2xl p-6 transition-all duration-300',
+                'relative rounded-2xl p-6 transition-shadow',
                 plan.popular
-                  ? 'bg-brand-dark text-white shadow-xl'
-                  : 'border border-zinc-100 bg-white shadow-sm hover:shadow-lg'
+                  ? 'bg-brand-dark text-white shadow-xl hover:shadow-2xl'
+                  : 'border border-zinc-100 bg-white shadow-sm hover:shadow-xl hover:border-brand-primary/20'
               )}
             >
-              {/* Popular Badge */}
+              {/* Popular Badge with pulse animation */}
               {plan.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                <motion.div
+                  className="absolute -top-3 left-1/2 -translate-x-1/2"
+                  animate={!prefersReducedMotion ? {
+                    scale: [1, 1.05, 1],
+                  } : {}}
+                  transition={{
+                    duration: 2,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
+                >
                   <Badge variant="primary" className="whitespace-nowrap bg-brand-primary text-white shadow-lg">
                     {t('popular')}
                   </Badge>
-                </div>
+                </motion.div>
               )}
 
               {/* Plan Name */}
@@ -122,18 +139,18 @@ export function PricingPreview() {
               </p>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* CTA */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
+          initial={prefersReducedMotion ? 'visible' : 'hidden'}
+          whileInView="visible"
+          variants={fadeInUp}
+          viewport={defaultViewport}
           className="mt-10 text-center"
         >
           <ButtonLink
-            href="#"
+            href="/tarifs"
             variant="primary"
             size="lg"
             className="group gap-2"
@@ -145,18 +162,22 @@ export function PricingPreview() {
 
         {/* Included in all plans */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
+          initial={prefersReducedMotion ? 'visible' : 'hidden'}
+          whileInView="visible"
+          variants={staggerContainer}
+          viewport={defaultViewport}
           className="mt-10 flex flex-wrap items-center justify-center gap-6 text-sm text-zinc-600"
         >
           <span className="font-medium">{t('included')}</span>
           {includedFeatures.map((feature) => (
-            <div key={feature.key} className="flex items-center gap-2">
+            <motion.div
+              key={feature.key}
+              variants={staggerItem}
+              className="flex items-center gap-2"
+            >
               <feature.icon className="h-4 w-4 text-brand-primary" />
               <span>{t(`includedFeatures.${feature.key}`)}</span>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
       </Container>

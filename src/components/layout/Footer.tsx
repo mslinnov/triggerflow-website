@@ -10,35 +10,35 @@ import { cn } from '@/lib/utils';
 
 // Product links matching mega menu
 const productLinks = [
-  { href: '#features', labelKey: 'product.communication' },
-  { href: '#features', labelKey: 'product.automation' },
-  { href: '#features', labelKey: 'product.marketing' },
-  { href: '#features', labelKey: 'product.tools' },
-  { href: '#features', labelKey: 'product.reputation' },
+  { href: '/produit', labelKey: 'product.communication', isLink: true },
+  { href: '/produit', labelKey: 'product.automation', isLink: true },
+  { href: '/produit', labelKey: 'product.marketing', isLink: true },
+  { href: '/produit', labelKey: 'product.tools', isLink: true },
+  { href: '/produit', labelKey: 'product.reputation', isLink: true },
 ] as const;
 
 // Solutions links
 const solutionLinks = [
-  { href: '#solutions', labelKey: 'solutions.independentHotel' },
-  { href: '#solutions', labelKey: 'solutions.hotelGroup' },
-  { href: '#solutions', labelKey: 'solutions.residence' },
-  { href: '#solutions', labelKey: 'solutions.camping' },
+  { href: '/solutions/hotels-independants', labelKey: 'solutions.independentHotel' },
+  { href: '/solutions/groupes-hoteliers', labelKey: 'solutions.hotelGroup' },
+  { href: '/solutions/residences', labelKey: 'solutions.residence' },
+  { href: '/solutions/campings', labelKey: 'solutions.camping' },
 ] as const;
 
-// Resources links (using anchor tags as these pages may not exist yet)
+// Resources links
 const resourceLinks = [
   { href: '/blog', labelKey: 'resources.blog' },
-  { href: '/cas-clients', labelKey: 'resources.caseStudies' },
-  { href: '/guides', labelKey: 'resources.guides' },
-  { href: 'https://help.trigger-flow.com', labelKey: 'resources.helpCenter', external: true },
-];
+  { href: '/ressources/cas-clients', labelKey: 'resources.caseStudies' },
+  { href: '/ressources/guides', labelKey: 'resources.guides' },
+  { href: '/ressources/aide', labelKey: 'resources.helpCenter' },
+] as const;
 
-// Company links (using anchor tags as these pages may not exist yet)
+// Company links
 const companyLinks = [
-  { href: '/a-propos', labelKey: 'company.about' },
-  { href: '/contact', labelKey: 'company.contact' },
-  { href: '/carrieres', labelKey: 'company.careers' },
-];
+  { href: '/entreprise/a-propos', labelKey: 'company.about', isLink: true },
+  { href: '/contact', labelKey: 'company.contact', isLink: true },
+  { href: '/entreprise/carrieres', labelKey: 'company.careers', isLink: true },
+] as const;
 
 const legalLinks = [
   { href: '/mentions-legales', labelKey: 'legal.legalNotice' },
@@ -136,29 +136,29 @@ export function Footer() {
               <ul className="mt-4 space-y-3">
                 {productLinks.map((link) => (
                   <li key={link.labelKey}>
-                    <a
+                    <Link
                       href={link.href}
                       className="text-sm text-zinc-400 transition-colors hover:text-white"
                     >
                       {t(link.labelKey)}
-                    </a>
+                    </Link>
                   </li>
                 ))}
                 <li>
-                  <a
-                    href="#pricing"
+                  <Link
+                    href="/tarifs"
                     className="text-sm text-zinc-400 transition-colors hover:text-white"
                   >
                     {t('product.pricing')}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#integrations"
+                  <Link
+                    href="/integrations"
                     className="text-sm text-zinc-400 transition-colors hover:text-white"
                   >
                     {t('product.integrations')}
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -171,12 +171,12 @@ export function Footer() {
               <ul className="mt-4 space-y-3">
                 {solutionLinks.map((link) => (
                   <li key={link.labelKey}>
-                    <a
+                    <Link
                       href={link.href}
                       className="text-sm text-zinc-400 transition-colors hover:text-white"
                     >
                       {t(link.labelKey)}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -190,13 +190,12 @@ export function Footer() {
               <ul className="mt-4 space-y-3">
                 {resourceLinks.map((link) => (
                   <li key={link.labelKey}>
-                    <a
+                    <Link
                       href={link.href}
-                      {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                       className="text-sm text-zinc-400 transition-colors hover:text-white"
                     >
                       {t(link.labelKey)}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -218,12 +217,21 @@ export function Footer() {
               <ul className="mt-4 space-y-3">
                 {companyLinks.map((link) => (
                   <li key={link.labelKey}>
-                    <a
-                      href={link.href}
-                      className="text-sm text-zinc-400 transition-colors hover:text-white"
-                    >
-                      {t(link.labelKey)}
-                    </a>
+                    {link.isLink ? (
+                      <Link
+                        href={link.href}
+                        className="text-sm text-zinc-400 transition-colors hover:text-white"
+                      >
+                        {t(link.labelKey)}
+                      </Link>
+                    ) : (
+                      <a
+                        href={link.href}
+                        className="text-sm text-zinc-400 transition-colors hover:text-white"
+                      >
+                        {t(link.labelKey)}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>

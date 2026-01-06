@@ -1,44 +1,48 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
-import { Building, Building2, Home, House, ArrowRight } from 'lucide-react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { Building, Building2, Home, Tent, ArrowRight } from 'lucide-react';
+import { Link } from '@/i18n/navigation';
 import { Container } from '@/components/ui';
+import { fadeInUp, staggerContainer, staggerItem, cardHover, defaultViewport } from '@/lib/animations';
 
 const solutions = [
   {
     key: 'independent',
     icon: Building,
-    href: '#',
+    href: '/solutions/hotels-independants',
   },
   {
     key: 'group',
     icon: Building2,
-    href: '#',
+    href: '/solutions/groupes-hoteliers',
   },
   {
     key: 'residence',
     icon: Home,
-    href: '#',
+    href: '/solutions/residences',
   },
   {
     key: 'guesthouse',
-    icon: House,
-    href: '#',
+    icon: Tent,
+    href: '/solutions/campings',
   },
 ];
 
 export function SolutionsGrid() {
   const t = useTranslations('solutions');
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <section className="bg-brand-light/30 py-16 md:py-24">
       <Container>
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          initial={prefersReducedMotion ? 'visible' : 'hidden'}
+          whileInView="visible"
+          variants={fadeInUp}
+          viewport={defaultViewport}
           className="text-center"
         >
           <h2 className="text-3xl font-bold tracking-tight text-brand-dark md:text-4xl lg:text-[2.75rem]">
@@ -49,39 +53,51 @@ export function SolutionsGrid() {
           </p>
         </motion.div>
 
-        {/* Solutions Grid */}
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {solutions.map((solution, index) => (
-            <motion.a
+        {/* Solutions Grid with stagger */}
+        <motion.div
+          initial={prefersReducedMotion ? 'visible' : 'hidden'}
+          whileInView="visible"
+          variants={staggerContainer}
+          viewport={defaultViewport}
+          className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+        >
+          {solutions.map((solution) => (
+            <Link
               key={solution.key}
-              href={solution.href}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="group rounded-2xl border border-zinc-100 bg-white p-6 shadow-sm transition-all duration-300 hover:border-brand-primary/20 hover:shadow-lg"
+              href={solution.href as any}
+              className="group"
             >
-              {/* Icon */}
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-primary/10 transition-colors group-hover:bg-brand-primary">
-                <solution.icon className="h-6 w-6 text-brand-primary transition-colors group-hover:text-white" />
-              </div>
+              <motion.div
+                variants={staggerItem}
+                whileHover={!prefersReducedMotion ? cardHover : {}}
+                className="rounded-2xl border border-zinc-100 bg-white p-6 shadow-sm transition-shadow hover:border-brand-primary/20 hover:shadow-xl h-full"
+              >
+                {/* Icon */}
+                <motion.div
+                  className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-brand-primary/10 transition-colors group-hover:bg-brand-primary"
+                  whileHover={!prefersReducedMotion ? { scale: 1.1, rotate: 5 } : {}}
+                  transition={{ type: 'spring', stiffness: 300 }}
+                >
+                  <solution.icon className="h-6 w-6 text-brand-primary transition-colors group-hover:text-white" />
+                </motion.div>
 
-              {/* Title & Description */}
-              <h3 className="text-lg font-bold text-brand-dark">
-                {t(`items.${solution.key}.title`)}
-              </h3>
-              <p className="mt-2 text-sm text-zinc-600">
-                {t(`items.${solution.key}.description`)}
-              </p>
+                {/* Title & Description */}
+                <h3 className="text-lg font-bold text-brand-dark">
+                  {t(`items.${solution.key}.title`)}
+                </h3>
+                <p className="mt-2 text-sm text-zinc-600">
+                  {t(`items.${solution.key}.description`)}
+                </p>
 
-              {/* Link */}
-              <div className="mt-4 flex items-center gap-2 text-sm font-medium text-brand-primary transition-colors group-hover:text-brand-dark">
-                {t('discover')}
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </div>
-            </motion.a>
+                {/* Link */}
+                <div className="mt-4 flex items-center gap-2 text-sm font-medium text-brand-primary transition-colors group-hover:text-brand-dark">
+                  {t('discover')}
+                  <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </div>
+              </motion.div>
+            </Link>
           ))}
-        </div>
+        </motion.div>
       </Container>
     </section>
   );
