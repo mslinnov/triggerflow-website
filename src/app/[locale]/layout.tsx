@@ -3,7 +3,6 @@ import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { routing } from '@/i18n/routing';
-import { Header, Footer } from '@/components/layout';
 
 const baseUrl = 'https://www.trigger-flow.com';
 
@@ -122,9 +121,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 
   return (
     <NextIntlClientProvider messages={messages}>
-      <Header />
-      <main>{children}</main>
-      <Footer />
+      {children}
     </NextIntlClientProvider>
   );
 }
