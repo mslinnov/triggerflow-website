@@ -3,7 +3,7 @@
 import { useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { ArrowRight, Zap } from 'lucide-react';
+import { ArrowRight, Zap, Sparkles, Lightbulb } from 'lucide-react';
 import Image from 'next/image';
 import { Container, ButtonLink, Badge } from '@/components/ui';
 import { heroContainer, heroItem } from '@/lib/animations';
@@ -68,11 +68,15 @@ export function ThaisHero() {
             variants={heroContainer}
             className="flex flex-col text-center lg:text-left"
           >
-            {/* Badge */}
-            <motion.div variants={heroItem} className="mb-6 flex justify-center lg:justify-start">
+            {/* Badges */}
+            <motion.div variants={heroItem} className="mb-6 flex flex-wrap items-center justify-center gap-2 lg:justify-start">
               <Badge variant="primary" className="gap-2 text-xs font-semibold tracking-wide">
                 <Zap className="h-3.5 w-3.5" />
                 Partenariat officiel
+              </Badge>
+              <Badge variant="secondary" className="gap-2 text-xs font-semibold tracking-wide bg-purple-100 text-purple-700 border-purple-200">
+                <Sparkles className="h-3.5 w-3.5" />
+                IA intégrée
               </Badge>
             </motion.div>
 
@@ -81,9 +85,8 @@ export function ThaisHero() {
               variants={heroItem}
               className="text-3xl font-bold leading-[1.15] tracking-tight text-brand-dark sm:text-4xl md:text-5xl lg:text-[3.25rem]"
             >
-              Automatisez vos communications clients avec{' '}
-              <span className="text-brand-primary">TriggerFlow</span> et{' '}
-              <span className="text-brand-primary">Thaïs</span>
+              Le bon message, au bon client,{' '}
+              <span className="text-brand-primary">au bon moment</span>
             </motion.h1>
 
             {/* Description */}
@@ -91,15 +94,40 @@ export function ThaisHero() {
               variants={heroItem}
               className="mt-5 max-w-lg text-base leading-relaxed text-zinc-600 md:text-lg lg:mx-0 mx-auto"
             >
-              L'intégration <strong>1-clic</strong> qui connecte votre PMS Thaïs à une plateforme
-              d'automatisation <strong>SMS, Email et WhatsApp</strong>. Accessible directement
-              depuis votre interface Thaïs.
+              TriggerFlow personnalise automatiquement vos communications selon le profil de chaque client Thaïs — <strong>sans y passer des heures</strong>.
             </motion.p>
+
+            {/* Exemple concret */}
+            <motion.div
+              variants={heroItem}
+              className="mt-6 max-w-lg lg:mx-0 mx-auto"
+            >
+              <div className="rounded-xl bg-gradient-to-br from-brand-primary/10 via-emerald-50 to-teal-50 p-5 border border-brand-primary/20">
+                <div className="flex items-center gap-2 mb-4">
+                  <Lightbulb className="h-5 w-5 text-brand-primary" />
+                  <span className="text-sm font-semibold text-brand-dark">Exemple concret</span>
+                </div>
+                <div className="space-y-3 text-sm">
+                  <div className="grid grid-cols-[140px_auto] gap-2 items-baseline">
+                    <span className="text-brand-primary font-medium">Client soirée étape</span>
+                    <span className="text-zinc-700">→ Email court avec accès WiFi + heure petit-déj</span>
+                  </div>
+                  <div className="grid grid-cols-[140px_auto] gap-2 items-baseline">
+                    <span className="text-brand-primary font-medium">Coffret cadeau</span>
+                    <span className="text-zinc-700">→ Message chaleureux + surclassement proposé</span>
+                  </div>
+                  <div className="grid grid-cols-[140px_auto] gap-2 items-baseline">
+                    <span className="text-brand-primary font-medium">Arrivée le dimanche</span>
+                    <span className="text-zinc-700">→ Alerte que le restaurant est fermé</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
 
             {/* CTA Buttons */}
             <motion.div
               variants={heroItem}
-              className="mt-8 flex flex-wrap items-center justify-center gap-4 lg:justify-start"
+              className="mt-8 flex flex-col items-center gap-3 lg:items-start"
             >
               <ButtonLink
                 href={calendlyUrl}
@@ -112,12 +140,15 @@ export function ThaisHero() {
                 Réserver une démo gratuite
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </ButtonLink>
+              <span className="text-sm text-zinc-500">
+                30 min • Sans engagement • En français
+              </span>
             </motion.div>
 
             {/* Social Proof */}
             <motion.div
               variants={heroItem}
-              className="mt-10 flex flex-wrap items-center justify-center gap-4 lg:justify-start"
+              className="mt-8 flex flex-wrap items-center justify-center gap-4 lg:justify-start"
             >
               <div className="flex items-center gap-2">
                 <div className="flex -space-x-1.5">

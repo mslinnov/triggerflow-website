@@ -1,12 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import { ShoppingCart, ArrowLeftRight, TrendingUp, CreditCard, Package } from 'lucide-react';
 
 export function CatalogVisual() {
   return (
-    <div className="relative w-full max-w-2xl mx-auto">
+    <div className="relative w-full max-w-2xl mx-auto px-2 md:px-0">
       {/* Main Screenshot */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -38,14 +37,13 @@ export function CatalogVisual() {
         /> */}
       </motion.div>
 
-      {/* Floating Element 1: Top Left - Shopping Cart */}
+      {/* Floating Element 1: Top Left - Shopping Cart - Hidden on mobile */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.8, x: -20 }}
-        whileInView={{ opacity: 1, scale: 1, x: 0 }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.3, duration: 0.5 }}
-        animate={{ scale: [1, 1.05, 1] }}
-        className="absolute -top-6 -left-6 bg-brand-primary text-white rounded-full w-16 h-16 flex items-center justify-center shadow-xl relative"
+        className="hidden md:flex absolute -top-6 -left-6 z-20 bg-brand-primary text-white rounded-full w-16 h-16 items-center justify-center shadow-xl"
       >
         <ShoppingCart className="w-8 h-8" />
         <div className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-7 h-7 flex items-center justify-center text-xs font-bold">
@@ -53,28 +51,28 @@ export function CatalogVisual() {
         </div>
       </motion.div>
 
-      {/* Floating Element 2: Top Right - Sync Badge */}
+      {/* Floating Element 2: Top Right - Sync Badge - Adjusted for mobile */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.8, y: -20 }}
-        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.5, duration: 0.5 }}
-        className="absolute -top-4 -right-4 bg-gradient-to-r from-brand-primary to-emerald-600 text-white rounded-xl shadow-xl px-4 py-3"
+        className="absolute top-2 right-2 md:-top-4 md:-right-4 bg-gradient-to-r from-brand-primary to-emerald-600 text-white rounded-lg md:rounded-xl shadow-xl px-3 py-2 md:px-4 md:py-3"
       >
-        <div className="flex items-center gap-2 mb-1">
-          <ArrowLeftRight className="w-5 h-5" />
-          <span className="text-sm font-bold">Sync 2-way</span>
+        <div className="flex items-center gap-2 mb-0.5 md:mb-1">
+          <ArrowLeftRight className="w-4 h-4 md:w-5 md:h-5" />
+          <span className="text-xs md:text-sm font-bold">Sync 2-way</span>
         </div>
-        <p className="text-xs opacity-90">avec Thaïs PMS</p>
+        <p className="text-[10px] md:text-xs opacity-90">avec Thaïs PMS</p>
       </motion.div>
 
-      {/* Floating Element 3: Bottom Left - Price Tag */}
+      {/* Floating Element 3: Bottom Left - Price Tag - Hidden on mobile */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.8, x: -20 }}
-        whileInView={{ opacity: 1, scale: 1, x: 0 }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.7, duration: 0.5 }}
-        className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 border-2 border-amber-500/30"
+        className="hidden md:flex absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 border-2 border-amber-500/30"
       >
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center">
@@ -87,13 +85,13 @@ export function CatalogVisual() {
         </div>
       </motion.div>
 
-      {/* Floating Element 4: Bottom Right - Conversion Rate */}
+      {/* Floating Element 4: Bottom Right - Conversion Rate - Hidden on mobile */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.8, y: 20 }}
-        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.9, duration: 0.5 }}
-        className="absolute -bottom-4 -right-4 bg-gradient-to-br from-green-500 to-emerald-600 text-white rounded-2xl shadow-xl p-4"
+        className="hidden md:block absolute -bottom-4 -right-4 bg-gradient-to-br from-green-500 to-emerald-600 text-white rounded-2xl shadow-xl p-4"
       >
         <div className="flex items-center gap-2 mb-1">
           <TrendingUp className="w-5 h-5" />
@@ -103,13 +101,13 @@ export function CatalogVisual() {
         <p className="text-xs opacity-90">vs email</p>
       </motion.div>
 
-      {/* Floating Element 5: Left Side - Payment Badge */}
+      {/* Floating Element 5: Left Side - Payment Badge - Hidden on mobile */}
       <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.4, duration: 0.5 }}
-        className="absolute top-1/3 -left-8 bg-white rounded-lg shadow-lg p-3 border border-gray-200"
+        className="hidden lg:block absolute top-1/3 -left-8 bg-white rounded-lg shadow-lg p-3 border border-gray-200"
       >
         <div className="flex items-center gap-2">
           <CreditCard className="w-5 h-5 text-blue-600" />
@@ -120,14 +118,13 @@ export function CatalogVisual() {
         </div>
       </motion.div>
 
-      {/* Floating Element 6: Right Side - Products Count */}
+      {/* Floating Element 6: Right Side - Products Count - Hidden on mobile */}
       <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.6, duration: 0.5 }}
-        animate={{ y: [0, -8, 0] }}
-        className="absolute top-1/2 -right-8 bg-purple-500 text-white rounded-full w-16 h-16 flex items-center justify-center shadow-lg"
+        className="hidden lg:flex absolute top-1/2 -right-8 bg-purple-500 text-white rounded-full w-16 h-16 items-center justify-center shadow-lg"
       >
         <div className="text-center">
           <Package className="w-6 h-6 mx-auto mb-1" />

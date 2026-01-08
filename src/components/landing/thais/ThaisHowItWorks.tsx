@@ -8,23 +8,23 @@ const STEPS = [
   {
     number: '01',
     icon: Link2,
-    title: 'Connectez Thaïs en 1 clic',
+    title: 'Activez l\'intégration depuis votre compte Thaïs',
     description:
-      'Depuis votre compte TriggerFlow, activez l\'intégration Thaïs en quelques secondes. Aucune configuration technique requise, tout est automatique.',
+      'Connexion 1-clic, vos données se synchronisent automatiquement. Aucune configuration technique requise.',
   },
   {
     number: '02',
     icon: Cog,
-    title: 'Configurez vos workflows sur TriggerFlow',
+    title: 'Vos données clients remontent automatiquement',
     description:
-      'Créez vos automatisations personnalisées depuis l\'interface TriggerFlow. Workflows visuels, segmentation avancée, et personnalisation complète.',
+      'Codes tarifs, fidélité, historique... tout est disponible pour personnaliser vos communications.',
   },
   {
     number: '03',
     icon: Rocket,
-    title: 'Automatisez tout 24/7',
+    title: 'Lancez votre première automatisation',
     description:
-      'Vos communications s\'envoient automatiquement selon vos règles. Concentrez-vous sur vos clients pendant que TriggerFlow travaille pour vous.',
+      'Avec nos templates prêts à l\'emploi ou créez la vôtre. Concentrez-vous sur vos clients pendant que TriggerFlow travaille pour vous.',
   },
 ];
 

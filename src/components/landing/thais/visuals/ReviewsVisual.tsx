@@ -6,7 +6,7 @@ import { Star, TrendingUp, Award, BarChart3 } from 'lucide-react';
 
 export function ReviewsVisual() {
   return (
-    <div className="relative w-full max-w-2xl mx-auto">
+    <div className="relative w-full max-w-2xl mx-auto px-2 md:px-0">
       {/* Main Screenshot */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -38,33 +38,33 @@ export function ReviewsVisual() {
         />
       </motion.div>
 
-      {/* Floating Element 1: Top Left - Average Rating */}
+      {/* Floating Element 1: Top Left - Average Rating - Adjusted for mobile */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.8, x: -20 }}
-        whileInView={{ opacity: 1, scale: 1, x: 0 }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.3, duration: 0.5 }}
-        className="absolute -top-6 -left-6 bg-gradient-to-br from-amber-400 to-orange-500 text-white rounded-2xl shadow-xl p-5"
+        className="absolute top-2 left-2 md:-top-6 md:-left-6 bg-gradient-to-br from-amber-400 to-orange-500 text-white rounded-xl md:rounded-2xl shadow-xl p-3 md:p-5"
       >
-        <div className="flex items-center gap-2 mb-2">
-          <Star className="w-6 h-6 fill-white" />
-          <span className="text-sm font-semibold">Note moyenne</span>
+        <div className="flex items-center gap-2 mb-1 md:mb-2">
+          <Star className="w-4 h-4 md:w-6 md:h-6 fill-white" />
+          <span className="text-xs md:text-sm font-semibold">Note moyenne</span>
         </div>
-        <p className="text-4xl font-bold">4.8</p>
-        <div className="flex gap-0.5 mt-1">
+        <p className="text-2xl md:text-4xl font-bold">4.8</p>
+        <div className="hidden md:flex gap-0.5 mt-1">
           {[...Array(5)].map((_, i) => (
             <Star key={i} className="w-3 h-3 fill-white" />
           ))}
         </div>
       </motion.div>
 
-      {/* Floating Element 2: Top Right - Review Sources */}
+      {/* Floating Element 2: Top Right - Review Sources - Hidden on mobile */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.8, y: -20 }}
-        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.5, duration: 0.5 }}
-        className="absolute -top-4 -right-4 bg-white rounded-xl shadow-xl p-3 border border-gray-200"
+        className="hidden md:block absolute -top-4 -right-4 bg-white rounded-xl shadow-xl p-3 border border-gray-200"
       >
         <p className="text-xs text-gray-500 mb-2 font-semibold">Sources</p>
         <div className="flex gap-2">
@@ -81,13 +81,13 @@ export function ReviewsVisual() {
         <p className="text-[10px] text-gray-400 mt-1">Google, Booking, TripAdvisor</p>
       </motion.div>
 
-      {/* Floating Element 3: Bottom Left - Growth */}
+      {/* Floating Element 3: Bottom Left - Growth - Hidden on mobile */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.8, x: -20 }}
-        whileInView={{ opacity: 1, scale: 1, x: 0 }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.7, duration: 0.5 }}
-        className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-lg p-4 border-2 border-green-500/30"
+        className="hidden md:flex absolute -bottom-6 -left-6 bg-white rounded-xl shadow-lg p-4 border-2 border-green-500/30"
       >
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
@@ -100,37 +100,36 @@ export function ReviewsVisual() {
         </div>
       </motion.div>
 
-      {/* Floating Element 4: Bottom Right - Total Reviews */}
+      {/* Floating Element 4: Bottom Right - Total Reviews - Hidden on mobile */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.8, y: 20 }}
-        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.9, duration: 0.5 }}
-        className="absolute -bottom-4 -right-4 bg-gradient-to-br from-brand-primary to-emerald-600 text-white rounded-full w-20 h-20 flex flex-col items-center justify-center shadow-xl"
+        className="hidden md:flex absolute -bottom-4 -right-4 bg-gradient-to-br from-brand-primary to-emerald-600 text-white rounded-full w-20 h-20 flex-col items-center justify-center shadow-xl"
       >
         <p className="text-2xl font-bold">547</p>
         <p className="text-[10px] opacity-90">avis total</p>
       </motion.div>
 
-      {/* Floating Element 5: Right Side - Award Badge */}
+      {/* Floating Element 5: Right Side - Award Badge - Hidden on mobile */}
       <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.4, duration: 0.5 }}
-        animate={{ rotate: [0, 5, 0, -5, 0] }}
-        className="absolute top-1/3 -right-8 bg-purple-500 text-white rounded-full w-16 h-16 flex items-center justify-center shadow-lg"
+        className="hidden lg:flex absolute top-1/3 -right-8 bg-purple-500 text-white rounded-full w-16 h-16 items-center justify-center shadow-lg"
       >
         <Award className="w-8 h-8" />
       </motion.div>
 
-      {/* Floating Element 6: Left Side - Analytics */}
+      {/* Floating Element 6: Left Side - Analytics - Hidden on mobile */}
       <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.6, duration: 0.5 }}
-        className="absolute top-1/2 -left-6 bg-white rounded-lg px-3 py-2 shadow-lg border border-gray-200"
+        className="hidden lg:block absolute top-1/2 -left-6 bg-white rounded-lg px-3 py-2 shadow-lg border border-gray-200"
       >
         <div className="flex items-center gap-2">
           <BarChart3 className="w-5 h-5 text-brand-primary" />

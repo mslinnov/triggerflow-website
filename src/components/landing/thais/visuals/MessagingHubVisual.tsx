@@ -6,7 +6,7 @@ import { MessageSquare, Mail, Phone, Clock, CheckCheck } from 'lucide-react';
 
 export function MessagingHubVisual() {
   return (
-    <div className="relative w-full max-w-2xl mx-auto">
+    <div className="relative w-full max-w-2xl mx-auto px-2 md:px-0">
       {/* Main Screenshot */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -38,13 +38,13 @@ export function MessagingHubVisual() {
         />
       </motion.div>
 
-      {/* Floating Element 1: Top Left - Channel Badges */}
+      {/* Floating Element 1: Top Left - Channel Badges - Hidden on mobile */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.8, x: -20 }}
-        whileInView={{ opacity: 1, scale: 1, x: 0 }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.3, duration: 0.5 }}
-        className="absolute -top-4 -left-4 bg-white rounded-xl shadow-xl p-3 border border-gray-200"
+        className="hidden md:block absolute -top-4 -left-4 bg-white rounded-xl shadow-xl p-3 border border-gray-200"
       >
         <p className="text-xs text-gray-500 mb-2 font-semibold">Canaux actifs</p>
         <div className="flex gap-2">
@@ -60,28 +60,27 @@ export function MessagingHubVisual() {
         </div>
       </motion.div>
 
-      {/* Floating Element 2: Top Right - New Messages */}
+      {/* Floating Element 2: Top Right - New Messages - Adjusted for mobile */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.8, y: -20 }}
-        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.5, duration: 0.5 }}
-        animate={{ scale: [1, 1.05, 1] }}
-        className="absolute -top-6 -right-6 bg-red-500 text-white rounded-full w-16 h-16 flex items-center justify-center shadow-lg"
+        className="absolute top-2 right-2 md:-top-6 md:-right-6 bg-red-500 text-white rounded-full w-12 h-12 md:w-16 md:h-16 flex items-center justify-center shadow-lg"
       >
         <div className="text-center">
-          <p className="text-2xl font-bold">3</p>
-          <p className="text-[10px] opacity-90">nouveaux</p>
+          <p className="text-xl md:text-2xl font-bold">3</p>
+          <p className="text-[8px] md:text-[10px] opacity-90">nouveaux</p>
         </div>
       </motion.div>
 
-      {/* Floating Element 3: Bottom Left - Response Time */}
+      {/* Floating Element 3: Bottom Left - Response Time - Hidden on mobile */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.8, x: -20 }}
-        whileInView={{ opacity: 1, scale: 1, x: 0 }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.7, duration: 0.5 }}
-        className="absolute -bottom-6 -left-6 bg-white rounded-xl shadow-lg p-4 border-2 border-blue-500/30"
+        className="hidden md:flex absolute -bottom-6 -left-6 bg-white rounded-xl shadow-lg p-4 border-2 border-blue-500/30"
       >
         <div className="flex items-center gap-3">
           <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
@@ -94,13 +93,13 @@ export function MessagingHubVisual() {
         </div>
       </motion.div>
 
-      {/* Floating Element 4: Bottom Right - Satisfaction */}
+      {/* Floating Element 4: Bottom Right - Satisfaction - Hidden on mobile */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.8, y: 20 }}
-        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.9, duration: 0.5 }}
-        className="absolute -bottom-4 -right-4 bg-gradient-to-br from-green-500 to-emerald-600 text-white rounded-2xl shadow-xl p-4"
+        className="hidden md:block absolute -bottom-4 -right-4 bg-gradient-to-br from-green-500 to-emerald-600 text-white rounded-2xl shadow-xl p-4"
       >
         <div className="flex items-center gap-2 mb-1">
           <CheckCheck className="w-5 h-5" />
@@ -110,13 +109,13 @@ export function MessagingHubVisual() {
         <p className="text-xs opacity-90">clients satisfaits</p>
       </motion.div>
 
-      {/* Floating Element 5: Right Side - WhatsApp Badge */}
+      {/* Floating Element 5: Right Side - WhatsApp Badge - Hidden on mobile */}
       <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.4, duration: 0.5 }}
-        className="absolute top-1/2 -right-6 bg-[#25D366] text-white rounded-lg px-3 py-2 shadow-lg"
+        className="hidden lg:block absolute top-1/2 -right-6 bg-[#25D366] text-white rounded-lg px-3 py-2 shadow-lg"
       >
         <div className="flex items-center gap-2">
           <MessageSquare className="w-5 h-5" />

@@ -23,12 +23,12 @@ interface Feature {
 
 const FEATURES: Feature[] = [
   {
-    id: 'workflows',
-    title: 'Créez des workflows sur mesure',
+    id: 'flows',
+    title: 'Gagnez des heures chaque semaine',
     description:
-      'Construisez vos scénarios d\'automatisation exactement comme vous les imaginez. Déclencheurs personnalisables, conditions avancées, actions multiples - tout est possible.',
+      'Vos communications s\'envoient toutes seules selon vos règles. Vous configurez une fois, ça tourne 24/7.',
     benefits: [
-      'Workflow builder visuel no-code',
+      'Flow builder visuel no-code',
       'Déclencheurs illimités (réservation, check-in, anniversaire...)',
       'Conditions et branchements complexes',
       'Synchronisation automatique avec Thaïs',
@@ -37,9 +37,9 @@ const FEATURES: Feature[] = [
   },
   {
     id: 'segmentation',
-    title: 'Segmentez vos clients avec précision',
+    title: 'Ciblez les bons clients avec le bon message',
     description:
-      'Créez des segments clients ultra-précis basés sur n\'importe quel critère : historique de séjours, comportement, préférences, données Thaïs.',
+      'Fini les emails génériques. Chaque segment reçoit une communication adaptée à son profil.',
     benefits: [
       'Filtres personnalisables à l\'infini',
       'Segments dynamiques mis à jour en temps réel',
@@ -50,9 +50,9 @@ const FEATURES: Feature[] = [
   },
   {
     id: 'messaging-hub',
-    title: 'Toutes vos conversations au même endroit',
+    title: 'Ne perdez plus jamais un message client',
     description:
-      'Gérez tous vos échanges clients depuis une seule interface : emails, SMS, WhatsApp. Plus besoin de jongler entre 10 outils différents.',
+      'Email, SMS, WhatsApp centralisés. Répondez à tout depuis une seule interface.',
     benefits: [
       'Inbox unifiée pour tous les canaux',
       'Historique complet des conversations',
@@ -63,22 +63,22 @@ const FEATURES: Feature[] = [
   },
   {
     id: 'reviews',
-    title: 'Collectez et gérez tous vos avis',
+    title: 'Tous vos avis centralisés, réponses générées par IA',
     description:
-      'Centralisez tous vos avis clients (Google, Booking, TripAdvisor) et automatisez les demandes d\'avis après chaque séjour.',
+      'Google, Booking, TripAdvisor, Airbnb : tous vos avis au même endroit. Stats unifiées, réponses en un clic grâce à l\'IA, résumés automatiques pour identifier les points d\'amélioration.',
     benefits: [
-      'Collecte automatique post-séjour',
       'Dashboard unifié de tous vos avis',
+      'Réponses générées par IA en 1 clic',
+      'Résumés automatiques des tendances',
       'Alertes pour avis négatifs',
-      'Boost de votre e-réputation',
     ],
     visual: <ReviewsVisual />,
   },
   {
     id: 'forms',
-    title: 'Créez des formulaires synchronisés avec Thaïs',
+    title: 'Collectez les infos clients avant même leur arrivée',
     description:
-      'Form builder intuitif pour créer vos formulaires pré-séjour, satisfaction, ou tout autre besoin. Toutes les réponses remontent automatiquement dans Thaïs.',
+      'Formulaires pré-séjour, préférences, allergies... tout remonte automatiquement dans Thaïs.',
     benefits: [
       'Éditeur drag & drop sans code',
       'Synchronisation 2-way avec Thaïs',
@@ -89,9 +89,9 @@ const FEATURES: Feature[] = [
   },
   {
     id: 'catalog',
-    title: 'Boostez vos ventes avec des catalogues personnalisés',
+    title: 'Vendez vos services additionnels sans lever le petit doigt',
     description:
-      'Créez des pages de vente pour vos upsells (spa, restaurant, activités). Toutes les commandes se synchronisent automatiquement dans Thaïs.',
+      'Spa, restaurant, late check-out... proposés automatiquement au bon moment, paiement en ligne intégré.',
     benefits: [
       'Catalogue produits/services personnalisable',
       'Pages de vente brandées',
@@ -119,27 +119,27 @@ export function ThaisFeaturesShowcase() {
             <Container>
               <div
                 className={cn(
-                  'grid items-center gap-12 lg:grid-cols-2 lg:gap-16',
+                  'grid items-center gap-8 lg:grid-cols-2 lg:gap-16',
                   !isEven && 'lg:grid-flow-dense'
                 )}
               >
                 {/* Visual */}
                 <motion.div
-                  initial={{ opacity: 0, x: isEven ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: '-100px' }}
-                  transition={{ duration: 0.6 }}
-                  className={cn(!isEven && 'lg:col-start-2')}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ duration: 0.5 }}
+                  className={cn('w-full flex justify-center', !isEven && 'lg:col-start-2')}
                 >
                   {feature.visual}
                 </motion.div>
 
                 {/* Content */}
                 <motion.div
-                  initial={{ opacity: 0, x: isEven ? 50 : -50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: '-100px' }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
                   className={cn(!isEven && 'lg:col-start-1 lg:row-start-1')}
                 >
                   <h3 className="text-2xl font-bold tracking-tight text-brand-dark sm:text-3xl md:text-4xl">
@@ -150,14 +150,10 @@ export function ThaisFeaturesShowcase() {
                     {feature.description}
                   </p>
 
-                  <ul className="mt-8 space-y-3">
+                  <ul className="mt-6 space-y-3">
                     {feature.benefits.map((benefit) => (
-                      <motion.li
+                      <li
                         key={benefit}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.4 }}
                         className="flex items-start gap-3"
                       >
                         <div className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-brand-primary/10">
@@ -166,7 +162,7 @@ export function ThaisFeaturesShowcase() {
                         <span className="text-sm text-zinc-700 md:text-base">
                           {benefit}
                         </span>
-                      </motion.li>
+                      </li>
                     ))}
                   </ul>
                 </motion.div>
