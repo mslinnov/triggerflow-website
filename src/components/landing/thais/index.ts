@@ -11,3 +11,6 @@ export { ThaisUseCases } from './ThaisUseCases';
 export { ThaisTestimonials } from './ThaisTestimonials';
 export { ThaisConcreteUseCases } from './ThaisConcreteUseCases';
 export { ThaisCTASection } from './ThaisCTASection';
+export { ThaisMarketingCampaigns } from './ThaisMarketingCampaigns';
+export { ThaisJourneyTimeline } from './ThaisJourneyTimeline';
+export { ThaisJourneyHub } from './ThaisJourneyHub';

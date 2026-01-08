@@ -13,6 +13,8 @@ import {
   ThaisTestimonials,
   ThaisConcreteUseCases,
   ThaisCTASection,
+  ThaisMarketingCampaigns,
+  ThaisJourneyTimeline,
 } from '@/components/landing/thais';
 
 // Loading component for Suspense boundary
@@ -36,12 +38,20 @@ export default function ThaisLandingPage() {
           <ThaisHero />
         </Suspense>
 
+        {/* Parcours Client */}
+        <ThaisJourneyTimeline />
+
         {/* Metrics Section */}
         <ThaisMetrics />
 
         {/* Cas d'usage concrets */}
         <div id="cas-usage">
           <ThaisConcreteUseCases />
+        </div>
+
+        {/* Campagnes Marketing */}
+        <div id="campagnes">
+          <ThaisMarketingCampaigns />
         </div>
 
         {/* CTA intermédiaire */}
