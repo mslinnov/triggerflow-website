@@ -77,19 +77,22 @@ export function ThaisTestimonials() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="group h-full border-2 border-zinc-100 bg-white p-6 transition-all duration-300 hover:border-brand-primary/30 hover:shadow-xl">
-                {/* Quote Icon */}
-                <div className="mb-4">
-                  <Quote className="h-8 w-8 text-brand-primary/20" />
+              <Card className="group h-full flex flex-col border-2 border-zinc-100 bg-white p-6 transition-all duration-300 hover:border-brand-primary/30 hover:shadow-xl">
+                {/* Quote Section - grows to fill space */}
+                <div className="flex-1">
+                  {/* Quote Icon */}
+                  <div className="mb-4">
+                    <Quote className="h-8 w-8 text-brand-primary/20" />
+                  </div>
+
+                  {/* Quote Text */}
+                  <blockquote className="text-zinc-700 leading-relaxed italic">
+                    &ldquo;{testimonial.quote}&rdquo;
+                  </blockquote>
                 </div>
 
-                {/* Quote Text */}
-                <blockquote className="mb-6 text-zinc-700 leading-relaxed italic">
-                  &ldquo;{testimonial.quote}&rdquo;
-                </blockquote>
-
-                {/* Author Info */}
-                <div className="border-t border-zinc-100 pt-4">
+                {/* Author Info - fixed at bottom */}
+                <div className="border-t border-zinc-100 pt-4 mt-6">
                   <div className="flex items-center gap-3 mb-3">
                     {/* Avatar */}
                     <div className="h-12 w-12 rounded-full bg-gradient-to-br from-brand-primary to-brand-dark flex items-center justify-center text-white font-semibold">
