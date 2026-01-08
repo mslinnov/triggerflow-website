@@ -44,7 +44,7 @@ export function FormBuilderVisual() {
                 whileInView={{opacity: 1, scale: 1}}
                 viewport={{once: true}}
                 transition={{delay: 0.3, duration: 0.5}}
-                className="absolute top-2 left-2 md:-top-4 md:-left-4 bg-gradient-to-r from-brand-primary to-emerald-600 text-white rounded-lg md:rounded-xl shadow-xl px-3 py-2 md:px-4 md:py-3"
+                className="absolute -top-6 left-2 md:-top-4 md:-left-4 bg-gradient-to-r from-brand-primary to-emerald-600 text-white rounded-lg md:rounded-xl shadow-xl px-3 py-2 md:px-4 md:py-3"
             >
                 <div className="flex items-center gap-2">
                     <ArrowLeftRight className="w-4 h-4 md:w-5 md:h-5"/>

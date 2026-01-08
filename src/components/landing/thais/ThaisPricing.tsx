@@ -14,43 +14,43 @@ const plans = [
     thaisPrice: 49,
     priceLabel: '€/mois',
     features: [
-      'Email illimités',
+      '10 segments clients',
+      '5 flows',
+      '5 000 emails/mois',
       'SMS & WhatsApp',
-      '1 utilisateur',
-      'Templates personnalisables',
-      'Support par email',
+      'Messaging Hub unifié',
+      'Domaine personnalisé',
     ],
   },
   {
-    name: 'Automation',
-    description: 'Le plus populaire',
+    name: 'Conversion',
+    description: 'Pour maximiser vos revenus',
     originalPrice: 149,
     thaisPrice: 110,
     priceLabel: '€/mois',
     isPopular: true,
     features: [
       'Tout Communication +',
-      'Workflows automatisés illimités',
-      'Segmentation avancée',
-      '3 utilisateurs',
-      'Intégration Thaïs complète',
-      'Support prioritaire',
+      '45 segments clients',
+      '10 flows',
+      '15 000 emails/mois',
+      'Conditions d\'interactions',
+      '5 formulaires',
     ],
   },
   {
-    name: 'Enterprise',
-    description: 'Pour les groupes',
+    name: 'Marketing+',
+    description: 'Le plus populaire',
     originalPrice: 199,
     thaisPrice: 149,
     priceLabel: '€/mois',
     features: [
-      'Tout Automation +',
-      'Utilisateurs illimités',
-      'Multi-établissements',
-      'API & Webhooks',
-      'Account manager dédié',
-      'Support 24/7',
-      'Formation personnalisée',
+      'Tout Conversion +',
+      'Segments illimités',
+      'Flows illimités',
+      '50 000 emails/mois',
+      'Formulaires illimités',
+      'Support prioritaire',
     ],
   },
 ];
@@ -127,21 +127,17 @@ export function ThaisPricing() {
 
               {/* Pricing */}
               <div className="mb-6">
-                <div className="flex items-end gap-3 mb-2">
-                  <div className="flex items-baseline">
-                    <span className="text-5xl font-bold text-brand-primary">{plan.thaisPrice}</span>
-                    <span className="text-lg text-zinc-600 ml-1">{plan.priceLabel}</span>
-                  </div>
+                {/* Prix avec réduction */}
+                <div className="flex items-baseline gap-3 mb-1">
+                  <span className="text-5xl font-bold text-brand-primary">{plan.thaisPrice}</span>
+                  <span className="text-lg text-zinc-600">{plan.priceLabel}</span>
                 </div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 mt-1">
                   <span className="text-lg text-zinc-400 line-through">{plan.originalPrice}€</span>
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-green-100 text-green-700 text-xs font-semibold rounded-full">
-                    -{Math.round(((plan.originalPrice - plan.thaisPrice) / plan.originalPrice) * 100)}%
+                  <span className="text-sm font-medium text-brand-primary">
+                    -{Math.round(((plan.originalPrice - plan.thaisPrice) / plan.originalPrice) * 100)}% partenaire Thaïs
                   </span>
                 </div>
-                <p className="text-xs text-zinc-500 mt-2">
-                  Tarif préférentiel partenaire Thaïs
-                </p>
               </div>
 
               {/* Features */}

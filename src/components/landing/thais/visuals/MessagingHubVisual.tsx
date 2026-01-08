@@ -38,39 +38,39 @@ export function MessagingHubVisual() {
         />
       </motion.div>
 
-      {/* Floating Element 1: Top Left - Channel Badges - Hidden on mobile */}
+      {/* Floating Element 1: Top Left - Channel Badges */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.3, duration: 0.5 }}
-        className="hidden md:block absolute -top-4 -left-4 bg-white rounded-xl shadow-xl p-3 border border-gray-200"
+        className="absolute -top-6 left-2 md:-top-4 md:-left-4 bg-white rounded-xl shadow-xl p-2 md:p-3 border border-gray-200"
       >
-        <p className="text-xs text-gray-500 mb-2 font-semibold">Canaux actifs</p>
-        <div className="flex gap-2">
-          <div className="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center">
-            <Mail className="w-5 h-5 text-blue-600" />
+        <p className="text-[10px] md:text-xs text-gray-500 mb-1.5 md:mb-2 font-semibold">Canaux actifs</p>
+        <div className="flex gap-1.5 md:gap-2">
+          <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-blue-100 flex items-center justify-center">
+            <Mail className="w-4 h-4 md:w-5 md:h-5 text-blue-600" />
           </div>
-          <div className="w-10 h-10 rounded-lg bg-green-100 flex items-center justify-center">
-            <Phone className="w-5 h-5 text-green-600" />
+          <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-green-100 flex items-center justify-center">
+            <Phone className="w-4 h-4 md:w-5 md:h-5 text-green-600" />
           </div>
-          <div className="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center">
-            <MessageSquare className="w-5 h-5 text-emerald-600" />
+          <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-emerald-100 flex items-center justify-center">
+            <MessageSquare className="w-4 h-4 md:w-5 md:h-5 text-emerald-600" />
           </div>
         </div>
       </motion.div>
 
-      {/* Floating Element 2: Top Right - New Messages - Adjusted for mobile */}
+      {/* Floating Element 2: Top Right - New Messages - Hidden on mobile */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.5, duration: 0.5 }}
-        className="absolute top-2 right-2 md:-top-6 md:-right-6 bg-red-500 text-white rounded-full w-12 h-12 md:w-16 md:h-16 flex items-center justify-center shadow-lg"
+        className="hidden md:flex absolute -top-6 -right-6 bg-red-500 text-white rounded-full w-16 h-16 items-center justify-center shadow-lg"
       >
         <div className="text-center">
-          <p className="text-xl md:text-2xl font-bold">3</p>
-          <p className="text-[8px] md:text-[10px] opacity-90">nouveaux</p>
+          <p className="text-2xl font-bold">3</p>
+          <p className="text-[10px] opacity-90">nouveaux</p>
         </div>
       </motion.div>
 

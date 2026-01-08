@@ -44,7 +44,7 @@ export function ReviewsVisual() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.3, duration: 0.5 }}
-        className="absolute top-2 left-2 md:-top-6 md:-left-6 bg-gradient-to-br from-amber-400 to-orange-500 text-white rounded-xl md:rounded-2xl shadow-xl p-3 md:p-5"
+        className="absolute -top-6 right-2 md:-top-6 md:-left-6 bg-gradient-to-br from-amber-400 to-orange-500 text-white rounded-xl md:rounded-2xl shadow-xl p-3 md:p-5"
       >
         <div className="flex items-center gap-2 mb-1 md:mb-2">
           <Star className="w-4 h-4 md:w-6 md:h-6 fill-white" />

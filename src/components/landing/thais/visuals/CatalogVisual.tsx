@@ -58,7 +58,7 @@ export function CatalogVisual() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.5, duration: 0.5 }}
-        className="absolute top-2 right-2 md:-top-4 md:-right-4 bg-gradient-to-r from-brand-primary to-emerald-600 text-white rounded-lg md:rounded-xl shadow-xl px-3 py-2 md:px-4 md:py-3"
+        className="absolute -top-6 right-2 md:-top-4 md:-right-4 bg-gradient-to-r from-brand-primary to-emerald-600 text-white rounded-lg md:rounded-xl shadow-xl px-3 py-2 md:px-4 md:py-3"
       >
         <div className="flex items-center gap-2 mb-0.5 md:mb-1">
           <ArrowLeftRight className="w-4 h-4 md:w-5 md:h-5" />

@@ -55,7 +55,7 @@ export function SegmentationVisual() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.5, duration: 0.5 }}
-        className="absolute top-2 right-2 md:-top-6 md:-right-6 bg-gradient-to-br from-brand-primary to-emerald-600 text-white rounded-xl md:rounded-2xl shadow-xl p-3 md:p-5"
+        className="absolute -top-6 right-2 md:-top-6 md:-right-6 bg-gradient-to-br from-brand-primary to-emerald-600 text-white rounded-xl md:rounded-2xl shadow-xl p-3 md:p-5"
       >
         <div className="flex items-center gap-2 mb-1">
           <Target className="w-4 h-4 md:w-5 md:h-5" />

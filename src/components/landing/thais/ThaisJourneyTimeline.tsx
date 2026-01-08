@@ -4,6 +4,16 @@ import { motion } from 'framer-motion';
 import { CheckCircle, CalendarClock, Building, Star, ArrowRight } from 'lucide-react';
 import { Container } from '@/components/ui';
 
+interface JourneyTimelineProps {
+  background?: 'white' | 'gradient' | 'light';
+}
+
+const BACKGROUNDS = {
+  white: 'bg-white',
+  gradient: 'bg-gradient-to-b from-white to-brand-light/20',
+  light: 'bg-brand-light/20',
+};
+
 const JOURNEY_STEPS = [
   {
     id: 'confirmation',
@@ -63,9 +73,9 @@ const JOURNEY_STEPS = [
   },
 ];
 
-export function ThaisJourneyTimeline() {
+export function JourneyTimeline({ background = 'gradient' }: JourneyTimelineProps) {
   return (
-    <section className="py-16 md:py-20 bg-white">
+    <section className={`py-16 md:py-20 ${BACKGROUNDS[background]}`}>
       <Container>
         {/* Section Header */}
         <motion.div

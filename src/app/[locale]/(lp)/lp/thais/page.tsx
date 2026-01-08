@@ -1,8 +1,6 @@
 import { Suspense } from 'react';
 import {
   ThaisHero,
-  ThaisMetrics,
-  ThaisValueProps,
   ThaisFeaturesShowcase,
   ThaisHowItWorks,
   ThaisPricing,
@@ -14,7 +12,7 @@ import {
   ThaisConcreteUseCases,
   ThaisCTASection,
   ThaisMarketingCampaigns,
-  ThaisJourneyTimeline,
+  JourneyTimeline,
 } from '@/components/landing/thais';
 
 // Loading component for Suspense boundary
@@ -39,10 +37,10 @@ export default function ThaisLandingPage() {
         </Suspense>
 
         {/* Parcours Client */}
-        <ThaisJourneyTimeline />
+        <JourneyTimeline />
 
         {/* Metrics Section */}
-        <ThaisMetrics />
+        {/*<ThaisMetrics />*/}
 
         {/* Cas d'usage concrets */}
         <div id="cas-usage">
