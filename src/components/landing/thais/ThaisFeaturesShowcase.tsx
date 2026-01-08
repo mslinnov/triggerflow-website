@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Container } from '@/components/ui';
-import { Check } from 'lucide-react';
+import { Check, Zap } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   WorkflowBuilderVisual,
@@ -105,6 +105,30 @@ const FEATURES: Feature[] = [
 export function ThaisFeaturesShowcase() {
   return (
     <div className="bg-white">
+      {/* Section Header */}
+      <div className="pt-16 pb-8 md:pt-24 md:pb-12 bg-white">
+        <Container>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-center"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-brand-primary/10 to-emerald-100 rounded-full mb-6">
+              <Zap className="w-5 h-5 text-brand-primary" />
+              <span className="text-sm font-semibold text-brand-primary">Fonctionnalités</span>
+            </div>
+            <h2 className="text-3xl font-bold tracking-tight text-brand-dark sm:text-4xl md:text-5xl">
+              Tout ce dont vous avez besoin, <span className="text-brand-primary">rien de plus</span>
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-600">
+              Des outils pensés pour les hôteliers, intégrés nativement avec Thaïs PMS
+            </p>
+          </motion.div>
+        </Container>
+      </div>
+
       {FEATURES.map((feature, index) => {
         const isEven = index % 2 === 0;
 

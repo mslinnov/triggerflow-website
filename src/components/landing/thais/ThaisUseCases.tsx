@@ -220,8 +220,8 @@ export function ThaisUseCases() {
                   {currentUseCase.results.map((result, i) => (
                     <motion.li
                       key={i}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: 0.2 + i * 0.1 }}
                       className="flex items-start gap-2 text-sm text-gray-700 bg-green-50 p-3 rounded-lg"
                     >

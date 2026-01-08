@@ -60,7 +60,7 @@ export function ThaisConcreteUseCases() {
             <span className="text-sm font-semibold text-brand-primary">Cas d'usage concrets</span>
           </div>
           <h2 className="text-3xl font-bold tracking-tight text-brand-dark sm:text-4xl md:text-5xl">
-            Ce que nos clients ont mis en place
+            Ce que les clients Thaïs ont mis en place
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-600">
             Des scénarios déjà utilisés par des centaines d'hôteliers Thaïs
@@ -77,7 +77,7 @@ export function ThaisConcreteUseCases() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <Card className="group h-full border-2 border-zinc-100 bg-white p-6 transition-all duration-300 hover:border-brand-primary/50 hover:shadow-xl">
+              <Card className="group h-full border-2 border-zinc-100 bg-white p-6 transition-all duration-300 hover:border-brand-primary/30 hover:shadow-xl">
                 {/* Trigger & Segment Badges */}
                 <div className="mb-4 flex flex-wrap items-center gap-2">
                   <div className="flex items-center gap-2 px-3 py-1.5 bg-amber-50 border border-amber-200 rounded-full">

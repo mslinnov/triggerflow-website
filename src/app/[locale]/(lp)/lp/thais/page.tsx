@@ -31,59 +31,51 @@ export default function ThaisLandingPage() {
       <ThaisNavigation />
 
       <main>
-        {/* 1. Hero Section - Above the fold with CTA, example concret, AI badge */}
+        {/* Hero Section */}
         <Suspense fallback={<LoadingFallback />}>
           <ThaisHero />
         </Suspense>
 
-        {/* 2. Metrics Section - 4 key stats */}
+        {/* Metrics Section */}
         <ThaisMetrics />
 
-        {/* 3. Pourquoi TriggerFlow + Thaïs (3 bénéfices avec exemples) */}
-        <div id="avantages">
-          <ThaisValueProps />
-        </div>
-
-        {/* 4. CTA intermédiaire */}
-        <ThaisCTASection variant="minimal" />
-
-        {/* 5. Témoignage fort mis en avant (carousel) */}
-        <div id="temoignages">
-          <ThaisUseCases />
-        </div>
-
-        {/* 6. Section Cas d'usage concrets (4 exemples) */}
+        {/* Cas d'usage concrets */}
         <div id="cas-usage">
           <ThaisConcreteUseCases />
         </div>
 
-        {/* 7. CTA intermédiaire */}
+        {/* CTA intermédiaire */}
         <ThaisCTASection variant="default" />
 
-        {/* 8. 6 Features clés (reformulées en bénéfices) */}
+        {/* Fonctionnalités */}
         <div id="fonctionnalites">
           <ThaisFeaturesShowcase />
         </div>
 
-        {/* 9. Témoignages supplémentaires */}
-        <ThaisTestimonials />
+        {/* CTA intermédiaire */}
+        <ThaisCTASection variant="minimal" />
 
-        {/* 10. Comment ça marche (3 étapes spécifiques Thaïs) */}
+        {/* Témoignages carousel */}
+        <div id="temoignages">
+          <ThaisUseCases />
+        </div>
+
+        {/* Comment ça marche */}
         <div id="comment-ca-marche">
           <ThaisHowItWorks />
         </div>
 
-        {/* 11. CTA intermédiaire */}
-        <ThaisCTASection variant="gradient" />
-
-        {/* 12. Pricing Section */}
+        {/* Tarifs */}
         <div id="tarifs">
           <Suspense fallback={<LoadingFallback />}>
             <ThaisPricing />
           </Suspense>
         </div>
 
-        {/* 13. Final CTA Section */}
+        {/* Témoignages supplémentaires */}
+        <ThaisTestimonials />
+
+        {/* CTA final */}
         <Suspense fallback={<LoadingFallback />}>
           <ThaisCTA />
         </Suspense>

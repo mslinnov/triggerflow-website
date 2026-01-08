@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { ShoppingCart, ArrowLeftRight, TrendingUp, CreditCard, Package } from 'lucide-react';
 
 export function CatalogVisual() {
@@ -15,26 +16,26 @@ export function CatalogVisual() {
         className="relative rounded-2xl overflow-hidden shadow-2xl"
       >
         {/* Placeholder */}
-        <div className="aspect-[16/10] bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-          <div className="text-center">
-            <ShoppingCart className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-            <p className="text-gray-500 text-sm">
-              Remplacer par capture d&apos;écran du Catalogue
-            </p>
-            <p className="text-gray-400 text-xs mt-1">
-              /public/images/assets/catalog.png
-            </p>
-          </div>
-        </div>
+        {/*<div className="aspect-[16/10] bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">*/}
+        {/*  <div className="text-center">*/}
+        {/*    <ShoppingCart className="w-16 h-16 text-gray-400 mx-auto mb-4" />*/}
+        {/*    <p className="text-gray-500 text-sm">*/}
+        {/*      Remplacer par capture d&apos;écran du Catalogue*/}
+        {/*    </p>*/}
+        {/*    <p className="text-gray-400 text-xs mt-1">*/}
+        {/*      /public/images/assets/catalog.png*/}
+        {/*    </p>*/}
+        {/*  </div>*/}
+        {/*</div>*/}
 
         {/* Uncomment when you have the screenshot */}
-        {/* <Image
+        <Image
           src="/images/assets/catalog.png"
           alt="TriggerFlow Catalog"
           width={1200}
           height={750}
           className="w-full h-auto"
-        /> */}
+        />
       </motion.div>
 
       {/* Floating Element 1: Top Left - Shopping Cart - Hidden on mobile */}

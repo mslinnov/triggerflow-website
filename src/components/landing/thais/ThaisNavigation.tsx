@@ -2,12 +2,12 @@
 
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
-import { Sparkles, Zap, Users, Rocket, DollarSign } from 'lucide-react';
+import { Zap, Users, MessageSquare, Rocket, DollarSign } from 'lucide-react';
 
 const navItems = [
-  { id: 'avantages', label: 'Avantages', icon: Sparkles },
-  { id: 'fonctionnalites', label: 'Fonctionnalités', icon: Zap },
   { id: 'cas-usage', label: 'Cas d\'usage', icon: Users },
+  { id: 'fonctionnalites', label: 'Fonctionnalités', icon: Zap },
+  { id: 'temoignages', label: 'Témoignages', icon: MessageSquare },
   { id: 'comment-ca-marche', label: 'Comment ça marche', icon: Rocket },
   { id: 'tarifs', label: 'Tarifs', icon: DollarSign },
 ];
