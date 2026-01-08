@@ -44,13 +44,13 @@ export function ReviewsVisual() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.3, duration: 0.5 }}
-        className="absolute -top-6 right-2 md:-top-6 md:-left-6 bg-gradient-to-br from-amber-400 to-orange-500 text-white rounded-xl md:rounded-2xl shadow-xl p-3 md:p-5"
+        className="max-w-52 absolute -top-6 right-2 md:-top-6 md:-left-6 bg-gradient-to-br from-amber-400 to-orange-500 text-white rounded-xl md:rounded-2xl shadow-xl p-2 md:p-4"
       >
-        <div className="flex items-center gap-2 mb-1 md:mb-2">
-          <Star className="w-4 h-4 md:w-6 md:h-6 fill-white" />
-          <span className="text-xs md:text-sm font-semibold">Note moyenne</span>
+        <div className="flex items-center gap-1.5 md:gap-2">
+          <Star className="w-4 h-4 md:w-5 md:h-5 fill-white flex-shrink-0" />
+          <span className="text-[10px] md:text-xs font-semibold whitespace-nowrap">Note moyenne</span>
+          <span className="text-xl md:text-2xl font-bold">4.8</span>
         </div>
-        <p className="text-2xl md:text-4xl font-bold">4.8</p>
         <div className="hidden md:flex gap-0.5 mt-1">
           {[...Array(5)].map((_, i) => (
             <Star key={i} className="w-3 h-3 fill-white" />

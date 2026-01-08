@@ -42,7 +42,7 @@ export function WorkflowBuilderVisual() {
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ delay: 0.5, duration: 0.5 }}
-        className="absolute -top-6 left-2 md:-top-6 md:-right-6 bg-white rounded-xl md:rounded-2xl shadow-xl p-2 md:p-4 border-2 border-brand-primary/20"
+        className="absolute -top-6 right-2 md:-top-6 md:-right-6 bg-white rounded-xl md:rounded-2xl shadow-xl p-2 md:p-4 border-2 border-brand-primary/20"
       >
         <div className="flex items-center gap-2 md:gap-3">
           <div className="w-8 h-8 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-brand-primary/10 flex items-center justify-center">

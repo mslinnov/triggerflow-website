@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+import type { Metadata } from 'next';
 import {
   ThaisHero,
   ThaisFeaturesShowcase,
@@ -14,6 +15,18 @@ import {
   ThaisMarketingCampaigns,
   JourneyTimeline,
 } from '@/components/landing/thais';
+
+// Prevent search engine indexing for this landing page
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
+};
 
 // Loading component for Suspense boundary
 function LoadingFallback() {
