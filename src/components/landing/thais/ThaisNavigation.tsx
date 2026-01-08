@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { Zap, Users, MessageSquare, Rocket, DollarSign } from 'lucide-react';
+import Image from 'next/image';
 
 const navItems = [
   { id: 'cas-usage', label: 'Cas d\'usage', icon: Users },
@@ -65,12 +66,21 @@ export function ThaisNavigation() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-primary to-emerald-600 flex items-center justify-center">
-              <span className="text-white font-bold text-sm">TF</span>
-            </div>
-            <span className="text-sm font-bold text-gray-800">
-              TriggerFlow <span className="text-brand-primary">× Thaïs</span>
-            </span>
+            <Image
+              src="/images/logo.webp"
+              alt="TriggerFlow"
+              width={120}
+              height={32}
+              className="h-6 w-auto"
+            />
+            <span className="text-lg font-light text-zinc-300">×</span>
+            <Image
+              src="/images/partners/thais-logo.svg"
+              alt="Thaïs PMS"
+              width={80}
+              height={32}
+              className="h-5 w-auto"
+            />
           </div>
 
           {/* Navigation Links */}
