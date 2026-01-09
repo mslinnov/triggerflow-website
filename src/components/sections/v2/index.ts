@@ -1,0 +1,9 @@
+export { HeroV2 } from './HeroV2';
+export { LogoCloudV2 } from './LogoCloudV2';
+export { FeaturesV2 } from './FeaturesV2';
+export { JourneyV2 } from './JourneyV2';
+export { ModulesV2 } from './ModulesV2';
+export { TestimonialV2 } from './TestimonialV2';
+export { PricingV2 } from './PricingV2';
+export { FAQV2 } from './FAQV2';
+export { CTAV2 } from './CTAV2';

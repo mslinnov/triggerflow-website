@@ -8,6 +8,23 @@
   --brand-dark: #002B28;
   --brand-light: #CCE2E1;
   --brand-accent: #FFCFA2;
+
+  /* V3 Warm Neutral Theme */
+  --v3-bg-primary: #FDFCFB;
+  --v3-bg-secondary: #F8F6F3;
+  --v3-bg-card: #F0EBE5;
+  --v3-border: #E5DDD3;
+  --v3-text-primary: #3D3632;
+  --v3-text-secondary: #7D7167;
+  --v3-text-muted: #A69888;
+  --v3-accent-green: #006F68;
+  --v3-accent-gold: #C4A77D;
+  --v3-accent-gold-light: #F5EEE3;
+
+  /* V3 Shadows */
+  --v3-shadow-sm: 0 2px 8px rgba(61, 54, 50, 0.04);
+  --v3-shadow-md: 0 4px 20px rgba(61, 54, 50, 0.08);
+  --v3-shadow-lg: 0 8px 40px rgba(61, 54, 50, 0.12);
 }
 
 @theme inline {
@@ -19,6 +36,20 @@
   --color-brand-accent: var(--brand-accent);
   --font-sans: var(--font-ibm-plex-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-playfair);
+  --font-display: var(--font-cormorant);
+
+  /* V3 Theme Colors */
+  --color-v3-bg-primary: var(--v3-bg-primary);
+  --color-v3-bg-secondary: var(--v3-bg-secondary);
+  --color-v3-bg-card: var(--v3-bg-card);
+  --color-v3-border: var(--v3-border);
+  --color-v3-text-primary: var(--v3-text-primary);
+  --color-v3-text-secondary: var(--v3-text-secondary);
+  --color-v3-text-muted: var(--v3-text-muted);
+  --color-v3-accent-green: var(--v3-accent-green);
+  --color-v3-accent-gold: var(--v3-accent-gold);
+  --color-v3-accent-gold-light: var(--v3-accent-gold-light);
 }
 
 body {
