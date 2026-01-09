@@ -1,7 +1,8 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { CheckCircle, CalendarClock, Building, Star, ArrowRight } from 'lucide-react';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
+import { CheckCircle, CalendarClock, Building, Star, Mail, Gift, MessageSquare, ThumbsUp } from 'lucide-react';
 import { Container } from '@/components/ui';
 
 interface JourneyTimelineProps {
@@ -19,133 +20,145 @@ const JOURNEY_STEPS = [
     id: 'confirmation',
     icon: CheckCircle,
     title: 'Confirmation',
-    subtitle: 'de réservation',
+    timing: 'Dès la réservation',
     color: 'bg-blue-500',
-    lightColor: 'bg-blue-100',
+    lightColor: 'bg-blue-50',
+    borderColor: 'border-blue-100',
     textColor: 'text-blue-600',
-    examples: [
-      'Email de confirmation',
-      'Récapitulatif séjour',
-      'Conditions d\'annulation',
+    actions: [
+      { icon: Mail, text: 'Email de confirmation personnalisé' },
+      { icon: MessageSquare, text: 'Récapitulatif envoyé automatiquement' },
     ],
   },
   {
     id: 'pre-sejour',
     icon: CalendarClock,
     title: 'Pré-séjour',
-    subtitle: 'avant l\'arrivée',
+    timing: '3 jours avant',
     color: 'bg-purple-500',
-    lightColor: 'bg-purple-100',
+    lightColor: 'bg-purple-50',
+    borderColor: 'border-purple-100',
     textColor: 'text-purple-600',
-    examples: [
-      'Proposition d\'upsell',
-      'Infos pratiques',
-      'Pré check-in',
+    actions: [
+      { icon: Mail, text: 'Infos pratiques (parking, WiFi...)' },
+      { icon: Gift, text: 'Proposition de services (spa, dîner...)' },
     ],
   },
   {
     id: 'during',
     icon: Building,
-    title: 'Pendant',
-    subtitle: 'le séjour',
+    title: 'Séjour',
+    timing: 'Pendant le séjour',
     color: 'bg-emerald-500',
-    lightColor: 'bg-emerald-100',
+    lightColor: 'bg-emerald-50',
+    borderColor: 'border-emerald-100',
     textColor: 'text-emerald-600',
-    examples: [
-      'Message de bienvenue',
-      'Infos restaurant',
-      'Room service',
+    actions: [
+      { icon: MessageSquare, text: 'Message de bienvenue' },
+      { icon: ThumbsUp, text: 'Satisfaction à mi-séjour' },
     ],
   },
   {
     id: 'after',
     icon: Star,
     title: 'Après',
-    subtitle: 'le séjour',
+    timing: 'Après le départ',
     color: 'bg-amber-500',
-    lightColor: 'bg-amber-100',
+    lightColor: 'bg-amber-50',
+    borderColor: 'border-amber-100',
     textColor: 'text-amber-600',
-    examples: [
-      'Demande d\'avis',
-      'Programme fidélité',
-      'Offre de retour',
+    actions: [
+      { icon: Star, text: "Demande d'avis (Google, TripAdvisor)" },
+      { icon: Gift, text: 'Invitation à revenir' },
     ],
   },
 ];
 
 export function JourneyTimeline({ background = 'gradient' }: JourneyTimelineProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = useReducedMotion();
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start end', 'end start'],
+  });
+
+  const lineProgress = useTransform(scrollYProgress, [0.1, 0.5], [0, 1]);
+
   return (
-    <section className={`py-16 md:py-20 ${BACKGROUNDS[background]}`}>
+    <section ref={containerRef} className={`py-16 md:py-24 ${BACKGROUNDS[background]}`}>
       <Container>
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-12 text-center"
+          className="mb-16 text-center"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-brand-primary/10 to-blue-100 rounded-full mb-6">
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-primary/10 to-blue-100 px-4 py-2">
             <span className="text-sm font-semibold text-brand-primary">Parcours Client Complet</span>
           </div>
           <h2 className="text-3xl font-bold tracking-tight text-brand-dark sm:text-4xl md:text-5xl">
-            Une solution pour <span className="text-brand-primary">chaque moment</span>
+            Un email automatique pour <span className="text-brand-primary">chaque moment</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-600">
-            TriggerFlow vous accompagne sur l'ensemble du parcours client
+            De la réservation au départ, TriggerFlow envoie le bon message au bon moment
           </p>
         </motion.div>
 
-        {/* Timeline - Desktop */}
+        {/* Desktop Timeline */}
         <div className="hidden lg:block">
           <div className="relative">
-            {/* Connection Line */}
-            <div className="absolute top-16 left-0 right-0 h-1 bg-gradient-to-r from-blue-200 via-purple-200 via-emerald-200 to-amber-200 rounded-full" />
+            {/* Background line */}
+            <div className="absolute left-[12.5%] right-[12.5%] top-8 h-1 rounded-full bg-zinc-200" />
 
-            {/* Steps */}
+            {/* Animated progress line */}
+            <motion.div
+              className="absolute left-[12.5%] top-8 h-1 rounded-full bg-gradient-to-r from-blue-400 via-purple-400 via-emerald-400 to-amber-400"
+              style={{
+                width: '75%',
+                scaleX: prefersReducedMotion ? 1 : lineProgress,
+                transformOrigin: 'left',
+              }}
+            />
+
+            {/* Steps Grid */}
             <div className="grid grid-cols-4 gap-6">
               {JOURNEY_STEPS.map((step, index) => (
                 <motion.div
                   key={step.id}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={prefersReducedMotion ? {} : { opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="relative"
+                  transition={{ delay: index * 0.15 }}
+                  className="flex flex-col items-center"
                 >
-                  {/* Icon Circle */}
-                  <div className="flex justify-center mb-6">
-                    <div className={`relative z-10 w-32 h-32 rounded-full ${step.lightColor} flex items-center justify-center shadow-lg border-4 border-white`}>
-                      <div className={`w-20 h-20 rounded-full ${step.color} flex items-center justify-center`}>
-                        <step.icon className="w-10 h-10 text-white" />
-                      </div>
-                    </div>
+                  {/* Dot on line */}
+                  <div
+                    className={`relative z-10 mb-6 flex h-16 w-16 items-center justify-center rounded-full border-4 border-white ${step.color} shadow-lg`}
+                  >
+                    <step.icon className="h-7 w-7 text-white" />
                   </div>
 
-                  {/* Arrow (except last) */}
-                  {index < JOURNEY_STEPS.length - 1 && (
-                    <div className="absolute top-14 -right-3 z-20">
-                      <ArrowRight className="w-6 h-6 text-zinc-300" />
-                    </div>
-                  )}
+                  {/* Label and timing */}
+                  <h3 className="text-lg font-semibold text-brand-dark">{step.title}</h3>
+                  <p className="mb-4 text-sm text-zinc-500">{step.timing}</p>
 
-                  {/* Content */}
-                  <div className="text-center">
-                    <h3 className={`text-xl font-bold ${step.textColor}`}>{step.title}</h3>
-                    <p className="text-sm text-zinc-500 mb-4">{step.subtitle}</p>
-
-                    {/* Examples */}
-                    <ul className="space-y-2">
-                      {step.examples.map((example) => (
-                        <li
-                          key={example}
-                          className="text-sm text-zinc-600 flex items-center justify-center gap-2"
-                        >
-                          <span className={`w-1.5 h-1.5 rounded-full ${step.color}`} />
-                          {example}
-                        </li>
+                  {/* Actions card */}
+                  <div className="min-h-[130px] w-full rounded-2xl border border-zinc-200 bg-white p-4 shadow-sm">
+                    <div className="space-y-3">
+                      {step.actions.map((action) => (
+                        <div key={action.text} className="flex items-start gap-3 text-sm">
+                          <div
+                            className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border ${step.lightColor} ${step.borderColor}`}
+                          >
+                            <action.icon className={`h-4 w-4 ${step.textColor}`} />
+                          </div>
+                          <span className="text-zinc-600">{action.text}</span>
+                        </div>
                       ))}
-                    </ul>
+                    </div>
                   </div>
                 </motion.div>
               ))}
@@ -153,52 +166,38 @@ export function JourneyTimeline({ background = 'gradient' }: JourneyTimelineProp
           </div>
         </div>
 
-        {/* Timeline - Mobile/Tablet */}
+        {/* Mobile/Tablet: Vertical cards */}
         <div className="lg:hidden">
-          <div className="relative">
-            {/* Vertical Line */}
-            <div className="absolute left-8 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-200 via-purple-200 via-emerald-200 to-amber-200 rounded-full" />
+          <div className="space-y-4">
+            {JOURNEY_STEPS.map((step, index) => (
+              <motion.div
+                key={step.id}
+                initial={prefersReducedMotion ? {} : { opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm"
+              >
+                <div className="mb-4 flex items-center gap-4">
+                  <div className={`flex h-12 w-12 items-center justify-center rounded-xl ${step.color}`}>
+                    <step.icon className="h-6 w-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-brand-dark">{step.title}</h3>
+                    <p className="text-sm text-zinc-500">{step.timing}</p>
+                  </div>
+                </div>
 
-            {/* Steps */}
-            <div className="space-y-8">
-              {JOURNEY_STEPS.map((step, index) => (
-                <motion.div
-                  key={step.id}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="relative flex gap-6"
-                >
-                  {/* Icon Circle */}
-                  <div className={`relative z-10 w-16 h-16 rounded-full ${step.lightColor} flex items-center justify-center shadow-lg border-4 border-white flex-shrink-0`}>
-                    <div className={`w-10 h-10 rounded-full ${step.color} flex items-center justify-center`}>
-                      <step.icon className="w-5 h-5 text-white" />
+                <div className="space-y-2">
+                  {step.actions.map((action) => (
+                    <div key={action.text} className="flex items-center gap-3 text-sm text-zinc-600">
+                      <action.icon className="h-4 w-4 text-zinc-400" />
+                      <span>{action.text}</span>
                     </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex-1 pb-4">
-                    <h3 className={`text-lg font-bold ${step.textColor}`}>
-                      {step.title} <span className="font-normal text-zinc-500">{step.subtitle}</span>
-                    </h3>
-
-                    {/* Examples */}
-                    <ul className="mt-2 space-y-1">
-                      {step.examples.map((example) => (
-                        <li
-                          key={example}
-                          className="text-sm text-zinc-600 flex items-center gap-2"
-                        >
-                          <span className={`w-1.5 h-1.5 rounded-full ${step.color}`} />
-                          {example}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </Container>
