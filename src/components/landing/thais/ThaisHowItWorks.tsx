@@ -30,7 +30,7 @@ const STEPS = [
 
 export function ThaisHowItWorks() {
   return (
-    <section className="bg-gradient-to-b from-brand-dark to-brand-primary py-16 md:py-24">
+    <section className="bg-gradient-to-br from-[var(--thais-primary)] via-[#0a2590] to-[var(--thais-cyan)]/80 py-16 md:py-24">
       <Container>
         {/* Section Header */}
         <motion.div

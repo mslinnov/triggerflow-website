@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { Container } from '@/components/ui';
-import { Calendar, ArrowRight } from 'lucide-react';
+import { Calendar, ArrowRight, Check } from 'lucide-react';
+import Image from 'next/image';
 
 interface ThaisCTASectionProps {
   variant?: 'default' | 'gradient' | 'minimal';
@@ -12,7 +13,7 @@ interface ThaisCTASectionProps {
 
 export function ThaisCTASection({
   variant = 'default',
-  title = 'Prêt à automatiser votre communication ?',
+  title = 'Prêt à transformer votre communication ?',
   subtitle = 'Réservez une démo personnalisée et découvrez comment TriggerFlow peut transformer votre hôtel',
 }: ThaisCTASectionProps) {
   const variants = {
@@ -23,16 +24,16 @@ export function ThaisCTASection({
       buttonClass: 'bg-gradient-to-r from-brand-primary to-emerald-600 text-white hover:shadow-xl',
     },
     gradient: {
-      containerClass: 'bg-gradient-to-br from-brand-primary to-emerald-600',
+      containerClass: 'bg-gradient-to-br from-[var(--thais-primary)] via-[#0a2590] to-brand-primary',
       titleClass: 'text-white',
       subtitleClass: 'text-white/90',
-      buttonClass: 'bg-white text-brand-primary hover:bg-gray-50',
+      buttonClass: 'bg-white text-[var(--thais-primary)] hover:bg-gray-50',
     },
     minimal: {
-      containerClass: 'bg-gradient-to-r from-brand-light/30 to-purple-50/30 border border-gray-200',
+      containerClass: 'bg-gradient-to-r from-[var(--thais-bg)]/50 to-brand-light/30 border border-[var(--thais-cyan)]/30',
       titleClass: 'text-brand-dark',
       subtitleClass: 'text-gray-600',
-      buttonClass: 'bg-brand-primary text-white hover:bg-brand-dark',
+      buttonClass: 'bg-gradient-to-r from-[var(--thais-primary)] to-brand-primary text-white hover:shadow-lg',
     },
   };
 
@@ -74,9 +75,50 @@ export function ThaisCTASection({
             </div>
 
             {variant === 'gradient' && (
-              <p className="mt-6 text-sm text-white/80">
-                💡 Tarifs préférentiels pour les utilisateurs Thaïs • Support francophone dédié
-              </p>
+              <div className="mt-8 flex flex-col items-center gap-3">
+                <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm">
+                  <span className="text-sm text-white/80">En partenariat avec</span>
+                  <Image
+                    src="/images/partners/thais-logo.svg"
+                    alt="Thaïs PMS"
+                    width={70}
+                    height={24}
+                    className="h-5 w-auto brightness-0 invert"
+                  />
+                </div>
+                <div className="flex items-center gap-4 text-sm text-white/70">
+                  <span className="flex items-center gap-1">
+                    <Check className="h-3.5 w-3.5 text-[var(--thais-cyan)]" />
+                    Intégration native
+                  </span>
+                  <span className="flex items-center gap-1">
+                    <Check className="h-3.5 w-3.5 text-[var(--thais-cyan)]" />
+                    Support francophone
+                  </span>
+                </div>
+              </div>
+            )}
+
+            {variant === 'minimal' && (
+              <div className="mt-6 flex items-center justify-center gap-3">
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--thais-bg)] border border-[var(--thais-primary)]/20">
+                  <Image
+                    src="/images/partners/thais-logo.svg"
+                    alt="Thaïs PMS"
+                    width={60}
+                    height={20}
+                    className="h-4 w-auto"
+                  />
+                  <span className="text-xs font-medium text-[var(--thais-primary)]">×</span>
+                  <Image
+                    src="/images/logo.webp"
+                    alt="TriggerFlow"
+                    width={80}
+                    height={20}
+                    className="h-4 w-auto"
+                  />
+                </div>
+              </div>
             )}
           </div>
         </motion.div>

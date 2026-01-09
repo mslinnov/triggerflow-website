@@ -3,7 +3,7 @@
 import { useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { ArrowRight, Zap, Sparkles, Lightbulb, Check, Mail, MessageSquare, Clock, TrendingUp } from 'lucide-react';
+import { ArrowRight, Sparkles, Lightbulb, Check, Mail, MessageSquare, Clock, TrendingUp } from 'lucide-react';
 import Image from 'next/image';
 import { Container, ButtonLink, Badge } from '@/components/ui';
 import { heroContainer, heroItem } from '@/lib/animations';
@@ -25,9 +25,11 @@ export function ThaisHero() {
   }, [searchParams]);
 
   return (
-    <section className="relative overflow-hidden bg-white pt-20 pb-16 md:pt-28 md:pb-24">
+    <section className="relative overflow-hidden bg-gradient-to-br from-white via-white to-[var(--thais-bg)]/30 pt-20 pb-16 md:pt-28 md:pb-24">
       {/* Subtle grid pattern */}
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px]" />
+      {/* Subtle Thaïs accent gradient */}
+      <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-gradient-to-bl from-[var(--thais-cyan)]/5 to-transparent -z-10 pointer-events-none" />
 
       <Container>
         {/* Co-branding logos */}
@@ -70,9 +72,9 @@ export function ThaisHero() {
           >
             {/* Badges */}
             <motion.div variants={heroItem} className="mb-6 flex flex-wrap items-center justify-center gap-2 lg:justify-start">
-              <Badge variant="primary" className="gap-2 text-xs font-semibold tracking-wide">
-                <Zap className="h-3.5 w-3.5" />
-                Partenariat officiel
+              <Badge variant="primary" className="gap-2 text-xs font-semibold tracking-wide bg-[var(--thais-bg)] text-[var(--thais-primary)] border-[var(--thais-primary)]/30">
+                <Check className="h-3.5 w-3.5" />
+                Partenaire officiel Thaïs
               </Badge>
               <Badge variant="secondary" className="gap-2 text-xs font-semibold tracking-wide bg-purple-100 text-purple-700 border-purple-200">
                 <Sparkles className="h-3.5 w-3.5" />
@@ -194,15 +196,15 @@ export function ThaisHero() {
                 />
               </motion.div>
 
-              {/* Floating Element 1: Top Left - Automation Active */}
+              {/* Floating Element 1: Top Left - Intégré à Thaïs */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.6, duration: 0.5 }}
-                className="hidden md:flex absolute -top-4 -left-4 bg-green-500 text-white px-4 py-2 rounded-full shadow-lg items-center gap-2"
+                className="hidden md:flex absolute -top-4 -left-4 bg-[var(--thais-primary)] text-white px-4 py-2 rounded-full shadow-lg items-center gap-2"
               >
-                <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
-                <span className="text-sm font-semibold">Automation active</span>
+                <Check className="w-4 h-4" />
+                <span className="text-sm font-semibold">Intégré à Thaïs PMS</span>
               </motion.div>
 
               {/* Floating Element 2: Top Right - Deliverability */}
@@ -244,7 +246,7 @@ export function ThaisHero() {
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.9, duration: 0.5 }}
-                className="hidden md:block absolute -bottom-6 -right-4 bg-gradient-to-br from-brand-primary to-emerald-600 text-white rounded-xl shadow-lg p-4"
+                className="hidden md:block absolute -bottom-6 -right-4 bg-gradient-to-br from-[var(--thais-primary)] to-[var(--thais-cyan)] text-white rounded-xl shadow-lg p-4"
               >
                 <div className="flex items-center gap-3 mb-2">
                   <Mail className="w-4 h-4" />

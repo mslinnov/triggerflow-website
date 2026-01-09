@@ -3,7 +3,8 @@
 import { useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { ArrowRight, Mail } from 'lucide-react';
+import { ArrowRight, Mail, Check } from 'lucide-react';
+import Image from 'next/image';
 import { Container, ButtonLink } from '@/components/ui';
 
 export function ThaisCTA() {
@@ -23,10 +24,10 @@ export function ThaisCTA() {
   }, [searchParams]);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-brand-dark via-brand-dark to-brand-primary/90 py-20 md:py-28">
+    <section className="relative overflow-hidden bg-gradient-to-br from-[var(--thais-primary)] via-[#0a2590] to-brand-primary/90 py-20 md:py-28">
       {/* Decorative elements */}
       <div className="absolute inset-0 -z-10">
-        <div className="absolute -left-20 -top-20 h-64 w-64 rounded-full bg-brand-primary/20 blur-3xl" />
+        <div className="absolute -left-20 -top-20 h-64 w-64 rounded-full bg-[var(--thais-cyan)]/20 blur-3xl" />
         <div className="absolute -bottom-20 -right-20 h-64 w-64 rounded-full bg-brand-primary/20 blur-3xl" />
       </div>
 
@@ -39,7 +40,7 @@ export function ThaisCTA() {
           className="text-center"
         >
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
-            Prêt à automatiser votre relation client ?
+            Prêt à transformer votre relation client ?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-white/80">
             Rejoignez les 200+ hôtels qui utilisent TriggerFlow pour gagner du temps et améliorer
@@ -69,6 +70,36 @@ export function ThaisCTA() {
               Nous contacter
             </ButtonLink>
           </div>
+
+          {/* Co-branding footer */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="mt-10 flex flex-col items-center gap-4"
+          >
+            <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm">
+              <span className="text-sm text-white/80">En partenariat avec</span>
+              <Image
+                src="/images/partners/thais-logo.svg"
+                alt="Thaïs PMS"
+                width={70}
+                height={24}
+                className="h-5 w-auto brightness-0 invert"
+              />
+            </div>
+            <div className="flex items-center gap-4 text-sm text-white/60">
+              <span className="flex items-center gap-1">
+                <Check className="h-3.5 w-3.5 text-[var(--thais-cyan)]" />
+                Intégration native
+              </span>
+              <span className="flex items-center gap-1">
+                <Check className="h-3.5 w-3.5 text-[var(--thais-cyan)]" />
+                Support francophone
+              </span>
+            </div>
+          </motion.div>
         </motion.div>
       </Container>
     </section>

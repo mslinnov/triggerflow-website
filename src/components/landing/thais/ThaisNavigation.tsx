@@ -77,9 +77,9 @@ export function ThaisNavigation() {
             <Image
               src="/images/partners/thais-logo.svg"
               alt="Thaïs PMS"
-              width={80}
-              height={32}
-              className="h-5 w-auto"
+              width={90}
+              height={36}
+              className="h-6 w-auto"
             />
           </div>
 
@@ -94,20 +94,22 @@ export function ThaisNavigation() {
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
                   className={`
-                    relative flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all
+                    group relative flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all
                     ${
                       isActive
-                        ? 'text-brand-primary bg-brand-primary/10'
-                        : 'text-gray-600 hover:text-brand-primary hover:bg-gray-50'
+                        ? 'text-[var(--thais-primary)] bg-[var(--thais-bg)]'
+                        : 'text-gray-600 hover:text-[var(--thais-primary)] hover:bg-[var(--thais-bg)]/50'
                     }
                   `}
                 >
                   <Icon className="w-4 h-4" />
                   <span>{item.label}</span>
+                  {/* Underline effect */}
+                  <span className={`absolute bottom-1 left-4 right-4 h-0.5 bg-[var(--thais-cyan)] rounded-full transition-transform origin-left ${isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'}`} />
                   {isActive && (
                     <motion.div
                       layoutId="activeTab"
-                      className="absolute inset-0 bg-brand-primary/10 rounded-lg -z-10"
+                      className="absolute inset-0 bg-[var(--thais-bg)] rounded-lg -z-10"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}

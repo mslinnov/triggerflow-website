@@ -82,9 +82,9 @@ export function ThaisPricing() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12 md:mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-brand-primary/10 to-purple-500/10 rounded-full mb-6">
-            <Sparkles className="w-5 h-5 text-brand-primary" />
-            <span className="text-sm font-semibold text-brand-primary">Tarifs préférentiels Thaïs</span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--thais-bg)] border border-[var(--thais-primary)]/20 rounded-full mb-6">
+            <Sparkles className="w-5 h-5 text-[var(--thais-primary)]" />
+            <span className="text-sm font-semibold text-[var(--thais-primary)]">Tarifs préférentiels Thaïs</span>
           </div>
           <h2 className="text-3xl font-bold tracking-tight text-brand-dark sm:text-4xl md:text-5xl">
             Des tarifs négociés pour les utilisateurs Thaïs
@@ -105,16 +105,16 @@ export function ThaisPricing() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className={`relative rounded-2xl border-2 ${
                 plan.isPopular
-                  ? 'border-brand-primary shadow-2xl scale-105'
+                  ? 'border-[var(--thais-cyan)] shadow-2xl scale-105'
                   : 'border-gray-200 shadow-lg'
               } bg-white p-8`}
             >
-              {/* Popular badge */}
+              {/* Popular badge - Recommandé par Thaïs */}
               {plan.isPopular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="inline-flex items-center gap-1 px-4 py-1.5 bg-gradient-to-r from-brand-primary to-brand-dark text-white text-xs font-bold rounded-full shadow-lg">
-                    <Sparkles className="w-3 h-3" />
-                    LE PLUS POPULAIRE
+                  <span className="inline-flex items-center gap-1.5 px-4 py-1.5 bg-gradient-to-r from-[var(--thais-primary)] to-[var(--thais-cyan)] text-white text-xs font-bold rounded-full shadow-lg">
+                    <Check className="w-3 h-3" />
+                    RECOMMANDÉ PAR THAÏS
                   </span>
                 </div>
               )}
@@ -134,8 +134,8 @@ export function ThaisPricing() {
                 </div>
                 <div className="flex items-center gap-2 mt-1">
                   <span className="text-lg text-zinc-400 line-through">{plan.originalPrice}€</span>
-                  <span className="text-sm font-medium text-brand-primary">
-                    -{Math.round(((plan.originalPrice - plan.thaisPrice) / plan.originalPrice) * 100)}% partenaire Thaïs
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[var(--thais-bg)] text-xs font-semibold text-[var(--thais-primary)] border border-[var(--thais-cyan)]/30">
+                    -{Math.round(((plan.originalPrice - plan.thaisPrice) / plan.originalPrice) * 100)}% Thaïs
                   </span>
                 </div>
               </div>
