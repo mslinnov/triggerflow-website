@@ -14,3 +14,7 @@ export { ThaisCTASection } from './ThaisCTASection';
 export { ThaisMarketingCampaigns } from './ThaisMarketingCampaigns';
 export { JourneyTimeline } from './ThaisJourneyTimeline';
 export { ThaisJourneyHub } from './ThaisJourneyHub';
+export { ThaisFAQ } from './ThaisFAQ';
+export { ThaisEmailCapture } from './ThaisEmailCapture';
+export { ThaisLogoCarousel } from './ThaisLogoCarousel';
+export { ThaisROICalculator } from './ThaisROICalculator';

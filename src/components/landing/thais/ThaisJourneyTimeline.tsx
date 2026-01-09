@@ -1,9 +1,10 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useMemo } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
-import { CheckCircle, CalendarClock, Building, Star, Mail, Gift, MessageSquare, ThumbsUp } from 'lucide-react';
-import { Container } from '@/components/ui';
+import { CheckCircle, CalendarClock, Building, Star, Mail, Gift, MessageSquare, ThumbsUp, ArrowRight } from 'lucide-react';
+import { Container, ButtonLink } from '@/components/ui';
 
 interface JourneyTimelineProps {
   background?: 'white' | 'gradient' | 'light';
@@ -77,6 +78,7 @@ const JOURNEY_STEPS = [
 export function JourneyTimeline({ background = 'gradient' }: JourneyTimelineProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
+  const searchParams = useSearchParams();
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -84,6 +86,19 @@ export function JourneyTimeline({ background = 'gradient' }: JourneyTimelineProp
   });
 
   const lineProgress = useTransform(scrollYProgress, [0.1, 0.5], [0, 1]);
+
+  // Build Calendly URL with UTM parameters
+  const calendlyUrl = useMemo(() => {
+    const baseUrl = 'https://app.lemcal.com/@trigger-flow/tf-thais';
+    const utmParams = new URLSearchParams();
+
+    ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach((param) => {
+      const value = searchParams.get(param);
+      if (value) utmParams.append(param, value);
+    });
+
+    return utmParams.toString() ? `${baseUrl}?${utmParams.toString()}` : baseUrl;
+  }, [searchParams]);
 
   return (
     <section ref={containerRef} className={`py-16 md:py-24 ${BACKGROUNDS[background]}`}>
@@ -200,6 +215,30 @@ export function JourneyTimeline({ background = 'gradient' }: JourneyTimelineProp
             ))}
           </div>
         </div>
+
+        {/* CTA after timeline */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3 }}
+          className="mt-12 text-center"
+        >
+          <p className="text-zinc-600 mb-4">
+            Prêt à offrir ce parcours à vos clients ?
+          </p>
+          <ButtonLink
+            href={calendlyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="primary"
+            size="lg"
+            className="group gap-2"
+          >
+            Configurer mon parcours client
+            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </ButtonLink>
+        </motion.div>
       </Container>
     </section>
   );

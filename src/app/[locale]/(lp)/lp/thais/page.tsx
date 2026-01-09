@@ -14,6 +14,8 @@ import {
   ThaisCTASection,
   ThaisMarketingCampaigns,
   JourneyTimeline,
+  ThaisFAQ,
+  ThaisLogoCarousel,
 } from '@/components/landing/thais';
 
 // Prevent search engine indexing for this landing page
@@ -49,11 +51,11 @@ export default function ThaisLandingPage() {
           <ThaisHero />
         </Suspense>
 
+        {/* Logo Carousel - Social Proof */}
+        <ThaisLogoCarousel />
+
         {/* Parcours Client */}
         <JourneyTimeline />
-
-        {/* Metrics Section */}
-        {/*<ThaisMetrics />*/}
 
         {/* Cas d'usage concrets */}
         <div id="cas-usage">
@@ -86,6 +88,11 @@ export default function ThaisLandingPage() {
           <ThaisHowItWorks />
         </div>
 
+        {/*/!* Calculateur ROI *!/*/}
+        {/*<Suspense fallback={<LoadingFallback />}>*/}
+        {/*  <ThaisROICalculator />*/}
+        {/*</Suspense>*/}
+
         {/* Tarifs */}
         <div id="tarifs">
           <Suspense fallback={<LoadingFallback />}>
@@ -95,6 +102,9 @@ export default function ThaisLandingPage() {
 
         {/* Témoignages supplémentaires */}
         <ThaisTestimonials />
+
+        {/* FAQ */}
+        <ThaisFAQ />
 
         {/* CTA final */}
         <Suspense fallback={<LoadingFallback />}>

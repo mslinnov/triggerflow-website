@@ -3,7 +3,7 @@
 import { useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Check, Sparkles } from 'lucide-react';
+import { Check, Sparkles, Clock, Zap } from 'lucide-react';
 import { Container, ButtonLink } from '@/components/ui';
 
 const plans = [
@@ -74,6 +74,27 @@ export function ThaisPricing() {
   return (
     <section className="bg-gradient-to-b from-white to-brand-light/20 py-16 md:py-24">
       <Container>
+        {/* Urgency Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-8"
+        >
+          <div className="max-w-2xl mx-auto bg-gradient-to-r from-[var(--thais-primary)] to-[var(--thais-cyan)] rounded-xl p-4 shadow-lg">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 text-white">
+              <div className="flex items-center gap-2">
+                <Clock className="w-5 h-5 animate-pulse" />
+                <span className="font-semibold">Offre partenariat Thaïs</span>
+              </div>
+              <span className="hidden sm:block text-white/60">•</span>
+              <span className="text-white/90 text-sm">
+                Tarifs préférentiels garantis pour les nouveaux clients
+              </span>
+            </div>
+          </div>
+        </motion.div>
+
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -159,10 +180,18 @@ export function ThaisPricing() {
                 rel="noopener noreferrer"
                 variant={plan.isPopular ? 'primary' : 'secondary'}
                 size="lg"
-                className="w-full justify-center"
+                className={`w-full justify-center gap-2 ${plan.isPopular ? 'shadow-lg' : ''}`}
               >
-                Réserver une démo
+                {plan.isPopular && <Zap className="w-4 h-4" />}
+                {plan.isPopular ? 'Choisir ce plan' : 'Démarrer avec ce plan'}
               </ButtonLink>
+
+              {/* Scarcity message for popular plan */}
+              {plan.isPopular && (
+                <p className="mt-3 text-xs text-center text-[var(--thais-primary)] font-medium">
+                  Le plus choisi par les hôteliers Thaïs
+                </p>
+              )}
             </motion.div>
           ))}
         </div>
