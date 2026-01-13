@@ -261,58 +261,59 @@ export function AccordionSwitchback() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [progress, setProgress] = useState(0);
-  const startTimeRef = useRef<number>(Date.now());
-  const animationFrameRef = useRef<number | null>(null);
+  const progressRef = useRef(0);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Auto-play logic
+  // Check for reduced motion preference on mount
   useEffect(() => {
-    // Check for reduced motion preference
     if (typeof window !== 'undefined') {
       const prefersReducedMotion = window.matchMedia(
         '(prefers-reduced-motion: reduce)'
       ).matches;
       if (prefersReducedMotion) {
         setIsPaused(true);
-        return;
       }
     }
+  }, []);
 
+  // Auto-play logic with interval
+  useEffect(() => {
     if (isPaused) {
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
       }
       return;
     }
 
-    const animate = () => {
-      const elapsed = Date.now() - startTimeRef.current;
-      const newProgress = Math.min(elapsed / AUTOPLAY_DURATION, 1);
+    // Update progress every 50ms for smooth animation
+    const TICK_INTERVAL = 50;
+    const PROGRESS_INCREMENT = TICK_INTERVAL / AUTOPLAY_DURATION;
 
-      setProgress(newProgress);
+    intervalRef.current = setInterval(() => {
+      progressRef.current += PROGRESS_INCREMENT;
 
-      if (newProgress >= 1) {
+      if (progressRef.current >= 1) {
         // Move to next item
         setActiveIndex((prev) => (prev + 1) % FEATURES.length);
-        startTimeRef.current = Date.now();
-        setProgress(0);
+        progressRef.current = 0;
       }
 
-      animationFrameRef.current = requestAnimationFrame(animate);
-    };
-
-    animationFrameRef.current = requestAnimationFrame(animate);
+      setProgress(progressRef.current);
+    }, TICK_INTERVAL);
 
     return () => {
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
       }
     };
-  }, [isPaused, activeIndex]);
+  }, [isPaused]);
 
   const handleItemClick = useCallback((index: number) => {
     setActiveIndex(index);
+    progressRef.current = 0;
     setProgress(0);
-    startTimeRef.current = Date.now();
   }, []);
 
   const handleMouseEnter = useCallback(() => {
@@ -321,8 +322,7 @@ export function AccordionSwitchback() {
 
   const handleMouseLeave = useCallback(() => {
     setIsPaused(false);
-    startTimeRef.current = Date.now() - progress * AUTOPLAY_DURATION;
-  }, [progress]);
+  }, []);
 
   // Keyboard navigation
   const handleKeyDown = useCallback(
