@@ -2,6 +2,7 @@ export { ThaisHero } from './ThaisHero';
 export { ThaisMetrics } from './ThaisMetrics';
 export { ThaisValueProps } from './ThaisValueProps';
 export { ThaisFeaturesShowcase } from './ThaisFeaturesShowcase';
+export { AccordionSwitchback } from './AccordionSwitchback';
 export { ThaisHowItWorks } from './ThaisHowItWorks';
 export { ThaisPricing } from './ThaisPricing';
 export { ThaisCTA } from './ThaisCTA';

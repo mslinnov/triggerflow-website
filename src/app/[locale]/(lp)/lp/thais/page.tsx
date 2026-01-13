@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import type { Metadata } from 'next';
 import {
   ThaisHero,
-  ThaisFeaturesShowcase,
+  AccordionSwitchback,
   ThaisHowItWorks,
   ThaisPricing,
   ThaisCTA,
@@ -72,7 +72,7 @@ export default function ThaisLandingPage() {
 
         {/* Fonctionnalités */}
         <div id="fonctionnalites">
-          <ThaisFeaturesShowcase />
+          <AccordionSwitchback />
         </div>
 
         {/* CTA intermédiaire */}
