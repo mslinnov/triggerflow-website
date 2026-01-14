@@ -43,7 +43,9 @@ export default function ThaisLandingPage() {
   return (
     <>
       {/* Sticky Navigation */}
-      <ThaisNavigation />
+      <Suspense fallback={null}>
+        <ThaisNavigation />
+      </Suspense>
 
       <main>
         {/* Hero Section */}
@@ -55,24 +57,26 @@ export default function ThaisLandingPage() {
         <ThaisLogoCarousel />
 
         {/* Parcours Client */}
-        <JourneyTimeline />
+        <Suspense fallback={null}>
+          <JourneyTimeline />
+        </Suspense>
 
         {/* Cas d'usage concrets */}
         <div id="cas-usage">
           <ThaisConcreteUseCases />
         </div>
 
-        {/* Campagnes Marketing */}
-        <div id="campagnes">
-          <ThaisMarketingCampaigns />
+        {/* Fonctionnalités */}
+        <div id="fonctionnalites">
+          <AccordionSwitchback />
         </div>
 
         {/* CTA intermédiaire */}
         <ThaisCTASection variant="default" />
 
-        {/* Fonctionnalités */}
-        <div id="fonctionnalites">
-          <AccordionSwitchback />
+        {/* Campagnes Marketing */}
+        <div id="campagnes">
+          <ThaisMarketingCampaigns />
         </div>
 
         {/* CTA intermédiaire */}

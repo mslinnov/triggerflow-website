@@ -13,8 +13,8 @@ interface ThaisCTASectionProps {
 
 export function ThaisCTASection({
   variant = 'default',
-  title = 'Prêt à transformer votre communication ?',
-  subtitle = 'Réservez une démo personnalisée et découvrez comment TriggerFlow peut transformer votre hôtel',
+  title = 'Prêt à réduire votre charge mentale ?',
+  subtitle = 'Réservez une démo personnalisée et découvrez comment TriggerFlow automatise vos communications',
 }: ThaisCTASectionProps) {
   const variants = {
     default: {

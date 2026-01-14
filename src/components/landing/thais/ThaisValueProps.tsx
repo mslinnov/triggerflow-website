@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Users, TrendingUp, RefreshCw, Lightbulb } from 'lucide-react';
+import { Users, TrendingUp, RefreshCw, Lightbulb, Brain } from 'lucide-react';
 import { Container, Card } from '@/components/ui';
 
 const VALUE_PROPS = [
@@ -39,6 +39,17 @@ const VALUE_PROPS = [
       result: 'Il reçoit automatiquement vos communications personnalisées',
     },
   },
+  {
+    icon: Brain,
+    title: 'Réduisez votre charge mentale',
+    description:
+      'Plus besoin de penser à chaque email, chaque rappel, chaque relance. TriggerFlow s\'occupe de tout en arrière-plan. Vous pouvez vous concentrer sur ce qui compte : l\'accueil de vos clients.',
+    example: {
+      trigger: 'Lundi matin',
+      action: 'Zéro tâche de communication en attente',
+      result: 'Votre équipe peut se concentrer sur les clients présents',
+    },
+  },
 ];
 
 export function ThaisValueProps() {
@@ -62,7 +73,7 @@ export function ThaisValueProps() {
         </motion.div>
 
         {/* Value Props Grid */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {VALUE_PROPS.map((prop, index) => (
             <motion.div
               key={prop.title}

@@ -7,8 +7,8 @@ import Image from 'next/image';
 
 const navItems = [
   { id: 'cas-usage', label: 'Cas d\'usage', icon: Users },
-  { id: 'campagnes', label: 'Campagnes', icon: Megaphone },
   { id: 'fonctionnalites', label: 'Fonctionnalités', icon: Zap },
+  { id: 'campagnes', label: 'Campagnes', icon: Megaphone },
   { id: 'temoignages', label: 'Témoignages', icon: MessageSquare },
   { id: 'tarifs', label: 'Tarifs', icon: DollarSign },
 ];

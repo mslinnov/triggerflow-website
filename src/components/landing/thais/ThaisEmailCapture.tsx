@@ -123,10 +123,10 @@ export function ThaisEmailCapture() {
                   </div>
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-2">
-                  Pas encore prêt pour une démo ?
+                  Envie de réduire votre charge mentale ?
                 </h3>
                 <p className="text-white/80">
-                  Recevez notre guide gratuit des <strong>10 automatisations essentielles</strong> pour hôteliers Thaïs
+                  Recevez notre guide gratuit : <strong>10 automatisations</strong> pour ne plus penser à vos emails clients
                 </p>
               </div>
 
@@ -137,10 +137,10 @@ export function ThaisEmailCapture() {
                     {/* Benefits */}
                     <ul className="space-y-3 mb-6">
                       {[
-                        'Email de bienvenue personnalisé selon le code tarif',
-                        'Rappel pré-séjour avec infos pratiques',
-                        'Demande d\'avis automatique post-checkout',
-                        'Offre d\'upsell pour les clients fidèles',
+                        'Automatisez vos emails de bienvenue selon le code tarif',
+                        'Plus jamais de rappel pré-séjour oublié',
+                        'Demandes d\'avis envoyées sans y penser',
+                        'Upsells proposés automatiquement au bon moment',
                       ].map((item, i) => (
                         <li key={i} className="flex items-start gap-2 text-sm text-zinc-600">
                           <CheckCircle className="w-4 h-4 text-[var(--thais-cyan)] flex-shrink-0 mt-0.5" />

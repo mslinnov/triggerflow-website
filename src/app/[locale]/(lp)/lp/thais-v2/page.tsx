@@ -1,5 +1,3 @@
-'use client';
-
 import { Suspense } from 'react';
 import {
   ThaisV2Hero,
@@ -23,7 +21,9 @@ function LoadingFallback() {
 export default function ThaisV2LandingPage() {
   return (
     <>
-      <ThaisV2Navigation />
+      <Suspense fallback={null}>
+        <ThaisV2Navigation />
+      </Suspense>
 
       <main>
         <Suspense fallback={<LoadingFallback />}>

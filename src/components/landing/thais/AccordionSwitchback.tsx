@@ -375,8 +375,8 @@ export function AccordionSwitchback() {
             <span className="text-brand-primary">rien de plus</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-600">
-            Des outils pensés pour les hôteliers, intégrés nativement avec Thaïs
-            PMS
+            Des outils pensés pour les hôteliers qui réduisent votre charge
+            mentale au quotidien
           </p>
         </motion.div>
 

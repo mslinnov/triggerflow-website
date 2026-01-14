@@ -40,7 +40,7 @@ export function ThaisCTA() {
           className="text-center"
         >
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
-            Prêt à transformer votre relation client ?
+            Prêt à vous libérer l'esprit ?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-white/80">
             Rejoignez les 200+ hôtels qui utilisent TriggerFlow pour gagner du temps et améliorer
