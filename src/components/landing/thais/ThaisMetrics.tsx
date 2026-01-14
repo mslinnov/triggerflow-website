@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Clock, Euro, CheckCircle, Zap } from 'lucide-react';
+import { Clock, Euro, Rocket, Zap } from 'lucide-react';
 import { Container } from '@/components/ui';
 
 const METRICS = [
@@ -18,10 +18,10 @@ const METRICS = [
     description: 'en moyenne par mois / établissement',
   },
   {
-    icon: CheckCircle,
-    value: '98%',
-    label: 'de délivrabilité',
-    description: 'sur tous les canaux',
+    icon: Rocket,
+    value: '2 sem',
+    label: 'pour être opérationnel',
+    description: 'déploiement accompagné',
   },
   {
     icon: Zap,

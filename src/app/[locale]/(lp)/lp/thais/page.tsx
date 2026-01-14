@@ -8,7 +8,6 @@ import {
   ThaisCTA,
   ThaisFooter,
   ThaisNavigation,
-  ThaisUseCases,
   ThaisTestimonials,
   ThaisConcreteUseCases,
   ThaisCTASection,
@@ -81,11 +80,6 @@ export default function ThaisLandingPage() {
 
         {/* CTA intermédiaire */}
         <ThaisCTASection variant="minimal" />
-
-        {/* Témoignages carousel */}
-        <div id="temoignages">
-          <ThaisUseCases />
-        </div>
 
         {/* Comment ça marche */}
         <div id="comment-ca-marche">

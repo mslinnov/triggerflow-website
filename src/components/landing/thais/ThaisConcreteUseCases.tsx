@@ -16,20 +16,20 @@ const USE_CASES = [
   },
   {
     icon: Calendar,
-    trigger: 'J-1 avant arrivée',
-    segment: 'Jour d\'arrivée (dim/lun)',
-    title: 'Alerte restaurant fermé',
+    trigger: 'Arrivée après fermeture caisse',
+    segment: 'Heure d\'arrivée tardive',
+    title: 'Gestion des arrivées tardives',
     description:
-      'Les clients arrivant dimanche ou lundi sont prévenus automatiquement que le restaurant ne sert pas le soir.',
+      'Les clients arrivant après la fermeture de la caisse reçoivent automatiquement les instructions pour une arrivée autonome.',
     result: '0 réclamation client',
   },
   {
     icon: Heart,
     trigger: 'Nouvelle réservation',
-    segment: 'Client fidèle (3+ séjours)',
-    title: 'Offre personnalisée selon le profil',
+    segment: 'Type de séjour',
+    title: 'Upsell adapté au profil client',
     description:
-      'Vos clients fidèles reçoivent automatiquement une offre de surclassement ou un avantage exclusif.',
+      'En couple, en business, on ne propose pas la même chose. Fini l\'accueil romantique proposé aux clients corporate.',
     result: '23% de conversion upsell',
   },
   {

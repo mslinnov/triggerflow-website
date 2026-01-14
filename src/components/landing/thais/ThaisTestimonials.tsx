@@ -7,7 +7,7 @@ import { Container, Card } from '@/components/ui';
 const TESTIMONIALS = [
   {
     quote:
-      'Avant TriggerFlow, on passait 2 heures par jour à envoyer des emails manuellement. Aujourd\'hui tout est automatisé et personnalisé. Nos clients reçoivent le bon message selon leur profil, et nous on se concentre sur l\'accueil.',
+      'Avant TriggerFlow, on passait 2 heures par jour à envoyer des emails manuellement. Aujourd\'hui tout est automatisé et personnalisé. Nos clients reçoivent le bon message selon leur profil, et nous on se concentre sur ce qui compte pour nous.',
     author: 'Marie Dupois',
     role: 'Directrice',
     hotel: 'Hôtel & Spa Le Provençal',

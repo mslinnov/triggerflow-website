@@ -115,7 +115,7 @@ export function JourneyTimeline({ background = 'gradient' }: JourneyTimelineProp
             <span className="text-sm font-semibold text-brand-primary">Parcours Client Complet</span>
           </div>
           <h2 className="text-3xl font-bold tracking-tight text-brand-dark sm:text-4xl md:text-5xl">
-            Un email automatique pour <span className="text-brand-primary">chaque moment</span>
+            Un message automatique et personnalisé pour <span className="text-brand-primary">chaque moment</span>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-600">
             De la réservation au départ, TriggerFlow envoie le bon message au bon moment

@@ -28,12 +28,12 @@ const CAMPAIGN_FEATURES = [
   },
   {
     icon: RefreshCw,
-    title: 'Séquences automatiques',
-    description: 'Créez des parcours client automatisés pour fidéliser vos clients.',
+    title: 'Import de contacts',
+    description: 'Importez votre base de données existante et enrichissez-la automatiquement.',
     benefits: [
-      'Scénarios de nurturing',
-      'Triggers personnalisés',
-      'A/B testing intégré',
+      'Import CSV/Excel en quelques clics',
+      'Synchronisation avec vos contacts Thaïs',
+      'Enrichissement automatique des profils',
     ],
   },
 ];

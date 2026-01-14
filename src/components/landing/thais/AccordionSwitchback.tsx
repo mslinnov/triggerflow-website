@@ -40,9 +40,9 @@ const FEATURES: AccordionFeature[] = [
     description:
       'Vos communications s\'envoient toutes seules selon vos règles. Vous configurez une fois, ça tourne 24/7.',
     benefits: [
-      'Flow builder visuel no-code',
+      'Constructeur d\'arbre de décision visuel',
       'Déclencheurs illimités (réservation, check-in, anniversaire...)',
-      'Conditions et branchements complexes',
+      'Conditions et branchements 100% personnalisables',
       'Synchronisation automatique avec Thaïs',
     ],
     Visual: WorkflowBuilderVisual,
@@ -54,10 +54,10 @@ const FEATURES: AccordionFeature[] = [
     description:
       'Fini les emails génériques. Chaque segment reçoit une communication adaptée à son profil.',
     benefits: [
-      'Filtres personnalisables à l\'infini',
-      'Segments dynamiques mis à jour en temps réel',
-      'Ciblage comportemental avancé',
-      'Données Thaïs exploitées pleinement',
+      'Jour d\'arrivée, email OTA, services réservés',
+      'Régime tarifaire, source de réservation, chambre',
+      '+50 filtres pour des milliers de combinaisons',
+      'Données Thaïs exploitées en temps réel',
     ],
     Visual: SegmentationVisual,
   },
@@ -76,6 +76,34 @@ const FEATURES: AccordionFeature[] = [
     Visual: MessagingHubVisual,
   },
   {
+    id: 'forms',
+    icon: FileText,
+    title: 'Collectez les infos clients avant même leur arrivée',
+    description:
+      'Formulaires pré-séjour, préférences, allergies... tout remonte automatiquement dans Thaïs.',
+    benefits: [
+      'Éditeur drag & drop sans code',
+      'Synchronisation 2-way avec Thaïs',
+      'Réponses illimitées',
+      'Logique conditionnelle avancée',
+    ],
+    Visual: FormBuilderVisual,
+  },
+  {
+    id: 'catalog',
+    icon: ShoppingBag,
+    title: 'Vendez vos services additionnels sans lever le petit doigt',
+    description:
+      'Spa, restaurant, late check-out... proposés automatiquement au bon moment.',
+    benefits: [
+      'Catalogue produits/services personnalisable',
+      'Pages de vente brandées',
+      'Envoi automatique selon le profil client',
+      'Synchronisation 2-way avec Thaïs PMS',
+    ],
+    Visual: CatalogVisual,
+  },
+  {
     id: 'reviews',
     icon: Star,
     title: 'Tous vos avis centralisés, réponses générées par IA',
@@ -88,34 +116,6 @@ const FEATURES: AccordionFeature[] = [
       'Alertes pour avis négatifs',
     ],
     Visual: ReviewsVisual,
-  },
-  {
-    id: 'forms',
-    icon: FileText,
-    title: 'Collectez les infos clients avant même leur arrivée',
-    description:
-      'Formulaires pré-séjour, préférences, allergies... tout remonte automatiquement dans Thaïs.',
-    benefits: [
-      'Éditeur drag & drop sans code',
-      'Synchronisation 2-way avec Thaïs',
-      'Formulaires illimités',
-      'Logique conditionnelle avancée',
-    ],
-    Visual: FormBuilderVisual,
-  },
-  {
-    id: 'catalog',
-    icon: ShoppingBag,
-    title: 'Vendez vos services additionnels sans lever le petit doigt',
-    description:
-      'Spa, restaurant, late check-out... proposés automatiquement au bon moment, paiement en ligne intégré.',
-    benefits: [
-      'Catalogue produits/services personnalisable',
-      'Pages de vente brandées',
-      'Paiement en ligne intégré',
-      'Synchronisation 2-way avec Thaïs PMS',
-    ],
-    Visual: CatalogVisual,
   },
 ];
 

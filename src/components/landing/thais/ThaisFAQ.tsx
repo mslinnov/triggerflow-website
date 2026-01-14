@@ -7,11 +7,6 @@ import { Container } from '@/components/ui';
 
 const faqs = [
   {
-    question: "L'intégration avec Thaïs est-elle vraiment en 1 clic ?",
-    answer:
-      "Oui, absolument. Depuis votre espace Thaïs, vous activez TriggerFlow en un clic. Vos données clients (réservations, codes tarifs, historique) se synchronisent automatiquement en temps réel. Aucune configuration technique n'est requise de votre côté.",
-  },
-  {
     question: 'Puis-je tester TriggerFlow avant de payer ?',
     answer:
       "Nous proposons une démo personnalisée gratuite de 30 minutes où nous configurons ensemble votre première automatisation. Vous voyez concrètement comment TriggerFlow fonctionne avec vos données Thaïs avant tout engagement.",
