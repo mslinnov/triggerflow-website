@@ -1,0 +1,101 @@
+version: "6.0.0"
+project_name: "TriggerFlow Website"
+project_level: 2
+current_sprint: 1
+sprint_plan_path: "docs/sprint-plan-triggerflow-website-2026-01-31.md"
+
+sprints:
+  - sprint_number: 1
+    start_date: "2026-02-03"
+    end_date: "2026-02-07"
+    capacity_points: 15
+    committed_points: 13
+    completed_points: 13
+    status: "completed"
+    goal: "Blog fonctionnel de bout en bout — un article peut être lu sur le site"
+    stories:
+      - story_id: "STORY-001"
+        title: "Blog infrastructure & MDX setup"
+        points: 5
+        status: "completed"
+        assigned_to: null
+        document: "docs/stories/STORY-001.md"
+        completion_date: "2026-01-31"
+      - story_id: "STORY-002"
+        title: "Blog article page & MDX components"
+        points: 5
+        status: "completed"
+        assigned_to: null
+        completion_date: "2026-01-31"
+      - story_id: "STORY-008"
+        title: "Newsletter Brevo integration"
+        points: 3
+        status: "completed"
+        assigned_to: null
+        completion_date: "2026-01-31"
+
+  - sprint_number: 2
+    start_date: "2026-02-10"
+    end_date: "2026-02-14"
+    capacity_points: 15
+    committed_points: 13
+    completed_points: 13
+    status: "completed"
+    goal: "Blog complet avec listings, silos, SEO, et composants LP prêts"
+    stories:
+      - story_id: "STORY-003"
+        title: "Blog listing pages & silo navigation"
+        points: 5
+        status: "completed"
+        assigned_to: null
+        document: "docs/stories/STORY-003.md"
+        completion_date: "2026-01-31"
+      - story_id: "STORY-004"
+        title: "Blog SEO & structured data"
+        points: 3
+        status: "completed"
+        assigned_to: null
+        document: "docs/stories/STORY-004.md"
+        completion_date: "2026-01-31"
+      - story_id: "STORY-006"
+        title: "LP shared components"
+        points: 5
+        status: "completed"
+        assigned_to: null
+        document: "docs/stories/STORY-006.md"
+        completion_date: "2026-01-31"
+
+  - sprint_number: 3
+    start_date: "2026-02-17"
+    end_date: "2026-02-21"
+    capacity_points: 15
+    committed_points: 11
+    completed_points: 11
+    status: "completed"
+    goal: "Système LP dynamique fonctionnel et pipeline d'import d'articles opérationnel"
+    stories:
+      - story_id: "STORY-007"
+        title: "LP dynamic routing & config system"
+        points: 3
+        status: "completed"
+        assigned_to: null
+        document: "docs/stories/STORY-007.md"
+        completion_date: "2026-01-31"
+      - story_id: "STORY-005"
+        title: "Article import pipeline (script CLI)"
+        points: 8
+        status: "completed"
+        assigned_to: null
+        document: "docs/stories/STORY-005.md"
+        completion_date: "2026-01-31"
+
+velocity:
+  sprint_1: 13
+  sprint_2: 13
+  sprint_3: 11
+  rolling_average: 12.3
+
+team:
+  size: 1
+  sprint_length_weeks: 1
+  capacity_per_sprint: 15

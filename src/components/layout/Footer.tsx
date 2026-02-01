@@ -5,6 +5,7 @@ import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { useState } from 'react';
 import { Linkedin, Mail, Phone, MapPin, ArrowRight, Send, CheckCircle } from 'lucide-react';
+import { useNewsletter } from '@/lib/hooks/useNewsletter';
 import { Container, ButtonLink } from '@/components/ui';
 import { cn } from '@/lib/utils';
 
@@ -283,24 +284,29 @@ export function Footer() {
 
 function NewsletterForm() {
   const t = useTranslations('footer.newsletter');
-  const [email, setEmail] = useState('');
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+  const tConsent = useTranslations('newsletter');
+  const { email, setEmail, honeypot, setHoneypot, status, subscribe } = useNewsletter();
+  const [consent, setConsent] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus('loading');
-
-    // Redirect to Brevo/Sibforms newsletter
-    window.open(
-      `https://15671da4.sibforms.com/serve/MUIFAOXnAHo2WSOP6csFPh9uhaHk6AD1ZdDIJgBiOKzHrqB40POPdPX0eiNDYqSG5TYkn6g7xqGHokwUEvYIQjtONDtazMnGFAi17szMqSfvy_fnmQ_Clsi8SRtsspUTWVFLPFD_iiuyjqXIu0TiSL7zr3LRuQWB9wMIHqk78xtN5XIDmwiHq7JxAHEnTJDQOBDlvCbImMJiZxrc`,
-      '_blank'
-    );
-    setStatus('success');
-    setTimeout(() => setStatus('idle'), 3000);
+    if (!consent) return;
+    await subscribe('fr');
   };
 
   return (
     <form onSubmit={handleSubmit} className="mt-3">
+      {/* Honeypot — hidden from users */}
+      <input
+        type="text"
+        name="website"
+        value={honeypot}
+        onChange={(e) => setHoneypot(e.target.value)}
+        className="hidden"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+      />
       <div className="flex gap-2">
         <input
           type="email"
@@ -309,15 +315,16 @@ function NewsletterForm() {
           placeholder={t('placeholder')}
           className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-zinc-500 focus:border-brand-primary focus:outline-none focus:ring-1 focus:ring-brand-primary"
           required
+          disabled={status === 'loading' || status === 'success'}
         />
         <button
           type="submit"
-          disabled={status === 'loading'}
+          disabled={status === 'loading' || status === 'success' || !consent}
           className={cn(
             'flex h-10 w-10 shrink-0 items-center justify-center rounded-lg transition-colors',
             status === 'success'
               ? 'bg-green-500 text-white'
-              : 'bg-brand-primary text-white hover:bg-brand-primary/90'
+              : 'bg-brand-primary text-white hover:bg-brand-primary/90 disabled:opacity-50'
           )}
         >
           {status === 'success' ? (
@@ -327,9 +334,33 @@ function NewsletterForm() {
           )}
         </button>
       </div>
-      <p className="mt-2 text-xs text-zinc-500">
-        {t('disclaimer')}
-      </p>
+
+      {/* RGPD consent */}
+      <label className="mt-3 flex items-start gap-2 cursor-pointer">
+        <input
+          type="checkbox"
+          checked={consent}
+          onChange={(e) => setConsent(e.target.checked)}
+          className="mt-0.5 h-4 w-4 shrink-0 rounded border-white/20 bg-white/5 text-brand-primary focus:ring-brand-primary"
+        />
+        <span className="text-xs text-zinc-500">
+          {tConsent('consent')}{' '}
+          <Link href="/politique-confidentialite" className="text-zinc-400 underline hover:text-white">
+            {tConsent('privacyLink')}
+          </Link>
+        </span>
+      </label>
+
+      {/* Status messages */}
+      {status === 'success' && (
+        <p className="mt-2 text-xs text-green-400">{tConsent('success')}</p>
+      )}
+      {status === 'error' && (
+        <p className="mt-2 text-xs text-red-400">{tConsent('error')}</p>
+      )}
+      {status === 'idle' && (
+        <p className="mt-2 text-xs text-zinc-500">{t('disclaimer')}</p>
+      )}
     </form>
   );
 }

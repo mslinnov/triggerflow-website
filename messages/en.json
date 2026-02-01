@@ -558,6 +558,12 @@
     },
     "copyright": "© {year} TriggerFlow. All rights reserved."
   },
+  "newsletter": {
+    "consent": "I agree to receive the TriggerFlow newsletter. You can unsubscribe at any time.",
+    "privacyLink": "Privacy Policy",
+    "success": "Thank you! You are subscribed to our newsletter.",
+    "error": "An error occurred. Please try again."
+  },
   "legalPages": {
     "legalNotice": {
       "meta": {
@@ -1137,8 +1143,21 @@
       "subtitle": "Everything you need to succeed"
     },
     "useCases": {
-      "title": "Use Cases",
-      "subtitle": "Concrete examples of usage"
+      "title": "Real-World Use Cases",
+      "subtitle": "How our customers use this module every day"
+    },
+    "journey": {
+      "title": "Present at every stage of the stay",
+      "subtitle": "TriggerFlow engages at key moments in the guest journey"
+    },
+    "integrations": {
+      "badge": "Integrations",
+      "title": "Connects to your PMS in 5 minutes",
+      "subtitle": "Compatible with the leading PMS and Channel Managers on the market"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Everything you need to know about this module"
     },
     "testimonial": {
       "quote": "This module has transformed how we work. The results were immediate and our guests are delighted.",
@@ -1147,7 +1166,7 @@
     },
     "related": {
       "title": "Complementary Modules",
-      "subtitle": "Discover modules that work perfectly together"
+      "subtitle": "Email works even better with..."
     },
     "cta": {
       "title": "Ready to discover this module?",
@@ -1232,9 +1251,22 @@
       "title": "The challenges you face",
       "subtitle": "TriggerFlow addresses your daily issues"
     },
+    "beforeAfter": {
+      "title": "Before / After TriggerFlow",
+      "subtitle": "The concrete difference for your property",
+      "before": "Without TriggerFlow",
+      "beforeSub": "The reality for many hotels",
+      "after": "With TriggerFlow",
+      "afterSub": "What TriggerFlow changes"
+    },
+    "journey": {
+      "title": "The automated guest journey",
+      "subtitle": "TriggerFlow steps in at every key touchpoint"
+    },
     "features": {
       "title": "Features that fit your needs",
-      "subtitle": "Discover the modules adapted to your business"
+      "subtitle": "Discover the modules adapted to your business",
+      "learnMore": "Learn more"
     },
     "useCases": {
       "title": "Concrete use cases",
@@ -1243,7 +1275,17 @@
     "integrations": {
       "title": "Compatible integrations",
       "subtitle": "TriggerFlow connects to your existing tools",
+      "badge": "Plug & Play",
+      "others": "others",
       "viewAll": "View all integrations"
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "subtitle": "Answers to the most common questions"
+    },
+    "relatedSolutions": {
+      "title": "Complementary solutions",
+      "subtitle": "Discover other solutions adapted to your needs"
     },
     "cta": {
       "title": "Ready to transform your property?",
@@ -1270,6 +1312,39 @@
       "placeholder": "Your email",
       "button": "Subscribe",
       "comingSoon": "Newsletter coming soon"
+    },
+    "article": {
+      "minRead": "min read",
+      "writtenBy": "By",
+      "publishedOn": "Published on",
+      "ctaTitle": "Ready to automate your guest communication?",
+      "ctaButton": "Book a demo"
+    },
+    "listing": {
+      "recentPosts": "Recent posts",
+      "allPosts": "All posts",
+      "allArticles": "All articles",
+      "allSilos": "All",
+      "noArticles": "No articles in this category yet.",
+      "pilierBadge": "Pillar article",
+      "readMore": "Read article",
+      "pagination": {
+        "previous": "Previous",
+        "next": "Next",
+        "page": "Page {current} of {total}"
+      }
+    },
+    "breadcrumb": {
+      "blog": "Blog"
+    },
+    "silo": {
+      "metaTitle": "{siloName} | TriggerFlow Blog",
+      "metaDescription": "Discover our articles about {siloName} — tips, guides and best practices for hospitality."
+    },
+    "toc": {
+      "title": "Table of Contents",
+      "show": "Show table of contents",
+      "hide": "Hide table of contents"
     }
   },
   "caseStudies": {

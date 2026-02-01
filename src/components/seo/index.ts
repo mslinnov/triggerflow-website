@@ -4,4 +4,6 @@ export {
   SoftwareApplicationJsonLd,
   FAQPageJsonLd,
   WebsiteJsonLd,
+  BlogPostingJsonLd,
+  BreadcrumbListJsonLd,
 } from './JsonLd';

@@ -241,24 +241,13 @@ export function Header() {
                 {t('pricing')}
               </Link>
 
-              {/* Ressources Dropdown */}
-              <div
-                onMouseEnter={() => handleMouseEnter('ressources')}
-                onMouseLeave={handleMouseLeave}
+              {/* Blog Link */}
+              <Link
+                href="/blog"
+                className="flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-medium text-brand-dark transition-colors hover:bg-zinc-100"
               >
-                <button
-                  className={cn(
-                    'flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors',
-                    activeDropdown === 'ressources' ? 'bg-zinc-100 text-brand-primary' : 'text-brand-dark hover:bg-zinc-100'
-                  )}
-                >
-                  {t('resources')}
-                  <ChevronDown className={cn(
-                    'h-4 w-4 transition-transform duration-200',
-                    activeDropdown === 'ressources' && 'rotate-180'
-                  )} />
-                </button>
-              </div>
+                Blog
+              </Link>
             </nav>
 
             {/* Desktop Actions */}
@@ -268,10 +257,11 @@ export function Header() {
                 href="https://app.trigger-flow.com/login"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium text-brand-dark transition-colors hover:bg-zinc-100"
+                className="flex items-center gap-2 rounded-lg px-2 py-2 text-sm font-medium text-brand-dark transition-colors hover:bg-zinc-100"
+                aria-label={t('login')}
               >
                 <User className="h-4 w-4" />
-                {t('login')}
+                <span className="hidden xl:inline">{t('login')}</span>
               </a>
               <ButtonLink
                 href="https://app.lemcal.com/@trigger-flow/demo"
@@ -279,6 +269,7 @@ export function Header() {
                 rel="noopener noreferrer"
                 variant="primary"
                 size="sm"
+                className="whitespace-nowrap"
               >
                 {t('demo')}
               </ButtonLink>
@@ -314,7 +305,7 @@ export function Header() {
               <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
                 {activeDropdown === 'produit' && <MegaMenuProduit />}
                 {activeDropdown === 'solutions' && <MegaMenuSolutions />}
-                {activeDropdown === 'ressources' && <MegaMenuRessources />}
+                {/* Ressources menu removed — only Blog link */}
               </div>
             </motion.div>
           )}
@@ -592,24 +583,14 @@ function MobileMenu({ t, onClose }: MobileMenuProps) {
             {t('pricing')}
           </Link>
 
-          {/* Ressources */}
-          <MobileAccordion
-            title={t('resources')}
-            isExpanded={expandedSection === 'ressources'}
-            onToggle={() => setExpandedSection(expandedSection === 'ressources' ? null : 'ressources')}
+          {/* Blog */}
+          <Link
+            href="/blog"
+            onClick={onClose}
+            className="flex items-center justify-between rounded-lg px-4 py-3 text-base font-medium text-brand-dark hover:bg-zinc-50"
           >
-            {menuItems.ressources.columns[0].items.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={onClose}
-                className="flex items-center gap-3 rounded-lg px-2 py-2 text-sm text-brand-dark hover:bg-zinc-50"
-              >
-                <item.icon className="h-4 w-4 text-brand-primary" />
-                {item.label}
-              </a>
-            ))}
-          </MobileAccordion>
+            Blog
+          </Link>
 
           <div className="my-4 border-t border-zinc-200" />
 

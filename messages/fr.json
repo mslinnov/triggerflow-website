@@ -558,6 +558,12 @@
     },
     "copyright": "© {year} TriggerFlow. Tous droits réservés."
   },
+  "newsletter": {
+    "consent": "J'accepte de recevoir la newsletter TriggerFlow. Vous pouvez vous désinscrire à tout moment.",
+    "privacyLink": "Politique de confidentialité",
+    "success": "Merci ! Vous êtes inscrit à notre newsletter.",
+    "error": "Une erreur est survenue. Veuillez réessayer."
+  },
   "legalPages": {
     "legalNotice": {
       "meta": {
@@ -1137,8 +1143,21 @@
       "subtitle": "Tout ce dont vous avez besoin pour réussir"
     },
     "useCases": {
-      "title": "Cas d'usage",
-      "subtitle": "Des exemples concrets d'utilisation"
+      "title": "Cas d'usage concrets",
+      "subtitle": "Comment nos clients utilisent ce module au quotidien"
+    },
+    "journey": {
+      "title": "Présent à chaque étape du séjour",
+      "subtitle": "TriggerFlow intervient aux moments clés du parcours client"
+    },
+    "integrations": {
+      "badge": "Intégrations",
+      "title": "Se connecte à votre PMS en 5 minutes",
+      "subtitle": "Compatible avec les principaux PMS et Channel Managers du marché"
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "subtitle": "Tout ce que vous devez savoir sur ce module"
     },
     "testimonial": {
       "quote": "Ce module a transformé notre façon de travailler. Les résultats ont été immédiats et nos clients sont ravis.",
@@ -1147,7 +1166,7 @@
     },
     "related": {
       "title": "Modules complémentaires",
-      "subtitle": "Découvrez les modules qui fonctionnent parfaitement ensemble"
+      "subtitle": "L'email, c'est encore mieux avec..."
     },
     "cta": {
       "title": "Prêt à découvrir ce module ?",
@@ -1232,9 +1251,22 @@
       "title": "Les défis que vous rencontrez",
       "subtitle": "TriggerFlow répond à vos problématiques quotidiennes"
     },
+    "beforeAfter": {
+      "title": "Avant / Après TriggerFlow",
+      "subtitle": "La différence concrète pour votre établissement",
+      "before": "Sans TriggerFlow",
+      "beforeSub": "La réalité de nombreux hôtels",
+      "after": "Avec TriggerFlow",
+      "afterSub": "Ce que TriggerFlow change"
+    },
+    "journey": {
+      "title": "Le parcours client automatisé",
+      "subtitle": "TriggerFlow intervient à chaque étape clé"
+    },
     "features": {
       "title": "Les fonctionnalités qui vous correspondent",
-      "subtitle": "Découvrez les modules adaptés à votre activité"
+      "subtitle": "Découvrez les modules adaptés à votre activité",
+      "learnMore": "En savoir plus"
     },
     "useCases": {
       "title": "Cas d'usage concrets",
@@ -1243,7 +1275,17 @@
     "integrations": {
       "title": "Intégrations compatibles",
       "subtitle": "TriggerFlow se connecte à vos outils existants",
+      "badge": "Plug & Play",
+      "others": "autres",
       "viewAll": "Voir toutes les intégrations"
+    },
+    "faq": {
+      "title": "Questions fréquentes",
+      "subtitle": "Les réponses à vos questions les plus courantes"
+    },
+    "relatedSolutions": {
+      "title": "Solutions complémentaires",
+      "subtitle": "Découvrez d'autres solutions adaptées à vos besoins"
     },
     "cta": {
       "title": "Prêt à transformer votre établissement ?",
@@ -1270,6 +1312,39 @@
       "placeholder": "Votre email",
       "button": "S'abonner",
       "comingSoon": "Newsletter bientôt disponible"
+    },
+    "article": {
+      "minRead": "min de lecture",
+      "writtenBy": "Par",
+      "publishedOn": "Publié le",
+      "ctaTitle": "Prêt à automatiser votre relation client ?",
+      "ctaButton": "Réserver une démo"
+    },
+    "listing": {
+      "recentPosts": "Articles récents",
+      "allPosts": "Tous les articles",
+      "allArticles": "Tous les articles",
+      "allSilos": "Tous",
+      "noArticles": "Aucun article dans cette catégorie pour le moment.",
+      "pilierBadge": "Article pilier",
+      "readMore": "Lire l'article",
+      "pagination": {
+        "previous": "Précédent",
+        "next": "Suivant",
+        "page": "Page {current} sur {total}"
+      }
+    },
+    "breadcrumb": {
+      "blog": "Blog"
+    },
+    "silo": {
+      "metaTitle": "{siloName} | Blog TriggerFlow",
+      "metaDescription": "Découvrez nos articles sur {siloName} — conseils, guides et bonnes pratiques pour l'hôtellerie."
+    },
+    "toc": {
+      "title": "Sommaire",
+      "show": "Voir le sommaire",
+      "hide": "Masquer le sommaire"
     }
   },
   "caseStudies": {

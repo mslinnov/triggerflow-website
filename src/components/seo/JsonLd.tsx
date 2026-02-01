@@ -1,4 +1,5 @@
 import { useTranslations } from 'next-intl';
+import type { Article } from '@/types/blog';
 
 const baseUrl = 'https://www.trigger-flow.com';
 
@@ -234,5 +235,85 @@ export function HomePageJsonLd({ locale }: JsonLdProps) {
       <FAQPageJsonLd locale={locale} />
       <WebsiteJsonLd />
     </>
+  );
+}
+
+interface BlogPostingJsonLdProps {
+  article: Article;
+  locale: string;
+}
+
+export function BlogPostingJsonLd({ article, locale }: BlogPostingJsonLdProps) {
+  const url = `${baseUrl}/${locale}/blog/${article.siloSlug}/${article.slug}`;
+  const heroImage = article.images.find((img) => img.id === 'hero');
+
+  const schema: Record<string, unknown> = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: article.title,
+    description: article.metaDescription,
+    url,
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    datePublished: article.datePublication,
+    dateModified: article.dateMiseAJour,
+    wordCount: article.longueurMots,
+    articleSection: article.siloNom,
+    keywords: [article.motClePrincipal, ...article.motsClesSecondaires].join(', '),
+    inLanguage: locale === 'fr' ? 'fr-FR' : 'en-US',
+    author: {
+      '@type': 'Organization',
+      name: 'TriggerFlow',
+      url: baseUrl,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'TriggerFlow',
+      logo: { '@type': 'ImageObject', url: `${baseUrl}/logo.png` },
+    },
+  };
+
+  if (heroImage) {
+    schema.image = {
+      '@type': 'ImageObject',
+      url: `${baseUrl}/images/blog/${article.slug}/${heroImage.filename}`,
+      width: heroImage.width,
+      height: heroImage.height,
+    };
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
+interface BreadcrumbListJsonLdProps {
+  items: BreadcrumbItem[];
+}
+
+export function BreadcrumbListJsonLd({ items }: BreadcrumbListJsonLdProps) {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
   );
 }

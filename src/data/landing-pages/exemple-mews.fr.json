@@ -1,0 +1,158 @@
+{
+  "slug": "exemple-mews",
+  "locale": "fr",
+  "noindex": true,
+  "header": {
+    "ctaLabel": "Réserver une démo",
+    "ctaHref": "https://app.lemcal.com/@trigger-flow/demo"
+  },
+  "metadata": {
+    "title": "TriggerFlow + Mews | Automatisez votre relation client",
+    "description": "Connectez TriggerFlow à Mews en 30 minutes. Automatisez vos emails de confirmation, pré-séjour et fidélisation sans code."
+  },
+  "sections": [
+    {
+      "type": "LPHero",
+      "props": {
+        "badge": "Partenaire officiel Mews",
+        "title": "Automatisez votre hôtel connecté à Mews",
+        "subtitle": "Configurez une fois, TriggerFlow envoie automatiquement les bons emails au bon moment. Confirmation, pré-séjour, après-séjour — sans intervention manuelle.",
+        "ctaLabel": "Réserver une démo gratuite",
+        "ctaHref": "https://app.lemcal.com/@trigger-flow/demo",
+        "secondaryCtaLabel": "Voir les tarifs",
+        "secondaryCtaHref": "#pricing",
+        "trustIndicators": ["Sans code", "Configuration en 48h", "Support français 7j/7"]
+      }
+    },
+    {
+      "type": "LPSocialProof",
+      "props": {
+        "title": "Ils automatisent déjà leur relation client",
+        "stats": [
+          { "value": "500+", "label": "Hôtels connectés" },
+          { "value": "2M+", "label": "Emails envoyés/mois" },
+          { "value": "4h", "label": "Gagnées par semaine" }
+        ],
+        "testimonial": {
+          "quote": "On a divisé par 3 le temps passé sur les emails clients. TriggerFlow s'occupe de tout automatiquement.",
+          "author": "Marie Dupont",
+          "role": "Directrice, Hôtel Le Majestic"
+        }
+      }
+    },
+    {
+      "type": "LPFeatures",
+      "props": {
+        "sectionTitle": "Tout ce dont votre hôtel a besoin",
+        "sectionSubtitle": "TriggerFlow se connecte à Mews et automatise vos communications clients de A à Z.",
+        "features": [
+          {
+            "icon": "Mail",
+            "title": "Emails automatiques",
+            "description": "Confirmation, pré-séjour, check-out, fidélisation — configurez une fois, c'est envoyé à chaque réservation."
+          },
+          {
+            "icon": "Smartphone",
+            "title": "SMS & WhatsApp",
+            "description": "Envoyez des rappels et informations pratiques par SMS ou WhatsApp pour un taux d'ouverture maximal."
+          },
+          {
+            "icon": "TrendingUp",
+            "title": "Upsell automatique",
+            "description": "Proposez automatiquement le spa, le restaurant ou un surclassement avant l'arrivée du client."
+          },
+          {
+            "icon": "BarChart3",
+            "title": "Tableaux de bord",
+            "description": "Suivez vos taux d'ouverture, clics et revenus générés en temps réel depuis votre dashboard."
+          },
+          {
+            "icon": "Shield",
+            "title": "Conformité RGPD",
+            "description": "Données hébergées en Europe, consentement géré, suppression automatique — 100% conforme."
+          },
+          {
+            "icon": "Headphones",
+            "title": "Support dédié",
+            "description": "Une équipe française vous accompagne dans la configuration et répond en moins de 2h."
+          }
+        ]
+      }
+    },
+    {
+      "type": "LPTestimonial",
+      "props": {
+        "quote": "La connexion avec Mews s'est faite en 30 minutes. Dès le lendemain, nos emails de confirmation partaient automatiquement. On ne pourrait plus s'en passer.",
+        "authorName": "Thomas Martin",
+        "authorRole": "Responsable digital, Groupe Hôtelier Riviera",
+        "rating": 5
+      }
+    },
+    {
+      "type": "LPPricing",
+      "props": {
+        "sectionTitle": "Un prix simple, sans surprise",
+        "sectionSubtitle": "Tous les plans incluent la connexion Mews et le support français.",
+        "plans": [
+          {
+            "name": "Communication",
+            "description": "Pour automatiser vos emails de base",
+            "price": "49€/mois",
+            "originalPrice": "69€/mois",
+            "features": [
+              "Emails automatiques (confirmation, pré-séjour, après)",
+              "Jusqu'à 5 000 emails/mois",
+              "SMS et WhatsApp inclus",
+              "Connexion Mews incluse",
+              "Support par email"
+            ],
+            "ctaLabel": "Commencer",
+            "ctaHref": "https://app.lemcal.com/@trigger-flow/demo"
+          },
+          {
+            "name": "Conversion",
+            "description": "Pour aussi vendre plus de services",
+            "price": "110€/mois",
+            "originalPrice": "149€/mois",
+            "popular": true,
+            "features": [
+              "Tout Communication +",
+              "Jusqu'à 15 000 emails/mois",
+              "Propositions d'upsell automatiques",
+              "Formulaires de pré-check-in",
+              "Support prioritaire"
+            ],
+            "ctaLabel": "Choisir Conversion",
+            "ctaHref": "https://app.lemcal.com/@trigger-flow/demo"
+          },
+          {
+            "name": "Marketing+",
+            "description": "Pour multi-établissements ou fort volume",
+            "price": "149€/mois",
+            "originalPrice": "199€/mois",
+            "features": [
+              "Tout Conversion +",
+              "Volume illimité",
+              "Campagnes marketing avancées",
+              "Rapports personnalisés",
+              "Account manager dédié"
+            ],
+            "ctaLabel": "Nous contacter",
+            "ctaHref": "https://app.lemcal.com/@trigger-flow/demo"
+          }
+        ],
+        "footnote": "Tous les prix sont HT. Sans engagement, annulation à tout moment."
+      }
+    },
+    {
+      "type": "LPCTA",
+      "props": {
+        "title": "Prêt à automatiser votre hôtel ?",
+        "subtitle": "Rejoignez les 500+ hôtels qui gagnent du temps chaque jour avec TriggerFlow.",
+        "ctaLabel": "Réserver une démo gratuite",
+        "ctaHref": "https://app.lemcal.com/@trigger-flow/demo",
+        "benefits": ["Configuration en 48h", "Support 7j/7", "Conformité RGPD", "Sans engagement"]
+      }
+    }
+  ]
+}
