@@ -2,7 +2,10 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { moduleSlugs, getModuleSerializable } from '@/data/modules';
+import { BreadcrumbListJsonLd } from '@/components/seo';
 import ModulePageContent from './ModulePageContent';
+
+const baseUrl = 'https://www.trigger-flow.com';
 
 interface Props {
   params: Promise<{
@@ -35,16 +38,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const title = `${moduleData.title} - ${t('meta.titleSuffix')}`;
+  const title = moduleData.seoTitle;
   const description = moduleData.description;
 
   return {
     title,
     description,
     openGraph: {
-      title,
+      title: `${title} | TriggerFlow`,
       description,
       type: 'website',
+    },
+    alternates: {
+      canonical: `${baseUrl}/${locale}/produit/${slug}`,
+      languages: {
+        'fr-FR': `${baseUrl}/fr/produit/${slug}`,
+        'en-US': `${baseUrl}/en/produit/${slug}`,
+      },
     },
   };
 }
@@ -59,5 +69,16 @@ export default async function ModulePage({ params }: Props) {
     notFound();
   }
 
-  return <ModulePageContent moduleSlug={slug} />;
+  return (
+    <>
+      <BreadcrumbListJsonLd
+        items={[
+          { name: 'TriggerFlow', url: `${baseUrl}/${locale}` },
+          { name: locale === 'fr' ? 'Produit' : 'Product', url: `${baseUrl}/${locale}/produit` },
+          { name: moduleData.title, url: `${baseUrl}/${locale}/produit/${slug}` },
+        ]}
+      />
+      <ModulePageContent moduleSlug={slug} />
+    </>
+  );
 }

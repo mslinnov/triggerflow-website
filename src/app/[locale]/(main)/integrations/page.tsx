@@ -1,6 +1,9 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
 import { IntegrationsContent } from './IntegrationsContent';
+import { BreadcrumbListJsonLd } from '@/components/seo';
+
+const baseUrl = 'https://www.trigger-flow.com';
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -13,6 +16,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: t('meta.title'),
     description: t('meta.description'),
+    alternates: {
+      canonical: `${baseUrl}/${locale}/integrations`,
+      languages: {
+        'fr-FR': `${baseUrl}/fr/integrations`,
+        'en-US': `${baseUrl}/en/integrations`,
+      },
+    },
   };
 }
 
@@ -20,5 +30,15 @@ export default async function IntegrationsPage({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  return <IntegrationsContent />;
+  return (
+    <>
+      <BreadcrumbListJsonLd
+        items={[
+          { name: 'TriggerFlow', url: `${baseUrl}/${locale}` },
+          { name: 'Intégrations', url: `${baseUrl}/${locale}/integrations` },
+        ]}
+      />
+      <IntegrationsContent />
+    </>
+  );
 }

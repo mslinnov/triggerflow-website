@@ -2,7 +2,10 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { solutionSlugs, getSolutionSerializable } from '@/data/solutions';
+import { BreadcrumbListJsonLd } from '@/components/seo';
 import SolutionPageContent from './SolutionPageContent';
+
+const baseUrl = 'https://www.trigger-flow.com';
 
 interface Props {
   params: Promise<{
@@ -35,16 +38,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
-  const title = `TriggerFlow pour ${solutionData.title} | ${t('meta.titleSuffix')}`;
+  const title = `TriggerFlow pour ${solutionData.title}`;
   const description = solutionData.description;
 
   return {
     title,
     description,
     openGraph: {
-      title,
+      title: `${title} | TriggerFlow`,
       description,
       type: 'website',
+    },
+    alternates: {
+      canonical: `${baseUrl}/${locale}/solutions/${slug}`,
+      languages: {
+        'fr-FR': `${baseUrl}/fr/solutions/${slug}`,
+        'en-US': `${baseUrl}/en/solutions/${slug}`,
+      },
     },
   };
 }
@@ -59,5 +69,16 @@ export default async function SolutionPage({ params }: Props) {
     notFound();
   }
 
-  return <SolutionPageContent solutionSlug={slug} />;
+  return (
+    <>
+      <BreadcrumbListJsonLd
+        items={[
+          { name: 'TriggerFlow', url: `${baseUrl}/${locale}` },
+          { name: 'Solutions', url: `${baseUrl}/${locale}` },
+          { name: solutionData.title, url: `${baseUrl}/${locale}/solutions/${slug}` },
+        ]}
+      />
+      <SolutionPageContent solutionSlug={slug} />
+    </>
+  );
 }

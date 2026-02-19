@@ -962,8 +962,8 @@
   },
   "pricing": {
     "meta": {
-      "title": "Tarifs | TriggerFlow",
-      "description": "Découvrez nos plans adaptés à chaque taille d'établissement. Du plan gratuit au plan entreprise."
+      "title": "Tarifs CRM hôtelier | TriggerFlow - Plans & Prix",
+      "description": "Tarifs TriggerFlow : CRM hôtelier + marketing automation dès 49€/mois. Plans adaptés du boutique-hôtel au groupe multi-établissements."
     },
     "hero": {
       "title": "Des tarifs adaptés à votre taille",
@@ -1181,8 +1181,8 @@
   },
   "integrations": {
     "meta": {
-      "title": "Intégrations | TriggerFlow",
-      "description": "Connectez TriggerFlow à plus de 50 outils : PMS (Mews, Opera, Thaïs), caisses, CRM, serrures connectées. Intégration native sans développement."
+      "title": "Intégrations PMS hôtel | TriggerFlow - 50+ connecteurs natifs",
+      "description": "Connectez TriggerFlow à votre PMS (Mews, Opera Cloud, Medialog, Misterbooking) et 50+ outils hôteliers. Synchronisation temps réel sans développement."
     },
     "hero": {
       "title": "Connectez TriggerFlow à vos outils",
@@ -1400,8 +1400,8 @@
   },
   "product": {
     "meta": {
-      "title": "Produit | TriggerFlow",
-      "description": "Découvrez la plateforme TriggerFlow : emails, SMS, WhatsApp, automatisations, CRM, formulaires, analytics. Tout pour votre relation client hôtelière."
+      "title": "CRM hôtelier tout-en-un | TriggerFlow - Email, SMS, WhatsApp, Workflows",
+      "description": "Plateforme tout-en-un pour hôteliers : CRM, email, SMS, WhatsApp, workflows automatisés, fidélité, avis Google. Connecté à 8+ PMS français."
     },
     "hero": {
       "title": "Une plateforme complète pour votre relation client",

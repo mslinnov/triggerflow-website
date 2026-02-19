@@ -158,12 +158,12 @@ export function PricingContent() {
                 )}
 
                 {/* Plan Name */}
-                <h3 className={cn(
+                <h2 className={cn(
                   'text-xl font-bold',
                   plan.popular ? 'text-white' : 'text-brand-dark'
                 )}>
                   {t(`plans.${plan.key}.name`)}
-                </h3>
+                </h2>
 
                 {/* Price */}
                 <div className="mt-4 flex items-baseline gap-1">

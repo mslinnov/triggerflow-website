@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
 import {
   HeroV2,
@@ -11,6 +12,10 @@ import {
   CTAV2,
 } from '@/components/sections/v2';
 import { HomePageJsonLd } from '@/components/seo';
+
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+};
 
 interface HomePageV2Props {
   params: Promise<{ locale: string }>;

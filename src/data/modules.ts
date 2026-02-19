@@ -78,6 +78,7 @@ export interface ModuleData {
   slug: string;
   icon: LucideIcon;
   title: string;
+  seoTitle: string;
   headline: string;
   description: string;
   mockup: string;
@@ -100,6 +101,7 @@ export const modules: Record<string, ModuleData> = {
     slug: 'email',
     icon: Mail,
     title: 'Email',
+    seoTitle: 'Email automatique hôtel : confirmations & pré-séjour',
     headline: 'Chaque email au bon client, au bon moment',
     description: 'Confirmation, pré-séjour, remerciement, offres personnalisées : TriggerFlow envoie le bon email à chaque étape du séjour. Sans effort.',
     mockup: 'EmailMockup',
@@ -207,6 +209,7 @@ export const modules: Record<string, ModuleData> = {
     slug: 'sms',
     icon: MessageSquare,
     title: 'SMS',
+    seoTitle: 'SMS hôtelier automatique : infos arrivée & offres',
     headline: '98% de taux d\'ouverture, message lu en 3 min',
     description: 'Le SMS est le canal le plus efficace pour les messages critiques. Infos d\'arrivée, code WiFi, offre flash : votre client lit en 3 minutes.',
     mockup: 'PhoneMockup',
@@ -314,6 +317,7 @@ export const modules: Record<string, ModuleData> = {
     slug: 'whatsapp',
     icon: MessageCircle,
     title: 'WhatsApp',
+    seoTitle: 'WhatsApp Business hôtel : conciergerie & automatisation',
     headline: 'Le canal préféré de vos clients, enfin professionnel',
     description: 'WhatsApp Business intégré à votre hôtel : messages automatisés, conciergerie digitale et conversation fluide. Vos clients adorent, votre équipe gagne du temps.',
     mockup: 'WhatsAppMockup',
@@ -421,6 +425,7 @@ export const modules: Record<string, ModuleData> = {
     slug: 'newsletter',
     icon: Newspaper,
     title: 'Newsletter',
+    seoTitle: 'Newsletter hôtelier : fidélisation & réservations directes',
     headline: 'Vos anciens clients réservent à nouveau en direct',
     description: 'Newsletters et campagnes ciblées pour garder le contact avec vos anciens clients et générer des réservations directes. Moins de commissions OTA, plus de marge.',
     mockup: 'CampaignMockup',
@@ -528,6 +533,7 @@ export const modules: Record<string, ModuleData> = {
     slug: 'fidelite',
     icon: Gift,
     title: 'Programme de fidélité',
+    seoTitle: 'Programme fidélité hôtel : réservations directes',
     headline: 'Vos clients reviennent en direct, pas via Booking',
     description: 'Programme de fidélité clé en main pour récompenser vos meilleurs clients et les faire réserver directement. Moins de commissions OTA, plus de marge.',
     mockup: 'CRMMockup',
@@ -635,6 +641,7 @@ export const modules: Record<string, ModuleData> = {
     slug: 'automatisations',
     icon: Zap,
     title: 'Automatisations',
+    seoTitle: 'Automatisation hôtelière : workflows sans code',
     headline: 'Votre hôtel tourne en pilote automatique',
     description: 'Le cœur de TriggerFlow : créez des scénarios automatiques sans code. Déclencheur, conditions, actions — vous dessinez le workflow, TriggerFlow l\'exécute 24h/24.',
     mockup: 'WorkflowBuilderMockup',
@@ -742,6 +749,7 @@ export const modules: Record<string, ModuleData> = {
     slug: 'crm',
     icon: Users,
     title: 'CRM',
+    seoTitle: 'CRM hôtelier : gestion relation client 360°',
     headline: 'Chaque client est reconnu dès son arrivée',
     description: 'Base clients unifiée avec historique complet : séjours, préférences, communications, dépenses. La réception sait tout avant que le client ne parle.',
     mockup: 'CRMMockup',
@@ -849,6 +857,7 @@ export const modules: Record<string, ModuleData> = {
     slug: 'formulaires',
     icon: FileText,
     title: 'Formulaires',
+    seoTitle: 'Formulaire pré check-in hôtel & enquêtes satisfaction',
     headline: 'Le check-in commence avant l\'arrivée',
     description: 'Formulaires de pré-check-in, enquêtes de satisfaction, demandes spéciales. Envoyés automatiquement, analysés en temps réel.',
     mockup: 'EmailMockup',
@@ -956,6 +965,7 @@ export const modules: Record<string, ModuleData> = {
     slug: 'avis',
     icon: Star,
     title: 'Gestion des avis',
+    seoTitle: 'Gestion avis Google hôtel : collecte & réponse automatique',
     headline: 'Plus d\'avis positifs, moins d\'avis négatifs publics',
     description: 'Collectez des avis au bon moment, interceptez les mécontents avant qu\'ils ne postent, et répondez efficacement à chaque avis grâce à l\'IA.',
     mockup: 'DashboardMockup',
@@ -1063,6 +1073,7 @@ export const modules: Record<string, ModuleData> = {
     slug: 'analytics',
     icon: BarChart3,
     title: 'Analytics',
+    seoTitle: 'Analytics hôtelier : reporting & performance',
     headline: 'Chaque décision appuyée par les données',
     description: 'Dashboard unifié pour suivre vos performances : emails, SMS, automatisations, satisfaction, revenus générés. Fini les suppositions.',
     mockup: 'DashboardMockup',
@@ -1170,6 +1181,7 @@ export const modules: Record<string, ModuleData> = {
     slug: 'hub-messagerie',
     icon: Inbox,
     title: 'Hub Messagerie',
+    seoTitle: 'Hub messagerie hôtel : email SMS WhatsApp unifié',
     headline: 'Plus jamais un message client ne passe entre les mailles',
     description: 'Emails, SMS, WhatsApp — tout arrive dans une seule boîte de réception. Votre équipe répond vite, avec le contexte complet du client.',
     mockup: 'DashboardMockup',
@@ -1277,6 +1289,7 @@ export const modules: Record<string, ModuleData> = {
     slug: 'ventes-additionnelles',
     icon: TrendingUp,
     title: 'Ventes Additionnelles',
+    seoTitle: 'Upsell hôtel automatique : +17% de panier moyen',
     headline: '+17% de panier moyen, sans effort de la réception',
     description: 'Proposez automatiquement les bons services au bon moment : surclassement, spa, restaurant, late checkout. Le client achète en 2 clics depuis son email.',
     mockup: 'DashboardMockup',
@@ -1388,6 +1401,7 @@ export const moduleSlugs = Object.keys(modules);
 export interface ModuleSerializable {
   slug: string;
   title: string;
+  seoTitle: string;
   headline: string;
   description: string;
   mockup: string;
@@ -1412,6 +1426,7 @@ export function getModuleSerializable(slug: string): ModuleSerializable | null {
   return {
     slug: module.slug,
     title: module.title,
+    seoTitle: module.seoTitle,
     headline: module.headline,
     description: module.description,
     mockup: module.mockup,

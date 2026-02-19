@@ -2,9 +2,38 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import Script from 'next/script';
+import { IBM_Plex_Sans, Geist_Mono, Fraunces, Cormorant_Garamond } from 'next/font/google';
 import { routing } from '@/i18n/routing';
 
+const GA_MEASUREMENT_ID = 'G-MD02XP125T';
 const baseUrl = 'https://www.trigger-flow.com';
+
+const ibmPlexSans = IBM_Plex_Sans({
+  variable: '--font-ibm-plex-sans',
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  display: 'swap',
+});
+
+const geistMono = Geist_Mono({
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
+});
+
+const fraunces = Fraunces({
+  variable: '--font-playfair',
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  display: 'swap',
+});
+
+const cormorantGaramond = Cormorant_Garamond({
+  variable: '--font-cormorant',
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
+});
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -19,7 +48,6 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'metadata' });
 
   return {
-    metadataBase: new URL(baseUrl),
     title: {
       template: '%s | TriggerFlow',
       default: t('title'),
@@ -50,7 +78,7 @@ export async function generateMetadata({
       type: 'website',
       locale: locale === 'fr' ? 'fr_FR' : 'en_US',
       alternateLocale: locale === 'fr' ? 'en_US' : 'fr_FR',
-      url: baseUrl,
+      url: `${baseUrl}/${locale}`,
       siteName: 'TriggerFlow',
       title: t('title'),
       description: t('description'),
@@ -80,9 +108,9 @@ export async function generateMetadata({
     },
     manifest: '/site.webmanifest',
     alternates: {
-      canonical: locale === 'fr' ? baseUrl : `${baseUrl}/en`,
+      canonical: `${baseUrl}/${locale}`,
       languages: {
-        'fr-FR': baseUrl,
+        'fr-FR': `${baseUrl}/fr`,
         'en-US': `${baseUrl}/en`,
       },
     },
@@ -120,8 +148,26 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const messages = await getMessages();
 
   return (
-    <NextIntlClientProvider messages={messages}>
-      {children}
-    </NextIntlClientProvider>
+    <html lang={locale} suppressHydrationWarning>
+      <head>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
+      </head>
+      <body className={`${ibmPlexSans.variable} ${geistMono.variable} ${fraunces.variable} ${cormorantGaramond.variable} antialiased`}>
+        <NextIntlClientProvider messages={messages}>
+          {children}
+        </NextIntlClientProvider>
+      </body>
+    </html>
   );
 }

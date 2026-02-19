@@ -9,13 +9,13 @@ import { useNewsletter } from '@/lib/hooks/useNewsletter';
 import { Container } from '@/components/ui';
 import { cn } from '@/lib/utils';
 
-// Product links matching mega menu
+// Product links to individual module pages
 const productLinks = [
-  { href: '/produit', labelKey: 'product.communication', isLink: true },
-  { href: '/produit', labelKey: 'product.automation', isLink: true },
-  { href: '/produit', labelKey: 'product.marketing', isLink: true },
-  { href: '/produit', labelKey: 'product.tools', isLink: true },
-  { href: '/produit', labelKey: 'product.reputation', isLink: true },
+  { href: '/produit/hub-messagerie', labelKey: 'product.communication', isLink: true },
+  { href: '/produit/automatisations', labelKey: 'product.automation', isLink: true },
+  { href: '/produit/newsletter', labelKey: 'product.marketing', isLink: true },
+  { href: '/produit/crm', labelKey: 'product.tools', isLink: true },
+  { href: '/produit/avis', labelKey: 'product.reputation', isLink: true },
 ] as const;
 
 // Solutions links
@@ -72,18 +72,18 @@ export function Footer() {
                   href="mailto:contact@trigger-flow.com"
                   className="flex items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-white"
                 >
-                  <Mail className="h-4 w-4" />
+                  <Mail className="h-4 w-4" aria-hidden="true" />
                   contact@trigger-flow.com
                 </a>
                 <a
                   href="tel:+33123456789"
                   className="flex items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-white"
                 >
-                  <Phone className="h-4 w-4" />
+                  <Phone className="h-4 w-4" aria-hidden="true" />
                   +33 1 23 45 67 89
                 </a>
                 <div className="flex items-start gap-2 text-sm text-zinc-400">
-                  <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
                   <span>Paris, France</span>
                 </div>
               </div>
