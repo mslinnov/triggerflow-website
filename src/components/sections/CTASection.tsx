@@ -24,7 +24,7 @@ export function CTASection() {
           transition={{ duration: 0.5 }}
           className="text-center"
         >
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
+          <h2 className="font-serif text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
             {t('title')}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-white/80">
@@ -38,7 +38,7 @@ export function CTASection() {
               rel="noopener noreferrer"
               variant="secondary"
               size="lg"
-              className="group gap-2 bg-white text-brand-dark shadow-lg hover:bg-zinc-100"
+              className="group gap-2 bg-white text-brand-dark shadow-lg hover:bg-v3-bg-secondary"
             >
               {t('ctaPrimary')}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />

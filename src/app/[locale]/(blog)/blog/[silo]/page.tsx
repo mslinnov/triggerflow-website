@@ -5,14 +5,11 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { getArticlesBySilo, getSilos } from '@/lib/blog';
 import { getSiloBySlug } from '@/data/silos';
 import { Container } from '@/components/ui/Container';
-import { SiloNav, ArticleList, BlogBreadcrumb, Pagination } from '@/components/blog';
+import { SiloNav, ArticleList, BlogBreadcrumb } from '@/components/blog';
 import { BreadcrumbListJsonLd } from '@/components/seo';
-
-const ARTICLES_PER_PAGE = 9;
 
 interface Props {
   params: Promise<{ locale: string; silo: string }>;
-  searchParams: Promise<{ page?: string }>;
 }
 
 export async function generateStaticParams() {
@@ -40,9 +37,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function SiloListingPage({ params, searchParams }: Props) {
+export default async function SiloListingPage({ params }: Props) {
   const { locale, silo: siloSlug } = await params;
-  const { page } = await searchParams;
   setRequestLocale(locale);
 
   const silo = getSiloBySlug(siloSlug);
@@ -50,13 +46,6 @@ export default async function SiloListingPage({ params, searchParams }: Props) {
 
   const t = await getTranslations({ locale, namespace: 'blog' });
   const allArticles = getArticlesBySilo(siloSlug, locale);
-
-  const currentPage = Math.max(1, parseInt(page || '1', 10) || 1);
-  const totalPages = Math.max(1, Math.ceil(allArticles.length / ARTICLES_PER_PAGE));
-  const safePage = Math.min(currentPage, totalPages);
-
-  const start = (safePage - 1) * ARTICLES_PER_PAGE;
-  const paginatedArticles = allArticles.slice(start, start + ARTICLES_PER_PAGE);
 
   const baseUrl = 'https://www.trigger-flow.com';
   const breadcrumbItems = [
@@ -101,24 +90,11 @@ export default async function SiloListingPage({ params, searchParams }: Props) {
                 <p className="text-gray-400 text-sm">{t('listing.noArticles')}</p>
               </div>
             ) : (
-              <>
-                <ArticleList
-                  articles={paginatedArticles}
-                  locale={locale}
-                  emptyMessage={t('listing.noArticles')}
-                />
-
-                <Pagination
-                  currentPage={safePage}
-                  totalPages={totalPages}
-                  basePath={`/blog/${siloSlug}`}
-                  labels={{
-                    previous: t('listing.pagination.previous'),
-                    next: t('listing.pagination.next'),
-                    page: t('listing.pagination.page', { current: safePage, total: totalPages }),
-                  }}
-                />
-              </>
+              <ArticleList
+                articles={allArticles}
+                locale={locale}
+                emptyMessage={t('listing.noArticles')}
+              />
             )}
           </Container>
         </section>

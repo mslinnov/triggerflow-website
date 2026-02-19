@@ -1,11 +1,43 @@
 'use client';
 
+import { useRef, useEffect, useState, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { motion, useReducedMotion } from 'framer-motion';
-import { Building2, TrendingUp, Heart, ArrowRight } from 'lucide-react';
+import { motion, useReducedMotion, useInView } from 'framer-motion';
+import { Clock, UserCheck, TrendingUp, Star } from 'lucide-react';
 import { Container } from '@/components/ui';
 import { fadeInUp, staggerContainer, staggerItem, defaultViewport } from '@/lib/animations';
+
+function CountUp({ end, duration = 1.5 }: { end: number; duration?: number }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: '-50px' });
+  const prefersReducedMotion = useReducedMotion();
+  const [displayValue, setDisplayValue] = useState(0);
+
+  const animate = useCallback(() => {
+    if (prefersReducedMotion) {
+      setDisplayValue(end);
+      return;
+    }
+    const startTime = performance.now();
+    const durationMs = duration * 1000;
+
+    function tick(now: number) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / durationMs, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setDisplayValue(Math.round(eased * end));
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }, [end, duration, prefersReducedMotion]);
+
+  useEffect(() => {
+    if (isInView) animate();
+  }, [isInView, animate]);
+
+  return <span ref={ref}>{displayValue}</span>;
+}
 
 const logos = [
   { name: 'Accor', src: '/images/logo-accor.webp' },
@@ -16,30 +48,20 @@ const logos = [
   { name: 'Saint James', src: '/images/logo-saintjames.webp' },
 ];
 
-const metrics = [
-  {
-    icon: Building2,
-    value: '200+',
-    labelKey: 'metrics.hotels',
-  },
-  {
-    icon: TrendingUp,
-    value: '+17%',
-    labelKey: 'metrics.basket',
-  },
-  {
-    icon: Heart,
-    value: '+80%',
-    labelKey: 'metrics.satisfaction',
-  },
-];
+const kpis = [
+  { key: 'timeSaved', icon: Clock },
+  { key: 'checkinRate', icon: UserCheck },
+  { key: 'upsellRevenue', icon: TrendingUp },
+  { key: 'reviewsBoost', icon: Star },
+] as const;
 
 export function LogoCloud() {
   const t = useTranslations('logoCloud');
+  const tMetrics = useTranslations('resultsMetrics');
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="border-y border-zinc-100 bg-white py-12 md:py-16">
+    <section className="border-y border-v3-border/50 bg-white py-10 md:py-14">
       <Container>
         {/* Title */}
         <motion.p
@@ -47,25 +69,21 @@ export function LogoCloud() {
           whileInView="visible"
           variants={fadeInUp}
           viewport={defaultViewport}
-          className="text-center text-sm font-medium uppercase tracking-wider text-zinc-500"
+          className="text-center text-sm font-medium uppercase tracking-wider text-v3-text-muted"
         >
           {t('title')}
         </motion.p>
 
-        {/* Logos with stagger */}
+        {/* Logos */}
         <motion.div
           initial={prefersReducedMotion ? 'visible' : 'hidden'}
           whileInView="visible"
           variants={staggerContainer}
           viewport={defaultViewport}
-          className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-6 grayscale opacity-60"
+          className="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-6 grayscale opacity-60"
         >
           {logos.map((logo) => (
-            <motion.div
-              key={logo.name}
-              variants={staggerItem}
-              className="flex h-10 items-center"
-            >
+            <motion.div key={logo.name} variants={staggerItem} className="flex h-10 items-center">
               <Image
                 src={logo.src}
                 alt={logo.name}
@@ -77,48 +95,52 @@ export function LogoCloud() {
           ))}
         </motion.div>
 
-        {/* Metrics Cards with stagger */}
+        {/* Animated KPI counters strip */}
         <motion.div
           initial={prefersReducedMotion ? 'visible' : 'hidden'}
           whileInView="visible"
           variants={staggerContainer}
           viewport={defaultViewport}
-          className="mt-12 grid gap-4 sm:grid-cols-3"
+          className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-0"
         >
-          {metrics.map((metric) => (
-            <motion.div
-              key={metric.labelKey}
-              variants={staggerItem}
-              whileHover={!prefersReducedMotion ? { scale: 1.02, y: -3 } : {}}
-              className="flex items-center gap-4 rounded-xl border border-zinc-100 bg-zinc-50/50 p-4 md:p-5 transition-shadow hover:shadow-lg"
-            >
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-primary/10">
-                <metric.icon className="h-6 w-6 text-brand-primary" />
-              </div>
-              <div>
-                <p className="text-2xl font-bold text-brand-dark md:text-3xl">{metric.value}</p>
-                <p className="text-sm text-zinc-600">{t(metric.labelKey)}</p>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+          {kpis.map((kpi, index) => {
+            const Icon = kpi.icon;
+            const value = parseInt(tMetrics(`metrics.${kpi.key}.value`), 10);
+            const hasPrefix = kpi.key === 'upsellRevenue' || kpi.key === 'reviewsBoost';
+            const prefix = hasPrefix
+              ? tMetrics(`metrics.${kpi.key}.prefix`)
+              : undefined;
+            const suffix = tMetrics(`metrics.${kpi.key}.suffix`);
+            const label = tMetrics(`metrics.${kpi.key}.label`);
 
-        {/* Link to testimonials */}
-        <motion.div
-          initial={prefersReducedMotion ? 'visible' : 'hidden'}
-          whileInView="visible"
-          variants={fadeInUp}
-          viewport={defaultViewport}
-          className="mt-8 text-center"
-        >
-          <motion.a
-            href="#"
-            className="inline-flex items-center gap-2 text-sm font-medium text-brand-primary transition-colors hover:text-brand-dark"
-            whileHover={!prefersReducedMotion ? { x: 3 } : {}}
-          >
-            {t('cta')}
-            <ArrowRight className="h-4 w-4" />
-          </motion.a>
+            return (
+              <motion.div
+                key={kpi.key}
+                variants={staggerItem}
+                className={`flex flex-col items-center text-center px-4 py-2${
+                  index < kpis.length - 1 ? ' sm:border-r sm:border-v3-border/50' : ''
+                }`}
+              >
+                <Icon className="mb-2 h-4 w-4 text-brand-primary/40" strokeWidth={1.5} />
+                <div className="flex items-baseline gap-0.5">
+                  {prefix && (
+                    <span className="text-lg font-bold text-brand-primary md:text-xl">
+                      {prefix}
+                    </span>
+                  )}
+                  <span className="text-2xl font-bold text-brand-primary md:text-3xl">
+                    <CountUp end={value} />
+                  </span>
+                  {suffix && (
+                    <span className="ml-0.5 text-sm font-semibold text-brand-primary md:text-base">
+                      {suffix}
+                    </span>
+                  )}
+                </div>
+                <p className="mt-1 text-xs text-v3-text-muted">{label}</p>
+              </motion.div>
+            );
+          })}
         </motion.div>
       </Container>
     </section>

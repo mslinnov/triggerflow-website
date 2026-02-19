@@ -777,6 +777,176 @@ export const solutions: Record<string, SolutionData> = {
     ctaSubtitle: "Maximisez chaque séjour et fidélisez pour la saison prochaine",
   },
 
+  'hotels-luxe': {
+    slug: 'hotels-luxe',
+    slugEn: 'luxury-hotels',
+    icon: Star,
+    category: 'type',
+    heroMockup: 'DashboardMockup',
+    title: 'Hôtels de luxe & 5 étoiles',
+    headline: "L'excellence relationnelle que vos clients premium exigent",
+    description:
+      "Vos clients attendent un service irréprochable à chaque interaction. TriggerFlow orchestre une communication sur-mesure qui sublime l'expérience — du premier contact au prochain séjour.",
+
+    persona: {
+      role: 'Directeur général / Guest Relations Manager',
+      painStatement: "Vos clients premium s'attendent à être reconnus et anticipés. Le moindre faux pas ternit votre réputation.",
+      valueProposition: "Une relation client d'exception, personnalisée et automatisée, digne de votre standing.",
+    },
+
+    challenges: [
+      {
+        icon: Star,
+        title: 'Exigences ultra-hautes',
+        description: "Chaque détail compte : un email mal personnalisé ou un oubli de préférence peut coûter un client à vie.",
+      },
+      {
+        icon: Users,
+        title: 'Personnalisation à grande échelle',
+        description: "Impossible de traiter chaque client comme un VIP manuellement quand vous avez 80+ chambres.",
+      },
+      {
+        icon: Clock,
+        title: 'Réactivité attendue',
+        description: "Les clients luxe n'attendent pas. Chaque demande doit être traitée en minutes, pas en heures.",
+      },
+      {
+        icon: Heart,
+        title: 'Fidélisation premium',
+        description: "Vos clients ont le choix entre les meilleurs hôtels du monde. Pourquoi reviendraient-ils chez vous ?",
+      },
+    ],
+
+    painPoints: [
+      'Les préférences clients (oreiller, minibar, étage) sont notées sur des post-it qui se perdent',
+      'Un client revient pour la 3ème fois et personne ne le reconnaît — il est traité comme un nouveau',
+      "L'email de confirmation est le même template générique que pour un 2 étoiles",
+      'Le concierge est débordé et ne peut pas contacter chaque client avant l\'arrivée',
+      "Aucun suivi structuré post-séjour : le client repart dans la nature et réserve ailleurs",
+    ],
+    benefits: [
+      'Fiche client enrichie automatiquement : préférences, allergies, occasions spéciales, historique complet',
+      "Communication pré-séjour personnalisée : email élégant avec nom, type de chambre, offres sur-mesure",
+      'Alertes VIP automatiques : le staff est prévenu quand un client fidèle ou un VIP arrive',
+      "Enquête satisfaction discrète et élégante, avec escalade immédiate si insatisfaction",
+      'Programme fidélité premium avec récompenses exclusives (surclassement, spa, dîner offert)',
+    ],
+
+    stats: [
+      { value: '4.8', suffix: '/5', label: 'note satisfaction moyenne' },
+      { value: '40', suffix: '%', label: 'de clients qui reviennent' },
+      { value: '35', suffix: '%', label: 'de revenus upsell en plus' },
+    ],
+
+    features: [
+      {
+        slug: 'crm',
+        highlight: 'Profil client ultra-détaillé',
+        whyForPersona: "Chaque client a sa fiche complète : préférences de chambre, allergies, anniversaires, historique de séjours. Votre équipe l'accueille comme un habitué — même si c'est sa première visite depuis 2 ans.",
+        bullets: ['Préférences mémorisées (oreiller, minibar, étage)', 'Historique complet multi-séjours', 'Notes et tags personnalisés par le staff'],
+      },
+      {
+        slug: 'automatisations',
+        highlight: 'Parcours client sur-mesure',
+        whyForPersona: "Du premier email à la relance anniversaire, chaque point de contact est orchestré pour refléter votre standing.",
+        bullets: ['Séquence premium pré/pendant/post-séjour', 'Conditions par segment (VIP, fidèle, nouveau)', 'Timing optimisé pour le luxe (pas d\'envoi à 6h du matin)'],
+      },
+      {
+        slug: 'email',
+        highlight: 'Emails dignes de votre marque',
+        whyForPersona: "Templates élégants personnalisables à votre charte graphique. Chaque email reflète l'excellence de votre établissement.",
+        bullets: ['Design premium personnalisable', 'Variables dynamiques (nom, chambre, dates)', 'Multilingue automatique (FR, EN, DE, ES, IT)'],
+      },
+      {
+        slug: 'whatsapp',
+        highlight: 'Conciergerie WhatsApp',
+        whyForPersona: "Vos clients internationaux préfèrent WhatsApp. Offrez un canal de communication direct, élégant et réactif.",
+        bullets: ['Canal WhatsApp Business dédié', 'Réponses rapides aux demandes fréquentes', 'Escalade automatique vers le concierge'],
+      },
+      {
+        slug: 'ventes-additionnelles',
+        highlight: 'Upsell premium contextuel',
+        whyForPersona: "Proposez le spa, le restaurant gastronomique, le surclassement suite — au bon moment, à la bonne personne.",
+        bullets: ['Offres contextuelles par profil client', 'Pack expérience (champagne, spa, dîner)', 'Paiement en ligne intégré'],
+      },
+      {
+        slug: 'fidelite',
+        highlight: 'Programme fidélité exclusif',
+        whyForPersona: "Un programme digne des grandes chaînes de luxe. Vos meilleurs clients cumulent des privilèges qui les font revenir.",
+        bullets: ['Statuts VIP avec avantages progressifs', 'Récompenses exclusives (suite, dîner, spa)', 'Reconnaissance cross-séjours'],
+      },
+    ],
+
+    useCases: [
+      {
+        title: 'Accueil VIP personnalisé',
+        description: "Un client fidèle réserve. TriggerFlow alerte l'équipe avec sa fiche complète : préférences, historique, occasion spéciale. Le staff prépare un accueil sur-mesure.",
+        steps: ['Réservation détectée', 'Fiche client enrichie', 'Alerte staff VIP', 'Accueil personnalisé'],
+        result: '4.8/5 de satisfaction client',
+      },
+      {
+        title: 'Séquence pré-séjour luxe',
+        description: "Email élégant J-10 avec questionnaire préférences, email J-3 avec programme sur-mesure, SMS J-1 avec accès et consigne bagages.",
+        steps: ['Email J-10 préférences', 'Email J-3 programme', 'SMS J-1 accès', 'WhatsApp bienvenue'],
+        result: '95% des clients arrivent avec leurs préférences renseignées',
+      },
+      {
+        title: 'Relance premium post-séjour',
+        description: "Email de remerciement avec photos du séjour, enquête satisfaction discrète, offre fidélité personnalisée, relance anniversaire.",
+        steps: ['Email J+1 remerciement', 'Enquête J+2', 'Points fidélité crédités', 'Offre anniversaire automatique'],
+        result: '40% de taux de retour client',
+      },
+    ],
+
+    testimonial: {
+      quote: "Nos clients habitués sont reconnus dès la réservation. L'équipe sait qu'ils préfèrent l'étage supérieur, le champagne Ruinart et un coussin ferme. C'est cette attention qui fidélise.",
+      author: 'Isabelle V.',
+      role: 'Directrice Guest Relations',
+      hotel: 'Le Grand Hôtel',
+      location: 'Paris',
+      metric: '40% de taux de retour client',
+    },
+
+    integrations: ['Opera Cloud', 'Mews', 'D-Edge', 'Sesame', 'Igloohome'],
+
+    faq: [
+      {
+        question: 'TriggerFlow convient-il à un hôtel 5 étoiles ou un palace ?',
+        answer: "Oui. TriggerFlow s'adapte à l'exigence du luxe : templates élégants personnalisables, gestion fine des préférences clients, alertes VIP, et programme fidélité premium. Plusieurs hôtels 4 et 5 étoiles l'utilisent déjà.",
+      },
+      {
+        question: 'Les emails et SMS reflètent-ils notre image de marque ?',
+        answer: "Absolument. Vous personnalisez chaque template avec votre logo, vos couleurs, votre typographie et votre ton de voix. Le résultat est un email aussi soigné que votre brochure papier.",
+      },
+      {
+        question: 'Comment gérer les préférences clients entre les séjours ?',
+        answer: "Le CRM TriggerFlow mémorise automatiquement les préférences renseignées par le client ou notées par le staff. À chaque nouvelle réservation, la fiche est pré-remplie et l'équipe est alertée.",
+      },
+      {
+        question: 'Le programme fidélité est-il personnalisable ?',
+        answer: "Entièrement. Vous définissez les niveaux (Silver, Gold, Platinum...), les points par nuitée, et les récompenses : surclassement, nuit offerte, accès spa, dîner gastronomique, early check-in, late check-out...",
+      },
+      {
+        question: 'TriggerFlow s\'intègre-t-il avec Opera Cloud ?',
+        answer: "Oui, Opera Cloud est nativement supporté, ainsi que Mews, D-Edge et d'autres PMS utilisés dans l'hôtellerie haut de gamme. La synchronisation est en temps réel.",
+      },
+    ],
+
+    journey: [
+      { label: 'Réservation', description: 'Détection VIP + fiche client', active: true },
+      { label: 'Pré-séjour', description: 'Email premium + préférences', active: true },
+      { label: 'Arrivée', description: 'Accueil VIP personnalisé', active: true },
+      { label: 'Séjour', description: 'Conciergerie + upsell', active: true },
+      { label: 'Départ', description: 'Enquête satisfaction discrète', active: true },
+      { label: 'Post-séjour', description: 'Fidélité + relance premium', active: true },
+    ],
+
+    relatedSolutions: ['groupes-hoteliers', 'fideliser-clients', 'booster-upsell'],
+
+    ctaTitle: "Offrez à vos clients l'excellence qu'ils attendent",
+    ctaSubtitle: "Demandez une démo personnalisée pour l'hôtellerie de luxe",
+  },
+
   // ─── Solutions par objectif ───────────────────────────────────
 
   'automatiser-communication': {

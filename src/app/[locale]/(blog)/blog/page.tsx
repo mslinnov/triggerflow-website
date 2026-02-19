@@ -3,13 +3,14 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { getAllArticles } from '@/lib/blog';
 import { Container } from '@/components/ui/Container';
-import { ArticleCard, SiloNav, ArticleList, Pagination } from '@/components/blog';
-
-const ARTICLES_PER_PAGE = 9;
+import { ArticleCard, SiloNav, ArticleList } from '@/components/blog';
 
 interface Props {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ page?: string }>;
+}
+
+export async function generateStaticParams() {
+  return [{ locale: 'fr' }, { locale: 'en' }];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -22,9 +23,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function BlogListingPage({ params, searchParams }: Props) {
+export default async function BlogListingPage({ params }: Props) {
   const { locale } = await params;
-  const { page } = await searchParams;
   setRequestLocale(locale);
 
   const t = await getTranslations({ locale, namespace: 'blog' });
@@ -34,14 +34,8 @@ export default async function BlogListingPage({ params, searchParams }: Props) {
   const recentFeatured = articles[0] ?? null;
   const recentSide = articles.slice(1, 4);
 
-  // All articles grid (paginated, skip the featured ones on page 1)
-  const gridArticles = page ? articles : articles.slice(4);
-  const currentPage = Math.max(1, parseInt(page || '1', 10) || 1);
-  const totalPages = Math.max(1, Math.ceil(gridArticles.length / ARTICLES_PER_PAGE));
-  const safePage = Math.min(currentPage, totalPages);
-
-  const start = (safePage - 1) * ARTICLES_PER_PAGE;
-  const paginatedArticles = gridArticles.slice(start, start + ARTICLES_PER_PAGE);
+  // All remaining articles
+  const gridArticles = articles.slice(4);
 
   return (
     <main className="min-h-screen bg-white">
@@ -60,7 +54,7 @@ export default async function BlogListingPage({ params, searchParams }: Props) {
       </section>
 
       {/* Recent blog posts */}
-      {recentFeatured && !page && (
+      {recentFeatured && (
         <section className="py-12 md:py-16">
           <Container>
             <h2 className="text-sm font-semibold uppercase tracking-widest text-gray-400">
@@ -107,20 +101,9 @@ export default async function BlogListingPage({ params, searchParams }: Props) {
           </h2>
 
           <ArticleList
-            articles={paginatedArticles}
+            articles={gridArticles}
             locale={locale}
             emptyMessage={t('listing.noArticles')}
-          />
-
-          <Pagination
-            currentPage={safePage}
-            totalPages={totalPages}
-            basePath="/blog"
-            labels={{
-              previous: t('listing.pagination.previous'),
-              next: t('listing.pagination.next'),
-              page: t('listing.pagination.page', { current: safePage, total: totalPages }),
-            }}
           />
         </Container>
       </section>

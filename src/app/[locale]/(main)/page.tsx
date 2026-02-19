@@ -3,16 +3,21 @@ import {
   Hero,
   LogoCloud,
   CommunicationFlow,
-  ModulesShowcase,
+  FeaturesBento,
   JourneyTimeline,
   HowItWorks,
+  IntegrationsShowcase,
+  Examples,
   SolutionsGrid,
-  TestimonialFeatured,
+  PersonasBento,
+  TestimonialsCarousel,
+  CustomerSuccess,
   PricingPreview,
   FAQ,
   CTASection,
 } from '@/components/sections';
 import { HomePageJsonLd } from '@/components/seo';
+import { StickyMobileCTA } from '@/components/layout/StickyMobileCTA';
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -25,36 +30,22 @@ export default async function HomePage({ params }: HomePageProps) {
   return (
     <>
       <HomePageJsonLd locale={locale} />
-      {/* Hero: bg-white */}
       <Hero />
-      {/* LogoCloud: bg-zinc-50 (set in component) */}
       <LogoCloud />
-      {/* CommunicationFlow: bg-white (set in component) */}
       <CommunicationFlow />
-      {/* ModulesShowcase: alternating backgrounds (built into component) */}
-      <ModulesShowcase />
-      {/* JourneyTimeline: bg-zinc-50 (set in component) */}
+      <FeaturesBento />
       <JourneyTimeline />
-      {/* HowItWorks: bg-white (set in component) */}
       <HowItWorks />
-      {/* SolutionsGrid: bg-brand-light/20 wrapper */}
-      <div className="bg-brand-light/20">
-        <SolutionsGrid />
-      </div>
-      {/* TestimonialFeatured: bg-zinc-50 wrapper */}
-      <div className="bg-zinc-50">
-        <TestimonialFeatured />
-      </div>
-      {/* PricingPreview: bg-white wrapper */}
-      <div className="bg-white">
-        <PricingPreview />
-      </div>
-      {/* FAQ: bg-zinc-50 wrapper */}
-      <div className="bg-zinc-50">
-        <FAQ />
-      </div>
-      {/* CTASection: gradient bg (set in component) */}
+      <IntegrationsShowcase />
+      <Examples />
+      <PersonasBento />
+      <SolutionsGrid />
+      <TestimonialsCarousel />
+      <CustomerSuccess />
+      <PricingPreview />
+      <FAQ />
       <CTASection />
+      <StickyMobileCTA />
     </>
   );
 }

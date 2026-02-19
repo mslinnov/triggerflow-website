@@ -9,6 +9,8 @@
   --brand-dark: #002B28;
   --brand-light: #CCE2E1;
   --brand-accent: #FFCFA2;
+  --brand-accent-light: #FFF4E8;
+  --brand-accent-dark: #D4944E;
 
   /* V3 Warm Neutral Theme */
   --v3-bg-primary: #FDFCFB;
@@ -43,6 +45,8 @@
   --color-brand-dark: var(--brand-dark);
   --color-brand-light: var(--brand-light);
   --color-brand-accent: var(--brand-accent);
+  --color-brand-accent-light: var(--brand-accent-light);
+  --color-brand-accent-dark: var(--brand-accent-dark);
   --font-sans: var(--font-ibm-plex-sans);
   --font-mono: var(--font-geist-mono);
   --font-serif: var(--font-playfair);

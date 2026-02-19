@@ -44,6 +44,7 @@ export interface TOCItem {
 
 export interface Article {
   slug: string;
+  translationKey: string | null;
   silo: SiloId;
   siloNom: string;
   siloSlug: string;

@@ -35,9 +35,9 @@ Le site est un **site statique marketing** généré par Next.js avec deux pipel
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                        Vercel Edge                       │
+│                   Cloudflare Pages (Edge)                 │
 │  ┌─────────────────────────────────────────────────────┐ │
-│  │              Next.js 16 (App Router)                │ │
+│  │     Next.js 16 (App Router via @opennextjs/cf)      │ │
 │  │                                                     │ │
 │  │  ┌──────────┐  ┌──────────┐  ┌──────────────────┐  │ │
 │  │  │  (main)  │  │   (lp)   │  │     (blog)       │  │ │
@@ -66,7 +66,7 @@ Le site est un **site statique marketing** généré par Next.js avec deux pipel
 
 ### Rationale
 
-- **Static-First** : Site marketing sans données dynamiques côté serveur → SSG + ISR = performance maximale
+- **Static-First** : Site marketing sans données dynamiques côté serveur → SSG = performance maximale (pas d'ISR, compatible Cloudflare Pages)
 - **Route Groups** : `(main)`, `(lp)`, `(blog)` isolent les layouts (header/footer différents par contexte)
 - **Content Pipeline externe** : Les articles sont rédigés séparément et importés, ce qui découple rédaction et développement
 
@@ -571,7 +571,7 @@ Tout le site est statiquement généré (SSG) au build time. Pas d'ISR nécessai
 **Solution :**
 - **React Server Components** par défaut → zéro JS envoyé au client pour les composants statiques
 - **"use client"** uniquement pour : Header (menu mobile), Tabs, Carousel, Accordion, LanguageSwitcher
-- **next/image** avec `priority` sur les images hero (LCP)
+- **next/image** avec `priority` sur les images hero (LCP) — images pré-optimisées en WebP (pas d'optimisation serveur sur Cloudflare Pages)
 - **Fonts** : `next/font/google` avec `display: swap` (déjà en place)
 - **Tailwind v4** : CSS-only, pas de runtime JS
 - **Lazy loading** : `dynamic()` import pour les sections below-the-fold lourdes (Framer Motion animations)
@@ -580,7 +580,7 @@ Tout le site est statiquement généré (SSG) au build time. Pas d'ISR nécessai
 **Validation :**
 - `npx next build` → vérifier les tailles de bundle
 - Lighthouse CI en pre-deploy
-- Web Vitals monitoring via Vercel Analytics
+- Web Vitals monitoring via Cloudflare Web Analytics (ou Google Lighthouse CI)
 
 ---
 
@@ -675,12 +675,13 @@ Tout le site est statiquement généré (SSG) au build time. Pas d'ISR nécessai
 
 ### NFR-007: Déploiement
 
-**Requirement :** CI/CD automatisé via Vercel
+**Requirement :** CI/CD automatisé via Cloudflare Pages
 
 **Solution (déjà en place) :**
-- Push main → deploy production (Vercel)
-- PR → preview deployment
+- Push main → deploy production (Cloudflare Pages via `opennextjs-cloudflare build && opennextjs-cloudflare deploy`)
+- PR → preview deployment (Cloudflare Pages Git integration)
 - Build vérifie TypeScript + ESLint
+- Worker config dans `wrangler.jsonc` avec `nodejs_compat` flag
 
 **Extension :**
 - Ajouter `type-check` au script build : `tsc --noEmit && next build`
@@ -894,8 +895,8 @@ export async function generateStaticParams() {
 | Env | URL | Deploy trigger |
 |-----|-----|---------------|
 | Development | localhost:3001 | `npm run dev` |
-| Preview | *.vercel.app | Push PR |
-| Production | trigger-flow.com | Push main |
+| Preview | *.pages.dev | Push PR (Cloudflare Pages Git integration) |
+| Production | trigger-flow.com | Push main (Cloudflare Pages) |
 
 ### Variables d'environnement
 
@@ -904,8 +905,9 @@ export async function generateStaticParams() {
 REPLICATE_API_TOKEN=r8_...        # Pour le script d'import d'images
 BREVO_API_KEY=xkeysib-...         # Si API route newsletter (sinon Sibforms embed)
 
-# Vercel (production)
-# Mêmes variables via Vercel Dashboard > Settings > Environment Variables
+# Cloudflare Pages (production)
+# Mêmes variables via Cloudflare Pages Dashboard > Settings > Environment variables
+# Secrets sensibles (API keys) → Encrypted environment variables
 ```
 
 ### Commandes
@@ -915,6 +917,8 @@ npm run dev              # Dev server (port 3001)
 npm run build            # Production build
 npm run lint             # ESLint
 npm run type-check       # TypeScript check
+npm run preview          # Build & preview via Cloudflare Workers
+npm run deploy           # Build & deploy to Cloudflare Pages
 
 # Blog import
 npx tsx scripts/import-articles.ts   # Import articles depuis le dossier externe

@@ -31,6 +31,7 @@ function parseFrontmatter(
 
     return {
       slug: data.slug,
+      translationKey: data.translationKey ?? null,
       silo: silo.id,
       siloNom: data.silo_nom ?? silo.nom,
       siloSlug: silo.slug,
@@ -130,6 +131,14 @@ export function getArticlesBySilo(siloSlug: string, locale: string): Article[] {
     if (!a.datePublication || !b.datePublication) return 0;
     return b.datePublication.localeCompare(a.datePublication);
   });
+}
+
+export function getArticleByTranslationKey(
+  translationKey: string,
+  locale: string
+): Article | null {
+  const articles = getAllArticles(locale);
+  return articles.find((a) => a.translationKey === translationKey) ?? null;
 }
 
 export function getSilos(): Silo[] {

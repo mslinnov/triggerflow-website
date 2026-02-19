@@ -41,7 +41,7 @@ export function PricingPreview() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section id="pricing" className="bg-brand-light/30 py-16 md:py-24">
+    <section id="pricing" className="bg-[var(--v3-bg-primary)] py-16 md:py-24">
       <Container>
         {/* Header */}
         <motion.div
@@ -51,10 +51,10 @@ export function PricingPreview() {
           viewport={defaultViewport}
           className="text-center"
         >
-          <h2 className="text-3xl font-bold tracking-tight text-brand-dark md:text-4xl lg:text-[2.75rem]">
+          <h2 className="font-serif text-3xl font-bold tracking-tight text-v3-text-primary md:text-4xl lg:text-[2.75rem]">
             {t('title')}
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-600">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-v3-text-secondary">
             {t('subtitle')}
           </p>
         </motion.div>
@@ -75,8 +75,8 @@ export function PricingPreview() {
               className={cn(
                 'relative rounded-2xl p-6 transition-shadow',
                 plan.popular
-                  ? 'bg-brand-dark text-white shadow-xl hover:shadow-2xl'
-                  : 'border border-zinc-100 bg-white shadow-sm hover:shadow-xl hover:border-brand-primary/20'
+                  ? 'bg-brand-dark text-white shadow-[var(--v3-shadow-lg)]'
+                  : 'border border-v3-border/50 bg-white shadow-[var(--v3-shadow-md)] hover:shadow-[var(--v3-shadow-lg)] hover:border-brand-primary/20'
               )}
             >
               {/* Popular Badge with pulse animation */}
@@ -100,8 +100,8 @@ export function PricingPreview() {
 
               {/* Plan Name */}
               <h3 className={cn(
-                'text-lg font-bold',
-                plan.popular ? 'text-white' : 'text-brand-dark'
+                'font-serif text-lg font-bold',
+                plan.popular ? 'text-white' : 'text-v3-text-primary'
               )}>
                 {t(`plans.${plan.key}.name`)}
               </h3>
@@ -110,13 +110,13 @@ export function PricingPreview() {
               <div className="mt-3 flex items-baseline gap-1">
                 <span className={cn(
                   'text-4xl font-bold',
-                  plan.popular ? 'text-white' : 'text-brand-dark'
+                  plan.popular ? 'text-white' : 'text-v3-text-primary'
                 )}>
                   {plan.price}€
                 </span>
                 <span className={cn(
                   'text-sm',
-                  plan.popular ? 'text-white/70' : 'text-zinc-500'
+                  plan.popular ? 'text-white/70' : 'text-v3-text-muted'
                 )}>
                   /{t('perMonth')}
                 </span>
@@ -125,7 +125,7 @@ export function PricingPreview() {
               {/* Description */}
               <p className={cn(
                 'mt-2 text-sm',
-                plan.popular ? 'text-white/80' : 'text-zinc-600'
+                plan.popular ? 'text-white/80' : 'text-v3-text-secondary'
               )}>
                 {t(`plans.${plan.key}.description`)}
               </p>
@@ -133,7 +133,7 @@ export function PricingPreview() {
               {/* Features */}
               <p className={cn(
                 'mt-4 text-xs',
-                plan.popular ? 'text-white/70' : 'text-zinc-500'
+                plan.popular ? 'text-white/70' : 'text-v3-text-muted'
               )}>
                 {t(`plans.${plan.key}.features`)}
               </p>
@@ -166,7 +166,7 @@ export function PricingPreview() {
           whileInView="visible"
           variants={staggerContainer}
           viewport={defaultViewport}
-          className="mt-10 flex flex-wrap items-center justify-center gap-6 text-sm text-zinc-600"
+          className="mt-10 flex flex-wrap items-center justify-center gap-6 text-sm text-v3-text-secondary"
         >
           <span className="font-medium">{t('included')}</span>
           {includedFeatures.map((feature) => (

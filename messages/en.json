@@ -3,6 +3,14 @@
     "title": "TriggerFlow | Hotel Customer Relationship Automation",
     "description": "SaaS solution to automate SMS, emails and customer loyalty in the hospitality industry."
   },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page you are looking for does not exist or has been moved.",
+    "backHome": "Back to home",
+    "blog": "Read the blog",
+    "contact": "Contact us",
+    "demo": "Book a demo"
+  },
   "header": {
     "features": "Features",
     "examples": "Examples",
@@ -109,13 +117,18 @@
   },
   "hero": {
     "badge": "Hotel automation platform",
-    "title": "Create the automations you've always imagined for your hotel",
+    "title": "Lighten your mental load: automate what you've always wanted in your hotel",
     "subtitle": "TriggerFlow adapts to your way of working. SMS, emails, WhatsApp, surveys, upsell... you decide what to automate, when and how.",
     "cta": "Book a demo",
+    "ctaFree": "Free 14-day trial",
     "ctaSecondary": "Discover modules",
     "socialProof": {
-      "hotels": "200+ hotels trust us",
-      "rating": "Rated 4.8/5"
+      "hotels": "Thousands of satisfied users"
+    },
+    "trustBadges": {
+      "rgpd": "GDPR Compliant",
+      "pms": "50+ PMS integrated",
+      "support": "24/7 Support"
     }
   },
   "heroDashboard": {
@@ -158,7 +171,7 @@
     "metrics": {
       "hotels": "hotels equipped",
       "basket": "average basket",
-      "satisfaction": "customer satisfaction"
+      "timeSaved": "saved per week"
     },
     "cta": "Discover their testimonials"
   },
@@ -185,51 +198,49 @@
       "triggers": "triggers",
       "sends": "sends"
     },
-    "result": {
-      "title": "Satisfied guest",
-      "subtitle": "Automated communication"
+    "results": {
+      "label": "Results",
+      "reviews": "+45% Google reviews",
+      "timeSaved": "10h saved / week",
+      "upsell": "+17% additional sales"
     }
   },
   "journeyTimeline": {
-    "title": "Automate every step of the stay",
-    "subtitle": "From booking to checkout, TriggerFlow supports your guests automatically",
-    "stages": {
-      "before": {
-        "title": "Before",
-        "subtitle": "the stay",
-        "actions": {
-          "confirmation": "Confirmation email",
-          "prestay": "Pre-stay form"
+    "badge": "Guest Journey",
+    "title": "You choose what to automate, at every stage",
+    "subtitle": "Before, during or after the stay — you decide which interactions TriggerFlow takes care of",
+    "phases": {
+      "preStay": {
+        "label": "Pre-stay",
+        "title": "Set up the perfect arrival",
+        "description": "Booking confirmations, online check-in, personalized offers — activate the scenarios that work for you before your guest walks in.",
+        "highlights": {
+          "0": "Instant booking confirmation",
+          "1": "Online check-in & preferences",
+          "2": "Targeted upgrade offers",
+          "3": "Multichannel pre-stay messaging"
         }
       },
-      "during": {
-        "title": "During",
-        "subtitle": "the stay",
-        "actions": {
-          "welcome": "Welcome SMS",
-          "upsell": "Personalized offers"
+      "stay": {
+        "label": "During stay",
+        "title": "Be present without being intrusive",
+        "description": "Welcome messages, digital concierge, real-time expense tracking — always there when your guests need you.",
+        "highlights": {
+          "0": "Personalized SMS welcome",
+          "1": "24/7 digital concierge",
+          "2": "Real-time expense summary"
         }
       },
-      "after": {
-        "title": "After",
-        "subtitle": "the stay",
-        "actions": {
-          "review": "Review request",
-          "loyalty": "Loyalty program"
+      "postStay": {
+        "label": "Post-stay",
+        "title": "Turn stays into lasting loyalty",
+        "description": "Express checkout, satisfaction surveys, Google reviews, targeted campaigns — make every stay count twice.",
+        "highlights": {
+          "0": "Streamlined express checkout",
+          "1": "Perfectly timed satisfaction surveys",
+          "2": "Automated Google review collection",
+          "3": "Personalized marketing campaigns"
         }
-      }
-    },
-    "mockups": {
-      "email": {
-        "subject": "Your booking is confirmed",
-        "preview": "Hello Mr. Smith, we have received your booking for March 15th..."
-      },
-      "sms": {
-        "message": "Welcome Mr. Smith! Your room 302 is ready. Wifi: HotelGuest / Code: 1234. Have a great stay!",
-        "sender": "Hotel Bellevue"
-      },
-      "review": {
-        "hotelName": "Hotel Bellevue"
       }
     }
   },
@@ -355,31 +366,123 @@
       }
     }
   },
+  "featuresBento": {
+    "badge": "Features",
+    "title": "Everything your hotel needs",
+    "subtitle": "Integrated modules to automate every aspect of your guest relationship",
+    "cta": "Learn more",
+    "items": {
+      "communication": {
+        "title": "Multichannel Communication",
+        "description": "Email, SMS, WhatsApp unified in one inbox. Zero messages lost.",
+        "highlights": ["Unified inbox", "Customizable templates"]
+      },
+      "automation": {
+        "title": "Workflows & Automation",
+        "description": "Custom scenarios, no code needed. Every action triggers itself, right on time."
+      },
+      "crm": {
+        "title": "Hotel CRM",
+        "description": "360° view of every guest. History, preferences, tags — all centralized."
+      },
+      "forms": {
+        "title": "Smart Forms",
+        "description": "Pre-check-in, surveys, preferences. 3x response rate with automated delivery.",
+        "highlights": ["Automated pre-check-in", "Satisfaction surveys"]
+      },
+      "upsell": {
+        "title": "Upselling",
+        "description": "Upgrades, spa, late check-out: the right offer to the right guest, at the right time.",
+        "highlights": ["Built-in offer catalog", "Targeted delivery at the right time"]
+      },
+      "reviews": {
+        "title": "Review Management",
+        "description": "Collect 5x more positive reviews. Filter unhappy guests before they publish.",
+        "highlights": ["Automated review collection", "Real-time dissatisfaction alerts"]
+      },
+      "analytics": {
+        "title": "Analytics & Reports",
+        "description": "Real-time KPIs. Measure the impact of every campaign."
+      }
+    }
+  },
+  "examples": {
+    "badge": "Use Cases",
+    "title": "Everything you can automate",
+    "subtitle": "With TriggerFlow, everything is automatable. Here are some of the most popular examples.",
+    "bottomTitle": "And much more...",
+    "bottomText": "Have a specific need? Let's talk. If you can imagine it, we can automate it.",
+    "bottomCta": "Discuss my project",
+    "items": {
+      "sms": {
+        "title": "Welcome SMS",
+        "description": "Personalized message sent automatically at check-in with practical stay information.",
+        "result": "98% read rate"
+      },
+      "precheckin": {
+        "title": "Online Pre-check-in",
+        "description": "Form sent before arrival to collect identity, preferences and arrival time.",
+        "result": "73% completion rate"
+      },
+      "event": {
+        "title": "Event Promotion",
+        "description": "Notify guests about upcoming events with one-click registration.",
+        "result": "+35% participation"
+      },
+      "survey": {
+        "title": "Satisfaction Surveys",
+        "description": "Collect feedback at the right time. Satisfied guests are redirected to Google.",
+        "result": "+45% Google reviews"
+      },
+      "upsell": {
+        "title": "Upselling",
+        "description": "Offer upgrades, spa, late checkout at the ideal moment in the guest journey.",
+        "result": "+17% additional revenue"
+      },
+      "reviews": {
+        "title": "Review Collection",
+        "description": "Ask satisfied guests for reviews, intercept unhappy ones before they publish.",
+        "result": "8.2 → 9.1 Booking score"
+      },
+      "loyalty": {
+        "title": "Loyalty & Newsletter",
+        "description": "Targeted post-stay campaigns, personalized return offers and loyalty program.",
+        "result": "+28% repeat guests"
+      },
+      "whatsapp": {
+        "title": "WhatsApp Concierge",
+        "description": "Respond to guest requests on WhatsApp with smart automated responses.",
+        "result": "Response in < 30s"
+      }
+    }
+  },
   "howItWorks": {
     "badge": "How it works",
     "title": "Operational in 48h",
-    "subtitle": "Three simple steps to automate your customer relationship",
+    "subtitle": "Three steps are all it takes to automate the tasks you choose",
     "pmsIntegrations": "PMS Integrations",
-    "templates": "Ready-to-use templates",
-    "workflowBuilder": "Workflow builder",
-    "screenshotWorkflow": "Workflow creation interface screenshot",
-    "analytics": "Real-time statistics",
-    "screenshotDashboard": "Analytics dashboard screenshot",
-    "autoRunning": "Active automation",
-    "autoRunningDesc": "24/7 without intervention",
-    "cta": "See all integrations",
     "steps": {
       "connect": {
         "title": "Connect your PMS",
-        "description": "1-click integration with Mews, Opera, Thaïs and 50+ others."
+        "description": "1-click integration with Mews, Opera, Thaïs and 50+ other systems. Your guest data syncs automatically."
       },
       "create": {
         "title": "Create your automations",
-        "description": "Intuitive interface, ready-to-use templates or custom creation."
+        "description": "Intuitive interface to configure your workflows in minutes, no technical skills required.",
+        "features": {
+          "0": "Ready-to-use templates by use case",
+          "1": "Drag & drop customization",
+          "2": "Smart conditions and triggers"
+        }
       },
       "launch": {
         "title": "Let the magic happen",
-        "description": "TriggerFlow works 24/7, you focus on your guests."
+        "description": "TriggerFlow works 24/7, you focus on your guests.",
+        "features": {
+          "0": "Real-time statistics",
+          "1": "Configurable alerts and notifications",
+          "2": "Continuous automatic optimization"
+        }
       }
     }
   },
@@ -494,6 +597,125 @@
         "answer": "Our team supports you at every step: initial setup, team training, and 7/7 support via chat, email or phone."
       }
     }
+  },
+  "resultsMetrics": {
+    "badge": "Proven Results",
+    "title": "Real impact on your operations",
+    "subtitle": "Measured results across our hotel clients",
+    "metrics": {
+      "timeSaved": { "value": "10", "suffix": "h", "label": "saved per week" },
+      "checkinRate": { "value": "73", "suffix": "%", "label": "online check-in rate" },
+      "upsellRevenue": { "value": "17", "prefix": "+", "suffix": "%", "label": "average basket increase" },
+      "reviewsBoost": { "value": "45", "prefix": "+", "suffix": "%", "label": "Google reviews" }
+    }
+  },
+  "integrationsShowcase": {
+    "badge": "Integrations",
+    "title": "Works with your PMS",
+    "subtitle": "1-click connection with 50+ hotel systems",
+    "count": "50+ integrations",
+    "cta": "View all integrations"
+  },
+  "testimonialsCarousel": {
+    "badge": "Testimonials",
+    "title": "What our clients say",
+    "items": [
+      {
+        "quote": "TriggerFlow transformed how we communicate with guests. Satisfaction surveys helped us significantly improve our OTA ratings.",
+        "name": "Sandrine Surrel",
+        "title": "Director, Nature Cathare",
+        "initials": "SS",
+        "metric": { "value": "+45%", "label": "Google reviews" }
+      },
+      {
+        "quote": "In 3 months, we generated €25,000 in additional sales through automated upsell campaigns. The ROI is immediate.",
+        "name": "Marc Dubois",
+        "title": "Revenue Manager, Hôtel & Spa Le Pavillon",
+        "initials": "MD",
+        "metric": { "value": "€25K", "label": "additional revenue" }
+      },
+      {
+        "quote": "The time savings are impressive. Our receptionists focus on welcoming guests instead of admin tasks. 10 hours saved per week.",
+        "name": "Alice Renaud",
+        "title": "Operations Director, Les Jardins d'Aliénor",
+        "initials": "AR",
+        "metric": { "value": "10h", "label": "saved / week" }
+      },
+      {
+        "quote": "Online check-in changed everything. 73% of our guests use it and the reception queue has virtually disappeared.",
+        "name": "Jean-Philippe Moret",
+        "title": "General Manager, Grand Hôtel des Thermes",
+        "initials": "JM",
+        "metric": { "value": "73%", "label": "online check-in" }
+      },
+      {
+        "quote": "Our Booking score went from 8.2 to 9.1 in 6 months thanks to pre-publication surveys. TriggerFlow filters unhappy guests before they post.",
+        "name": "Sophie Lefèvre",
+        "title": "Quality Manager, Groupe Hôtels Patrimoine",
+        "initials": "SL",
+        "metric": { "value": "8.2 → 9.1", "label": "Booking score" }
+      }
+    ]
+  },
+  "customerSuccess": {
+    "badge": "Support",
+    "title": "We don't leave you alone",
+    "subtitle": "Human support at every step of your journey",
+    "items": {
+      "onboarding": {
+        "title": "Operational in 48h",
+        "description": "Guided setup, data import, first workflows active in less than 2 days."
+      },
+      "support": {
+        "title": "24/7 Support",
+        "description": "Chat, email or phone. Average response time of 15 minutes during business hours."
+      },
+      "training": {
+        "title": "Training included",
+        "description": "Team training sessions, monthly webinars and comprehensive knowledge base."
+      },
+      "csm": {
+        "title": "Personalized follow-up",
+        "description": "A dedicated contact who knows your hotel and helps you optimize your results."
+      }
+    },
+    "satisfaction": { "value": "9.4/10", "label": "Customer satisfaction" }
+  },
+  "stickyMobileCta": {
+    "label": "Book a demo"
+  },
+  "personasBento": {
+    "personas": {
+      "direction": {
+        "title": "Hotel Directors",
+        "description": "Monitor your guest relationships at a glance. Dashboards, KPIs and reports for better decisions.",
+        "ctas": {
+          "analytics": "Analytics",
+          "crm": "Hotel CRM",
+          "reports": "Reports"
+        }
+      },
+      "frontDesk": {
+        "title": "Front Desk Teams",
+        "description": "Less repetitive tasks, more time to welcome your guests.",
+        "ctas": {
+          "messaging": "Messaging Hub",
+          "checkin": "Online Check-in",
+          "sms": "Automations"
+        }
+      },
+      "marketing": {
+        "title": "Marketing Managers",
+        "description": "Create campaigns that increase conversion and revenue.",
+        "ctas": {
+          "journeys": "Guest Journeys",
+          "email": "Email Marketing",
+          "campaigns": "Campaigns"
+        }
+      }
+    },
+    "socialProof": "Average client satisfaction",
+    "cta": "Simplify your operations this week"
   },
   "ctaSection": {
     "title": "Ready to create your first automations?",

@@ -75,7 +75,7 @@ TriggerFlow a atteint une maturité produit suffisante (8+ PMS, 6 piliers foncti
 
 ### Solution proposée
 
-Un site Next.js 15 (App Router, RSC) hébergé sur Vercel, avec :
+Un site Next.js 15 (App Router, RSC) hébergé sur Cloudflare Pages (via @opennextjs/cloudflare), avec :
 - **Homepage complète** : 14 sections couvrant proposition de valeur, fonctionnalités, pricing, témoignages, FAQ
 - **Blog intégré** : Articles SEO pour le content marketing hôtelier
 - **Pages légales** : Mentions légales, CGV, CGU, politique de confidentialité
@@ -174,7 +174,7 @@ Donner aux hôteliers une compréhension immédiate de la valeur de TriggerFlow,
 - CMS headless pour le blog (Sanity, Strapi, ou autre)
 - Pages produit détaillées pour chaque pilier
 - Section case studies / success stories
-- A/B testing (Vercel Edge Config ou similaire)
+- A/B testing (Cloudflare Workers ou similaire)
 - Chatbot / widget d'aide
 - Page "À propos" et équipe
 - Multi-langue étendu (ES, DE, IT)
@@ -195,7 +195,7 @@ Donner aux hôteliers une compréhension immédiate de la valeur de TriggerFlow,
 
 - **Budget limité** : Pas de prestataires externes, développement en interne avec assistance IA (Claude)
 - **Contenus partiellement prêts** : Logos et quelques screenshots disponibles, mais textes finaux et visuels complémentaires à créer
-- **Stack imposée** : Next.js 15, TypeScript, Tailwind CSS, Vercel (déjà défini dans CLAUDE.md)
+- **Stack imposée** : Next.js 15, TypeScript, Tailwind CSS, Cloudflare Pages (défini dans CLAUDE.md)
 - **Deux langues** : FR et EN uniquement pour la V1
 - **Pas de CMS** : Articles de blog gérés en statique ou MDX
 
@@ -203,7 +203,7 @@ Donner aux hôteliers une compréhension immédiate de la valeur de TriggerFlow,
 
 - Le document de référence marketing fourni est à jour et reflète le positionnement actuel
 - Les screenshots de l'application seront disponibles au moment de l'intégration
-- Le domaine trigger-flow.com est déjà configuré et pointé vers Vercel
+- Le domaine trigger-flow.com est configuré via Cloudflare DNS et pointe vers Cloudflare Pages
 - L'intégration Brevo pour la newsletter est techniquement faisable côté client
 - Les contenus du blog seront rédigés progressivement après le lancement du site
 
@@ -255,7 +255,7 @@ Donner aux hôteliers une compréhension immédiate de la valeur de TriggerFlow,
 - **Styling :** Tailwind CSS
 - **Animations :** Framer Motion
 - **i18n :** next-intl (FR/EN)
-- **Hosting :** Vercel
+- **Hosting :** Cloudflare Pages (via @opennextjs/cloudflare)
 - **Icons :** Lucide React
 - **Newsletter :** Brevo/Sibforms
 

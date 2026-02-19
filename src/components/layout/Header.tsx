@@ -136,16 +136,18 @@ type MenuKey = 'produit' | 'solutions' | 'ressources';
 
 export function Header() {
   const t = useTranslations('header');
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<MenuKey | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      // Progress from 0 to 1 over the first 80px of scroll
+      const progress = Math.min(window.scrollY / 80, 1);
+      setScrollProgress(progress);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -171,12 +173,15 @@ export function Header() {
   return (
     <>
       <header
-        className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-          isScrolled
-            ? 'bg-white/95 backdrop-blur-lg shadow-sm'
-            : 'bg-white/80 backdrop-blur-sm'
-        )}
+        className="fixed top-0 left-0 right-0 z-50 transition-shadow duration-300"
+        style={{
+          backgroundColor: `rgba(255, 255, 255, ${scrollProgress * 0.95})`,
+          backdropFilter: `blur(${scrollProgress * 12}px)`,
+          WebkitBackdropFilter: `blur(${scrollProgress * 12}px)`,
+          boxShadow: scrollProgress > 0.5
+            ? `0 1px 3px rgba(0, 0, 0, ${(scrollProgress - 0.5) * 0.16})`
+            : 'none',
+        }}
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between md:h-20">

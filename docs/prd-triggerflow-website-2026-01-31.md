@@ -549,7 +549,7 @@ Le site doit atteindre d'excellents scores de performance pour l'expérience uti
 - [ ] LCP (Largest Contentful Paint) < 2.5s
 - [ ] FID (First Input Delay) < 100ms
 - [ ] CLS (Cumulative Layout Shift) < 0.1
-- [ ] TTFB (Time to First Byte) < 200ms (Vercel Edge)
+- [ ] TTFB (Time to First Byte) < 200ms (Cloudflare Edge)
 - [ ] Bundle JS < 150KB gzipped pour le first load
 
 **Rationale:** Performance impacte directement le SEO (Core Web Vitals), le taux de rebond, et le Quality Score des campagnes Google Ads.
@@ -613,7 +613,7 @@ Le site fonctionne correctement sur les navigateurs et appareils modernes.
 Le site applique les bonnes pratiques de sécurité web.
 
 **Acceptance Criteria:**
-- [ ] HTTPS enforced (Vercel default)
+- [ ] HTTPS enforced (Cloudflare default)
 - [ ] Security headers configurés :
   - Content-Security-Policy
   - X-Content-Type-Options: nosniff
@@ -650,13 +650,13 @@ Le code est propre, typé, et maintenable.
 **Priority:** Should Have
 
 **Description:**
-Déploiement automatisé via Vercel avec preview deployments.
+Déploiement automatisé via Cloudflare Pages avec preview deployments.
 
 **Acceptance Criteria:**
-- [ ] Déploiement automatique sur push main → production
-- [ ] Preview deployments sur chaque PR
+- [ ] Déploiement automatique sur push main → production (Cloudflare Pages)
+- [ ] Preview deployments sur chaque PR (*.pages.dev)
 - [ ] Build réussi sans erreurs TypeScript ni ESLint
-- [ ] Variables d'environnement gérées via Vercel
+- [ ] Variables d'environnement gérées via Cloudflare Pages dashboard
 
 **Rationale:** Workflow de développement efficace pour une petite équipe.
 
@@ -795,7 +795,7 @@ Obligatoire légalement. Nécessaire avant mise en production.
 - **Contenus juridiques** : Textes des pages légales validés
 
 ### Dependencies externes
-- **Vercel** : Hébergement et déploiement
+- **Cloudflare Pages** : Hébergement et déploiement (via @opennextjs/cloudflare)
 - **Brevo/Sibforms** : Intégration newsletter
 - **lemcal** : URL de réservation de démo
 - **Domaine** : trigger-flow.com configuré et pointé
@@ -808,7 +808,7 @@ Obligatoire légalement. Nécessaire avant mise en production.
 ### Assumptions
 - Le document de référence marketing est à jour
 - Les screenshots de l'app seront fournis
-- Le domaine est déjà configuré sur Vercel
+- Le domaine est configuré via Cloudflare DNS et pointe vers Cloudflare Pages
 - L'intégration Brevo est faisable côté client (Sibforms embed)
 - Les articles de blog seront rédigés progressivement après le lancement
 - Les LP individuelles seront créées au fur et à mesure des campagnes SEA

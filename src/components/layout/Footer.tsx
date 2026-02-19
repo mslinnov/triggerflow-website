@@ -4,9 +4,9 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { useState } from 'react';
-import { Linkedin, Mail, Phone, MapPin, ArrowRight, Send, CheckCircle } from 'lucide-react';
+import { Linkedin, Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
 import { useNewsletter } from '@/lib/hooks/useNewsletter';
-import { Container, ButtonLink } from '@/components/ui';
+import { Container } from '@/components/ui';
 import { cn } from '@/lib/utils';
 
 // Product links matching mega menu
@@ -54,33 +54,6 @@ export function Footer() {
 
   return (
     <footer className="bg-brand-dark">
-      {/* CTA Banner */}
-      <div className="bg-gradient-to-r from-brand-primary to-brand-primary/80">
-        <Container>
-          <div className="flex flex-col items-center justify-between gap-6 py-10 md:flex-row md:py-12">
-            <div className="text-center md:text-left">
-              <h3 className="text-2xl font-bold text-white md:text-3xl">
-                {t('cta.title')}
-              </h3>
-              <p className="mt-2 text-white/80">
-                {t('cta.subtitle')}
-              </p>
-            </div>
-            <ButtonLink
-              href="https://app.lemcal.com/@trigger-flow/demo"
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="secondary"
-              size="lg"
-              className="shrink-0 bg-white text-brand-primary hover:bg-zinc-100"
-            >
-              {t('cta.button')}
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </ButtonLink>
-          </div>
-        </Container>
-      </div>
-
       {/* Main Footer Content */}
       <Container>
         <div className="py-12 md:py-16">

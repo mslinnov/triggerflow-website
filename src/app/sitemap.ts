@@ -138,43 +138,62 @@ export default function sitemap(): MetadataRoute.Sitemap {
     );
   }
 
-  // Blog articles
+  // Blog articles — use translationKey to pair FR/EN and avoid duplicates
   const frArticles = getAllArticles('fr');
   const enArticles = getAllArticles('en');
+  const processedTranslationKeys = new Set<string>();
 
-  for (const article of frArticles) {
-    const frUrl = `${baseUrl}/blog/${article.siloSlug}/${article.slug}`;
-    const enUrl = `${baseUrl}/en/blog/${article.siloSlug}/${article.slug}`;
+  for (const frArticle of frArticles) {
+    const frUrl = `${baseUrl}/blog/${frArticle.siloSlug}/${frArticle.slug}`;
+    const languages: Record<string, string> = { fr: frUrl };
+
+    // Find EN counterpart via translationKey
+    if (frArticle.translationKey) {
+      processedTranslationKeys.add(frArticle.translationKey);
+      const enArticle = enArticles.find(
+        (a) => a.translationKey === frArticle.translationKey
+      );
+      if (enArticle) {
+        languages.en = `${baseUrl}/en/blog/${enArticle.siloSlug}/${enArticle.slug}`;
+      }
+    }
 
     sitemapEntries.push({
       url: frUrl,
-      lastModified: article.dateMiseAJour ? new Date(article.dateMiseAJour) : lastModified,
+      lastModified: frArticle.dateMiseAJour ? new Date(frArticle.dateMiseAJour) : lastModified,
       changeFrequency: 'monthly',
       priority: 0.6,
-      alternates: {
-        languages: {
-          fr: frUrl,
-          en: enUrl,
-        },
-      },
+      alternates: { languages },
     });
+
+    // Add EN entry with same alternates (if EN counterpart exists)
+    if (languages.en) {
+      const enArticle = enArticles.find(
+        (a) => a.translationKey === frArticle.translationKey
+      );
+      sitemapEntries.push({
+        url: languages.en,
+        lastModified: enArticle?.dateMiseAJour ? new Date(enArticle.dateMiseAJour) : lastModified,
+        changeFrequency: 'monthly',
+        priority: 0.5,
+        alternates: { languages },
+      });
+    }
   }
 
-  for (const article of enArticles) {
-    const frUrl = `${baseUrl}/blog/${article.siloSlug}/${article.slug}`;
-    const enUrl = `${baseUrl}/en/blog/${article.siloSlug}/${article.slug}`;
+  // Add EN-only articles (no FR counterpart)
+  for (const enArticle of enArticles) {
+    if (enArticle.translationKey && processedTranslationKeys.has(enArticle.translationKey)) {
+      continue; // Already processed via FR counterpart
+    }
 
+    const enUrl = `${baseUrl}/en/blog/${enArticle.siloSlug}/${enArticle.slug}`;
     sitemapEntries.push({
       url: enUrl,
-      lastModified: article.dateMiseAJour ? new Date(article.dateMiseAJour) : lastModified,
+      lastModified: enArticle.dateMiseAJour ? new Date(enArticle.dateMiseAJour) : lastModified,
       changeFrequency: 'monthly',
       priority: 0.5,
-      alternates: {
-        languages: {
-          fr: frUrl,
-          en: enUrl,
-        },
-      },
+      alternates: { languages: { en: enUrl } },
     });
   }
 

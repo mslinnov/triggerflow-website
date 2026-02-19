@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { Mail, CheckCircle } from 'lucide-react';
 import { useNewsletter } from '@/lib/hooks/useNewsletter';
@@ -10,13 +10,14 @@ import { cn } from '@/lib/utils';
 export function NewsletterInline() {
   const t = useTranslations('blog.newsletter');
   const tConsent = useTranslations('newsletter');
+  const locale = useLocale();
   const { email, setEmail, honeypot, setHoneypot, status, subscribe } = useNewsletter();
   const [consent, setConsent] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!consent) return;
-    await subscribe('fr');
+    await subscribe(locale);
   };
 
   return (

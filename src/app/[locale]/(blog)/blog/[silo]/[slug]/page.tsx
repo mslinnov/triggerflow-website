@@ -7,7 +7,7 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
 import { Calendar, Clock, Share2, Linkedin, Twitter } from 'lucide-react';
 
-import { getAllArticles, getArticleBySlug, generateTableOfContents } from '@/lib/blog';
+import { getAllArticles, getArticleBySlug, getArticleByTranslationKey, generateTableOfContents } from '@/lib/blog';
 import { Container } from '@/components/ui/Container';
 import { BlogBreadcrumb, TableOfContents } from '@/components/blog';
 import { BlogPostingJsonLd, BreadcrumbListJsonLd } from '@/components/seo';
@@ -67,13 +67,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: article.metaDescription,
       images: [ogImage],
     },
-    alternates: {
-      canonical: url,
-      languages: {
-        'fr-FR': `${BASE_URL}/fr/blog/${silo}/${slug}`,
-        'en-US': `${BASE_URL}/en/blog/${silo}/${slug}`,
-      },
-    },
+    alternates: (() => {
+      const alternateLocale = locale === 'fr' ? 'en' : 'fr';
+      const languages: Record<string, string> = {
+        [locale === 'fr' ? 'fr-FR' : 'en-US']: url,
+      };
+
+      if (article.translationKey) {
+        const translatedArticle = getArticleByTranslationKey(article.translationKey, alternateLocale);
+        if (translatedArticle) {
+          const altUrl = `${BASE_URL}/${alternateLocale}/blog/${translatedArticle.siloSlug}/${translatedArticle.slug}`;
+          languages[alternateLocale === 'fr' ? 'fr-FR' : 'en-US'] = altUrl;
+        }
+      }
+
+      return { canonical: url, languages };
+    })(),
   };
 }
 

@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
-import { IBM_Plex_Sans, Geist_Mono, Playfair_Display, Cormorant_Garamond } from 'next/font/google';
+import Script from 'next/script';
+import { IBM_Plex_Sans, Geist_Mono, Fraunces, Cormorant_Garamond } from 'next/font/google';
 import './globals.css';
+
+const GA_MEASUREMENT_ID = 'G-MD02XP125T';
 
 const ibmPlexSans = IBM_Plex_Sans({
   variable: '--font-ibm-plex-sans',
@@ -14,7 +17,7 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 });
 
-const playfairDisplay = Playfair_Display({
+const fraunces = Fraunces({
   variable: '--font-playfair',
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800'],
@@ -29,6 +32,7 @@ const cormorantGaramond = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.trigger-flow.com'),
   title: 'TriggerFlow | Automatisation relation client hôtelière',
   description: "Solution SaaS pour automatiser SMS, emails et fidélisation client dans l'hôtellerie.",
 };
@@ -40,7 +44,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" suppressHydrationWarning>
-      <body className={`${ibmPlexSans.variable} ${geistMono.variable} ${playfairDisplay.variable} ${cormorantGaramond.variable} antialiased`}>
+      <head>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
+      </head>
+      <body className={`${ibmPlexSans.variable} ${geistMono.variable} ${fraunces.variable} ${cormorantGaramond.variable} antialiased`}>
         {children}
       </body>
     </html>

@@ -3,6 +3,14 @@
     "title": "TriggerFlow | Automatisation relation client hôtelière",
     "description": "Solution SaaS pour automatiser SMS, emails et fidélisation client dans l'hôtellerie."
   },
+  "notFound": {
+    "title": "Page introuvable",
+    "description": "La page que vous recherchez n'existe pas ou a été déplacée.",
+    "backHome": "Retour à l'accueil",
+    "blog": "Lire le blog",
+    "contact": "Nous contacter",
+    "demo": "Réserver une démo"
+  },
   "header": {
     "features": "Fonctionnalités",
     "examples": "Exemples",
@@ -109,13 +117,18 @@
   },
   "hero": {
     "badge": "Plateforme d'automatisation hôtelière",
-    "title": "Créez les automatisations que vous avez toujours imaginées pour votre hôtel",
+    "title": "Allégez votre charge mentale : automatisez ce que vous avez toujours voulu dans votre hôtel",
     "subtitle": "TriggerFlow s'adapte à votre façon de travailler. SMS, emails, WhatsApp, enquêtes, upsell... vous décidez quoi automatiser, quand et comment.",
     "cta": "Réserver une démo",
+    "ctaFree": "Essai gratuit 14 jours",
     "ctaSecondary": "Découvrir les modules",
     "socialProof": {
-      "hotels": "200+ hôtels nous font confiance",
-      "rating": "Noté 4.8/5"
+      "hotels": "Plusieurs milliers d'utilisateurs satisfaits"
+    },
+    "trustBadges": {
+      "rgpd": "Conforme RGPD",
+      "pms": "50+ PMS intégrés",
+      "support": "Support 7j/7"
     }
   },
   "heroDashboard": {
@@ -158,7 +171,7 @@
     "metrics": {
       "hotels": "hôtels équipés",
       "basket": "de panier moyen",
-      "satisfaction": "de satisfaction client"
+      "timeSaved": "gagnées par semaine"
     },
     "cta": "Découvrir leurs témoignages"
   },
@@ -185,51 +198,49 @@
       "triggers": "déclenche",
       "sends": "envoie"
     },
-    "result": {
-      "title": "Client satisfait",
-      "subtitle": "Communication automatisée"
+    "results": {
+      "label": "Résultats",
+      "reviews": "+45% d'avis Google",
+      "timeSaved": "10h gagnées / semaine",
+      "upsell": "+17% de ventes additionnelles"
     }
   },
   "journeyTimeline": {
-    "title": "Automatisez chaque étape du séjour",
-    "subtitle": "De la réservation au départ, TriggerFlow accompagne vos clients automatiquement",
-    "stages": {
-      "before": {
-        "title": "Avant",
-        "subtitle": "le séjour",
-        "actions": {
-          "confirmation": "Email de confirmation",
-          "prestay": "Formulaire pré-séjour"
+    "badge": "Parcours Client",
+    "title": "Choisissez ce que vous automatisez, à chaque étape",
+    "subtitle": "Avant, pendant ou après le séjour : vous décidez quelles interactions confier à TriggerFlow",
+    "phases": {
+      "preStay": {
+        "label": "Avant le séjour",
+        "title": "Préparez l'arrivée sans effort",
+        "description": "Confirmation, check-in en ligne, offres personnalisées : activez les scénarios qui vous conviennent avant l'arrivée du client.",
+        "highlights": {
+          "0": "Confirmation de réservation instantanée",
+          "1": "Check-in en ligne et préférences",
+          "2": "Offres de surclassement ciblées",
+          "3": "Communication pré-séjour multicanale"
         }
       },
-      "during": {
-        "title": "Pendant",
-        "subtitle": "le séjour",
-        "actions": {
-          "welcome": "SMS de bienvenue",
-          "upsell": "Offres personnalisées"
+      "stay": {
+        "label": "Pendant le séjour",
+        "title": "Accompagnez chaque instant",
+        "description": "Message de bienvenue, conciergerie digitale, suivi des consommations : présent sans être intrusif.",
+        "highlights": {
+          "0": "Accueil personnalisé par SMS",
+          "1": "Conciergerie digitale 24/7",
+          "2": "Récap des consommations en temps réel"
         }
       },
-      "after": {
-        "title": "Après",
-        "subtitle": "le séjour",
-        "actions": {
-          "review": "Demande d'avis",
-          "loyalty": "Programme fidélité"
+      "postStay": {
+        "label": "Après le séjour",
+        "title": "Transformez l'expérience en fidélité",
+        "description": "Checkout express, enquête satisfaction, avis Google, campagnes ciblées : capitalisez sur chaque séjour.",
+        "highlights": {
+          "0": "Checkout express simplifié",
+          "1": "Enquête de satisfaction au bon moment",
+          "2": "Collecte d'avis Google automatisée",
+          "3": "Campagnes marketing personnalisées"
         }
-      }
-    },
-    "mockups": {
-      "email": {
-        "subject": "Votre réservation est confirmée",
-        "preview": "Bonjour M. Dupont, nous avons bien reçu votre réservation pour le 15 mars..."
-      },
-      "sms": {
-        "message": "Bienvenue M. Dupont ! Votre chambre 302 est prête. Wifi: HotelGuest / Code: 1234. Bonne arrivée !",
-        "sender": "Hotel Bellevue"
-      },
-      "review": {
-        "hotelName": "Hotel Bellevue"
       }
     }
   },
@@ -355,31 +366,123 @@
       }
     }
   },
+  "featuresBento": {
+    "badge": "Fonctionnalités",
+    "title": "Tout ce dont votre hôtel a besoin",
+    "subtitle": "Des modules intégrés pour automatiser chaque aspect de votre relation client",
+    "cta": "Découvrir",
+    "items": {
+      "communication": {
+        "title": "Communication multicanale",
+        "description": "Email, SMS, WhatsApp réunis dans une boîte de réception unique. Zéro message perdu.",
+        "highlights": ["Boîte de réception unifiée", "Templates personnalisables"]
+      },
+      "automation": {
+        "title": "Workflows & Automatisation",
+        "description": "Scénarios sur-mesure, sans code. Chaque action se déclenche toute seule, au bon moment."
+      },
+      "crm": {
+        "title": "CRM Hôtelier",
+        "description": "Vision 360° de chaque client. Historique, préférences, tags : tout est centralisé."
+      },
+      "forms": {
+        "title": "Formulaires intelligents",
+        "description": "Pré-check-in, enquêtes, préférences. Taux de réponse x3 grâce à l'envoi automatisé.",
+        "highlights": ["Pré-check-in automatisé", "Enquêtes de satisfaction"]
+      },
+      "upsell": {
+        "title": "Ventes additionnelles",
+        "description": "Surclassements, spa, late check-out : proposez la bonne offre au bon client, au bon moment.",
+        "highlights": ["Catalogue d'offres intégré", "Envoi ciblé au bon moment"]
+      },
+      "reviews": {
+        "title": "Gestion des avis",
+        "description": "Collectez 5x plus d'avis positifs. Filtrez les insatisfaits avant qu'ils ne publient.",
+        "highlights": ["Collecte d'avis automatisée", "Alerte insatisfaction en temps réel"]
+      },
+      "analytics": {
+        "title": "Analytics & Rapports",
+        "description": "KPIs en temps réel. Mesurez l'impact de chaque campagne."
+      }
+    }
+  },
+  "examples": {
+    "badge": "Cas d'usage",
+    "title": "Tout ce que vous pouvez automatiser",
+    "subtitle": "Avec TriggerFlow, tout est automatisable. Voici quelques exemples parmi les plus populaires.",
+    "bottomTitle": "Et bien plus encore...",
+    "bottomText": "Vous avez un besoin spécifique ? Parlons-en. Si vous pouvez l'imaginer, on peut l'automatiser.",
+    "bottomCta": "Discuter de mon projet",
+    "items": {
+      "sms": {
+        "title": "SMS de bienvenue",
+        "description": "Message personnalisé envoyé automatiquement au check-in avec infos pratiques du séjour.",
+        "result": "98% de taux de lecture"
+      },
+      "precheckin": {
+        "title": "Pré-check-in en ligne",
+        "description": "Formulaire envoyé avant l'arrivée pour collecter identité, préférences et heure d'arrivée.",
+        "result": "73% de complétion"
+      },
+      "event": {
+        "title": "Promotion d'événements",
+        "description": "Notifiez vos clients des événements à venir avec inscription en un clic.",
+        "result": "+35% de participation"
+      },
+      "survey": {
+        "title": "Enquêtes satisfaction",
+        "description": "Collectez les retours au bon moment. Les satisfaits sont redirigés vers Google.",
+        "result": "+45% d'avis Google"
+      },
+      "upsell": {
+        "title": "Ventes additionnelles",
+        "description": "Proposez surclassement, spa, late checkout au moment idéal du parcours client.",
+        "result": "+17% de revenu additionnel"
+      },
+      "reviews": {
+        "title": "Collecte d'avis",
+        "description": "Sollicitez un avis aux clients satisfaits, interceptez les insatisfaits avant publication.",
+        "result": "8.2 → 9.1 note Booking"
+      },
+      "loyalty": {
+        "title": "Fidélité & Newsletter",
+        "description": "Campagnes ciblées post-séjour, offres de retour personnalisées et programme fidélité.",
+        "result": "+28% de clients fidélisés"
+      },
+      "whatsapp": {
+        "title": "Conciergerie WhatsApp",
+        "description": "Répondez aux demandes clients sur WhatsApp avec des réponses automatisées intelligentes.",
+        "result": "Réponse en < 30s"
+      }
+    }
+  },
   "howItWorks": {
     "badge": "Comment ça marche",
     "title": "Opérationnel en 48h",
-    "subtitle": "Trois étapes simples pour automatiser votre relation client",
+    "subtitle": "Trois étapes suffisent pour automatiser les tâches de votre choix",
     "pmsIntegrations": "Intégrations PMS",
-    "templates": "Templates prêts à l'emploi",
-    "workflowBuilder": "Créateur de workflows",
-    "screenshotWorkflow": "Screenshot interface création",
-    "analytics": "Statistiques en temps réel",
-    "screenshotDashboard": "Screenshot dashboard analytics",
-    "autoRunning": "Automatisation active",
-    "autoRunningDesc": "24/7 sans intervention",
-    "cta": "Voir toutes les intégrations",
     "steps": {
       "connect": {
         "title": "Connectez votre PMS",
-        "description": "Intégration en 1 clic avec Mews, Opera, Thaïs et 50+ autres."
+        "description": "Intégration en 1 clic avec Mews, Opera, Thaïs et 50+ autres systèmes. Vos données clients se synchronisent automatiquement."
       },
       "create": {
         "title": "Créez vos automatisations",
-        "description": "Interface intuitive, templates prêts à l'emploi ou création sur-mesure."
+        "description": "Interface intuitive pour configurer vos workflows en quelques minutes, sans compétence technique.",
+        "features": {
+          "0": "Templates prêts à l'emploi par cas d'usage",
+          "1": "Personnalisation drag & drop",
+          "2": "Conditions et déclencheurs intelligents"
+        }
       },
       "launch": {
         "title": "Laissez la magie opérer",
-        "description": "TriggerFlow travaille 24/7, vous vous concentrez sur vos clients."
+        "description": "TriggerFlow travaille 24/7, vous vous concentrez sur vos clients.",
+        "features": {
+          "0": "Statistiques en temps réel",
+          "1": "Alertes et notifications configurables",
+          "2": "Optimisation continue automatique"
+        }
       }
     }
   },
@@ -494,6 +597,125 @@
         "answer": "Notre équipe vous accompagne à chaque étape : configuration initiale, formation de vos équipes, et support 7j/7 par chat, email ou téléphone."
       }
     }
+  },
+  "resultsMetrics": {
+    "badge": "Résultats mesurés",
+    "title": "L'impact concret sur vos opérations",
+    "subtitle": "Des résultats mesurés auprès de nos clients hôteliers",
+    "metrics": {
+      "timeSaved": { "value": "10", "suffix": "h", "label": "gagnées par semaine" },
+      "checkinRate": { "value": "73", "suffix": "%", "label": "de check-in en ligne" },
+      "upsellRevenue": { "value": "17", "prefix": "+", "suffix": "%", "label": "de panier moyen" },
+      "reviewsBoost": { "value": "45", "prefix": "+", "suffix": "%", "label": "d'avis Google" }
+    }
+  },
+  "integrationsShowcase": {
+    "badge": "Intégrations",
+    "title": "Compatible avec votre PMS",
+    "subtitle": "Connexion en 1 clic avec plus de 50 systèmes hôteliers",
+    "count": "+50 intégrations",
+    "cta": "Voir toutes les intégrations"
+  },
+  "testimonialsCarousel": {
+    "badge": "Témoignages",
+    "title": "Ce que nos clients en disent",
+    "items": [
+      {
+        "quote": "TriggerFlow a transformé notre façon de communiquer avec nos clients. Les enquêtes de satisfaction nous ont permis d'améliorer considérablement notre note sur les OTA.",
+        "name": "Sandrine Surrel",
+        "title": "Directrice, Nature Cathare",
+        "initials": "SS",
+        "metric": { "value": "+45%", "label": "d'avis Google" }
+      },
+      {
+        "quote": "En 3 mois, nous avons généré 25 000€ de ventes additionnelles grâce aux campagnes d'upsell automatisées. Le ROI est immédiat.",
+        "name": "Marc Dubois",
+        "title": "Revenue Manager, Hôtel & Spa Le Pavillon",
+        "initials": "MD",
+        "metric": { "value": "€25K", "label": "de revenus additionnels" }
+      },
+      {
+        "quote": "Le gain de temps est impressionnant. Nos réceptionnistes se concentrent sur l'accueil au lieu de tâches administratives. 10h économisées par semaine.",
+        "name": "Alice Renaud",
+        "title": "Directrice d'exploitation, Les Jardins d'Aliénor",
+        "initials": "AR",
+        "metric": { "value": "10h", "label": "gagnées / semaine" }
+      },
+      {
+        "quote": "Le check-in en ligne a tout changé. 73% de nos clients l'utilisent et la file d'attente à la réception a quasiment disparu.",
+        "name": "Jean-Philippe Moret",
+        "title": "Directeur Général, Grand Hôtel des Thermes",
+        "initials": "JM",
+        "metric": { "value": "73%", "label": "de check-in online" }
+      },
+      {
+        "quote": "Notre note Booking est passée de 8.2 à 9.1 en 6 mois grâce aux enquêtes pré-publication. TriggerFlow filtre les insatisfaits avant qu'ils ne publient.",
+        "name": "Sophie Lefèvre",
+        "title": "Responsable Qualité, Groupe Hôtels Patrimoine",
+        "initials": "SL",
+        "metric": { "value": "8.2 → 9.1", "label": "Note Booking" }
+      }
+    ]
+  },
+  "customerSuccess": {
+    "badge": "Accompagnement",
+    "title": "On ne vous laisse pas seul",
+    "subtitle": "Un accompagnement humain à chaque étape de votre parcours",
+    "items": {
+      "onboarding": {
+        "title": "Opérationnel en 48h",
+        "description": "Configuration guidée, import de vos données, premiers workflows actifs en moins de 2 jours."
+      },
+      "support": {
+        "title": "Support 7j/7",
+        "description": "Chat, email ou téléphone. Temps de réponse moyen de 15 minutes en heures ouvrées."
+      },
+      "training": {
+        "title": "Formation incluse",
+        "description": "Sessions de formation pour votre équipe, webinaires mensuels et base de connaissances complète."
+      },
+      "csm": {
+        "title": "Suivi personnalisé",
+        "description": "Un interlocuteur dédié qui connaît votre hôtel et vous aide à optimiser vos résultats."
+      }
+    },
+    "satisfaction": { "value": "9.4/10", "label": "Satisfaction client" }
+  },
+  "stickyMobileCta": {
+    "label": "Réserver une démo"
+  },
+  "personasBento": {
+    "personas": {
+      "direction": {
+        "title": "Directeurs d'hôtel",
+        "description": "Pilotez votre relation client en un coup d'œil. Tableaux de bord, KPIs et rapports pour prendre les bonnes décisions.",
+        "ctas": {
+          "analytics": "Analytics",
+          "crm": "CRM hôtelier",
+          "reports": "Rapports"
+        }
+      },
+      "frontDesk": {
+        "title": "Équipes réception",
+        "description": "Moins de tâches répétitives, plus de temps pour accueillir vos clients.",
+        "ctas": {
+          "messaging": "Hub messagerie",
+          "checkin": "Check-in en ligne",
+          "sms": "Automatisations"
+        }
+      },
+      "marketing": {
+        "title": "Responsables Marketing",
+        "description": "Créez des campagnes qui augmentent la conversion et le revenu.",
+        "ctas": {
+          "journeys": "Parcours client",
+          "email": "Email marketing",
+          "campaigns": "Campagnes auto."
+        }
+      }
+    },
+    "socialProof": "Satisfaction client moyenne",
+    "cta": "Simplifiez vos opérations dès cette semaine"
   },
   "ctaSection": {
     "title": "Prêt à créer vos premières automatisations ?",
