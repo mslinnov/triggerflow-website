@@ -181,7 +181,7 @@ export const modules: Record<string, ModuleData> = {
       hotel: 'Hôtel & Spa du Lac ****',
       metric: '62% de taux d\'ouverture'
     },
-    integrations: ['Opera', 'Mews', 'Cloudbeds', 'D-Edge', 'Misterbooking', 'Amenitiz', 'Thaïs', 'Reservit'],
+    integrations: ['Thaïs PMS', 'Misterbooking', 'Medialog', 'Opera Cloud', 'Mews', 'Asterio', 'Lean PMS', 'Apaleo'],
     faq: [
       {
         question: 'Est-ce que les emails arrivent bien en boîte de réception ?',
@@ -289,7 +289,7 @@ export const modules: Record<string, ModuleData> = {
       hotel: 'Le Domaine des Pins ***',
       metric: '98% de taux de lecture'
     },
-    integrations: ['Opera', 'Mews', 'Cloudbeds', 'D-Edge', 'Misterbooking', 'Amenitiz', 'Thaïs', 'Reservit'],
+    integrations: ['Thaïs PMS', 'Misterbooking', 'Medialog', 'Opera Cloud', 'Mews', 'Asterio', 'Lean PMS', 'Apaleo'],
     faq: [
       {
         question: 'Combien coûte l\'envoi d\'un SMS ?',
@@ -397,7 +397,7 @@ export const modules: Record<string, ModuleData> = {
       hotel: 'Hôtel Le Rivage ****',
       metric: '-70% d\'appels téléphoniques'
     },
-    integrations: ['Opera', 'Mews', 'Cloudbeds', 'D-Edge', 'Misterbooking', 'Amenitiz', 'Thaïs', 'Reservit'],
+    integrations: ['Thaïs PMS', 'Misterbooking', 'Medialog', 'Opera Cloud', 'Mews', 'Asterio', 'Lean PMS', 'Apaleo'],
     faq: [
       {
         question: 'Faut-il un numéro WhatsApp Business dédié ?',
@@ -505,7 +505,7 @@ export const modules: Record<string, ModuleData> = {
       hotel: 'Les Jardins de Provence ****',
       metric: '8% de réservations directes via newsletter'
     },
-    integrations: ['Opera', 'Mews', 'Cloudbeds', 'D-Edge', 'Misterbooking', 'Amenitiz', 'Thaïs', 'Reservit'],
+    integrations: ['Thaïs PMS', 'Misterbooking', 'Medialog', 'Opera Cloud', 'Mews', 'Asterio', 'Lean PMS', 'Apaleo'],
     faq: [
       {
         question: 'Combien de contacts puis-je avoir dans ma base ?',
@@ -613,7 +613,7 @@ export const modules: Record<string, ModuleData> = {
       hotel: 'Le Mas des Oliviers ****',
       metric: '30 000€ de commissions économisées/an'
     },
-    integrations: ['Opera', 'Mews', 'Cloudbeds', 'D-Edge', 'Misterbooking', 'Amenitiz', 'Thaïs', 'Reservit'],
+    integrations: ['Thaïs PMS', 'Misterbooking', 'Medialog', 'Opera Cloud', 'Mews', 'Asterio', 'Lean PMS', 'Apaleo'],
     faq: [
       {
         question: 'Combien de temps faut-il pour mettre en place le programme ?',
@@ -721,7 +721,7 @@ export const modules: Record<string, ModuleData> = {
       hotel: 'Grand Hôtel des Thermes ****',
       metric: '15h/semaine économisées'
     },
-    integrations: ['Opera', 'Mews', 'Cloudbeds', 'D-Edge', 'Misterbooking', 'Amenitiz', 'Thaïs', 'Reservit'],
+    integrations: ['Thaïs PMS', 'Misterbooking', 'Medialog', 'Opera Cloud', 'Mews', 'Asterio', 'Lean PMS', 'Apaleo'],
     faq: [
       {
         question: 'Faut-il des compétences techniques pour créer un workflow ?',
@@ -829,7 +829,7 @@ export const modules: Record<string, ModuleData> = {
       hotel: 'Hôtel de la Plage ***',
       metric: '+40% de satisfaction'
     },
-    integrations: ['Opera', 'Mews', 'Cloudbeds', 'D-Edge', 'Misterbooking', 'Amenitiz', 'Thaïs', 'Reservit'],
+    integrations: ['Thaïs PMS', 'Misterbooking', 'Medialog', 'Opera Cloud', 'Mews', 'Asterio', 'Lean PMS', 'Apaleo'],
     faq: [
       {
         question: 'Les données sont-elles sécurisées ?',
@@ -937,7 +937,7 @@ export const modules: Record<string, ModuleData> = {
       hotel: 'L\'Hôtel du Parc ****',
       metric: '75% de pré-check-in complétés'
     },
-    integrations: ['Opera', 'Mews', 'Cloudbeds', 'D-Edge', 'Misterbooking', 'Amenitiz', 'Thaïs', 'Reservit'],
+    integrations: ['Thaïs PMS', 'Misterbooking', 'Medialog', 'Opera Cloud', 'Mews', 'Asterio', 'Lean PMS', 'Apaleo'],
     faq: [
       {
         question: 'Les formulaires sont-ils adaptés au mobile ?',
@@ -1045,7 +1045,7 @@ export const modules: Record<string, ModuleData> = {
       hotel: 'Le Clos des Vignes ****',
       metric: 'De 4.1 à 4.6 sur Google en 3 mois'
     },
-    integrations: ['Google Business', 'TripAdvisor', 'Booking.com', 'Opera', 'Mews', 'Cloudbeds', 'D-Edge', 'Amenitiz'],
+    integrations: ['Google', 'TripAdvisor', 'Booking.com', 'Airbnb', 'Thaïs PMS', 'Misterbooking', 'Opera Cloud', 'Mews'],
     faq: [
       {
         question: 'Comment TriggerFlow sait si le client est satisfait ?',
@@ -1153,7 +1153,7 @@ export const modules: Record<string, ModuleData> = {
       hotel: 'Hôtel & Spa Bellevue ****',
       metric: '4h/mois économisées'
     },
-    integrations: ['Opera', 'Mews', 'Cloudbeds', 'D-Edge', 'Misterbooking', 'Amenitiz', 'Google Analytics', 'Google Business'],
+    integrations: ['Thaïs PMS', 'Misterbooking', 'Opera Cloud', 'Mews', 'Asterio', 'Google', 'TripAdvisor', 'Booking.com'],
     faq: [
       {
         question: 'Quelles métriques sont disponibles ?',
@@ -1261,7 +1261,7 @@ export const modules: Record<string, ModuleData> = {
       hotel: 'Le Royal Hôtel ****',
       metric: 'Zéro message perdu'
     },
-    integrations: ['Opera', 'Mews', 'Cloudbeds', 'D-Edge', 'Misterbooking', 'Amenitiz', 'Thaïs', 'Reservit'],
+    integrations: ['Thaïs PMS', 'Misterbooking', 'Medialog', 'Opera Cloud', 'Mews', 'Asterio', 'Lean PMS', 'Apaleo'],
     faq: [
       {
         question: 'Tous les canaux arrivent-ils vraiment au même endroit ?',
@@ -1369,7 +1369,7 @@ export const modules: Record<string, ModuleData> = {
       hotel: 'Domaine & Spa La Cascade ****',
       metric: '+17% de panier moyen'
     },
-    integrations: ['Opera', 'Mews', 'Cloudbeds', 'D-Edge', 'Misterbooking', 'Amenitiz', 'Thaïs', 'Reservit'],
+    integrations: ['Thaïs PMS', 'Misterbooking', 'Medialog', 'Opera Cloud', 'Mews', 'Asterio', 'Lean PMS', 'Apaleo'],
     faq: [
       {
         question: 'Comment TriggerFlow sait quel extra proposer à qui ?',

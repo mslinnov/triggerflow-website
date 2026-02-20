@@ -33,8 +33,6 @@ import {
   BookOpen,
   FileQuestion,
   HelpCircle,
-  ArrowRight,
-  LayoutGrid,
   Tent,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -86,12 +84,6 @@ const menuItems = {
         ],
       },
     ],
-    featured: {
-      icon: LayoutGrid,
-      label: 'Vue d\'ensemble',
-      description: 'Découvrez toutes nos fonctionnalités',
-      href: '/produit',
-    },
   },
   solutions: {
     labelKey: 'solutions',
@@ -386,26 +378,6 @@ function MegaMenuProduit() {
         ))}
       </div>
 
-      {/* Featured Link */}
-      <div className="mt-8 pt-6 border-t border-zinc-100">
-        <Link
-          href="/produit"
-          className="group flex items-center gap-4 rounded-xl bg-gradient-to-r from-brand-light to-brand-light/50 p-4 transition-all hover:from-brand-light hover:to-brand-light"
-        >
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-primary shadow-lg shadow-brand-primary/20">
-            <menuItems.produit.featured.icon className="h-6 w-6 text-white" />
-          </div>
-          <div className="flex-1">
-            <div className="text-base font-semibold text-brand-dark">
-              {menuItems.produit.featured.label}
-            </div>
-            <div className="text-sm text-zinc-600">
-              {menuItems.produit.featured.description}
-            </div>
-          </div>
-          <ArrowRight className="h-5 w-5 text-brand-primary transition-transform group-hover:translate-x-1" />
-        </Link>
-      </div>
     </div>
   );
 }

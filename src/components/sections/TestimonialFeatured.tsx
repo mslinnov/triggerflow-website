@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Quote, ArrowRight, Star, Clock, TrendingUp } from 'lucide-react';
+import { Link } from '@/i18n/navigation';
 import { Container } from '@/components/ui';
 import { fadeInUp, staggerContainer, staggerItem, scaleIn, defaultViewport } from '@/lib/animations';
 
@@ -105,14 +106,13 @@ export function TestimonialFeatured() {
               transition={{ delay: 0.5 }}
               className="mt-8 text-center"
             >
-              <motion.a
-                href="#"
+              <Link
+                href="/ressources/cas-clients/edgar-hotel-spa"
                 className="inline-flex items-center gap-2 text-sm font-medium text-brand-primary transition-colors hover:text-brand-dark"
-                whileHover={!prefersReducedMotion ? { x: 5 } : {}}
               >
                 {t('cta')}
                 <ArrowRight className="h-4 w-4" />
-              </motion.a>
+              </Link>
             </motion.div>
           </motion.div>
         </motion.div>

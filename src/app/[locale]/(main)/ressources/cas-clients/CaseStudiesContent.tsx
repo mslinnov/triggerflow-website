@@ -1,124 +1,38 @@
 'use client';
 
-import { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import { ArrowRight, Building } from 'lucide-react';
+import { ArrowRight, Quote, MapPin, Building2 } from 'lucide-react';
+import { Link } from '@/i18n/navigation';
+import Image from 'next/image';
 import { cn } from '@/lib/utils';
-
-const caseStudies = [
-  {
-    slug: 'hotel-spa-du-lac',
-    name: 'Hôtel & Spa du Lac',
-    type: 'Hôtel indépendant',
-    location: 'Annecy',
-    quote: 'TriggerFlow nous a permis de passer de 45 à 120 avis Google en 4 mois.',
-    results: [
-      { metric: '+150%', label: 'Avis Google' },
-      { metric: '10h', label: 'Gagnées/semaine' },
-      { metric: '4.6★', label: 'Note Google' },
-    ],
-    objectives: ['Avis', 'Automatisation'],
-  },
-  {
-    slug: 'groupe-hotelier-provence',
-    name: 'Groupe Hôtelier de Provence',
-    type: 'Groupe hôtelier',
-    location: 'Provence (8 hôtels)',
-    quote: 'Une stratégie marketing unifiée sur nos 8 établissements, enfin !',
-    results: [
-      { metric: '8', label: 'Hôtels connectés' },
-      { metric: '+25%', label: 'Réservations directes' },
-      { metric: '2 sem.', label: 'Déploiement' },
-    ],
-    objectives: ['Fidélité', 'Automatisation'],
-  },
-  {
-    slug: 'residence-cote-azur',
-    name: "Résidences Côte d'Azur",
-    type: 'Résidence de tourisme',
-    location: 'Nice',
-    quote: "Les arrivées autonomes étaient un cauchemar. Plus maintenant.",
-    results: [
-      { metric: '-80%', label: 'Appels entrants' },
-      { metric: '98%', label: 'Satisfaction proprio' },
-      { metric: '2 min', label: 'Check-in moyen' },
-    ],
-    objectives: ['Automatisation'],
-  },
-  {
-    slug: 'camping-les-pins',
-    name: 'Camping Les Pins',
-    type: 'Camping',
-    location: 'Vendée',
-    quote: 'Notre taux de re-réservation a plus que doublé grâce aux campagnes early booking.',
-    results: [
-      { metric: '+120%', label: 'Re-réservation' },
-      { metric: '+50%', label: 'Cross-sell' },
-      { metric: '15K€', label: 'CA additionnel' },
-    ],
-    objectives: ['Fidélité', 'Upsell'],
-  },
-  {
-    slug: 'boutique-hotel-bordeaux',
-    name: 'Le Boutique Hotel',
-    type: 'Hôtel indépendant',
-    location: 'Bordeaux',
-    quote: "L'upsell automatique nous rapporte 3000€ de plus par mois.",
-    results: [
-      { metric: '+17%', label: 'Panier moyen' },
-      { metric: '23%', label: "Taux d'upsell" },
-      { metric: '10x', label: 'ROI TriggerFlow' },
-    ],
-    objectives: ['Upsell', 'Automatisation'],
-  },
-];
-
-const types = ['Tous', 'Hôtel indépendant', 'Groupe hôtelier', 'Résidence de tourisme', 'Camping'];
-const objectives = ['Tous', 'Automatisation', 'Avis', 'Upsell', 'Fidélité'];
-
-const globalStats = [
-  { value: '200+', label: 'Hôtels' },
-  { value: '+17%', label: 'Panier moyen' },
-  { value: '+150%', label: 'Avis Google' },
-  { value: '10h', label: '/semaine gagnées' },
-];
+import { caseStudies } from '@/lib/case-studies';
+import {
+  fadeInUp,
+  staggerContainer,
+  staggerItem,
+  defaultViewport,
+} from '@/lib/animations';
 
 export default function CaseStudiesContent() {
   const t = useTranslations('caseStudies');
   const prefersReducedMotion = useReducedMotion();
-  const [activeType, setActiveType] = useState('Tous');
-  const [activeObjective, setActiveObjective] = useState('Tous');
 
-  const fadeIn = prefersReducedMotion
-    ? {}
-    : {
-        initial: { opacity: 0, y: 20 },
-        whileInView: { opacity: 1, y: 0 },
-        viewport: { once: true },
-        transition: { duration: 0.6 },
-      };
-
-  const stagger = prefersReducedMotion
-    ? {}
-    : {
-        initial: { opacity: 0, y: 20 },
-        whileInView: { opacity: 1, y: 0 },
-        viewport: { once: true },
-      };
-
-  const filteredStudies = caseStudies.filter((study) => {
-    const typeMatch = activeType === 'Tous' || study.type === activeType;
-    const objectiveMatch = activeObjective === 'Tous' || study.objectives.includes(activeObjective);
-    return typeMatch && objectiveMatch;
-  });
+  const featured = caseStudies[0]; // Edgar Hotel & Spa
+  const others = caseStudies.slice(1);
 
   return (
     <main className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-brand-light via-white to-emerald-50/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeIn} className="text-center max-w-3xl mx-auto">
+          <motion.div
+            initial={prefersReducedMotion ? 'visible' : 'hidden'}
+            whileInView="visible"
+            variants={fadeInUp}
+            viewport={defaultViewport}
+            className="text-center max-w-3xl mx-auto"
+          >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-dark mb-6">
               {t('hero.title')}
             </h1>
@@ -129,130 +43,205 @@ export default function CaseStudiesContent() {
         </div>
       </section>
 
-      {/* Global Stats */}
-      <section className="py-12 bg-brand-dark">
+      {/* Social Proof Banner */}
+      <section className="py-8 bg-brand-dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {globalStats.map((stat, index) => (
-              <motion.div
-                key={index}
-                {...stagger}
-                transition={{ delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="text-3xl md:text-4xl font-bold text-brand-primary mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-white/70">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
+          <p className="text-center text-white/80 text-lg">
+            {t('socialProof')}
+          </p>
         </div>
       </section>
 
-      {/* Filters */}
-      <section className="py-8 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row gap-6 justify-center">
-            <div className="flex flex-wrap gap-2 justify-center">
-              <span className="text-sm font-medium text-gray-500 self-center mr-2">{t('filters.type')}:</span>
-              {types.map((type) => (
-                <button
-                  key={type}
-                  onClick={() => setActiveType(type)}
-                  className={cn(
-                    'px-3 py-1.5 rounded-full text-sm transition-all',
-                    activeType === type
-                      ? 'bg-brand-primary text-white'
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                  )}
-                >
-                  {type}
-                </button>
-              ))}
-            </div>
-            <div className="flex flex-wrap gap-2 justify-center">
-              <span className="text-sm font-medium text-gray-500 self-center mr-2">{t('filters.objective')}:</span>
-              {objectives.map((objective) => (
-                <button
-                  key={objective}
-                  onClick={() => setActiveObjective(objective)}
-                  className={cn(
-                    'px-3 py-1.5 rounded-full text-sm transition-all',
-                    activeObjective === objective
-                      ? 'bg-brand-primary text-white'
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                  )}
-                >
-                  {objective}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Case Studies Grid */}
+      {/* Featured Case Study */}
       <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredStudies.map((study, index) => (
-              <motion.div
-                key={study.slug}
-                {...stagger}
-                transition={{ delay: index * 0.1 }}
-              >
-                <div
-                  className="group bg-white rounded-xl border border-gray-100 p-6 hover:shadow-lg hover:border-brand-primary/20 transition-all cursor-pointer h-full flex flex-col"
-                  onClick={() => alert(t('comingSoon'))}
-                >
-                  {/* Header */}
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center">
-                      <Building className="w-6 h-6 text-brand-primary" />
-                    </div>
-                    <span className="px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
-                      {study.type}
+          <motion.div
+            initial={prefersReducedMotion ? 'visible' : 'hidden'}
+            whileInView="visible"
+            variants={fadeInUp}
+            viewport={defaultViewport}
+          >
+            <Link
+              href={`/ressources/cas-clients/${featured.slug}`}
+              className="group block"
+            >
+              <div className="grid md:grid-cols-2 gap-8 items-center rounded-2xl border border-gray-100 bg-white p-6 md:p-10 shadow-sm hover:shadow-xl hover:border-brand-primary/20 transition-all">
+                {/* Image */}
+                <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-100">
+                  <Image
+                    src={featured.image}
+                    alt={featured.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority
+                  />
+                </div>
+
+                {/* Content */}
+                <div className="flex flex-col">
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="px-3 py-1 rounded-full text-xs font-medium bg-brand-primary/10 text-brand-primary">
+                      {featured.type}
+                    </span>
+                    <span className="flex items-center gap-1 text-sm text-gray-500">
+                      <MapPin className="w-3.5 h-3.5" />
+                      {featured.location}
                     </span>
                   </div>
 
-                  {/* Info */}
-                  <h3 className="text-lg font-bold text-brand-dark mb-1 group-hover:text-brand-primary transition-colors">
-                    {study.name}
-                  </h3>
-                  <p className="text-sm text-gray-500 mb-4">{study.location}</p>
+                  <h2 className="text-2xl md:text-3xl font-bold text-brand-dark mb-4 group-hover:text-brand-primary transition-colors">
+                    {featured.name}
+                  </h2>
 
-                  {/* Quote */}
-                  <blockquote className="text-gray-600 italic mb-6 flex-1">
-                    &ldquo;{study.quote}&rdquo;
+                  <blockquote className="text-lg text-gray-600 italic mb-6 leading-relaxed">
+                    <Quote className="w-5 h-5 text-brand-primary/40 inline mr-2 -mt-1" />
+                    {featured.quote}
                   </blockquote>
 
-                  {/* Results */}
-                  <div className="grid grid-cols-3 gap-2 mb-4">
-                    {study.results.map((result, i) => (
-                      <div key={i} className="text-center p-2 bg-brand-light/50 rounded-lg">
-                        <div className="text-sm font-bold text-brand-primary">{result.metric}</div>
-                        <div className="text-xs text-gray-500">{result.label}</div>
-                      </div>
+                  {/* Highlights */}
+                  <ul className="space-y-2 mb-6">
+                    {featured.highlights.map((highlight, i) => (
+                      <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
+                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-primary shrink-0" />
+                        {highlight}
+                      </li>
                     ))}
-                  </div>
+                  </ul>
 
-                  {/* CTA */}
-                  <div className="flex items-center gap-2 text-sm font-medium text-brand-primary group-hover:text-brand-dark transition-colors">
-                    {t('readMore')}
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  {/* Author + CTA */}
+                  <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 rounded-full bg-gradient-to-br from-brand-primary to-brand-dark flex items-center justify-center text-sm font-bold text-white">
+                        {featured.initials}
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-brand-dark">{featured.contactName}</p>
+                        <p className="text-xs text-gray-500">{featured.contactRole}</p>
+                      </div>
+                    </div>
+                    <span className="flex items-center gap-2 text-sm font-medium text-brand-primary group-hover:text-brand-dark transition-colors">
+                      {t('readMore')}
+                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                    </span>
                   </div>
                 </div>
+              </div>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Other Case Studies Grid */}
+      <section className="pb-16 md:pb-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={prefersReducedMotion ? 'visible' : 'hidden'}
+            whileInView="visible"
+            variants={staggerContainer}
+            viewport={defaultViewport}
+            className="grid md:grid-cols-2 gap-6"
+          >
+            {others.map((study) => (
+              <motion.div key={study.slug} variants={staggerItem}>
+                <Link
+                  href={`/ressources/cas-clients/${study.slug}`}
+                  className="group block h-full"
+                >
+                  <div className="h-full bg-white rounded-xl border border-gray-100 overflow-hidden hover:shadow-lg hover:border-brand-primary/20 transition-all">
+                    {/* Image */}
+                    <div className="relative aspect-[16/9] bg-gray-100">
+                      <Image
+                        src={study.image}
+                        alt={study.name}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                      <div className="absolute top-4 left-4 flex gap-2">
+                        <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-white/90 text-brand-dark backdrop-blur-sm">
+                          {study.type}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Content */}
+                    <div className="p-6 flex flex-col">
+                      <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
+                        <MapPin className="w-3.5 h-3.5" />
+                        {study.location}
+                        {study.pms && (
+                          <>
+                            <span className="text-gray-300">|</span>
+                            <Building2 className="w-3.5 h-3.5" />
+                            {study.pms}
+                          </>
+                        )}
+                      </div>
+
+                      <h3 className="text-xl font-bold text-brand-dark mb-3 group-hover:text-brand-primary transition-colors">
+                        {study.name}
+                      </h3>
+
+                      <blockquote className="text-gray-600 italic mb-4 leading-relaxed">
+                        <Quote className="w-4 h-4 text-brand-primary/40 inline mr-1.5 -mt-1" />
+                        {study.quote}
+                      </blockquote>
+
+                      {/* Tags */}
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {study.objectives.map((objective) => (
+                          <span
+                            key={objective}
+                            className="px-2 py-0.5 rounded-full text-xs bg-brand-light text-gray-600"
+                          >
+                            {objective}
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Author + CTA */}
+                      <div className={cn(
+                        'flex items-center justify-between mt-auto pt-4 border-t border-gray-100',
+                      )}>
+                        <div className="flex items-center gap-3">
+                          <div className="w-9 h-9 rounded-full bg-gradient-to-br from-brand-primary to-brand-dark flex items-center justify-center text-xs font-bold text-white">
+                            {study.initials}
+                          </div>
+                          <div>
+                            {study.contactName ? (
+                              <>
+                                <p className="text-sm font-semibold text-brand-dark">{study.contactName}</p>
+                                <p className="text-xs text-gray-500">{study.contactRole}</p>
+                              </>
+                            ) : (
+                              <p className="text-sm font-semibold text-brand-dark">{study.contactRole}</p>
+                            )}
+                          </div>
+                        </div>
+                        <span className="flex items-center gap-2 text-sm font-medium text-brand-primary group-hover:text-brand-dark transition-colors">
+                          {t('readMore')}
+                          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-brand-primary to-emerald-600">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div {...fadeIn}>
+          <motion.div
+            initial={prefersReducedMotion ? 'visible' : 'hidden'}
+            whileInView="visible"
+            variants={fadeInUp}
+            viewport={defaultViewport}
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               {t('cta.title')}
             </h2>

@@ -9,6 +9,7 @@ import {
   Sparkles,
   Check,
   ChevronRight,
+  ArrowRight,
 } from 'lucide-react';
 import { Container, Badge } from '@/components/ui';
 import { fadeInUp, defaultViewport } from '@/lib/animations';
@@ -172,6 +173,24 @@ export function HowItWorks() {
               </div>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* CTA Link */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={defaultViewport}
+          variants={fadeInUp}
+          className="mt-10 text-center"
+        >
+          <motion.a
+            href="/integrations"
+            className="inline-flex items-center gap-2 text-sm font-medium text-brand-primary transition-colors hover:text-brand-dark"
+            whileHover={{ x: 5 }}
+          >
+            {t('cta')}
+            <ArrowRight className="h-4 w-4" />
+          </motion.a>
         </motion.div>
       </Container>
     </section>
