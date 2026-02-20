@@ -20,11 +20,11 @@ const steps = [
 ] as const;
 
 const pmsLogos = [
-  { name: 'Mews', src: '/images/pms/mews.webp' },
-  { name: 'Opera', src: '/images/pms/opera.webp' },
-  { name: 'Thaïs', src: '/images/pms/thais.webp' },
-  { name: 'Misterbooking', src: '/images/pms/misterbooking.webp' },
-  { name: 'Asterio', src: '/images/pms/asterio.webp' },
+  { name: 'Mews', src: '/images/pms/mews.svg' },
+  { name: 'Opera', src: '/images/pms/opera.svg' },
+  { name: 'Thaïs', src: '/images/pms/thais.svg' },
+  { name: 'Misterbooking', src: '/images/pms/misterbooking.svg' },
+  { name: 'Asterio', src: '/images/pms/asterio.svg' },
 ];
 
 // --- Animations ---
@@ -182,17 +182,17 @@ export function HowItWorks() {
 
 function PMSLogo({ name, src }: { name: string; src: string }) {
   return (
-    <div className="flex h-8 items-center justify-center rounded-md bg-v3-bg-secondary px-2 border border-v3-border/40">
+    <div className="flex h-9 items-center justify-center rounded-lg bg-white px-2.5 border border-v3-border/50 shadow-sm">
       <Image
         src={src}
         alt={`Logo ${name}`}
-        width={48}
-        height={20}
-        style={{ width: 'auto', height: '14px' }}
-        className="object-contain opacity-50 grayscale"
+        width={64}
+        height={24}
+        style={{ width: 'auto', height: '18px' }}
+        className="object-contain"
         onError={(e) => {
           e.currentTarget.style.display = 'none';
-          e.currentTarget.parentElement!.innerHTML = `<span class="text-[10px] font-medium text-v3-text-secondary">${name}</span>`;
+          e.currentTarget.parentElement!.innerHTML = `<span class="text-[10px] font-semibold text-v3-text-secondary">${name}</span>`;
         }}
       />
     </div>
