@@ -65,6 +65,10 @@
   --color-v3-accent-gold-light: var(--v3-accent-gold-light);
 }
 
+html {
+  scroll-padding-top: 5rem;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

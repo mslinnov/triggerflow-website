@@ -11,7 +11,7 @@ export function Hero() {
   const t = useTranslations('hero');
 
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(135deg,#FFF4E8_0%,#ffffff_40%,#ffffff_60%,#CCE2E1_100%)] pt-28 pb-16 md:pt-36 md:pb-24">
+    <section className="relative overflow-hidden bg-[linear-gradient(135deg,#FFF4E8_0%,#ffffff_40%,#ffffff_60%,#CCE2E1_100%)] pt-12 pb-16 md:pt-16 md:pb-24">
       {/* Subtle grid pattern + golden/green glow accents */}
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px]" />
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_80%_15%,rgba(255,207,162,0.2),transparent_55%)]" />
