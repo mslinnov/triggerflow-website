@@ -27,9 +27,7 @@
       "product": "Product",
       "solutions": "Solutions",
       "resources": "Resources",
-      "integrations": "Integrations",
-      "overview": "Overview",
-      "overviewDesc": "Discover all TriggerFlow features"
+      "integrations": "Integrations"
     },
     "megaMenu": {
       "product": {
@@ -461,6 +459,7 @@
     "title": "Operational in 48h",
     "subtitle": "Three steps are all it takes to automate the tasks you choose",
     "pmsIntegrations": "PMS Integrations",
+    "cta": "View all integrations",
     "steps": {
       "connect": {
         "title": "Connect your PMS",
@@ -510,27 +509,27 @@
     }
   },
   "testimonialFeatured": {
-    "quote": "TriggerFlow has transformed the way we communicate with our guests. Satisfaction surveys have allowed us to significantly improve our OTA ratings. We save precious time every day.",
+    "quote": "After testing several CRM solutions, we found with TriggerFlow the tool that truly matches our needs. A real asset for our hotel: guest loyalty, concrete additional sales, and a perfect interface with our PMS.",
     "author": {
-      "name": "Sandrine Surrel",
-      "title": "Director, Nature Cathare",
-      "initials": "SS"
+      "name": "Maxime Jullien",
+      "title": "Director, Edgar Hotel & Spa ****",
+      "initials": "MJ"
     },
     "metrics": {
       "reviews": {
-        "value": "+45%",
-        "label": "guest reviews"
+        "value": "100%",
+        "label": "managed by the hotelier"
       },
       "timeSaved": {
-        "value": "10h",
-        "label": "saved/week"
+        "value": "∞",
+        "label": "personalization options"
       },
       "otaScore": {
-        "value": "4.2 → 4.7",
-        "label": "OTA Score"
+        "value": "★★★★",
+        "label": "4-star Hotel"
       }
     },
-    "cta": "Read the full case study"
+    "cta": "Read the full testimonial"
   },
   "pricingPreview": {
     "title": "Pricing adapted to your size",
@@ -966,68 +965,129 @@
       "description": "TriggerFlow pricing: hotel CRM + marketing automation from €49/month. Plans tailored from boutique hotels to multi-property groups."
     },
     "hero": {
-      "title": "Pricing adapted to your size",
-      "subtitle": "From launch to expansion, a plan for every stage of your growth"
+      "badge": "Pricing",
+      "title": "Compare our plans based on your needs",
+      "subtitle": "Use TriggerFlow precisely based on your needs and scale your capabilities as you grow"
     },
     "perMonth": "month",
     "plans": {
       "discovery": {
         "name": "Discovery",
-        "badge": "Free",
-        "description": "To test and discover TriggerFlow",
-        "features": ["1 workflow", "1,000 emails/month", "Basic CRM", "Email support"]
+        "trial": "No credit card required",
+        "description": "Discover TriggerFlow for free and test your first guest scenarios."
       },
       "communication": {
         "name": "Communication",
-        "description": "To start automating",
-        "features": ["5 workflows", "5,000 emails/month", "SMS & WhatsApp", "Message hub", "Priority support"]
+        "trial": "14-day free trial",
+        "description": "Create your segments and automate your messages before, during and after stay."
       },
       "conversion": {
         "name": "Conversion",
-        "badge": "Popular",
-        "description": "To perform and convert",
-        "features": ["10 workflows", "15,000 emails/month", "500 SMS included", "Unlimited forms", "Additional sales", "Advanced analytics"]
+        "badge": "Most popular",
+        "trial": "14-day free trial",
+        "description": "With more interaction, boost your ancillary sales and collect guest feedback."
       },
       "marketing": {
-        "name": "Marketing+",
-        "description": "To scale your marketing",
-        "features": ["Unlimited workflows", "Unlimited emails", "1,000 SMS included", "Newsletter & Campaigns", "Loyalty program", "Dedicated account manager"]
+        "name": "Marketing +",
+        "trial": "14-day free trial",
+        "description": "Deploy your marketing campaigns and newsletters at scale and build guest loyalty."
       }
     },
     "cta": {
-      "startFree": "Start for free",
-      "tryFree": "14-day free trial",
-      "contactSales": "Contact sales"
+      "demo": "Book a demo"
+    },
+    "addons": {
+      "badge": "Add-on modules",
+      "title": "Customize your experience",
+      "subtitle": "Add modules to any plan to meet your specific needs",
+      "cta": "Learn more",
+      "items": {
+        "reviews": {
+          "name": "Reviews & E-reputation",
+          "description": "Collect, centralize and manage your guest reviews across all platforms with AI assistance.",
+          "features": [
+            "Automatic post-stay review collection",
+            "Google, TripAdvisor, Booking, Airbnb",
+            "AI-powered review responses",
+            "E-reputation analytics",
+            "Link reviews to CRM guest profiles",
+            "Real-time negative review alerts"
+          ]
+        },
+        "aiAgent": {
+          "name": "AI Agent / Chatbot",
+          "description": "An AI assistant that automatically answers your guests 24/7 and supports your team daily: proofreading, rephrasing, translation, summaries and more.",
+          "features": [
+            "24/7 automatic responses",
+            "Multilingual (30+ languages)",
+            "Trained and customized to your property",
+            "Rephrasing and spell-check",
+            "Escalation to front desk if needed",
+            "WhatsApp, SMS and email",
+            "Smart upsell suggestions"
+          ]
+        },
+        "loyalty": {
+          "name": "Loyalty Program",
+          "description": "Reward your loyal guests with a customizable points and benefits program.",
+          "features": [
+            "Customizable points system",
+            "Tiers and rewards",
+            "Automated communication",
+            "Loyalty tracking and analytics"
+          ]
+        },
+        "guestApp": {
+          "name": "Guest App",
+          "description": "Offer your guests a mobile app for a connected and frictionless stay.",
+          "features": [
+            "Online check-in / check-out",
+            "Room service & concierge",
+            "Real-time stay information",
+            "Direct chat with reception"
+          ]
+        }
+      }
     },
     "comparison": {
       "title": "Detailed plan comparison",
       "subtitle": "Find the plan that matches your needs",
-      "feature": "Feature",
+      "feature": "Features",
+      "popular": "Most popular",
       "categories": {
         "communication": "Communication",
         "automation": "Automation",
-        "marketing": "Marketing",
-        "tools": "Tools",
-        "support": "Support"
+        "marketing": "Marketing & Sales",
+        "tools": "Tools & Analytics"
       },
+      "planLabel": "{name} Plan",
       "features": {
-        "emails": "Emails per month",
-        "sms": "SMS",
-        "whatsapp": "WhatsApp",
+        "segments": "Client segments",
+        "flows": "Flows (automations)",
+        "emails": "Emails/month",
+        "sms": "SMS (From €0.06/sms)",
+        "stats": "Statistics and analytics",
         "hub": "Message hub",
-        "workflows": "Workflows",
-        "triggers": "Automatic triggers",
-        "segmentation": "Advanced segmentation",
-        "newsletter": "Newsletter",
-        "campaigns": "Marketing campaigns",
-        "loyalty": "Loyalty program",
-        "crm": "Hotel CRM",
+        "whatsapp": "WhatsApp",
+        "marketing": "Marketing & Newsletter",
         "forms": "Forms",
-        "upsell": "Additional sales",
-        "analytics": "Analytics",
-        "users": "Users",
-        "supportType": "Support type",
-        "onboarding": "Personalized onboarding"
+        "salesCatalog": "Sales and catalog module",
+        "groupPortal": "Hotel group portal",
+        "conditions": "Conditions on client interactions"
+      },
+      "tooltips": {
+        "emails": "Number of emails included per month in your plan. Beyond that, additional email packs are available.",
+        "sms": "Send automatic or manual SMS to your guests. Usage-based billing from €0.06/SMS.",
+        "whatsapp": "Communicate with your guests via WhatsApp Business for a higher read rate.",
+        "hub": "Centralize all your communication channels (email, SMS, WhatsApp) in a single interface.",
+        "segments": "Create guest groups based on their characteristics and behaviors for targeted actions.",
+        "flows": "Automate message sequences triggered by events (arrival, departure, birthday...).",
+        "conditions": "Add advanced conditions in your flows based on guest interactions (opens, clicks, replies...).",
+        "marketing": "Create and send targeted newsletters and marketing campaigns to your guest segments.",
+        "forms": "Create custom forms: pre-checkin, satisfaction surveys, stay preferences and more.",
+        "salesCatalog": "Offer additional services and products to your guests (spa, restaurant, upgrades...).",
+        "stats": "Hotel BI dashboards: occupancy rates, RevPAR, ADR, open rates, conversions and generated revenue.",
+        "groupPortal": "Dedicated interface to manage multiple properties from a single account with consolidated view."
       }
     },
     "faq": {
@@ -1051,7 +1111,7 @@
         },
         "smsIncluded": {
           "question": "Are SMS included in the plans?",
-          "answer": "Conversion and Marketing+ plans include 500 and 1000 SMS per month respectively. Beyond that, SMS are billed at €0.06/SMS. The Communication plan offers SMS at €0.06/SMS from the first message."
+          "answer": "SMS are available on all plans from €0.06/SMS. No SMS are included in the plans, they are billed on usage."
         }
       }
     },
@@ -1182,12 +1242,13 @@
   "integrations": {
     "meta": {
       "title": "Hotel PMS Integrations | TriggerFlow - 50+ Native Connectors",
-      "description": "Connect TriggerFlow to your PMS (Mews, Opera Cloud, Cloudbeds, Apaleo) and 50+ hotel tools. Real-time sync without development."
+      "description": "Connect TriggerFlow to your PMS (Mews, Opera Cloud, Thaïs, Misterbooking...) and 50+ hotel tools. Real-time sync without development."
     },
     "hero": {
       "title": "Connect TriggerFlow to your tools",
-      "subtitle": "Over 50 native integrations with PMS, point-of-sale systems, CRM and more. No development required.",
-      "cta": "Can't find your tool?"
+      "subtitle": "Native integrations with leading hotel PMS, smart locks, payment solutions and review platforms. No development required.",
+      "cta": "Can't find your tool?",
+      "count": "28+ integrations"
     },
     "badges": {
       "native": "Native",
@@ -1196,131 +1257,189 @@
     "categories": {
       "pms": {
         "title": "PMS (Property Management System)",
+        "description": "Automatically sync your reservations, guest data and stays.",
         "integrations": {
-          "mews": {
-            "name": "Mews",
-            "description": "The next-generation cloud PMS"
-          },
-          "opera": {
-            "name": "Opera Cloud",
-            "description": "Oracle's hospitality solution"
-          },
           "thais": {
-            "name": "Thaïs-PMS",
+            "name": "Thaïs PMS",
             "description": "The French reference PMS"
-          },
-          "dedge": {
-            "name": "D-Edge",
-            "description": "Distribution and integrated PMS"
           },
           "misterbooking": {
             "name": "Misterbooking",
             "description": "PMS and Channel Manager"
           },
-          "amenitiz": {
-            "name": "Amenitiz",
-            "description": "All-in-one for independents"
-          },
-          "reservit": {
-            "name": "Reservit",
-            "description": "Booking engine and PMS"
-          },
           "medialog": {
             "name": "Medialog",
             "description": "PMS for hotels and residences"
+          },
+          "opera": {
+            "name": "Opera Cloud",
+            "description": "Oracle's hospitality solution"
+          },
+          "mews": {
+            "name": "Mews",
+            "description": "The next-generation cloud PMS"
+          },
+          "asterio": {
+            "name": "Asterio",
+            "description": "PMS by Septeo Hospitality"
+          },
+          "leanpms": {
+            "name": "Lean PMS",
+            "description": "Lightweight and modern PMS"
+          },
+          "chloe": {
+            "name": "Chloë PMS",
+            "description": "Intuitive PMS for hoteliers"
+          },
+          "vega": {
+            "name": "Vega",
+            "description": "Hotel management solution"
+          },
+          "apaleo": {
+            "name": "Apaleo",
+            "description": "Open API-first PMS"
+          },
+          "zeswitch": {
+            "name": "Zeswitch",
+            "description": "Next-generation PMS"
+          },
+          "protel": {
+            "name": "Protel",
+            "description": "PMS by Planet (ex-Protel)"
+          },
+          "clockpms": {
+            "name": "Clock PMS",
+            "description": "All-in-one cloud PMS"
           }
         }
       },
-      "pos": {
-        "title": "Point of Sale",
-        "integrations": {
-          "lightspeed": {
-            "name": "Lightspeed",
-            "description": "Restaurant and retail POS"
-          },
-          "sumup": {
-            "name": "SumUp",
-            "description": "Simplified payments and POS"
-          },
-          "zelty": {
-            "name": "Zelty",
-            "description": "Connected restaurant POS"
-          },
-          "addition": {
-            "name": "Addition",
-            "description": "POS for hospitality"
-          }
-        }
-      },
-      "crm": {
-        "title": "CRM & Marketing",
-        "integrations": {
-          "salesforce": {
-            "name": "Salesforce",
-            "description": "The world's leading CRM"
-          },
-          "hubspot": {
-            "name": "HubSpot",
-            "description": "CRM and marketing automation"
-          },
-          "mailchimp": {
-            "name": "Mailchimp",
-            "description": "Email marketing"
-          },
-          "brevo": {
-            "name": "Brevo",
-            "description": "Email, SMS and automation"
-          }
-        }
-      },
-      "locks": {
-        "title": "Smart Locks",
+      "hardware": {
+        "title": "Smart Locks & Connected Devices",
+        "description": "Manage your smart locks, printers and devices directly from TriggerFlow.",
         "integrations": {
           "sesame": {
             "name": "Sesame",
             "description": "Smart locks"
           },
-          "nuki": {
-            "name": "Nuki",
-            "description": "Smart locks for hotels"
-          },
-          "assaabloy": {
-            "name": "ASSA ABLOY",
-            "description": "Hotel access solutions"
+          "igloohome": {
+            "name": "Igloohome",
+            "description": "Smart locks and key boxes"
           },
           "salto": {
             "name": "Salto",
             "description": "Electronic access control"
+          },
+          "printer": {
+            "name": "Printer",
+            "description": "Print guest cards and tickets"
           }
         }
       },
-      "channel": {
-        "title": "Channel Managers",
+      "payments": {
+        "title": "Payment Solutions",
+        "description": "Securely collect payments for extras, upsells and prepayments.",
         "integrations": {
-          "siteminder": {
-            "name": "SiteMinder",
-            "description": "Hotel distribution"
+          "stripe": {
+            "name": "Stripe",
+            "description": "Online payments"
           },
-          "cubilis": {
-            "name": "Cubilis",
-            "description": "European channel manager"
+          "mollie": {
+            "name": "Mollie",
+            "description": "Simplified European payments"
           },
-          "wubook": {
-            "name": "WuBook",
-            "description": "Channel management"
+          "paypal": {
+            "name": "PayPal",
+            "description": "International payments"
+          },
+          "payzen": {
+            "name": "PayZen",
+            "description": "Secure payment solution"
+          },
+          "applepay": {
+            "name": "Apple Pay",
+            "description": "Apple mobile payment"
+          },
+          "googlepay": {
+            "name": "Google Pay",
+            "description": "Google mobile payment"
+          }
+        }
+      },
+      "reviews": {
+        "title": "Review Platforms",
+        "description": "Collect and manage guest reviews on leading platforms.",
+        "integrations": {
+          "google": {
+            "name": "Google",
+            "description": "Google Business reviews"
+          },
+          "tripadvisor": {
+            "name": "TripAdvisor",
+            "description": "World's leading travel reviews"
+          },
+          "booking": {
+            "name": "Booking.com",
+            "description": "Booking traveller reviews"
+          },
+          "airbnb": {
+            "name": "Airbnb",
+            "description": "Host and guest reviews"
+          },
+          "trustpilot": {
+            "name": "Trustpilot",
+            "description": "Verified review platform"
+          },
+          "hotelscom": {
+            "name": "Hotels.com",
+            "description": "Hotels.com traveller reviews"
+          }
+        }
+      },
+      "messaging": {
+        "title": "Messaging & Communication",
+        "description": "Communicate with your guests on their preferred channels.",
+        "integrations": {
+          "whatsapp": {
+            "name": "WhatsApp",
+            "description": "World's #1 instant messaging"
+          },
+          "microsoft": {
+            "name": "Microsoft",
+            "description": "Microsoft 365 collaborative suite"
+          },
+          "twilio": {
+            "name": "Twilio",
+            "description": "SMS and voice platform"
+          },
+          "google": {
+            "name": "Google",
+            "description": "Gmail and Google Workspace"
+          },
+          "smtp": {
+            "name": "SMTP / IMAP",
+            "description": "Custom email server"
           }
         }
       },
       "other": {
-        "title": "Other",
+        "title": "Automation & API",
+        "description": "Connect TriggerFlow to any tool through our connectors.",
         "integrations": {
           "zapier": {
             "name": "Zapier",
-            "description": "Connect 5000+ apps"
+            "description": "Connect 5000+ applications"
           },
           "make": {
-            "name": "Make (Integromat)",
+            "name": "Make",
             "description": "Advanced automation"
+          },
+          "n8n": {
+            "name": "n8n",
+            "description": "Open source automation"
+          },
+          "webhook": {
+            "name": "Webhook",
+            "description": "Real-time notifications"
           },
           "api": {
             "name": "REST API",
@@ -1329,19 +1448,15 @@
         }
       }
     },
+    "synapse": {
+      "title": "Synapse Label Member",
+      "description": "TriggerFlow is part of the Synapse ecosystem, the label that brings together interconnected cloud solutions for the hospitality industry. This certification guarantees the interoperability of our tools with the best software on the market.",
+      "link": "Discover the Synapse label"
+    },
     "request": {
       "title": "Can't find your tool?",
-      "description": "We regularly add new integrations. Tell us which tool you use and we'll look into adding it.",
-      "form": {
-        "toolPlaceholder": "Tool name",
-        "emailPlaceholder": "Your email",
-        "submit": "Request integration",
-        "submitting": "Sending..."
-      },
-      "success": {
-        "title": "Request sent!",
-        "message": "Thank you for your request. We'll keep you updated on progress."
-      }
+      "description": "We regularly develop new integrations. Contact us to discuss your needs.",
+      "cta": "Talk to an expert"
     },
     "cta": {
       "title": "Ready to connect your tools?",
@@ -1572,20 +1687,33 @@
   "caseStudies": {
     "meta": {
       "title": "Case Studies | TriggerFlow",
-      "description": "Discover how our customers transform their customer relationships with TriggerFlow."
+      "description": "Discover how our hotel customers transform their guest relationships with TriggerFlow."
     },
     "hero": {
-      "title": "They transformed their customer relationship",
-      "subtitle": "Discover our hotel customers' success stories"
+      "title": "They trust us",
+      "subtitle": "From independent hotels to hotel groups, discover our customers' testimonials"
     },
-    "filters": {
-      "type": "Type",
-      "objective": "Objective"
-    },
-    "readMore": "Read case study",
-    "comingSoon": "Case study coming soon",
+    "socialProof": "From independent hotels to multi-site groups, they use TriggerFlow every day",
+    "readMore": "Read testimonial",
     "cta": {
       "title": "Ready to write your success story?",
+      "button": "Book a demo"
+    }
+  },
+  "caseStudyDetail": {
+    "breadcrumb": {
+      "caseStudies": "Case Studies"
+    },
+    "objectives": "Objectives",
+    "nav": {
+      "previous": "Previous case study",
+      "next": "Next case study",
+      "backToList": "Back",
+      "allCaseStudies": "All case studies"
+    },
+    "cta": {
+      "title": "Convinced? Let's discuss your project",
+      "subtitle": "Join our customers and automate your guest relationships",
       "button": "Book a demo"
     }
   },

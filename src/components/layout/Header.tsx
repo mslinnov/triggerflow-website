@@ -33,8 +33,6 @@ import {
   BookOpen,
   FileQuestion,
   HelpCircle,
-  ArrowRight,
-  LayoutGrid,
   Tent,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -86,12 +84,6 @@ const menuItems = {
         ],
       },
     ],
-    featured: {
-      icon: LayoutGrid,
-      label: 'Vue d\'ensemble',
-      description: 'Découvrez toutes nos fonctionnalités',
-      href: '/produit',
-    },
   },
   solutions: {
     labelKey: 'solutions',
@@ -406,6 +398,7 @@ function MegaMenuProduit() {
           <ArrowRight className="h-5 w-5 text-brand-primary transition-transform group-hover:translate-x-1" />
         </Link>
       </div>
+
     </div>
   );
 }

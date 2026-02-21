@@ -243,7 +243,7 @@ export const solutions: Record<string, SolutionData> = {
       metric: '+120% d\'avis Google en 4 mois',
     },
 
-    integrations: ['Mews', 'Thaïs-PMS', 'Amenitiz', 'Misterbooking'],
+    integrations: ['Mews', 'Thaïs PMS', 'Misterbooking', 'Opera Cloud'],
 
     faq: [
       {
@@ -412,7 +412,7 @@ export const solutions: Record<string, SolutionData> = {
       metric: '12 hôtels pilotés depuis 1 dashboard',
     },
 
-    integrations: ['Opera Cloud', 'Mews', 'D-Edge', 'Salesforce'],
+    integrations: ['Opera Cloud', 'Mews', 'Thaïs PMS', 'Misterbooking'],
 
     faq: [
       {
@@ -576,7 +576,7 @@ export const solutions: Record<string, SolutionData> = {
       metric: '-80% d\'appels hors horaires',
     },
 
-    integrations: ['Amenitiz', 'Sesame', 'Nuki', 'Medialog'],
+    integrations: ['Medialog', 'Sesame', 'Igloohome', 'Salto'],
 
     faq: [
       {
@@ -741,7 +741,7 @@ export const solutions: Record<string, SolutionData> = {
       metric: '+35% de re-réservation saison suivante',
     },
 
-    integrations: ['Misterbooking', 'Amenitiz', 'Reservit', 'eSeason'],
+    integrations: ['Misterbooking', 'Thaïs PMS', 'Lean PMS', 'Apaleo'],
 
     faq: [
       {
@@ -1066,7 +1066,7 @@ export const solutions: Record<string, SolutionData> = {
       metric: '10h/semaine récupérées',
     },
 
-    integrations: ['Mews', 'Opera Cloud', 'Amenitiz', 'Misterbooking'],
+    integrations: ['Mews', 'Opera Cloud', 'Asterio', 'Misterbooking'],
 
     faq: [
       {
@@ -1223,7 +1223,7 @@ export const solutions: Record<string, SolutionData> = {
       metric: 'De 45 à 120 avis Google en 4 mois',
     },
 
-    integrations: ['Google Business', 'TripAdvisor', 'Booking.com', 'Mews'],
+    integrations: ['Google', 'TripAdvisor', 'Booking.com', 'Airbnb'],
 
     faq: [
       {
@@ -1376,7 +1376,7 @@ export const solutions: Record<string, SolutionData> = {
       metric: '+3 000€/mois de revenus upsell',
     },
 
-    integrations: ['Mews', 'Opera Cloud', 'Stripe', 'PMS'],
+    integrations: ['Mews', 'Opera Cloud', 'Stripe', 'Thaïs PMS'],
 
     faq: [
       {
@@ -1529,7 +1529,7 @@ export const solutions: Record<string, SolutionData> = {
       metric: 'De 30% à 55% de réservations directes',
     },
 
-    integrations: ['Mews', 'Stripe', 'Mailchimp', 'PMS'],
+    integrations: ['Mews', 'Stripe', 'Thaïs PMS', 'Misterbooking'],
 
     faq: [
       {
