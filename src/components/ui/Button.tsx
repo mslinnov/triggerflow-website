@@ -33,7 +33,8 @@ export function Button({
   return (
     <button
       className={cn(
-        'inline-flex items-center justify-center gap-2 rounded-full font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+        'inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+        variant === 'primary' ? 'shadow-md shadow-brand-primary/20 hover:shadow-lg hover:shadow-brand-primary/25' : '',
         variants[variant],
         sizes[size],
         className
@@ -61,7 +62,8 @@ export function ButtonLink({
   return (
     <a
       className={cn(
-        'inline-flex items-center justify-center gap-2 rounded-full font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2',
+        'inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2',
+        variant === 'primary' ? 'shadow-md shadow-brand-primary/20 hover:shadow-lg hover:shadow-brand-primary/25' : '',
         variants[variant],
         sizes[size],
         className

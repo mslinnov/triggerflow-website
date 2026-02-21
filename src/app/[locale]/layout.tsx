@@ -3,7 +3,7 @@ import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Script from 'next/script';
-import { IBM_Plex_Sans, Geist_Mono, Fraunces, Cormorant_Garamond } from 'next/font/google';
+import { IBM_Plex_Sans, Geist_Mono, Fraunces } from 'next/font/google';
 import { routing } from '@/i18n/routing';
 
 const GA_MEASUREMENT_ID = 'G-MD02XP125T';
@@ -25,13 +25,6 @@ const fraunces = Fraunces({
   variable: '--font-playfair',
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800'],
-  display: 'swap',
-});
-
-const cormorantGaramond = Cormorant_Garamond({
-  variable: '--font-cormorant',
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
   display: 'swap',
 });
 
@@ -163,7 +156,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
           `}
         </Script>
       </head>
-      <body className={`${ibmPlexSans.variable} ${geistMono.variable} ${fraunces.variable} ${cormorantGaramond.variable} antialiased`}>
+      <body className={`${ibmPlexSans.variable} ${geistMono.variable} ${fraunces.variable} antialiased`}>
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>

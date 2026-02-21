@@ -35,7 +35,7 @@ export function SolutionsGrid() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="bg-[var(--v3-bg-primary)] py-16 md:py-24">
+    <section className="bg-white py-16 md:py-24">
       <Container>
         {/* Header */}
         <motion.div
@@ -45,10 +45,10 @@ export function SolutionsGrid() {
           viewport={defaultViewport}
           className="text-center"
         >
-          <h2 className="font-serif text-3xl font-bold tracking-tight text-v3-text-primary md:text-4xl lg:text-[2.75rem]">
+          <h2 className="font-serif text-3xl font-bold tracking-tight text-text-primary md:text-4xl lg:text-[2.75rem]">
             {t('title')}
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-v3-text-secondary">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-text-secondary">
             {t('subtitle')}
           </p>
         </motion.div>
@@ -70,7 +70,7 @@ export function SolutionsGrid() {
               <motion.div
                 variants={staggerItem}
                 whileHover={!prefersReducedMotion ? cardHover : {}}
-                className="rounded-2xl border border-v3-border/50 bg-white p-6 shadow-[var(--v3-shadow-md)] transition-shadow hover:border-brand-primary/20 hover:shadow-[var(--v3-shadow-lg)] h-full"
+                className="rounded-2xl border border-border-light bg-white p-6 shadow-[var(--shadow-md)] transition-shadow hover:border-brand-primary/20 hover:shadow-[var(--shadow-lg)] h-full"
               >
                 {/* Icon */}
                 <motion.div
@@ -82,10 +82,10 @@ export function SolutionsGrid() {
                 </motion.div>
 
                 {/* Title & Description */}
-                <h3 className="font-serif text-lg font-bold text-v3-text-primary">
+                <h3 className="font-serif text-lg font-bold text-text-primary">
                   {t(`items.${solution.key}.title`)}
                 </h3>
-                <p className="mt-2 text-sm text-v3-text-secondary">
+                <p className="mt-2 text-sm text-text-secondary">
                   {t(`items.${solution.key}.description`)}
                 </p>
 

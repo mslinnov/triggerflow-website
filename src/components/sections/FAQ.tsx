@@ -33,13 +33,13 @@ export function FAQ() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.1 }}
-              className="overflow-hidden rounded-xl border border-v3-border/50 bg-v3-bg-secondary shadow-[var(--v3-shadow-sm)]"
+              className="overflow-hidden rounded-xl border border-border-light bg-surface-tertiary shadow-[var(--shadow-sm)]"
             >
               <button
                 onClick={() => toggle(index)}
                 className="flex w-full items-center justify-between p-5 text-left"
               >
-                <span className="pr-4 font-medium text-v3-text-primary">
+                <span className="pr-4 font-medium text-text-primary">
                   {t(`items.${item}.question`)}
                 </span>
                 <ChevronDown
@@ -58,7 +58,7 @@ export function FAQ() {
                     exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <div className="border-t border-v3-border/50 bg-white px-5 pb-5 pt-4 text-v3-text-secondary">
+                    <div className="border-t border-border-light bg-white px-5 pb-5 pt-4 text-text-secondary">
                       {t(`items.${item}.answer`)}
                     </div>
                   </motion.div>

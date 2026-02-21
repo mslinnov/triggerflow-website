@@ -49,7 +49,7 @@ export function CommunicationFlow() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="bg-[var(--v3-bg-primary)] py-16 md:py-24 overflow-hidden">
+    <section className="bg-surface-secondary py-16 md:py-24 overflow-hidden">
       <Container>
         {/* Header */}
         <motion.div
@@ -59,10 +59,10 @@ export function CommunicationFlow() {
           variants={fadeInUp}
           className="text-center mb-12 md:mb-16"
         >
-          <h2 className="font-serif text-3xl font-bold tracking-tight text-v3-text-primary md:text-4xl lg:text-[2.75rem]">
+          <h2 className="font-serif text-3xl font-bold tracking-tight text-text-primary md:text-4xl lg:text-[2.75rem]">
             {t('title')}
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-v3-text-secondary">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-text-secondary">
             {t('subtitle')}
           </p>
         </motion.div>
@@ -105,7 +105,7 @@ export function CommunicationFlow() {
                 </motion.div>
               )}
             </div>
-            <span className="text-xs text-v3-text-muted font-medium">{t('flow.triggers')}</span>
+            <span className="text-xs text-text-muted font-medium">{t('flow.triggers')}</span>
           </motion.div>
 
           {/* Actions Orbit */}
@@ -133,18 +133,18 @@ export function CommunicationFlow() {
             className="flex flex-col items-center gap-1"
           >
             <div className="relative">
-              <ArrowRight className="h-8 w-8 text-brand-accent-dark" />
+              <ArrowRight className="h-8 w-8 text-brand-accent" />
               {!prefersReducedMotion && (
                 <motion.div
                   className="absolute inset-0"
                   animate={{ x: [0, 5, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
                 >
-                  <ArrowRight className="h-8 w-8 text-brand-accent-dark/50" />
+                  <ArrowRight className="h-8 w-8 text-brand-accent/50" />
                 </motion.div>
               )}
             </div>
-            <span className="text-xs text-v3-text-muted font-medium">{t('flow.sends')}</span>
+            <span className="text-xs text-text-muted font-medium">{t('flow.sends')}</span>
           </motion.div>
 
           {/* Results Stack */}
@@ -155,7 +155,7 @@ export function CommunicationFlow() {
             transition={{ duration: 0.6, delay: 0.4, type: 'spring' }}
             className="flex flex-col gap-3"
           >
-            <p className="text-sm font-semibold uppercase tracking-wider text-brand-accent-dark text-center mb-1">
+            <p className="text-sm font-semibold uppercase tracking-wider text-brand-accent text-center mb-1">
               {t('results.label')}
             </p>
             {results.map((result, i) => (
@@ -168,7 +168,7 @@ export function CommunicationFlow() {
                 className="flex items-center gap-3 rounded-xl border-2 border-brand-accent/40 bg-brand-accent-light/30 px-4 py-2.5 shadow-sm"
               >
                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-accent/20">
-                  <result.icon className="h-4 w-4 text-brand-accent-dark" />
+                  <result.icon className="h-4 w-4 text-brand-accent" />
                 </div>
                 <span className="text-sm font-bold text-brand-dark whitespace-nowrap">{t(`results.${result.key}`)}</span>
               </motion.div>
@@ -198,7 +198,7 @@ export function CommunicationFlow() {
             />
           </div>
 
-          <ChevronRight className="h-6 w-6 rotate-90 text-brand-accent-dark/40" />
+          <ChevronRight className="h-6 w-6 rotate-90 text-brand-accent/40" />
 
           {/* Results */}
           <div className="flex flex-wrap justify-center gap-3">
@@ -208,7 +208,7 @@ export function CommunicationFlow() {
                 className="flex items-center gap-2.5 rounded-xl border-2 border-brand-accent/40 bg-brand-accent-light/30 px-4 py-2.5"
               >
                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-accent/20">
-                  <result.icon className="h-4 w-4 text-brand-accent-dark" />
+                  <result.icon className="h-4 w-4 text-brand-accent" />
                 </div>
                 <span className="text-sm font-bold text-brand-dark">{t(`results.${result.key}`)}</span>
               </div>
@@ -266,12 +266,12 @@ export function CommunicationFlow() {
             </motion.div>
 
             <motion.div variants={staggerItem}>
-              <ChevronRight className="h-6 w-6 rotate-90 text-brand-accent-dark/40" />
+              <ChevronRight className="h-6 w-6 rotate-90 text-brand-accent/40" />
             </motion.div>
 
             {/* Results */}
             <motion.div variants={staggerItem} className="w-full max-w-sm space-y-2">
-              <p className="mb-3 text-center text-xs font-semibold uppercase tracking-wider text-brand-accent-dark">
+              <p className="mb-3 text-center text-xs font-semibold uppercase tracking-wider text-brand-accent">
                 {t('results.label')}
               </p>
               {results.map((result) => (
@@ -280,7 +280,7 @@ export function CommunicationFlow() {
                   className="flex items-center gap-3 rounded-xl border-2 border-brand-accent/40 bg-brand-accent-light/30 px-4 py-3"
                 >
                   <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-brand-accent/20">
-                    <result.icon className="h-4 w-4 text-brand-accent-dark" />
+                    <result.icon className="h-4 w-4 text-brand-accent" />
                   </div>
                   <span className="text-sm font-bold text-brand-dark">{t(`results.${result.key}`)}</span>
                 </div>

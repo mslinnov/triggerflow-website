@@ -58,7 +58,7 @@ export function HowItWorks() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section id="how-it-works" className="bg-[var(--v3-bg-primary)] py-16 md:py-24 overflow-hidden">
+    <section id="how-it-works" className="bg-white py-16 md:py-24 overflow-hidden">
       <Container>
         {/* Header */}
         <motion.div
@@ -71,10 +71,10 @@ export function HowItWorks() {
           <Badge variant="accent" className="mb-3">
             {t('badge')}
           </Badge>
-          <h2 className="font-serif text-3xl font-bold tracking-tight text-v3-text-primary md:text-4xl lg:text-[2.75rem]">
+          <h2 className="font-serif text-3xl font-bold tracking-tight text-text-primary md:text-4xl lg:text-[2.75rem]">
             {t('title')}
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-lg text-v3-text-secondary">
+          <p className="mx-auto mt-3 max-w-2xl text-lg text-text-secondary">
             {t('subtitle')}
           </p>
         </motion.div>
@@ -114,7 +114,7 @@ export function HowItWorks() {
                     }}
                   />
                 )}
-                <div className="relative flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full bg-white border-2 border-brand-primary/20 shadow-[var(--v3-shadow-md)]">
+                <div className="relative flex h-[4.5rem] w-[4.5rem] items-center justify-center rounded-full bg-white border-2 border-brand-primary/20 shadow-[var(--shadow-md)]">
                   <step.icon className="h-6 w-6 text-brand-primary" />
                 </div>
                 {/* Step number badge */}
@@ -131,11 +131,11 @@ export function HowItWorks() {
               )}
 
               {/* Content card */}
-              <div className="w-full flex-1 rounded-2xl border border-v3-border/50 bg-white p-5 shadow-[var(--v3-shadow-sm)] transition-shadow duration-300 hover:shadow-[var(--v3-shadow-md)]">
-                <h3 className="mb-2 text-base font-bold text-v3-text-primary lg:text-lg">
+              <div className="w-full flex-1 rounded-2xl border border-border-light bg-white p-5 shadow-[var(--shadow-sm)] transition-shadow duration-300 hover:shadow-[var(--shadow-md)]">
+                <h3 className="mb-2 text-base font-bold text-text-primary lg:text-lg">
                   {t(`steps.${step.key}.title`)}
                 </h3>
-                <p className="text-sm leading-relaxed text-v3-text-secondary">
+                <p className="text-sm leading-relaxed text-text-secondary">
                   {t(`steps.${step.key}.description`)}
                 </p>
 
@@ -145,7 +145,7 @@ export function HowItWorks() {
                     {[0, 1, 2].map((i) => (
                       <li key={i} className="flex items-start gap-2">
                         <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-brand-primary" />
-                        <span className="text-xs leading-relaxed text-v3-text-secondary">
+                        <span className="text-xs leading-relaxed text-text-secondary">
                           {t(`steps.${step.key}.features.${i}`)}
                         </span>
                       </li>
@@ -156,7 +156,7 @@ export function HowItWorks() {
                 {/* PMS logos (step 1) */}
                 {step.key === 'connect' && (
                   <div className="mt-4">
-                    <p className="mb-2.5 text-[10px] font-medium uppercase tracking-wider text-v3-text-muted">
+                    <p className="mb-2.5 text-[10px] font-medium uppercase tracking-wider text-text-muted">
                       {t('pmsIntegrations')}
                     </p>
                     <div className="flex flex-wrap items-center gap-1.5">
@@ -182,7 +182,7 @@ export function HowItWorks() {
 
 function PMSLogo({ name, src }: { name: string; src: string }) {
   return (
-    <div className="flex h-9 items-center justify-center rounded-lg bg-white px-2.5 border border-v3-border/50 shadow-sm">
+    <div className="flex h-9 items-center justify-center rounded-lg bg-white px-2.5 border border-border-light shadow-sm">
       <Image
         src={src}
         alt={`Logo ${name}`}
@@ -192,7 +192,7 @@ function PMSLogo({ name, src }: { name: string; src: string }) {
         className="object-contain"
         onError={(e) => {
           e.currentTarget.style.display = 'none';
-          e.currentTarget.parentElement!.innerHTML = `<span class="text-[10px] font-semibold text-v3-text-secondary">${name}</span>`;
+          e.currentTarget.parentElement!.innerHTML = `<span class="text-[10px] font-semibold text-text-secondary">${name}</span>`;
         }}
       />
     </div>

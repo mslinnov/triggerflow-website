@@ -55,7 +55,7 @@ export function IntegrationsShowcase() {
   const t = useTranslations('integrationsShowcase');
 
   return (
-    <section className="bg-[var(--v3-bg-primary)] py-16 md:py-24 overflow-hidden">
+    <section className="bg-brand-light py-16 md:py-24 overflow-hidden">
       <Container>
         {/* Header */}
         <motion.div
@@ -68,10 +68,10 @@ export function IntegrationsShowcase() {
           <Badge variant="accent" className="mb-3">
             {t('badge')}
           </Badge>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-v3-text-primary">
+          <h2 className="font-serif text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-brand-dark">
             {t('title')}
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-lg text-v3-text-secondary">
+          <p className="mx-auto mt-3 max-w-2xl text-lg text-text-secondary">
             {t('subtitle')}
           </p>
         </motion.div>
@@ -133,7 +133,7 @@ function PMSCard({ pms }: { pms: PmsIntegration }) {
       variants={cardReveal}
       whileHover={{ y: -4, scale: 1.02 }}
       transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-      className="group relative flex flex-col items-center rounded-2xl border border-v3-border/50 bg-white p-5 md:p-6 shadow-[var(--v3-shadow-sm)] transition-all duration-300 hover:shadow-[var(--v3-shadow-lg)] hover:border-brand-primary/30 cursor-default"
+      className="group relative flex flex-col items-center rounded-2xl border border-brand-dark/10 bg-white p-5 md:p-6 shadow-[var(--shadow-sm)] transition-all duration-300 hover:shadow-[var(--shadow-lg)] hover:border-brand-primary/30 cursor-default"
     >
       {/* Colored accent bar */}
       <div
@@ -160,7 +160,7 @@ function PMSCard({ pms }: { pms: PmsIntegration }) {
       </div>
 
       {/* Name */}
-      <span className="text-sm font-semibold text-v3-text-primary mb-1.5">
+      <span className="text-sm font-semibold text-brand-dark mb-1.5">
         {pms.name}
       </span>
 

@@ -39,7 +39,7 @@ export function LanguageSwitcher() {
     <div ref={ref} className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-1 rounded-lg px-2 py-2 text-sm transition-colors hover:bg-zinc-100"
+        className="flex items-center gap-1 rounded-lg px-2 py-2 text-sm transition-colors hover:bg-surface-secondary"
         aria-label="Changer de langue"
       >
         <span className="text-lg leading-none">{localeFlags[locale]}</span>
@@ -50,14 +50,14 @@ export function LanguageSwitcher() {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 top-full mt-1 min-w-[44px] overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-lg">
+        <div className="absolute right-0 top-full mt-1 min-w-[44px] overflow-hidden rounded-lg border border-border-light bg-white shadow-lg">
           {routing.locales
             .filter((loc) => loc !== locale)
             .map((loc) => (
               <button
                 key={loc}
                 onClick={() => handleLocaleChange(loc)}
-                className="flex w-full items-center justify-center px-3 py-2 text-lg transition-colors hover:bg-zinc-50"
+                className="flex w-full items-center justify-center px-3 py-2 text-lg transition-colors hover:bg-surface-secondary"
                 aria-label={loc === 'fr' ? 'Français' : 'English'}
               >
                 {localeFlags[loc]}

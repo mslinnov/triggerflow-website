@@ -44,10 +44,10 @@ export function Examples() {
           <Badge variant="secondary" className="mb-4">
             {t('badge')}
           </Badge>
-          <h2 className="text-3xl font-bold tracking-tight text-v3-text-primary md:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-text-primary md:text-4xl">
             {t('title')}
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-v3-text-secondary">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-text-secondary">
             {t('subtitle')}
           </p>
         </motion.div>
@@ -67,7 +67,7 @@ export function Examples() {
                 key={useCase.key}
                 variants={staggerItem}
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
-                className="group relative rounded-2xl border border-v3-border/50 bg-white p-5 shadow-sm transition-all hover:shadow-md hover:border-brand-primary/20"
+                className="group relative rounded-2xl border border-border-light bg-white p-5 shadow-sm transition-all hover:shadow-md hover:border-brand-primary/20"
               >
                 {/* Icon */}
                 <div
@@ -77,12 +77,12 @@ export function Examples() {
                 </div>
 
                 {/* Title */}
-                <h3 className="font-semibold text-v3-text-primary">
+                <h3 className="font-semibold text-text-primary">
                   {t(`items.${useCase.key}.title`)}
                 </h3>
 
                 {/* Description */}
-                <p className="mt-1.5 text-sm leading-relaxed text-v3-text-secondary">
+                <p className="mt-1.5 text-sm leading-relaxed text-text-secondary">
                   {t(`items.${useCase.key}.description`)}
                 </p>
 
@@ -110,10 +110,10 @@ export function Examples() {
           viewport={defaultViewport}
           className="mt-12 text-center"
         >
-          <p className="text-lg font-semibold text-v3-text-primary">
+          <p className="text-lg font-semibold text-text-primary">
             {t('bottomTitle')}
           </p>
-          <p className="mx-auto mt-2 max-w-lg text-base text-v3-text-secondary">
+          <p className="mx-auto mt-2 max-w-lg text-base text-text-secondary">
             {t('bottomText')}
           </p>
           <ButtonLink

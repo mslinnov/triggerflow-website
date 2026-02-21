@@ -49,7 +49,7 @@ function ConcentricCircles({ className }: { className?: string }) {
         {[1, 2, 3, 4].map((i) => (
           <div
             key={i}
-            className="absolute rounded-full border border-v3-border/30"
+            className="absolute rounded-full border border-border-light"
             style={{ inset: `${i * 18}px` }}
           />
         ))}
@@ -65,15 +65,15 @@ function ChannelIcons({ className }: { className?: string }) {
   return (
     <div className={`pointer-events-none absolute ${className}`}>
       <div className="flex items-center gap-5 opacity-40">
-        <div className="rounded-lg bg-brand-primary/8 p-2 shadow-[var(--v3-shadow-sm)]">
+        <div className="rounded-lg bg-brand-primary/8 p-2 shadow-[var(--shadow-sm)]">
           <MessageSquare className="h-4 w-4 text-brand-primary" />
         </div>
-        <div className="h-px w-8 bg-v3-border/50" />
-        <div className="rounded-lg bg-brand-primary/8 p-2 shadow-[var(--v3-shadow-sm)]">
+        <div className="h-px w-8 bg-border-default" />
+        <div className="rounded-lg bg-brand-primary/8 p-2 shadow-[var(--shadow-sm)]">
           <Smartphone className="h-4 w-4 text-brand-primary" />
         </div>
-        <div className="h-px w-8 bg-v3-border/50" />
-        <div className="rounded-lg bg-brand-primary/8 p-2 shadow-[var(--v3-shadow-sm)]">
+        <div className="h-px w-8 bg-border-default" />
+        <div className="rounded-lg bg-brand-primary/8 p-2 shadow-[var(--shadow-sm)]">
           <Send className="h-4 w-4 text-brand-primary" />
         </div>
       </div>
@@ -89,9 +89,9 @@ function StarRating({ className }: { className?: string }) {
           {[1, 2, 3, 4, 5].map((i) => (
             <Star key={i} className="h-4 w-4 fill-brand-accent text-brand-accent" />
           ))}
-          <span className="ml-1.5 text-xs font-semibold text-v3-text-muted">4.9</span>
+          <span className="ml-1.5 text-xs font-semibold text-text-muted">4.9</span>
         </div>
-        <div className="h-1.5 w-28 rounded-full bg-v3-bg-secondary">
+        <div className="h-1.5 w-28 rounded-full bg-surface-tertiary">
           <div className="h-full w-[85%] rounded-full bg-brand-accent/40" />
         </div>
       </div>
@@ -137,12 +137,12 @@ function CardContent({
           <div className={`shrink-0 inline-flex items-center justify-center rounded-lg p-1.5 ${iconBg}`}>
             <Icon className={`h-3.5 w-3.5 ${iconColor}`} />
           </div>
-          <h3 className="text-sm font-bold text-v3-text-primary">
+          <h3 className="text-sm font-bold text-text-primary">
             {t(`items.${featureKey}.title`)}
           </h3>
         </div>
         <div className="flex items-center justify-between pl-[28px]">
-          <p className="mt-0.5 text-xs leading-relaxed text-v3-text-secondary">
+          <p className="mt-0.5 text-xs leading-relaxed text-text-secondary">
             {t(`items.${featureKey}.description`)}
           </p>
           <Link href={href} className="ml-2 shrink-0 inline-flex items-center gap-1 text-xs font-medium text-brand-primary">
@@ -160,11 +160,11 @@ function CardContent({
         <div className={`shrink-0 inline-flex items-center justify-center rounded-lg p-1.5 ${iconBg}`}>
           <Icon className={`h-4 w-4 ${iconColor}`} />
         </div>
-        <h3 className="text-sm font-bold text-v3-text-primary lg:text-base">
+        <h3 className="text-sm font-bold text-text-primary lg:text-base">
           {t(`items.${featureKey}.title`)}
         </h3>
       </div>
-      <p className="text-xs leading-relaxed text-v3-text-secondary">
+      <p className="text-xs leading-relaxed text-text-secondary">
         {t(`items.${featureKey}.description`)}
       </p>
       {highlightCount > 0 && (
@@ -172,7 +172,7 @@ function CardContent({
           {Array.from({ length: highlightCount }, (_, i) => (
             <div key={i} className="flex items-center gap-1.5">
               <Check className="h-3 w-3 shrink-0 text-brand-primary" />
-              <span className="text-xs text-v3-text-secondary">
+              <span className="text-xs text-text-secondary">
                 {t(`items.${featureKey}.highlights.${i}`)}
               </span>
             </div>
@@ -211,10 +211,10 @@ export function FeaturesBento() {
           <Badge variant="accent" className="mb-3">
             {t('badge')}
           </Badge>
-          <h2 className="mb-3 font-serif text-3xl font-bold tracking-tight text-v3-text-primary md:text-4xl lg:text-[2.75rem]">
+          <h2 className="mb-3 font-serif text-3xl font-bold tracking-tight text-text-primary md:text-4xl lg:text-[2.75rem]">
             {t('title')}
           </h2>
-          <p className="text-lg text-v3-text-secondary">{t('subtitle')}</p>
+          <p className="text-lg text-text-secondary">{t('subtitle')}</p>
         </motion.div>
 
         {/* Bento — 3 flex columns */}
@@ -231,14 +231,14 @@ export function FeaturesBento() {
             <motion.div
               variants={cardReveal}
               whileHover={hover}
-              className="group relative overflow-hidden rounded-2xl border border-v3-border/50 bg-white shadow-[var(--v3-shadow-md)] transition-shadow duration-300 hover:shadow-[var(--v3-shadow-lg)] md:flex-[42]"
+              className="group relative overflow-hidden rounded-2xl border border-border-light bg-white shadow-[var(--shadow-md)] transition-shadow duration-300 hover:shadow-[var(--shadow-lg)] md:flex-[42]"
             >
               <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse at 0% 0%, rgba(255,207,162,0.06), transparent 55%)' }} />
               <CardContent
                 featureKey="upsell"
                 icon={ShoppingBag}
                 iconBg="bg-brand-accent/15"
-                iconColor="text-brand-accent-dark"
+                iconColor="text-brand-accent"
                 t={t}
                 href="/produit/ventes-additionnelles"
                 highlightCount={2}
@@ -249,7 +249,7 @@ export function FeaturesBento() {
             <motion.div
               variants={cardReveal}
               whileHover={hover}
-              className="group relative overflow-hidden rounded-2xl border border-v3-border/50 bg-white shadow-[var(--v3-shadow-md)] transition-shadow duration-300 hover:shadow-[var(--v3-shadow-lg)] md:flex-[58]"
+              className="group relative overflow-hidden rounded-2xl border border-border-light bg-white shadow-[var(--shadow-md)] transition-shadow duration-300 hover:shadow-[var(--shadow-lg)] md:flex-[58]"
             >
               <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse at 100% 100%, rgba(0,111,104,0.04), transparent 60%)' }} />
               <CardContent
@@ -277,14 +277,14 @@ export function FeaturesBento() {
             <motion.div
               variants={cardReveal}
               whileHover={hover}
-              className="group relative overflow-hidden rounded-2xl border border-v3-border/50 bg-white shadow-[var(--v3-shadow-md)] transition-shadow duration-300 hover:shadow-[var(--v3-shadow-lg)] md:flex-[12]"
+              className="group relative overflow-hidden rounded-2xl border border-border-light bg-white shadow-[var(--shadow-md)] transition-shadow duration-300 hover:shadow-[var(--shadow-lg)] md:flex-[12]"
             >
               <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse at 50% 100%, rgba(255,207,162,0.05), transparent 55%)' }} />
               <CardContent
                 featureKey="crm"
                 icon={Users}
                 iconBg="bg-brand-accent/10"
-                iconColor="text-brand-accent-dark"
+                iconColor="text-brand-accent"
                 t={t}
                 compact
                 href="/produit/crm"
@@ -295,7 +295,7 @@ export function FeaturesBento() {
             <motion.div
               variants={cardReveal}
               whileHover={hover}
-              className="group relative flex flex-col overflow-hidden rounded-2xl border border-v3-border/50 bg-white shadow-[var(--v3-shadow-md)] transition-shadow duration-300 hover:shadow-[var(--v3-shadow-lg)] md:flex-[48]"
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-border-light bg-white shadow-[var(--shadow-md)] transition-shadow duration-300 hover:shadow-[var(--shadow-lg)] md:flex-[48]"
             >
               <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse at 85% 15%, rgba(0,111,104,0.04), transparent 50%), radial-gradient(ellipse at 15% 85%, rgba(255,207,162,0.04), transparent 50%)' }} />
               {/* Text — prioritized */}
@@ -304,11 +304,11 @@ export function FeaturesBento() {
                   <div className="shrink-0 inline-flex items-center justify-center rounded-lg bg-emerald-500/8 p-1.5">
                     <Workflow className="h-4 w-4 text-emerald-600" />
                   </div>
-                  <h3 className="text-sm font-bold text-v3-text-primary lg:text-base">
+                  <h3 className="text-sm font-bold text-text-primary lg:text-base">
                     {t('items.automation.title')}
                   </h3>
                 </div>
-                <p className="text-xs leading-relaxed text-v3-text-secondary">
+                <p className="text-xs leading-relaxed text-text-secondary">
                   {t('items.automation.description')}
                 </p>
                 <Link href="/produit/automatisations" className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-brand-primary">
@@ -330,7 +330,7 @@ export function FeaturesBento() {
             <motion.div
               variants={cardReveal}
               whileHover={hover}
-              className="group relative overflow-hidden rounded-2xl border border-v3-border/50 bg-white shadow-[var(--v3-shadow-md)] transition-shadow duration-300 hover:shadow-[var(--v3-shadow-lg)] md:flex-[18]"
+              className="group relative overflow-hidden rounded-2xl border border-border-light bg-white shadow-[var(--shadow-md)] transition-shadow duration-300 hover:shadow-[var(--shadow-lg)] md:flex-[18]"
             >
               <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse at 100% 50%, rgba(0,111,104,0.03), transparent 55%)' }} />
               <ConcentricCircles className="right-[-30px] top-1/2 -translate-y-1/2" />
@@ -358,7 +358,7 @@ export function FeaturesBento() {
             <motion.div
               variants={cardReveal}
               whileHover={hover}
-              className="group relative overflow-hidden rounded-2xl border border-v3-border/50 bg-white shadow-[var(--v3-shadow-md)] transition-shadow duration-300 hover:shadow-[var(--v3-shadow-lg)] md:flex-[58]"
+              className="group relative overflow-hidden rounded-2xl border border-border-light bg-white shadow-[var(--shadow-md)] transition-shadow duration-300 hover:shadow-[var(--shadow-lg)] md:flex-[58]"
             >
               <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse at 100% 0%, rgba(20,184,166,0.04), transparent 55%)' }} />
               <CardContent
@@ -377,14 +377,14 @@ export function FeaturesBento() {
             <motion.div
               variants={cardReveal}
               whileHover={hover}
-              className="group relative overflow-hidden rounded-2xl border border-v3-border/50 bg-white shadow-[var(--v3-shadow-md)] transition-shadow duration-300 hover:shadow-[var(--v3-shadow-lg)] md:flex-[42]"
+              className="group relative overflow-hidden rounded-2xl border border-border-light bg-white shadow-[var(--shadow-md)] transition-shadow duration-300 hover:shadow-[var(--shadow-lg)] md:flex-[42]"
             >
               <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse at 0% 100%, rgba(244,63,94,0.04), transparent 50%)' }} />
               <CardContent
                 featureKey="reviews"
                 icon={Star}
                 iconBg="bg-brand-accent/15"
-                iconColor="text-brand-accent-dark"
+                iconColor="text-brand-accent"
                 t={t}
                 href="/produit/avis"
                 highlightCount={2}

@@ -200,7 +200,7 @@ export function Header() {
                 <button
                   className={cn(
                     'flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors',
-                    activeDropdown === 'produit' ? 'bg-zinc-100 text-brand-primary' : 'text-brand-dark hover:bg-zinc-100'
+                    activeDropdown === 'produit' ? 'bg-surface-secondary text-brand-primary' : 'text-brand-dark hover:bg-surface-secondary'
                   )}
                 >
                   {t('product')}
@@ -214,7 +214,7 @@ export function Header() {
               {/* Intégrations Link */}
               <Link
                 href="/integrations"
-                className="flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-medium text-brand-dark transition-colors hover:bg-zinc-100"
+                className="flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-medium text-brand-dark transition-colors hover:bg-surface-secondary"
               >
                 {t('integrations')}
               </Link>
@@ -227,7 +227,7 @@ export function Header() {
                 <button
                   className={cn(
                     'flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-medium transition-colors',
-                    activeDropdown === 'solutions' ? 'bg-zinc-100 text-brand-primary' : 'text-brand-dark hover:bg-zinc-100'
+                    activeDropdown === 'solutions' ? 'bg-surface-secondary text-brand-primary' : 'text-brand-dark hover:bg-surface-secondary'
                   )}
                 >
                   {t('solutions')}
@@ -241,7 +241,7 @@ export function Header() {
               {/* Tarifs Link */}
               <Link
                 href="/tarifs"
-                className="flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-medium text-brand-dark transition-colors hover:bg-zinc-100"
+                className="flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-medium text-brand-dark transition-colors hover:bg-surface-secondary"
               >
                 {t('pricing')}
               </Link>
@@ -249,7 +249,7 @@ export function Header() {
               {/* Blog Link */}
               <Link
                 href="/blog"
-                className="flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-medium text-brand-dark transition-colors hover:bg-zinc-100"
+                className="flex items-center gap-1 rounded-lg px-4 py-2 text-sm font-medium text-brand-dark transition-colors hover:bg-surface-secondary"
               >
                 Blog
               </Link>
@@ -262,7 +262,7 @@ export function Header() {
                 href="https://app.trigger-flow.com/login"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 rounded-lg px-2 py-2 text-sm font-medium text-brand-dark transition-colors hover:bg-zinc-100"
+                className="flex items-center gap-2 rounded-lg px-2 py-2 text-sm font-medium text-brand-dark transition-colors hover:bg-surface-secondary"
                 aria-label={t('login')}
               >
                 <User className="h-4 w-4" />
@@ -303,7 +303,7 @@ export function Header() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className="absolute left-0 right-0 top-full border-t border-zinc-100 bg-white shadow-xl"
+              className="absolute left-0 right-0 top-full border-t border-border-light bg-white shadow-xl"
               onMouseEnter={() => setActiveDropdown(activeDropdown)}
               onMouseLeave={handleMouseLeave}
             >
@@ -357,7 +357,7 @@ function MegaMenuProduit() {
       <div className="grid grid-cols-5 gap-8">
         {menuItems.produit.columns.map((column) => (
           <div key={column.title}>
-            <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-zinc-500">
+            <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-text-secondary">
               {column.title}
             </h3>
             <ul className="space-y-1">
@@ -374,7 +374,7 @@ function MegaMenuProduit() {
                       <div className="text-sm font-medium text-brand-dark group-hover:text-brand-primary">
                         {item.label}
                       </div>
-                      <div className="text-xs text-zinc-500 leading-snug">
+                      <div className="text-xs text-text-secondary leading-snug">
                         {item.description}
                       </div>
                     </div>
@@ -387,7 +387,7 @@ function MegaMenuProduit() {
       </div>
 
       {/* Featured Link */}
-      <div className="mt-8 pt-6 border-t border-zinc-100">
+      <div className="mt-8 pt-6 border-t border-border-light">
         <Link
           href="/produit"
           className="group flex items-center gap-4 rounded-xl bg-gradient-to-r from-brand-light to-brand-light/50 p-4 transition-all hover:from-brand-light hover:to-brand-light"
@@ -399,7 +399,7 @@ function MegaMenuProduit() {
             <div className="text-base font-semibold text-brand-dark">
               {menuItems.produit.featured.label}
             </div>
-            <div className="text-sm text-zinc-600">
+            <div className="text-sm text-text-secondary">
               {menuItems.produit.featured.description}
             </div>
           </div>
@@ -415,7 +415,7 @@ function MegaMenuSolutions() {
     <div className="grid grid-cols-2 gap-12">
       {menuItems.solutions.columns.map((column) => (
         <div key={column.title}>
-          <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-zinc-500">
+          <h3 className="mb-4 text-xs font-semibold uppercase tracking-wider text-text-secondary">
             {column.title}
           </h3>
           <div className="grid grid-cols-2 gap-2">
@@ -432,7 +432,7 @@ function MegaMenuSolutions() {
                   <div className="text-sm font-medium text-brand-dark group-hover:text-brand-primary">
                     {item.label}
                   </div>
-                  <div className="text-xs text-zinc-500 leading-snug">
+                  <div className="text-xs text-text-secondary leading-snug">
                     {item.description}
                   </div>
                 </div>
@@ -454,7 +454,7 @@ function MegaMenuRessources() {
           href={item.href}
           target={item.href.startsWith('http') ? '_blank' : undefined}
           rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-          className="group flex items-start gap-4 rounded-xl border border-zinc-100 bg-white p-4 transition-all hover:border-brand-primary/20 hover:shadow-lg"
+          className="group flex items-start gap-4 rounded-xl border border-border-light bg-white p-4 transition-all hover:border-brand-primary/20 hover:shadow-lg"
         >
           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-brand-light group-hover:bg-brand-primary/10">
             <item.icon className="h-6 w-6 text-brand-primary" />
@@ -463,7 +463,7 @@ function MegaMenuRessources() {
             <div className="text-base font-medium text-brand-dark group-hover:text-brand-primary">
               {item.label}
             </div>
-            <div className="mt-1 text-sm text-zinc-500 leading-snug">
+            <div className="mt-1 text-sm text-text-secondary leading-snug">
               {item.description}
             </div>
           </div>
@@ -506,7 +506,7 @@ function MobileMenu({ t, onClose }: MobileMenuProps) {
         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
         className="absolute right-0 top-0 h-full w-full max-w-sm bg-white shadow-xl overflow-y-auto"
       >
-        <div className="flex h-16 items-center justify-between px-4 md:h-20 border-b border-zinc-100">
+        <div className="flex h-16 items-center justify-between px-4 md:h-20 border-b border-border-light">
           <span className="text-lg font-semibold text-brand-dark">Menu</span>
           <button
             onClick={onClose}
@@ -526,7 +526,7 @@ function MobileMenu({ t, onClose }: MobileMenuProps) {
           >
             {menuItems.produit.columns.map((column) => (
               <div key={column.title} className="mb-4">
-                <div className="text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-2 px-2">
+                <div className="text-xs font-semibold uppercase tracking-wider text-text-secondary mb-2 px-2">
                   {column.title}
                 </div>
                 {column.items.map((item) => (
@@ -534,7 +534,7 @@ function MobileMenu({ t, onClose }: MobileMenuProps) {
                     key={item.label}
                     href={item.href as any}
                     onClick={onClose}
-                    className="flex items-center gap-3 rounded-lg px-2 py-2 text-sm text-brand-dark hover:bg-zinc-50"
+                    className="flex items-center gap-3 rounded-lg px-2 py-2 text-sm text-brand-dark hover:bg-surface-secondary"
                   >
                     <item.icon className="h-4 w-4 text-brand-primary" />
                     {item.label}
@@ -548,7 +548,7 @@ function MobileMenu({ t, onClose }: MobileMenuProps) {
           <Link
             href="/integrations"
             onClick={onClose}
-            className="flex items-center justify-between rounded-lg px-4 py-3 text-base font-medium text-brand-dark hover:bg-zinc-50"
+            className="flex items-center justify-between rounded-lg px-4 py-3 text-base font-medium text-brand-dark hover:bg-surface-secondary"
           >
             {t('integrations')}
           </Link>
@@ -561,7 +561,7 @@ function MobileMenu({ t, onClose }: MobileMenuProps) {
           >
             {menuItems.solutions.columns.map((column) => (
               <div key={column.title} className="mb-4">
-                <div className="text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-2 px-2">
+                <div className="text-xs font-semibold uppercase tracking-wider text-text-secondary mb-2 px-2">
                   {column.title}
                 </div>
                 {column.items.map((item) => (
@@ -569,7 +569,7 @@ function MobileMenu({ t, onClose }: MobileMenuProps) {
                     key={item.label}
                     href={item.href as any}
                     onClick={onClose}
-                    className="flex items-center gap-3 rounded-lg px-2 py-2 text-sm text-brand-dark hover:bg-zinc-50"
+                    className="flex items-center gap-3 rounded-lg px-2 py-2 text-sm text-brand-dark hover:bg-surface-secondary"
                   >
                     <item.icon className="h-4 w-4 text-brand-primary" />
                     {item.label}
@@ -583,7 +583,7 @@ function MobileMenu({ t, onClose }: MobileMenuProps) {
           <Link
             href="/tarifs"
             onClick={onClose}
-            className="flex items-center justify-between rounded-lg px-4 py-3 text-base font-medium text-brand-dark hover:bg-zinc-50"
+            className="flex items-center justify-between rounded-lg px-4 py-3 text-base font-medium text-brand-dark hover:bg-surface-secondary"
           >
             {t('pricing')}
           </Link>
@@ -592,12 +592,12 @@ function MobileMenu({ t, onClose }: MobileMenuProps) {
           <Link
             href="/blog"
             onClick={onClose}
-            className="flex items-center justify-between rounded-lg px-4 py-3 text-base font-medium text-brand-dark hover:bg-zinc-50"
+            className="flex items-center justify-between rounded-lg px-4 py-3 text-base font-medium text-brand-dark hover:bg-surface-secondary"
           >
             Blog
           </Link>
 
-          <div className="my-4 border-t border-zinc-200" />
+          <div className="my-4 border-t border-border-light" />
 
           <div className="px-2 mb-4">
             <LanguageSwitcher />
@@ -607,7 +607,7 @@ function MobileMenu({ t, onClose }: MobileMenuProps) {
             href="https://app.trigger-flow.com/login"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 rounded-lg px-4 py-3 text-base font-medium text-brand-dark hover:bg-zinc-50"
+            className="flex items-center gap-2 rounded-lg px-4 py-3 text-base font-medium text-brand-dark hover:bg-surface-secondary"
           >
             <User className="h-5 w-5" />
             {t('login')}
@@ -643,11 +643,11 @@ function MobileAccordion({ title, isExpanded, onToggle, children }: MobileAccord
     <div>
       <button
         onClick={onToggle}
-        className="flex w-full items-center justify-between rounded-lg px-4 py-3 text-base font-medium text-brand-dark hover:bg-zinc-50"
+        className="flex w-full items-center justify-between rounded-lg px-4 py-3 text-base font-medium text-brand-dark hover:bg-surface-secondary"
       >
         {title}
         <ChevronDown className={cn(
-          'h-5 w-5 text-zinc-500 transition-transform duration-200',
+          'h-5 w-5 text-text-secondary transition-transform duration-200',
           isExpanded && 'rotate-180'
         )} />
       </button>

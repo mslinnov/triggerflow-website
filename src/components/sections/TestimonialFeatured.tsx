@@ -29,7 +29,7 @@ export function TestimonialFeatured() {
           <motion.div
             whileHover={!prefersReducedMotion ? { scale: 1.01, y: -5 } : {}}
             transition={{ type: 'spring', stiffness: 200 }}
-            className="rounded-3xl border border-v3-border/50 bg-white p-8 shadow-[var(--v3-shadow-lg)] md:p-12 transition-shadow"
+            className="rounded-3xl border border-border-light bg-white p-8 shadow-[var(--shadow-lg)] md:p-12 transition-shadow"
           >
             {/* Quote Icon */}
             <motion.div
@@ -48,7 +48,7 @@ export function TestimonialFeatured() {
               whileInView={{ opacity: 1 }}
               viewport={defaultViewport}
               transition={{ delay: 0.2 }}
-              className="text-xl font-medium leading-relaxed text-v3-text-primary md:text-2xl"
+              className="text-xl font-medium leading-relaxed text-text-primary md:text-2xl"
             >
               "{t('quote')}"
             </motion.blockquote>
@@ -59,15 +59,15 @@ export function TestimonialFeatured() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={defaultViewport}
               transition={{ delay: 0.3 }}
-              className="mt-8 flex items-center gap-4 border-t border-v3-border/50 pt-8"
+              className="mt-8 flex items-center gap-4 border-t border-border-light pt-8"
             >
               {/* Avatar placeholder */}
               <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-brand-primary to-brand-dark text-lg font-bold text-white">
                 {t('author.initials')}
               </div>
               <div>
-                <p className="font-semibold text-v3-text-primary">{t('author.name')}</p>
-                <p className="text-sm text-v3-text-secondary">{t('author.title')}</p>
+                <p className="font-semibold text-text-primary">{t('author.name')}</p>
+                <p className="text-sm text-text-secondary">{t('author.title')}</p>
               </div>
             </motion.div>
 
@@ -77,7 +77,7 @@ export function TestimonialFeatured() {
               whileInView="visible"
               variants={staggerContainer}
               viewport={defaultViewport}
-              className="mt-8 grid gap-4 rounded-2xl bg-v3-bg-secondary p-6 sm:grid-cols-3"
+              className="mt-8 grid gap-4 rounded-2xl bg-surface-tertiary p-6 sm:grid-cols-3"
             >
               {metrics.map((metric) => (
                 <motion.div
@@ -91,8 +91,8 @@ export function TestimonialFeatured() {
                   >
                     <metric.icon className="h-5 w-5 text-brand-primary" />
                   </motion.div>
-                  <p className="text-xl font-bold text-v3-text-primary">{t(`metrics.${metric.key}.value`)}</p>
-                  <p className="text-sm text-v3-text-secondary">{t(`metrics.${metric.key}.label`)}</p>
+                  <p className="text-xl font-bold text-text-primary">{t(`metrics.${metric.key}.value`)}</p>
+                  <p className="text-sm text-text-secondary">{t(`metrics.${metric.key}.label`)}</p>
                 </motion.div>
               ))}
             </motion.div>

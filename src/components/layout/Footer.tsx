@@ -62,7 +62,7 @@ export function Footer() {
             {/* Column 1: Logo + Contact */}
             <div className="lg:col-span-1">
               <Logo />
-              <p className="mt-4 text-sm leading-relaxed text-zinc-400">
+              <p className="mt-4 text-sm leading-relaxed text-white/50">
                 {t('description')}
               </p>
 
@@ -70,19 +70,19 @@ export function Footer() {
               <div className="mt-6 space-y-3">
                 <a
                   href="mailto:contact@trigger-flow.com"
-                  className="flex items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-white"
+                  className="flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-white"
                 >
                   <Mail className="h-4 w-4" aria-hidden="true" />
                   contact@trigger-flow.com
                 </a>
                 <a
                   href="tel:+33123456789"
-                  className="flex items-center gap-2 text-sm text-zinc-400 transition-colors hover:text-white"
+                  className="flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-white"
                 >
                   <Phone className="h-4 w-4" aria-hidden="true" />
                   +33 1 23 45 67 89
                 </a>
-                <div className="flex items-start gap-2 text-sm text-zinc-400">
+                <div className="flex items-start gap-2 text-sm text-white/50">
                   <MapPin className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
                   <span>Paris, France</span>
                 </div>
@@ -112,7 +112,7 @@ export function Footer() {
                   <li key={link.labelKey}>
                     <Link
                       href={link.href}
-                      className="text-sm text-zinc-400 transition-colors hover:text-white"
+                      className="text-sm text-white/50 transition-colors hover:text-white"
                     >
                       {t(link.labelKey)}
                     </Link>
@@ -121,7 +121,7 @@ export function Footer() {
                 <li>
                   <Link
                     href="/tarifs"
-                    className="text-sm text-zinc-400 transition-colors hover:text-white"
+                    className="text-sm text-white/50 transition-colors hover:text-white"
                   >
                     {t('product.pricing')}
                   </Link>
@@ -129,7 +129,7 @@ export function Footer() {
                 <li>
                   <Link
                     href="/integrations"
-                    className="text-sm text-zinc-400 transition-colors hover:text-white"
+                    className="text-sm text-white/50 transition-colors hover:text-white"
                   >
                     {t('product.integrations')}
                   </Link>
@@ -147,7 +147,7 @@ export function Footer() {
                   <li key={link.labelKey}>
                     <Link
                       href={link.href}
-                      className="text-sm text-zinc-400 transition-colors hover:text-white"
+                      className="text-sm text-white/50 transition-colors hover:text-white"
                     >
                       {t(link.labelKey)}
                     </Link>
@@ -166,7 +166,7 @@ export function Footer() {
                   <li key={link.labelKey}>
                     <Link
                       href={link.href}
-                      className="text-sm text-zinc-400 transition-colors hover:text-white"
+                      className="text-sm text-white/50 transition-colors hover:text-white"
                     >
                       {t(link.labelKey)}
                     </Link>
@@ -194,14 +194,14 @@ export function Footer() {
                     {link.isLink ? (
                       <Link
                         href={link.href}
-                        className="text-sm text-zinc-400 transition-colors hover:text-white"
+                        className="text-sm text-white/50 transition-colors hover:text-white"
                       >
                         {t(link.labelKey)}
                       </Link>
                     ) : (
                       <a
                         href={link.href}
-                        className="text-sm text-zinc-400 transition-colors hover:text-white"
+                        className="text-sm text-white/50 transition-colors hover:text-white"
                       >
                         {t(link.labelKey)}
                       </a>
@@ -218,7 +218,7 @@ export function Footer() {
                   <li key={link.labelKey}>
                     <Link
                       href={link.href}
-                      className="text-sm text-zinc-400 transition-colors hover:text-white"
+                      className="text-sm text-white/50 transition-colors hover:text-white"
                     >
                       {t(link.labelKey)}
                     </Link>
@@ -231,10 +231,10 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 py-8 md:flex-row">
-          <p className="text-sm text-zinc-400">
+          <p className="text-sm text-white/50">
             {t('copyright', { year: currentYear })}
           </p>
-          <div className="flex items-center gap-6 text-sm text-zinc-400">
+          <div className="flex items-center gap-6 text-sm text-white/50">
             <span>{t('bottom.utelysSolution')}</span>
             <span className="hidden md:inline">•</span>
             <span>
@@ -286,7 +286,7 @@ function NewsletterForm() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder={t('placeholder')}
-          className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-zinc-500 focus:border-brand-primary focus:outline-none focus:ring-1 focus:ring-brand-primary"
+          className="w-full rounded-lg border border-white/10 bg-white/5 px-3 py-2 text-sm text-white placeholder:text-white/40 focus:border-brand-primary focus:outline-none focus:ring-1 focus:ring-brand-primary"
           required
           disabled={status === 'loading' || status === 'success'}
         />
@@ -316,9 +316,9 @@ function NewsletterForm() {
           onChange={(e) => setConsent(e.target.checked)}
           className="mt-0.5 h-4 w-4 shrink-0 rounded border-white/20 bg-white/5 text-brand-primary focus:ring-brand-primary"
         />
-        <span className="text-xs text-zinc-500">
+        <span className="text-xs text-white/40">
           {tConsent('consent')}{' '}
-          <Link href="/politique-confidentialite" className="text-zinc-400 underline hover:text-white">
+          <Link href="/politique-confidentialite" className="text-white/50 underline hover:text-white">
             {tConsent('privacyLink')}
           </Link>
         </span>
@@ -332,7 +332,7 @@ function NewsletterForm() {
         <p className="mt-2 text-xs text-red-400">{tConsent('error')}</p>
       )}
       {status === 'idle' && (
-        <p className="mt-2 text-xs text-zinc-500">{t('disclaimer')}</p>
+        <p className="mt-2 text-xs text-white/40">{t('disclaimer')}</p>
       )}
     </form>
   );

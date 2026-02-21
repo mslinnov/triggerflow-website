@@ -37,7 +37,7 @@ export function CustomerSuccess() {
   const t = useTranslations('customerSuccess');
 
   return (
-    <section className="bg-[var(--v3-bg-primary)] py-16 md:py-24">
+    <section className="bg-white py-16 md:py-24">
       <Container>
         {/* Header */}
         <motion.div
@@ -50,10 +50,10 @@ export function CustomerSuccess() {
           <Badge variant="primary" className="mb-4">
             {t('badge')}
           </Badge>
-          <h2 className="text-3xl font-bold tracking-tight text-v3-text-primary md:text-4xl">
+          <h2 className="text-3xl font-bold tracking-tight text-text-primary md:text-4xl">
             {t('title')}
           </h2>
-          <p className="mt-3 text-base text-v3-text-secondary md:text-lg">
+          <p className="mt-3 text-base text-text-secondary md:text-lg">
             {t('subtitle')}
           </p>
         </motion.div>
@@ -71,15 +71,15 @@ export function CustomerSuccess() {
               key={item.key}
               variants={cardReveal}
               whileHover={{ y: -4 }}
-              className="rounded-2xl border border-v3-border/50 bg-white p-5 shadow-[var(--v3-shadow-sm)] transition-shadow duration-300 hover:shadow-[var(--v3-shadow-md)]"
+              className="rounded-2xl border border-border-light bg-white p-5 shadow-[var(--shadow-sm)] transition-shadow duration-300 hover:shadow-[var(--shadow-md)]"
             >
               <div className="mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-brand-primary/8">
                 <item.icon className="h-5 w-5 text-brand-primary" />
               </div>
-              <h3 className="text-base font-bold text-v3-text-primary">
+              <h3 className="text-base font-bold text-text-primary">
                 {t(`items.${item.key}.title`)}
               </h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-v3-text-secondary">
+              <p className="mt-1.5 text-sm leading-relaxed text-text-secondary">
                 {t(`items.${item.key}.description`)}
               </p>
             </motion.div>
@@ -96,10 +96,10 @@ export function CustomerSuccess() {
         >
           <div className="inline-flex items-center gap-2.5 rounded-full border border-brand-accent/60 bg-brand-accent-light/60 px-5 py-2.5">
             <Star className="h-4.5 w-4.5 fill-brand-accent text-brand-accent" />
-            <span className="text-sm font-semibold text-amber-900">
+            <span className="text-sm font-semibold text-brand-dark">
               {t('satisfaction.value')}
             </span>
-            <span className="text-sm text-amber-700">
+            <span className="text-sm text-text-secondary">
               {t('satisfaction.label')}
             </span>
           </div>

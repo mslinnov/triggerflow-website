@@ -129,7 +129,7 @@ export function PersonasBento() {
   ];
 
   return (
-    <section className="bg-white py-14 md:py-20">
+    <section className="bg-surface-secondary py-14 md:py-20">
       <Container>
         <motion.div
           initial="hidden"
@@ -142,14 +142,14 @@ export function PersonasBento() {
             {/* ═══ LEFT COLUMN — 2fr / 1fr split ═══ */}
             <div className="grid gap-3 md:grid-rows-[2fr_1fr] md:gap-4">
               {/* Product Screenshot with browser chrome */}
-              <div className="relative overflow-hidden rounded-[20px] border border-v3-border/80 bg-white shadow-sm md:rounded-[32px]">
-                <div className="flex items-center gap-2 border-b border-v3-border/50 bg-v3-bg-secondary/80 px-4 py-2.5">
+              <div className="relative overflow-hidden rounded-[20px] border border-border-default bg-white shadow-sm md:rounded-[32px]">
+                <div className="flex items-center gap-2 border-b border-border-light bg-surface-tertiary/80 px-4 py-2.5">
                   <div className="flex gap-1.5">
-                    <div className="h-2.5 w-2.5 rounded-full bg-v3-border" />
-                    <div className="h-2.5 w-2.5 rounded-full bg-v3-border" />
-                    <div className="h-2.5 w-2.5 rounded-full bg-v3-border" />
+                    <div className="h-2.5 w-2.5 rounded-full bg-border-default" />
+                    <div className="h-2.5 w-2.5 rounded-full bg-border-default" />
+                    <div className="h-2.5 w-2.5 rounded-full bg-border-default" />
                   </div>
-                  <div className="ml-2 flex-1 rounded-md bg-v3-bg-tertiary px-3 py-1 text-xs text-v3-text-muted">
+                  <div className="ml-2 flex-1 rounded-md bg-surface-tertiary px-3 py-1 text-xs text-text-muted">
                     app.trigger-flow.com
                   </div>
                 </div>
@@ -226,9 +226,9 @@ export function PersonasBento() {
                 href="https://app.lemcal.com/@trigger-flow/demo"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-between rounded-[20px] bg-v3-bg-secondary p-6 transition-colors hover:bg-v3-bg-tertiary md:rounded-[32px] md:p-8"
+                className="group flex items-center justify-between rounded-[20px] bg-surface-tertiary p-6 transition-colors hover:bg-surface-tertiary md:rounded-[32px] md:p-8"
               >
-                <span className="text-lg font-semibold text-v3-text-primary md:text-2xl">
+                <span className="text-lg font-semibold text-text-primary md:text-2xl">
                   {t('cta')}
                 </span>
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-primary text-white transition-transform group-hover:translate-x-1">

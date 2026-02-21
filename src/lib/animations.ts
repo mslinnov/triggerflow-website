@@ -2,11 +2,11 @@ import { Variants } from 'framer-motion';
 
 // Basic fade in up animation
 export const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: 'easeOut' },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
   },
 };
 
@@ -84,9 +84,20 @@ export const heroItem: Variants = {
 
 // Card hover animation
 export const cardHover = {
-  scale: 1.02,
-  y: -5,
+  scale: 1.015,
+  y: -3,
   transition: { type: 'spring' as const, stiffness: 300, damping: 20 },
+};
+
+// Blur up animation for hero elements
+export const blurUp: Variants = {
+  hidden: { opacity: 0, y: 24, filter: 'blur(8px)' },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+  },
 };
 
 // Button animations

@@ -61,7 +61,7 @@ export function LogoCloud() {
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <section className="border-y border-v3-border/50 bg-white py-10 md:py-14">
+    <section className="border-y border-border-light bg-white py-10 md:py-14">
       <Container>
         {/* Title */}
         <motion.p
@@ -69,7 +69,7 @@ export function LogoCloud() {
           whileInView="visible"
           variants={fadeInUp}
           viewport={defaultViewport}
-          className="text-center text-sm font-medium uppercase tracking-wider text-v3-text-muted"
+          className="text-center text-sm font-medium uppercase tracking-wider text-text-muted"
         >
           {t('title')}
         </motion.p>
@@ -118,7 +118,7 @@ export function LogoCloud() {
                 key={kpi.key}
                 variants={staggerItem}
                 className={`flex flex-col items-center text-center px-4 py-2${
-                  index < kpis.length - 1 ? ' sm:border-r sm:border-v3-border/50' : ''
+                  index < kpis.length - 1 ? ' sm:border-r sm:border-border-light' : ''
                 }`}
               >
                 <Icon className="mb-2 h-4 w-4 text-brand-primary/40" strokeWidth={1.5} />
@@ -137,7 +137,7 @@ export function LogoCloud() {
                     </span>
                   )}
                 </div>
-                <p className="mt-1 text-xs text-v3-text-muted">{label}</p>
+                <p className="mt-1 text-xs text-text-muted">{label}</p>
               </motion.div>
             );
           })}

@@ -9,7 +9,7 @@ export function Card({ className, children }: CardProps) {
   return (
     <div
       className={cn(
-        'rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm',
+        'rounded-2xl border border-border-light bg-white p-6 shadow-sm',
         className
       )}
     >
@@ -52,7 +52,7 @@ interface CardDescriptionProps {
 
 export function CardDescription({ className, children }: CardDescriptionProps) {
   return (
-    <p className={cn('text-zinc-600', className)}>
+    <p className={cn('text-text-secondary', className)}>
       {children}
     </p>
   );
@@ -78,7 +78,7 @@ interface CardFooterProps {
 
 export function CardFooter({ className, children }: CardFooterProps) {
   return (
-    <div className={cn('mt-4 pt-4 border-t border-zinc-100', className)}>
+    <div className={cn('mt-4 pt-4 border-t border-border-light', className)}>
       {children}
     </div>
   );

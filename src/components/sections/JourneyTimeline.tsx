@@ -62,7 +62,7 @@ const phases: PhaseConfig[] = [
   {
     key: 'postStay',
     number: '03',
-    pillClass: 'bg-brand-accent/30 text-brand-accent-dark',
+    pillClass: 'bg-brand-accent/30 text-brand-accent',
     gradientStyle: 'radial-gradient(ellipse at 0% 100%, rgba(255,207,162,0.08), transparent 60%)',
     icons: [Star, ClipboardList, Mail],
     highlightCount: 4,
@@ -104,10 +104,10 @@ function HighlightItem({
 }) {
   return (
     <li className="flex items-start gap-2.5">
-      <span className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-v3-bg-secondary ${checkColor}`}>
+      <span className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-surface-tertiary ${checkColor}`}>
         <Check className="h-3 w-3" strokeWidth={2.5} />
       </span>
-      <span className="text-sm font-medium text-v3-text-secondary">{text}</span>
+      <span className="text-sm font-medium text-text-secondary">{text}</span>
     </li>
   );
 }
@@ -135,7 +135,7 @@ function PhaseCard({
     <motion.div
       variants={cardReveal}
       whileHover={prefersReducedMotion ? undefined : { y: -4 }}
-      className={`group relative overflow-hidden rounded-2xl border border-v3-border/50 bg-white p-8 shadow-[var(--v3-shadow-md)] transition-shadow duration-300 hover:shadow-[var(--v3-shadow-lg)] lg:p-10 ${staggerOffset}`}
+      className={`group relative overflow-hidden rounded-2xl border border-border-light bg-white p-8 shadow-[var(--shadow-md)] transition-shadow duration-300 hover:shadow-[var(--shadow-lg)] lg:p-10 ${staggerOffset}`}
     >
       {/* Subtle colored gradient tint */}
       <div
@@ -144,7 +144,7 @@ function PhaseCard({
       />
 
       {/* Decorative large number */}
-      <span className="pointer-events-none absolute right-4 top-2 select-none font-display text-[120px] font-bold leading-none text-brand-primary/[0.05] lg:text-[140px]">
+      <span className="pointer-events-none absolute right-4 top-2 select-none font-serif text-[120px] font-bold leading-none text-brand-primary/[0.05] lg:text-[140px]">
         {phase.number}
       </span>
 
@@ -163,18 +163,18 @@ function PhaseCard({
               key={i}
               className={`flex h-9 w-9 items-center justify-center rounded-full ${phase.iconBg}`}
             >
-              <Icon className="h-4 w-4 text-v3-text-secondary" />
+              <Icon className="h-4 w-4 text-text-secondary" />
             </div>
           ))}
         </div>
 
         {/* Phase title */}
-        <h3 className="mt-5 font-serif text-xl font-bold text-v3-text-primary lg:text-2xl">
+        <h3 className="mt-5 font-serif text-xl font-bold text-text-primary lg:text-2xl">
           {t(`phases.${phase.key}.title`)}
         </h3>
 
         {/* Description */}
-        <p className="mt-3 text-sm leading-relaxed text-v3-text-secondary lg:text-[15px]">
+        <p className="mt-3 text-sm leading-relaxed text-text-secondary lg:text-[15px]">
           {t(`phases.${phase.key}.description`)}
         </p>
 
@@ -268,7 +268,7 @@ export function JourneyTimeline() {
   return (
     <section
       ref={sectionRef}
-      className="relative overflow-hidden bg-[var(--v3-bg-primary)] py-20 md:py-28"
+      className="relative overflow-hidden bg-surface-secondary py-20 md:py-28"
     >
       {/* Subtle radial background overlay */}
       <div className="pointer-events-none absolute inset-0">
@@ -285,10 +285,10 @@ export function JourneyTimeline() {
           className="mx-auto mb-16 max-w-2xl text-center md:mb-20"
         >
           <Badge variant="accent">{t('badge')}</Badge>
-          <h2 className="mb-4 mt-4 font-serif text-3xl font-bold tracking-tight text-v3-text-primary md:text-4xl lg:text-[2.75rem]">
+          <h2 className="mb-4 mt-4 font-serif text-3xl font-bold tracking-tight text-text-primary md:text-4xl lg:text-[2.75rem]">
             {t('title')}
           </h2>
-          <p className="text-lg text-v3-text-secondary">
+          <p className="text-lg text-text-secondary">
             {t('subtitle')}
           </p>
         </motion.div>
