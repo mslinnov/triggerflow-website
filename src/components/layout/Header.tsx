@@ -34,6 +34,7 @@ import {
   FileQuestion,
   HelpCircle,
   Tent,
+  ArrowRight,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
@@ -84,6 +85,12 @@ const menuItems = {
         ],
       },
     ],
+    featured: {
+      icon: Zap,
+      label: 'Vue d\'ensemble',
+      description: 'Découvrez toutes les fonctionnalités de TriggerFlow',
+      href: '/produit',
+    },
   },
   solutions: {
     labelKey: 'solutions',
