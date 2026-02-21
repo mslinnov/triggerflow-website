@@ -116,14 +116,14 @@
     }
   },
   "hero": {
-    "badge": "Plateforme d'automatisation hôtelière",
-    "title": "Allégez votre charge mentale : automatisez ce que vous avez toujours voulu dans votre hôtel",
-    "subtitle": "TriggerFlow s'adapte à votre façon de travailler. SMS, emails, WhatsApp, enquêtes, upsell... vous décidez quoi automatiser, quand et comment.",
-    "cta": "Réserver une démo",
-    "ctaFree": "Essai gratuit 14 jours",
+    "badge": "La plateforme CRM des hôteliers exigeants",
+    "title": "Chaque interaction client, orchestrée avec précision",
+    "subtitle": "TriggerFlow automatise vos communications avant, pendant et après le séjour. Vous gardez le contrôle, vos clients vivent une expérience sans couture.",
+    "cta": "Demander une démo privée",
+    "ctaFree": "Essai gratuit — 14 jours",
     "ctaSecondary": "Découvrir les modules",
     "socialProof": {
-      "hotels": "Plusieurs milliers d'utilisateurs satisfaits"
+      "hotels": "Plus de 500 hôteliers nous font confiance"
     },
     "trustBadges": {
       "rgpd": "Conforme RGPD",
@@ -167,7 +167,7 @@
     }
   },
   "logoCloud": {
-    "title": "Ils nous font confiance",
+    "title": "Adopté par des hôteliers en France et en Europe",
     "metrics": {
       "hotels": "hôtels équipés",
       "basket": "de panier moyen",
@@ -176,8 +176,8 @@
     "cta": "Découvrir leurs témoignages"
   },
   "communicationFlow": {
-    "title": "Déclencheur → Action → Résultat",
-    "subtitle": "Choisissez un événement déclencheur, définissez l'action automatique, et laissez TriggerFlow s'occuper du reste",
+    "title": "Un événement se produit. TriggerFlow agit.",
+    "subtitle": "Définissez vos déclencheurs et vos actions. Le reste se fait automatiquement, 24h/24.",
     "triggers": {
       "label": "Déclencheurs",
       "reservation": "Réservation",
@@ -206,9 +206,9 @@
     }
   },
   "journeyTimeline": {
-    "badge": "Parcours Client",
-    "title": "Choisissez ce que vous automatisez, à chaque étape",
-    "subtitle": "Avant, pendant ou après le séjour : vous décidez quelles interactions confier à TriggerFlow",
+    "badge": "Le parcours client",
+    "title": "Présent à chaque étape, sans être intrusif",
+    "subtitle": "Avant, pendant et après le séjour : vous choisissez les interactions à automatiser, TriggerFlow s'en charge.",
     "phases": {
       "preStay": {
         "label": "Avant le séjour",
@@ -223,7 +223,7 @@
       },
       "stay": {
         "label": "Pendant le séjour",
-        "title": "Accompagnez chaque instant",
+        "title": "Accompagnez sans interrompre",
         "description": "Message de bienvenue, conciergerie digitale, suivi des consommations : présent sans être intrusif.",
         "highlights": {
           "0": "Accueil personnalisé par SMS",
@@ -233,7 +233,7 @@
       },
       "postStay": {
         "label": "Après le séjour",
-        "title": "Transformez l'expérience en fidélité",
+        "title": "Transformez le séjour en relation durable",
         "description": "Checkout express, enquête satisfaction, avis Google, campagnes ciblées : capitalisez sur chaque séjour.",
         "highlights": {
           "0": "Checkout express simplifié",
@@ -367,52 +367,52 @@
     }
   },
   "featuresBento": {
-    "badge": "Fonctionnalités",
-    "title": "Tout ce dont votre hôtel a besoin",
-    "subtitle": "Des modules intégrés pour automatiser chaque aspect de votre relation client",
+    "badge": "La plateforme",
+    "title": "Chaque module, pensé pour l'hôtellerie",
+    "subtitle": "Communication, CRM, ventes, réputation — une suite intégrée qui couvre l'ensemble du parcours client.",
     "cta": "Découvrir",
     "items": {
       "communication": {
         "title": "Communication multicanale",
-        "description": "Email, SMS, WhatsApp réunis dans une boîte de réception unique. Zéro message perdu.",
+        "description": "Email, SMS, WhatsApp dans une boîte de réception unique. Chaque message arrive sur le bon canal, au bon moment.",
         "highlights": ["Boîte de réception unifiée", "Templates personnalisables"]
       },
       "automation": {
         "title": "Workflows & Automatisation",
-        "description": "Scénarios sur-mesure, sans code. Chaque action se déclenche toute seule, au bon moment."
+        "description": "Des scénarios sur-mesure, sans code. Chaque action se déclenche au bon moment, sans intervention manuelle."
       },
       "crm": {
         "title": "CRM Hôtelier",
-        "description": "Vision 360° de chaque client. Historique, préférences, tags : tout est centralisé."
+        "description": "Fiche client à 360°. Historique des séjours, préférences, tags — tout est centralisé et exploitable."
       },
       "forms": {
         "title": "Formulaires intelligents",
-        "description": "Pré-check-in, enquêtes, préférences. Taux de réponse x3 grâce à l'envoi automatisé.",
+        "description": "Pré-check-in, enquêtes, préférences. Taux de réponse multiplié par 3 grâce à l'envoi automatisé.",
         "highlights": ["Pré-check-in automatisé", "Enquêtes de satisfaction"]
       },
       "upsell": {
         "title": "Ventes additionnelles",
-        "description": "Surclassements, spa, late check-out : proposez la bonne offre au bon client, au bon moment.",
+        "description": "Surclassement, spa, late check-out — la bonne offre, au bon client, au bon moment.",
         "highlights": ["Catalogue d'offres intégré", "Envoi ciblé au bon moment"]
       },
       "reviews": {
         "title": "Gestion des avis",
-        "description": "Collectez 5x plus d'avis positifs. Filtrez les insatisfaits avant qu'ils ne publient.",
+        "description": "Collectez 5 fois plus d'avis positifs. Identifiez les insatisfaits avant qu'ils ne publient.",
         "highlights": ["Collecte d'avis automatisée", "Alerte insatisfaction en temps réel"]
       },
       "analytics": {
         "title": "Analytics & Rapports",
-        "description": "KPIs en temps réel. Mesurez l'impact de chaque campagne."
+        "description": "Vos KPIs en temps réel. Mesurez l'impact de chaque campagne et chaque workflow."
       }
     }
   },
   "examples": {
     "badge": "Cas d'usage",
-    "title": "Tout ce que vous pouvez automatiser",
-    "subtitle": "Avec TriggerFlow, tout est automatisable. Voici quelques exemples parmi les plus populaires.",
-    "bottomTitle": "Et bien plus encore...",
-    "bottomText": "Vous avez un besoin spécifique ? Parlons-en. Si vous pouvez l'imaginer, on peut l'automatiser.",
-    "bottomCta": "Discuter de mon projet",
+    "title": "Des scénarios concrets, des résultats mesurés",
+    "subtitle": "Les automatisations les plus déployées par nos clients hôteliers.",
+    "bottomTitle": "Un besoin spécifique ?",
+    "bottomText": "Chaque établissement est unique. Échangeons sur votre projet pour concevoir les automatisations adaptées à votre réalité.",
+    "bottomCta": "Échanger avec un expert",
     "items": {
       "sms": {
         "title": "SMS de bienvenue",
@@ -458,17 +458,17 @@
   },
   "howItWorks": {
     "badge": "Comment ça marche",
-    "title": "Opérationnel en 48h",
-    "subtitle": "Trois étapes suffisent pour automatiser les tâches de votre choix",
+    "title": "Opérationnel en 48 heures",
+    "subtitle": "Trois étapes pour déployer vos premières automatisations",
     "pmsIntegrations": "Intégrations PMS",
     "steps": {
       "connect": {
         "title": "Connectez votre PMS",
-        "description": "Intégration en 1 clic avec Mews, Opera, Thaïs et 50+ autres systèmes. Vos données clients se synchronisent automatiquement."
+        "description": "Intégration native avec Mews, Opera, Thaïs et plus de 50 systèmes. Vos données clients se synchronisent en temps réel."
       },
       "create": {
-        "title": "Créez vos automatisations",
-        "description": "Interface intuitive pour configurer vos workflows en quelques minutes, sans compétence technique.",
+        "title": "Configurez vos workflows",
+        "description": "Interface intuitive pour créer vos scénarios en quelques minutes. Aucune compétence technique requise.",
         "features": {
           "0": "Templates prêts à l'emploi par cas d'usage",
           "1": "Personnalisation drag & drop",
@@ -476,8 +476,8 @@
         }
       },
       "launch": {
-        "title": "Laissez la magie opérer",
-        "description": "TriggerFlow travaille 24/7, vous vous concentrez sur vos clients.",
+        "title": "Observez les résultats",
+        "description": "TriggerFlow opère en continu. Vous suivez les performances, vous vous concentrez sur vos clients.",
         "features": {
           "0": "Statistiques en temps réel",
           "1": "Alertes et notifications configurables",
@@ -487,30 +487,30 @@
     }
   },
   "solutions": {
-    "title": "Adapté à votre réalité",
-    "subtitle": "Que vous gériez un boutique-hôtel ou un groupe de 50 établissements",
+    "title": "Une solution à votre mesure",
+    "subtitle": "Du boutique-hôtel au groupe multi-établissements, TriggerFlow s'adapte à votre structure",
     "discover": "Découvrir",
     "items": {
       "independent": {
         "title": "Hôtels indépendants",
-        "description": "Automatisez sans équipe technique"
+        "description": "Automatisez votre relation client sans équipe technique dédiée"
       },
       "group": {
         "title": "Groupes hôteliers",
-        "description": "Déployez à grande échelle avec contrôle centralisé"
+        "description": "Déploiement multi-établissements avec pilotage centralisé"
       },
       "residence": {
         "title": "Résidences de tourisme",
-        "description": "Gérez les séjours longs et la rotation"
+        "description": "Conçu pour les séjours longue durée et la rotation des clients"
       },
       "guesthouse": {
         "title": "Maisons d'hôtes",
-        "description": "L'automatisation accessible aux petites structures"
+        "description": "L'automatisation premium, accessible aux petites structures"
       }
     }
   },
   "testimonialFeatured": {
-    "quote": "TriggerFlow a transformé notre façon de communiquer avec nos clients. Les enquêtes de satisfaction nous ont permis d'améliorer considérablement notre note sur les OTA. Nous gagnons un temps précieux chaque jour.",
+    "quote": "TriggerFlow a transformé notre communication client. Les enquêtes de satisfaction ont fait passer notre note OTA de 4.2 à 4.7 en quatre mois.",
     "author": {
       "name": "Sandrine Surrel",
       "title": "Directrice, Nature Cathare",
@@ -533,8 +533,8 @@
     "cta": "Lire le cas client complet"
   },
   "pricingPreview": {
-    "title": "Des tarifs adaptés à votre taille",
-    "subtitle": "Du lancement à l'expansion, un plan pour chaque étape",
+    "title": "Des plans pensés pour chaque étape de votre croissance",
+    "subtitle": "Démarrez gratuitement, montez en puissance selon vos besoins",
     "perMonth": "mois",
     "popular": "Populaire",
     "cta": "Comparer les plans en détail",
@@ -547,29 +547,29 @@
     "plans": {
       "discovery": {
         "name": "Découverte",
-        "description": "Pour tester",
+        "description": "Idéal pour tester",
         "features": "1 flow, 1000 emails"
       },
       "communication": {
         "name": "Communication",
-        "description": "Pour démarrer",
+        "description": "Pour structurer vos communications",
         "features": "5 flows, 5000 emails, SMS, WhatsApp"
       },
       "conversion": {
         "name": "Conversion",
-        "description": "Pour performer",
+        "description": "Pour maximiser vos revenus",
         "features": "10 flows, 15000 emails, Formulaires, Ventes"
       },
       "marketing": {
         "name": "Marketing+",
-        "description": "Pour scaler",
+        "description": "Pour industrialiser votre marketing",
         "features": "Illimité, Newsletter, Fidélité"
       }
     }
   },
   "faq": {
     "title": "Questions fréquentes",
-    "subtitle": "Tout ce que vous devez savoir sur TriggerFlow",
+    "subtitle": "Les réponses aux questions les plus posées par nos prospects",
     "contactCta": "Vous avez d'autres questions ? Contactez-nous",
     "items": {
       "setup": {
@@ -611,17 +611,17 @@
   },
   "integrationsShowcase": {
     "badge": "Intégrations",
-    "title": "Compatible avec votre PMS",
-    "subtitle": "Connexion en 1 clic avec plus de 50 systèmes hôteliers",
+    "title": "Connecté à votre écosystème",
+    "subtitle": "Intégration native avec plus de 50 PMS et logiciels hôteliers",
     "count": "+50 intégrations",
     "cta": "Voir toutes les intégrations"
   },
   "testimonialsCarousel": {
     "badge": "Témoignages",
-    "title": "Ce que nos clients en disent",
+    "title": "La parole à nos clients",
     "items": [
       {
-        "quote": "TriggerFlow a transformé notre façon de communiquer avec nos clients. Les enquêtes de satisfaction nous ont permis d'améliorer considérablement notre note sur les OTA.",
+        "quote": "TriggerFlow a transformé notre communication client. Les enquêtes de satisfaction ont fait passer notre note OTA de 4.2 à 4.7 en quatre mois.",
         "name": "Sandrine Surrel",
         "title": "Directrice, Nature Cathare",
         "initials": "SS",
@@ -659,8 +659,8 @@
   },
   "customerSuccess": {
     "badge": "Accompagnement",
-    "title": "On ne vous laisse pas seul",
-    "subtitle": "Un accompagnement humain à chaque étape de votre parcours",
+    "title": "Un accompagnement dédié, du premier jour aux résultats",
+    "subtitle": "Notre équipe vous guide à chaque étape pour maximiser votre retour sur investissement",
     "items": {
       "onboarding": {
         "title": "Opérationnel en 48h",
@@ -688,7 +688,7 @@
     "personas": {
       "direction": {
         "title": "Directeurs d'hôtel",
-        "description": "Pilotez votre relation client en un coup d'œil. Tableaux de bord, KPIs et rapports pour prendre les bonnes décisions.",
+        "description": "Pilotez la relation client en un coup d'œil. KPIs, rapports et tableaux de bord pour des décisions éclairées.",
         "ctas": {
           "analytics": "Analytics",
           "crm": "CRM hôtelier",
@@ -697,7 +697,7 @@
       },
       "frontDesk": {
         "title": "Équipes réception",
-        "description": "Moins de tâches répétitives, plus de temps pour accueillir vos clients.",
+        "description": "Moins de tâches répétitives, plus de temps pour l'accueil et le service.",
         "ctas": {
           "messaging": "Hub messagerie",
           "checkin": "Check-in en ligne",
@@ -706,7 +706,7 @@
       },
       "marketing": {
         "title": "Responsables Marketing",
-        "description": "Créez des campagnes qui augmentent la conversion et le revenu.",
+        "description": "Des campagnes ciblées qui augmentent la conversion et le revenu par client.",
         "ctas": {
           "journeys": "Parcours client",
           "email": "Email marketing",
@@ -715,16 +715,16 @@
       }
     },
     "socialProof": "Satisfaction client moyenne",
-    "cta": "Simplifiez vos opérations dès cette semaine"
+    "cta": "Simplifiez vos opérations dès aujourd'hui"
   },
   "ctaSection": {
-    "title": "Prêt à créer vos premières automatisations ?",
-    "subtitle": "Rejoignez les 200+ hôtels qui ont repris le contrôle de leur relation client",
-    "ctaPrimary": "Réserver une démo",
+    "title": "Prêt à transformer votre relation client ?",
+    "subtitle": "Rejoignez les centaines d'hôteliers qui automatisent leurs opérations avec TriggerFlow",
+    "ctaPrimary": "Demander une démo privée",
     "ctaSecondary": "Nous contacter"
   },
   "footer": {
-    "description": "TriggerFlow est la solution SaaS de référence pour l'automatisation de la relation client dans l'hôtellerie.",
+    "description": "TriggerFlow — la plateforme CRM et automatisation conçue pour l'hôtellerie.",
     "cta": {
       "title": "Prêt à transformer votre relation client ?",
       "subtitle": "Rejoignez les centaines d'hôteliers qui font confiance à TriggerFlow",
@@ -990,7 +990,7 @@
       },
       "marketing": {
         "name": "Marketing+",
-        "description": "Pour scaler votre marketing",
+        "description": "Pour industrialiser votre marketing",
         "features": ["Workflows illimités", "Emails illimités", "1 000 SMS inclus", "Newsletter & Campagnes", "Programme fidélité", "Account manager dédié"]
       }
     },

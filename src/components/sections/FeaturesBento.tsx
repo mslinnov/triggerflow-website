@@ -132,7 +132,7 @@ function CardContent({
 }) {
   if (compact) {
     return (
-      <div className="relative z-10 p-3 lg:p-3.5">
+      <div className="relative z-10 p-3 pb-3.5 lg:p-3.5 lg:pb-4">
         <div className="flex items-center gap-2">
           <div className={`shrink-0 inline-flex items-center justify-center rounded-lg p-1.5 ${iconBg}`}>
             <Icon className={`h-3.5 w-3.5 ${iconColor}`} />
@@ -217,21 +217,21 @@ export function FeaturesBento() {
           <p className="text-lg text-text-secondary">{t('subtitle')}</p>
         </motion.div>
 
-        {/* Bento — 3 flex columns */}
-        <div className="flex flex-col gap-2.5 md:flex-row md:min-h-[340px] lg:min-h-[380px] lg:gap-3">
+        {/* Bento — 1 col mobile, 2 col md, 3 flex col lg */}
+        <div className="flex flex-col gap-2.5 md:grid md:grid-cols-2 lg:flex lg:flex-row lg:min-h-[380px] lg:gap-3">
           {/* ─── LEFT COLUMN ─── */}
           <motion.div
             variants={columnStagger}
             initial="hidden"
             whileInView="visible"
             viewport={defaultViewport}
-            className="flex flex-col gap-2.5 md:flex-[1] lg:gap-3"
+            className="flex flex-col gap-2.5 lg:flex-[1] lg:gap-3"
           >
             {/* Ventes additionnelles — top ~42% */}
             <motion.div
               variants={cardReveal}
               whileHover={hover}
-              className="group relative overflow-hidden rounded-2xl border border-border-light bg-white shadow-[var(--shadow-md)] transition-shadow duration-300 hover:shadow-[var(--shadow-lg)] md:flex-[42]"
+              className="group relative overflow-hidden rounded-2xl border border-border-light bg-white shadow-[var(--shadow-md)] transition-shadow duration-300 hover:shadow-[var(--shadow-lg)] lg:flex-[42]"
             >
               <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse at 0% 0%, rgba(255,207,162,0.06), transparent 55%)' }} />
               <CardContent
@@ -249,7 +249,7 @@ export function FeaturesBento() {
             <motion.div
               variants={cardReveal}
               whileHover={hover}
-              className="group relative overflow-hidden rounded-2xl border border-border-light bg-white shadow-[var(--shadow-md)] transition-shadow duration-300 hover:shadow-[var(--shadow-lg)] md:flex-[58]"
+              className="group relative overflow-hidden rounded-2xl border border-border-light bg-white shadow-[var(--shadow-md)] transition-shadow duration-300 hover:shadow-[var(--shadow-lg)] lg:flex-[58]"
             >
               <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse at 100% 100%, rgba(0,111,104,0.04), transparent 60%)' }} />
               <CardContent
@@ -271,13 +271,13 @@ export function FeaturesBento() {
             initial="hidden"
             whileInView="visible"
             viewport={defaultViewport}
-            className="flex flex-col gap-2.5 md:flex-[1.1] lg:gap-3"
+            className="flex flex-col gap-2.5 lg:flex-[1.1] lg:gap-3"
           >
             {/* CRM — top compact */}
             <motion.div
               variants={cardReveal}
               whileHover={hover}
-              className="group relative overflow-hidden rounded-2xl border border-border-light bg-white shadow-[var(--shadow-md)] transition-shadow duration-300 hover:shadow-[var(--shadow-lg)] md:flex-[12]"
+              className="group relative overflow-hidden rounded-2xl border border-border-light bg-white shadow-[var(--shadow-md)] transition-shadow duration-300 hover:shadow-[var(--shadow-lg)] lg:flex-[20]"
             >
               <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse at 50% 100%, rgba(255,207,162,0.05), transparent 55%)' }} />
               <CardContent
@@ -295,7 +295,7 @@ export function FeaturesBento() {
             <motion.div
               variants={cardReveal}
               whileHover={hover}
-              className="group relative flex flex-col overflow-hidden rounded-2xl border border-border-light bg-white shadow-[var(--shadow-md)] transition-shadow duration-300 hover:shadow-[var(--shadow-lg)] md:flex-[48]"
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-border-light bg-white shadow-[var(--shadow-md)] transition-shadow duration-300 hover:shadow-[var(--shadow-lg)] lg:flex-[48]"
             >
               <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse at 85% 15%, rgba(0,111,104,0.04), transparent 50%), radial-gradient(ellipse at 15% 85%, rgba(255,207,162,0.04), transparent 50%)' }} />
               {/* Text — prioritized */}
@@ -330,7 +330,7 @@ export function FeaturesBento() {
             <motion.div
               variants={cardReveal}
               whileHover={hover}
-              className="group relative overflow-hidden rounded-2xl border border-border-light bg-white shadow-[var(--shadow-md)] transition-shadow duration-300 hover:shadow-[var(--shadow-lg)] md:flex-[18]"
+              className="group relative overflow-hidden rounded-2xl border border-border-light bg-white shadow-[var(--shadow-md)] transition-shadow duration-300 hover:shadow-[var(--shadow-lg)] lg:flex-[18]"
             >
               <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse at 100% 50%, rgba(0,111,104,0.03), transparent 55%)' }} />
               <ConcentricCircles className="right-[-30px] top-1/2 -translate-y-1/2" />
@@ -352,13 +352,13 @@ export function FeaturesBento() {
             initial="hidden"
             whileInView="visible"
             viewport={defaultViewport}
-            className="flex flex-col gap-2.5 md:flex-[1] lg:gap-3"
+            className="flex flex-col gap-2.5 lg:flex-[1] lg:gap-3"
           >
             {/* Forms — top ~58% */}
             <motion.div
               variants={cardReveal}
               whileHover={hover}
-              className="group relative overflow-hidden rounded-2xl border border-border-light bg-white shadow-[var(--shadow-md)] transition-shadow duration-300 hover:shadow-[var(--shadow-lg)] md:flex-[58]"
+              className="group relative overflow-hidden rounded-2xl border border-border-light bg-white shadow-[var(--shadow-md)] transition-shadow duration-300 hover:shadow-[var(--shadow-lg)] lg:flex-[58]"
             >
               <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse at 100% 0%, rgba(0,111,104,0.04), transparent 55%)' }} />
               <CardContent
@@ -377,7 +377,7 @@ export function FeaturesBento() {
             <motion.div
               variants={cardReveal}
               whileHover={hover}
-              className="group relative overflow-hidden rounded-2xl border border-border-light bg-white shadow-[var(--shadow-md)] transition-shadow duration-300 hover:shadow-[var(--shadow-lg)] md:flex-[42]"
+              className="group relative overflow-hidden rounded-2xl border border-border-light bg-white shadow-[var(--shadow-md)] transition-shadow duration-300 hover:shadow-[var(--shadow-lg)] lg:flex-[42]"
             >
               <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse at 0% 100%, rgba(0,111,104,0.03), transparent 50%)' }} />
               <CardContent
