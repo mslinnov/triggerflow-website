@@ -184,7 +184,7 @@ export function PersonasBento() {
                   title={t('personas.frontDesk.title')}
                   description={t('personas.frontDesk.description')}
                   imageSrc="/images/benefit-1.webp"
-                  gradient="from-[#1a1a2e]/70 to-[#006F68]/50"
+                  gradient="from-[#002B28]/70 to-[#006F68]/50"
                   ctaLinks={frontDeskLinks}
                   className="min-h-[180px]"
                 />
@@ -194,7 +194,7 @@ export function PersonasBento() {
                   title={t('personas.marketing.title')}
                   description={t('personas.marketing.description')}
                   imageSrc="/images/assets/campaigns.webp"
-                  gradient="from-[#006F68]/60 to-[#1a1a2e]/70"
+                  gradient="from-[#006F68]/60 to-[#002B28]/70"
                   ctaLinks={marketingLinks}
                   className="row-span-2 min-h-[180px]"
                 />

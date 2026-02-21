@@ -52,12 +52,12 @@ const phases: PhaseConfig[] = [
   {
     key: 'stay',
     number: '02',
-    pillClass: 'bg-emerald-500/10 text-emerald-600',
-    gradientStyle: 'radial-gradient(ellipse at 50% 100%, rgba(16,185,129,0.04), transparent 60%)',
+    pillClass: 'bg-brand-primary/10 text-brand-primary',
+    gradientStyle: 'radial-gradient(ellipse at 50% 100%, rgba(0,111,104,0.04), transparent 60%)',
     icons: [MessageSquare, Headphones, ClipboardList],
     highlightCount: 3,
-    iconBg: 'bg-emerald-500/8',
-    checkColor: 'text-emerald-500',
+    iconBg: 'bg-brand-primary/8',
+    checkColor: 'text-brand-primary',
   },
   {
     key: 'postStay',
@@ -67,7 +67,7 @@ const phases: PhaseConfig[] = [
     icons: [Star, ClipboardList, Mail],
     highlightCount: 4,
     iconBg: 'bg-brand-accent/15',
-    checkColor: 'text-amber-600',
+    checkColor: 'text-brand-accent',
   },
 ];
 
@@ -209,12 +209,12 @@ function JourneyConnector({
       <defs>
         <linearGradient id="connector-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="var(--color-brand-primary)" stopOpacity="0.3" />
-          <stop offset="50%" stopColor="#10b981" stopOpacity="0.3" />
+          <stop offset="50%" stopColor="var(--color-brand-primary)" stopOpacity="0.3" />
           <stop offset="100%" stopColor="var(--color-brand-accent)" stopOpacity="0.3" />
         </linearGradient>
         <linearGradient id="connector-gradient-active" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="var(--color-brand-primary)" />
-          <stop offset="50%" stopColor="#10b981" />
+          <stop offset="50%" stopColor="var(--color-brand-primary)" />
           <stop offset="100%" stopColor="var(--color-brand-accent)" />
         </linearGradient>
       </defs>

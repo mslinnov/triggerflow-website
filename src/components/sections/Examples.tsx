@@ -44,7 +44,7 @@ export function Examples() {
           <Badge variant="secondary" className="mb-4">
             {t('badge')}
           </Badge>
-          <h2 className="text-3xl font-bold tracking-tight text-text-primary md:text-4xl">
+          <h2 className="font-serif text-3xl font-bold tracking-tight text-text-primary md:text-4xl">
             {t('title')}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-text-secondary">

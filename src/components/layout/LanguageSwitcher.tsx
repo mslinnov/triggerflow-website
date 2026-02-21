@@ -44,7 +44,7 @@ export function LanguageSwitcher() {
       >
         <span className="text-lg leading-none">{localeFlags[locale]}</span>
         <ChevronDown className={cn(
-          'h-3.5 w-3.5 text-gray-400 transition-transform duration-200',
+          'h-3.5 w-3.5 text-text-muted transition-transform duration-200',
           isOpen && 'rotate-180'
         )} />
       </button>

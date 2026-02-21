@@ -141,11 +141,11 @@ function CardContent({
             {t(`items.${featureKey}.title`)}
           </h3>
         </div>
-        <div className="flex items-center justify-between pl-[28px]">
+        <div className="pl-[28px]">
           <p className="mt-0.5 text-xs leading-relaxed text-text-secondary">
             {t(`items.${featureKey}.description`)}
           </p>
-          <Link href={href} className="ml-2 shrink-0 inline-flex items-center gap-1 text-xs font-medium text-brand-primary">
+          <Link href={href} className="mt-1.5 inline-flex items-center gap-1 text-xs font-medium text-brand-primary">
             {t('cta')}
             <ArrowRight className="h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5" />
           </Link>
@@ -301,8 +301,8 @@ export function FeaturesBento() {
               {/* Text — prioritized */}
               <div className="relative z-10 px-3.5 pt-3.5 pb-1 lg:px-4 lg:pt-4 lg:pb-1.5">
                 <div className="mb-1.5 flex items-center gap-2">
-                  <div className="shrink-0 inline-flex items-center justify-center rounded-lg bg-emerald-500/8 p-1.5">
-                    <Workflow className="h-4 w-4 text-emerald-600" />
+                  <div className="shrink-0 inline-flex items-center justify-center rounded-lg bg-brand-primary/8 p-1.5">
+                    <Workflow className="h-4 w-4 text-brand-primary" />
                   </div>
                   <h3 className="text-sm font-bold text-text-primary lg:text-base">
                     {t('items.automation.title')}
@@ -360,7 +360,7 @@ export function FeaturesBento() {
               whileHover={hover}
               className="group relative overflow-hidden rounded-2xl border border-border-light bg-white shadow-[var(--shadow-md)] transition-shadow duration-300 hover:shadow-[var(--shadow-lg)] md:flex-[58]"
             >
-              <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse at 100% 0%, rgba(20,184,166,0.04), transparent 55%)' }} />
+              <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse at 100% 0%, rgba(0,111,104,0.04), transparent 55%)' }} />
               <CardContent
                 featureKey="forms"
                 icon={ClipboardList}
@@ -379,7 +379,7 @@ export function FeaturesBento() {
               whileHover={hover}
               className="group relative overflow-hidden rounded-2xl border border-border-light bg-white shadow-[var(--shadow-md)] transition-shadow duration-300 hover:shadow-[var(--shadow-lg)] md:flex-[42]"
             >
-              <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse at 0% 100%, rgba(244,63,94,0.04), transparent 50%)' }} />
+              <div className="pointer-events-none absolute inset-0" style={{ background: 'radial-gradient(ellipse at 0% 100%, rgba(0,111,104,0.03), transparent 50%)' }} />
               <CardContent
                 featureKey="reviews"
                 icon={Star}

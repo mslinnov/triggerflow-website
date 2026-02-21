@@ -51,7 +51,7 @@ export function TestimonialsCarousel() {
           viewport={defaultViewport}
           className="mb-12 text-center"
         >
-          <Badge variant="accent" className="mb-4">
+          <Badge variant="accent" className="mb-4 bg-white/[0.08] text-brand-accent border border-white/[0.12]">
             {t('badge')}
           </Badge>
           <h2 className="font-serif text-3xl font-bold text-white md:text-4xl">
