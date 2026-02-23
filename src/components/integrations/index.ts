@@ -1,0 +1,12 @@
+export { IntegrationHero } from './IntegrationHero';
+export { TrustBar } from './TrustBar';
+export { BenefitsGrid } from './BenefitsGrid';
+export { DataSyncTable } from './DataSyncTable';
+export { ScenarioCard } from './ScenarioCard';
+export { ScenariosSection } from './ScenariosSection';
+export { IntegrationHowItWorks } from './IntegrationHowItWorks';
+export { IntegrationTestimonial } from './IntegrationTestimonial';
+export { IntegrationFaq } from './IntegrationFaq';
+export { AuthorBox } from './AuthorBox';
+export { IntegrationCta } from './IntegrationCta';
+export { RelatedIntegrations } from './RelatedIntegrations';

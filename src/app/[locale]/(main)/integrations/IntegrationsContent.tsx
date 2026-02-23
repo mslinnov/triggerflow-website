@@ -4,9 +4,15 @@ import { useTranslations } from 'next-intl';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, ArrowDown, MessageCircle, MessageSquare, Hotel, Lock, Printer, CreditCard, Star, Zap, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { useLocale } from 'next-intl';
 import { Container, ButtonLink, Badge } from '@/components/ui';
 import { cn } from '@/lib/utils';
 import { fadeInUp, staggerContainer, staggerItem, defaultViewport } from '@/lib/animations';
+
+const integrationLinks: Record<string, string> = {
+  mews: '/integrations/pms/mews',
+};
 
 interface Integration {
   key: string;
@@ -113,6 +119,7 @@ const integrationCategories: Category[] = [
 
 export function IntegrationsContent() {
   const t = useTranslations('integrations');
+  const locale = useLocale();
   const prefersReducedMotion = useReducedMotion();
 
   const totalIntegrations = integrationCategories.reduce(
@@ -221,13 +228,9 @@ export function IntegrationsContent() {
                 viewport={defaultViewport}
                 className="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
               >
-                {category.integrations.map((integration) => (
-                  <motion.div
-                    key={integration.key}
-                    variants={staggerItem}
-                    whileHover={!prefersReducedMotion ? { y: -4 } : {}}
-                    className="group relative"
-                  >
+                {category.integrations.map((integration) => {
+                  const href = integrationLinks[integration.key];
+                  const cardContent = (
                     <div className={cn(
                       'relative rounded-2xl border border-zinc-200/80 bg-white p-1 transition-all duration-200',
                       'hover:shadow-lg hover:shadow-zinc-200/50',
@@ -254,8 +257,25 @@ export function IntegrationsContent() {
                         </p>
                       </div>
                     </div>
-                  </motion.div>
-                ))}
+                  );
+
+                  return (
+                    <motion.div
+                      key={integration.key}
+                      variants={staggerItem}
+                      whileHover={!prefersReducedMotion ? { y: -4 } : {}}
+                      className="group relative"
+                    >
+                      {href ? (
+                        <Link href={`/${locale}${href}`}>
+                          {cardContent}
+                        </Link>
+                      ) : (
+                        cardContent
+                      )}
+                    </motion.div>
+                  );
+                })}
               </motion.div>
             </Container>
           </section>
