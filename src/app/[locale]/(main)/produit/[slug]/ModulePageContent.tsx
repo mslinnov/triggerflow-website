@@ -188,7 +188,7 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
             <motion.div {...motionProps} variants={fadeInUp} className="flex flex-col text-center lg:text-left">
               <Badge variant="primary" className="mb-6 gap-2 self-center border-brand-primary/20 bg-brand-primary/8 text-xs font-semibold tracking-wide lg:self-start">
                 <Icon className="h-3.5 w-3.5 text-brand-primary" />
-                {module.title}
+                Automatisation email hôtelière
               </Badge>
 
               <h1 className="text-3xl font-bold leading-[1.15] tracking-tight text-brand-dark sm:text-4xl md:text-5xl lg:text-[3.25rem]">
@@ -219,6 +219,28 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
                 >
                   {t('cta.pricing')}
                 </ButtonLink>
+              </div>
+
+              {/* Social proof */}
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
+                <div className="flex -space-x-2">
+                  {[
+                    { initials: 'SL', from: 'from-brand-primary', to: 'to-brand-accent' },
+                    { initials: 'MR', from: 'from-brand-primary', to: 'to-brand-dark' },
+                    { initials: 'AD', from: 'from-brand-accent', to: 'to-brand-primary' },
+                    { initials: 'JP', from: 'from-brand-dark', to: 'to-brand-primary' },
+                  ].map((avatar) => (
+                    <div
+                      key={avatar.initials}
+                      className={`flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br ${avatar.from} ${avatar.to} ring-2 ring-white text-[10px] font-bold text-white`}
+                    >
+                      {avatar.initials}
+                    </div>
+                  ))}
+                </div>
+                <span className="text-sm font-medium text-text-primary">
+                  Plus de 500 hôtels nous font confiance
+                </span>
               </div>
             </motion.div>
 
@@ -333,14 +355,11 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
         <Container>
           <motion.div {...motionProps} variants={fadeInUp} className="mb-14 text-center">
             <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.15em] text-brand-primary">
-              Transformation
+              Le déclic
             </span>
             <h2 className="font-serif text-3xl font-bold tracking-tight text-text-primary md:text-4xl">
               {t('problemSolution.title')}
             </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-text-secondary">
-              {t('problemSolution.subtitle')}
-            </p>
           </motion.div>
 
           <div className="grid gap-6 md:grid-cols-2 md:gap-8">
@@ -360,7 +379,7 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
                     <h3 className="font-serif text-xl font-bold text-red-900">
                       {t('problemSolution.before')}
                     </h3>
-                    <p className="text-sm text-red-600/60">La realite de nombreux hotels</p>
+                    <p className="text-sm text-red-600/60">{t('problemSolution.beforeSubtitle')}</p>
                   </div>
                 </div>
                 <ul className="space-y-4">
@@ -392,7 +411,7 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
                     <h3 className="font-serif text-xl font-bold text-text-primary">
                       {t('problemSolution.after')}
                     </h3>
-                    <p className="text-sm text-text-muted">Ce que TriggerFlow change</p>
+                    <p className="text-sm text-text-muted">{t('problemSolution.afterSubtitle')}</p>
                   </div>
                 </div>
                 <ul className="space-y-4">
@@ -432,7 +451,7 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
         <Container className="relative">
           <motion.div {...motionProps} variants={fadeInUp} className="mb-14 text-center">
             <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.15em] text-brand-primary">
-              Cas d&apos;usage
+              En situation
             </span>
             <h2 className="font-serif text-3xl font-bold tracking-tight text-white md:text-4xl">
               {t('useCases.title')}

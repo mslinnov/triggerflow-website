@@ -1470,22 +1470,24 @@
     },
     "backToProduct": "Retour au produit",
     "problemSolution": {
-      "title": "Avant / Après TriggerFlow",
-      "subtitle": "Découvrez comment ce module transforme votre quotidien",
+      "title": "Ce qui change quand vos emails se gèrent tout seuls",
+      "subtitle": "",
       "before": "Sans TriggerFlow",
-      "after": "Avec TriggerFlow"
+      "beforeSubtitle": "La réalité de 80% des hôtels encore aujourd'hui",
+      "after": "Avec TriggerFlow",
+      "afterSubtitle": "Dès la première semaine"
     },
     "features": {
-      "title": "Fonctionnalités clés",
-      "subtitle": "Tout ce dont vous avez besoin pour réussir"
+      "title": "Créez, personnalisez, analysez — en quelques clics",
+      "subtitle": "Un email builder drag & drop, des variables PMS automatiques et un dashboard analytique. Aucune compétence technique requise."
     },
     "useCases": {
-      "title": "Cas d'usage concrets",
-      "subtitle": "Comment nos clients utilisent ce module au quotidien"
+      "title": "4 emails qui génèrent des résultats mesurables",
+      "subtitle": "Chaque scénario ci-dessous fonctionne dès l'activation — sans intervention de votre équipe."
     },
     "journey": {
-      "title": "Présent à chaque étape du séjour",
-      "subtitle": "TriggerFlow intervient aux moments clés du parcours client"
+      "title": "Un email à chaque étape clé du séjour",
+      "subtitle": "De la réservation au post-séjour, chaque email part automatiquement au bon moment — sans intervention de votre équipe"
     },
     "integrations": {
       "badge": "Intégrations",
@@ -1493,8 +1495,8 @@
       "subtitle": "Compatible avec les principaux PMS et Channel Managers du marché"
     },
     "faq": {
-      "title": "Questions fréquentes",
-      "subtitle": "Tout ce que vous devez savoir sur ce module"
+      "title": "Vos questions, nos réponses",
+      "subtitle": "Tout ce qu'il faut savoir avant de se lancer"
     },
     "testimonial": {
       "quote": "Ce module a transformé notre façon de travailler. Les résultats ont été immédiats et nos clients sont ravis.",
@@ -1502,15 +1504,15 @@
       "role": "Directrice, Hôtel Le Grand"
     },
     "related": {
-      "title": "Modules complémentaires",
-      "subtitle": "L'email, c'est encore mieux avec..."
+      "title": "Encore plus puissant combiné",
+      "subtitle": "Ajoutez SMS ou WhatsApp pour 2x plus d'engagement"
     },
     "cta": {
       "title": "Prêt à découvrir ce module ?",
       "subtitle": "Réservez une démo personnalisée avec notre équipe",
-      "demo": "Réserver une démo",
+      "demo": "Réserver ma démo gratuite",
       "pricing": "Voir les tarifs",
-      "contact": "Nous contacter"
+      "contact": "Poser une question"
     }
   },
   "product": {

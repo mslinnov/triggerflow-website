@@ -101,107 +101,125 @@ export const modules: Record<string, ModuleData> = {
     slug: 'email',
     icon: Mail,
     title: 'Email',
-    seoTitle: 'Email automatique hôtel : confirmations & pré-séjour',
-    headline: 'Chaque email au bon client, au bon moment',
-    description: 'Confirmation, pré-séjour, remerciement, offres personnalisées : TriggerFlow envoie le bon email à chaque étape du séjour. Sans effort.',
+    seoTitle: 'Email automatique hôtel : confirmations, pré-séjour & fidélisation',
+    headline: 'Vos emails envoyés automatiquement — 45% de taux d\'ouverture',
+    description: 'Confirmation en 30 secondes, rappel pré-séjour à J-3, demande d\'avis à J+1. Chaque email est personnalisé aux couleurs de votre établissement, avec les données de votre PMS. Aucune compétence technique requise.',
     mockup: 'EmailMockup',
     painPoints: [
-      'Vous passez 45 min/jour à copier-coller des emails de confirmation manuellement',
-      'Vos emails finissent dans les spams — vos clients ne reçoivent jamais les infos importantes',
-      "Tous vos clients reçoivent le même message générique, sans personnalisation"
+      '45 min/jour perdues à copier-coller des confirmations dans Outlook ou votre PMS',
+      'Vos emails finissent dans les spams — vos clients ne reçoivent jamais les infos d\'arrivée',
+      'Des emails génériques sans votre logo ni vos couleurs — le client ne sait pas qui lui écrit',
+      'Chaque collaborateur envoie un email différent — aucune cohérence dans votre communication'
     ],
     benefits: [
-      'Emails envoyés automatiquement à chaque réservation, check-in, check-out — 0 action manuelle',
-      'Vos emails arrivent en boîte de réception, jamais en spam — on gère la technique pour vous',
-      'Chaque email contient le prénom, les dates, la chambre du client — personnalisation totale'
+      'Emails envoyés automatiquement à chaque réservation, check-in, check-out — 0 action manuelle, dès le premier jour',
+      'Délivrabilité de 98% garantie — on configure SPF, DKIM et DMARC pour vous, vos emails arrivent en boîte de réception',
+      'Chaque email porte votre logo, vos couleurs, votre charte — le client reconnaît votre hôtel au premier coup d\'œil',
+      'Une identité visuelle cohérente sur tous vos points de contact : confirmation, pré-séjour, remerciement, offres'
     ],
     stats: [
-      { value: '45', label: "taux d'ouverture moyen", suffix: '%' },
-      { value: '98', label: 'de délivrabilité', suffix: '%' },
+      { value: '45', label: "taux d'ouverture (vs 21% en hôtellerie)", suffix: '%' },
+      { value: '98', label: 'de délivrabilité garantie', suffix: '%' },
       { value: '3', label: 'plus de clics vs email générique', suffix: 'x' },
-      { value: '2', label: 'pour créer un email', suffix: 'min' },
+      { value: '2', label: 'pour créer un email — sans code', suffix: 'min' },
     ],
     journey: [
-      { label: 'Réservation', description: 'Confirmation automatique', active: true },
-      { label: 'Pré-séjour', description: 'Infos pratiques J-3', active: true },
-      { label: 'Arrivée', description: 'Bienvenue + WiFi', active: false },
-      { label: 'Séjour', description: 'Offres & services', active: false },
-      { label: 'Départ', description: 'Remerciement + avis', active: true },
-      { label: 'Post-séjour', description: 'Fidélisation & offres', active: true },
+      { label: 'Réservation', description: 'Confirmation automatique personnalisée', active: true },
+      { label: 'Pré-séjour', description: 'Infos pratiques + upsell J-3', active: true },
+      { label: 'Arrivée', description: 'Bienvenue + WiFi + services', active: true },
+      { label: 'Séjour', description: 'Offres & recommandations', active: false },
+      { label: 'Départ', description: 'Remerciement + demande d\'avis', active: true },
+      { label: 'Post-séjour', description: 'Fidélisation & offre retour', active: true },
     ],
     features: [
       {
-        title: 'Des emails dignes d\'un 5 étoiles, sans graphiste',
-        description: 'Choisissez parmi 15+ templates pensés pour l\'hôtellerie, ou créez le vôtre en drag & drop. Votre identité visuelle, vos couleurs, votre logo.',
+        title: 'Un email builder pensé pour l\'hôtellerie — 0 ligne de code',
+        description: 'Créez des emails 100% à votre image en drag & drop. Importez votre logo, vos couleurs, vos polices — chaque email que reçoit votre client est immédiatement identifiable comme venant de votre établissement. 15+ templates hôteliers prêts à l\'emploi pour démarrer en 2 minutes.',
         icon: Layout,
-        bullets: ['Logo et couleurs personnalisables', 'Responsive mobile natif', 'Preview avant envoi'],
+        bullets: ['Charte graphique complète : logo, couleurs, polices', 'Templates hôteliers prêts à l\'emploi', 'Responsive mobile natif + preview avant envoi'],
         mockup: 'EmailEditorMockup',
       },
       {
-        title: 'Chaque email parle directement à votre client',
-        description: 'Insérez automatiquement le prénom, les dates de séjour, le type de chambre et bien plus. Vos clients se sentent reconnus.',
+        title: 'Chaque email personnalisé avec les données de votre PMS',
+        description: 'Prénom, dates de séjour, type de chambre, langue du client — les variables s\'insèrent automatiquement depuis votre PMS. Vous pouvez aussi afficher du contenu conditionnel : une offre spa pour les couples, le Kids Club pour les familles.',
         icon: UserCheck,
-        bullets: ['Variables dynamiques illimitées', 'Contenu conditionnel par segment', 'Multi-langue automatique'],
+        bullets: ['Variables dynamiques illimitées depuis votre PMS', 'Contenu conditionnel par segment client', 'Multi-langue automatique (FR, EN, DE, ES...)'],
         mockup: 'EmailPersonalizationMockup',
       },
       {
-        title: 'Sachez exactement ce qui fonctionne',
-        description: "Taux d'ouverture, clics, rebonds... Suivez les performances de chaque email et optimisez en continu.",
+        title: 'Mesurez chaque email, optimisez en continu',
+        description: 'Taux d\'ouverture, clics, rebonds, désabonnements — suivez les performances de chaque email en temps réel. Identifiez ce qui fonctionne et ce qui doit être ajusté en un coup d\'œil.',
         icon: BarChart,
-        bullets: ['Dashboard temps réel', 'Alertes anomalies automatiques', 'Export et rapports'],
+        bullets: ['Dashboard analytics en temps réel', 'Alertes automatiques sur les anomalies', 'Export CSV et rapports planifiés'],
         mockup: 'EmailAnalyticsMockup',
       }
     ],
     useCases: [
       {
         title: 'Confirmation instantanée',
-        description: 'Le client réserve à 23h sur Booking. En 30 secondes, il reçoit un email personnalisé avec son nom, ses dates, le type de chambre et un lien vers son espace client.',
+        description: 'Le client réserve à 23h un dimanche sur Booking. En 30 secondes, il reçoit un email aux couleurs de votre hôtel avec son nom, ses dates, le type de chambre et un lien vers son espace client. Aucun collaborateur n\'a eu besoin d\'intervenir.',
         result: '92% de taux d\'ouverture, 0 action manuelle'
       },
       {
-        title: 'Rappel pré-séjour',
-        description: 'J-3 avant l\'arrivée : horaires de check-in, code WiFi, proposition de surclassement ou spa. Le client arrive informé et serein.',
+        title: 'Rappel pré-séjour J-3',
+        description: 'Trois jours avant l\'arrivée : horaires de check-in, code WiFi, itinéraire, et une proposition de surclassement ou de soin spa. Le client arrive informé, serein — et a déjà acheté un extra.',
         result: '+35% de ventes additionnelles pré-séjour'
       },
       {
-        title: 'Remerciement & avis',
-        description: 'J+1 après le départ : email de remerciement personnalisé avec demande d\'avis. Envoyé uniquement si la satisfaction est positive.',
+        title: 'Demande d\'avis intelligente',
+        description: 'J+1 après le départ : un email de remerciement personnalisé avec un lien direct vers Google. Le système n\'envoie la demande d\'avis que si le séjour s\'est bien passé — pour protéger votre note.',
         result: '+47% d\'avis Google collectés'
       },
       {
-        title: 'Offres personnalisées',
-        description: 'Anniversaire du client, offre fidélité, promotion saisonnière... Chaque offre est ciblée selon l\'historique et les préférences.',
+        title: 'Offres ciblées post-séjour',
+        description: 'Anniversaire du client, programme fidélité, promotion saisonnière — chaque offre est ciblée selon l\'historique de séjours et les préférences. Pas de spam, que de la pertinence.',
         result: '12% de taux de conversion sur les offres'
       }
     ],
     testimonial: {
-      quote: 'Depuis TriggerFlow, nos emails de pré-séjour ont un taux d\'ouverture de 62%. Nos clients arrivent mieux préparés et achètent plus de services.',
+      quote: 'On a mis en place les emails automatiques en une matinée, sans aucune compétence technique. Nos emails de pré-séjour ont un taux d\'ouverture de 62%. Les clients arrivent mieux préparés et achètent plus de services avant même d\'arriver.',
       author: 'Sophie Laurent',
       role: 'Directrice Générale',
       hotel: 'Hôtel & Spa du Lac ****',
-      metric: '62% de taux d\'ouverture'
+      metric: '62% de taux d\'ouverture (vs 21% avant)'
     },
     integrations: ['Thaïs PMS', 'Misterbooking', 'Medialog', 'Opera Cloud', 'Mews', 'Asterio', 'Lean PMS', 'Apaleo'],
     faq: [
       {
-        question: 'Est-ce que les emails arrivent bien en boîte de réception ?',
-        answer: 'Oui. TriggerFlow gère automatiquement la configuration SPF, DKIM et DMARC pour garantir un taux de délivrabilité de 98%. Vos emails n\'atterrissent pas dans les spams.'
+        question: 'Faut-il des compétences techniques pour créer des emails ?',
+        answer: 'Non, aucune. L\'éditeur fonctionne en drag & drop : vous glissez des blocs (texte, image, bouton, logo) et vous personnalisez les couleurs en un clic. Si vous savez utiliser PowerPoint, vous saurez créer un email sur TriggerFlow. Et on fournit 15+ templates hôteliers prêts à l\'emploi pour démarrer immédiatement.'
       },
       {
-        question: 'Puis-je personnaliser le design des emails ?',
-        answer: 'Absolument. Vous pouvez utiliser nos 15+ templates prêts à l\'emploi ou créer les vôtres avec notre éditeur drag & drop. Logo, couleurs, polices — tout est personnalisable.'
+        question: 'Est-ce que les emails arrivent bien en boîte de réception ?',
+        answer: 'Oui. TriggerFlow configure automatiquement SPF, DKIM et DMARC sur votre domaine pour garantir un taux de délivrabilité de 98%. Vos emails arrivent en boîte principale, pas dans les spams ni les promotions.'
+      },
+      {
+        question: 'Les emails reprennent-ils vraiment la charte de mon hôtel ?',
+        answer: 'Complètement. Vous importez votre logo, définissez vos couleurs et vos polices une seule fois. Ensuite, chaque email — confirmation, pré-séjour, remerciement, offre — utilise automatiquement votre charte. Votre client reconnaît votre hôtel au premier coup d\'œil.'
       },
       {
         question: 'Comment les emails sont-ils déclenchés ?',
-        answer: 'Les emails sont déclenchés automatiquement par des événements : nouvelle réservation, J-3 avant arrivée, check-out, etc. Vous définissez les règles une fois, TriggerFlow s\'occupe du reste.'
+        answer: 'Les emails partent automatiquement selon des événements PMS : nouvelle réservation, J-3 avant arrivée, check-in, check-out, etc. Vous paramétrez les règles une fois, TriggerFlow gère tout ensuite — 24h/24, même le dimanche à 23h.'
       },
       {
         question: 'Est-ce compatible avec mon PMS ?',
-        answer: 'TriggerFlow se connecte aux principaux PMS du marché : Opera, Mews, Cloudbeds, D-Edge, Misterbooking, Amenitiz et bien d\'autres. L\'intégration prend moins de 5 minutes.'
+        answer: 'TriggerFlow est connecté nativement aux principaux PMS du marché : Opera, Mews, Thaïs, D-EDGE, Misterbooking, Amenitiz, Medialog et bien d\'autres. L\'intégration prend moins de 5 minutes, sans intervention technique.'
+      },
+      {
+        question: 'Combien de temps pour être opérationnel ?',
+        answer: 'Comptez 1 heure pour connecter votre PMS, importer votre charte graphique et activer vos premiers emails automatiques. La plupart de nos clients envoient leur premier email le jour même de l\'inscription.'
+      },
+      {
+        question: 'Y a-t-il un engagement ou une durée minimum ?',
+        answer: 'Non. TriggerFlow fonctionne sans engagement. Vous pouvez résilier à tout moment en un clic depuis votre espace. On préfère vous garder parce que les résultats sont là, pas par obligation contractuelle.'
+      },
+      {
+        question: 'Combien ça coûte ?',
+        answer: 'Les tarifs démarrent à 69€/mois pour un hôtel indépendant, avec l\'email builder, les automatisations et le support inclus. Consultez notre page tarifs pour voir le détail par plan, ou demandez une démo pour un devis personnalisé.'
       },
     ],
     ctaTitle: 'Envoyez votre premier email automatisé dès aujourd\'hui',
-    ctaSubtitle: 'Démo personnalisée de 20 min. On vous montre avec VOS données.',
+    ctaSubtitle: 'Démo personnalisée de 20 min. On vous montre avec VOS données, votre charte, vos emails.',
     relatedModules: ['sms', 'automatisations', 'newsletter']
   },
 
