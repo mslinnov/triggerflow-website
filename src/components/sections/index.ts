@@ -29,3 +29,5 @@ export { IntegrationsShowcase } from './IntegrationsShowcase';
 export { TestimonialsCarousel } from './TestimonialsCarousel';
 export { CustomerSuccess } from './CustomerSuccess';
 export { PersonasBento } from './PersonasBento';
+export { FeaturesTabbedCommunication } from './FeaturesTabbedCommunication';
+export { FeaturesTabbedCRM } from './FeaturesTabbedCRM';

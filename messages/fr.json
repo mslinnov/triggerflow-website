@@ -1796,5 +1796,371 @@
       "cta": "Envoyer ma candidature"
     },
     "applyComingSoon": "Système de candidature bientôt disponible"
+  },
+  "mewsIntegration": {
+    "meta": {
+      "title": "CRM hôtelier pour Mews | TriggerFlow — Automatisez votre relation client",
+      "description": "Connectez Mews à un CRM conçu pour l'hôtellerie. Synchronisation bidirectionnelle temps réel, emails pré-séjour, upselling automatisé, fidélité. 120+ hôtels connectés. Configuration en 15 min."
+    },
+    "breadcrumb": {
+      "integrations": "Intégrations",
+      "pms": "PMS",
+      "mews": "Mews"
+    },
+    "hero": {
+      "badgeNative": "Intégration native",
+      "badgeMarketplace": "Mews Marketplace",
+      "title": "Le CRM hôtelier qui se connecte nativement à Mews",
+      "subtitle": "Automatisez toute votre relation client depuis les données Mews. Conçu pour les hôtels indépendants et les groupes.",
+      "details": "Synchronisation bidirectionnelle temps réel · Emails, SMS, WhatsApp · Enquêtes satisfaction · Programme de fidélité · Configuration en 15 min",
+      "ctaDemo": "Réserver une démo",
+      "ctaDemoMicro": "Gratuite, 20 min, sans engagement",
+      "ctaData": "Données synchronisées",
+      "ctaPricing": "Voir les tarifs",
+      "lastUpdated": "Dernière mise à jour : février 2026"
+    },
+    "trustBar": {
+      "stats": {
+        "hotels": {
+          "value": "120+",
+          "label": "hôtels sous Mews connectés"
+        },
+        "openRate": {
+          "value": "62%",
+          "label": "taux d'ouverture emails pré-séjour"
+        },
+        "setup": {
+          "value": "15 min",
+          "label": "pour être opérationnel"
+        }
+      },
+      "badges": {
+        "gdpr": "RGPD conforme",
+        "eu": "Hébergement UE",
+        "support": "Support français"
+      }
+    },
+    "benefits": {
+      "title": "Ce que TriggerFlow ajoute à Mews",
+      "subtitle": "Mews gère vos opérations. TriggerFlow transforme ces données en revenus et en fidélité.",
+      "items": [
+        {
+          "title": "Parcours pré-séjour automatisé",
+          "description": "Emails d'accueil, upselling, pré-check-in — chaque réservation déclenche la bonne séquence au bon moment."
+        },
+        {
+          "title": "Gestion d'avis intelligente",
+          "description": "Enquêtes post-séjour qui redirigent les satisfaits vers Google et alertent le directeur pour les mécontents."
+        },
+        {
+          "title": "Reconquête OTA → direct",
+          "description": "Identifiez les clients Booking/Expedia et reconvertissez-les en réservation directe avec des offres ciblées."
+        },
+        {
+          "title": "Programme de fidélité intégré",
+          "description": "Points, statuts VIP et avantages — calculés automatiquement depuis les dépenses réelles dans Mews."
+        }
+      ]
+    },
+    "dataSync": {
+      "title": "Ce qui circule entre Mews et TriggerFlow",
+      "subtitle": "Via l'API ouverte Mews et les webhooks temps réel. Aucun CSV, aucun export manuel.",
+      "caption": "Données synchronisées entre Mews PMS et TriggerFlow CRM — via API ouverte Mews",
+      "columns": {
+        "category": "Catégorie",
+        "detail": "Détail",
+        "direction": "Direction",
+        "usage": "Usage dans TriggerFlow"
+      },
+      "directions": {
+        "bidirectional": "Bidirectionnelle",
+        "fromMews": "Mews → TF",
+        "toMews": "TF → Mews"
+      },
+      "rows": [
+        {
+          "category": "Profils clients",
+          "detail": "Nom, email, téléphone, nationalité, langue, adresse, date de naissance",
+          "direction": "bidirectional",
+          "usage": "Fiches CRM unifiées, segmentation, personnalisation des messages"
+        },
+        {
+          "category": "Réservations",
+          "detail": "Dates, type de chambre, code tarif, canal (direct, OTA, corporate), statut, montant",
+          "direction": "fromMews",
+          "usage": "Triggers automatiques (nouvelle résa, check-in, check-out), filtres de workflow"
+        },
+        {
+          "category": "Charges & extras",
+          "detail": "Minibar, spa, restaurant, room service, frais divers",
+          "direction": "fromMews",
+          "usage": "Calcul de dépense totale par client, segmentation par panier moyen, points fidélité"
+        },
+        {
+          "category": "Chambres & tarifs",
+          "detail": "Catégories, types, plans tarifaires, disponibilités",
+          "direction": "fromMews",
+          "usage": "Vérification dispo avant upselling, personnalisation des offres par type de chambre"
+        },
+        {
+          "category": "Notes & commentaires",
+          "detail": "Préférences, allergies, demandes spéciales, commentaires internes",
+          "direction": "bidirectional",
+          "usage": "Contexte dans la messagerie, personnalisation avancée, assistant IA"
+        },
+        {
+          "category": "Entreprises & groupes",
+          "detail": "Comptes corporate, liens entre clients, réservations groupe",
+          "direction": "fromMews",
+          "usage": "Segmentation B2B, workflows corporate, reporting groupe"
+        },
+        {
+          "category": "Tags & scores TF",
+          "detail": "Tags CRM, score de satisfaction, statut fidélité",
+          "direction": "toMews",
+          "usage": "Visibilité dans Mews Commander pour la réception et les opérations"
+        }
+      ],
+      "technicalNote": "Les réservations individuelles se synchronisent en quelques secondes via webhooks. Les réservations de groupe (allotements, blocs) peuvent prendre jusqu'à 15 minutes pour une synchronisation complète. TriggerFlow ne modifie jamais les réservations ni les tarifs dans Mews — le PMS reste la source de vérité."
+    },
+    "scenarios": {
+      "title": "3 scénarios que les hôtels sur Mews activent en premier",
+      "items": [
+        {
+          "badge": "Scénario 1",
+          "title": "Le parcours pré-séjour qui vend avant l'arrivée",
+          "context": "Mardi 14h12. Mme Leroy réserve 3 nuits en chambre Supérieure pour le 17-20 mars via le booking engine Mews. TriggerFlow capte la réservation. Le workflow démarre :",
+          "timeline": [
+            {
+              "day": "J-7 (mardi)",
+              "description": "Email de confirmation enrichi : dates, chambre Supérieure, code parking 4712, horaires restaurant, recommandations locales. Ce n'est pas la confirmation Mews — c'est un vrai email d'accueil, avec la marque de l'hôtel et des infos utiles."
+            },
+            {
+              "day": "J-3 (samedi)",
+              "description": "WhatsApp d'upselling : proposition de surclassement en Junior Suite (+45 €/nuit). TriggerFlow vérifie la disponibilité dans Mews avant d'envoyer. Si la Junior Suite est complète, le message n'est pas envoyé — pas de promesse impossible."
+            },
+            {
+              "day": "J-1 (dimanche)",
+              "description": "SMS avec le code de la serrure connectée et un lien de pré-check-in. La cliente arrive, badge la porte, s'installe. Zéro file d'attente à la réception."
+            }
+          ],
+          "result": "12-18 % de conversion sur l'upselling pré-séjour. Pour un hôtel de 80 chambres à 130 € d'ADR, ça représente 15 000 à 25 000 € de revenus additionnels par an."
+        },
+        {
+          "badge": "Scénario 2",
+          "title": "L'enquête qui intercepte les avis négatifs",
+          "context": "Jeudi 11h. M. Sanchez fait son check-out après 2 nuits. Son statut passe à \"checked-out\" dans Mews. TriggerFlow enchaîne :",
+          "timeline": [
+            {
+              "day": "J+1 (vendredi)",
+              "description": "Email avec enquête de satisfaction personnalisée. Traduite automatiquement en espagnol — la nationalité de M. Sanchez est dans Mews. 6 questions, 2 minutes à remplir."
+            },
+            {
+              "day": "Si note ≥ 8/10",
+              "description": "Email de remerciement avec lien direct vers la fiche Google Business de l'hôtel. \"Votre retour nous fait plaisir — partagez-le ?\""
+            },
+            {
+              "day": "Si note ≤ 5/10",
+              "description": "Alerte immédiate au directeur. Pas de redirection Google. Le problème est traité en interne AVANT qu'il devienne un avis 1 étoile public. Le directeur appelle le client dans les 24h."
+            }
+          ],
+          "result": "Un hôtel parisien est passé de 8 à 26 avis Google par mois en 4 mois, avec une réduction de 40 % des avis négatifs publics."
+        },
+        {
+          "badge": "Scénario 3",
+          "title": "La reconquête OTA → réservation directe",
+          "context": "Un client arrive via Booking.com. Son séjour se passe bien. Comment le faire revenir en direct ?",
+          "timeline": [
+            {
+              "day": "Check-in",
+              "description": "TriggerFlow détecte \"Booking.com\" dans le canal de réservation Mews. Tag automatique \"source:OTA\" dans le CRM. Le client entre dans un workflow dédié."
+            },
+            {
+              "day": "J+14",
+              "description": "Email personnalisé avec offre exclusive : -10 % sur le tarif direct ou avantage fidélité (late check-out offert). L'offre n'est disponible que via le site de l'hôtel."
+            },
+            {
+              "day": "J+90",
+              "description": "Si pas de nouvelle réservation : relance saisonnière adaptée au profil. Si le client a réservé en direct entre-temps, il sort automatiquement du workflow — pas de spam."
+            }
+          ],
+          "result": "Sur 15-18 % de commission OTA, chaque client reconverti en direct représente un gain immédiat. Un hôtel qui reconvertit 20 clients/mois économise 4 000-6 000 €/mois de commissions."
+        }
+      ],
+      "ctaMid1": {
+        "text": "Voir ces scénarios en démo",
+        "href": "https://app.lemcal.com/@trigger-flow/demo"
+      },
+      "ctaMid2": {
+        "title": "Vous utilisez Mews et ces scénarios vous parlent ?",
+        "cta": "Planifier un échange de 20 minutes",
+        "href": "https://app.lemcal.com/@trigger-flow/demo",
+        "note": "Intégration Mews incluse dans tous les plans.",
+        "noteLink": "Voir les tarifs",
+        "noteHref": "/tarifs"
+      }
+    },
+    "howItWorks": {
+      "title": "Connexion en 3 étapes — 15 minutes, sans développeur",
+      "steps": [
+        {
+          "number": "1",
+          "title": "Activez TriggerFlow dans Mews Marketplace",
+          "description": "Depuis Mews Commander, Marketplace > TriggerFlow. Activez le connecteur — une clé API est générée automatiquement. Copiez-la.",
+          "duration": "~3 minutes"
+        },
+        {
+          "number": "2",
+          "title": "Collez la clé dans TriggerFlow",
+          "description": "Réglages > Intégrations > Mews. La synchronisation bidirectionnelle démarre immédiatement. Clients, réservations, chambres — tout arrive via webhooks.",
+          "duration": "~2 min + sync auto"
+        },
+        {
+          "number": "3",
+          "title": "Activez vos workflows",
+          "description": "Scénarios pré-configurés ou création sur mesure avec le flow builder visuel en glisser-déposer. Pas de code, pas de consultant.",
+          "duration": "~10 minutes"
+        }
+      ]
+    },
+    "testimonial": {
+      "stars": 5,
+      "quote": "On a connecté TriggerFlow à notre Mews un lundi matin. Le soir, nos emails pré-séjour partaient tout seuls. En 3 mois, on a doublé nos avis Google et nos surclassements se vendent presque tout seuls. Ce qui me plaît surtout : l'équipe ne touche plus à rien, ça tourne.",
+      "author": "Claire M., Directrice générale",
+      "context": "Boutique-hôtel 42 chambres — Paris 11e"
+    },
+    "faq": {
+      "title": "Questions fréquentes — CRM hôtelier pour Mews",
+      "items": [
+        {
+          "question": "Qu'est-ce que l'intégration Mews + TriggerFlow ?",
+          "answer": "C'est une connexion native entre le PMS cloud Mews et le CRM hôtelier TriggerFlow. Elle synchronise en temps réel les profils clients, réservations, charges et commentaires via l'API ouverte Mews et des webhooks. Les données circulent dans les deux sens : Mews alimente le CRM avec les données opérationnelles, et les tags, scores de satisfaction et statuts de fidélité TriggerFlow remontent dans Mews Commander — visibles directement par la réception."
+        },
+        {
+          "question": "Comment connecter un CRM à Mews PMS ?",
+          "answer": "Depuis Mews Commander, ouvrez la Marketplace et activez TriggerFlow. Une clé API est générée automatiquement. Collez-la dans TriggerFlow (Réglages > Intégrations > Mews). La synchronisation démarre immédiatement via webhooks temps réel. Pas de développeur nécessaire, pas de fichier à configurer. L'opération complète prend environ 3 minutes."
+        },
+        {
+          "question": "Combien de temps pour être opérationnel ?",
+          "answer": "La connexion technique prend 3 minutes. La synchronisation initiale dépend du volume : quelques minutes pour un hôtel de 50 chambres avec 2 ans d'historique. L'activation des premiers workflows (email pré-séjour, enquête post-séjour) prend 10 à 15 minutes supplémentaires. Total : un hôtel est opérationnel en moins de 30 minutes."
+        },
+        {
+          "question": "Quelles données sont synchronisées entre Mews et TriggerFlow ?",
+          "answer": "Profils clients (nom, email, téléphone, nationalité, langue), réservations (dates, chambre, tarif, canal, statut, montant), charges et extras (minibar, spa, restaurant), notes et commentaires internes, données de chambres et catégories, entreprises et groupes. La sync est bidirectionnelle : les tags et scores TriggerFlow remontent dans Mews Commander. Les réservations de tous les canaux (direct, Booking, Expedia, corporate) sont incluses."
+        },
+        {
+          "question": "Est-ce que Mews est compatible avec un CRM hôtelier externe ?",
+          "answer": "Oui. Mews dispose d'une API ouverte documentée et d'une Marketplace officielle qui référence les CRM compatibles, dont TriggerFlow. La connexion est native — pas de Zapier, pas de middleware. C'est d'ailleurs l'un des avantages de Mews par rapport aux PMS on-premise : la connectivité est pensée dès le départ."
+        },
+        {
+          "question": "TriggerFlow peut-il modifier mes réservations dans Mews ?",
+          "answer": "Non. TriggerFlow lit les données de Mews et peut y écrire des informations complémentaires (tags CRM, commentaires, scores de satisfaction), mais il ne modifie jamais les réservations, tarifs ou disponibilités. C'est une règle de conception. Le PMS reste la source de vérité pour les opérations — TriggerFlow exploite ces données pour la relation client."
+        }
+      ]
+    },
+    "author": {
+      "name": "Soufiane Bouyahia",
+      "initials": "SB",
+      "bio": "Fondateur de TriggerFlow. Avant ça, 8 ans à construire des intégrations PMS pour l'hôtellerie — dont Mews, Opera Cloud et Medialog. Intervenant Food Hotel Tech 2025 sur l'automatisation de la relation client.",
+      "linkedin": "https://www.linkedin.com/in/soufiane-bouyahia/",
+      "linkedinLabel": "Profil LinkedIn"
+    },
+    "ctaFinal": {
+      "title": "Vous utilisez Mews ?",
+      "text": "Découvrez en 20 minutes comment TriggerFlow automatise votre relation client — depuis les données que vous avez déjà dans Mews.",
+      "cta": "Réserver une démo gratuite",
+      "href": "https://app.lemcal.com/@trigger-flow/demo",
+      "alternative": "Besoin d'échanger directement ?",
+      "email": "contact@trigger-flow.com"
+    },
+    "relatedIntegrations": {
+      "title": "Autres intégrations populaires",
+      "items": [
+        {
+          "label": "Catégorie",
+          "title": "Toutes les intégrations PMS",
+          "description": "Mews, Opera Cloud, Thaïs, Medialog et 9 autres PMS connectés nativement.",
+          "href": "/integrations"
+        },
+        {
+          "label": "Intégration PMS",
+          "title": "Opera Cloud + TriggerFlow",
+          "description": "Le CRM hôtelier connecté au PMS le plus utilisé au monde.",
+          "href": "/integrations/pms/opera-cloud"
+        },
+        {
+          "label": "Intégration PMS",
+          "title": "Thaïs PMS + TriggerFlow",
+          "description": "Spécial hôtels-restaurants : dépenses resto synchronisées dans le CRM.",
+          "href": "/integrations/pms/thais"
+        },
+        {
+          "label": "Messagerie",
+          "title": "WhatsApp Business + TriggerFlow",
+          "description": "Messages WhatsApp automatisés directement depuis Mews.",
+          "href": "/integrations/messagerie/whatsapp"
+        },
+        {
+          "label": "IoT",
+          "title": "Serrures Sesame + TriggerFlow",
+          "description": "Code de serrure envoyé automatiquement avant l'arrivée.",
+          "href": "/integrations/serrures/sesame"
+        },
+        {
+          "label": "Solution",
+          "title": "TriggerFlow pour hôtels indépendants",
+          "description": "CRM, automation, fidélité — conçu pour les indépendants.",
+          "href": "/solutions/hotels-independants"
+        }
+      ]
+    }
+  },
+  "featuresTabbed1": {
+    "badge": "Communication & Engagement",
+    "title": "Chaque interaction, orchestrée",
+    "subtitle": "Emails, SMS, WhatsApp, chatbot IA, formulaires — tous vos canaux dans un seul outil, avec des workflows qui se déclenchent au bon moment.",
+    "cta": "Réserver une démo",
+    "items": {
+      "communication": {
+        "title": "Communication multicanale",
+        "description": "Email, SMS, WhatsApp réunis dans une boîte de réception unique. Chaque message part sur le bon canal, au bon moment — sans jongler entre trois outils."
+      },
+      "automation": {
+        "title": "Workflows & Automatisation",
+        "description": "Créez des scénarios sans code : pré-séjour, relance avis, offre d'anniversaire. Chaque étape se déclenche automatiquement selon vos règles."
+      },
+      "chatbot": {
+        "title": "Chat Bot IA",
+        "description": "Un assistant WhatsApp disponible 24h/24 qui répond aux questions fréquentes, propose des services et qualifie les demandes avant de passer la main."
+      },
+      "forms": {
+        "title": "Formulaires intelligents",
+        "description": "Pré-check-in, enquêtes de satisfaction, recueil de préférences — envoyés automatiquement et adaptés à chaque étape du séjour."
+      }
+    }
+  },
+  "featuresTabbed2": {
+    "badge": "CRM & Performance",
+    "title": "Chaque client, connu et valorisé",
+    "subtitle": "Fiche client 360°, ventes additionnelles ciblées, gestion des avis automatisée et rapports en temps réel.",
+    "cta": "Réserver une démo",
+    "items": {
+      "crm": {
+        "title": "CRM Hôtelier",
+        "description": "Historique des séjours, préférences, tags, score de fidélité — tout est centralisé dans une fiche client exploitable dès la réservation."
+      },
+      "upsell": {
+        "title": "Ventes additionnelles",
+        "description": "Surclassement, spa, late check-out — proposez la bonne offre, au bon client, au bon moment. Le tout intégré à votre parcours automatisé."
+      },
+      "reviews": {
+        "title": "Gestion des avis",
+        "description": "Collectez les avis Google au bon moment, identifiez les clients insatisfaits en amont et suivez votre e-réputation depuis un tableau de bord unifié."
+      },
+      "analytics": {
+        "title": "Analytics & Rapports",
+        "description": "Taux d'ouverture, revenus additionnels, satisfaction client — des tableaux de bord clairs pour piloter vos actions et prouver le ROI."
+      }
+    }
   }
 }

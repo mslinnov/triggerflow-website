@@ -13,6 +13,9 @@ export { FormBuilderMockup } from './FormBuilderMockup';
 export { UpsellOfferMockup } from './UpsellOfferMockup';
 export { ReviewCollectMockup } from './ReviewCollectMockup';
 export { AnalyticsDashboardMockup } from './AnalyticsDashboardMockup';
+export { WhatsAppChatbotMockup } from './WhatsAppChatbotMockup';
+export { CrmClientCardMockup } from './CrmClientCardMockup';
+export { ReviewDashboardMockup } from './ReviewDashboardMockup';
 
 // Timeline mockups (for JourneyTimeline)
 export {

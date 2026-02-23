@@ -4,13 +4,14 @@ import {
   Hero,
   LogoCloud,
   CommunicationFlow,
-  FeaturesBento,
   JourneyTimeline,
   HowItWorks,
   IntegrationsShowcase,
   Examples,
   SolutionsGrid,
   PersonasBento,
+  FeaturesTabbedCommunication,
+  FeaturesTabbedCRM,
   TestimonialsCarousel,
   CustomerSuccess,
   PricingPreview,
@@ -66,7 +67,8 @@ export default async function HomePage({ params }: HomePageProps) {
       <Hero />
       <LogoCloud />
       <CommunicationFlow />
-      <FeaturesBento />
+      <FeaturesTabbedCommunication />
+      <FeaturesTabbedCRM />
       <JourneyTimeline />
       <HowItWorks />
       <IntegrationsShowcase />
