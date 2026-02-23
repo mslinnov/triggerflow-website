@@ -19,8 +19,18 @@ export interface TabConfig {
   mockup: ReactNode;
 }
 
+/** Direct data to bypass translations — title, description per tab + header */
+export interface FeaturesTabbedDirectData {
+  badge: string;
+  title: string;
+  subtitle: string;
+  cta: string;
+  items: Record<string, { title: string; description: string }>;
+}
+
 interface FeaturesTabbedProps {
-  translationNamespace: string;
+  translationNamespace?: string;
+  directData?: FeaturesTabbedDirectData;
   tabs: TabConfig[];
   inverted?: boolean;
   autoPlayInterval?: number;
@@ -64,12 +74,25 @@ const TAB_ACCENTS = [
 
 export function FeaturesTabbed({
   translationNamespace,
+  directData,
   tabs,
   inverted = false,
   autoPlayInterval = DEFAULT_INTERVAL,
   className,
 }: FeaturesTabbedProps) {
-  const t = useTranslations(translationNamespace);
+  // Use translations if namespace provided, otherwise use directData
+  const tRaw = useTranslations(translationNamespace || 'featuresTabbed1');
+  const getText = useCallback((key: string) => {
+    if (directData) {
+      // Resolve dotted keys like "items.communication.title"
+      const parts = key.split('.');
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      let val: any = directData;
+      for (const p of parts) { val = val?.[p]; }
+      return typeof val === 'string' ? val : key;
+    }
+    return tRaw(key);
+  }, [directData, tRaw]);
   const prefersReducedMotion = useReducedMotion();
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -173,13 +196,13 @@ export function FeaturesTabbed({
           className="mb-12 text-center md:mb-16"
         >
           <Badge variant="accent" className="mb-4">
-            {t('badge')}
+            {getText('badge')}
           </Badge>
           <h2 className="font-serif text-3xl font-bold text-text-primary md:text-4xl lg:text-[2.75rem]">
-            {t('title')}
+            {getText('title')}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-text-secondary">
-            {t('subtitle')}
+            {getText('subtitle')}
           </p>
         </motion.div>
 
@@ -265,7 +288,7 @@ export function FeaturesTabbed({
                               : 'text-text-muted group-hover:text-text-secondary',
                           )}
                         >
-                          {t(`items.${tab.key}.title`)}
+                          {getText(`items.${tab.key}.title`)}
                         </span>
                       </div>
 
@@ -282,7 +305,7 @@ export function FeaturesTabbed({
                             onMouseLeave={() => setIsPaused(false)}
                           >
                             <p className="mt-2 pl-[4.25rem] text-sm leading-relaxed text-text-secondary">
-                              {t(`items.${tab.key}.description`)}
+                              {getText(`items.${tab.key}.description`)}
                             </p>
                           </motion.div>
                         )}
@@ -320,7 +343,7 @@ export function FeaturesTabbed({
                 rel="noopener noreferrer"
                 className="group/cta inline-flex items-center gap-2.5 rounded-xl bg-brand-primary px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-primary/20 transition-all duration-300 hover:shadow-xl hover:shadow-brand-primary/30"
               >
-                {t('cta')}
+                {getText('cta')}
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/cta:translate-x-1" />
               </a>
             </motion.div>

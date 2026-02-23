@@ -29,5 +29,7 @@ export { IntegrationsShowcase } from './IntegrationsShowcase';
 export { TestimonialsCarousel } from './TestimonialsCarousel';
 export { CustomerSuccess } from './CustomerSuccess';
 export { PersonasBento } from './PersonasBento';
+export { FeaturesTabbed } from './FeaturesTabbed';
+export type { TabConfig, FeaturesTabbedDirectData } from './FeaturesTabbed';
 export { FeaturesTabbedCommunication } from './FeaturesTabbedCommunication';
 export { FeaturesTabbedCRM } from './FeaturesTabbedCRM';
