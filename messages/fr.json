@@ -2132,8 +2132,8 @@
         "description": "Créez des scénarios sans code : pré-séjour, relance avis, offre d'anniversaire. Chaque étape se déclenche automatiquement selon vos règles."
       },
       "chatbot": {
-        "title": "Chat Bot IA",
-        "description": "Un assistant WhatsApp disponible 24h/24 qui répond aux questions fréquentes, propose des services et qualifie les demandes avant de passer la main."
+        "title": "Chatbot IA",
+        "description": "Un assistant IA disponible 24h/24 sur WhatsApp et en live chat sur votre site. Il répond aux questions fréquentes, propose des services et qualifie les demandes avant de passer la main à votre équipe."
       },
       "forms": {
         "title": "Formulaires intelligents",

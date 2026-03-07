@@ -2132,8 +2132,8 @@
         "description": "Build no-code scenarios: pre-stay, review follow-up, birthday offers. Each step triggers automatically based on your rules."
       },
       "chatbot": {
-        "title": "AI Chat Bot",
-        "description": "A 24/7 WhatsApp assistant that answers common questions, suggests services and qualifies requests before handing off to your team."
+        "title": "AI Chatbot",
+        "description": "A 24/7 AI assistant available on WhatsApp and as a live chat widget on your website. It answers common questions, suggests services and qualifies requests before handing off to your team."
       },
       "forms": {
         "title": "Smart forms",
