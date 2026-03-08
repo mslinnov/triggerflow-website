@@ -158,10 +158,12 @@
       "paused": "Pause"
     },
     "floatingCards": {
-      "smsSent": "SMS envoyé",
+      "smsSent": "SMS délivré",
       "room": "Chambre",
       "newReview": "+1 avis Google",
-      "emailOpened": "Email ouvert"
+      "emailOpened": "Email ouvert",
+      "messagesSent": "messages ce mois",
+      "extraRevenue": "CA additionnel / mois"
     }
   },
   "logoCloud": {

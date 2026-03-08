@@ -158,10 +158,12 @@
       "paused": "Paused"
     },
     "floatingCards": {
-      "smsSent": "SMS sent",
+      "smsSent": "SMS delivered",
       "room": "Room",
       "newReview": "+1 Google review",
-      "emailOpened": "Email opened"
+      "emailOpened": "Email opened",
+      "messagesSent": "messages this month",
+      "extraRevenue": "extra revenue / mo"
     }
   },
   "logoCloud": {

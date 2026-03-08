@@ -155,7 +155,7 @@ export function PersonasBento() {
                 </div>
                 <div className="relative h-[250px] md:h-full">
                   <Image
-                    src="/images/assets/messaging.png"
+                    src="/images/homepage/personas-dashboard.webp"
                     alt="TriggerFlow — Hub de messagerie"
                     fill
                     className="object-cover object-left-top"
@@ -168,7 +168,7 @@ export function PersonasBento() {
               <PersonaCard
                 title={t('personas.direction.title')}
                 description={t('personas.direction.description')}
-                imageSrc="/images/hero-photo.webp"
+                imageSrc="/images/homepage/persona-direction_1.webp"
                 imagePosition="object-top"
                 ctaLinks={directionLinks}
                 className="min-h-[180px]"
@@ -183,7 +183,7 @@ export function PersonasBento() {
                 <PersonaCard
                   title={t('personas.frontDesk.title')}
                   description={t('personas.frontDesk.description')}
-                  imageSrc="/images/benefit-1.webp"
+                  imageSrc="/images/homepage/persona-reception_1.webp"
                   gradient="from-[#002B28]/70 to-[#006F68]/50"
                   ctaLinks={frontDeskLinks}
                   className="min-h-[180px]"
@@ -193,7 +193,7 @@ export function PersonasBento() {
                 <PersonaCard
                   title={t('personas.marketing.title')}
                   description={t('personas.marketing.description')}
-                  imageSrc="/images/assets/campaigns.webp"
+                  imageSrc="/images/homepage/persona-marketing_1.webp"
                   gradient="from-[#006F68]/60 to-[#002B28]/70"
                   ctaLinks={marketingLinks}
                   className="row-span-2 min-h-[180px]"

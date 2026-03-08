@@ -2,6 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { Zap, ArrowRight, Shield, Plug, Headphones } from 'lucide-react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Container, ButtonLink, Badge } from '@/components/ui';
 import { HeroDashboard } from './HeroDashboard';
@@ -66,44 +67,6 @@ export function Hero() {
                 {t('cta')}
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </ButtonLink>
-              <ButtonLink
-                href="https://app.trigger-flow.com/register"
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="secondary"
-                size="lg"
-                className="gap-2"
-              >
-                {t('ctaFree')}
-              </ButtonLink>
-            </motion.div>
-
-            {/* Social Proof - Inline */}
-            <motion.div
-              variants={heroItem}
-              className="mt-8 flex flex-wrap items-center gap-3"
-            >
-              <div className="flex -space-x-2">
-                {[
-                  { initials: 'SL', from: 'from-brand-primary', to: 'to-brand-accent' },
-                  { initials: 'MR', from: 'from-brand-primary', to: 'to-brand-dark' },
-                  { initials: 'AD', from: 'from-brand-accent', to: 'to-brand-primary' },
-                  { initials: 'JP', from: 'from-brand-dark', to: 'to-brand-primary' },
-                ].map((avatar, i) => (
-                  <motion.div
-                    key={avatar.initials}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.6 + i * 0.1 }}
-                    className={`flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br ${avatar.from} ${avatar.to} ring-2 ring-white text-[10px] font-bold text-white`}
-                  >
-                    {avatar.initials}
-                  </motion.div>
-                ))}
-              </div>
-              <span className="text-sm font-medium text-text-primary">
-                {t('socialProof.hotels')}
-              </span>
             </motion.div>
 
             {/* Trust Badges */}
