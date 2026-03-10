@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, Check, X, Star, Quote } from 'lucide-react';
 import { IntegrationsShowcase, FeaturesTabbed } from '@/components/sections';
 import type { TabConfig, FeaturesTabbedDirectData } from '@/components/sections';
@@ -221,26 +222,23 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
                 </ButtonLink>
               </div>
 
-              {/* Social proof */}
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
-                <div className="flex -space-x-2">
-                  {[
-                    { initials: 'SL', from: 'from-brand-primary', to: 'to-brand-accent' },
-                    { initials: 'MR', from: 'from-brand-primary', to: 'to-brand-dark' },
-                    { initials: 'AD', from: 'from-brand-accent', to: 'to-brand-primary' },
-                    { initials: 'JP', from: 'from-brand-dark', to: 'to-brand-primary' },
-                  ].map((avatar) => (
-                    <div
-                      key={avatar.initials}
-                      className={`flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br ${avatar.from} ${avatar.to} ring-2 ring-white text-[10px] font-bold text-white`}
-                    >
-                      {avatar.initials}
-                    </div>
-                  ))}
-                </div>
-                <span className="text-sm font-medium text-text-primary">
-                  Plus de 500 hôtels nous font confiance
-                </span>
+              {/* Social proof — logos clients */}
+              <div className="mt-8 flex flex-wrap items-center justify-center gap-5 lg:justify-start">
+                {[
+                  { src: '/images/homepage/logos/saint-james.webp', alt: 'Saint James Paris' },
+                  { src: '/images/homepage/logos/hotels-particuliers.webp', alt: 'Les Hôtels Très Particuliers' },
+                  { src: '/images/homepage/logos/sofitel.webp', alt: 'Sofitel' },
+                  { src: '/images/homepage/logos/ibis.webp', alt: 'Ibis Hotels' },
+                ].map((logo) => (
+                  <Image
+                    key={logo.alt}
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={80}
+                    height={32}
+                    className="h-5 w-auto object-contain opacity-40 grayscale"
+                  />
+                ))}
               </div>
             </motion.div>
 

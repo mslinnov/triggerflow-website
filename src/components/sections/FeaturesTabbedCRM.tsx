@@ -3,10 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Users, ShoppingBag, Star, BarChart3, Heart, Check, Loader2, CalendarCheck, Sparkles } from 'lucide-react';
-import {
-  AnalyticsDashboardMockup,
-} from '@/components/mockups';
+import { Users, ShoppingBag, Star, BarChart3, Heart, Check, Loader2, CalendarCheck, Sparkles, TrendingUp } from 'lucide-react';
 import { FeaturesTabbed, type TabConfig } from './FeaturesTabbed';
 
 /* ─── Helpers ─── */
@@ -269,11 +266,95 @@ function ReviewDashboardVisual() {
   );
 }
 
+/* ─── Analytics: KPI trend + Taux d'occupation ─── */
+
+function AnalyticsDashboardVisual() {
+  return (
+    <div className="relative h-full w-full">
+      <Image
+        src="/images/homepage/analytics-dashboard.webp"
+        alt="TriggerFlow — Tableau de bord analytics"
+        fill
+        className="object-cover object-left-top"
+        sizes="(max-width: 1024px) 100vw, 60vw"
+      />
+
+      {/* KPI trend — top right */}
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.5 }}
+        className="absolute top-4 right-4 z-10"
+      >
+        <motion.div
+          animate={{ y: [0, 4, 0] }}
+          transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+          className="flex items-center gap-2 rounded-full bg-gray-900/90 px-4 py-2 shadow-lg backdrop-blur-sm"
+        >
+          <TrendingUp className="h-3.5 w-3.5 text-emerald-400" />
+          <span className="text-sm font-bold tabular-nums text-white">
+            +<AnimatedCounter target={23} />%
+          </span>
+          <span className="text-[10px] text-gray-400">RevPAR ce mois</span>
+        </motion.div>
+      </motion.div>
+
+      {/* Taux d'occupation — bottom left */}
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 0.7, duration: 0.5 }}
+        className="absolute bottom-4 left-4 z-10"
+      >
+        <motion.div
+          animate={{ y: [0, -5, 0] }}
+          transition={{ duration: 3.5, repeat: Infinity, ease: 'easeInOut' }}
+          className="rounded-xl border border-white/60 bg-white/80 px-3 py-2.5 shadow-lg backdrop-blur-md"
+        >
+          <p className="mb-1 text-[9px] font-semibold uppercase tracking-wider text-gray-500">Taux d&apos;occupation</p>
+          <div className="flex items-end gap-1">
+            {[65, 72, 58, 81, 90, 85, 94].map((h, i) => (
+              <motion.div
+                key={i}
+                className="w-2 rounded-t-sm bg-brand-primary"
+                initial={{ height: 0 }}
+                animate={{ height: `${h * 0.28}px` }}
+                transition={{ delay: 0.9 + i * 0.08, duration: 0.6, ease: 'easeOut' }}
+              />
+            ))}
+            <span className="ml-1 text-xs font-bold text-gray-800">94%</span>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* Emails ouverts — bottom right */}
+      <motion.div
+        initial={{ opacity: 0, x: 40 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ delay: 1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute bottom-4 right-4 z-10"
+      >
+        <motion.div
+          animate={{ y: [0, -4, 0] }}
+          transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+          className="flex items-center gap-2.5 rounded-xl border border-white/60 bg-white/80 px-3 py-2 shadow-lg backdrop-blur-md"
+        >
+          <div className="h-full w-1 self-stretch rounded-full bg-blue-500" />
+          <div>
+            <p className="text-[11px] font-semibold text-gray-800">Taux d&apos;ouverture</p>
+            <p className="text-[10px] text-gray-500">68% — +12pts vs N-1</p>
+          </div>
+        </motion.div>
+      </motion.div>
+    </div>
+  );
+}
+
 const tabs: TabConfig[] = [
   { key: 'crm', icon: Users, mockup: <CrmClientCardVisual /> },
   { key: 'upsell', icon: ShoppingBag, mockup: <UpsellOfferVisual /> },
   { key: 'reviews', icon: Star, mockup: <ReviewDashboardVisual /> },
-  { key: 'analytics', icon: BarChart3, mockup: <AnalyticsDashboardMockup /> },
+  { key: 'analytics', icon: BarChart3, mockup: <AnalyticsDashboardVisual /> },
 ];
 
 export function FeaturesTabbedCRM() {
