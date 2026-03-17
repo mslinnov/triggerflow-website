@@ -1491,11 +1491,11 @@
       "afterSubtitle": "Dès la première semaine"
     },
     "features": {
-      "title": "Créez, personnalisez, analysez — en quelques clics",
+      "title": "Créez, personnalisez, analysez — sans toucher au code",
       "subtitle": "Un email builder drag & drop, des variables PMS automatiques et un dashboard analytique. Aucune compétence technique requise."
     },
     "useCases": {
-      "title": "4 emails qui génèrent des résultats mesurables",
+      "title": "4 scénarios qui rapportent",
       "subtitle": "Chaque scénario ci-dessous fonctionne dès l'activation — sans intervention de votre équipe."
     },
     "journey": {
@@ -1526,6 +1526,18 @@
       "demo": "Réserver ma démo gratuite",
       "pricing": "Voir les tarifs",
       "contact": "Poser une question"
+    },
+    "trustBadges": {
+      "rgpd": "Conforme RGPD",
+      "pms": "Connecté à 8+ PMS",
+      "support": "Support 7j/7"
+    },
+    "badges": {
+      "journey": "Parcours client",
+      "problemSolution": "Le déclic",
+      "useCases": "En situation",
+      "faq": "FAQ",
+      "related": "Écosystème"
     }
   },
   "product": {

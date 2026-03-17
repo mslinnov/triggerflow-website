@@ -1491,11 +1491,11 @@
       "afterSubtitle": "From week one"
     },
     "features": {
-      "title": "Build, personalize, analyze — in a few clicks",
+      "title": "Build, personalize, analyze — no code needed",
       "subtitle": "A drag & drop email builder, automatic PMS variables, and a real-time analytics dashboard. No technical skills required."
     },
     "useCases": {
-      "title": "4 emails that deliver measurable results",
+      "title": "4 scenarios that drive revenue",
       "subtitle": "Each scenario below works from day one — with zero intervention from your team."
     },
     "journey": {
@@ -1526,6 +1526,18 @@
       "demo": "Book my free demo",
       "pricing": "View pricing",
       "contact": "Ask a question"
+    },
+    "trustBadges": {
+      "rgpd": "GDPR Compliant",
+      "pms": "Connected to 8+ PMS",
+      "support": "24/7 Support"
+    },
+    "badges": {
+      "journey": "Guest journey",
+      "problemSolution": "The shift",
+      "useCases": "In action",
+      "faq": "FAQ",
+      "related": "Ecosystem"
     }
   },
   "product": {
