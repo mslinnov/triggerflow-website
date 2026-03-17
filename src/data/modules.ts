@@ -683,8 +683,9 @@ export const modules: Record<string, ModuleData> = {
     title: 'Automatisations',
     seoTitle: 'Automatisation hôtelière : workflows sans code',
     headline: 'Votre hôtel tourne en pilote automatique',
-    description: 'Le cœur de TriggerFlow : créez des scénarios automatiques sans code. Déclencheur, conditions, actions — vous dessinez le workflow, TriggerFlow l\'exécute 24h/24.',
+    description: 'Un builder intuitif, zéro code. Déclencheur, conditions, actions — vous dessinez le workflow en quelques clics, TriggerFlow l\'exécute 24h/24.',
     mockup: 'WorkflowBuilderMockup',
+    heroImage: '/images/produit/automatisations/hero-automatisations.webp',
     painPoints: [
       'Votre équipe répète les mêmes tâches 50 fois par jour — envoyer un email, vérifier un check-in, rappeler un client',
       'Des actions importantes sont oubliées quand c\'est le rush — la demande de chambre avec berceau passe à la trappe',
@@ -692,7 +693,7 @@ export const modules: Record<string, ModuleData> = {
     ],
     benefits: [
       'Automatisez n\'importe quel scénario : de la simple confirmation à la séquence pré-séjour en 5 étapes',
-      'Builder visuel sans code : glissez-déposez des blocs, ajoutez des conditions, c\'est en production en 5 minutes',
+      'Interface intuitive : glissez-déposez des blocs, ajoutez des conditions, c\'est en production en 5 minutes — sans aucune compétence technique',
       'TriggerFlow exécute vos workflows 24h/24, week-ends et jours fériés inclus — jamais de tâche oubliée'
     ],
     stats: [
@@ -711,11 +712,11 @@ export const modules: Record<string, ModuleData> = {
     ],
     features: [
       {
-        title: 'Dessinez vos workflows, pas de code',
-        description: 'Glissez-déposez des blocs dans le builder visuel : déclencheur, délai, condition, action. N\'importe qui dans votre équipe peut créer un workflow.',
+        title: 'Un builder intuitif, zéro ligne de code',
+        description: 'Glissez-déposez des blocs dans le builder visuel : déclencheur, délai, condition, action. Prise en main immédiate, même sans profil technique.',
         icon: Workflow,
         bullets: ['Drag & drop intuitif', 'Templates prêts à l\'emploi', 'Duplication et modification'],
-        mockup: 'WorkflowBuilderFeatureMockup',
+        image: '/images/produit/automatisations/hero-automatisations.webp',
       },
       {
         title: 'Tout peut déclencher un workflow',
@@ -725,11 +726,11 @@ export const modules: Record<string, ModuleData> = {
         mockup: 'WorkflowTriggersMockup',
       },
       {
-        title: 'Des scénarios aussi complexes que vous voulez',
-        description: 'Si couple → offre romantique. Si famille → kids club. Si VIP → surclassement. Créez des branches conditionnelles pour chaque profil.',
+        title: 'Votre hôtel est unique, vos automatisations aussi',
+        description: 'Couple → offre spa. Famille → kids club. VIP → surclassement. Chaque profil client déclenche le bon scénario, automatiquement.',
         icon: GitBranch,
         bullets: ['Conditions Si/Sinon illimitées', 'Branches parallèles', 'Délais configurables entre étapes'],
-        mockup: 'WorkflowConditionsMockup',
+        image: '/images/produit/automatisations/feature-conditions.webp',
       }
     ],
     useCases: [
@@ -765,7 +766,7 @@ export const modules: Record<string, ModuleData> = {
     faq: [
       {
         question: 'Faut-il des compétences techniques pour créer un workflow ?',
-        answer: 'Non. Le builder est 100% visuel. Vous glissez-déposez des blocs et configurez les paramètres avec des menus déroulants. Aucune ligne de code.'
+        answer: 'Non. L\'interface est intuitive et 100% visuelle. Vous glissez-déposez des blocs et configurez les paramètres avec des menus déroulants. Aucune ligne de code.'
       },
       {
         question: 'Combien de workflows puis-je créer ?',

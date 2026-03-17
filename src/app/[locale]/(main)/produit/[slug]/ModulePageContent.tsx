@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Check, X, Star, Quote, Mail, TrendingUp, Shield, Send, Users, Gift } from 'lucide-react';
+import { ArrowRight, Check, X, Star, Quote, Mail, TrendingUp, Shield, Zap, GitBranch, MessageSquare, Clock, Users, MailOpen,  Send, Gift} from 'lucide-react';
 import { IntegrationsShowcase, FeaturesTabbed } from '@/components/sections';
 import type { TabConfig, FeaturesTabbedDirectData } from '@/components/sections';
 import { cn } from '@/lib/utils';
@@ -155,19 +155,143 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
   // Build FeaturesTabbed config from module.features
   const featureTabs: TabConfig[] = module.features.map((feature, i) => {
     const MockupComp = feature.mockup ? mockupComponents[feature.mockup] : null;
-    const mockupContent = feature.image ? (
-      <Image
-        src={feature.image}
-        alt={feature.title}
-        width={1232}
-        height={770}
-        className="h-full w-full object-cover object-top"
-      />
-    ) : MockupComp ? (
-      <MockupComp />
-    ) : (
-      <div className="flex h-full items-center justify-center"><span className="text-sm text-text-muted">{feature.title}</span></div>
-    );
+    let mockupContent;
+
+    // Special: automatisations feature 0 — screenshot + floating elements
+    if (moduleSlug === 'automatisations' && i === 0 && feature.image) {
+      mockupContent = (
+        <div className="relative h-full w-full">
+          <Image
+            src={feature.image}
+            alt={feature.title}
+            width={1232}
+            height={770}
+            className="h-full w-full object-cover object-top"
+          />
+          {/* Floating: Ajouter un email */}
+          <div className="absolute left-[2%] top-[6%] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
+            <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-orange-100">
+              <Mail className="h-3.5 w-3.5 text-orange-600" />
+            </div>
+            <div>
+              <p className="text-[10px] font-semibold text-gray-800">+ Ajouter un email</p>
+              <p className="text-[8px] text-gray-500">Action · pré-séjour J-3</p>
+            </div>
+          </div>
+          {/* Floating: Condition */}
+          <div className="absolute right-[2%] top-[5%] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
+            <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-purple-100">
+              <GitBranch className="h-3.5 w-3.5 text-purple-600" />
+            </div>
+            <div>
+              <p className="text-[10px] font-semibold text-gray-800">Condition</p>
+              <p className="text-[8px] text-gray-500">Si client fidèle → surclassement</p>
+            </div>
+          </div>
+          {/* Floating: Ajouter SMS */}
+          <div className="absolute bottom-[10%] left-[2%] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
+            <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-blue-100">
+              <MessageSquare className="h-3.5 w-3.5 text-blue-600" />
+            </div>
+            <div>
+              <p className="text-[10px] font-semibold text-gray-800">+ Ajouter un SMS</p>
+              <p className="text-[8px] text-gray-500">Rappel check-in · J-1</p>
+            </div>
+          </div>
+          {/* Floating: Délai */}
+          <div className="absolute bottom-[10%] right-[2%] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
+            <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-emerald-100">
+              <Clock className="h-3.5 w-3.5 text-emerald-600" />
+            </div>
+            <div>
+              <p className="text-[10px] font-semibold text-gray-800">+ Attendre 2 jours</p>
+              <p className="text-[8px] text-gray-500">Délai avant prochaine étape</p>
+            </div>
+          </div>
+        </div>
+      );
+    } else if (moduleSlug === 'automatisations' && i === 1 && MockupComp) {
+      // Feature 2: Triggers — mockup + floating elements
+      mockupContent = (
+        <div className="relative h-full w-full">
+          <MockupComp />
+          {/* Floating: Check-in détecté */}
+          <div className="absolute right-[3%] top-[4%] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
+            <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-emerald-100">
+              <Zap className="h-3.5 w-3.5 text-emerald-600" />
+            </div>
+            <div>
+              <p className="text-[10px] font-semibold text-gray-800">Check-in détecté</p>
+              <p className="text-[8px] text-gray-500">Workflow déclenché · Ch. 108</p>
+            </div>
+          </div>
+          {/* Floating: Déclencheurs actifs */}
+          <div className="absolute bottom-[6%] right-[3%] flex items-center gap-2 rounded-full bg-gray-900/85 px-3.5 py-1.5 shadow-lg backdrop-blur-sm">
+            <div className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-500" />
+            </div>
+            <span className="text-[10px] font-semibold text-white">8 déclencheurs actifs</span>
+          </div>
+        </div>
+      );
+    } else if (moduleSlug === 'automatisations' && i === 2 && feature.image) {
+      // Feature 3: Conditions — screenshot + floating elements
+      mockupContent = (
+        <div className="relative h-full w-full">
+          <Image
+            src={feature.image}
+            alt={feature.title}
+            width={1232}
+            height={770}
+            className="h-full w-full object-cover object-top"
+          />
+          {/* Floating: Branche couple */}
+          <div className="absolute left-[2%] top-[5%] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
+            <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-pink-100">
+              <Star className="h-3.5 w-3.5 text-pink-600" />
+            </div>
+            <div>
+              <p className="text-[10px] font-semibold text-gray-800">Plan SPA détecté</p>
+              <p className="text-[8px] text-gray-500">→ Email offre bien-être</p>
+            </div>
+          </div>
+          {/* Floating: Formulaire condition */}
+          <div className="absolute right-[2%] top-[5%] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
+            <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-purple-100">
+              <GitBranch className="h-3.5 w-3.5 text-purple-600" />
+            </div>
+            <div>
+              <p className="text-[10px] font-semibold text-gray-800">4 branches actives</p>
+              <p className="text-[8px] text-gray-500">Chaque profil a son parcours</p>
+            </div>
+          </div>
+          {/* Floating: Taux de conversion */}
+          <div className="absolute bottom-[8%] right-[2%] flex items-center gap-2.5 rounded-full bg-gray-900/85 px-4 py-2 shadow-lg backdrop-blur-sm">
+            <TrendingUp className="h-3.5 w-3.5 text-emerald-400" />
+            <span className="text-[11px] font-bold text-white">+22%</span>
+            <span className="text-[9px] text-gray-400">taux de conversion</span>
+          </div>
+        </div>
+      );
+    } else if (feature.image) {
+      mockupContent = (
+        <Image
+          src={feature.image}
+          alt={feature.title}
+          width={1232}
+          height={770}
+          className="h-full w-full object-cover object-top"
+        />
+      );
+    } else if (MockupComp) {
+      mockupContent = <MockupComp />;
+    } else {
+      mockupContent = (
+        <div className="flex h-full items-center justify-center"><span className="text-sm text-text-muted">{feature.title}</span></div>
+      );
+    }
+
     return {
       key: `feature_${i}`,
       icon: feature.icon,
@@ -368,62 +492,71 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
                 </>
               )}
 
-              {/* Floating elements — newsletter module */}
-              {moduleSlug === 'newsletter' && (
+              {/* Floating elements — automatisations module */}
+              {moduleSlug === 'automatisations' && (
                 <>
-                  {/* Top-right: Campaign sent */}
+                  {/* Top-right: Large card — profil adapté avec mini workflow */}
                   <motion.div
                     initial={{ opacity: 0, y: -30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute -top-3 right-[8%] z-20 md:-top-5 md:right-[12%]"
+                    className="absolute -top-4 right-[4%] z-20 md:-top-6 md:right-[8%]"
                   >
                     <motion.div
-                      animate={!prefersReducedMotion ? { y: [0, -6, 0] } : {}}
+                      animate={!prefersReducedMotion ? { y: [0, -8, 0] } : {}}
                       transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
-                      className="flex items-center gap-2.5 rounded-xl border border-white/60 bg-white/80 px-3 py-2 shadow-lg backdrop-blur-md"
+                      className="rounded-2xl border border-white/60 bg-white/90 p-3.5 shadow-xl backdrop-blur-md"
                     >
-                      <div className="h-full w-1 self-stretch rounded-full bg-green-500" />
-                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-green-100">
-                        <Send className="h-3.5 w-3.5 text-green-600" />
+                      <div className="flex items-center gap-2 mb-2.5">
+                        <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-brand-primary/10">
+                          <Users className="h-4 w-4 text-brand-primary" />
+                        </div>
+                        <div>
+                          <p className="text-[11px] font-bold text-gray-800">Email adapté au profil</p>
+                          <p className="text-[9px] text-gray-500">Personnalisation automatique</p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="text-[11px] font-semibold text-gray-800">Campagne envoyée</p>
-                        <p className="text-[10px] text-gray-500">Saint-Valentin — 1 247 dest.</p>
+                      <div className="flex items-center gap-1.5">
+                        <span className="rounded-full bg-pink-100 px-2 py-0.5 text-[8px] font-semibold text-pink-700">Couple</span>
+                        <span className="text-[9px] text-gray-400">→</span>
+                        <span className="rounded-full bg-pink-50 px-2 py-0.5 text-[8px] text-pink-600">Offre spa</span>
+                      </div>
+                      <div className="mt-1 flex items-center gap-1.5">
+                        <span className="rounded-full bg-blue-100 px-2 py-0.5 text-[8px] font-semibold text-blue-700">Famille</span>
+                        <span className="text-[9px] text-gray-400">→</span>
+                        <span className="rounded-full bg-blue-50 px-2 py-0.5 text-[8px] text-blue-600">Kids club</span>
                       </div>
                     </motion.div>
                   </motion.div>
 
-                  {/* Left: Open rate */}
+                  {/* Left: Relance auto — compact */}
                   <motion.div
                     initial={{ opacity: 0, x: -40 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute -left-2 top-[22%] z-20 md:-left-6 md:top-[18%]"
+                    className="absolute -left-2 top-[30%] z-20 md:-left-6 md:top-[25%]"
                   >
                     <motion.div
                       animate={!prefersReducedMotion ? { y: [0, 5, 0] } : {}}
                       transition={{ duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
-                      className="rounded-xl border border-white/60 bg-white/80 px-2.5 py-2 shadow-md backdrop-blur-md"
+                      className="flex items-center gap-2 rounded-xl border border-white/60 bg-white/85 px-3 py-2 shadow-lg backdrop-blur-md"
                     >
-                      <div className="flex items-center gap-1.5">
-                        <div className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-primary/10">
-                          <TrendingUp className="h-3 w-3 text-brand-primary" />
-                        </div>
-                        <div>
-                          <p className="text-[10px] font-semibold text-gray-800">Taux d&apos;ouverture</p>
-                          <p className="text-[10px] font-bold text-brand-primary">32.4%</p>
-                        </div>
+                      <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-orange-100">
+                        <MailOpen className="h-3.5 w-3.5 text-orange-600" />
+                      </div>
+                      <div>
+                        <p className="text-[10px] font-semibold text-gray-800">Relance automatique</p>
+                        <p className="text-[9px] text-gray-500">Si non ouvert après 48h</p>
                       </div>
                     </motion.div>
                   </motion.div>
 
-                  {/* Right: Direct bookings */}
+                  {/* Right: Temps gagné — dark pill */}
                   <motion.div
                     initial={{ opacity: 0, scale: 0.7 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 1.5, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute -right-1 bottom-[22%] z-30 md:-right-8 md:bottom-[16%]"
+                    className="absolute -right-1 bottom-[26%] z-30 md:-right-8 md:bottom-[18%]"
                   >
                     <motion.div
                       animate={!prefersReducedMotion ? { y: [0, -10, 0] } : {}}
@@ -431,12 +564,12 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
                       className="flex items-center gap-2.5 rounded-full bg-gray-900/90 px-5 py-2.5 shadow-xl backdrop-blur-sm"
                     >
                       <TrendingUp className="h-4 w-4 text-emerald-400" />
-                      <span className="text-base font-bold tabular-nums text-white">+23</span>
-                      <span className="text-[10px] text-gray-400">résa. directes ce mois</span>
+                      <span className="text-base font-bold tabular-nums text-white">+35%</span>
+                      <span className="text-[10px] text-gray-400">de ventes additionnelles</span>
                     </motion.div>
                   </motion.div>
 
-                  {/* Bottom-left: Subscribers */}
+                  {/* Bottom-left: Scénarios exécutés — dark pill */}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -452,190 +585,8 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
                         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
                         <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
                       </div>
-                      <span className="text-xs font-bold tabular-nums text-white">4 892</span>
-                      <span className="text-[9px] text-gray-400">abonnés actifs</span>
-                    </motion.div>
-                  </motion.div>
-                </>
-              )}
-
-              {/* Floating elements — fidelite module */}
-              {moduleSlug === 'fidelite' && (
-                <>
-                  {/* Top-right: Points credited */}
-                  <motion.div
-                    initial={{ opacity: 0, y: -30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute -top-3 right-[8%] z-20 md:-top-5 md:right-[12%]"
-                  >
-                    <motion.div
-                      animate={!prefersReducedMotion ? { y: [0, -6, 0] } : {}}
-                      transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
-                      className="flex items-center gap-2.5 rounded-xl border border-white/60 bg-white/80 px-3 py-2 shadow-lg backdrop-blur-md"
-                    >
-                      <div className="h-full w-1 self-stretch rounded-full bg-amber-500" />
-                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-amber-100">
-                        <Star className="h-3.5 w-3.5 text-amber-600" />
-                      </div>
-                      <div>
-                        <p className="text-[11px] font-semibold text-gray-800">+450 points</p>
-                        <p className="text-[10px] text-gray-500">Séjour 3 nuits Suite</p>
-                      </div>
-                    </motion.div>
-                  </motion.div>
-
-                  {/* Left: Loyalty tier */}
-                  <motion.div
-                    initial={{ opacity: 0, x: -40 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute -left-2 top-[22%] z-20 md:-left-6 md:top-[18%]"
-                  >
-                    <motion.div
-                      animate={!prefersReducedMotion ? { y: [0, 5, 0] } : {}}
-                      transition={{ duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
-                      className="rounded-xl border border-white/60 bg-white/80 px-2.5 py-2 shadow-md backdrop-blur-md"
-                    >
-                      <div className="flex items-center gap-1.5">
-                        <div className="flex h-6 w-6 items-center justify-center rounded-full bg-amber-100">
-                          <Gift className="h-3 w-3 text-amber-600" />
-                        </div>
-                        <div>
-                          <p className="text-[10px] font-semibold text-gray-800">Palier Gold</p>
-                          <p className="text-[10px] font-bold text-amber-600">1 247 pts</p>
-                        </div>
-                      </div>
-                    </motion.div>
-                  </motion.div>
-
-                  {/* Right: Direct bookings */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.7 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 1.5, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute -right-1 bottom-[22%] z-30 md:-right-8 md:bottom-[16%]"
-                  >
-                    <motion.div
-                      animate={!prefersReducedMotion ? { y: [0, -10, 0] } : {}}
-                      transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut' }}
-                      className="flex items-center gap-2.5 rounded-full bg-gray-900/90 px-5 py-2.5 shadow-xl backdrop-blur-sm"
-                    >
-                      <TrendingUp className="h-4 w-4 text-emerald-400" />
-                      <span className="text-base font-bold tabular-nums text-white">+24%</span>
-                      <span className="text-[10px] text-gray-400">résa. directes</span>
-                    </motion.div>
-                  </motion.div>
-
-                  {/* Bottom-left: Active members */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.8, duration: 0.5 }}
-                    className="absolute -bottom-3 left-[6%] z-20 md:-bottom-4 md:left-[8%]"
-                  >
-                    <motion.div
-                      animate={!prefersReducedMotion ? { y: [0, 4, 0] } : {}}
-                      transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
-                      className="flex items-center gap-2 rounded-full bg-gray-900/90 px-3.5 py-1.5 shadow-lg backdrop-blur-sm"
-                    >
-                      <div className="relative flex h-2 w-2">
-                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-                        <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
-                      </div>
-                      <span className="text-xs font-bold tabular-nums text-white">892</span>
-                      <span className="text-[9px] text-gray-400">membres actifs</span>
-                    </motion.div>
-                  </motion.div>
-                </>
-              )}
-
-              {/* Floating elements — crm module */}
-              {moduleSlug === 'crm' && (
-                <>
-                  {/* Top-right: New reservation synced */}
-                  <motion.div
-                    initial={{ opacity: 0, y: -30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute -top-3 right-[8%] z-20 md:-top-5 md:right-[12%]"
-                  >
-                    <motion.div
-                      animate={!prefersReducedMotion ? { y: [0, -6, 0] } : {}}
-                      transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
-                      className="flex items-center gap-2.5 rounded-xl border border-white/60 bg-white/80 px-3 py-2 shadow-lg backdrop-blur-md"
-                    >
-                      <div className="h-full w-1 self-stretch rounded-full bg-green-500" />
-                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-green-100">
-                        <Check className="h-3.5 w-3.5 text-green-600" />
-                      </div>
-                      <div>
-                        <p className="text-[11px] font-semibold text-gray-800">Fiche mise à jour</p>
-                        <p className="text-[10px] text-gray-500">Sync PMS — A. Duffaut</p>
-                      </div>
-                    </motion.div>
-                  </motion.div>
-
-                  {/* Left: Client count */}
-                  <motion.div
-                    initial={{ opacity: 0, x: -40 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute -left-2 top-[22%] z-20 md:-left-6 md:top-[18%]"
-                  >
-                    <motion.div
-                      animate={!prefersReducedMotion ? { y: [0, 5, 0] } : {}}
-                      transition={{ duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
-                      className="rounded-xl border border-white/60 bg-white/80 px-2.5 py-2 shadow-md backdrop-blur-md"
-                    >
-                      <div className="flex items-center gap-1.5">
-                        <div className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-primary/10">
-                          <Users className="h-3 w-3 text-brand-primary" />
-                        </div>
-                        <div>
-                          <p className="text-[10px] font-semibold text-gray-800">Base clients</p>
-                          <p className="text-[10px] font-bold text-brand-primary">12 847</p>
-                        </div>
-                      </div>
-                    </motion.div>
-                  </motion.div>
-
-                  {/* Right: Satisfaction score */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.7 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 1.5, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                    className="absolute -right-1 bottom-[22%] z-30 md:-right-8 md:bottom-[16%]"
-                  >
-                    <motion.div
-                      animate={!prefersReducedMotion ? { y: [0, -10, 0] } : {}}
-                      transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut' }}
-                      className="flex items-center gap-2.5 rounded-full bg-gray-900/90 px-5 py-2.5 shadow-xl backdrop-blur-sm"
-                    >
-                      <Star className="h-4 w-4 text-amber-400" />
-                      <span className="text-base font-bold tabular-nums text-white">4.8/5</span>
-                      <span className="text-[10px] text-gray-400">satisfaction client</span>
-                    </motion.div>
-                  </motion.div>
-
-                  {/* Bottom-left: Segments */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 1.8, duration: 0.5 }}
-                    className="absolute -bottom-3 left-[6%] z-20 md:-bottom-4 md:left-[8%]"
-                  >
-                    <motion.div
-                      animate={!prefersReducedMotion ? { y: [0, 4, 0] } : {}}
-                      transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
-                      className="flex items-center gap-2 rounded-full bg-gray-900/90 px-3.5 py-1.5 shadow-lg backdrop-blur-sm"
-                    >
-                      <div className="relative flex h-2 w-2">
-                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-                        <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
-                      </div>
-                      <span className="text-xs font-bold tabular-nums text-white">45</span>
-                      <span className="text-[9px] text-gray-400">segments actifs</span>
+                      <span className="text-xs font-bold tabular-nums text-white">2 847</span>
+                      <span className="text-[9px] text-gray-400">scénarios exécutés ce mois</span>
                     </motion.div>
                   </motion.div>
                 </>

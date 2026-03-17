@@ -15,7 +15,7 @@ import {
 
 export function WorkflowBuilderMockup() {
   return (
-    <BrowserMockup title="Workflow Builder" className="max-w-lg">
+    <BrowserMockup title="Workflow Builder">
       <div className="p-4 bg-gray-50 min-h-[320px]">
         {/* Workflow header */}
         <div className="flex items-center justify-between mb-4">
