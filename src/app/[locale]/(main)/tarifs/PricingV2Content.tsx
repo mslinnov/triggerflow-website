@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, useReducedMotion, AnimatePresence } from 'framer-motion';
 import {
-  Check, X, Mail, ChevronDown, Star, Heart, Smartphone, Bot,
+  Check, X, Mail, ChevronDown, Star, Heart, Smartphone, Bot, CreditCard,
   ArrowRight, Sparkles, MessageSquare, Workflow, BarChart3,
   ShoppingBag, ChevronLeft, ChevronRight, HelpCircle,
 } from 'lucide-react';
@@ -85,6 +85,12 @@ const addons = [
     price: '49',
     color: 'sky' as const,
   },
+  {
+    key: 'payments',
+    icon: CreditCard,
+    price: '29',
+    color: 'emerald' as const,
+  },
 ];
 
 const addonColors = {
@@ -123,6 +129,15 @@ const addonColors = {
     badge: 'bg-violet-100 text-violet-700',
     check: 'text-violet-500',
     checkBg: 'bg-violet-50',
+  },
+  emerald: {
+    bg: 'bg-emerald-50',
+    icon: 'text-emerald-500',
+    border: 'border-emerald-200',
+    hoverBorder: 'hover:border-emerald-300',
+    badge: 'bg-emerald-100 text-emerald-700',
+    check: 'text-emerald-500',
+    checkBg: 'bg-emerald-50',
   },
 };
 

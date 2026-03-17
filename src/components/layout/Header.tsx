@@ -34,6 +34,7 @@ import {
   FileQuestion,
   HelpCircle,
   Tent,
+  CreditCard,
   ArrowRight,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -75,6 +76,7 @@ const menuItems = {
           { icon: Building2, label: 'CRM Hôtelier', description: 'Gestion relation client', href: '/produit/crm' },
           { icon: FileText, label: 'Formulaires', description: 'Collectez des données', href: '/produit/formulaires' },
           { icon: ShoppingBag, label: 'Ventes additionnelles', description: 'Boostez votre CA', href: '/produit/ventes-additionnelles' },
+          { icon: CreditCard, label: 'Liens de paiement', description: 'Encaissez vos clients', href: '/produit/paiements' },
           { icon: BarChart3, label: 'Analytics', description: 'Tableaux de bord', href: '/produit/analytics' },
         ],
       },

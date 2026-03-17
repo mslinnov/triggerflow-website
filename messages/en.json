@@ -449,10 +449,10 @@
         "description": "Targeted post-stay campaigns, personalized return offers and loyalty program.",
         "result": "+28% repeat guests"
       },
-      "whatsapp": {
-        "title": "WhatsApp Concierge",
-        "description": "Respond to guest requests on WhatsApp with smart automated responses.",
-        "result": "Response in < 30s"
+      "payments": {
+        "title": "Payment Links",
+        "description": "Deposit, security hold, card on file: send branded payment links automatically.",
+        "result": "85% paid within 2 hours"
       }
     }
   },
@@ -744,6 +744,7 @@
       "marketing": "Marketing",
       "tools": "Tools",
       "reputation": "Reputation",
+      "payments": "Payments",
       "pricing": "Pricing",
       "integrations": "Integrations"
     },
@@ -1047,6 +1048,16 @@
             "Room service & concierge",
             "Real-time stay information",
             "Direct chat with reception"
+          ]
+        },
+        "payments": {
+          "name": "Payments",
+          "description": "Collect payments with branded payment links. Deposit, security hold, card on file.",
+          "features": [
+            "Branded payment links",
+            "Security hold & pre-authorization",
+            "Card on file",
+            "Multi-provider (Stripe, Mollie...)"
           ]
         }
       }

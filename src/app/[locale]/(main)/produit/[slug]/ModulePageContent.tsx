@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Check, X, Star, Quote } from 'lucide-react';
+import { ArrowRight, Check, X, Star, Quote, Mail, TrendingUp, Shield } from 'lucide-react';
 import { IntegrationsShowcase, FeaturesTabbed } from '@/components/sections';
 import type { TabConfig, FeaturesTabbedDirectData } from '@/components/sections';
 import { cn } from '@/lib/utils';
@@ -155,10 +155,23 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
   // Build FeaturesTabbed config from module.features
   const featureTabs: TabConfig[] = module.features.map((feature, i) => {
     const MockupComp = feature.mockup ? mockupComponents[feature.mockup] : null;
+    const mockupContent = feature.image ? (
+      <Image
+        src={feature.image}
+        alt={feature.title}
+        width={1232}
+        height={770}
+        className="h-full w-full object-cover object-top"
+      />
+    ) : MockupComp ? (
+      <MockupComp />
+    ) : (
+      <div className="flex h-full items-center justify-center"><span className="text-sm text-text-muted">{feature.title}</span></div>
+    );
     return {
       key: `feature_${i}`,
       icon: feature.icon,
-      mockup: MockupComp ? <MockupComp /> : <div className="flex h-full items-center justify-center"><span className="text-sm text-text-muted">{feature.title}</span></div>,
+      mockup: mockupContent,
     };
   });
 
@@ -248,10 +261,112 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
               className="relative"
             >
               <div className="relative z-10 overflow-hidden rounded-2xl border border-border-light bg-white shadow-[var(--shadow-lg)]">
-                <MockupComponent />
+                {module.heroImage ? (
+                  <Image
+                    src={module.heroImage}
+                    alt={module.headline}
+                    width={1232}
+                    height={770}
+                    priority
+                    className="w-full h-auto"
+                  />
+                ) : (
+                  <MockupComponent />
+                )}
               </div>
               <div className="pointer-events-none absolute -bottom-8 -right-8 h-64 w-64 rounded-full bg-brand-primary/10 blur-3xl" />
               <div className="pointer-events-none absolute -left-8 -top-8 h-48 w-48 rounded-full bg-brand-primary/5 blur-2xl" />
+
+              {/* Floating elements — email module */}
+              {moduleSlug === 'email' && (
+                <>
+                  {/* Top-right: Email sent confirmation */}
+                  <motion.div
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -top-3 right-[8%] z-20 md:-top-5 md:right-[12%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, -6, 0] } : {}}
+                      transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2.5 rounded-xl border border-white/60 bg-white/80 px-3 py-2 shadow-lg backdrop-blur-md"
+                    >
+                      <div className="h-full w-1 self-stretch rounded-full bg-green-500" />
+                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-green-100">
+                        <Check className="h-3.5 w-3.5 text-green-600" />
+                      </div>
+                      <div>
+                        <p className="text-[11px] font-semibold text-gray-800">Email envoyé</p>
+                        <p className="text-[10px] text-gray-500">Confirmation — Ch. 204</p>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Left: Deliverability badge */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -40 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -left-2 top-[22%] z-20 md:-left-6 md:top-[18%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, 5, 0] } : {}}
+                      transition={{ duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
+                      className="rounded-xl border border-white/60 bg-white/80 px-2.5 py-2 shadow-md backdrop-blur-md"
+                    >
+                      <div className="flex items-center gap-1.5">
+                        <div className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-primary/10">
+                          <Shield className="h-3 w-3 text-brand-primary" />
+                        </div>
+                        <div>
+                          <p className="text-[10px] font-semibold text-gray-800">Délivrabilité</p>
+                          <p className="text-[10px] font-bold text-brand-primary">98.2%</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Right: Open rate */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.7 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 1.5, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -right-1 bottom-[22%] z-30 md:-right-8 md:bottom-[16%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, -10, 0] } : {}}
+                      transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2.5 rounded-full bg-gray-900/90 px-5 py-2.5 shadow-xl backdrop-blur-sm"
+                    >
+                      <TrendingUp className="h-4 w-4 text-emerald-400" />
+                      <span className="text-base font-bold tabular-nums text-white">98%</span>
+                      <span className="text-[10px] text-gray-400">taux d&apos;ouverture</span>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Bottom-left: Emails sent counter */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.8, duration: 0.5 }}
+                    className="absolute -bottom-3 left-[6%] z-20 md:-bottom-4 md:left-[8%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, 4, 0] } : {}}
+                      transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2 rounded-full bg-gray-900/90 px-3.5 py-1.5 shadow-lg backdrop-blur-sm"
+                    >
+                      <div className="relative flex h-2 w-2">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+                      </div>
+                      <span className="text-xs font-bold tabular-nums text-white">7 243</span>
+                      <span className="text-[9px] text-gray-400">emails envoyés ce mois</span>
+                    </motion.div>
+                  </motion.div>
+                </>
+              )}
             </motion.div>
           </div>
         </Container>
@@ -261,7 +376,12 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
       {module.stats && module.stats.length > 0 && (
         <section className="relative border-b border-border-light bg-white py-10">
           <Container>
-            <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+            <div className={cn(
+              'grid gap-8',
+              module.stats!.length === 3
+                ? 'grid-cols-3'
+                : 'grid-cols-2 md:grid-cols-4'
+            )}>
               {module.stats.map((stat, index) => (
                 <motion.div
                   key={index}

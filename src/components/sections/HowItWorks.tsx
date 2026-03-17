@@ -21,11 +21,11 @@ const steps = [
 ] as const;
 
 const pmsLogos = [
-  { name: 'Mews', src: '/images/pms/mews.svg' },
-  { name: 'Opera', src: '/images/pms/opera.svg' },
-  { name: 'Thaïs', src: '/images/pms/thais.svg' },
-  { name: 'Misterbooking', src: '/images/pms/misterbooking.svg' },
-  { name: 'Asterio', src: '/images/pms/asterio.svg' },
+  { name: 'Mews', src: '/images/integrations/mews.svg' },
+  { name: 'Opera', src: '/images/integrations/opera.png' },
+  { name: 'Thaïs', src: '/images/integrations/thais.svg' },
+  { name: 'Misterbooking', src: '/images/integrations/misterbooking.png' },
+  { name: 'Asterio', src: '/images/integrations/asterio.png' },
 ];
 
 // --- Animations ---

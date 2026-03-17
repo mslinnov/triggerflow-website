@@ -10,7 +10,7 @@ import {
   Smartphone,
   Star,
   Heart,
-  MessageCircle,
+  CreditCard,
   ArrowRight,
 } from 'lucide-react';
 import { Container, Badge, ButtonLink } from '@/components/ui';
@@ -24,7 +24,7 @@ const useCases = [
   { key: 'upsell', icon: ShoppingCart, colorLight: 'bg-rose-50', colorText: 'text-rose-600' },
   { key: 'reviews', icon: Star, colorLight: 'bg-orange-50', colorText: 'text-orange-600' },
   { key: 'loyalty', icon: Heart, colorLight: 'bg-pink-50', colorText: 'text-pink-600' },
-  { key: 'whatsapp', icon: MessageCircle, colorLight: 'bg-green-50', colorText: 'text-green-600' },
+  { key: 'payments', icon: CreditCard, colorLight: 'bg-emerald-50', colorText: 'text-emerald-600' },
 ] as const;
 
 export function Examples() {

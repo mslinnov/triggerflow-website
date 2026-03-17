@@ -16,15 +16,15 @@ interface PmsIntegration {
 }
 
 const integrations: PmsIntegration[] = [
-  { name: 'Mews', slug: 'mews', src: '/images/pms/mews.svg', color: '#1C1D24' },
-  { name: 'Opera', slug: 'opera', src: '/images/pms/opera.svg', color: '#C74634' },
-  { name: 'Thaïs', slug: 'thais', src: '/images/pms/thais.svg', color: '#051991' },
-  { name: 'D-EDGE', slug: 'dedge', src: '/images/pms/dedge.svg', color: '#432975' },
-  { name: 'Misterbooking', slug: 'misterbooking', src: '/images/pms/misterbooking.svg', color: '#098AFF' },
-  { name: 'Asterio', slug: 'asterio', src: '/images/pms/asterio.svg', color: '#FF6136' },
-  { name: 'Amenitiz', slug: 'amenitiz', src: '/images/pms/amenitiz.svg', color: '#006AFF' },
-  { name: 'Reservit', slug: 'reservit', src: '/images/pms/reservit.svg', color: '#0F172A' },
-  { name: 'Medialog', slug: 'medialog', src: '/images/pms/medialog.svg', color: '#0070B0' },
+  { name: 'Mews', slug: 'mews', src: '/images/integrations/mews.svg', color: '#1C1D24' },
+  { name: 'Opera', slug: 'opera', src: '/images/integrations/opera.png', color: '#C74634' },
+  { name: 'Thaïs', slug: 'thais', src: '/images/integrations/thais.svg', color: '#051991' },
+  { name: 'Misterbooking', slug: 'misterbooking', src: '/images/integrations/misterbooking.png', color: '#098AFF' },
+  { name: 'Asterio', slug: 'asterio', src: '/images/integrations/asterio.png', color: '#FF6136' },
+  { name: 'Medialog', slug: 'medialog', src: '/images/integrations/medialog.svg', color: '#0070B0' },
+  { name: 'Lean PMS', slug: 'leanpms', src: '/images/integrations/leanpms.webp', color: '#2563EB' },
+  { name: 'Chloë', slug: 'chloe', src: '/images/integrations/chloe.webp', color: '#6D28D9' },
+  { name: 'Vega', slug: 'vega', src: '/images/integrations/vega.png', color: '#1E40AF' },
 ];
 
 // --- Animations ---

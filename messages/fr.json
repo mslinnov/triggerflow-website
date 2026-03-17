@@ -449,10 +449,10 @@
         "description": "Campagnes ciblées post-séjour, offres de retour personnalisées et programme fidélité.",
         "result": "+28% de clients fidélisés"
       },
-      "whatsapp": {
-        "title": "Conciergerie WhatsApp",
-        "description": "Répondez aux demandes clients sur WhatsApp avec des réponses automatisées intelligentes.",
-        "result": "Réponse en < 30s"
+      "payments": {
+        "title": "Liens de paiement",
+        "description": "Acompte, caution, empreinte carte : envoyez des liens de paiement personnalisés automatiquement.",
+        "result": "85% payés en moins de 2h"
       }
     }
   },
@@ -744,6 +744,7 @@
       "marketing": "Marketing",
       "tools": "Outils",
       "reputation": "Réputation",
+      "payments": "Paiements",
       "pricing": "Tarifs",
       "integrations": "Intégrations"
     },
@@ -1047,6 +1048,16 @@
             "Room service & conciergerie",
             "Informations séjour en temps réel",
             "Chat direct avec la réception"
+          ]
+        },
+        "payments": {
+          "name": "Paiements",
+          "description": "Encaissez vos clients avec des liens de paiement personnalisés. Acompte, caution, empreinte carte.",
+          "features": [
+            "Liens de paiement brandés",
+            "Caution & pré-autorisation",
+            "Empreinte carte",
+            "Multi-prestataires (Stripe, Mollie...)"
           ]
         }
       }

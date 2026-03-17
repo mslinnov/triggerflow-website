@@ -32,6 +32,7 @@ import {
   TrendingUp,
   Target,
   ShoppingCart,
+  CreditCard,
   type LucideIcon,
 } from 'lucide-react';
 
@@ -41,6 +42,7 @@ export interface ModuleFeature {
   icon: LucideIcon;
   bullets?: string[];
   mockup?: string;
+  image?: string;
 }
 
 export interface ModuleUseCase {
@@ -82,6 +84,7 @@ export interface ModuleData {
   headline: string;
   description: string;
   mockup: string;
+  heroImage?: string;
   painPoints: string[];
   benefits: string[];
   features: ModuleFeature[];
@@ -102,9 +105,10 @@ export const modules: Record<string, ModuleData> = {
     icon: Mail,
     title: 'Email',
     seoTitle: 'Email automatique hôtel : confirmations, pré-séjour & fidélisation',
-    headline: 'Vos emails envoyés automatiquement — 45% de taux d\'ouverture',
+    headline: 'Vos emails transactionnels envoyés automatiquement — 100% personnalisables',
     description: 'Confirmation en 30 secondes, rappel pré-séjour à J-3, demande d\'avis à J+1. Chaque email est personnalisé aux couleurs de votre établissement, avec les données de votre PMS. Aucune compétence technique requise.',
     mockup: 'EmailMockup',
+    heroImage: '/images/produit/email/hero-email.webp',
     painPoints: [
       '45 min/jour perdues à copier-coller des confirmations dans Outlook ou votre PMS',
       'Vos emails finissent dans les spams — vos clients ne reçoivent jamais les infos d\'arrivée',
@@ -118,7 +122,6 @@ export const modules: Record<string, ModuleData> = {
       'Une identité visuelle cohérente sur tous vos points de contact : confirmation, pré-séjour, remerciement, offres'
     ],
     stats: [
-      { value: '45', label: "taux d'ouverture (vs 21% en hôtellerie)", suffix: '%' },
       { value: '98', label: 'de délivrabilité garantie', suffix: '%' },
       { value: '3', label: 'plus de clics vs email générique', suffix: 'x' },
       { value: '2', label: 'pour créer un email — sans code', suffix: 'min' },
@@ -138,6 +141,7 @@ export const modules: Record<string, ModuleData> = {
         icon: Layout,
         bullets: ['Charte graphique complète : logo, couleurs, polices', 'Templates hôteliers prêts à l\'emploi', 'Responsive mobile natif + preview avant envoi'],
         mockup: 'EmailEditorMockup',
+        image: '/images/produit/email/email-builder.webp',
       },
       {
         title: 'Chaque email personnalisé avec les données de votre PMS',
@@ -145,6 +149,7 @@ export const modules: Record<string, ModuleData> = {
         icon: UserCheck,
         bullets: ['Variables dynamiques illimitées depuis votre PMS', 'Contenu conditionnel par segment client', 'Multi-langue automatique (FR, EN, DE, ES...)'],
         mockup: 'EmailPersonalizationMockup',
+        image: '/images/produit/email/email-personnalisation.webp',
       },
       {
         title: 'Mesurez chaque email, optimisez en continu',
@@ -152,6 +157,7 @@ export const modules: Record<string, ModuleData> = {
         icon: BarChart,
         bullets: ['Dashboard analytics en temps réel', 'Alertes automatiques sur les anomalies', 'Export CSV et rapports planifiés'],
         mockup: 'EmailAnalyticsMockup',
+        image: '/images/produit/email/email-analytics.webp',
       }
     ],
     useCases: [
@@ -220,7 +226,7 @@ export const modules: Record<string, ModuleData> = {
     ],
     ctaTitle: 'Envoyez votre premier email automatisé dès aujourd\'hui',
     ctaSubtitle: 'Démo personnalisée de 20 min. On vous montre avec VOS données, votre charte, vos emails.',
-    relatedModules: ['sms', 'automatisations', 'newsletter']
+    relatedModules: ['sms', 'automatisations', 'paiements']
   },
 
   sms: {
@@ -760,7 +766,7 @@ export const modules: Record<string, ModuleData> = {
     ],
     ctaTitle: 'Créez votre premier workflow en 5 minutes',
     ctaSubtitle: 'Builder visuel, templates prêts à l\'emploi. Votre hôtel tourne tout seul.',
-    relatedModules: ['email', 'sms', 'whatsapp']
+    relatedModules: ['email', 'sms', 'paiements']
   },
 
   crm: {
@@ -868,7 +874,7 @@ export const modules: Record<string, ModuleData> = {
     ],
     ctaTitle: 'Connaissez enfin vos clients par cœur',
     ctaSubtitle: 'CRM synchronisé avec votre PMS en 5 minutes. Fiche client 360° dès le premier jour.',
-    relatedModules: ['automatisations', 'fidelite', 'email']
+    relatedModules: ['automatisations', 'paiements', 'email']
   },
 
   formulaires: {
@@ -1408,8 +1414,141 @@ export const modules: Record<string, ModuleData> = {
     ],
     ctaTitle: 'Augmentez votre panier moyen dès cette semaine',
     ctaSubtitle: 'Catalogue configuré en 1h. Premières ventes additionnelles automatiques dès demain.',
-    relatedModules: ['automatisations', 'email', 'sms', 'crm']
-  }
+    relatedModules: ['automatisations', 'email', 'paiements', 'crm']
+  },
+
+  paiements: {
+    slug: 'paiements',
+    icon: CreditCard,
+    title: 'Paiements',
+    seoTitle: 'Liens de paiement hôtel : acompte, caution & empreinte carte',
+    headline: 'Encaissez vos clients avant, pendant et après le séjour — sans friction',
+    description: 'Créez des liens de paiement personnalisés à votre image. Acompte, caution, empreinte carte : chaque besoin hôtelier couvert. Intégré à vos workflows et connecté à votre PMS.',
+    mockup: 'DashboardMockup',
+    painPoints: [
+      'Vous relancez les clients par email pour les acomptes — pas de lien direct pour payer',
+      'La caution se gère à l\'arrivée en physique — friction pour le client et la réception',
+      'Vous n\'avez aucune visibilité sur les paiements en cours et les cartes enregistrées',
+      'Chaque prestataire de paiement nécessite une intégration technique différente'
+    ],
+    benefits: [
+      'Un lien personnalisé aux couleurs de votre hôtel, envoyé automatiquement par email, SMS ou WhatsApp',
+      '3 types de paiement : encaissement immédiat, caution (pré-autorisation 7-31j), empreinte carte (prélèvement ultérieur)',
+      'Page de paiement multilingue — s\'adapte automatiquement à la langue du client',
+      'Compatible Stripe, et bientôt Mollie, Payline, etc. — un seul système, plusieurs prestataires'
+    ],
+    stats: [
+      { value: '3', label: 'types de paiement (paiement, caution, empreinte)', suffix: '' },
+      { value: '5', label: 'langues supportées (FR, EN, ES, DE, IT)', suffix: '' },
+      { value: '0', label: 'commission TriggerFlow', suffix: '€' },
+    ],
+    journey: [
+      { label: 'Réservation', description: 'Acompte automatique', active: true },
+      { label: 'Pré-séjour', description: 'Empreinte carte / caution', active: true },
+      { label: 'Arrivée', description: 'Vérification caution', active: true },
+      { label: 'Séjour', description: 'Prélèvement minibar/extras', active: true },
+      { label: 'Départ', description: 'Libération caution', active: true },
+      { label: 'Post-séjour', description: 'Remboursement si nécessaire', active: false },
+    ],
+    features: [
+      {
+        title: 'Liens de paiement personnalisés',
+        description: 'Créez des liens brandés (logo, couleurs, polices). Montant fixe, pourcentage ou solde restant. Envoyés via vos workflows automatiques.',
+        icon: Palette,
+        bullets: ['Design aux couleurs de votre hôtel', 'Montant fixe, pourcentage ou solde restant', 'Envoi automatique via workflows'],
+        mockup: 'DashboardMockup',
+      },
+      {
+        title: 'Paiement immédiat',
+        description: 'Le client paie en un clic. Fonds encaissés directement sur votre compte. Confirmation automatique.',
+        icon: CreditCard,
+        bullets: ['Paiement en 1 clic', 'Fonds sur votre compte', 'Confirmation automatique'],
+        mockup: 'DashboardMockup',
+      },
+      {
+        title: 'Caution / Pré-autorisation',
+        description: 'Bloquez un montant sur la carte du client. Capturez ou libérez depuis votre dashboard. Expire automatiquement après 7-31 jours.',
+        icon: Shield,
+        bullets: ['Blocage sans débit', 'Capture ou libération en 1 clic', 'Expiration automatique 7-31j'],
+        mockup: 'DashboardMockup',
+      },
+      {
+        title: 'Empreinte carte',
+        description: 'Enregistrez la carte du client pour un prélèvement ultérieur (no-show, dégâts, minibar). Aucun montant débité à l\'enregistrement.',
+        icon: User,
+        bullets: ['Enregistrement sans débit', 'Prélèvement ultérieur à la demande', 'Idéal no-show et dégâts'],
+        mockup: 'DashboardMockup',
+      },
+      {
+        title: 'Suivi & remboursements',
+        description: 'Tableau de bord des transactions. Remboursement total ou partiel en un clic. Historique complet avec motif et audit trail.',
+        icon: Activity,
+        bullets: ['Dashboard transactions temps réel', 'Remboursement partiel ou total', 'Audit trail complet'],
+        mockup: 'DashboardMockup',
+      },
+      {
+        title: 'Multi-prestataires',
+        description: 'Connectez Stripe aujourd\'hui, Mollie ou Payline demain. Architecture extensible, pas de verrouillage prestataire.',
+        icon: RefreshCw,
+        bullets: ['Stripe Connect natif', 'Mollie & Payline bientôt', 'Changez de prestataire sans migration'],
+        mockup: 'DashboardMockup',
+      },
+    ],
+    useCases: [
+      {
+        title: 'Acompte automatique à la réservation',
+        description: 'Le client réserve. En 30 secondes, il reçoit un lien de paiement aux couleurs de votre hôtel pour verser son acompte. Aucune relance, aucune action manuelle.',
+        result: '85% des acomptes payés dans les 2h'
+      },
+      {
+        title: 'Caution digitale au pré-séjour',
+        description: 'À J-3, le client reçoit automatiquement une demande de caution. Le montant est bloqué (pas débité) sur sa carte. Plus besoin de gérer ça à la réception.',
+        result: 'Check-in accéléré de 5 min → 30 sec'
+      },
+      {
+        title: 'Empreinte carte pour les no-shows',
+        description: 'Sécurisez vos réservations avec une empreinte carte. En cas de no-show, prélevez le montant prévu en un clic depuis votre dashboard.',
+        result: '-70% de pertes liées aux no-shows'
+      },
+      {
+        title: 'Extras et minibar en fin de séjour',
+        description: 'Le client a consommé au minibar ou réservé un soin ? Prélevez directement la carte enregistrée. Le client reçoit un reçu automatique.',
+        result: '100% des extras encaissés sans friction'
+      },
+    ],
+    faq: [
+      {
+        question: 'Quels prestataires de paiement sont supportés ?',
+        answer: 'Stripe Connect aujourd\'hui, Mollie et Payline bientôt. TriggerFlow s\'intègre directement à votre compte prestataire — vos fonds arrivent sur votre compte, pas le nôtre.'
+      },
+      {
+        question: 'Est-ce que TriggerFlow prend une commission ?',
+        answer: 'Non. Seuls les frais du prestataire (Stripe ~1.5%+0.25€) s\'appliquent. TriggerFlow ne prend aucune commission sur les transactions.'
+      },
+      {
+        question: 'Combien de temps dure une caution ?',
+        answer: '7 à 31 jours selon le réseau de carte. Pour l\'hôtellerie, des autorisations étendues jusqu\'à 31 jours sont possibles via Stripe.'
+      },
+      {
+        question: 'Peut-on prélever une carte enregistrée plusieurs mois après ?',
+        answer: 'Oui, tant que la carte n\'est pas expirée ou révoquée. Aucune limite de durée côté TriggerFlow.'
+      },
+      {
+        question: 'Les liens de paiement sont-ils réutilisables ?',
+        answer: 'Oui, un même lien peut être utilisé par plusieurs réservations. La déduplication se fait automatiquement par réservation.'
+      },
+    ],
+    testimonial: {
+      quote: 'On a divisé par 10 le temps passé sur les acomptes. Les clients paient avant d\'arriver, c\'est fluide pour tout le monde.',
+      author: 'Thomas Renard',
+      role: 'Directeur',
+      hotel: 'Hôtel & Spa Le Clos',
+      metric: '-90% de temps sur les acomptes'
+    },
+    ctaTitle: 'Simplifiez vos encaissements dès cette semaine',
+    ctaSubtitle: 'Configuration en 15 minutes. Premiers paiements encaissés dès demain.',
+    relatedModules: ['crm', 'automatisations', 'ventes-additionnelles', 'email']
+  },
 };
 
 export const modulesList = Object.values(modules);

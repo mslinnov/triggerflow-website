@@ -16,6 +16,7 @@ const productLinks = [
   { href: '/produit/newsletter', labelKey: 'product.marketing', isLink: true },
   { href: '/produit/crm', labelKey: 'product.tools', isLink: true },
   { href: '/produit/avis', labelKey: 'product.reputation', isLink: true },
+  { href: '/produit/paiements', labelKey: 'product.payments', isLink: true },
 ] as const;
 
 // Solutions links
