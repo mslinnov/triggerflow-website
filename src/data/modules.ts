@@ -453,6 +453,7 @@ export const modules: Record<string, ModuleData> = {
     headline: 'Vos anciens clients réservent à nouveau en direct',
     description: 'Newsletters et campagnes ciblées pour garder le contact avec vos anciens clients et générer des réservations directes. Moins de commissions OTA, plus de marge.',
     mockup: 'CampaignMockup',
+    heroImage: '/images/produit/newsletter/hero-newsletter.webp',
     painPoints: [
       'Vos anciens clients réservent sur Booking au lieu de revenir en direct — vous payez 15-25% de commission',
       'Créer une newsletter vous prend une journée entière entre le contenu, le design et l\'envoi',
@@ -484,6 +485,7 @@ export const modules: Record<string, ModuleData> = {
         icon: Palette,
         bullets: ['Blocs spécialisés hôtellerie', 'Bibliothèque d\'images intégrée', 'Preview mobile avant envoi'],
         mockup: 'NewsletterEditorMockup',
+        image: '/images/produit/newsletter/nl-editor.webp',
       },
       {
         title: 'Envoyez le bon message au bon segment',
@@ -491,6 +493,7 @@ export const modules: Record<string, ModuleData> = {
         icon: Users,
         bullets: ['Segments dynamiques automatiques', 'Filtres combinables', 'Exclusion des clients récents'],
         mockup: 'NewsletterSegmentMockup',
+        image: '/images/produit/newsletter/nl-segment.webp',
       },
       {
         title: 'Programmez et oubliez',
@@ -498,6 +501,15 @@ export const modules: Record<string, ModuleData> = {
         icon: Calendar,
         bullets: ['Séquences automatiques', 'Calendrier éditorial intégré', 'A/B testing objet et contenu'],
         mockup: 'NewsletterScheduleMockup',
+        image: '/images/produit/newsletter/nl-schedule.webp',
+      },
+      {
+        title: 'Mesurez chaque campagne, optimisez en continu',
+        description: 'Taux d\'ouverture, clics, désabonnements, revenus générés — suivez les performances de chaque newsletter en temps réel. Identifiez ce qui fonctionne et ajustez.',
+        icon: BarChart,
+        bullets: ['Dashboard analytics en temps réel', 'Revenus attribués par campagne', 'Comparaison entre campagnes'],
+        mockup: 'EmailAnalyticsMockup',
+        image: '/images/produit/email/email-analytics.webp',
       }
     ],
     useCases: [
@@ -561,6 +573,7 @@ export const modules: Record<string, ModuleData> = {
     headline: 'Vos clients reviennent en direct, pas via Booking',
     description: 'Programme de fidélité clé en main pour récompenser vos meilleurs clients et les faire réserver directement. Moins de commissions OTA, plus de marge.',
     mockup: 'CRMMockup',
+    heroImage: '/images/produit/fidelite/fid-points.webp',
     painPoints: [
       'Vos clients satisfaits réservent quand même via Booking la fois suivante — vous repayez 15-25% de commission',
       'Mettre en place un programme fidélité semble complexe et chronophage — vous n\'avez pas de développeur',
@@ -592,6 +605,7 @@ export const modules: Record<string, ModuleData> = {
         icon: Star,
         bullets: ['Points auto par séjour et dépense', 'Paliers Bronze / Silver / Gold', 'Expiration configurable'],
         mockup: 'LoyaltyPointsMockup',
+        image: '/images/produit/fidelite/fid-portail.webp',
       },
       {
         title: 'Vos récompenses, vos règles',
@@ -599,12 +613,14 @@ export const modules: Record<string, ModuleData> = {
         icon: Gift,
         bullets: ['Récompenses personnalisables', 'Catalogue par palier', 'Récompenses surprise possibles'],
         mockup: 'LoyaltyRewardsMockup',
+        image: '/images/produit/fidelite/fid-recompenses.webp',
       },
       {
         title: 'Vos clients suivent leurs points en ligne',
         description: 'Espace client dédié où vos clients voient leur solde de points, leur statut et les récompenses disponibles. Un vrai programme professionnel.',
         icon: User,
         bullets: ['Espace client en ligne', 'Historique des points', 'Récompenses réclamables en 1 clic'],
+        image: '/images/produit/fidelite/fid-points.webp',
         mockup: 'LoyaltyPortalMockup',
       }
     ],
@@ -777,6 +793,7 @@ export const modules: Record<string, ModuleData> = {
     headline: 'Chaque client est reconnu dès son arrivée',
     description: 'Base clients unifiée avec historique complet : séjours, préférences, communications, dépenses. La réception sait tout avant que le client ne parle.',
     mockup: 'CRMMockup',
+    heroImage: '/images/produit/crm/hero-crm.webp',
     painPoints: [
       'Les infos clients sont éparpillées entre le PMS, les emails, les post-it — personne n\'a la vue complète',
       'Un client fidèle arrive et le réceptionniste ne le reconnaît pas — expérience décevante',
@@ -808,6 +825,7 @@ export const modules: Record<string, ModuleData> = {
         icon: User,
         bullets: ['Fiche client complète', 'Préférences et habitudes', 'Score de satisfaction NPS'],
         mockup: 'CrmClientCardMockup',
+        image: '/images/produit/crm/crm-fiche-client.webp',
       },
       {
         title: 'Votre PMS se synchronise tout seul',
@@ -815,6 +833,7 @@ export const modules: Record<string, ModuleData> = {
         icon: RefreshCw,
         bullets: ['Synchro temps réel PMS', 'Détection des doublons', 'Historique sans limite de durée'],
         mockup: 'CrmPmsSyncMockup',
+        image: '/images/produit/crm/crm-reservations.webp',
       },
       {
         title: 'Créez les segments qui comptent pour vous',
@@ -822,6 +841,7 @@ export const modules: Record<string, ModuleData> = {
         icon: Tag,
         bullets: ['Tags manuels et automatiques', 'Segments dynamiques', 'Combinaison de critères'],
         mockup: 'CrmSegmentsMockup',
+        image: '/images/produit/crm/crm-segments.webp',
       }
     ],
     useCases: [

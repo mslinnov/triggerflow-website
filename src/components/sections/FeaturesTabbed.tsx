@@ -218,7 +218,7 @@ export function FeaturesTabbed({
           )}
         >
           {/* Tab list */}
-          <div className="w-full lg:w-[40%]">
+          <div className="w-full lg:w-[40%]" style={{ overflowAnchor: 'none' }}>
             <div className="flex flex-col">
               {tabs.map((tab, index) => {
                 const isActive = index === activeIndex;
@@ -238,16 +238,17 @@ export function FeaturesTabbed({
                     )}
                   >
                     {/* Active tab background highlight */}
-                    {isActive && (
-                      <motion.div
-                        layoutId={`tab-bg-${translationNamespace}`}
-                        className="absolute inset-0 rounded-xl border border-border-light bg-white shadow-[var(--shadow-md)]"
-                        style={{
-                          background: `linear-gradient(135deg, white 60%, ${accent.glow})`,
-                        }}
-                        transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-                      />
-                    )}
+                    <div
+                      className={cn(
+                        'absolute inset-0 rounded-xl border bg-white transition-all duration-300',
+                        isActive
+                          ? 'border-border-light opacity-100 shadow-[var(--shadow-md)]'
+                          : 'border-transparent opacity-0 shadow-none'
+                      )}
+                      style={isActive ? {
+                        background: `linear-gradient(135deg, white 60%, ${accent.glow})`,
+                      } : undefined}
+                    />
 
                     <div className="relative z-10 px-4 py-4 lg:py-5">
                       {/* Title row */}
@@ -292,24 +293,18 @@ export function FeaturesTabbed({
                         </span>
                       </div>
 
-                      {/* Description (expand/collapse) */}
-                      <AnimatePresence initial={false}>
-                        {isActive && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                            className="overflow-hidden"
-                            onMouseEnter={() => setIsPaused(true)}
-                            onMouseLeave={() => setIsPaused(false)}
-                          >
-                            <p className="mt-2 pl-[4.25rem] text-sm leading-relaxed text-text-secondary">
-                              {getText(`items.${tab.key}.description`)}
-                            </p>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
+                      {/* Description — instant height, opacity transition only */}
+                      {isActive && (
+                        <div
+                          className="overflow-hidden"
+                          onMouseEnter={() => setIsPaused(true)}
+                          onMouseLeave={() => setIsPaused(false)}
+                        >
+                          <p className="mt-2 pl-[4.25rem] text-sm leading-relaxed text-text-secondary">
+                            {getText(`items.${tab.key}.description`)}
+                          </p>
+                        </div>
+                      )}
                     </div>
 
                     {/* Progress bar */}
