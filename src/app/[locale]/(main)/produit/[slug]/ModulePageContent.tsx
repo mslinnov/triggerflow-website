@@ -592,20 +592,20 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
                 className="group rounded-2xl border border-white/[0.08] bg-white/[0.05] p-6 backdrop-blur-sm transition-all duration-200 hover:border-white/15 hover:bg-white/[0.08]"
               >
                 <div className="flex items-start gap-4">
-                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-brand-primary/15 font-serif text-sm font-bold text-brand-primary">
+                  <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-white/10 font-serif text-sm font-bold text-white">
                     {index + 1}
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-base font-semibold text-white transition-colors group-hover:text-brand-primary">
+                    <h3 className="text-base font-semibold text-white">
                       {useCase.title}
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-white/65">
                       {useCase.description}
                     </p>
                     {useCase.result && (
-                      <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-brand-primary/20 bg-brand-primary/10 px-3 py-1.5">
-                        <div className="h-1.5 w-1.5 rounded-full bg-brand-primary" />
-                        <span className="text-xs font-medium text-brand-primary">
+                      <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5">
+                        <div className="h-1.5 w-1.5 rounded-full bg-white" />
+                        <span className="text-xs font-medium text-white">
                           {useCase.result}
                         </span>
                       </div>
