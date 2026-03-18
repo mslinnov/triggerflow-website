@@ -561,10 +561,10 @@
         "description": "To perform",
         "features": "10 flows, 15000 emails, Forms, Sales"
       },
-      "marketing": {
-        "name": "Marketing+",
-        "description": "To scale",
-        "features": "Unlimited, Newsletter, Loyalty"
+      "allInclusive": {
+        "name": "All Inclusive",
+        "description": "All modules included, no limits",
+        "features": "Unlimited, All modules included"
       }
     }
   },
@@ -795,169 +795,278 @@
         "description": "Legal notice and company information for TriggerFlow."
       },
       "title": "Legal Notice",
+      "lastUpdate": "Last modified on 04/02/2025",
       "sections": {
         "editor": {
-          "title": "Site Publisher",
-          "content": "The website trigger-flow.com is published by:",
-          "company": "Company name:",
-          "address": "Address:",
-          "capital": "Share capital:",
-          "rcs": "RCS:",
-          "vat": "VAT number:",
-          "director": "Publication director:",
-          "email": "Email:"
+          "title": "1. Site Publisher",
+          "intro": "The Trigger Flow website is published by:",
+          "companyName": "Utelys",
+          "legalForm": "Legal form",
+          "legalFormValue": "SAS (Simplified Joint-Stock Company)",
+          "capital": "Share capital",
+          "capitalValue": "€24,000",
+          "address": "Registered office",
+          "addressValue": "13 Rue Sainte Ursule, 31000 Toulouse, France",
+          "rcs": "RCS",
+          "rcsValue": "Toulouse 842 608 671",
+          "vat": "EU VAT number",
+          "vatValue": "FR11842608671",
+          "email": "Email",
+          "emailValue": "contact@utelys.fr",
+          "phone": "Phone",
+          "phoneValue": "+33 5 54 54 48 52",
+          "director": "Publication director",
+          "directorValue": "Mounir LAKHFIF"
         },
         "hosting": {
-          "title": "Hosting",
-          "content": "The site is hosted by:",
-          "provider": "Host:",
-          "address": "Address:"
+          "title": "2. Hosting",
+          "intro": "The website is hosted by:",
+          "providerName": "Webflow, Inc.",
+          "address": "Address",
+          "addressValue": "398 11th Street, 2nd Floor, San Francisco, CA 94103, USA",
+          "website": "Website",
+          "websiteValue": "www.webflow.com"
         },
         "intellectual": {
-          "title": "Intellectual Property",
-          "content": "All content on the trigger-flow.com website (texts, images, logos, videos, etc.) is protected by intellectual property law. Any unauthorized reproduction, representation, modification or exploitation is prohibited."
+          "title": "3. Intellectual Property",
+          "content": "All content on the Trigger Flow website (texts, images, graphics, logos, videos, icons, etc.) is protected by applicable intellectual property laws. Any reproduction, modification or publication is strictly prohibited without prior written consent from Utelys."
         },
         "data": {
-          "title": "Personal Data",
-          "content": "In accordance with the Data Protection Act and the GDPR, you have the right to access, rectify and delete your personal data. To exercise this right, contact us at contact@trigger-flow.com."
+          "title": "4. Personal Data and Cookies",
+          "content": "The site collects certain data in accordance with its privacy policy. Users can access, modify or delete their data by contacting contact@utelys.fr. Cookies enhance user experience and analyze site traffic."
         },
-        "cookies": {
-          "title": "Cookies",
-          "content": "This site uses cookies to improve your browsing experience and compile visit statistics. You can configure cookie settings in your browser preferences."
+        "responsibility": {
+          "title": "5. Liability",
+          "content": "Utelys makes every effort to ensure the accuracy of information published on the site. The company cannot be held responsible for omissions or inaccuracies. Users assume responsibility for the use of information provided."
+        },
+        "links": {
+          "title": "6. Hyperlinks",
+          "content": "The site may contain external links. Utelys cannot be held responsible for the content of third-party websites."
+        },
+        "jurisdiction": {
+          "title": "7. Applicable Law and Jurisdiction",
+          "content": "These legal notices are governed by French law. In case of dispute, the courts of the registered office of Utelys shall have jurisdiction."
         }
       }
     },
     "terms": {
       "meta": {
         "title": "Terms of Sale | TriggerFlow",
-        "description": "General terms of sale for TriggerFlow services."
+        "description": "General terms of sale for TriggerFlow services - Subscriptions, payments, termination."
       },
       "title": "Terms of Sale",
-      "lastUpdate": "Last updated",
+      "lastUpdate": "Last modified on 11/02/2025",
       "sections": {
         "object": {
-          "title": "Purpose",
-          "content": "These general terms of sale define the contractual conditions applicable to any subscription to TriggerFlow services by a business customer. Any use of the service implies unconditional acceptance of these terms."
+          "title": "Article 1 – Purpose and Enforceability",
+          "content": "These Terms of Sale define the conditions for subscribing to and paying for the subscription plans of the \"Trigger Flow\" Platform. They apply to all professional CLIENTS. Any order implies full and unconditional acceptance of these Terms."
         },
-        "services": {
-          "title": "Services Description",
-          "content": "TriggerFlow is a SaaS platform for automating hotel customer relationships. Services include: synchronization with PMS, automatic sending of SMS and emails, satisfaction surveys management, additional sales module, and statistics dashboard."
+        "offers": {
+          "title": "Article 2 – Plans and Subscriptions",
+          "formulasTitle": "2.1 Plans",
+          "formulaDiscovery": "Discovery: €0/month",
+          "formulaCommunication": "Communication: €69/month",
+          "formulaConversion": "Conversion: €149/month",
+          "formulaAllInclusive": "All Inclusive: €249/month",
+          "commissionTitle": "2.2 Sales Pages Commission",
+          "commissionContent": "Transactions generated through the Platform are subject to a commission (between 5% and 15%). Amounts owed to the CLIENT are paid after commission deduction, on a weekly basis."
         },
-        "pricing": {
-          "title": "Pricing and Payment Terms",
-          "content": "Prices are indicated in euros excluding tax. VAT will be applied at the current rate. Subscriptions are billed monthly or annually in advance. Payment is made by bank card or SEPA direct debit. Any late payment will result in automatic suspension of services."
-        },
-        "payment": {
-          "title": "Payment",
-          "content": "Payments are secure via our partner Stripe. Accepted payment methods are: Visa, Mastercard, American Express, and SEPA direct debit. Invoices are available in your customer portal."
+        "orders": {
+          "title": "Article 3 – Orders and Payment",
+          "processTitle": "3.1 Order Process",
+          "processContent": "The CLIENT subscribes to their chosen plan online, via credit card. Billing information must be accurate.",
+          "pricingTitle": "3.2 Pricing and Invoicing",
+          "pricingContent": "Prices are indicated in euros excluding tax. Monthly or annual subscriptions are payable in advance. Invoices are sent electronically.",
+          "refundTitle": "3.3 Refund Policy",
+          "refundContent": "Except for legal obligations (e.g., right of withdrawal for certain distance sales if eligible), no refund is granted in case of early termination. Amounts already paid remain acquired by the PROVIDER."
         },
         "duration": {
-          "title": "Duration and Renewal",
-          "content": "Subscriptions are taken out for a minimum period of one month or one year depending on the formula chosen. Unless terminated before the deadline, subscriptions are renewed automatically for the same period."
-        },
-        "termination": {
-          "title": "Termination",
-          "content": "The customer can terminate their subscription at any time from their customer portal. Termination takes effect at the end of the current billing period. No refund will be made for the remaining period."
+          "title": "Article 4 – Duration and Termination",
+          "initialTitle": "4.1 Initial Duration",
+          "initialContent": "The contract is concluded for 12 months, tacitly renewable.",
+          "terminationTitle": "4.2 Termination",
+          "terminationContent": "See Service Agreement (Article 7). Any early termination for serious breach does not entitle to a refund.",
+          "consequencesTitle": "4.3 Consequences",
+          "consequencesContent": "The CLIENT may request data export before the effective end date. The PROVIDER deletes data at contract expiry (unless legally required otherwise)."
         },
         "liability": {
-          "title": "Liability",
-          "content": "Utelys SAS commits to make its best efforts to ensure service availability. However, Utelys SAS cannot be held responsible for interruptions due to maintenance, technical failures or causes beyond its control. Compensation cannot exceed the amount paid by the customer over the last 12 months."
+          "title": "Article 5 – Liability",
+          "obligationTitle": "5.1 Best Efforts Obligation",
+          "obligationContent": "The PROVIDER makes all reasonable efforts to provide the Platform, without guaranteeing the absence of bugs or the expected marketing effectiveness.",
+          "limitationsTitle": "5.2 Limitations",
+          "limitationsContent": "The PROVIDER shall not be held liable for indirect damages. The compensation cap is limited to the amounts paid by the CLIENT over the last 12 months."
+        },
+        "revision": {
+          "title": "Article 6 – Revision of Terms",
+          "content": "The PROVIDER reserves the right to modify the Terms, subject to informing the CLIENT (email, notification). Modified Terms will apply to subsequent renewals, unless the CLIENT refuses and terminates before the deadline."
         },
         "jurisdiction": {
-          "title": "Applicable Law and Jurisdiction",
-          "content": "These terms are governed by French law. In case of dispute, and after failed attempt at amicable resolution, Paris courts will have exclusive jurisdiction."
+          "title": "Article 7 – Applicable Law and Disputes",
+          "content": "These Terms are governed by French law. Disputes fall under the jurisdiction of the courts of Toulouse."
         }
       }
     },
     "termsOfUse": {
       "meta": {
         "title": "Terms of Use | TriggerFlow",
-        "description": "General terms of use for TriggerFlow services."
+        "description": "General terms of use for the TriggerFlow platform."
       },
       "title": "Terms of Use",
-      "lastUpdate": "Last updated",
+      "lastUpdate": "Last modified on 01/02/2025",
       "sections": {
-        "acceptance": {
-          "title": "Terms Acceptance",
-          "content": "By accessing and using the TriggerFlow platform, you expressly agree to these terms of use. If you do not accept these terms, please do not use our services."
+        "object": {
+          "title": "Article 1 – Purpose",
+          "content": "These Terms of Use govern access to and use of the \"Trigger Flow\" platform available at app.trigger-flow.com. Acceptance of the Terms of Use, Terms of Sale and Service Agreement is mandatory."
         },
-        "access": {
-          "title": "Service Access",
-          "content": "Access to TriggerFlow services is reserved for business customers. To use the platform, you must create an account by providing accurate and up-to-date information."
+        "services": {
+          "title": "Article 2 – Services and Modifications",
+          "descriptionTitle": "2.1 Description",
+          "descriptionContent": "The Platform offers marketing automation features: segment creation, email/SMS sending, sales pages, etc.",
+          "modificationTitle": "2.2 Service Modification",
+          "modificationContent": "The PROVIDER reserves the right to modify or discontinue all or part of the Services at any time, without notice, particularly for technical or commercial reasons."
         },
         "account": {
-          "title": "Account and Security",
-          "content": "You are responsible for maintaining the confidentiality of your credentials. Any activity carried out from your account is your responsibility. In case of suspected breach, please contact us immediately."
-        },
-        "usage": {
-          "title": "Service Usage",
-          "content": "You agree to use the service in accordance with applicable laws and regulations, including those relating to electronic communications (GDPR, anti-spam laws). You are responsible for the content of messages sent via the platform."
-        },
-        "prohibited": {
-          "title": "Prohibited Use",
-          "content": "It is forbidden to: send unauthorized commercial messages (spam), use the service for illegal purposes, attempt to access non-authorized parts of the system, share your account with third parties, collect personal data without consent."
+          "title": "Article 3 – Account Creation and Use",
+          "registrationTitle": "3.1 Registration",
+          "registrationContent": "Clients must provide accurate and up-to-date information (company name, email, etc.) and are responsible for the confidentiality of their credentials.",
+          "complianceTitle": "3.2 Compliant Use",
+          "complianceContent": "The CLIENT agrees to comply with all applicable regulations: anti-spam legislation, GDPR, consumer rights.",
+          "betaTitle": "3.3 \"Beta\" Features",
+          "betaContent": "Experimental features are provided \"as is\", without warranty, and may be modified or removed without notice."
         },
         "intellectual": {
-          "title": "Intellectual Property",
-          "content": "The TriggerFlow platform, including its code, design and content, is protected by intellectual property rights. You are granted only a limited right to use the service within the scope of your subscription."
+          "title": "Article 4 – Intellectual Property",
+          "content": "The Trigger Flow platform remains the exclusive property of the provider. Clients do not acquire any intellectual property rights over the software, trademarks or logos."
+        },
+        "data": {
+          "title": "Article 5 – Personal Data",
+          "controllerTitle": "5.1 Data Controller",
+          "controllerContent": "The CLIENT is responsible for data they import or collect through the Platform. The provider acts as a data processor in accordance with the GDPR Annex.",
+          "securityTitle": "5.2 Security",
+          "securityContent": "The provider implements technical measures to secure data, without guaranteeing absolute infallibility."
+        },
+        "liability": {
+          "title": "Article 6 – Limitation of Liability",
+          "availabilityTitle": "6.1 Availability",
+          "availabilityContent": "The Platform is accessible \"as is\" and \"subject to availability\". No continuous availability is guaranteed.",
+          "warrantiesTitle": "6.2 Disclaimer of Warranties",
+          "warrantiesContent": "The provider disclaims express or implied warranties, particularly regarding merchantability or fitness for a particular purpose.",
+          "indemnificationTitle": "6.3 Indemnification",
+          "indemnificationContent": "The CLIENT indemnifies the PROVIDER against any claims related to non-compliant use of the Platform."
         },
         "modifications": {
-          "title": "Modifications",
-          "content": "We reserve the right to modify these terms at any time. Users will be informed of significant changes. Continued use of the service after modifications implies acceptance of the new terms."
+          "title": "Article 7 – Modification of Terms",
+          "content": "The provider may modify these Terms at any time. Major changes will be notified."
         },
-        "contact": {
-          "title": "Contact",
-          "content": "For any questions regarding these terms of use, you can contact us at: contact@trigger-flow.com"
+        "jurisdiction": {
+          "title": "Article 8 – Applicable Law and Disputes",
+          "content": "These Terms are governed by French law. Any dispute shall be submitted to the competent courts of Toulouse."
         }
       }
     },
     "privacy": {
       "meta": {
         "title": "Privacy Policy | TriggerFlow",
-        "description": "Privacy policy and personal data protection for TriggerFlow."
+        "description": "TriggerFlow privacy policy - Personal data protection and user rights."
       },
       "title": "Privacy Policy",
-      "lastUpdate": "Last updated",
+      "lastUpdate": "Last modified on 11/02/2025",
       "sections": {
-        "introduction": {
-          "title": "Introduction",
-          "content": "Utelys SAS, publisher of TriggerFlow, is committed to protecting the privacy of its users and customers. This policy describes how we collect, use and protect your personal data in accordance with the GDPR and the Data Protection Act."
+        "controller": {
+          "title": "1. Data Controller Identification",
+          "company": "Company name",
+          "companyValue": "Utelys (SAS with share capital of €28,000)",
+          "rcs": "RCS",
+          "rcsValue": "842 608 671 Toulouse",
+          "address": "Registered office",
+          "addressValue": "13 rue Saint Ursule, 31000 Toulouse, France",
+          "representative": "Legal representative",
+          "representativeValue": "Mr. Mounir LAKHFIF",
+          "dpo": "Contact (DPO)",
+          "dpoValue": "privacy@utelys.fr"
         },
         "dataCollected": {
-          "title": "Data Collected",
-          "content": "We collect: identification data (last name, first name, email, phone), connection data (IP address, logs), usage data (platform usage, preferences), payment data (processed securely by Stripe). Guest data transmitted by your PMS remains your property."
+          "title": "2. Personal Data Collected",
+          "platformTitle": "2.1 Data collected via Trigger Flow",
+          "platformContent": "Client company name, first name, last name, professional email address, phone number. Payment information processed by Stripe (no direct storage of bank details).",
+          "usageTitle": "2.2 Usage and navigation data",
+          "usageContent": "Google Analytics (IP addresses, pages visited, visit duration). Facebook Pixel (audience measurement and retargeting)."
         },
-        "purpose": {
-          "title": "Purposes of Processing",
-          "content": "Your data is used to: provide and improve our services, manage your account and subscription, send transactional and commercial communications (with your consent), ensure platform security, comply with legal obligations."
+        "purposes": {
+          "title": "3. Purposes of Processing",
+          "item1": "Manage client accounts",
+          "item2": "Provide customer support",
+          "item3": "Handle billing and payment processing",
+          "item4": "Analyze audience and compile statistics",
+          "item5": "Comply with legal and regulatory obligations"
         },
         "legalBasis": {
-          "title": "Legal Basis",
-          "content": "Data processing is based on: contract performance (service subscription), consent (newsletter, cookies), legitimate interest (service improvement, fraud prevention), legal obligation (accounting, tax)."
+          "title": "4. Legal Basis for Processing",
+          "item1": "Contract performance (registration, use, billing)",
+          "item2": "Legitimate interest (audience analysis, service improvement)",
+          "item3": "Legal obligations (accounting, taxation)"
+        },
+        "recipients": {
+          "title": "5. Data Recipients",
+          "subprocessorsTitle": "5.1 Subprocessors and service providers",
+          "hosting": "Hosting: Digital Ocean (EU)",
+          "emails": "Emails: Mailgun",
+          "sms": "SMS: Gateway API",
+          "payment": "Payment: Stripe",
+          "analytics": "Analytics: Google Analytics, Facebook Pixel",
+          "transfersTitle": "5.2 Transfers outside the EU",
+          "transfersContent": "Appropriate safeguards are in place (European Commission Standard Contractual Clauses or equivalent)."
         },
         "retention": {
-          "title": "Retention Period",
-          "content": "Your data is retained for the duration of the contract plus 3 years for commercial prospecting. Payment data is retained in accordance with accounting obligations (10 years). Cookies are retained for 13 months maximum."
-        },
-        "sharing": {
-          "title": "Data Sharing",
-          "content": "Your data may be shared with: our technical subcontractors (hosting, payment), competent authorities on legal request. We never sell your personal data to third parties."
+          "title": "6. Data Retention",
+          "account": "Account data: as long as the account is active + 3 years after last activity, then deletion/archiving.",
+          "billing": "Billing data: 10 years (legal obligations).",
+          "analyticsData": "Logs and analytics: in accordance with Google Analytics settings (generally 14 months)."
         },
         "rights": {
-          "title": "Your Rights",
-          "content": "You have: access right, rectification right, deletion right, opposition right, portability right, right to limit processing. To exercise them, contact: dpo@trigger-flow.com. In case of dispute, you can contact the CNIL."
-        },
-        "cookies": {
-          "title": "Cookies",
-          "content": "Our site uses: necessary cookies (platform operation), analytics cookies (audience measurement), advertising cookies (with consent). You can manage your preferences in your browser or via our cookie consent banner."
+          "title": "7. User Rights",
+          "intro": "In accordance with the GDPR and French legislation:",
+          "item1": "Right of access",
+          "item2": "Right to rectification",
+          "item3": "Right to erasure (\"right to be forgotten\")",
+          "item4": "Right to restriction of processing",
+          "item5": "Right to object",
+          "item6": "Right to data portability",
+          "item7": "Withdrawal of consent",
+          "contactTitle": "To exercise your rights:",
+          "contactEmail": "Email: privacy@utelys.fr",
+          "contactAddress": "Mail: Utelys, 13 rue Saint Ursule, 31000 Toulouse, France",
+          "responseTime": "Response time: 1 month (extendable by 2 months).",
+          "recourse": "Recourse: contact the supervisory authority (CNIL in France: www.cnil.fr)."
         },
         "security": {
-          "title": "Security",
-          "content": "We implement appropriate technical and organizational measures to protect your data: encryption, secure access, employee awareness, regular audits."
+          "title": "8. Data Security",
+          "item1": "HTTPS protocol to secure exchanges",
+          "item2": "Strict access control and protected passwords",
+          "item3": "Limitation of access rights",
+          "item4": "Regular backups and encryption when necessary",
+          "item5": "Notification in case of data breach"
+        },
+        "cookies": {
+          "title": "9. Cookies and Trackers",
+          "intro": "Cookies are used for:",
+          "item1": "Proper functioning of the site",
+          "item2": "Audience measurement (Google Analytics)",
+          "item3": "Advertising and retargeting (Facebook Pixel)",
+          "consent": "A consent banner is displayed on first visit. You can configure cookies in your browser settings."
+        },
+        "b2b": {
+          "title": "10. B2B Services / Minors",
+          "content": "Services are intended for professionals (hospitality, food service). No intentional targeting of minors."
+        },
+        "updates": {
+          "title": "11. Policy Updates",
+          "content": "Revisions may occur to reflect evolving practices. The last update date is visible at the top of the document."
         },
         "contact": {
-          "title": "Contact",
-          "content": "For any questions regarding your personal data, you can contact our Data Protection Officer: dpo@trigger-flow.com"
+          "title": "12. Contact",
+          "email": "Email: privacy@utelys.fr",
+          "address": "Postal address: Utelys, 13 rue Saint Ursule, 31000 Toulouse, France"
         }
       }
     }
@@ -990,10 +1099,10 @@
         "trial": "14-day free trial",
         "description": "With more interaction, boost your ancillary sales and collect guest feedback."
       },
-      "marketing": {
-        "name": "Marketing +",
+      "allInclusive": {
+        "name": "All Inclusive",
         "trial": "14-day free trial",
-        "description": "Deploy your marketing campaigns and newsletters at scale and build guest loyalty."
+        "description": "All add-on modules included, no limits"
       }
     },
     "cta": {
@@ -1086,7 +1195,8 @@
         "forms": "Forms",
         "salesCatalog": "Sales and catalog module",
         "groupPortal": "Hotel group portal",
-        "conditions": "Conditions on client interactions"
+        "conditions": "Conditions on client interactions",
+        "addonsIncluded": "Add-on modules included"
       },
       "tooltips": {
         "emails": "Number of emails included per month in your plan. Beyond that, additional email packs are available.",
@@ -1100,7 +1210,8 @@
         "forms": "Create custom forms: pre-checkin, satisfaction surveys, stay preferences and more.",
         "salesCatalog": "Offer additional services and products to your guests (spa, restaurant, upgrades...).",
         "stats": "Hotel BI dashboards: occupancy rates, RevPAR, ADR, open rates, conversions and generated revenue.",
-        "groupPortal": "Dedicated interface to manage multiple properties from a single account with consolidated view."
+        "groupPortal": "Dedicated interface to manage multiple properties from a single account with consolidated view.",
+        "addonsIncluded": "The All Inclusive plan includes all add-on modules (Reviews, AI Agent, Payments, Loyalty, Guest App) at no extra cost."
       }
     },
     "faq": {
@@ -1597,6 +1708,10 @@
         "analytics": {
           "title": "Analytics",
           "description": "Dashboards and statistics"
+        },
+        "paymentLinks": {
+          "title": "Payment Links",
+          "description": "Collect payments with personalized payment links"
         }
       }
     },

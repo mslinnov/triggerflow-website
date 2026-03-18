@@ -35,7 +35,7 @@ function TermsContent() {
             {t('title')}
           </h1>
 
-          <p className="lead">{t('lastUpdate')}: 01/01/2024</p>
+          <p className="text-sm text-zinc-500">{t('lastUpdate')}</p>
 
           <section className="mt-8">
             <h2>{t('sections.object.title')}</h2>
@@ -43,33 +43,49 @@ function TermsContent() {
           </section>
 
           <section className="mt-8">
-            <h2>{t('sections.services.title')}</h2>
-            <p>{t('sections.services.content')}</p>
+            <h2>{t('sections.offers.title')}</h2>
+            <h3>{t('sections.offers.formulasTitle')}</h3>
+            <ul>
+              <li>{t('sections.offers.formulaDiscovery')}</li>
+              <li>{t('sections.offers.formulaCommunication')}</li>
+              <li>{t('sections.offers.formulaConversion')}</li>
+              <li>{t('sections.offers.formulaAllInclusive')}</li>
+            </ul>
+            <h3>{t('sections.offers.commissionTitle')}</h3>
+            <p>{t('sections.offers.commissionContent')}</p>
           </section>
 
           <section className="mt-8">
-            <h2>{t('sections.pricing.title')}</h2>
-            <p>{t('sections.pricing.content')}</p>
-          </section>
-
-          <section className="mt-8">
-            <h2>{t('sections.payment.title')}</h2>
-            <p>{t('sections.payment.content')}</p>
+            <h2>{t('sections.orders.title')}</h2>
+            <h3>{t('sections.orders.processTitle')}</h3>
+            <p>{t('sections.orders.processContent')}</p>
+            <h3>{t('sections.orders.pricingTitle')}</h3>
+            <p>{t('sections.orders.pricingContent')}</p>
+            <h3>{t('sections.orders.refundTitle')}</h3>
+            <p>{t('sections.orders.refundContent')}</p>
           </section>
 
           <section className="mt-8">
             <h2>{t('sections.duration.title')}</h2>
-            <p>{t('sections.duration.content')}</p>
-          </section>
-
-          <section className="mt-8">
-            <h2>{t('sections.termination.title')}</h2>
-            <p>{t('sections.termination.content')}</p>
+            <h3>{t('sections.duration.initialTitle')}</h3>
+            <p>{t('sections.duration.initialContent')}</p>
+            <h3>{t('sections.duration.terminationTitle')}</h3>
+            <p>{t('sections.duration.terminationContent')}</p>
+            <h3>{t('sections.duration.consequencesTitle')}</h3>
+            <p>{t('sections.duration.consequencesContent')}</p>
           </section>
 
           <section className="mt-8">
             <h2>{t('sections.liability.title')}</h2>
-            <p>{t('sections.liability.content')}</p>
+            <h3>{t('sections.liability.obligationTitle')}</h3>
+            <p>{t('sections.liability.obligationContent')}</p>
+            <h3>{t('sections.liability.limitationsTitle')}</h3>
+            <p>{t('sections.liability.limitationsContent')}</p>
+          </section>
+
+          <section className="mt-8">
+            <h2>{t('sections.revision.title')}</h2>
+            <p>{t('sections.revision.content')}</p>
           </section>
 
           <section className="mt-8">

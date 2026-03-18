@@ -39,9 +39,9 @@ const plans = [
     ],
   },
   {
-    name: 'Marketing+',
+    name: 'All Inclusive',
     description: 'Le plus populaire',
-    originalPrice: 199,
+    originalPrice: 249,
     thaisPrice: 149,
     priceLabel: '€/mois',
     features: [

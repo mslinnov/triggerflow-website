@@ -18,7 +18,7 @@ const plans = [
   { key: 'discovery', price: '0', popular: false },
   { key: 'communication', price: '69', popular: false },
   { key: 'conversion', price: '149', popular: true },
-  { key: 'marketing', price: '199', popular: false },
+  { key: 'allInclusive', price: '249', popular: false },
 ];
 
 const featureGroups = [
@@ -56,6 +56,7 @@ const featureGroups = [
     features: [
       { key: 'stats', values: [true, true, true, true] },
       { key: 'groupPortal', values: [false, false, true, true] },
+      { key: 'addonsIncluded', values: [false, false, false, true] },
     ],
   },
 ];
@@ -74,6 +75,12 @@ const addons = [
     color: 'violet' as const,
   },
   {
+    key: 'payments',
+    icon: CreditCard,
+    price: '29',
+    color: 'emerald' as const,
+  },
+  {
     key: 'loyalty',
     icon: Heart,
     price: '39',
@@ -84,12 +91,6 @@ const addons = [
     icon: Smartphone,
     price: '49',
     color: 'sky' as const,
-  },
-  {
-    key: 'payments',
-    icon: CreditCard,
-    price: '29',
-    color: 'emerald' as const,
   },
 ];
 

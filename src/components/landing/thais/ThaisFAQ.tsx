@@ -24,7 +24,7 @@ const faqs = [
   {
     question: 'Le support est-il inclus dans tous les forfaits ?',
     answer:
-      "Oui, tous les forfaits incluent un support francophone par email et chat. Le forfait Marketing+ inclut en plus un support prioritaire avec temps de réponse garanti sous 4h et un Customer Success Manager dédié.",
+      "Oui, tous les forfaits incluent un support francophone par email et chat. Le forfait All Inclusive inclut en plus un support prioritaire avec temps de réponse garanti sous 4h et un Customer Success Manager dédié.",
   },
   {
     question: 'Combien de temps pour être opérationnel ?',

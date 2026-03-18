@@ -37,10 +37,10 @@ const plans = [
     exampleUse: 'Proposez automatiquement le spa ou le restaurant avant l\'arrivée.',
   },
   {
-    name: 'Marketing+',
+    name: 'All Inclusive',
     scenario: 'Pour multi-établissements ou fort volume',
     monthlyPrice: 149,
-    originalPrice: 199,
+    originalPrice: 249,
     popular: false,
     keyIncludes: [
       'Tout Conversion +',

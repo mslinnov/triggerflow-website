@@ -29,8 +29,8 @@ const plans = [
     dark: true,
   },
   {
-    key: 'marketing',
-    price: '199',
+    key: 'allInclusive',
+    price: '249',
     gradient: 'from-purple-50 to-violet-50',
     borderColor: 'border-purple-200',
     popular: false,

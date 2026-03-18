@@ -101,9 +101,9 @@ export function SoftwareApplicationJsonLd() {
       },
       {
         '@type': 'Offer',
-        name: 'Marketing+',
+        name: 'All Inclusive',
         description: 'Pour les hôtels ambitieux',
-        price: '199',
+        price: '249',
         priceCurrency: 'EUR',
         priceValidUntil: '2026-12-31',
         billingIncrement: 'P1M',

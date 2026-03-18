@@ -561,10 +561,10 @@
         "description": "Pour maximiser vos revenus",
         "features": "10 flows, 15000 emails, Formulaires, Ventes"
       },
-      "marketing": {
-        "name": "Marketing+",
-        "description": "Pour industrialiser votre marketing",
-        "features": "Illimité, Newsletter, Fidélité"
+      "allInclusive": {
+        "name": "All Inclusive",
+        "description": "Tous les modules inclus, sans limites",
+        "features": "Illimité, Tous les modules inclus"
       }
     }
   },
@@ -794,78 +794,115 @@
         "title": "Mentions légales | TriggerFlow",
         "description": "Mentions légales du site TriggerFlow - Informations sur l'éditeur, l'hébergeur et les conditions d'utilisation."
       },
-      "title": "Mentions légales",
+      "title": "Mentions Légales",
+      "lastUpdate": "Dernière modification le 04/02/2025",
       "sections": {
         "editor": {
-          "title": "Éditeur du site",
-          "content": "Le site trigger-flow.com est édité par :",
-          "company": "Raison sociale :",
-          "address": "Adresse :",
-          "capital": "Capital social :",
-          "rcs": "RCS :",
-          "vat": "N° TVA :",
-          "director": "Directeur de publication :",
-          "email": "Email :"
+          "title": "1. Éditeur du site",
+          "intro": "Le site Trigger Flow est édité par :",
+          "companyName": "Utelys",
+          "legalForm": "Forme juridique",
+          "legalFormValue": "SAS (Société par Actions Simplifiée)",
+          "capital": "Capital social",
+          "capitalValue": "24 000 €",
+          "address": "Siège social",
+          "addressValue": "13 Rue Sainte Ursule, 31000 Toulouse",
+          "rcs": "RCS",
+          "rcsValue": "Toulouse 842 608 671",
+          "vat": "N° TVA intracommunautaire",
+          "vatValue": "FR11842608671",
+          "email": "Email",
+          "emailValue": "contact@utelys.fr",
+          "phone": "Téléphone",
+          "phoneValue": "05 54 54 48 52",
+          "director": "Directeur de publication",
+          "directorValue": "Mounir LAKHFIF"
         },
         "hosting": {
-          "title": "Hébergement",
-          "content": "Le site est hébergé par :",
-          "provider": "Hébergeur :",
-          "address": "Adresse :"
+          "title": "2. Hébergeur",
+          "intro": "Le site est hébergé par :",
+          "providerName": "Webflow, Inc.",
+          "address": "Adresse",
+          "addressValue": "398 11th Street, 2nd Floor, San Francisco, CA 94103, USA",
+          "website": "Site web",
+          "websiteValue": "www.webflow.com"
         },
         "intellectual": {
-          "title": "Propriété intellectuelle",
-          "content": "L'ensemble des contenus présents sur le site trigger-flow.com (textes, images, logos, vidéos, etc.) sont protégés par le droit de la propriété intellectuelle. Toute reproduction, représentation, modification ou exploitation non autorisée est interdite."
+          "title": "3. Propriété intellectuelle",
+          "content": "L'ensemble du contenu présent sur le site Trigger Flow (textes, images, graphismes, logos, vidéos, icônes, etc.) est protégé par les lois en vigueur en matière de propriété intellectuelle. Toute reproduction, modification ou publication est strictement interdite sans accord écrit préalable d'Utelys."
         },
         "data": {
-          "title": "Données personnelles",
-          "content": "Conformément à la loi Informatique et Libertés et au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données personnelles. Pour exercer ce droit, contactez-nous à contact@trigger-flow.com."
+          "title": "4. Données personnelles et cookies",
+          "content": "Le site collecte certaines données selon sa politique de confidentialité. Les utilisateurs peuvent accéder, modifier ou supprimer leurs données en contactant contact@utelys.fr. Des cookies améliorent l'expérience utilisateur et analysent la fréquentation du site."
         },
-        "cookies": {
-          "title": "Cookies",
-          "content": "Ce site utilise des cookies pour améliorer votre expérience de navigation et réaliser des statistiques de visites. Vous pouvez paramétrer l'utilisation des cookies dans les paramètres de votre navigateur."
+        "responsibility": {
+          "title": "5. Responsabilité",
+          "content": "Utelys met en œuvre tous les moyens nécessaires pour assurer l'exactitude des informations diffusées sur le site. L'entreprise ne peut être responsable des omissions ou inexactitudes. L'utilisateur assume la responsabilité de l'utilisation des informations fournies."
+        },
+        "links": {
+          "title": "6. Liens hypertextes",
+          "content": "Le site peut contenir des liens externes. Utelys ne peut être tenu responsable du contenu de ces sites tiers."
+        },
+        "jurisdiction": {
+          "title": "7. Droit applicable et juridiction compétente",
+          "content": "Les présentes mentions légales sont régies par le droit français. En cas de litige, les tribunaux du siège social d'Utelys sont compétents."
         }
       }
     },
     "terms": {
       "meta": {
         "title": "Conditions Générales de Vente | TriggerFlow",
-        "description": "Conditions générales de vente des services TriggerFlow."
+        "description": "Conditions générales de vente des services TriggerFlow - Abonnements, paiement, résiliation."
       },
       "title": "Conditions Générales de Vente",
-      "lastUpdate": "Dernière mise à jour",
+      "lastUpdate": "Dernière modification le 11/02/2025",
       "sections": {
         "object": {
-          "title": "Objet",
-          "content": "Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre TriggerFlow SAS et ses clients."
+          "title": "Article 1 – Objet et opposabilité",
+          "content": "Les présentes CGV définissent les conditions de souscription et de paiement des formules d'abonnement à la Plateforme « Trigger Flow ». Elles s'appliquent à tout CLIENT professionnel. Toute commande implique l'acceptation pleine et entière des CGV."
         },
-        "services": {
-          "title": "Services proposés",
-          "content": "TriggerFlow propose une plateforme SaaS permettant l'automatisation des communications client."
+        "offers": {
+          "title": "Article 2 – Offres et abonnements",
+          "formulasTitle": "2.1 Formules",
+          "formulaDiscovery": "Découverte : 0 €/mois",
+          "formulaCommunication": "Communication : 69 €/mois",
+          "formulaConversion": "Conversion : 149 €/mois",
+          "formulaAllInclusive": "All Inclusive : 249 €/mois",
+          "commissionTitle": "2.2 Commission sur Pages de Vente",
+          "commissionContent": "Les transactions générées via la Plateforme sont soumises à une commission (entre 5 % et 15 %). Les sommes dues au CLIENT sont reversées après déduction de la commission, sur base hebdomadaire."
         },
-        "pricing": {
-          "title": "Tarifs et facturation",
-          "content": "Les tarifs sont indiqués en euros hors taxes sur notre page tarifs."
-        },
-        "payment": {
-          "title": "Modalités de paiement",
-          "content": "Le paiement s'effectue par prélèvement automatique ou carte bancaire."
+        "orders": {
+          "title": "Article 3 – Commandes et paiement",
+          "processTitle": "3.1 Processus de commande",
+          "processContent": "Le CLIENT souscrit à l'abonnement choisi en ligne, via carte bancaire. Les informations de facturation doivent être exactes.",
+          "pricingTitle": "3.2 Prix et facturation",
+          "pricingContent": "Les prix sont indiqués en euros HT. Les abonnements mensuels ou annuels sont payables d'avance. Les factures sont envoyées par voie électronique.",
+          "refundTitle": "3.3 Politique de remboursement",
+          "refundContent": "À l'exception des obligations légales (ex. droit de rétractation pour certaines ventes à distance si éligibles), aucun remboursement n'est accordé en cas d'interruption anticipée. Les sommes déjà versées restent acquises au FOURNISSEUR."
         },
         "duration": {
-          "title": "Durée et renouvellement",
-          "content": "L'abonnement est conclu pour une durée déterminée et se renouvelle tacitement."
-        },
-        "termination": {
-          "title": "Résiliation",
-          "content": "Le client peut résilier son abonnement à tout moment avec un préavis de 30 jours."
+          "title": "Article 4 – Durée et résiliation",
+          "initialTitle": "4.1 Durée initiale",
+          "initialContent": "Le contrat est conclu pour 12 mois, renouvelables tacitement.",
+          "terminationTitle": "4.2 Résiliation",
+          "terminationContent": "Voir Contrat de prestation de services (article 7). Toute résiliation anticipée pour manquement grave n'ouvre pas droit à remboursement.",
+          "consequencesTitle": "4.3 Conséquences",
+          "consequencesContent": "Le CLIENT peut demander l'export de ses données avant la fin effective. Le FOURNISSEUR supprime les données à l'échéance du contrat (sauf obligation légale)."
         },
         "liability": {
-          "title": "Responsabilité",
-          "content": "TriggerFlow s'engage à fournir un service de qualité."
+          "title": "Article 5 – Responsabilité",
+          "obligationTitle": "5.1 Obligation de moyens",
+          "obligationContent": "Le FOURNISSEUR met en œuvre tous les moyens raisonnables pour fournir la Plateforme, sans garantir l'absence de bugs, ni l'efficacité marketing attendue.",
+          "limitationsTitle": "5.2 Limitations",
+          "limitationsContent": "Le FOURNISSEUR ne pourra être tenu responsable des dommages indirects. Le plafond d'indemnisation est limité aux montants payés par le CLIENT sur les 12 derniers mois."
+        },
+        "revision": {
+          "title": "Article 6 – Révision des CGV",
+          "content": "Le FOURNISSEUR se réserve le droit de modifier les CGV, moyennant information du CLIENT (e-mail, notification). Les CGV modifiées s'appliqueront aux renouvellements suivants, sauf refus du CLIENT et résiliation avant l'échéance."
         },
         "jurisdiction": {
-          "title": "Loi applicable et juridiction",
-          "content": "Les présentes CGV sont soumises au droit français."
+          "title": "Article 7 – Loi applicable et litiges",
+          "content": "Les présentes CGV sont régies par le droit français. Les litiges relèvent de la compétence des tribunaux de Toulouse."
         }
       }
     },
@@ -875,89 +912,161 @@
         "description": "Conditions générales d'utilisation de la plateforme TriggerFlow."
       },
       "title": "Conditions Générales d'Utilisation",
-      "lastUpdate": "Dernière mise à jour",
+      "lastUpdate": "Dernière modification le 01/02/2025",
       "sections": {
-        "acceptance": {
-          "title": "Acceptation des conditions",
-          "content": "L'accès et l'utilisation de la plateforme TriggerFlow impliquent l'acceptation sans réserve des présentes CGU."
+        "object": {
+          "title": "Article 1 – Objet",
+          "content": "Les présentes CGU régissent l'accès et l'utilisation de la plateforme « Trigger Flow » disponible via app.trigger-flow.com. L'acceptation des CGU, CGV et du Contrat de prestation de services est obligatoire."
         },
-        "access": {
-          "title": "Accès au service",
-          "content": "TriggerFlow s'efforce de maintenir le service accessible 24h/24 et 7j/7."
+        "services": {
+          "title": "Article 2 – Services et modifications",
+          "descriptionTitle": "2.1 Description",
+          "descriptionContent": "La Plateforme offre des fonctionnalités de marketing automation : création de segments, envoi d'e-mails/SMS, pages de vente, etc.",
+          "modificationTitle": "2.2 Modification du service",
+          "modificationContent": "Le FOURNISSEUR se réserve le droit de modifier ou interrompre tout ou partie des Services à tout moment, sans préavis, notamment pour des raisons techniques ou commerciales."
         },
         "account": {
-          "title": "Compte utilisateur",
-          "content": "Pour utiliser nos services, vous devez créer un compte avec des informations exactes."
-        },
-        "usage": {
-          "title": "Utilisation du service",
-          "content": "Vous vous engagez à utiliser le service conformément à sa destination."
-        },
-        "prohibited": {
-          "title": "Utilisations interdites",
-          "content": "Sont strictement interdits : l'envoi de communications non sollicitées."
+          "title": "Article 3 – Création de compte et utilisation",
+          "registrationTitle": "3.1 Inscription",
+          "registrationContent": "Les clients doivent fournir des informations exactes et à jour (raison sociale, email, etc.) et sont responsables de la confidentialité de leurs identifiants.",
+          "complianceTitle": "3.2 Usage conforme",
+          "complianceContent": "Le CLIENT s'engage à respecter toute réglementation applicable : législation anti-spam, RGPD, droits des consommateurs.",
+          "betaTitle": "3.3 Fonctionnalités « Bêta »",
+          "betaContent": "Les fonctionnalités expérimentales sont fournies « en l'état », sans garantie, et peuvent être modifiées ou retirées sans préavis."
         },
         "intellectual": {
-          "title": "Propriété intellectuelle",
-          "content": "TriggerFlow conserve tous les droits de propriété intellectuelle sur la plateforme."
+          "title": "Article 4 – Propriété intellectuelle",
+          "content": "La plateforme Trigger Flow demeure la propriété exclusive du fournisseur. Les clients n'acquièrent aucun droit de propriété intellectuelle sur le logiciel, les marques ou logos."
+        },
+        "data": {
+          "title": "Article 5 – Données personnelles",
+          "controllerTitle": "5.1 Responsable de traitement",
+          "controllerContent": "Le CLIENT est responsable des données qu'il importe ou collecte via la Plateforme. Le fournisseur agit comme sous-traitant selon les modalités de l'Annexe RGPD.",
+          "securityTitle": "5.2 Sécurité",
+          "securityContent": "Le fournisseur met en œuvre des mesures techniques pour sécuriser les données, sans garantie d'infaillibilité absolue."
+        },
+        "liability": {
+          "title": "Article 6 – Limitation de responsabilité",
+          "availabilityTitle": "6.1 Disponibilité",
+          "availabilityContent": "La Plateforme est accessible « en l'état » et « selon disponibilités ». Aucune disponibilité continue n'est garantie.",
+          "warrantiesTitle": "6.2 Exclusion de garanties",
+          "warrantiesContent": "Le fournisseur exclut les garanties expresses ou implicites, notamment concernant la qualité marchande ou l'adéquation à un usage particulier.",
+          "indemnificationTitle": "6.3 Indemnisation",
+          "indemnificationContent": "Le CLIENT indemnise le FOURNISSEUR de toute réclamation liée à l'utilisation non conforme de la Plateforme."
         },
         "modifications": {
-          "title": "Modifications des CGU",
-          "content": "TriggerFlow se réserve le droit de modifier ces CGU à tout moment."
+          "title": "Article 7 – Modification des CGU",
+          "content": "Le fournisseur peut modifier les CGU à tout moment. Les modifications majeures feront l'objet d'une notification."
         },
-        "contact": {
-          "title": "Contact",
-          "content": "Pour toute question, contactez-nous à contact@trigger-flow.com."
+        "jurisdiction": {
+          "title": "Article 8 – Loi applicable et litiges",
+          "content": "Les CGU sont régies par la loi française. Tout litige sera soumis aux tribunaux compétents de Toulouse."
         }
       }
     },
     "privacy": {
       "meta": {
         "title": "Politique de Confidentialité | TriggerFlow",
-        "description": "Politique de confidentialité TriggerFlow."
+        "description": "Politique de confidentialité TriggerFlow - Protection des données personnelles et droits des utilisateurs."
       },
       "title": "Politique de Confidentialité",
-      "lastUpdate": "Dernière mise à jour",
+      "lastUpdate": "Dernière modification le 11/02/2025",
       "sections": {
-        "introduction": {
-          "title": "Introduction",
-          "content": "TriggerFlow s'engage à protéger la vie privée de ses utilisateurs."
+        "controller": {
+          "title": "1. Identification du responsable de traitement",
+          "company": "Dénomination sociale",
+          "companyValue": "Utelys (SAS au capital de 28 000 €)",
+          "rcs": "RCS",
+          "rcsValue": "842 608 671 Toulouse",
+          "address": "Siège social",
+          "addressValue": "13 rue Saint Ursule, 31000 Toulouse, France",
+          "representative": "Représentant légal",
+          "representativeValue": "M. Mounir LAKHFIF",
+          "dpo": "Contact (DPO)",
+          "dpoValue": "privacy@utelys.fr"
         },
         "dataCollected": {
-          "title": "Données collectées",
-          "content": "Nous collectons les données que vous nous fournissez."
+          "title": "2. Données personnelles collectées",
+          "platformTitle": "2.1 Données collectées via Trigger Flow",
+          "platformContent": "Nom de la société cliente, nom, prénom, adresse e-mail professionnelle, numéro de téléphone. Informations de paiement traitées par Stripe (pas de stockage direct des données bancaires).",
+          "usageTitle": "2.2 Données d'usage et navigation",
+          "usageContent": "Google Analytics (adresses IP, pages consultées, durée de visite). Facebook Pixel (mesure d'audience et retargeting)."
         },
-        "purpose": {
-          "title": "Finalités du traitement",
-          "content": "Vos données sont utilisées pour fournir nos services."
+        "purposes": {
+          "title": "3. Finalités du traitement",
+          "item1": "Gérer les comptes clients",
+          "item2": "Fournir le support client",
+          "item3": "Assurer la facturation et traitement des paiements",
+          "item4": "Analyser l'audience et réaliser des statistiques",
+          "item5": "Se conformer aux obligations légales et réglementaires"
         },
         "legalBasis": {
-          "title": "Base légale",
-          "content": "Le traitement de vos données est fondé sur l'exécution du contrat."
+          "title": "4. Base légale du traitement",
+          "item1": "Exécution du contrat (inscription, utilisation, facturation)",
+          "item2": "Intérêt légitime (analyse d'audience, amélioration des services)",
+          "item3": "Respect d'obligations légales (comptabilité, fiscalité)"
+        },
+        "recipients": {
+          "title": "5. Destinataires des données",
+          "subprocessorsTitle": "5.1 Sous-traitants et prestataires",
+          "hosting": "Hébergement : Digital Ocean (UE)",
+          "emails": "Emails : Mailgun",
+          "sms": "SMS : Gateway API",
+          "payment": "Paiement : Stripe",
+          "analytics": "Analyse : Google Analytics, Facebook Pixel",
+          "transfersTitle": "5.2 Transferts hors UE",
+          "transfersContent": "Garanties appropriées mises en place (Clauses Contractuelles Types de la Commission européenne ou équivalent)."
         },
         "retention": {
-          "title": "Durée de conservation",
-          "content": "Vos données sont conservées pendant la durée de votre abonnement."
-        },
-        "sharing": {
-          "title": "Partage des données",
-          "content": "Nous ne vendons pas vos données."
+          "title": "6. Durée de conservation",
+          "account": "Données de compte : tant que le compte est actif + 3 ans après dernière activité, puis suppression/archivage.",
+          "billing": "Données de facturation : 10 ans (obligations légales).",
+          "analyticsData": "Logs et analytics : conforme aux paramétrages de Google Analytics (généralement 14 mois)."
         },
         "rights": {
-          "title": "Vos droits",
-          "content": "Vous disposez des droits d'accès, de rectification et d'effacement."
-        },
-        "cookies": {
-          "title": "Cookies",
-          "content": "Nous utilisons des cookies essentiels au fonctionnement du site."
+          "title": "7. Droits des utilisateurs",
+          "intro": "Conformément au RGPD et à la législation française :",
+          "item1": "Droit d'accès",
+          "item2": "Droit de rectification",
+          "item3": "Droit à l'effacement (« droit à l'oubli »)",
+          "item4": "Droit à la limitation du traitement",
+          "item5": "Droit d'opposition",
+          "item6": "Droit à la portabilité",
+          "item7": "Retrait du consentement",
+          "contactTitle": "Pour exercer vos droits :",
+          "contactEmail": "Email : privacy@utelys.fr",
+          "contactAddress": "Courrier : Utelys, 13 rue Saint Ursule, 31000 Toulouse, France",
+          "responseTime": "Délai de réponse : 1 mois (prolongeable de 2 mois).",
+          "recourse": "Recours : saisir l'autorité de contrôle (CNIL en France : www.cnil.fr)."
         },
         "security": {
-          "title": "Sécurité",
-          "content": "Nous mettons en œuvre des mesures de sécurité appropriées."
+          "title": "8. Sécurité des données",
+          "item1": "Protocole HTTPS pour sécuriser les échanges",
+          "item2": "Contrôle d'accès strict et mots de passe protégés",
+          "item3": "Limitation des droits d'accès",
+          "item4": "Sauvegardes régulières et chiffrement si nécessaire",
+          "item5": "Notification en cas de violation de données"
+        },
+        "cookies": {
+          "title": "9. Cookies et autres traceurs",
+          "intro": "Les cookies sont utilisés pour :",
+          "item1": "Bon fonctionnement du site",
+          "item2": "Mesure d'audience (Google Analytics)",
+          "item3": "Publicité et retargeting (Facebook Pixel)",
+          "consent": "Une bannière de consentement est affichée au premier accès. Vous pouvez paramétrer les cookies dans votre navigateur."
+        },
+        "b2b": {
+          "title": "10. Services B2B / Mineurs",
+          "content": "Les services sont destinés aux professionnels (hôtellerie, restauration). Aucun ciblage intentionnel de mineurs."
+        },
+        "updates": {
+          "title": "11. Mises à jour de la Politique",
+          "content": "Des révisions sont possibles pour refléter l'évolution des pratiques. La date de dernière mise à jour est visible en haut du document."
         },
         "contact": {
-          "title": "Contact DPO",
-          "content": "Contactez notre DPO à dpo@trigger-flow.com."
+          "title": "12. Contact",
+          "email": "Email : privacy@utelys.fr",
+          "address": "Adresse postale : Utelys, 13 rue Saint Ursule, 31000 Toulouse, France"
         }
       }
     }
@@ -990,10 +1099,11 @@
         "trial": "Essai gratuit 14 jours",
         "description": "Avec plus d'interaction, renforcez vos ventes annexes et collectez les retours clients."
       },
-      "marketing": {
-        "name": "Marketing+",
-        "description": "Pour industrialiser votre marketing",
-        "features": ["Workflows illimités", "Emails illimités", "1 000 SMS inclus", "Newsletter & Campagnes", "Programme fidélité", "Account manager dédié"]
+      "allInclusive": {
+        "name": "All Inclusive",
+        "trial": "Essai gratuit 14 jours",
+        "description": "Tous les modules inclus, sans limites",
+        "features": ["Workflows illimités", "Emails illimités", "1 000 SMS inclus", "Newsletter & Campagnes", "Tous les modules complémentaires inclus", "Account manager dédié"]
       }
     },
     "cta": {
@@ -1086,7 +1196,8 @@
         "forms": "Formulaires",
         "salesCatalog": "Module vente et catalogue",
         "groupPortal": "Portail groupe hôtelier",
-        "conditions": "Conditions sur les interactions clients"
+        "conditions": "Conditions sur les interactions clients",
+        "addonsIncluded": "Modules complémentaires inclus"
       },
       "tooltips": {
         "emails": "Nombre d'emails inclus par mois dans votre forfait. Au-delà, des packs d'emails supplémentaires sont disponibles.",
@@ -1100,7 +1211,8 @@
         "forms": "Créez des formulaires personnalisés : pré-checkin, enquête de satisfaction, préférences séjour et plus encore.",
         "salesCatalog": "Proposez des services et produits additionnels à vos clients (spa, restaurant, surclassement...).",
         "stats": "Tableaux de bord BI hôteliers : taux d'occupation, RevPAR, ADR, taux d'ouverture, conversions et revenus générés.",
-        "groupPortal": "Interface dédiée pour gérer plusieurs établissements depuis un seul compte avec vue consolidée."
+        "groupPortal": "Interface dédiée pour gérer plusieurs établissements depuis un seul compte avec vue consolidée.",
+        "addonsIncluded": "Le plan All Inclusive inclut tous les modules complémentaires (Avis, Agent IA, Paiements, Fidélité, Guest App) sans surcoût."
       }
     },
     "faq": {
@@ -1597,6 +1709,10 @@
         "analytics": {
           "title": "Analytics",
           "description": "Tableaux de bord et statistiques"
+        },
+        "paymentLinks": {
+          "title": "Lien de paiement",
+          "description": "Encaissez vos clients avec des liens de paiement personnalisés"
         }
       }
     },

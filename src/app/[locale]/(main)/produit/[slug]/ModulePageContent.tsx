@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Check, X, Star, Quote, Mail, TrendingUp, Shield, Zap, GitBranch, MessageSquare, Clock, Users, MailOpen,  Send, Gift} from 'lucide-react';
+import { ArrowRight, Check, X, Star, Quote, Mail, TrendingUp, Shield, Zap, GitBranch, MessageSquare, Clock, Users, MailOpen, Send, Gift, FileText } from 'lucide-react';
 import { IntegrationsShowcase, FeaturesTabbed } from '@/components/sections';
 import type { TabConfig, FeaturesTabbedDirectData } from '@/components/sections';
 import { cn } from '@/lib/utils';
@@ -587,6 +587,382 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
                       </div>
                       <span className="text-xs font-bold tabular-nums text-white">2 847</span>
                       <span className="text-[9px] text-gray-400">scénarios exécutés ce mois</span>
+                    </motion.div>
+                  </motion.div>
+                </>
+              )}
+
+              {/* Floating elements — formulaires module */}
+              {moduleSlug === 'formulaires' && (
+                <>
+                  {/* Top-right: Form completed */}
+                  <motion.div
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -top-3 right-[8%] z-20 md:-top-5 md:right-[12%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, -6, 0] } : {}}
+                      transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2.5 rounded-xl border border-white/60 bg-white/80 px-3 py-2 shadow-lg backdrop-blur-md"
+                    >
+                      <div className="h-full w-1 self-stretch rounded-full bg-green-500" />
+                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-green-100">
+                        <Check className="h-3.5 w-3.5 text-green-600" />
+                      </div>
+                      <div>
+                        <p className="text-[11px] font-semibold text-gray-800">Pré-check-in complété</p>
+                        <p className="text-[10px] text-gray-500">L. Martin — Ch. 312</p>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Left: Completion rate */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -40 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -left-2 top-[22%] z-20 md:-left-6 md:top-[18%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, 5, 0] } : {}}
+                      transition={{ duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
+                      className="rounded-xl border border-white/60 bg-white/80 px-2.5 py-2 shadow-md backdrop-blur-md"
+                    >
+                      <div className="flex items-center gap-1.5">
+                        <div className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-primary/10">
+                          <FileText className="h-3 w-3 text-brand-primary" />
+                        </div>
+                        <div>
+                          <p className="text-[10px] font-semibold text-gray-800">Taux de complétion</p>
+                          <p className="text-[10px] font-bold text-brand-primary">75%</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Right: Check-in time saved */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.7 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 1.5, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -right-1 bottom-[22%] z-30 md:-right-8 md:bottom-[16%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, -10, 0] } : {}}
+                      transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2.5 rounded-full bg-gray-900/90 px-5 py-2.5 shadow-xl backdrop-blur-sm"
+                    >
+                      <TrendingUp className="h-4 w-4 text-emerald-400" />
+                      <span className="text-base font-bold tabular-nums text-white">2 min</span>
+                      <span className="text-[10px] text-gray-400">de check-in au lieu de 8</span>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Bottom-left: Forms submitted */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.8, duration: 0.5 }}
+                    className="absolute -bottom-3 left-[6%] z-20 md:-bottom-4 md:left-[8%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, 4, 0] } : {}}
+                      transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2 rounded-full bg-gray-900/90 px-3.5 py-1.5 shadow-lg backdrop-blur-sm"
+                    >
+                      <div className="relative flex h-2 w-2">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+                      </div>
+                      <span className="text-xs font-bold tabular-nums text-white">1 340</span>
+                      <span className="text-[9px] text-gray-400">formulaires complétés ce mois</span>
+                    </motion.div>
+                  </motion.div>
+                </>
+              )}
+
+              {/* Floating elements — newsletter module */}
+              {moduleSlug === 'newsletter' && (
+                <>
+                  {/* Top-right: Campagne envoyée */}
+                  <motion.div
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -top-3 right-[8%] z-20 md:-top-5 md:right-[12%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, -6, 0] } : {}}
+                      transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2.5 rounded-xl border border-white/60 bg-white/80 px-3 py-2 shadow-lg backdrop-blur-md"
+                    >
+                      <div className="h-full w-1 self-stretch rounded-full bg-green-500" />
+                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-green-100">
+                        <Send className="h-3.5 w-3.5 text-green-600" />
+                      </div>
+                      <div>
+                        <p className="text-[11px] font-semibold text-gray-800">Campagne envoyée</p>
+                        <p className="text-[10px] text-gray-500">Newsletter mars — 2 430 destinataires</p>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Left: Taux d'ouverture */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -40 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -left-2 top-[22%] z-20 md:-left-6 md:top-[18%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, 5, 0] } : {}}
+                      transition={{ duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
+                      className="rounded-xl border border-white/60 bg-white/80 px-2.5 py-2 shadow-md backdrop-blur-md"
+                    >
+                      <div className="flex items-center gap-1.5">
+                        <div className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-primary/10">
+                          <MailOpen className="h-3 w-3 text-brand-primary" />
+                        </div>
+                        <div>
+                          <p className="text-[10px] font-semibold text-gray-800">Taux d&apos;ouverture</p>
+                          <p className="text-[10px] font-bold text-brand-primary">45.2%</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Right: Taux de clic */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.7 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 1.5, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -right-1 bottom-[22%] z-30 md:-right-8 md:bottom-[16%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, -10, 0] } : {}}
+                      transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2.5 rounded-full bg-gray-900/90 px-5 py-2.5 shadow-xl backdrop-blur-sm"
+                    >
+                      <TrendingUp className="h-4 w-4 text-emerald-400" />
+                      <span className="text-base font-bold tabular-nums text-white">12.8%</span>
+                      <span className="text-[10px] text-gray-400">taux de clic</span>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Bottom-left: Newsletters envoyées */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.8, duration: 0.5 }}
+                    className="absolute -bottom-3 left-[6%] z-20 md:-bottom-4 md:left-[8%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, 4, 0] } : {}}
+                      transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2 rounded-full bg-gray-900/90 px-3.5 py-1.5 shadow-lg backdrop-blur-sm"
+                    >
+                      <div className="relative flex h-2 w-2">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+                      </div>
+                      <span className="text-xs font-bold tabular-nums text-white">18 540</span>
+                      <span className="text-[9px] text-gray-400">emails envoyés ce mois</span>
+                    </motion.div>
+                  </motion.div>
+                </>
+              )}
+
+              {/* Floating elements — fidélité module */}
+              {moduleSlug === 'fidelite' && (
+                <>
+                  {/* Top-right: Points gagnés */}
+                  <motion.div
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -top-4 right-[4%] z-20 md:-top-6 md:right-[8%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, -8, 0] } : {}}
+                      transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
+                      className="rounded-2xl border border-white/60 bg-white/90 p-3.5 shadow-xl backdrop-blur-md"
+                    >
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-amber-100">
+                          <Star className="h-4 w-4 text-amber-600" />
+                        </div>
+                        <div>
+                          <p className="text-[11px] font-bold text-gray-800">+150 points gagnés</p>
+                          <p className="text-[9px] text-gray-500">Séjour du 12-15 mars</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <span className="rounded-full bg-amber-100 px-2 py-0.5 text-[8px] font-semibold text-amber-700">Niveau Gold</span>
+                        <span className="text-[9px] text-gray-400">→</span>
+                        <span className="rounded-full bg-amber-50 px-2 py-0.5 text-[8px] text-amber-600">850 pts cumulés</span>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Left: Taux de rétention */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -40 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -left-2 top-[22%] z-20 md:-left-6 md:top-[18%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, 5, 0] } : {}}
+                      transition={{ duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
+                      className="rounded-xl border border-white/60 bg-white/80 px-2.5 py-2 shadow-md backdrop-blur-md"
+                    >
+                      <div className="flex items-center gap-1.5">
+                        <div className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-primary/10">
+                          <Gift className="h-3 w-3 text-brand-primary" />
+                        </div>
+                        <div>
+                          <p className="text-[10px] font-semibold text-gray-800">Taux de rétention</p>
+                          <p className="text-[10px] font-bold text-brand-primary">+32%</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Right: Réservations directes */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.7 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 1.5, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -right-1 bottom-[22%] z-30 md:-right-8 md:bottom-[16%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, -10, 0] } : {}}
+                      transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2.5 rounded-full bg-gray-900/90 px-5 py-2.5 shadow-xl backdrop-blur-sm"
+                    >
+                      <TrendingUp className="h-4 w-4 text-emerald-400" />
+                      <span className="text-base font-bold tabular-nums text-white">+24%</span>
+                      <span className="text-[10px] text-gray-400">réservations directes</span>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Bottom-left: Membres actifs */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.8, duration: 0.5 }}
+                    className="absolute -bottom-3 left-[6%] z-20 md:-bottom-4 md:left-[8%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, 4, 0] } : {}}
+                      transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2 rounded-full bg-gray-900/90 px-3.5 py-1.5 shadow-lg backdrop-blur-sm"
+                    >
+                      <div className="relative flex h-2 w-2">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+                      </div>
+                      <span className="text-xs font-bold tabular-nums text-white">1 890</span>
+                      <span className="text-[9px] text-gray-400">membres fidélité actifs</span>
+                    </motion.div>
+                  </motion.div>
+                </>
+              )}
+
+              {/* Floating elements — CRM module */}
+              {moduleSlug === 'crm' && (
+                <>
+                  {/* Top-right: Fiche client enrichie */}
+                  <motion.div
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -top-4 right-[4%] z-20 md:-top-6 md:right-[8%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, -8, 0] } : {}}
+                      transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
+                      className="rounded-2xl border border-white/60 bg-white/90 p-3.5 shadow-xl backdrop-blur-md"
+                    >
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-blue-100">
+                          <Users className="h-4 w-4 text-blue-600" />
+                        </div>
+                        <div>
+                          <p className="text-[11px] font-bold text-gray-800">Fiche client enrichie</p>
+                          <p className="text-[9px] text-gray-500">Synchronisée avec le PMS</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <span className="rounded-full bg-blue-100 px-2 py-0.5 text-[8px] font-semibold text-blue-700">3 séjours</span>
+                        <span className="rounded-full bg-emerald-100 px-2 py-0.5 text-[8px] font-semibold text-emerald-700">VIP</span>
+                        <span className="rounded-full bg-purple-100 px-2 py-0.5 text-[8px] font-semibold text-purple-700">Spa lover</span>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Left: Segments actifs */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -40 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -left-2 top-[22%] z-20 md:-left-6 md:top-[18%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, 5, 0] } : {}}
+                      transition={{ duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
+                      className="rounded-xl border border-white/60 bg-white/80 px-2.5 py-2 shadow-md backdrop-blur-md"
+                    >
+                      <div className="flex items-center gap-1.5">
+                        <div className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-primary/10">
+                          <Users className="h-3 w-3 text-brand-primary" />
+                        </div>
+                        <div>
+                          <p className="text-[10px] font-semibold text-gray-800">Segments actifs</p>
+                          <p className="text-[10px] font-bold text-brand-primary">12 segments</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Right: Données centralisées */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.7 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 1.5, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -right-1 bottom-[22%] z-30 md:-right-8 md:bottom-[16%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, -10, 0] } : {}}
+                      transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2.5 rounded-full bg-gray-900/90 px-5 py-2.5 shadow-xl backdrop-blur-sm"
+                    >
+                      <TrendingUp className="h-4 w-4 text-emerald-400" />
+                      <span className="text-base font-bold tabular-nums text-white">100%</span>
+                      <span className="text-[10px] text-gray-400">données centralisées</span>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Bottom-left: Fiches clients */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.8, duration: 0.5 }}
+                    className="absolute -bottom-3 left-[6%] z-20 md:-bottom-4 md:left-[8%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, 4, 0] } : {}}
+                      transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2 rounded-full bg-gray-900/90 px-3.5 py-1.5 shadow-lg backdrop-blur-sm"
+                    >
+                      <div className="relative flex h-2 w-2">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+                      </div>
+                      <span className="text-xs font-bold tabular-nums text-white">4 620</span>
+                      <span className="text-[9px] text-gray-400">fiches clients actives</span>
                     </motion.div>
                   </motion.div>
                 </>

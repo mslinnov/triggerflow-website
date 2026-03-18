@@ -36,9 +36,9 @@ const plans = [
   },
   {
     key: 'marketing',
-    name: 'Marketing +',
-    tableName: 'Plan Marketing +',
-    price: '199',
+    name: 'All Inclusive',
+    tableName: 'Plan All Inclusive',
+    price: '249',
     subtitle: 'Essai gratuit 14 jours',
     description: 'Déployez vos campagnes marketing et newsletter à grande échelle et fidélisez vos clients.',
     popular: false,

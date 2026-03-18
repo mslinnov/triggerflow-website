@@ -40,9 +40,9 @@ const plans = [
     popular: true,
   },
   {
-    name: 'Marketing+',
+    name: 'All Inclusive',
     description: 'Le plus complet',
-    originalPrice: 199,
+    originalPrice: 249,
     thaisPrice: 149,
     features: [
       'Tout Conversion +',

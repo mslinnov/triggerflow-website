@@ -24,8 +24,8 @@ const plans = [
     popular: true,
   },
   {
-    key: 'marketing',
-    price: '199',
+    key: 'allInclusive',
+    price: '249',
     popular: false,
   },
 ];

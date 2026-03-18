@@ -35,26 +35,31 @@ function LegalNoticeContent() {
             {t('title')}
           </h1>
 
+          <p className="text-sm text-zinc-500">{t('lastUpdate')}</p>
+
           <section className="mt-8">
             <h2>{t('sections.editor.title')}</h2>
-            <p>{t('sections.editor.content')}</p>
+            <p>{t('sections.editor.intro')}</p>
+            <p className="text-lg font-semibold">{t('sections.editor.companyName')}</p>
             <ul>
-              <li><strong>{t('sections.editor.company')}</strong> TriggerFlow SAS</li>
-              <li><strong>{t('sections.editor.address')}</strong> 123 Rue de l'Innovation, 75001 Paris, France</li>
-              <li><strong>{t('sections.editor.capital')}</strong> 10 000 €</li>
-              <li><strong>{t('sections.editor.rcs')}</strong> Paris B 123 456 789</li>
-              <li><strong>{t('sections.editor.vat')}</strong> FR 12 345678901</li>
-              <li><strong>{t('sections.editor.director')}</strong> [Nom du Directeur]</li>
-              <li><strong>{t('sections.editor.email')}</strong> contact@trigger-flow.com</li>
+              <li><strong>{t('sections.editor.legalForm')} :</strong> {t('sections.editor.legalFormValue')}</li>
+              <li><strong>{t('sections.editor.capital')} :</strong> {t('sections.editor.capitalValue')}</li>
+              <li><strong>{t('sections.editor.address')} :</strong> {t('sections.editor.addressValue')}</li>
+              <li><strong>{t('sections.editor.rcs')} :</strong> {t('sections.editor.rcsValue')}</li>
+              <li><strong>{t('sections.editor.vat')} :</strong> {t('sections.editor.vatValue')}</li>
+              <li><strong>{t('sections.editor.email')} :</strong> {t('sections.editor.emailValue')}</li>
+              <li><strong>{t('sections.editor.phone')} :</strong> {t('sections.editor.phoneValue')}</li>
+              <li><strong>{t('sections.editor.director')} :</strong> {t('sections.editor.directorValue')}</li>
             </ul>
           </section>
 
           <section className="mt-8">
             <h2>{t('sections.hosting.title')}</h2>
-            <p>{t('sections.hosting.content')}</p>
+            <p>{t('sections.hosting.intro')}</p>
+            <p className="text-lg font-semibold">{t('sections.hosting.providerName')}</p>
             <ul>
-              <li><strong>{t('sections.hosting.provider')}</strong> Vercel Inc.</li>
-              <li><strong>{t('sections.hosting.address')}</strong> 340 S Lemon Ave #4133, Walnut, CA 91789, USA</li>
+              <li><strong>{t('sections.hosting.address')} :</strong> {t('sections.hosting.addressValue')}</li>
+              <li><strong>{t('sections.hosting.website')} :</strong> {t('sections.hosting.websiteValue')}</li>
             </ul>
           </section>
 
@@ -69,8 +74,18 @@ function LegalNoticeContent() {
           </section>
 
           <section className="mt-8">
-            <h2>{t('sections.cookies.title')}</h2>
-            <p>{t('sections.cookies.content')}</p>
+            <h2>{t('sections.responsibility.title')}</h2>
+            <p>{t('sections.responsibility.content')}</p>
+          </section>
+
+          <section className="mt-8">
+            <h2>{t('sections.links.title')}</h2>
+            <p>{t('sections.links.content')}</p>
+          </section>
+
+          <section className="mt-8">
+            <h2>{t('sections.jurisdiction.title')}</h2>
+            <p>{t('sections.jurisdiction.content')}</p>
           </section>
         </article>
       </Container>
