@@ -1,7 +1,6 @@
 'use client';
 
 import { Mail, MessageSquare, Search, User } from 'lucide-react';
-import { BrowserMockup } from './PhoneMockup';
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -53,8 +52,7 @@ function ConversationItem({ name, initials, channel, preview, time, unread, sele
 
 export function HubInboxMockup() {
   return (
-    <BrowserMockup title="Hub Messagerie - TriggerFlow" className="max-w-lg">
-      <div className="min-h-[300px]">
+    <div className="h-full w-full">
         {/* Filter tabs */}
         <div className="flex items-center gap-1 px-3 py-2 border-b border-gray-100 bg-gray-50/50">
           <span className="text-[9px] font-semibold text-white bg-brand-primary rounded-full px-2 py-0.5">Tous</span>
@@ -177,7 +175,6 @@ export function HubInboxMockup() {
             </div>
           </div>
         </div>
-      </div>
-    </BrowserMockup>
+    </div>
   );
 }

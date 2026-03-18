@@ -36,10 +36,12 @@ import { EmailAnalyticsMockup } from '@/components/mockups/EmailAnalyticsMockup'
 import { SmsSendMockup } from '@/components/mockups/SmsSendMockup';
 import { SmsBidirectionalMockup } from '@/components/mockups/SmsBidirectionalMockup';
 import { SmsRgpdMockup } from '@/components/mockups/SmsRgpdMockup';
+import { SmsHeroMockup } from '@/components/mockups/SmsHeroMockup';
 // WhatsApp feature mockups
 import { WhatsAppChatbotMockup } from '@/components/mockups/WhatsAppChatbotMockup';
 import { WhatsAppTemplateMockup } from '@/components/mockups/WhatsAppTemplateMockup';
 import { WhatsAppHistoryMockup } from '@/components/mockups/WhatsAppHistoryMockup';
+import { WhatsAppHeroMockup } from '@/components/mockups/WhatsAppHeroMockup';
 // Newsletter feature mockups
 import { NewsletterEditorMockup } from '@/components/mockups/NewsletterEditorMockup';
 import { NewsletterSegmentMockup } from '@/components/mockups/NewsletterSegmentMockup';
@@ -70,6 +72,7 @@ import { AnalyticsReportMockup } from '@/components/mockups/AnalyticsReportMocku
 import { AnalyticsCompareMockup } from '@/components/mockups/AnalyticsCompareMockup';
 // Hub Messagerie feature mockups
 import { HubInboxMockup } from '@/components/mockups/HubInboxMockup';
+import { HubHeroMockup } from '@/components/mockups/HubHeroMockup';
 import { HubClientViewMockup } from '@/components/mockups/HubClientViewMockup';
 import { HubTemplatesMockup } from '@/components/mockups/HubTemplatesMockup';
 // Ventes Additionnelles feature mockups
@@ -95,9 +98,11 @@ const mockupComponents: Record<string, React.ComponentType> = {
   SmsSendMockup,
   SmsBidirectionalMockup,
   SmsRgpdMockup,
+  SmsHeroMockup,
   WhatsAppChatbotMockup,
   WhatsAppTemplateMockup,
   WhatsAppHistoryMockup,
+  WhatsAppHeroMockup,
   NewsletterEditorMockup,
   NewsletterSegmentMockup,
   NewsletterScheduleMockup,
@@ -120,6 +125,7 @@ const mockupComponents: Record<string, React.ComponentType> = {
   AnalyticsReportMockup,
   AnalyticsCompareMockup,
   HubInboxMockup,
+  HubHeroMockup,
   HubClientViewMockup,
   HubTemplatesMockup,
   UpsellOfferMockup,
@@ -169,7 +175,7 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
             className="h-full w-full object-cover object-top"
           />
           {/* Floating: Ajouter un email */}
-          <div className="absolute left-[2%] top-[6%] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
+          <div className="absolute left-[2%] top-[6%] animate-[float_4s_ease-in-out_infinite] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
             <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-orange-100">
               <Mail className="h-3.5 w-3.5 text-orange-600" />
             </div>
@@ -179,7 +185,7 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
             </div>
           </div>
           {/* Floating: Condition */}
-          <div className="absolute right-[2%] top-[5%] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
+          <div className="absolute right-[2%] top-[5%] animate-[float_3.8s_ease-in-out_infinite_0.3s] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
             <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-purple-100">
               <GitBranch className="h-3.5 w-3.5 text-purple-600" />
             </div>
@@ -189,7 +195,7 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
             </div>
           </div>
           {/* Floating: Ajouter SMS */}
-          <div className="absolute bottom-[10%] left-[2%] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
+          <div className="absolute bottom-[10%] left-[2%] animate-[float_4.2s_ease-in-out_infinite_0.5s] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
             <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-blue-100">
               <MessageSquare className="h-3.5 w-3.5 text-blue-600" />
             </div>
@@ -199,7 +205,7 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
             </div>
           </div>
           {/* Floating: Délai */}
-          <div className="absolute bottom-[10%] right-[2%] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
+          <div className="absolute bottom-[10%] right-[2%] animate-[float_3.6s_ease-in-out_infinite_0.7s] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
             <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-emerald-100">
               <Clock className="h-3.5 w-3.5 text-emerald-600" />
             </div>
@@ -216,7 +222,7 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
         <div className="relative h-full w-full">
           <MockupComp />
           {/* Floating: Check-in détecté */}
-          <div className="absolute right-[3%] top-[4%] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
+          <div className="absolute right-[3%] top-[4%] animate-[float_4s_ease-in-out_infinite] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
             <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-emerald-100">
               <Zap className="h-3.5 w-3.5 text-emerald-600" />
             </div>
@@ -226,7 +232,7 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
             </div>
           </div>
           {/* Floating: Déclencheurs actifs */}
-          <div className="absolute bottom-[6%] right-[3%] flex items-center gap-2 rounded-full bg-gray-900/85 px-3.5 py-1.5 shadow-lg backdrop-blur-sm">
+          <div className="absolute bottom-[6%] right-[3%] animate-[float_3.5s_ease-in-out_infinite_0.5s] flex items-center gap-2 rounded-full bg-gray-900/85 px-3.5 py-1.5 shadow-lg backdrop-blur-sm">
             <div className="relative flex h-1.5 w-1.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-500" />
@@ -247,7 +253,7 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
             className="h-full w-full object-cover object-top"
           />
           {/* Floating: Branche couple */}
-          <div className="absolute left-[2%] top-[5%] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
+          <div className="absolute left-[2%] top-[5%] animate-[float_4s_ease-in-out_infinite] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
             <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-pink-100">
               <Star className="h-3.5 w-3.5 text-pink-600" />
             </div>
@@ -257,7 +263,7 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
             </div>
           </div>
           {/* Floating: Formulaire condition */}
-          <div className="absolute right-[2%] top-[5%] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
+          <div className="absolute right-[2%] top-[5%] animate-[float_3.8s_ease-in-out_infinite_0.3s] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
             <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-purple-100">
               <GitBranch className="h-3.5 w-3.5 text-purple-600" />
             </div>
@@ -267,11 +273,216 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
             </div>
           </div>
           {/* Floating: Taux de conversion */}
-          <div className="absolute bottom-[8%] right-[2%] flex items-center gap-2.5 rounded-full bg-gray-900/85 px-4 py-2 shadow-lg backdrop-blur-sm">
+          <div className="absolute bottom-[8%] right-[2%] animate-[float_3.5s_ease-in-out_infinite_0.5s] flex items-center gap-2.5 rounded-full bg-gray-900/85 px-4 py-2 shadow-lg backdrop-blur-sm">
             <TrendingUp className="h-3.5 w-3.5 text-emerald-400" />
             <span className="text-[11px] font-bold text-white">+22%</span>
             <span className="text-[9px] text-gray-400">taux de conversion</span>
           </div>
+        </div>
+      );
+    } else if (moduleSlug === 'sms' && MockupComp) {
+      // SMS features — mockup + floating elements
+      const smsFloaters: Record<number, React.ReactNode> = {
+        0: (
+          <>
+            <div className="absolute right-[2%] top-[4%] animate-[float_4s_ease-in-out_infinite] flex items-center gap-2 rounded-full bg-gray-900/85 px-3.5 py-1.5 shadow-lg backdrop-blur-sm">
+              <div className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-500" />
+              </div>
+              <span className="text-[10px] font-semibold text-white">342 SMS envoyés aujourd&apos;hui</span>
+            </div>
+            <div className="absolute bottom-[5%] left-[2%] animate-[float_3.5s_ease-in-out_infinite_0.5s] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
+              <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-brand-primary/10">
+                <Check className="h-3.5 w-3.5 text-brand-primary" />
+              </div>
+              <div>
+                <p className="text-[10px] font-semibold text-gray-800">98% délivrés</p>
+                <p className="text-[8px] text-gray-500">Taux de livraison</p>
+              </div>
+            </div>
+          </>
+        ),
+        1: (
+          <>
+            <div className="absolute left-[2%] top-[4%] animate-[float_4.2s_ease-in-out_infinite] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
+              <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-blue-100">
+                <MessageSquare className="h-3.5 w-3.5 text-blue-600" />
+              </div>
+              <div>
+                <p className="text-[10px] font-semibold text-gray-800">Réponse reçue</p>
+                <p className="text-[8px] text-gray-500">Sophie — il y a 2 min</p>
+              </div>
+            </div>
+            <div className="absolute bottom-[5%] right-[2%] animate-[float_3.8s_ease-in-out_infinite_0.3s] flex items-center gap-2.5 rounded-full bg-gray-900/85 px-4 py-2 shadow-lg backdrop-blur-sm">
+              <TrendingUp className="h-3.5 w-3.5 text-emerald-400" />
+              <span className="text-[11px] font-bold text-white">5x</span>
+              <span className="text-[9px] text-gray-400">plus de réponses vs email</span>
+            </div>
+          </>
+        ),
+        2: (
+          <>
+            <div className="absolute right-[2%] top-[4%] animate-[float_3.5s_ease-in-out_infinite_0.2s] flex items-center gap-1.5 rounded-full bg-green-500 px-3 py-1.5 shadow-lg">
+              <Shield className="h-3.5 w-3.5 text-white" />
+              <span className="text-[10px] font-bold text-white">0 plainte CNIL</span>
+            </div>
+          </>
+        ),
+      };
+
+      mockupContent = (
+        <div className="relative h-full w-full">
+          <MockupComp />
+          {smsFloaters[i]}
+        </div>
+      );
+    } else if (moduleSlug === 'whatsapp') {
+      // WhatsApp features — mockup or image + floating elements
+      const waFloaters: Record<number, React.ReactNode> = {
+        0: (
+          <>
+            <div className="absolute left-[2%] top-[4%] animate-[float_4s_ease-in-out_infinite] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
+              <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-[#25D366]/10">
+                <MessageSquare className="h-3.5 w-3.5 text-[#25D366]" />
+              </div>
+              <div>
+                <p className="text-[10px] font-semibold text-gray-800">Spa réservé via WhatsApp</p>
+                <p className="text-[8px] text-gray-500">Alexander N. · Duo 14h</p>
+              </div>
+            </div>
+            <div className="absolute right-[2%] bottom-[5%] animate-[float_3.5s_ease-in-out_infinite_0.5s] flex items-center gap-2.5 rounded-full bg-gray-900/85 px-4 py-2 shadow-lg backdrop-blur-sm">
+              <TrendingUp className="h-3.5 w-3.5 text-emerald-400" />
+              <span className="text-[11px] font-bold text-white">+45%</span>
+              <span className="text-[9px] text-gray-400">réservations services additionnels</span>
+            </div>
+          </>
+        ),
+        1: (
+          <>
+            <div className="absolute left-[2%] top-[4%] animate-[float_4.2s_ease-in-out_infinite] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
+              <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-green-100">
+                <Check className="h-3.5 w-3.5 text-green-600" />
+              </div>
+              <div>
+                <p className="text-[10px] font-semibold text-gray-800">Template approuvé Meta</p>
+                <p className="text-[8px] text-gray-500">FR · EN · ES · DE</p>
+              </div>
+            </div>
+            <div className="absolute bottom-[5%] right-[2%] animate-[float_3.8s_ease-in-out_infinite_0.3s] flex items-center gap-2 rounded-full bg-gray-900/85 px-3.5 py-1.5 shadow-lg backdrop-blur-sm">
+              <div className="relative flex h-1.5 w-1.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-500" />
+              </div>
+              <span className="text-[10px] font-semibold text-white">Variables PMS auto-remplies</span>
+            </div>
+          </>
+        ),
+        2: (
+          <>
+            <div className="absolute right-[2%] top-[4%] animate-[float_4s_ease-in-out_infinite_0.2s] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
+              <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-blue-100">
+                <Mail className="h-3.5 w-3.5 text-blue-600" />
+              </div>
+              <div>
+                <p className="text-[10px] font-semibold text-gray-800">3 canaux, 1 vue</p>
+                <p className="text-[8px] text-gray-500">Email + SMS + WhatsApp</p>
+              </div>
+            </div>
+            <div className="absolute bottom-[5%] left-[2%] animate-[float_3.6s_ease-in-out_infinite_0.4s] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
+              <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-brand-primary/10">
+                <Users className="h-3.5 w-3.5 text-brand-primary" />
+              </div>
+              <div>
+                <p className="text-[10px] font-semibold text-gray-800">Fiche client complète</p>
+                <p className="text-[8px] text-gray-500">Notes, tags, préférences</p>
+              </div>
+            </div>
+          </>
+        ),
+      };
+
+      const inner = feature.image ? (
+        <Image src={feature.image} alt={feature.title} width={1232} height={770} className="h-full w-full object-cover object-top" />
+      ) : MockupComp ? (
+        <MockupComp />
+      ) : null;
+
+      mockupContent = (
+        <div className="relative h-full w-full">
+          {inner}
+          {waFloaters[i]}
+        </div>
+      );
+    } else if (moduleSlug === 'hub-messagerie') {
+      // Hub Messagerie features — mockup + floating elements
+      const hubFloaters: Record<number, React.ReactNode> = {
+        0: (
+          <>
+            <div className="absolute right-[2%] top-[4%] animate-[float_4s_ease-in-out_infinite] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
+              <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-brand-primary/10">
+                <Mail className="h-3.5 w-3.5 text-brand-primary" />
+              </div>
+              <div>
+                <p className="text-[10px] font-semibold text-gray-800">Tous les canaux, 1 inbox</p>
+                <p className="text-[8px] text-gray-500">Email · SMS · WhatsApp</p>
+              </div>
+            </div>
+            <div className="absolute bottom-[5%] left-[2%] animate-[float_3.5s_ease-in-out_infinite_0.5s] flex items-center gap-2.5 rounded-full bg-gray-900/85 px-4 py-2 shadow-lg backdrop-blur-sm">
+              <TrendingUp className="h-3.5 w-3.5 text-emerald-400" />
+              <span className="text-[11px] font-bold text-white">0</span>
+              <span className="text-[9px] text-gray-400">message perdu</span>
+            </div>
+          </>
+        ),
+        1: (
+          <>
+            <div className="absolute left-[2%] top-[4%] animate-[float_4.2s_ease-in-out_infinite] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
+              <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-amber-100">
+                <Star className="h-3.5 w-3.5 text-amber-600" />
+              </div>
+              <div>
+                <p className="text-[10px] font-semibold text-gray-800">Client Gold · 8 séjours</p>
+                <p className="text-[8px] text-gray-500">Préfère vue mer, oreiller ferme</p>
+              </div>
+            </div>
+            <div className="absolute bottom-[5%] right-[2%] animate-[float_3.8s_ease-in-out_infinite_0.3s] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
+              <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-purple-100">
+                <MessageSquare className="h-3.5 w-3.5 text-purple-600" />
+              </div>
+              <div>
+                <p className="text-[10px] font-semibold text-gray-800">Contexte complet</p>
+                <p className="text-[8px] text-gray-500">Avant de répondre</p>
+              </div>
+            </div>
+          </>
+        ),
+        2: (
+          <>
+            <div className="absolute right-[2%] top-[4%] animate-[float_4s_ease-in-out_infinite_0.2s] flex items-center gap-2 rounded-xl border border-white/70 bg-white/90 px-3 py-2 shadow-lg backdrop-blur-md">
+              <div className="flex h-6 w-6 items-center justify-center rounded-lg bg-brand-primary/10">
+                <Clock className="h-3.5 w-3.5 text-brand-primary" />
+              </div>
+              <div>
+                <p className="text-[10px] font-semibold text-gray-800">Réponse en 5 secondes</p>
+                <p className="text-[8px] text-gray-500">Templates pré-remplis</p>
+              </div>
+            </div>
+            <div className="absolute bottom-[5%] left-[2%] animate-[float_3.6s_ease-in-out_infinite_0.4s] flex items-center gap-2.5 rounded-full bg-gray-900/85 px-4 py-2 shadow-lg backdrop-blur-sm">
+              <Zap className="h-3.5 w-3.5 text-amber-400" />
+              <span className="text-[11px] font-bold text-white">128x</span>
+              <span className="text-[9px] text-gray-400">template WiFi utilisé</span>
+            </div>
+          </>
+        ),
+      };
+
+      const hubInner = MockupComp ? <MockupComp /> : null;
+
+      mockupContent = (
+        <div className="relative h-full w-full">
+          {hubInner}
+          {hubFloaters[i]}
         </div>
       );
     } else if (feature.image) {
@@ -359,24 +570,7 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
                 </ButtonLink>
               </div>
 
-              {/* Social proof — logos clients */}
-              <div className="mt-8 flex flex-wrap items-center justify-center gap-5 lg:justify-start">
-                {[
-                  { src: '/images/homepage/logos/saint-james.webp', alt: 'Saint James Paris' },
-                  { src: '/images/homepage/logos/hotels-particuliers.webp', alt: 'Les Hôtels Très Particuliers' },
-                  { src: '/images/homepage/logos/sofitel.webp', alt: 'Sofitel' },
-                  { src: '/images/homepage/logos/ibis.webp', alt: 'Ibis Hotels' },
-                ].map((logo) => (
-                  <Image
-                    key={logo.alt}
-                    src={logo.src}
-                    alt={logo.alt}
-                    width={80}
-                    height={32}
-                    className="h-5 w-auto object-contain opacity-40 grayscale"
-                  />
-                ))}
-              </div>
+              {/* Social proof — logos clients — masqué */}
             </motion.div>
 
             <motion.div
@@ -963,6 +1157,266 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
                       </div>
                       <span className="text-xs font-bold tabular-nums text-white">4 620</span>
                       <span className="text-[9px] text-gray-400">fiches clients actives</span>
+                    </motion.div>
+                  </motion.div>
+                </>
+              )}
+
+              {/* Floating elements — sms module */}
+              {moduleSlug === 'sms' && (
+                <>
+                  {/* Top-right: SMS lu */}
+                  <motion.div
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -top-3 right-[6%] z-20 md:-top-5 md:right-[10%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, -6, 0] } : {}}
+                      transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2.5 rounded-xl border border-white/60 bg-white/80 px-3 py-2 shadow-lg backdrop-blur-md"
+                    >
+                      <div className="h-full w-1 self-stretch rounded-full bg-green-500" />
+                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-green-100">
+                        <Check className="h-3.5 w-3.5 text-green-600" />
+                      </div>
+                      <div>
+                        <p className="text-[11px] font-semibold text-gray-800">SMS lu en 2 min</p>
+                        <p className="text-[10px] text-gray-500">Sophie D. — Ch. 204</p>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Left: Taux d'ouverture */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -40 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -left-2 top-[28%] z-20 md:-left-6 md:top-[22%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, 5, 0] } : {}}
+                      transition={{ duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
+                      className="rounded-2xl border border-white/60 bg-white/90 p-3 shadow-lg backdrop-blur-md"
+                    >
+                      <p className="text-[9px] font-medium text-gray-500 mb-1">Taux d&apos;ouverture</p>
+                      <p className="text-2xl font-bold text-brand-primary leading-none">98%</p>
+                      <p className="text-[8px] text-gray-400 mt-0.5">vs 22% email</p>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Right: Offre flash */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.7 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 1.5, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -right-1 bottom-[26%] z-30 md:-right-8 md:bottom-[18%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, -10, 0] } : {}}
+                      transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2.5 rounded-full bg-gray-900/90 px-5 py-2.5 shadow-xl backdrop-blur-sm"
+                    >
+                      <TrendingUp className="h-4 w-4 text-emerald-400" />
+                      <span className="text-base font-bold tabular-nums text-white">23%</span>
+                      <span className="text-[10px] text-gray-400">conversion offres flash</span>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Bottom-left: SMS envoyés */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.8, duration: 0.5 }}
+                    className="absolute -bottom-3 left-[6%] z-20 md:-bottom-4 md:left-[8%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, 4, 0] } : {}}
+                      transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2 rounded-full bg-gray-900/90 px-3.5 py-1.5 shadow-lg backdrop-blur-sm"
+                    >
+                      <div className="relative flex h-2 w-2">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+                      </div>
+                      <span className="text-xs font-bold tabular-nums text-white">1 842</span>
+                      <span className="text-[9px] text-gray-400">SMS envoyés ce mois</span>
+                    </motion.div>
+                  </motion.div>
+                </>
+              )}
+
+              {/* Floating elements — whatsapp module */}
+              {moduleSlug === 'whatsapp' && (
+                <>
+                  {/* Top-right: Bot response */}
+                  <motion.div
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -top-3 right-[6%] z-20 md:-top-5 md:right-[10%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, -6, 0] } : {}}
+                      transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
+                      className="rounded-2xl border border-white/60 bg-white/90 p-3 shadow-xl backdrop-blur-md"
+                    >
+                      <div className="flex items-center gap-2 mb-1.5">
+                        <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#25D366]/10">
+                          <MessageSquare className="h-3.5 w-3.5 text-[#25D366]" />
+                        </div>
+                        <div>
+                          <p className="text-[10px] font-bold text-gray-800">Chatbot actif</p>
+                          <p className="text-[8px] text-gray-500">Réponse en 2 secondes</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <span className="rounded-full bg-[#25D366]/10 px-2 py-0.5 text-[8px] font-semibold text-[#25D366]">70%</span>
+                        <span className="text-[8px] text-gray-500">des questions traitées auto</span>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Left: Taux d'ouverture */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -40 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -left-2 top-[28%] z-20 md:-left-6 md:top-[22%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, 5, 0] } : {}}
+                      transition={{ duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
+                      className="rounded-2xl border border-white/60 bg-white/90 p-3 shadow-lg backdrop-blur-md"
+                    >
+                      <p className="text-[9px] font-medium text-gray-500 mb-1">Taux d&apos;ouverture</p>
+                      <p className="text-2xl font-bold text-[#25D366] leading-none">90%</p>
+                      <p className="text-[8px] text-gray-400 mt-0.5">WhatsApp Business</p>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Right: Réservations spa */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.7 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 1.5, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -right-1 bottom-[26%] z-30 md:-right-8 md:bottom-[18%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, -10, 0] } : {}}
+                      transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2.5 rounded-full bg-gray-900/90 px-5 py-2.5 shadow-xl backdrop-blur-sm"
+                    >
+                      <TrendingUp className="h-4 w-4 text-emerald-400" />
+                      <span className="text-base font-bold tabular-nums text-white">+45%</span>
+                      <span className="text-[10px] text-gray-400">réservations services</span>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Bottom-left: Conversations */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.8, duration: 0.5 }}
+                    className="absolute -bottom-3 left-[6%] z-20 md:-bottom-4 md:left-[8%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, 4, 0] } : {}}
+                      transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2 rounded-full bg-gray-900/90 px-3.5 py-1.5 shadow-lg backdrop-blur-sm"
+                    >
+                      <div className="relative flex h-2 w-2">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+                      </div>
+                      <span className="text-xs font-bold tabular-nums text-white">-70%</span>
+                      <span className="text-[9px] text-gray-400">d&apos;appels téléphoniques</span>
+                    </motion.div>
+                  </motion.div>
+                </>
+              )}
+
+              {/* Floating elements — hub-messagerie module */}
+              {moduleSlug === 'hub-messagerie' && (
+                <>
+                  {/* Top-right: Temps de réponse */}
+                  <motion.div
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -top-3 right-[6%] z-20 md:-top-5 md:right-[10%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, -6, 0] } : {}}
+                      transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2.5 rounded-xl border border-white/60 bg-white/80 px-3 py-2 shadow-lg backdrop-blur-md"
+                    >
+                      <div className="h-full w-1 self-stretch rounded-full bg-brand-primary" />
+                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-primary/10">
+                        <Clock className="h-3.5 w-3.5 text-brand-primary" />
+                      </div>
+                      <div>
+                        <p className="text-[11px] font-semibold text-gray-800">Réponse en 5 sec</p>
+                        <p className="text-[10px] text-gray-500">Avec templates pré-remplis</p>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Left: 0 message perdu */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -40 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -left-2 top-[28%] z-20 md:-left-6 md:top-[22%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, 5, 0] } : {}}
+                      transition={{ duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
+                      className="rounded-2xl border border-white/60 bg-white/90 p-3 shadow-lg backdrop-blur-md"
+                    >
+                      <p className="text-[9px] font-medium text-gray-500 mb-1">Messages perdus</p>
+                      <p className="text-2xl font-bold text-brand-primary leading-none">0</p>
+                      <p className="text-[8px] text-gray-400 mt-0.5">Email + SMS + WhatsApp</p>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Right: Productivité */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.7 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 1.5, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -right-1 bottom-[26%] z-30 md:-right-8 md:bottom-[18%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, -10, 0] } : {}}
+                      transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2.5 rounded-full bg-gray-900/90 px-5 py-2.5 shadow-xl backdrop-blur-sm"
+                    >
+                      <TrendingUp className="h-4 w-4 text-emerald-400" />
+                      <span className="text-base font-bold tabular-nums text-white">3x</span>
+                      <span className="text-[10px] text-gray-400">plus de demandes traitées</span>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Bottom-left: Canaux unifiés */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.8, duration: 0.5 }}
+                    className="absolute -bottom-3 left-[6%] z-20 md:-bottom-4 md:left-[8%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, 4, 0] } : {}}
+                      transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2 rounded-full bg-gray-900/90 px-3.5 py-1.5 shadow-lg backdrop-blur-sm"
+                    >
+                      <div className="relative flex h-2 w-2">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+                      </div>
+                      <span className="text-xs font-bold tabular-nums text-white">1</span>
+                      <span className="text-[9px] text-gray-400">boîte pour tous vos canaux</span>
                     </motion.div>
                   </motion.div>
                 </>

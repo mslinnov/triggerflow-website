@@ -236,7 +236,7 @@ export const modules: Record<string, ModuleData> = {
     seoTitle: 'SMS hôtelier automatique : infos arrivée & offres',
     headline: '98% de taux d\'ouverture, message lu en 3 min',
     description: 'Le SMS est le canal le plus efficace pour les messages critiques. Infos d\'arrivée, code WiFi, offre flash : votre client lit en 3 minutes.',
-    mockup: 'PhoneMockup',
+    mockup: 'SmsHeroMockup',
     painPoints: [
       'Vos emails de check-in ne sont jamais lus — le client arrive sans les infos essentielles',
       'Vous appelez chaque client un par un pour confirmer les horaires d\'arrivée',
@@ -270,11 +270,11 @@ export const modules: Record<string, ModuleData> = {
         mockup: 'SmsSendMockup',
       },
       {
-        title: 'Vos clients répondent, vous les voyez',
-        description: 'SMS bidirectionnel : recevez les réponses de vos clients directement dans votre dashboard. Plus besoin de gérer un téléphone dédié.',
+        title: 'Chaque réponse client, centralisée dans un seul écran',
+        description: 'Vos clients répondent par SMS et vous voyez tout dans votre dashboard. Historique, contexte, réservation — tout est là pour répondre en 30 secondes.',
         icon: MessageCircle,
         bullets: ['Réponses visibles dans le dashboard', 'Historique par client', 'Notification équipe en temps réel'],
-        mockup: 'SmsBidirectionalMockup',
+        image: '/images/produit/sms/feature-sms-inbox.webp',
       },
       {
         title: 'RGPD intégré, zéro risque',
@@ -344,7 +344,7 @@ export const modules: Record<string, ModuleData> = {
     seoTitle: 'WhatsApp Business hôtel : conciergerie & automatisation',
     headline: 'Le canal préféré de vos clients, enfin professionnel',
     description: 'WhatsApp Business intégré à votre hôtel : messages automatisés, conciergerie digitale et conversation fluide. Vos clients adorent, votre équipe gagne du temps.',
-    mockup: 'WhatsAppMockup',
+    mockup: 'WhatsAppHeroMockup',
     painPoints: [
       'Vos clients envoient des WhatsApp au téléphone perso du réceptionniste — aucune traçabilité',
       'Vous ratez des demandes client car WhatsApp n\'est pas centralisé avec vos autres canaux',
@@ -375,7 +375,7 @@ export const modules: Record<string, ModuleData> = {
         description: 'Le chatbot répond instantanément aux questions fréquentes : code WiFi, horaires piscine, restaurant à proximité. Votre équipe ne gère que les demandes complexes.',
         icon: Bot,
         bullets: ['Réponses instantanées 24h/24', 'Questions fréquentes automatisées', 'Escalade vers un humain si besoin'],
-        mockup: 'WhatsAppChatbotMockup',
+        image: '/images/produit/whatsapp/feature-whatsapp-history.webp',
       },
       {
         title: 'Messages automatisés approuvés par WhatsApp',
@@ -389,7 +389,7 @@ export const modules: Record<string, ModuleData> = {
         description: 'Email, SMS, WhatsApp : chaque conversation client est regroupée. L\'équipe de nuit voit ce que l\'équipe de jour a échangé.',
         icon: Inbox,
         bullets: ['Historique unifié multi-canal', 'Handover entre équipes', 'Notes internes par conversation'],
-        mockup: 'WhatsAppHistoryMockup',
+        image: '/images/produit/whatsapp/feature-whatsapp-history.webp',
       }
     ],
     useCases: [
@@ -1241,7 +1241,7 @@ export const modules: Record<string, ModuleData> = {
     seoTitle: 'Hub messagerie hôtel : email SMS WhatsApp unifié',
     headline: 'Plus jamais un message client ne passe entre les mailles',
     description: 'Emails, SMS, WhatsApp — tout arrive dans une seule boîte de réception. Votre équipe répond vite, avec le contexte complet du client.',
-    mockup: 'DashboardMockup',
+    mockup: 'HubHeroMockup',
     painPoints: [
       'Votre équipe jongle entre l\'email, le téléphone, WhatsApp et le PMS — des messages passent entre les mailles du filet',
       'Un client envoie un email puis un WhatsApp : personne ne fait le lien et il reçoit deux réponses différentes',

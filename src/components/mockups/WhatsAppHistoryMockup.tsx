@@ -1,12 +1,10 @@
 'use client';
 
-import { BrowserMockup } from './PhoneMockup';
 import { Mail, MessageSquare, MessageCircle } from 'lucide-react';
 
 export function WhatsAppHistoryMockup() {
   return (
-    <BrowserMockup title="Historique unifié" className="max-w-lg">
-      <div className="p-4 min-h-[300px]">
+    <div className="h-full w-full p-5 bg-white">
         {/* Client header */}
         <div className="flex items-center gap-3 pb-3 mb-3 border-b border-gray-100">
           <div className="w-10 h-10 rounded-full bg-brand-primary/10 flex items-center justify-center">
@@ -34,8 +32,7 @@ export function WhatsAppHistoryMockup() {
           <TimelineItem channel="email" time="J-3 · 09:00" text="Email pré-séjour + offre spa" />
           <TimelineItem channel="whatsapp" time="J-3 · 09:15" text="Client : 'Je prends le spa duo !'" />
         </div>
-      </div>
-    </BrowserMockup>
+    </div>
   );
 }
 

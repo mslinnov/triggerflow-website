@@ -19,27 +19,27 @@ const productLinks = [
   { href: '/produit/paiements', labelKey: 'product.payments', isLink: true },
 ] as const;
 
-// Solutions links
-const solutionLinks = [
-  { href: '/solutions/hotels-independants', labelKey: 'solutions.independentHotel' },
-  { href: '/solutions/groupes-hoteliers', labelKey: 'solutions.hotelGroup' },
-  { href: '/solutions/residences', labelKey: 'solutions.residence' },
-  { href: '/solutions/campings', labelKey: 'solutions.camping' },
-] as const;
+// Solutions links — masqué pour le lancement
+// const solutionLinks = [
+//   { href: '/solutions/hotels-independants', labelKey: 'solutions.independentHotel' },
+//   { href: '/solutions/groupes-hoteliers', labelKey: 'solutions.hotelGroup' },
+//   { href: '/solutions/residences', labelKey: 'solutions.residence' },
+//   { href: '/solutions/campings', labelKey: 'solutions.camping' },
+// ] as const;
 
 // Resources links
 const resourceLinks = [
   { href: '/blog', labelKey: 'resources.blog' },
   { href: '/ressources/cas-clients', labelKey: 'resources.caseStudies' },
-  { href: '/ressources/guides', labelKey: 'resources.guides' },
-  { href: '/ressources/aide', labelKey: 'resources.helpCenter' },
+  // { href: '/ressources/guides', labelKey: 'resources.guides' },      // masqué pour le lancement
+  // { href: '/ressources/aide', labelKey: 'resources.helpCenter' },     // masqué pour le lancement
 ] as const;
 
 // Company links
 const companyLinks = [
-  { href: '/entreprise/a-propos', labelKey: 'company.about', isLink: true },
+  // { href: '/entreprise/a-propos', labelKey: 'company.about', isLink: true },   // masqué pour le lancement
   { href: '/contact', labelKey: 'company.contact', isLink: true },
-  { href: '/entreprise/carrieres', labelKey: 'company.careers', isLink: true },
+  // { href: '/entreprise/carrieres', labelKey: 'company.careers', isLink: true }, // masqué pour le lancement
 ] as const;
 
 const legalLinks = [
@@ -59,7 +59,7 @@ export function Footer() {
       <Container>
         <div className="py-12 md:py-16">
           {/* 5-Column Grid */}
-          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5">
+          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
             {/* Column 1: Logo + Contact */}
             <div className="lg:col-span-1">
               <Logo />
@@ -138,24 +138,7 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Column 3: Solutions */}
-            <div>
-              <h3 className="text-sm font-semibold uppercase tracking-wider text-white">
-                {t('columns.solutions')}
-              </h3>
-              <ul className="mt-4 space-y-3">
-                {solutionLinks.map((link) => (
-                  <li key={link.labelKey}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-white/50 transition-colors hover:text-white"
-                    >
-                      {t(link.labelKey)}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {/* Column 3: Solutions — masqué pour le lancement */}
 
             {/* Column 4: Ressources */}
             <div>

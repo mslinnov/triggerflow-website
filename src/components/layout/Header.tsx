@@ -73,7 +73,6 @@ const menuItems = {
       {
         title: 'Outils',
         items: [
-          { icon: Building2, label: 'CRM Hôtelier', description: 'Gestion relation client', href: '/produit/crm' },
           { icon: FileText, label: 'Formulaires', description: 'Collectez des données', href: '/produit/formulaires' },
           { icon: ShoppingBag, label: 'Ventes additionnelles', description: 'Boostez votre CA', href: '/produit/ventes-additionnelles' },
           { icon: CreditCard, label: 'Liens de paiement', description: 'Encaissez vos clients', href: '/produit/paiements' },
@@ -220,8 +219,8 @@ export function Header() {
                 {t('integrations')}
               </Link>
 
-              {/* Solutions Dropdown */}
-              <div
+              {/* Solutions Dropdown — masqué pour le lancement */}
+              {/* <div
                 onMouseEnter={() => handleMouseEnter('solutions')}
                 onMouseLeave={handleMouseLeave}
               >
@@ -237,7 +236,7 @@ export function Header() {
                     activeDropdown === 'solutions' && 'rotate-180'
                   )} />
                 </button>
-              </div>
+              </div> */}
 
               {/* Tarifs Link */}
               <Link
@@ -387,26 +386,7 @@ function MegaMenuProduit() {
         ))}
       </div>
 
-      {/* Featured Link */}
-      <div className="mt-8 pt-6 border-t border-border-light">
-        <Link
-          href="/produit"
-          className="group flex items-center gap-4 rounded-xl bg-gradient-to-r from-brand-light to-brand-light/50 p-4 transition-all hover:from-brand-light hover:to-brand-light"
-        >
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-primary shadow-lg shadow-brand-primary/20">
-            <menuItems.produit.featured.icon className="h-6 w-6 text-white" />
-          </div>
-          <div className="flex-1">
-            <div className="text-base font-semibold text-brand-dark">
-              {menuItems.produit.featured.label}
-            </div>
-            <div className="text-sm text-text-secondary">
-              {menuItems.produit.featured.description}
-            </div>
-          </div>
-          <ArrowRight className="h-5 w-5 text-brand-primary transition-transform group-hover:translate-x-1" />
-        </Link>
-      </div>
+      {/* Featured Link — masqué pour le lancement */}
 
     </div>
   );
@@ -555,31 +535,7 @@ function MobileMenu({ t, onClose }: MobileMenuProps) {
             {t('integrations')}
           </Link>
 
-          {/* Solutions */}
-          <MobileAccordion
-            title={t('solutions')}
-            isExpanded={expandedSection === 'solutions'}
-            onToggle={() => setExpandedSection(expandedSection === 'solutions' ? null : 'solutions')}
-          >
-            {menuItems.solutions.columns.map((column) => (
-              <div key={column.title} className="mb-4">
-                <div className="text-xs font-semibold uppercase tracking-wider text-text-secondary mb-2 px-2">
-                  {column.title}
-                </div>
-                {column.items.map((item) => (
-                  <Link
-                    key={item.label}
-                    href={item.href as any}
-                    onClick={onClose}
-                    className="flex items-center gap-3 rounded-lg px-2 py-2 text-sm text-brand-dark hover:bg-surface-secondary"
-                  >
-                    <item.icon className="h-4 w-4 text-brand-primary" />
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            ))}
-          </MobileAccordion>
+          {/* Solutions — masqué pour le lancement */}
 
           {/* Tarifs */}
           <Link

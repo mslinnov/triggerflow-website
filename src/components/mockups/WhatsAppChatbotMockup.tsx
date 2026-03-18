@@ -1,12 +1,10 @@
 'use client';
 
-import { PhoneMockup } from './PhoneMockup';
 import { Bot } from 'lucide-react';
 
 export function WhatsAppChatbotMockup() {
   return (
-    <PhoneMockup>
-      <div className="bg-[#e5ddd5] h-full">
+    <div className="h-full w-full bg-[#e5ddd5]">
         {/* WhatsApp header */}
         <div className="bg-[#075e54] px-3 py-2 flex items-center gap-2">
           <div className="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center">
@@ -33,8 +31,7 @@ export function WhatsAppChatbotMockup() {
           <WaIn text="14h00 pour 2 personnes svp !" time="14:04" />
           <WaOut text="✅ Réservé ! Spa duo demain à 14h. Confirmation envoyée par email. Profitez bien ! 🌿" time="14:04" bot />
         </div>
-      </div>
-    </PhoneMockup>
+    </div>
   );
 }
 

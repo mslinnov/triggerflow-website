@@ -1,12 +1,10 @@
 'use client';
 
-import { BrowserMockup } from './PhoneMockup';
 import { Check, MessageCircle } from 'lucide-react';
 
 export function WhatsAppTemplateMockup() {
   return (
-    <BrowserMockup title="Templates WhatsApp" className="max-w-lg">
-      <div className="p-4 min-h-[300px]">
+    <div className="h-full w-full p-5 bg-white">
         {/* Template list */}
         <div className="flex items-center justify-between mb-3">
           <h4 className="text-xs font-semibold text-gray-800">Templates approuvés</h4>
@@ -45,8 +43,7 @@ export function WhatsAppTemplateMockup() {
             ))}
           </div>
         </div>
-      </div>
-    </BrowserMockup>
+    </div>
   );
 }
 

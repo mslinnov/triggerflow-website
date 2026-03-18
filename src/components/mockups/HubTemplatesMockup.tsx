@@ -2,7 +2,6 @@
 
 import { type ReactNode } from 'react';
 import { Search, Zap, Clock, Wifi, Sparkles, MapPin } from 'lucide-react';
-import { BrowserMockup } from './PhoneMockup';
 
 interface TemplateCardProps {
   title: string;
@@ -61,8 +60,7 @@ function TemplateCard({ title, preview, usageCount, icon, expanded, fullText }: 
 
 export function HubTemplatesMockup() {
   return (
-    <BrowserMockup title="Templates - TriggerFlow" className="max-w-lg">
-      <div className="min-h-[300px] p-3 bg-gray-50/50">
+    <div className="h-full w-full p-4 bg-gray-50/50">
         {/* Header */}
         <div className="flex items-center justify-between mb-3">
           <div>
@@ -120,7 +118,6 @@ export function HubTemplatesMockup() {
             icon={<MapPin className="w-3 h-3 text-red-500" />}
           />
         </div>
-      </div>
-    </BrowserMockup>
+    </div>
   );
 }
