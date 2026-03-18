@@ -903,7 +903,7 @@ export const modules: Record<string, ModuleData> = {
     icon: FileText,
     title: 'Formulaires',
     seoTitle: 'Formulaire pré check-in hôtel & enquêtes satisfaction',
-    headline: 'Le check-in commence avant l\'arrivée',
+    headline: 'Créez le formulaire exact dont vous avez besoin',
     description: 'Formulaires de pré-check-in, enquêtes de satisfaction, demandes spéciales. Envoyés automatiquement, analysés en temps réel.',
     mockup: 'EmailMockup',
     painPoints: [
@@ -932,25 +932,32 @@ export const modules: Record<string, ModuleData> = {
     ],
     features: [
       {
-        title: 'Créez un formulaire en 10 minutes, pas en 10 jours',
-        description: 'Éditeur visuel avec des champs prêts pour l\'hôtellerie : identité, préférences chambre, horaire d\'arrivée, demandes spéciales.',
+        title: 'Des dizaines de widgets pour des formulaires sur mesure',
+        description: 'Texte, email, téléphone, date, heure, signature, choix multiples, échelle de notation, upload photo, cases à cocher... Assemblez vos formulaires comme des Lego, sans écrire une ligne de code. Chaque widget est pensé pour l\'hôtellerie.',
         icon: PenTool,
-        bullets: ['Champs pré-configurés hôtellerie', 'Logique conditionnelle', 'Multi-langue automatique'],
+        bullets: ['20+ types de champs disponibles', 'Drag & drop visuel', 'Multi-langue automatique (FR, EN, DE, ES...)'],
         mockup: 'FormBuilderMockup',
       },
       {
-        title: 'Envoyé automatiquement au bon moment',
-        description: 'Pré-check-in à J-3, enquête satisfaction à J+1, demande de service pendant le séjour. Vous configurez la règle une fois.',
-        icon: Send,
-        bullets: ['Déclenchement par événement', 'Envoi par email, SMS ou WhatsApp', 'Rappels automatiques si non complété'],
+        title: 'Chaque réponse synchronisable avec votre PMS',
+        description: 'Email, nom, prénom, téléphone, heure d\'arrivée, fiche de police, motif de séjour, préférences chambre — les données collectées remontent automatiquement dans la fiche client de votre PMS. Zéro ressaisie, zéro erreur.',
+        icon: RefreshCw,
+        bullets: ['Sync automatique des champs vers le PMS', 'Fiche de police pré-remplie', 'Mise à jour CRM en temps réel'],
         mockup: 'FormAutoSendMockup',
       },
       {
-        title: 'Résultats visibles en temps réel',
-        description: 'Dashboard avec graphiques, NPS calculé automatiquement, alertes sur les scores bas. Exportez en CSV ou PDF en un clic.',
+        title: 'Des stats avancées sur chaque formulaire',
+        description: 'Taux de complétion, temps moyen de remplissage, NPS calculé automatiquement, répartition des réponses par question. Identifiez les points de friction et les tendances en un coup d\'œil.',
         icon: PieChart,
-        bullets: ['NPS calculé automatiquement', 'Alertes scores négatifs', 'Export CSV et PDF'],
+        bullets: ['NPS et scores calculés automatiquement', 'Taux de complétion par étape', 'Export CSV et rapports planifiés'],
         mockup: 'FormAnalysisMockup',
+      },
+      {
+        title: 'Logique conditionnelle et alertes internes',
+        description: 'Affichez des pages selon les réponses du client : un voyageur business voit les options de parking, une famille voit le Kids Club. Déclenchez des alertes internes sur certaines réponses (allergie, VIP, réclamation). Personnalisez le message de confirmation selon le profil.',
+        icon: GitBranch,
+        bullets: ['Pages et champs affichés sous conditions', 'Alertes internes par email ou Slack', 'Message de confirmation personnalisable'],
+        mockup: 'FormBuilderMockup',
       }
     ],
     useCases: [
