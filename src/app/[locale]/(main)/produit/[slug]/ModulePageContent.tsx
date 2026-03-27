@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Check, X, Star, Quote, Mail, TrendingUp, Shield, Zap, GitBranch, MessageSquare, Clock, Users, MailOpen, Send, Gift, FileText } from 'lucide-react';
+import { ArrowRight, Check, X, Star, Quote, Mail, TrendingUp, Shield, Zap, GitBranch, MessageSquare, Clock, Users, MailOpen, Send, Gift, FileText, ShoppingBag, BarChart3, Eye, Euro } from 'lucide-react';
 import { IntegrationsShowcase, FeaturesTabbed } from '@/components/sections';
 import type { TabConfig, FeaturesTabbedDirectData } from '@/components/sections';
 import { cn } from '@/lib/utils';
@@ -63,10 +63,12 @@ import { FormBuilderMockup } from '@/components/mockups/FormBuilderMockup';
 import { FormAutoSendMockup } from '@/components/mockups/FormAutoSendMockup';
 import { FormAnalysisMockup } from '@/components/mockups/FormAnalysisMockup';
 // Avis feature mockups
+import { ReviewHeroMockup } from '@/components/mockups/ReviewHeroMockup';
 import { ReviewCollectMockup } from '@/components/mockups/ReviewCollectMockup';
 import { ReviewDashboardMockup } from '@/components/mockups/ReviewDashboardMockup';
 import { ReviewAiResponseMockup } from '@/components/mockups/ReviewAiResponseMockup';
 // Analytics feature mockups
+import { AnalyticsHeroMockup } from '@/components/mockups/AnalyticsHeroMockup';
 import { AnalyticsDashboardMockup } from '@/components/mockups/AnalyticsDashboardMockup';
 import { AnalyticsReportMockup } from '@/components/mockups/AnalyticsReportMockup';
 import { AnalyticsCompareMockup } from '@/components/mockups/AnalyticsCompareMockup';
@@ -79,6 +81,14 @@ import { HubTemplatesMockup } from '@/components/mockups/HubTemplatesMockup';
 import { UpsellOfferMockup } from '@/components/mockups/UpsellOfferMockup';
 import { UpsellTimingMockup } from '@/components/mockups/UpsellTimingMockup';
 import { UpsellCheckoutMockup } from '@/components/mockups/UpsellCheckoutMockup';
+// Paiements feature mockups
+import { PaymentHeroMockup } from '@/components/mockups/PaymentHeroMockup';
+import { PaymentLinkMockup } from '@/components/mockups/PaymentLinkMockup';
+import { PaymentInstantMockup } from '@/components/mockups/PaymentInstantMockup';
+import { PaymentCautionMockup } from '@/components/mockups/PaymentCautionMockup';
+import { PaymentEmpreinteMockup } from '@/components/mockups/PaymentEmpreinteMockup';
+import { PaymentTrackingMockup } from '@/components/mockups/PaymentTrackingMockup';
+import { PaymentProvidersMockup } from '@/components/mockups/PaymentProvidersMockup';
 
 interface ModulePageContentProps {
   moduleSlug: string;
@@ -118,9 +128,11 @@ const mockupComponents: Record<string, React.ComponentType> = {
   FormBuilderMockup,
   FormAutoSendMockup,
   FormAnalysisMockup,
+  ReviewHeroMockup,
   ReviewCollectMockup,
   ReviewDashboardMockup,
   ReviewAiResponseMockup,
+  AnalyticsHeroMockup,
   AnalyticsDashboardMockup,
   AnalyticsReportMockup,
   AnalyticsCompareMockup,
@@ -131,6 +143,13 @@ const mockupComponents: Record<string, React.ComponentType> = {
   UpsellOfferMockup,
   UpsellTimingMockup,
   UpsellCheckoutMockup,
+  PaymentHeroMockup,
+  PaymentLinkMockup,
+  PaymentInstantMockup,
+  PaymentCautionMockup,
+  PaymentEmpreinteMockup,
+  PaymentTrackingMockup,
+  PaymentProvidersMockup,
 };
 
 
@@ -503,10 +522,13 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
       );
     }
 
+    const phoneMockups = ['UpsellCheckoutMockup', 'WhatsAppMockup', 'LoyaltyPortalMockup'];
     return {
       key: `feature_${i}`,
       icon: feature.icon,
       mockup: mockupContent,
+      isImage: !!feature.image,
+      hideChrome: feature.mockup ? phoneMockups.includes(feature.mockup) : false,
     };
   });
 
@@ -872,6 +894,97 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
                       </div>
                       <span className="text-xs font-bold tabular-nums text-white">1 340</span>
                       <span className="text-[9px] text-gray-400">formulaires complétés ce mois</span>
+                    </motion.div>
+                  </motion.div>
+                </>
+              )}
+
+              {/* Floating elements — ventes-additionnelles module */}
+              {moduleSlug === 'ventes-additionnelles' && (
+                <>
+                  {/* Top-right: Upsell purchased */}
+                  <motion.div
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -top-3 right-[8%] z-20 md:-top-5 md:right-[12%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, -6, 0] } : {}}
+                      transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2.5 rounded-xl border border-white/60 bg-white/80 px-3 py-2 shadow-lg backdrop-blur-md"
+                    >
+                      <div className="h-full w-1 self-stretch rounded-full bg-green-500" />
+                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-green-100">
+                        <ShoppingBag className="h-3.5 w-3.5 text-green-600" />
+                      </div>
+                      <div>
+                        <p className="text-[11px] font-semibold text-gray-800">Late checkout acheté</p>
+                        <p className="text-[10px] text-gray-500">Ch. 405 — 35€</p>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Left: Conversion rate */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -40 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -left-2 top-[22%] z-20 md:-left-6 md:top-[18%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, 5, 0] } : {}}
+                      transition={{ duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
+                      className="rounded-xl border border-white/60 bg-white/80 px-2.5 py-2 shadow-md backdrop-blur-md"
+                    >
+                      <div className="flex items-center gap-1.5">
+                        <div className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-primary/10">
+                          <TrendingUp className="h-3 w-3 text-brand-primary" />
+                        </div>
+                        <div>
+                          <p className="text-[10px] font-semibold text-gray-800">Taux de conversion</p>
+                          <p className="text-[10px] font-bold text-brand-primary">12%</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Right: Revenue boost */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.7 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 1.5, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -right-1 bottom-[22%] z-30 md:-right-8 md:bottom-[16%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, -10, 0] } : {}}
+                      transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2.5 rounded-full bg-gray-900/90 px-5 py-2.5 shadow-xl backdrop-blur-sm"
+                    >
+                      <TrendingUp className="h-4 w-4 text-emerald-400" />
+                      <span className="text-base font-bold tabular-nums text-white">+5 020€</span>
+                      <span className="text-[10px] text-gray-400">ce mois</span>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Bottom-left: Orders count */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.8, duration: 0.5 }}
+                    className="absolute -bottom-3 left-[6%] z-20 md:-bottom-4 md:left-[8%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, 4, 0] } : {}}
+                      transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2 rounded-full bg-gray-900/90 px-3.5 py-1.5 shadow-lg backdrop-blur-sm"
+                    >
+                      <div className="relative flex h-2 w-2">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+                      </div>
+                      <span className="text-xs font-bold tabular-nums text-white">36</span>
+                      <span className="text-[9px] text-gray-400">commandes ce mois</span>
                     </motion.div>
                   </motion.div>
                 </>
@@ -1417,6 +1530,263 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
                       </div>
                       <span className="text-xs font-bold tabular-nums text-white">1</span>
                       <span className="text-[9px] text-gray-400">boîte pour tous vos canaux</span>
+                    </motion.div>
+                  </motion.div>
+                </>
+              )}
+
+              {/* Floating elements — avis module */}
+              {moduleSlug === 'avis' && (
+                <>
+                  {/* Top-right: Nouvel avis 5 étoiles */}
+                  <motion.div
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -top-3 right-[8%] z-20 md:-top-5 md:right-[12%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, -6, 0] } : {}}
+                      transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2.5 rounded-xl border border-white/60 bg-white/80 px-3 py-2 shadow-lg backdrop-blur-md"
+                    >
+                      <div className="h-full w-1 self-stretch rounded-full bg-amber-400" />
+                      <div className="flex gap-0.5">
+                        {[1, 2, 3, 4, 5].map((s) => (
+                          <Star key={s} className="h-3 w-3 fill-amber-400 text-amber-400" />
+                        ))}
+                      </div>
+                      <div>
+                        <p className="text-[11px] font-semibold text-gray-800">Nouvel avis Google</p>
+                        <p className="text-[10px] text-gray-500">Marie L. — Il y a 2h</p>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Left: Note moyenne */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -40 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -left-2 top-[22%] z-20 md:-left-6 md:top-[18%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, 5, 0] } : {}}
+                      transition={{ duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
+                      className="rounded-2xl border border-white/60 bg-white/90 p-3 shadow-lg backdrop-blur-md"
+                    >
+                      <p className="mb-1 text-[9px] font-medium text-gray-500">Note Google</p>
+                      <p className="text-2xl font-bold leading-none text-brand-primary">4.6<span className="text-sm text-gray-400">/5</span></p>
+                      <p className="mt-0.5 text-[8px] text-gray-400">+0.4 en 3 mois</p>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Right: Réponse IA */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.7 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 1.5, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -right-1 bottom-[22%] z-30 md:-right-8 md:bottom-[16%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, -10, 0] } : {}}
+                      transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2.5 rounded-full bg-gray-900/90 px-5 py-2.5 shadow-xl backdrop-blur-sm"
+                    >
+                      <MessageSquare className="h-4 w-4 text-purple-400" />
+                      <span className="text-base font-bold tabular-nums text-white">2 min</span>
+                      <span className="text-[10px] text-gray-400">réponse IA</span>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Bottom-left: Avis positifs */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.8, duration: 0.5 }}
+                    className="absolute -bottom-3 left-[6%] z-20 md:-bottom-4 md:left-[8%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, 4, 0] } : {}}
+                      transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2 rounded-full bg-gray-900/90 px-3.5 py-1.5 shadow-lg backdrop-blur-sm"
+                    >
+                      <div className="relative flex h-2 w-2">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+                      </div>
+                      <span className="text-xs font-bold tabular-nums text-white">90%</span>
+                      <span className="text-[9px] text-gray-400">d&apos;avis collectés positifs</span>
+                    </motion.div>
+                  </motion.div>
+                </>
+              )}
+
+              {/* Floating elements — paiements module */}
+              {moduleSlug === 'paiements' && (
+                <>
+                  {/* Top-right: Acompte encaissé */}
+                  <motion.div
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -top-3 right-[8%] z-20 md:-top-5 md:right-[12%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, -6, 0] } : {}}
+                      transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2.5 rounded-xl border border-white/60 bg-white/80 px-3 py-2 shadow-lg backdrop-blur-md"
+                    >
+                      <div className="h-full w-1 self-stretch rounded-full bg-green-500" />
+                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-green-100">
+                        <Check className="h-3.5 w-3.5 text-green-600" />
+                      </div>
+                      <div>
+                        <p className="text-[11px] font-semibold text-gray-800">Acompte encaissé</p>
+                        <p className="text-[10px] text-gray-500">150€ — Sophie Durand</p>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Left: 0€ commission */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -40 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -left-2 top-[22%] z-20 md:-left-6 md:top-[18%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, 5, 0] } : {}}
+                      transition={{ duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
+                      className="rounded-2xl border border-white/60 bg-white/90 p-3 shadow-lg backdrop-blur-md"
+                    >
+                      <p className="mb-1 text-[9px] font-medium text-gray-500">Commission TriggerFlow</p>
+                      <p className="text-2xl font-bold leading-none text-brand-primary">0€</p>
+                      <p className="mt-0.5 text-[8px] text-gray-400">Seuls les frais Stripe</p>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Right: Caution active */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.7 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 1.5, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -right-1 bottom-[22%] z-30 md:-right-8 md:bottom-[16%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, -10, 0] } : {}}
+                      transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2.5 rounded-full bg-gray-900/90 px-5 py-2.5 shadow-xl backdrop-blur-sm"
+                    >
+                      <Shield className="h-4 w-4 text-blue-400" />
+                      <span className="text-base font-bold tabular-nums text-white">300€</span>
+                      <span className="text-[10px] text-gray-400">caution bloquée</span>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Bottom-left: Paiements ce mois */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.8, duration: 0.5 }}
+                    className="absolute -bottom-3 left-[6%] z-20 md:-bottom-4 md:left-[8%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, 4, 0] } : {}}
+                      transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2 rounded-full bg-gray-900/90 px-3.5 py-1.5 shadow-lg backdrop-blur-sm"
+                    >
+                      <div className="relative flex h-2 w-2">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+                      </div>
+                      <span className="text-xs font-bold tabular-nums text-white">85%</span>
+                      <span className="text-[9px] text-gray-400">acomptes payés en 2h</span>
+                    </motion.div>
+                  </motion.div>
+                </>
+              )}
+
+              {/* Floating elements — analytics module */}
+              {moduleSlug === 'analytics' && (
+                <>
+                  {/* Top-right: Revenus générés */}
+                  <motion.div
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -top-3 right-[8%] z-20 md:-top-5 md:right-[12%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, -6, 0] } : {}}
+                      transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2.5 rounded-xl border border-white/60 bg-white/80 px-3 py-2 shadow-lg backdrop-blur-md"
+                    >
+                      <div className="h-full w-1 self-stretch rounded-full bg-emerald-500" />
+                      <div className="flex h-6 w-6 items-center justify-center rounded-full bg-emerald-100">
+                        <Euro className="h-3.5 w-3.5 text-emerald-600" />
+                      </div>
+                      <div>
+                        <p className="text-[11px] font-semibold text-gray-800">Revenus générés</p>
+                        <p className="text-[10px] text-gray-500">+22% vs mois dernier</p>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Left: Taux d'ouverture */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -40 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -left-2 top-[22%] z-20 md:-left-6 md:top-[18%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, 5, 0] } : {}}
+                      transition={{ duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
+                      className="rounded-2xl border border-white/60 bg-white/90 p-3 shadow-lg backdrop-blur-md"
+                    >
+                      <p className="mb-1 text-[9px] font-medium text-gray-500">Taux d&apos;ouverture</p>
+                      <p className="text-2xl font-bold leading-none text-brand-primary">45.2%</p>
+                      <p className="mt-0.5 text-[8px] text-gray-400">+3.1% cette semaine</p>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Right: NPS */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.7 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 1.5, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute -right-1 bottom-[22%] z-30 md:-right-8 md:bottom-[16%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, -10, 0] } : {}}
+                      transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2.5 rounded-full bg-gray-900/90 px-5 py-2.5 shadow-xl backdrop-blur-sm"
+                    >
+                      <Star className="h-4 w-4 text-amber-400" />
+                      <span className="text-base font-bold tabular-nums text-white">NPS 58</span>
+                      <span className="text-[10px] text-gray-400">+16 pts</span>
+                    </motion.div>
+                  </motion.div>
+
+                  {/* Bottom-left: Rapport automatique */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.8, duration: 0.5 }}
+                    className="absolute -bottom-3 left-[6%] z-20 md:-bottom-4 md:left-[8%]"
+                  >
+                    <motion.div
+                      animate={!prefersReducedMotion ? { y: [0, 4, 0] } : {}}
+                      transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
+                      className="flex items-center gap-2 rounded-full bg-gray-900/90 px-3.5 py-1.5 shadow-lg backdrop-blur-sm"
+                    >
+                      <div className="relative flex h-2 w-2">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
+                      </div>
+                      <span className="text-xs font-bold tabular-nums text-white">0 min</span>
+                      <span className="text-[9px] text-gray-400">de reporting manuel</span>
                     </motion.div>
                   </motion.div>
                 </>

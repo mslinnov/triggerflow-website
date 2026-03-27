@@ -17,6 +17,8 @@ export interface TabConfig {
   key: string;
   icon: LucideIcon;
   mockup: ReactNode;
+  isImage?: boolean;
+  hideChrome?: boolean;
 }
 
 /** Direct data to bypass translations — title, description per tab + header */
@@ -344,9 +346,9 @@ export function FeaturesTabbed({
             </motion.div>
           </div>
 
-          {/* Mockup area */}
+          {/* Mockup area — fixed aspect ratio wrapper to prevent layout shift */}
           <div className="w-full lg:w-[60%]">
-            <div className="relative">
+            <div className="relative" style={{ aspectRatio: '16 / 11' }}>
               {/* Decorative glow behind mockup */}
               <div
                 className="pointer-events-none absolute -inset-4 rounded-3xl opacity-60 blur-2xl"
@@ -355,36 +357,38 @@ export function FeaturesTabbed({
                 }}
               />
 
-              {/* Mockup container */}
-              <div className="relative overflow-hidden rounded-2xl border border-border-light bg-white p-1.5 shadow-[var(--shadow-lg)]">
-                {/* Top accent bar */}
-                <div className="mb-1.5 flex items-center gap-1.5 px-3 pt-2">
-                  <div className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
-                  <div className="h-2.5 w-2.5 rounded-full bg-[#FFBD2E]" />
-                  <div className="h-2.5 w-2.5 rounded-full bg-[#28CA41]" />
-                  <div className="mx-auto flex h-5 items-center rounded-md bg-surface-secondary px-3">
-                    <span className="text-[10px] text-text-muted">app.trigger-flow.com</span>
-                  </div>
-                </div>
-
-                {/* Mockup with crossfade — fixed aspect ratio container */}
-                <div className="relative overflow-hidden rounded-b-xl" style={{ aspectRatio: '16 / 10' }}>
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={activeTab.key}
-                      initial={{ opacity: 0, scale: 0.98 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.98 }}
-                      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                      className="absolute inset-0"
-                    >
-                      <div className="pointer-events-none h-full w-full origin-top overflow-hidden">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeTab.key}
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                  className="absolute inset-0"
+                >
+                  {activeTab.hideChrome ? (
+                    /* Phone mockup — no chrome, centered */
+                    <div className="pointer-events-none flex h-full w-full items-start justify-center">
+                      {activeTab.mockup}
+                    </div>
+                  ) : (
+                    /* Browser mockup — with chrome */
+                    <div className="relative h-full overflow-hidden rounded-2xl border border-border-light bg-white p-1.5 shadow-[var(--shadow-lg)]">
+                      <div className="mb-1.5 flex items-center gap-1.5 px-3 pt-2">
+                        <div className="h-2.5 w-2.5 rounded-full bg-[#FF5F57]" />
+                        <div className="h-2.5 w-2.5 rounded-full bg-[#FFBD2E]" />
+                        <div className="h-2.5 w-2.5 rounded-full bg-[#28CA41]" />
+                        <div className="mx-auto flex h-5 items-center rounded-md bg-surface-secondary px-3">
+                          <span className="text-[10px] text-text-muted">app.trigger-flow.com</span>
+                        </div>
+                      </div>
+                      <div className="pointer-events-none h-[calc(100%-2.5rem)] w-full overflow-hidden rounded-b-xl">
                         {activeTab.mockup}
                       </div>
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
-              </div>
+                    </div>
+                  )}
+                </motion.div>
+              </AnimatePresence>
 
             </div>
           </div>

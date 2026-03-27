@@ -5,7 +5,7 @@ import { Mail, Eye, Euro, Star, TrendingUp } from 'lucide-react';
 
 export function AnalyticsDashboardMockup() {
   return (
-    <BrowserMockup title="Analytics — Dashboard" className="max-w-lg">
+    <BrowserMockup title="Analytics — Dashboard">
       <div className="p-4 min-h-[300px]">
         {/* KPI Cards */}
         <div className="grid grid-cols-4 gap-2 mb-4">
@@ -54,15 +54,15 @@ export function AnalyticsDashboardMockup() {
               { day: 'Ven', value: 70 },
               { day: 'Sam', value: 40 },
             ].map((bar, i) => (
-              <div key={i} className="flex-1 flex flex-col items-center gap-1">
+              <div key={i} className="flex-1 flex flex-col items-center justify-end h-full">
                 <div
-                  className="w-full rounded-t-sm"
+                  className="w-full rounded-t-sm min-h-[2px]"
                   style={{
                     height: `${bar.value}%`,
                     backgroundColor: bar.value === 78 ? '#00875a' : '#00875a40',
                   }}
                 />
-                <span className="text-[8px] text-gray-400">{bar.day}</span>
+                <span className="text-[8px] text-gray-400 mt-1 shrink-0">{bar.day}</span>
               </div>
             ))}
           </div>

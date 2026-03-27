@@ -5,7 +5,7 @@ import { Star, Sparkles, Pencil, Send } from 'lucide-react';
 
 export function ReviewAiResponseMockup() {
   return (
-    <BrowserMockup title="Reponses IA aux avis" className="max-w-lg">
+    <BrowserMockup title="Reponses IA aux avis">
       <div className="p-4 min-h-[300px]">
         {/* Tone selector */}
         <div className="flex items-center gap-2 mb-3">

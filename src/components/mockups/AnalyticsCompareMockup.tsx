@@ -5,7 +5,7 @@ import { ArrowUpRight, Calendar, FlaskConical, AlertTriangle, Trophy } from 'luc
 
 export function AnalyticsCompareMockup() {
   return (
-    <BrowserMockup title="Analytics — Comparaison" className="max-w-lg">
+    <BrowserMockup title="Analytics — Comparaison">
       <div className="p-4 min-h-[300px]">
         {/* Period Selector */}
         <div className="flex items-center gap-2 mb-4">

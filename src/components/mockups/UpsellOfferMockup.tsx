@@ -5,7 +5,7 @@ import { User, Heart, Sparkles, Clock, Send, ChevronDown, EyeOff } from 'lucide-
 
 export function UpsellOfferMockup() {
   return (
-    <BrowserMockup title="Ventes Additionnelles" className="max-w-lg">
+    <BrowserMockup title="Ventes Additionnelles">
       <div className="p-4 min-h-[300px]">
         {/* Client profile summary */}
         <div className="flex items-center gap-3 mb-4 p-2.5 bg-blue-50 rounded-xl border border-blue-100">

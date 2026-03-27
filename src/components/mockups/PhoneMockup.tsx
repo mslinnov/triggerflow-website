@@ -57,25 +57,22 @@ interface BrowserMockupProps {
   children: ReactNode;
   title?: string;
   className?: string;
+  showChrome?: boolean;
 }
 
-export function BrowserMockup({ children, title = 'TriggerFlow', className = '' }: BrowserMockupProps) {
+export function BrowserMockup({ children, className = '', showChrome = false }: BrowserMockupProps) {
   return (
-    <div className={`bg-white rounded-xl shadow-2xl border border-gray-200 overflow-hidden ${className}`}>
-      {/* Header */}
-      <div className="h-10 bg-gray-100 flex items-center px-4 gap-2 border-b border-gray-200">
-        <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full bg-red-500" />
-          <div className="w-3 h-3 rounded-full bg-yellow-500" />
-          <div className="w-3 h-3 rounded-full bg-green-500" />
-        </div>
-        <div className="flex-1 flex justify-center">
-          <div className="px-4 py-1 bg-white rounded-md text-xs text-gray-500 border border-gray-200">
-            {title}
+    <div className={`bg-white overflow-hidden ${className}`}>
+      {/* Header — hidden by default since FeaturesTabbed provides its own */}
+      {showChrome && (
+        <div className="h-10 bg-gray-100 flex items-center px-4 gap-2 border-b border-gray-200">
+          <div className="flex items-center gap-2">
+            <div className="w-3 h-3 rounded-full bg-red-500" />
+            <div className="w-3 h-3 rounded-full bg-yellow-500" />
+            <div className="w-3 h-3 rounded-full bg-green-500" />
           </div>
         </div>
-        <div className="w-16" /> {/* Spacer for symmetry */}
-      </div>
+      )}
 
       {/* Content */}
       <div>

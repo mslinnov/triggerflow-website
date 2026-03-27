@@ -17,6 +17,21 @@ export { WhatsAppChatbotMockup } from './WhatsAppChatbotMockup';
 export { CrmClientCardMockup } from './CrmClientCardMockup';
 export { ReviewDashboardMockup } from './ReviewDashboardMockup';
 
+// Review mockups
+export { ReviewHeroMockup } from './ReviewHeroMockup';
+
+// Analytics mockups
+export { AnalyticsHeroMockup } from './AnalyticsHeroMockup';
+
+// Payment mockups
+export { PaymentHeroMockup } from './PaymentHeroMockup';
+export { PaymentLinkMockup } from './PaymentLinkMockup';
+export { PaymentInstantMockup } from './PaymentInstantMockup';
+export { PaymentCautionMockup } from './PaymentCautionMockup';
+export { PaymentEmpreinteMockup } from './PaymentEmpreinteMockup';
+export { PaymentTrackingMockup } from './PaymentTrackingMockup';
+export { PaymentProvidersMockup } from './PaymentProvidersMockup';
+
 // Timeline mockups (for JourneyTimeline)
 export {
   EmailConfirmationMockup,

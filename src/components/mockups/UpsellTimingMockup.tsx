@@ -5,7 +5,7 @@ import { ArrowUp, Clock, Mail, Zap, CalendarCheck, BedDouble, Heart, Utensils, L
 
 export function UpsellTimingMockup() {
   return (
-    <BrowserMockup title="Timing d'envoi" className="max-w-lg">
+    <BrowserMockup title="Timing d'envoi">
       <div className="p-4 min-h-[300px]">
         <h4 className="text-xs font-semibold text-gray-800 mb-3">Timeline d&apos;envoi automatique</h4>
 

@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { Check, Star, MessageSquare, TrendingUp } from 'lucide-react';
+import { Check, Star, MessageSquare, TrendingUp, MessageCircle } from 'lucide-react';
 
 function AnimatedCounter({ target, duration = 2 }: { target: number; duration?: number }) {
   const [count, setCount] = useState(0);
@@ -28,73 +28,115 @@ export function HeroDashboard() {
 
   return (
     <div className="relative">
-      {/* Glow effect behind */}
-      <motion.div
-        className="absolute -inset-8 rounded-3xl bg-brand-primary/20 blur-3xl -z-10 scale-110"
-        animate={!prefersReducedMotion ? {
-          scale: [1.1, 1.15, 1.1],
-          opacity: [0.3, 0.5, 0.3],
-        } : {}}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: 'easeInOut',
-        }}
-      />
+      {/* ── Decorative abstract shapes behind photo ── */}
+      <div className="absolute inset-0 -z-10">
+        {/* Large teal blob — top right */}
+        <div className="absolute -right-8 -top-8 h-[70%] w-[55%] rounded-[3rem] bg-brand-primary/10" />
+        {/* Tall thin accent — top left-center */}
+        <div className="absolute left-[30%] -top-6 h-[45%] w-[12%] rounded-[2rem] bg-brand-primary/8" />
+        {/* Wide blob — bottom left */}
+        <div className="absolute -bottom-6 -left-6 h-[50%] w-[45%] rounded-[3rem] bg-brand-primary/8" />
+      </div>
 
-      {/* Main Dashboard Screenshot */}
+      {/* ── Central photo ── */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="rounded-2xl overflow-hidden"
+        className="relative mx-auto w-[65%] max-w-[380px] overflow-hidden rounded-2xl shadow-2xl"
       >
         <Image
-          src="/images/homepage/dashboard-hero.webp"
-          alt="TriggerFlow — Dashboard de gestion hôtelière"
-          width={1200}
-          height={750}
+          src="/images/homepage/persona-reception_1.webp"
+          alt="Réceptionniste d'hôtel souriante avec tablette"
+          width={800}
+          height={1000}
           priority
-          className="w-full h-auto"
+          className="h-auto w-full"
         />
       </motion.div>
 
-      {/* ── Floating elements — organic diagonal cascade, no corners ── */}
+      {/* ── Floating UI cards ── */}
 
-      {/* 1. SMS toast — top, right-of-center (NOT in corner) */}
+      {/* 1. Mes Flows — top right, Webflow style */}
       <motion.div
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute -top-3 right-[10%] z-20 md:-top-5 md:right-[14%]"
+        initial={{ opacity: 0, y: -20, x: 20 }}
+        animate={{ opacity: 1, y: 0, x: 0 }}
+        transition={{ duration: 0.5, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute -right-2 top-[5%] z-20 md:-right-6 md:top-[8%]"
       >
         <motion.div
           animate={!prefersReducedMotion ? { y: [0, -6, 0] } : {}}
           transition={{ duration: 4.2, repeat: Infinity, ease: 'easeInOut' }}
-          className="flex items-center gap-2.5 rounded-xl border border-white/60 bg-white/80 px-3 py-2 shadow-lg backdrop-blur-md"
+          className="w-[220px] rounded-xl border border-white/60 bg-white/95 p-3 shadow-xl backdrop-blur-md"
         >
-          <div className="h-full w-1 self-stretch rounded-full bg-green-500" />
-          <div className="flex h-6 w-6 items-center justify-center rounded-full bg-green-100">
-            <Check className="h-3.5 w-3.5 text-green-600" />
+          <p className="mb-2 text-sm font-bold text-gray-800">Mes Flows</p>
+          <div className="mb-1.5 flex items-center justify-between border-b border-gray-100 pb-1.5 text-[10px] text-gray-400">
+            <span>Flow</span>
+            <span>Statut</span>
           </div>
-          <div>
-            <p className="text-[11px] font-semibold text-gray-800">{t('floatingCards.smsSent')}</p>
-            <p className="text-[10px] text-gray-500">{t('floatingCards.room')} 302</p>
+          <div className="space-y-2">
+            <FlowToggleRow label="Confirmation réservation" active />
+            <FlowToggleRow label="Proposition services" active />
+            <FlowToggleRow label="Questionnaire satisfaction" active />
           </div>
         </motion.div>
       </motion.div>
 
-      {/* 2. Avis Google — left side, upper quarter — smaller, intimate */}
+      {/* 2. Message WhatsApp — bottom left */}
       <motion.div
         initial={{ opacity: 0, x: -40 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.6, delay: 1.1, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute -left-2 top-[22%] z-10 md:-left-6 md:top-[18%]"
+        transition={{ duration: 0.6, delay: 1.0, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute -left-2 bottom-[18%] z-20 md:-left-4 md:bottom-[22%]"
       >
         <motion.div
           animate={!prefersReducedMotion ? { y: [0, 5, 0] } : {}}
           transition={{ duration: 3.4, repeat: Infinity, ease: 'easeInOut' }}
-          className="rounded-xl border border-white/60 bg-white/80 px-2.5 py-2 shadow-md backdrop-blur-md"
+          className="flex items-center gap-2.5 rounded-xl border border-white/60 bg-white/95 px-3 py-2.5 shadow-xl backdrop-blur-md"
+        >
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-primary">
+            <MessageCircle className="h-5 w-5 text-white" />
+          </div>
+          <div>
+            <p className="text-[11px] font-bold text-gray-800">Hôtel Le Clos</p>
+            <p className="text-[10px] text-gray-500">Bonjour Sophie, êtes-vous bi...</p>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* 3. Second message — bottom, slightly right of first */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 1.4 }}
+        className="absolute -bottom-2 left-[8%] z-20 md:-bottom-4 md:left-[10%]"
+      >
+        <motion.div
+          animate={!prefersReducedMotion ? { y: [0, 4, 0] } : {}}
+          transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
+          className="flex items-center gap-2.5 rounded-xl border border-white/60 bg-white/95 px-3 py-2.5 shadow-xl backdrop-blur-md"
+        >
+          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-primary">
+            <MessageCircle className="h-5 w-5 text-white" />
+          </div>
+          <div>
+            <p className="text-[11px] font-bold text-gray-800">Le Domaine des Pins</p>
+            <p className="text-[10px] text-gray-500">N&apos;oubliez pas de vous pré-enr...</p>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* 4. Avis Google — left, upper */}
+      <motion.div
+        initial={{ opacity: 0, x: -30 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute -left-1 top-[8%] z-10 md:-left-4 md:top-[12%]"
+      >
+        <motion.div
+          animate={!prefersReducedMotion ? { y: [0, 6, 0] } : {}}
+          transition={{ duration: 3.8, repeat: Infinity, ease: 'easeInOut' }}
+          className="rounded-xl border border-white/60 bg-white/95 px-3 py-2 shadow-lg backdrop-blur-md"
         >
           <div className="flex items-center gap-1.5">
             <div className="flex h-6 w-6 items-center justify-center rounded-full bg-yellow-50">
@@ -108,9 +150,9 @@ export function HeroDashboard() {
                     key={i}
                     initial={{ opacity: 0, scale: 0 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 1.4 + i * 0.1, duration: 0.3, ease: 'backOut' }}
+                    transition={{ delay: 1.2 + i * 0.1, duration: 0.3, ease: 'backOut' }}
                   >
-                    <Star className="h-2 w-2 text-yellow-400 fill-yellow-400" />
+                    <Star className="h-2 w-2 fill-yellow-400 text-yellow-400" />
                   </motion.div>
                 ))}
               </div>
@@ -119,12 +161,12 @@ export function HeroDashboard() {
         </motion.div>
       </motion.div>
 
-      {/* 3. CA additionnel — right side, lower area — THE star element, prominent */}
+      {/* 5. CA additionnel — right side, lower */}
       <motion.div
         initial={{ opacity: 0, scale: 0.7 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 1.5, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute -right-1 bottom-[22%] z-30 md:-right-8 md:bottom-[16%]"
+        transition={{ delay: 1.6, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute -right-1 bottom-[8%] z-30 md:-right-6 md:bottom-[10%]"
       >
         <motion.div
           animate={!prefersReducedMotion ? { y: [0, -10, 0] } : {}}
@@ -138,29 +180,19 @@ export function HeroDashboard() {
           <span className="text-[10px] text-gray-400">{t('floatingCards.extraRevenue')}</span>
         </motion.div>
       </motion.div>
+    </div>
+  );
+}
 
-      {/* 4. Compteur messages — bottom, left-of-center (NOT in corner) */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.8, duration: 0.5 }}
-        className="absolute -bottom-3 left-[6%] z-20 md:-bottom-4 md:left-[8%]"
-      >
-        <motion.div
-          animate={!prefersReducedMotion ? { y: [0, 4, 0] } : {}}
-          transition={{ duration: 2.8, repeat: Infinity, ease: 'easeInOut' }}
-          className="flex items-center gap-2 rounded-full bg-gray-900/90 px-3.5 py-1.5 shadow-lg backdrop-blur-sm"
-        >
-          <div className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
-          </div>
-          <span className="text-xs font-bold tabular-nums text-white">
-            <AnimatedCounter target={1847} />
-          </span>
-          <span className="text-[9px] text-gray-400">{t('floatingCards.messagesSent')}</span>
-        </motion.div>
-      </motion.div>
+/* ── Sub-components ── */
+
+function FlowToggleRow({ label, active }: { label: string; active: boolean }) {
+  return (
+    <div className="flex items-center justify-between">
+      <span className="text-[11px] text-gray-700">{label}</span>
+      <div className={`flex h-5 w-9 items-center rounded-full px-0.5 ${active ? 'bg-brand-primary' : 'bg-gray-200'}`}>
+        <div className={`h-4 w-4 rounded-full bg-white shadow-sm transition-transform ${active ? 'translate-x-4' : 'translate-x-0'}`} />
+      </div>
     </div>
   );
 }

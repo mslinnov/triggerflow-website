@@ -5,7 +5,7 @@ import { Send, Star, Bell, ArrowDown, CheckCircle, TrendingUp } from 'lucide-rea
 
 export function ReviewCollectMockup() {
   return (
-    <BrowserMockup title="Collecte d'avis" className="max-w-lg">
+    <BrowserMockup title="Collecte d'avis">
       <div className="p-4 min-h-[300px]">
         {/* Step 1: Survey sent */}
         <div className="bg-blue-50 border border-blue-200 rounded-xl p-3 flex items-center gap-3">

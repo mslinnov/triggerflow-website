@@ -115,9 +115,9 @@
   },
   "hero": {
     "badge": "La plateforme CRM des hôteliers exigeants",
-    "title": "Chaque interaction client, orchestrée avec précision",
-    "subtitle": "TriggerFlow automatise vos communications avant, pendant et après le séjour. Vous gardez le contrôle, vos clients vivent une expérience sans couture.",
-    "cta": "Demander une démo privée",
+    "title": "Le CRM hôtelier qui orchestre chaque interaction client",
+    "subtitle": "Automatisez vos emails, SMS, WhatsApp, avis, upsells et paiements — du check-in au check-out. Connecté à votre PMS, tout fonctionne sans effort.",
+    "cta": "Demander une démo",
     "ctaFree": "Essai gratuit — 14 jours",
     "ctaSecondary": "Découvrir les modules",
     "socialProof": {
@@ -125,7 +125,7 @@
     },
     "trustBadges": {
       "rgpd": "Conforme RGPD",
-      "pms": "50+ PMS intégrés",
+      "pms": "PMS intégrés",
       "support": "Support 7j/7"
     }
   },

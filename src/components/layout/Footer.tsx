@@ -220,18 +220,6 @@ export function Footer() {
           </p>
           <div className="flex items-center gap-6 text-sm text-white/50">
             <span>{t('bottom.utelysSolution')}</span>
-            <span className="hidden md:inline">•</span>
-            <span>
-              {t('bottom.designBy')}{' '}
-              <a
-                href="https://www.larampe.io"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white transition-colors hover:text-brand-primary"
-              >
-                La Rampe
-              </a>
-            </span>
           </div>
         </div>
       </Container>

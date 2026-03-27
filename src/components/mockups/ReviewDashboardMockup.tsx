@@ -5,7 +5,7 @@ import { Star, TrendingUp, BarChart3 } from 'lucide-react';
 
 export function ReviewDashboardMockup() {
   return (
-    <BrowserMockup title="Reputation dashboard" className="max-w-lg">
+    <BrowserMockup title="Reputation dashboard">
       <div className="p-4 min-h-[300px]">
         {/* Global score */}
         <div className="flex items-center justify-between mb-4">
