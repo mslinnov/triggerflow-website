@@ -5,7 +5,7 @@ import { FileText, Download, Clock, Mail, CheckCircle, Zap } from 'lucide-react'
 
 export function AnalyticsReportMockup() {
   return (
-    <BrowserMockup title="Analytics — Rapports">
+    <BrowserMockup title="Analytics - Rapports">
       <div className="p-4 min-h-[300px]">
         {/* Report Header */}
         <div className="flex items-center justify-between mb-4">

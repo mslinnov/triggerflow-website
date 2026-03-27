@@ -156,7 +156,7 @@ export function PersonasBento() {
                 <div className="relative h-[250px] md:h-full">
                   <Image
                     src="/images/homepage/personas-dashboard.webp"
-                    alt="TriggerFlow — Hub de messagerie"
+                    alt="TriggerFlow - Hub de messagerie"
                     fill
                     className="object-cover object-left-top"
                     sizes="(max-width: 768px) 100vw, 50vw"

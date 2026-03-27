@@ -105,26 +105,26 @@ export const modules: Record<string, ModuleData> = {
     icon: Mail,
     title: 'Email',
     seoTitle: 'Email automatique hôtel : confirmations, pré-séjour & fidélisation',
-    headline: 'Vos emails transactionnels envoyés automatiquement — 100% personnalisables',
+    headline: 'Vos emails transactionnels envoyés automatiquement, 100% personnalisables',
     description: 'Confirmation en 30 secondes, rappel pré-séjour à J-3, demande d\'avis à J+1. Chaque email est personnalisé aux couleurs de votre établissement, avec les données de votre PMS. Aucune compétence technique requise.',
     mockup: 'EmailMockup',
     heroImage: '/images/produit/email/hero-email.webp',
     painPoints: [
       '45 min/jour perdues à copier-coller des confirmations dans Outlook ou votre PMS',
-      'Vos emails finissent dans les spams — vos clients ne reçoivent jamais les infos d\'arrivée',
-      'Des emails génériques sans votre logo ni vos couleurs — le client ne sait pas qui lui écrit',
-      'Chaque collaborateur envoie un email différent — aucune cohérence dans votre communication'
+      'Vos emails finissent dans les spams, vos clients ne reçoivent jamais les infos d\'arrivée',
+      'Des emails génériques sans votre logo ni vos couleurs, le client ne sait pas qui lui écrit',
+      'Chaque collaborateur envoie un email différent, aucune cohérence dans votre communication'
     ],
     benefits: [
-      'Emails envoyés automatiquement à chaque réservation, check-in, check-out — 0 action manuelle, dès le premier jour',
-      'Délivrabilité de 98% garantie — on configure SPF, DKIM et DMARC pour vous, vos emails arrivent en boîte de réception',
-      'Chaque email porte votre logo, vos couleurs, votre charte — le client reconnaît votre hôtel au premier coup d\'œil',
+      'Emails envoyés automatiquement à chaque réservation, check-in, check-out, 0 action manuelle, dès le premier jour',
+      'Délivrabilité de 98% garantie, on configure SPF, DKIM et DMARC pour vous, vos emails arrivent en boîte de réception',
+      'Chaque email porte votre logo, vos couleurs, votre charte, le client reconnaît votre hôtel au premier coup d\'œil',
       'Une identité visuelle cohérente sur tous vos points de contact : confirmation, pré-séjour, remerciement, offres'
     ],
     stats: [
       { value: '98', label: 'de délivrabilité garantie', suffix: '%' },
       { value: '3', label: 'plus de clics vs email générique', suffix: 'x' },
-      { value: '2', label: 'pour créer un email — sans code', suffix: 'min' },
+      { value: '2', label: 'pour créer un email - sans code', suffix: 'min' },
     ],
     journey: [
       { label: 'Réservation', description: 'Confirmation automatique personnalisée', active: true },
@@ -136,8 +136,8 @@ export const modules: Record<string, ModuleData> = {
     ],
     features: [
       {
-        title: 'Un email builder pensé pour l\'hôtellerie — 0 ligne de code',
-        description: 'Créez des emails 100% à votre image en drag & drop. Importez votre logo, vos couleurs, vos polices — chaque email que reçoit votre client est immédiatement identifiable comme venant de votre établissement. 15+ templates hôteliers prêts à l\'emploi pour démarrer en 2 minutes.',
+        title: 'Un email builder pensé pour l\'hôtellerie - 0 ligne de code',
+        description: 'Créez des emails 100% à votre image en drag & drop. Importez votre logo, vos couleurs, vos polices, chaque email que reçoit votre client est immédiatement identifiable comme venant de votre établissement. 15+ templates hôteliers prêts à l\'emploi pour démarrer en 2 minutes.',
         icon: Layout,
         bullets: ['Charte graphique complète : logo, couleurs, polices', 'Templates hôteliers prêts à l\'emploi', 'Responsive mobile natif + preview avant envoi'],
         mockup: 'EmailEditorMockup',
@@ -145,7 +145,7 @@ export const modules: Record<string, ModuleData> = {
       },
       {
         title: 'Chaque email personnalisé avec les données de votre PMS',
-        description: 'Prénom, dates de séjour, type de chambre, langue du client — les variables s\'insèrent automatiquement depuis votre PMS. Vous pouvez aussi afficher du contenu conditionnel : une offre spa pour les couples, le Kids Club pour les familles.',
+        description: 'Prénom, dates de séjour, type de chambre, langue du client, les variables s\'insèrent automatiquement depuis votre PMS. Vous pouvez aussi afficher du contenu conditionnel : une offre spa pour les couples, le Kids Club pour les familles.',
         icon: UserCheck,
         bullets: ['Variables dynamiques illimitées depuis votre PMS', 'Contenu conditionnel par segment client', 'Multi-langue automatique (FR, EN, DE, ES...)'],
         mockup: 'EmailPersonalizationMockup',
@@ -153,7 +153,7 @@ export const modules: Record<string, ModuleData> = {
       },
       {
         title: 'Mesurez chaque email, optimisez en continu',
-        description: 'Taux d\'ouverture, clics, rebonds, désabonnements — suivez les performances de chaque email en temps réel. Identifiez ce qui fonctionne et ce qui doit être ajusté en un coup d\'œil.',
+        description: 'Taux d\'ouverture, clics, rebonds, désabonnements, suivez les performances de chaque email en temps réel. Identifiez ce qui fonctionne et ce qui doit être ajusté en un coup d\'œil.',
         icon: BarChart,
         bullets: ['Dashboard analytics en temps réel', 'Alertes automatiques sur les anomalies', 'Export CSV et rapports planifiés'],
         mockup: 'EmailAnalyticsMockup',
@@ -168,17 +168,17 @@ export const modules: Record<string, ModuleData> = {
       },
       {
         title: 'Rappel pré-séjour J-3',
-        description: 'Trois jours avant l\'arrivée : horaires de check-in, code WiFi, itinéraire, et une proposition de surclassement ou de soin spa. Le client arrive informé, serein — et a déjà acheté un extra.',
+        description: 'Trois jours avant l\'arrivée : horaires de check-in, code WiFi, itinéraire, et une proposition de surclassement ou de soin spa. Le client arrive informé, serein, et a déjà acheté un extra.',
         result: '+35% de ventes additionnelles pré-séjour'
       },
       {
         title: 'Demande d\'avis intelligente',
-        description: 'J+1 après le départ : un email de remerciement personnalisé avec un lien direct vers Google. Le système n\'envoie la demande d\'avis que si le séjour s\'est bien passé — pour protéger votre note.',
+        description: 'J+1 après le départ : un email de remerciement personnalisé avec un lien direct vers Google. Le système n\'envoie la demande d\'avis que si le séjour s\'est bien passé, pour protéger votre note.',
         result: '+47% d\'avis Google collectés'
       },
       {
         title: 'Offres ciblées post-séjour',
-        description: 'Anniversaire du client, programme fidélité, promotion saisonnière — chaque offre est ciblée selon l\'historique de séjours et les préférences. Pas de spam, que de la pertinence.',
+        description: 'Anniversaire du client, programme fidélité, promotion saisonnière, chaque offre est ciblée selon l\'historique de séjours et les préférences. Pas de spam, que de la pertinence.',
         result: '12% de taux de conversion sur les offres'
       }
     ],
@@ -201,11 +201,11 @@ export const modules: Record<string, ModuleData> = {
       },
       {
         question: 'Les emails reprennent-ils vraiment la charte de mon hôtel ?',
-        answer: 'Complètement. Vous importez votre logo, définissez vos couleurs et vos polices une seule fois. Ensuite, chaque email — confirmation, pré-séjour, remerciement, offre — utilise automatiquement votre charte. Votre client reconnaît votre hôtel au premier coup d\'œil.'
+        answer: 'Complètement. Vous importez votre logo, définissez vos couleurs et vos polices une seule fois. Ensuite, chaque email - confirmation, pré-séjour, remerciement, offre - utilise automatiquement votre charte. Votre client reconnaît votre hôtel au premier coup d\'œil.'
       },
       {
         question: 'Comment les emails sont-ils déclenchés ?',
-        answer: 'Les emails partent automatiquement selon des événements PMS : nouvelle réservation, J-3 avant arrivée, check-in, check-out, etc. Vous paramétrez les règles une fois, TriggerFlow gère tout ensuite — 24h/24, même le dimanche à 23h.'
+        answer: 'Les emails partent automatiquement selon des événements PMS : nouvelle réservation, J-3 avant arrivée, check-in, check-out, etc. Vous paramétrez les règles une fois, TriggerFlow gère tout ensuite, 24h/24, même le dimanche à 23h.'
       },
       {
         question: 'Est-ce compatible avec mon PMS ?',
@@ -238,13 +238,13 @@ export const modules: Record<string, ModuleData> = {
     description: 'Le SMS est le canal le plus efficace pour les messages critiques. Infos d\'arrivée, code WiFi, offre flash : votre client lit en 3 minutes.',
     mockup: 'SmsHeroMockup',
     painPoints: [
-      'Vos emails de check-in ne sont jamais lus — le client arrive sans les infos essentielles',
+      'Vos emails de check-in ne sont jamais lus, le client arrive sans les infos essentielles',
       'Vous appelez chaque client un par un pour confirmer les horaires d\'arrivée',
       'Vos offres flash spa ou restaurant passent inaperçues par email'
     ],
     benefits: [
-      '98% de taux d\'ouverture — votre message est lu à coup sûr, en moins de 3 minutes',
-      'Envoi automatique au bon moment : check-in, offre flash, notification urgente — 0 appel téléphonique',
+      '98% de taux d\'ouverture, votre message est lu à coup sûr, en moins de 3 minutes',
+      'Envoi automatique au bon moment : check-in, offre flash, notification urgente, 0 appel téléphonique',
       'SMS bidirectionnel : le client répond directement et vous le voyez dans votre dashboard'
     ],
     stats: [
@@ -271,7 +271,7 @@ export const modules: Record<string, ModuleData> = {
       },
       {
         title: 'Chaque réponse client, centralisée dans un seul écran',
-        description: 'Vos clients répondent par SMS et vous voyez tout dans votre dashboard. Historique, contexte, réservation — tout est là pour répondre en 30 secondes.',
+        description: 'Vos clients répondent par SMS et vous voyez tout dans votre dashboard. Historique, contexte, réservation, tout est là pour répondre en 30 secondes.',
         icon: MessageCircle,
         bullets: ['Réponses visibles dans le dashboard', 'Historique par client', 'Notification équipe en temps réel'],
         image: '/images/produit/sms/feature-sms-inbox.webp',
@@ -346,13 +346,13 @@ export const modules: Record<string, ModuleData> = {
     description: 'WhatsApp Business intégré à votre hôtel : messages automatisés, conciergerie digitale et conversation fluide. Vos clients adorent, votre équipe gagne du temps.',
     mockup: 'WhatsAppHeroMockup',
     painPoints: [
-      'Vos clients envoient des WhatsApp au téléphone perso du réceptionniste — aucune traçabilité',
+      'Vos clients envoient des WhatsApp au téléphone perso du réceptionniste, aucune traçabilité',
       'Vous ratez des demandes client car WhatsApp n\'est pas centralisé avec vos autres canaux',
       'Les questions répétitives (WiFi, parking, horaires) prennent un temps fou à répondre manuellement'
     ],
     benefits: [
-      'Toutes les conversations WhatsApp centralisées dans un dashboard professionnel — fini le téléphone perso',
-      'Chatbot automatique pour les questions fréquentes : WiFi, horaires, parking — réponse en 2 secondes',
+      'Toutes les conversations WhatsApp centralisées dans un dashboard professionnel, fini le téléphone perso',
+      'Chatbot automatique pour les questions fréquentes : WiFi, horaires, parking, réponse en 2 secondes',
       'Historique complet par client : WhatsApp + email + SMS dans une seule vue'
     ],
     stats: [
@@ -455,9 +455,9 @@ export const modules: Record<string, ModuleData> = {
     mockup: 'CampaignMockup',
     heroImage: '/images/produit/newsletter/hero-newsletter.webp',
     painPoints: [
-      'Vos anciens clients réservent sur Booking au lieu de revenir en direct — vous payez 15-25% de commission',
+      'Vos anciens clients réservent sur Booking au lieu de revenir en direct, vous payez 15-25% de commission',
       'Créer une newsletter vous prend une journée entière entre le contenu, le design et l\'envoi',
-      'Vous envoyez la même newsletter à tout le monde — les familles reçoivent les offres business'
+      'Vous envoyez la même newsletter à tout le monde, les familles reçoivent les offres business'
     ],
     benefits: [
       'Restez dans l\'esprit de vos clients : ils pensent à vous quand ils planifient leurs vacances, pas à Booking',
@@ -505,7 +505,7 @@ export const modules: Record<string, ModuleData> = {
       },
       {
         title: 'Mesurez chaque campagne, optimisez en continu',
-        description: 'Taux d\'ouverture, clics, désabonnements, revenus générés — suivez les performances de chaque newsletter en temps réel. Identifiez ce qui fonctionne et ajustez.',
+        description: 'Taux d\'ouverture, clics, désabonnements, revenus générés, suivez les performances de chaque newsletter en temps réel. Identifiez ce qui fonctionne et ajustez.',
         icon: BarChart,
         bullets: ['Dashboard analytics en temps réel', 'Revenus attribués par campagne', 'Comparaison entre campagnes'],
         mockup: 'EmailAnalyticsMockup',
@@ -535,7 +535,7 @@ export const modules: Record<string, ModuleData> = {
       }
     ],
     testimonial: {
-      quote: 'Nos newsletters génèrent maintenant 8% de nos réservations directes. C\'est du chiffre d\'affaires sans commission OTA — c\'est énorme pour notre marge.',
+      quote: 'Nos newsletters génèrent maintenant 8% de nos réservations directes. C\'est du chiffre d\'affaires sans commission OTA - c\'est énorme pour notre marge.',
       author: 'Jean-Marc Dufour',
       role: 'Directeur Commercial',
       hotel: 'Les Jardins de Provence ****',
@@ -575,14 +575,14 @@ export const modules: Record<string, ModuleData> = {
     mockup: 'CRMMockup',
     heroImage: '/images/produit/fidelite/fid-points.webp',
     painPoints: [
-      'Vos clients satisfaits réservent quand même via Booking la fois suivante — vous repayez 15-25% de commission',
-      'Mettre en place un programme fidélité semble complexe et chronophage — vous n\'avez pas de développeur',
-      'Vous ne savez pas quels clients reviennent et lesquels sont perdus — aucune visibilité'
+      'Vos clients satisfaits réservent quand même via Booking la fois suivante, vous repayez 15-25% de commission',
+      'Mettre en place un programme fidélité semble complexe et chronophage, vous n\'avez pas de développeur',
+      'Vous ne savez pas quels clients reviennent et lesquels sont perdus, aucune visibilité'
     ],
     benefits: [
-      'Programme fidélité opérationnel en 1 jour — points, paliers et récompenses configurés en quelques clics',
-      'Les clients cumulent des points automatiquement à chaque séjour — zéro gestion manuelle',
-      'Vos clients fidèles réservent en direct pour conserver leurs points — fini les commissions OTA sur vos meilleurs clients'
+      'Programme fidélité opérationnel en 1 jour, points, paliers et récompenses configurés en quelques clics',
+      'Les clients cumulent des points automatiquement à chaque séjour, zéro gestion manuelle',
+      'Vos clients fidèles réservent en direct pour conserver leurs points, fini les commissions OTA sur vos meilleurs clients'
     ],
     stats: [
       { value: '24', label: 'de réservations directes en plus', suffix: '%' },
@@ -665,7 +665,7 @@ export const modules: Record<string, ModuleData> = {
       },
       {
         question: 'Peut-on personnaliser les paliers et récompenses ?',
-        answer: 'Oui, totalement. Vous définissez le nombre de paliers, les seuils de points, et les récompenses associées. Nuit gratuite, upgrade, spa offert — c\'est vous qui décidez.'
+        answer: 'Oui, totalement. Vous définissez le nombre de paliers, les seuils de points, et les récompenses associées. Nuit gratuite, upgrade, spa offert, c\'est vous qui décidez.'
       },
       {
         question: 'Comment ça se connecte à mon PMS ?',
@@ -683,18 +683,18 @@ export const modules: Record<string, ModuleData> = {
     title: 'Automatisations',
     seoTitle: 'Automatisation hôtelière : workflows sans code',
     headline: 'Votre hôtel tourne en pilote automatique',
-    description: 'Un builder intuitif, zéro code. Déclencheur, conditions, actions — vous dessinez le workflow en quelques clics, TriggerFlow l\'exécute 24h/24.',
+    description: 'Un builder intuitif, zéro code. Déclencheur, conditions, actions - vous dessinez le workflow en quelques clics, TriggerFlow l\'exécute 24h/24.',
     mockup: 'WorkflowBuilderMockup',
     heroImage: '/images/produit/automatisations/hero-automatisations.webp',
     painPoints: [
-      'Votre équipe répète les mêmes tâches 50 fois par jour — envoyer un email, vérifier un check-in, rappeler un client',
-      'Des actions importantes sont oubliées quand c\'est le rush — la demande de chambre avec berceau passe à la trappe',
+      'Votre équipe répète les mêmes tâches 50 fois par jour : envoyer un email, vérifier un check-in, rappeler un client',
+      'Des actions importantes sont oubliées quand c\'est le rush, la demande de chambre avec berceau passe à la trappe',
       'Vous aimeriez être proactif (offres, rappels, suivi) mais le quotidien ne laisse pas le temps'
     ],
     benefits: [
       'Automatisez n\'importe quel scénario : de la simple confirmation à la séquence pré-séjour en 5 étapes',
-      'Interface intuitive : glissez-déposez des blocs, ajoutez des conditions, c\'est en production en 5 minutes — sans aucune compétence technique',
-      'TriggerFlow exécute vos workflows 24h/24, week-ends et jours fériés inclus — jamais de tâche oubliée'
+      'Interface intuitive : glissez-déposez des blocs, ajoutez des conditions, c\'est en production en 5 minutes, sans aucune compétence technique',
+      'TriggerFlow exécute vos workflows 24h/24, week-ends et jours fériés inclus, jamais de tâche oubliée'
     ],
     stats: [
       { value: '15', label: 'heures/semaine économisées', suffix: 'h' },
@@ -796,13 +796,13 @@ export const modules: Record<string, ModuleData> = {
     mockup: 'CRMMockup',
     heroImage: '/images/produit/crm/hero-crm.webp',
     painPoints: [
-      'Les infos clients sont éparpillées entre le PMS, les emails, les post-it — personne n\'a la vue complète',
-      'Un client fidèle arrive et le réceptionniste ne le reconnaît pas — expérience décevante',
-      'Vous ne pouvez pas segmenter vos clients pour cibler vos communications — tout le monde reçoit tout'
+      'Les infos clients sont éparpillées entre le PMS, les emails, les post-it, personne n\'a la vue complète',
+      'Un client fidèle arrive et le réceptionniste ne le reconnaît pas, expérience décevante',
+      'Vous ne pouvez pas segmenter vos clients pour cibler vos communications, tout le monde reçoit tout'
     ],
     benefits: [
       'Vue 360° de chaque client en un clic : séjours passés, préférences, dépenses, communications, score de satisfaction',
-      'Synchronisation automatique avec votre PMS — les fiches clients sont toujours à jour, sans saisie manuelle',
+      'Synchronisation automatique avec votre PMS - les fiches clients sont toujours à jour, sans saisie manuelle',
       'Segmentation puissante : ciblez par comportement, historique, montant dépensé, et personnalisez chaque interaction'
     ],
     stats: [
@@ -908,13 +908,13 @@ export const modules: Record<string, ModuleData> = {
     mockup: 'EmailMockup',
     heroImage: '/images/produit/formulaires/hero-formulaires.webp',
     painPoints: [
-      'Le check-in prend 8 minutes par client — la file d\'attente s\'allonge aux heures de pointe',
+      'Le check-in prend 8 minutes par client, la file d\'attente s\'allonge aux heures de pointe',
       'Vous découvrez les préférences du client (allergie, berceau, étage) quand il est déjà à la réception',
-      'Les enquêtes de satisfaction papier finissent à la poubelle — vous ne savez pas ce que pensent vos clients'
+      'Les enquêtes de satisfaction papier finissent à la poubelle, vous ne savez pas ce que pensent vos clients'
     ],
     benefits: [
       'Check-in réduit à 2 minutes : le client a déjà rempli identité, heure d\'arrivée et préférences en ligne',
-      'Préférences collectées avant l\'arrivée : chambre, oreiller, régime alimentaire — tout est prêt quand le client arrive',
+      'Préférences collectées avant l\'arrivée : chambre, oreiller, régime alimentaire - tout est prêt quand le client arrive',
       'NPS et satisfaction analysés en temps réel : vous identifiez les problèmes avant qu\'ils deviennent des avis négatifs'
     ],
     stats: [
@@ -942,7 +942,7 @@ export const modules: Record<string, ModuleData> = {
       },
       {
         title: 'Chaque réponse synchronisable avec votre PMS',
-        description: 'Email, nom, prénom, téléphone, heure d\'arrivée, fiche de police, motif de séjour, préférences chambre — les données collectées remontent automatiquement dans la fiche client de votre PMS. Zéro ressaisie, zéro erreur.',
+        description: 'Email, nom, prénom, téléphone, heure d\'arrivée, fiche de police, motif de séjour, préférences chambre - les données collectées remontent automatiquement dans la fiche client de votre PMS. Zéro ressaisie, zéro erreur.',
         icon: RefreshCw,
         bullets: ['Sync automatique des champs vers le PMS', 'Fiche de police pré-remplie', 'Mise à jour CRM en temps réel'],
         mockup: 'FormAutoSendMockup',
@@ -1002,7 +1002,7 @@ export const modules: Record<string, ModuleData> = {
       },
       {
         question: 'Les données collectées alimentent-elles le CRM ?',
-        answer: 'Oui. Chaque réponse enrichit automatiquement la fiche client dans le CRM. Préférences, allergies, habitudes — tout est centralisé.'
+        answer: 'Oui. Chaque réponse enrichit automatiquement la fiche client dans le CRM. Préférences, allergies, habitudes, tout est centralisé.'
       },
       {
         question: 'Peut-on créer des formulaires en plusieurs langues ?',
@@ -1027,14 +1027,14 @@ export const modules: Record<string, ModuleData> = {
     description: 'Collectez des avis au bon moment, interceptez les mécontents avant qu\'ils ne postent, et répondez efficacement à chaque avis grâce à l\'IA.',
     mockup: 'ReviewHeroMockup',
     painPoints: [
-      'Vos clients satisfaits ne laissent jamais d\'avis — seuls les mécontents prennent le temps de poster',
-      'Un avis négatif reste sans réponse pendant des semaines — votre e-réputation en souffre',
+      'Vos clients satisfaits ne laissent jamais d\'avis - seuls les mécontents prennent le temps de poster',
+      'Un avis négatif reste sans réponse pendant des semaines, votre e-réputation en souffre',
       'Vous n\'avez aucune vue d\'ensemble : quelle est votre note moyenne ? Elle monte ou elle descend ?'
     ],
     benefits: [
-      'Demande d\'avis automatique envoyée uniquement aux clients satisfaits — vos bons clients postent enfin',
+      'Demande d\'avis automatique envoyée uniquement aux clients satisfaits, vos bons clients postent enfin',
       'Les clients insatisfaits sont interceptés : enquête interne d\'abord, avis Google seulement si > 4/5',
-      'Dashboard unifié avec votre note moyenne sur Google, TripAdvisor, Booking — évolution semaine par semaine'
+      'Dashboard unifié avec votre note moyenne sur Google, TripAdvisor, Booking, évolution semaine par semaine'
     ],
     stats: [
       { value: '47', label: 'd\'avis en plus collectés', suffix: '%' },
@@ -1059,7 +1059,7 @@ export const modules: Record<string, ModuleData> = {
         mockup: 'ReviewCollectMockup',
       },
       {
-        title: 'Google, TripAdvisor, Booking — tout dans un dashboard',
+        title: 'Google, TripAdvisor, Booking - tout dans un dashboard',
         description: 'Suivez votre note moyenne, le volume d\'avis et l\'évolution dans le temps sur chaque plateforme. Comparez-vous à vos concurrents.',
         icon: Globe,
         bullets: ['Agrégation multi-plateformes', 'Évolution semaine par semaine', 'Benchmark concurrentiel'],
@@ -1135,13 +1135,13 @@ export const modules: Record<string, ModuleData> = {
     description: 'Dashboard unifié pour suivre vos performances : emails, SMS, automatisations, satisfaction, revenus générés. Fini les suppositions.',
     mockup: 'AnalyticsHeroMockup',
     painPoints: [
-      'Vous ne savez pas quels emails fonctionnent et lesquels finissent à la poubelle — vous envoyez à l\'aveugle',
-      'Les données sont éparpillées entre 5 outils — impossible d\'avoir une vue d\'ensemble',
+      'Vous ne savez pas quels emails fonctionnent et lesquels finissent à la poubelle, vous envoyez à l\'aveugle',
+      'Les données sont éparpillées entre 5 outils, impossible d\'avoir une vue d\'ensemble',
       'Votre direction vous demande un rapport mensuel et vous passez une demi-journée à le compiler'
     ],
     benefits: [
       'Tous vos KPIs sur un seul écran : emails, SMS, WhatsApp, automatisations, satisfaction, revenus générés',
-      'Rapports automatiques envoyés chaque semaine par email — zéro compilation manuelle',
+      'Rapports automatiques envoyés chaque semaine par email, zéro compilation manuelle',
       'Identifiez en un coup d\'œil ce qui fonctionne et ce qu\'il faut optimiser'
     ],
     stats: [
@@ -1240,15 +1240,15 @@ export const modules: Record<string, ModuleData> = {
     title: 'Hub Messagerie',
     seoTitle: 'Hub messagerie hôtel : email SMS WhatsApp unifié',
     headline: 'Plus jamais un message client ne passe entre les mailles',
-    description: 'Emails, SMS, WhatsApp — tout arrive dans une seule boîte de réception. Votre équipe répond vite, avec le contexte complet du client.',
+    description: 'Emails, SMS, WhatsApp - tout arrive dans une seule boîte de réception. Votre équipe répond vite, avec le contexte complet du client.',
     mockup: 'HubHeroMockup',
     painPoints: [
-      'Votre équipe jongle entre l\'email, le téléphone, WhatsApp et le PMS — des messages passent entre les mailles du filet',
+      'Votre équipe jongle entre l\'email, le téléphone, WhatsApp et le PMS, des messages passent entre les mailles du filet',
       'Un client envoie un email puis un WhatsApp : personne ne fait le lien et il reçoit deux réponses différentes',
-      'L\'équipe de nuit ne sait pas ce que l\'équipe de jour a échangé avec le client — pas de continuité'
+      'L\'équipe de nuit ne sait pas ce que l\'équipe de jour a échangé avec le client, pas de continuité'
     ],
     benefits: [
-      'Tous les messages (email, SMS, WhatsApp) arrivent au même endroit — plus rien ne passe entre les mailles',
+      'Tous les messages (email, SMS, WhatsApp) arrivent au même endroit, plus rien ne passe entre les mailles',
       'En un clic, tout l\'historique du client : séjours passés, préférences, communications précédentes. Contexte complet.',
       'Templates de réponse en 1 clic : la réponse "horaires check-in" prend 5 secondes au lieu de 2 minutes'
     ],
@@ -1352,14 +1352,14 @@ export const modules: Record<string, ModuleData> = {
     mockup: 'DashboardMockup',
     heroImage: '/images/produit/ventes-additionnelles/hero-upsell.webp',
     painPoints: [
-      'Votre spa, votre restaurant et vos surclassements sont sous-vendus — la réception n\'a pas le temps de proposer',
-      'Vous proposez les mêmes extras à tout le monde — le voyageur solo reçoit l\'offre kids club',
+      'Votre spa, votre restaurant et vos surclassements sont sous-vendus, la réception n\'a pas le temps de proposer',
+      'Vous proposez les mêmes extras à tout le monde, le voyageur solo reçoit l\'offre kids club',
       'Le client réserve un extra par téléphone, personne ne le note, c\'est oublié à l\'arrivée'
     ],
     benefits: [
       'Chaque client reçoit les offres qui le concernent : spa pour les couples, kids club pour les familles, business lounge pour les pros',
       'Envoi automatique au moment optimal : J-3 surclassement, J-1 restaurant, check-in late checkout',
-      'Le client réserve en 2 clics depuis l\'email ou le SMS — pas besoin d\'appeler, pas de risque d\'oubli'
+      'Le client réserve en 2 clics depuis l\'email ou le SMS, pas besoin d\'appeler, pas de risque d\'oubli'
     ],
     stats: [
       { value: '17', label: 'de panier moyen en plus', suffix: '%' },
@@ -1456,20 +1456,20 @@ export const modules: Record<string, ModuleData> = {
     icon: CreditCard,
     title: 'Paiements',
     seoTitle: 'Liens de paiement hôtel : acompte, caution & empreinte carte',
-    headline: 'Encaissez vos clients avant, pendant et après le séjour — sans friction',
+    headline: 'Encaissez vos clients avant, pendant et après le séjour, sans friction',
     description: 'Créez des liens de paiement personnalisés à votre image. Acompte, caution, empreinte carte : chaque besoin hôtelier couvert. Intégré à vos workflows et connecté à votre PMS.',
     mockup: 'PaymentHeroMockup',
     painPoints: [
-      'Vous relancez les clients par email pour les acomptes — pas de lien direct pour payer',
-      'La caution se gère à l\'arrivée en physique — friction pour le client et la réception',
+      'Vous relancez les clients par email pour les acomptes, pas de lien direct pour payer',
+      'La caution se gère à l\'arrivée en physique, friction pour le client et la réception',
       'Vous n\'avez aucune visibilité sur les paiements en cours et les cartes enregistrées',
       'Chaque prestataire de paiement nécessite une intégration technique différente'
     ],
     benefits: [
       'Un lien personnalisé aux couleurs de votre hôtel, envoyé automatiquement par email, SMS ou WhatsApp',
       '3 types de paiement : encaissement immédiat, caution (pré-autorisation 7-31j), empreinte carte (prélèvement ultérieur)',
-      'Page de paiement multilingue — s\'adapte automatiquement à la langue du client',
-      'Compatible Stripe, et bientôt Mollie, Payline, etc. — un seul système, plusieurs prestataires'
+      'Page de paiement multilingue - s\'adapte automatiquement à la langue du client',
+      'Compatible Stripe, et bientôt Mollie, Payline, etc., un seul système, plusieurs prestataires'
     ],
     stats: [
       { value: '3', label: 'types de paiement (paiement, caution, empreinte)', suffix: '' },
@@ -1553,7 +1553,7 @@ export const modules: Record<string, ModuleData> = {
     faq: [
       {
         question: 'Quels prestataires de paiement sont supportés ?',
-        answer: 'Stripe Connect aujourd\'hui, Mollie et Payline bientôt. TriggerFlow s\'intègre directement à votre compte prestataire — vos fonds arrivent sur votre compte, pas le nôtre.'
+        answer: 'Stripe Connect aujourd\'hui, Mollie et Payline bientôt. TriggerFlow s\'intègre directement à votre compte prestataire, vos fonds arrivent sur votre compte, pas le nôtre.'
       },
       {
         question: 'Est-ce que TriggerFlow prend une commission ?',

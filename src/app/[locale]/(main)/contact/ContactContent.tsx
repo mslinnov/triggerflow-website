@@ -264,7 +264,7 @@ export function ContactContent() {
                   {/* eslint-disable-next-line */}
                   <motion.a
                     variants={staggerItem}
-                    href="tel:+33123456789"
+                    href="tel:+33554544852"
                     className="flex items-center gap-4 p-3 rounded-xl hover:bg-brand-light/50 transition-colors group"
                   >
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-primary/10 group-hover:bg-brand-primary/20 transition-colors">
@@ -272,7 +272,7 @@ export function ContactContent() {
                     </div>
                     <div>
                       <p className="text-sm text-zinc-500">{t('info.phone')}</p>
-                      <p className="font-medium text-brand-dark">+33 1 23 45 67 89</p>
+                      <p className="font-medium text-brand-dark">+33 (0)5 54 54 48 52</p>
                     </div>
                   </motion.a>
 
@@ -286,7 +286,7 @@ export function ContactContent() {
                     </div>
                     <div>
                       <p className="text-sm text-zinc-500">{t('info.address')}</p>
-                      <p className="font-medium text-brand-dark">Paris, France</p>
+                      <p className="font-medium text-brand-dark">Toulouse, France</p>
                     </div>
                   </motion.div>
 

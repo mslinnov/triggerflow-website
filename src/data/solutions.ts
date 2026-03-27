@@ -184,7 +184,7 @@ export const solutions: Record<string, SolutionData> = {
       {
         slug: 'email',
         highlight: 'Emails personnalisés',
-        whyForPersona: "Chaque client reçoit un email avec son nom, ses dates et les infos de son séjour — sans que vous touchiez au clavier.",
+        whyForPersona: "Chaque client reçoit un email avec son nom, ses dates et les infos de son séjour - sans que vous touchiez au clavier.",
         bullets: ['Templates professionnels prêts à l\'emploi', 'Personnalisation dynamique automatique', 'Suivi des ouvertures et clics'],
       },
       {
@@ -786,7 +786,7 @@ export const solutions: Record<string, SolutionData> = {
     title: 'Hôtels de luxe & 5 étoiles',
     headline: "L'excellence relationnelle que vos clients premium exigent",
     description:
-      "Vos clients attendent un service irréprochable à chaque interaction. TriggerFlow orchestre une communication sur-mesure qui sublime l'expérience — du premier contact au prochain séjour.",
+      "Vos clients attendent un service irréprochable à chaque interaction. TriggerFlow orchestre une communication sur-mesure qui sublime l'expérience, du premier contact au prochain séjour.",
 
     persona: {
       role: 'Directeur général / Guest Relations Manager',
@@ -819,7 +819,7 @@ export const solutions: Record<string, SolutionData> = {
 
     painPoints: [
       'Les préférences clients (oreiller, minibar, étage) sont notées sur des post-it qui se perdent',
-      'Un client revient pour la 3ème fois et personne ne le reconnaît — il est traité comme un nouveau',
+      'Un client revient pour la 3ème fois et personne ne le reconnaît, il est traité comme un nouveau',
       "L'email de confirmation est le même template générique que pour un 2 étoiles",
       'Le concierge est débordé et ne peut pas contacter chaque client avant l\'arrivée',
       "Aucun suivi structuré post-séjour : le client repart dans la nature et réserve ailleurs",
@@ -842,7 +842,7 @@ export const solutions: Record<string, SolutionData> = {
       {
         slug: 'crm',
         highlight: 'Profil client ultra-détaillé',
-        whyForPersona: "Chaque client a sa fiche complète : préférences de chambre, allergies, anniversaires, historique de séjours. Votre équipe l'accueille comme un habitué — même si c'est sa première visite depuis 2 ans.",
+        whyForPersona: "Chaque client a sa fiche complète : préférences de chambre, allergies, anniversaires, historique de séjours. Votre équipe l'accueille comme un habitué - même si c'est sa première visite depuis 2 ans.",
         bullets: ['Préférences mémorisées (oreiller, minibar, étage)', 'Historique complet multi-séjours', 'Notes et tags personnalisés par le staff'],
       },
       {
@@ -866,7 +866,7 @@ export const solutions: Record<string, SolutionData> = {
       {
         slug: 'ventes-additionnelles',
         highlight: 'Upsell premium contextuel',
-        whyForPersona: "Proposez le spa, le restaurant gastronomique, le surclassement suite — au bon moment, à la bonne personne.",
+        whyForPersona: "Proposez le spa, le restaurant gastronomique, le surclassement suite, au bon moment, à la bonne personne.",
         bullets: ['Offres contextuelles par profil client', 'Pack expérience (champagne, spa, dîner)', 'Paiement en ligne intégré'],
       },
       {

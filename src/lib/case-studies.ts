@@ -68,7 +68,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: 'causse-comtal',
     name: 'Causse Comtal',
-    type: 'Hôtel Restaurant & Spa — 100 chambres',
+    type: 'Hôtel Restaurant & Spa - 100 chambres',
     location: 'Montrozier, près de Rodez',
     contactName: 'Baptiste Legout',
     contactRole: "Directeur de l'hôtel",
@@ -113,7 +113,7 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: 'le-vieux-pressoir',
     name: 'Le Vieux Pressoir',
-    type: 'Gîte hôtelier — 4 studios & 2 appartements',
+    type: 'Gîte hôtelier - 4 studios & 2 appartements',
     location: 'Dieffenthal, Alsace',
     contactName: 'Guillaume Broutin',
     contactRole: 'Propriétaire',
@@ -146,14 +146,14 @@ export const caseStudies: CaseStudy[] = [
       {
         question: 'En 3 mots, TriggerFlow pour vous c\'est ?',
         answer:
-          "Facilité. Gain de temps. Super relationnel — avec nos clients et avec l'équipe TriggerFlow.\n\nPourvu que ça dure.",
+          "Facilité. Gain de temps. Super relationnel - avec nos clients et avec l'équipe TriggerFlow.\n\nPourvu que ça dure.",
       },
     ],
   },
   {
     slug: 'groupe-noemys',
     name: 'Groupe Noemys',
-    type: 'Groupe hôtelier — 15 établissements',
+    type: 'Groupe hôtelier - 15 établissements',
     location: 'France (multi-sites)',
     contactName: 'Marie-Liesse Gaubens',
     contactRole: 'Responsable Communication',
@@ -176,17 +176,17 @@ export const caseStudies: CaseStudy[] = [
       {
         question: 'À quels objectifs la solution vous permettait-elle de répondre ?',
         answer:
-          "L'intégration de TriggerFlow nous permet de répondre à des objectifs stratégiques majeurs :\n\nMarketing et Fidélisation Personnalisée — La solution nous permet de centraliser l'e-mailing pour l'ensemble de nos hôtels, garantissant une cohérence d'image de marque. Grâce à une base de données unifiée, nous pouvons personnaliser les échanges pour chaque client, garder une trace précise de chaque interaction et accompagner le client de la réservation à l'après-séjour.\n\nGestion de la Réputation et Satisfaction — TriggerFlow est un levier essentiel pour notre e-réputation. En automatisant la sollicitation et la gestion des avis clients, nous améliorons la satisfaction globale et réagissons plus rapidement aux retours.\n\nPilotage et Analyse de l'Activité — La solution nous offre une visibilité précieuse pour mesurer les flux de réservation.",
+          "L'intégration de TriggerFlow nous permet de répondre à des objectifs stratégiques majeurs :\n\nMarketing et Fidélisation Personnalisée - La solution nous permet de centraliser l'e-mailing pour l'ensemble de nos hôtels, garantissant une cohérence d'image de marque. Grâce à une base de données unifiée, nous pouvons personnaliser les échanges pour chaque client, garder une trace précise de chaque interaction et accompagner le client de la réservation à l'après-séjour.\n\nGestion de la Réputation et Satisfaction - TriggerFlow est un levier essentiel pour notre e-réputation. En automatisant la sollicitation et la gestion des avis clients, nous améliorons la satisfaction globale et réagissons plus rapidement aux retours.\n\nPilotage et Analyse de l'Activité - La solution nous offre une visibilité précieuse pour mesurer les flux de réservation.",
       },
       {
         question: 'Quels sont les points forts de la solution ?',
         answer:
-          "En tant que spécialiste de l'hôtellerie, la plateforme offre des atouts stratégiques majeurs :\n\nAutomatisation & Centralisation — Un gain de temps précieux grâce aux mailings automatiques centralisés pour tout le parc hôtelier.\n\nData & Personnalisation — Une récolte de données efficace pour construire une stratégie marketing ultra-personnalisée et performante.",
+          "En tant que spécialiste de l'hôtellerie, la plateforme offre des atouts stratégiques majeurs :\n\nAutomatisation & Centralisation - Un gain de temps précieux grâce aux mailings automatiques centralisés pour tout le parc hôtelier.\n\nData & Personnalisation - Une récolte de données efficace pour construire une stratégie marketing ultra-personnalisée et performante.",
       },
       {
         question: 'Quelles sont vos perspectives et futurs projets ?',
         answer:
-          "Après quelques mois d'utilisation concluants, nous passons à l'étape supérieure :\n\nDéploiement du \"Pre-stay\" — Automatisation des mails avant l'arrivée pour tous nos hôtels afin d'optimiser l'expérience client dès la réservation.\n\nCentralisation des avis — Intégration complète des flux Google et TripAdvisor pour piloter notre e-réputation depuis une interface unique.",
+          "Après quelques mois d'utilisation concluants, nous passons à l'étape supérieure :\n\nDéploiement du \"Pre-stay\" - Automatisation des mails avant l'arrivée pour tous nos hôtels afin d'optimiser l'expérience client dès la réservation.\n\nCentralisation des avis - Intégration complète des flux Google et TripAdvisor pour piloter notre e-réputation depuis une interface unique.",
       },
     ],
   },

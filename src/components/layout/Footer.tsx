@@ -77,15 +77,15 @@ export function Footer() {
                   contact@trigger-flow.com
                 </a>
                 <a
-                  href="tel:+33123456789"
+                  href="tel:+33554544852"
                   className="flex items-center gap-2 text-sm text-white/50 transition-colors hover:text-white"
                 >
                   <Phone className="h-4 w-4" aria-hidden="true" />
-                  +33 1 23 45 67 89
+                  +33 (0)5 54 54 48 52
                 </a>
                 <div className="flex items-start gap-2 text-sm text-white/50">
                   <MapPin className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
-                  <span>Paris, France</span>
+                  <span>Toulouse, France</span>
                 </div>
               </div>
 

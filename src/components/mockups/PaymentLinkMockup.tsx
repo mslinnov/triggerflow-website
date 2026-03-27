@@ -19,7 +19,7 @@ export function PaymentLinkMockup() {
         <div className="p-4">
           {/* Amount */}
           <div className="mb-4 text-center">
-            <p className="text-[10px] text-gray-500">Acompte — Réservation #4521</p>
+            <p className="text-[10px] text-gray-500">Acompte - Réservation #4521</p>
             <p className="mt-1 text-2xl font-bold text-gray-800">150,00 €</p>
             <p className="mt-0.5 text-[9px] text-gray-400">Sophie Durand &middot; 15-18 jan 2026</p>
           </div>

@@ -89,7 +89,7 @@ images:
 
 Il est 23h17. Un couple arrive devant votre hôtel après un vol retardé. La réception a fermé à 22h. Dans un établissement classique, c'est le début d'un problème : appels sur le portable du night-auditor, attente dans le froid, première impression désastreuse. Avec une serrure connectée hôtel, le scénario est différent. Le client a reçu son code d'accès par SMS trois heures plus tôt. Il tape les six chiffres sur le clavier, pousse la porte, monte à sa chambre. Zéro friction, zéro stress, zéro personnel mobilisé.
 
-Cette situation n'est plus réservée aux résidences de tourisme ou aux locations Airbnb. Les serrures intelligentes se sont démocratisées au point de devenir accessibles à n'importe quel hôtel indépendant, pour un budget maîtrisé et une installation rapide. Ce guide vous accompagne dans le choix, l'installation et l'automatisation complète de vos accès digitaux — du comparatif Sesame vs Igloohome jusqu'à l'envoi automatique du code via votre PMS.
+Cette situation n'est plus réservée aux résidences de tourisme ou aux locations Airbnb. Les serrures intelligentes se sont démocratisées au point de devenir accessibles à n'importe quel hôtel indépendant, pour un budget maîtrisé et une installation rapide. Ce guide vous accompagne dans le choix, l'installation et l'automatisation complète de vos accès digitaux, du comparatif Sesame vs Igloohome jusqu'à l'envoi automatique du code via votre PMS.
 
 <ImageBlock id="hero" />
 
@@ -101,7 +101,7 @@ Les clés physiques et les cartes magnétiques ont rendu service pendant des dé
 
 Une clé physique perdue, c'est 30 à 50 € de remplacement de cylindre, plus le temps passé à gérer l'incident. Une carte magnétique démagnétisée par un téléphone dans la même poche, c'est un client qui redescend à la réception, agacé, parfois plusieurs fois dans le même séjour. Ces micro-irritants s'accumulent et finissent par peser sur l'expérience globale.
 
-Le problème devient critique pour les arrivées tardives. Sans personnel de nuit, l'hôtel doit soit refuser les réservations après une certaine heure, soit maintenir une permanence coûteuse. Certains établissements ont recours à des boîtes à clés à code — une solution bricolée qui pose des questions de sécurité évidentes : le code ne change pas entre chaque client, n'importe qui peut le noter, et vous n'avez aucune traçabilité des accès.
+Le problème devient critique pour les arrivées tardives. Sans personnel de nuit, l'hôtel doit soit refuser les réservations après une certaine heure, soit maintenir une permanence coûteuse. Certains établissements ont recours à des boîtes à clés à code, une solution bricolée qui pose des questions de sécurité évidentes : le code ne change pas entre chaque client, n'importe qui peut le noter, et vous n'avez aucune traçabilité des accès.
 
 ### Ce que changent les serrures connectées
 
@@ -127,7 +127,7 @@ Toutes les serrures intelligentes ne fonctionnent pas de la même manière. Le c
 
 ### Cylindres connectés (type Sesame)
 
-Le cylindre connecté remplace uniquement le barillet de votre serrure existante. La porte, la poignée et le mécanisme restent en place — seul le cœur de la serrure devient intelligent. C'est la solution la moins invasive : 15 minutes d'installation par porte avec un simple tournevis, aucune modification structurelle.
+Le cylindre connecté remplace uniquement le barillet de votre serrure existante. La porte, la poignée et le mécanisme restent en place, seul le cœur de la serrure devient intelligent. C'est la solution la moins invasive : 15 minutes d'installation par porte avec un simple tournevis, aucune modification structurelle.
 
 Le fonctionnement repose sur le Bluetooth et un hub WiFi central. Le client utilise une application mobile pour déverrouiller, ou reçoit un code temporaire qu'il saisit via l'app. L'autonomie des piles varie entre 6 et 12 mois selon l'usage. Le coût par unité tourne autour de 150 € (prix constatés en 2026, susceptibles de varier).
 
@@ -137,7 +137,7 @@ Cette option convient particulièrement aux hôtels urbains avec une clientèle 
 
 Ici, c'est la serrure complète qui est remplacée. Un clavier à code apparaît sur la porte, permettant au client de taper directement son code sans application mobile. C'est un avantage décisif pour les clientèles moins connectées ou les situations où le téléphone est déchargé.
 
-La particularité d'Igloohome réside dans son algorithme hors-ligne. Les codes sont générés mathématiquement et fonctionnent même sans connexion WiFi — un atout pour les établissements en zone rurale ou de montagne où la couverture réseau reste aléatoire. L'installation prend 30 à 45 minutes par porte et nécessite parfois une perceuse. Le budget se situe entre 200 et 300 € par serrure.
+La particularité d'Igloohome réside dans son algorithme hors-ligne. Les codes sont générés mathématiquement et fonctionnent même sans connexion WiFi, un atout pour les établissements en zone rurale ou de montagne où la couverture réseau reste aléatoire. L'installation prend 30 à 45 minutes par porte et nécessite parfois une perceuse. Le budget se situe entre 200 et 300 € par serrure.
 
 Les résidences de tourisme, gîtes et locations saisonnières privilégient souvent cette solution pour sa robustesse et son indépendance au réseau.
 
@@ -189,15 +189,15 @@ Installer des serrures connectées ne suffit pas. Sans automatisation, vous reto
 
 ### Le workflow d'accès automatisé
 
-**Étape 1 — Détection de la réservation.** Quand une nouvelle réservation apparaît dans votre PMS (Mews, Thaïs-PMS, Medialog, Misterbooking), TriggerFlow la détecte automatiquement via la synchronisation bidirectionnelle. Le système identifie la chambre, les dates d'arrivée et de départ, et les coordonnées du client.
+**Étape 1 - Détection de la réservation.** Quand une nouvelle réservation apparaît dans votre PMS (Mews, Thaïs-PMS, Medialog, Misterbooking), TriggerFlow la détecte automatiquement via la synchronisation bidirectionnelle. Le système identifie la chambre, les dates d'arrivée et de départ, et les coordonnées du client.
 
-**Étape 2 — Génération du code temporaire.** La veille de l'arrivée (ou à l'heure de votre choix), TriggerFlow appelle l'API de la serrure pour générer un code unique. Ce code est valide uniquement pour la période du séjour — il s'active le jour du check-in et expire automatiquement le jour du check-out.
+**Étape 2 - Génération du code temporaire.** La veille de l'arrivée (ou à l'heure de votre choix), TriggerFlow appelle l'API de la serrure pour générer un code unique. Ce code est valide uniquement pour la période du séjour, il s'active le jour du check-in et expire automatiquement le jour du check-out.
 
-**Étape 3 — Envoi au client.** Le code part par SMS, accompagné des informations pratiques : adresse exacte, instructions d'arrivée, code WiFi, numéro de parking si applicable. Le message peut aussi être envoyé par WhatsApp ou email selon les préférences du client, dans le cadre d'une séquence de [marketing automation hôtelier](/fr/blog/automatisation/marketing-automation-hotelier-guide/).
+**Étape 3 - Envoi au client.** Le code part par SMS, accompagné des informations pratiques : adresse exacte, instructions d'arrivée, code WiFi, numéro de parking si applicable. Le message peut aussi être envoyé par WhatsApp ou email selon les préférences du client, dans le cadre d'une séquence de [marketing automation hôtelier](/fr/blog/automatisation/marketing-automation-hotelier-guide/).
 
-**Étape 4 — Check-in autonome.** Le client arrive, tape son code, entre dans sa chambre. Aucune intervention humaine requise. L'ouverture est enregistrée dans le système — vous savez que le client est arrivé sans avoir besoin de le voir physiquement.
+**Étape 4 - Check-in autonome.** Le client arrive, tape son code, entre dans sa chambre. Aucune intervention humaine requise. L'ouverture est enregistrée dans le système, vous savez que le client est arrivé sans avoir besoin de le voir physiquement.
 
-**Étape 5 — Désactivation automatique.** À l'heure du check-out, le code est invalidé. La chambre est sécurisée, prête pour le ménage. L'équipe peut recevoir une notification automatique pour lancer le nettoyage.
+**Étape 5 - Désactivation automatique.** À l'heure du check-out, le code est invalidé. La chambre est sécurisée, prête pour le ménage. L'équipe peut recevoir une notification automatique pour lancer le nettoyage.
 
 <KeyFigure
   value="0"
@@ -214,7 +214,7 @@ Pour le personnel, vous pouvez créer des codes restreints par plage horaire. L'
 Les groupes hôteliers apprécient la gestion multi-propriétés. Depuis une interface unique, vous visualisez l'état des accès de tous vos établissements, générez des rapports consolidés, et déployez des workflows identiques sur l'ensemble du parc.
 
 <Callout type="info">
-TriggerFlow est l'une des rares plateformes CRM hôtelières à intégrer nativement Sesame et Igloohome. La plupart des solutions concurrentes (Duve, LoungeUp, Bookboost) ne proposent pas d'intégration serrures — vous devez gérer les accès séparément.
+TriggerFlow est l'une des rares plateformes CRM hôtelières à intégrer nativement Sesame et Igloohome. La plupart des solutions concurrentes (Duve, LoungeUp, Bookboost) ne proposent pas d'intégration serrures, vous devez gérer les accès séparément.
 </Callout>
 
 ### Intégration dans la séquence pré-séjour
@@ -236,13 +236,13 @@ Cette séquence transforme l'accès digital en élément d'une expérience clien
 
 Passer aux serrures connectées ne demande pas de grands travaux. Voici le processus complet, étape par étape.
 
-### Étape 1 — Audit de l'existant
+### Étape 1 - Audit de l'existant
 
 Avant de commander, faites l'inventaire de vos portes. Vérifiez le type de cylindre actuel (européen dans la majorité des cas en France), l'épaisseur des portes, et la présence éventuelle de serrures multipoints. Certaines configurations particulières peuvent nécessiter des adaptateurs ou exclure certains modèles.
 
-Évaluez aussi la couverture WiFi dans les couloirs. Pour Sesame, le hub doit pouvoir communiquer avec toutes les serrures — prévoyez un hub par étage ou par aile de bâtiment si nécessaire. Pour Igloohome, le WiFi n'est pas critique au fonctionnement quotidien, mais reste utile pour la configuration initiale et les mises à jour.
+Évaluez aussi la couverture WiFi dans les couloirs. Pour Sesame, le hub doit pouvoir communiquer avec toutes les serrures, prévoyez un hub par étage ou par aile de bâtiment si nécessaire. Pour Igloohome, le WiFi n'est pas critique au fonctionnement quotidien, mais reste utile pour la configuration initiale et les mises à jour.
 
-### Étape 2 — Installation physique
+### Étape 2 - Installation physique
 
 **Pour Sesame (cylindre connecté) :**
 1. Retirez le cylindre existant (une vis sur la tranche de la porte)
@@ -264,7 +264,7 @@ Temps moyen : 30-45 minutes par porte. Outils : tournevis, perceuse (si ajusteme
 Conservez toujours une clé mécanique de secours. Les serrures connectées incluent généralement un barillet traditionnel en backup. En cas de panne de batterie ou de dysfonctionnement, vous devez pouvoir ouvrir la porte physiquement.
 </Callout>
 
-### Étape 3 — Configuration dans TriggerFlow
+### Étape 3 - Configuration dans TriggerFlow
 
 Une fois les serrures installées, connectez-les à TriggerFlow :
 
@@ -275,7 +275,7 @@ Une fois les serrures installées, connectez-les à TriggerFlow :
 
 L'association chambre/serrure permet à TriggerFlow de savoir quel code générer pour quelle réservation. Si une chambre n'a pas de serrure connectée (installation partielle), le système l'exclut automatiquement du workflow.
 
-### Étape 4 — Création du workflow
+### Étape 4 - Création du workflow
 
 Dans le builder visuel de TriggerFlow, créez un nouveau workflow :
 
@@ -291,7 +291,7 @@ Dans le builder visuel de TriggerFlow, créez un nouveau workflow :
 **Workflow de sortie :**
 Créez un second workflow déclenché par "Date de check-out atteinte" qui désactive le code et notifie l'équipe ménage.
 
-### Étape 5 — Tests et validation
+### Étape 5 - Tests et validation
 
 Avant de déployer en production :
 
@@ -326,16 +326,16 @@ Les serrures connectées manipulent des données personnelles : qui a ouvert que
 
 Les communications entre serrure, hub et serveur sont chiffrées en AES-128 ou AES-256 selon les modèles. Les codes temporaires sont générés aléatoirement et ne suivent pas de séquence prédictible. Contrairement à un code maître partagé entre tous les clients (pratique malheureusement courante avec les boîtes à clés), chaque séjour dispose de son propre code unique.
 
-Les serrures certifiées répondent aux normes de résistance physique (A2P en France pour les plus exigeantes). Vérifiez que votre assurance couvre les serrures électroniques — la plupart des contrats récents les incluent, mais une confirmation écrite évite les mauvaises surprises.
+Les serrures certifiées répondent aux normes de résistance physique (A2P en France pour les plus exigeantes). Vérifiez que votre assurance couvre les serrures électroniques, la plupart des contrats récents les incluent, mais une confirmation écrite évite les mauvaises surprises.
 
 ### Conformité RGPD
 
 Les données d'accès (horodatage des ouvertures, identité du détenteur du code) sont des données personnelles au sens du RGPD. Vous devez :
 
 - **Informer les clients** de la collecte de ces données (mention dans les CGV ou affichage à la réception)
-- **Limiter la durée de conservation** — les logs d'accès n'ont pas besoin d'être conservés indéfiniment ; 12 mois suffisent pour la plupart des usages
-- **Sécuriser l'accès** aux données — seuls les collaborateurs habilités doivent pouvoir consulter l'historique des accès
-- **Permettre l'exercice des droits** — un client peut demander l'accès ou la suppression de ses données d'accès
+- **Limiter la durée de conservation** - les logs d'accès n'ont pas besoin d'être conservés indéfiniment ; 12 mois suffisent pour la plupart des usages
+- **Sécuriser l'accès** aux données - seuls les collaborateurs habilités doivent pouvoir consulter l'historique des accès
+- **Permettre l'exercice des droits** - un client peut demander l'accès ou la suppression de ses données d'accès
 
 TriggerFlow intègre ces exigences dans sa gestion des données : durées de conservation paramétrables, accès restreints par rôle, export des données sur demande.
 
@@ -351,11 +351,11 @@ Avec Igloohome, ce n'est pas un problème : le code se tape directement sur le c
 
 **Les serrures connectées fonctionnent-elles en cas de coupure de courant ?**
 
-Oui. Les serrures fonctionnent sur piles et sont autonomes du réseau électrique. En revanche, le hub WiFi (pour Sesame) cessera de fonctionner en cas de coupure — les codes déjà générés resteront valides, mais vous ne pourrez pas en créer de nouveaux tant que le courant n'est pas rétabli.
+Oui. Les serrures fonctionnent sur piles et sont autonomes du réseau électrique. En revanche, le hub WiFi (pour Sesame) cessera de fonctionner en cas de coupure, les codes déjà générés resteront valides, mais vous ne pourrez pas en créer de nouveaux tant que le courant n'est pas rétabli.
 
 **Puis-je garder mes anciennes cartes magnétiques en parallèle ?**
 
-Avec un système hybride (type Assa Abloy Vostio), oui. Avec Sesame ou Igloohome, non — ces serrures remplacent le système existant. La transition se fait généralement chambre par chambre pour limiter les perturbations.
+Avec un système hybride (type Assa Abloy Vostio), oui. Avec Sesame ou Igloohome, non, ces serrures remplacent le système existant. La transition se fait généralement chambre par chambre pour limiter les perturbations.
 
 **Comment gérer les clients qui refusent de donner leur numéro de téléphone ?**
 
@@ -373,4 +373,4 @@ Pour l'hôtelier, les bénéfices sont concrets. Fin des clés perdues et des ca
 
 L'investissement initial se rentabilise en 6 à 12 mois pour un établissement de taille moyenne. Sesame convient aux installations rapides et budgets serrés. Igloohome s'impose pour les environnements sans WiFi fiable ou les clientèles moins technophiles. Les deux s'intègrent nativement avec TriggerFlow pour automatiser l'ensemble de la chaîne : de la réservation PMS à l'ouverture de la porte, sans aucune intervention manuelle.
 
-Prêt à digitaliser les accès de votre établissement ? [Réservez une démo gratuite](https://app.lemcal.com/@trigger-flow/demo) et découvrez comment TriggerFlow automatise l'envoi des codes de serrure avec Sesame et Igloohome — en 30 minutes, vous visualiserez le workflow complet appliqué à votre hôtel.
+Prêt à digitaliser les accès de votre établissement ? [Réservez une démo gratuite](https://app.lemcal.com/@trigger-flow/demo) et découvrez comment TriggerFlow automatise l'envoi des codes de serrure avec Sesame et Igloohome. En 30 minutes, vous visualiserez le workflow complet appliqué à votre hôtel.

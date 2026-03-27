@@ -15,19 +15,19 @@ export function PaymentInstantMockup() {
         <FlowStep
           icon={Send}
           label="Lien envoyé"
-          detail="Email automatique — 14:02"
+          detail="Email automatique - 14:02"
           status="done"
         />
         <FlowStep
           icon={MousePointerClick}
           label="Client clique"
-          detail="Ouvert à 14:08 — 6 min après"
+          detail="Ouvert à 14:08 - 6 min après"
           status="done"
         />
         <FlowStep
           icon={CreditCard}
           label="Paiement effectué"
-          detail="CB Visa •••• 4242 — 14:09"
+          detail="CB Visa •••• 4242 - 14:09"
           status="done"
         />
         <FlowStep
@@ -49,7 +49,7 @@ export function PaymentInstantMockup() {
         <div className="flex items-center gap-2">
           <CheckCircle2 className="h-4 w-4 text-green-600" />
           <div>
-            <p className="text-[10px] font-semibold text-green-800">Acompte encaissé — 150,00 €</p>
+            <p className="text-[10px] font-semibold text-green-800">Acompte encaissé - 150,00 €</p>
             <p className="text-[9px] text-green-600">Sophie Durand &middot; Réservation #4521</p>
           </div>
         </div>

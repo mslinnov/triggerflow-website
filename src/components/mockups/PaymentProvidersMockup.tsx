@@ -6,7 +6,7 @@ export function PaymentProvidersMockup() {
   return (
     <div className="h-full w-full bg-white p-4">
       <h4 className="mb-1 text-xs font-semibold text-gray-800">Prestataires de paiement</h4>
-      <p className="mb-3 text-[9px] text-gray-500">Un seul système, plusieurs prestataires — changez sans migration</p>
+      <p className="mb-3 text-[9px] text-gray-500">Un seul système, plusieurs prestataires - changez sans migration</p>
 
       {/* Provider cards */}
       <div className="space-y-2.5">
@@ -83,7 +83,7 @@ export function PaymentProvidersMockup() {
       {/* Bottom note */}
       <div className="mt-3 rounded-lg bg-blue-50 p-2 text-center">
         <p className="text-[9px] text-blue-700">
-          <span className="font-semibold">0€ de commission TriggerFlow</span> — seuls les frais prestataire s&apos;appliquent
+          <span className="font-semibold">0€ de commission TriggerFlow</span>, seuls les frais prestataire s&apos;appliquent
         </p>
       </div>
     </div>

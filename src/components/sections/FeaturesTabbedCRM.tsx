@@ -31,7 +31,7 @@ function CrmClientCardVisual() {
     <div className="relative h-full w-full">
       <Image
         src="/images/homepage/crm-client-card.webp"
-        alt="TriggerFlow — Fiche client CRM hôtelier"
+        alt="TriggerFlow - Fiche client CRM hôtelier"
         fill
         className="object-cover object-left-top"
         sizes="(max-width: 1024px) 100vw, 60vw"
@@ -53,7 +53,7 @@ function CrmClientCardVisual() {
             LD
           </div>
           <div>
-            <p className="text-[11px] font-semibold text-gray-800">L. Dupont — Check-in</p>
+            <p className="text-[11px] font-semibold text-gray-800">L. Dupont - Check-in</p>
             <p className="text-[10px] text-gray-500">Suite Deluxe &middot; 3 nuits</p>
           </div>
         </motion.div>
@@ -107,7 +107,7 @@ function UpsellOfferVisual() {
     <div className="relative h-full w-full">
       <Image
         src="/images/homepage/upsell-offer.webp"
-        alt="TriggerFlow — Ventes additionnelles hôtelières"
+        alt="TriggerFlow - Ventes additionnelles hôtelières"
         fill
         className="object-cover object-left-top"
         sizes="(max-width: 1024px) 100vw, 60vw"
@@ -154,7 +154,7 @@ function UpsellOfferVisual() {
           </div>
           <div>
             <p className="text-[11px] font-semibold text-gray-800">Surclassement accepté</p>
-            <p className="text-[10px] text-gray-500">+45 €/nuit — Chambre 302</p>
+            <p className="text-[10px] text-gray-500">+45 €/nuit - Chambre 302</p>
           </div>
         </motion.div>
       </motion.div>
@@ -191,7 +191,7 @@ function ReviewDashboardVisual() {
     <div className="relative h-full w-full">
       <Image
         src="/images/homepage/review-dashboard.webp"
-        alt="TriggerFlow — Gestion des avis clients"
+        alt="TriggerFlow - Gestion des avis clients"
         fill
         className="object-cover object-left-top"
         sizes="(max-width: 1024px) 100vw, 60vw"
@@ -273,7 +273,7 @@ function AnalyticsDashboardVisual() {
     <div className="relative h-full w-full">
       <Image
         src="/images/homepage/analytics-dashboard.webp"
-        alt="TriggerFlow — Tableau de bord analytics"
+        alt="TriggerFlow - Tableau de bord analytics"
         fill
         className="object-cover object-left-top"
         sizes="(max-width: 1024px) 100vw, 60vw"
@@ -342,7 +342,7 @@ function AnalyticsDashboardVisual() {
           <div className="h-full w-1 self-stretch rounded-full bg-blue-500" />
           <div>
             <p className="text-[11px] font-semibold text-gray-800">Taux d&apos;ouverture</p>
-            <p className="text-[10px] text-gray-500">68% — +12pts vs N-1</p>
+            <p className="text-[10px] text-gray-500">68% - +12pts vs N-1</p>
           </div>
         </motion.div>
       </motion.div>

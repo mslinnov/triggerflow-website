@@ -16,7 +16,7 @@
       "props": {
         "badge": "Partenaire officiel Mews",
         "title": "Automatisez votre hôtel connecté à Mews",
-        "subtitle": "Configurez une fois, TriggerFlow envoie automatiquement les bons emails au bon moment. Confirmation, pré-séjour, après-séjour — sans intervention manuelle.",
+        "subtitle": "Configurez une fois, TriggerFlow envoie automatiquement les bons emails au bon moment. Confirmation, pré-séjour, après-séjour, sans intervention manuelle.",
         "ctaLabel": "Réserver une démo gratuite",
         "ctaHref": "https://app.lemcal.com/@trigger-flow/demo",
         "secondaryCtaLabel": "Voir les tarifs",
@@ -49,7 +49,7 @@
           {
             "icon": "Mail",
             "title": "Emails automatiques",
-            "description": "Confirmation, pré-séjour, check-out, fidélisation — configurez une fois, c'est envoyé à chaque réservation."
+            "description": "Confirmation, pré-séjour, check-out, fidélisation, configurez une fois, c'est envoyé à chaque réservation."
           },
           {
             "icon": "Smartphone",
@@ -69,7 +69,7 @@
           {
             "icon": "Shield",
             "title": "Conformité RGPD",
-            "description": "Données hébergées en Europe, consentement géré, suppression automatique — 100% conforme."
+            "description": "Données hébergées en Europe, consentement géré, suppression automatique, 100% conforme."
           },
           {
             "icon": "Headphones",

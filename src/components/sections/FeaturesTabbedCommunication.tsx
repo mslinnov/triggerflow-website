@@ -31,7 +31,7 @@ function HubInboxVisual() {
     <div className="relative h-full w-full">
       <Image
         src="/images/homepage/hub-inbox.webp"
-        alt="TriggerFlow — Hub de messagerie multicanale"
+        alt="TriggerFlow - Hub de messagerie multicanale"
         fill
         className="object-cover object-left-top"
         sizes="(max-width: 1024px) 100vw, 60vw"
@@ -53,7 +53,7 @@ function HubInboxVisual() {
           <Mail className="h-4 w-4 text-blue-600" />
           <div>
             <p className="text-[11px] font-semibold text-gray-800">Nouvel email reçu</p>
-            <p className="text-[10px] text-gray-500">M. Laurent — Chambre 204</p>
+            <p className="text-[10px] text-gray-500">M. Laurent - Chambre 204</p>
           </div>
           <span className="text-[9px] text-gray-400">2s</span>
         </motion.div>
@@ -96,7 +96,7 @@ function HubInboxVisual() {
           </div>
           <div>
             <p className="text-[11px] font-semibold text-gray-800">SMS délivré</p>
-            <p className="text-[10px] text-gray-500">Check-in J-1 — Mme Bernard</p>
+            <p className="text-[10px] text-gray-500">Check-in J-1 - Mme Bernard</p>
           </div>
         </motion.div>
       </motion.div>
@@ -111,7 +111,7 @@ function WorkflowBuilderVisual() {
     <div className="relative h-full w-full">
       <Image
         src="/images/homepage/workflow-builder.webp"
-        alt="TriggerFlow — Éditeur de workflows"
+        alt="TriggerFlow - Éditeur de workflows"
         fill
         className="object-cover object-left-top"
         sizes="(max-width: 1024px) 100vw, 60vw"
@@ -179,7 +179,7 @@ function FormBuilderVisual() {
     <div className="relative h-full w-full">
       <Image
         src="/images/homepage/form-builder.webp"
-        alt="TriggerFlow — Constructeur de formulaires"
+        alt="TriggerFlow - Constructeur de formulaires"
         fill
         className="object-cover object-left-top"
         sizes="(max-width: 1024px) 100vw, 60vw"
@@ -257,7 +257,7 @@ function FormBuilderVisual() {
           </div>
           <div>
             <p className="text-[11px] font-semibold text-gray-800">Formulaire soumis</p>
-            <p className="text-[10px] text-gray-500">Pré-checkin — Ch. 118</p>
+            <p className="text-[10px] text-gray-500">Pré-checkin - Ch. 118</p>
           </div>
         </motion.div>
       </motion.div>
@@ -272,7 +272,7 @@ function ChatbotVisual() {
     <div className="relative h-full w-full">
       <Image
         src="/images/homepage/chatbot-ia.webp"
-        alt="TriggerFlow — Chatbot IA hôtelier"
+        alt="TriggerFlow - Chatbot IA hôtelier"
         fill
         className="object-cover object-left-top"
         sizes="(max-width: 1024px) 100vw, 60vw"

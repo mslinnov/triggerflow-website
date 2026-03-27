@@ -65,7 +65,7 @@ function FAQPageJsonLd({ locale }: { locale: string }) {
           },
           {
             question: 'Est-ce que Mews est compatible avec un CRM hôtelier externe ?',
-            answer: 'Oui. Mews dispose d\'une API ouverte documentée et d\'une Marketplace officielle qui référence les CRM compatibles, dont TriggerFlow. La connexion est native — pas de Zapier, pas de middleware.',
+            answer: 'Oui. Mews dispose d\'une API ouverte documentée et d\'une Marketplace officielle qui référence les CRM compatibles, dont TriggerFlow. La connexion est native, pas de Zapier, pas de middleware.',
           },
           {
             question: 'TriggerFlow peut-il modifier mes réservations dans Mews ?',
@@ -91,7 +91,7 @@ function FAQPageJsonLd({ locale }: { locale: string }) {
           },
           {
             question: 'Is Mews compatible with an external hotel CRM?',
-            answer: 'Yes. Mews has a well-documented open API and an official Marketplace listing compatible CRMs, including TriggerFlow. The connection is native — no Zapier, no middleware.',
+            answer: 'Yes. Mews has a well-documented open API and an official Marketplace listing compatible CRMs, including TriggerFlow. The connection is native, no Zapier, no middleware.',
           },
           {
             question: 'Can TriggerFlow modify my reservations in Mews?',
@@ -130,8 +130,8 @@ function HowToJsonLd({ locale }: { locale: string }) {
         : 'How to connect TriggerFlow to Mews PMS',
     description:
       locale === 'fr'
-        ? 'Connexion en 3 étapes — 15 minutes, sans développeur'
-        : 'Connect in 3 steps — 15 minutes, no developer needed',
+        ? 'Connexion en 3 étapes - 15 minutes, sans développeur'
+        : 'Connect in 3 steps - 15 minutes, no developer needed',
     totalTime: 'PT15M',
     step: [
       {
@@ -143,8 +143,8 @@ function HowToJsonLd({ locale }: { locale: string }) {
             : 'Activate TriggerFlow in Mews Marketplace',
         text:
           locale === 'fr'
-            ? 'Depuis Mews Commander, Marketplace > TriggerFlow. Activez le connecteur — une clé API est générée automatiquement.'
-            : 'From Mews Commander, go to Marketplace > TriggerFlow. Activate the connector — an API key is generated automatically.',
+            ? 'Depuis Mews Commander, Marketplace > TriggerFlow. Activez le connecteur, une clé API est générée automatiquement.'
+            : 'From Mews Commander, go to Marketplace > TriggerFlow. Activate the connector, an API key is generated automatically.',
       },
       {
         '@type': 'HowToStep',

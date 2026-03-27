@@ -36,7 +36,7 @@ export function PaymentHeroMockup() {
           <PaymentRow
             name="Maria García"
             type="Empreinte"
-            amount="—"
+            amount="-"
             status="registered"
             time="Il y a 6h"
           />

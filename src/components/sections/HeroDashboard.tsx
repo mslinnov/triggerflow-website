@@ -43,13 +43,13 @@ export function HeroDashboard() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="relative mx-auto w-[65%] max-w-[380px] overflow-hidden rounded-2xl shadow-2xl"
+        className="relative mx-auto w-[85%] max-w-[500px] overflow-hidden"
       >
         <Image
-          src="/images/homepage/persona-reception_1.webp"
-          alt="Réceptionniste d'hôtel souriante avec tablette"
-          width={800}
-          height={1000}
+          src="/images/hero-tf.webp"
+          alt="TriggerFlow – plateforme CRM et automatisation hôtelière"
+          width={1041}
+          height={920}
           priority
           className="h-auto w-full"
         />
@@ -62,7 +62,7 @@ export function HeroDashboard() {
         initial={{ opacity: 0, y: -20, x: 20 }}
         animate={{ opacity: 1, y: 0, x: 0 }}
         transition={{ duration: 0.5, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute -right-2 top-[5%] z-20 md:-right-6 md:top-[8%]"
+        className="absolute -right-6 -top-2 z-20 md:-right-16 md:-top-4"
       >
         <motion.div
           animate={!prefersReducedMotion ? { y: [0, -6, 0] } : {}}
@@ -87,7 +87,7 @@ export function HeroDashboard() {
         initial={{ opacity: 0, x: -40 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6, delay: 1.0, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute -left-2 bottom-[18%] z-20 md:-left-4 md:bottom-[22%]"
+        className="absolute -left-6 bottom-[20%] z-20 md:-left-12 md:bottom-[24%]"
       >
         <motion.div
           animate={!prefersReducedMotion ? { y: [0, 5, 0] } : {}}
@@ -109,7 +109,7 @@ export function HeroDashboard() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 1.4 }}
-        className="absolute -bottom-2 left-[8%] z-20 md:-bottom-4 md:left-[10%]"
+        className="absolute -bottom-6 left-[2%] z-20 md:-bottom-8 md:left-[4%]"
       >
         <motion.div
           animate={!prefersReducedMotion ? { y: [0, 4, 0] } : {}}
@@ -131,7 +131,7 @@ export function HeroDashboard() {
         initial={{ opacity: 0, x: -30 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.6, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute -left-1 top-[8%] z-10 md:-left-4 md:top-[12%]"
+        className="absolute -left-4 top-[2%] z-10 md:-left-10 md:top-[4%]"
       >
         <motion.div
           animate={!prefersReducedMotion ? { y: [0, 6, 0] } : {}}
@@ -166,7 +166,7 @@ export function HeroDashboard() {
         initial={{ opacity: 0, scale: 0.7 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 1.6, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute -right-1 bottom-[8%] z-30 md:-right-6 md:bottom-[10%]"
+        className="absolute -right-4 bottom-[4%] z-30 md:-right-12 md:bottom-[6%]"
       >
         <motion.div
           animate={!prefersReducedMotion ? { y: [0, -10, 0] } : {}}

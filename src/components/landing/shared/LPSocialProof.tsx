@@ -92,7 +92,7 @@ export function LPSocialProof({
             </p>
             <p className="mt-3 text-sm font-medium text-brand-dark">
               {testimonial.author}
-              <span className="text-zinc-400"> — {testimonial.role}</span>
+              <span className="text-zinc-400"> - {testimonial.role}</span>
             </p>
           </div>
         )}

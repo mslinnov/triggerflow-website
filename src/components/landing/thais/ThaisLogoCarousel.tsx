@@ -29,7 +29,7 @@ export function ThaisLogoCarousel() {
           viewport={{ once: true }}
           className="text-center text-sm font-medium text-zinc-500 mb-8"
         >
-          Ils nous font confiance — <span className="text-[var(--thais-primary)] font-semibold">200+ hôtels</span>
+          Ils nous font confiance - <span className="text-[var(--thais-primary)] font-semibold">200+ hôtels</span>
         </motion.p>
       </Container>
 

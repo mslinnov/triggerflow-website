@@ -330,7 +330,7 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
               </div>
               <div>
                 <p className="text-[10px] font-semibold text-gray-800">Réponse reçue</p>
-                <p className="text-[8px] text-gray-500">Sophie — il y a 2 min</p>
+                <p className="text-[8px] text-gray-500">Sophie - il y a 2 min</p>
               </div>
             </div>
             <div className="absolute bottom-[5%] right-[2%] animate-[float_3.8s_ease-in-out_infinite_0.3s] flex items-center gap-2.5 rounded-full bg-gray-900/85 px-4 py-2 shadow-lg backdrop-blur-sm">
@@ -638,7 +638,7 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
                       </div>
                       <div>
                         <p className="text-[11px] font-semibold text-gray-800">Email envoyé</p>
-                        <p className="text-[10px] text-gray-500">Confirmation — Ch. 204</p>
+                        <p className="text-[10px] text-gray-500">Confirmation - Ch. 204</p>
                       </div>
                     </motion.div>
                   </motion.div>
@@ -829,7 +829,7 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
                       </div>
                       <div>
                         <p className="text-[11px] font-semibold text-gray-800">Pré-check-in complété</p>
-                        <p className="text-[10px] text-gray-500">L. Martin — Ch. 312</p>
+                        <p className="text-[10px] text-gray-500">L. Martin - Ch. 312</p>
                       </div>
                     </motion.div>
                   </motion.div>
@@ -920,7 +920,7 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
                       </div>
                       <div>
                         <p className="text-[11px] font-semibold text-gray-800">Late checkout acheté</p>
-                        <p className="text-[10px] text-gray-500">Ch. 405 — 35€</p>
+                        <p className="text-[10px] text-gray-500">Ch. 405 - 35€</p>
                       </div>
                     </motion.div>
                   </motion.div>
@@ -1011,7 +1011,7 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
                       </div>
                       <div>
                         <p className="text-[11px] font-semibold text-gray-800">Campagne envoyée</p>
-                        <p className="text-[10px] text-gray-500">Newsletter mars — 2 430 destinataires</p>
+                        <p className="text-[10px] text-gray-500">Newsletter mars - 2 430 destinataires</p>
                       </div>
                     </motion.div>
                   </motion.div>
@@ -1296,7 +1296,7 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
                       </div>
                       <div>
                         <p className="text-[11px] font-semibold text-gray-800">SMS lu en 2 min</p>
-                        <p className="text-[10px] text-gray-500">Sophie D. — Ch. 204</p>
+                        <p className="text-[10px] text-gray-500">Sophie D. - Ch. 204</p>
                       </div>
                     </motion.div>
                   </motion.div>
@@ -1558,7 +1558,7 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
                       </div>
                       <div>
                         <p className="text-[11px] font-semibold text-gray-800">Nouvel avis Google</p>
-                        <p className="text-[10px] text-gray-500">Marie L. — Il y a 2h</p>
+                        <p className="text-[10px] text-gray-500">Marie L. - Il y a 2h</p>
                       </div>
                     </motion.div>
                   </motion.div>
@@ -1643,7 +1643,7 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
                       </div>
                       <div>
                         <p className="text-[11px] font-semibold text-gray-800">Acompte encaissé</p>
-                        <p className="text-[10px] text-gray-500">150€ — Sophie Durand</p>
+                        <p className="text-[10px] text-gray-500">150€ - Sophie Durand</p>
                       </div>
                     </motion.div>
                   </motion.div>

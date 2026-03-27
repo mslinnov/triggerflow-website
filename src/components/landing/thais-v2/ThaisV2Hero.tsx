@@ -138,7 +138,7 @@ export function ThaisV2Hero() {
                 transition={{ delay: 0.3 }}
                 className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-zinc-400 lg:mx-0 md:text-xl"
               >
-                TriggerFlow personnalise automatiquement vos communications selon le profil de chaque client Thaïs —{' '}
+                TriggerFlow personnalise automatiquement vos communications selon le profil de chaque client Thaïs,{' '}
                 <strong className="text-white">sans y passer des heures</strong>.
               </motion.p>
 

@@ -5,7 +5,7 @@ import { Mail, Eye, Euro, Star, TrendingUp } from 'lucide-react';
 
 export function AnalyticsDashboardMockup() {
   return (
-    <BrowserMockup title="Analytics — Dashboard">
+    <BrowserMockup title="Analytics - Dashboard">
       <div className="p-4 min-h-[300px]">
         {/* KPI Cards */}
         <div className="grid grid-cols-4 gap-2 mb-4">
