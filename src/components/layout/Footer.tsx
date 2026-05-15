@@ -46,8 +46,6 @@ const legalLinks = [
   { href: '/mentions-legales', labelKey: 'legal.legalNotice' },
   { href: '/cgv', labelKey: 'legal.terms' },
   { href: '/cgu', labelKey: 'legal.termsOfUse' },
-  { href: '/contrat-prestation', labelKey: 'legal.serviceAgreement' },
-  { href: '/dpa', labelKey: 'legal.dpa' },
   { href: '/politique-confidentialite', labelKey: 'legal.privacy' },
 ] as const;
 

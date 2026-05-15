@@ -50,17 +50,6 @@ export function ThaisFooter() {
             </a>
             <span className="text-zinc-300">•</span>
             <a
-              href="/fr/contrat-prestation"
-              className="transition-colors hover:text-brand-primary"
-            >
-              Contrat de prestation
-            </a>
-            <span className="text-zinc-300">•</span>
-            <a href="/fr/dpa" className="transition-colors hover:text-brand-primary">
-              DPA
-            </a>
-            <span className="text-zinc-300">•</span>
-            <a
               href="/fr/politique-confidentialite"
               className="transition-colors hover:text-brand-primary"
             >

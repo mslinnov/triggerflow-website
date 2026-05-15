@@ -1,6 +1,15 @@
 # Pages légales — guide d'édition
 
-Ce document explique comment maintenir les 6 pages légales du site `trigger-flow.com` : CGV, CGU, mentions légales, politique de confidentialité, contrat de prestation type, et DPA (accord de sous-traitance RGPD).
+Ce document explique comment maintenir les 4 pages légales publiques du site `trigger-flow.com` : CGV, CGU, mentions légales et politique de confidentialité.
+
+## Documents non publiés
+
+Deux documents juridiques existent mais ne sont **pas** publiés sur le site marketing :
+
+- **Contrat de prestation type** : généré à la signature depuis le CRM (template Blade côté `app.trigger-flow.com`), avec les conditions particulières du client.
+- **DPA (accord de sous-traitance RGPD)** : annexé manuellement au contrat signé, communiqué aux clients qui le demandent.
+
+Ces deux documents ne doivent pas réapparaître publiquement sans validation juridique préalable. Pour les republier ultérieurement, suivre la procédure « Ajouter une nouvelle page légale » plus bas.
 
 ## Vue d'ensemble
 
@@ -13,8 +22,6 @@ content/legal/
     cgu.mdx
     mentions-legales.mdx
     politique-confidentialite.mdx
-    contrat-prestation.mdx
-    dpa.mdx
   en/   (pas encore livré — fallback FR automatique)
 
 src/lib/legal.ts                                # loader MDX (gray-matter, sync)
