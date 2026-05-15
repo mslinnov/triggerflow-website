@@ -47,6 +47,17 @@ export function ThaisV2Footer() {
             </a>
             <span className="text-zinc-700">•</span>
             <a
+              href="/fr/contrat-prestation"
+              className="transition-colors hover:text-white"
+            >
+              Contrat de prestation
+            </a>
+            <span className="text-zinc-700">•</span>
+            <a href="/fr/dpa" className="transition-colors hover:text-white">
+              DPA
+            </a>
+            <span className="text-zinc-700">•</span>
+            <a
               href="/fr/politique-confidentialite"
               className="transition-colors hover:text-white"
             >

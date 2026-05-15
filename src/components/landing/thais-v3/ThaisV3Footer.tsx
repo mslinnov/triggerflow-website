@@ -47,6 +47,17 @@ export function ThaisV3Footer() {
             </a>
             <span className="text-[var(--v3-border)]">•</span>
             <a
+              href="/fr/contrat-prestation"
+              className="transition-colors hover:text-[var(--v3-text-primary)]"
+            >
+              Contrat de prestation
+            </a>
+            <span className="text-[var(--v3-border)]">•</span>
+            <a href="/fr/dpa" className="transition-colors hover:text-[var(--v3-text-primary)]">
+              DPA
+            </a>
+            <span className="text-[var(--v3-border)]">•</span>
+            <a
               href="/fr/politique-confidentialite"
               className="transition-colors hover:text-[var(--v3-text-primary)]"
             >
