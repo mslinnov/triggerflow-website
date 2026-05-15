@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { getAllArticles, getSilos } from '@/lib/blog';
 import { getAllLandingPages } from '@/lib/landing-pages';
+import { getAllLegalSlugs, getLegalDoc } from '@/lib/legal';
 import { moduleSlugs } from '@/data/modules';
 import { solutionSlugs } from '@/data/solutions';
 
@@ -23,10 +24,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { frPath: '/fr/ressources/aide', enPath: '/en/ressources/aide', priority: 0.5, changeFrequency: 'monthly' as const },
     { frPath: '/fr/ressources/cas-clients', enPath: '/en/ressources/cas-clients', priority: 0.6, changeFrequency: 'monthly' as const },
     { frPath: '/fr/ressources/guides', enPath: '/en/ressources/guides', priority: 0.5, changeFrequency: 'monthly' as const },
-    { frPath: '/fr/mentions-legales', enPath: '/en/legal-notice', priority: 0.3, changeFrequency: 'yearly' as const },
-    { frPath: '/fr/cgv', enPath: '/en/terms-of-sale', priority: 0.3, changeFrequency: 'yearly' as const },
-    { frPath: '/fr/cgu', enPath: '/en/terms-of-use', priority: 0.3, changeFrequency: 'yearly' as const },
-    { frPath: '/fr/politique-confidentialite', enPath: '/en/privacy-policy', priority: 0.3, changeFrequency: 'yearly' as const },
   ];
 
   for (const page of staticPages) {
@@ -200,6 +197,37 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
       alternates: { languages: { en: enUrl } },
     });
+  }
+
+  // ─── Legal pages ────────────────────────────────────────────
+  // Slugs FR identiques sur les 2 locales (pas de pathnames localises).
+  // En attendant les versions EN traduites, /en/<slug> sert le contenu
+  // FR en fallback (cf. src/lib/legal.ts).
+  for (const slug of getAllLegalSlugs()) {
+    const doc = getLegalDoc(slug, 'fr');
+    const legalLastModified = doc?.frontmatter.lastUpdated
+      ? new Date(doc.frontmatter.lastUpdated)
+      : lastModified;
+
+    const frUrl = `${baseUrl}/fr/${slug}`;
+    const enUrl = `${baseUrl}/en/${slug}`;
+
+    sitemapEntries.push(
+      {
+        url: frUrl,
+        lastModified: legalLastModified,
+        changeFrequency: 'yearly',
+        priority: 0.3,
+        alternates: { languages: { fr: frUrl, en: enUrl } },
+      },
+      {
+        url: enUrl,
+        lastModified: legalLastModified,
+        changeFrequency: 'yearly',
+        priority: 0.2,
+        alternates: { languages: { fr: frUrl, en: enUrl } },
+      }
+    );
   }
 
   // ─── Landing pages (exclude noindex) ─────────────────────────
