@@ -2077,5 +2077,28 @@
         "description": "Taux d'ouverture, revenus additionnels, satisfaction client : des tableaux de bord clairs pour piloter vos actions."
       }
     }
+  },
+  "cookies": {
+    "banner": {
+      "ariaLabel": "Bandeau de gestion des cookies",
+      "message": "Nous utilisons des cookies pour mesurer l'audience du site et en améliorer le contenu. Vous pouvez accepter, refuser ou personnaliser votre choix à tout moment.",
+      "accept": "Accepter",
+      "reject": "Refuser",
+      "customize": "Personnaliser",
+      "learnMore": "En savoir plus"
+    },
+    "modal": {
+      "title": "Préférences de cookies",
+      "close": "Fermer",
+      "necessary": "Cookies strictement nécessaires",
+      "necessaryDesc": "Indispensables au fonctionnement du site, à la sécurité et à la mémorisation de vos préférences (langue, consentement). Ils sont activés par défaut et ne peuvent pas être désactivés.",
+      "analytics": "Cookies de mesure d'audience",
+      "analyticsDesc": "Google Analytics nous permet de mesurer la fréquentation du site et d'améliorer son contenu. Les données sont anonymisées (IP tronquée).",
+      "save": "Enregistrer mes préférences",
+      "acceptAll": "Tout accepter"
+    },
+    "manager": {
+      "link": "Gérer mes cookies"
+    }
   }
 }

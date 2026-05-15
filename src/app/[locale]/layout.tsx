@@ -2,11 +2,11 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import Script from 'next/script';
 import { IBM_Plex_Sans, Geist_Mono, Fraunces } from 'next/font/google';
 import { routing } from '@/i18n/routing';
+import { CookieConsentBanner } from '@/components/cookies';
+import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics';
 
-const GA_MEASUREMENT_ID = 'G-MD02XP125T';
 const baseUrl = 'https://www.trigger-flow.com';
 
 const ibmPlexSans = IBM_Plex_Sans({
@@ -142,24 +142,12 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <head>
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_MEASUREMENT_ID}');
-          `}
-        </Script>
-      </head>
       <body className={`${ibmPlexSans.variable} ${geistMono.variable} ${fraunces.variable} antialiased`}>
         <NextIntlClientProvider messages={messages}>
           {children}
+          <CookieConsentBanner />
         </NextIntlClientProvider>
+        <GoogleAnalytics />
       </body>
     </html>
   );

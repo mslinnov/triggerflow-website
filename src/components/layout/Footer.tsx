@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { Linkedin, Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
 import { useNewsletter } from '@/lib/hooks/useNewsletter';
 import { Container } from '@/components/ui';
+import { CookieManagerLink } from '@/components/cookies';
 import { cn } from '@/lib/utils';
 
 // Product links to individual module pages
@@ -208,6 +209,9 @@ export function Footer() {
                     </Link>
                   </li>
                 ))}
+                <li>
+                  <CookieManagerLink className="text-left text-sm text-white/50 transition-colors hover:text-white" />
+                </li>
               </ul>
             </div>
           </div>

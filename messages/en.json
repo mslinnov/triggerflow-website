@@ -2069,5 +2069,28 @@
         "description": "Open rates, ancillary revenue, guest satisfaction — clear dashboards to drive your actions."
       }
     }
+  },
+  "cookies": {
+    "banner": {
+      "ariaLabel": "Cookie consent banner",
+      "message": "We use cookies to measure site audience and improve content. You can accept, decline, or customize your choice at any time.",
+      "accept": "Accept",
+      "reject": "Decline",
+      "customize": "Customize",
+      "learnMore": "Learn more"
+    },
+    "modal": {
+      "title": "Cookie preferences",
+      "close": "Close",
+      "necessary": "Strictly necessary cookies",
+      "necessaryDesc": "Essential to the site to function, for security and to remember your preferences (language, consent). Always active.",
+      "analytics": "Analytics cookies",
+      "analyticsDesc": "Google Analytics helps us measure site traffic and improve content. Data is anonymized (truncated IP).",
+      "save": "Save preferences",
+      "acceptAll": "Accept all"
+    },
+    "manager": {
+      "link": "Manage cookies"
+    }
   }
 }
