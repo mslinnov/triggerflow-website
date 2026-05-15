@@ -375,7 +375,10 @@
       "communication": {
         "title": "Multichannel Communication",
         "description": "Email, SMS, WhatsApp unified in one inbox. Zero messages lost.",
-        "highlights": ["Unified inbox", "Customizable templates"]
+        "highlights": [
+          "Unified inbox",
+          "Customizable templates"
+        ]
       },
       "automation": {
         "title": "Workflows & Automation",
@@ -388,17 +391,26 @@
       "forms": {
         "title": "Smart Forms",
         "description": "Pre-check-in, surveys, preferences. 3x response rate with automated delivery.",
-        "highlights": ["Automated pre-check-in", "Satisfaction surveys"]
+        "highlights": [
+          "Automated pre-check-in",
+          "Satisfaction surveys"
+        ]
       },
       "upsell": {
         "title": "Upselling",
         "description": "Upgrades, spa, late check-out: the right offer to the right guest, at the right time.",
-        "highlights": ["Built-in offer catalog", "Targeted delivery at the right time"]
+        "highlights": [
+          "Built-in offer catalog",
+          "Targeted delivery at the right time"
+        ]
       },
       "reviews": {
         "title": "Review Management",
         "description": "Collect 5x more positive reviews. Filter unhappy guests before they publish.",
-        "highlights": ["Automated review collection", "Real-time dissatisfaction alerts"]
+        "highlights": [
+          "Automated review collection",
+          "Real-time dissatisfaction alerts"
+        ]
       },
       "analytics": {
         "title": "Analytics & Reports",
@@ -604,10 +616,28 @@
     "title": "Real impact on your operations",
     "subtitle": "Measured results across our hotel clients",
     "metrics": {
-      "timeSaved": { "value": "10", "suffix": "h", "label": "saved per week" },
-      "checkinRate": { "value": "73", "suffix": "%", "label": "online check-in rate" },
-      "upsellRevenue": { "value": "17", "prefix": "+", "suffix": "%", "label": "average basket increase" },
-      "reviewsBoost": { "value": "45", "prefix": "+", "suffix": "%", "label": "Google reviews" }
+      "timeSaved": {
+        "value": "10",
+        "suffix": "h",
+        "label": "saved per week"
+      },
+      "checkinRate": {
+        "value": "73",
+        "suffix": "%",
+        "label": "online check-in rate"
+      },
+      "upsellRevenue": {
+        "value": "17",
+        "prefix": "+",
+        "suffix": "%",
+        "label": "average basket increase"
+      },
+      "reviewsBoost": {
+        "value": "45",
+        "prefix": "+",
+        "suffix": "%",
+        "label": "Google reviews"
+      }
     }
   },
   "integrationsShowcase": {
@@ -626,35 +656,50 @@
         "name": "Sandrine Surrel",
         "title": "Director, Nature Cathare",
         "initials": "SS",
-        "metric": { "value": "+45%", "label": "Google reviews" }
+        "metric": {
+          "value": "+45%",
+          "label": "Google reviews"
+        }
       },
       {
         "quote": "In 3 months, we generated €25,000 in additional sales through automated upsell campaigns. The ROI is immediate.",
         "name": "Marc Dubois",
         "title": "Revenue Manager, Hôtel & Spa Le Pavillon",
         "initials": "MD",
-        "metric": { "value": "€25K", "label": "additional revenue" }
+        "metric": {
+          "value": "€25K",
+          "label": "additional revenue"
+        }
       },
       {
         "quote": "The time savings are impressive. Our receptionists focus on welcoming guests instead of admin tasks. 10 hours saved per week.",
         "name": "Alice Renaud",
         "title": "Operations Director, Les Jardins d'Aliénor",
         "initials": "AR",
-        "metric": { "value": "10h", "label": "saved / week" }
+        "metric": {
+          "value": "10h",
+          "label": "saved / week"
+        }
       },
       {
         "quote": "Online check-in changed everything. 73% of our guests use it and the reception queue has virtually disappeared.",
         "name": "Jean-Philippe Moret",
         "title": "General Manager, Grand Hôtel des Thermes",
         "initials": "JM",
-        "metric": { "value": "73%", "label": "online check-in" }
+        "metric": {
+          "value": "73%",
+          "label": "online check-in"
+        }
       },
       {
         "quote": "Our Booking score went from 8.2 to 9.1 in 6 months thanks to pre-publication surveys. TriggerFlow filters unhappy guests before they post.",
         "name": "Sophie Lefèvre",
         "title": "Quality Manager, Groupe Hôtels Patrimoine",
         "initials": "SL",
-        "metric": { "value": "8.2 → 9.1", "label": "Booking score" }
+        "metric": {
+          "value": "8.2 → 9.1",
+          "label": "Booking score"
+        }
       }
     ]
   },
@@ -680,7 +725,10 @@
         "description": "A dedicated contact who knows your hotel and helps you optimize your results."
       }
     },
-    "satisfaction": { "value": "9.4/10", "label": "Customer satisfaction" }
+    "satisfaction": {
+      "value": "9.4/10",
+      "label": "Customer satisfaction"
+    }
   },
   "stickyMobileCta": {
     "label": "Book a demo"
@@ -787,289 +835,6 @@
     "privacyLink": "Privacy Policy",
     "success": "Thank you! You are subscribed to our newsletter.",
     "error": "An error occurred. Please try again."
-  },
-  "legalPages": {
-    "legalNotice": {
-      "meta": {
-        "title": "Legal Notice | TriggerFlow",
-        "description": "Legal notice and company information for TriggerFlow."
-      },
-      "title": "Legal Notice",
-      "lastUpdate": "Last modified on 04/02/2025",
-      "sections": {
-        "editor": {
-          "title": "1. Site Publisher",
-          "intro": "The Trigger Flow website is published by:",
-          "companyName": "Utelys",
-          "legalForm": "Legal form",
-          "legalFormValue": "SAS (Simplified Joint-Stock Company)",
-          "capital": "Share capital",
-          "capitalValue": "€24,000",
-          "address": "Registered office",
-          "addressValue": "13 Rue Sainte Ursule, 31000 Toulouse, France",
-          "rcs": "RCS",
-          "rcsValue": "Toulouse 842 608 671",
-          "vat": "EU VAT number",
-          "vatValue": "FR11842608671",
-          "email": "Email",
-          "emailValue": "contact@utelys.fr",
-          "phone": "Phone",
-          "phoneValue": "+33 5 54 54 48 52",
-          "director": "Publication director",
-          "directorValue": "Mounir LAKHFIF"
-        },
-        "hosting": {
-          "title": "2. Hosting",
-          "intro": "The website is hosted by:",
-          "providerName": "Webflow, Inc.",
-          "address": "Address",
-          "addressValue": "398 11th Street, 2nd Floor, San Francisco, CA 94103, USA",
-          "website": "Website",
-          "websiteValue": "www.webflow.com"
-        },
-        "intellectual": {
-          "title": "3. Intellectual Property",
-          "content": "All content on the Trigger Flow website (texts, images, graphics, logos, videos, icons, etc.) is protected by applicable intellectual property laws. Any reproduction, modification or publication is strictly prohibited without prior written consent from Utelys."
-        },
-        "data": {
-          "title": "4. Personal Data and Cookies",
-          "content": "The site collects certain data in accordance with its privacy policy. Users can access, modify or delete their data by contacting contact@utelys.fr. Cookies enhance user experience and analyze site traffic."
-        },
-        "responsibility": {
-          "title": "5. Liability",
-          "content": "Utelys makes every effort to ensure the accuracy of information published on the site. The company cannot be held responsible for omissions or inaccuracies. Users assume responsibility for the use of information provided."
-        },
-        "links": {
-          "title": "6. Hyperlinks",
-          "content": "The site may contain external links. Utelys cannot be held responsible for the content of third-party websites."
-        },
-        "jurisdiction": {
-          "title": "7. Applicable Law and Jurisdiction",
-          "content": "These legal notices are governed by French law. In case of dispute, the courts of the registered office of Utelys shall have jurisdiction."
-        }
-      }
-    },
-    "terms": {
-      "meta": {
-        "title": "Terms of Sale | TriggerFlow",
-        "description": "General terms of sale for TriggerFlow services - Subscriptions, payments, termination."
-      },
-      "title": "Terms of Sale",
-      "lastUpdate": "Last modified on 11/02/2025",
-      "sections": {
-        "object": {
-          "title": "Article 1 – Purpose and Enforceability",
-          "content": "These Terms of Sale define the conditions for subscribing to and paying for the subscription plans of the \"Trigger Flow\" Platform. They apply to all professional CLIENTS. Any order implies full and unconditional acceptance of these Terms."
-        },
-        "offers": {
-          "title": "Article 2 – Plans and Subscriptions",
-          "formulasTitle": "2.1 Plans",
-          "formulaDiscovery": "Discovery: €0/month",
-          "formulaCommunication": "Communication: €69/month",
-          "formulaConversion": "Conversion: €149/month",
-          "formulaAllInclusive": "All Inclusive: €249/month",
-          "commissionTitle": "2.2 Sales Pages Commission",
-          "commissionContent": "Transactions generated through the Platform are subject to a commission (between 5% and 15%). Amounts owed to the CLIENT are paid after commission deduction, on a weekly basis."
-        },
-        "orders": {
-          "title": "Article 3 – Orders and Payment",
-          "processTitle": "3.1 Order Process",
-          "processContent": "The CLIENT subscribes to their chosen plan online, via credit card. Billing information must be accurate.",
-          "pricingTitle": "3.2 Pricing and Invoicing",
-          "pricingContent": "Prices are indicated in euros excluding tax. Monthly or annual subscriptions are payable in advance. Invoices are sent electronically.",
-          "refundTitle": "3.3 Refund Policy",
-          "refundContent": "Except for legal obligations (e.g., right of withdrawal for certain distance sales if eligible), no refund is granted in case of early termination. Amounts already paid remain acquired by the PROVIDER."
-        },
-        "duration": {
-          "title": "Article 4 – Duration and Termination",
-          "initialTitle": "4.1 Initial Duration",
-          "initialContent": "The contract is concluded for 12 months, tacitly renewable.",
-          "terminationTitle": "4.2 Termination",
-          "terminationContent": "See Service Agreement (Article 7). Any early termination for serious breach does not entitle to a refund.",
-          "consequencesTitle": "4.3 Consequences",
-          "consequencesContent": "The CLIENT may request data export before the effective end date. The PROVIDER deletes data at contract expiry (unless legally required otherwise)."
-        },
-        "liability": {
-          "title": "Article 5 – Liability",
-          "obligationTitle": "5.1 Best Efforts Obligation",
-          "obligationContent": "The PROVIDER makes all reasonable efforts to provide the Platform, without guaranteeing the absence of bugs or the expected marketing effectiveness.",
-          "limitationsTitle": "5.2 Limitations",
-          "limitationsContent": "The PROVIDER shall not be held liable for indirect damages. The compensation cap is limited to the amounts paid by the CLIENT over the last 12 months."
-        },
-        "revision": {
-          "title": "Article 6 – Revision of Terms",
-          "content": "The PROVIDER reserves the right to modify the Terms, subject to informing the CLIENT (email, notification). Modified Terms will apply to subsequent renewals, unless the CLIENT refuses and terminates before the deadline."
-        },
-        "jurisdiction": {
-          "title": "Article 7 – Applicable Law and Disputes",
-          "content": "These Terms are governed by French law. Disputes fall under the jurisdiction of the courts of Toulouse."
-        }
-      }
-    },
-    "termsOfUse": {
-      "meta": {
-        "title": "Terms of Use | TriggerFlow",
-        "description": "General terms of use for the TriggerFlow platform."
-      },
-      "title": "Terms of Use",
-      "lastUpdate": "Last modified on 01/02/2025",
-      "sections": {
-        "object": {
-          "title": "Article 1 – Purpose",
-          "content": "These Terms of Use govern access to and use of the \"Trigger Flow\" platform available at app.trigger-flow.com. Acceptance of the Terms of Use, Terms of Sale and Service Agreement is mandatory."
-        },
-        "services": {
-          "title": "Article 2 – Services and Modifications",
-          "descriptionTitle": "2.1 Description",
-          "descriptionContent": "The Platform offers marketing automation features: segment creation, email/SMS sending, sales pages, etc.",
-          "modificationTitle": "2.2 Service Modification",
-          "modificationContent": "The PROVIDER reserves the right to modify or discontinue all or part of the Services at any time, without notice, particularly for technical or commercial reasons."
-        },
-        "account": {
-          "title": "Article 3 – Account Creation and Use",
-          "registrationTitle": "3.1 Registration",
-          "registrationContent": "Clients must provide accurate and up-to-date information (company name, email, etc.) and are responsible for the confidentiality of their credentials.",
-          "complianceTitle": "3.2 Compliant Use",
-          "complianceContent": "The CLIENT agrees to comply with all applicable regulations: anti-spam legislation, GDPR, consumer rights.",
-          "betaTitle": "3.3 \"Beta\" Features",
-          "betaContent": "Experimental features are provided \"as is\", without warranty, and may be modified or removed without notice."
-        },
-        "intellectual": {
-          "title": "Article 4 – Intellectual Property",
-          "content": "The Trigger Flow platform remains the exclusive property of the provider. Clients do not acquire any intellectual property rights over the software, trademarks or logos."
-        },
-        "data": {
-          "title": "Article 5 – Personal Data",
-          "controllerTitle": "5.1 Data Controller",
-          "controllerContent": "The CLIENT is responsible for data they import or collect through the Platform. The provider acts as a data processor in accordance with the GDPR Annex.",
-          "securityTitle": "5.2 Security",
-          "securityContent": "The provider implements technical measures to secure data, without guaranteeing absolute infallibility."
-        },
-        "liability": {
-          "title": "Article 6 – Limitation of Liability",
-          "availabilityTitle": "6.1 Availability",
-          "availabilityContent": "The Platform is accessible \"as is\" and \"subject to availability\". No continuous availability is guaranteed.",
-          "warrantiesTitle": "6.2 Disclaimer of Warranties",
-          "warrantiesContent": "The provider disclaims express or implied warranties, particularly regarding merchantability or fitness for a particular purpose.",
-          "indemnificationTitle": "6.3 Indemnification",
-          "indemnificationContent": "The CLIENT indemnifies the PROVIDER against any claims related to non-compliant use of the Platform."
-        },
-        "modifications": {
-          "title": "Article 7 – Modification of Terms",
-          "content": "The provider may modify these Terms at any time. Major changes will be notified."
-        },
-        "jurisdiction": {
-          "title": "Article 8 – Applicable Law and Disputes",
-          "content": "These Terms are governed by French law. Any dispute shall be submitted to the competent courts of Toulouse."
-        }
-      }
-    },
-    "privacy": {
-      "meta": {
-        "title": "Privacy Policy | TriggerFlow",
-        "description": "TriggerFlow privacy policy - Personal data protection and user rights."
-      },
-      "title": "Privacy Policy",
-      "lastUpdate": "Last modified on 11/02/2025",
-      "sections": {
-        "controller": {
-          "title": "1. Data Controller Identification",
-          "company": "Company name",
-          "companyValue": "Utelys (SAS with share capital of €28,000)",
-          "rcs": "RCS",
-          "rcsValue": "842 608 671 Toulouse",
-          "address": "Registered office",
-          "addressValue": "13 rue Saint Ursule, 31000 Toulouse, France",
-          "representative": "Legal representative",
-          "representativeValue": "Mr. Mounir LAKHFIF",
-          "dpo": "Contact (DPO)",
-          "dpoValue": "privacy@utelys.fr"
-        },
-        "dataCollected": {
-          "title": "2. Personal Data Collected",
-          "platformTitle": "2.1 Data collected via Trigger Flow",
-          "platformContent": "Client company name, first name, last name, professional email address, phone number. Payment information processed by Stripe (no direct storage of bank details).",
-          "usageTitle": "2.2 Usage and navigation data",
-          "usageContent": "Google Analytics (IP addresses, pages visited, visit duration). Facebook Pixel (audience measurement and retargeting)."
-        },
-        "purposes": {
-          "title": "3. Purposes of Processing",
-          "item1": "Manage client accounts",
-          "item2": "Provide customer support",
-          "item3": "Handle billing and payment processing",
-          "item4": "Analyze audience and compile statistics",
-          "item5": "Comply with legal and regulatory obligations"
-        },
-        "legalBasis": {
-          "title": "4. Legal Basis for Processing",
-          "item1": "Contract performance (registration, use, billing)",
-          "item2": "Legitimate interest (audience analysis, service improvement)",
-          "item3": "Legal obligations (accounting, taxation)"
-        },
-        "recipients": {
-          "title": "5. Data Recipients",
-          "subprocessorsTitle": "5.1 Subprocessors and service providers",
-          "hosting": "Hosting: Digital Ocean (EU)",
-          "emails": "Emails: Mailgun",
-          "sms": "SMS: Gateway API",
-          "payment": "Payment: Stripe",
-          "analytics": "Analytics: Google Analytics, Facebook Pixel",
-          "transfersTitle": "5.2 Transfers outside the EU",
-          "transfersContent": "Appropriate safeguards are in place (European Commission Standard Contractual Clauses or equivalent)."
-        },
-        "retention": {
-          "title": "6. Data Retention",
-          "account": "Account data: as long as the account is active + 3 years after last activity, then deletion/archiving.",
-          "billing": "Billing data: 10 years (legal obligations).",
-          "analyticsData": "Logs and analytics: in accordance with Google Analytics settings (generally 14 months)."
-        },
-        "rights": {
-          "title": "7. User Rights",
-          "intro": "In accordance with the GDPR and French legislation:",
-          "item1": "Right of access",
-          "item2": "Right to rectification",
-          "item3": "Right to erasure (\"right to be forgotten\")",
-          "item4": "Right to restriction of processing",
-          "item5": "Right to object",
-          "item6": "Right to data portability",
-          "item7": "Withdrawal of consent",
-          "contactTitle": "To exercise your rights:",
-          "contactEmail": "Email: privacy@utelys.fr",
-          "contactAddress": "Mail: Utelys, 13 rue Saint Ursule, 31000 Toulouse, France",
-          "responseTime": "Response time: 1 month (extendable by 2 months).",
-          "recourse": "Recourse: contact the supervisory authority (CNIL in France: www.cnil.fr)."
-        },
-        "security": {
-          "title": "8. Data Security",
-          "item1": "HTTPS protocol to secure exchanges",
-          "item2": "Strict access control and protected passwords",
-          "item3": "Limitation of access rights",
-          "item4": "Regular backups and encryption when necessary",
-          "item5": "Notification in case of data breach"
-        },
-        "cookies": {
-          "title": "9. Cookies and Trackers",
-          "intro": "Cookies are used for:",
-          "item1": "Proper functioning of the site",
-          "item2": "Audience measurement (Google Analytics)",
-          "item3": "Advertising and retargeting (Facebook Pixel)",
-          "consent": "A consent banner is displayed on first visit. You can configure cookies in your browser settings."
-        },
-        "b2b": {
-          "title": "10. B2B Services / Minors",
-          "content": "Services are intended for professionals (hospitality, food service). No intentional targeting of minors."
-        },
-        "updates": {
-          "title": "11. Policy Updates",
-          "content": "Revisions may occur to reflect evolving practices. The last update date is visible at the top of the document."
-        },
-        "contact": {
-          "title": "12. Contact",
-          "email": "Email: privacy@utelys.fr",
-          "address": "Postal address: Utelys, 13 rue Saint Ursule, 31000 Toulouse, France"
-        }
-      }
-    }
   },
   "pricing": {
     "meta": {

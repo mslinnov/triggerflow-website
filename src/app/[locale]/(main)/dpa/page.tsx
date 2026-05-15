@@ -12,11 +12,11 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale } = await params;
-  return buildLegalMetadata('politique-confidentialite', locale);
+  return buildLegalMetadata('dpa', locale);
 }
 
-export default async function PolitiqueConfidentialitePage({ params }: PageProps) {
+export default async function DpaPage({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
-  return <LegalPageRenderer slug="politique-confidentialite" locale={locale} />;
+  return <LegalPageRenderer slug="dpa" locale={locale} />;
 }
