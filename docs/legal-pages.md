@@ -27,8 +27,17 @@ content/legal/
 src/lib/legal.ts                                # loader MDX (gray-matter, sync)
 src/components/legal/LegalPageLayout.tsx        # wrapper visuel commun
 src/components/legal/LegalPageRenderer.tsx      # rendu MDX + buildLegalMetadata
-src/app/[locale]/(main)/<slug>/page.tsx         # 6 routes, ~20 lignes chacune
+src/app/[locale]/(main)/<slug>/page.tsx         # 4 routes, ~20 lignes chacune
 ```
+
+### Versions en vigueur
+
+| Document | Version | En vigueur depuis |
+|---|---|---|
+| CGV | 2.0 | 2026-05-15 |
+| CGU | 2.0 | 2026-05-14 |
+| Politique de confidentialité | 2.0 | 2026-05-15 |
+| Mentions légales | 1.0 | 2025-02-04 |
 
 Chaque `page.tsx` se limite à : récupérer la locale, appeler `setRequestLocale`, déléguer à `LegalPageRenderer`. La metadata Next.js (title, description, canonical, hreflang) est générée par `buildLegalMetadata`.
 
@@ -117,7 +126,59 @@ Les pages légales utilisent les classes Tailwind `prose prose-zinc max-w-3xl` (
 
 Le wrapper extérieur est `<section className="bg-white py-24 md:py-32">` (pas `<main>`, car le route group `(main)` enveloppe déjà le contenu dans un `<main>`).
 
-## Points connus à corriger ultérieurement
+## Module de consentement cookies
 
-- L'hébergeur dans `mentions-legales.mdx` est toujours déclaré « Webflow, Inc. » — à mettre à jour pour refléter le passage à Cloudflare Pages, lors d'une révision juridique.
-- Les valeurs « Capital social » et « Siège social » divergent légèrement entre `mentions-legales.mdx` (24 000 €, « 13 Rue Sainte Ursule ») et les autres documents (28 000 €, « 13 rue Saint-Ursule »). Convergence à faire à la prochaine refonte juridique.
+Le site implémente un bandeau de consentement maison (sans outil tiers payant) conforme aux recommandations CNIL. Fichiers concernés :
+
+```
+src/lib/cookies.ts                                    # localStorage + event bus
+src/components/cookies/CookieConsentBanner.tsx        # bandeau fixed bottom
+src/components/cookies/CookiePreferencesModal.tsx     # modale toggles par catégorie
+src/components/cookies/CookieManagerLink.tsx          # lien "Gérer mes cookies"
+src/components/analytics/GoogleAnalytics.tsx          # chargement conditionnel GA
+src/app/[locale]/layout.tsx                           # intégration banner + GA
+src/components/layout/Footer.tsx                      # lien manager dans footer
+```
+
+### Stockage du consentement
+
+- **Clé localStorage** : `tf_cookie_consent`
+- **Shape** : `{ analytics: boolean, timestamp: ISO 8601, version: "1.0" }`
+- **Durée de validité** : 6 mois. Au-delà, le bandeau réapparaît.
+- **Invalidation globale** : bumper la constante `CONSENT_VERSION` dans `src/lib/cookies.ts` (ex. quand on ajoute une nouvelle catégorie de cookies). Tous les anciens consents sont alors considérés comme expirés.
+
+### Garanties CNIL
+
+- Google Analytics n'est **jamais** chargé tant que `analytics` n'est pas explicitement à `true` (ni script `googletagmanager.com`, ni cookies `_ga*`).
+- Les boutons « Accepter » et « Refuser » ont la même visibilité (CNIL exige l'équivalence visuelle).
+- Le visiteur peut changer d'avis à tout moment via le lien « Gérer mes cookies » en pied de page.
+- En cas de refus après acceptation, les cookies `_ga`, `_gid`, `_gat`, `_ga_*` sont supprimés immédiatement et `window['ga-disable-<ID>'] = true` est posé pour empêcher tout nouveau hit.
+
+### Configuration GA
+
+L'ID de mesure est lu depuis la variable d'environnement `NEXT_PUBLIC_GA_MEASUREMENT_ID`. **Cette variable doit être définie côté infra AVANT `npm run build`** (les variables `NEXT_PUBLIC_*` sont bake-in au build). Si elle est absente, le composant `GoogleAnalytics` ne fait rien (pas d'erreur, mais aucune mesure).
+
+Sur le VPS de prod, ajouter dans `/var/www/triggerflow-website/.env.production.local` (ou équivalent PM2 ecosystem) :
+
+```
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+```
+
+## Sous-traitants à maintenir
+
+La liste des sous-traitants est déclarée dans `politique-confidentialite.mdx` (section 5.1). À chaque ajout ou retrait d'un service tiers traitant des données personnelles, mettre à jour le tableau et bumper `lastUpdated` du fichier.
+
+Liste actuelle (V2.0) :
+
+| Catégorie | Prestataire | Localisation |
+|---|---|---|
+| Hébergement infrastructure | DigitalOcean | UE |
+| Envoi d'emails | Mailgun | UE |
+| Envoi de SMS | Twilio, Gateway API | UE / international |
+| Paiement par carte | Stripe | UE (Irlande) |
+| Prélèvements SEPA | GoCardless | UE / Royaume-Uni |
+| Mesure d'audience | Google Analytics | États-Unis |
+
+## TODOs
+
+- **Migration analytics (non bloquant)** : envisager le passage de Google Analytics vers Plausible, Simple Analytics ou Matomo cloud. Ces solutions ne déposent pas de cookies (ou uniquement first-party non identifiants), ce qui supprime le besoin de consentement préalable et simplifie la conformité CNIL. Impact technique mineur (changement du composant `GoogleAnalytics`).
