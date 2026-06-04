@@ -48,6 +48,7 @@ const legalLinks = [
   { href: '/cgv', labelKey: 'legal.terms' },
   { href: '/cgu', labelKey: 'legal.termsOfUse' },
   { href: '/politique-confidentialite', labelKey: 'legal.privacy' },
+  { href: '/dpa', labelKey: 'legal.dpa' },
 ] as const;
 
 export function Footer() {

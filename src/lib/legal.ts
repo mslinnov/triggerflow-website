@@ -25,6 +25,7 @@ const KNOWN_SLUGS = [
   'cgu',
   'mentions-legales',
   'politique-confidentialite',
+  'dpa',
 ] as const;
 
 export type LegalSlug = (typeof KNOWN_SLUGS)[number];

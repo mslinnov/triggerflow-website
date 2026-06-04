@@ -1,8 +1,17 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { MDXRemote } from 'next-mdx-remote/rsc';
+import remarkGfm from 'remark-gfm';
+import rehypeSlug from 'rehype-slug';
 import { LegalPageLayout } from './LegalPageLayout';
 import { Callout, InternalLink } from '@/components/mdx';
+import {
+  LegalTable,
+  LegalThead,
+  LegalTr,
+  LegalTh,
+  LegalTd,
+} from './LegalTable';
 import { getLegalDoc, type LegalSlug } from '@/lib/legal';
 import type { Locale } from '@/i18n/routing';
 
@@ -11,6 +20,18 @@ const BASE_URL = 'https://www.trigger-flow.com';
 const legalMdxComponents = {
   Callout,
   InternalLink,
+  table: LegalTable,
+  thead: LegalThead,
+  tr: LegalTr,
+  th: LegalTh,
+  td: LegalTd,
+};
+
+const mdxOptions = {
+  mdxOptions: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [rehypeSlug],
+  },
 };
 
 interface LegalPageRendererProps {
@@ -32,7 +53,11 @@ export async function LegalPageRenderer({ slug, locale }: LegalPageRendererProps
       effectiveDate={doc.frontmatter.effectiveDate}
       lastUpdated={doc.frontmatter.lastUpdated}
     >
-      <MDXRemote source={doc.content} components={legalMdxComponents} />
+      <MDXRemote
+        source={doc.content}
+        components={legalMdxComponents}
+        options={mdxOptions}
+      />
     </LegalPageLayout>
   );
 }

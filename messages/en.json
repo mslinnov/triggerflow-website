@@ -817,7 +817,8 @@
       "legalNotice": "Legal Notice",
       "terms": "Terms of Sale",
       "termsOfUse": "Terms of Use",
-      "privacy": "Privacy Policy"
+      "privacy": "Privacy Policy",
+      "dpa": "Data Processing Agreement (DPA)"
     },
     "newsletter": {
       "title": "Newsletter",
