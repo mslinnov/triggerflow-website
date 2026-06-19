@@ -41,7 +41,8 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
   };
 
   return {
-    title: titles[locale] ?? titles.fr,
+    // Le titre contient déjà la marque → `absolute` pour éviter le doublon « … | TriggerFlow | TriggerFlow ».
+    title: { absolute: titles[locale] ?? titles.fr },
     description: descriptions[locale] ?? descriptions.fr,
     openGraph: {
       title: titles[locale] ?? titles.fr,
@@ -50,8 +51,9 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
     alternates: {
       canonical: `${baseUrl}/${locale}`,
       languages: {
-        'fr-FR': `${baseUrl}/fr`,
-        'en-US': `${baseUrl}/en`,
+        fr: `${baseUrl}/fr`,
+        en: `${baseUrl}/en`,
+        'x-default': `${baseUrl}/fr`,
       },
     },
   };

@@ -70,16 +70,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     alternates: (() => {
       const alternateLocale = locale === 'fr' ? 'en' : 'fr';
       const languages: Record<string, string> = {
-        [locale === 'fr' ? 'fr-FR' : 'en-US']: url,
+        [locale]: url,
       };
 
       if (article.translationKey) {
         const translatedArticle = getArticleByTranslationKey(article.translationKey, alternateLocale);
         if (translatedArticle) {
           const altUrl = `${BASE_URL}/${alternateLocale}/blog/${translatedArticle.siloSlug}/${translatedArticle.slug}`;
-          languages[alternateLocale === 'fr' ? 'fr-FR' : 'en-US'] = altUrl;
+          languages[alternateLocale] = altUrl;
         }
       }
+
+      // x-default points to the FR version when available, else the current URL.
+      languages['x-default'] = languages.fr ?? url;
 
       return { canonical: url, languages };
     })(),

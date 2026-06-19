@@ -839,7 +839,7 @@
   },
   "pricing": {
     "meta": {
-      "title": "Tarifs CRM hôtelier | TriggerFlow - Plans & Prix",
+      "title": "Tarifs CRM hôtelier - Plans & Prix",
       "description": "Tarifs TriggerFlow : CRM hôtelier + marketing automation dès 49€/mois. Plans adaptés du boutique-hôtel au groupe multi-établissements."
     },
     "hero": {
@@ -1021,7 +1021,7 @@
   },
   "contact": {
     "meta": {
-      "title": "Contact | TriggerFlow",
+      "title": "Contact",
       "description": "Contactez l'équipe TriggerFlow. Nous sommes là pour répondre à vos questions."
     },
     "hero": {
@@ -1071,7 +1071,7 @@
   },
   "about": {
     "meta": {
-      "title": "À propos | TriggerFlow",
+      "title": "À propos",
       "description": "Découvrez l'histoire et l'équipe derrière TriggerFlow, la solution d'automatisation pour l'hôtellerie."
     },
     "hero": {
@@ -1139,7 +1139,7 @@
   },
   "integrations": {
     "meta": {
-      "title": "Intégrations PMS hôtel | TriggerFlow - 50+ connecteurs natifs",
+      "title": "Intégrations PMS hôtel - 50+ connecteurs natifs",
       "description": "Connectez TriggerFlow à vos PMS (Mews, Opera Cloud, Thaïs, Misterbooking...) et 50+ outils hôteliers. Synchronisation temps réel sans développement."
     },
     "hero": {
@@ -1427,7 +1427,7 @@
   },
   "product": {
     "meta": {
-      "title": "CRM hôtelier tout-en-un | TriggerFlow - Email, SMS, WhatsApp, Workflows",
+      "title": "CRM hôtelier tout-en-un - Email, SMS, WhatsApp, Workflows",
       "description": "Plateforme tout-en-un pour hôteliers : CRM, email, SMS, WhatsApp, workflows automatisés, fidélité, avis Google. Connecté à 8+ PMS français."
     },
     "hero": {
@@ -1550,7 +1550,7 @@
   },
   "blog": {
     "meta": {
-      "title": "Blog | TriggerFlow",
+      "title": "Blog",
       "description": "Conseils, tendances et bonnes pratiques pour optimiser la relation client dans l'hôtellerie."
     },
     "hero": {
@@ -1602,7 +1602,7 @@
   },
   "caseStudies": {
     "meta": {
-      "title": "Cas clients | TriggerFlow",
+      "title": "Cas clients",
       "description": "Découvrez comment nos clients hôteliers transforment leur relation client avec TriggerFlow."
     },
     "hero": {
@@ -1635,7 +1635,7 @@
   },
   "guides": {
     "meta": {
-      "title": "Guides & Ressources | TriggerFlow",
+      "title": "Guides & Ressources",
       "description": "Téléchargez nos guides, ebooks et templates pour optimiser votre relation client hôtelière."
     },
     "hero": {
@@ -1654,7 +1654,7 @@
   },
   "helpCenter": {
     "meta": {
-      "title": "Centre d'aide | TriggerFlow",
+      "title": "Centre d'aide",
       "description": "Trouvez des réponses à vos questions sur TriggerFlow. Documentation, tutoriels et FAQ."
     },
     "hero": {
@@ -1683,7 +1683,7 @@
   },
   "careers": {
     "meta": {
-      "title": "Carrières | TriggerFlow",
+      "title": "Carrières",
       "description": "Rejoignez l'équipe TriggerFlow et participez à la transformation de l'hôtellerie."
     },
     "hero": {
@@ -1715,7 +1715,7 @@
   },
   "mewsIntegration": {
     "meta": {
-      "title": "CRM hôtelier pour Mews | TriggerFlow - Automatisez votre relation client",
+      "title": "CRM hôtelier pour Mews - Automatisez votre relation client",
       "description": "Connectez Mews à un CRM conçu pour l'hôtellerie. Synchronisation bidirectionnelle temps réel, emails pré-séjour, upselling automatisé, fidélité. 120+ hôtels connectés. Configuration en 15 min."
     },
     "breadcrumb": {

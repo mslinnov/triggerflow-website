@@ -117,13 +117,6 @@ export function SoftwareApplicationJsonLd() {
       'Tableaux de bord analytiques',
       'Templates personnalisables',
     ],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      ratingCount: '150',
-      bestRating: '5',
-      worstRating: '1',
-    },
   };
 
   return (

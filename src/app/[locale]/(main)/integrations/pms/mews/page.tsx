@@ -30,8 +30,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     alternates: {
       canonical: `${baseUrl}/${locale}/integrations/pms/mews`,
       languages: {
-        'fr-FR': `${baseUrl}/fr/integrations/pms/mews`,
-        'en-US': `${baseUrl}/en/integrations/pms/mews`,
+        fr: `${baseUrl}/fr/integrations/pms/mews`,
+        en: `${baseUrl}/en/integrations/pms/mews`,
+        'x-default': `${baseUrl}/fr/integrations/pms/mews`,
       },
     },
     openGraph: {

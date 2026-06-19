@@ -4,8 +4,12 @@ import { getAllLandingPages } from '@/lib/landing-pages';
 import { getAllLegalSlugs, getLegalDoc } from '@/lib/legal';
 import { moduleSlugs } from '@/data/modules';
 import { solutionSlugs } from '@/data/solutions';
+import { getAllSlugs as getCaseStudySlugs } from '@/lib/case-studies';
 
 const baseUrl = 'https://www.trigger-flow.com';
+
+// Evite les artefacts flottants (ex. 0.7000000000000001) sur les priorites.
+const round1 = (n: number) => Math.round(n * 10) / 10;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
@@ -27,18 +31,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   for (const page of staticPages) {
+    const languages = {
+      fr: `${baseUrl}${page.frPath}`,
+      en: `${baseUrl}${page.enPath}`,
+      'x-default': `${baseUrl}${page.frPath}`,
+    };
+
     // French version
     sitemapEntries.push({
       url: `${baseUrl}${page.frPath}`,
       lastModified,
       changeFrequency: page.changeFrequency,
-      priority: page.priority,
-      alternates: {
-        languages: {
-          fr: `${baseUrl}${page.frPath}`,
-          en: `${baseUrl}${page.enPath}`,
-        },
-      },
+      priority: round1(page.priority),
+      alternates: { languages },
     });
 
     // English version
@@ -46,13 +51,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: `${baseUrl}${page.enPath}`,
       lastModified,
       changeFrequency: page.changeFrequency,
-      priority: page.priority - 0.1,
-      alternates: {
-        languages: {
-          fr: `${baseUrl}${page.frPath}`,
-          en: `${baseUrl}${page.enPath}`,
-        },
-      },
+      priority: round1(page.priority - 0.1),
+      alternates: { languages },
     });
   }
 
@@ -60,13 +60,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const slug of moduleSlugs) {
     const frUrl = `${baseUrl}/fr/produit/${slug}`;
     const enUrl = `${baseUrl}/en/produit/${slug}`;
+    const languages = { fr: frUrl, en: enUrl, 'x-default': frUrl };
 
     sitemapEntries.push({
       url: frUrl,
       lastModified,
       changeFrequency: 'monthly',
       priority: 0.8,
-      alternates: { languages: { fr: frUrl, en: enUrl } },
+      alternates: { languages },
     });
 
     sitemapEntries.push({
@@ -74,7 +75,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: 'monthly',
       priority: 0.7,
-      alternates: { languages: { fr: frUrl, en: enUrl } },
+      alternates: { languages },
     });
   }
 
@@ -82,13 +83,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const slug of solutionSlugs) {
     const frUrl = `${baseUrl}/fr/solutions/${slug}`;
     const enUrl = `${baseUrl}/en/solutions/${slug}`;
+    const languages = { fr: frUrl, en: enUrl, 'x-default': frUrl };
 
     sitemapEntries.push({
       url: frUrl,
       lastModified,
       changeFrequency: 'monthly',
       priority: 0.8,
-      alternates: { languages: { fr: frUrl, en: enUrl } },
+      alternates: { languages },
     });
 
     sitemapEntries.push({
@@ -96,33 +98,88 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: 'monthly',
       priority: 0.7,
-      alternates: { languages: { fr: frUrl, en: enUrl } },
+      alternates: { languages },
     });
   }
 
+  // ─── Integration detail pages (PMS) ──────────────────────────
+  {
+    const frUrl = `${baseUrl}/fr/integrations/pms/mews`;
+    const enUrl = `${baseUrl}/en/integrations/pms/mews`;
+    const languages = { fr: frUrl, en: enUrl, 'x-default': frUrl };
+
+    sitemapEntries.push(
+      {
+        url: frUrl,
+        lastModified,
+        changeFrequency: 'monthly',
+        priority: 0.7,
+        alternates: { languages },
+      },
+      {
+        url: enUrl,
+        lastModified,
+        changeFrequency: 'monthly',
+        priority: 0.6,
+        alternates: { languages },
+      }
+    );
+  }
+
+  // ─── Case study detail pages ─────────────────────────────────
+  for (const slug of getCaseStudySlugs()) {
+    const frUrl = `${baseUrl}/fr/ressources/cas-clients/${slug}`;
+    const enUrl = `${baseUrl}/en/ressources/cas-clients/${slug}`;
+    const languages = { fr: frUrl, en: enUrl, 'x-default': frUrl };
+
+    sitemapEntries.push(
+      {
+        url: frUrl,
+        lastModified,
+        changeFrequency: 'monthly',
+        priority: 0.5,
+        alternates: { languages },
+      },
+      {
+        url: enUrl,
+        lastModified,
+        changeFrequency: 'monthly',
+        priority: 0.4,
+        alternates: { languages },
+      }
+    );
+  }
+
   // ─── Blog listing page ───────────────────────────────────────
-  sitemapEntries.push(
-    {
-      url: `${baseUrl}/fr/blog`,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 0.8,
-      alternates: { languages: { fr: `${baseUrl}/fr/blog`, en: `${baseUrl}/en/blog` } },
-    },
-    {
-      url: `${baseUrl}/en/blog`,
-      lastModified,
-      changeFrequency: 'weekly',
-      priority: 0.7,
-      alternates: { languages: { fr: `${baseUrl}/fr/blog`, en: `${baseUrl}/en/blog` } },
-    }
-  );
+  {
+    const frUrl = `${baseUrl}/fr/blog`;
+    const enUrl = `${baseUrl}/en/blog`;
+    const languages = { fr: frUrl, en: enUrl, 'x-default': frUrl };
+
+    sitemapEntries.push(
+      {
+        url: frUrl,
+        lastModified,
+        changeFrequency: 'weekly',
+        priority: 0.8,
+        alternates: { languages },
+      },
+      {
+        url: enUrl,
+        lastModified,
+        changeFrequency: 'weekly',
+        priority: 0.7,
+        alternates: { languages },
+      }
+    );
+  }
 
   // ─── Blog silo pages ────────────────────────────────────────
   const silos = getSilos();
   for (const silo of silos) {
     const frUrl = `${baseUrl}/fr/blog/${silo.slug}`;
     const enUrl = `${baseUrl}/en/blog/${silo.slug}`;
+    const languages = { fr: frUrl, en: enUrl, 'x-default': frUrl };
 
     sitemapEntries.push(
       {
@@ -130,14 +187,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified,
         changeFrequency: 'weekly',
         priority: 0.7,
-        alternates: { languages: { fr: frUrl, en: enUrl } },
+        alternates: { languages },
       },
       {
         url: enUrl,
         lastModified,
         changeFrequency: 'weekly',
         priority: 0.6,
-        alternates: { languages: { fr: frUrl, en: enUrl } },
+        alternates: { languages },
       }
     );
   }
@@ -146,14 +203,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const frArticles = getAllArticles('fr');
   const enArticles = getAllArticles('en');
   const processedTranslationKeys = new Set<string>();
+  // Dedupe par URL EN deja emise : evite qu'un article EM apparie cote FR
+  // soit re-emis par la boucle « EN-only » (cf. paire serrures-connectees/smart-locks).
+  const emittedEnUrls = new Set<string>();
 
   for (const frArticle of frArticles) {
     const frUrl = `${baseUrl}/fr/blog/${frArticle.siloSlug}/${frArticle.slug}`;
-    const languages: Record<string, string> = { fr: frUrl };
+    const languages: Record<string, string> = { fr: frUrl, 'x-default': frUrl };
 
+    let enArticle: (typeof enArticles)[number] | undefined;
     if (frArticle.translationKey) {
       processedTranslationKeys.add(frArticle.translationKey);
-      const enArticle = enArticles.find(
+      enArticle = enArticles.find(
         (a) => a.translationKey === frArticle.translationKey
       );
       if (enArticle) {
@@ -170,9 +231,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
 
     if (languages.en) {
-      const enArticle = enArticles.find(
-        (a) => a.translationKey === frArticle.translationKey
-      );
+      emittedEnUrls.add(languages.en);
       sitemapEntries.push({
         url: languages.en,
         lastModified: enArticle?.dateMiseAJour ? new Date(enArticle.dateMiseAJour) : lastModified,
@@ -190,12 +249,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
 
     const enUrl = `${baseUrl}/en/blog/${enArticle.siloSlug}/${enArticle.slug}`;
+    // Garde-fou : ne pas re-emettre une URL EN deja sortie via la boucle FR.
+    if (emittedEnUrls.has(enUrl)) {
+      continue;
+    }
+
     sitemapEntries.push({
       url: enUrl,
       lastModified: enArticle.dateMiseAJour ? new Date(enArticle.dateMiseAJour) : lastModified,
       changeFrequency: 'monthly',
       priority: 0.5,
-      alternates: { languages: { en: enUrl } },
+      alternates: { languages: { en: enUrl, 'x-default': enUrl } },
     });
   }
 
@@ -211,6 +275,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     const frUrl = `${baseUrl}/fr/${slug}`;
     const enUrl = `${baseUrl}/en/${slug}`;
+    const languages = { fr: frUrl, en: enUrl, 'x-default': frUrl };
 
     sitemapEntries.push(
       {
@@ -218,14 +283,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
         lastModified: legalLastModified,
         changeFrequency: 'yearly',
         priority: 0.3,
-        alternates: { languages: { fr: frUrl, en: enUrl } },
+        alternates: { languages },
       },
       {
         url: enUrl,
         lastModified: legalLastModified,
         changeFrequency: 'yearly',
         priority: 0.2,
-        alternates: { languages: { fr: frUrl, en: enUrl } },
+        alternates: { languages },
       }
     );
   }

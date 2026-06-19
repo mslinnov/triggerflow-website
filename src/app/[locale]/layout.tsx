@@ -104,8 +104,9 @@ export async function generateMetadata({
     alternates: {
       canonical: `${baseUrl}/${locale}`,
       languages: {
-        'fr-FR': `${baseUrl}/fr`,
-        'en-US': `${baseUrl}/en`,
+        fr: `${baseUrl}/fr`,
+        en: `${baseUrl}/en`,
+        'x-default': `${baseUrl}/fr`,
       },
     },
     robots: {
