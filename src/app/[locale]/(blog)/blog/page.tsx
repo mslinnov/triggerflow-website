@@ -34,8 +34,8 @@ export default async function BlogListingPage({ params }: Props) {
   const recentFeatured = articles[0] ?? null;
   const recentSide = articles.slice(1, 4);
 
-  // All remaining articles
-  const gridArticles = articles.slice(4);
+  // All posts grid — show the rest when there are enough, otherwise all
+  const gridArticles = articles.length > 4 ? articles.slice(4) : articles;
 
   return (
     <main className="min-h-screen bg-white">
@@ -88,7 +88,7 @@ export default async function BlogListingPage({ params }: Props) {
       <section className="border-t border-gray-100 pt-10 pb-4">
         <Container>
           <div className="flex justify-center">
-            <SiloNav allLabel={t('listing.allSilos')} />
+            <SiloNav allLabel={t('listing.allSilos')} locale={locale} />
           </div>
         </Container>
       </section>

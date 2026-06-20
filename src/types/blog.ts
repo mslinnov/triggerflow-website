@@ -9,8 +9,10 @@ export type CtaPrincipal = 'demo' | 'newsletter' | 'les_deux';
 export interface Silo {
   id: SiloId;
   nom: string;
+  nomEn: string;
   slug: string;
   description: string;
+  descriptionEn: string;
 }
 
 export interface ArticleImage {
