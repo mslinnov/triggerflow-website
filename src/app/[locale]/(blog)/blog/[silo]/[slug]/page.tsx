@@ -17,6 +17,7 @@ import { InternalLink } from '@/components/mdx/InternalLink';
 import { NewsletterInline } from '@/components/mdx/NewsletterInline';
 import { KeyFigure } from '@/components/mdx/KeyFigure';
 import { KeyFiguresGrid, KeyFigureCard } from '@/components/mdx/KeyFiguresGrid';
+import { Stat } from '@/components/mdx/Stat';
 
 const BASE_URL = 'https://www.trigger-flow.com';
 
@@ -108,7 +109,10 @@ export default async function ArticlePage({ params }: PageProps) {
     NewsletterInline,
     KeyFigure,
     KeyFiguresGrid,
-    KeyFigureCard,
+    KeyFigureCard: (props: { value?: string; label: string; statId?: string }) => (
+      <KeyFigureCard {...props} locale={locale} />
+    ),
+    Stat: (props: { id: string }) => <Stat id={props.id} locale={locale} />,
   };
 
   const formattedDate = new Date(article.datePublication).toLocaleDateString(
