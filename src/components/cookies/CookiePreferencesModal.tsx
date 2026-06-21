@@ -13,10 +13,13 @@ interface CookiePreferencesModalProps {
 export function CookiePreferencesModal({ open, onClose }: CookiePreferencesModalProps) {
   const t = useTranslations('cookies.modal');
   const [analyticsOn, setAnalyticsOn] = useState(false);
+  const [marketingOn, setMarketingOn] = useState(false);
 
   useEffect(() => {
     if (!open) return;
-    setAnalyticsOn(getConsent()?.analytics ?? false);
+    const consent = getConsent();
+    setAnalyticsOn(consent?.analytics ?? false);
+    setMarketingOn(consent?.marketing ?? false);
   }, [open]);
 
   useEffect(() => {
@@ -35,12 +38,12 @@ export function CookiePreferencesModal({ open, onClose }: CookiePreferencesModal
   if (!open) return null;
 
   const handleSave = () => {
-    setConsent(analyticsOn);
+    setConsent(analyticsOn, marketingOn);
     onClose();
   };
 
   const handleAcceptAll = () => {
-    setConsent(true);
+    setConsent(true, true);
     onClose();
   };
 
@@ -85,6 +88,12 @@ export function CookiePreferencesModal({ open, onClose }: CookiePreferencesModal
             description={t('analyticsDesc')}
             checked={analyticsOn}
             onChange={setAnalyticsOn}
+          />
+          <CookieRow
+            label={t('marketing')}
+            description={t('marketingDesc')}
+            checked={marketingOn}
+            onChange={setMarketingOn}
           />
         </div>
 

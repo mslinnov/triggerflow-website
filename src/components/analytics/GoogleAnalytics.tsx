@@ -41,13 +41,20 @@ export function GoogleAnalytics() {
     if (!GA_ID) return;
 
     const apply = () => {
-      const isGranted = hasValidConsent() && getConsent()?.analytics === true;
+      const consent = hasValidConsent() ? getConsent() : null;
+      const isGranted = consent?.analytics === true;
+      const adGranted = consent?.marketing === true;
       setGranted(isGranted);
 
       if (CONSENT_MODE === 'advanced') {
         // gtag.js is already loaded; reflect runtime consent changes.
+        // Marketing consent drives the Consent Mode v2 ad signals, so a Google
+        // Ads tag (see MarketingPixels) measures conversions only with consent.
         window.gtag?.('consent', 'update', {
           analytics_storage: isGranted ? 'granted' : 'denied',
+          ad_storage: adGranted ? 'granted' : 'denied',
+          ad_user_data: adGranted ? 'granted' : 'denied',
+          ad_personalization: adGranted ? 'granted' : 'denied',
         });
       }
       if (!isGranted) clearAnalyticsCookies();
@@ -82,20 +89,22 @@ export function GoogleAnalytics() {
           function gtag(){dataLayer.push(arguments);}
           window.gtag = gtag;
           var granted = false;
+          var adGranted = false;
           try {
             var raw = localStorage.getItem('${CONSENT_STORAGE_KEY}');
             if (raw) {
               var c = JSON.parse(raw);
-              if (c && c.analytics === true && c.version === '${CONSENT_VERSION}' &&
+              if (c && c.version === '${CONSENT_VERSION}' &&
                   (Date.now() - new Date(c.timestamp).getTime()) < ${CONSENT_MAX_AGE_MS}) {
-                granted = true;
+                granted = c.analytics === true;
+                adGranted = c.marketing === true;
               }
             }
           } catch (e) {}
           gtag('consent', 'default', {
-            ad_storage: 'denied',
-            ad_user_data: 'denied',
-            ad_personalization: 'denied',
+            ad_storage: adGranted ? 'granted' : 'denied',
+            ad_user_data: adGranted ? 'granted' : 'denied',
+            ad_personalization: adGranted ? 'granted' : 'denied',
             analytics_storage: granted ? 'granted' : 'denied',
             wait_for_update: 500
           });

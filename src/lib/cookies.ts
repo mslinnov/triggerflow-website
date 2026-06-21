@@ -2,7 +2,7 @@
  * Cookie consent helpers - CNIL-compliant.
  *
  * Stored under localStorage key `tf_cookie_consent` with shape:
- *   { analytics: boolean, timestamp: string (ISO 8601), version: string }
+ *   { analytics: boolean, marketing: boolean, timestamp: string (ISO 8601), version: string }
  *
  * Consent is considered valid for 6 months. After that, the banner reappears.
  * Bumping CONSENT_VERSION also invalidates all existing consents (use it when
@@ -11,12 +11,15 @@
 
 export type ConsentState = {
   analytics: boolean;
+  marketing: boolean;
   timestamp: string;
   version: string;
 };
 
 export const CONSENT_STORAGE_KEY = 'tf_cookie_consent';
-export const CONSENT_VERSION = '1.0';
+// 1.1 — added the `marketing` category (advertising pixels). The bump invalidates
+// every pre-existing consent so visitors are re-prompted for the new finality.
+export const CONSENT_VERSION = '1.1';
 export const CONSENT_MAX_AGE_MS = 180 * 24 * 60 * 60 * 1000; // 6 months
 export const CONSENT_CHANGED_EVENT = 'tf-consent-changed';
 
@@ -37,16 +40,20 @@ export function getConsent(): ConsentState | null {
     ) {
       return null;
     }
-    return parsed as ConsentState;
+    // `marketing` was introduced in consent v1.1. Tolerate its absence by
+    // defaulting to false; any pre-1.1 blob fails the version check in
+    // hasValidConsent() anyway and re-prompts the visitor.
+    return { ...parsed, marketing: parsed.marketing === true } as ConsentState;
   } catch {
     return null;
   }
 }
 
-export function setConsent(analytics: boolean): void {
+export function setConsent(analytics: boolean, marketing: boolean): void {
   if (!isBrowser()) return;
   const state: ConsentState = {
     analytics,
+    marketing,
     timestamp: new Date().toISOString(),
     version: CONSENT_VERSION,
   };
@@ -86,6 +93,29 @@ export function clearAnalyticsCookies(): void {
   const gaPattern = /^_ga($|_)|^_gid$|^_gat($|_)/;
   for (const name of targets) {
     if (!gaPattern.test(name)) continue;
+    for (const d of domains) {
+      document.cookie = `${name}=; Path=/; Domain=${d}; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+    }
+    document.cookie = `${name}=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+  }
+}
+
+/**
+ * Best-effort removal of advertising/pixel cookies on `marketing` revocation.
+ * Covers the common first-party cookies dropped by the pixels in MarketingPixels:
+ * Meta (_fbp/_fbc), Google Ads (_gcl_*), Microsoft/Bing (_uet*), LinkedIn
+ * (li_*, bcookie, lidc), TikTok (_ttp). Cookies set on the vendors' own domains
+ * can't be cleared from here — withholding the scripts prevents new ones.
+ */
+export function clearMarketingCookies(): void {
+  if (typeof document === 'undefined') return;
+  const host = window.location.hostname;
+  const root = host.replace(/^www\./, '');
+  const domains = [host, '.' + host, root, '.' + root];
+  const targets = document.cookie.split(';').map((c) => c.trim().split('=')[0]);
+  const adPattern = /^_fbp$|^_fbc$|^_gcl_|^_uet|^_ttp$|^li_|^lms_|^bcookie$|^lidc$/;
+  for (const name of targets) {
+    if (!adPattern.test(name)) continue;
     for (const d of domains) {
       document.cookie = `${name}=; Path=/; Domain=${d}; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
     }

@@ -6,6 +6,7 @@ import { IBM_Plex_Sans, Geist_Mono, Fraunces } from 'next/font/google';
 import { routing } from '@/i18n/routing';
 import { CookieConsentBanner } from '@/components/cookies';
 import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics';
+import { MarketingPixels } from '@/components/analytics/MarketingPixels';
 import { DemoClickTracker } from '@/components/analytics/DemoClickTracker';
 
 const baseUrl = 'https://www.trigger-flow.com';
@@ -150,6 +151,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
           <CookieConsentBanner />
         </NextIntlClientProvider>
         <GoogleAnalytics />
+        <MarketingPixels />
         <DemoClickTracker />
       </body>
     </html>

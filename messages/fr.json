@@ -2135,7 +2135,7 @@
   "cookies": {
     "banner": {
       "ariaLabel": "Bandeau de gestion des cookies",
-      "message": "Nous utilisons des cookies pour mesurer l'audience du site et en améliorer le contenu. Vous pouvez accepter, refuser ou personnaliser votre choix à tout moment.",
+      "message": "Nous utilisons des cookies pour mesurer l'audience du site, en améliorer le contenu et, avec votre accord, mesurer nos campagnes publicitaires. Vous pouvez accepter, refuser ou personnaliser votre choix à tout moment.",
       "accept": "Accepter",
       "reject": "Refuser",
       "customize": "Personnaliser",
@@ -2148,6 +2148,8 @@
       "necessaryDesc": "Indispensables au fonctionnement du site, à la sécurité et à la mémorisation de vos préférences (langue, consentement). Ils sont activés par défaut et ne peuvent pas être désactivés.",
       "analytics": "Cookies de mesure d'audience",
       "analyticsDesc": "Google Analytics nous permet de mesurer la fréquentation du site et d'améliorer son contenu. Les données sont anonymisées (IP tronquée).",
+      "marketing": "Cookies publicitaires",
+      "marketingDesc": "Permettent de mesurer l'efficacité de nos campagnes et de vous proposer des publicités pertinentes sur d'autres sites et réseaux sociaux (Meta, Google, LinkedIn, TikTok, Microsoft). Désactivés tant que vous ne les acceptez pas.",
       "save": "Enregistrer mes préférences",
       "acceptAll": "Tout accepter"
     },

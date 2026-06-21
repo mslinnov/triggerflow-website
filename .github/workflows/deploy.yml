@@ -21,6 +21,13 @@ jobs:
         env:
           NEXT_PUBLIC_GA_MEASUREMENT_ID: ${{ secrets.NEXT_PUBLIC_GA_MEASUREMENT_ID }}
           NEXT_PUBLIC_GA_CONSENT_MODE: ${{ vars.NEXT_PUBLIC_GA_CONSENT_MODE }}
+          # Advertising pixels — left empty until each ad account exists; an empty
+          # value keeps that pixel dormant (no script shipped). Set as repo secrets.
+          NEXT_PUBLIC_META_PIXEL_ID: ${{ secrets.NEXT_PUBLIC_META_PIXEL_ID }}
+          NEXT_PUBLIC_TIKTOK_PIXEL_ID: ${{ secrets.NEXT_PUBLIC_TIKTOK_PIXEL_ID }}
+          NEXT_PUBLIC_LINKEDIN_PARTNER_ID: ${{ secrets.NEXT_PUBLIC_LINKEDIN_PARTNER_ID }}
+          NEXT_PUBLIC_MS_UET_TAG_ID: ${{ secrets.NEXT_PUBLIC_MS_UET_TAG_ID }}
+          NEXT_PUBLIC_GOOGLE_ADS_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_ADS_ID }}
         with:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USER }}
@@ -29,7 +36,7 @@ jobs:
           command_timeout: 12m
           # Forward the analytics env vars into the remote shell so the build
           # bakes them in regardless of any .env file present on the VPS.
-          envs: NEXT_PUBLIC_GA_MEASUREMENT_ID,NEXT_PUBLIC_GA_CONSENT_MODE
+          envs: NEXT_PUBLIC_GA_MEASUREMENT_ID,NEXT_PUBLIC_GA_CONSENT_MODE,NEXT_PUBLIC_META_PIXEL_ID,NEXT_PUBLIC_TIKTOK_PIXEL_ID,NEXT_PUBLIC_LINKEDIN_PARTNER_ID,NEXT_PUBLIC_MS_UET_TAG_ID,NEXT_PUBLIC_GOOGLE_ADS_ID
           script: |
             set -euo pipefail
             cd /var/www/triggerflow-website
