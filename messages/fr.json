@@ -203,12 +203,29 @@
       "reviews": "+45% d'avis Google",
       "timeSaved": "10h gagnées / semaine",
       "upsell": "+17% de ventes additionnelles"
+    },
+    "result": {
+      "title": "Automatisation déclenchée"
     }
   },
   "journeyTimeline": {
     "badge": "Le parcours client",
     "title": "Présent à chaque étape, sans être intrusif",
     "subtitle": "Avant, pendant et après le séjour : vous choisissez les interactions à automatiser, TriggerFlow s'en charge.",
+    "stages": {
+      "before": {
+        "title": "Avant le séjour",
+        "subtitle": "Confirmation, formulaire pré-séjour et offres personnalisées, automatisés avant l'arrivée."
+      },
+      "during": {
+        "title": "Pendant le séjour",
+        "subtitle": "SMS de bienvenue et offres ciblées, présent sans jamais être intrusif."
+      },
+      "after": {
+        "title": "Après le séjour",
+        "subtitle": "Demande d'avis et programme de fidélité déclenchés au bon moment."
+      }
+    },
     "phases": {
       "preStay": {
         "label": "Avant le séjour",
@@ -318,6 +335,42 @@
       "tools": {
         "title": "Outils métier",
         "description": "CRM hôtelier, formulaires, ventes additionnelles, analytics. Tout ce qu'il vous faut."
+      },
+      "email": {
+        "title": "Email",
+        "description": "Confirmations, pré-séjour, campagnes : des emails personnalisés envoyés au bon moment, sans intervention."
+      },
+      "sms": {
+        "title": "SMS",
+        "description": "Messages courts et lus à 98%. Idéal pour le check-in, les rappels et les offres de dernière minute."
+      },
+      "whatsapp": {
+        "title": "WhatsApp",
+        "description": "Échangez avec vos clients sur le canal qu'ils utilisent déjà, en conversationnel et en temps réel."
+      },
+      "crm": {
+        "title": "CRM hôtelier",
+        "description": "Centralisez l'historique, les préférences et les coordonnées de chaque client dans une fiche unique."
+      },
+      "forms": {
+        "title": "Formulaires",
+        "description": "Pré-check-in, préférences, demandes spéciales : collectez les infos clés avant l'arrivée."
+      },
+      "upsell": {
+        "title": "Ventes additionnelles",
+        "description": "Surclassements, petits-déjeuners, services : proposez la bonne offre au bon moment et augmentez le panier."
+      },
+      "analytics": {
+        "title": "Analytics",
+        "description": "Suivez l'impact de chaque scénario : taux d'ouverture, revenus générés, temps gagné."
+      },
+      "reviews": {
+        "title": "Avis clients",
+        "description": "Sollicitez un avis Google au moment idéal et améliorez votre e-réputation automatiquement."
+      },
+      "loyalty": {
+        "title": "Fidélité",
+        "description": "Récompensez vos habitués et déclenchez des campagnes ciblées pour les faire revenir."
       }
     }
   },

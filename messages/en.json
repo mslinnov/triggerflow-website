@@ -203,12 +203,29 @@
       "reviews": "+45% Google reviews",
       "timeSaved": "10h saved / week",
       "upsell": "+17% additional sales"
+    },
+    "result": {
+      "title": "Automation triggered"
     }
   },
   "journeyTimeline": {
     "badge": "Guest Journey",
     "title": "You choose what to automate, at every stage",
     "subtitle": "Before, during or after the stay — you decide which interactions TriggerFlow takes care of",
+    "stages": {
+      "before": {
+        "title": "Before the stay",
+        "subtitle": "Confirmation, pre-stay form and tailored offers, automated before arrival."
+      },
+      "during": {
+        "title": "During the stay",
+        "subtitle": "Welcome SMS and targeted offers, present without ever being intrusive."
+      },
+      "after": {
+        "title": "After the stay",
+        "subtitle": "Review requests and loyalty program triggered at the right moment."
+      }
+    },
     "phases": {
       "preStay": {
         "label": "Pre-stay",
@@ -318,6 +335,42 @@
       "tools": {
         "title": "Business Tools",
         "description": "Hotel CRM, forms, additional sales, analytics. Everything you need."
+      },
+      "email": {
+        "title": "Email",
+        "description": "Confirmations, pre-stay, campaigns: personalized emails sent at the right time, hands-free."
+      },
+      "sms": {
+        "title": "SMS",
+        "description": "Short messages read 98% of the time. Perfect for check-in, reminders and last-minute offers."
+      },
+      "whatsapp": {
+        "title": "WhatsApp",
+        "description": "Talk to your guests on the channel they already use, conversationally and in real time."
+      },
+      "crm": {
+        "title": "Hotel CRM",
+        "description": "Centralize history, preferences and contact details for each guest in a single profile."
+      },
+      "forms": {
+        "title": "Forms",
+        "description": "Pre-check-in, preferences, special requests: collect key information before arrival."
+      },
+      "upsell": {
+        "title": "Upsell",
+        "description": "Upgrades, breakfasts, services: offer the right extra at the right moment and grow each booking."
+      },
+      "analytics": {
+        "title": "Analytics",
+        "description": "Track the impact of every scenario: open rates, revenue generated, time saved."
+      },
+      "reviews": {
+        "title": "Guest reviews",
+        "description": "Request a Google review at the ideal moment and improve your online reputation automatically."
+      },
+      "loyalty": {
+        "title": "Loyalty",
+        "description": "Reward your regulars and trigger targeted campaigns to bring them back."
       }
     }
   },
