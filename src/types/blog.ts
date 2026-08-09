@@ -44,6 +44,11 @@ export interface TOCItem {
   level: 2 | 3;
 }
 
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
 export interface Article {
   slug: string;
   translationKey: string | null;

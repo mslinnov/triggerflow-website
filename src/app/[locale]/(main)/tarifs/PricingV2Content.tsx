@@ -11,15 +11,9 @@ import {
 import { Container, ButtonLink, Badge } from '@/components/ui';
 import { cn } from '@/lib/utils';
 import { fadeInUp, staggerContainer, staggerItem, defaultViewport } from '@/lib/animations';
+import { PLANS as plans } from '@/data/pricing';
 
 /* ─── Data ──────────────────────────────────────────────────── */
-
-const plans = [
-  { key: 'discovery', price: '0', popular: false },
-  { key: 'communication', price: '69', popular: false },
-  { key: 'conversion', price: '149', popular: true },
-  { key: 'allInclusive', price: '249', popular: false },
-];
 
 const featureGroups = [
   {
