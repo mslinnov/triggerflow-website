@@ -1,7 +1,7 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
 import { PricingV2Content } from './PricingV2Content';
-import { BreadcrumbListJsonLd } from '@/components/seo';
+import { BreadcrumbListJsonLd, PricingJsonLd } from '@/components/seo';
 
 const baseUrl = 'https://www.trigger-flow.com';
 
@@ -39,6 +39,7 @@ export default async function PricingPage({ params }: PageProps) {
           { name: locale === 'fr' ? 'Tarifs' : 'Pricing', url: `${baseUrl}/${locale}/tarifs` },
         ]}
       />
+      <PricingJsonLd locale={locale} />
       <PricingV2Content />
     </>
   );

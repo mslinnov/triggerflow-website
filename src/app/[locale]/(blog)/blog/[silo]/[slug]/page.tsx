@@ -7,10 +7,10 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
 import { Calendar, Clock, Share2, Linkedin, Twitter } from 'lucide-react';
 
-import { getAllArticles, getArticleBySlug, getArticleByTranslationKey, generateTableOfContents } from '@/lib/blog';
+import { getAllArticles, getArticleBySlug, getArticleByTranslationKey, generateTableOfContents, extractFaqItems } from '@/lib/blog';
 import { Container } from '@/components/ui/Container';
 import { BlogBreadcrumb, TableOfContents } from '@/components/blog';
-import { BlogPostingJsonLd, BreadcrumbListJsonLd } from '@/components/seo';
+import { BlogPostingJsonLd, BreadcrumbListJsonLd, FaqJsonLd } from '@/components/seo';
 import { ImageBlock } from '@/components/mdx/ImageBlock';
 import { Callout } from '@/components/mdx/Callout';
 import { InternalLink } from '@/components/mdx/InternalLink';
@@ -137,6 +137,7 @@ export default async function ArticlePage({ params }: PageProps) {
     <>
       <BlogPostingJsonLd article={article} locale={locale} />
       <BreadcrumbListJsonLd items={breadcrumbItems} />
+      <FaqJsonLd items={extractFaqItems(article.content)} />
 
       <article>
         {/* Article header */}

@@ -4,7 +4,7 @@ import matter from 'gray-matter';
 import readingTime from 'reading-time';
 import GithubSlugger from 'github-slugger';
 import { silos, getSiloBySlug } from '@/data/silos';
-import type { Article, Silo, TOCItem } from '@/types/blog';
+import type { Article, FaqItem, Silo, TOCItem } from '@/types/blog';
 
 const CONTENT_DIR = path.join(process.cwd(), 'content', 'blog');
 
@@ -158,6 +158,71 @@ export function generateTableOfContents(content: string): TOCItem[] {
 
     items.push({ id, text, level });
   }
+
+  return items;
+}
+
+/** Titre du H2 qui ouvre la section FAQ, en FR et en EN. */
+const FAQ_HEADING = /^##\s+(questions?\s+fréquentes|frequently\s+asked\s+questions?)\s*$/im;
+
+/** Une question de FAQ : un paragraphe entièrement en gras. */
+const FAQ_QUESTION = /^\*\*(.+?)\*\*$/;
+
+/**
+ * Réduit le markdown/MDX inline en texte nu — le JSON-LD attend du texte,
+ * pas des astérisques ni des composants React.
+ */
+function stripInlineMarkup(text: string): string {
+  return text
+    .replace(/<[^>]+>/g, '')
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+    .replace(/\*\*(.+?)\*\*/g, '$1')
+    .replace(/(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g, '$1')
+    .replace(/`(.+?)`/g, '$1')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/**
+ * Extrait les paires question/réponse de la section « Questions fréquentes »
+ * d'un article, pour les baliser en FAQPage.
+ *
+ * Les 10 articles suivent la même forme : un H2 FAQ, puis des paragraphes
+ * `**Question ?**` suivis de leur réponse (parfois séparés par `---`).
+ * Retourne un tableau vide si l'article n'a pas de section FAQ.
+ */
+export function extractFaqItems(content: string): FaqItem[] {
+  const heading = content.match(FAQ_HEADING);
+  if (!heading || heading.index === undefined) return [];
+
+  // De la fin du titre FAQ jusqu'au H2 suivant (ou la fin de l'article).
+  const afterHeading = content.slice(heading.index + heading[0].length);
+  const nextHeading = afterHeading.search(/^##\s+/m);
+  const section = nextHeading === -1 ? afterHeading : afterHeading.slice(0, nextHeading);
+
+  const items: FaqItem[] = [];
+  let current: { question: string; answer: string[] } | null = null;
+
+  const flush = () => {
+    if (!current) return;
+    const answer = stripInlineMarkup(current.answer.join(' '));
+    if (answer) items.push({ question: current.question, answer });
+    current = null;
+  };
+
+  for (const rawLine of section.split('\n')) {
+    const line = rawLine.trim();
+    if (!line || line === '---') continue;
+
+    const question = line.match(FAQ_QUESTION);
+    if (question) {
+      flush();
+      current = { question: stripInlineMarkup(question[1]), answer: [] };
+    } else if (current) {
+      current.answer.push(line);
+    }
+  }
+  flush();
 
   return items;
 }
