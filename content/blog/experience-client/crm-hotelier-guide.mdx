@@ -3,30 +3,30 @@ locale: fr
 translationKey: "crm-hotelier-guide"
 
 # === SILO & STRUCTURE ===
-silo: S2
-silo_nom: "Expérience client"
+silo: experience-client
+silo_nom: "Guest Experience"
 type: pilier
 pilier_parent: null
 
 # === SEO ===
-title: "CRM hôtelier : le guide pour centraliser vos données clients"
-meta_description: "Qu'est-ce qu'un CRM hôtelier ? Comment centraliser vos données clients, créer des segments et personnaliser l'expérience. Guide complet."
-mot_cle_principal: "CRM hôtelier"
+title: "CRM hôtelier : le guide complet"
+meta_description: "Qu'est-ce qu'un CRM hôtelier ? Centralisez vos données clients, segmentez, automatisez les communications et fidélisez durablement vos clients."
+mot_cle_principal: "crm hôtelier"
 mots_cles_secondaires:
-  - "CRM hôtel"
+  - "logiciel crm hôtelier"
   - "gestion relation client hôtel"
-  - "cardex hôtel"
-  - "fiche client hôtel"
-  - "segmentation clients hôtel"
+  - "crm hôtel"
+  - "expérience client hôtel logiciel"
+  - "meilleur crm hôtelier"
 
 # === URL & DATES ===
 slug: "crm-hotelier-guide"
-date_publication: 2026-01-31
-date_mise_a_jour: 2026-01-31
+date_publication: 2026-06-22
+date_mise_a_jour: 2026-06-22
 
 # === CONTENU ===
-longueur_mots: 3800
-temps_lecture: 15
+longueur_mots: 3200
+temps_lecture: 13
 
 # === TRIGGERFLOW SPECIFIQUE ===
 persona_cible: directeur
@@ -34,604 +34,397 @@ cta_principal: demo
 fonctionnalites_mises_en_avant:
   - "CRM hôtelier"
   - "Segmentation dynamique"
-  - "Profils clients 360°"
+  - "Fiche client 360°"
   - "Synchronisation PMS"
 pms_mentionnes:
   - "Mews"
   - "Opera Cloud"
-  - "Medialog"
-  - "Misterbooking"
-  - "Asterio"
 
 # === MAILLAGE INTERNE ===
 liens_internes:
-  - fichier: S1-P-marketing-automation-hotelier.md
-    ancre: "marketing automation"
-    contexte: "Lier quand on parle d'exploiter les données pour l'automation"
-  - fichier: S2-S-enquete-satisfaction-hotel.md
-    ancre: "enquêtes de satisfaction"
-    contexte: "Lier dans la section sur l'enrichissement des profils"
-  - fichier: S3-S-programme-fidelite-hotel.md
-    ancre: "programme de fidélité"
-    contexte: "Lier dans la section fidélisation"
-  - fichier: S4-P-integration-pms-crm.md
-    ancre: "connecter votre PMS"
-    contexte: "Lier dans la section intégration PMS"
-
-liens_externes:
-  - url: https://www.trigger-flow.com
-    ancre: "TriggerFlow"
-    contexte: "Première mention de TriggerFlow dans l'article"
-  - url: https://app.lemcal.com/@trigger-flow/demo
-    ancre: "réserver une démo"
-    contexte: "CTA de fin d'article"
+  - fichier: experience-client/hotel-guest-satisfaction-survey
+    ancre: "enquêtes de satisfaction client"
+    contexte: "Section sur l'enrichissement des profils et le post-séjour"
+  - fichier: experience-client/google-booking-reviews-hotel
+    ancre: "avis publics"
+    contexte: "Section réputation et orientation post-séjour"
+  - fichier: experience-client/hotel-crm-guide
+    ancre: "guide complet (EN)"
+    contexte: "Lien hreflang vers la version anglaise du pilier"
+  - fichier: produit/crm
+    ancre: "CRM hôtelier intelligent"
+    contexte: "CTA final de l'article"
+  - fichier: produit/ventes-additionnelles
+    ancre: "upsell"
+    contexte: "Section cycle de vie et bénéfices"
+  - fichier: produit/fidelite
+    ancre: "fidélisation"
+    contexte: "Section bénéfices"
+  - fichier: produit/email
+    ancre: "email"
+    contexte: "Section FAQ modules essentiels"
+  - fichier: produit/sms
+    ancre: "SMS"
+    contexte: "Section FAQ modules essentiels"
+  - fichier: produit/avis
+    ancre: "avis"
+    contexte: "Section FAQ modules essentiels"
+  - fichier: tarifs
+    ancre: "voir les tarifs"
+    contexte: "Section tarifs"
+  - fichier: integrations/pms/mews
+    ancre: "Mews"
+    contexte: "Section intégration PMS"
 
 # === IMAGES ===
 images:
   - id: hero
     filename: hero-crm-hotelier-guide.webp
-    alt: "Réceptionniste consultant une fiche client sur écran dans un hôtel moderne"
+    alt: "Hotel receptionist reviewing a guest profile on a computer screen at the front desk"
     placement: after_title
     width: 1200
     height: 630
-    model: nano-banana-pro
-    prompt: |
-      Professional hotel photography: a hotel receptionist at a modern
-      front desk looking at a large monitor displaying a guest profile
-      with colorful data visualizations (screen slightly blurred, no
-      readable text). The reception area is elegant with warm lighting,
-      wood and stone materials. The receptionist appears focused and
-      professional. A guest's silhouette is visible approaching the desk.
-      Soft afternoon light. The atmosphere conveys efficiency and
-      personalized service. Shot at a slight angle, medium depth of field.
-
-  - id: cardex-probleme
-    filename: cardex-probleme-crm-hotelier-guide.webp
-    alt: "Illustration des données clients éparpillées sans CRM centralisé"
-    placement: "after_h2:Le cardex traditionnel : pourquoi il ne suffit plus"
-    width: 800
-    height: 450
-    model: nano-banana
-    prompt: |
-      Flat design illustration showing scattered guest data: multiple
-      file cards, sticky notes, spreadsheet icons, and paper documents
-      floating in disarray. Some cards show avatar silhouettes with
-      disconnected data points around them. Broken links between elements.
-      A confused hotel staff silhouette in the center. Color scheme:
-      muted grays for the chaos, light mint (#CCE2E1) background, small
-      teal (#006F68) accents on important but lost data, warm peach
-      (#FFCFA2) warning symbols. The feeling is disorganization and
-      lost information. Vector style, no text or letters.
-
   - id: fiche-client-360
     filename: fiche-client-360-crm-hotelier-guide.webp
-    alt: "Profil client unifié 360 degrés dans un CRM hôtelier"
-    placement: "after_h2:La fiche client 360° : tout savoir en un coup d'œil"
+    alt: "Unified 360-degree hotel guest profile displayed on a CRM dashboard"
+    placement: "after_h2:À quoi sert concrètement un CRM hôtelier"
     width: 800
     height: 450
-    model: nano-banana
-    prompt: |
-      Flat design illustration of a unified guest profile card: a central
-      large card showing a guest avatar silhouette surrounded by organized
-      data modules - reservation history (calendar icons), spending data
-      (chart icon), preferences (heart icons), communication history
-      (message bubbles), loyalty status (star badge). All connected by
-      clean lines to the central profile. Color scheme: teal green
-      (#006F68) for the main card frame, dark teal (#002B28) for data
-      icons, light mint (#CCE2E1) background, warm peach (#FFCFA2)
-      highlights on key information. Clean, organized, modern vector
-      style. No text or letters.
-
-  - id: segmentation
-    filename: segmentation-crm-hotelier-guide.webp
-    alt: "Équipe marketing hôtelier analysant des segments clients"
-    placement: "after_h2:La segmentation : cibler pour mieux personnaliser"
-    width: 800
-    height: 450
-    model: nano-banana-pro
-    prompt: |
-      Professional photography of a hotel marketing meeting: three hotel
-      staff members gathered around a conference table with a laptop,
-      looking at colorful pie charts and segment visualizations on the
-      screen (content blurred). One person points at the screen while
-      explaining. Modern meeting room with glass walls, city view in
-      background. Coffee cups on table. Natural daylight. Collaborative
-      and analytical atmosphere. Shot from slight angle showing all
-      participants and the screen.
-
   - id: synchronisation-pms
     filename: synchronisation-pms-crm-hotelier-guide.webp
-    alt: "Synchronisation automatique entre PMS et CRM hôtelier"
-    placement: "after_h2:L'intégration PMS : la clé d'un CRM efficace"
+    alt: "Real-time data synchronization between a hotel PMS and a CRM platform"
+    placement: "after_h2:Pourquoi l'intégration PMS est-elle déterminante"
     width: 800
     height: 450
-    model: nano-banana
-    prompt: |
-      Flat design illustration showing PMS-CRM synchronization: on the
-      left, a PMS icon (hotel building with database symbol), on the
-      right, a CRM icon (contact card with gear). Between them, flowing
-      data streams with small icons (guest avatars, calendar events,
-      currency symbols) moving bidirectionally. Sync arrows and refresh
-      symbols indicate real-time connection. A clock icon shows "real-time".
-      Color scheme: teal green (#006F68) for the systems and data flow,
-      dark teal (#002B28) for icons, light mint (#CCE2E1) background,
-      warm peach (#FFCFA2) for sync indicators. Vector style, no text.
-
   - id: resultats-crm
     filename: resultats-crm-crm-hotelier-guide.webp
-    alt: "Client fidèle reconnu à son arrivée dans un hôtel"
-    placement: "after_h2:Les bénéfices concrets d'un CRM hôtelier"
+    alt: "Loyal hotel guest warmly welcomed at a boutique hotel front desk"
+    placement: "after_h2:Quels sont les bénéfices d'un CRM hôtelier"
     width: 800
     height: 450
-    model: nano-banana-pro
-    prompt: |
-      Professional hotel photography: a warm welcome scene at a boutique
-      hotel. A receptionist greets a returning guest with a genuine smile,
-      clearly recognizing them. The guest looks pleased and surprised by
-      the personalized attention. The reception desk has fresh flowers
-      and a tablet visible (screen not readable). Elegant lobby with
-      warm lighting, tasteful decor. The interaction feels personal and
-      genuine. Shot at eye level capturing both faces, shallow depth of
-      field. Premium hospitality atmosphere.
 ---
+
 <ImageBlock id="hero" />
 
-Mme Dupont séjourne dans votre hôtel pour la quatrième fois cette année.
+<Callout type="info">
+**En résumé :** Un CRM hôtelier est un logiciel qui centralise toutes vos données clients — issues de votre PMS, de votre site et de vos canaux de messagerie — en un profil unique, puis les transforme en segmentation, communication automatisée et fidélisation. TriggerFlow est un CRM hôtelier intégré au PMS, à prix transparent et accessible dès le plan gratuit, conçu pour les hôtels indépendants et les groupes.
+</Callout>
 
-Elle demande toujours une chambre au calme, côté jardin. Elle prend son petit-déjeuner tôt, avant 7h30. Elle a fêté son anniversaire chez vous l'an dernier. Elle dépense en moyenne 180 € au restaurant à chaque séjour.
+Mme Bertrand séjourne chez vous pour la quatrième fois cette année.
 
-**Votre PMS contient ces informations, quelque part.**
+Elle demande toujours une chambre calme côté jardin. Elle prend son petit-déjeuner tôt, avant 7 h 30. Elle a fêté son anniversaire chez vous l'an dernier. Elle dépense en moyenne 160 € au restaurant à chaque séjour.
 
-Mais quand Mme Dupont arrive à la réception, le réceptionniste la traite comme n'importe quel client. Personne ne l'a reconnue. Personne n'a préparé sa chambre préférée.
+**Votre PMS contient toutes ces informations, quelque part.**
 
-Les données existent. Elles ne sont simplement pas exploitées.
+Mais quand Mme Bertrand se présente à la réception, elle est traitée comme n'importe quelle cliente. Personne ne l'a reconnue. Personne n'a préparé sa chambre préférée.
 
-C'est exactement ce que résout un CRM hôtelier bien conçu.
+Les données existent. Elles ne sont simplement pas utilisées.
+
+Cet écart — entre les données que vous collectez déjà et l'expérience que vous délivrez réellement — c'est exactement ce qu'un CRM hôtelier est conçu pour combler.
 
 ---
 
 ## Qu'est-ce qu'un CRM hôtelier ?
 
-CRM signifie Customer Relationship Management, **gestion de la relation client**.
+Un **CRM hôtelier** (Customer Relationship Management) est un logiciel qui centralise tout ce que vous savez sur vos clients — coordonnées, historique de séjours, préférences, dépenses, communications, avis — en un profil unique, et transforme cette connaissance en actions concrètes : segmentation, messages personnalisés, automatisations et fidélisation.
 
-Dans l'hôtellerie, un CRM est un système qui centralise toutes les informations sur vos clients :
+Votre PMS gère *le séjour*, votre CRM construit *la relation*.
 
-- Coordonnées
-- Historique de séjours
-- Préférences
-- Dépenses
-- Communications
-- Feedback
+Un CRM hôtelier centralise typiquement :
+
+- Les coordonnées et l'identité du client
+- L'historique complet des séjours, tous canaux confondus
+- Les préférences déclarées et observées
+- Les dépenses, par séjour et en valeur vie client
+- Toutes les communications (email, SMS, WhatsApp)
+- Les scores de satisfaction et les avis collectés
 
 <Callout type="info">
-Un vrai CRM hôtelier ne se limite pas à un carnet d'adresses amélioré. Il **connecte ces données à des actions** : segmentation, personnalisation, [marketing automation](/fr/blog/automatisation/marketing-automation-hotelier-guide/), fidélisation.
+Un vrai CRM hôtelier n'est pas un carnet d'adresses amélioré. Sa valeur tient au fait qu'il **connecte la donnée à l'action** — segments dynamiques, messages automatisés, demandes d'avis, upselling — pour que la connaissance client change concrètement l'expérience vécue à chaque séjour.
 </Callout>
-
-### CRM vs PMS : quelle différence ?
-
-| Outil | Focus | Vision |
-|-------|-------|--------|
-| **PMS** | Opérations (réservations, chambres, facturation) | Le séjour en cours |
-| **CRM** | Relation client | Le client dans la durée |
-
-Dans un monde idéal, les deux communiquent en temps réel. Le PMS alimente le CRM avec les données transactionnelles. Le CRM renvoie au PMS les informations utiles (préférences, statut VIP).
-
-### Le cardex : l'ancêtre du CRM
-
-Dans l'hôtellerie traditionnelle, le cardex était ce fichier qui recensait les clients avec quelques notes : "Aime le calme", "Allergique aux arachides".
-
-Le cardex existe toujours dans la plupart des PMS. Mais il a **trois limites majeures** :
-
-1. Données saisies manuellement (donc souvent incomplètes)
-2. Pas de segmentation dynamique
-3. Aucune action automatique déclenchée
 
 ---
 
-## Le cardex traditionnel : pourquoi il ne suffit plus
+## CRM hôtelier, PMS et moteur de réservation : quelles différences ?
 
-<ImageBlock id="cardex-probleme" />
+Un CRM hôtelier et un PMS ne font pas le même travail — l'un gère le séjour en cours, l'autre construit la relation dans la durée.
 
-Le cardex du PMS pose plusieurs problèmes structurels.
+La confusion la plus fréquente en technologie hôtelière oppose **CRM et PMS**. Ces outils résolvent des problèmes différents et fonctionnent mieux ensemble.
 
-### Des données incomplètes et obsolètes
+| Outil | Rôle principal | Horizon temporel |
+|-------|---------------|------------------|
+| **PMS** (Property Management System) | Opérations : réservations, attribution des chambres, facturation | Le séjour en cours |
+| **CRM hôtelier** | Relation : qui est le client dans la durée, quoi lui envoyer | La vie du client |
+| **Moteur de réservation** | Conversion : transformer un visiteur en réservation directe | Le moment de l'achat |
 
-Les informations dépendent de la saisie manuelle par les équipes.
+Le PMS alimente le CRM en données transactionnelles (réservations, consommations, arrivées). Le CRM renvoie du contexte utile — préférences, statut VIP — pour que la réception le voie au prochain séjour. Le moteur de réservation capte la demande directe ; le CRM est ce qui ramène ce client sans repayer la commission OTA.
 
-Entre deux check-ins pressés, qui prend le temps de noter que le client a demandé un oreiller supplémentaire ?
-
-**Résultat** : des profils à moitié vides, des informations périmées, des doublons.
-
-### Aucune vision consolidée
-
-Si un client a séjourné 5 fois, vous avez 5 réservations distinctes dans le PMS.
-
-Mais avez-vous facilement accès à :
-
-- Nombre total de séjours
-- Dépense cumulée
-- Évolution de la satisfaction
-- Canaux de réservation utilisés
-
-<Callout type="warning">
-La plupart des PMS obligent à naviguer entre plusieurs écrans pour reconstituer cette vision. Les équipes n'ont pas le temps de le faire à chaque check-in.
-</Callout>
-
-### Pas de segmentation dynamique
-
-Le cardex permet parfois d'attribuer des tags manuels (VIP, Corporate).
-
-Mais il ne permet pas de créer des **segments intelligents** qui se mettent à jour automatiquement.
-
-> **Exemple de segment impossible avec un cardex** : "Clients ayant séjourné plus de 3 fois, dépensé plus de 500 € au restaurant, et n'ayant pas réservé depuis 6 mois."
-
-Ce segment serait la cible parfaite pour une campagne de reconquête. Sans CRM, impossible de l'identifier.
-
-### Des données inexploitables pour le marketing
-
-Même si les données sont là, elles ne sont pas actionnables.
-
-Envoyer un email personnalisé aux clients qui fêtent leur anniversaire ce mois-ci ? Il faudrait exporter, filtrer dans Excel, importer dans Mailchimp...
-
-**Processus trop lourd** pour être fait régulièrement.
+Un CRM déconnecté du PMS est un CRM mort — on y reviendra en détail.
 
 ---
 
-## La fiche client 360° : tout savoir en un coup d'œil
+## À quoi sert concrètement un CRM hôtelier ?
 
 <ImageBlock id="fiche-client-360" />
 
-Un CRM hôtelier moderne propose une **fiche client unifiée** qui agrège toutes les informations pertinentes.
+Un CRM hôtelier sert à transformer les données déjà présentes dans votre PMS en expériences personnalisées et en revenus additionnels — via cinq fonctions concrètes.
 
-### Les données d'identification
+### 1. Construire une fiche client 360°
 
-Les basiques :
-- Nom, prénom, email, téléphone
-- Adresse, date de naissance
-- Nationalité, langue préférée
+Chaque réservation, consommation, message et réponse à un questionnaire se consolide en **un profil unique par client**, dédupliqué automatiquement. Ainsi, un même client qui réserve sous deux adresses email différentes ne génère pas deux fiches distinctes. En un coup d'œil, votre équipe voit : fidèle ou primo-séjournant ? Réserve en direct ou via OTA ? Consomme au restaurant ou non ?
 
-Ces données viennent du PMS et se **synchronisent automatiquement** à chaque réservation.
+### 2. Segmenter finement votre base client
+
+C'est là que réside l'essentiel de la valeur. Plutôt que des tags statiques, un CRM hôtelier permet de construire des **segments dynamiques** qui se mettent à jour automatiquement — par exemple, « clients ayant effectué 3 séjours ou plus et n'ayant pas réservé depuis 6 mois ». La bonne cible pour une campagne de réactivation, identifiée sans effort manuel.
+
+### 3. Automatiser la communication multicanal
+
+Messages avant, pendant et après le séjour — par email, SMS ou WhatsApp — déclenchés par des événements plutôt qu'envoyés à la main. Un départ déclenche automatiquement un remerciement et une demande d'avis ; un anniversaire déclenche automatiquement une offre personnalisée.
+
+### 4. Collecter les avis et protéger votre réputation
+
+Le CRM envoie des [enquêtes de satisfaction client](/en/blog/experience-client/hotel-guest-satisfaction-survey), oriente les clients satisfaits vers des [avis publics](/en/blog/experience-client/google-booking-reviews-hotel) (Google, TripAdvisor) et alerte un manager sur les clients insatisfaits *avant* qu'un mauvais avis ne soit publié.
+
+### 5. Générer du chiffre d'affaires additionnel
+
+Fort de l'historique des séjours et des préférences, le CRM active des [upsells](/en/produit/ventes-additionnelles) pertinents — surclassement de chambre, départ tardif, services sur site — proposés aux clients les plus susceptibles d'accepter, au bon moment.
 
 <Callout type="tip">
-Le CRM gère aussi le **dédoublonnage** : quand un client réserve avec deux emails différents, le système détecte le doublon et propose de fusionner les fiches.
+Toutes ces fonctionnalités doivent former **une seule plateforme**, pas cinq outils distincts à connecter entre eux. C'est la différence décisive entre un CRM hôtelier intégré et un assemblage d'applications déconnectées — que les équipes finissent par abandonner.
 </Callout>
-
-### L'historique des séjours
-
-Chaque séjour est tracé :
-
-| Information | Utilité |
-|-------------|---------|
-| Dates | Fréquence de visite |
-| Type de chambre | Préférences |
-| Tarif / canal | Direct vs OTA |
-| Montant total | Valeur client |
-| Extras consommés | Opportunités upselling |
-
-En un coup d'œil : client occasionnel ou habitué ? Réserve en direct ou via OTA ? Dépense au restaurant ou non ?
-
-### Les préférences déclarées et observées
-
-**Préférences déclarées** : ce que le client a explicitement demandé.
-- Chambre non-fumeur
-- Lit king size
-- Oreiller ferme
-
-**Préférences observées** : ce que le système a appris de son comportement.
-- Réserve toujours des suites
-- Commande systématiquement au room service le soir d'arrivée
-
-### L'historique des communications
-
-Tous les échanges sont tracés dans la fiche :
-- Emails envoyés
-- SMS
-- Conversations WhatsApp
-
-Le réceptionniste sait immédiatement si le client a reçu l'email de bienvenue, s'il a ouvert l'offre d'upselling.
-
-### Les scores et indicateurs
-
-Un bon CRM calcule automatiquement :
-
-- **Valeur client** (lifetime value)
-- **Fréquence de visite**
-- **Score de satisfaction moyen**
-- **Taux d'ouverture des emails**
-
-Ces métriques permettent d'identifier en un instant les meilleurs clients, et ceux qui risquent de partir.
 
 ---
 
-## La segmentation : cibler pour mieux personnaliser
+## Quel est le cycle de vie client géré par un CRM hôtelier ?
 
-<ImageBlock id="segmentation" />
+Un CRM hôtelier intervient à chaque étape du parcours — pas seulement pendant le séjour. À chaque étape, il transforme une donnée en action concrète :
 
-La segmentation est le **cœur de la valeur** d'un CRM. Elle permet de diviser votre base clients en groupes homogènes.
+| Étape | Ce que fait le CRM hôtelier |
+|-------|--------------------------|
+| **Considération** | Capture les prospects et les prospects web, les nourrit vers une réservation directe |
+| **Réservation** | Synchronise la réservation depuis le PMS, enrichit le profil client |
+| **Pré-arrivée** | Envoie la confirmation, le formulaire de pré-check-in et les [offres additionnelles](/en/produit/ventes-additionnelles) |
+| **Check-in** | Remonte préférences et statut VIP à la réception pour un accueil personnalisé |
+| **Séjour** | Active la messagerie en cours de séjour via email, SMS, WhatsApp |
+| **Départ** | Déclenche le remerciement, le règlement et le [questionnaire de satisfaction](/en/blog/experience-client/hotel-guest-satisfaction-survey) |
+| **Post-séjour** | Oriente les satisfaits vers les [avis publics](/en/blog/experience-client/google-booking-reviews-hotel), segmente pour la réactivation, construit la fidélité |
 
-### Segmentation statique vs dynamique
+Le profil s'enrichit à chaque étape — c'est ce qui distingue un CRM d'un simple répertoire.
 
-| Type | Fonctionnement | Limite |
-|------|----------------|--------|
-| **Statique** | Tag attribué manuellement (VIP, Corporate) | Reste figé jusqu'à modification manuelle |
-| **Dynamique** | Règles définies, mise à jour automatique | Se recalcule en temps réel |
+---
 
-<Callout type="info">
-**Exemple de segmentation dynamique** : "Clients ayant séjourné 3+ fois", dès qu'un client atteint son troisième séjour, il entre automatiquement dans le segment.
+## Pourquoi l'intégration PMS est-elle déterminante pour un CRM hôtelier ?
+
+<ImageBlock id="synchronisation-pms" />
+
+Un CRM hôtelier ne vaut que par les données qui l'alimentent — et ces données vivent dans votre PMS.
+
+Sans synchronisation automatique, votre équipe doit tout re-saisir manuellement. **Elle ne le fera pas.** Entre deux check-ins chargés, personne ne saisit qu'un client a demandé un oreiller supplémentaire ou une chambre haute. Les fiches restent à moitié vides, et le CRM devient silencieusement inutilisable.
+
+### Ce qu'une bonne intégration synchronise
+
+**Du PMS vers le CRM :** création et mise à jour des profils clients, réservations nouvelles et modifiées, arrivées et départs, consommations détaillées, demandes spéciales et notes.
+
+**Du CRM vers le PMS :** préférences clients visibles à la réception, statut VIP et alertes personnalisées, notes enrichies par le marketing.
+
+### Exigez la synchronisation en temps réel
+
+| Mode de synchronisation | Fréquence | Adapté pour |
+|------------------------|-----------|-------------|
+| Import manuel (CSV) | Ponctuel | Jamais recommandé |
+| Synchronisation planifiée | Quotidienne / horaire | Marketing uniquement |
+| **Synchronisation temps réel** | **Instantanée** | **Opérations + marketing** |
+
+<Callout type="warning">
+Une synchronisation quotidienne signifie que le client est déjà reparti quand la donnée arrive dans le CRM. Pour tout ce dont la réception a besoin au moment de l'accueil, exigez le **temps réel**.
 </Callout>
 
-### Les critères de segmentation hôteliers
+[TriggerFlow](https://www.trigger-flow.com) se connecte nativement aux principaux PMS utilisés en Europe et à l'international — dont [Mews](/en/integrations/pms/mews) et Opera Cloud — avec d'autres ajoutés régulièrement, sans développement sur mesure. Le principe qui compte lors de l'évaluation de tout CRM hôtelier : il doit s'intégrer au PMS que vous avez déjà, pas vous forcer à en changer.
 
-**Critères transactionnels :**
-- Nombre de séjours
-- Dépense totale ou moyenne
-- Type de chambre habituellement réservé
-- Canal de réservation (direct vs OTA)
-- Code tarif ou segment tarifaire
+---
 
-**Critères comportementaux :**
-- Taux d'ouverture des emails
-- Réponse aux offres d'upselling
-- Utilisation des services (spa, restaurant)
-- Score de satisfaction
+## Comment les hôtels utilisent un CRM hôtelier au quotidien ?
 
-**Critères temporels :**
-- Dernier séjour (actif, dormant, perdu)
-- Saisonnalité (client été, client hiver)
-- Ancienneté de la relation
+Un CRM ne crée de valeur que s'il est utilisé tous les jours — voici ce que cela donne concrètement, rôle par rôle :
 
-### Exemples de segments actionnables
+### À la réception : reconnaître et personnaliser
 
-<Callout type="tip">
-**"Ambassadeurs potentiels"**
+Un client arrive ; le réceptionniste ouvre sa fiche en un clic et voit : cliente fidèle (5ᵉ séjour), préfère les chambres calmes côté jardin, a laissé un avis 5 étoiles la dernière fois, anniversaire dans trois jours.
 
-Critères : 3+ séjours, satisfaction > 8/10, actifs sur les 12 derniers mois.
+> « Bienvenue Mme Bertrand, quel plaisir de vous revoir. Nous avons réservé la chambre 204 côté jardin, comme d'habitude — et comme votre anniversaire approche, nous avons une petite surprise pour vous. »
 
-Action : Invitation au [programme de fidélité](/fr/produit/fidelite) premium, demande d'avis Google.
-</Callout>
+Ce moment de reconnaissance ne coûte rien d'extra à l'équipe. Il repose entièrement sur une fiche à jour.
 
-<Callout type="tip">
-**"À reconquérir"**
+### Pour le marketing : cibler et automatiser
 
-Critères : 2+ séjours, dernier séjour > 12 mois.
+Le responsable marketing travaille depuis des segments — une newsletter aux clients francophones uniquement, une offre spa aux clients ayant déjà utilisé le spa, une réactivation aux clients inactifs depuis six mois — et configure des scénarios automatisés qui s'exécutent sans intervention manuelle, même en dehors des heures de bureau.
 
-Action : Email de reconquête avec offre personnalisée.
-</Callout>
+### Pour la direction : mesurer et décider
 
-<Callout type="tip">
-**"Risque d'avis négatif"**
-
-Critères : Note < 6 à l'[enquête de satisfaction](/fr/blog/experience-client/enquete-satisfaction-hotel/).
-
-Action : Alerte au manager, appel personnalisé, geste commercial.
-</Callout>
+Le directeur consulte des tableaux de bord consolidés : croissance de la base client, valeur moyenne par segment, taux de retour, satisfaction dans le temps. Des indicateurs qui orientent de vraies décisions stratégiques, pas des impressions.
 
 <NewsletterInline />
 
 ---
 
-## L'intégration PMS : la clé d'un CRM efficace
-
-<ImageBlock id="synchronisation-pms" />
-
-Un CRM déconnecté du PMS est un CRM mort.
-
-Sans synchronisation automatique, les équipes doivent ressaisir les données, **et elles ne le font pas**.
-
-### Ce que doit synchroniser l'intégration
-
-**Du PMS vers le CRM :**
-- Création et mise à jour des fiches clients
-- Nouvelles réservations et modifications
-- Check-in et check-out
-- Charges et consommations
-- Commentaires et demandes spéciales
-
-**Du CRM vers le PMS :**
-- Préférences client à afficher pour la réception
-- Statut VIP ou alertes
-- Notes et commentaires enrichis
-
-### Les modes de synchronisation
-
-| Mode | Fréquence | Adapté pour |
-|------|-----------|-------------|
-| Import manuel (CSV) | Ponctuel | Jamais recommandé |
-| Synchronisation programmée | 1x/jour ou 1x/heure | Marketing uniquement |
-| **Synchronisation temps réel** | Instantané | Opérationnel + Marketing |
-
-<Callout type="warning">
-**Exigez le temps réel.** Une synchronisation quotidienne signifie que le client est déjà parti quand les données arrivent.
-</Callout>
-
-### Les PMS compatibles
-
-[TriggerFlow](https://www.trigger-flow.com) se connecte nativement à plus de **8 PMS** du marché français et européen :
-
-- Mews
-- Opera Cloud
-- Medialog
-- Misterbooking
-- Asterio
-- Hotello
-- Thais
-- Vega
-
-La connexion se fait en quelques clics, sans développement technique.
-
----
-
-## Exploiter le CRM au quotidien
-
-Un CRM n'apporte de la valeur que s'il est utilisé.
-
-### À la réception : reconnaître et personnaliser
-
-Quand un client se présente, le réceptionniste consulte sa fiche en un clic.
-
-Il voit immédiatement :
-- Client fidèle (5ème séjour)
-- Préfère les chambres calmes
-- A laissé un avis positif la dernière fois
-- Anniversaire dans 3 jours
-
-> "Ravi de vous revoir Mme Dupont, nous vous avons réservé la chambre 204 côté jardin comme d'habitude. Et je vois que votre anniversaire approche, nous aurons une petite attention pour vous."
-
-### Pour le marketing : cibler et automatiser
-
-Le responsable marketing utilise les segments pour ses campagnes :
-
-- Newsletter aux clients français uniquement
-- Offre spa aux clients qui ont déjà consommé ce service
-- Relance aux clients dormants depuis 6 mois
-
-Mieux encore : il configure des **workflows automatiques** qui s'exécutent sans intervention.
-
-### Pour la direction : piloter et décider
-
-Le directeur accède à des tableaux de bord consolidés :
-
-- Évolution de la base clients
-- Valeur moyenne par segment
-- Taux de retour
-- Satisfaction par période
-
-Ces indicateurs alimentent les décisions stratégiques.
-
----
-
-## Les bénéfices concrets d'un CRM hôtelier
+## Quels sont les bénéfices d'un CRM hôtelier ?
 
 <ImageBlock id="resultats-crm" />
 
-Passons aux résultats mesurables.
-
-### Augmentation du taux de retour
-
-<KeyFigure 
-  value="+15 à 25%" 
-  label="Taux de retour client"
-  description="Pour les hôtels qui exploitent leur CRM pour la fidélisation"
-/>
-
-La reconnaissance, les offres personnalisées, le programme de fidélité créent un attachement que les concurrents ne peuvent pas répliquer.
-
-### Hausse du panier moyen
-
-La connaissance client permet un upselling pertinent.
-
-Proposer un surclassement à un client qui a déjà accepté par le passé a **3 fois plus de chances** de convertir qu'une offre générique.
-
-### Amélioration de la satisfaction
+Un CRM hôtelier bien intégré agit sur trois indicateurs à la fois : fidélisation, panier moyen et réputation en ligne. Voici les résultats mesurés chez les hôtels TriggerFlow :
 
 <KeyFiguresGrid>
-  <KeyFigureCard value="+10 à 15 pts" label="Score de satisfaction" />
-  <KeyFigureCard value="5-10 min" label="Gagnées par check-in" />
-  <KeyFigureCard value="-5 à 10 pts" label="Part des OTA" />
+  <KeyFigureCard statId="avgBasket" label="Panier moyen" />
+  <KeyFigureCard statId="googleReviews" label="Avis Google" />
+  <KeyFigureCard statId="hoursSaved" label="Heures économisées par équipe" />
 </KeyFiguresGrid>
 
-Un client reconnu est un client satisfait. Et un client satisfait laisse de meilleurs avis, recommande l'hôtel, revient plus souvent.
+**Plus de clients fidèles.** La reconnaissance, les offres personnalisées et la [fidélisation](/en/produit/fidelite) créent un attachement que les concurrents ne peuvent pas facilement reproduire. Un client qui se sent connu revient.
 
-### Réduction de la dépendance aux OTA
+**Un panier moyen plus élevé.** Un [upsell](/en/produit/ventes-additionnelles) pertinent convertit bien mieux qu'une offre générique. Proposer un surclassement à un client qui en a déjà accepté un représente une opportunité radicalement différente d'une promotion indifférenciée.
 
-Mieux connaître ses clients permet de les fidéliser en direct.
+**Une meilleure réputation en ligne.** Un client reconnu est un client satisfait — et un client satisfait laisse de meilleurs avis, vous recommande et revient sans passer par une OTA.
 
-À **15-20% de commission économisée** par réservation, l'impact sur la marge est considérable.
+**Moins de dépendance aux OTA.** Connaître vos clients permet de les faire revenir en direct. Les OTA facturent typiquement 15 à 20 % de commission (fourchette sectorielle courante) — chaque re-réservation directe que vous récupérez protège cette marge.
+
+<Callout type="info">
+TriggerFlow est utilisé par **<Stat id="hotels" /> hôtels** et noté **<Stat id="rating" />** par les hôteliers qui l'utilisent au quotidien — un CRM n'est rentable que si les équipes l'adoptent vraiment.
+</Callout>
 
 ---
 
-## Choisir et déployer son CRM hôtelier
+## Comment choisir son CRM hôtelier ?
 
-### Les critères de sélection
+Tous les CRM hôteliers ne se valent pas. Cinq critères distinguent un outil que vos équipes utiliseront d'un outil qui prendra la poussière après quelques semaines.
 
-| Critère | Pourquoi c'est essentiel |
-|---------|-------------------------|
-| **Intégration PMS native** | Sans connexion fluide, le CRM sera une coquille vide |
-| **Segmentation avancée** | Créer des segments sur n'importe quelle combinaison de critères |
-| **Connexion à l'automation** | L'idéal : CRM et automation dans le même outil |
+| Critère | Pourquoi ça compte |
+|---------|-----------------|
+| **Intégration PMS native** | Sans connexion propre, le CRM est une coquille vide |
+| **Segmentation avancée** | Vous devez pouvoir segmenter sur toute combinaison de critères |
+| **Automatisation et messagerie intégrées** | Idéalement CRM, automatisation et communication dans un seul outil |
 | **Facilité d'utilisation** | Si l'interface est complexe, les équipes ne l'utiliseront pas |
-| **Multi-établissement** | Si vous avez plusieurs hôtels |
+| **Prix transparent** | Vous devez pouvoir connaître le coût avant tout appel commercial |
+| **Multi-établissement** | Indispensable si vous gérez plusieurs hôtels |
 
-### Le déploiement : les étapes clés
-
-**Phase 1 : Connexion et import initial**
-
-Connectez le CRM à votre PMS. Importez l'historique. Lancez le dédoublonnage.
-
-**Phase 2 : Configuration des segments**
-
-Définissez vos segments prioritaires. Commencez simple : clients fidèles, clients à risque, clients OTA.
-
-**Phase 3 : Formation des équipes**
-
-La réception doit savoir consulter une fiche client en 10 secondes. Le marketing doit maîtriser la création de segments.
-
-**Phase 4 : Connexion aux actions**
-
-Reliez les segments à des workflows automatiques. Un client "fidèle" reçoit automatiquement un email de bienvenue au programme.
-
-**Phase 5 : Mesure et optimisation**
-
-Suivez les indicateurs clés. Ajustez les segments et les actions en fonction des résultats.
+En comparant les solutions du marché, vous constaterez rapidement que la plupart des plateformes d'expérience client hôtelière cachent leur tarif derrière un devis — ce qui nous amène directement à la question que posent tous les acheteurs.
 
 ---
 
-## Ce qu'il faut retenir
+## Combien coûte un CRM hôtelier ?
 
-Le CRM hôtelier transforme vos données clients - aujourd'hui dormantes dans votre PMS - en **expérience personnalisée et en revenus additionnels**.
+Réponse honnête : dans ce marché, c'est souvent difficile à savoir. La majorité des éditeurs ne publient aucun prix et orientent chaque prospect vers un appel commercial. Des frais d'installation et des minimums de chambres sont fréquents. Voici ce que les acheteurs rencontrent typiquement :
+
+| Modèle tarifaire | Coût habituel | Transparence |
+|-----------------|---------------|--------------|
+| Par chambre / mois | ~5–15 € par chambre | Souvent sur devis |
+| Forfait mensuel | 100–250 €+/mois + onboarding | Rarement public |
+| Entreprise / groupes | 1 000 €+/mois, sur mesure | Sur devis uniquement |
+| **TriggerFlow** | **Plan gratuit, puis à partir de 69 €/mois** | **Public — [voir les tarifs](/en/tarifs), sans appel commercial** |
+
+Un nombre croissant d'acheteurs commence désormais sa recherche en **interrogeant un assistant IA** (ChatGPT, Claude) pour trouver le CRM hôtelier adapté à sa situation — ce qui récompense naturellement les éditeurs clairs et publics sur ce qu'ils font et ce qu'ils coûtent.
+
+TriggerFlow prend le contre-pied de la norme du devis imposé : prix publics avec plan gratuit pour démarrer, offres payantes à partir de 69 €/mois, et modules additionnels (avis, agent IA, paiements, [fidélité](/en/produit/fidelite), application client) activés à la demande — sans frais d'installation, sans minimum de chambres. Pour un hôtel indépendant, cette transparence est souvent le facteur décisif.
+
+<Callout type="tip">
+Quand vous évaluez un CRM hôtelier, posez trois questions dès le départ : *S'intègre-t-il à mon PMS en temps réel ? Puis-je voir le prix sans appel commercial ? Puis-je démarrer petit et ajouter des modules progressivement ?* Les réponses en disent long sur la philosophie de l'éditeur.
+</Callout>
+
+---
+
+## Comment mettre en place un CRM hôtelier ?
+
+L'implémentation suit cinq phases — de la connexion PMS à la mise en route des automatisations — pour un déploiement complet en 2 à 4 semaines.
+
+**Phase 1 — Connecter et importer.** Relier le CRM au PMS, importer l'historique client existant, lancer la déduplication des fiches.
+
+**Phase 2 — Configurer les segments prioritaires.** Commencer simple : clients fidèles, clients à risque de départ, clients OTA à reconquérir en direct. Complexifier progressivement.
+
+**Phase 3 — Former les équipes.** La réception doit pouvoir ouvrir une fiche client en moins de 10 secondes ; le marketing doit être à l'aise pour construire un segment et programmer un envoi.
+
+**Phase 4 — Connecter les actions.** Associer les segments à des scénarios automatisés — un client identifié « fidèle » reçoit automatiquement un message de bienvenue dans le programme de fidélité.
+
+**Phase 5 — Mesurer et ajuster.** Suivre les indicateurs clés (taux d'ouverture, taux de conversion des upsells, score de satisfaction, taux de retour) et affiner les segments et les scénarios selon les résultats.
+
+<Callout type="info">
+Avec une solution moderne et intégrée, comptez quelques heures pour la configuration technique, 1 à 2 jours pour l'import de l'historique, et 1 à 2 semaines pour la configuration et la formation des équipes — soit **2 à 4 semaines** pour être pleinement opérationnel.
+</Callout>
+
+---
+
+## En résumé : qu'apporte vraiment un CRM hôtelier ?
+
+Un CRM hôtelier transforme les données dormantes de votre PMS en expériences personnalisées et en revenus additionnels — à condition d'être réellement connecté à votre PMS.
 
 <KeyFiguresGrid>
-  <KeyFigureCard value="+20%" label="Taux de retour" />
-  <KeyFigureCard value="+15%" label="Panier moyen" />
-  <KeyFigureCard value="-10 pts" label="Part OTA" />
+  <KeyFigureCard value="360°" label="Un profil unique par client" />
+  <KeyFigureCard value="Temps réel" label="Synchronisation PMS" />
+  <KeyFigureCard value="Tout-en-un" label="CRM + communications + avis + upsell" />
 </KeyFiguresGrid>
 
-La clé du succès est l'intégration. Un CRM déconnecté du PMS ne sert à rien.
+La clé, c'est l'intégration PMS : un CRM déconnecté est une coquille vide. Les plateformes qui s'imposent combinent CRM, automatisation et messagerie multicanal dans un outil adopté par les équipes — prix consultable avant toute signature.
 
-Une plateforme qui combine CRM, automation et communication multicanale offre la cohérence nécessaire pour vraiment exploiter la connaissance client.
-
-Prêt à centraliser vos données clients ? [Réservez une démo](https://app.lemcal.com/@trigger-flow/demo) et découvrez comment TriggerFlow connecte votre PMS à un CRM intelligent en quelques clics.
+Prêt à mettre vos données clients au travail ? [Réservez une démo](https://app.lemcal.com/@trigger-flow/demo) et découvrez comment TriggerFlow connecte votre PMS à un [CRM hôtelier intelligent](/en/produit/crm) en quelques clics.
 
 ---
 
-## Questions fréquentes
+## Questions fréquentes sur le CRM hôtelier
 
-**Quelle différence entre le cardex du PMS et un CRM ?**
+**Quelle est la différence entre un CRM hôtelier et un PMS ?**
 
-Le cardex est une fiche client basique : coordonnées, quelques notes manuelles. Un CRM va beaucoup plus loin : historique complet, segmentation dynamique, scores automatiques, connexion aux campagnes marketing.
-
----
-
-**Faut-il un CRM séparé ou intégré au PMS ?**
-
-Un CRM intégré au PMS simplifie l'architecture mais reste souvent limité. Un CRM spécialisé offre plus de puissance, à condition d'être nativement connecté au PMS.
+Un PMS gère les opérations — réservations, attribution des chambres, facturation — pour le séjour en cours. Un CRM hôtelier gère la relation client dans la durée : profils unifiés, segmentation dynamique, communication automatisée et fidélisation. Ils fonctionnent mieux connectés, le PMS alimentant le CRM en temps réel.
 
 ---
 
-**Combien de temps pour déployer un CRM hôtelier ?**
+**Ai-je besoin d'un CRM distinct, ou celui intégré à mon PMS suffit-il ?**
 
-Avec une solution moderne : déploiement technique en quelques heures, import historique en 1-2 jours, formation et configuration en 1-2 semaines. **Comptez 2 à 4 semaines** pour être pleinement opérationnel.
-
----
-
-**Un petit hôtel a-t-il besoin d'un CRM ?**
-
-Particulièrement. Un petit hôtel ne peut pas se permettre une équipe marketing dédiée. Le CRM automatise la connaissance client que les grands groupes font manuellement.
+Un CRM intégré au PMS simplifie l'architecture mais reste généralement limité — profils basiques, peu d'options d'automatisation et segmentation rudimentaire. Un CRM hôtelier dédié offre bien plus de puissance, à condition qu'il soit *nativement* connecté à votre PMS et non pas simplement importé via un fichier CSV.
 
 ---
 
-**Comment gérer le RGPD avec un CRM ?**
+**Combien de temps faut-il pour déployer un CRM hôtelier ?**
 
-Un CRM conforme doit : héberger les données en Europe, permettre l'export et la suppression sur demande, tracer les consentements, offrir une gestion fine des préférences de communication.
+Avec une solution moderne : configuration technique en quelques heures, import de l'historique en 1 à 2 jours, formation et paramétrage en 1 à 2 semaines. Comptez **2 à 4 semaines** pour être pleinement opérationnel avec des scénarios actifs.
 
 ---
 
-## À lire aussi
+**Un petit hôtel indépendant a-t-il vraiment besoin d'un CRM ?**
 
-<InternalLink href="/fr/blog/automatisation/marketing-automation-hotelier-guide/">
-  Marketing automation hôtelier : le guide complet
+C'est même lui qui en a le plus besoin. Un petit hôtel ne peut pas se payer une équipe marketing dédiée. Un CRM automatise la connaissance client que les grands groupes gèrent manuellement — et c'est précisément là que la transparence des prix et un plan gratuit font la différence entre adopter ou passer son chemin.
+
+---
+
+**Comment un CRM hôtelier gère-t-il le RGPD ?**
+
+Un CRM conforme doit héberger les données en Europe, permettre l'export et la suppression sur demande, journaliser les consentements et offrir un contrôle granulaire sur les préférences de communication de chaque client.
+
+---
+
+**Un CRM hôtelier peut-il augmenter les réservations directes ?**
+
+Oui. En reconnaissant vos clients et en les fidélisant, un CRM les ramène en direct plutôt que via une OTA — économisant au passage une commission typique de 15 à 20 % (fourchette sectorielle courante) à chaque re-réservation.
+
+---
+
+**Quels sont les modules essentiels d'un CRM hôtelier ?**
+
+Au minimum : gestion des profils clients, segmentation dynamique, [email](/en/produit/email) et [SMS](/en/produit/sms) automatisés, et intégration PMS native. Les modules complémentaires les plus rentables sont la gestion des [avis](/en/produit/avis), les [ventes additionnelles](/en/produit/ventes-additionnelles) et la [fidélité](/en/produit/fidelite).
+
+---
+
+## Pour aller plus loin
+
+<InternalLink href="/en/blog/experience-client/hotel-guest-satisfaction-survey">
+  Enquête de satisfaction client hôtel : modèles et automatisation
 </InternalLink>
 
-<InternalLink href="/fr/blog/experience-client/enquete-satisfaction-hotel/">
-  Enquête de satisfaction hôtel : modèles et bonnes pratiques
+<InternalLink href="/en/blog/experience-client/google-booking-reviews-hotel">
+  Comment obtenir plus d'avis Google et Booking.com pour votre hôtel
 </InternalLink>
+
+<InternalLink href="/en/blog/experience-client/hotel-crm-guide">
+  Hotel CRM: The Complete Guide (version EN)
+</InternalLink>
+
+---
+
+*Photos : Neon Wang et Helena Lopes sur Unsplash.*
