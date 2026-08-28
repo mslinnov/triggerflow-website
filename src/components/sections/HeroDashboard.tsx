@@ -48,8 +48,8 @@ export function HeroDashboard() {
         <Image
           src="/images/hero-tf.webp"
           alt="TriggerFlow – plateforme CRM et automatisation hôtelière"
-          width={1041}
-          height={920}
+          width={1200}
+          height={829}
           priority
           className="h-auto w-full"
         />
