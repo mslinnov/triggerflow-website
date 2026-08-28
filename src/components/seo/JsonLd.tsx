@@ -43,6 +43,7 @@ export function OrganizationJsonLd() {
     logo: `${baseUrl}/images/logo.webp`,
     description:
       'TriggerFlow est la solution SaaS leader pour l\'automatisation de la relation client dans l\'hôtellerie.',
+    slogan: 'Le CRM hôtelier qui centralise toute la relation client',
     foundingDate: '2020',
     founders: [
       {
@@ -90,6 +91,7 @@ export function SoftwareApplicationJsonLd({ locale = 'fr' }: { locale?: string }
     applicationCategory: 'BusinessApplication',
     applicationSubCategory: 'CRM',
     operatingSystem: 'Web',
+    slogan: 'Le CRM hôtelier qui centralise toute la relation client',
     description:
       'Solution SaaS pour automatiser SMS, emails et fidélisation client dans l\'hôtellerie. Synchronisation PMS, enquêtes satisfaction, upselling.',
     url: baseUrl,

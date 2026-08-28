@@ -115,7 +115,7 @@
   },
   "hero": {
     "badge": "Hotel automation platform",
-    "title": "The hotel CRM that orchestrates every guest interaction",
+    "title": "The hotel CRM that centralizes your entire guest relationship",
     "subtitle": "Automate your emails, SMS, WhatsApp, reviews, upsells and payments — from check-in to check-out. Connected to your PMS, everything runs effortlessly.",
     "cta": "Book a demo",
     "ctaFree": "Free 14-day trial",
@@ -826,7 +826,7 @@
     "ctaSecondary": "Contact us"
   },
   "footer": {
-    "description": "TriggerFlow is the leading SaaS solution for customer relationship automation in the hospitality industry.",
+    "description": "The hotel CRM that centralizes your entire guest relationship.",
     "cta": {
       "title": "Ready to transform your customer relationship?",
       "subtitle": "Join hundreds of hoteliers who trust TriggerFlow",
