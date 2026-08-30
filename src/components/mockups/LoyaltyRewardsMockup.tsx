@@ -9,7 +9,7 @@ export function LoyaltyRewardsMockup() {
       <div className="p-4 min-h-[300px]">
         <div className="flex items-center justify-between mb-4">
           <h4 className="text-xs font-semibold text-gray-800">Catalogue de récompenses</h4>
-          <span className="text-[10px] bg-amber-50 text-amber-700 px-2 py-0.5 rounded-full border border-amber-200">1,247 pts disponibles</span>
+          <span className="text-[10px] bg-amber-50 text-amber-700 px-2 py-0.5 rounded-full border border-amber-200">1 247 pts disponibles</span>
         </div>
 
         <div className="grid grid-cols-2 gap-2.5">

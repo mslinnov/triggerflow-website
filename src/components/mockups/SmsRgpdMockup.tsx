@@ -63,9 +63,9 @@ export function SmsRgpdMockup() {
           <p className="text-[9px] text-gray-500 leading-relaxed">Lien STOP inclus automatiquement dans chaque SMS envoyé</p>
           <div className="mt-2.5 flex items-center gap-1.5">
             <div className="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
-              <div className="h-full bg-orange-400 rounded-full" style={{ width: '0.3%', minWidth: '3px' }} />
+              <div className="h-full bg-orange-400 rounded-full" style={{ width: '0,3%', minWidth: '3px' }} />
             </div>
-            <span className="text-[9px] font-bold text-orange-600">0.3%</span>
+            <span className="text-[9px] font-bold text-orange-600">0,3%</span>
           </div>
         </div>
 
@@ -123,7 +123,7 @@ export function SmsRgpdMockup() {
           </div>
           <div className="w-px h-8 bg-gray-200" />
           <div className="text-center">
-            <p className="text-sm font-bold text-gray-800">0.3%</p>
+            <p className="text-sm font-bold text-gray-800">0,3%</p>
             <p className="text-[8px] text-gray-500">Désabonnements</p>
           </div>
           <div className="w-px h-8 bg-gray-200" />

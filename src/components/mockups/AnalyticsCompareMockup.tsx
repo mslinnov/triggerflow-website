@@ -25,9 +25,9 @@ export function AnalyticsCompareMockup() {
             <span>Nov.</span>
             <span>Variation</span>
           </div>
-          <CompareRow label="Ouvertures" current="45.2%" previous="42.1%" diff="+3.1%" />
-          <CompareRow label="Clics" current="15.3%" previous="12.8%" diff="+2.5%" />
-          <CompareRow label="Revenus" current="8,720€" previous="7,140€" diff="+22%" />
+          <CompareRow label="Ouvertures" current="45,2%" previous="42,1%" diff="+3,1%" />
+          <CompareRow label="Clics" current="15,3%" previous="12,8%" diff="+2,5%" />
+          <CompareRow label="Revenus" current="8 720 €" previous="7 140 €" diff="+22%" />
           <CompareRow label="NPS" current="58" previous="52" diff="+6" isLast />
         </div>
 

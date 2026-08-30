@@ -44,21 +44,21 @@ export function CampaignMockup() {
         <div className="grid grid-cols-3 gap-3 mb-4">
           <StatCard
             icon={Users}
-            value="1,247"
+            value="1 247"
             label="Destinataires"
             color="text-blue-600"
             bgColor="bg-blue-50"
           />
           <StatCard
             icon={CheckCircle2}
-            value="89%"
-            label="Taux estimé"
+            value="42%"
+            label="Ouverture estimée"
             color="text-green-600"
             bgColor="bg-green-50"
           />
           <StatCard
             icon={BarChart3}
-            value="€2.4k"
+            value="2 400 €"
             label="Revenu estimé"
             color="text-purple-600"
             bgColor="bg-purple-50"

@@ -3,7 +3,15 @@
 import { BrowserMockup } from './PhoneMockup';
 import { Star, TrendingUp } from 'lucide-react';
 
-export function LoyaltyPointsMockup() {
+interface LoyaltyPointsMockupProps {
+  memberName?: string;
+  hotelName?: string;
+}
+
+export function LoyaltyPointsMockup({
+  memberName = 'Sophie Durand',
+  hotelName,
+}: LoyaltyPointsMockupProps = {}) {
   return (
     <BrowserMockup title="Programme fidélité" className="max-w-lg">
       <div className="p-4 min-h-[300px]">
@@ -18,9 +26,12 @@ export function LoyaltyPointsMockup() {
               </div>
               <span className="text-[10px] text-yellow-200">Depuis mars 2025</span>
             </div>
-            <p className="text-lg font-bold">Sophie Durand</p>
+            {hotelName && (
+              <p className="text-[10px] font-semibold uppercase tracking-wide text-yellow-100">{hotelName}</p>
+            )}
+            <p className="text-lg font-bold">{memberName}</p>
             <div className="flex items-center gap-1 mt-1">
-              <span className="text-2xl font-bold">1,247</span>
+              <span className="text-2xl font-bold">1 247</span>
               <span className="text-xs text-yellow-200">points</span>
             </div>
           </div>

@@ -81,7 +81,7 @@ export async function generateMetadata({
           url: '/og-image.jpg',
           width: 1200,
           height: 630,
-          alt: 'TriggerFlow - Automatisation relation client hôtelière',
+          alt: 'TriggerFlow - Le CRM hôtelier qui centralise toute la relation client',
         },
       ],
     },

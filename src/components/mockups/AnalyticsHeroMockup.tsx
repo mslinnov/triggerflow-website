@@ -16,8 +16,8 @@ export function AnalyticsHeroMockup() {
         />
         <KpiCard
           label="Taux ouverture"
-          value="45.2%"
-          trend="+3.1%"
+          value="45,2%"
+          trend="+3,1%"
           up
           color="blue"
         />
@@ -30,8 +30,8 @@ export function AnalyticsHeroMockup() {
         />
         <KpiCard
           label="Taux rebond"
-          value="2.1%"
-          trend="-0.8%"
+          value="2,1%"
+          trend="-0,8%"
           up
           color="red"
         />

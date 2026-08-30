@@ -32,10 +32,10 @@ export function AnalyticsReportMockup() {
 
         {/* Summary Stats */}
         <div className="grid grid-cols-4 gap-2 mb-4">
-          <SummaryCard label="Envois" value="3,240" />
-          <SummaryCard label="Ouvertures" value="1,458" sub="45%" />
+          <SummaryCard label="Envois" value="3 240" />
+          <SummaryCard label="Ouvertures" value="1 458" sub="45%" />
           <SummaryCard label="Clics" value="486" sub="15%" />
-          <SummaryCard label="Conversions" value="73" sub="2.3%" />
+          <SummaryCard label="Conversions" value="73" sub="2,3%" />
         </div>
 
         {/* Best Workflow Highlight */}

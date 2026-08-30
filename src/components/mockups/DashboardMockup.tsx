@@ -21,13 +21,13 @@ export function DashboardMockup() {
   const prefersReducedMotion = useReducedMotion();
 
   const stats = [
-    { value: '1,247', label: 'Emails ce mois', icon: Mail, trend: '+12%', color: 'text-blue-600' },
-    { value: '89.2%', label: "Taux d'ouverture", icon: TrendingUp, trend: '+3%', color: 'text-green-600' },
+    { value: '1 247', label: 'Emails ce mois', icon: Mail, trend: '+12%', color: 'text-blue-600' },
+    { value: '89,2%', label: "Taux d'ouverture", icon: TrendingUp, trend: '+3%', color: 'text-green-600' },
     { value: '+17%', label: 'Panier moyen', icon: BarChart3, trend: '+5%', color: 'text-purple-600' },
   ];
 
   const workflows = [
-    { name: 'Email confirmation réservation', status: 'active', count: '1,234' },
+    { name: 'Email confirmation réservation', status: 'active', count: '1 234' },
     { name: 'SMS bienvenue J-1', status: 'active', count: '856' },
     { name: 'Enquête satisfaction J+1', status: 'active', count: '421' },
     { name: 'Offre spa personnalisée', status: 'paused', count: '89' },

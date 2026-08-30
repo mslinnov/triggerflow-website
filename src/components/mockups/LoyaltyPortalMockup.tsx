@@ -18,7 +18,7 @@ export function LoyaltyPortalMockup() {
 
         {/* Points balance */}
         <div className="bg-gray-50 rounded-xl p-3 text-center mb-3">
-          <p className="text-2xl font-bold text-gray-800">1,247</p>
+          <p className="text-2xl font-bold text-gray-800">1 247</p>
           <p className="text-[10px] text-gray-500">points disponibles</p>
         </div>
 
