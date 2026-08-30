@@ -1,9 +1,9 @@
 ---
 title: "SMS Messaging Terms — Opt-In & Consent"
 slug: "sms-opt-in"
-version: "1.0"
+version: "1.1"
 effectiveDate: "2026-06-30"
-lastUpdated: "2026-06-30"
+lastUpdated: "2026-08-30"
 metaTitle: "SMS Messaging Terms — Opt-In & Consent"
 metaDescription: "How hotel guests opt in to receive transactional SMS sent through the TriggerFlow platform, message types, frequency, fees, and how to opt out (STOP) or get help (HELP)."
 ---
@@ -21,6 +21,35 @@ End users are **guests of hotels** that use the TriggerFlow platform. A guest pr
 By providing their mobile number during the booking, the guest **consents to receive transactional service messages** strictly related to their own reservation and stay. Consent is collected by the hotel **at the time of reservation**. Because these are transactional messages tied to a reservation the guest has actively made, the guest expects to receive service communications about that stay.
 
 Receiving these SMS is **not a condition of any purchase**.
+
+## Proof of consent collection
+
+Consent is collected by the hotel, not by Utelys. Because the phone number is
+gathered inside each hotel's own booking flow, the opt-in step is not reachable
+from a single public link: a guest only sees it after choosing dates and a room,
+within an active booking session. The screenshot below therefore documents the
+complete consent experience.
+
+Example — the direct booking engine of our customer Château d'Acotz
+(`chateauacotz.thais-hotel.com`, operated by the Thais property management
+system):
+
+![Contact step of the Château d'Acotz booking engine: the "Téléphone" (phone number) field is mandatory, as is acceptance of the hotel's Terms and Conditions.](/images/legal/sms-opt-in-booking-engine.jpg)
+
+On this final step of the reservation, before any payment:
+
+- **Phone number is a required field** (marked with an asterisk) — the guest
+  cannot complete the reservation without providing it.
+- **Acceptance of the hotel's Terms and Conditions is required** (checkbox
+  marked with an asterisk), and those terms cover the service communications
+  relating to the stay.
+- A separate, **optional** checkbox covers commercial contact. It is not used by
+  this program: the messages described here are transactional only, and are sent
+  whether or not that optional box is ticked.
+
+The same information is collected through the other booking paths — online
+travel agencies, telephone, and the front desk — and transmitted to the hotel's
+property management system, which is where TriggerFlow reads it from.
 
 ## Types of messages
 

@@ -1,9 +1,9 @@
 ---
 title: "Conditions de réception des SMS — Consentement"
 slug: "sms-opt-in"
-version: "1.0"
+version: "1.1"
 effectiveDate: "2026-06-30"
-lastUpdated: "2026-06-30"
+lastUpdated: "2026-08-30"
 metaTitle: "Conditions de réception des SMS — Consentement"
 metaDescription: "Comment les clients des hôtels consentent à recevoir les SMS transactionnels envoyés via la plateforme TriggerFlow : types de messages, fréquence, frais, désinscription (STOP) et aide (HELP)."
 ---
@@ -21,6 +21,36 @@ Les destinataires sont les **clients des hôtels** utilisant la plateforme Trigg
 En fournissant son numéro lors de la réservation, le client **consent à recevoir des messages de service transactionnels** strictement liés à sa réservation et à son séjour. Le consentement est recueilli par l'établissement **au moment de la réservation**. S'agissant de messages transactionnels rattachés à une réservation que le client a lui-même effectuée, celui-ci s'attend à recevoir ces communications de service relatives à son séjour.
 
 La réception de ces SMS **ne constitue pas une condition d'achat**.
+
+## Preuve du recueil du consentement
+
+Le consentement est recueilli par l'hôtel, et non par Utelys. Le numéro de
+téléphone étant collecté à l'intérieur du parcours de réservation de chaque
+hôtel, cette étape n'est pas accessible depuis un lien public unique : le client
+ne la voit qu'après avoir choisi ses dates et sa chambre, au sein d'une session
+de réservation active. La capture ci-dessous documente donc l'expérience de
+consentement complète.
+
+Exemple — le moteur de réservation directe de notre client le Château d'Acotz
+(`chateauacotz.thais-hotel.com`, opéré par le PMS Thais) :
+
+![Étape de contact du moteur de réservation du Château d'Acotz : le champ « Téléphone » est obligatoire, tout comme l'acceptation des conditions générales de l'hôtel.](/images/legal/sms-opt-in-booking-engine.jpg)
+
+À cette dernière étape de la réservation, avant tout paiement :
+
+- **Le numéro de téléphone est un champ obligatoire** (marqué d'un astérisque) —
+  le client ne peut pas finaliser sa réservation sans le renseigner.
+- **L'acceptation des conditions générales de l'hôtel est obligatoire** (case
+  marquée d'un astérisque), et ces conditions couvrent les communications de
+  service liées au séjour.
+- Une case distincte et **facultative** concerne la prospection commerciale.
+  Elle n'est pas utilisée par ce programme : les messages décrits ici sont
+  strictement transactionnels et sont envoyés que cette case optionnelle soit
+  cochée ou non.
+
+Les mêmes informations sont recueillies par les autres canaux de réservation —
+agences en ligne, téléphone et réception — puis transmises au PMS de l'hôtel,
+d'où TriggerFlow les lit.
 
 ## Types de messages
 
