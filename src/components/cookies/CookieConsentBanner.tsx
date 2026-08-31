@@ -30,8 +30,8 @@ export function CookieConsentBanner() {
     };
   }, []);
 
-  const handleAccept = () => setConsent(true);
-  const handleReject = () => setConsent(false);
+  const handleAccept = () => setConsent(true, true);
+  const handleReject = () => setConsent(false, false);
   const handleCustomize = () => {
     setNeedsConsent(false);
     setModalOpen(true);

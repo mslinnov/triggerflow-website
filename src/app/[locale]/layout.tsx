@@ -7,6 +7,7 @@ import { routing } from '@/i18n/routing';
 import { CookieConsentBanner } from '@/components/cookies';
 import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics';
 import { DemoClickTracker } from '@/components/analytics/DemoClickTracker';
+import { MetaPixel } from '@/components/analytics/MetaPixel';
 
 const baseUrl = 'https://www.trigger-flow.com';
 
@@ -150,6 +151,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
           <CookieConsentBanner />
         </NextIntlClientProvider>
         <GoogleAnalytics />
+        <MetaPixel />
         <DemoClickTracker />
       </body>
     </html>

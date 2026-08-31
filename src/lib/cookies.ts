@@ -2,7 +2,7 @@
  * Cookie consent helpers - CNIL-compliant.
  *
  * Stored under localStorage key `tf_cookie_consent` with shape:
- *   { analytics: boolean, timestamp: string (ISO 8601), version: string }
+ *   { analytics: boolean, marketing: boolean, timestamp: string (ISO 8601), version: string }
  *
  * Consent is considered valid for 6 months. After that, the banner reappears.
  * Bumping CONSENT_VERSION also invalidates all existing consents (use it when
@@ -11,12 +11,18 @@
 
 export type ConsentState = {
   analytics: boolean;
+  /**
+   * Advertising / retargeting trackers (Meta pixel). Kept strictly separate
+   * from `analytics`: audience measurement and ad targeting are two distinct
+   * purposes, and consent to one is never consent to the other.
+   */
+  marketing: boolean;
   timestamp: string;
   version: string;
 };
 
 export const CONSENT_STORAGE_KEY = 'tf_cookie_consent';
-export const CONSENT_VERSION = '1.0';
+export const CONSENT_VERSION = '2.0';
 export const CONSENT_MAX_AGE_MS = 180 * 24 * 60 * 60 * 1000; // 6 months
 export const CONSENT_CHANGED_EVENT = 'tf-consent-changed';
 
@@ -32,6 +38,7 @@ export function getConsent(): ConsentState | null {
     const parsed = JSON.parse(raw) as Partial<ConsentState>;
     if (
       typeof parsed.analytics !== 'boolean' ||
+      typeof parsed.marketing !== 'boolean' ||
       typeof parsed.timestamp !== 'string' ||
       typeof parsed.version !== 'string'
     ) {
@@ -43,10 +50,11 @@ export function getConsent(): ConsentState | null {
   }
 }
 
-export function setConsent(analytics: boolean): void {
+export function setConsent(analytics: boolean, marketing: boolean): void {
   if (!isBrowser()) return;
   const state: ConsentState = {
     analytics,
+    marketing,
     timestamp: new Date().toISOString(),
     version: CONSENT_VERSION,
   };
@@ -86,6 +94,26 @@ export function clearAnalyticsCookies(): void {
   const gaPattern = /^_ga($|_)|^_gid$|^_gat($|_)/;
   for (const name of targets) {
     if (!gaPattern.test(name)) continue;
+    for (const d of domains) {
+      document.cookie = `${name}=; Path=/; Domain=${d}; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+    }
+    document.cookie = `${name}=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+  }
+}
+
+/**
+ * Remove the Meta pixel cookies set on the current eTLD+1.
+ * Called when the user revokes marketing consent.
+ */
+export function clearMarketingCookies(): void {
+  if (typeof document === 'undefined') return;
+  const host = window.location.hostname;
+  const root = host.replace(/^www\./, '');
+  const domains = [host, '.' + host, root, '.' + root];
+  const targets = document.cookie.split(';').map((c) => c.trim().split('=')[0]);
+  const metaPattern = /^_fbp$|^_fbc$/;
+  for (const name of targets) {
+    if (!metaPattern.test(name)) continue;
     for (const d of domains) {
       document.cookie = `${name}=; Path=/; Domain=${d}; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
     }

@@ -2127,7 +2127,7 @@
   "cookies": {
     "banner": {
       "ariaLabel": "Cookie consent banner",
-      "message": "We use cookies to measure site audience and improve content. You can accept, decline, or customize your choice at any time.",
+      "message": "We use cookies to measure site traffic and, if you agree, to measure how our ads perform. You can accept, decline or customise your choice at any time.",
       "accept": "Accept",
       "reject": "Decline",
       "customize": "Customize",
@@ -2140,6 +2140,8 @@
       "necessaryDesc": "Essential to the site to function, for security and to remember your preferences (language, consent). Always active.",
       "analytics": "Analytics cookies",
       "analyticsDesc": "Google Analytics helps us measure site traffic and improve content. Data is anonymized (truncated IP).",
+      "marketing": "Advertising cookies",
+      "marketingDesc": "The Meta pixel lets us measure how our Facebook and Instagram ads perform, and stop showing them to people who already know us. No cookie is set without your consent.",
       "save": "Save preferences",
       "acceptAll": "Accept all"
     },

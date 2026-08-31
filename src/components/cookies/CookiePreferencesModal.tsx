@@ -12,11 +12,20 @@ interface CookiePreferencesModalProps {
 
 export function CookiePreferencesModal({ open, onClose }: CookiePreferencesModalProps) {
   const t = useTranslations('cookies.modal');
-  const [analyticsOn, setAnalyticsOn] = useState(false);
+  // Single state object so re-reading the stored consent when the modal opens
+  // stays one setState call, as it was when there was only one category.
+  const [prefs, setPrefs] = useState({ analytics: false, marketing: false });
+  const { analytics: analyticsOn, marketing: marketingOn } = prefs;
+  const setAnalyticsOn = (next: boolean) => setPrefs((p) => ({ ...p, analytics: next }));
+  const setMarketingOn = (next: boolean) => setPrefs((p) => ({ ...p, marketing: next }));
 
   useEffect(() => {
     if (!open) return;
-    setAnalyticsOn(getConsent()?.analytics ?? false);
+    const consent = getConsent();
+    setPrefs({
+      analytics: consent?.analytics ?? false,
+      marketing: consent?.marketing ?? false,
+    });
   }, [open]);
 
   useEffect(() => {
@@ -35,12 +44,12 @@ export function CookiePreferencesModal({ open, onClose }: CookiePreferencesModal
   if (!open) return null;
 
   const handleSave = () => {
-    setConsent(analyticsOn);
+    setConsent(analyticsOn, marketingOn);
     onClose();
   };
 
   const handleAcceptAll = () => {
-    setConsent(true);
+    setConsent(true, true);
     onClose();
   };
 
@@ -85,6 +94,12 @@ export function CookiePreferencesModal({ open, onClose }: CookiePreferencesModal
             description={t('analyticsDesc')}
             checked={analyticsOn}
             onChange={setAnalyticsOn}
+          />
+          <CookieRow
+            label={t('marketing')}
+            description={t('marketingDesc')}
+            checked={marketingOn}
+            onChange={setMarketingOn}
           />
         </div>
 
