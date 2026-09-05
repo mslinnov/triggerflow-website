@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const BREVO_API_KEY = process.env.BREVO_API_KEY;
+const BREVO_API_KEY = process.env.BREVO_API_KEY?.trim();
 const BREVO_LIST_ID = Number(process.env.BREVO_LIST_ID) || 2;
 
 interface NewsletterBody {

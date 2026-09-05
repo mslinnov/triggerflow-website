@@ -11,7 +11,10 @@ import { NextRequest, NextResponse } from 'next/server';
  * même traitement du contact déjà existant).
  */
 
-const BREVO_API_KEY = process.env.BREVO_API_KEY;
+// `.trim()` volontaire : une clé copiée avec un retour à la ligne rend
+// l'en-tête `api-key` invalide et Brevo répond 401, sans que rien ne
+// distingue ce cas d'une clé réellement révoquée.
+const BREVO_API_KEY = process.env.BREVO_API_KEY?.trim();
 const BREVO_LEADS_LIST_ID = Number(process.env.BREVO_LEADS_LIST_ID) || 0;
 const LEADS_NOTIFICATION_EMAIL = process.env.LEADS_NOTIFICATION_EMAIL;
 const NOTIFICATION_SENDER = { name: 'TriggerFlow Site', email: 'noreply@trigger-flow.com' };
