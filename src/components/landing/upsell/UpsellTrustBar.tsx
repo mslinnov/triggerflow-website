@@ -16,19 +16,26 @@ import { cn } from '@/lib/utils';
 /**
  * Mur de logos : uniquement les marques dont nous avons le logo authentique.
  *
- * Protel, Clock PMS et Reservit sont bien connectés mais leurs fichiers
- * (public/images/integrations/protel.svg, clockpms.svg et public/images/pms/
- * reservit.svg) sont des approximations fabriquées, du texte en Arial ou une
- * horloge dessinée. Afficher une contrefaçon de logo à la place du vrai
- * dessert la marque du partenaire autant que la nôtre : ces trois-là sont donc
- * cités en toutes lettres dans la FAQ et le formulaire, en attendant les vrais
- * fichiers. Vega est écarté pour une autre raison : son logo est un badge
- * circulaire plein, que le passage en monochrome réduit à un disque gris.
- * Amenitiz et D-EDGE ont été retirés, ce ne sont pas des partenaires.
+ * Trois partenaires manquent au mur, pour deux raisons distinctes.
  *
- * Restent six marques verbales, homogènes entre elles.
+ * Protel : le fichier protel.svg est une approximation fabriquée, « protel » en
+ * Arial dans un carré bleu. Le site de l'éditeur bloque l'accès automatisé, le
+ * vrai logo reste à récupérer à la main. Afficher une contrefaçon du logo d'un
+ * partenaire dessert sa marque autant que la nôtre.
  *
- * Les rapports largeur/hauteur vont de 1,00 à 7,92 : la hauteur est calée par
+ * Reservit et Vega : leurs vrais logos existent mais ne survivent pas au
+ * passage en monochrome du mur. Vega est un badge circulaire plein qui devient
+ * un disque gris, Reservit un ensemble de pictogrammes colorés qui devient
+ * trois gouttes noires. Les mettre en couleur au milieu de marques verbales
+ * grises casserait l'homogénéité de la rangée.
+ *
+ * Ces trois-là sont cités en toutes lettres dans la FAQ et le formulaire.
+ * Amenitiz et D-EDGE, eux, ont été retirés partout : ce ne sont pas des
+ * partenaires.
+ *
+ * Restent sept marques verbales, homogènes entre elles.
+ *
+ * Les rapports largeur/hauteur vont de 1,91 à 7,92 : la hauteur est calée par
  * logo pour égaliser leur poids visuel, plutôt qu'uniformément.
  */
 const PMS_LOGOS = [
@@ -38,6 +45,7 @@ const PMS_LOGOS = [
   { file: 'misterbooking.png', name: 'Misterbooking', width: 498, height: 100, size: 'h-5' },
   { file: 'medialog.svg', name: 'Medialog', width: 152, height: 36, size: 'h-5' },
   { file: 'asterio.png', name: 'Asterio', width: 300, height: 157, size: 'h-7' },
+  { file: 'clockpms.svg', name: 'Clock PMS', width: 600, height: 183, size: 'h-6' },
 ] as const;
 
 const REASSURANCE = [
