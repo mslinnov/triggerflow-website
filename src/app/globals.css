@@ -105,7 +105,6 @@
   --up-accent-ink: #FFFFFF;
   --up-accent-wash: #E8F2F1;
   --up-highlight: #FFCFA2;
-  --up-highlight-wash: #FFF4E8;
   --up-highlight-ink: #002B28;
   --up-danger: #B4231C;
   --up-logo-filter: grayscale(1) contrast(1.15) opacity(0.92);
@@ -129,9 +128,11 @@
     --up-accent-hover: #6BD5CB;
     --up-accent-ink: #00201E;
     --up-accent-wash: #0C2B28;
+    /* Le panneau pêche reste identique en thème sombre, c'est un accent
+       volontaire. Son encre doit donc rester sombre : la faire suivre le thème
+       la rendait identique au fond, texte pêche sur pêche. */
     --up-highlight: #FFCFA2;
-    --up-highlight-wash: #241A10;
-    --up-highlight-ink: #FFCFA2;
+    --up-highlight-ink: #002B28;
     --up-danger: #FF8B82;
     --up-logo-filter: grayscale(1) invert(1) contrast(1.1) opacity(0.9);
     --up-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.25);
