@@ -69,6 +69,62 @@
   --thais-bg: #ebfdff;
 }
 
+/* ── Landing d'acquisition « ventes additionnelles » (Facebook Ads) ──────────
+   Système de design propre à cette LP, scopé sous [data-lp="upsell"] pour ne
+   jamais fuir sur le reste du site.
+
+   Règles verrouillées :
+   - Accent unique : le vert de marque. Aucune autre couleur d'accent nulle part.
+   - Rayons : boutons = pill, surfaces = 16px, champs de saisie = 12px.
+   - Chiffres : toujours en Geist Mono (c'est une page de calcul).
+   Le thème suit la préférence système, light et dark définis symétriquement. */
+[data-lp='upsell'] {
+  --up-bg: #FAFBFA;
+  --up-bg-sunken: #EFF2F1;
+  --up-surface: #FFFFFF;
+  --up-surface-alt: #F5F8F7;
+  --up-ink: #0E1A16;
+  --up-ink-soft: #4F5F59;
+  --up-ink-muted: #616E69;
+  --up-line: #E1E7E5;
+  --up-line-strong: #CBD5D1;
+  --up-accent: #00875A;
+  /* Variante assombrie réservée au TEXTE : le vert de marque tombe à 4,04:1
+     sur les fonds enfoncés, sous le seuil AA pour les petits caractères.
+     Les aplats (boutons, gros chiffres) gardent le vert de marque. */
+  --up-accent-text: #00724B;
+  --up-accent-hover: #006D49;
+  --up-accent-ink: #FFFFFF;
+  --up-accent-wash: #E7F4EE;
+  --up-danger: #B4231C;
+  --up-logo-filter: brightness(0) saturate(100%) opacity(0.45);
+  --up-shadow-sm: 0 1px 2px rgba(14, 26, 22, 0.06), 0 2px 8px rgba(14, 26, 22, 0.04);
+  --up-shadow-lg: 0 12px 48px rgba(14, 26, 22, 0.10);
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-lp='upsell'] {
+    --up-bg: #0C1310;
+    --up-bg-sunken: #070C0A;
+    --up-surface: #131D19;
+    --up-surface-alt: #182420;
+    --up-ink: #EDF2F0;
+    --up-ink-soft: #A6B4AF;
+    --up-ink-muted: #8B9A94;
+    --up-line: #22302B;
+    --up-line-strong: #33443E;
+    --up-accent: #2DC98B;
+    --up-accent-text: #2DC98B;
+    --up-accent-hover: #4FD9A1;
+    --up-accent-ink: #06120D;
+    --up-accent-wash: #10281F;
+    --up-danger: #FF8B82;
+    --up-logo-filter: brightness(0) invert(1) opacity(0.6);
+    --up-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.25);
+    --up-shadow-lg: 0 12px 48px rgba(0, 0, 0, 0.45);
+  }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

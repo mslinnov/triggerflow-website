@@ -48,3 +48,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Variables locales Cloudflare (contiennent des clés API)
+.dev.vars
+.dev.vars.*
