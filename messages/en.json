@@ -2377,7 +2377,7 @@
       "estimateLabel": "Your estimate:",
       "demo": {
         "title": "Get your additional revenue plan",
-        "subtitle": "The breakdown service by service for your property, and 15 minutes with someone who knows your PMS.",
+        "subtitle": "The breakdown service by service for your property, and 20 minutes with someone who knows your PMS.",
         "formTitle": "Your details"
       },
       "whitepaper": {
@@ -2401,9 +2401,9 @@
     },
     "demoBridge": {
       "cta": "Book a demo",
-      "inline": "Does that figure speak to you? Fifteen minutes with someone who knows your PMS beats a PDF.",
+      "inline": "Does that figure speak to you? Twenty minutes with someone who knows your PMS beats a PDF.",
       "bandTitle": "Would you rather we showed you?",
-      "bandBody": "Fifteen minutes, your PMS on screen, your services and your prices. You see what it looks like for you before deciding anything."
+      "bandBody": "Twenty minutes, your PMS on screen, your services and your prices. You see what it looks like for you before deciding anything."
     }
   }
 }

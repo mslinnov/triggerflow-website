@@ -2385,7 +2385,7 @@
       "estimateLabel": "Votre estimation :",
       "demo": {
         "title": "Recevez votre plan de revenus additionnels",
-        "subtitle": "Le détail prestation par prestation pour votre établissement, et 15 minutes avec quelqu'un qui connaît votre PMS.",
+        "subtitle": "Le détail prestation par prestation pour votre établissement, et 20 minutes avec quelqu'un qui connaît votre PMS.",
         "formTitle": "Vos coordonnées"
       },
       "whitepaper": {
@@ -2409,9 +2409,9 @@
     },
     "demoBridge": {
       "cta": "Réserver une démo",
-      "inline": "Ce chiffre vous parle ? 15 minutes avec quelqu'un qui connaît votre PMS valent mieux qu'un PDF.",
+      "inline": "Ce chiffre vous parle ? 20 minutes avec quelqu'un qui connaît votre PMS valent mieux qu'un PDF.",
       "bandTitle": "Vous préférez qu'on vous montre ?",
-      "bandBody": "Quinze minutes, votre PMS branché à l'écran, vos prestations et vos prix. Vous voyez ce que ça donne chez vous avant de décider quoi que ce soit."
+      "bandBody": "Vingt minutes, votre PMS branché à l'écran, vos prestations et vos prix. Vous voyez ce que ça donne chez vous avant de décider quoi que ce soit."
     }
   }
 }
