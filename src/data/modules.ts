@@ -209,7 +209,7 @@ export const modules: Record<string, ModuleData> = {
       },
       {
         question: 'Est-ce compatible avec mon PMS ?',
-        answer: 'TriggerFlow est connecté nativement aux principaux PMS du marché : Opera, Mews, Thaïs, D-EDGE, Misterbooking, Amenitiz, Medialog et bien d\'autres. L\'intégration prend moins de 5 minutes, sans intervention technique.'
+        answer: 'TriggerFlow est connecté nativement aux principaux PMS du marché : Mews, Thaïs, Opera Cloud, Misterbooking, Medialog, Asterio, Vega, Protel, Reservit et Clock PMS. L\'intégration prend moins de 5 minutes, sans intervention technique.'
       },
       {
         question: 'Combien de temps pour être opérationnel ?',
