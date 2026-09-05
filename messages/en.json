@@ -2074,7 +2074,7 @@
   "cookies": {
     "banner": {
       "ariaLabel": "Cookie consent banner",
-      "message": "We use cookies to measure site audience and improve content. You can accept, decline, or customize your choice at any time.",
+      "message": "We use cookies to measure site audience, improve content and measure the performance of our advertising campaigns. You can accept, decline, or customize your choice at any time.",
       "accept": "Accept",
       "reject": "Decline",
       "customize": "Customize",
@@ -2087,11 +2087,253 @@
       "necessaryDesc": "Essential to the site to function, for security and to remember your preferences (language, consent). Always active.",
       "analytics": "Analytics cookies",
       "analyticsDesc": "Google Analytics helps us measure site traffic and improve content. Data is anonymized (truncated IP).",
+      "marketing": "Advertising cookies",
+      "marketingDesc": "The Meta (Facebook) pixel lets us measure the performance of our advertising campaigns and avoid showing you irrelevant ads. Nothing is stored without your consent.",
       "save": "Save preferences",
       "acceptAll": "Accept all"
     },
     "manager": {
       "link": "Manage cookies"
+    }
+  },
+  "lpUpsell": {
+    "cta": {
+      "calculate": "Calculate my potential",
+      "demo": "Request a demo",
+      "whitepaper": "Get the guide"
+    },
+    "hero": {
+      "eyebrow": "Upsells",
+      "titleLine1": "Your guests would pay.",
+      "titleLine2": "Nobody ever asks them.",
+      "subtitle": "Breakfast, spa, restaurant, parking: TriggerFlow sends the offer before arrival, on its own.",
+      "imageAlt": "Add-on services catalogue as the guest receives it, with prices and one-tap booking"
+    },
+    "trust": {
+      "figures": {
+        "facilities": "properties equipped",
+        "offers": "offers sent",
+        "revenue": "in add-on sales generated"
+      },
+      "title": "Works with the property management systems independent hotels actually run",
+      "pms": "Sales written back to your PMS, no re-entry",
+      "gdpr": "GDPR compliant, DPA available",
+      "support": "Team and support in French and English"
+    },
+    "simulator": {
+      "eyebrow": "Calculator",
+      "title": "What your hotel leaves on the table every month",
+      "subtitle": "Set your property, tick the services you can sell. The figure is built on sales actually recorded across our customers.",
+      "roomsLabel": "Number of rooms",
+      "roomsSuffix": "{count, plural, one {room} other {rooms}}",
+      "occupancyLabel": "Average occupancy rate",
+      "servicesLabel": "Services you can offer",
+      "servicesHint": "Untick anything your property does not have.",
+      "resultLabel": "Estimated additional revenue",
+      "emptyState": "Select at least one service to see your potential.",
+      "perMonth": "per month",
+      "perYear": "Over a year",
+      "perRoom": "Per room, per month",
+      "salesPerMonth": "{count, plural, one {# sale} other {# sales}}",
+      "lockedHint": "Your estimate is ready. Tell us where to send it.",
+      "basis": "Estimate built on sales actually recorded across {hotels} customer properties that use the feature: {offers, number} offers sent and €{revenue, number} in add-on sales generated.",
+      "methodologyToggle": "How the figure is built",
+      "methodologyVolume": "With {rooms} rooms at the occupancy rate you set, your hotel books roughly {nights, number} room nights per month, which is {sends, number} stays and as many campaigns sent. The average length of stay used, {los} nights, is the only estimated value in the calculation.",
+      "methodologyRates": "Across our customer properties, {rate, number, ::.00}% of offers sent lead to a sale, at an average basket of €{basket}. Revenue is then split according to the real weight of each service in observed sales, not by a per-service acceptance rate: one campaign shows the whole catalogue, so those rates do not add up.",
+      "methodologyBias": "These references come from properties that have set up their catalogue and run campaigns. The figure therefore describes what a hotel actually using the feature achieves, not an average across all our customers."
+    },
+    "services": {
+      "breakfast": {
+        "name": "Breakfast",
+        "example": "The single biggest source of add-on sales across our customers. Sold ahead, it is never negotiated at the desk."
+      },
+      "restaurant": {
+        "name": "Restaurant",
+        "example": "The dinner table booked along with the room, at your place rather than across the street."
+      },
+      "spa": {
+        "name": "Spa and wellness",
+        "example": "The highest basket in the catalogue. A treatment booked before arrival fills the quiet midweek slots."
+      },
+      "parking": {
+        "name": "Parking",
+        "example": "A space reserved before the guest leaves home. They arrive relaxed, your car park fills up."
+      },
+      "activities": {
+        "name": "Activities and leisure",
+        "example": "Bike hire, tours, excursions: offered while the guest is still planning the trip."
+      },
+      "welcome": {
+        "name": "Welcome touches",
+        "example": "Champagne, flowers, a hamper in the room. Offered to couples and to guests who flagged an occasion."
+      },
+      "bar": {
+        "name": "Bar and drinks",
+        "example": "A bottle or a platter waiting in the room, ordered before arrival."
+      },
+      "pets": {
+        "name": "Pets",
+        "example": "The supplement and the welcome kit settled up front, rather than discovered at the desk."
+      },
+      "transfer": {
+        "name": "Transfer",
+        "example": "Station or airport pickup offered from an arrival time you already know."
+      },
+      "earlyCheckin": {
+        "name": "Early check-in",
+        "example": "« Your room from 11am » for guests off the first train, who would otherwise wait in the lobby."
+      },
+      "lateCheckout": {
+        "name": "Late check-out",
+        "example": "« Your room until 3pm » offered the day before departure, before it gets negotiated at the desk."
+      },
+      "roomUpgrade": {
+        "name": "Room upgrade",
+        "example": "The better room offered before arrival, priced at the difference."
+      }
+    },
+    "servicesSection": {
+      "eyebrow": "Services",
+      "title": "Twelve offers, ranked by what they actually earn",
+      "subtitle": "The order is not a marketing hunch: it is the real weight of each service in our customers' add-on sales.",
+      "medianBasket": "Median basket",
+      "hotelCountLabel": "Properties selling it",
+      "hotelCount": "{count, plural, one {# property sells it} other {# properties sell it}}",
+      "disclaimer": "Median baskets and property counts recorded on the production database as of 5 September 2026. Parking, activities and room upgrades rest on fewer than twelve properties, so read those with care."
+    },
+    "gap": {
+      "title": "The money is already inside your hotel",
+      "subtitle": "All that is missing is an offer, sent at the right moment, to the right guest.",
+      "breakfast": {
+        "statement": "Breakfast gets decided at the desk, on the morning itself.",
+        "consequence": "Offered before arrival, it becomes the single biggest add-on line."
+      },
+      "restaurant": {
+        "statement": "Dinner gets booked at the restaurant across the street.",
+        "consequence": "Nobody offered yours when the room was booked."
+      },
+      "spa": {
+        "statement": "The spa sits empty on Tuesday afternoons.",
+        "consequence": "Last night's guests never knew it was there."
+      }
+    },
+    "how": {
+      "title": "Three moments, then you stop touching it",
+      "connect": {
+        "title": "Connect",
+        "body": "TriggerFlow plugs into your PMS and pulls in the bookings. Half a day, once."
+      },
+      "offer": {
+        "title": "Offer",
+        "body": "Each offer goes out on its own at the right moment, and never for something already booked: a guest who has paid for parking will not be offered it again."
+      },
+      "collect": {
+        "title": "Collect",
+        "body": "The guest accepts and pays online. The sale is written straight onto their booking in your PMS. Your team retypes nothing."
+      },
+      "imageAlt": "TriggerFlow scenario builder showing triggers before and during the stay",
+      "imageCaption": "Scenarios ship ready to use. You adjust the prices and the wording."
+    },
+    "evidence": {
+      "title": "The channel and the timing matter as much as the offer",
+      "channelFigure": "6 of 7",
+      "channelTitle": "WhatsApp converts better than email",
+      "channelBody": "Of the seven properties genuinely running both channels, six get a higher acceptance rate on WhatsApp, often two to three times higher. The comparison is made within each hotel, so the channel is not confused with the kind of property.",
+      "timingTitle": "Sending too late cuts sales by three",
+      "timingBody": "Acceptance rate recorded by send timing, across 80,000 offers.",
+      "timing": {
+        "longBefore": "3 to 7 days before",
+        "twoDays": "1 to 2 days before",
+        "sameDay": "On arrival day",
+        "afterArrival": "After arrival"
+      },
+      "rateValue": "{rate, number, ::.00}%"
+    },
+    "proof": {
+      "title": "You see exactly what sells",
+      "subtitle": "Revenue, number of sales, average basket, ranking by service. The detail is there, with no spreadsheet to keep.",
+      "imageAlt": "TriggerFlow sales statistics showing revenue, average basket and best selling services",
+      "caption": "Compare two periods to find out which offer works, at what price, and for which kind of guest."
+    },
+    "faq": {
+      "title": "Questions we get asked",
+      "retyping": {
+        "q": "Do we have to re-enter the sales in the PMS?",
+        "a": "No. Every sale is written automatically onto the guest's booking in your PMS, with the amount and the service. The front desk sees it arrive, billing carries on as usual, and nobody copies anything across."
+      },
+      "spam": {
+        "q": "Will my guests find this intrusive?",
+        "a": "Anything they have already booked is never offered again, so the messages stay coherent. Each guest gets at most two offers across their whole stay, at the moment those offers are useful. You set the frequency, and every message carries an unsubscribe link."
+      },
+      "pms": {
+        "q": "Does it work with my PMS?",
+        "a": "TriggerFlow connects to Mews, Thaïs, Opera Cloud, Amenitiz, Misterbooking, Medialog, Reservit, Asterio and D-EDGE. If yours is not on the list, tell us and we will check feasibility before you commit to anything."
+      },
+      "setup": {
+        "q": "How long until it runs?",
+        "a": "Connecting the PMS takes half a day. The sales scenarios ship already written: you adjust prices and wording, then switch them on."
+      },
+      "noSpa": {
+        "q": "I have no spa and no restaurant. Is it still worth it?",
+        "a": "Breakfast alone accounts for close to a third of the add-on sales we record, and it sells in 46 of our customer properties. Parking, the pet supplement and welcome touches follow, with no investment at all. Untick the rest in the calculator to see what that looks like for you."
+      },
+      "price": {
+        "q": "What does it cost?",
+        "a": "The subscription depends on your number of rooms. The median add-on revenue we record across customers covers it comfortably, but your situation depends on your catalogue and your guests. We give you the exact price during the call, with no commitment."
+      },
+      "gdpr": {
+        "q": "What about GDPR?",
+        "a": "The data stays yours and you remain the data controller. We sign a data processing agreement, and every message respects the consent collected at booking."
+      }
+    },
+    "form": {
+      "firstName": "First name",
+      "hotelName": "Hotel name",
+      "rooms": "Number of rooms",
+      "pms": "Your PMS",
+      "pmsPlaceholder": "Select",
+      "pmsOther": "Other or not sure",
+      "email": "Work email",
+      "phone": "Phone",
+      "phoneHint": "Optional. For a call back instead of an email.",
+      "error": "That did not go through. Check your email address and try again.",
+      "demo": {
+        "submit": "Request a demo",
+        "successTitle": "Noted.",
+        "successBody": "Someone from the team will write to you within one working day with your detailed plan and two demo slots.",
+        "privacy": "Your details are used to prepare your plan and to get back to you. Never sold on."
+      },
+      "whitepaper": {
+        "submit": "Get the guide",
+        "successTitle": "On its way.",
+        "successBody": "The guide lands in your inbox within a few minutes. Do check your spam folder.",
+        "privacy": "Your email is used to send you the guide. You can unsubscribe in one click, and nothing is sold on."
+      }
+    },
+    "finalCta": {
+      "estimateLabel": "Your estimate:",
+      "demo": {
+        "title": "Get your additional revenue plan",
+        "subtitle": "The breakdown service by service for your property, and 15 minutes with someone who knows your PMS."
+      },
+      "whitepaper": {
+        "title": "The automations that earn the most",
+        "subtitle": "We went back through our customers' sales to work out what actually sells, when to send it and on which channel. It is all in this guide.",
+        "formTitle": "Where should we send it?",
+        "format": "PDF, sent by email. Built on 89,347 offers sent and €201,439 in sales actually measured.",
+        "chapters": {
+          "timing": "The right moment for each offer, and why sending on arrival day cuts sales by three.",
+          "channel": "Email, SMS or WhatsApp: what the channel really changes, compared within a single property.",
+          "catalogue": "The twelve services that sell, ranked by what they earn, with the baskets we record.",
+          "pms": "How to wire all of it into your PMS without creating double entry at the front desk."
+        }
+      }
+    },
+    "footer": {
+      "legal": "Legal notice",
+      "privacy": "Privacy policy",
+      "terms": "Terms of sale",
+      "copyright": "© {year} TriggerFlow. All rights reserved."
     }
   }
 }

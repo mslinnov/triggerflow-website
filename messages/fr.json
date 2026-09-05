@@ -2082,7 +2082,7 @@
   "cookies": {
     "banner": {
       "ariaLabel": "Bandeau de gestion des cookies",
-      "message": "Nous utilisons des cookies pour mesurer l'audience du site et en améliorer le contenu. Vous pouvez accepter, refuser ou personnaliser votre choix à tout moment.",
+      "message": "Nous utilisons des cookies pour mesurer l'audience du site, en améliorer le contenu et mesurer l'efficacité de nos campagnes publicitaires. Vous pouvez accepter, refuser ou personnaliser votre choix à tout moment.",
       "accept": "Accepter",
       "reject": "Refuser",
       "customize": "Personnaliser",
@@ -2095,11 +2095,253 @@
       "necessaryDesc": "Indispensables au fonctionnement du site, à la sécurité et à la mémorisation de vos préférences (langue, consentement). Ils sont activés par défaut et ne peuvent pas être désactivés.",
       "analytics": "Cookies de mesure d'audience",
       "analyticsDesc": "Google Analytics nous permet de mesurer la fréquentation du site et d'améliorer son contenu. Les données sont anonymisées (IP tronquée).",
+      "marketing": "Cookies publicitaires",
+      "marketingDesc": "Le pixel Meta (Facebook) nous permet de mesurer l'efficacité de nos campagnes publicitaires et d'éviter de vous montrer des publicités non pertinentes. Aucune donnée n'est déposée sans votre accord.",
       "save": "Enregistrer mes préférences",
       "acceptAll": "Tout accepter"
     },
     "manager": {
       "link": "Gérer mes cookies"
+    }
+  },
+  "lpUpsell": {
+    "cta": {
+      "calculate": "Calculer mon potentiel",
+      "demo": "Demander une démo",
+      "whitepaper": "Recevoir le livre blanc"
+    },
+    "hero": {
+      "eyebrow": "Ventes additionnelles",
+      "titleLine1": "Vos clients paieraient.",
+      "titleLine2": "Personne ne leur demande.",
+      "subtitle": "Petit-déjeuner, spa, restaurant, parking : TriggerFlow envoie l'offre avant l'arrivée, toute seule.",
+      "imageAlt": "Catalogue de services additionnels tel que le client le reçoit, avec les prix et l'ajout en un clic"
+    },
+    "trust": {
+      "figures": {
+        "facilities": "établissements équipés",
+        "offers": "offres envoyées",
+        "revenue": "de ventes additionnelles générées"
+      },
+      "title": "Compatible avec les PMS utilisés par les hôtels indépendants",
+      "pms": "Ventes remontées dans votre PMS, sans resaisie",
+      "gdpr": "Conforme RGPD, DPA signable",
+      "support": "Équipe et support en français"
+    },
+    "simulator": {
+      "eyebrow": "Simulateur",
+      "title": "Ce que votre hôtel laisse passer chaque mois",
+      "subtitle": "Réglez votre établissement, cochez les prestations que vous pouvez vendre. Le calcul repose sur les ventes réellement constatées chez nos clients.",
+      "roomsLabel": "Nombre de chambres",
+      "roomsSuffix": "{count, plural, one {chambre} other {chambres}}",
+      "occupancyLabel": "Taux d'occupation moyen",
+      "servicesLabel": "Prestations que vous pouvez proposer",
+      "servicesHint": "Décochez celles que votre établissement ne propose pas.",
+      "resultLabel": "Revenu additionnel estimé",
+      "emptyState": "Sélectionnez au moins une prestation pour voir votre potentiel.",
+      "perMonth": "par mois",
+      "perYear": "Sur un an",
+      "perRoom": "Par chambre et par mois",
+      "salesPerMonth": "{count, plural, one {# vente} other {# ventes}}",
+      "lockedHint": "Votre estimation est prête. Indiquez où l'envoyer.",
+      "basis": "Estimation calculée sur les ventes réellement constatées chez {hotels} établissements clients qui utilisent la fonctionnalité : {offers, number} offres envoyées et {revenue, number} € de ventes additionnelles générées.",
+      "methodologyToggle": "Le détail du calcul",
+      "methodologyVolume": "Avec {rooms} chambres au taux d'occupation indiqué, votre hôtel enregistre environ {nights, number} nuitées par mois, soit {sends, number} séjours et autant de campagnes envoyées. La durée moyenne de séjour retenue, {los} nuits, est la seule valeur estimée du calcul.",
+      "methodologyRates": "Sur nos établissements clients, {rate, number, ::.00}% des offres envoyées donnent lieu à une vente, pour un panier moyen de {basket} €. Le revenu est ensuite réparti selon le poids réel de chaque prestation dans les ventes observées, et non selon un taux d'acceptation par prestation : une même campagne présente tout le catalogue, ces taux ne s'additionnent pas.",
+      "methodologyBias": "Ces références proviennent d'établissements qui ont configuré leur catalogue et lancé des campagnes. Le chiffre décrit donc ce que fait un hôtel qui utilise réellement la fonctionnalité, pas une moyenne de tous nos clients."
+    },
+    "services": {
+      "breakfast": {
+        "name": "Petit-déjeuner",
+        "example": "La première source de ventes additionnelles chez nos clients. Vendu à l'avance, il évite la négociation à la réception."
+      },
+      "restaurant": {
+        "name": "Restaurant",
+        "example": "La table du soir réservée en même temps que la chambre, chez vous plutôt qu'en face."
+      },
+      "spa": {
+        "name": "Spa et bien-être",
+        "example": "Le panier le plus élevé du catalogue. Un soin réservé avant l'arrivée remplit les créneaux creux de la semaine."
+      },
+      "parking": {
+        "name": "Parking",
+        "example": "Place réservée avant le départ du client. Il arrive serein, votre parking se remplit."
+      },
+      "activities": {
+        "name": "Activités et loisirs",
+        "example": "Location de vélos, visites, excursions : proposées quand le client prépare encore son séjour."
+      },
+      "welcome": {
+        "name": "Accueil et agrément",
+        "example": "Champagne, fleurs, corbeille en chambre. Proposés aux réservations en couple ou aux occasions déclarées."
+      },
+      "bar": {
+        "name": "Bar et boissons",
+        "example": "Une bouteille ou un plateau qui attend le client dans la chambre, commandé avant l'arrivée."
+      },
+      "pets": {
+        "name": "Animaux",
+        "example": "Le supplément et le kit d'accueil réglés en amont, plutôt que découverts au comptoir."
+      },
+      "transfer": {
+        "name": "Transfert",
+        "example": "Navette gare ou aéroport proposée à partir de l'heure d'arrivée déjà connue."
+      },
+      "earlyCheckin": {
+        "name": "Early check-in",
+        "example": "« Votre chambre dès 11h » pour les clients qui débarquent du premier train et attendent devant la réception."
+      },
+      "lateCheckout": {
+        "name": "Late check-out",
+        "example": "« Votre chambre jusqu'à 15h » proposé la veille du départ, avant que ça se négocie au comptoir."
+      },
+      "roomUpgrade": {
+        "name": "Surclassement",
+        "example": "La chambre supérieure proposée avant l'arrivée, au prix de la différence."
+      }
+    },
+    "servicesSection": {
+      "eyebrow": "Prestations",
+      "title": "Douze offres, classées par ce qu'elles rapportent vraiment",
+      "subtitle": "L'ordre n'est pas une intuition marketing : c'est le poids réel de chaque prestation dans les ventes de nos établissements clients.",
+      "medianBasket": "Panier médian",
+      "hotelCountLabel": "Établissements vendeurs",
+      "hotelCount": "{count, plural, one {# établissement en vend} other {# établissements en vendent}}",
+      "disclaimer": "Paniers médians et nombre d'établissements constatés sur la base de production au 5 septembre 2026. Le parking, les activités et le surclassement reposent sur moins de douze établissements : à lire avec prudence."
+    },
+    "gap": {
+      "title": "L'argent est déjà dans votre hôtel",
+      "subtitle": "Il manque seulement une proposition, envoyée au bon moment, à la bonne personne.",
+      "breakfast": {
+        "statement": "Le petit-déjeuner se décide à la réception, le matin même.",
+        "consequence": "Proposé avant l'arrivée, il devient le premier poste de ventes additionnelles."
+      },
+      "restaurant": {
+        "statement": "La table du soir se réserve dans le restaurant d'en face.",
+        "consequence": "Personne n'a proposé la vôtre au moment de la réservation."
+      },
+      "spa": {
+        "statement": "Le spa tourne à vide le mardi après-midi.",
+        "consequence": "Vos clients de la veille ne savaient pas qu'il existait."
+      }
+    },
+    "how": {
+      "title": "Trois moments, et vous n'y touchez plus",
+      "connect": {
+        "title": "Connecter",
+        "body": "TriggerFlow se branche sur votre PMS et récupère les réservations. Une demi-journée, une seule fois."
+      },
+      "offer": {
+        "title": "Proposer",
+        "body": "Chaque offre part toute seule au bon moment, et jamais pour une prestation déjà réservée : le client qui a payé son parking ne le reçoit pas en proposition."
+      },
+      "collect": {
+        "title": "Encaisser",
+        "body": "Le client accepte et paie en ligne. La vente s'inscrit automatiquement sur sa réservation dans votre PMS. Votre équipe n'a rien à ressaisir."
+      },
+      "imageAlt": "Constructeur de scénarios TriggerFlow avec les déclencheurs avant et pendant le séjour",
+      "imageCaption": "Les scénarios sont livrés prêts à l'emploi. Vous ajustez les prix et les textes."
+    },
+    "evidence": {
+      "title": "Le canal et le moment comptent autant que l'offre",
+      "channelFigure": "6 sur 7",
+      "channelTitle": "WhatsApp convertit mieux que l'email",
+      "channelBody": "Sur les sept établissements qui utilisent réellement les deux canaux, six obtiennent un meilleur taux d'acceptation en WhatsApp, souvent deux à trois fois supérieur. La comparaison est faite à l'intérieur de chaque hôtel, pour ne pas confondre le canal et le profil d'établissement.",
+      "timingTitle": "Envoyer trop tard divise les ventes par trois",
+      "timingBody": "Taux d'acceptation constaté selon le moment de l'envoi, sur 80 000 offres.",
+      "timing": {
+        "longBefore": "3 à 7 jours avant",
+        "twoDays": "1 à 2 jours avant",
+        "sameDay": "Le jour de l'arrivée",
+        "afterArrival": "Après l'arrivée"
+      },
+      "rateValue": "{rate, number, ::.00}%"
+    },
+    "proof": {
+      "title": "Vous voyez exactement ce qui se vend",
+      "subtitle": "Chiffre d'affaires, nombre de ventes, panier moyen, classement des prestations : le détail est là, sans tableur à tenir.",
+      "imageAlt": "Statistiques de ventes TriggerFlow avec chiffre d'affaires, panier moyen et services les plus vendus",
+      "caption": "Comparez deux périodes pour savoir quelle offre fonctionne, à quel prix, et sur quel profil de clientèle."
+    },
+    "faq": {
+      "title": "Les questions qu'on nous pose",
+      "retyping": {
+        "q": "Faut-il ressaisir les ventes dans le PMS ?",
+        "a": "Non. Chaque vente s'inscrit automatiquement sur la réservation du client dans votre PMS, avec le montant et la prestation concernée. La réception la voit arriver, la facturation suit son cours habituel, et personne ne recopie quoi que ce soit."
+      },
+      "spam": {
+        "q": "Mes clients ne vont-ils pas trouver ça intrusif ?",
+        "a": "Une prestation déjà réservée n'est jamais reproposée, ce qui évite les messages incohérents. Chaque client reçoit au maximum deux propositions sur l'ensemble de son séjour, au moment où elles lui rendent service. Vous fixez la fréquence, et le lien de désabonnement figure sur chaque message."
+      },
+      "pms": {
+        "q": "Est-ce compatible avec mon PMS ?",
+        "a": "TriggerFlow est connecté à Mews, Thaïs, Opera Cloud, Amenitiz, Misterbooking, Medialog, Reservit, Asterio et D-EDGE. Si le vôtre n'y figure pas, dites-le nous, nous vérifions la faisabilité avant tout engagement."
+      },
+      "setup": {
+        "q": "Combien de temps pour être opérationnel ?",
+        "a": "La connexion au PMS prend une demi-journée. Les scénarios de vente sont livrés déjà écrits : vous ajustez les prix et les textes, puis vous activez."
+      },
+      "noSpa": {
+        "q": "Je n'ai ni spa ni restaurant. Est-ce que ça vaut le coup ?",
+        "a": "Le petit-déjeuner représente à lui seul près d'un tiers des ventes additionnelles constatées, et il se vend dans 46 de nos établissements clients. Le parking, le supplément animaux et les prestations d'accueil suivent, sans aucun investissement. Décochez le reste dans le simulateur pour voir ce que ça donne chez vous."
+      },
+      "price": {
+        "q": "Combien ça coûte ?",
+        "a": "L'abonnement dépend du nombre de chambres. Le revenu additionnel médian constaté chez nos clients couvre l'abonnement largement, mais votre situation dépend de votre catalogue et de votre clientèle. Nous vous donnons le tarif exact lors de l'échange, sans engagement."
+      },
+      "gdpr": {
+        "q": "Et le RGPD ?",
+        "a": "Les données restent celles de votre hôtel, vous en êtes responsable de traitement. Nous signons un accord de sous-traitance, et chaque message respecte le consentement recueilli à la réservation."
+      }
+    },
+    "form": {
+      "firstName": "Prénom",
+      "hotelName": "Nom de l'hôtel",
+      "rooms": "Nombre de chambres",
+      "pms": "Votre PMS",
+      "pmsPlaceholder": "Sélectionnez",
+      "pmsOther": "Autre ou je ne sais pas",
+      "email": "Email professionnel",
+      "phone": "Téléphone",
+      "phoneHint": "Facultatif. Pour un rappel plutôt qu'un email.",
+      "error": "L'envoi a échoué. Vérifiez votre adresse email, puis réessayez.",
+      "demo": {
+        "submit": "Demander une démo",
+        "successTitle": "C'est noté.",
+        "successBody": "Un membre de l'équipe vous écrit sous 24h ouvrées avec votre plan détaillé et deux créneaux de démo.",
+        "privacy": "Vos coordonnées servent à préparer votre plan et à vous recontacter. Aucune revente à des tiers."
+      },
+      "whitepaper": {
+        "submit": "Recevoir le livre blanc",
+        "successTitle": "C'est envoyé.",
+        "successBody": "Le guide arrive dans votre boîte mail d'ici quelques minutes. Pensez à vérifier vos indésirables.",
+        "privacy": "Votre email sert à vous envoyer le guide. Vous pouvez vous désabonner en un clic, et rien n'est revendu à des tiers."
+      }
+    },
+    "finalCta": {
+      "estimateLabel": "Votre estimation :",
+      "demo": {
+        "title": "Recevez votre plan de revenus additionnels",
+        "subtitle": "Le détail prestation par prestation pour votre établissement, et 15 minutes avec quelqu'un qui connaît votre PMS."
+      },
+      "whitepaper": {
+        "title": "Les automatisations qui rapportent le plus",
+        "subtitle": "Nous avons repris les ventes de nos établissements clients pour identifier ce qui se vend vraiment, quand l'envoyer et sur quel canal. Tout est dans ce guide.",
+        "formTitle": "Où faut-il l'envoyer ?",
+        "format": "Format PDF, envoyé par email. Fondé sur 89 347 offres envoyées et 201 439 € de ventes réellement mesurées.",
+        "chapters": {
+          "timing": "Le bon moment pour chaque offre, et pourquoi envoyer le jour de l'arrivée divise les ventes par trois.",
+          "channel": "Email, SMS ou WhatsApp : ce que change réellement le canal, comparé à l'intérieur d'un même établissement.",
+          "catalogue": "Les douze prestations qui se vendent, classées par ce qu'elles rapportent, avec les paniers constatés.",
+          "pms": "Comment brancher tout ça sur votre PMS sans créer de double saisie à la réception."
+        }
+      }
+    },
+    "footer": {
+      "legal": "Mentions légales",
+      "privacy": "Politique de confidentialité",
+      "terms": "CGV",
+      "copyright": "© {year} TriggerFlow. Tous droits réservés."
     }
   }
 }
