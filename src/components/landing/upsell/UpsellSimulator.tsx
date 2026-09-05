@@ -6,6 +6,7 @@ import { trackMetaEvent } from '@/components/analytics/MetaPixel';
 import { SIMULATOR_BOUNDS, UPSELL_SERVICES } from '@/data/upsell-services';
 import { cn } from '@/lib/utils';
 import { UpsellEyebrow, UpsellSection } from './primitives';
+import { UpsellDemoCta } from './UpsellDemoCta';
 import { UpsellIcon } from './UpsellIcon';
 import { UpsellResultPanel } from './UpsellResultPanel';
 import { useUpsell } from './UpsellContext';
@@ -122,6 +123,10 @@ export function UpsellSimulator() {
             <UpsellResultPanel />
           </div>
         </div>
+
+        {/* Sous les deux colonnes, pas dans le panneau de résultat : la colonne
+            de droite est trop étroite, la phrase s'y cassait mot par mot. */}
+        {goal === 'whitepaper' && <UpsellDemoCta variant="inline" className="mt-8" />}
       </div>
     </UpsellSection>
   );

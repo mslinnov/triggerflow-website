@@ -2298,7 +2298,7 @@
     },
     "evidence": {
       "title": "The channel and the timing matter as much as the offer",
-      "channelFigure": "6 of 7",
+      "channelFigure": "86%",
       "channelTitle": "WhatsApp converts better than email",
       "channelBody": "Of the seven properties genuinely running both channels, six get a higher acceptance rate on WhatsApp, often two to three times higher. The comparison is made within each hotel, so the channel is not confused with the kind of property.",
       "timingTitle": "Sending too late cuts sales by three",
@@ -2309,7 +2309,8 @@
         "sameDay": "On arrival day",
         "afterArrival": "After arrival"
       },
-      "rateValue": "{rate, number, ::.00}%"
+      "rateValue": "{rate, number, ::.00}%",
+      "channelFigureNote": "6 properties out of 7"
     },
     "proof": {
       "title": "You see exactly what sells",
@@ -2329,7 +2330,7 @@
       },
       "pms": {
         "q": "Does it work with my PMS?",
-        "a": "TriggerFlow connects to Mews, Thaïs, Opera Cloud, Amenitiz, Misterbooking, Medialog, Reservit, Asterio and D-EDGE. If yours is not on the list, tell us and we will check feasibility before you commit to anything."
+        "a": "TriggerFlow connects to Mews, Thaïs, Opera Cloud, Misterbooking, Medialog, Asterio, Vega, Protel, Reservit and Clock PMS. If yours is not on the list, tell us and we will check feasibility before you commit to anything."
       },
       "setup": {
         "q": "How long until it runs?",

@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { ShieldCheck, Plug, Headset, PackageCheck } from 'lucide-react';
 import { PRODUCTION_FIGURES } from '@/data/upsell-services';
 import { formatEuros } from '@/lib/upsell-simulator';
+import { cn } from '@/lib/utils';
 
 /**
  * Mur de logos PMS réels, puis les trois éléments de réassurance sortis du hero.
@@ -12,16 +13,31 @@ import { formatEuros } from '@/lib/upsell-simulator';
  * en thème clair comme en thème sombre.
  */
 
+/**
+ * Mur de logos : uniquement les marques dont nous avons le logo authentique.
+ *
+ * Protel, Clock PMS et Reservit sont bien connectés mais leurs fichiers
+ * (public/images/integrations/protel.svg, clockpms.svg et public/images/pms/
+ * reservit.svg) sont des approximations fabriquées, du texte en Arial ou une
+ * horloge dessinée. Afficher une contrefaçon de logo à la place du vrai
+ * dessert la marque du partenaire autant que la nôtre : ces trois-là sont donc
+ * cités en toutes lettres dans la FAQ et le formulaire, en attendant les vrais
+ * fichiers. Vega est écarté pour une autre raison : son logo est un badge
+ * circulaire plein, que le passage en monochrome réduit à un disque gris.
+ * Amenitiz et D-EDGE ont été retirés, ce ne sont pas des partenaires.
+ *
+ * Restent six marques verbales, homogènes entre elles.
+ *
+ * Les rapports largeur/hauteur vont de 1,00 à 7,92 : la hauteur est calée par
+ * logo pour égaliser leur poids visuel, plutôt qu'uniformément.
+ */
 const PMS_LOGOS = [
-  { slug: 'mews', name: 'Mews' },
-  { slug: 'thais', name: 'Thaïs' },
-  { slug: 'opera', name: 'Opera Cloud' },
-  { slug: 'amenitiz', name: 'Amenitiz' },
-  { slug: 'misterbooking', name: 'Misterbooking' },
-  { slug: 'medialog', name: 'Medialog' },
-  { slug: 'reservit', name: 'Reservit' },
-  { slug: 'asterio', name: 'Asterio' },
-  { slug: 'dedge', name: 'D-EDGE' },
+  { file: 'mews.svg', name: 'Mews', width: 901, height: 113, size: 'h-5' },
+  { file: 'thais.svg', name: 'Thaïs', width: 210, height: 64, size: 'h-6' },
+  { file: 'opera.png', name: 'Opera Cloud', width: 1080, height: 500, size: 'h-8' },
+  { file: 'misterbooking.png', name: 'Misterbooking', width: 498, height: 100, size: 'h-5' },
+  { file: 'medialog.svg', name: 'Medialog', width: 152, height: 36, size: 'h-5' },
+  { file: 'asterio.png', name: 'Asterio', width: 300, height: 157, size: 'h-7' },
 ] as const;
 
 const REASSURANCE = [
@@ -65,15 +81,15 @@ export function UpsellTrustBar() {
           {t('title')}
         </p>
 
-        <ul className="mt-7 grid grid-cols-3 items-center gap-x-6 gap-y-7 sm:grid-cols-5 lg:grid-cols-9">
+        <ul className="mt-7 flex flex-wrap items-center justify-center gap-x-10 gap-y-7 sm:gap-x-12">
           {PMS_LOGOS.map((pms) => (
-            <li key={pms.slug} className="flex items-center justify-center">
+            <li key={pms.file} className="flex shrink-0 items-center justify-center">
               <Image
-                src={`/images/pms/${pms.slug}.svg`}
+                src={`/images/integrations/${pms.file}`}
                 alt={pms.name}
-                width={120}
-                height={36}
-                className="h-6 w-auto max-w-full"
+                width={pms.width}
+                height={pms.height}
+                className={cn('w-auto max-w-[7rem] object-contain', pms.size)}
                 style={{ filter: 'var(--up-logo-filter)' }}
               />
             </li>

@@ -21,16 +21,18 @@ import { useUpsell } from './UpsellContext';
  * dans les deux cas : le lead arrive déjà qualifié côté CRM.
  */
 
+/** Les dix PMS réellement connectés. Toute autre réponse passe par « Autre ». */
 const PMS_OPTIONS = [
   'Mews',
   'Thaïs',
   'Opera Cloud',
-  'Amenitiz',
   'Misterbooking',
   'Medialog',
-  'Reservit',
   'Asterio',
-  'D-EDGE',
+  'Vega',
+  'Protel',
+  'Reservit',
+  'Clock PMS',
 ] as const;
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';

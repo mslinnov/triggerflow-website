@@ -47,6 +47,9 @@ export function UpsellEvidence() {
             <p className="font-[family-name:var(--font-geist-mono)] text-4xl font-semibold text-[var(--up-accent-text)] md:text-5xl">
               {t('channelFigure')}
             </p>
+            {/* Le dénominateur est affiché juste sous le pourcentage : sept
+                établissements, ce n'est pas un échantillon qu'on peut taire. */}
+            <p className="mt-2 text-sm text-[var(--up-ink-muted)]">{t('channelFigureNote')}</p>
             <h3 className="mt-4 text-lg font-semibold text-[var(--up-ink)]">
               {t('channelTitle')}
             </h3>

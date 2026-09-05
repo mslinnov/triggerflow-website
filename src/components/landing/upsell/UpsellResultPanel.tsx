@@ -4,7 +4,6 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { useLocale, useTranslations } from 'next-intl';
 import { PRODUCTION_FIGURES, SIMULATOR_ASSUMPTIONS } from '@/data/upsell-services';
 import { formatEuros } from '@/lib/upsell-simulator';
-import { UpsellDemoCta } from './UpsellDemoCta';
 import { UpsellLinkButton } from './primitives';
 import { useUpsell } from './UpsellContext';
 
@@ -84,10 +83,6 @@ export function UpsellResultPanel() {
           <UpsellLinkButton href="#formulaire" size="lg" className="mt-7 w-full">
             {goal === 'demo' ? tCta('demo') : tCta('whitepaper')}
           </UpsellLinkButton>
-
-          {/* Le visiteur vient de voir son chiffre : c'est le moment où une
-              démo se justifie sans avoir à attendre un document. */}
-          {goal === 'whitepaper' && <UpsellDemoCta variant="inline" />}
         </>
       )}
 
