@@ -188,8 +188,17 @@ export async function POST(request: NextRequest) {
     // Contact déjà existant — mis à jour par updateEnabled, on traite en succès
     if (errorData && errorData.code !== 'duplicate_parameter') {
       console.error('[leads] Brevo API error:', response.status, errorData);
+      // Le code d'erreur Brevo est renvoye au client : il ne contient aucune
+      // donnee personnelle, seulement la nature du refus (`unauthorized`,
+      // `invalid_parameter`...), et sans lui un diagnostic impose un acces aux
+      // logs du serveur que l'equipe n'a pas toujours sous la main.
       return NextResponse.json(
-        { success: false, error: 'api_error' },
+        {
+          success: false,
+          error: 'api_error',
+          brevoStatus: response.status,
+          brevoCode: typeof errorData.code === 'string' ? errorData.code : null,
+        },
         { status: 500 }
       );
     }
