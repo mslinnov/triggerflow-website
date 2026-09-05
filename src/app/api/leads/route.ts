@@ -40,6 +40,23 @@ function sanitize(value: unknown): string {
   return value.trim().slice(0, MAX_TEXT_LENGTH);
 }
 
+/**
+ * Normalise un numéro français en E.164 pour l'attribut SMS de Brevo, qui
+ * refuse tout autre format et ferait alors échouer la création du contact
+ * entier. Retourne null si le numéro n'est pas exploitable : mieux vaut un
+ * lead sans téléphone qu'un lead perdu.
+ */
+function normalizePhone(value: unknown): string | null {
+  if (typeof value !== 'string') return null;
+  const digits = value.replace(/[^\d+]/g, '');
+  if (!digits) return null;
+  if (/^\+[1-9]\d{7,14}$/.test(digits)) return digits;
+  if (/^00[1-9]\d{7,14}$/.test(digits)) return `+${digits.slice(2)}`;
+  if (/^0[1-9]\d{8}$/.test(digits)) return `+33${digits.slice(1)}`;
+  if (/^33[1-9]\d{8}$/.test(digits)) return `+${digits}`;
+  return null;
+}
+
 function sanitizeNumber(value: unknown): number | null {
   const parsed = typeof value === 'number' ? value : Number(value);
   if (!Number.isFinite(parsed) || parsed < 0) return null;
@@ -106,14 +123,16 @@ export async function POST(request: NextRequest) {
 
     const firstName = sanitize(body.firstName);
     const hotelName = sanitize(body.hotelName);
-    const phone = sanitize(body.phone);
+    const phone = normalizePhone(body.phone);
     const pms = sanitize(body.pms);
     const rooms = sanitizeNumber(body.rooms);
     const estimatedRevenue = sanitizeNumber(body.estimatedRevenue);
     const goal = sanitize(body.goal);
 
     if (firstName) attributes.PRENOM = firstName;
-    if (hotelName) attributes.HOTEL = hotelName;
+    // ETABLISSEMENT existe déjà côté Brevo, on réutilise plutôt que de créer
+    // un doublon HOTEL.
+    if (hotelName) attributes.ETABLISSEMENT = hotelName;
     if (phone) attributes.SMS = phone;
     if (pms) attributes.PMS = pms;
     if (rooms !== null) attributes.CHAMBRES = rooms;

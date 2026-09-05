@@ -2263,26 +2263,6 @@
       "imageAlt": "Statistiques de ventes TriggerFlow avec chiffre d'affaires, panier moyen et services les plus vendus",
       "caption": "Comparez deux périodes pour savoir quelle offre fonctionne, à quel prix, et sur quel profil de clientèle."
     },
-    "results": {
-      "title": "Ce que font réellement des hôtels comme le vôtre",
-      "subtitle": "Établissements clients anonymisés, revenus additionnels mensuels moyens constatés sur leur période d'activité.",
-      "profiles": {
-        "urban": "Hôtel urbain",
-        "independent": "Hôtel indépendant",
-        "charm": "Hôtel de charme"
-      },
-      "mix": {
-        "urban": "Presque la moitié du revenu vient du parking, complété par les activités et le petit-déjeuner.",
-        "independent": "Le catalogue le plus diversifié : petit-déjeuner, activités, parking, transfert et surclassement.",
-        "charm": "Le petit-déjeuner pèse près de neuf ventes sur dix, devant le supplément animaux."
-      },
-      "rooms": "{count} chambres",
-      "perMonth": "par mois en moyenne",
-      "perRoom": "Par chambre",
-      "monthsLabel": "Période observée",
-      "months": "{count, plural, one {# mois observé} other {# mois observés}}",
-      "footnote": "Deux autres établissements sur la même période : {roomsA} chambres pour {revenueA} par mois, et {roomsB} chambres pour {revenueB} par mois. Ces résultats sont ceux d'hôtels qui ont configuré leur catalogue et envoient des campagnes régulièrement."
-    },
     "faq": {
       "title": "Les questions qu'on nous pose",
       "retyping": {

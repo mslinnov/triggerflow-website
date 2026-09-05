@@ -10,7 +10,6 @@ import { UpsellHero } from './UpsellHero';
 import { UpsellHowItWorks } from './UpsellHowItWorks';
 import { UpsellEvidence } from './UpsellEvidence';
 import { UpsellProof } from './UpsellProof';
-import { UpsellResults } from './UpsellResults';
 import { UpsellServices } from './UpsellServices';
 import { UpsellSimulator } from './UpsellSimulator';
 import { UpsellStickyCta } from './UpsellStickyCta';
@@ -42,7 +41,6 @@ export function UpsellLandingPage({
           <UpsellEvidence />
           <UpsellServices />
           <UpsellProof />
-          <UpsellResults />
           <UpsellFaq />
           <UpsellFinalCta />
         </main>

@@ -2255,26 +2255,6 @@
       "imageAlt": "TriggerFlow sales statistics showing revenue, average basket and best selling services",
       "caption": "Compare two periods to find out which offer works, at what price, and for which kind of guest."
     },
-    "results": {
-      "title": "What hotels like yours actually do",
-      "subtitle": "Anonymised customer properties, average monthly add-on revenue recorded over their active period.",
-      "profiles": {
-        "urban": "City hotel",
-        "independent": "Independent hotel",
-        "charm": "Boutique hotel"
-      },
-      "mix": {
-        "urban": "Almost half the revenue comes from parking, then activities and breakfast.",
-        "independent": "The most varied catalogue: breakfast, activities, parking, transfers and upgrades.",
-        "charm": "Breakfast accounts for nearly nine sales in ten, ahead of the pet supplement."
-      },
-      "rooms": "{count} rooms",
-      "perMonth": "per month on average",
-      "perRoom": "Per room",
-      "monthsLabel": "Period observed",
-      "months": "{count, plural, one {# month observed} other {# months observed}}",
-      "footnote": "Two more properties over the same period: {roomsA} rooms at {revenueA} per month, and {roomsB} rooms at {revenueB} per month. These are hotels that have set up their catalogue and send campaigns regularly."
-    },
     "faq": {
       "title": "Questions we get asked",
       "retyping": {
