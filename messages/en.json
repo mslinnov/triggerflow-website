@@ -2369,7 +2369,7 @@
       "whitepaper": {
         "submit": "Get the guide",
         "successTitle": "On its way.",
-        "successBody": "The guide lands in your inbox within a few minutes. Do check your spam folder.",
+        "successBody": "It reaches you by email within the next few hours. Do check your spam folder if you do not see it.",
         "privacy": "Your email is used to send you the guide. You can unsubscribe in one click, and nothing is sold on."
       }
     },

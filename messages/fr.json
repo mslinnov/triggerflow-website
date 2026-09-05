@@ -2377,7 +2377,7 @@
       "whitepaper": {
         "submit": "Recevoir le livre blanc",
         "successTitle": "C'est envoyé.",
-        "successBody": "Le guide arrive dans votre boîte mail d'ici quelques minutes. Pensez à vérifier vos indésirables.",
+        "successBody": "Vous le recevez par email dans les prochaines heures. Pensez à vérifier vos indésirables si vous ne le voyez pas arriver.",
         "privacy": "Votre email sert à vous envoyer le guide. Vous pouvez vous désabonner en un clic, et rien n'est revendu à des tiers."
       }
     },

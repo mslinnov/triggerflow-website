@@ -14,9 +14,8 @@
 export const LEMCAL_DEMO_URL = 'https://app.lemcal.com/@trigger-flow/demo-upsell';
 
 /**
- * Variante B : démo proposée en second, à côté du livre blanc.
- * ⚠️ Pointe temporairement sur le même calendrier que la variante A. Tant que
- * ce lien n'est pas distinct, les rendez-vous des deux variantes sont
- * indistinguables et le test A/B ne dira pas d'où viennent les démos.
+ * Variante B : démo proposée en second, à côté du livre blanc. Calendrier
+ * distinct de celui de la variante A, pour que les rendez-vous pris depuis
+ * cette page soient attribuables sans recoupement.
  */
-export const LEMCAL_DEMO_URL_WHITEPAPER = 'https://app.lemcal.com/@trigger-flow/demo-upsell';
+export const LEMCAL_DEMO_URL_WHITEPAPER = 'https://app.lemcal.com/@trigger-flow/demo-upsell-lb';

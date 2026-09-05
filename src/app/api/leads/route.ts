@@ -88,7 +88,12 @@ async function notifyTeam(lead: Record<string, string>): Promise<void> {
       body: JSON.stringify({
         sender: NOTIFICATION_SENDER,
         to: [{ email: LEADS_NOTIFICATION_EMAIL }],
-        subject: `Nouveau lead — ${lead.HOTEL || lead.email}`,
+        // L'offre demandée figure dans l'objet : le livre blanc est envoyé à
+        // la main au démarrage, il faut pouvoir trier la boîte sans ouvrir.
+        subject:
+          lead.OFFRE === 'whitepaper'
+            ? `Livre blanc à envoyer : ${lead.ETABLISSEMENT || lead.email}`
+            : `Demande de démo : ${lead.ETABLISSEMENT || lead.email}`,
         htmlContent: `<h2>Nouveau lead landing page</h2><table>${rows}</table>`,
       }),
     });
