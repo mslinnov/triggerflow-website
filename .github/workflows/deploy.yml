@@ -25,6 +25,11 @@ jobs:
           # uniquement `vars` renvoyait une chaîne vide et le pixel ne se
           # chargeait jamais. On accepte les deux emplacements.
           NEXT_PUBLIC_META_PIXEL_ID: ${{ secrets.NEXT_PUBLIC_META_PIXEL_ID || vars.NEXT_PUBLIC_META_PIXEL_ID }}
+          # Collecte des leads des landing pages d'acquisition (/api/leads).
+          # Variables d'exécution, pas de build : elles sont injectées dans le
+          # process via `pm2 reload --update-env` plus bas.
+          BREVO_LEADS_LIST_ID: ${{ secrets.BREVO_LEADS_LIST_ID }}
+          LEADS_NOTIFICATION_EMAIL: ${{ secrets.LEADS_NOTIFICATION_EMAIL }}
         with:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USER }}
@@ -33,7 +38,7 @@ jobs:
           command_timeout: 12m
           # Forward the analytics env vars into the remote shell so the build
           # bakes them in regardless of any .env file present on the VPS.
-          envs: NEXT_PUBLIC_GA_MEASUREMENT_ID,NEXT_PUBLIC_GA_CONSENT_MODE,NEXT_PUBLIC_META_PIXEL_ID
+          envs: NEXT_PUBLIC_GA_MEASUREMENT_ID,NEXT_PUBLIC_GA_CONSENT_MODE,NEXT_PUBLIC_META_PIXEL_ID,BREVO_LEADS_LIST_ID,LEADS_NOTIFICATION_EMAIL
           script: |
             set -euo pipefail
             cd /var/www/triggerflow-website
@@ -59,6 +64,12 @@ jobs:
             echo "::endgroup::"
 
             echo "::group::Reload PM2"
+            if [ -z "${BREVO_LEADS_LIST_ID:-}" ]; then
+              echo "::warning::BREVO_LEADS_LIST_ID is empty — landing page leads will be logged and DISCARDED, not saved to Brevo. Set the GitHub secret before running ads."
+            fi
+            # `--update-env` reprend l'environnement du shell courant : c'est ce
+            # qui fait entrer les variables ci-dessus dans le process Next.js.
+            export BREVO_LEADS_LIST_ID LEADS_NOTIFICATION_EMAIL
             pm2 reload triggerflow-website --update-env
             pm2 save
             echo "::endgroup::"
