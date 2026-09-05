@@ -2169,6 +2169,7 @@
         "revenue": "in add-on sales generated"
       },
       "title": "Works with the property management systems independent hotels actually run",
+      "turnkey": "Ships preconfigured, live within 48 hours",
       "pms": "Sales written back to your PMS, no re-entry",
       "gdpr": "GDPR compliant, DPA available",
       "support": "Team and support in French and English"
@@ -2271,7 +2272,15 @@
       }
     },
     "how": {
-      "title": "Three moments, then you stop touching it",
+      "title": "Up and running in half a day",
+      "subtitle": "The blocker is almost never the offer itself. It is the fear of the project, and of the blank page.",
+      "turnkey": {
+        "title": "You never start from a blank page",
+        "body": "The sales scenarios arrive already written, already timed to the right moment of the stay, already priced. Your job is to read them over and adjust.",
+        "scenarios": "Scenarios ship preconfigured, including the send timings drawn from what works across our customers.",
+        "content": "The message copy is written, in your colours. You change it if you want to, not because you have to.",
+        "prices": "Prices are prefilled from the baskets we record. You swap in your own in a few minutes."
+      },
       "connect": {
         "title": "Connect",
         "body": "TriggerFlow plugs into your PMS and pulls in the bookings. Half a day, once."
@@ -2285,7 +2294,7 @@
         "body": "The guest accepts and pays online. The sale is written straight onto their booking in your PMS. Your team retypes nothing."
       },
       "imageAlt": "TriggerFlow scenario builder showing triggers before and during the stay",
-      "imageCaption": "Scenarios ship ready to use. You adjust the prices and the wording."
+      "imageCaption": "This is what you receive: the scenarios already built. You open them, adjust prices and wording, and switch them on."
     },
     "evidence": {
       "title": "The channel and the timing matter as much as the offer",
@@ -2354,7 +2363,8 @@
         "submit": "Request a demo",
         "successTitle": "Noted.",
         "successBody": "Someone from the team will write to you within one working day with your detailed plan and two demo slots.",
-        "privacy": "Your details are used to prepare your plan and to get back to you. Never sold on."
+        "privacy": "Your details are used to prepare your plan and to get back to you. Never sold on.",
+        "book": "Book my slot now"
       },
       "whitepaper": {
         "submit": "Get the guide",
@@ -2367,7 +2377,8 @@
       "estimateLabel": "Your estimate:",
       "demo": {
         "title": "Get your additional revenue plan",
-        "subtitle": "The breakdown service by service for your property, and 15 minutes with someone who knows your PMS."
+        "subtitle": "The breakdown service by service for your property, and 15 minutes with someone who knows your PMS.",
+        "formTitle": "Your details"
       },
       "whitepaper": {
         "title": "The automations that earn the most",
@@ -2387,6 +2398,12 @@
       "privacy": "Privacy policy",
       "terms": "Terms of sale",
       "copyright": "© {year} TriggerFlow. All rights reserved."
+    },
+    "demoBridge": {
+      "cta": "Book a demo",
+      "inline": "Does that figure speak to you? Fifteen minutes with someone who knows your PMS beats a PDF.",
+      "bandTitle": "Would you rather we showed you?",
+      "bandBody": "Fifteen minutes, your PMS on screen, your services and your prices. You see what it looks like for you before deciding anything."
     }
   }
 }

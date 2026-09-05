@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { CheckCircle2, Loader2 } from 'lucide-react';
+import { CalendarClock, CheckCircle2, Loader2 } from 'lucide-react';
 import { trackMetaEvent } from '@/components/analytics/MetaPixel';
+import { LEMCAL_DEMO_URL } from '@/data/upsell-links';
 import { cn } from '@/lib/utils';
 import { UpsellButton } from './primitives';
 import { useUpsell } from './UpsellContext';
@@ -119,6 +120,21 @@ export function UpsellLeadForm({ idPrefix, className }: UpsellLeadFormProps) {
         <p className="mt-1.5 text-sm text-[var(--up-ink-soft)]">
           {t(isDemo ? 'demo.successBody' : 'whitepaper.successBody')}
         </p>
+
+        {/* Le lead est déjà enregistré : proposer le créneau ici ne risque plus
+            rien et évite un aller-retour d'emails pour caler la démo. */}
+        {isDemo && (
+          <a
+            href={LEMCAL_DEMO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackMetaEvent('CompleteRegistration', { content_name: 'lp-upsell-booking', variant: goal })}
+            className="mt-5 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[var(--up-accent)] px-6 py-3 text-sm font-semibold text-[var(--up-accent-ink)] transition-colors hover:bg-[var(--up-accent-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--up-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--up-accent-wash)] active:translate-y-[1px]"
+          >
+            <CalendarClock className="h-4 w-4" strokeWidth={2} aria-hidden />
+            {t('demo.book')}
+          </a>
+        )}
       </div>
     );
   }

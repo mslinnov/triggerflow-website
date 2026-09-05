@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
-import { ShieldCheck, Plug, Headset } from 'lucide-react';
+import { ShieldCheck, Plug, Headset, PackageCheck } from 'lucide-react';
 import { PRODUCTION_FIGURES } from '@/data/upsell-services';
 import { formatEuros } from '@/lib/upsell-simulator';
 
@@ -25,6 +25,7 @@ const PMS_LOGOS = [
 ] as const;
 
 const REASSURANCE = [
+  { key: 'turnkey', Icon: PackageCheck },
   { key: 'pms', Icon: Plug },
   { key: 'gdpr', Icon: ShieldCheck },
   { key: 'support', Icon: Headset },
@@ -79,7 +80,7 @@ export function UpsellTrustBar() {
           ))}
         </ul>
 
-        <ul className="mt-10 flex flex-col items-center justify-center gap-4 border-t border-[var(--up-line)] pt-8 text-sm text-[var(--up-ink-soft)] sm:flex-row sm:gap-10">
+        <ul className="mt-10 flex flex-col items-center justify-center gap-4 border-t border-[var(--up-line)] pt-8 text-sm text-[var(--up-ink-soft)] sm:flex-row sm:flex-wrap sm:gap-x-8 sm:gap-y-3">
           {REASSURANCE.map(({ key, Icon }) => (
             <li key={key} className="flex items-center gap-2.5">
               <Icon className="h-[18px] w-[18px] shrink-0 text-[var(--up-accent)]" strokeWidth={2} />

@@ -2177,6 +2177,7 @@
         "revenue": "de ventes additionnelles générées"
       },
       "title": "Compatible avec les PMS utilisés par les hôtels indépendants",
+      "turnkey": "Livré préréglé, opérationnel en 48 h",
       "pms": "Ventes remontées dans votre PMS, sans resaisie",
       "gdpr": "Conforme RGPD, DPA signable",
       "support": "Équipe et support en français"
@@ -2279,7 +2280,15 @@
       }
     },
     "how": {
-      "title": "Trois moments, et vous n'y touchez plus",
+      "title": "Opérationnel en une demi-journée",
+      "subtitle": "Le frein n'est presque jamais l'intérêt de l'offre. C'est la crainte du chantier, et de la page blanche.",
+      "turnkey": {
+        "title": "Vous ne partez pas d'une page blanche",
+        "body": "Les scénarios de vente arrivent déjà écrits, déjà programmés au bon moment du séjour, déjà tarifés. Votre travail se limite à relire et à ajuster.",
+        "scenarios": "Les scénarios sont livrés préréglés, y compris les délais d'envoi issus de ce qui fonctionne chez nos clients.",
+        "content": "Les textes des messages sont rédigés, à vos couleurs. Vous les modifiez si vous voulez, pas parce qu'il le faut.",
+        "prices": "Les prix sont préremplis à partir des paniers constatés. Vous les remplacez par les vôtres en quelques minutes."
+      },
       "connect": {
         "title": "Connecter",
         "body": "TriggerFlow se branche sur votre PMS et récupère les réservations. Une demi-journée, une seule fois."
@@ -2293,7 +2302,7 @@
         "body": "Le client accepte et paie en ligne. La vente s'inscrit automatiquement sur sa réservation dans votre PMS. Votre équipe n'a rien à ressaisir."
       },
       "imageAlt": "Constructeur de scénarios TriggerFlow avec les déclencheurs avant et pendant le séjour",
-      "imageCaption": "Les scénarios sont livrés prêts à l'emploi. Vous ajustez les prix et les textes."
+      "imageCaption": "Voilà ce que vous recevez : les scénarios déjà construits. Vous ouvrez, vous ajustez les prix et les textes, vous activez."
     },
     "evidence": {
       "title": "Le canal et le moment comptent autant que l'offre",
@@ -2362,7 +2371,8 @@
         "submit": "Demander une démo",
         "successTitle": "C'est noté.",
         "successBody": "Un membre de l'équipe vous écrit sous 24h ouvrées avec votre plan détaillé et deux créneaux de démo.",
-        "privacy": "Vos coordonnées servent à préparer votre plan et à vous recontacter. Aucune revente à des tiers."
+        "privacy": "Vos coordonnées servent à préparer votre plan et à vous recontacter. Aucune revente à des tiers.",
+        "book": "Réserver mon créneau maintenant"
       },
       "whitepaper": {
         "submit": "Recevoir le livre blanc",
@@ -2375,7 +2385,8 @@
       "estimateLabel": "Votre estimation :",
       "demo": {
         "title": "Recevez votre plan de revenus additionnels",
-        "subtitle": "Le détail prestation par prestation pour votre établissement, et 15 minutes avec quelqu'un qui connaît votre PMS."
+        "subtitle": "Le détail prestation par prestation pour votre établissement, et 15 minutes avec quelqu'un qui connaît votre PMS.",
+        "formTitle": "Vos coordonnées"
       },
       "whitepaper": {
         "title": "Les automatisations qui rapportent le plus",
@@ -2395,6 +2406,12 @@
       "privacy": "Politique de confidentialité",
       "terms": "CGV",
       "copyright": "© {year} TriggerFlow. Tous droits réservés."
+    },
+    "demoBridge": {
+      "cta": "Réserver une démo",
+      "inline": "Ce chiffre vous parle ? 15 minutes avec quelqu'un qui connaît votre PMS valent mieux qu'un PDF.",
+      "bandTitle": "Vous préférez qu'on vous montre ?",
+      "bandBody": "Quinze minutes, votre PMS branché à l'écran, vos prestations et vos prix. Vous voyez ce que ça donne chez vous avant de décider quoi que ce soit."
     }
   }
 }

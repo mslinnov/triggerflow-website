@@ -73,51 +73,65 @@
    Système de design propre à cette LP, scopé sous [data-lp="upsell"] pour ne
    jamais fuir sur le reste du site.
 
+   Les couleurs sont celles de la charte TriggerFlow, reprises telles quelles
+   des tokens de marque ci-dessus : teal #006F68, encre #002B28, accent pêche
+   #FFCFA2. Deux ajustements seulement, tous deux pour l'accessibilité :
+   --up-ink-muted assombrit #6B8A87 (3,40:1 sur fond enfoncé, sous le seuil AA)
+   et le thème sombre éclaircit le teal, illisible tel quel sur fond foncé.
+
    Règles verrouillées :
-   - Accent unique : le vert de marque. Aucune autre couleur d'accent nulle part.
+   - Un seul accent, le teal de marque. Le pêche sert uniquement de surlignage
+     ponctuel, jamais de second accent concurrent.
    - Rayons : boutons = pill, surfaces = 16px, champs de saisie = 12px.
-   - Chiffres : toujours en Geist Mono (c'est une page de calcul).
+   - Chiffres : toujours en Geist Mono, c'est une page de calcul.
    Le thème suit la préférence système, light et dark définis symétriquement. */
 [data-lp='upsell'] {
-  --up-bg: #FAFBFA;
-  --up-bg-sunken: #EFF2F1;
+  --up-bg: #FFFFFF;
+  --up-bg-sunken: #EFF5F5;
   --up-surface: #FFFFFF;
-  --up-surface-alt: #F5F8F7;
-  --up-ink: #0E1A16;
-  --up-ink-soft: #4F5F59;
-  --up-ink-muted: #616E69;
-  --up-line: #E1E7E5;
-  --up-line-strong: #CBD5D1;
-  --up-accent: #00875A;
-  /* Variante assombrie réservée au TEXTE : le vert de marque tombe à 4,04:1
-     sur les fonds enfoncés, sous le seuil AA pour les petits caractères.
-     Les aplats (boutons, gros chiffres) gardent le vert de marque. */
-  --up-accent-text: #00724B;
-  --up-accent-hover: #006D49;
+  --up-surface-alt: #F7FAFA;
+  --up-ink: #002B28;
+  --up-ink-soft: #3D5856;
+  /* #6B8A87 de la charte, assombri pour atteindre 4,87:1 sur fond enfoncé. */
+  --up-ink-muted: #54706D;
+  --up-line: #E5EEED;
+  --up-line-strong: #D1E0DF;
+  --up-accent: #006F68;
+  /* Même teinte que l'aplat : le teal de marque passe AA jusqu'en petits
+     caractères (5,48:1 au pire), le token reste comme couture pour le thème
+     sombre où l'aplat et le texte divergent. */
+  --up-accent-text: #006F68;
+  --up-accent-hover: #005F59;
   --up-accent-ink: #FFFFFF;
-  --up-accent-wash: #E7F4EE;
+  --up-accent-wash: #E8F2F1;
+  --up-highlight: #FFCFA2;
+  --up-highlight-wash: #FFF4E8;
+  --up-highlight-ink: #002B28;
   --up-danger: #B4231C;
   --up-logo-filter: brightness(0) saturate(100%) opacity(0.45);
-  --up-shadow-sm: 0 1px 2px rgba(14, 26, 22, 0.06), 0 2px 8px rgba(14, 26, 22, 0.04);
-  --up-shadow-lg: 0 12px 48px rgba(14, 26, 22, 0.10);
+  --up-shadow-sm: 0 2px 8px rgba(0, 43, 40, 0.05), 0 1px 2px rgba(0, 43, 40, 0.04);
+  --up-shadow-lg: 0 8px 40px rgba(0, 43, 40, 0.10);
 }
 
 @media (prefers-color-scheme: dark) {
   [data-lp='upsell'] {
-    --up-bg: #0C1310;
-    --up-bg-sunken: #070C0A;
-    --up-surface: #131D19;
-    --up-surface-alt: #182420;
-    --up-ink: #EDF2F0;
-    --up-ink-soft: #A6B4AF;
-    --up-ink-muted: #8B9A94;
-    --up-line: #22302B;
-    --up-line-strong: #33443E;
-    --up-accent: #2DC98B;
-    --up-accent-text: #2DC98B;
-    --up-accent-hover: #4FD9A1;
-    --up-accent-ink: #06120D;
-    --up-accent-wash: #10281F;
+    --up-bg: #061615;
+    --up-bg-sunken: #031110;
+    --up-surface: #0A1F1D;
+    --up-surface-alt: #0F2725;
+    --up-ink: #E3EDEC;
+    --up-ink-soft: #A9BEBB;
+    --up-ink-muted: #8AA3A0;
+    --up-line: #17332F;
+    --up-line-strong: #26433F;
+    --up-accent: #4FC2B8;
+    --up-accent-text: #4FC2B8;
+    --up-accent-hover: #6BD5CB;
+    --up-accent-ink: #00201E;
+    --up-accent-wash: #0C2B28;
+    --up-highlight: #FFCFA2;
+    --up-highlight-wash: #241A10;
+    --up-highlight-ink: #FFCFA2;
     --up-danger: #FF8B82;
     --up-logo-filter: brightness(0) invert(1) opacity(0.6);
     --up-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.25);

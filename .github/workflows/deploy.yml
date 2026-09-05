@@ -53,6 +53,32 @@ jobs:
             npm ci --no-audit --no-fund
             echo "::endgroup::"
 
+            echo "::group::Configuration d'execution"
+            # `pm2 reload --update-env` s'est revele peu fiable pour propager
+            # ces variables jusqu'au process Next.js. On les ecrit donc dans
+            # .env.production.local, que Next lit en priorite au demarrage, en
+            # remplacant proprement d'eventuelles lignes precedentes.
+            ENV_FILE=.env.production.local
+            touch "$ENV_FILE"
+            chmod 600 "$ENV_FILE"
+            grep -v -E '^(BREVO_LEADS_LIST_ID|LEADS_NOTIFICATION_EMAIL)=' "$ENV_FILE" > "$ENV_FILE.tmp" || true
+            mv "$ENV_FILE.tmp" "$ENV_FILE"
+            printf 'BREVO_LEADS_LIST_ID=%s\n' "${BREVO_LEADS_LIST_ID:-}" >> "$ENV_FILE"
+            printf 'LEADS_NOTIFICATION_EMAIL=%s\n' "${LEADS_NOTIFICATION_EMAIL:-}" >> "$ENV_FILE"
+            chmod 600 "$ENV_FILE"
+
+            # Diagnostic : presence uniquement, jamais les valeurs.
+            echo "Fichiers d'environnement presents :"
+            ls -1 .env* 2>/dev/null || echo "  aucun"
+            for key in BREVO_API_KEY BREVO_LEADS_LIST_ID LEADS_NOTIFICATION_EMAIL; do
+              if grep -qE "^${key}=." .env* 2>/dev/null; then
+                echo "  ${key}: present dans un fichier .env"
+              else
+                echo "  ${key}: ABSENT des fichiers .env"
+              fi
+            done
+            echo "::endgroup::"
+
             echo "::group::Build"
             if [ -z "${NEXT_PUBLIC_GA_MEASUREMENT_ID:-}" ]; then
               echo "::warning::NEXT_PUBLIC_GA_MEASUREMENT_ID is empty — analytics will NOT be tracked in this build. Set the GitHub secret."
@@ -67,8 +93,8 @@ jobs:
             if [ -z "${BREVO_LEADS_LIST_ID:-}" ]; then
               echo "::warning::BREVO_LEADS_LIST_ID is empty — landing page leads will be logged and DISCARDED, not saved to Brevo. Set the GitHub secret before running ads."
             fi
-            # `--update-env` reprend l'environnement du shell courant : c'est ce
-            # qui fait entrer les variables ci-dessus dans le process Next.js.
+            # Ceinture et bretelles : le fichier .env.production.local ci-dessus
+            # est le mecanisme principal, l'environnement du shell le complete.
             export BREVO_LEADS_LIST_ID LEADS_NOTIFICATION_EMAIL
             pm2 reload triggerflow-website --update-env
             pm2 save

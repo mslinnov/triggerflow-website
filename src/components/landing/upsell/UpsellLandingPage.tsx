@@ -8,6 +8,7 @@ import { UpsellGap } from './UpsellGap';
 import { UpsellHeader } from './UpsellHeader';
 import { UpsellHero } from './UpsellHero';
 import { UpsellHowItWorks } from './UpsellHowItWorks';
+import { UpsellDemoCta } from './UpsellDemoCta';
 import { UpsellEvidence } from './UpsellEvidence';
 import { UpsellProof } from './UpsellProof';
 import { UpsellServices } from './UpsellServices';
@@ -28,6 +29,8 @@ export function UpsellLandingPage({
   goal: UpsellGoal;
   locale: string;
 }) {
+  const isWhitepaper = goal === 'whitepaper';
+
   return (
     <UpsellProvider goal={goal}>
       <div data-lp="upsell" className="bg-[var(--up-bg)] text-[var(--up-ink)]">
@@ -38,6 +41,7 @@ export function UpsellLandingPage({
           <UpsellSimulator />
           <UpsellGap />
           <UpsellHowItWorks />
+          {isWhitepaper && <UpsellDemoCta variant="band" />}
           <UpsellEvidence />
           <UpsellServices />
           <UpsellProof />

@@ -139,12 +139,30 @@ export async function POST(request: NextRequest) {
     if (estimatedRevenue !== null) attributes.POTENTIEL_ESTIME = estimatedRevenue;
     if (goal) attributes.OFFRE = goal;
 
-    // Pas de clé API configurée (dev) — on log et on rend la main sans erreur
+    // Configuration absente. En développement on laisse passer pour ne pas
+    // bloquer le travail sur le formulaire ; en production on échoue bruyamment.
+    //
+    // Renvoyer un succès quand rien n'est enregistré est le pire comportement
+    // possible pendant une campagne payante : le visiteur croit son message
+    // parti, l'équipe ne voit rien arriver, et personne ne s'en aperçoit avant
+    // d'avoir dépensé le budget. C'est exactement ce qui est arrivé ici.
     if (!BREVO_API_KEY || !BREVO_LEADS_LIST_ID) {
-      console.warn('[leads] BREVO_API_KEY / BREVO_LEADS_LIST_ID not set — lead not persisted:', {
+      const missing = [
+        !BREVO_API_KEY && 'BREVO_API_KEY',
+        !BREVO_LEADS_LIST_ID && 'BREVO_LEADS_LIST_ID',
+      ].filter(Boolean);
+
+      console.error('[leads] Configuration manquante:', missing.join(', '), '— lead NON enregistré:', {
         email,
         ...attributes,
       });
+
+      if (process.env.NODE_ENV === 'production') {
+        return NextResponse.json(
+          { success: false, error: 'not_configured' },
+          { status: 503 }
+        );
+      }
       return NextResponse.json({ success: true });
     }
 
