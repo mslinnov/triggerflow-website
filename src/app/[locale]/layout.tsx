@@ -140,13 +140,21 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   // Enable static rendering
   setRequestLocale(locale);
 
-  // Get messages for the current locale
   const messages = await getMessages();
+
+  // Seuls les namespaces consommés par les composants rendus ici même : la
+  // bannière cookies et la page 404. Chaque groupe de routes fournit ensuite ce
+  // dont ses pages ont besoin, ce qui évite de sérialiser l'intégralité du
+  // fichier de traductions dans la charge utile de toutes les pages du site.
+  const rootMessages = {
+    cookies: messages.cookies,
+    notFound: messages.notFound,
+  };
 
   return (
     <html lang={locale} suppressHydrationWarning>
       <body className={`${ibmPlexSans.variable} ${geistMono.variable} ${fraunces.variable} antialiased`}>
-        <NextIntlClientProvider messages={messages}>
+        <NextIntlClientProvider locale={locale} messages={rootMessages}>
           {children}
           <CookieConsentBanner />
         </NextIntlClientProvider>
