@@ -28,6 +28,10 @@ jobs:
           # Collecte des leads des landing pages d'acquisition (/api/leads).
           # Variables d'exécution, pas de build : elles sont injectées dans le
           # process via `pm2 reload --update-env` plus bas.
+          # Clé API Brevo. Absente du serveur jusqu'ici, ce qui faisait échouer
+          # silencieusement la newsletter comme la collecte des leads.
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          BREVO_LIST_ID: ${{ secrets.BREVO_LIST_ID }}
           BREVO_LEADS_LIST_ID: ${{ secrets.BREVO_LEADS_LIST_ID }}
           LEADS_NOTIFICATION_EMAIL: ${{ secrets.LEADS_NOTIFICATION_EMAIL }}
         with:
@@ -38,7 +42,7 @@ jobs:
           command_timeout: 12m
           # Forward the analytics env vars into the remote shell so the build
           # bakes them in regardless of any .env file present on the VPS.
-          envs: NEXT_PUBLIC_GA_MEASUREMENT_ID,NEXT_PUBLIC_GA_CONSENT_MODE,NEXT_PUBLIC_META_PIXEL_ID,BREVO_LEADS_LIST_ID,LEADS_NOTIFICATION_EMAIL
+          envs: NEXT_PUBLIC_GA_MEASUREMENT_ID,NEXT_PUBLIC_GA_CONSENT_MODE,NEXT_PUBLIC_META_PIXEL_ID,BREVO_API_KEY,BREVO_LIST_ID,BREVO_LEADS_LIST_ID,LEADS_NOTIFICATION_EMAIL
           script: |
             set -euo pipefail
             cd /var/www/triggerflow-website
@@ -61,10 +65,15 @@ jobs:
             ENV_FILE=.env.production.local
             touch "$ENV_FILE"
             chmod 600 "$ENV_FILE"
-            grep -v -E '^(BREVO_LEADS_LIST_ID|LEADS_NOTIFICATION_EMAIL)=' "$ENV_FILE" > "$ENV_FILE.tmp" || true
+            grep -v -E '^(BREVO_API_KEY|BREVO_LIST_ID|BREVO_LEADS_LIST_ID|LEADS_NOTIFICATION_EMAIL)=' "$ENV_FILE" > "$ENV_FILE.tmp" || true
             mv "$ENV_FILE.tmp" "$ENV_FILE"
-            printf 'BREVO_LEADS_LIST_ID=%s\n' "${BREVO_LEADS_LIST_ID:-}" >> "$ENV_FILE"
-            printf 'LEADS_NOTIFICATION_EMAIL=%s\n' "${LEADS_NOTIFICATION_EMAIL:-}" >> "$ENV_FILE"
+            # Une variable non fournie n'est pas ecrite, pour ne pas ecraser une
+            # valeur deja presente ailleurs par une chaine vide.
+            [ -n "${BREVO_API_KEY:-}" ] && printf 'BREVO_API_KEY=%s\n' "$BREVO_API_KEY" >> "$ENV_FILE"
+            [ -n "${BREVO_LIST_ID:-}" ] && printf 'BREVO_LIST_ID=%s\n' "$BREVO_LIST_ID" >> "$ENV_FILE"
+            [ -n "${BREVO_LEADS_LIST_ID:-}" ] && printf 'BREVO_LEADS_LIST_ID=%s\n' "$BREVO_LEADS_LIST_ID" >> "$ENV_FILE"
+            [ -n "${LEADS_NOTIFICATION_EMAIL:-}" ] && printf 'LEADS_NOTIFICATION_EMAIL=%s\n' "$LEADS_NOTIFICATION_EMAIL" >> "$ENV_FILE"
+            true
             chmod 600 "$ENV_FILE"
 
             # Diagnostic : presence uniquement, jamais les valeurs.
