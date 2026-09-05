@@ -3,6 +3,8 @@ export {
   OrganizationJsonLd,
   SoftwareApplicationJsonLd,
   FAQPageJsonLd,
+  FaqJsonLd,
+  PricingJsonLd,
   WebsiteJsonLd,
   BlogPostingJsonLd,
   BreadcrumbListJsonLd,

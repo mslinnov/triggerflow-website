@@ -115,7 +115,7 @@
   },
   "hero": {
     "badge": "La plateforme CRM des hôteliers exigeants",
-    "title": "Le CRM hôtelier qui orchestre chaque interaction client",
+    "title": "Le CRM hôtelier qui centralise toute la relation client",
     "subtitle": "Automatisez vos emails, SMS, WhatsApp, avis, upsells et paiements, du check-in au check-out. Connecté à votre PMS, tout fonctionne sans effort.",
     "cta": "Demander une démo",
     "ctaFree": "Essai gratuit - 14 jours",
@@ -203,12 +203,29 @@
       "reviews": "+45% d'avis Google",
       "timeSaved": "10h gagnées / semaine",
       "upsell": "+17% de ventes additionnelles"
+    },
+    "result": {
+      "title": "Automatisation déclenchée"
     }
   },
   "journeyTimeline": {
     "badge": "Le parcours client",
     "title": "Présent à chaque étape, sans être intrusif",
     "subtitle": "Avant, pendant et après le séjour : vous choisissez les interactions à automatiser, TriggerFlow s'en charge.",
+    "stages": {
+      "before": {
+        "title": "Avant le séjour",
+        "subtitle": "Confirmation, formulaire pré-séjour et offres personnalisées, automatisés avant l'arrivée."
+      },
+      "during": {
+        "title": "Pendant le séjour",
+        "subtitle": "SMS de bienvenue et offres ciblées, présent sans jamais être intrusif."
+      },
+      "after": {
+        "title": "Après le séjour",
+        "subtitle": "Demande d'avis et programme de fidélité déclenchés au bon moment."
+      }
+    },
     "phases": {
       "preStay": {
         "label": "Avant le séjour",
@@ -318,6 +335,42 @@
       "tools": {
         "title": "Outils métier",
         "description": "CRM hôtelier, formulaires, ventes additionnelles, analytics. Tout ce qu'il vous faut."
+      },
+      "email": {
+        "title": "Email",
+        "description": "Confirmations, pré-séjour, campagnes : des emails personnalisés envoyés au bon moment, sans intervention."
+      },
+      "sms": {
+        "title": "SMS",
+        "description": "Messages courts et lus à 98%. Idéal pour le check-in, les rappels et les offres de dernière minute."
+      },
+      "whatsapp": {
+        "title": "WhatsApp",
+        "description": "Échangez avec vos clients sur le canal qu'ils utilisent déjà, en conversationnel et en temps réel."
+      },
+      "crm": {
+        "title": "CRM hôtelier",
+        "description": "Centralisez l'historique, les préférences et les coordonnées de chaque client dans une fiche unique."
+      },
+      "forms": {
+        "title": "Formulaires",
+        "description": "Pré-check-in, préférences, demandes spéciales : collectez les infos clés avant l'arrivée."
+      },
+      "upsell": {
+        "title": "Ventes additionnelles",
+        "description": "Surclassements, petits-déjeuners, services : proposez la bonne offre au bon moment et augmentez le panier."
+      },
+      "analytics": {
+        "title": "Analytics",
+        "description": "Suivez l'impact de chaque scénario : taux d'ouverture, revenus générés, temps gagné."
+      },
+      "reviews": {
+        "title": "Avis clients",
+        "description": "Sollicitez un avis Google au moment idéal et améliorez votre e-réputation automatiquement."
+      },
+      "loyalty": {
+        "title": "Fidélité",
+        "description": "Récompensez vos habitués et déclenchez des campagnes ciblées pour les faire revenir."
       }
     }
   },
@@ -773,7 +826,7 @@
     "ctaSecondary": "Nous contacter"
   },
   "footer": {
-    "description": "TriggerFlow, la plateforme CRM et automatisation conçue pour l'hôtellerie.",
+    "description": "Le CRM hôtelier qui centralise toute la relation client.",
     "cta": {
       "title": "Prêt à transformer votre relation client ?",
       "subtitle": "Rejoignez les centaines d'hôteliers qui font confiance à TriggerFlow",
@@ -839,8 +892,8 @@
   },
   "pricing": {
     "meta": {
-      "title": "Tarifs CRM hôtelier | TriggerFlow - Plans & Prix",
-      "description": "Tarifs TriggerFlow : CRM hôtelier + marketing automation dès 49€/mois. Plans adaptés du boutique-hôtel au groupe multi-établissements."
+      "title": "Tarifs CRM hôtelier - Plans & Prix",
+      "description": "Tarifs TriggerFlow : CRM hôtelier + marketing automation dès 69€/mois. Plans adaptés du boutique-hôtel au groupe multi-établissements."
     },
     "hero": {
       "badge": "Tarification",
@@ -1021,7 +1074,7 @@
   },
   "contact": {
     "meta": {
-      "title": "Contact | TriggerFlow",
+      "title": "Contact",
       "description": "Contactez l'équipe TriggerFlow. Nous sommes là pour répondre à vos questions."
     },
     "hero": {
@@ -1071,7 +1124,7 @@
   },
   "about": {
     "meta": {
-      "title": "À propos | TriggerFlow",
+      "title": "À propos",
       "description": "Découvrez l'histoire et l'équipe derrière TriggerFlow, la solution d'automatisation pour l'hôtellerie."
     },
     "hero": {
@@ -1139,7 +1192,7 @@
   },
   "integrations": {
     "meta": {
-      "title": "Intégrations PMS hôtel | TriggerFlow - 50+ connecteurs natifs",
+      "title": "Intégrations PMS hôtel - 50+ connecteurs natifs",
       "description": "Connectez TriggerFlow à vos PMS (Mews, Opera Cloud, Thaïs, Misterbooking...) et 50+ outils hôteliers. Synchronisation temps réel sans développement."
     },
     "hero": {
@@ -1427,7 +1480,7 @@
   },
   "product": {
     "meta": {
-      "title": "CRM hôtelier tout-en-un | TriggerFlow - Email, SMS, WhatsApp, Workflows",
+      "title": "CRM hôtelier tout-en-un - Email, SMS, WhatsApp, Workflows",
       "description": "Plateforme tout-en-un pour hôteliers : CRM, email, SMS, WhatsApp, workflows automatisés, fidélité, avis Google. Connecté à 8+ PMS français."
     },
     "hero": {
@@ -1550,7 +1603,7 @@
   },
   "blog": {
     "meta": {
-      "title": "Blog | TriggerFlow",
+      "title": "Blog",
       "description": "Conseils, tendances et bonnes pratiques pour optimiser la relation client dans l'hôtellerie."
     },
     "hero": {
@@ -1602,7 +1655,7 @@
   },
   "caseStudies": {
     "meta": {
-      "title": "Cas clients | TriggerFlow",
+      "title": "Cas clients",
       "description": "Découvrez comment nos clients hôteliers transforment leur relation client avec TriggerFlow."
     },
     "hero": {
@@ -1635,7 +1688,7 @@
   },
   "guides": {
     "meta": {
-      "title": "Guides & Ressources | TriggerFlow",
+      "title": "Guides & Ressources",
       "description": "Téléchargez nos guides, ebooks et templates pour optimiser votre relation client hôtelière."
     },
     "hero": {
@@ -1654,7 +1707,7 @@
   },
   "helpCenter": {
     "meta": {
-      "title": "Centre d'aide | TriggerFlow",
+      "title": "Centre d'aide",
       "description": "Trouvez des réponses à vos questions sur TriggerFlow. Documentation, tutoriels et FAQ."
     },
     "hero": {
@@ -1683,7 +1736,7 @@
   },
   "careers": {
     "meta": {
-      "title": "Carrières | TriggerFlow",
+      "title": "Carrières",
       "description": "Rejoignez l'équipe TriggerFlow et participez à la transformation de l'hôtellerie."
     },
     "hero": {
@@ -1715,7 +1768,7 @@
   },
   "mewsIntegration": {
     "meta": {
-      "title": "CRM hôtelier pour Mews | TriggerFlow - Automatisez votre relation client",
+      "title": "CRM hôtelier pour Mews - Automatisez votre relation client",
       "description": "Connectez Mews à un CRM conçu pour l'hôtellerie. Synchronisation bidirectionnelle temps réel, emails pré-séjour, upselling automatisé, fidélité. 120+ hôtels connectés. Configuration en 15 min."
     },
     "breadcrumb": {
@@ -2082,7 +2135,7 @@
   "cookies": {
     "banner": {
       "ariaLabel": "Bandeau de gestion des cookies",
-      "message": "Nous utilisons des cookies pour mesurer l'audience du site, en améliorer le contenu et mesurer l'efficacité de nos campagnes publicitaires. Vous pouvez accepter, refuser ou personnaliser votre choix à tout moment.",
+      "message": "Nous utilisons des cookies pour mesurer l'audience du site et, si vous l'acceptez, mesurer l'efficacité de nos publicités. Vous pouvez accepter, refuser ou personnaliser votre choix à tout moment.",
       "accept": "Accepter",
       "reject": "Refuser",
       "customize": "Personnaliser",
@@ -2096,7 +2149,7 @@
       "analytics": "Cookies de mesure d'audience",
       "analyticsDesc": "Google Analytics nous permet de mesurer la fréquentation du site et d'améliorer son contenu. Les données sont anonymisées (IP tronquée).",
       "marketing": "Cookies publicitaires",
-      "marketingDesc": "Le pixel Meta (Facebook) nous permet de mesurer l'efficacité de nos campagnes publicitaires et d'éviter de vous montrer des publicités non pertinentes. Aucune donnée n'est déposée sans votre accord.",
+      "marketingDesc": "Le pixel Meta nous permet de mesurer les résultats de nos publicités sur Facebook et Instagram, et de ne plus les afficher à ceux qui nous connaissent déjà. Aucun cookie n'est déposé sans votre accord.",
       "save": "Enregistrer mes préférences",
       "acceptAll": "Tout accepter"
     },

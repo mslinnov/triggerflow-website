@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { getArticlesBySilo, getSilos } from '@/lib/blog';
-import { getSiloBySlug } from '@/data/silos';
+import { getSiloBySlug, siloName, siloDescription } from '@/data/silos';
 import { Container } from '@/components/ui/Container';
 import { SiloNav, ArticleList, BlogBreadcrumb } from '@/components/blog';
 import { BreadcrumbListJsonLd } from '@/components/seo';
@@ -32,8 +32,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'blog' });
 
   return {
-    title: t('silo.metaTitle', { siloName: silo.nom }),
-    description: t('silo.metaDescription', { siloName: silo.nom }),
+    title: t('silo.metaTitle', { siloName: siloName(silo, locale) }),
+    description: t('silo.metaDescription', { siloName: siloName(silo, locale) }),
   };
 }
 
@@ -50,7 +50,7 @@ export default async function SiloListingPage({ params }: Props) {
   const baseUrl = 'https://www.trigger-flow.com';
   const breadcrumbItems = [
     { name: t('breadcrumb.blog'), url: `${baseUrl}/${locale}/blog` },
-    { name: silo.nom, url: `${baseUrl}/${locale}/blog/${silo.slug}` },
+    { name: siloName(silo, locale), url: `${baseUrl}/${locale}/blog/${silo.slug}` },
   ];
 
   return (
@@ -62,13 +62,13 @@ export default async function SiloListingPage({ params }: Props) {
           <Container>
             <BlogBreadcrumb
               blogLabel={t('breadcrumb.blog')}
-              silo={{ nom: silo.nom, slug: silo.slug }}
+              silo={{ nom: siloName(silo, locale), slug: silo.slug }}
             />
             <h1 className="mt-6 font-serif text-3xl font-bold tracking-tight text-brand-dark md:text-4xl">
-              {silo.nom}
+              {siloName(silo, locale)}
             </h1>
             <p className="mt-3 max-w-2xl text-lg text-gray-500">
-              {silo.description}
+              {siloDescription(silo, locale)}
             </p>
           </Container>
         </section>
@@ -77,7 +77,7 @@ export default async function SiloListingPage({ params }: Props) {
         <section className="pt-10 pb-4">
           <Container>
             <div className="flex justify-center">
-              <SiloNav activeSilo={siloSlug} allLabel={t('listing.allSilos')} />
+              <SiloNav activeSilo={siloSlug} allLabel={t('listing.allSilos')} locale={locale} />
             </div>
           </Container>
         </section>

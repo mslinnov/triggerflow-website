@@ -9,9 +9,9 @@ export function EmailAnalyticsMockup() {
       <div className="p-4 min-h-[320px]">
         {/* Stats row */}
         <div className="grid grid-cols-3 gap-3 mb-4">
-          <StatCard label="Taux d'ouverture" value="47.2%" trend="+3.1%" positive />
-          <StatCard label="Taux de clic" value="12.8%" trend="+1.4%" positive />
-          <StatCard label="Rebonds" value="1.2%" trend="-0.3%" positive />
+          <StatCard label="Taux d'ouverture" value="47,2%" trend="+3,1%" positive />
+          <StatCard label="Taux de clic" value="12,8%" trend="+1,4%" positive />
+          <StatCard label="Rebonds" value="1,2%" trend="-0,3%" positive />
         </div>
 
         {/* Mini chart */}

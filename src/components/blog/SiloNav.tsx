@@ -1,13 +1,15 @@
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import { getSilos } from '@/lib/blog';
+import { siloName } from '@/data/silos';
 
 interface SiloNavProps {
   activeSilo?: string;
   allLabel: string;
+  locale: string;
 }
 
-export function SiloNav({ activeSilo, allLabel }: SiloNavProps) {
+export function SiloNav({ activeSilo, allLabel, locale }: SiloNavProps) {
   const silos = getSilos();
 
   return (
@@ -34,7 +36,7 @@ export function SiloNav({ activeSilo, allLabel }: SiloNavProps) {
               : 'border-gray-200 text-gray-600 hover:border-brand-primary hover:text-brand-primary'
           )}
         >
-          {silo.nom}
+          {siloName(silo, locale)}
         </Link>
       ))}
     </nav>

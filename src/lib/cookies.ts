@@ -12,10 +12,9 @@
 export type ConsentState = {
   analytics: boolean;
   /**
-   * Publicité / mesure d'audience publicitaire (Meta Pixel).
-   * Catégorie distincte de `analytics` au sens CNIL : un pixel publicitaire
-   * ne peut pas être couvert par un consentement donné pour la seule mesure
-   * d'audience.
+   * Advertising / retargeting trackers (Meta pixel). Kept strictly separate
+   * from `analytics`: audience measurement and ad targeting are two distinct
+   * purposes, and consent to one is never consent to the other.
    */
   marketing: boolean;
   timestamp: string;
@@ -23,8 +22,6 @@ export type ConsentState = {
 };
 
 export const CONSENT_STORAGE_KEY = 'tf_cookie_consent';
-// Bumpée en 2.0 lors de l'ajout de la catégorie `marketing` : invalide les
-// consentements existants, la bannière réapparaît (comportement voulu).
 export const CONSENT_VERSION = '2.0';
 export const CONSENT_MAX_AGE_MS = 180 * 24 * 60 * 60 * 1000; // 6 months
 export const CONSENT_CHANGED_EVENT = 'tf-consent-changed';
@@ -53,7 +50,7 @@ export function getConsent(): ConsentState | null {
   }
 }
 
-export function setConsent(analytics: boolean, marketing: boolean = analytics): void {
+export function setConsent(analytics: boolean, marketing: boolean): void {
   if (!isBrowser()) return;
   const state: ConsentState = {
     analytics,
@@ -105,7 +102,7 @@ export function clearAnalyticsCookies(): void {
 }
 
 /**
- * Remove Meta Pixel cookies (_fbp / _fbc) set on the current eTLD+1.
+ * Remove the Meta pixel cookies set on the current eTLD+1.
  * Called when the user revokes marketing consent.
  */
 export function clearMarketingCookies(): void {

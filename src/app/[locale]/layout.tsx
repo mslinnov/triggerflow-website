@@ -6,6 +6,7 @@ import { IBM_Plex_Sans, Geist_Mono, Fraunces } from 'next/font/google';
 import { routing } from '@/i18n/routing';
 import { CookieConsentBanner } from '@/components/cookies';
 import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics';
+import { DemoClickTracker } from '@/components/analytics/DemoClickTracker';
 import { MetaPixel } from '@/components/analytics/MetaPixel';
 
 const baseUrl = 'https://www.trigger-flow.com';
@@ -81,7 +82,7 @@ export async function generateMetadata({
           url: '/og-image.jpg',
           width: 1200,
           height: 630,
-          alt: 'TriggerFlow - Automatisation relation client hôtelière',
+          alt: 'TriggerFlow - Le CRM hôtelier qui centralise toute la relation client',
         },
       ],
     },
@@ -104,8 +105,9 @@ export async function generateMetadata({
     alternates: {
       canonical: `${baseUrl}/${locale}`,
       languages: {
-        'fr-FR': `${baseUrl}/fr`,
-        'en-US': `${baseUrl}/en`,
+        fr: `${baseUrl}/fr`,
+        en: `${baseUrl}/en`,
+        'x-default': `${baseUrl}/fr`,
       },
     },
     robots: {
@@ -150,6 +152,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
         </NextIntlClientProvider>
         <GoogleAnalytics />
         <MetaPixel />
+        <DemoClickTracker />
       </body>
     </html>
   );

@@ -5,56 +5,52 @@ import Script from 'next/script';
 import {
   CONSENT_CHANGED_EVENT,
   clearMarketingCookies,
-  getConsent,
   hasValidConsent,
+  getConsent,
 } from '@/lib/cookies';
-
-/**
- * Meta (Facebook) Pixel — chargé uniquement après consentement explicite sur la
- * catégorie « marketing ». Même modèle que GoogleAnalytics.tsx : rien n'est
- * injecté tant que le consentement n'est pas donné, et les cookies déposés sont
- * supprimés en cas de refus ou de révocation.
- *
- * Les événements métier (ViewContent, Lead) sont émis par les composants de
- * landing page via `trackMetaEvent()` ci-dessous.
- */
 
 const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 
-type FbqFn = ((...args: unknown[]) => void) & {
-  queue?: unknown[];
-  callMethod?: (...args: unknown[]) => void;
-  loaded?: boolean;
-  version?: string;
-  push?: unknown;
-};
-
 declare global {
   interface Window {
-    fbq?: FbqFn;
-    _fbq?: FbqFn;
+    fbq?: ((...args: unknown[]) => void) & { callMethod?: (...args: unknown[]) => void };
+    _fbq?: unknown;
   }
 }
 
+/**
+ * Meta pixel, gated on the `marketing` consent category.
+ *
+ * Unlike GA4 there is no Consent Mode equivalent worth relying on here: the
+ * pixel either fires or it does not. So we apply the strictest reading —
+ * nothing reaches Meta until the visitor explicitly opts in to advertising
+ * cookies, and revoking the choice removes the cookies the pixel dropped.
+ *
+ * Deliberately separate from GoogleAnalytics.tsx: measuring the audience and
+ * building advertising audiences are two distinct purposes, and the visitor
+ * can accept one while refusing the other.
+ */
 export function MetaPixel() {
-  const [marketingAllowed, setMarketingAllowed] = useState(false);
+  const [granted, setGranted] = useState(false);
 
   useEffect(() => {
-    const evaluate = () => {
-      const allowed = hasValidConsent() && getConsent()?.marketing === true;
-      setMarketingAllowed(allowed);
-      if (!allowed) clearMarketingCookies();
+    if (!PIXEL_ID) return;
+
+    const apply = () => {
+      const isGranted = hasValidConsent() && getConsent()?.marketing === true;
+      setGranted(isGranted);
+      if (!isGranted) clearMarketingCookies();
     };
 
-    evaluate();
-    window.addEventListener(CONSENT_CHANGED_EVENT, evaluate);
-    return () => window.removeEventListener(CONSENT_CHANGED_EVENT, evaluate);
+    apply();
+    window.addEventListener(CONSENT_CHANGED_EVENT, apply);
+    return () => window.removeEventListener(CONSENT_CHANGED_EVENT, apply);
   }, []);
 
-  if (!PIXEL_ID || !marketingAllowed) return null;
+  if (!PIXEL_ID || !granted) return null;
 
   return (
-    <Script id="meta-pixel-init" strategy="afterInteractive">
+    <Script id="meta-pixel" strategy="afterInteractive">
       {`
         !function(f,b,e,v,n,t,s)
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -72,9 +68,13 @@ export function MetaPixel() {
 }
 
 /**
- * Émet un événement Meta. No-op silencieux si le pixel n'est pas chargé
- * (consentement refusé, pixel non configuré, bloqueur de pub) : le parcours de
- * conversion ne doit jamais dépendre du tracking.
+ * Emits a Meta standard event. Silent no-op when the pixel is not loaded
+ * (consent refused, pixel not configured, ad blocker): the conversion path
+ * must never depend on tracking being available.
+ *
+ * Used by the acquisition landing pages to report simulator engagement
+ * (ViewContent) and form submissions (Lead) with the estimated revenue as the
+ * event value, so campaigns can optimise on lead quality rather than volume.
  */
 export function trackMetaEvent(
   event: 'ViewContent' | 'Lead' | 'CompleteRegistration',
@@ -84,6 +84,6 @@ export function trackMetaEvent(
   try {
     window.fbq('track', event, params);
   } catch {
-    // Ignoré volontairement : le tracking ne doit jamais casser la page.
+    // Ignored on purpose: tracking must never break the page.
   }
 }

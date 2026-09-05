@@ -115,7 +115,7 @@
   },
   "hero": {
     "badge": "Hotel automation platform",
-    "title": "The hotel CRM that orchestrates every guest interaction",
+    "title": "The hotel CRM that centralizes your entire guest relationship",
     "subtitle": "Automate your emails, SMS, WhatsApp, reviews, upsells and payments — from check-in to check-out. Connected to your PMS, everything runs effortlessly.",
     "cta": "Book a demo",
     "ctaFree": "Free 14-day trial",
@@ -203,12 +203,29 @@
       "reviews": "+45% Google reviews",
       "timeSaved": "10h saved / week",
       "upsell": "+17% additional sales"
+    },
+    "result": {
+      "title": "Automation triggered"
     }
   },
   "journeyTimeline": {
     "badge": "Guest Journey",
     "title": "You choose what to automate, at every stage",
     "subtitle": "Before, during or after the stay — you decide which interactions TriggerFlow takes care of",
+    "stages": {
+      "before": {
+        "title": "Before the stay",
+        "subtitle": "Confirmation, pre-stay form and tailored offers, automated before arrival."
+      },
+      "during": {
+        "title": "During the stay",
+        "subtitle": "Welcome SMS and targeted offers, present without ever being intrusive."
+      },
+      "after": {
+        "title": "After the stay",
+        "subtitle": "Review requests and loyalty program triggered at the right moment."
+      }
+    },
     "phases": {
       "preStay": {
         "label": "Pre-stay",
@@ -318,6 +335,42 @@
       "tools": {
         "title": "Business Tools",
         "description": "Hotel CRM, forms, additional sales, analytics. Everything you need."
+      },
+      "email": {
+        "title": "Email",
+        "description": "Confirmations, pre-stay, campaigns: personalized emails sent at the right time, hands-free."
+      },
+      "sms": {
+        "title": "SMS",
+        "description": "Short messages read 98% of the time. Perfect for check-in, reminders and last-minute offers."
+      },
+      "whatsapp": {
+        "title": "WhatsApp",
+        "description": "Talk to your guests on the channel they already use, conversationally and in real time."
+      },
+      "crm": {
+        "title": "Hotel CRM",
+        "description": "Centralize history, preferences and contact details for each guest in a single profile."
+      },
+      "forms": {
+        "title": "Forms",
+        "description": "Pre-check-in, preferences, special requests: collect key information before arrival."
+      },
+      "upsell": {
+        "title": "Upsell",
+        "description": "Upgrades, breakfasts, services: offer the right extra at the right moment and grow each booking."
+      },
+      "analytics": {
+        "title": "Analytics",
+        "description": "Track the impact of every scenario: open rates, revenue generated, time saved."
+      },
+      "reviews": {
+        "title": "Guest reviews",
+        "description": "Request a Google review at the ideal moment and improve your online reputation automatically."
+      },
+      "loyalty": {
+        "title": "Loyalty",
+        "description": "Reward your regulars and trigger targeted campaigns to bring them back."
       }
     }
   },
@@ -773,7 +826,7 @@
     "ctaSecondary": "Contact us"
   },
   "footer": {
-    "description": "TriggerFlow is the leading SaaS solution for customer relationship automation in the hospitality industry.",
+    "description": "The hotel CRM that centralizes your entire guest relationship.",
     "cta": {
       "title": "Ready to transform your customer relationship?",
       "subtitle": "Join hundreds of hoteliers who trust TriggerFlow",
@@ -839,8 +892,8 @@
   },
   "pricing": {
     "meta": {
-      "title": "Hotel CRM Pricing | TriggerFlow - Plans & Pricing",
-      "description": "TriggerFlow pricing: hotel CRM + marketing automation from €49/month. Plans tailored from boutique hotels to multi-property groups."
+      "title": "Hotel CRM Pricing - Plans & Pricing",
+      "description": "TriggerFlow pricing: hotel CRM + marketing automation from €69/month. Plans tailored from boutique hotels to multi-property groups."
     },
     "hero": {
       "badge": "Pricing",
@@ -1013,7 +1066,7 @@
   },
   "contact": {
     "meta": {
-      "title": "Contact | TriggerFlow",
+      "title": "Contact",
       "description": "Contact the TriggerFlow team. We're here to answer your questions."
     },
     "hero": {
@@ -1063,7 +1116,7 @@
   },
   "about": {
     "meta": {
-      "title": "About | TriggerFlow",
+      "title": "About",
       "description": "Discover the story and team behind TriggerFlow, the automation solution for hospitality."
     },
     "hero": {
@@ -1131,7 +1184,7 @@
   },
   "integrations": {
     "meta": {
-      "title": "Hotel PMS Integrations | TriggerFlow - 50+ Native Connectors",
+      "title": "Hotel PMS Integrations - 50+ Native Connectors",
       "description": "Connect TriggerFlow to your PMS (Mews, Opera Cloud, Thaïs, Misterbooking...) and 50+ hotel tools. Real-time sync without development."
     },
     "hero": {
@@ -1419,7 +1472,7 @@
   },
   "product": {
     "meta": {
-      "title": "All-in-One Hotel CRM | TriggerFlow - Email, SMS, WhatsApp, Workflows",
+      "title": "All-in-One Hotel CRM - Email, SMS, WhatsApp, Workflows",
       "description": "All-in-one platform for hoteliers: CRM, email, SMS, WhatsApp, automated workflows, loyalty, Google reviews. Connected to 8+ PMS."
     },
     "hero": {
@@ -1542,7 +1595,7 @@
   },
   "blog": {
     "meta": {
-      "title": "Blog | TriggerFlow",
+      "title": "Blog",
       "description": "Tips, trends and best practices to optimize customer relationships in hospitality."
     },
     "hero": {
@@ -1594,7 +1647,7 @@
   },
   "caseStudies": {
     "meta": {
-      "title": "Case Studies | TriggerFlow",
+      "title": "Case Studies",
       "description": "Discover how our hotel customers transform their guest relationships with TriggerFlow."
     },
     "hero": {
@@ -1627,7 +1680,7 @@
   },
   "guides": {
     "meta": {
-      "title": "Guides & Resources | TriggerFlow",
+      "title": "Guides & Resources",
       "description": "Download our guides, ebooks and templates to optimize your hotel customer relationships."
     },
     "hero": {
@@ -1646,7 +1699,7 @@
   },
   "helpCenter": {
     "meta": {
-      "title": "Help Center | TriggerFlow",
+      "title": "Help Center",
       "description": "Find answers to your questions about TriggerFlow. Documentation, tutorials and FAQ."
     },
     "hero": {
@@ -1675,7 +1728,7 @@
   },
   "careers": {
     "meta": {
-      "title": "Careers | TriggerFlow",
+      "title": "Careers",
       "description": "Join the TriggerFlow team and participate in the transformation of hospitality."
     },
     "hero": {
@@ -1707,7 +1760,7 @@
   },
   "mewsIntegration": {
     "meta": {
-      "title": "Hotel CRM for Mews | TriggerFlow — Automate Your Guest Relations",
+      "title": "Hotel CRM for Mews — Automate Your Guest Relations",
       "description": "Connect Mews to a CRM built for hospitality. Real-time bidirectional sync, pre-stay emails, automated upselling, loyalty. 120+ hotels connected. Setup in 15 min."
     },
     "breadcrumb": {
@@ -2074,7 +2127,7 @@
   "cookies": {
     "banner": {
       "ariaLabel": "Cookie consent banner",
-      "message": "We use cookies to measure site audience, improve content and measure the performance of our advertising campaigns. You can accept, decline, or customize your choice at any time.",
+      "message": "We use cookies to measure site traffic and, if you agree, to measure how our ads perform. You can accept, decline or customise your choice at any time.",
       "accept": "Accept",
       "reject": "Decline",
       "customize": "Customize",
@@ -2088,7 +2141,7 @@
       "analytics": "Analytics cookies",
       "analyticsDesc": "Google Analytics helps us measure site traffic and improve content. Data is anonymized (truncated IP).",
       "marketing": "Advertising cookies",
-      "marketingDesc": "The Meta (Facebook) pixel lets us measure the performance of our advertising campaigns and avoid showing you irrelevant ads. Nothing is stored without your consent.",
+      "marketingDesc": "The Meta pixel lets us measure how our Facebook and Instagram ads perform, and stop showing them to people who already know us. No cookie is set without your consent.",
       "save": "Save preferences",
       "acceptAll": "Accept all"
     },

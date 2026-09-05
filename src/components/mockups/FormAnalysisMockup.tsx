@@ -23,7 +23,7 @@ export function FormAnalysisMockup() {
           />
           <StatCard
             icon={Star}
-            value="4.2/5"
+            value="4,2/5"
             label="NPS moyen"
             color="amber"
           />
@@ -53,7 +53,7 @@ export function FormAnalysisMockup() {
               <Star className="w-2.5 h-2.5 text-amber-500 fill-amber-500" />
               <Star className="w-2.5 h-2.5 text-gray-300" />
             </div>
-            <span className="text-[9px] text-gray-500">Moyenne : 4.2 / 5</span>
+            <span className="text-[9px] text-gray-500">Moyenne : 4,2 / 5</span>
           </div>
         </div>
 

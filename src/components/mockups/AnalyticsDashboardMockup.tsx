@@ -13,21 +13,21 @@ export function AnalyticsDashboardMockup() {
             icon={<Mail className="w-3.5 h-3.5 text-blue-500" />}
             iconBg="bg-blue-50"
             label="Emails envoyés"
-            value="12,450"
+            value="12 450"
             trend="+12%"
           />
           <KpiCard
             icon={<Eye className="w-3.5 h-3.5 text-purple-500" />}
             iconBg="bg-purple-50"
             label="Taux d'ouverture"
-            value="45.2%"
-            trend="+3.1%"
+            value="45,2%"
+            trend="+3,1%"
           />
           <KpiCard
             icon={<Euro className="w-3.5 h-3.5 text-emerald-500" />}
             iconBg="bg-emerald-50"
             label="Revenus générés"
-            value="8,720€"
+            value="8 720 €"
             trend="+22%"
           />
           <KpiCard

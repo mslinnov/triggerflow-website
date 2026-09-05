@@ -10,7 +10,7 @@ export function NewsletterSegmentMockup() {
         <h4 className="text-xs font-semibold text-gray-800 mb-3">Segments actifs</h4>
 
         <div className="space-y-2.5">
-          <SegmentCard icon={Heart} name="Couples" count="1,247" color="pink" tags={['2 adultes', '0 enfant', 'Chambre double']} />
+          <SegmentCard icon={Heart} name="Couples" count="1 247" color="pink" tags={['2 adultes', '0 enfant', 'Chambre double']} />
           <SegmentCard icon={Baby} name="Familles" count="892" color="blue" tags={['Enfants > 0', 'Suite ou familiale']} />
           <SegmentCard icon={Briefcase} name="Business" count="634" color="purple" tags={['Solo', 'Semaine', '> 2 séjours']} />
           <SegmentCard icon={Users} name="VIP / Fidèles" count="156" color="amber" tags={['> 3 séjours', '> 500€ total']} />

@@ -18,12 +18,19 @@ jobs:
     steps:
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.2.0
+        env:
+          NEXT_PUBLIC_GA_MEASUREMENT_ID: ${{ secrets.NEXT_PUBLIC_GA_MEASUREMENT_ID }}
+          NEXT_PUBLIC_GA_CONSENT_MODE: ${{ vars.NEXT_PUBLIC_GA_CONSENT_MODE }}
+          NEXT_PUBLIC_META_PIXEL_ID: ${{ vars.NEXT_PUBLIC_META_PIXEL_ID }}
         with:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           port: 22
           command_timeout: 12m
+          # Forward the analytics env vars into the remote shell so the build
+          # bakes them in regardless of any .env file present on the VPS.
+          envs: NEXT_PUBLIC_GA_MEASUREMENT_ID,NEXT_PUBLIC_GA_CONSENT_MODE,NEXT_PUBLIC_META_PIXEL_ID
           script: |
             set -euo pipefail
             cd /var/www/triggerflow-website
@@ -39,6 +46,12 @@ jobs:
             echo "::endgroup::"
 
             echo "::group::Build"
+            if [ -z "${NEXT_PUBLIC_GA_MEASUREMENT_ID:-}" ]; then
+              echo "::warning::NEXT_PUBLIC_GA_MEASUREMENT_ID is empty — analytics will NOT be tracked in this build. Set the GitHub secret."
+            fi
+            if [ -z "${NEXT_PUBLIC_META_PIXEL_ID:-}" ]; then
+              echo "::warning::NEXT_PUBLIC_META_PIXEL_ID is empty — the Meta pixel will NOT load in this build. Set the GitHub variable."
+            fi
             NODE_ENV=production npm run build
             echo "::endgroup::"
 

@@ -1,10 +1,36 @@
 import { useTranslations } from 'next-intl';
-import type { Article } from '@/types/blog';
+import type { Article, FaqItem } from '@/types/blog';
+import { PLANS } from '@/data/pricing';
 
 const baseUrl = 'https://www.trigger-flow.com';
 
 interface JsonLdProps {
   locale: string;
+}
+
+/**
+ * Un abonnement mensuel : le prix récurrent se déclare dans un
+ * `UnitPriceSpecification` (unitCode `MON` = par mois), pas sur l'Offer nue.
+ */
+function buildOffers(locale: string) {
+  return PLANS.map((plan) => ({
+    '@type': 'Offer',
+    name: locale === 'fr' ? plan.name.fr : plan.name.en,
+    description: locale === 'fr' ? plan.description.fr : plan.description.en,
+    url: `${baseUrl}/${locale}/tarifs`,
+    price: plan.price,
+    priceCurrency: 'EUR',
+    availability: 'https://schema.org/InStock',
+    priceValidUntil: '2026-12-31',
+    priceSpecification: {
+      '@type': 'UnitPriceSpecification',
+      price: plan.price,
+      priceCurrency: 'EUR',
+      billingDuration: 1,
+      billingIncrement: 1,
+      unitCode: 'MON',
+    },
+  }));
 }
 
 export function OrganizationJsonLd() {
@@ -17,6 +43,7 @@ export function OrganizationJsonLd() {
     logo: `${baseUrl}/images/logo.webp`,
     description:
       'TriggerFlow est la solution SaaS leader pour l\'automatisation de la relation client dans l\'hôtellerie.',
+    slogan: 'Le CRM hôtelier qui centralise toute la relation client',
     foundingDate: '2020',
     founders: [
       {
@@ -56,7 +83,7 @@ export function OrganizationJsonLd() {
   );
 }
 
-export function SoftwareApplicationJsonLd() {
+export function SoftwareApplicationJsonLd({ locale = 'fr' }: { locale?: string } = {}) {
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
@@ -64,6 +91,7 @@ export function SoftwareApplicationJsonLd() {
     applicationCategory: 'BusinessApplication',
     applicationSubCategory: 'CRM',
     operatingSystem: 'Web',
+    slogan: 'Le CRM hôtelier qui centralise toute la relation client',
     description:
       'Solution SaaS pour automatiser SMS, emails et fidélisation client dans l\'hôtellerie. Synchronisation PMS, enquêtes satisfaction, upselling.',
     url: baseUrl,
@@ -72,43 +100,7 @@ export function SoftwareApplicationJsonLd() {
       name: 'TriggerFlow',
       url: baseUrl,
     },
-    offers: [
-      {
-        '@type': 'Offer',
-        name: 'Découverte',
-        description: 'Pour tester la solution',
-        price: '0',
-        priceCurrency: 'EUR',
-        priceValidUntil: '2026-12-31',
-      },
-      {
-        '@type': 'Offer',
-        name: 'Communication',
-        description: 'Pour automatiser vos communications',
-        price: '69',
-        priceCurrency: 'EUR',
-        priceValidUntil: '2026-12-31',
-        billingIncrement: 'P1M',
-      },
-      {
-        '@type': 'Offer',
-        name: 'Conversion',
-        description: 'Pour booster vos ventes',
-        price: '149',
-        priceCurrency: 'EUR',
-        priceValidUntil: '2026-12-31',
-        billingIncrement: 'P1M',
-      },
-      {
-        '@type': 'Offer',
-        name: 'All Inclusive',
-        description: 'Pour les hôtels ambitieux',
-        price: '249',
-        priceCurrency: 'EUR',
-        priceValidUntil: '2026-12-31',
-        billingIncrement: 'P1M',
-      },
-    ],
+    offers: buildOffers(locale),
     featureList: [
       'Synchronisation PMS',
       'SMS & Emails automatisés',
@@ -117,13 +109,6 @@ export function SoftwareApplicationJsonLd() {
       'Tableaux de bord analytiques',
       'Templates personnalisables',
     ],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      ratingCount: '150',
-      bestRating: '5',
-      worstRating: '1',
-    },
   };
 
   return (
@@ -182,10 +167,24 @@ export function FAQPageJsonLd({ locale }: JsonLdProps) {
           },
         ];
 
+  return <FaqJsonLd items={faqItems} />;
+}
+
+/**
+ * Balise une liste de questions/réponses en FAQPage.
+ *
+ * Google a restreint le *rich result* FAQ aux sites institutionnels : n'attends
+ * pas d'accordéon dans la SERP. L'intérêt ici est l'AEO — donner aux moteurs
+ * génératifs (AI Overviews, ChatGPT, Perplexity) des paires Q/R explicitement
+ * délimitées et donc citables, plutôt qu'un mur de texte à découper.
+ */
+export function FaqJsonLd({ items }: { items: FaqItem[] }) {
+  if (items.length === 0) return null;
+
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: faqItems.map((item) => ({
+    mainEntity: items.map((item) => ({
       '@type': 'Question',
       name: item.question,
       acceptedAnswer: {
@@ -193,6 +192,46 @@ export function FAQPageJsonLd({ locale }: JsonLdProps) {
         text: item.answer,
       },
     })),
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+/**
+ * Schema Product/Offer de la page tarifs.
+ *
+ * Le prix public est le différenciateur n°1 de TriggerFlow face à des
+ * concurrents en « devis sur demande » : autant le rendre lisible par machine.
+ */
+export function PricingJsonLd({ locale }: JsonLdProps) {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: 'TriggerFlow',
+    category: locale === 'fr' ? 'CRM hôtelier' : 'Hotel CRM',
+    description:
+      locale === 'fr'
+        ? 'CRM hôtelier et plateforme d\'expérience client : données clients centralisées depuis votre PMS, segmentation, communication multicanale, enquêtes, avis, ventes additionnelles et fidélité.'
+        : 'Hotel CRM and guest experience platform: guest data centralized from your PMS, segmentation, multichannel communication, surveys, reviews, upselling and loyalty.',
+    url: `${baseUrl}/${locale}/tarifs`,
+    brand: {
+      '@type': 'Organization',
+      name: 'TriggerFlow',
+      url: baseUrl,
+    },
+    offers: {
+      '@type': 'AggregateOffer',
+      priceCurrency: 'EUR',
+      lowPrice: String(Math.min(...PLANS.map((plan) => Number(plan.price)))),
+      highPrice: String(Math.max(...PLANS.map((plan) => Number(plan.price)))),
+      offerCount: PLANS.length,
+      offers: buildOffers(locale),
+    },
   };
 
   return (
@@ -223,7 +262,7 @@ export function HomePageJsonLd({ locale }: JsonLdProps) {
   return (
     <>
       <OrganizationJsonLd />
-      <SoftwareApplicationJsonLd />
+      <SoftwareApplicationJsonLd locale={locale} />
       <FAQPageJsonLd locale={locale} />
       <WebsiteJsonLd />
     </>

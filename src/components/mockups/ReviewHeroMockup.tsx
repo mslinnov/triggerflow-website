@@ -10,7 +10,7 @@ export function ReviewHeroMockup() {
         <div className="rounded-xl border border-gray-200 bg-white p-2.5">
           <p className="text-[9px] text-gray-500">Note moyenne</p>
           <div className="mt-0.5 flex items-baseline gap-1.5">
-            <span className="text-lg font-bold text-gray-800">4.6</span>
+            <span className="text-lg font-bold text-gray-800">4,6</span>
             <span className="text-[10px] text-gray-400">/5</span>
           </div>
           <div className="mt-0.5 flex gap-0.5">

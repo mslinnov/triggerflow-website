@@ -9,8 +9,10 @@ export type CtaPrincipal = 'demo' | 'newsletter' | 'les_deux';
 export interface Silo {
   id: SiloId;
   nom: string;
+  nomEn: string;
   slug: string;
   description: string;
+  descriptionEn: string;
 }
 
 export interface ArticleImage {
@@ -40,6 +42,11 @@ export interface TOCItem {
   id: string;
   text: string;
   level: 2 | 3;
+}
+
+export interface FaqItem {
+  question: string;
+  answer: string;
 }
 
 export interface Article {

@@ -7,16 +7,17 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
 import { Calendar, Clock, Share2, Linkedin, Twitter } from 'lucide-react';
 
-import { getAllArticles, getArticleBySlug, getArticleByTranslationKey, generateTableOfContents } from '@/lib/blog';
+import { getAllArticles, getArticleBySlug, getArticleByTranslationKey, generateTableOfContents, extractFaqItems } from '@/lib/blog';
 import { Container } from '@/components/ui/Container';
 import { BlogBreadcrumb, TableOfContents } from '@/components/blog';
-import { BlogPostingJsonLd, BreadcrumbListJsonLd } from '@/components/seo';
+import { BlogPostingJsonLd, BreadcrumbListJsonLd, FaqJsonLd } from '@/components/seo';
 import { ImageBlock } from '@/components/mdx/ImageBlock';
 import { Callout } from '@/components/mdx/Callout';
 import { InternalLink } from '@/components/mdx/InternalLink';
 import { NewsletterInline } from '@/components/mdx/NewsletterInline';
 import { KeyFigure } from '@/components/mdx/KeyFigure';
 import { KeyFiguresGrid, KeyFigureCard } from '@/components/mdx/KeyFiguresGrid';
+import { Stat } from '@/components/mdx/Stat';
 
 const BASE_URL = 'https://www.trigger-flow.com';
 
@@ -70,16 +71,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     alternates: (() => {
       const alternateLocale = locale === 'fr' ? 'en' : 'fr';
       const languages: Record<string, string> = {
-        [locale === 'fr' ? 'fr-FR' : 'en-US']: url,
+        [locale]: url,
       };
 
       if (article.translationKey) {
         const translatedArticle = getArticleByTranslationKey(article.translationKey, alternateLocale);
         if (translatedArticle) {
           const altUrl = `${BASE_URL}/${alternateLocale}/blog/${translatedArticle.siloSlug}/${translatedArticle.slug}`;
-          languages[alternateLocale === 'fr' ? 'fr-FR' : 'en-US'] = altUrl;
+          languages[alternateLocale] = altUrl;
         }
       }
+
+      // x-default points to the FR version when available, else the current URL.
+      languages['x-default'] = languages.fr ?? url;
 
       return { canonical: url, languages };
     })(),
@@ -105,7 +109,10 @@ export default async function ArticlePage({ params }: PageProps) {
     NewsletterInline,
     KeyFigure,
     KeyFiguresGrid,
-    KeyFigureCard,
+    KeyFigureCard: (props: { value?: string; label: string; statId?: string }) => (
+      <KeyFigureCard {...props} locale={locale} />
+    ),
+    Stat: (props: { id: string }) => <Stat id={props.id} locale={locale} />,
   };
 
   const formattedDate = new Date(article.datePublication).toLocaleDateString(
@@ -130,6 +137,7 @@ export default async function ArticlePage({ params }: PageProps) {
     <>
       <BlogPostingJsonLd article={article} locale={locale} />
       <BreadcrumbListJsonLd items={breadcrumbItems} />
+      <FaqJsonLd items={extractFaqItems(article.content)} />
 
       <article>
         {/* Article header */}

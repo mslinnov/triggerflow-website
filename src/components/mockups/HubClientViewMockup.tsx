@@ -124,7 +124,7 @@ export function HubClientViewMockup() {
               <Star className="w-3 h-3 text-gray-400" />
               <div>
                 <p className="text-[8px] text-gray-400">Note</p>
-                <p className="text-[9px] font-medium text-gray-700">4.8/5</p>
+                <p className="text-[9px] font-medium text-gray-700">4,8/5</p>
               </div>
             </div>
           </div>

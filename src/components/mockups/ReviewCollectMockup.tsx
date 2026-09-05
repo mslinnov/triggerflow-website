@@ -18,7 +18,7 @@ export function ReviewCollectMockup() {
           </div>
           <div className="bg-white rounded-lg px-2 py-1 border border-blue-200">
             <p className="text-[10px] text-gray-500">Score</p>
-            <p className="text-sm font-bold text-gray-900">4.2/5</p>
+            <p className="text-sm font-bold text-gray-900">4,2/5</p>
           </div>
         </div>
 

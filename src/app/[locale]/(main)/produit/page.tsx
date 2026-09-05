@@ -19,8 +19,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     alternates: {
       canonical: `${baseUrl}/${locale}/produit`,
       languages: {
-        'fr-FR': `${baseUrl}/fr/produit`,
-        'en-US': `${baseUrl}/en/produit`,
+        fr: `${baseUrl}/fr/produit`,
+        en: `${baseUrl}/en/produit`,
+        'x-default': `${baseUrl}/fr/produit`,
       },
     },
   };

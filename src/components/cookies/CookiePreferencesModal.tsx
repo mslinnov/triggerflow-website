@@ -12,20 +12,21 @@ interface CookiePreferencesModalProps {
 
 export function CookiePreferencesModal({ open, onClose }: CookiePreferencesModalProps) {
   const t = useTranslations('cookies.modal');
-  const [analyticsOn, setAnalyticsOn] = useState(false);
-  const [marketingOn, setMarketingOn] = useState(false);
+  // Single state object so re-reading the stored consent when the modal opens
+  // stays one setState call, as it was when there was only one category.
+  const [prefs, setPrefs] = useState({ analytics: false, marketing: false });
+  const { analytics: analyticsOn, marketing: marketingOn } = prefs;
+  const setAnalyticsOn = (next: boolean) => setPrefs((p) => ({ ...p, analytics: next }));
+  const setMarketingOn = (next: boolean) => setPrefs((p) => ({ ...p, marketing: next }));
 
-  // Les interrupteurs reprennent le consentement enregistré à chaque ouverture.
-  // Ajustement pendant le rendu plutôt qu'en effet : pas de rendu en cascade.
-  const [wasOpen, setWasOpen] = useState(open);
-  if (open !== wasOpen) {
-    setWasOpen(open);
-    if (open) {
-      const consent = getConsent();
-      setAnalyticsOn(consent?.analytics ?? false);
-      setMarketingOn(consent?.marketing ?? false);
-    }
-  }
+  useEffect(() => {
+    if (!open) return;
+    const consent = getConsent();
+    setPrefs({
+      analytics: consent?.analytics ?? false,
+      marketing: consent?.marketing ?? false,
+    });
+  }, [open]);
 
   useEffect(() => {
     if (!open) return;

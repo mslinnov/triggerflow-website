@@ -56,6 +56,51 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      // ── Slugs légaux : anciens chemins WP → slugs réels (FR sur les 2 locales) ──
+      {
+        source: '/en/privacy-policy',
+        destination: '/en/politique-confidentialite',
+        permanent: true,
+      },
+      {
+        source: '/fr/condition-generale-dutilisation',
+        destination: '/fr/cgu',
+        permanent: true,
+      },
+
+      // ── Vestige locale en-us (inexistante) — spécifique AVANT le général ──
+      {
+        source: '/en-us/mentions-legales',
+        destination: '/en/mentions-legales',
+        permanent: true,
+      },
+      {
+        source: '/en-us',
+        destination: '/en',
+        permanent: true,
+      },
+
+      // ── Articles de blog : slug FR servi sous /en (404) → version réelle ──
+      {
+        source: '/en/blog/experience-client/crm-hotelier-guide',
+        destination: '/fr/blog/experience-client/crm-hotelier-guide',
+        permanent: true,
+      },
+      {
+        source: '/en/blog/automatisation/marketing-automation-hotelier-guide',
+        destination: '/fr/blog/automatisation/marketing-automation-hotelier-guide',
+        permanent: true,
+      },
+      // Règle 7 : la version EN existe (smart-locks) → on garde le visiteur en anglais
+      {
+        source: '/en/blog/tech-integrations/serrures-connectees-hotel-guide',
+        destination: '/en/blog/tech-integrations/smart-locks-hotel-guide',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 if (process.env.NODE_ENV === 'development') {
