@@ -108,7 +108,7 @@
   --up-highlight-wash: #FFF4E8;
   --up-highlight-ink: #002B28;
   --up-danger: #B4231C;
-  --up-logo-filter: brightness(0) saturate(100%) opacity(0.55);
+  --up-logo-filter: grayscale(1) contrast(1.15) opacity(0.92);
   --up-shadow-sm: 0 2px 8px rgba(0, 43, 40, 0.05), 0 1px 2px rgba(0, 43, 40, 0.04);
   --up-shadow-lg: 0 8px 40px rgba(0, 43, 40, 0.10);
 }
@@ -133,7 +133,7 @@
     --up-highlight-wash: #241A10;
     --up-highlight-ink: #FFCFA2;
     --up-danger: #FF8B82;
-    --up-logo-filter: brightness(0) invert(1) opacity(0.7);
+    --up-logo-filter: grayscale(1) invert(1) contrast(1.1) opacity(0.9);
     --up-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.25);
     --up-shadow-lg: 0 12px 48px rgba(0, 0, 0, 0.45);
   }

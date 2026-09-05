@@ -8,44 +8,36 @@ import { formatEuros } from '@/lib/upsell-simulator';
 import { cn } from '@/lib/utils';
 
 /**
- * Mur de logos PMS réels, puis les trois éléments de réassurance sortis du hero.
- * Les logos sont neutralisés par un filtre piloté par token, pour rester lisibles
- * en thème clair comme en thème sombre.
- */
-
-/**
- * Mur de logos : uniquement les marques dont nous avons le logo authentique.
+ * Mur de logos : les dix PMS réellement connectés, avec leurs logos officiels.
  *
- * Trois partenaires manquent au mur, pour deux raisons distinctes.
+ * Le traitement est un passage en niveaux de gris et non un aplat monochrome.
+ * La nuance compte : `brightness(0)` écrasait tout en noir, ce qui réduisait
+ * Reservit à trois gouttes opaques et Vega à un disque plein, leurs éléments
+ * internes disparaissant. `grayscale()` conserve les écarts de luminosité,
+ * donc les icônes blanches des repères Reservit et l'étoile de Vega restent
+ * lisibles, tout en gardant une rangée homogène qui ne vole pas l'attention
+ * au simulateur juste en dessous.
  *
- * Protel : le fichier protel.svg est une approximation fabriquée, « protel » en
- * Arial dans un carré bleu. Le site de l'éditeur bloque l'accès automatisé, le
- * vrai logo reste à récupérer à la main. Afficher une contrefaçon du logo d'un
- * partenaire dessert sa marque autant que la nôtre.
+ * Amenitiz et D-EDGE ont été retirés du site entier : ce ne sont pas des
+ * partenaires, et une intégration annoncée à tort se paie en rendez-vous pris
+ * pour rien.
  *
- * Reservit et Vega : leurs vrais logos existent mais ne survivent pas au
- * passage en monochrome du mur. Vega est un badge circulaire plein qui devient
- * un disque gris, Reservit un ensemble de pictogrammes colorés qui devient
- * trois gouttes noires. Les mettre en couleur au milieu de marques verbales
- * grises casserait l'homogénéité de la rangée.
- *
- * Ces trois-là sont cités en toutes lettres dans la FAQ et le formulaire.
- * Amenitiz et D-EDGE, eux, ont été retirés partout : ce ne sont pas des
- * partenaires.
- *
- * Restent sept marques verbales, homogènes entre elles.
- *
- * Les rapports largeur/hauteur vont de 1,91 à 7,92 : la hauteur est calée par
- * logo pour égaliser leur poids visuel, plutôt qu'uniformément.
+ * Les rapports largeur/hauteur vont de 1,00 à 7,92 et les densités visuelles
+ * sont très inégales : la hauteur est donc calée logo par logo pour égaliser
+ * leur poids optique. Les marques figuratives (Vega, Reservit) sont plus
+ * petites que les marques verbales, sans quoi elles dominent la rangée.
  */
 const PMS_LOGOS = [
   { file: 'mews.svg', name: 'Mews', width: 901, height: 113, size: 'h-5' },
   { file: 'thais.svg', name: 'Thaïs', width: 210, height: 64, size: 'h-6' },
   { file: 'opera.png', name: 'Opera Cloud', width: 1080, height: 500, size: 'h-8' },
-  { file: 'misterbooking.png', name: 'Misterbooking', width: 498, height: 100, size: 'h-5' },
+  { file: 'misterbooking.png', name: 'Misterbooking', width: 498, height: 100, size: 'h-6' },
   { file: 'medialog.svg', name: 'Medialog', width: 152, height: 36, size: 'h-5' },
-  { file: 'asterio.png', name: 'Asterio', width: 300, height: 157, size: 'h-7' },
+  { file: 'asterio.png', name: 'Asterio', width: 300, height: 157, size: 'h-8' },
   { file: 'clockpms.svg', name: 'Clock PMS', width: 600, height: 183, size: 'h-6' },
+  { file: 'protel.png', name: 'Protel', width: 300, height: 200, size: 'h-9' },
+  { file: 'reservit.webp', name: 'Reservit', width: 300, height: 173, size: 'h-8' },
+  { file: 'vega.png', name: 'Vega', width: 512, height: 512, size: 'h-7' },
 ] as const;
 
 const REASSURANCE = [
