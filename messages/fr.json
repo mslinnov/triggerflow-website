@@ -644,7 +644,7 @@
       },
       "pms": {
         "question": "TriggerFlow est-il compatible avec mon PMS ?",
-        "answer": "Nous sommes compatibles avec les principaux PMS du marché : Mews, Opera, Protel, Clock, Misterbooking, Asterio, Thaïs et bien d'autres. Si votre PMS n'est pas dans la liste, contactez-nous pour vérifier la compatibilité."
+        "answer": "Nous sommes compatibles avec les principaux PMS du marché : Mews, Opera, Clock, Misterbooking, Asterio, Thaïs et bien d'autres. Si votre PMS n'est pas dans la liste, contactez-nous pour vérifier la compatibilité."
       },
       "customization": {
         "question": "Puis-je personnaliser les messages envoyés ?",
@@ -1253,10 +1253,6 @@
           "zeswitch": {
             "name": "Zeswitch",
             "description": "PMS nouvelle génération"
-          },
-          "protel": {
-            "name": "Protel",
-            "description": "PMS par Planet (ex-Protel)"
           },
           "clockpms": {
             "name": "Clock PMS",
@@ -2048,7 +2044,7 @@
         {
           "label": "Catégorie",
           "title": "Toutes les intégrations PMS",
-          "description": "Mews, Opera Cloud, Thaïs, Medialog et 9 autres PMS connectés nativement.",
+          "description": "Mews, Opera Cloud, Thaïs, Medialog et 8 autres PMS connectés nativement.",
           "href": "/integrations"
         },
         {
@@ -2160,23 +2156,23 @@
   "lpUpsell": {
     "cta": {
       "calculate": "Calculer mon potentiel",
-      "demo": "Demander une démo",
-      "whitepaper": "Recevoir le livre blanc"
+      "bookDemo": "Réserver une démo",
+      "demo": "Recevoir mon plan",
+      "whitepaper": "Recevoir les 5 automatisations"
     },
     "hero": {
-      "eyebrow": "Ventes additionnelles",
-      "titleLine1": "Vos clients paieraient.",
-      "titleLine2": "Personne ne leur demande.",
+      "titleLead": "Entre la réservation et l'arrivée,",
+      "titleStatement": "votre hôtel vend sans vous.",
       "subtitle": "Petit-déjeuner, spa, restaurant, parking : TriggerFlow envoie l'offre avant l'arrivée, toute seule.",
       "imageAlt": "Catalogue de services additionnels tel que le client le reçoit, avec les prix et l'ajout en un clic"
     },
     "trust": {
       "figures": {
-        "facilities": "établissements équipés",
-        "offers": "offres envoyées",
-        "revenue": "de ventes additionnelles générées"
+        "revenuePerRoom": "de revenu additionnel par chambre et par mois",
+        "uplift": "de chiffre d'affaires sur vos prestations annexes",
+        "margin": "de marge sur l'early check-in, le late check-out et le surclassement"
       },
-      "title": "Compatible avec les PMS utilisés par les hôtels indépendants",
+      "title": "Plus de 400 établissements équipés, connectés aux PMS des hôtels indépendants",
       "turnkey": "Livré préréglé, opérationnel en 48 h",
       "pms": "Ventes remontées dans votre PMS, sans resaisie",
       "gdpr": "Conforme RGPD, DPA signable",
@@ -2201,8 +2197,9 @@
       "basis": "Estimation calculée sur les ventes réellement constatées chez {hotels} établissements clients qui utilisent la fonctionnalité : {offers, number} offres envoyées et {revenue, number} € de ventes additionnelles générées.",
       "methodologyToggle": "Le détail du calcul",
       "methodologyVolume": "Avec {rooms} chambres au taux d'occupation indiqué, votre hôtel enregistre environ {nights, number} nuitées par mois, soit {sends, number} séjours et autant de campagnes envoyées. La durée moyenne de séjour retenue, {los} nuits, est la seule valeur estimée du calcul.",
-      "methodologyRates": "Sur nos établissements clients, {rate, number, ::.00}% des offres envoyées donnent lieu à une vente, pour un panier moyen de {basket} €. Le revenu est ensuite réparti selon le poids réel de chaque prestation dans les ventes observées, et non selon un taux d'acceptation par prestation : une même campagne présente tout le catalogue, ces taux ne s'additionnent pas.",
-      "methodologyBias": "Ces références proviennent d'établissements qui ont configuré leur catalogue et lancé des campagnes. Le chiffre décrit donc ce que fait un hôtel qui utilise réellement la fonctionnalité, pas une moyenne de tous nos clients."
+      "methodologyRates": "Le calcul retient un taux d'acceptation de {rate, number, ::.00}%, celui que nous mesurons sur les offres envoyées 3 à 7 jours avant l'arrivée, la fenêtre que les scénarios livrés utilisent par défaut. Le panier moyen d'une vente est de {basket} €. Le revenu est ensuite réparti selon le poids réel de chaque prestation dans les ventes observées, et non selon un taux d'acceptation par prestation : une même campagne présente tout le catalogue, ces taux ne s'additionnent pas.",
+      "methodologyBias": "Ces références proviennent d'établissements qui ont configuré leur catalogue et lancé des campagnes. Le chiffre décrit donc ce que fait un hôtel qui utilise réellement la fonctionnalité, pas une moyenne de tous nos clients.",
+      "methodologyBenchmark": "Repère de marché : sur 1 100 hôtels, Oaky publie 29 € de revenu additionnel par chambre et par mois en moyenne sur les 5 étoiles, 38 € sur les resorts de montagne, avec un maximum observé à 141 €. L'estimation ci-dessus se situe au milieu de cette fourchette, jamais en haut."
     },
     "services": {
       "breakfast": {
@@ -2259,24 +2256,24 @@
       "title": "Douze offres, classées par ce qu'elles rapportent vraiment",
       "subtitle": "L'ordre n'est pas une intuition marketing : c'est le poids réel de chaque prestation dans les ventes de nos établissements clients.",
       "medianBasket": "Panier médian",
-      "hotelCountLabel": "Établissements vendeurs",
-      "hotelCount": "{count, plural, one {# établissement en vend} other {# établissements en vendent}}",
-      "disclaimer": "Paniers médians et nombre d'établissements constatés sur la base de production au 5 septembre 2026. Le parking, les activités et le surclassement reposent sur moins de douze établissements : à lire avec prudence."
+      "disclaimer": "Paniers médians constatés sur la base de production au 5 septembre 2026, chez les établissements qui ont configuré leur catalogue et lancé des campagnes."
     },
     "gap": {
       "title": "L'argent est déjà dans votre hôtel",
-      "subtitle": "Il manque seulement une proposition, envoyée au bon moment, à la bonne personne.",
-      "breakfast": {
-        "statement": "Le petit-déjeuner se décide à la réception, le matin même.",
-        "consequence": "Proposé avant l'arrivée, il devient le premier poste de ventes additionnelles."
+      "subtitle": "Vous avez déjà les chambres, déjà les clients, déjà les prestations. Il manque la proposition, envoyée avant que le client arrive.",
+      "margin": "Ces trois prestations-là ne coûtent rien à produire : aucune denrée à acheter, aucun créneau de praticien à bloquer, personne à embaucher. Chaque euro vendu tombe en marge nette.",
+      "noCost": "sans coût en face",
+      "earlyCheckin": {
+        "statement": "La chambre est prête à 11 h, le client arrive du premier train.",
+        "consequence": "À la réception, on la cède pour éviter la discussion. Proposée deux jours avant, elle se vend."
       },
-      "restaurant": {
-        "statement": "La table du soir se réserve dans le restaurant d'en face.",
-        "consequence": "Personne n'a proposé la vôtre au moment de la réservation."
+      "roomUpgrade": {
+        "statement": "La chambre supérieure reste vide un mardi sur deux.",
+        "consequence": "Personne ne pense à proposer l'écart de gamme. Le client, lui, vient de réserver : il est encore dans l'achat."
       },
-      "spa": {
-        "statement": "Le spa tourne à vide le mardi après-midi.",
-        "consequence": "Vos clients de la veille ne savaient pas qu'il existait."
+      "lateCheckout": {
+        "statement": "Le départ à 15 h se négocie au comptoir, le matin même.",
+        "consequence": "Négocié, il se cède. Proposé la veille au soir, il se paie. Même service, deux résultats."
       }
     },
     "how": {
@@ -2338,7 +2335,7 @@
       },
       "pms": {
         "q": "Est-ce compatible avec mon PMS ?",
-        "a": "TriggerFlow est connecté à Mews, Thaïs, Opera Cloud, Misterbooking, Medialog, Asterio, Vega, Protel, Reservit et Clock PMS. Si le vôtre n'y figure pas, dites-le nous, nous vérifions la faisabilité avant tout engagement."
+        "a": "TriggerFlow est connecté à Mews, Thaïs, Opera Cloud, Misterbooking, Medialog, Asterio, Vega, Reservit et Clock PMS. Si le vôtre n'y figure pas, dites-le nous, nous vérifions la faisabilité avant tout engagement."
       },
       "setup": {
         "q": "Combien de temps pour être opérationnel ?",
@@ -2346,11 +2343,7 @@
       },
       "noSpa": {
         "q": "Je n'ai ni spa ni restaurant. Est-ce que ça vaut le coup ?",
-        "a": "Le petit-déjeuner représente à lui seul près d'un tiers des ventes additionnelles constatées, et il se vend dans 46 de nos établissements clients. Le parking, le supplément animaux et les prestations d'accueil suivent, sans aucun investissement. Décochez le reste dans le simulateur pour voir ce que ça donne chez vous."
-      },
-      "price": {
-        "q": "Combien ça coûte ?",
-        "a": "L'abonnement dépend du nombre de chambres. Le revenu additionnel médian constaté chez nos clients couvre l'abonnement largement, mais votre situation dépend de votre catalogue et de votre clientèle. Nous vous donnons le tarif exact lors de l'échange, sans engagement."
+        "a": "Oui. Le petit-déjeuner représente à lui seul près d'un tiers des ventes additionnelles constatées, et il ne demande aucun investissement. Viennent ensuite le parking, le supplément animaux, l'early check-in, le late check-out et les prestations d'accueil : ce sont des prestations que vous avez déjà. Décochez le reste dans le simulateur pour voir ce que ça donne chez vous."
       },
       "gdpr": {
         "q": "Et le RGPD ?",
@@ -2369,14 +2362,14 @@
       "phoneHint": "Facultatif. Pour un rappel plutôt qu'un email.",
       "error": "L'envoi a échoué. Vérifiez votre adresse email, puis réessayez.",
       "demo": {
-        "submit": "Demander une démo",
+        "submit": "Recevoir mon plan",
         "successTitle": "C'est noté.",
         "successBody": "Un membre de l'équipe vous écrit sous 24h ouvrées avec votre plan détaillé et deux créneaux de démo.",
         "privacy": "Vos coordonnées servent à préparer votre plan et à vous recontacter. Aucune revente à des tiers.",
-        "book": "Réserver mon créneau maintenant"
+        "book": "Réserver une démo"
       },
       "whitepaper": {
-        "submit": "Recevoir le livre blanc",
+        "submit": "Recevoir les 5 automatisations",
         "successTitle": "C'est envoyé.",
         "successBody": "Vous le recevez par email dans les prochaines heures. Pensez à vérifier vos indésirables si vous ne le voyez pas arriver.",
         "privacy": "Votre email sert à vous envoyer le guide. Vous pouvez vous désabonner en un clic, et rien n'est revendu à des tiers."
@@ -2390,7 +2383,7 @@
         "formTitle": "Vos coordonnées"
       },
       "whitepaper": {
-        "title": "Les automatisations qui rapportent le plus",
+        "title": "Les 5 automatisations qui rapportent le plus",
         "subtitle": "Nous avons repris les ventes de nos établissements clients pour identifier ce qui se vend vraiment, quand l'envoyer et sur quel canal. Tout est dans ce guide.",
         "formTitle": "Où faut-il l'envoyer ?",
         "format": "Format PDF, envoyé par email. Fondé sur 89 347 offres envoyées et 201 439 € de ventes réellement mesurées.",
@@ -2398,6 +2391,7 @@
           "timing": "Le bon moment pour chaque offre, et pourquoi envoyer le jour de l'arrivée divise les ventes par trois.",
           "channel": "Email, SMS ou WhatsApp : ce que change réellement le canal, comparé à l'intérieur d'un même établissement.",
           "catalogue": "Les douze prestations qui se vendent, classées par ce qu'elles rapportent, avec les paniers constatés.",
+          "margin": "Les trois prestations qui ne coûtent rien à produire, et comment les proposer sans avoir l'air de vendre.",
           "pms": "Comment brancher tout ça sur votre PMS sans créer de double saisie à la réception."
         }
       }

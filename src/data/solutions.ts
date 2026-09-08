@@ -256,7 +256,7 @@ export const solutions: Record<string, SolutionData> = {
       },
       {
         question: 'Mon PMS est-il compatible ?',
-        answer: 'TriggerFlow se connecte aux principaux PMS du marché : Mews, Thaïs, Opera Cloud, Misterbooking, Medialog, Asterio, Vega, Protel, Reservit et Clock PMS. Si le vôtre n\'est pas listé, contactez-nous.',
+        answer: 'TriggerFlow se connecte aux principaux PMS du marché : Mews, Thaïs, Opera Cloud, Misterbooking, Medialog, Asterio, Vega, Reservit et Clock PMS. Si le vôtre n\'est pas listé, contactez-nous.',
       },
       {
         question: 'Quel est le coût pour un hôtel indépendant ?',
@@ -907,7 +907,7 @@ export const solutions: Record<string, SolutionData> = {
       metric: '40% de taux de retour client',
     },
 
-    integrations: ['Opera Cloud', 'Mews', 'Protel', 'Sesame', 'Igloohome'],
+    integrations: ['Opera Cloud', 'Mews', 'Sesame', 'Igloohome'],
 
     faq: [
       {
@@ -928,7 +928,7 @@ export const solutions: Record<string, SolutionData> = {
       },
       {
         question: 'TriggerFlow s\'intègre-t-il avec Opera Cloud ?',
-        answer: "Oui, Opera Cloud est nativement supporté, ainsi que Mews, Protel et d'autres PMS utilisés dans l'hôtellerie haut de gamme. La synchronisation est en temps réel.",
+        answer: "Oui, Opera Cloud est nativement supporté, ainsi que Mews, Thaïs et d'autres PMS utilisés dans l'hôtellerie haut de gamme. La synchronisation est en temps réel.",
       },
     ],
 

@@ -45,7 +45,6 @@ const integrationCategories: Category[] = [
       { key: 'vega', logo: '/images/integrations/vega.png' },
       { key: 'apaleo', logo: '/images/integrations/apaleo.png' },
       { key: 'zeswitch', logo: '/images/integrations/zeswitch.png' },
-      { key: 'protel', logo: '/images/integrations/protel.svg' },
       { key: 'clockpms', logo: '/images/integrations/clockpms.svg' },
     ],
   },

@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
+import { SEND_WINDOWS } from '@/data/upsell-services';
 import { UpsellSection } from './primitives';
 
 /**
@@ -14,15 +15,15 @@ import { UpsellSection } from './primitives';
  * proportionnels, pas des jauges de tableau de bord.
  */
 
-// Taux d'acceptation mesurés par fenêtre d'envoi (rapport §4b).
-const TIMING = [
-  { id: 'longBefore', rate: 5.15, sends: 36708 },
-  { id: 'twoDays', rate: 3.47, sends: 17792 },
-  { id: 'sameDay', rate: 1.67, sends: 17792 },
-  { id: 'afterArrival', rate: 0.2, sends: 1464 },
-] as const;
+// Les taux viennent de `SEND_WINDOWS`, la même source que le simulateur :
+// c'est ce qui garantit que le chiffre du calcul est bien celui de la fenêtre
+// montrée ici. Stockés en fraction, affichés en pourcentage.
+const TIMING = SEND_WINDOWS.map((window) => ({
+  id: window.id,
+  rate: window.acceptanceRate * 100,
+}));
 
-const MAX_RATE = 5.15;
+const MAX_RATE = Math.max(...TIMING.map((row) => row.rate));
 
 export function UpsellEvidence() {
   const t = useTranslations('lpUpsell.evidence');

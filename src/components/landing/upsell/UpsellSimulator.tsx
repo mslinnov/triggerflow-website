@@ -53,6 +53,7 @@ export function UpsellSimulator() {
         <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_26rem] lg:items-start lg:gap-12">
           <div className="rounded-2xl border border-[var(--up-line)] bg-[var(--up-surface)] p-6 md:p-8">
             <Slider
+              id="rooms"
               label={t('roomsLabel')}
               value={rooms}
               suffix={t('roomsSuffix', { count: rooms })}
@@ -65,6 +66,7 @@ export function UpsellSimulator() {
 
             <div className="mt-8">
               <Slider
+                id="occupancy"
                 label={t('occupancyLabel')}
                 value={occupancy}
                 suffix="%"
@@ -133,6 +135,8 @@ export function UpsellSimulator() {
 }
 
 interface SliderProps {
+  /** Identifiant stable, indépendant du libellé traduit. */
+  id: string;
   label: string;
   value: number;
   suffix: string;
@@ -140,15 +144,17 @@ interface SliderProps {
   onChange: (value: number) => void;
 }
 
-function Slider({ label, value, suffix, bounds, onChange }: SliderProps) {
+function Slider({ id, label, value, suffix, bounds, onChange }: SliderProps) {
+  const inputId = `slider-${id}`;
+
   return (
     <div>
       <div className="flex items-baseline justify-between gap-4">
-        <label className="text-sm font-medium text-[var(--up-ink)]" htmlFor={`slider-${label}`}>
+        <label className="text-sm font-medium text-[var(--up-ink)]" htmlFor={inputId}>
           {label}
         </label>
         <output
-          htmlFor={`slider-${label}`}
+          htmlFor={inputId}
           className="font-[family-name:var(--font-geist-mono)] text-lg font-semibold text-[var(--up-ink)]"
         >
           {value}
@@ -159,7 +165,7 @@ function Slider({ label, value, suffix, bounds, onChange }: SliderProps) {
           tactile de 44 px et on redessine piste et poignée en pseudo-éléments,
           plutôt que d'imposer un geste de précision sur mobile. */}
       <input
-        id={`slider-${label}`}
+        id={inputId}
         type="range"
         min={bounds.min}
         max={bounds.max}

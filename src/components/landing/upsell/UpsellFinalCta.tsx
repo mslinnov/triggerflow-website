@@ -1,10 +1,9 @@
 'use client';
 
 import { Check } from 'lucide-react';
-import { useLocale, useTranslations } from 'next-intl';
-import { formatEuros } from '@/lib/upsell-simulator';
+import { useTranslations } from 'next-intl';
 import { UpsellLeadForm } from './UpsellLeadForm';
-import { UpsellSection } from './primitives';
+import { UpsellAmount, UpsellSection } from './primitives';
 import { useUpsell } from './UpsellContext';
 
 /**
@@ -17,11 +16,10 @@ import { useUpsell } from './UpsellContext';
  * mobile, pour la même raison.
  */
 
-const WHITEPAPER_CHAPTERS = ['timing', 'channel', 'catalogue', 'pms'] as const;
+const WHITEPAPER_CHAPTERS = ['timing', 'channel', 'catalogue', 'margin', 'pms'] as const;
 
 export function UpsellFinalCta() {
   const t = useTranslations('lpUpsell.finalCta');
-  const locale = useLocale();
   const { result, goal } = useUpsell();
 
   const isDemo = goal === 'demo';
@@ -41,9 +39,10 @@ export function UpsellFinalCta() {
           {showEstimate && (
             <p className="mt-6 inline-flex items-baseline gap-2 rounded-full border border-[var(--up-accent)]/30 bg-[var(--up-accent-wash)] px-5 py-2.5 text-sm text-[var(--up-ink-soft)]">
               {t('estimateLabel')}
-              <span className="font-[family-name:var(--font-geist-mono)] text-base font-semibold text-[var(--up-accent-text)]">
-                {formatEuros(result.monthlyRevenue, locale)}
-              </span>
+              <UpsellAmount
+                amount={result.monthlyRevenue}
+                className="text-base font-semibold text-[var(--up-accent-text)]"
+              />
             </p>
           )}
 

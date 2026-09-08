@@ -122,11 +122,54 @@ function clamp(value: number, min: number, max: number): number {
   return Math.min(Math.max(value, min), max);
 }
 
-/** Formate un montant en euros, sans décimales (ex. « 845 € »). */
-export function formatEuros(amount: number, locale: string): string {
-  return new Intl.NumberFormat(locale === 'en' ? 'en-GB' : 'fr-FR', {
-    style: 'currency',
-    currency: 'EUR',
-    maximumFractionDigits: 0,
-  }).format(amount);
+/**
+ * Formateurs mémorisés par locale.
+ *
+ * `new Intl.NumberFormat(...)` coûte environ quinze fois plus cher que le
+ * formatage lui-même, et le simulateur reformate neuf montants à chaque image
+ * pendant qu'on déplace un curseur. Sur le mobile milieu de gamme d'où vient
+ * la quasi-totalité du trafic Facebook, reconstruire le formateur à chaque
+ * appel représentait plusieurs dizaines de millisecondes de calcul par seconde
+ * de glissement. Deux instances suffisent pour toute la page.
+ */
+const euroFormatters = new Map<string, Intl.NumberFormat>();
+
+function euroFormatter(locale: string): Intl.NumberFormat {
+  const tag = locale === 'en' ? 'en-GB' : 'fr-FR';
+  let formatter = euroFormatters.get(tag);
+
+  if (!formatter) {
+    formatter = new Intl.NumberFormat(tag, {
+      style: 'currency',
+      currency: 'EUR',
+      maximumFractionDigits: 0,
+    });
+    euroFormatters.set(tag, formatter);
+  }
+
+  return formatter;
+}
+
+/**
+ * Sépare le nombre du symbole monétaire.
+ *
+ * Nécessaire parce que les montants sont affichés en Geist Mono : l'espace
+ * insécable étroite que produit `Intl` y occupe une chasse pleine, soit près
+ * de trente pixels sur le grand chiffre du simulateur. Le symbole finissait
+ * détaché au point de se lire comme un mot séparé. Rendu à part, il peut
+ * recevoir sa propre échelle et sa propre marge.
+ */
+export function formatEurosParts(
+  amount: number,
+  locale: string
+): { value: string; currency: string } {
+  const parts = euroFormatter(locale).formatToParts(amount);
+
+  return {
+    value: parts
+      .filter((part) => part.type !== 'currency' && part.type !== 'literal')
+      .map((part) => part.value)
+      .join(''),
+    currency: parts.find((part) => part.type === 'currency')?.value ?? '€',
+  };
 }

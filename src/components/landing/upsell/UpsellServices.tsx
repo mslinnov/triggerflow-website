@@ -1,11 +1,10 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { UPSELL_SERVICES } from '@/data/upsell-services';
-import { formatEuros } from '@/lib/upsell-simulator';
 import { cn } from '@/lib/utils';
-import { UpsellEyebrow, UpsellSection } from './primitives';
+import { UpsellAmount, UpsellEyebrow, UpsellSection } from './primitives';
 import { UpsellIcon } from './UpsellIcon';
 
 /**
@@ -28,7 +27,6 @@ const TINTED = new Set([0, 4, 8]);
 export function UpsellServices() {
   const t = useTranslations('lpUpsell.servicesSection');
   const tServices = useTranslations('lpUpsell.services');
-  const locale = useLocale();
   const reduce = useReducedMotion();
 
   return (
@@ -65,17 +63,14 @@ export function UpsellServices() {
               <p className="mt-2 grow text-[15px] leading-relaxed text-[var(--up-ink-soft)]">
                 {tServices(`${service.id}.example`)}
               </p>
-              <dl className="mt-5 flex flex-wrap items-baseline gap-x-6 gap-y-1 border-t border-[var(--up-line)] pt-4 text-sm text-[var(--up-ink-muted)]">
-                <div className="flex items-baseline gap-1.5">
-                  <dt>{t('medianBasket')}</dt>
-                  <dd className="font-[family-name:var(--font-geist-mono)] font-semibold text-[var(--up-ink)]">
-                    {formatEuros(service.medianPrice, locale)}
-                  </dd>
-                </div>
-                <div className="flex items-baseline gap-1.5">
-                  <dt className="sr-only">{t('hotelCountLabel')}</dt>
-                  <dd>{t('hotelCount', { count: service.hotelCount })}</dd>
-                </div>
+              {/* Panier médian seul : le nombre d'établissements vendeurs a été
+                  retiré, il renseignait sur la taille de notre parc et non sur
+                  l'intérêt de la prestation pour l'hôtel qui lit la page. */}
+              <dl className="mt-5 flex items-baseline justify-between gap-4 border-t border-[var(--up-line)] pt-4 text-sm">
+                <dt className="text-[var(--up-ink-muted)]">{t('medianBasket')}</dt>
+                <dd className="text-base font-semibold text-[var(--up-ink)]">
+                  <UpsellAmount amount={service.medianPrice} />
+                </dd>
               </dl>
             </motion.article>
           ))}

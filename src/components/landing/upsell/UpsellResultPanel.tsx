@@ -1,10 +1,9 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { PRODUCTION_FIGURES, SIMULATOR_ASSUMPTIONS } from '@/data/upsell-services';
-import { formatEuros } from '@/lib/upsell-simulator';
-import { UpsellLinkButton } from './primitives';
+import { UpsellAmount, UpsellLinkButton } from './primitives';
 import { useUpsell } from './UpsellContext';
 
 /**
@@ -16,7 +15,6 @@ export function UpsellResultPanel() {
   const t = useTranslations('lpUpsell.simulator');
   const tServices = useTranslations('lpUpsell.services');
   const tCta = useTranslations('lpUpsell.cta');
-  const locale = useLocale();
   const reduce = useReducedMotion();
   const { result, rooms, goal } = useUpsell();
 
@@ -37,9 +35,9 @@ export function UpsellResultPanel() {
             initial={reduce ? false : { opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-2 font-[family-name:var(--font-geist-mono)] text-5xl font-semibold tracking-tight text-[var(--up-accent-text)] md:text-6xl"
+            className="mt-2 text-[3.25rem] font-semibold leading-none tracking-[-0.03em] text-[var(--up-accent-text)] md:text-6xl"
           >
-            {formatEuros(result.monthlyRevenue, locale)}
+            <UpsellAmount amount={result.monthlyRevenue} />
           </motion.p>
           <p className="mt-1.5 text-sm text-[var(--up-ink-muted)]">{t('perMonth')}</p>
 
@@ -48,16 +46,16 @@ export function UpsellResultPanel() {
               <dt className="text-xs uppercase tracking-wide text-[var(--up-ink-muted)]">
                 {t('perYear')}
               </dt>
-              <dd className="mt-1 font-[family-name:var(--font-geist-mono)] text-xl font-semibold text-[var(--up-ink)]">
-                {formatEuros(result.yearlyRevenue, locale)}
+              <dd className="mt-1 text-xl font-semibold text-[var(--up-ink)]">
+                <UpsellAmount amount={result.yearlyRevenue} />
               </dd>
             </div>
             <div>
               <dt className="text-xs uppercase tracking-wide text-[var(--up-ink-muted)]">
                 {t('perRoom')}
               </dt>
-              <dd className="mt-1 font-[family-name:var(--font-geist-mono)] text-xl font-semibold text-[var(--up-ink)]">
-                {formatEuros(result.revenuePerRoom, locale)}
+              <dd className="mt-1 text-xl font-semibold text-[var(--up-ink)]">
+                <UpsellAmount amount={result.revenuePerRoom} />
               </dd>
             </div>
           </dl>
@@ -72,9 +70,10 @@ export function UpsellResultPanel() {
                   <span className="text-[var(--up-ink-muted)]">
                     {t('salesPerMonth', { count: row.salesPerMonth })}
                   </span>
-                  <span className="font-semibold text-[var(--up-ink)]">
-                    {formatEuros(row.monthlyRevenue, locale)}
-                  </span>
+                  <UpsellAmount
+                    amount={row.monthlyRevenue}
+                    className="font-semibold text-[var(--up-ink)]"
+                  />
                 </span>
               </li>
             ))}
@@ -115,6 +114,7 @@ export function UpsellResultPanel() {
             })}
           </p>
           <p>{t('methodologyBias')}</p>
+          <p>{t('methodologyBenchmark')}</p>
         </div>
       </details>
     </div>

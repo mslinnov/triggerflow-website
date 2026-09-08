@@ -131,7 +131,7 @@ export function FAQPageJsonLd({ locale }: JsonLdProps) {
           {
             question: 'TriggerFlow est-il compatible avec mon PMS ?',
             answer:
-              'Nous sommes compatibles avec les principaux PMS du marché : Mews, Opera, Protel, Clock, Misterbooking, Asterio et bien d\'autres. Si votre PMS n\'est pas dans la liste, contactez-nous pour vérifier la compatibilité.',
+              'Nous sommes compatibles avec les principaux PMS du marché : Mews, Opera, Clock, Misterbooking, Asterio et bien d\'autres. Si votre PMS n\'est pas dans la liste, contactez-nous pour vérifier la compatibilité.',
           },
           {
             question: 'Puis-je personnaliser les messages envoyés ?',
@@ -153,7 +153,7 @@ export function FAQPageJsonLd({ locale }: JsonLdProps) {
           {
             question: 'Is TriggerFlow compatible with my PMS?',
             answer:
-              'We are compatible with major PMS on the market: Mews, Opera, Protel, Clock, Misterbooking, Asterio and many more. If your PMS is not on the list, contact us to check compatibility.',
+              'We are compatible with major PMS on the market: Mews, Opera, Clock, Misterbooking, Asterio and many more. If your PMS is not on the list, contact us to check compatibility.',
           },
           {
             question: 'Can I customize the messages sent?',

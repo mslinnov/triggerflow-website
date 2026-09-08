@@ -1,4 +1,8 @@
+'use client';
+
 import Link from 'next/link';
+import { useLocale } from 'next-intl';
+import { formatEurosParts } from '@/lib/upsell-simulator';
 import { cn } from '@/lib/utils';
 
 /**
@@ -49,6 +53,34 @@ export function UpsellLinkButton({
   );
 }
 
+/**
+ * Variante lien externe. `UpsellLinkButton` passe par `next/link`, qui ne
+ * convient pas pour une prise de rendez-vous ouverte dans un onglet : il lui
+ * faut `target`, `rel` et un `onClick` de suivi. Sans cette primitive, la
+ * recette de classes était retapée à la main dans l'en-tête et divergeait
+ * déjà du reste des boutons de la page.
+ */
+export function UpsellExternalLinkButton({
+  href,
+  variant = 'primary',
+  size = 'md',
+  className,
+  children,
+  ...props
+}: UpsellButtonProps & React.AnchorHTMLAttributes<HTMLAnchorElement>) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={cn(buttonBase, buttonSizes[size], buttonVariants[variant], className)}
+      {...props}
+    >
+      {children}
+    </a>
+  );
+}
+
 export function UpsellButton({
   variant = 'primary',
   size = 'md',
@@ -89,4 +121,52 @@ export function UpsellSection({
       {children}
     </section>
   );
+}
+
+/**
+ * Chiffre composé en Geist Mono, unité rendue à part et à échelle réduite.
+ *
+ * L'unité a besoin de son propre élément : en Geist Mono, l'espace insécable
+ * étroite que produit `Intl` occupe une chasse pleine et détache le symbole du
+ * nombre. Le rapport d'échelle et la marge sont définis ici et nulle part
+ * ailleurs, sans quoi le « € » du simulateur et le « % » de la bande de
+ * réassurance se composent différemment.
+ */
+export function UpsellFigure({
+  value,
+  unit,
+  className,
+  unitClassName,
+}: {
+  value: string;
+  unit: string;
+  className?: string;
+  unitClassName?: string;
+}) {
+  return (
+    <span
+      className={cn(
+        'font-[family-name:var(--font-geist-mono)] [font-variant-numeric:tabular-nums]',
+        className
+      )}
+    >
+      {value}
+      <span
+        className={cn(
+          'ml-[0.2em] align-baseline text-[0.62em] font-medium tracking-normal',
+          unitClassName
+        )}
+      >
+        {unit}
+      </span>
+    </span>
+  );
+}
+
+/** Montant en euros. La locale est lue ici, elle n'a pas à traverser l'arbre. */
+export function UpsellAmount({ amount, className }: { amount: number; className?: string }) {
+  const locale = useLocale();
+  const { value, currency } = formatEurosParts(amount, locale);
+
+  return <UpsellFigure value={value} unit={currency} className={className} />;
 }
