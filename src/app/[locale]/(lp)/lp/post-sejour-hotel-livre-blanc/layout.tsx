@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { LpMessagesProvider } from '@/components/landing/LpMessagesProvider';
 
 /**
  * Landing d'acquisition Facebook Ads, axe « post-séjour et avis clients »,
@@ -50,10 +51,23 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function PostStayWhitepaperLpLayout({
+/**
+ * Le fournisseur de traductions est posé ici et non dans le layout du groupe
+ * `(lp)` : là-haut, il serait commun à toutes les landings et chacune
+ * embarquerait les namespaces des autres dans son HTML.
+ */
+export default async function PostStayWhitepaperLpLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }) {
-  return <>{children}</>;
+  const { locale } = await params;
+
+  return (
+    <LpMessagesProvider locale={locale} namespace="lpPostStay">
+      {children}
+    </LpMessagesProvider>
+  );
 }

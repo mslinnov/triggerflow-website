@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { LpMessagesProvider } from '@/components/landing/LpMessagesProvider';
 
 /**
  * Landing d'acquisition Facebook Ads, axe « ventes additionnelles », variante livre blanc.
@@ -47,6 +48,23 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function UpsellWhitepaperLpLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+/**
+ * Le fournisseur de traductions est posé ici et non dans le layout du groupe
+ * `(lp)` : là-haut, il serait commun à toutes les landings et chacune
+ * embarquerait les namespaces des autres dans son HTML.
+ */
+export default async function UpsellWhitepaperLpLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  return (
+    <LpMessagesProvider locale={locale} namespace="lpUpsell">
+      {children}
+    </LpMessagesProvider>
+  );
 }

@@ -1,16 +1,22 @@
-import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, setRequestLocale } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 
 /**
- * Les landing pages d'acquisition ne consomment qu'un seul namespace chacune.
- * Leur transmettre le fichier de traductions complet ajoutait environ 130 Ko de
- * HTML à chaque page, sur un trafic payant très majoritairement mobile où le
- * poids se paie en conversions perdues et donc en budget publicitaire.
+ * Groupe des landing pages d'acquisition.
  *
- * Toute nouvelle landing du groupe doit ajouter son namespace à la liste
- * ci-dessous : absent d'ici, `useTranslations` plante côté client avec une
- * erreur qui ne nomme pas ce fichier. Les deux pages actuelles ne partagent
- * aucune clé, chacune ne reçoit donc que la sienne.
+ * Ce layout ne fournit AUCUNE traduction au client, et c'est volontaire. Un
+ * fournisseur posé ici est commun à toutes les pages du groupe : chacune paie
+ * alors dans son HTML les traductions des autres, sur un trafic payant très
+ * majoritairement mobile où le poids se paie en conversions perdues et donc en
+ * budget publicitaire.
+ *
+ * L'erreur a déjà été commise : les deux namespaces ont cohabité ici, et la
+ * landing des ventes additionnelles, que personne n'avait touchée, embarquait
+ * en plus des siens les 13 Ko de sa voisine.
+ *
+ * Chaque landing déclare donc le namespace dont elle a besoin, et lui seul,
+ * dans son propre layout, avec `LpMessagesProvider`. Une nouvelle landing qui
+ * appelle `useTranslations` sans ce fournisseur plante côté client avec une
+ * erreur qui ne nomme aucun de ces fichiers.
  */
 export default async function LandingPagesLayout({
   children,
@@ -21,14 +27,6 @@ export default async function LandingPagesLayout({
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const messages = await getMessages();
 
-  return (
-    <NextIntlClientProvider
-      locale={locale}
-      messages={{ lpUpsell: messages.lpUpsell, lpPostStay: messages.lpPostStay }}
-    >
-      {children}
-    </NextIntlClientProvider>
-  );
+  return <>{children}</>;
 }
