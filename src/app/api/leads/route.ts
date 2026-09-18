@@ -188,28 +188,33 @@ function readVisitorIp(request: NextRequest): string | null {
  * l'adresse : ces journaux sont consultables largement, une adresse qui y
  * entre n'en ressort plus.
  *
- * Retourne l'URL de téléchargement quand le backend en fournit une (le guide
- * est câblé), pour que la page puisse proposer le guide tout de suite en plus
- * de l'e-mail. Retourne null dans tous les autres cas, échec compris.
+ * Ne retourne rien. Le `download_url` que le backend renvoie sur 201 est
+ * volontairement ignoré : le guide part par e-mail, c'est la décision produit,
+ * et aucun des deux formulaires n'affiche de lien immédiat. Le remonter au
+ * navigateur ferait vivre du code que personne ne consomme.
+ *
+ * L'attente du relais est en revanche conservée. Elle n'est plus là pour ce
+ * lien mais parce qu'elle est notre seule garantie que le lead a bien atteint
+ * le backend : sans elle, un échec partirait sans trace.
  */
 async function relayLeadMagnet(
   slug: LeadMagnetSlug,
   email: string,
   firstName: string,
   visitorIp: string | null
-): Promise<string | null> {
+): Promise<void> {
   if (!TRIGGERFLOW_API_URL || !LEAD_MAGNET_SECRET) {
     const missing = [
       !TRIGGERFLOW_API_URL && 'TRIGGERFLOW_API_URL',
       !LEAD_MAGNET_SECRET && 'LEAD_MAGNET_SECRET',
     ].filter(Boolean);
     console.error('[leads] Relais lead magnet non configuré:', missing.join(', '), 'slug:', slug);
-    return null;
+    return;
   }
 
   if (!isTransportSafe(TRIGGERFLOW_API_URL)) {
     console.error('[leads] Relais refusé, base non chiffrée, le secret ne part pas. Slug:', slug);
-    return null;
+    return;
   }
 
   const headers: Record<string, string> = {
@@ -250,30 +255,13 @@ async function relayLeadMagnet(
       // absent côté backend. Aucun de ces cas ne justifie de réessayer ici :
       // le visiteur attend, et rien n'est perdu.
       console.error('[leads] Relais TriggerFlow en échec, slug:', slug, 'statut:', response.status);
-      return null;
     }
-
-    const data = await response.json().catch(() => null);
-    const downloadUrl = (data as { download_url?: unknown } | null)?.download_url;
-    if (typeof downloadUrl !== 'string' || !downloadUrl) return null;
-
-    // Ce lien finira dans l'attribut `href` d'un bouton. Le backend est le
-    // nôtre, donc le risque est théorique, mais une URL en `javascript:` ou en
-    // `data:` recopiée telle quelle exécuterait du code dans la page du
-    // visiteur. On n'accepte que http et https, et on laisse tomber le reste.
-    if (!/^https?:\/\//i.test(downloadUrl)) {
-      console.error('[leads] Lien de téléchargement au schéma refusé, slug:', slug);
-      return null;
-    }
-
-    return downloadUrl;
   } catch (error) {
     // Délai dépassé ou réseau injoignable. On journalise le nom de l'erreur
     // seulement : le corps de la requête, donc l'adresse, n'a pas à s'y
     // retrouver par un message d'exception trop bavard.
     const reason = error instanceof Error ? error.name : 'unknown';
     console.error('[leads] Relais TriggerFlow injoignable, slug:', slug, 'cause:', reason);
-    return null;
   }
 }
 
@@ -387,11 +375,11 @@ export async function POST(request: NextRequest) {
       // En développement le relais est quand même tenté : c'est la seule façon
       // de travailler la chaîne du livre blanc contre un backend local sans
       // avoir à se procurer les identifiants Brevo.
-      const devDownloadUrl = magnet
-        ? await relayLeadMagnet(magnet, email, firstName, readVisitorIp(request))
-        : null;
+      if (magnet) {
+        await relayLeadMagnet(magnet, email, firstName, readVisitorIp(request));
+      }
 
-      return NextResponse.json({ success: true, ...(devDownloadUrl ? { downloadUrl: devDownloadUrl } : {}) });
+      return NextResponse.json({ success: true });
     }
 
     const response = await fetch('https://api.brevo.com/v3/contacts', {
@@ -446,15 +434,14 @@ export async function POST(request: NextRequest) {
     ) });
 
     // Relais du livre blanc, en dernier : le lead est enregistré et l'équipe
-    // prévenue, donc plus rien ne peut le faire perdre. `downloadUrl` n'est
-    // ajouté que lorsque le backend en renvoie une, pour que la page puisse
-    // proposer le guide tout de suite ; son absence n'est pas un échec, le
-    // guide arrive alors par e-mail comme d'habitude.
-    const downloadUrl = magnet
-      ? await relayLeadMagnet(magnet, email, firstName, readVisitorIp(request))
-      : null;
+    // prévenue, donc plus rien ne peut le faire perdre. Rien n'en remonte au
+    // navigateur, le guide part par e-mail ; l'attente reste néanmoins, elle
+    // est notre seule garantie que le lead a bien atteint le backend.
+    if (magnet) {
+      await relayLeadMagnet(magnet, email, firstName, readVisitorIp(request));
+    }
 
-    return NextResponse.json({ success: true, ...(downloadUrl ? { downloadUrl } : {}) });
+    return NextResponse.json({ success: true });
   } catch (error) {
     console.error('[leads] Error:', error);
     return NextResponse.json(
