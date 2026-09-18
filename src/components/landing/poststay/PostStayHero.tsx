@@ -35,6 +35,24 @@ const FUNNEL = [
   { id: 'completed', value: 10, hasNote: true },
 ] as const;
 
+/**
+ * ─── ON ANIME DEPUIS UN ÉTAT VISIBLE, JAMAIS DEPUIS L'INVISIBLE ──────────
+ * Les deux blocs ci-dessous entrent en glissant, mais leur état de départ est
+ * OPAQUE. Framer Motion sérialise l'état initial dans le HTML prérendu : un
+ * `opacity: 0` de départ part donc dans la page servie, et seul le JavaScript
+ * le lève. Sur une page d'acquisition payante, un script qui tarde affichait
+ * alors un premier écran vide, à la place même de la promesse qu'on a payée
+ * pour faire lire. C'est ce qui a produit la capture au grand chiffre blanc.
+ *
+ * Le décalage vertical, lui, peut rester dans l'état de départ : il déplace le
+ * bloc de vingt pixels, il ne l'efface pas. Sans JavaScript, le titre est lu,
+ * simplement un peu plus bas.
+ *
+ * Ne pas « rétablir » `opacity: 0` ici pour rendre l'entrée plus franche. Ce
+ * qui vit sous la ligne de flottaison peut apparaître en fondu au défilement,
+ * le visiteur a forcément le script chargé quand il y arrive ; ce qui est dans
+ * le premier écran, non.
+ */
 export function PostStayHero() {
   const t = useTranslations('lpPostStay.hero');
   const tf = useTranslations('lpPostStay.funnel');
@@ -49,7 +67,7 @@ export function PostStayHero() {
       />
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14 lg:px-8">
         <motion.div
-          initial={reduce ? false : { opacity: 0, y: 20 }}
+          initial={reduce ? false : { opacity: 1, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
         >
@@ -74,7 +92,7 @@ export function PostStayHero() {
         </motion.div>
 
         <motion.div
-          initial={reduce ? false : { opacity: 0, scale: 0.96 }}
+          initial={reduce ? false : { opacity: 1, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
           className="rounded-2xl border border-[var(--up-line)] bg-[var(--up-surface)] p-5 shadow-[var(--up-shadow-lg)] sm:p-7"
