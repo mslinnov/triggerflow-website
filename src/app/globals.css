@@ -69,9 +69,13 @@
   --thais-bg: #ebfdff;
 }
 
-/* ── Landing d'acquisition « ventes additionnelles » (Facebook Ads) ──────────
-   Système de design propre à cette LP, scopé sous [data-lp="upsell"] pour ne
-   jamais fuir sur le reste du site.
+/* ── Landings d'acquisition (Facebook Ads) ───────────────────────────────────
+   Système de design propre à ces LP, scopé sous [data-lp="upsell"] et
+   [data-lp="poststay"] pour ne jamais fuir sur le reste du site.
+
+   Les deux pages partagent ces jetons et rien d'autre : leurs composants sont
+   dupliqués volontairement. Un jeton qui ne conviendrait qu'à une seule d'entre
+   elles se redéfinit sur son propre sélecteur, il ne se rajoute pas ici.
 
    Les couleurs sont celles de la charte TriggerFlow, reprises telles quelles
    des tokens de marque ci-dessus : teal #006F68, encre #002B28, accent pêche
@@ -85,7 +89,8 @@
    - Rayons : boutons = pill, surfaces = 16px, champs de saisie = 12px.
    - Chiffres : toujours en Geist Mono, c'est une page de calcul.
    Le thème suit la préférence système, light et dark définis symétriquement. */
-[data-lp='upsell'] {
+[data-lp='upsell'],
+[data-lp='poststay'] {
   --up-bg: #FFFFFF;
   --up-bg-sunken: #EFF5F5;
   --up-surface: #FFFFFF;
@@ -113,7 +118,8 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  [data-lp='upsell'] {
+  [data-lp='upsell'],
+  [data-lp='poststay'] {
     --up-bg: #061615;
     --up-bg-sunken: #031110;
     --up-surface: #0A1F1D;

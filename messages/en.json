@@ -2480,7 +2480,7 @@
       "gainPerMonth": "{count, plural, =0 {no extra review} one {# extra review per month} other {# extra reviews per month}}",
       "gainPerYear": "that is {count, number} over a year",
       "noGap": "Your three settings are already the ones the study ranks first. The gap is nil, and that is good news.",
-      "stayNote": "The review count assumes one email per stay, with an average length of stay of {los} nights. That length is an estimate, not a measurement: it moves the number of reviews shown, never the rates.",
+      "stayNote": "The review count assumes one email per stay, with an average length of stay of {los, number} nights. That length is an estimate, not a measurement: it moves the number of reviews shown, never the rates.",
       "estimateNote": "The reachable rate is a combined estimate: it brings together three measurements taken separately, each on a single criterion. The only crossing actually measured by the study, a single button with no competing review link, gives 16.4% of completed reviews.",
       "methodologyToggle": "How the calculation works",
       "methodologyVolume": "With {rooms} rooms at the occupancy rate you entered, your property records around {nights, number} room nights per month, which is {stays, number} stays and as many post-stay emails.",
@@ -2618,7 +2618,6 @@
     },
     "demoBridge": {
       "cta": "Book 30 minutes",
-      "inline": "Would you rather go through your current emails with us than wait for a PDF?",
       "bandTitle": "Want to know which of the five settings costs you the most?",
       "bandBody": "We look at your current post-stay emails and tell you where to start. Thirty minutes, no commitment."
     },

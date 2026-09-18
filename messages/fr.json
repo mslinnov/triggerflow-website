@@ -2488,7 +2488,7 @@
       "gainPerMonth": "{count, plural, =0 {aucun avis de plus} one {# avis de plus par mois} other {# avis de plus par mois}}",
       "gainPerYear": "soit {count, number} sur un an",
       "noGap": "Vos trois réglages sont déjà ceux que l'étude place en tête. L'écart est nul, et c'est une bonne nouvelle.",
-      "stayNote": "Le nombre d'avis suppose un e-mail par séjour, avec une durée moyenne de séjour de {los} nuits. Cette durée est une estimation, pas une mesure : elle déplace le nombre d'avis affiché, jamais les taux.",
+      "stayNote": "Le nombre d'avis suppose un e-mail par séjour, avec une durée moyenne de séjour de {los, number} nuits. Cette durée est une estimation, pas une mesure : elle déplace le nombre d'avis affiché, jamais les taux.",
       "estimateNote": "Le taux atteignable est une estimation combinée : elle rapproche trois mesures prises séparément, chacune sur un seul critère. Le seul croisement réellement mesuré par l'étude, un bouton unique sans aucun lien d'avis concurrent, donne 16,4 % d'avis terminés.",
       "methodologyToggle": "Le détail du calcul",
       "methodologyVolume": "Avec {rooms} chambres au taux d'occupation indiqué, votre établissement enregistre environ {nights, number} nuitées par mois, soit {stays, number} séjours et autant d'e-mails post-séjour.",
@@ -2626,7 +2626,6 @@
     },
     "demoBridge": {
       "cta": "Réserver 30 minutes",
-      "inline": "Vous préférez qu'on regarde vos e-mails actuels ensemble plutôt que d'attendre un PDF ?",
       "bandTitle": "Vous voulez savoir lequel des cinq réglages vous coûte le plus ?",
       "bandBody": "Nous regardons vos e-mails post-séjour actuels et nous vous disons par quoi commencer. Trente minutes, sans engagement."
     },
