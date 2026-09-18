@@ -20,10 +20,9 @@ import { UpsellLinkButton } from '../upsell/primitives';
  * Le parcours d'un avis, sur 100 e-mails envoyés.
  *
  * Source : guide du post-séjour, chapitre 1, mêmes envois que les références
- * de `@/data/post-stay`. Ces cinq nombres ne servent qu'à l'affichage et
- * n'entrent dans aucun calcul : ils sont volontairement écrits ici plutôt
- * qu'ajoutés au fichier de données du simulateur, qui ne doit porter que ce
- * dont le moteur se sert.
+ * de `@/data/post-stay`. Ces cinq nombres ne servent qu'à l'affichage de ce
+ * seul bloc : ils sont volontairement écrits ici plutôt qu'ajoutés au fichier
+ * de données, qui ne porte que les taux cités par plusieurs sections.
  *
  * Ce sont des proportions pour cent envois, jamais des volumes : la page ne
  * renseigne personne sur la taille de notre parc.
@@ -68,8 +67,8 @@ export function PostStayHero() {
           </p>
 
           <div className="mt-9">
-            <UpsellLinkButton href="#simulateur" size="lg">
-              {tc('calculate')}
+            <UpsellLinkButton href="#comparatif" size="lg">
+              {tc('compare')}
             </UpsellLinkButton>
           </div>
         </motion.div>

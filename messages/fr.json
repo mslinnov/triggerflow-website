@@ -2412,7 +2412,7 @@
   },
   "lpPostStay": {
     "cta": {
-      "calculate": "Calculer mon écart",
+      "compare": "Comparer les deux e-mails",
       "bookDemo": "Réserver 30 minutes",
       "guide": "Recevoir le guide"
     },
@@ -2447,56 +2447,59 @@
       "gdpr": "Conforme RGPD, DPA signable",
       "support": "Équipe et support en français"
     },
-    "simulator": {
-      "eyebrow": "Simulateur",
-      "title": "Ce que vos réglages actuels vous coûtent en avis",
-      "subtitle": "Indiquez votre établissement, puis les trois réglages de votre e-mail post-séjour actuel. Le calcul les situe face aux taux mesurés pendant l'étude, il ne vous promet rien.",
-      "roomsLabel": "Nombre de chambres",
-      "roomsSuffix": "{count, plural, one {chambre} other {chambres}}",
-      "occupancyLabel": "Taux d'occupation moyen",
-      "hourLabel": "Heure d'envoi actuelle",
-      "hourHint": "Le critère le plus puissant de l'étude, et le plus simple à corriger.",
-      "hours": {
-        "beforeNine": "Avant 9 h",
-        "nineToEleven": "9 h - 11 h",
-        "elevenToFourteen": "11 h - 14 h",
-        "fourteenToSeventeen": "14 h - 17 h",
-        "seventeenToTwenty": "17 h - 20 h",
-        "afterTwenty": "Après 20 h"
+    "comparator": {
+      "eyebrow": "Comparatif",
+      "title": "Les deux e-mails, côte à côte",
+      "subtitle": "Le même client, le même séjour, deux façons de lui demander son avis. L'étude a suivi les deux montages de l'envoi jusqu'à l'avis terminé. Vous n'avez rien à saisir : votre e-mail ressemble à l'un des deux.",
+      "reconstructionTitle": "Ces deux messages sont des reconstructions",
+      "reconstructionBody": "Nous avons recomposé les deux montages tels que l'étude les a mesurés, pour les rendre lisibles côte à côte. Ce ne sont pas des captures d'e-mails réels : aucun établissement n'est cité, ni reconnaissable. Seuls les taux sont des mesures.",
+      "subjectLabel": "Objet",
+      "greeting": "Bonjour,",
+      "rateNumber": "{rate, number, ::.0}",
+      "rateValue": "{rate, number, ::.0}%",
+      "rateCaption": "d'avis terminés, par e-mail envoyé. Mesuré sur ce montage complet.",
+      "markerLabel": "Différence numéro {number}",
+      "annotationsTitle": "Les trois différences, et ce qu'elles pèsent",
+      "thinSampleNote": "Ce créneau est bien mesuré, mais sur {sends, number} envois seulement, quand les autres en comptent plusieurs milliers. À lire comme une indication solide, pas comme une certitude.",
+      "methodNote": "Les six taux des trois différences ci-dessus sont mesurés un critère à la fois, sur la même population d'envois : ils ne s'additionnent pas et ne se multiplient pas entre eux. Les deux taux affichés en tête de chaque e-mail sont, eux, les deux seuls montages complets que l'étude isole. Et ce sont des corrélations, pas des preuves de cause : un établissement qui envoie à 10 h soigne souvent aussi son objet et son bouton.",
+      "effective": {
+        "badge": "Le montage qui marche",
+        "subject": "Avez-vous passé un bon séjour ?",
+        "timing": "Envoi le lendemain du départ, à 10 h",
+        "body": "Vous nous avez quittés hier. Votre avis nous aide à progresser, et deux minutes suffisent.",
+        "button": "Donner mon avis",
+        "reviewLink": "Aucun lien vers une plateforme d'avis dans ce message.",
+        "signature": "Signature de l'hôtel. Un seul lien dans tout le message."
       },
-      "notMeasuredBadge": "non mesuré",
-      "thinSampleBadge": "échantillon mince",
-      "thinSampleNote": "Ce créneau est bien mesuré, mais sur {sends, number} envois seulement, quand les autres en comptent plusieurs milliers. Son taux est le plus bas de l'étude et c'est lui qui creuse l'écart annoncé plus haut : à lire comme une indication solide, pas comme une certitude.",
-      "notMeasuredNote": "Le créneau d'avant 9 h compte trop peu d'envois dans l'étude pour être mesuré. La valeur utilisée ici est un repère prudent, aligné sur le plus faible créneau de journée. Ce n'est pas une mesure, et elle ne doit pas être citée comme telle.",
-      "ctaLabel": "Ce que votre e-mail propose de cliquer",
-      "ctaHint": "Un lien unique vers le formulaire, ou des étoiles cliquables dans le message.",
-      "shapes": {
-        "singleButton": "Un seul bouton",
-        "starRow": "Une rangée d'étoiles"
+      "ineffective": {
+        "badge": "Le montage qui ne marche pas",
+        "subject": "Merci pour votre séjour",
+        "timing": "Envoi le soir du départ, à 21 h",
+        "body": "Merci d'avoir séjourné chez nous. Quelle note donneriez-vous à votre séjour ?",
+        "starsHint": "Les étoiles sont cliquables, mais la note cliquée n'est pas transmise.",
+        "reviewLink": "Et retrouvez-nous sur TripAdvisor ou Google pour y laisser un avis.",
+        "signature": "Signature de l'hôtel. Deux chemins proposés dans le même message."
       },
-      "reviewLinkLabel": "Lien vers TripAdvisor ou Google dans ce même e-mail",
-      "reviewLinkHint": "Une plateforme d'avis publique citée à côté de votre formulaire.",
-      "reviewLinkAbsent": "Aucun",
-      "reviewLinkPresent": "Oui, il y en a un",
-      "measured": "mesuré {rate}",
-      "rateValue": "{rate, number, ::.0}%"
-    },
-    "result": {
-      "label": "Votre taux d'avis estimé, réglages actuels",
-      "reviewsPerMonth": "{count, plural, =0 {aucun avis par mois} one {# avis par mois} other {# avis par mois}}",
-      "reachableLabel": "Avec les trois meilleurs réglages",
-      "benchmarkLabel": "Référence plateforme",
-      "gainLabel": "L'écart",
-      "gainPerMonth": "{count, plural, =0 {aucun avis de plus} one {# avis de plus par mois} other {# avis de plus par mois}}",
-      "gainPerYear": "soit {count, number} sur un an",
-      "noGap": "Vos trois réglages sont déjà ceux que l'étude place en tête. L'écart est nul, et c'est une bonne nouvelle.",
-      "stayNote": "Le nombre d'avis suppose un e-mail par séjour, avec une durée moyenne de séjour de {los, number} nuits. Cette durée est une estimation, pas une mesure : elle déplace le nombre d'avis affiché, jamais les taux.",
-      "estimateNote": "Le taux atteignable est une estimation combinée : elle rapproche trois mesures prises séparément, chacune sur un seul critère. Le seul croisement réellement mesuré par l'étude, un bouton unique sans aucun lien d'avis concurrent, donne 16,4 % d'avis terminés. L'estimation combinée reste volontairement en dessous de ce croisement : elle moyenne les trois effets au lieu de les cumuler, pour ne jamais annoncer plus que ce qui a été constaté.",
-      "methodologyToggle": "Le détail du calcul",
-      "methodologyVolume": "Avec {rooms} chambres au taux d'occupation indiqué, votre établissement enregistre environ {nights, number} nuitées par mois, soit {stays, number} séjours et autant d'e-mails post-séjour.",
-      "methodologyCombine": "Les trois réglages sont combinés par leur moyenne géométrique, et non multipliés. Les taux de l'étude sont mesurés un critère à la fois, sur la même population : les multiplier ferait sortir le résultat de l'enveloppe de ce qui a été observé.",
-      "methodologyBounds": "Le résultat reste donc encadré par le plus faible et le plus fort des trois taux retenus, et ne peut jamais dépasser le meilleur taux observé pendant l'étude.",
-      "methodologyCorrelation": "Ce sont des corrélations, pas des preuves de cause. Un établissement qui envoie à 10 h soigne souvent aussi son objet et son bouton."
+      "annotations": {
+        "cta": {
+          "title": "La rangée d'étoiles promet une note en un clic",
+          "body": "Le client clique sur trois étoiles, arrive sur le formulaire, et la même question lui est reposée. Il a le sentiment d'avoir déjà répondu, il referme. Un bouton unique ne promet qu'une chose, et il la tient.",
+          "bestLabel": "Un seul bouton vers le formulaire",
+          "worstLabel": "Une rangée d'étoiles cliquables"
+        },
+        "hour": {
+          "title": "L'heure à laquelle le message part",
+          "body": "C'est le réglage le plus puissant de l'étude, et le seul qui se corrige en une minute sans rien réécrire. Un message du soir est lu au lit, un message du matin est lu avec le temps d'y répondre.",
+          "bestLabel": "Envoi entre 9 h et 11 h",
+          "worstLabel": "Envoi après 20 h"
+        },
+        "link": {
+          "title": "Le lien vers une plateforme d'avis",
+          "body": "Glissé dans le même message, il n'ajoute pas un chemin : il en détourne un. Le client part noter ailleurs, ou ne fait rien. Cette demande mérite son propre e-mail, envoyé plus tard aux clients qui viennent de se déclarer satisfaits.",
+          "bestLabel": "Aucun lien concurrent",
+          "worstLabel": "Un lien vers TripAdvisor ou Google"
+        }
+      }
     },
     "gap": {
       "title": "Les trois erreurs les plus coûteuses",
@@ -2581,7 +2584,7 @@
       "title": "Les questions qu'on nous pose",
       "measure": {
         "q": "D'où viennent ces chiffres ?",
-        "a": "Des envois réels d'un parc d'hôtels indépendants entre le 1er juin et le 15 septembre 2026, suivis jusqu'à l'avis terminé. Les comparaisons de contenu ne portent que sur les e-mails proposant réellement un formulaire, et les groupes les plus minces sont signalés comme tels dans le simulateur, avec leur nombre d'envois, plutôt qu'écartés en silence. Aucun nom d'établissement n'est cité, aucune donnée personnelle de client n'a été utilisée."
+        "a": "Des envois réels d'un parc d'hôtels indépendants entre le 1er juin et le 15 septembre 2026, suivis jusqu'à l'avis terminé. Les comparaisons de contenu ne portent que sur les e-mails proposant réellement un formulaire, et les groupes les plus minces sont signalés comme tels à côté du chiffre qu'ils portent, avec leur nombre d'envois, plutôt qu'écartés en silence. Aucun nom d'établissement n'est cité, aucune donnée personnelle de client n'a été utilisée."
       },
       "causality": {
         "q": "Est-ce que ce sont des causes ou des corrélations ?",

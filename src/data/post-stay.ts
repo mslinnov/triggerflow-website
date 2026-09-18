@@ -92,8 +92,6 @@ export const POST_STAY_SEND_HOURS = [
   { id: 'afterTwenty', completionRate: 0.025, isMeasured: true, sampleSize: 557 },
 ] as const satisfies readonly PostStayReference[];
 
-export type SendHourId = (typeof POST_STAY_SEND_HOURS)[number]['id'];
-
 /**
  * Taille d'échantillon d'une référence, ou `undefined` quand elle n'a pas à
  * être signalée.
@@ -121,8 +119,6 @@ export const POST_STAY_CTA_SHAPES = [
   { id: 'starRow', completionRate: 0.037, isMeasured: true },
 ] as const satisfies readonly PostStayReference[];
 
-export type CtaShapeId = (typeof POST_STAY_CTA_SHAPES)[number]['id'];
-
 /**
  * Présence d'un lien direct vers une plateforme d'avis (TripAdvisor, Google)
  * dans le même e-mail. Le lien concurrent n'ajoute pas un chemin, il en
@@ -135,64 +131,36 @@ export const POST_STAY_REVIEW_LINK = {
 
 /**
  * Taux d'avis complétés de la plateforme entière, tous réglages confondus :
- * 4 238 avis pour 42 369 envois. Sert de repère neutre à l'écran, et de
- * définition du « réglage sans effet » dans le moteur de calcul : un réglage
- * qui vaut exactement cette référence ne déplace pas le résultat.
+ * 4 238 avis pour 42 369 envois. Sert de repère neutre à l'écran : c'est la
+ * valeur qu'un e-mail post-séjour moyen de la plateforme obtient, sans rien
+ * régler du tout.
  */
 export const PLATFORM_COMPLETION_RATE = 0.1;
 
 /**
- * Meilleur taux jamais observé, toutes mesures confondues. Dérivé des
- * constantes ci-dessus plutôt que recopié, pour qu'il suive automatiquement
- * une prochaine extraction. Le moteur s'en sert de plafond : aucune
- * combinaison de réglages ne peut annoncer mieux que ce qui a été mesuré.
- */
-export const BEST_OBSERVED_COMPLETION_RATE = Math.max(
-  ...POST_STAY_SEND_HOURS.map((reference) => reference.completionRate),
-  ...POST_STAY_CTA_SHAPES.map((reference) => reference.completionRate),
-  POST_STAY_REVIEW_LINK.absent.completionRate,
-  POST_STAY_REVIEW_LINK.present.completionRate
-);
-
-/**
- * Hypothèses de volumétrie.
+ * Les deux MONTAGES CROISÉS réellement mesurés par le rapport.
  *
- * `averageLengthOfStay` est ESTIMÉE et non mesurée. Elle est reprise à
- * l'identique du simulateur de ventes additionnelles, et dupliquée ici
- * volontairement : les deux pages vivront leur vie, et partager une constante
- * entre elles ferait qu'un recalage de l'une déplacerait les chiffres de
- * l'autre sans que personne ne le demande.
- */
-export const POST_STAY_ASSUMPTIONS = {
-  averageLengthOfStay: 1.8,
-  daysPerMonth: 30,
-} as const;
-
-export const POST_STAY_BOUNDS = {
-  rooms: { min: 10, max: 200, step: 1, default: 40 },
-  occupancy: { min: 30, max: 100, step: 1, default: 70 },
-} as const;
-
-/**
- * Réglages par défaut du simulateur : le paramétrage le plus répandu de la
- * plateforme, mesuré en volume d'envois et non choisi pour l'effet.
+ * Les tables ci-dessus sont des taux marginaux : chacune est mesurée sur la
+ * même population d'envois, en ne regardant qu'un critère à la fois. Le
+ * rapport isole en plus deux combinaisons complètes, et ce sont les seules
+ * qu'on ait le droit d'annoncer comme le résultat d'un e-mail entier :
  *
- * - heure : 11 h - 14 h, le créneau le plus utilisé (14 683 envois) ;
- * - appel à l'action : le bouton unique (15 362 envois contre 8 714 pour la
- *   rangée d'étoiles accompagnée d'un lien d'avis) ;
- * - lien d'avis : absent (17 226 envois contre 17 029, écart mince).
+ * - `effective` : objet court en question, un seul bouton vers le formulaire,
+ *   aucun lien vers une plateforme d'avis, envoi en milieu de matinée.
+ * - `ineffective` : objet de remerciement, rangée d'étoiles cliquables et lien
+ *   vers une plateforme d'avis dans le même message, envoi en soirée.
  *
- * Ce défaut sort à 11,7 % d'avis complétés, donc AU-DESSUS de la référence
- * plateforme de 10 %. Un défaut plus sombre creuserait l'écart affiché à
- * l'ouverture de la page, et ce serait un épouvantail : le visiteur vient
- * régler le simulateur sur sa propre situation, pas admirer la nôtre.
+ * Les taux marginaux ne se composent pas entre eux : multiplier trois écarts
+ * de la table sortirait de l'enveloppe des mesures. Ces deux valeurs-ci ne
+ * sont donc PAS dérivées des tables, elles sont lues dans le rapport, et
+ * l'écart qu'elles portent est celui d'un montage complet contre un autre.
+ *
+ * Coïncidence à ne pas « factoriser » : `ineffective` vaut 3,7 %, exactement
+ * comme `starRow` dans `POST_STAY_CTA_SHAPES`. Ce sont deux mesures
+ * différentes qui tombent sur la même valeur, pas la même mesure écrite deux
+ * fois. Une prochaine extraction les séparera.
  */
-export const POST_STAY_DEFAULT_SETTINGS = {
-  sendHourId: 'elevenToFourteen',
-  ctaShapeId: 'singleButton',
-  hasReviewSiteLink: false,
-} as const satisfies {
-  sendHourId: SendHourId;
-  ctaShapeId: CtaShapeId;
-  hasReviewSiteLink: boolean;
-};
+export const POST_STAY_MEASURED_SETUPS = {
+  effective: { id: 'effectiveSetup', completionRate: 0.164, isMeasured: true },
+  ineffective: { id: 'ineffectiveSetup', completionRate: 0.037, isMeasured: true },
+} as const satisfies Record<string, PostStayReference>;

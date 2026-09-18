@@ -6,7 +6,6 @@ import { CheckCircle2, Loader2 } from 'lucide-react';
 import { trackMetaEvent } from '@/components/analytics/MetaPixel';
 import { cn } from '@/lib/utils';
 import { UpsellButton } from '../upsell/primitives';
-import { usePostStay } from './PostStayContext';
 
 /**
  * Formulaire de conversion : l'adresse e-mail, et rien d'autre.
@@ -25,11 +24,11 @@ import { usePostStay } from './PostStayContext';
  *
  * Ne pas « rétablir » le prénom ou le nom d'hôtel sans mesurer ce que ça coûte.
  *
- * Le nombre de chambres part quand même : il vient du simulateur et non du
- * visiteur, donc il ne coûte aucune friction et le lead arrive un peu qualifié
- * côté CRM. Les trois réglages déclarés ne sont PAS transmis : `/api/leads` ne
- * lit que les champs qu'il connaît, les ajouter ici les ferait disparaître en
- * silence et laisserait croire qu'ils remontent quelque part.
+ * Le nombre de chambres ne part plus. Il venait du calculateur que le
+ * comparateur a remplacé, et celui-ci ne demande plus rien au visiteur :
+ * envoyer la valeur par défaut d'un curseur disparu ferait naître des fiches
+ * prospect toutes déclarées à la même taille d'établissement, ce qui est pire
+ * qu'une fiche sans taille. `/api/leads` traite déjà le champ comme facultatif.
  */
 
 /**
@@ -53,7 +52,6 @@ interface PostStayLeadFormProps {
 export function PostStayLeadForm({ idPrefix, className }: PostStayLeadFormProps) {
   const t = useTranslations('lpPostStay.form');
   const locale = useLocale();
-  const { rooms } = usePostStay();
 
   const [status, setStatus] = useState<Status>('idle');
 
@@ -69,7 +67,6 @@ export function PostStayLeadForm({ idPrefix, className }: PostStayLeadFormProps)
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email: data.get('email'),
-          rooms,
           source: 'fb-post-sejour',
           goal: 'whitepaper',
           locale,

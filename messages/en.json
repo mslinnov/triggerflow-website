@@ -2404,7 +2404,7 @@
   },
   "lpPostStay": {
     "cta": {
-      "calculate": "Calculate my gap",
+      "compare": "Compare the two emails",
       "bookDemo": "Book 30 minutes",
       "guide": "Get the guide"
     },
@@ -2439,56 +2439,59 @@
       "gdpr": "GDPR compliant, DPA available",
       "support": "French speaking team and support"
     },
-    "simulator": {
-      "eyebrow": "Simulator",
-      "title": "What your current settings cost you in reviews",
-      "subtitle": "Enter your property, then the three settings of your current post-stay email. The calculation places them against the rates measured during the study. It promises you nothing.",
-      "roomsLabel": "Number of rooms",
-      "roomsSuffix": "{count, plural, one {room} other {rooms}}",
-      "occupancyLabel": "Average occupancy rate",
-      "hourLabel": "Current send time",
-      "hourHint": "The strongest factor in the study, and the easiest one to fix.",
-      "hours": {
-        "beforeNine": "Before 9 am",
-        "nineToEleven": "9 am - 11 am",
-        "elevenToFourteen": "11 am - 2 pm",
-        "fourteenToSeventeen": "2 pm - 5 pm",
-        "seventeenToTwenty": "5 pm - 8 pm",
-        "afterTwenty": "After 8 pm"
+    "comparator": {
+      "eyebrow": "Side by side",
+      "title": "The two emails, side by side",
+      "subtitle": "The same guest, the same stay, two ways of asking for a review. The study followed both setups from the send through to the completed review. There is nothing for you to enter: your own email looks like one of these two.",
+      "reconstructionTitle": "Both messages are reconstructions",
+      "reconstructionBody": "We rebuilt the two setups exactly as the study measured them, so they can be read side by side. These are not screenshots of real emails: no property is named, and none is recognisable. Only the rates are measurements.",
+      "subjectLabel": "Subject",
+      "greeting": "Hello,",
+      "rateNumber": "{rate, number, ::.0}",
+      "rateValue": "{rate, number, ::.0}%",
+      "rateCaption": "completed reviews, per email sent. Measured on this whole setup.",
+      "markerLabel": "Difference number {number}",
+      "annotationsTitle": "The three differences, and what they are worth",
+      "thinSampleNote": "This window is measured, but on {sends, number} sends only, where the others carry several thousand. Read it as a solid indication, not as a certainty.",
+      "methodNote": "The six rates of the three differences above are measured one criterion at a time, on the same population of sends: they neither add up nor multiply together. The two rates shown at the top of each email are, for their part, the only two complete setups the study isolates. And these are correlations, not proof of cause: a property that sends at 10 am often takes just as much care of its subject line and its button.",
+      "effective": {
+        "badge": "The setup that works",
+        "subject": "Did you enjoy your stay?",
+        "timing": "Sent the day after departure, at 10 am",
+        "body": "You left us yesterday. Your feedback helps us improve, and two minutes are enough.",
+        "button": "Leave my review",
+        "reviewLink": "No link to any review platform in this message.",
+        "signature": "Hotel signature. One single link in the whole message."
       },
-      "notMeasuredBadge": "not measured",
-      "thinSampleBadge": "thin sample",
-      "thinSampleNote": "This window is measured, but on {sends, number} sends only, where the others carry several thousand. Its rate is the lowest in the study and it is the one that widens the gap quoted above: read it as a solid indication, not as a certainty.",
-      "notMeasuredNote": "The window before 9 am carries too few sends in the study to be measured. The value used here is a cautious marker, aligned with the weakest daytime window. It is not a measurement and must not be quoted as one.",
-      "ctaLabel": "What your email invites the guest to click",
-      "ctaHint": "A single link to the form, or clickable stars inside the message.",
-      "shapes": {
-        "singleButton": "A single button",
-        "starRow": "A row of stars"
+      "ineffective": {
+        "badge": "The setup that does not work",
+        "subject": "Thank you for your stay",
+        "timing": "Sent on the evening of departure, at 9 pm",
+        "body": "Thank you for staying with us. How would you rate your stay?",
+        "starsHint": "The stars are clickable, but the rating that is clicked is never passed on.",
+        "reviewLink": "And find us on TripAdvisor or Google to leave a review there.",
+        "signature": "Hotel signature. Two paths offered in the same message."
       },
-      "reviewLinkLabel": "Link to TripAdvisor or Google in that same email",
-      "reviewLinkHint": "A public review platform placed next to your own form.",
-      "reviewLinkAbsent": "None",
-      "reviewLinkPresent": "Yes, there is one",
-      "measured": "measured {rate}",
-      "rateValue": "{rate, number, ::.0}%"
-    },
-    "result": {
-      "label": "Your estimated review rate, current settings",
-      "reviewsPerMonth": "{count, plural, =0 {no review per month} one {# review per month} other {# reviews per month}}",
-      "reachableLabel": "With the three best settings",
-      "benchmarkLabel": "Platform reference",
-      "gainLabel": "The gap",
-      "gainPerMonth": "{count, plural, =0 {no extra review} one {# extra review per month} other {# extra reviews per month}}",
-      "gainPerYear": "that is {count, number} over a year",
-      "noGap": "Your three settings are already the ones the study ranks first. The gap is nil, and that is good news.",
-      "stayNote": "The review count assumes one email per stay, with an average length of stay of {los, number} nights. That length is an estimate, not a measurement: it moves the number of reviews shown, never the rates.",
-      "estimateNote": "The reachable rate is a combined estimate: it brings together three measurements taken separately, each on a single criterion. The only crossing actually measured by the study, a single button with no competing review link, gives 16.4% of completed reviews. The combined estimate deliberately stays below that crossing: it averages the three effects instead of stacking them, so it never claims more than what was observed.",
-      "methodologyToggle": "How the calculation works",
-      "methodologyVolume": "With {rooms} rooms at the occupancy rate you entered, your property records around {nights, number} room nights per month, which is {stays, number} stays and as many post-stay emails.",
-      "methodologyCombine": "The three settings are combined through their geometric mean rather than multiplied. The rates of the study are measured one criterion at a time, on the same population: multiplying them would push the result outside the envelope of what was observed.",
-      "methodologyBounds": "The result therefore stays framed by the lowest and the highest of the three rates used, and can never exceed the best rate observed during the study.",
-      "methodologyCorrelation": "These are correlations, not proof of cause. A property that sends at 10 am often takes just as much care of its subject line and of its button."
+      "annotations": {
+        "cta": {
+          "title": "A row of stars promises a rating in one click",
+          "body": "The guest clicks three stars, lands on the form, and the very same question is asked again. It feels like answering twice, so they close the tab. A single button promises one thing only, and it keeps that promise.",
+          "bestLabel": "One single button to the form",
+          "worstLabel": "A row of clickable stars"
+        },
+        "hour": {
+          "title": "The time the message goes out",
+          "body": "It is the strongest factor in the study, and the only one that is fixed in a minute without rewriting anything. An evening message is read in bed, a morning message is read with time to answer it.",
+          "bestLabel": "Sent between 9 am and 11 am",
+          "worstLabel": "Sent after 8 pm"
+        },
+        "link": {
+          "title": "The link to a review platform",
+          "body": "Slipped into the same message, it does not add a path: it diverts one. The guest goes and rates elsewhere, or does nothing at all. That request deserves its own email, sent later to the guests who have just declared themselves satisfied.",
+          "bestLabel": "No competing link",
+          "worstLabel": "A link to TripAdvisor or Google"
+        }
+      }
     },
     "gap": {
       "title": "The three most expensive mistakes",
@@ -2573,7 +2576,7 @@
       "title": "The questions we get asked",
       "measure": {
         "q": "Where do these figures come from?",
-        "a": "From the real sends of a set of independent hotels between 1 June and 15 September 2026, followed through to the completed review. Content comparisons only cover emails that actually carry a link to a form, and the thinnest groups are flagged as such in the simulator, with their number of sends, rather than quietly set aside. No property is named, and no personal guest data was used."
+        "a": "From the real sends of a set of independent hotels between 1 June and 15 September 2026, followed through to the completed review. Content comparisons only cover emails that actually carry a link to a form, and the thinnest groups are flagged as such next to the figure they carry, with their number of sends, rather than quietly set aside. No property is named, and no personal guest data was used."
       },
       "causality": {
         "q": "Are these causes or correlations?",
