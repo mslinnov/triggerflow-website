@@ -62,6 +62,17 @@ type LeadMagnetSlug = (typeof LEAD_MAGNET_SLUGS)[number];
 
 const MAX_TEXT_LENGTH = 120;
 
+/**
+ * Longueur maximale d'une adresse acceptée. La limite de la norme, et celle
+ * que le backend applique de son côté.
+ *
+ * L'adresse ne passe volontairement PAS par `sanitize` : tronquer à 120
+ * caractères fabriquerait une adresse plus courte qui franchit encore le
+ * motif de validation, et nous créerions alors un contact Brevo puis une
+ * fiche prospect sur une adresse qui n'existe pas. Trop longue, on refuse.
+ */
+const MAX_EMAIL_LENGTH = 255;
+
 interface LeadBody {
   email: string;
   firstName?: string;
@@ -314,8 +325,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: true });
     }
 
-    const email = sanitize(body.email).toLowerCase();
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    const email = (typeof body.email === 'string' ? body.email.trim() : '').toLowerCase();
+    if (!email || email.length > MAX_EMAIL_LENGTH || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json(
         { success: false, error: 'invalid_email' },
         { status: 400 }
