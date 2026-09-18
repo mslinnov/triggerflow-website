@@ -34,6 +34,11 @@ jobs:
           BREVO_LIST_ID: ${{ secrets.BREVO_LIST_ID }}
           BREVO_LEADS_LIST_ID: ${{ secrets.BREVO_LEADS_LIST_ID }}
           LEADS_NOTIFICATION_EMAIL: ${{ secrets.LEADS_NOTIFICATION_EMAIL }}
+          # Relais des livres blancs vers l'API TriggerFlow (/api/leads).
+          # Sans ces deux variables, le lead est bien enregistre dans Brevo
+          # mais aucun guide n'est envoye et aucune sequence ne demarre.
+          TRIGGERFLOW_API_URL: ${{ secrets.TRIGGERFLOW_API_URL || vars.TRIGGERFLOW_API_URL }}
+          LEAD_MAGNET_SECRET: ${{ secrets.LEAD_MAGNET_SECRET }}
         with:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USER }}
@@ -42,7 +47,7 @@ jobs:
           command_timeout: 12m
           # Forward the analytics env vars into the remote shell so the build
           # bakes them in regardless of any .env file present on the VPS.
-          envs: NEXT_PUBLIC_GA_MEASUREMENT_ID,NEXT_PUBLIC_GA_CONSENT_MODE,NEXT_PUBLIC_META_PIXEL_ID,BREVO_API_KEY,BREVO_LIST_ID,BREVO_LEADS_LIST_ID,LEADS_NOTIFICATION_EMAIL
+          envs: NEXT_PUBLIC_GA_MEASUREMENT_ID,NEXT_PUBLIC_GA_CONSENT_MODE,NEXT_PUBLIC_META_PIXEL_ID,BREVO_API_KEY,BREVO_LIST_ID,BREVO_LEADS_LIST_ID,LEADS_NOTIFICATION_EMAIL,TRIGGERFLOW_API_URL,LEAD_MAGNET_SECRET
           script: |
             set -euo pipefail
             cd /var/www/triggerflow-website
@@ -65,7 +70,7 @@ jobs:
             ENV_FILE=.env.production.local
             touch "$ENV_FILE"
             chmod 600 "$ENV_FILE"
-            grep -v -E '^(BREVO_API_KEY|BREVO_LIST_ID|BREVO_LEADS_LIST_ID|LEADS_NOTIFICATION_EMAIL)=' "$ENV_FILE" > "$ENV_FILE.tmp" || true
+            grep -v -E '^(BREVO_API_KEY|BREVO_LIST_ID|BREVO_LEADS_LIST_ID|LEADS_NOTIFICATION_EMAIL|TRIGGERFLOW_API_URL|LEAD_MAGNET_SECRET)=' "$ENV_FILE" > "$ENV_FILE.tmp" || true
             mv "$ENV_FILE.tmp" "$ENV_FILE"
             # Une variable non fournie n'est pas ecrite, pour ne pas ecraser une
             # valeur deja presente ailleurs par une chaine vide.
@@ -73,13 +78,15 @@ jobs:
             [ -n "${BREVO_LIST_ID:-}" ] && printf 'BREVO_LIST_ID=%s\n' "$BREVO_LIST_ID" >> "$ENV_FILE"
             [ -n "${BREVO_LEADS_LIST_ID:-}" ] && printf 'BREVO_LEADS_LIST_ID=%s\n' "$BREVO_LEADS_LIST_ID" >> "$ENV_FILE"
             [ -n "${LEADS_NOTIFICATION_EMAIL:-}" ] && printf 'LEADS_NOTIFICATION_EMAIL=%s\n' "$LEADS_NOTIFICATION_EMAIL" >> "$ENV_FILE"
+            [ -n "${TRIGGERFLOW_API_URL:-}" ] && printf 'TRIGGERFLOW_API_URL=%s\n' "$TRIGGERFLOW_API_URL" >> "$ENV_FILE"
+            [ -n "${LEAD_MAGNET_SECRET:-}" ] && printf 'LEAD_MAGNET_SECRET=%s\n' "$LEAD_MAGNET_SECRET" >> "$ENV_FILE"
             true
             chmod 600 "$ENV_FILE"
 
             # Diagnostic : presence uniquement, jamais les valeurs.
             echo "Fichiers d'environnement presents :"
             ls -1 .env* 2>/dev/null || echo "  aucun"
-            for key in BREVO_API_KEY BREVO_LEADS_LIST_ID LEADS_NOTIFICATION_EMAIL; do
+            for key in BREVO_API_KEY BREVO_LEADS_LIST_ID LEADS_NOTIFICATION_EMAIL TRIGGERFLOW_API_URL LEAD_MAGNET_SECRET; do
               if grep -qE "^${key}=." .env* 2>/dev/null; then
                 echo "  ${key}: present dans un fichier .env"
               else
@@ -102,9 +109,12 @@ jobs:
             if [ -z "${BREVO_LEADS_LIST_ID:-}" ]; then
               echo "::warning::BREVO_LEADS_LIST_ID is empty — landing page leads will be logged and DISCARDED, not saved to Brevo. Set the GitHub secret before running ads."
             fi
+            if [ -z "${LEAD_MAGNET_SECRET:-}" ]; then
+              echo "::warning::LEAD_MAGNET_SECRET is empty: white paper leads will be saved to Brevo but NO guide will be sent and NO follow-up sequence will start. Set the GitHub secret before running ads."
+            fi
             # Ceinture et bretelles : le fichier .env.production.local ci-dessus
             # est le mecanisme principal, l'environnement du shell le complete.
-            export BREVO_LEADS_LIST_ID LEADS_NOTIFICATION_EMAIL
+            export BREVO_LEADS_LIST_ID LEADS_NOTIFICATION_EMAIL TRIGGERFLOW_API_URL LEAD_MAGNET_SECRET
             pm2 reload triggerflow-website --update-env
             pm2 save
             echo "::endgroup::"
