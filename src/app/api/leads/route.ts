@@ -34,11 +34,22 @@ const TRIGGERFLOW_API_URL = process.env.TRIGGERFLOW_API_URL?.trim().replace(/\/+
 const LEAD_MAGNET_SECRET = process.env.LEAD_MAGNET_SECRET?.trim();
 
 /**
- * Délai maximal du relais. Le visiteur attend cette réponse : si le backend ne
- * répond pas, on préfère lui rendre la main sans le guide plutôt que de laisser
- * son formulaire tourner. Le lead est de toute façon déjà dans Brevo.
+ * Le secret ne part que sur un canal chiffré. Une base saisie en `http://` par
+ * inadvertance dans le tableau de bord Cloudflare le mettrait en clair sur le
+ * réseau, et rien dans la réponse ne le signalerait. Seul `http://localhost`
+ * est toléré, pour travailler contre un backend local.
  */
-const RELAY_TIMEOUT_MS = 5000;
+function isTransportSafe(baseUrl: string): boolean {
+  return baseUrl.startsWith('https://') || baseUrl.startsWith('http://localhost');
+}
+
+/**
+ * Délai maximal du relais. Le visiteur attend cette réponse, derrière deux
+ * appels Brevo eux-mêmes non bornés : trois secondes suffisent, puisque le
+ * guide part par e-mail et non par affichage immédiat. L'attente n'achèterait
+ * qu'un lien de téléchargement, et le lead est de toute façon déjà dans Brevo.
+ */
+const RELAY_TIMEOUT_MS = 3000;
 
 /**
  * Slugs de livres blancs connus du backend. La liste est fermée parce que le
@@ -99,11 +110,21 @@ function sanitizeNumber(value: unknown): number | null {
 }
 
 function readMagnetSlug(value: unknown): LeadMagnetSlug | null {
-  if (typeof value !== 'string') return null;
-  const slug = value.trim();
-  return (LEAD_MAGNET_SLUGS as readonly string[]).includes(slug)
-    ? (slug as LeadMagnetSlug)
-    : null;
+  // `sanitize` borne la longueur : la valeur vient du navigateur et finit dans
+  // un journal, une chaîne d'un mégaoctet n'a pas à y entrer.
+  const slug = sanitize(value);
+  if ((LEAD_MAGNET_SLUGS as readonly string[]).includes(slug)) {
+    return slug as LeadMagnetSlug;
+  }
+
+  // Un slug demandé mais inconnu est le scénario du troisième guide ajouté au
+  // site sans étendre cette liste : les leads continueraient d'arriver dans
+  // Brevo, le formulaire afficherait un succès, et aucun guide ne partirait
+  // jamais. On l'apprendrait par un prospect mécontent. D'où cette trace.
+  if (slug) {
+    console.error('[leads] Slug de livre blanc inconnu, relais ignoré, slug:', slug);
+  }
+  return null;
 }
 
 // Un en-tête d'IP ne sert à rien s'il n'est pas une IP : le backend le
@@ -123,10 +144,14 @@ function isIpAddress(value: string): boolean {
  * IP réelle du visiteur, pour que la limitation de débit du backend porte sur
  * lui et non sur nous.
  *
- * Cible Cloudflare Workers (OpenNext) : `cf-connecting-ip` est posé par le
- * bord et n'est pas falsifiable par le client, il passe donc en premier.
- * `x-forwarded-for` n'est lu qu'en repli, et seulement son premier membre, le
- * reste étant la chaîne des relais.
+ * Cible Cloudflare Workers (OpenNext), donc `cf-connecting-ip` et rien d'autre :
+ * Cloudflare l'écrase à l'entrée, le client ne peut pas le fabriquer.
+ *
+ * Pas de repli sur `x-forwarded-for` : Cloudflare AJOUTE l'IP réelle à
+ * l'en-tête fourni par le client au lieu de le remplacer, donc son premier
+ * membre est une valeur que le visiteur choisit. Un bot y mettrait une IP
+ * différente à chaque requête et contournerait entièrement la limitation de
+ * débit du backend, ce qui est pire que le repli sur notre propre IP.
  *
  * Retourne null dès qu'on ne sait pas : l'appelant DOIT alors omettre
  * l'en-tête. Le transmettre vide ferait retomber le backend sur l'IP de notre
@@ -134,13 +159,7 @@ function isIpAddress(value: string): boolean {
  */
 function readVisitorIp(request: NextRequest): string | null {
   const direct = request.headers.get('cf-connecting-ip')?.trim();
-  if (direct && isIpAddress(direct)) return direct;
-
-  const forwarded = request.headers.get('x-forwarded-for');
-  if (!forwarded) return null;
-
-  const first = forwarded.split(',')[0]?.trim();
-  return first && isIpAddress(first) ? first : null;
+  return direct && isIpAddress(direct) ? direct : null;
 }
 
 /**
@@ -172,13 +191,25 @@ async function relayLeadMagnet(
     return null;
   }
 
+  if (!isTransportSafe(TRIGGERFLOW_API_URL)) {
+    console.error('[leads] Relais refusé, base non chiffrée, le secret ne part pas. Slug:', slug);
+    return null;
+  }
+
   const headers: Record<string, string> = {
     'accept': 'application/json',
     'content-type': 'application/json',
     'X-TF-Lead-Secret': LEAD_MAGNET_SECRET,
   };
-  // En-tête posé seulement si l'IP est connue et bien formée. Voir readVisitorIp.
-  if (visitorIp) headers['X-TF-Visitor-Ip'] = visitorIp;
+  if (visitorIp) {
+    headers['X-TF-Visitor-Ip'] = visitorIp;
+  } else {
+    // Omettre l'en-tête est le bon choix, mais ce n'est pas anodin : le backend
+    // retombe alors sur l'IP de notre serveur et son quota par IP devient un
+    // quota unique pour tous nos visiteurs. Si cette ligne se met à sortir en
+    // rafale, c'est que `cf-connecting-ip` ne nous parvient plus.
+    console.error('[leads] IP visiteur illisible, en-tête omis, slug:', slug);
+  }
 
   try {
     const response = await fetch(`${TRIGGERFLOW_API_URL}/api/public-lead-magnet/${slug}`, {
@@ -187,6 +218,13 @@ async function relayLeadMagnet(
       // `tf_hp` est le honeypot du backend : toujours vide, le nôtre a déjà
       // filtré les bots en amont.
       body: JSON.stringify({ email, firstname: firstName, tf_hp: '' }),
+      // Une redirection ne rejoue pas seulement la requête : la spécification
+      // ne retire que les en-têtes d'authentification standard, un en-tête
+      // maison comme le nôtre est renvoyé tel quel vers l'hôte de destination,
+      // fût-il sur un autre domaine. Il suffirait d'avoir saisi le domaine
+      // apex au lieu du sous-domaine applicatif pour que le secret parte
+      // ailleurs sans le moindre signal. On refuse donc de suivre.
+      redirect: 'error',
       signal: AbortSignal.timeout(RELAY_TIMEOUT_MS),
     });
 
@@ -201,7 +239,18 @@ async function relayLeadMagnet(
 
     const data = await response.json().catch(() => null);
     const downloadUrl = (data as { download_url?: unknown } | null)?.download_url;
-    return typeof downloadUrl === 'string' && downloadUrl ? downloadUrl : null;
+    if (typeof downloadUrl !== 'string' || !downloadUrl) return null;
+
+    // Ce lien finira dans l'attribut `href` d'un bouton. Le backend est le
+    // nôtre, donc le risque est théorique, mais une URL en `javascript:` ou en
+    // `data:` recopiée telle quelle exécuterait du code dans la page du
+    // visiteur. On n'accepte que http et https, et on laisse tomber le reste.
+    if (!/^https?:\/\//i.test(downloadUrl)) {
+      console.error('[leads] Lien de téléchargement au schéma refusé, slug:', slug);
+      return null;
+    }
+
+    return downloadUrl;
   } catch (error) {
     // Délai dépassé ou réseau injoignable. On journalise le nom de l'erreur
     // seulement : le corps de la requête, donc l'adresse, n'a pas à s'y
@@ -351,6 +400,16 @@ export async function POST(request: NextRequest) {
     // Contact déjà existant — mis à jour par updateEnabled, on traite en succès
     if (errorData && errorData.code !== 'duplicate_parameter') {
       console.error('[leads] Brevo API error:', response.status, errorData);
+
+      // Brevo est en panne, pas nous : le relais est tenté quand même, sans
+      // quoi le visiteur repartirait sans guide alors que notre propre backend
+      // était disponible. Le lien de téléchargement n'est pas remonté ici, la
+      // réponse étant un échec du point de vue du formulaire ; le guide part
+      // par e-mail, ce qui est le chemin normal.
+      if (magnet) {
+        await relayLeadMagnet(magnet, email, firstName, readVisitorIp(request));
+      }
+
       // Le code d'erreur Brevo est renvoye au client : il ne contient aucune
       // donnee personnelle, seulement la nature du refus (`unauthorized`,
       // `invalid_parameter`...), et sans lui un diagnostic impose un acces aux
