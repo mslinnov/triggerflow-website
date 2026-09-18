@@ -2465,6 +2465,8 @@
         "afterTwenty": "Après 20 h"
       },
       "notMeasuredBadge": "non mesuré",
+      "thinSampleBadge": "échantillon mince",
+      "thinSampleNote": "Ce créneau est bien mesuré, mais sur {sends, number} envois seulement, quand les autres en comptent plusieurs milliers. Son taux est le plus bas de l'étude et c'est lui qui creuse l'écart annoncé plus haut : à lire comme une indication solide, pas comme une certitude.",
       "notMeasuredNote": "Le créneau d'avant 9 h compte trop peu d'envois dans l'étude pour être mesuré. La valeur utilisée ici est un repère prudent, aligné sur le plus faible créneau de journée. Ce n'est pas une mesure, et elle ne doit pas être citée comme telle.",
       "ctaLabel": "Ce que votre e-mail propose de cliquer",
       "ctaHint": "Un lien unique vers le formulaire, ou des étoiles cliquables dans le message.",
@@ -2489,7 +2491,7 @@
       "gainPerYear": "soit {count, number} sur un an",
       "noGap": "Vos trois réglages sont déjà ceux que l'étude place en tête. L'écart est nul, et c'est une bonne nouvelle.",
       "stayNote": "Le nombre d'avis suppose un e-mail par séjour, avec une durée moyenne de séjour de {los, number} nuits. Cette durée est une estimation, pas une mesure : elle déplace le nombre d'avis affiché, jamais les taux.",
-      "estimateNote": "Le taux atteignable est une estimation combinée : elle rapproche trois mesures prises séparément, chacune sur un seul critère. Le seul croisement réellement mesuré par l'étude, un bouton unique sans aucun lien d'avis concurrent, donne 16,4 % d'avis terminés.",
+      "estimateNote": "Le taux atteignable est une estimation combinée : elle rapproche trois mesures prises séparément, chacune sur un seul critère. Le seul croisement réellement mesuré par l'étude, un bouton unique sans aucun lien d'avis concurrent, donne 16,4 % d'avis terminés. L'estimation combinée reste volontairement en dessous de ce croisement : elle moyenne les trois effets au lieu de les cumuler, pour ne jamais annoncer plus que ce qui a été constaté.",
       "methodologyToggle": "Le détail du calcul",
       "methodologyVolume": "Avec {rooms} chambres au taux d'occupation indiqué, votre établissement enregistre environ {nights, number} nuitées par mois, soit {stays, number} séjours et autant d'e-mails post-séjour.",
       "methodologyCombine": "Les trois réglages sont combinés par leur moyenne géométrique, et non multipliés. Les taux de l'étude sont mesurés un critère à la fois, sur la même population : les multiplier ferait sortir le résultat de l'enveloppe de ce qui a été observé.",
@@ -2579,7 +2581,7 @@
       "title": "Les questions qu'on nous pose",
       "measure": {
         "q": "D'où viennent ces chiffres ?",
-        "a": "Des envois réels d'un parc d'hôtels indépendants entre le 1er juin et le 15 septembre 2026, suivis jusqu'à l'avis terminé. Les comparaisons de contenu ne portent que sur les e-mails proposant réellement un formulaire, et les groupes trop peu fournis pour être significatifs sont écartés. Aucun nom d'établissement n'est cité, aucune donnée personnelle de client n'a été utilisée."
+        "a": "Des envois réels d'un parc d'hôtels indépendants entre le 1er juin et le 15 septembre 2026, suivis jusqu'à l'avis terminé. Les comparaisons de contenu ne portent que sur les e-mails proposant réellement un formulaire, et les groupes les plus minces sont signalés comme tels dans le simulateur, avec leur nombre d'envois, plutôt qu'écartés en silence. Aucun nom d'établissement n'est cité, aucune donnée personnelle de client n'a été utilisée."
       },
       "causality": {
         "q": "Est-ce que ce sont des causes ou des corrélations ?",

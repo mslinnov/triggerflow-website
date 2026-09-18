@@ -2457,6 +2457,8 @@
         "afterTwenty": "After 8 pm"
       },
       "notMeasuredBadge": "not measured",
+      "thinSampleBadge": "thin sample",
+      "thinSampleNote": "This window is measured, but on {sends, number} sends only, where the others carry several thousand. Its rate is the lowest in the study and it is the one that widens the gap quoted above: read it as a solid indication, not as a certainty.",
       "notMeasuredNote": "The window before 9 am carries too few sends in the study to be measured. The value used here is a cautious marker, aligned with the weakest daytime window. It is not a measurement and must not be quoted as one.",
       "ctaLabel": "What your email invites the guest to click",
       "ctaHint": "A single link to the form, or clickable stars inside the message.",
@@ -2481,7 +2483,7 @@
       "gainPerYear": "that is {count, number} over a year",
       "noGap": "Your three settings are already the ones the study ranks first. The gap is nil, and that is good news.",
       "stayNote": "The review count assumes one email per stay, with an average length of stay of {los, number} nights. That length is an estimate, not a measurement: it moves the number of reviews shown, never the rates.",
-      "estimateNote": "The reachable rate is a combined estimate: it brings together three measurements taken separately, each on a single criterion. The only crossing actually measured by the study, a single button with no competing review link, gives 16.4% of completed reviews.",
+      "estimateNote": "The reachable rate is a combined estimate: it brings together three measurements taken separately, each on a single criterion. The only crossing actually measured by the study, a single button with no competing review link, gives 16.4% of completed reviews. The combined estimate deliberately stays below that crossing: it averages the three effects instead of stacking them, so it never claims more than what was observed.",
       "methodologyToggle": "How the calculation works",
       "methodologyVolume": "With {rooms} rooms at the occupancy rate you entered, your property records around {nights, number} room nights per month, which is {stays, number} stays and as many post-stay emails.",
       "methodologyCombine": "The three settings are combined through their geometric mean rather than multiplied. The rates of the study are measured one criterion at a time, on the same population: multiplying them would push the result outside the envelope of what was observed.",
@@ -2571,7 +2573,7 @@
       "title": "The questions we get asked",
       "measure": {
         "q": "Where do these figures come from?",
-        "a": "From the real sends of a set of independent hotels between 1 June and 15 September 2026, followed through to the completed review. Content comparisons only cover emails that actually carry a link to a form, and groups too thin to be significant are set aside. No property is named, and no personal guest data was used."
+        "a": "From the real sends of a set of independent hotels between 1 June and 15 September 2026, followed through to the completed review. Content comparisons only cover emails that actually carry a link to a form, and the thinnest groups are flagged as such in the simulator, with their number of sends, rather than quietly set aside. No property is named, and no personal guest data was used."
       },
       "causality": {
         "q": "Are these causes or correlations?",

@@ -22,6 +22,11 @@
  * part dans le bundle du navigateur, affiché ou non. Les volumes d'envois
  * restent donc en commentaire, où ils documentent la mesure et disparaissent
  * à la minification. Les résultats se formulent en taux, jamais en cumul.
+ *
+ * Une seule exception, `sampleSize`, renseignée sur le seul groupe trop mince
+ * pour être lu comme les autres : ce volume-là ne dit rien de notre activité,
+ * il dit à quel point le taux qu'il accompagne est fragile, et le taire
+ * reviendrait à afficher une mesure douteuse sans son avertissement.
  */
 
 /** Une référence mesurée : un réglage, son taux d'avis complétés. */
@@ -35,6 +40,18 @@ export interface PostStayReference {
    * mesure, ni à l'écran ni dans un argumentaire.
    */
   isMeasured: boolean;
+  /**
+   * Volume d'envois, renseigné UNIQUEMENT sur les groupes trop minces pour
+   * être lus comme les autres, et affiché à côté de leur taux.
+   *
+   * C'est la seule exception à la règle « aucun volume absolu exporté » de ce
+   * fichier, et elle est étroite par construction : une taille d'échantillon
+   * qui sert à relativiser une mesure est une garantie de méthode, pas un
+   * indicateur de notre activité. Le renseigner sur tous les groupes
+   * exporterait en revanche leur somme, donc le volume de la plateforme :
+   * à ne pas faire.
+   */
+  sampleSize?: number;
 }
 
 /**
@@ -65,12 +82,30 @@ export const POST_STAY_SEND_HOURS = [
   { id: 'fourteenToSeventeen', completionRate: 0.069, isMeasured: true },
   // 9 202 envois.
   { id: 'seventeenToTwenty', completionRate: 0.102, isMeasured: true },
-  // 557 envois seulement : le taux est le plus faible de tous, mais c'est
-  // aussi le groupe le plus fragile de la table.
-  { id: 'afterTwenty', completionRate: 0.025, isMeasured: true },
+  // Le taux est le plus faible de tous, mais c'est aussi le groupe le plus
+  // fragile de la table : 557 envois, contre plusieurs milliers ailleurs. Ce
+  // volume est le seul de la table à être exporté, et donc affiché, parce que
+  // c'est lui qui permet au visiteur de relativiser le taux plutôt que de le
+  // croire sur parole. C'est aussi ce créneau qui fabrique l'écart annoncé
+  // dans la bande de réassurance, raison de plus pour qu'il porte sa fragilité
+  // à l'écran.
+  { id: 'afterTwenty', completionRate: 0.025, isMeasured: true, sampleSize: 557 },
 ] as const satisfies readonly PostStayReference[];
 
 export type SendHourId = (typeof POST_STAY_SEND_HOURS)[number]['id'];
+
+/**
+ * Taille d'échantillon d'une référence, ou `undefined` quand elle n'a pas à
+ * être signalée.
+ *
+ * Accesseur plutôt que lecture directe : les tables sont figées par
+ * `as const`, donc une entrée sans `sampleSize` n'a tout simplement pas la
+ * propriété et TypeScript refuse de la lire. Passer par cette fonction élargit
+ * proprement vers `PostStayReference`, sans transtypage à l'appel.
+ */
+export function sampleSizeOf(reference: PostStayReference): number | undefined {
+  return reference.sampleSize;
+}
 
 /**
  * Forme de l'appel à l'action dans l'e-mail.

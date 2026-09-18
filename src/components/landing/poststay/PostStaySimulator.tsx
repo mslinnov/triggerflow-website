@@ -9,6 +9,7 @@ import {
   POST_STAY_CTA_SHAPES,
   POST_STAY_REVIEW_LINK,
   POST_STAY_SEND_HOURS,
+  sampleSizeOf,
   type CtaShapeId,
   type SendHourId,
 } from '@/data/post-stay';
@@ -36,7 +37,15 @@ import { usePostStay } from './PostStayContext';
  * repère prudent. Ce drapeau est affiché à l'écran, sur la pastille puis en
  * toutes lettres quand le créneau est retenu. Un drapeau que personne
  * n'affiche ne protège personne : c'est le seul chiffre de la page qui n'est
- * pas une mesure, il doit être le seul à porter une alerte.
+ * pas une mesure, il doit être le seul à porter cette alerte-là.
+ *
+ * ─── LE CRÉNEAU MESURÉ SUR UN ÉCHANTILLON MINCE ──────────────────────────
+ * Le créneau « après 20 h » est bien mesuré, mais sur 557 envois quand les
+ * autres en comptent des milliers, et c'est lui qui fabrique l'écart annoncé
+ * dans la bande de réassurance. Il porte donc sa propre pastille et sa propre
+ * note, distinctes de celles du créneau non mesuré : une mesure fragile n'est
+ * pas une absence de mesure, et confondre les deux affaiblirait les deux
+ * avertissements.
  */
 export function PostStaySimulator() {
   const t = useTranslations('lpPostStay.simulator');
@@ -64,6 +73,9 @@ export function PostStaySimulator() {
 
   const selectedHour = POST_STAY_SEND_HOURS.find((hour) => hour.id === sendHourId);
   const isSelectedHourEstimated = selectedHour ? !selectedHour.isMeasured : false;
+  // `sampleSize` n'est renseigné que sur les créneaux trop minces pour être
+  // lus comme les autres. Voir post-stay.ts : c'est le seul volume exporté.
+  const selectedThinSample = selectedHour ? sampleSizeOf(selectedHour) : undefined;
 
   return (
     <UpsellSection id="simulateur" className="bg-[var(--up-bg-sunken)]">
@@ -122,7 +134,13 @@ export function PostStaySimulator() {
                         ? t('measured', { rate: t('rateValue', { rate: hour.completionRate * 100 }) })
                         : undefined
                     }
-                    badge={hour.isMeasured ? undefined : t('notMeasuredBadge')}
+                    badge={
+                      !hour.isMeasured
+                        ? t('notMeasuredBadge')
+                        : sampleSizeOf(hour) !== undefined
+                          ? t('thinSampleBadge')
+                          : undefined
+                    }
                     onSelect={() => {
                       markInteracted();
                       setSendHourId(hour.id as SendHourId);
@@ -145,6 +163,25 @@ export function PostStaySimulator() {
                     aria-hidden
                   />
                   {t('notMeasuredNote')}
+                </p>
+              )}
+
+              {/* Même traitement pour le créneau le plus mince de la table. Il
+                  est bien mesuré, mais sur 557 envois quand les autres en
+                  comptent des milliers, et c'est lui qui fabrique l'écart
+                  annoncé plus haut : le visiteur doit pouvoir en tenir compte
+                  au lieu de le découvrir dans le rapport. */}
+              {selectedThinSample !== undefined && (
+                <p
+                  role="status"
+                  className="mt-4 flex gap-2.5 rounded-xl border border-[var(--up-line-strong)] bg-[var(--up-surface-alt)] p-4 text-[13px] leading-relaxed text-[var(--up-ink-soft)]"
+                >
+                  <AlertTriangle
+                    className="mt-0.5 h-4 w-4 shrink-0 text-[var(--up-accent-text)]"
+                    strokeWidth={2}
+                    aria-hidden
+                  />
+                  {t('thinSampleNote', { sends: selectedThinSample })}
                 </p>
               )}
             </fieldset>
