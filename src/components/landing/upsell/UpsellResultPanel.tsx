@@ -10,6 +10,19 @@ import { useUpsell } from './UpsellContext';
  * Panneau de résultat du simulateur. Le chiffre est visible immédiatement dans
  * les deux variantes : masquer le résultat derrière un formulaire capte plus
  * d'emails mais casse la confiance, et c'est la confiance qui fait la démo.
+ *
+ * ─── ON ANIME DEPUIS UN ÉTAT VISIBLE, JAMAIS DEPUIS L'INVISIBLE ──────────
+ * Même règle que dans les heros des landings, et pour la même raison. Framer
+ * Motion sérialise l'état initial dans le HTML prérendu : un `opacity: 0` de
+ * départ part dans la page servie, et seul le JavaScript le lève. Ce nombre
+ * est la récompense de tout le simulateur. S'il manque, la page perd son unique
+ * raison d'être, au moment précis où le visiteur vient de bouger les curseurs.
+ * C'est ce défaut qui a produit une capture au grand chiffre blanc sur la
+ * landing jumelle.
+ *
+ * L'animation est conservée : le nombre glisse toujours de huit pixels à chaque
+ * recalcul, grâce au `key` qui le remonte. Seule son opacité de départ vaut 1.
+ * Ne pas la repasser à 0 pour rendre la transition plus franche.
  */
 export function UpsellResultPanel() {
   const t = useTranslations('lpUpsell.simulator');
@@ -32,7 +45,7 @@ export function UpsellResultPanel() {
         <>
           <motion.p
             key={result.monthlyRevenue}
-            initial={reduce ? false : { opacity: 0, y: 8 }}
+            initial={reduce ? false : { opacity: 1, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
             className="mt-2 text-[3.25rem] font-semibold leading-none tracking-[-0.03em] text-[var(--up-accent-text)] md:text-6xl"
