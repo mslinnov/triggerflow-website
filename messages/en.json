@@ -2401,5 +2401,232 @@
       "bandTitle": "Would you rather we showed you?",
       "bandBody": "Twenty minutes, your PMS on screen, your services and your prices. You see what it looks like for you before deciding anything."
     }
+  },
+  "lpPostStay": {
+    "cta": {
+      "calculate": "Calculate my gap",
+      "bookDemo": "Book 30 minutes",
+      "guide": "Get the guide"
+    },
+    "hero": {
+      "badge": "Summer 2026 study, independent hotels",
+      "titleLead": "Nine guests out of ten never leave a review,",
+      "titleStatement": "and your questionnaire is not the reason.",
+      "subtitle": "We followed a full summer of post-stay emails across independent hotels, from the send all the way to the completed review. Almost everything comes down to the send time and to how many paths the guest is offered.",
+      "funnelTitle": "Out of 100 post-stay emails sent",
+      "funnelNote": "Hoteliers keep shortening their questionnaire. That is not where it breaks: three people out of four who open it finish it."
+    },
+    "funnel": {
+      "sent": "Emails sent",
+      "opened": "Opened",
+      "openedNote": "Deliverability is rarely the issue.",
+      "clicked": "One click in the email",
+      "clickedNote": "This is where it is decided: what you offer, and at what time.",
+      "formOpened": "Review form opened",
+      "formOpenedNote": "One clicker out of five is lost between the click and the form.",
+      "completed": "Review completed",
+      "completedNote": "Three people out of four who open the form go all the way."
+    },
+    "trust": {
+      "figures": {
+        "completion": "of post-stay emails end in a completed review, all settings taken together",
+        "hourSpread": "gap between the best and the worst send window",
+        "ctaSpread": "gap between a single button and a row of clickable stars"
+      },
+      "title": "More than 400 properties equipped, connected to the PMS of independent hotels",
+      "turnkey": "Email and form templates delivered preset",
+      "pms": "Every departure triggers the send from your PMS",
+      "gdpr": "GDPR compliant, DPA available",
+      "support": "French speaking team and support"
+    },
+    "simulator": {
+      "eyebrow": "Simulator",
+      "title": "What your current settings cost you in reviews",
+      "subtitle": "Enter your property, then the three settings of your current post-stay email. The calculation places them against the rates measured during the study. It promises you nothing.",
+      "roomsLabel": "Number of rooms",
+      "roomsSuffix": "{count, plural, one {room} other {rooms}}",
+      "occupancyLabel": "Average occupancy rate",
+      "hourLabel": "Current send time",
+      "hourHint": "The strongest factor in the study, and the easiest one to fix.",
+      "hours": {
+        "beforeNine": "Before 9 am",
+        "nineToEleven": "9 am - 11 am",
+        "elevenToFourteen": "11 am - 2 pm",
+        "fourteenToSeventeen": "2 pm - 5 pm",
+        "seventeenToTwenty": "5 pm - 8 pm",
+        "afterTwenty": "After 8 pm"
+      },
+      "notMeasuredBadge": "not measured",
+      "notMeasuredNote": "The window before 9 am carries too few sends in the study to be measured. The value used here is a cautious marker, aligned with the weakest daytime window. It is not a measurement and must not be quoted as one.",
+      "ctaLabel": "What your email invites the guest to click",
+      "ctaHint": "A single link to the form, or clickable stars inside the message.",
+      "shapes": {
+        "singleButton": "A single button",
+        "starRow": "A row of stars"
+      },
+      "reviewLinkLabel": "Link to TripAdvisor or Google in that same email",
+      "reviewLinkHint": "A public review platform placed next to your own form.",
+      "reviewLinkAbsent": "None",
+      "reviewLinkPresent": "Yes, there is one",
+      "measured": "measured {rate}",
+      "rateValue": "{rate, number, ::.0}%"
+    },
+    "result": {
+      "label": "Your estimated review rate, current settings",
+      "reviewsPerMonth": "{count, plural, =0 {no review per month} one {# review per month} other {# reviews per month}}",
+      "reachableLabel": "With the three best settings",
+      "benchmarkLabel": "Platform reference",
+      "gainLabel": "The gap",
+      "gainPerMonth": "{count, plural, =0 {no extra review} one {# extra review per month} other {# extra reviews per month}}",
+      "gainPerYear": "that is {count, number} over a year",
+      "noGap": "Your three settings are already the ones the study ranks first. The gap is nil, and that is good news.",
+      "stayNote": "The review count assumes one email per stay, with an average length of stay of {los} nights. That length is an estimate, not a measurement: it moves the number of reviews shown, never the rates.",
+      "estimateNote": "The reachable rate is a combined estimate: it brings together three measurements taken separately, each on a single criterion. The only crossing actually measured by the study, a single button with no competing review link, gives 16.4% of completed reviews.",
+      "methodologyToggle": "How the calculation works",
+      "methodologyVolume": "With {rooms} rooms at the occupancy rate you entered, your property records around {nights, number} room nights per month, which is {stays, number} stays and as many post-stay emails.",
+      "methodologyCombine": "The three settings are combined through their geometric mean rather than multiplied. The rates of the study are measured one criterion at a time, on the same population: multiplying them would push the result outside the envelope of what was observed.",
+      "methodologyBounds": "The result therefore stays framed by the lowest and the highest of the three rates used, and can never exceed the best rate observed during the study.",
+      "methodologyCorrelation": "These are correlations, not proof of cause. A property that sends at 10 am often takes just as much care of its subject line and of its button."
+    },
+    "gap": {
+      "title": "The three most expensive mistakes",
+      "subtitle": "All three are free to fix. That is what makes them expensive.",
+      "starRow": {
+        "figure": "3.7% against 13.5%",
+        "statement": "The row of stars inside the email",
+        "consequence": "It promises a rating in one click. The guest clicks, meets exactly the same question in the form, and gives up. If your tool does not carry the clicked rating over to the form, that row of stars works against you."
+      },
+      "waiting": {
+        "figure": "4.9% against 11.6%",
+        "statement": "Waiting three days or more after departure",
+        "consequence": "Within two days of departure, results hold. From the third day on, they fall by half. The memory fades, and another stay has already started."
+      },
+      "peakSeason": {
+        "figure": "10 days without a reply",
+        "statement": "Moving the send time in the middle of the season",
+        "consequence": "One property in the study moved its send from 1 pm to 10 pm, then to 8 am, in high season. Not a single reply for ten days, while the emails were going out and being opened normally. Once the time was back, the replies came back too."
+      }
+    },
+    "evidence": {
+      "title": "The five rules, and what each one is worth",
+      "subtitle": "Every rate is a rate of completed reviews per email sent, never per email opened: it is the only unit that compares one setting to another, and the one you can check on your own base.",
+      "rateValue": "{rate, number, ::.0}%",
+      "hour": {
+        "title": "Send between 9 am and 11 am",
+        "body": "The strongest factor of the whole study, and the easiest to fix. The 2 pm to 5 pm window is a false friend: it is the one that gets opened the most, and one of the weakest at the finish line. The guest reads it between two tasks and does not take the time to answer.",
+        "best": "9 am - 11 am",
+        "worst": "after 8 pm"
+      },
+      "single": {
+        "title": "One button, one path",
+        "body": "Stars promise a rating in one click, then the form asks the very same question again. The promise was not kept, and the guest stops there.",
+        "best": "a single link",
+        "worst": "row of stars"
+      },
+      "noCompetitor": {
+        "title": "No link to a review platform in that message",
+        "body": "Two requests in one email is one request too many. Keep the public platforms for a second send, addressed to the guests who have just declared themselves satisfied.",
+        "best": "no competing link",
+        "worst": "with a competing link"
+      },
+      "subject": {
+        "title": "A short subject line, phrased as a question",
+        "body": "Under 40 characters, and a question rather than a statement. Beware of the thank you note: «Thank you for your stay» is the champion of opens and one of the weakest at the finish line. It announces a courtesy, not a request.",
+        "best": "subject as a question",
+        "worst": "thank you note"
+      },
+      "starsFirst": {
+        "title": "A form that opens on a star rating",
+        "body": "The first question must be answerable without thinking. Do not ask for contact details, you already have them: beyond two required questions, you discourage more than you frame.",
+        "best": "stars first",
+        "worst": "multiple choice first"
+      }
+    },
+    "how": {
+      "title": "The template to copy",
+      "subtitle": "A subject line, a button, a signature. Nothing else to write, nothing else to click.",
+      "mail": {
+        "subjectLabel": "Subject",
+        "subject": "Did you enjoy your stay?",
+        "timing": "Sent the day after departure, at 10 am",
+        "greeting": "Hello Camille,",
+        "body": "You left us yesterday, and your feedback helps us improve. Two minutes are enough.",
+        "button": "Leave my review",
+        "footnote": "Hotel signature. One single link in the whole message, five links at most including the signature."
+      },
+      "checklistTitle": "The eight point checklist",
+      "checklist": {
+        "sendWindow": "Send scheduled between 9 am and 11 am",
+        "delay": "Two days after departure at most, never three",
+        "subjectLength": "Subject line under 40 characters, phrased as a question",
+        "reviewWord": "The word «review» in the subject, not just a thank you",
+        "singleButton": "One single button to the form",
+        "noCompetitor": "No link to TripAdvisor or Google in that message",
+        "linkCount": "Five links at most in the whole email, signature included",
+        "starsFirst": "A form that opens on a star rating, with no contact details asked"
+      },
+      "checklistNote": "Two hours of setup are enough. With TriggerFlow, email and form templates included, the checklist is in place in half a day, then runs on its own."
+    },
+    "faq": {
+      "title": "The questions we get asked",
+      "measure": {
+        "q": "Where do these figures come from?",
+        "a": "From the real sends of a set of independent hotels between 1 June and 15 September 2026, followed through to the completed review. Content comparisons only cover emails that actually carry a link to a form, and groups too thin to be significant are set aside. No property is named, and no personal guest data was used."
+      },
+      "causality": {
+        "q": "Are these causes or correlations?",
+        "a": "Correlations, and we do not claim otherwise. A property that sends at 10 am often takes just as much care of its subject line and its button. The two gaps that survive every cut are the send time and the single button: those are the two to start with."
+      },
+      "negative": {
+        "q": "Will I collect more negative reviews?",
+        "a": "You will mostly collect reviews, and unhappy guests are already the ones who answer most spontaneously. An internal form brings them to you before the public platform does, which leaves time to make the stay right instead of discovering it online."
+      },
+      "platforms": {
+        "q": "What if I want Google or TripAdvisor reviews?",
+        "a": "You will get them, but in a second message, addressed to the guests who have just declared themselves satisfied. Mixing both requests in the same email loses both, and that is the third rule of the study."
+      },
+      "pms": {
+        "q": "Do I have to change my software or my PMS?",
+        "a": "No. The departure comes from your current PMS and triggers the send without any intervention. Reviews come back into your dashboard, linked to the stay and to the guest concerned."
+      },
+      "setup": {
+        "q": "How long does it take to set up?",
+        "a": "Half a day: the form from a template that already applies the five rules, the email in your own branding, the connection to the PMS, then the alerts that warn you if replies drop. After that, you do not touch it again."
+      }
+    },
+    "form": {
+      "email": "Your email address",
+      "emailHint": "One address, nothing else to fill in. The guide arrives by email.",
+      "submit": "Get the guide",
+      "successTitle": "All set.",
+      "successBody": "The post-stay guide is on its way by email, within the next few minutes. Do check your spam folder if it keeps you waiting.",
+      "privacy": "Your address is used to send you this guide and our content for hoteliers. One click to unsubscribe, and nothing is sold to third parties.",
+      "error": "The submission did not go through. Please try again in a moment."
+    },
+    "finalCta": {
+      "title": "Get the post-stay guide",
+      "subtitle": "The full study, the five rules with the rates behind them, the email template and the eight point checklist.",
+      "formTitle": "Where do we send the guide?",
+      "format": "PDF, readable in twenty minutes, no jargon.",
+      "chapters": {
+        "funnel": "The real journey of a review, from the send to the completed review",
+        "rules": "The five rules, each with the measured rate behind it",
+        "mistakes": "The three most expensive mistakes, and what they cost",
+        "template": "The email template to copy and the eight point checklist",
+        "method": "How we measured, the limits, and what it does not prove"
+      }
+    },
+    "demoBridge": {
+      "cta": "Book 30 minutes",
+      "inline": "Would you rather go through your current emails with us than wait for a PDF?",
+      "bandTitle": "Want to know which of the five settings costs you the most?",
+      "bandBody": "We look at your current post-stay emails and tell you where to start. Thirty minutes, no commitment."
+    },
+    "footer": {
+      "legal": "Legal notice",
+      "privacy": "Privacy policy",
+      "terms": "Terms of sale",
+      "copyright": "© {year} TriggerFlow. All rights reserved."
+    }
   }
 }

@@ -2409,5 +2409,232 @@
       "bandTitle": "Vous préférez qu'on vous montre ?",
       "bandBody": "Vingt minutes, votre PMS branché à l'écran, vos prestations et vos prix. Vous voyez ce que ça donne chez vous avant de décider quoi que ce soit."
     }
+  },
+  "lpPostStay": {
+    "cta": {
+      "calculate": "Calculer mon écart",
+      "bookDemo": "Réserver 30 minutes",
+      "guide": "Recevoir le guide"
+    },
+    "hero": {
+      "badge": "Étude été 2026, hôtels indépendants francophones",
+      "titleLead": "Neuf clients sur dix ne laissent jamais d'avis,",
+      "titleStatement": "et votre questionnaire n'y est pour rien.",
+      "subtitle": "Nous avons suivi un été complet d'e-mails post-séjour chez des hôtels indépendants, de l'envoi jusqu'à l'avis terminé. Tout se joue sur l'heure d'envoi et sur le nombre de chemins proposés au client.",
+      "funnelTitle": "Sur 100 e-mails post-séjour envoyés",
+      "funnelNote": "Les hôteliers raccourcissent leur questionnaire. Ce n'est pas là que ça casse : trois personnes sur quatre qui l'ouvrent le terminent."
+    },
+    "funnel": {
+      "sent": "E-mails envoyés",
+      "opened": "Ouverts",
+      "openedNote": "La délivrabilité est rarement le sujet.",
+      "clicked": "Un clic dans l'e-mail",
+      "clickedNote": "Le tri se fait ici : ce qu'on propose, et à quelle heure.",
+      "formOpened": "Formulaire d'avis ouvert",
+      "formOpenedNote": "Un cliqueur sur cinq se perd entre le clic et le formulaire.",
+      "completed": "Avis terminé",
+      "completedNote": "Trois personnes sur quatre qui ouvrent le formulaire vont au bout."
+    },
+    "trust": {
+      "figures": {
+        "completion": "des e-mails post-séjour aboutissent à un avis complété, tous réglages confondus",
+        "hourSpread": "d'écart entre le meilleur et le pire créneau d'envoi",
+        "ctaSpread": "d'écart entre un bouton unique et une rangée d'étoiles cliquables"
+      },
+      "title": "Plus de 400 établissements équipés, connectés aux PMS des hôtels indépendants",
+      "turnkey": "Modèles d'e-mail et de formulaire livrés préréglés",
+      "pms": "Chaque départ déclenche l'envoi depuis votre PMS",
+      "gdpr": "Conforme RGPD, DPA signable",
+      "support": "Équipe et support en français"
+    },
+    "simulator": {
+      "eyebrow": "Simulateur",
+      "title": "Ce que vos réglages actuels vous coûtent en avis",
+      "subtitle": "Indiquez votre établissement, puis les trois réglages de votre e-mail post-séjour actuel. Le calcul les situe face aux taux mesurés pendant l'étude, il ne vous promet rien.",
+      "roomsLabel": "Nombre de chambres",
+      "roomsSuffix": "{count, plural, one {chambre} other {chambres}}",
+      "occupancyLabel": "Taux d'occupation moyen",
+      "hourLabel": "Heure d'envoi actuelle",
+      "hourHint": "Le critère le plus puissant de l'étude, et le plus simple à corriger.",
+      "hours": {
+        "beforeNine": "Avant 9 h",
+        "nineToEleven": "9 h - 11 h",
+        "elevenToFourteen": "11 h - 14 h",
+        "fourteenToSeventeen": "14 h - 17 h",
+        "seventeenToTwenty": "17 h - 20 h",
+        "afterTwenty": "Après 20 h"
+      },
+      "notMeasuredBadge": "non mesuré",
+      "notMeasuredNote": "Le créneau d'avant 9 h compte trop peu d'envois dans l'étude pour être mesuré. La valeur utilisée ici est un repère prudent, aligné sur le plus faible créneau de journée. Ce n'est pas une mesure, et elle ne doit pas être citée comme telle.",
+      "ctaLabel": "Ce que votre e-mail propose de cliquer",
+      "ctaHint": "Un lien unique vers le formulaire, ou des étoiles cliquables dans le message.",
+      "shapes": {
+        "singleButton": "Un seul bouton",
+        "starRow": "Une rangée d'étoiles"
+      },
+      "reviewLinkLabel": "Lien vers TripAdvisor ou Google dans ce même e-mail",
+      "reviewLinkHint": "Une plateforme d'avis publique citée à côté de votre formulaire.",
+      "reviewLinkAbsent": "Aucun",
+      "reviewLinkPresent": "Oui, il y en a un",
+      "measured": "mesuré {rate}",
+      "rateValue": "{rate, number, ::.0}%"
+    },
+    "result": {
+      "label": "Votre taux d'avis estimé, réglages actuels",
+      "reviewsPerMonth": "{count, plural, =0 {aucun avis par mois} one {# avis par mois} other {# avis par mois}}",
+      "reachableLabel": "Avec les trois meilleurs réglages",
+      "benchmarkLabel": "Référence plateforme",
+      "gainLabel": "L'écart",
+      "gainPerMonth": "{count, plural, =0 {aucun avis de plus} one {# avis de plus par mois} other {# avis de plus par mois}}",
+      "gainPerYear": "soit {count, number} sur un an",
+      "noGap": "Vos trois réglages sont déjà ceux que l'étude place en tête. L'écart est nul, et c'est une bonne nouvelle.",
+      "stayNote": "Le nombre d'avis suppose un e-mail par séjour, avec une durée moyenne de séjour de {los} nuits. Cette durée est une estimation, pas une mesure : elle déplace le nombre d'avis affiché, jamais les taux.",
+      "estimateNote": "Le taux atteignable est une estimation combinée : elle rapproche trois mesures prises séparément, chacune sur un seul critère. Le seul croisement réellement mesuré par l'étude, un bouton unique sans aucun lien d'avis concurrent, donne 16,4 % d'avis terminés.",
+      "methodologyToggle": "Le détail du calcul",
+      "methodologyVolume": "Avec {rooms} chambres au taux d'occupation indiqué, votre établissement enregistre environ {nights, number} nuitées par mois, soit {stays, number} séjours et autant d'e-mails post-séjour.",
+      "methodologyCombine": "Les trois réglages sont combinés par leur moyenne géométrique, et non multipliés. Les taux de l'étude sont mesurés un critère à la fois, sur la même population : les multiplier ferait sortir le résultat de l'enveloppe de ce qui a été observé.",
+      "methodologyBounds": "Le résultat reste donc encadré par le plus faible et le plus fort des trois taux retenus, et ne peut jamais dépasser le meilleur taux observé pendant l'étude.",
+      "methodologyCorrelation": "Ce sont des corrélations, pas des preuves de cause. Un établissement qui envoie à 10 h soigne souvent aussi son objet et son bouton."
+    },
+    "gap": {
+      "title": "Les trois erreurs les plus coûteuses",
+      "subtitle": "Elles sont toutes les trois gratuites à corriger. C'est ce qui les rend chères.",
+      "starRow": {
+        "figure": "3,7 % contre 13,5 %",
+        "statement": "La rangée d'étoiles dans l'e-mail",
+        "consequence": "Elle promet une note en un clic. Le client clique, retrouve exactement la même question dans le formulaire, et abandonne. Si votre outil ne transmet pas la note cliquée, cette rangée travaille contre vous."
+      },
+      "waiting": {
+        "figure": "4,9 % contre 11,6 %",
+        "statement": "Attendre trois jours ou plus après le départ",
+        "consequence": "Dans les deux jours qui suivent le départ, les résultats se tiennent. À partir du troisième, ils tombent de moitié. Le souvenir s'efface, et un autre séjour a déjà commencé."
+      },
+      "peakSeason": {
+        "figure": "10 jours sans réponse",
+        "statement": "Déplacer l'heure d'envoi en pleine saison",
+        "consequence": "Un établissement de l'étude a déplacé son envoi de 13 h à 22 h, puis à 8 h du matin, en haute saison. Plus aucune réponse pendant dix jours, alors que les e-mails partaient et s'ouvraient normalement. L'heure revenue, les retours sont repartis."
+      }
+    },
+    "evidence": {
+      "title": "Les cinq règles, et ce que chacune pèse",
+      "subtitle": "Chaque taux est un taux d'avis terminés par e-mail envoyé, jamais par e-mail ouvert : c'est la seule unité comparable d'un réglage à l'autre, et celle que vous pouvez vérifier sur votre propre base.",
+      "rateValue": "{rate, number, ::.0}%",
+      "hour": {
+        "title": "Envoyer entre 9 h et 11 h",
+        "body": "Le facteur le plus puissant de toute l'étude, et le plus facile à corriger. Le créneau de 14 h à 17 h est un faux ami : c'est celui qui s'ouvre le plus, et l'un des plus faibles à l'arrivée. Le client le lit entre deux tâches et ne prend pas le temps de répondre.",
+        "best": "9 h - 11 h",
+        "worst": "après 20 h"
+      },
+      "single": {
+        "title": "Un seul bouton, un seul chemin",
+        "body": "Les étoiles promettent une note en un clic, puis le formulaire repose la même question. La promesse n'a pas été tenue, et le client s'arrête là.",
+        "best": "un lien unique",
+        "worst": "rangée d'étoiles"
+      },
+      "noCompetitor": {
+        "title": "Aucun lien vers une plateforme d'avis dans ce message",
+        "body": "Deux demandes dans un même e-mail, c'est une demande de trop. Gardez les plateformes publiques pour un second envoi, adressé aux clients qui viennent de se déclarer satisfaits.",
+        "best": "sans lien concurrent",
+        "worst": "avec lien concurrent"
+      },
+      "subject": {
+        "title": "Un objet court, formulé en question",
+        "body": "Moins de 40 caractères, et une question plutôt qu'une affirmation. Méfiez-vous du remerciement : « Merci pour votre séjour » est le champion de l'ouverture et l'un des plus faibles à l'arrivée. Il annonce une politesse, pas une demande.",
+        "best": "objet en question",
+        "worst": "remerciement"
+      },
+      "starsFirst": {
+        "title": "Un formulaire qui s'ouvre sur une note en étoiles",
+        "body": "La première question doit se répondre sans réfléchir. Ne demandez pas de coordonnées, vous les avez déjà : au-delà de deux questions obligatoires, on décourage plus qu'on ne cadre.",
+        "best": "étoiles en premier",
+        "worst": "question à choix d'abord"
+      }
+    },
+    "how": {
+      "title": "Le modèle à copier",
+      "subtitle": "Un objet, un bouton, une signature. Rien d'autre à écrire, rien d'autre à cliquer.",
+      "mail": {
+        "subjectLabel": "Objet",
+        "subject": "Avez-vous passé un bon séjour ?",
+        "timing": "Envoi le lendemain du départ, à 10 h",
+        "greeting": "Bonjour Camille,",
+        "body": "Vous nous avez quittés hier, et votre avis nous aide à progresser. Deux minutes suffisent.",
+        "button": "Donner mon avis",
+        "footnote": "Signature de l'hôtel. Un seul lien dans tout le message, cinq liens au maximum en comptant la signature."
+      },
+      "checklistTitle": "La checklist en huit points",
+      "checklist": {
+        "sendWindow": "Envoi programmé entre 9 h et 11 h",
+        "delay": "Départ à deux jours maximum, jamais trois",
+        "subjectLength": "Objet de moins de 40 caractères, formulé en question",
+        "reviewWord": "Le mot « avis » dans l'objet, pas seulement un remerciement",
+        "singleButton": "Un seul bouton vers le formulaire",
+        "noCompetitor": "Aucun lien vers TripAdvisor ou Google dans ce message",
+        "linkCount": "Cinq liens au maximum dans tout l'e-mail, signature comprise",
+        "starsFirst": "Formulaire qui s'ouvre sur une note en étoiles, sans demander de coordonnées"
+      },
+      "checklistNote": "Deux heures de paramétrage suffisent. Avec TriggerFlow, modèles d'e-mail et de formulaire compris, la checklist se met en place en une demi-journée, puis tourne toute seule."
+    },
+    "faq": {
+      "title": "Les questions qu'on nous pose",
+      "measure": {
+        "q": "D'où viennent ces chiffres ?",
+        "a": "Des envois réels d'un parc d'hôtels indépendants entre le 1er juin et le 15 septembre 2026, suivis jusqu'à l'avis terminé. Les comparaisons de contenu ne portent que sur les e-mails proposant réellement un formulaire, et les groupes trop peu fournis pour être significatifs sont écartés. Aucun nom d'établissement n'est cité, aucune donnée personnelle de client n'a été utilisée."
+      },
+      "causality": {
+        "q": "Est-ce que ce sont des causes ou des corrélations ?",
+        "a": "Des corrélations, et nous ne prétendons pas l'inverse. Un établissement qui envoie à 10 h soigne souvent aussi son objet et son bouton. Les deux écarts qui résistent à toutes les découpes sont l'heure d'envoi et le bouton unique : ce sont les deux par lesquels commencer."
+      },
+      "negative": {
+        "q": "Est-ce que je vais récolter plus d'avis négatifs ?",
+        "a": "Vous allez surtout récolter des avis, et les mécontents sont déjà ceux qui répondent le plus spontanément. Le formulaire interne vous les fait remonter avant la plateforme publique, ce qui laisse le temps de rattraper le séjour plutôt que de le découvrir en ligne."
+      },
+      "platforms": {
+        "q": "Et si je veux des avis Google ou TripAdvisor ?",
+        "a": "Vous en aurez, mais dans un second message, adressé aux clients qui viennent de se déclarer satisfaits. Mélanger les deux demandes dans le même e-mail fait perdre les deux, c'est la troisième règle de l'étude."
+      },
+      "pms": {
+        "q": "Faut-il changer de logiciel ou de PMS ?",
+        "a": "Non. Le départ remonte depuis votre PMS actuel et déclenche l'envoi sans intervention. Les avis reviennent dans votre tableau de bord, reliés au séjour et au client concerné."
+      },
+      "setup": {
+        "q": "Combien de temps pour tout mettre en place ?",
+        "a": "Une demi-journée : le formulaire à partir d'un modèle qui applique déjà les cinq règles, l'e-mail à votre charte, le branchement sur le PMS, puis les alertes qui vous préviennent si les retours décrochent. Ensuite, vous n'y touchez plus."
+      }
+    },
+    "form": {
+      "email": "Votre adresse e-mail",
+      "emailHint": "Une seule adresse, rien d'autre à remplir. Le guide arrive par e-mail.",
+      "submit": "Recevoir le guide",
+      "successTitle": "C'est enregistré.",
+      "successBody": "Le guide du post-séjour arrive par e-mail dans les prochaines minutes. Pensez à regarder vos indésirables s'il se fait attendre.",
+      "privacy": "Votre adresse sert à vous envoyer ce guide et nos contenus pour hôteliers. Désinscription en un clic, rien n'est revendu à des tiers.",
+      "error": "L'envoi n'a pas abouti. Réessayez dans un instant."
+    },
+    "finalCta": {
+      "title": "Recevez le guide du post-séjour",
+      "subtitle": "L'étude complète, les cinq règles avec leurs taux, le modèle d'e-mail et la checklist en huit points.",
+      "formTitle": "Où envoyons-nous le guide ?",
+      "format": "PDF, lisible en vingt minutes, sans jargon.",
+      "chapters": {
+        "funnel": "Le vrai parcours d'un avis, de l'envoi jusqu'à l'avis terminé",
+        "rules": "Les cinq règles, chacune avec le taux mesuré qui la porte",
+        "mistakes": "Les trois erreurs les plus coûteuses, et ce qu'elles coûtent",
+        "template": "Le modèle d'e-mail à copier et la checklist en huit points",
+        "method": "La méthode de mesure, ses limites et ce qu'elle ne prouve pas"
+      }
+    },
+    "demoBridge": {
+      "cta": "Réserver 30 minutes",
+      "inline": "Vous préférez qu'on regarde vos e-mails actuels ensemble plutôt que d'attendre un PDF ?",
+      "bandTitle": "Vous voulez savoir lequel des cinq réglages vous coûte le plus ?",
+      "bandBody": "Nous regardons vos e-mails post-séjour actuels et nous vous disons par quoi commencer. Trente minutes, sans engagement."
+    },
+    "footer": {
+      "legal": "Mentions légales",
+      "privacy": "Politique de confidentialité",
+      "terms": "CGV",
+      "copyright": "© {year} TriggerFlow. Tous droits réservés."
+    }
   }
 }
