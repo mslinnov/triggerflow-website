@@ -144,22 +144,38 @@ function isIpAddress(value: string): boolean {
  * IP réelle du visiteur, pour que la limitation de débit du backend porte sur
  * lui et non sur nous.
  *
- * Cible Cloudflare Workers (OpenNext), donc `cf-connecting-ip` et rien d'autre :
- * Cloudflare l'écrase à l'entrée, le client ne peut pas le fabriquer.
+ * La cible réelle est un VPS DigitalOcean derrière Apache, pas Cloudflare :
+ * `.github/workflows/deploy.yml` déploie par SSH, et Apache relaie vers
+ * `http://127.0.0.1:3002/` avec `ProxyAddHeaders` laissé à sa valeur par
+ * défaut. Les commandes OpenNext du `package.json` existent mais ne sont pas
+ * le chemin de production.
  *
- * Pas de repli sur `x-forwarded-for` : Cloudflare AJOUTE l'IP réelle à
- * l'en-tête fourni par le client au lieu de le remplacer, donc son premier
- * membre est une valeur que le visiteur choisit. Un bot y mettrait une IP
- * différente à chaque requête et contournerait entièrement la limitation de
- * débit du backend, ce qui est pire que le repli sur notre propre IP.
+ * D'où l'ordre de lecture :
+ *
+ * 1. `cf-connecting-ip`, qu'aucun relais ne pose aujourd'hui. Il ne coûte rien
+ *    et servira tel quel si un jour un proxy Cloudflare passe devant.
+ * 2. le DERNIER membre de `x-forwarded-for`, et surtout pas le premier :
+ *    Apache AJOUTE l'adresse du client qu'il voit à la fin de l'en-tête reçu.
+ *    Un robot qui fabrique `x-forwarded-for: 1.2.3.4` obtient donc
+ *    « 1.2.3.4, son adresse réelle ». Le premier membre est ce qu'il a écrit,
+ *    le dernier est ce qu'Apache a constaté : seul le dernier est digne de
+ *    confiance.
  *
  * Retourne null dès qu'on ne sait pas : l'appelant DOIT alors omettre
  * l'en-tête. Le transmettre vide ferait retomber le backend sur l'IP de notre
- * serveur, et son quota par IP deviendrait un quota unique pour tout Internet.
+ * serveur, et son quota par IP deviendrait un quota unique pour tout Internet,
+ * dix envois par minute pour la Terre entière.
  */
 function readVisitorIp(request: NextRequest): string | null {
   const direct = request.headers.get('cf-connecting-ip')?.trim();
-  return direct && isIpAddress(direct) ? direct : null;
+  if (direct && isIpAddress(direct)) return direct;
+
+  const forwarded = request.headers.get('x-forwarded-for');
+  if (!forwarded) return null;
+
+  const chain = forwarded.split(',');
+  const last = chain[chain.length - 1]?.trim();
+  return last && isIpAddress(last) ? last : null;
 }
 
 /**
