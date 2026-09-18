@@ -85,13 +85,14 @@ export function UpsellResultPanel() {
         </>
       )}
 
-      {/* Origine des chiffres : affichée en permanence, ce n'est pas une note de bas de page. */}
+      {/*
+        Origine des chiffres : affichée en permanence, ce n'est pas une note de
+        bas de page. Elle nomme la taille de l'échantillon, jamais le cumul des
+        offres envoyées ni le chiffre d'affaires mesuré : ces volumes absolus
+        renseignent la concurrence et la page est lisible par n'importe qui.
+      */}
       <p className="mt-6 border-t border-[var(--up-line)] pt-5 text-[13px] leading-relaxed text-[var(--up-ink-soft)]">
-        {t('basis', {
-          hotels: PRODUCTION_FIGURES.referenceHotels,
-          offers: PRODUCTION_FIGURES.offersSent,
-          revenue: PRODUCTION_FIGURES.revenueGenerated,
-        })}
+        {t('basis', { hotels: PRODUCTION_FIGURES.referenceHotels })}
       </p>
 
       <details className="group mt-5">

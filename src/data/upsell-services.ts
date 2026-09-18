@@ -126,11 +126,16 @@ export const REVENUE_PER_SEND =
  * `facilities` couvre le parc TriggerFlow et Utelys réunis. `referenceHotels`
  * est le sous-ensemble qui a configuré un catalogue et lancé des campagnes :
  * c'est lui, et lui seul, qui sert de base au simulateur.
+ *
+ * Aucun volume absolu de ventes ici : ni le nombre d'offres envoyées, ni le
+ * chiffre d'affaires cumulé. Ce fichier est importé par un composant client,
+ * donc tout ce qu'il contient part dans le bundle du navigateur, affiché ou
+ * non. Ces deux valeurs renseignaient la concurrence sur notre taille ; elles
+ * ont été retirées des guides pour la même raison. Les résultats se formulent
+ * en taux, jamais en cumul.
  */
 export const PRODUCTION_FIGURES = {
   facilities: 400,
-  offersSent: 89347,
-  revenueGenerated: 201439,
   referenceHotels: 53,
 } as const;
 

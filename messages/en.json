@@ -2186,7 +2186,7 @@
       "perRoom": "Per room, per month",
       "salesPerMonth": "{count, plural, one {# sale} other {# sales}}",
       "lockedHint": "Your estimate is ready. Tell us where to send it.",
-      "basis": "Estimate built on sales actually recorded across {hotels} customer properties that use the feature: {offers, number} offers sent and €{revenue, number} in add-on sales generated.",
+      "basis": "Estimate built on sales actually recorded across {hotels} customer properties that use the feature, not on a projection: the acceptance rate and the average sale are measured, not assumed.",
       "methodologyToggle": "How the figure is built",
       "methodologyVolume": "With {rooms} rooms at the occupancy rate you set, your hotel books roughly {nights, number} room nights per month, which is {sends, number} stays and as many campaigns sent. The average length of stay used, {los} nights, is the only estimated value in the calculation.",
       "methodologyRates": "The model uses an acceptance rate of {rate, number, ::.00}%, the rate we measure on offers sent 3 to 7 days before arrival, which is the window the pre-built scenarios use by default. The average sale is {basket} €. Revenue is then split according to how much each service actually weighs in observed sales, not by a per-service acceptance rate: one campaign shows the whole catalogue, so those rates do not add up.",
@@ -2378,7 +2378,7 @@
         "title": "The 5 automations that earn the most",
         "subtitle": "We went back through our customers' sales to work out what actually sells, when to send it and on which channel. It is all in this guide.",
         "formTitle": "Where should we send it?",
-        "format": "PDF, sent by email. Built on 89,347 offers sent and €201,439 in sales actually measured.",
+        "format": "PDF, sent by email. Built on sales actually measured at independent hotels, with results given as rates.",
         "chapters": {
           "timing": "The right moment for each offer, and why sending on arrival day cuts sales by three.",
           "channel": "Email, SMS or WhatsApp: what the channel really changes, compared inside one property at a time.",

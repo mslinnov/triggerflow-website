@@ -2194,7 +2194,7 @@
       "perRoom": "Par chambre et par mois",
       "salesPerMonth": "{count, plural, one {# vente} other {# ventes}}",
       "lockedHint": "Votre estimation est prête. Indiquez où l'envoyer.",
-      "basis": "Estimation calculée sur les ventes réellement constatées chez {hotels} établissements clients qui utilisent la fonctionnalité : {offers, number} offres envoyées et {revenue, number} € de ventes additionnelles générées.",
+      "basis": "Estimation calculée sur les ventes réellement constatées chez {hotels} établissements clients qui utilisent la fonctionnalité, et non sur une projection : le taux d'acceptation et le panier moyen sont mesurés, pas supposés.",
       "methodologyToggle": "Le détail du calcul",
       "methodologyVolume": "Avec {rooms} chambres au taux d'occupation indiqué, votre hôtel enregistre environ {nights, number} nuitées par mois, soit {sends, number} séjours et autant de campagnes envoyées. La durée moyenne de séjour retenue, {los} nuits, est la seule valeur estimée du calcul.",
       "methodologyRates": "Le calcul retient un taux d'acceptation de {rate, number, ::.00}%, celui que nous mesurons sur les offres envoyées 3 à 7 jours avant l'arrivée, la fenêtre que les scénarios livrés utilisent par défaut. Le panier moyen d'une vente est de {basket} €. Le revenu est ensuite réparti selon le poids réel de chaque prestation dans les ventes observées, et non selon un taux d'acceptation par prestation : une même campagne présente tout le catalogue, ces taux ne s'additionnent pas.",
@@ -2386,7 +2386,7 @@
         "title": "Les 5 automatisations qui rapportent le plus",
         "subtitle": "Nous avons repris les ventes de nos établissements clients pour identifier ce qui se vend vraiment, quand l'envoyer et sur quel canal. Tout est dans ce guide.",
         "formTitle": "Où faut-il l'envoyer ?",
-        "format": "Format PDF, envoyé par email. Fondé sur 89 347 offres envoyées et 201 439 € de ventes réellement mesurées.",
+        "format": "Format PDF, envoyé par email. Fondé sur les ventes réellement mesurées chez des hôtels indépendants, résultats exprimés en taux.",
         "chapters": {
           "timing": "Le bon moment pour chaque offre, et pourquoi envoyer le jour de l'arrivée divise les ventes par trois.",
           "channel": "Email, SMS ou WhatsApp : ce que change réellement le canal, comparé à l'intérieur d'un même établissement.",
