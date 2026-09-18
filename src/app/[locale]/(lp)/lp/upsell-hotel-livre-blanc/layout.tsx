@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { LpMessagesProvider } from '@/components/landing/LpMessagesProvider';
 
 /**
  * Landing d'acquisition Facebook Ads, axe « ventes additionnelles », variante livre blanc.
@@ -11,11 +12,16 @@ import type { Metadata } from 'next';
  * champ par champ. Sans ce rappel, les partages de la page dans Messenger ou
  * WhatsApp partaient sans vignette, ce qui compte pour une page dont tout le
  * trafic vient d'un réseau social.
+ *
+ * Aucun volume absolu dans ces descriptions : ni le nombre d'offres envoyées,
+ * ni le chiffre d'affaires mesuré. Ces volumes ont été retirés des guides pour
+ * ne pas renseigner la concurrence sur la taille du parc, et une balise meta
+ * est encore plus exposée qu'un PDF. Les résultats se formulent en taux.
  */
 export const metadata: Metadata = {
   title: 'Les 5 automatisations qui rapportent le plus | Livre blanc hôtellerie',
   description:
-    "Le guide des automatisations qui rapportent le plus en hôtellerie, fondé sur 89 347 offres envoyées et 201 439 € de ventes réellement mesurées.",
+    'Le guide des automatisations qui rapportent le plus en hôtellerie, fondé sur les ventes réellement mesurées chez des hôtels indépendants, résultats exprimés en taux.',
   openGraph: {
     title: 'Les 5 automatisations qui rapportent le plus | Livre blanc hôtellerie',
     description:
@@ -42,6 +48,23 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-export default function UpsellWhitepaperLpLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+/**
+ * Le fournisseur de traductions est posé ici et non dans le layout du groupe
+ * `(lp)` : là-haut, il serait commun à toutes les landings et chacune
+ * embarquerait les namespaces des autres dans son HTML.
+ */
+export default async function UpsellWhitepaperLpLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  return (
+    <LpMessagesProvider locale={locale} namespace="lpUpsell">
+      {children}
+    </LpMessagesProvider>
+  );
 }
