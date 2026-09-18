@@ -2369,6 +2369,7 @@
         "book": "Réserver une démo"
       },
       "whitepaper": {
+        "emailHint": "Une seule information demandée : l'adresse à laquelle envoyer le guide.",
         "submit": "Recevoir les 5 automatisations",
         "successTitle": "C'est envoyé.",
         "successBody": "Vous le recevez par email dans les prochaines heures. Pensez à vérifier vos indésirables si vous ne le voyez pas arriver.",

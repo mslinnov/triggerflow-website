@@ -2361,6 +2361,7 @@
         "book": "Book a demo"
       },
       "whitepaper": {
+        "emailHint": "One field only: the address the guide is sent to.",
         "submit": "Get the 5 automations",
         "successTitle": "On its way.",
         "successBody": "It reaches you by email within the next few hours. Do check your spam folder if you do not see it.",

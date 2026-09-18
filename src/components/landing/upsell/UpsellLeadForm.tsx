@@ -12,14 +12,37 @@ import { useUpsell } from './UpsellContext';
 /**
  * Formulaire de conversion. Deux jeux de champs selon l'offre testée :
  *
- * - `demo` : qualification complète (hôtel, chambres, PMS, téléphone), parce
- *   qu'un commercial va rappeler et qu'il a besoin du contexte.
- * - `whitepaper` : friction minimale (prénom, hôtel, email), parce que la seule
- *   promesse est l'envoi d'un document.
+ * - `demo` : qualification complète (prénom, hôtel, chambres, PMS, téléphone),
+ *   parce qu'un commercial va rappeler et qu'il a besoin du contexte.
+ * - `whitepaper` : l'adresse e-mail et rien d'autre. Un seul champ, parce que
+ *   la seule promesse est l'envoi d'un document.
+ *
+ * ─── POURQUOI UN SEUL CHAMP CÔTÉ LIVRE BLANC ─────────────────────────────
+ * C'est une décision produit, pas un oubli : les deux variantes tournent en
+ * parallèle et l'écart de conversion entre cinq champs et un seul est
+ * précisément ce qu'on mesure. Ne pas « rétablir » le prénom ou le nom
+ * d'hôtel sans invalider ce test.
+ *
+ * Les deux conséquences sont assumées :
+ * 1. La séquence de relance ne pourra pas s'adresser nommément au
+ *    destinataire. Ses e-mails devront rester rédigés sans nom propre, sous
+ *    peine d'afficher une formule d'appel vide.
+ * 2. La fiche prospect naîtra avec le seul domaine de l'adresse comme nom
+ *    (« hotel-des-lices.fr » plutôt que « Hôtel des Lices »). Le commercial
+ *    qui reprend le lead devra compléter la fiche à la main.
  *
  * Le nombre de chambres et le potentiel estimé par le simulateur sont transmis
- * dans les deux cas : le lead arrive déjà qualifié côté CRM.
+ * dans les deux cas : ils viennent du simulateur, pas du visiteur, donc ils ne
+ * coûtent aucune friction et le lead arrive un peu qualifié côté CRM.
  */
+
+/**
+ * Slug du livre blanc servi par cette page, tel que le backend le connaît
+ * (liste fermée côté `/api/leads`). Transmis uniquement sur la variante livre
+ * blanc : la variante démo ne promet aucun document, et un `magnet` y
+ * déclencherait un envoi que le visiteur n'a pas demandé.
+ */
+const WHITEPAPER_MAGNET = 'ventes-additionnelles';
 
 /** Les neuf PMS réellement connectés. Toute autre réponse passe par « Autre ». */
 const PMS_OPTIONS = [
@@ -82,6 +105,9 @@ export function UpsellLeadForm({ idPrefix, className }: UpsellLeadFormProps) {
           goal,
           locale,
           honeypot: data.get('company'),
+          // Déclenche le relais vers l'API TriggerFlow, qui envoie le guide et
+          // lance la séquence. Absent sur la variante démo, volontairement.
+          ...(isDemo ? {} : { magnet: WHITEPAPER_MAGNET }),
         }),
       });
 
@@ -149,29 +175,32 @@ export function UpsellLeadForm({ idPrefix, className }: UpsellLeadFormProps) {
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
-        <Field id={`${idPrefix}-firstName`} label={t('firstName')}>
-          <input
-            id={`${idPrefix}-firstName`}
-            name="firstName"
-            type="text"
-            autoComplete="given-name"
-            required
-            className={inputClass}
-          />
-        </Field>
-        <Field id={`${idPrefix}-hotelName`} label={t('hotelName')}>
-          <input
-            id={`${idPrefix}-hotelName`}
-            name="hotelName"
-            type="text"
-            autoComplete="organization"
-            required
-            className={inputClass}
-          />
-        </Field>
-
+        {/* Variante livre blanc : aucun de ces champs n'est rendu, l'adresse
+            e-mail ci-dessous est le seul champ du formulaire. Voir la décision
+            produit et ses deux conséquences en tête de fichier avant d'en
+            rajouter un. */}
         {isDemo && (
           <>
+            <Field id={`${idPrefix}-firstName`} label={t('firstName')}>
+              <input
+                id={`${idPrefix}-firstName`}
+                name="firstName"
+                type="text"
+                autoComplete="given-name"
+                required
+                className={inputClass}
+              />
+            </Field>
+            <Field id={`${idPrefix}-hotelName`} label={t('hotelName')}>
+              <input
+                id={`${idPrefix}-hotelName`}
+                name="hotelName"
+                type="text"
+                autoComplete="organization"
+                required
+                className={inputClass}
+              />
+            </Field>
             <Field id={`${idPrefix}-rooms`} label={t('rooms')}>
               <input
                 id={`${idPrefix}-rooms`}
@@ -204,6 +233,7 @@ export function UpsellLeadForm({ idPrefix, className }: UpsellLeadFormProps) {
         <Field
           id={`${idPrefix}-email`}
           label={t('email')}
+          hint={isDemo ? undefined : t('whitepaper.emailHint')}
           className={isDemo ? undefined : 'sm:col-span-2'}
         >
           <input
