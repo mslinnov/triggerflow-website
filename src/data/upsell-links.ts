@@ -1,21 +1,20 @@
 /**
  * Liens de prise de rendez-vous des landing pages d'acquisition.
  *
- * ⚠️ À REMPLACER par les liens lemcal dédiés. Deux liens distincts, pour que
- * les rendez-vous pris depuis chaque variante soient attribuables sans avoir à
- * recouper avec autre chose : c'est la seule façon de savoir si la LP livre
- * blanc génère des démos en plus des téléchargements.
- *
- * En attendant, les deux pointent sur le lien de démo générique, ce qui reste
- * fonctionnel mais rend les deux variantes indistinguables côté lemcal.
+ * Un calendrier lemcal par thème de livre blanc, et non un par variante de
+ * page : lemcal limite le slug à vingt caractères et multiplier les
+ * calendriers multiplie surtout les agendas à surveiller. L'attribution fine
+ * (variante démo ou variante livre blanc) se lit côté site, pas côté lemcal.
  */
 
-/** Variante A : la démo est l'offre principale de la page. */
-export const LEMCAL_DEMO_URL = 'https://app.lemcal.com/@trigger-flow/demo-upsell';
+/** Thème « ventes additionnelles », variante démo : la démo est l'offre principale. */
+export const LEMCAL_DEMO_URL = 'https://app.lemcal.com/@trigger-flow/ventes-en-plus';
 
 /**
- * Variante B : démo proposée en second, à côté du livre blanc. Calendrier
- * distinct de celui de la variante A, pour que les rendez-vous pris depuis
- * cette page soient attribuables sans recoupement.
+ * Thème « ventes additionnelles », variante livre blanc : démo proposée en
+ * second, à côté du guide. Même calendrier que la variante démo.
  */
-export const LEMCAL_DEMO_URL_WHITEPAPER = 'https://app.lemcal.com/@trigger-flow/demo-upsell-lb';
+export const LEMCAL_DEMO_URL_WHITEPAPER = 'https://app.lemcal.com/@trigger-flow/ventes-en-plus';
+
+/** Thème « post-séjour » : calendrier de la landing du guide avis clients. */
+export const LEMCAL_DEMO_URL_POST_STAY = 'https://app.lemcal.com/@trigger-flow/post-sejour';
