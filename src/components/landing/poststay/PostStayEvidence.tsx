@@ -13,9 +13,9 @@ import { UpsellSection } from '../upsell/primitives';
  * Les cinq règles, chacune avec les deux taux qui l'opposent.
  *
  * Les trois premières lisent leurs taux dans `@/data/post-stay`, la source du
- * simulateur : le visiteur qui vient de bouger un réglage retrouve ici
- * exactement le chiffre qui a déplacé son résultat. Les deux dernières, l'objet
- * et la première question du formulaire, ne sont pas des entrées du calcul :
+ * comparateur : le visiteur retrouve ici exactement les chiffres qui annotent
+ * les deux e-mails, et ils ne peuvent pas diverger. Les deux dernières, l'objet
+ * et la première question du formulaire, ne sont annotées nulle part ailleurs :
  * leurs taux sont écrits ici, avec la mention de leur provenance.
  *
  * Toutes les valeurs sont des taux d'avis terminés par e-mail ENVOYÉ, jamais

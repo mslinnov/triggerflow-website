@@ -10,13 +10,14 @@ import { UpsellSection } from '../upsell/primitives';
  * écart mesuré.
  *
  * Elles viennent avant les cinq règles, et ce n'est pas l'ordre du guide.
- * L'hôtelier qui arrive ici vient de régler le simulateur sur sa propre
- * situation : il veut d'abord savoir ce qui cloche, la recette vient après.
+ * L'hôtelier qui arrive ici vient de reconnaître son e-mail dans l'une des deux
+ * colonnes du comparateur : il veut d'abord savoir ce qui cloche, la recette
+ * vient après.
  *
  * Les trois écarts sont écrits dans les traductions plutôt que dérivés des
  * constantes : deux d'entre eux (le délai de trois jours, l'incident de pleine
- * saison) ne figurent pas dans les données du simulateur, et aligner le
- * troisième seul sur une constante créerait une dépendance trompeuse.
+ * saison) ne figurent pas dans `@/data/post-stay`, et aligner le troisième seul
+ * sur une constante créerait une dépendance trompeuse.
  */
 const MISTAKES = ['starRow', 'waiting', 'peakSeason'] as const;
 

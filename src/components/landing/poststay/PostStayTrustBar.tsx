@@ -39,10 +39,10 @@ const PMS_LOGOS = [
 ] as const;
 
 /**
- * Les deux rapports sont DÉRIVÉS des mêmes constantes que le simulateur, et
- * non recopiés depuis la couverture du guide. Deux raisons : un chiffre affiché
- * ici ne peut plus contredire celui que le visiteur lit deux sections plus bas,
- * et une prochaine extraction déplacera les deux ensemble.
+ * Les deux rapports sont DÉRIVÉS des constantes de `@/data/post-stay`, et non
+ * recopiés depuis la couverture du guide. Deux raisons : un chiffre affiché ici
+ * ne peut plus contredire celui que le visiteur lit deux sections plus bas, et
+ * une prochaine extraction déplacera les deux ensemble.
  *
  * Les créneaux non mesurés sont écartés du rapport : un écart annoncé doit
  * tenir entre deux mesures, sinon il n'annonce rien.
