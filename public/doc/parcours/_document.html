@@ -1,0 +1,1922 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Parcours client hôtelier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+:root{
+  --ground:#F8F7F6;
+  --surface:#FFFFFF;
+  --surface-2:#F1F4F3;
+  --surface-3:#EDEAE6;
+  --ink:#1F2A2A;
+  --ink-2:#5E6383;
+  --ink-3:#8A8F9C;
+  --line:#E0DFE0;
+  --line-2:#EDEDEC;
+  --brand:#006F68;
+  --brand-ink:#006F68;
+  --brand-soft:#CCE2E1;
+  --brand-wash:#F0F6F5;
+  --brand-deep:#002B28;
+  --brand-lift:#018C83;
+  --gold:#C9A227;
+  --gold-soft:#F4EBCB;
+  --gold-ink:#8A6E12;
+  --ch-email:#3D80F7;
+  --ch-sms:#3F9E3C;
+  --ch-wa:#128C7E;
+  --ch-cond:#B07C08;
+  --end-bg:#002B28;
+  --end-fg:#EAF4F3;
+  --shadow:0 1px 2px rgba(0,0,0,.04), 0 8px 24px -16px rgba(0,43,40,.24);
+  --font-display:"DM Serif Display", Georgia, "Times New Roman", serif;
+  --font-body:"IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --rail:clamp(24px, 5vw, 56px);
+  --hdr:82px;
+  --axis:clamp(116px, 15vw, 188px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0E1312;
+    --surface:#161C1B;
+    --surface-2:#1C2423;
+    --surface-3:#232B2A;
+    --ink:#E8EDEC;
+    --ink-2:#A2ADAB;
+    --ink-3:#7D8887;
+    --line:#2A3433;
+    --line-2:#222B2A;
+    --brand:#2DB3A8;
+    --brand-ink:#5CCFC5;
+    --brand-soft:#123B38;
+    --brand-wash:#14211F;
+    --brand-deep:#8FDDD5;
+    --brand-lift:#3FC7BB;
+    --gold:#C9A64A;
+    --gold-soft:#332B15;
+    --gold-ink:#DCBB63;
+    --ch-email:#7FA9F7;
+    --ch-sms:#6FC46C;
+    --ch-wa:#4DC2B2;
+    --ch-cond:#D9A93B;
+    --end-bg:#1C2423;
+    --end-fg:#E8EDEC;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0E1312;
+  --surface:#161C1B;
+  --surface-2:#1C2423;
+  --surface-3:#232B2A;
+  --ink:#E8EDEC;
+  --ink-2:#A2ADAB;
+  --ink-3:#7D8887;
+  --line:#2A3433;
+  --line-2:#222B2A;
+  --brand:#2DB3A8;
+  --brand-ink:#5CCFC5;
+  --brand-soft:#123B38;
+  --brand-wash:#14211F;
+  --brand-deep:#8FDDD5;
+  --brand-lift:#3FC7BB;
+  --gold:#C9A64A;
+  --gold-soft:#332B15;
+  --gold-ink:#DCBB63;
+  --ch-email:#7FA9F7;
+  --ch-sms:#6FC46C;
+  --ch-wa:#4DC2B2;
+  --ch-cond:#D9A93B;
+  --end-bg:#1C2423;
+  --end-fg:#E8EDEC;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px}
+
+/* ---------- barre supérieure ---------- */
+.topbar{
+  position:sticky;
+  top:env(safe-area-inset-top, 0px);
+  z-index:60;
+  background:color-mix(in srgb, var(--ground) 92%, transparent);
+  backdrop-filter:saturate(1.4) blur(10px);
+  border-bottom:1px solid var(--line-2);
+}
+.topbar-in{
+  max-width:1080px;margin:0 auto;padding:9px 20px 7px;
+  display:flex;align-items:center;gap:16px;
+}
+.mark{display:flex;align-items:center;gap:9px;font-weight:600;font-size:14px;letter-spacing:-.01em;color:var(--ink)}
+.mark svg{display:block;flex:none}
+.mark span{white-space:nowrap}
+.topbar-spacer{flex:1}
+.topbar-ctx{
+  font-size:12px;color:var(--ink-2);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  max-width:36ch;
+}
+.toc-btn{
+  font:inherit;font-size:13px;font-weight:500;
+  color:var(--brand-ink);background:transparent;
+  border:1px solid var(--line);border-radius:999px;
+  padding:5px 14px;cursor:pointer;white-space:nowrap;
+}
+.toc-btn:hover{background:var(--brand-wash);border-color:var(--brand-soft)}
+.progress{position:absolute;left:0;bottom:-1px;height:2px;background:var(--brand);width:0}
+
+/* ---------- fil d'Ariane : la frise en permanence ---------- */
+.rail{border-top:1px solid var(--line-2);background:color-mix(in srgb, var(--surface) 46%, transparent)}
+.rail-in{
+  max-width:1080px;margin:0 auto;padding:0 20px;
+  position:relative;
+}
+.rail-scroll{
+  overflow-x:auto;overflow-y:hidden;
+  scrollbar-width:none;-ms-overflow-style:none;
+  scroll-behavior:smooth;
+}
+.rail-scroll::-webkit-scrollbar{display:none}
+.rail-steps{
+  list-style:none;margin:0;padding:9px 0 10px;
+  display:flex;align-items:center;gap:0;width:100%;
+}
+/* flex-basis 0 : les huit phases occupent exactement la même largeur, quelle
+   que soit la longueur de leur libellé. Sans ça, les pastilles se décalaient
+   les unes par rapport aux autres. */
+.rail-steps li{display:flex;align-items:center;flex:1 1 0;min-width:0}
+.rail-link{
+  display:flex;align-items:center;gap:7px;
+  text-decoration:none;color:var(--ink-3);
+  padding:3px 2px;border-radius:7px;white-space:nowrap;
+  transition:color .2s ease;
+}
+.rail-link:hover{color:var(--brand-ink)}
+.rail-dot{
+  flex:none;width:9px;height:9px;border-radius:50%;
+  background:var(--surface);border:1.5px solid var(--line);
+  transition:background .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.rail-n{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.04em;opacity:.75}
+.rail-t{
+  font-size:12.5px;font-weight:500;letter-spacing:-.005em;
+  overflow:hidden;text-overflow:ellipsis;
+}
+.rail-seg{
+  flex:1 1 auto;height:1.5px;min-width:10px;margin:0 8px;border-radius:2px;
+  background:var(--line);transition:background .25s ease;
+}
+/* état parcouru */
+.rail-link.done{color:var(--ink-2)}
+.rail-link.done .rail-dot{background:var(--brand-soft);border-color:var(--brand-soft)}
+.rail-seg.done{background:var(--brand-soft)}
+/* état courant */
+.rail-link.now{color:var(--brand-ink);font-weight:600}
+.rail-link.now .rail-dot{
+  background:var(--brand);border-color:var(--brand);
+  box-shadow:0 0 0 3px color-mix(in srgb, var(--brand) 22%, transparent);
+}
+.rail-link.now .rail-n{opacity:1}
+/* repère transverse, après les 8 phases */
+.rail-tail{
+  display:flex;align-items:center;gap:7px;flex:none;padding-left:4px;
+  font-size:12.5px;font-weight:600;color:var(--brand-ink);white-space:nowrap;
+}
+.rail-tail .rail-dot{background:var(--brand);border-color:var(--brand)}
+
+.mode-btn{color:var(--ink-2)}
+.mode-btn[aria-pressed="false"]{
+  color:var(--brand-ink);background:var(--brand-wash);border-color:var(--brand-soft);
+}
+
+/* ---------- vue résumée ----------
+   26 points de contact font une lecture de trente minutes. Le document reste
+   complet pour qui veut tout vérifier ; par défaut il se lit en survol, et
+   s'ouvre d'un clic. Le choix est mémorisé sur l'appareil du lecteur. */
+:root[data-read="resume"] .fiche-body > p,
+:root[data-read="resume"] .fiche-body .equipe,
+:root[data-read="resume"] .fiche-body .shot,
+:root[data-read="resume"] .fiche-body .shot-row{display:none}
+/* Les captures restent : dans une vue de survol, l'image est ce qui se lit le
+   plus vite. C'est le texte qui s'efface, pas le visuel. */
+:root[data-read="resume"] .fiche{padding-block:20px}
+:root[data-read="resume"] .canaux{margin-bottom:12px}
+:root[data-read="resume"] .gain{margin-top:0}
+:root[data-read="resume"] .figure{margin-top:14px}
+
+/* ---------- sommaire ---------- */
+.toc{
+  position:fixed;inset:0;z-index:70;
+  background:color-mix(in srgb, var(--ground) 96%, transparent);
+  overflow:auto;padding:24px 20px calc(40px + env(safe-area-inset-bottom, 0px));
+}
+.toc-head{display:flex;align-items:baseline;gap:16px;max-width:1080px;margin:0 auto 24px}
+.toc-close{
+  margin-left:auto;font:inherit;font-size:13px;background:transparent;color:var(--ink-2);
+  border:1px solid var(--line);border-radius:999px;padding:5px 14px;cursor:pointer;
+}
+.toc-grid{max-width:1080px;margin:0 auto;display:grid;gap:2px}
+.toc-grid a{
+  display:grid;grid-template-columns:2.6rem 1fr auto;gap:14px;align-items:baseline;
+  padding:11px 12px;border-radius:8px;text-decoration:none;color:var(--ink);
+  border-bottom:1px solid var(--line-2);
+}
+.toc-grid a:hover{background:var(--surface-2)}
+.toc-grid .n{font-family:var(--font-mono);font-size:12px;color:var(--brand-ink)}
+.toc-grid .t{font-weight:500}
+.toc-grid .m{font-size:12px;color:var(--ink-3);font-family:var(--font-mono);text-align:right}
+
+/* ---------- couverture ---------- */
+.cover{padding-block:clamp(48px,9vw,104px) clamp(40px,7vw,80px);border-bottom:1px solid var(--line)}
+.eyebrow{
+  font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--brand-ink);margin:0 0 20px;
+}
+h1{
+  font-family:var(--font-display);font-weight:400;
+  font-size:clamp(2.5rem,6.4vw,4.4rem);line-height:1.04;letter-spacing:-.015em;
+  margin:0 0 26px;text-wrap:balance;max-width:17ch;
+}
+.lede{font-size:clamp(1.05rem,2vw,1.2rem);color:var(--ink-2);max-width:60ch;margin:0 0 30px}
+.lede strong{color:var(--ink);font-weight:600}
+.cover-meta{
+  display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:34px;
+  padding-top:24px;border-top:1px solid var(--line-2);
+}
+.meta-chip{
+  font-size:12px;color:var(--ink-2);background:var(--surface);
+  border:1px solid var(--line);border-radius:999px;padding:4px 12px;
+}
+
+/* ---------- section générique ---------- */
+section{scroll-margin-top:calc(var(--hdr) + 12px + env(safe-area-inset-top, 0px))}
+.band{padding-block:clamp(44px,7vw,76px);border-bottom:1px solid var(--line)}
+.band-alt{background:var(--surface-2)}
+h2{
+  font-family:var(--font-display);font-weight:400;
+  font-size:clamp(1.9rem,4vw,2.9rem);line-height:1.1;letter-spacing:-.01em;
+  margin:0 0 14px;text-wrap:balance;
+}
+h3{font-size:1.18rem;font-weight:600;letter-spacing:-.01em;margin:0;line-height:1.35}
+.intro{color:var(--ink-2);max-width:62ch;margin:0 0 30px;font-size:1.02rem}
+
+/* Titre et chapeau en vis-à-vis : la colonne de texte seule laissait la moitié
+   droite de la page vide, et le bloc d'en-tête flottait sans assise. */
+.head-row{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(24px,4.5vw,60px);align-items:end;margin-bottom:34px;
+}
+.head-row h2{margin-bottom:0}
+.head-row .intro{margin-bottom:0}
+.head-row--cover{align-items:end;margin-bottom:0}
+.head-row--cover h1{margin-bottom:0;max-width:14ch}
+.head-text .lede{margin-bottom:18px}
+.head-text .lede:last-child{margin-bottom:0}
+@media (max-width:820px){
+  .head-row{grid-template-columns:minmax(0,1fr);gap:16px;margin-bottom:26px}
+  .head-row--cover h1{max-width:17ch}
+}
+.sec-num{
+  font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;
+  color:var(--brand-ink);display:block;margin-bottom:10px;
+}
+
+/* ---------- ligne de temps ----------
+   Compacte et alignée : une phase par ligne, le numéro sur l'axe, un résumé,
+   le nombre de points de contact. La version précédente empilait soixante et
+   une pastilles, ce qui noyait la lecture d'ensemble. */
+/* ---------- encart de bilan en fin de phase ----------
+   Un bloc côté équipe qui clôt une phase sans être un point de contact : il ne
+   vit donc PAS dans `.fiches` (qui porte l'axe chronologique et compterait
+   l'encart comme une étape de plus), mais juste après, en frère de celui-ci. */
+.bilan{
+  margin:clamp(30px,5vw,46px) 0 0;padding:clamp(22px,3.5vw,32px);
+  background:var(--brand-wash);border:1px solid var(--brand-soft);border-radius:16px;
+}
+.bilan-head{margin-bottom:16px}
+.bilan-k{
+  font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--brand-ink);display:block;margin-bottom:8px;
+}
+.bilan-head h3{
+  font-family:var(--font-display);font-weight:400;
+  font-size:clamp(1.4rem,2.8vw,1.9rem);line-height:1.15;margin:0;letter-spacing:-.01em;
+}
+.bilan-lede{margin:0 0 22px;font-size:15px;color:var(--ink-2);max-width:74ch}
+.bilan .figure{margin-top:24px}
+
+/* ---------- ouverture : le trait continu ----------
+   Un seul trait porte les vingt-six points. Le tracé, les points et la pointe
+   lisent tous la MEME frise de référence, déclarée sur .g-fig : sans elle chaque
+   cercle mesurerait sa propre boîte de onze pixels et s'allumerait de travers. */
+.g-wrap{margin:0 0 clamp(26px,4vw,40px)}
+.g-wrap figcaption{margin:14px 0 0;font-size:12.5px;color:var(--ink-3);line-height:1.45;max-width:72ch}
+.g-fig{view-timeline-name:--gtrait;view-timeline-axis:block}
+.g-fig svg{display:block;width:100%;height:auto;color:var(--ink)}
+.g-lab text{font-family:var(--font-body);font-size:12px;font-weight:600;fill:var(--ink)}
+.g-lab a{text-decoration:none;cursor:pointer}
+.g-lab a:hover text,.g-lab a:focus-visible text{fill:var(--brand-ink);text-decoration:underline}
+.g-lab a:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:3px}
+.g-temps text{font-family:var(--font-mono);font-size:11px;letter-spacing:1.4px;fill:var(--brand-ink)}
+.g-cnt text{font-family:var(--font-display);font-size:21px;fill:currentColor;fill-opacity:.42}
+.g-line{stroke-dasharray:1000;stroke-dashoffset:1000}
+.g-dot{transform-box:fill-box;transform-origin:center}
+.g-tip{transform-box:fill-box;transform-origin:left center}
+@supports not (animation-timeline: view()){.g-line{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.g-line{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:no-preference){
+  @supports (animation-timeline: view()){
+    .g-line{animation:tf-trace linear both;animation-timeline:--gtrait;animation-range:cover 14% cover 68%}
+    .g-dot{opacity:.16;animation:tf-light linear both;animation-timeline:--gtrait}
+    .g-tip{opacity:0;animation:tf-tip linear both;animation-timeline:--gtrait;animation-range:cover 68% cover 73%}
+    .g-dot.d1{animation-range:cover 14.2% cover 16.2%}
+    .g-dot.d2{animation-range:cover 15.2% cover 17.2%}
+    .g-dot.d3{animation-range:cover 16.3% cover 18.3%}
+    .g-dot.d4{animation-range:cover 18.1% cover 20.1%}
+    .g-dot.d5{animation-range:cover 19.1% cover 21.1%}
+    .g-dot.d6{animation-range:cover 20.2% cover 22.2%}
+    .g-dot.d7{animation-range:cover 21.2% cover 23.2%}
+    .g-dot.d8{animation-range:cover 23.4% cover 25.4%}
+    .g-dot.d9{animation-range:cover 24.5% cover 26.5%}
+    .g-dot.d10{animation-range:cover 25.5% cover 27.5%}
+    .g-dot.d11{animation-range:cover 26.5% cover 28.5%}
+    .g-dot.d12{animation-range:cover 34.1% cover 36.1%}
+    .g-dot.d13{animation-range:cover 35.1% cover 37.1%}
+    .g-dot.d14{animation-range:cover 36.2% cover 38.2%}
+    .g-dot.d15{animation-range:cover 38.2% cover 40.2%}
+    .g-dot.d16{animation-range:cover 39.2% cover 41.2%}
+    .g-dot.d17{animation-range:cover 40.3% cover 42.3%}
+    .g-dot.d18{animation-range:cover 42.7% cover 44.7%}
+    .g-dot.d19{animation-range:cover 43.7% cover 45.7%}
+    .g-dot.d20{animation-range:cover 52.3% cover 54.3%}
+    .g-dot.d21{animation-range:cover 53.4% cover 55.4%}
+    .g-dot.d22{animation-range:cover 54.4% cover 56.4%}
+    .g-dot.d23{animation-range:cover 56.8% cover 58.8%}
+    .g-dot.d24{animation-range:cover 57.9% cover 59.9%}
+    .g-dot.d25{animation-range:cover 58.9% cover 60.9%}
+    .g-dot.d26{animation-range:cover 59.9% cover 61.9%}
+  }
+}
+@keyframes tf-trace{from{stroke-dashoffset:1000}to{stroke-dashoffset:0}}
+@keyframes tf-light{from{opacity:.16;transform:scale(.55)}to{opacity:1;transform:scale(1)}}
+@keyframes tf-tip{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
+
+/* Sous 860 px le dessin garde sa largeur utile et se fait glisser du doigt :
+   le réduire rendrait les libellés illisibles. */
+@media (max-width:860px){
+  .g-fig{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .g-fig svg{min-width:680px}
+}
+
+/* ---------- les huit phases, en grille compacte ---------- */
+.phases{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line-2);border:1px solid var(--line-2);border-radius:12px;overflow:hidden}
+.ph{display:flex;flex-direction:column;gap:5px;padding:16px 16px 18px;background:var(--surface);color:inherit;text-decoration:none;transition:background .16s ease}
+.ph:hover,.ph:focus-visible{background:var(--brand-wash)}
+.ph:focus-visible{outline:2px solid var(--brand);outline-offset:-2px}
+.ph-n{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;color:var(--brand-ink)}
+.ph-t{font-family:var(--font-display);font-weight:400;font-size:1.06rem;line-height:1.2;color:var(--ink)}
+.ph:hover .ph-t{color:var(--brand-ink)}
+.ph-w{font-size:11.5px;color:var(--ink-3);font-style:italic;line-height:1.35}
+.ph-s{margin:4px 0 0;font-size:13px;color:var(--ink-2);line-height:1.5;flex:1}
+.ph-c{margin-top:8px;padding-top:8px;border-top:1px solid var(--line-2);font-size:11.5px;color:var(--ink-3)}
+.ph-c b{font-family:var(--font-display);font-size:15px;font-weight:400;color:var(--brand-ink)}
+@media (max-width:1000px){.phases{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.phases{grid-template-columns:minmax(0,1fr)}}
+
+
+
+/* ---------- frise (héritage) ---------- */
+.frise{margin-top:8px;position:relative}
+.frise::before{
+  content:"";position:absolute;left:11px;top:14px;bottom:14px;width:2px;
+  background:linear-gradient(to bottom,var(--brand-soft),var(--brand),var(--brand-soft));
+}
+.fr-step{position:relative;padding:0 0 30px 44px}
+.fr-step:last-child{padding-bottom:0}
+.fr-dot{
+  position:absolute;left:0;top:4px;width:24px;height:24px;border-radius:50%;
+  background:var(--surface);border:2px solid var(--brand);
+  display:grid;place-items:center;
+  font-family:var(--font-mono);font-size:10px;font-weight:500;color:var(--brand-ink);
+}
+.fr-title{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin-bottom:9px}
+.fr-title a{color:var(--ink);text-decoration:none;font-weight:600;font-size:1.06rem}
+.fr-title a:hover{color:var(--brand-ink);text-decoration:underline;text-underline-offset:3px}
+.fr-when{font-family:var(--font-mono);font-size:11px;color:var(--ink-3)}
+.lane{display:grid;grid-template-columns:5.6rem 1fr;gap:12px;align-items:start;padding:5px 0}
+.lane-k{
+  font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-3);padding-top:4px;
+}
+.lane-client .lane-k{color:var(--brand-ink)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{
+  font-size:12.5px;padding:3px 10px;border-radius:6px;
+  background:var(--surface);border:1px solid var(--line);color:var(--ink-2);
+}
+.lane-client .chip{background:var(--brand-wash);border-color:var(--brand-soft);color:var(--brand-deep)}
+
+/* ---------- l'axe temporel ----------
+   Le document est une chronologie. L'axe n'illustre pas le parcours : il le
+   structure. Chaque fiche s'y accroche, et son déclencheur EST la graduation.
+   Le déclencheur reste collé en haut pendant la lecture : on sait toujours à
+   quel instant du séjour on se trouve. */
+.fiches{position:relative;display:grid;margin-top:10px}
+.fiches::before{
+  content:"";position:absolute;z-index:0;
+  top:18px;bottom:18px;left:calc(var(--axis) - 1px);width:2px;border-radius:2px;
+  background:linear-gradient(to bottom,var(--brand-soft) 0%,var(--brand-soft) 78%,transparent 100%);
+}
+/* Le défilement pilote l'axe : le temps du séjour avance derrière le lecteur.
+   Un seul mouvement, sur le seul élément qui porte du sens. */
+.fiches::after{
+  content:"";position:absolute;z-index:0;pointer-events:none;
+  top:18px;left:calc(var(--axis) - 1px);width:2px;height:calc(100% - 36px);
+  border-radius:2px;background:var(--brand);
+  transform:scaleY(0);transform-origin:top;
+}
+.fiche{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:var(--axis) minmax(0,1fr);
+  column-gap:clamp(20px,3vw,36px);align-items:start;
+  padding-block:30px;border-top:1px solid var(--line-2);
+}
+.fiches > .fiche:first-child{border-top:none;padding-top:8px}
+
+/* Position fixe dans la fiche, jamais collante : rendu collant, le déclencheur
+   d'une fiche haute descendait pendant la lecture pendant que celui d'une fiche
+   courte restait en place. Les pastilles cessaient de former une échelle
+   régulière. Elles sont maintenant toutes au même niveau dans leur fiche, et
+   exactement centrées sur l'axe. */
+.fiche-when{
+  display:flex;align-items:flex-start;justify-content:flex-end;gap:12px;
+  text-align:right;
+}
+.tick{
+  order:2;flex:none;width:11px;height:11px;margin-top:4px;border-radius:50%;
+  background:var(--surface);border:2px solid var(--brand);
+  box-shadow:0 0 0 5px var(--ground);
+  transform:translateX(50%);
+}
+.trig{
+  font-family:var(--font-mono);font-size:11.5px;line-height:1.45;
+  color:var(--brand-ink);letter-spacing:-.01em;
+}
+
+/* Le contenu n'est plus une carte : 26 cartes identiques aplatissent la
+   hiérarchie. Le filet de l'axe et l'espace suffisent à séparer. */
+.fiche-card{min-width:0}
+.fiche-card h3{margin:0 0 13px}
+.fiche-body{padding:0}
+.fiche-body p{margin:0 0 14px;max-width:66ch}
+.fiche-body p:last-child{margin-bottom:0}
+.canaux{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 16px}
+.cn{
+  font-size:11.5px;font-weight:500;letter-spacing:.02em;
+  padding:3px 10px;border-radius:999px;border:1px solid var(--line);
+  color:var(--ink-2);background:var(--surface-2);
+}
+.cn-email{color:var(--ch-email);border-color:color-mix(in srgb,var(--ch-email) 34%,transparent)}
+.cn-sms{color:var(--ch-sms);border-color:color-mix(in srgb,var(--ch-sms) 34%,transparent)}
+.cn-wa{color:var(--ch-wa);border-color:color-mix(in srgb,var(--ch-wa) 34%,transparent)}
+.cn-web{color:var(--brand-ink);border-color:var(--brand-soft)}
+.equipe{
+  margin-top:16px;padding:14px 16px;border-radius:10px;
+  background:var(--surface-2);border-left:3px solid var(--ink-3);
+}
+.equipe-k{
+  font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-3);margin:0 0 6px;
+}
+.equipe p{margin:0;font-size:14.5px;color:var(--ink-2);max-width:none}
+.gain{
+  margin-top:14px;padding-left:14px;border-left:3px solid var(--gold);
+  font-size:14.5px;color:var(--ink-2);
+}
+.gain b{color:var(--ink);font-weight:600}
+
+/* ---------- capture ---------- */
+/* Emplacement de capture à venir : un repère discret, pas un grand vide.
+   Dix cadres pleine largeur pesaient autant que dix vraies captures. */
+.shot{
+  margin:20px 0 0;max-width:min(100%, 520px);
+  background:var(--brand-wash);
+  border:1px dashed var(--brand-soft);border-radius:10px;
+  display:flex;align-items:center;gap:14px;
+  text-align:left;padding:14px 18px;
+}
+.shot-wide,.shot-tall{max-width:min(100%, 520px)}
+.shot > div{display:flex;flex-direction:column;gap:3px;min-width:0}
+.shot-l{font-size:13.5px;font-weight:500;color:var(--ink-2);line-height:1.4}
+.shot-s{font-size:11.5px;color:var(--ink-3);font-style:italic}
+.shot-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:18px}
+.shot-row .shot{margin-top:0}
+
+/* Une capture ne dépasse jamais sa taille naturelle : agrandie, elle devient
+   floue et mange la page. Trois gabarits selon la forme réelle de l'image. */
+.figure{margin:20px 0 0;max-width:min(100%, 760px)}
+.shot-row .figure{max-width:100%}
+
+/* Une capture en portrait ou presque carrée laissée seule dans une colonne
+   large flotte au milieu d'un vide. On la pose sur un panneau qui occupe la
+   colonne : le cadrage devient un choix, plus un accident. */
+.figure--narrow,.figure--medium{
+  max-width:100%;
+  display:flex;flex-direction:column;align-items:center;
+  background:var(--brand-wash);
+  border:1px solid var(--line-2);border-radius:14px;
+  padding:clamp(18px,3vw,30px);
+}
+.figure--narrow img{max-width:min(100%, 300px)}
+.figure--medium img{max-width:min(100%, 440px)}
+.figure--narrow figcaption,.figure--medium figcaption{
+  flex-direction:column;align-items:center;gap:5px;
+  text-align:center;max-width:44ch;margin-top:16px;
+}
+.figure img{
+  display:block;width:100%;height:auto;border-radius:10px;
+  border:1px solid var(--line);background:var(--surface);
+  box-shadow:var(--shadow);
+}
+.figure figcaption{
+  margin-top:10px;font-size:12.5px;color:var(--ink-3);line-height:1.45;
+}
+.shot-row .figure{margin-top:0}
+
+/* ---------- galerie d'écrans ----------
+   Plusieurs captures d'une même surface se lisent mieux côte à côte qu'empilées :
+   on fait défiler la pellicule au lieu de dérouler la page. La quatrième vignette
+   dépasse volontairement du cadre, c'est ce qui signale qu'on peut glisser. */
+.gallery{
+  margin:20px 0 0;max-width:100%;
+  display:flex;flex-direction:column;
+  background:var(--brand-wash);
+  border:1px solid var(--line-2);border-radius:14px;
+  padding:clamp(18px,3vw,26px);
+}
+.gallery-track{
+  display:flex;gap:16px;align-items:flex-start;
+  overflow-x:auto;overflow-y:hidden;
+  scroll-snap-type:x proximity;
+  scroll-padding-inline:4px;
+  padding-bottom:12px;
+  scrollbar-width:thin;scrollbar-color:var(--brand-soft) transparent;
+}
+.gallery-track::-webkit-scrollbar{height:8px}
+.gallery-track::-webkit-scrollbar-track{background:transparent}
+.gallery-track::-webkit-scrollbar-thumb{background:var(--brand-soft);border-radius:8px}
+.gallery-track img{
+  flex:0 0 auto;width:auto;height:clamp(290px,44vw,360px);
+  scroll-snap-align:center;
+  border-radius:12px;border:1px solid var(--line);
+  background:var(--surface);box-shadow:var(--shadow);
+}
+.gallery-track:focus-visible{outline:2px solid var(--brand);outline-offset:5px;border-radius:12px}
+.gallery figcaption{
+  flex-direction:column;align-items:center;gap:5px;
+  text-align:center;max-width:52ch;align-self:center;margin-top:16px;
+}
+@media print{
+  .gallery-track{overflow:visible;flex-wrap:wrap;justify-content:center}
+  .gallery-track img{height:210px}
+}
+
+/* ---------- blocs divers ---------- */
+.note{
+  background:var(--gold-soft);border-left:3px solid var(--gold);
+  border-radius:0 10px 10px 0;padding:16px 20px;margin:26px 0 0;
+}
+.note p{margin:0;font-size:14.5px;color:var(--ink);max-width:70ch}
+.note b{color:var(--gold-ink)}
+
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:8px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.tile h4{margin:0 0 8px;font-size:1rem;font-weight:600}
+.tile p{margin:0;font-size:14.5px;color:var(--ink-2)}
+
+.tbl-wrap{overflow-x:auto;margin-top:22px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14.5px}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line-2);vertical-align:top}
+th{
+  font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-3);background:var(--surface-2);
+}
+tr:last-child td{border-bottom:none}
+td.mono{font-family:var(--font-mono);font-size:12.5px;color:var(--ink-2);white-space:nowrap}
+
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:8px}
+.plan{
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;
+  display:flex;flex-direction:column;gap:6px;
+}
+.plan.pop{border-color:var(--brand);box-shadow:inset 0 2px 0 var(--brand)}
+.plan-n{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.plan-p{font-family:var(--font-display);font-size:2.1rem;line-height:1;color:var(--ink)}
+.plan-p sup{font-family:var(--font-body);font-size:.95rem;font-weight:500;vertical-align:super;margin-left:2px}
+.plan-m{font-size:12px;color:var(--ink-3)}
+.plan-d{font-size:14px;color:var(--ink-2);margin-top:4px}
+
+/* ---------- synthèse cochable ---------- */
+.score{
+  position:sticky;top:calc(var(--hdr) + 10px + env(safe-area-inset-top, 0px));z-index:20;
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:14px 18px;margin-bottom:24px;
+  display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;box-shadow:var(--shadow);
+}
+.score-n{font-family:var(--font-display);font-size:1.9rem;line-height:1;color:var(--brand-ink);font-variant-numeric:tabular-nums}
+.score-l{font-size:14px;color:var(--ink-2)}
+.score-bar{flex:1 1 140px;height:6px;border-radius:999px;background:var(--surface-3);overflow:hidden;min-width:120px}
+.score-fill{height:100%;width:0;background:var(--brand);border-radius:999px;transition:width .25s ease}
+.reset{font:inherit;font-size:12px;color:var(--ink-3);background:none;border:none;cursor:pointer;text-decoration:underline;padding:0}
+
+.check-group{margin-top:22px}
+.check-group h4{
+  margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--brand-ink);
+}
+.check-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px}
+.check{
+  display:flex;align-items:flex-start;gap:10px;padding:9px 12px;
+  border-radius:8px;cursor:pointer;font-size:14.5px;color:var(--ink);
+  border-bottom:1px solid var(--line-2);
+}
+.check:hover{background:var(--brand-wash)}
+.check input{
+  appearance:none;flex:none;width:17px;height:17px;margin-top:3px;
+  border:1.5px solid var(--ink-3);border-radius:4px;background:var(--surface);cursor:pointer;
+}
+.check input:checked{background:var(--brand);border-color:var(--brand)}
+.check input:checked::after{content:"";display:block;width:4px;height:8px;margin:1.5px auto 0;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.check input:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.check:has(input:checked){color:var(--ink-3)}
+
+/* ---------- clôture ---------- */
+.end{background:var(--end-bg);color:var(--end-fg);border-bottom:none}
+.end h2{color:inherit}
+.end .intro{color:color-mix(in srgb, currentColor 74%, transparent);max-width:56ch}
+.end .eyebrow{color:color-mix(in srgb, currentColor 80%, transparent)}
+.end-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:30px}
+.end-step{border-top:2px solid color-mix(in srgb, currentColor 34%, transparent);padding-top:14px}
+.end-step .n{font-family:var(--font-mono);font-size:11px;opacity:.7;display:block;margin-bottom:6px}
+.end-step h4{margin:0 0 6px;font-size:1rem;font-weight:600}
+.end-step p{margin:0;font-size:14.5px;color:color-mix(in srgb, currentColor 74%, transparent)}
+
+footer{padding-block:30px;font-size:12.5px;color:var(--ink-3)}
+footer p{margin:0 0 4px;max-width:70ch}
+
+a{color:var(--brand-ink)}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:4px}
+
+/* En dessous de 860 px le fil défile horizontalement, largeurs figées : masquer
+   puis réafficher le libellé de l'étape courante faisait sauter tout le fil à
+   chaque changement de phase. */
+@media (max-width:860px){
+  .rail-steps li{flex:0 0 auto}
+  .rail-seg{flex:none;width:18px;min-width:18px}
+  .rail-steps{width:max-content}
+  .rail-link{padding-right:6px}
+}
+@media (max-width:900px){
+  .fiches::before,.fiches::after{display:none}
+  .fiche{grid-template-columns:minmax(0,1fr);row-gap:9px;padding-block:24px}
+  .fiche-when{justify-content:flex-start;text-align:left}
+  .tick{display:none}
+  .trig{
+    display:inline-block;padding:3px 10px;border-radius:6px;
+    background:var(--brand-wash);border:1px solid var(--brand-soft);
+  }
+}
+@media (max-width:640px){
+  :root{--hdr:76px}
+  .topbar-ctx{display:none}
+  .lane{grid-template-columns:1fr;gap:5px}
+  .lane-k{padding-top:0}
+  .score{position:static}
+}
+/* Apparition au défilement, en amélioration progressive : les moteurs qui
+   ignorent animation-timeline affichent simplement l'état final. */
+@media (prefers-reduced-motion:no-preference){
+  @supports (animation-timeline: view()){
+    .fiches::after{
+      animation:tf-spine linear both;
+      animation-timeline:view();
+      animation-range:entry 92% exit 8%;
+    }
+    .tick{
+      animation:tf-tick linear both;
+      animation-timeline:view();
+      animation-range:entry 88% entry 100%;
+    }
+    .fiche-card,.figure,.tile,.plan{
+      animation:tf-rise linear both;
+      animation-timeline:view();
+      animation-range:entry 4% entry 46%;
+    }
+  }
+}
+@keyframes tf-spine{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes tf-tick{from{background:var(--surface)}to{background:var(--brand)}}
+@keyframes tf-rise{from{opacity:.25;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+}
+html{scroll-behavior:smooth}
+
+@media print{
+  .topbar,.toc,.score,.rail{display:none!important}
+  /* un document imprimé se lit en entier, quel que soit le mode à l'écran */
+  .fiche-body > p,.fiche-body .equipe,.fiche-body .figure{display:block!important}
+  .fiches::after{display:none}
+  .tick{background:var(--brand)!important}
+  body{background:#fff;color:#1F2A2A;font-size:11pt}
+  .band{border-bottom:1px solid #ddd;padding-block:18pt;break-inside:auto}
+  .fiche,.tile,.plan,.fr-step{break-inside:avoid}
+  .shot{break-inside:avoid;aspect-ratio:16/9}
+  .end{background:#fff!important;color:#1F2A2A!important}
+  h1{font-size:30pt}h2{font-size:19pt}
+}
+</style>
+</head>
+<body>
+
+
+<div class="topbar">
+  <div class="topbar-in">
+    <span class="mark">
+      <svg width="15" height="18" viewBox="0 0 133 155" aria-hidden="true"><path fill="#006F68" d="M66.5 0 133 38.5v77L66.5 154 0 115.5v-77L66.5 0Zm0 17.7L15.3 47.3v59.4l51.2 29.6 51.2-29.6V47.3L66.5 17.7Z"/><path fill="#006F68" d="M66.5 44.4 90 58v27.1L66.5 98.7 43 85.1V58l23.5-13.6Z"/></svg>
+      <span>TriggerFlow</span>
+    </span>
+    <div class="topbar-spacer"></div>
+    <span class="topbar-ctx" id="ctx">Le parcours client</span>
+    <button class="toc-btn mode-btn" id="modeBtn" aria-pressed="true">Tout déplier</button>
+    <button class="toc-btn" id="tocOpen" aria-expanded="false" aria-controls="toc">Sommaire</button>
+  </div>
+  <nav class="rail" aria-label="Fil du parcours">
+    <div class="rail-in">
+      <div class="rail-scroll" id="railScroll">
+        <ol class="rail-steps" id="railSteps"></ol>
+      </div>
+    </div>
+  </nav>
+  <div class="progress" id="prog"></div>
+</div>
+
+<div class="toc" id="toc" hidden role="dialog" aria-modal="true" aria-label="Sommaire">
+  <div class="toc-head">
+    <span class="eyebrow" style="margin:0">Sommaire</span>
+    <button class="toc-close" id="tocClose">Fermer</button>
+  </div>
+  <nav class="toc-grid" id="tocGrid"></nav>
+</div>
+
+<!-- ============ COUVERTURE ============ -->
+<header class="cover">
+  <div class="wrap">
+    <p class="eyebrow">Document de référence</p>
+    <div class="head-row head-row--cover">
+      <h1>Le parcours client, point de contact par point de contact</h1>
+      <div class="head-text">
+        <p class="lede">Entre le moment où un voyageur découvre un établissement et celui où il y revient, il existe une trentaine d'occasions de lui parler. La plupart ne sont jamais utilisées, non par désintérêt, mais parce qu'aucune équipe de réception ne peut les tenir à la main.</p>
+        <p class="lede">Ce document recense ces moments un par un. Pour chacun : <strong>ce qui le déclenche</strong>, <strong>par quels canaux il passe</strong>, <strong>ce que l'équipe voit en face</strong>, et <strong>ce qu'il change concrètement</strong>. Tout ce qui est décrit ici fonctionne aujourd'hui en production.</p>
+      </div>
+    </div>
+    <div class="cover-meta">
+      <span class="meta-chip">8 phases du parcours</span>
+      <span class="meta-chip">Côté voyageur et côté équipe</span>
+      <span class="meta-chip">Lecture d'environ 25 minutes</span>
+      <span class="meta-chip">Mis à jour en septembre 2026</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ FRISE ============ -->
+<section class="band" id="frise">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Vue d'ensemble</span>
+      <h2>Le parcours, d'un bout à l'autre</h2></div>
+      <p class="intro">Un seul trait, jamais coupé : vingt-six moments où l'établissement peut parler à son client, répartis sur les trois temps du séjour. Chaque étape renvoie à sa section détaillée.</p>
+    </div>
+
+    <figure class="g-wrap">
+      <div class="g-fig">
+        <svg viewBox="0 0 1000 400" role="img" aria-label="Un trait continu parcourt les vingt-six points de contact du séjour en trois passages : avant, pendant, après">
+          <path class="g-track" d="M 60 96 H 856 Q 916 96 916 156 Q 916 216 856 216 H 164 Q 104 216 104 276 Q 104 336 164 336 H 924" fill="none" stroke="currentColor" stroke-opacity=".13" stroke-width="3" stroke-linecap="round"/>
+          <path class="g-line" pathLength="1000" d="M 60 96 H 856 Q 916 96 916 156 Q 916 216 856 216 H 164 Q 104 216 104 276 Q 104 336 164 336 H 924" fill="none" stroke="var(--brand)" stroke-width="3" stroke-linecap="round"/>
+          <polygon class="g-tip" points="918,328 940,336 918,344" fill="var(--brand)"/>
+          <g fill="var(--brand)">
+            <circle class="g-dot d1" cx="110" cy="96" r="5.5"/>
+            <circle class="g-dot d2" cx="160" cy="96" r="5.5"/>
+            <circle class="g-dot d3" cx="210" cy="96" r="5.5"/>
+            <circle class="g-dot d4" cx="300" cy="96" r="5.5"/>
+            <circle class="g-dot d5" cx="350" cy="96" r="5.5"/>
+            <circle class="g-dot d6" cx="400" cy="96" r="5.5"/>
+            <circle class="g-dot d7" cx="450" cy="96" r="5.5"/>
+            <circle class="g-dot d8" cx="560" cy="96" r="5.5"/>
+            <circle class="g-dot d9" cx="610" cy="96" r="5.5"/>
+            <circle class="g-dot d10" cx="660" cy="96" r="5.5"/>
+            <circle class="g-dot d11" cx="710" cy="96" r="5.5"/>
+          </g>
+          <g class="g-lab">
+            <a href="#p1"><text x="160" y="76" text-anchor="middle">Avant</text></a>
+            <a href="#p2"><text x="375" y="76" text-anchor="middle">Réservation</text></a>
+            <a href="#p3"><text x="635" y="76" text-anchor="middle">Pré-séjour</text></a>
+          </g>
+          <g fill="var(--brand)">
+            <circle class="g-dot d12" cx="820" cy="216" r="5.5"/>
+            <circle class="g-dot d13" cx="770" cy="216" r="5.5"/>
+            <circle class="g-dot d14" cx="720" cy="216" r="5.5"/>
+            <circle class="g-dot d15" cx="620" cy="216" r="5.5"/>
+            <circle class="g-dot d16" cx="570" cy="216" r="5.5"/>
+            <circle class="g-dot d17" cx="520" cy="216" r="5.5"/>
+            <circle class="g-dot d18" cx="400" cy="216" r="5.5"/>
+            <circle class="g-dot d19" cx="350" cy="216" r="5.5"/>
+          </g>
+          <g class="g-lab">
+            <a href="#p4"><text x="770" y="244" text-anchor="middle">Arrivée</text></a>
+            <a href="#p5"><text x="570" y="244" text-anchor="middle">Séjour</text></a>
+            <a href="#p6"><text x="375" y="244" text-anchor="middle">Départ</text></a>
+          </g>
+          <g fill="var(--brand)">
+            <circle class="g-dot d20" cx="210" cy="336" r="5.5"/>
+            <circle class="g-dot d21" cx="260" cy="336" r="5.5"/>
+            <circle class="g-dot d22" cx="310" cy="336" r="5.5"/>
+            <circle class="g-dot d23" cx="430" cy="336" r="5.5"/>
+            <circle class="g-dot d24" cx="480" cy="336" r="5.5"/>
+            <circle class="g-dot d25" cx="530" cy="336" r="5.5"/>
+            <circle class="g-dot d26" cx="580" cy="336" r="5.5"/>
+          </g>
+          <g class="g-lab">
+            <a href="#p7"><text x="260" y="364" text-anchor="middle">Après-séjour</text></a>
+            <a href="#p8"><text x="505" y="364" text-anchor="middle">Fidélisation</text></a>
+          </g>
+          <g class="g-temps">
+            <text x="60"  y="48"  text-anchor="start">AVANT LE SÉJOUR</text>
+            <text x="640" y="188" text-anchor="start">PENDANT LE SÉJOUR</text>
+            <text x="636" y="308" text-anchor="start">APRÈS, ET LE RETOUR</text>
+          </g>
+          <g class="g-cnt">
+            <text x="196" y="48"  text-anchor="start">11 points</text>
+            <text x="792" y="188" text-anchor="start">8 points</text>
+            <text x="800" y="308" text-anchor="start">7 points</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption>Onze points de contact avant le séjour, huit pendant, sept après. Le trait se remplit à mesure de la lecture.</figcaption>
+    </figure>
+
+    <div class="phases">
+      <a class="ph" href="#p1">
+        <span class="ph-n">01</span>
+        <span class="ph-t">Avant la réservation</span>
+        <span class="ph-w">le visiteur n'est pas encore client</span>
+        <span class="ph-s">Chat du site, bot IA en trente langues, WhatsApp et réseaux sociaux, inscription newsletter, avis affichés.</span>
+        <span class="ph-c"><b>3</b> points de contact</span>
+      </a>
+      <a class="ph" href="#p2">
+        <span class="ph-n">02</span>
+        <span class="ph-t">La réservation</span>
+        <span class="ph-w">à la seconde où le PMS l'enregistre</span>
+        <span class="ph-s">Confirmation à votre marque, carte dans le portefeuille du téléphone, calendrier, lien d'acompte, contrat.</span>
+        <span class="ph-c"><b>4</b> points de contact</span>
+      </a>
+      <a class="ph" href="#p3">
+        <span class="ph-n">03</span>
+        <span class="ph-t">Le pré-séjour</span>
+        <span class="ph-w">de J-30 à la veille de l'arrivée</span>
+        <span class="ph-s">Pré-check-in en ligne, scan de la pièce d'identité, signature, ventes additionnelles, surclassement.</span>
+        <span class="ph-c"><b>4</b> points de contact</span>
+      </a>
+      <a class="ph" href="#p4">
+        <span class="ph-n">04</span>
+        <span class="ph-t">L'arrivée</span>
+        <span class="ph-w">le jour J</span>
+        <span class="ph-s">Code de serrure connectée et QR, borne en libre-service, mot de bienvenue au moment réel du check-in.</span>
+        <span class="ph-c"><b>3</b> points de contact</span>
+      </a>
+      <a class="ph" href="#p5">
+        <span class="ph-n">05</span>
+        <span class="ph-t">Pendant le séjour</span>
+        <span class="ph-w">chaque nuit passée sur place</span>
+        <span class="ph-s">Conversation sur six canaux, Guest App, room service, demande de service transmise aux étages.</span>
+        <span class="ph-c"><b>3</b> points de contact</span>
+      </a>
+      <a class="ph" href="#p6">
+        <span class="ph-n">06</span>
+        <span class="ph-t">Le départ</span>
+        <span class="ph-w">du check-out au dernier règlement</span>
+        <span class="ph-s">Facture automatique, règlement du solde à distance, objet oublié rattaché à la réservation.</span>
+        <span class="ph-c"><b>2</b> points de contact</span>
+      </a>
+      <a class="ph" href="#p7">
+        <span class="ph-n">07</span>
+        <span class="ph-t">L'après-séjour</span>
+        <span class="ph-w">de quelques heures à quelques jours après</span>
+        <span class="ph-s">Enquête de satisfaction, demande d'avis conditionnée à la réponse, alerte sur avis négatif.</span>
+        <span class="ph-c"><b>3</b> points de contact</span>
+      </a>
+      <a class="ph" href="#p8">
+        <span class="ph-n">08</span>
+        <span class="ph-t">La fidélisation et le retour</span>
+        <span class="ph-w">tout le reste de l'année</span>
+        <span class="ph-s">Espace client, points et avantages, anniversaire, campagnes segmentées, réactivation des dormants.</span>
+        <span class="ph-c"><b>4</b> points de contact</span>
+      </a>
+    </div>
+
+      <div class="note">
+      <p><b>Comment lire les fiches.</b> Chaque point de contact porte son déclencheur exact, écrit tel qu'il apparaît dans l'outil. C'est ce qui distingue une automatisation d'un envoi groupé : le message part parce qu'un événement précis a eu lieu sur cette réservation précise, pas parce qu'un lundi matin quelqu'un a lancé un envoi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PHASE 01 ============ -->
+<section class="band band-alt" id="p1">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Phase 01</span>
+      <h2>Avant la réservation</h2></div>
+      <p class="intro">Le visiteur hésite, compare, et repart si personne ne répond. La plupart des questions posées à ce stade arrivent en dehors des heures de présence de la réception.</p>
+    </div>
+
+    <div class="fiches">
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Visiteur sur une page du site</span></div>
+        <div class="fiche-card">
+          <h3>Le chat du site</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-web">Chat du site</span><span class="cn cn-wa">WhatsApp</span><span class="cn">Messenger</span><span class="cn">Instagram</span></div>
+          <p>Un widget s'installe sur le site de l'établissement en une ligne de code. Horaires d'ouverture, message d'accueil traduit, formulaire de pré-chat, message hors ligne et couleurs sont paramétrables. Quand personne n'est disponible, le visiteur reçoit un lien pour reprendre la conversation plus tard sans rien ressaisir.</p>
+          <p>Les messages venus de WhatsApp, Messenger et Instagram arrivent dans le même fil que ceux du chat. Un visiteur qui écrit sur Instagram et qui rappelle deux jours plus tard sur WhatsApp reste la même conversation.</p>
+          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Tout arrive dans un hub de messagerie unique. Pas de bascule entre cinq applications, pas de message vu par personne parce qu'il était sur le mauvais canal.</p></div>
+          <div class="gain"><b>Ce que ça change :</b> les demandes du soir et du week-end ne se perdent plus en attendant le lundi matin.</div>
+          <div class="shot-row">
+            <div class="shot"><div><div class="shot-l">Le chat du site vu par le visiteur, bulle ouverte sur une page de réservation</div><div class="shot-s">À intégrer</div></div></div>
+            <figure class="figure"><img src="/doc/parcours/captures/02-hub-messagerie.jpg" alt="Le hub de messagerie : un fil unique où s'enchaînent la réservation, l'arrivée, un message WhatsApp du client et le départ" width="1383" height="780" loading="lazy" decoding="async"><figcaption><span>Le hub de messagerie : un fil unique où s'enchaînent la réservation, l'arrivée, un message WhatsApp du client et le départ</span></figcaption></figure>
+          </div>
+        
+        </div>
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Message entrant hors présence</span></div>
+        <div class="fiche-card">
+          <h3>Le bot IA et son escalade vers un humain</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-web">Chat du site</span><span class="cn cn-wa">WhatsApp</span><span class="cn cn-sms">SMS</span><span class="cn cn-email">E-mail</span></div>
+          <p>Le bot répond dans la langue du visiteur, détectée automatiquement, à partir d'une base de connaissance construite depuis le site de l'établissement et complétée à la main. Il connaît les horaires, les équipements, les conditions d'annulation, l'adresse, le parking.</p>
+          <p>Le point important n'est pas qu'il réponde, c'est qu'il sache s'arrêter. Dès qu'une question sort de son périmètre, ou que le visiteur demande un humain, il passe la main : la réception reçoit une alerte, reprend le fil exactement là où il s'est arrêté, et le visiteur n'a rien à répéter.</p>
+          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Alerte par e-mail et notification à l'escalade. L'historique complet de l'échange avec le bot est visible. Un simulateur permet de tester les réponses avant mise en ligne.</p></div>
+          <div class="gain"><b>Ce que ça change :</b> une présence continue sans astreinte, et une main passée à l'humain avant que le visiteur ne s'agace.</div>
+          <figure class="figure figure--narrow"><img src="/doc/parcours/captures/03-bot-simulateur.png" alt="Le bot répond à une question client, avec son indice de confiance et le nombre de sources utilisées" width="404" height="530" loading="lazy" decoding="async"><figcaption><span>Le bot répond à une question client, avec son indice de confiance et le nombre de sources utilisées</span></figcaption></figure>
+        
+        </div>
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Nouvelle réponse à un formulaire</span></div>
+        <div class="fiche-card">
+          <h3>La capture d'audience sur le site</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-web">Widget embarqué</span><span class="cn cn-email">E-mail de confirmation</span></div>
+          <p>Deux widgets s'intègrent au site de l'établissement. Le premier collecte les inscriptions à la newsletter avec double confirmation par e-mail, ce qui protège la délivrabilité et la conformité. Le second affiche les avis réels de l'établissement, dans une version lisible par les moteurs de recherche.</p>
+          <p>Une inscription crée directement une fiche dans le CRM, pose les étiquettes choisies et alimente les segments. Le contact est exploitable immédiatement, sans export ni import.</p>
+          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Fiche contact créée, étiquettes posées, segment alimenté. Aucune saisie.</p></div>
+          <div class="gain"><b>Ce que ça change :</b> l'audience du site cesse d'être anonyme et devient une base adressable.</div>
+          <figure class="figure figure--medium"><img src="/doc/parcours/captures/04-widget-avis.png" alt="Le widget d'avis embarqué sur le site de l'hôtel, à sa charte, avec les trois plateformes réunies" width="760" height="672" loading="lazy" decoding="async"><figcaption><span>Le widget d'avis embarqué sur le site de l'hôtel, à sa charte, avec les trois plateformes réunies</span></figcaption></figure>
+        
+        </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="band" id="p2">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Phase 02</span>
+      <h2>La réservation</h2></div>
+      <p class="intro">C'est le moment où l'attention du client est la plus forte. C'est aussi le seul message que presque tous les établissements envoient déjà, et le seul qu'ils envoient souvent sans y avoir réfléchi.</p>
+    </div>
+
+    <div class="fiches">
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Nouvelle réservation · Confirmation</span></div>
+        <div class="fiche-card">
+          <h3>La confirmation de réservation</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span></div>
+          <p>Le message part dans les secondes qui suivent l'enregistrement dans le PMS, pas au prochain passage d'un traitement nocturne. Il reprend les éléments réels de la réservation : dates, chambre, régime tarifaire, montant, occupants, conditions d'annulation.</p>
+          <p>L'éditeur d'e-mail est visuel. La charte de l'établissement, ses polices et son logo sont appliqués une fois et valent pour tous les messages. Un lien de repli permet d'ouvrir le message dans un navigateur quand la messagerie du destinataire le tronque.</p>
+          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>La fiche client se crée ou s'enrichit automatiquement. Un commentaire peut être reposté dans le PMS pour que la réception voie, depuis son outil habituel, ce qui a été envoyé.</p></div>
+          <div class="gain"><b>Ce que ça change :</b> une confirmation à la marque de l'établissement, pas celle du PMS ou de l'agence.</div>
+          <div class="shot-row">
+            <figure class="figure"><img src="/doc/parcours/captures/05-constructeur-flow.jpg" alt="Le constructeur de flow : déclencheur à trois jours de l'arrivée, condition sur l'e-mail, deux branches" width="1456" height="821" loading="lazy" decoding="async"><figcaption><span>Le constructeur de flow : déclencheur à trois jours de l'arrivée, condition sur l'e-mail, deux branches</span></figcaption></figure>
+            <figure class="figure"><img src="/doc/parcours/captures/06-editeur-email.jpg" alt="L'éditeur d'e-mail : le modèle pré-séjour, ses variables et la bibliothèque de blocs" width="1155" height="757" loading="lazy" decoding="async"><figcaption><span>L'éditeur d'e-mail : le modèle pré-séjour, ses variables et la bibliothèque de blocs</span></figcaption></figure>
+          
+        </div>
+        </div>
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Confirmation de la réservation</span></div>
+        <div class="fiche-card">
+          <h3>La carte dans le portefeuille du téléphone</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-web">Apple Wallet</span><span class="cn cn-web">Google Wallet</span><span class="cn cn-web">Fichier calendrier</span></div>
+          <p>Le client ajoute sa réservation au portefeuille de son téléphone en un geste. La carte porte les dates, le nom de l'établissement, l'adresse, et la charte de l'hôtel : logo, couleurs, visuel. Elle reste accessible hors connexion, ce qui compte à l'arrivée d'un vol.</p>
+          <p>En parallèle, un lien d'ajout au calendrier place les dates du séjour dans l'agenda du client, avec l'adresse et le contact de l'établissement.</p>
+          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Rien à faire. La carte se construit à partir des données de la réservation et de la charte déjà paramétrée.</p></div>
+          <div class="gain"><b>Ce que ça change :</b> l'établissement reste présent sur l'écran d'accueil du téléphone jusqu'au jour de l'arrivée.</div>
+          <div class="shot"><div><div class="shot-l">La carte de réservation dans le portefeuille, aux couleurs de l'établissement</div><div class="shot-s">À intégrer, format portrait</div></div></div>
+        </div>
+      
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Lien de paiement : payé</span></div>
+        <div class="fiche-card">
+          <h3>Le lien de paiement</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span></div>
+          <p>Acompte, solde, caution, empreinte carte : le lien est à la marque de l'établissement et s'envoie par le canal de son choix. Plusieurs prestataires de paiement sont pris en charge.</p>
+          <p>Le paiement est un événement, pas seulement une écriture comptable. Le scénario peut donc s'embrancher dessus : si le client a payé, on passe à la suite ; s'il n'a pas payé au bout de trois jours, une relance part, et la réception est prévenue au bout de cinq.</p>
+          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Suivi des encaissements, relances automatiques, alerte quand le délai est dépassé. Le solde restant dû peut aussi être lu directement dans le PMS pour la plupart des connecteurs.</p></div>
+          <div class="gain"><b>Ce que ça change :</b> la relance d'acompte cesse d'être un pense-bête sur un carnet.</div>
+          <div class="shot"><div><div class="shot-l">La page de paiement vue par le client, à la charte de l'établissement</div><div class="shot-s">À intégrer</div></div></div>
+        </div>
+      
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Générer document</span></div>
+        <div class="fiche-card">
+          <h3>Les documents</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">Pièce jointe</span><span class="cn cn-web">Lien permanent</span></div>
+          <p>Contrat, bon de réservation, facture, fiche de police : un document PDF est généré à partir des données réelles de la réservation, stocké et envoyé, ou mis à disposition derrière un lien permanent. Il peut être signé électroniquement dans le formulaire de pré-check-in.</p>
+          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Le document est rattaché à la réservation et reste consultable depuis la fiche client.</p></div>
+          <div class="gain"><b>Ce que ça change :</b> fin des modèles Word remplis à la main et renommés à chaque envoi.</div>
+        </div>
+      
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="band band-alt" id="p3">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Phase 03</span>
+      <h2>Le pré-séjour</h2></div>
+      <p class="intro">La fenêtre la plus rentable du parcours, et la plus souvent vide. Le client a déjà payé, il se projette, et il est disponible. C'est là qu'il accepte un surclassement, remplit un formulaire, réserve une table.</p>
+    </div>
+
+    <div class="fiches">
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Date d'arrivée, 3 jours avant, 10h00</span></div>
+        <div class="fiche-card">
+          <h3>Le pré-check-in en ligne</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span><span class="cn cn-web">Formulaire web</span></div>
+          <p>Le client renseigne ses informations depuis son téléphone : identité des occupants, heure d'arrivée estimée, préférences, demandes particulières. Le formulaire se construit par glisser-déposer, sans développeur, et se traduit dans les langues de l'établissement.</p>
+          <p>Deux éléments changent le quotidien de la réception. Le <b>scan de la pièce d'identité</b> lit la bande de lecture optique du passeport ou de la carte d'identité et remplit les champs tout seul. La <b>signature électronique</b> permet de faire signer le règlement intérieur ou le contrat avant l'arrivée.</p>
+          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Un tableau des arrivées du jour indique qui a rempli, qui n'a pas rempli, qui arrive tard. Une vue des occupants, protégée par code, peut être partagée avec les services de secours.</p></div>
+          <div class="gain"><b>Ce que ça change :</b> le temps passé au comptoir à taper des identités disparaît. C'est aussi la phase où les formulaires sont de loin les mieux remplis : près d'un quart des envois pré-séjour sont complétés, contre moins de sept pour cent en post-séjour.</div>
+          <div class="shot-row">
+            <figure class="figure"><img src="/doc/parcours/captures/09-precheckin-identite.jpg" alt="Le pré-check-in côté client : l'étape d'identité des occupants" width="1155" height="757" loading="lazy" decoding="async"><figcaption><span>Le pré-check-in côté client : l'étape d'identité des occupants</span></figcaption></figure>
+            <div class="shot"><div><div class="shot-l">Le scan de la pièce d'identité et les champs remplis automatiquement</div><div class="shot-s">À intégrer</div></div></div>
+          </div>
+        
+        </div>
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Date d'arrivée, 4 à 7 jours avant</span></div>
+        <div class="fiche-card">
+          <h3>Les ventes additionnelles</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-wa">WhatsApp</span><span class="cn cn-web">Catalogue web</span></div>
+          <p>Petit-déjeuner, transfert, soin, bouteille en chambre, parking, départ tardif : le catalogue s'affiche dans le formulaire de pré-séjour, avec photos, prix et conditions. Les produits peuvent être conditionnés, par exemple n'apparaître que pour les séjours de deux nuits ou plus, ou que pour certaines catégories de chambre.</p>
+          <p>Le client commande et paie en ligne. La commande arrive dans l'établissement avec sa date de consommation, prête à préparer.</p>
+          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Vue des commandes à préparer par jour et par service. Une vue de suivi peut être partagée avec un prestataire extérieur, par exemple le boulanger, qui pointe ce qu'il a livré sans avoir accès au reste.</p></div>
+          <div class="gain"><b>Ce que ça change :</b> le timing compte plus que l'offre. Une proposition envoyée quatre à sept jours avant l'arrivée convertit nettement mieux que la même proposition envoyée la veille.</div>
+          <figure class="figure gallery">
+            <div class="gallery-track" tabindex="0" role="group" aria-label="Mises en page du catalogue, défilement horizontal">
+              <img src="/doc/parcours/captures/11-catalogue-vitrine.jpg" alt="Mise en page vitrine : un produit mis en avant, les autres en liste" width="1240" height="717" loading="lazy" decoding="async">
+              <img src="/doc/parcours/captures/11-catalogue-couple-fond.jpg" alt="Un second catalogue, dédié aux séjours en amoureux, avec sa propre image de fond" width="1240" height="808" loading="lazy" decoding="async">
+            </div>
+            <figcaption><span>Un catalogue par intention de séjour, et une mise en page qui se règle sans toucher aux produits : vitrine, cartes, liste ou mini-page. Faites défiler horizontalement.</span></figcaption>
+          </figure>
+        
+        </div>
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Surclassement accepté</span></div>
+        <div class="fiche-card">
+          <h3>Le surclassement de chambre</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-wa">WhatsApp</span><span class="cn cn-web">Catalogue web</span></div>
+          <p>La proposition de montée en gamme n'est envoyée que si la catégorie supérieure est réellement disponible dans le PMS à ces dates. La vérification se fait au moment de l'envoi, pas la veille.</p>
+          <p>Quand le client accepte et paie, l'information redescend dans le PMS. La réservation change de catégorie sans ressaisie, et l'acceptation devient elle-même un déclencheur : on peut enchaîner sur un message de remerciement ou sur une préparation de chambre particulière.</p>
+          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Le changement est visible dans le PMS comme s'il avait été saisi à la réception. Aucune double saisie, aucun risque de surréservation de la catégorie supérieure.</p></div>
+          <div class="gain"><b>Ce que ça change :</b> une recette additionnelle sur des chambres qui seraient parties au tarif de la catégorie inférieure.</div>
+          <div class="shot"><div><div class="shot-l">La proposition de surclassement avec la chambre supérieure et le supplément</div><div class="shot-s">À intégrer</div></div></div>
+        </div>
+      
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Date d'arrivée, 1 jour avant</span></div>
+        <div class="fiche-card">
+          <h3>Les informations pratiques</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span></div>
+          <p>Adresse et itinéraire, accès en voiture et en transport, parking, heure de mise à disposition de la chambre, contact direct de la réception. Ce message est le plus lu du parcours et le moins bien exploité : c'est le bon endroit pour glisser la dernière occasion de réserver une table ou un transfert.</p>
+          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Moins d'appels la veille et le jour même pour demander le code du portail ou l'heure du petit-déjeuner.</p></div>
+          <div class="gain"><b>Ce que ça change :</b> les questions répétitives de dernière minute diminuent nettement.</div>
+        </div>
+      
+        </div>
+      </article>
+
+
+    </div>
+
+      <div class="bilan" id="ventes-bilan">
+        <div class="bilan-head">
+          <span class="bilan-k">Côté équipe</span>
+          <h3>Ce que les ventes rapportent</h3>
+        </div>
+        <p class="bilan-lede">Proposer des prestations est une chose, savoir lesquelles se vendent en est une autre. Le suivi des ventes réunit sur un seul écran ce qui a été commandé, par quel canal, dans quelle catégorie, et ce que ça pèse réellement. Il couvre aussi les ventes faites pendant le séjour et celles passées depuis l'espace fidélité.</p>
+
+        <div class="cols">
+          <div class="tile"><h4>Trois indicateurs en tête</h4><p>Chiffre d'affaires, nombre de ventes et panier moyen sur la période choisie. Le panier moyen est souvent le plus parlant : il dit si le client achète plus cher ou simplement plus souvent.</p></div>
+          <div class="tile"><h4>Comparer deux périodes</h4><p>La période se règle sur sept jours, trente jours, trois mois, six mois, un an ou des dates libres. Une seconde sélection permet de comparer à la période précédente, à la même période l'an dernier, ou à un intervalle choisi.</p></div>
+          <div class="tile"><h4>Comparer deux segments</h4><p>La comparaison peut aussi porter sur deux segments de clientèle plutôt que sur deux périodes. Les couples et les familles n'achètent pas les mêmes choses, et le catalogue peut s'ajuster en conséquence.</p></div>
+          <div class="tile"><h4>La répartition par catégorie</h4><p>Le poids de chaque famille de prestations, en euros et en pourcentage, au choix sur le chiffre d'affaires ou sur le nombre de ventes. C'est la vue qui révèle les catégories qui occupent le catalogue sans rien rapporter.</p></div>
+          <div class="tile"><h4>Le classement des produits</h4><p>Les dix prestations les plus vendues, triables par volume ou par recette. Un produit qui sort peu mais cher et un produit qui sort souvent mais bas ne se pilotent pas de la même façon.</p></div>
+          <div class="tile"><h4>D'où viennent les commandes</h4><p>Chaque commande garde sa source : le formulaire de pré-séjour, le programme de fidélité ou la Guest App. On sait donc quel canal travaille, pas seulement combien on a vendu.</p></div>
+        </div>
+
+        <figure class="figure"><img src="/doc/parcours/captures/12-ventes-statistiques.jpg" alt="Le suivi des ventes additionnelles : chiffre d'affaires, nombre de ventes et panier moyen, courbes d'évolution, répartition par catégorie et classement des produits" width="1240" height="1306" loading="lazy" decoding="async"><figcaption><span>Sur cet exemple, le petit-déjeuner mène le classement en volume, mais la moitié de la recette vient d'une seule famille de prestations, et une autre en pèse à peine quatre pour cent. Le produit qui sort le plus souvent n'est pas celui qui rapporte le plus : c'est le genre de constat qui fait revoir un catalogue, pas la seule somme encaissée.</span></figcaption></figure>
+      </div>
+  </div>
+</section>
+
+<section class="band" id="p4">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Phase 04</span>
+      <h2>L'arrivée</h2></div>
+      <p class="intro">Le moment où la promesse se vérifie. Une arrivée tardive, un comptoir encombré ou un code qui ne fonctionne pas abîment durablement l'impression.</p>
+    </div>
+
+    <div class="fiches">
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Date d'arrivée, au moment, 14h00</span></div>
+        <div class="fiche-card">
+          <h3>Les codes d'accès et la serrure connectée</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span><span class="cn cn-web">Page sécurisée</span></div>
+          <p>Le client reçoit un lien personnel vers une page qui affiche ses codes d'accès et un QR code. Les serrures connectées prises en charge génèrent un code valable sur la durée du séjour, et seulement sur cette durée.</p>
+          <p>La page porte aussi un bloc de contact paramétrable : qui appeler si le code ne passe pas, à quel numéro, à quelle heure. C'est le détail qui évite l'appel paniqué à minuit sur un standard fermé.</p>
+          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Le code est généré et révoqué automatiquement. Plus de trousseau remis en main propre, plus de clé non rendue.</p></div>
+          <div class="gain"><b>Ce que ça change :</b> une arrivée autonome possible à toute heure, sans présence physique obligatoire.</div>
+          <div class="shot"><div><div class="shot-l">La page d'accès : le code, le QR et le bloc de contact d'urgence</div><div class="shot-s">À intégrer, format portrait</div></div></div>
+        </div>
+      
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Le client s'identifie sur la borne</span></div>
+        <div class="fiche-card">
+          <h3>La borne de check-in</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-web">Écran tactile sur place</span></div>
+          <p>Une tablette ou un écran dans le hall. Le client retrouve sa réservation par son nom et ses dates, finalise ce qui manque, choisit sa chambre quand l'établissement l'autorise, et repart avec ses accès. La borne revient d'elle-même à son écran d'accueil après un temps d'inactivité.</p>
+          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Le flux du soir se lisse. La réception traite les cas qui demandent un échange plutôt que la file d'attente.</p></div>
+          <div class="gain"><b>Ce que ça change :</b> une capacité d'accueil qui ne dépend plus du nombre de personnes derrière le comptoir.</div>
+          <div class="shot"><div><div class="shot-l">L'écran d'accueil de la borne et l'étape de choix de la chambre</div><div class="shot-s">À intégrer</div></div></div>
+        </div>
+      
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Check-in d'une chambre</span></div>
+        <div class="fiche-card">
+          <h3>Le mot de bienvenue</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span></div>
+          <p>Ce message ne part pas à une heure fixe. Il part au moment où le check-in est réellement enregistré, donc quand le client est physiquement dans sa chambre. Le contenu suit : le code du wifi, l'horaire du petit-déjeuner, le numéro direct pour écrire à la réception.</p>
+          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>C'est aussi ce message qui ouvre le canal de conversation pour tout le séjour. Le client répond sur le même fil.</p></div>
+          <div class="gain"><b>Ce que ça change :</b> le client sait à qui écrire, et il écrit au lieu de repartir mécontent sans rien dire.</div>
+        </div>
+      
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="band band-alt" id="p5">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Phase 05</span>
+      <h2>Pendant le séjour</h2></div>
+      <p class="intro">La phase la plus courte à décrire et la plus décisive. Un problème résolu pendant le séjour ne devient jamais un avis à une étoile.</p>
+    </div>
+
+    <div class="fiches">
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Message entrant du client</span></div>
+        <div class="fiche-card">
+          <h3>La conversation avec la réception</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-wa">WhatsApp</span><span class="cn cn-sms">SMS</span><span class="cn cn-email">E-mail</span><span class="cn cn-web">Chat</span><span class="cn">Messenger</span><span class="cn">Instagram</span></div>
+          <p>Six canaux entrants, un seul fil de conversation, rattaché à la bonne réservation et à la bonne fiche client. L'équipe voit qui écrit, dans quelle chambre, jusqu'à quand, et ce qui a déjà été échangé.</p>
+          <p>Le bot peut répondre aux questions simples à toute heure et passer la main dès que c'est nécessaire. Les demandes de service intéressent directement les étages : serviettes, oreiller supplémentaire, ne pas déranger.</p>
+          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Hub de messagerie sur poste fixe, et application mobile pour le personnel en mouvement, avec notifications. Un gouvernante peut répondre depuis le couloir.</p></div>
+          <div class="gain"><b>Ce que ça change :</b> le client dit pendant le séjour ce qu'il aurait écrit après, en public.</div>
+          <div class="shot"><div><div class="shot-l">L'application mobile du personnel : la liste des conversations et une réponse en cours</div><div class="shot-s">À intégrer, format portrait</div></div></div>
+        </div>
+      
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Lien personnel envoyé au client</span></div>
+        <div class="fiche-card">
+          <h3>La Guest App</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-web">Application mobile du voyageur</span></div>
+          <p>Une application destinée au client, alimentée par les données de l'établissement : informations du séjour en temps réel, room service et conciergerie, check-in et check-out en ligne, chat direct avec la réception. Le client y entre par un lien personnel, sans créer de compte.</p>
+          <p>Catalogues, produits, stock, données de réservation et de fidélité y sont synchronisés en continu. Ce que le client commande dans l'application arrive au même endroit que le reste.</p>
+          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Aucune base de données à tenir en double. Le catalogue paramétré une fois sert le formulaire de pré-séjour, l'espace client et l'application.</p></div>
+          <div class="gain"><b>Ce que ça change :</b> un répertoire de chambre numérique, qui remplace le classeur en similicuir posé sur le bureau.</div>
+          <figure class="figure gallery">
+            <div class="gallery-track" tabindex="0" role="group" aria-label="Écrans de la Guest App, défilement horizontal">
+              <img src="/doc/parcours/captures/guestapp-saint-james.png" alt="Saint James Paris : accueil, histoire du lieu, soins et carte du petit-déjeuner" width="1200" height="646" loading="lazy" decoding="async">
+              <img src="/doc/parcours/captures/guestapp-sofitel.png" alt="Sofitel Marrakech : accueil multilingue, jardins, restaurants et lieux à proximité" width="1200" height="607" loading="lazy" decoding="async">
+              <img src="/doc/parcours/captures/guestapp-cooks-bay.png" alt="Cook's Bay Moorea : guide de l'île, chambres, restaurant et contact avec l'équipe" width="1200" height="682" loading="lazy" decoding="async">
+              <img src="/doc/parcours/captures/guestapp-1.png" alt="Le gabarit vierge, prêt à recevoir le logo et les contenus d'un établissement" width="774" height="760" loading="lazy" decoding="async">
+            </div>
+            <figcaption><span>Trois établissements, trois applications : même socle, identité et contenus propres à chacun. Faites défiler horizontalement.</span></figcaption>
+          </figure>
+        </div>
+      
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Nouvelle commande · Changement de statut</span></div>
+        <div class="fiche-card">
+          <h3>Les commandes en séjour</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-web">Catalogue</span><span class="cn cn-email">Confirmation</span><span class="cn">Notification au point de vente</span></div>
+          <p>Une commande passée en séjour suit son propre cycle : confirmation au client, notification au service concerné, changement de statut quand elle est préparée, puis livrée. Une réservation au restaurant peut être créée automatiquement, et le point de vente prévenu.</p>
+          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Les commandes remontent par service et par créneau. Les extras consommés déjà présents dans le PMS sont réconciliés pour éviter de compter deux fois le même revenu.</p></div>
+          <div class="gain"><b>Ce que ça change :</b> le chiffre d'affaires additionnel devient mesurable et attribuable au message qui l'a déclenché.</div>
+        </div>
+      
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="band" id="p6">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Phase 06</span>
+      <h2>Le départ</h2></div>
+      <p class="intro">Souvent traité comme une formalité administrative. C'est pourtant la dernière impression, et le dernier moment où un encaissement est simple.</p>
+    </div>
+
+    <div class="fiches">
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Date de départ, au moment</span></div>
+        <div class="fiche-card">
+          <h3>Le règlement et la facture</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-sms">SMS</span><span class="cn cn-web">Lien de paiement</span></div>
+          <p>La facture est générée depuis les données réelles du séjour et envoyée. Quand un solde reste dû, un lien de paiement l'accompagne : le client règle depuis son téléphone, dans le taxi, plutôt qu'au comptoir pendant que trois personnes attendent derrière lui.</p>
+          <p>La ventilation détaillée des prestations peut être masquée pour ne présenter qu'un total, quand c'est ce que l'établissement souhaite.</p>
+          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Suivi des soldes non réglés, relances automatiques, rapprochement à la fermeture de caisse.</p></div>
+          <div class="gain"><b>Ce que ça change :</b> moins d'impayés à courir après, et un comptoir désengorgé le matin.</div>
+        </div>
+      
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Check-out d'une chambre</span></div>
+        <div class="fiche-card">
+          <h3>Le check-out et l'objet oublié</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-sms">SMS</span><span class="cn cn-email">E-mail</span></div>
+          <p>Le check-out déclenche à la fois le message au client et la remise en ordre côté étages. Quand la gouvernante enregistre un objet trouvé dans la chambre, l'information est rattachée à la réservation qui vient de partir : on sait à qui écrire, et on écrit le jour même.</p>
+          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>La chambre passe en recouche, l'objet trouvé est enregistré avec sa photo et son emplacement, et le dossier reste consultable.</p></div>
+          <div class="gain"><b>Ce que ça change :</b> un chargeur rendu dans la journée vaut plus qu'un message de remerciement parfaitement rédigé.</div>
+        </div>
+      
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="band band-alt" id="p7">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Phase 07</span>
+      <h2>L'après-séjour</h2></div>
+      <p class="intro">Deux objectifs distincts, à ne pas confondre : comprendre ce qui s'est passé, et obtenir un avis public. Les mêler dans un seul message dégrade les deux.</p>
+    </div>
+
+    <div class="fiches">
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Date de départ, 1 jour après, 9h30</span></div>
+        <div class="fiche-card">
+          <h3>L'enquête de satisfaction</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-wa">WhatsApp</span><span class="cn cn-web">Formulaire web</span></div>
+          <p>Le formulaire est construit par l'établissement : note globale, questions par thème, champs libres, sections qui n'apparaissent que si la réponse précédente le justifie. Une réponse négative sur la propreté peut ouvrir une question de précision que personne d'autre ne verra.</p>
+          <p>L'heure d'envoi n'est pas un détail. Un message envoyé en fin de matinée est ouvert bien plus souvent qu'un message parti en pleine nuit ou en fin de journée.</p>
+          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Les réponses alimentent des tableaux par thème et par période, et restent attachées à la fiche client. Un entonnoir montre où les répondants abandonnent le formulaire.</p></div>
+          <div class="gain"><b>Ce que ça change :</b> un signal mesuré sur ce qui fonctionne, plutôt qu'une lecture d'avis publics une fois par trimestre.</div>
+          <figure class="figure"><img src="/doc/parcours/captures/16-statistiques-flow.jpg" alt="Les statistiques d'un flow post-séjour, action par action : envoyés, délivrés, ouverts, cliqués, plaintes et erreurs" width="1240" height="609" loading="lazy" decoding="async"><figcaption><span>Les statistiques d'un flow post-séjour, action par action : envoyés, délivrés, ouverts, cliqués, plaintes, erreurs, et le détail des liens sur lesquels on a cliqué.</span></figcaption></figure>
+        
+        </div>
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Formulaire : répondu</span></div>
+        <div class="fiche-card">
+          <h3>La demande d'avis et la e-réputation</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span></div>
+          <p>La demande d'avis public n'est pas envoyée à tout le monde. Elle est conditionnée à la réponse à l'enquête : un client satisfait est orienté vers l'avis public, un client mécontent est orienté vers la direction. Ce n'est pas un filtre sur l'avis, c'est un ordre de priorité sur le traitement.</p>
+          <p>Les avis Google sont collectés, rattachés à la fiche client quand c'est possible, et peuvent recevoir une réponse publique depuis l'outil. Les avis venus de Booking, TripAdvisor et Airbnb sont également remontés en lecture.</p>
+          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Alerte immédiate sur avis négatif, récapitulatif périodique, tableaux d'e-réputation par établissement et par période.</p></div>
+          <div class="gain"><b>Ce que ça change :</b> un volume d'avis en hausse et un délai de réaction qui se compte en heures.</div>
+          <figure class="figure"><img src="/doc/parcours/captures/17-avis.jpg" alt="L'écran des avis : Google, Booking et TripAdvisor réunis, distribution des notes et réponses publiées" width="1240" height="715" loading="lazy" decoding="async"><figcaption><span>Google, Booking et TripAdvisor réunis sur un seul écran, avec la distribution des notes, le taux de réponse et les réponses publiées depuis l'outil.</span></figcaption></figure>
+        
+        </div>
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">E-mail : ouvert · lien cliqué · sans réponse</span></div>
+        <div class="fiche-card">
+          <h3>La relance conditionnée à l'interaction réelle</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span></div>
+          <p>C'est le point qui distingue un scénario d'un envoi de masse. Le parcours se poursuit différemment selon ce que le client a fait : ouvert sans cliquer, cliqué sans répondre, répondu, ou rien du tout. Le message de relance n'est ni le même, ni sur le même canal.</p>
+          <p>Un e-mail resté sans ouverture peut basculer en SMS ou en WhatsApp au bout de deux jours. Un client qui a répondu ne reçoit jamais la relance.</p>
+          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Le scénario se dessine visuellement, avec ses branches oui et non. Les ouvertures générées par les antivirus d'entreprise sont écartées pour ne pas fausser la lecture.</p></div>
+          <div class="gain"><b>Ce que ça change :</b> personne ne reçoit trois fois la même demande, et personne n'est oublié.</div>
+        </div>
+      
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="band" id="p8">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Phase 08</span>
+      <h2>La fidélisation et le retour</h2></div>
+      <p class="intro">Onze mois pendant lesquels presque personne ne parle au client, sauf pour lui envoyer une newsletter qu'il n'a pas demandée.</p>
+    </div>
+
+    <div class="fiches">
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Nouveau compte fidélité</span></div>
+        <div class="fiche-card">
+          <h3>L'espace client</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-web">Espace web dédié</span><span class="cn cn-email">E-mail</span></div>
+          <p>Un espace à l'adresse du programme de l'établissement ou du groupe, où le client retrouve ses réservations passées et à venir, ses commandes, ses points, son niveau, les avantages associés, ses codes d'accès, et ses informations personnelles qu'il met à jour lui-même.</p>
+          <p>Pour un groupe, c'est l'espace qui donne son sens au multi-établissements : les points gagnés dans un hôtel se dépensent dans un autre.</p>
+          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Les mises à jour faites par le client alimentent directement le CRM. Les paliers, les points et les avantages se paramètrent sans développement.</p></div>
+          <div class="gain"><b>Ce que ça change :</b> une raison de revenir en direct plutôt que par une agence en ligne.</div>
+          <div class="shot"><div><div class="shot-l">L'espace client : réservations, points, niveau et avantages</div><div class="shot-s">À intégrer</div></div></div>
+        </div>
+      
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Date d'anniversaire · Anniversaire fidélité</span></div>
+        <div class="fiche-card">
+          <h3>Les dates personnelles</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span></div>
+          <p>Anniversaire du client, anniversaire de son premier séjour, date d'entrée dans le programme, passage à un palier supérieur : autant de motifs de prendre contact qui ne ressemblent pas à une sollicitation commerciale, parce qu'ils sont personnels.</p>
+          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Aucune liste à tenir. Le calcul se fait sur la donnée réelle de la fiche client.</p></div>
+          <div class="gain"><b>Ce que ça change :</b> un message par an dont le taux d'ouverture n'a rien à voir avec celui d'une newsletter.</div>
+        </div>
+      
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Date définie · Date récurrente</span></div>
+        <div class="fiche-card">
+          <h3>Les campagnes segmentées</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span></div>
+          <p>Les segments se construisent sur la donnée réelle : montant dépensé, nombre de séjours, date du dernier séjour, pays, catégorie de chambre réservée, produits déjà commandés, étiquettes posées par l'équipe. Une soixantaine de critères sont combinables.</p>
+          <p>Une campagne peut être ponctuelle ou récurrente, et exclure automatiquement les clients déjà inscrits ailleurs. Les désinscriptions sont gérées à l'échelle du groupe, ce qui évite qu'un client désinscrit d'un hôtel soit recontacté par un autre.</p>
+          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Résultats par campagne : ouvertures, clics, commandes, revenu attribué. Les envois passés par une agence en ligne peuvent être exclus des statistiques pour ne pas les fausser.</p></div>
+          <div class="gain"><b>Ce que ça change :</b> on cesse d'envoyer la même chose à tout le monde.</div>
+        </div>
+      
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Date de la dernière réservation : antérieure à</span></div>
+        <div class="fiche-card">
+          <h3>La réactivation</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-wa">WhatsApp</span></div>
+          <p>Un client qui n'est pas revenu depuis dix-huit mois, qui avait dépensé au-delà d'un certain montant et qui n'a pas de réservation future : le segment se décrit en trois critères et se maintient tout seul. Le client y entre et en sort au fil du temps, sans intervention.</p>
+          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Le segment est vivant. Il n'y a pas de liste figée à réexporter tous les trimestres.</p></div>
+          <div class="gain"><b>Ce que ça change :</b> une base dormante redevient une base adressable.</div>
+        </div>
+      
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="band band-alt" id="hk">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Transverse</span>
+      <h2>Ce qui se passe aux étages</h2></div>
+      <p class="intro">Le housekeeping n'est pas un point de contact avec le client. C'est ce qui rend plusieurs d'entre eux possibles : une chambre prête à l'heure annoncée, un objet oublié retrouvé, un incident signalé avant que le client ne le découvre.</p>
+    </div>
+
+    <div class="cols">
+      <div class="tile"><h4>Le tableau des chambres</h4><p>Un kanban par statut : à nettoyer, en cours, contrôlée, prête. Le statut se recalcule à partir des arrivées, des départs et des recouches du jour.</p></div>
+      <div class="tile"><h4>Zones et bâtiments</h4><p>Les chambres se répartissent en étages, ailes et bâtiments, puis en zones d'affectation. Le tri manuel des plannings est possible quand la logique du terrain ne suit pas la numérotation.</p></div>
+      <div class="tile"><h4>Les check-lists</h4><p>Des modèles de contrôle différents selon le type de nettoyage. Le nettoyage n'est terminé qu'une fois la liste complétée.</p></div>
+      <div class="tile"><h4>Ne pas déranger</h4><p>Consigné et daté. La chambre n'est pas comptée comme oubliée, et le client n'est pas dérangé deux fois.</p></div>
+      <div class="tile"><h4>Objets trouvés</h4><p>Enregistrés avec leur emplacement, commentés, et rattachés à la réservation concernée pour retrouver à qui écrire.</p></div>
+      <div class="tile"><h4>Incidents techniques</h4><p>Signalés depuis la chambre par catégorie, commentés, suivis jusqu'à résolution. La maintenance ne passe plus par un carnet au fond du bureau.</p></div>
+    </div>
+
+    <figure class="figure"><img src="/doc/parcours/captures/19-housekeeping.jpg" alt="Le tableau housekeeping : les chambres par étage et par bâtiment, avec leur statut" width="1383" height="780" loading="lazy" decoding="async"><figcaption><span>Le tableau housekeeping : les chambres par étage et par bâtiment, avec leur statut</span></figcaption></figure>
+
+    <div class="note"><p><b>Le lien avec le parcours.</b> Un statut de chambre qui passe à « prête » peut déclencher le message qui annonce au client qu'il peut monter. Une demande de service envoyée par le client depuis son téléphone arrive directement aux étages. Les deux mondes ne sont pas séparés.</p></div>
+  </div>
+</section>
+
+<!-- ============ GROUPE ============ -->
+<section class="band" id="groupe">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Transverse</span>
+      <h2>À l'échelle d'un groupe</h2></div>
+      <p class="intro">La question posée par un groupe n'est pas « est-ce que ça marche », mais « est-ce que ça tient sur soixante-dix établissements sans une équipe dédiée pour le maintenir ». C'est une question d'architecture, pas de fonctionnalité.</p>
+    </div>
+
+    <div class="cols">
+      <div class="tile"><h4>Des modèles partagés</h4><p>Un scénario écrit une fois au niveau du groupe se déploie sur les établissements choisis. Les modifications se propagent sans réécriture hôtel par hôtel.</p></div>
+      <div class="tile"><h4>Une charte par établissement</h4><p>Chaque hôtel garde son logo, ses couleurs, ses polices et son adresse d'expédition. Le même scénario produit un message différent selon l'établissement qui l'envoie.</p></div>
+      <div class="tile"><h4>Une vue consolidée</h4><p>Un portail groupe agrège les résultats de tous les établissements et permet de basculer de l'un à l'autre sans se déconnecter.</p></div>
+      <div class="tile"><h4>Des droits par établissement</h4><p>Un directeur voit son hôtel. Un responsable régional voit son périmètre. La direction voit tout. Les données restent cloisonnées par établissement.</p></div>
+      <div class="tile"><h4>Une base client de groupe</h4><p>Un client connu dans un établissement est reconnu dans les autres. Les désinscriptions valent pour l'ensemble du groupe, ce qui protège la conformité.</p></div>
+      <div class="tile"><h4>Un déploiement progressif</h4><p>Une bibliothèque de scénarios prêts à l'emploi, classés par moment du séjour, permet de démarrer un établissement sans repartir d'une page blanche.</p></div>
+    </div>
+
+    <figure class="figure"><img src="/doc/parcours/captures/09-groupe.jpg" alt="Le cardex du groupe : les clients des deux établissements réunis, avec leur nombre de séjours et leur chiffre d'affaires" width="1240" height="747" loading="lazy" decoding="async"><figcaption><span>La bascule se fait en haut à gauche. Au niveau du groupe, les clients des établissements sont réunis dans un seul cardex, avec leur nombre de séjours et leur chiffre d'affaires cumulés. Adresses et téléphones sont floutés ici.</span></figcaption></figure>
+  </div>
+</section>
+
+<!-- ============ PMS ============ -->
+<section class="band band-alt" id="pms">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Transverse</span>
+      <h2>La connexion au PMS</h2></div>
+      <p class="intro">Rien de ce qui précède ne fonctionne sans une donnée juste. C'est le PMS qui la détient, et c'est la qualité de la connexion qui détermine ce qu'il est possible de déclencher.</p>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Sens</th><th>Ce qui circule</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">PMS vers TriggerFlow</td><td>Réservations, occupants, dates, catégories et chambres, régimes tarifaires, montants et soldes, statuts de check-in et check-out, extras consommés, annulations, fiches client.</td></tr>
+          <tr><td class="mono">TriggerFlow vers PMS</td><td>Commentaire sur la réservation, notification à la réception, notification au point de vente, changement de catégorie après un surclassement accepté, réservation au restaurant.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="intro" style="margin-top:28px">Les connecteurs couvrent les principaux éditeurs du marché français et international, en local comme en infonuagique. La liste à jour et le détail de ce que chacun expose se cadrent lors de l'étude technique.</p>
+
+    <div class="note"><p><b>À vérifier établissement par établissement.</b> Tous les PMS n'exposent pas les mêmes événements. Un connecteur qui ne remonte pas le check-in en temps réel interdit le message de bienvenue déclenché à l'entrée en chambre. La liste précise de ce qui est disponible pour un parc donné se cadre lors de l'étude technique, avant tout engagement.</p></div>
+  </div>
+</section>
+
+<!-- ============ TARIFS ============ -->
+<section class="band" id="tarifs">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Transverse</span>
+      <h2>Les tarifs</h2></div>
+      <p class="intro">Tarification par établissement, sans engagement, avec quatorze jours d'essai sur les plans payants. Ce sont les tarifs publiés sur trigger-flow.com.</p>
+    </div>
+
+    <div class="plans">
+      <div class="plan"><span class="plan-n">Découverte</span><span class="plan-p">0<sup>€</sup></span><span class="plan-m">par mois</span><p class="plan-d">Un scénario, mille e-mails. Sans carte bancaire.</p></div>
+      <div class="plan"><span class="plan-n">Communication</span><span class="plan-p">69<sup>€</sup></span><span class="plan-m">par mois</span><p class="plan-d">Segments, scénarios, SMS et WhatsApp, hub de messagerie.</p></div>
+      <div class="plan pop"><span class="plan-n">Conversion</span><span class="plan-p">149<sup>€</sup></span><span class="plan-m">par mois</span><p class="plan-d">Formulaires, catalogue de ventes, conditions sur les interactions.</p></div>
+      <div class="plan"><span class="plan-n">All Inclusive</span><span class="plan-p">249<sup>€</sup></span><span class="plan-m">par mois</span><p class="plan-d">Tous les modules inclus, sans limites, avec un interlocuteur dédié.</p></div>
+    </div>
+
+    <div class="cols" style="margin-top:22px">
+      <div class="tile"><h4>Les SMS</h4><p>Facturés à l'usage, à partir de 0,06 € par message. Aucun SMS n'est inclus dans les plans, hormis le quota du plan All Inclusive.</p></div>
+      <div class="tile"><h4>Les modules complémentaires</h4><p>Avis et e-réputation, agent IA, paiements, programme de fidélité, Guest App et housekeeping s'ajoutent à n'importe quel plan, et sont tous inclus dans le plan All Inclusive.</p></div>
+      <div class="tile"><h4>Les groupes</h4><p>Un parc multi-établissements fait l'objet de tarifs dégressifs et d'un accompagnement dédié, sur proposition commerciale.</p></div>
+    </div>
+
+    <div class="note"><p><b>Évolution tarifaire.</b> Les tarifs présentés ici sont ceux en vigueur à la date de ce document. Une évolution est prévue au 1<sup>er</sup> janvier 2027.</p></div>
+  </div>
+</section>
+
+<!-- ============ SYNTHÈSE ============ -->
+<section class="band band-alt" id="synthese">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Synthèse</span>
+      <h2>Combien de ces moments couvrez-vous aujourd'hui ?</h2></div>
+      <p class="intro">La liste complète des points de contact décrits dans ce document. Cochez ceux qui sont déjà couverts dans votre établissement, quel que soit l'outil utilisé. Le compte se met à jour et reste sur cet appareil.</p>
+    </div>
+
+    <div class="score">
+      <span class="score-n" id="scoreN">0</span>
+      <span class="score-l">sur <span id="scoreT">0</span> moments couverts</span>
+      <span class="score-bar"><span class="score-fill" id="scoreFill"></span></span>
+      <button class="reset" id="reset" type="button">Tout décocher</button>
+    </div>
+
+    <div id="checks">
+      <div class="check-group"><h4>01 · Avant la réservation</h4><div class="check-list">
+        <label class="check"><input type="checkbox" id="c1a"> Chat disponible sur le site</label>
+        <label class="check"><input type="checkbox" id="c1b"> Réponse automatique hors horaires</label>
+        <label class="check"><input type="checkbox" id="c1c"> WhatsApp, Messenger et Instagram centralisés</label>
+        <label class="check"><input type="checkbox" id="c1d"> Collecte d'inscriptions newsletter sur le site</label>
+        <label class="check"><input type="checkbox" id="c1e"> Avis affichés sur le site</label>
+      </div></div>
+      <div class="check-group"><h4>02 · La réservation</h4><div class="check-list">
+        <label class="check"><input type="checkbox" id="c2a"> Confirmation à la marque de l'établissement</label>
+        <label class="check"><input type="checkbox" id="c2b"> Carte ajoutée au portefeuille du téléphone</label>
+        <label class="check"><input type="checkbox" id="c2c"> Ajout des dates au calendrier</label>
+        <label class="check"><input type="checkbox" id="c2d"> Lien de paiement pour l'acompte</label>
+        <label class="check"><input type="checkbox" id="c2e"> Relance automatique d'acompte impayé</label>
+        <label class="check"><input type="checkbox" id="c2f"> Contrat ou bon de réservation en PDF</label>
+      </div></div>
+      <div class="check-group"><h4>03 · Le pré-séjour</h4><div class="check-list">
+        <label class="check"><input type="checkbox" id="c3a"> Pré-check-in en ligne</label>
+        <label class="check"><input type="checkbox" id="c3b"> Scan de la pièce d'identité</label>
+        <label class="check"><input type="checkbox" id="c3c"> Signature électronique avant l'arrivée</label>
+        <label class="check"><input type="checkbox" id="c3d"> Proposition de ventes additionnelles</label>
+        <label class="check"><input type="checkbox" id="c3e"> Proposition de surclassement vérifiée en disponibilité</label>
+        <label class="check"><input type="checkbox" id="c3f"> Informations pratiques la veille</label>
+      </div></div>
+      <div class="check-group"><h4>04 · L'arrivée</h4><div class="check-list">
+        <label class="check"><input type="checkbox" id="c4a"> Codes d'accès envoyés au client</label>
+        <label class="check"><input type="checkbox" id="c4b"> Serrure connectée pilotée automatiquement</label>
+        <label class="check"><input type="checkbox" id="c4c"> Borne de check-in en libre-service</label>
+        <label class="check"><input type="checkbox" id="c4d"> Mot de bienvenue au moment réel du check-in</label>
+      </div></div>
+      <div class="check-group"><h4>05 · Pendant le séjour</h4><div class="check-list">
+        <label class="check"><input type="checkbox" id="c5a"> Canal de conversation ouvert avec la réception</label>
+        <label class="check"><input type="checkbox" id="c5b"> Équipe capable de répondre depuis un mobile</label>
+        <label class="check"><input type="checkbox" id="c5c"> Application mobile pour le client</label>
+        <label class="check"><input type="checkbox" id="c5d"> Commande de services depuis la chambre</label>
+        <label class="check"><input type="checkbox" id="c5e"> Demande de service transmise aux étages</label>
+      </div></div>
+      <div class="check-group"><h4>06 · Le départ</h4><div class="check-list">
+        <label class="check"><input type="checkbox" id="c6a"> Facture envoyée automatiquement</label>
+        <label class="check"><input type="checkbox" id="c6b"> Règlement du solde à distance</label>
+        <label class="check"><input type="checkbox" id="c6c"> Objet oublié rattaché à la réservation</label>
+      </div></div>
+      <div class="check-group"><h4>07 · L'après-séjour</h4><div class="check-list">
+        <label class="check"><input type="checkbox" id="c7a"> Enquête de satisfaction</label>
+        <label class="check"><input type="checkbox" id="c7b"> Demande d'avis conditionnée à la satisfaction</label>
+        <label class="check"><input type="checkbox" id="c7c"> Alerte immédiate sur avis négatif</label>
+        <label class="check"><input type="checkbox" id="c7d"> Réponse aux avis depuis un seul outil</label>
+        <label class="check"><input type="checkbox" id="c7e"> Relance différenciée selon l'interaction</label>
+      </div></div>
+      <div class="check-group"><h4>08 · La fidélisation</h4><div class="check-list">
+        <label class="check"><input type="checkbox" id="c8a"> Espace client personnel</label>
+        <label class="check"><input type="checkbox" id="c8b"> Programme de points et d'avantages</label>
+        <label class="check"><input type="checkbox" id="c8c"> Message d'anniversaire</label>
+        <label class="check"><input type="checkbox" id="c8d"> Campagnes segmentées sur la donnée réelle</label>
+        <label class="check"><input type="checkbox" id="c8e"> Scénario de réactivation des clients dormants</label>
+      </div></div>
+      <div class="check-group"><h4>Transverse</h4><div class="check-list">
+        <label class="check"><input type="checkbox" id="c9a"> Housekeeping suivi dans le même outil</label>
+        <label class="check"><input type="checkbox" id="c9b"> Scénarios partagés entre établissements</label>
+        <label class="check"><input type="checkbox" id="c9c"> Vue consolidée du groupe</label>
+        <label class="check"><input type="checkbox" id="c9d"> Connexion temps réel avec le PMS</label>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCHAINE ÉTAPE ============ -->
+<section class="band end" id="suite">
+  <div class="wrap">
+    <p class="eyebrow">Prochaine étape</p>
+    <h2>Cartographier votre propre parcours</h2>
+    <p class="intro">Le tableau ci-dessus vaut pour un établissement type. Le vôtre a ses contraintes : un PMS particulier, des arrivées tardives, une clientèle d'affaires ou de loisir, un parc hétérogène. Le travail utile consiste à poser votre parcours réel à côté de celui-ci et à regarder les écarts.</p>
+
+    <div class="end-steps">
+      <div class="end-step"><span class="n">ÉTAPE 1</span><h4>L'état des lieux</h4><p>Une séance d'une heure pour lister ce qui est envoyé aujourd'hui, par qui, et à quel moment. Les écarts apparaissent d'eux-mêmes.</p></div>
+      <div class="end-step"><span class="n">ÉTAPE 2</span><h4>L'étude technique</h4><p>Vérification de ce que votre PMS expose réellement, établissement par établissement, et de ce qui en découle comme déclencheurs disponibles.</p></div>
+      <div class="end-step"><span class="n">ÉTAPE 3</span><h4>Un établissement pilote</h4><p>Un hôtel, trois scénarios, six semaines. Les chiffres du pilote servent de base à la décision sur le reste du parc.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Document de référence TriggerFlow. Les fonctionnalités décrites sont en production à la date de publication. Les tarifs indiqués sont ceux publiés sur trigger-flow.com et évoluent au 1<sup>er</sup> janvier 2027.</p>
+    <p>Les repères de performance cités sont des médianes observées sur l'ensemble des établissements de la plateforme et ne constituent pas un engagement de résultat.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---- sommaire ---- */
+  var SECTIONS = [
+    {id:"frise",   n:"·",  t:"Le parcours d'un bout à l'autre", m:"vue d'ensemble"},
+    {id:"p1",      n:"01", t:"Avant la réservation",    m:"3 points de contact"},
+    {id:"p2",      n:"02", t:"La réservation",          m:"4 points de contact"},
+    {id:"p3",      n:"03", t:"Le pré-séjour",           m:"4 points de contact"},
+    {id:"p4",      n:"04", t:"L'arrivée",               m:"3 points de contact"},
+    {id:"p5",      n:"05", t:"Pendant le séjour",       m:"3 points de contact"},
+    {id:"p6",      n:"06", t:"Le départ",               m:"2 points de contact"},
+    {id:"p7",      n:"07", t:"L'après-séjour",          m:"3 points de contact"},
+    {id:"p8",      n:"08", t:"La fidélisation et le retour", m:"4 points de contact"},
+    {id:"hk",      n:"·",  t:"Ce qui se passe aux étages", m:"transverse"},
+    {id:"groupe",  n:"·",  t:"À l'échelle d'un groupe", m:"transverse"},
+    {id:"pms",     n:"·",  t:"La connexion au PMS",     m:"transverse"},
+    {id:"tarifs",  n:"·",  t:"Les tarifs",              m:"transverse"},
+    {id:"synthese",n:"·",  t:"Combien de ces moments couvrez-vous ?", m:"synthèse"},
+    {id:"suite",   n:"·",  t:"Cartographier votre parcours", m:"prochaine étape"}
+  ];
+
+  var grid = document.getElementById("tocGrid");
+  SECTIONS.forEach(function(s){
+    var a = document.createElement("a");
+    a.href = "#" + s.id;
+    a.innerHTML = '<span class="n">'+s.n+'</span><span class="t"></span><span class="m"></span>';
+    a.querySelector(".t").textContent = s.t;
+    a.querySelector(".m").textContent = s.m;
+    a.addEventListener("click", closeToc);
+    grid.appendChild(a);
+  });
+
+  /* ---- vue résumée / vue détaillée ---- */
+  var MODE_KEY = "tf-parcours-mode";
+  var root = document.documentElement;
+  var modeBtn = document.getElementById("modeBtn");
+
+  function applyMode(mode){
+    var resume = mode === "resume";
+    root.setAttribute("data-read", resume ? "resume" : "detail");
+    modeBtn.textContent = resume ? "Tout déplier" : "Vue résumée";
+    modeBtn.setAttribute("aria-pressed", resume ? "false" : "true");
+    try { window.localStorage.setItem(MODE_KEY, resume ? "resume" : "detail"); }
+    catch (e) { /* stockage indisponible */ }
+  }
+
+  var savedMode = "resume";
+  try { savedMode = window.localStorage.getItem(MODE_KEY) || "resume"; }
+  catch (e) { /* stockage indisponible */ }
+  applyMode(savedMode);
+
+  modeBtn.addEventListener("click", function(){
+    applyMode(root.getAttribute("data-read") === "resume" ? "detail" : "resume");
+    lastKey = null;
+    onScroll();
+  });
+
+  var toc = document.getElementById("toc");
+  var openBtn = document.getElementById("tocOpen");
+  function openToc(){ toc.hidden = false; openBtn.setAttribute("aria-expanded","true"); }
+  function closeToc(){ toc.hidden = true; openBtn.setAttribute("aria-expanded","false"); }
+  openBtn.addEventListener("click", function(){ toc.hidden ? openToc() : closeToc(); });
+  document.getElementById("tocClose").addEventListener("click", closeToc);
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape" && !toc.hidden) closeToc(); });
+
+  /* ---- fil d'Ariane : la frise en permanence ---- */
+  var PHASES = [
+    {id:"p1", n:"01", t:"Avant"},
+    {id:"p2", n:"02", t:"Réservation"},
+    {id:"p3", n:"03", t:"Pré-séjour"},
+    {id:"p4", n:"04", t:"Arrivée"},
+    {id:"p5", n:"05", t:"Séjour"},
+    {id:"p6", n:"06", t:"Départ"},
+    {id:"p7", n:"07", t:"Après"},
+    {id:"p8", n:"08", t:"Fidélisation"}
+  ];
+  var TRANSVERSE = ["hk","groupe","pms","tarifs","synthese","suite"];
+  var PHASE_IDX = {};
+  PHASES.forEach(function(p, i){ PHASE_IDX[p.id] = i; });
+
+  var railSteps = document.getElementById("railSteps");
+  var railScroll = document.getElementById("railScroll");
+  var railLinks = [];
+  var railSegs = [];
+
+  PHASES.forEach(function(ph, i){
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.href = "#" + ph.id;
+    a.className = "rail-link";
+    a.innerHTML = '<span class="rail-dot"></span><span class="rail-n"></span><span class="rail-t"></span>';
+    a.querySelector(".rail-n").textContent = ph.n;
+    a.querySelector(".rail-t").textContent = ph.t;
+    li.appendChild(a);
+    railLinks.push(a);
+    var seg = document.createElement("span");
+    seg.className = "rail-seg";
+    li.appendChild(seg);
+    railSegs.push(seg);
+    railSteps.appendChild(li);
+  });
+
+  var tailLi = document.createElement("li");
+  tailLi.style.flex = "none";
+  tailLi.innerHTML = '<span class="rail-tail" id="railTail" hidden><span class="rail-dot"></span><span class="rail-tail-t"></span></span>';
+  railSteps.appendChild(tailLi);
+  var railTail = document.getElementById("railTail");
+  var railTailT = railTail.querySelector(".rail-tail-t");
+
+  var lastKey = null;
+  function updateRail(id, label){
+    var key = id + "|" + label;
+    if (key === lastKey) return;
+    lastKey = key;
+
+    var isPhase = Object.prototype.hasOwnProperty.call(PHASE_IDX, id);
+    var isTransverse = TRANSVERSE.indexOf(id) !== -1;
+    var idx = isPhase ? PHASE_IDX[id] : -1;
+    var done = isTransverse ? PHASES.length : idx;
+
+    railLinks.forEach(function(a, i){
+      a.classList.toggle("now", isPhase && i === idx);
+      a.classList.toggle("done", i < done);
+      if (isPhase && i === idx) { a.setAttribute("aria-current", "step"); }
+      else { a.removeAttribute("aria-current"); }
+    });
+    railSegs.forEach(function(s, i){ s.classList.toggle("done", i < done); });
+
+    railTail.hidden = !isTransverse;
+    railSegs[railSegs.length - 1].hidden = !isTransverse;
+    if (isTransverse) railTailT.textContent = label;
+
+    /* recentrer l'étape courante quand le fil défile horizontalement */
+    var target = isTransverse ? railTail : (isPhase ? railLinks[idx] : null);
+    if (target && railScroll.scrollWidth > railScroll.clientWidth + 4){
+      var left = target.offsetLeft - (railScroll.clientWidth - target.offsetWidth) / 2;
+      railScroll.scrollLeft = Math.max(0, left);
+    }
+  }
+
+  /* ---- progression et contexte ---- */
+  var prog = document.getElementById("prog");
+  var ctx = document.getElementById("ctx");
+  var nodes = SECTIONS.map(function(s){ return document.getElementById(s.id); });
+  var hdr = 82;
+  function measure(){
+    var v = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--hdr"));
+    if (!isNaN(v)) hdr = v;
+  }
+  measure();
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+    prog.style.width = pct.toFixed(2) + "%";
+
+    var current = "Le parcours client";
+    var currentId = null;
+    var line = h.scrollTop + hdr + 60;
+    for (var i = 0; i < nodes.length; i++){
+      if (nodes[i] && nodes[i].offsetTop <= line){
+        current = SECTIONS[i].t;
+        currentId = SECTIONS[i].id;
+      }
+    }
+    if (ctx.textContent !== current) ctx.textContent = current;
+    updateRail(currentId, current);
+  }
+  window.addEventListener("scroll", onScroll, {passive:true});
+  window.addEventListener("resize", function(){ measure(); lastKey = null; onScroll(); });
+  onScroll();
+
+  /* ---- synthèse cochable ---- */
+  var KEY = "tf-parcours-checks";
+  var boxes = Array.prototype.slice.call(document.querySelectorAll("#checks input[type=checkbox]"));
+  var scoreN = document.getElementById("scoreN");
+  var scoreFill = document.getElementById("scoreFill");
+  document.getElementById("scoreT").textContent = String(boxes.length);
+
+  function load(){
+    try {
+      var raw = window.localStorage.getItem(KEY);
+      if (!raw) return;
+      var saved = JSON.parse(raw);
+      if (!saved || typeof saved !== "object") return;
+      boxes.forEach(function(b){ if (saved[b.id]) b.checked = true; });
+    } catch (e) { /* stockage indisponible */ }
+  }
+  function save(){
+    try {
+      var state = {};
+      boxes.forEach(function(b){ if (b.checked) state[b.id] = 1; });
+      window.localStorage.setItem(KEY, JSON.stringify(state));
+    } catch (e) { /* stockage indisponible */ }
+  }
+  function render(){
+    var n = boxes.filter(function(b){ return b.checked; }).length;
+    scoreN.textContent = String(n);
+    scoreFill.style.width = (boxes.length ? (n / boxes.length) * 100 : 0).toFixed(1) + "%";
+  }
+
+  load();
+  render();
+  boxes.forEach(function(b){ b.addEventListener("change", function(){ save(); render(); }); });
+  document.getElementById("reset").addEventListener("click", function(){
+    boxes.forEach(function(b){ b.checked = false; });
+    save(); render();
+  });
+})();
+</script>
+
+</body>
+</html>
