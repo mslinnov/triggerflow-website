@@ -1,7 +1,7 @@
 import createMiddleware from 'next-intl/middleware';
 import { NextFetchEvent, NextRequest, NextResponse } from 'next/server';
 import { routing } from './i18n/routing';
-import { DOCUMENTS, parseDocumentPath, recordDocumentView } from './lib/document-views';
+import { DOCUMENTS, langueDemandee, parseDocumentPath, recordDocumentView } from './lib/document-views';
 
 const intlMiddleware = createMiddleware(routing);
 
@@ -37,7 +37,13 @@ export default function middleware(request: NextRequest, event: NextFetchEvent) 
     // Compté en tâche de fond : le lecteur n'attend pas TriggerFlow.
     event.waitUntil(recordDocumentView(target.document, target.slug, request));
 
-    const response = NextResponse.rewrite(new URL(DOCUMENTS[target.document], request.url));
+    // La langue vit dans l'URL (?lang=en) : elle survit au rechargement, au
+    // partage du lien et aux ancres internes, et le compteur ne bouge pas
+    // puisque le chemin, lui, reste le même.
+    const langue = langueDemandee(request.nextUrl);
+    const fichier = DOCUMENTS[target.document][langue];
+
+    const response = NextResponse.rewrite(new URL(fichier, request.url));
 
     // Ceinture et bretelles avec la balise meta du document : un en-tête
     // couvre aussi les réponses que les robots obtiennent sans exécuter le

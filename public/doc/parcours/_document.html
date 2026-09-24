@@ -324,6 +324,21 @@ h3{font-size:1.18rem;font-weight:600;letter-spacing:-.01em;margin:0;line-height:
 .bilan-lede{margin:0 0 22px;font-size:15px;color:var(--ink-2);max-width:74ch}
 .bilan .figure{margin-top:24px}
 
+/* ---------- bascule de langue ----------
+   Un lien, pas un bouton : la langue vit dans l'URL, donc elle survit au
+   rechargement, au partage du lien et aux ancres internes. Un basculement
+   JavaScript aurait demandé de dupliquer tout le document dans la page, et
+   les identifiants en double auraient cassé le fil d'Ariane et les ancres. */
+.lang{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:34px;height:30px;padding:0 9px;
+  border:1px solid var(--line);border-radius:999px;
+  font-family:var(--font-mono);font-size:11.5px;letter-spacing:.06em;
+  color:var(--ink-2);text-decoration:none;background:var(--surface);
+  transition:color .15s ease,border-color .15s ease;
+}
+.lang:hover,.lang:focus-visible{color:var(--brand-ink);border-color:var(--brand-soft)}
+
 /* ---------- ouverture : le trait continu ----------
    Un seul trait porte les vingt-six points. Le tracé, les points et la pointe
    lisent tous la MEME frise de référence, déclarée sur .g-fig : sans elle chaque
@@ -768,7 +783,8 @@ html{scroll-behavior:smooth}
     </span>
     <div class="topbar-spacer"></div>
     <span class="topbar-ctx" id="ctx">Le parcours client</span>
-    <button class="toc-btn mode-btn" id="modeBtn" aria-pressed="true">Tout déplier</button>
+    <a class="lang" href="?lang=en" hreflang="en" lang="en" aria-label="Read this document in English">EN</a>
+      <button class="toc-btn mode-btn" id="modeBtn" aria-pressed="true">Tout déplier</button>
     <button class="toc-btn" id="tocOpen" aria-expanded="false" aria-controls="toc">Sommaire</button>
   </div>
   <nav class="rail" aria-label="Fil du parcours">

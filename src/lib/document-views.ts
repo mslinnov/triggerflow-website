@@ -12,12 +12,37 @@
  * ouvert son document », il faut compter au serveur, sans cookie ni JavaScript.
  */
 
-/** Documents publiables, et le fichier statique qui porte chacun. */
+/**
+ * Documents publiables, et le fichier statique qui porte chacun, par langue.
+ *
+ * Une langue = un FICHIER, pas une bascule dans la page. Le document porte des
+ * ancres, un fil d'Ariane et des animations liées à ses identifiants :
+ * embarquer les deux langues dans la même page aurait mis 74 identifiants en
+ * double et cassé les trois.
+ */
 export const DOCUMENTS = {
-  parcours: '/doc/parcours/_document.html',
+  parcours: {
+    fr: '/doc/parcours/_document.html',
+    en: '/doc/parcours/_document.en.html',
+  },
 } as const;
 
 export type DocumentName = keyof typeof DOCUMENTS;
+
+/** Langues servies. Le français est la version de référence, donc le défaut. */
+export const LANGUES = ['fr', 'en'] as const;
+export type Langue = (typeof LANGUES)[number];
+
+/**
+ * Langue demandée par l'URL (?lang=en).
+ *
+ * Tout ce qui n'est pas explicitement une langue servie retombe sur le
+ * français : un paramètre bricolé ne doit pas produire une page vide.
+ */
+export function langueDemandee(url: URL): Langue {
+  const demande = url.searchParams.get('lang');
+  return (LANGUES as readonly string[]).includes(demande ?? '') ? (demande as Langue) : 'fr';
+}
 
 /**
  * Forme acceptée pour un suffixe.

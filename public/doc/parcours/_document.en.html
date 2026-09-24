@@ -1,0 +1,1938 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Hotel guest journey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+:root{
+  --ground:#F8F7F6;
+  --surface:#FFFFFF;
+  --surface-2:#F1F4F3;
+  --surface-3:#EDEAE6;
+  --ink:#1F2A2A;
+  --ink-2:#5E6383;
+  --ink-3:#8A8F9C;
+  --line:#E0DFE0;
+  --line-2:#EDEDEC;
+  --brand:#006F68;
+  --brand-ink:#006F68;
+  --brand-soft:#CCE2E1;
+  --brand-wash:#F0F6F5;
+  --brand-deep:#002B28;
+  --brand-lift:#018C83;
+  --gold:#C9A227;
+  --gold-soft:#F4EBCB;
+  --gold-ink:#8A6E12;
+  --ch-email:#3D80F7;
+  --ch-sms:#3F9E3C;
+  --ch-wa:#128C7E;
+  --ch-cond:#B07C08;
+  --end-bg:#002B28;
+  --end-fg:#EAF4F3;
+  --shadow:0 1px 2px rgba(0,0,0,.04), 0 8px 24px -16px rgba(0,43,40,.24);
+  --font-display:"DM Serif Display", Georgia, "Times New Roman", serif;
+  --font-body:"IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --rail:clamp(24px, 5vw, 56px);
+  --hdr:82px;
+  --axis:clamp(116px, 15vw, 188px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0E1312;
+    --surface:#161C1B;
+    --surface-2:#1C2423;
+    --surface-3:#232B2A;
+    --ink:#E8EDEC;
+    --ink-2:#A2ADAB;
+    --ink-3:#7D8887;
+    --line:#2A3433;
+    --line-2:#222B2A;
+    --brand:#2DB3A8;
+    --brand-ink:#5CCFC5;
+    --brand-soft:#123B38;
+    --brand-wash:#14211F;
+    --brand-deep:#8FDDD5;
+    --brand-lift:#3FC7BB;
+    --gold:#C9A64A;
+    --gold-soft:#332B15;
+    --gold-ink:#DCBB63;
+    --ch-email:#7FA9F7;
+    --ch-sms:#6FC46C;
+    --ch-wa:#4DC2B2;
+    --ch-cond:#D9A93B;
+    --end-bg:#1C2423;
+    --end-fg:#E8EDEC;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0E1312;
+  --surface:#161C1B;
+  --surface-2:#1C2423;
+  --surface-3:#232B2A;
+  --ink:#E8EDEC;
+  --ink-2:#A2ADAB;
+  --ink-3:#7D8887;
+  --line:#2A3433;
+  --line-2:#222B2A;
+  --brand:#2DB3A8;
+  --brand-ink:#5CCFC5;
+  --brand-soft:#123B38;
+  --brand-wash:#14211F;
+  --brand-deep:#8FDDD5;
+  --brand-lift:#3FC7BB;
+  --gold:#C9A64A;
+  --gold-soft:#332B15;
+  --gold-ink:#DCBB63;
+  --ch-email:#7FA9F7;
+  --ch-sms:#6FC46C;
+  --ch-wa:#4DC2B2;
+  --ch-cond:#D9A93B;
+  --end-bg:#1C2423;
+  --end-fg:#E8EDEC;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -16px rgba(0,0,0,.8);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:20px}
+
+/* ---------- barre supérieure ---------- */
+.topbar{
+  position:sticky;
+  top:env(safe-area-inset-top, 0px);
+  z-index:60;
+  background:color-mix(in srgb, var(--ground) 92%, transparent);
+  backdrop-filter:saturate(1.4) blur(10px);
+  border-bottom:1px solid var(--line-2);
+}
+.topbar-in{
+  max-width:1080px;margin:0 auto;padding:9px 20px 7px;
+  display:flex;align-items:center;gap:16px;
+}
+.mark{display:flex;align-items:center;gap:9px;font-weight:600;font-size:14px;letter-spacing:-.01em;color:var(--ink)}
+.mark svg{display:block;flex:none}
+.mark span{white-space:nowrap}
+.topbar-spacer{flex:1}
+.topbar-ctx{
+  font-size:12px;color:var(--ink-2);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+  max-width:36ch;
+}
+.toc-btn{
+  font:inherit;font-size:13px;font-weight:500;
+  color:var(--brand-ink);background:transparent;
+  border:1px solid var(--line);border-radius:999px;
+  padding:5px 14px;cursor:pointer;white-space:nowrap;
+}
+.toc-btn:hover{background:var(--brand-wash);border-color:var(--brand-soft)}
+.progress{position:absolute;left:0;bottom:-1px;height:2px;background:var(--brand);width:0}
+
+/* ---------- fil d'Ariane : la frise en permanence ---------- */
+.rail{border-top:1px solid var(--line-2);background:color-mix(in srgb, var(--surface) 46%, transparent)}
+.rail-in{
+  max-width:1080px;margin:0 auto;padding:0 20px;
+  position:relative;
+}
+.rail-scroll{
+  overflow-x:auto;overflow-y:hidden;
+  scrollbar-width:none;-ms-overflow-style:none;
+  scroll-behavior:smooth;
+}
+.rail-scroll::-webkit-scrollbar{display:none}
+.rail-steps{
+  list-style:none;margin:0;padding:9px 0 10px;
+  display:flex;align-items:center;gap:0;width:100%;
+}
+/* flex-basis 0 : les huit phases occupent exactement la même largeur, quelle
+   que soit la longueur de leur libellé. Sans ça, les pastilles se décalaient
+   les unes par rapport aux autres. */
+.rail-steps li{display:flex;align-items:center;flex:1 1 0;min-width:0}
+.rail-link{
+  display:flex;align-items:center;gap:7px;
+  text-decoration:none;color:var(--ink-3);
+  padding:3px 2px;border-radius:7px;white-space:nowrap;
+  transition:color .2s ease;
+}
+.rail-link:hover{color:var(--brand-ink)}
+.rail-dot{
+  flex:none;width:9px;height:9px;border-radius:50%;
+  background:var(--surface);border:1.5px solid var(--line);
+  transition:background .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.rail-n{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.04em;opacity:.75}
+.rail-t{
+  font-size:12.5px;font-weight:500;letter-spacing:-.005em;
+  overflow:hidden;text-overflow:ellipsis;
+}
+.rail-seg{
+  flex:1 1 auto;height:1.5px;min-width:10px;margin:0 8px;border-radius:2px;
+  background:var(--line);transition:background .25s ease;
+}
+/* état parcouru */
+.rail-link.done{color:var(--ink-2)}
+.rail-link.done .rail-dot{background:var(--brand-soft);border-color:var(--brand-soft)}
+.rail-seg.done{background:var(--brand-soft)}
+/* état courant */
+.rail-link.now{color:var(--brand-ink);font-weight:600}
+.rail-link.now .rail-dot{
+  background:var(--brand);border-color:var(--brand);
+  box-shadow:0 0 0 3px color-mix(in srgb, var(--brand) 22%, transparent);
+}
+.rail-link.now .rail-n{opacity:1}
+/* repère transverse, après les 8 phases */
+.rail-tail{
+  display:flex;align-items:center;gap:7px;flex:none;padding-left:4px;
+  font-size:12.5px;font-weight:600;color:var(--brand-ink);white-space:nowrap;
+}
+.rail-tail .rail-dot{background:var(--brand);border-color:var(--brand)}
+
+.mode-btn{color:var(--ink-2)}
+.mode-btn[aria-pressed="false"]{
+  color:var(--brand-ink);background:var(--brand-wash);border-color:var(--brand-soft);
+}
+
+/* ---------- vue résumée ----------
+   26 points de contact font une lecture de trente minutes. Le document reste
+   complet pour qui veut tout vérifier ; par défaut il se lit en survol, et
+   s'ouvre d'un clic. Le choix est mémorisé sur l'appareil du lecteur. */
+:root[data-read="resume"] .fiche-body > p,
+:root[data-read="resume"] .fiche-body .equipe,
+:root[data-read="resume"] .fiche-body .shot,
+:root[data-read="resume"] .fiche-body .shot-row{display:none}
+/* Les captures restent : dans une vue de survol, l'image est ce qui se lit le
+   plus vite. C'est le texte qui s'efface, pas le visuel. */
+:root[data-read="resume"] .fiche{padding-block:20px}
+:root[data-read="resume"] .canaux{margin-bottom:12px}
+:root[data-read="resume"] .gain{margin-top:0}
+:root[data-read="resume"] .figure{margin-top:14px}
+
+/* ---------- sommaire ---------- */
+.toc{
+  position:fixed;inset:0;z-index:70;
+  background:color-mix(in srgb, var(--ground) 96%, transparent);
+  overflow:auto;padding:24px 20px calc(40px + env(safe-area-inset-bottom, 0px));
+}
+.toc-head{display:flex;align-items:baseline;gap:16px;max-width:1080px;margin:0 auto 24px}
+.toc-close{
+  margin-left:auto;font:inherit;font-size:13px;background:transparent;color:var(--ink-2);
+  border:1px solid var(--line);border-radius:999px;padding:5px 14px;cursor:pointer;
+}
+.toc-grid{max-width:1080px;margin:0 auto;display:grid;gap:2px}
+.toc-grid a{
+  display:grid;grid-template-columns:2.6rem 1fr auto;gap:14px;align-items:baseline;
+  padding:11px 12px;border-radius:8px;text-decoration:none;color:var(--ink);
+  border-bottom:1px solid var(--line-2);
+}
+.toc-grid a:hover{background:var(--surface-2)}
+.toc-grid .n{font-family:var(--font-mono);font-size:12px;color:var(--brand-ink)}
+.toc-grid .t{font-weight:500}
+.toc-grid .m{font-size:12px;color:var(--ink-3);font-family:var(--font-mono);text-align:right}
+
+/* ---------- couverture ---------- */
+.cover{padding-block:clamp(48px,9vw,104px) clamp(40px,7vw,80px);border-bottom:1px solid var(--line)}
+.eyebrow{
+  font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--brand-ink);margin:0 0 20px;
+}
+h1{
+  font-family:var(--font-display);font-weight:400;
+  font-size:clamp(2.5rem,6.4vw,4.4rem);line-height:1.04;letter-spacing:-.015em;
+  margin:0 0 26px;text-wrap:balance;max-width:17ch;
+}
+.lede{font-size:clamp(1.05rem,2vw,1.2rem);color:var(--ink-2);max-width:60ch;margin:0 0 30px}
+.lede strong{color:var(--ink);font-weight:600}
+.cover-meta{
+  display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:34px;
+  padding-top:24px;border-top:1px solid var(--line-2);
+}
+.meta-chip{
+  font-size:12px;color:var(--ink-2);background:var(--surface);
+  border:1px solid var(--line);border-radius:999px;padding:4px 12px;
+}
+
+/* ---------- section générique ---------- */
+section{scroll-margin-top:calc(var(--hdr) + 12px + env(safe-area-inset-top, 0px))}
+.band{padding-block:clamp(44px,7vw,76px);border-bottom:1px solid var(--line)}
+.band-alt{background:var(--surface-2)}
+h2{
+  font-family:var(--font-display);font-weight:400;
+  font-size:clamp(1.9rem,4vw,2.9rem);line-height:1.1;letter-spacing:-.01em;
+  margin:0 0 14px;text-wrap:balance;
+}
+h3{font-size:1.18rem;font-weight:600;letter-spacing:-.01em;margin:0;line-height:1.35}
+.intro{color:var(--ink-2);max-width:62ch;margin:0 0 30px;font-size:1.02rem}
+
+/* Titre et chapeau en vis-à-vis : la colonne de texte seule laissait la moitié
+   droite de la page vide, et le bloc d'en-tête flottait sans assise. */
+.head-row{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(24px,4.5vw,60px);align-items:end;margin-bottom:34px;
+}
+.head-row h2{margin-bottom:0}
+.head-row .intro{margin-bottom:0}
+.head-row--cover{align-items:end;margin-bottom:0}
+.head-row--cover h1{margin-bottom:0;max-width:14ch}
+.head-text .lede{margin-bottom:18px}
+.head-text .lede:last-child{margin-bottom:0}
+@media (max-width:820px){
+  .head-row{grid-template-columns:minmax(0,1fr);gap:16px;margin-bottom:26px}
+  .head-row--cover h1{max-width:17ch}
+}
+.sec-num{
+  font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;
+  color:var(--brand-ink);display:block;margin-bottom:10px;
+}
+
+/* ---------- ligne de temps ----------
+   Compacte et alignée : une phase par ligne, le numéro sur l'axe, un résumé,
+   le nombre de points de contact. La version précédente empilait soixante et
+   une pastilles, ce qui noyait la lecture d'ensemble. */
+/* ---------- encart de bilan en fin de phase ----------
+   Un bloc côté équipe qui clôt une phase sans être un point de contact : il ne
+   vit donc PAS dans `.fiches` (qui porte l'axe chronologique et compterait
+   l'encart comme une étape de plus), mais juste après, en frère de celui-ci. */
+.bilan{
+  margin:clamp(30px,5vw,46px) 0 0;padding:clamp(22px,3.5vw,32px);
+  background:var(--brand-wash);border:1px solid var(--brand-soft);border-radius:16px;
+}
+.bilan-head{margin-bottom:16px}
+.bilan-k{
+  font-family:var(--font-mono);font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--brand-ink);display:block;margin-bottom:8px;
+}
+.bilan-head h3{
+  font-family:var(--font-display);font-weight:400;
+  font-size:clamp(1.4rem,2.8vw,1.9rem);line-height:1.15;margin:0;letter-spacing:-.01em;
+}
+.bilan-lede{margin:0 0 22px;font-size:15px;color:var(--ink-2);max-width:74ch}
+.bilan .figure{margin-top:24px}
+
+/* ---------- bascule de langue ----------
+   Un lien, pas un bouton : la langue vit dans l'URL, donc elle survit au
+   rechargement, au partage du lien et aux ancres internes. Un basculement
+   JavaScript aurait demandé de dupliquer tout le document dans la page, et
+   les identifiants en double auraient cassé le fil d'Ariane et les ancres. */
+.lang{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:34px;height:30px;padding:0 9px;
+  border:1px solid var(--line);border-radius:999px;
+  font-family:var(--font-mono);font-size:11.5px;letter-spacing:.06em;
+  color:var(--ink-2);text-decoration:none;background:var(--surface);
+  transition:color .15s ease,border-color .15s ease;
+}
+.lang:hover,.lang:focus-visible{color:var(--brand-ink);border-color:var(--brand-soft)}
+
+/* ---------- ouverture : le trait continu ----------
+   Un seul trait porte les vingt-six points. Le tracé, les points et la pointe
+   lisent tous la MEME frise de référence, déclarée sur .g-fig : sans elle chaque
+   cercle mesurerait sa propre boîte de onze pixels et s'allumerait de travers. */
+.g-wrap{margin:0 0 clamp(26px,4vw,40px)}
+.g-wrap figcaption{margin:14px 0 0;font-size:12.5px;color:var(--ink-3);line-height:1.45;max-width:72ch}
+.g-fig{view-timeline-name:--gtrait;view-timeline-axis:block}
+.g-fig svg{display:block;width:100%;height:auto;color:var(--ink)}
+.g-lab text{font-family:var(--font-body);font-size:12px;font-weight:600;fill:var(--ink)}
+.g-lab a{text-decoration:none;cursor:pointer}
+.g-lab a:hover text,.g-lab a:focus-visible text{fill:var(--brand-ink);text-decoration:underline}
+.g-lab a:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:3px}
+.g-temps text{font-family:var(--font-mono);font-size:11px;letter-spacing:1.4px;fill:var(--brand-ink)}
+.g-cnt text{font-family:var(--font-display);font-size:21px;fill:currentColor;fill-opacity:.42}
+.g-line{stroke-dasharray:1000;stroke-dashoffset:1000}
+.g-dot{transform-box:fill-box;transform-origin:center}
+.g-tip{transform-box:fill-box;transform-origin:left center}
+@supports not (animation-timeline: view()){.g-line{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.g-line{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:no-preference){
+  @supports (animation-timeline: view()){
+    .g-line{animation:tf-trace linear both;animation-timeline:--gtrait;animation-range:cover 14% cover 68%}
+    .g-dot{opacity:.16;animation:tf-light linear both;animation-timeline:--gtrait}
+    .g-tip{opacity:0;animation:tf-tip linear both;animation-timeline:--gtrait;animation-range:cover 68% cover 73%}
+    .g-dot.d1{animation-range:cover 14.2% cover 16.2%}
+    .g-dot.d2{animation-range:cover 15.2% cover 17.2%}
+    .g-dot.d3{animation-range:cover 16.3% cover 18.3%}
+    .g-dot.d4{animation-range:cover 18.1% cover 20.1%}
+    .g-dot.d5{animation-range:cover 19.1% cover 21.1%}
+    .g-dot.d6{animation-range:cover 20.2% cover 22.2%}
+    .g-dot.d7{animation-range:cover 21.2% cover 23.2%}
+    .g-dot.d8{animation-range:cover 23.4% cover 25.4%}
+    .g-dot.d9{animation-range:cover 24.5% cover 26.5%}
+    .g-dot.d10{animation-range:cover 25.5% cover 27.5%}
+    .g-dot.d11{animation-range:cover 26.5% cover 28.5%}
+    .g-dot.d12{animation-range:cover 34.1% cover 36.1%}
+    .g-dot.d13{animation-range:cover 35.1% cover 37.1%}
+    .g-dot.d14{animation-range:cover 36.2% cover 38.2%}
+    .g-dot.d15{animation-range:cover 38.2% cover 40.2%}
+    .g-dot.d16{animation-range:cover 39.2% cover 41.2%}
+    .g-dot.d17{animation-range:cover 40.3% cover 42.3%}
+    .g-dot.d18{animation-range:cover 42.7% cover 44.7%}
+    .g-dot.d19{animation-range:cover 43.7% cover 45.7%}
+    .g-dot.d20{animation-range:cover 52.3% cover 54.3%}
+    .g-dot.d21{animation-range:cover 53.4% cover 55.4%}
+    .g-dot.d22{animation-range:cover 54.4% cover 56.4%}
+    .g-dot.d23{animation-range:cover 56.8% cover 58.8%}
+    .g-dot.d24{animation-range:cover 57.9% cover 59.9%}
+    .g-dot.d25{animation-range:cover 58.9% cover 60.9%}
+    .g-dot.d26{animation-range:cover 59.9% cover 61.9%}
+  }
+}
+@keyframes tf-trace{from{stroke-dashoffset:1000}to{stroke-dashoffset:0}}
+@keyframes tf-light{from{opacity:.16;transform:scale(.55)}to{opacity:1;transform:scale(1)}}
+@keyframes tf-tip{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
+
+/* Sous 860 px le dessin garde sa largeur utile et se fait glisser du doigt :
+   le réduire rendrait les libellés illisibles. */
+@media (max-width:860px){
+  .g-fig{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .g-fig svg{min-width:680px}
+}
+
+/* ---------- les huit phases, en grille compacte ---------- */
+.phases{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line-2);border:1px solid var(--line-2);border-radius:12px;overflow:hidden}
+.ph{display:flex;flex-direction:column;gap:5px;padding:16px 16px 18px;background:var(--surface);color:inherit;text-decoration:none;transition:background .16s ease}
+.ph:hover,.ph:focus-visible{background:var(--brand-wash)}
+.ph:focus-visible{outline:2px solid var(--brand);outline-offset:-2px}
+.ph-n{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;color:var(--brand-ink)}
+.ph-t{font-family:var(--font-display);font-weight:400;font-size:1.06rem;line-height:1.2;color:var(--ink)}
+.ph:hover .ph-t{color:var(--brand-ink)}
+.ph-w{font-size:11.5px;color:var(--ink-3);font-style:italic;line-height:1.35}
+.ph-s{margin:4px 0 0;font-size:13px;color:var(--ink-2);line-height:1.5;flex:1}
+.ph-c{margin-top:8px;padding-top:8px;border-top:1px solid var(--line-2);font-size:11.5px;color:var(--ink-3)}
+.ph-c b{font-family:var(--font-display);font-size:15px;font-weight:400;color:var(--brand-ink)}
+@media (max-width:1000px){.phases{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.phases{grid-template-columns:minmax(0,1fr)}}
+
+
+
+/* ---------- frise (héritage) ---------- */
+.frise{margin-top:8px;position:relative}
+.frise::before{
+  content:"";position:absolute;left:11px;top:14px;bottom:14px;width:2px;
+  background:linear-gradient(to bottom,var(--brand-soft),var(--brand),var(--brand-soft));
+}
+.fr-step{position:relative;padding:0 0 30px 44px}
+.fr-step:last-child{padding-bottom:0}
+.fr-dot{
+  position:absolute;left:0;top:4px;width:24px;height:24px;border-radius:50%;
+  background:var(--surface);border:2px solid var(--brand);
+  display:grid;place-items:center;
+  font-family:var(--font-mono);font-size:10px;font-weight:500;color:var(--brand-ink);
+}
+.fr-title{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin-bottom:9px}
+.fr-title a{color:var(--ink);text-decoration:none;font-weight:600;font-size:1.06rem}
+.fr-title a:hover{color:var(--brand-ink);text-decoration:underline;text-underline-offset:3px}
+.fr-when{font-family:var(--font-mono);font-size:11px;color:var(--ink-3)}
+.lane{display:grid;grid-template-columns:5.6rem 1fr;gap:12px;align-items:start;padding:5px 0}
+.lane-k{
+  font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-3);padding-top:4px;
+}
+.lane-client .lane-k{color:var(--brand-ink)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{
+  font-size:12.5px;padding:3px 10px;border-radius:6px;
+  background:var(--surface);border:1px solid var(--line);color:var(--ink-2);
+}
+.lane-client .chip{background:var(--brand-wash);border-color:var(--brand-soft);color:var(--brand-deep)}
+
+/* ---------- l'axe temporel ----------
+   Le document est une chronologie. L'axe n'illustre pas le parcours : il le
+   structure. Chaque fiche s'y accroche, et son déclencheur EST la graduation.
+   Le déclencheur reste collé en haut pendant la lecture : on sait toujours à
+   quel instant du séjour on se trouve. */
+.fiches{position:relative;display:grid;margin-top:10px}
+.fiches::before{
+  content:"";position:absolute;z-index:0;
+  top:18px;bottom:18px;left:calc(var(--axis) - 1px);width:2px;border-radius:2px;
+  background:linear-gradient(to bottom,var(--brand-soft) 0%,var(--brand-soft) 78%,transparent 100%);
+}
+/* Le défilement pilote l'axe : le temps du séjour avance derrière le lecteur.
+   Un seul mouvement, sur le seul élément qui porte du sens. */
+.fiches::after{
+  content:"";position:absolute;z-index:0;pointer-events:none;
+  top:18px;left:calc(var(--axis) - 1px);width:2px;height:calc(100% - 36px);
+  border-radius:2px;background:var(--brand);
+  transform:scaleY(0);transform-origin:top;
+}
+.fiche{
+  position:relative;z-index:1;
+  display:grid;grid-template-columns:var(--axis) minmax(0,1fr);
+  column-gap:clamp(20px,3vw,36px);align-items:start;
+  padding-block:30px;border-top:1px solid var(--line-2);
+}
+.fiches > .fiche:first-child{border-top:none;padding-top:8px}
+
+/* Position fixe dans la fiche, jamais collante : rendu collant, le déclencheur
+   d'une fiche haute descendait pendant la lecture pendant que celui d'une fiche
+   courte restait en place. Les pastilles cessaient de former une échelle
+   régulière. Elles sont maintenant toutes au même niveau dans leur fiche, et
+   exactement centrées sur l'axe. */
+.fiche-when{
+  display:flex;align-items:flex-start;justify-content:flex-end;gap:12px;
+  text-align:right;
+}
+.tick{
+  order:2;flex:none;width:11px;height:11px;margin-top:4px;border-radius:50%;
+  background:var(--surface);border:2px solid var(--brand);
+  box-shadow:0 0 0 5px var(--ground);
+  transform:translateX(50%);
+}
+.trig{
+  font-family:var(--font-mono);font-size:11.5px;line-height:1.45;
+  color:var(--brand-ink);letter-spacing:-.01em;
+}
+
+/* Le contenu n'est plus une carte : 26 cartes identiques aplatissent la
+   hiérarchie. Le filet de l'axe et l'espace suffisent à séparer. */
+.fiche-card{min-width:0}
+.fiche-card h3{margin:0 0 13px}
+.fiche-body{padding:0}
+.fiche-body p{margin:0 0 14px;max-width:66ch}
+.fiche-body p:last-child{margin-bottom:0}
+.canaux{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 16px}
+.cn{
+  font-size:11.5px;font-weight:500;letter-spacing:.02em;
+  padding:3px 10px;border-radius:999px;border:1px solid var(--line);
+  color:var(--ink-2);background:var(--surface-2);
+}
+.cn-email{color:var(--ch-email);border-color:color-mix(in srgb,var(--ch-email) 34%,transparent)}
+.cn-sms{color:var(--ch-sms);border-color:color-mix(in srgb,var(--ch-sms) 34%,transparent)}
+.cn-wa{color:var(--ch-wa);border-color:color-mix(in srgb,var(--ch-wa) 34%,transparent)}
+.cn-web{color:var(--brand-ink);border-color:var(--brand-soft)}
+.equipe{
+  margin-top:16px;padding:14px 16px;border-radius:10px;
+  background:var(--surface-2);border-left:3px solid var(--ink-3);
+}
+.equipe-k{
+  font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ink-3);margin:0 0 6px;
+}
+.equipe p{margin:0;font-size:14.5px;color:var(--ink-2);max-width:none}
+.gain{
+  margin-top:14px;padding-left:14px;border-left:3px solid var(--gold);
+  font-size:14.5px;color:var(--ink-2);
+}
+.gain b{color:var(--ink);font-weight:600}
+
+/* ---------- capture ---------- */
+/* Emplacement de capture à venir : un repère discret, pas un grand vide.
+   Dix cadres pleine largeur pesaient autant que dix vraies captures. */
+.shot{
+  margin:20px 0 0;max-width:min(100%, 520px);
+  background:var(--brand-wash);
+  border:1px dashed var(--brand-soft);border-radius:10px;
+  display:flex;align-items:center;gap:14px;
+  text-align:left;padding:14px 18px;
+}
+.shot-wide,.shot-tall{max-width:min(100%, 520px)}
+.shot > div{display:flex;flex-direction:column;gap:3px;min-width:0}
+.shot-l{font-size:13.5px;font-weight:500;color:var(--ink-2);line-height:1.4}
+.shot-s{font-size:11.5px;color:var(--ink-3);font-style:italic}
+.shot-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:18px}
+.shot-row .shot{margin-top:0}
+
+/* Une capture ne dépasse jamais sa taille naturelle : agrandie, elle devient
+   floue et mange la page. Trois gabarits selon la forme réelle de l'image. */
+.figure{margin:20px 0 0;max-width:min(100%, 760px)}
+.shot-row .figure{max-width:100%}
+
+/* Une capture en portrait ou presque carrée laissée seule dans une colonne
+   large flotte au milieu d'un vide. On la pose sur un panneau qui occupe la
+   colonne : le cadrage devient un choix, plus un accident. */
+.figure--narrow,.figure--medium{
+  max-width:100%;
+  display:flex;flex-direction:column;align-items:center;
+  background:var(--brand-wash);
+  border:1px solid var(--line-2);border-radius:14px;
+  padding:clamp(18px,3vw,30px);
+}
+.figure--narrow img{max-width:min(100%, 300px)}
+.figure--medium img{max-width:min(100%, 440px)}
+.figure--narrow figcaption,.figure--medium figcaption{
+  flex-direction:column;align-items:center;gap:5px;
+  text-align:center;max-width:44ch;margin-top:16px;
+}
+.figure img{
+  display:block;width:100%;height:auto;border-radius:10px;
+  border:1px solid var(--line);background:var(--surface);
+  box-shadow:var(--shadow);
+}
+.figure figcaption{
+  margin-top:10px;font-size:12.5px;color:var(--ink-3);line-height:1.45;
+}
+.shot-row .figure{margin-top:0}
+
+/* ---------- galerie d'écrans ----------
+   Plusieurs captures d'une même surface se lisent mieux côte à côte qu'empilées :
+   on fait défiler la pellicule au lieu de dérouler la page. La quatrième vignette
+   dépasse volontairement du cadre, c'est ce qui signale qu'on peut glisser. */
+.gallery{
+  margin:20px 0 0;max-width:100%;
+  display:flex;flex-direction:column;
+  background:var(--brand-wash);
+  border:1px solid var(--line-2);border-radius:14px;
+  padding:clamp(18px,3vw,26px);
+}
+.gallery-track{
+  display:flex;gap:16px;align-items:flex-start;
+  overflow-x:auto;overflow-y:hidden;
+  scroll-snap-type:x proximity;
+  scroll-padding-inline:4px;
+  padding-bottom:12px;
+  scrollbar-width:thin;scrollbar-color:var(--brand-soft) transparent;
+}
+.gallery-track::-webkit-scrollbar{height:8px}
+.gallery-track::-webkit-scrollbar-track{background:transparent}
+.gallery-track::-webkit-scrollbar-thumb{background:var(--brand-soft);border-radius:8px}
+.gallery-track img{
+  flex:0 0 auto;width:auto;height:clamp(290px,44vw,360px);
+  scroll-snap-align:center;
+  border-radius:12px;border:1px solid var(--line);
+  background:var(--surface);box-shadow:var(--shadow);
+}
+.gallery-track:focus-visible{outline:2px solid var(--brand);outline-offset:5px;border-radius:12px}
+.gallery figcaption{
+  flex-direction:column;align-items:center;gap:5px;
+  text-align:center;max-width:52ch;align-self:center;margin-top:16px;
+}
+@media print{
+  .gallery-track{overflow:visible;flex-wrap:wrap;justify-content:center}
+  .gallery-track img{height:210px}
+}
+
+/* ---------- blocs divers ---------- */
+.note{
+  background:var(--gold-soft);border-left:3px solid var(--gold);
+  border-radius:0 10px 10px 0;padding:16px 20px;margin:26px 0 0;
+}
+.note p{margin:0;font-size:14.5px;color:var(--ink);max-width:70ch}
+.note b{color:var(--gold-ink)}
+
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:8px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.tile h4{margin:0 0 8px;font-size:1rem;font-weight:600}
+.tile p{margin:0;font-size:14.5px;color:var(--ink-2)}
+
+.tbl-wrap{overflow-x:auto;margin-top:22px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:14.5px}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line-2);vertical-align:top}
+th{
+  font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-3);background:var(--surface-2);
+}
+tr:last-child td{border-bottom:none}
+td.mono{font-family:var(--font-mono);font-size:12.5px;color:var(--ink-2);white-space:nowrap}
+
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:8px}
+.plan{
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;
+  display:flex;flex-direction:column;gap:6px;
+}
+.plan.pop{border-color:var(--brand);box-shadow:inset 0 2px 0 var(--brand)}
+.plan-n{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.plan-p{font-family:var(--font-display);font-size:2.1rem;line-height:1;color:var(--ink)}
+.plan-p sup{font-family:var(--font-body);font-size:.95rem;font-weight:500;vertical-align:super;margin-left:2px}
+.plan-m{font-size:12px;color:var(--ink-3)}
+.plan-d{font-size:14px;color:var(--ink-2);margin-top:4px}
+
+/* ---------- synthèse cochable ---------- */
+.score{
+  position:sticky;top:calc(var(--hdr) + 10px + env(safe-area-inset-top, 0px));z-index:20;
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  padding:14px 18px;margin-bottom:24px;
+  display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;box-shadow:var(--shadow);
+}
+.score-n{font-family:var(--font-display);font-size:1.9rem;line-height:1;color:var(--brand-ink);font-variant-numeric:tabular-nums}
+.score-l{font-size:14px;color:var(--ink-2)}
+.score-bar{flex:1 1 140px;height:6px;border-radius:999px;background:var(--surface-3);overflow:hidden;min-width:120px}
+.score-fill{height:100%;width:0;background:var(--brand);border-radius:999px;transition:width .25s ease}
+.reset{font:inherit;font-size:12px;color:var(--ink-3);background:none;border:none;cursor:pointer;text-decoration:underline;padding:0}
+
+.check-group{margin-top:22px}
+.check-group h4{
+  margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--brand-ink);
+}
+.check-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px}
+.check{
+  display:flex;align-items:flex-start;gap:10px;padding:9px 12px;
+  border-radius:8px;cursor:pointer;font-size:14.5px;color:var(--ink);
+  border-bottom:1px solid var(--line-2);
+}
+.check:hover{background:var(--brand-wash)}
+.check input{
+  appearance:none;flex:none;width:17px;height:17px;margin-top:3px;
+  border:1.5px solid var(--ink-3);border-radius:4px;background:var(--surface);cursor:pointer;
+}
+.check input:checked{background:var(--brand);border-color:var(--brand)}
+.check input:checked::after{content:"";display:block;width:4px;height:8px;margin:1.5px auto 0;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.check input:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.check:has(input:checked){color:var(--ink-3)}
+
+/* ---------- clôture ---------- */
+.end{background:var(--end-bg);color:var(--end-fg);border-bottom:none}
+.end h2{color:inherit}
+.end .intro{color:color-mix(in srgb, currentColor 74%, transparent);max-width:56ch}
+.end .eyebrow{color:color-mix(in srgb, currentColor 80%, transparent)}
+.end-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:30px}
+.end-step{border-top:2px solid color-mix(in srgb, currentColor 34%, transparent);padding-top:14px}
+.end-step .n{font-family:var(--font-mono);font-size:11px;opacity:.7;display:block;margin-bottom:6px}
+.end-step h4{margin:0 0 6px;font-size:1rem;font-weight:600}
+.end-step p{margin:0;font-size:14.5px;color:color-mix(in srgb, currentColor 74%, transparent)}
+
+footer{padding-block:30px;font-size:12.5px;color:var(--ink-3)}
+footer p{margin:0 0 4px;max-width:70ch}
+
+a{color:var(--brand-ink)}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px;border-radius:4px}
+
+/* En dessous de 860 px le fil défile horizontalement, largeurs figées : masquer
+   puis réafficher le libellé de l'étape courante faisait sauter tout le fil à
+   chaque changement de phase. */
+@media (max-width:860px){
+  .rail-steps li{flex:0 0 auto}
+  .rail-seg{flex:none;width:18px;min-width:18px}
+  .rail-steps{width:max-content}
+  .rail-link{padding-right:6px}
+}
+@media (max-width:900px){
+  .fiches::before,.fiches::after{display:none}
+  .fiche{grid-template-columns:minmax(0,1fr);row-gap:9px;padding-block:24px}
+  .fiche-when{justify-content:flex-start;text-align:left}
+  .tick{display:none}
+  .trig{
+    display:inline-block;padding:3px 10px;border-radius:6px;
+    background:var(--brand-wash);border:1px solid var(--brand-soft);
+  }
+}
+@media (max-width:640px){
+  :root{--hdr:76px}
+  .topbar-ctx{display:none}
+  .lane{grid-template-columns:1fr;gap:5px}
+  .lane-k{padding-top:0}
+  .score{position:static}
+}
+/* Apparition au défilement, en amélioration progressive : les moteurs qui
+   ignorent animation-timeline affichent simplement l'état final. */
+@media (prefers-reduced-motion:no-preference){
+  @supports (animation-timeline: view()){
+    .fiches::after{
+      animation:tf-spine linear both;
+      animation-timeline:view();
+      animation-range:entry 92% exit 8%;
+    }
+    .tick{
+      animation:tf-tick linear both;
+      animation-timeline:view();
+      animation-range:entry 88% entry 100%;
+    }
+    .fiche-card,.figure,.tile,.plan{
+      animation:tf-rise linear both;
+      animation-timeline:view();
+      animation-range:entry 4% entry 46%;
+    }
+  }
+}
+@keyframes tf-spine{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes tf-tick{from{background:var(--surface)}to{background:var(--brand)}}
+@keyframes tf-rise{from{opacity:.25;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+}
+html{scroll-behavior:smooth}
+
+@media print{
+  .topbar,.toc,.score,.rail{display:none!important}
+  /* un document imprimé se lit en entier, quel que soit le mode à l'écran */
+  .fiche-body > p,.fiche-body .equipe,.fiche-body .figure{display:block!important}
+  .fiches::after{display:none}
+  .tick{background:var(--brand)!important}
+  body{background:#fff;color:#1F2A2A;font-size:11pt}
+  .band{border-bottom:1px solid #ddd;padding-block:18pt;break-inside:auto}
+  .fiche,.tile,.plan,.fr-step{break-inside:avoid}
+  .shot{break-inside:avoid;aspect-ratio:16/9}
+  .end{background:#fff!important;color:#1F2A2A!important}
+  h1{font-size:30pt}h2{font-size:19pt}
+}
+</style>
+</head>
+<body>
+
+
+<div class="topbar">
+  <div class="topbar-in">
+    <span class="mark">
+      <svg width="15" height="18" viewBox="0 0 133 155" aria-hidden="true"><path fill="#006F68" d="M66.5 0 133 38.5v77L66.5 154 0 115.5v-77L66.5 0Zm0 17.7L15.3 47.3v59.4l51.2 29.6 51.2-29.6V47.3L66.5 17.7Z"/><path fill="#006F68" d="M66.5 44.4 90 58v27.1L66.5 98.7 43 85.1V58l23.5-13.6Z"/></svg>
+      <span>TriggerFlow</span>
+    </span>
+    <div class="topbar-spacer"></div>
+    <span class="topbar-ctx" id="ctx">The guest journey</span>
+    <a class="lang" href="?lang=fr" hreflang="fr" lang="fr" aria-label="Lire ce document en français">FR</a>
+      <button class="toc-btn mode-btn" id="modeBtn" aria-pressed="true">Expand all</button>
+    <button class="toc-btn" id="tocOpen" aria-expanded="false" aria-controls="toc">Contents</button>
+  </div>
+  <nav class="rail" aria-label="Journey thread">
+    <div class="rail-in">
+      <div class="rail-scroll" id="railScroll">
+        <ol class="rail-steps" id="railSteps"></ol>
+      </div>
+    </div>
+  </nav>
+  <div class="progress" id="prog"></div>
+</div>
+
+<div class="toc" id="toc" hidden role="dialog" aria-modal="true" aria-label="Contents">
+  <div class="toc-head">
+    <span class="eyebrow" style="margin:0">Contents</span>
+    <button class="toc-close" id="tocClose">Close</button>
+  </div>
+  <nav class="toc-grid" id="tocGrid"></nav>
+</div>
+
+<!-- ============ COUVERTURE ============ -->
+<header class="cover">
+  <div class="wrap">
+    <p class="eyebrow">Reference document</p>
+    <div class="head-row head-row--cover">
+      <h1>The guest journey, one touchpoint at a time</h1>
+      <div class="head-text">
+        <p class="lede">Between the moment a traveller discovers a property and the moment they come back, there are some thirty opportunities to speak to them. Most are never used, not out of indifference, but because no front desk team can handle them by hand.</p>
+        <p class="lede">This document lists those moments one by one. For each of them: <strong>what triggers it</strong>, <strong>which channels it uses</strong>, <strong>what the team sees on their side</strong>, and <strong>what it actually changes</strong>. Everything described here is running in production today.</p>
+      </div>
+    </div>
+    <div class="cover-meta">
+      <span class="meta-chip">8 phases of the journey</span>
+      <span class="meta-chip">Guest side and team side</span>
+      <span class="meta-chip">About a 25 minute read</span>
+      <span class="meta-chip">Updated September 2026</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ FRISE ============ -->
+<section class="band" id="frise">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Overview</span>
+      <h2>The journey, end to end</h2></div>
+      <p class="intro">A single unbroken line: twenty-six moments where a property can speak to its guest, spread across the three stages of the stay. Each step links to its detailed section.</p>
+    </div>
+
+    <figure class="g-wrap">
+      <div class="g-fig">
+        <svg viewBox="0 0 1000 400" role="img" aria-label="A continuous line runs through the twenty-six touchpoints of the stay in three passes: before, during, after">
+          <path class="g-track" d="M 60 96 H 856 Q 916 96 916 156 Q 916 216 856 216 H 164 Q 104 216 104 276 Q 104 336 164 336 H 924" fill="none" stroke="currentColor" stroke-opacity=".13" stroke-width="3" stroke-linecap="round"/>
+          <path class="g-line" pathLength="1000" d="M 60 96 H 856 Q 916 96 916 156 Q 916 216 856 216 H 164 Q 104 216 104 276 Q 104 336 164 336 H 924" fill="none" stroke="var(--brand)" stroke-width="3" stroke-linecap="round"/>
+          <polygon class="g-tip" points="918,328 940,336 918,344" fill="var(--brand)"/>
+          <g fill="var(--brand)">
+            <circle class="g-dot d1" cx="110" cy="96" r="5.5"/>
+            <circle class="g-dot d2" cx="160" cy="96" r="5.5"/>
+            <circle class="g-dot d3" cx="210" cy="96" r="5.5"/>
+            <circle class="g-dot d4" cx="300" cy="96" r="5.5"/>
+            <circle class="g-dot d5" cx="350" cy="96" r="5.5"/>
+            <circle class="g-dot d6" cx="400" cy="96" r="5.5"/>
+            <circle class="g-dot d7" cx="450" cy="96" r="5.5"/>
+            <circle class="g-dot d8" cx="560" cy="96" r="5.5"/>
+            <circle class="g-dot d9" cx="610" cy="96" r="5.5"/>
+            <circle class="g-dot d10" cx="660" cy="96" r="5.5"/>
+            <circle class="g-dot d11" cx="710" cy="96" r="5.5"/>
+          </g>
+          <g class="g-lab">
+            <a href="#p1"><text x="160" y="76" text-anchor="middle">Before</text></a>
+            <a href="#p2"><text x="375" y="76" text-anchor="middle">Booking</text></a>
+            <a href="#p3"><text x="635" y="76" text-anchor="middle">Pre-stay</text></a>
+          </g>
+          <g fill="var(--brand)">
+            <circle class="g-dot d12" cx="820" cy="216" r="5.5"/>
+            <circle class="g-dot d13" cx="770" cy="216" r="5.5"/>
+            <circle class="g-dot d14" cx="720" cy="216" r="5.5"/>
+            <circle class="g-dot d15" cx="620" cy="216" r="5.5"/>
+            <circle class="g-dot d16" cx="570" cy="216" r="5.5"/>
+            <circle class="g-dot d17" cx="520" cy="216" r="5.5"/>
+            <circle class="g-dot d18" cx="400" cy="216" r="5.5"/>
+            <circle class="g-dot d19" cx="350" cy="216" r="5.5"/>
+          </g>
+          <g class="g-lab">
+            <a href="#p4"><text x="770" y="244" text-anchor="middle">Arrival</text></a>
+            <a href="#p5"><text x="570" y="244" text-anchor="middle">Stay</text></a>
+            <a href="#p6"><text x="375" y="244" text-anchor="middle">Departure</text></a>
+          </g>
+          <g fill="var(--brand)">
+            <circle class="g-dot d20" cx="210" cy="336" r="5.5"/>
+            <circle class="g-dot d21" cx="260" cy="336" r="5.5"/>
+            <circle class="g-dot d22" cx="310" cy="336" r="5.5"/>
+            <circle class="g-dot d23" cx="430" cy="336" r="5.5"/>
+            <circle class="g-dot d24" cx="480" cy="336" r="5.5"/>
+            <circle class="g-dot d25" cx="530" cy="336" r="5.5"/>
+            <circle class="g-dot d26" cx="580" cy="336" r="5.5"/>
+          </g>
+          <g class="g-lab">
+            <a href="#p7"><text x="260" y="364" text-anchor="middle">After the stay</text></a>
+            <a href="#p8"><text x="505" y="364" text-anchor="middle">Loyalty</text></a>
+          </g>
+          <g class="g-temps">
+            <text x="60"  y="48"  text-anchor="start">BEFORE THE STAY</text>
+            <text x="640" y="188" text-anchor="start">DURING THE STAY</text>
+            <text x="636" y="308" text-anchor="start">AFTER, AND THE RETURN</text>
+          </g>
+          <g class="g-cnt">
+            <text x="196" y="48"  text-anchor="start">11 points</text>
+            <text x="792" y="188" text-anchor="start">8 points</text>
+            <text x="800" y="308" text-anchor="start">7 points</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption>Eleven touchpoints before the stay, eight during, seven after. The line fills in as you read.</figcaption>
+    </figure>
+
+    <div class="phases">
+      <a class="ph" href="#p1">
+        <span class="ph-n">01</span>
+        <span class="ph-t">Before the booking</span>
+        <span class="ph-w">the visitor is not a guest yet</span>
+        <span class="ph-s">Website chat, AI bot in thirty languages, WhatsApp and social media, newsletter sign-up, reviews on display.</span>
+        <span class="ph-c"><b>3</b> touchpoints</span>
+      </a>
+      <a class="ph" href="#p2">
+        <span class="ph-n">02</span>
+        <span class="ph-t">The booking</span>
+        <span class="ph-w">the second the PMS records it</span>
+        <span class="ph-s">Confirmation in your brand, card in the phone wallet, calendar, deposit link, contract.</span>
+        <span class="ph-c"><b>4</b> touchpoints</span>
+      </a>
+      <a class="ph" href="#p3">
+        <span class="ph-n">03</span>
+        <span class="ph-t">The pre-stay</span>
+        <span class="ph-w">from 30 days out to the eve of arrival</span>
+        <span class="ph-s">Online pre-check-in, ID document scan, signature, upselling, room upgrade.</span>
+        <span class="ph-c"><b>4</b> touchpoints</span>
+      </a>
+      <a class="ph" href="#p4">
+        <span class="ph-n">04</span>
+        <span class="ph-t">Arrival</span>
+        <span class="ph-w">on the day</span>
+        <span class="ph-s">Smart lock code and QR, self-service kiosk, welcome message triggered at the actual check-in.</span>
+        <span class="ph-c"><b>3</b> touchpoints</span>
+      </a>
+      <a class="ph" href="#p5">
+        <span class="ph-n">05</span>
+        <span class="ph-t">During the stay</span>
+        <span class="ph-w">every night spent on site</span>
+        <span class="ph-s">Conversation across six channels, Guest App, room service, service request passed to housekeeping.</span>
+        <span class="ph-c"><b>3</b> touchpoints</span>
+      </a>
+      <a class="ph" href="#p6">
+        <span class="ph-n">06</span>
+        <span class="ph-t">Departure</span>
+        <span class="ph-w">from check-out to the final payment</span>
+        <span class="ph-s">Automatic invoice, remote balance payment, lost item linked to the booking.</span>
+        <span class="ph-c"><b>2</b> touchpoints</span>
+      </a>
+      <a class="ph" href="#p7">
+        <span class="ph-n">07</span>
+        <span class="ph-t">After the stay</span>
+        <span class="ph-w">from a few hours to a few days later</span>
+        <span class="ph-s">Satisfaction survey, review request conditioned on the answer, alert on a negative review.</span>
+        <span class="ph-c"><b>3</b> touchpoints</span>
+      </a>
+      <a class="ph" href="#p8">
+        <span class="ph-n">08</span>
+        <span class="ph-t">Loyalty and the return</span>
+        <span class="ph-w">all the rest of the year</span>
+        <span class="ph-s">Guest portal, points and benefits, birthday, segmented campaigns, reactivation of dormant guests.</span>
+        <span class="ph-c"><b>4</b> touchpoints</span>
+      </a>
+    </div>
+
+      <div class="note">
+      <p><b>How to read the cards.</b> Every touchpoint carries its exact trigger, written as it appears in the tool. That is what separates automation from a bulk send: the message goes out because a precise event happened on that precise booking, not because someone launched a campaign on a Monday morning.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PHASE 01 ============ -->
+<section class="band band-alt" id="p1">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Phase 01</span>
+      <h2>Before the booking</h2></div>
+      <p class="intro">The visitor hesitates, compares, and leaves if nobody answers. Most questions asked at this stage arrive outside front desk hours.</p>
+    </div>
+
+    <div class="fiches">
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Visitor on a page of the website</span></div>
+        <div class="fiche-card">
+          <h3>The website chat</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-web">Website chat</span><span class="cn cn-wa">WhatsApp</span><span class="cn">Messenger</span><span class="cn">Instagram</span></div>
+          <p>A widget goes onto the property's website in one line of code. Opening hours, translated welcome message, pre-chat form, offline message and colours are all configurable. When nobody is available, the visitor gets a link to pick the conversation back up later without retyping anything.</p>
+          <p>Messages coming from WhatsApp, Messenger and Instagram land in the same thread as the chat. A visitor who writes on Instagram and comes back two days later on WhatsApp stays one single conversation.</p>
+          <div class="equipe"><p class="equipe-k">Team side</p><p>Everything arrives in a single messaging hub. No switching between five apps, no message seen by nobody because it was on the wrong channel.</p></div>
+          <div class="gain"><b>What this changes:</b> evening and weekend enquiries no longer sit unanswered until Monday morning.</div>
+          <div class="shot-row">
+            <div class="shot"><div><div class="shot-l">The website chat as the visitor sees it, bubble open on a booking page</div><div class="shot-s">To be added</div></div></div>
+            <figure class="figure"><img src="/doc/parcours/captures/02-hub-messagerie.jpg" alt="The messaging hub: a single thread running through the booking, the arrival, a WhatsApp message from the guest and the departure" width="1383" height="780" loading="lazy" decoding="async"><figcaption><span>The messaging hub: a single thread running through the booking, the arrival, a WhatsApp message from the guest and the departure</span></figcaption></figure>
+          </div>
+        
+        </div>
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Incoming message outside opening hours</span></div>
+        <div class="fiche-card">
+          <h3>The AI bot and its handover to a human</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-web">Website chat</span><span class="cn cn-wa">WhatsApp</span><span class="cn cn-sms">SMS</span><span class="cn cn-email">Email</span></div>
+          <p>The bot answers in the visitor's language, detected automatically, from a knowledge base built from the property's website and completed by hand. It knows the opening hours, the facilities, the cancellation terms, the address, the parking.</p>
+          <p>What matters is not that it answers, it is that it knows when to stop. As soon as a question falls outside its scope, or the visitor asks for a human, it hands over: the front desk gets an alert, picks the thread up exactly where it stopped, and the visitor has nothing to repeat.</p>
+          <div class="equipe"><p class="equipe-k">Team side</p><p>Email alert and notification on handover. The full history of the exchange with the bot stays visible. A simulator lets you test the answers before going live.</p></div>
+          <div class="gain"><b>What this changes:</b> continuous availability without an on-call rota, and a handover to a human before the visitor gets annoyed.</div>
+          <figure class="figure figure--narrow"><img src="/doc/parcours/captures/03-bot-simulateur.png" alt="The bot answers a guest question, with its confidence score and the number of sources used" width="404" height="530" loading="lazy" decoding="async"><figcaption><span>The bot answers a guest question, with its confidence score and the number of sources used</span></figcaption></figure>
+        
+        </div>
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">New form response</span></div>
+        <div class="fiche-card">
+          <h3>Capturing the website audience</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-web">Embedded widget</span><span class="cn cn-email">Confirmation email</span></div>
+          <p>Two widgets slot into the property's website. The first collects newsletter sign-ups with double email confirmation, which protects deliverability and compliance. The second displays the property's real reviews, in a version search engines can read.</p>
+          <p>A sign-up creates a record straight into the CRM, applies the chosen tags and feeds the segments. The contact is usable immediately, with no export and no import.</p>
+          <div class="equipe"><p class="equipe-k">Team side</p><p>Contact record created, tags applied, segment fed. No data entry.</p></div>
+          <div class="gain"><b>What this changes:</b> the website audience stops being anonymous and becomes a list you can address.</div>
+          <figure class="figure figure--medium"><img src="/doc/parcours/captures/04-widget-avis.png" alt="The review widget embedded on the hotel's website, in its brand, with all three platforms together" width="760" height="672" loading="lazy" decoding="async"><figcaption><span>The review widget embedded on the hotel's website, in its brand, with all three platforms together</span></figcaption></figure>
+        
+        </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="band" id="p2">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Phase 02</span>
+      <h2>The booking</h2></div>
+      <p class="intro">This is when the guest's attention is at its highest. It is also the one message almost every property already sends, and the one they often send without having thought about it.</p>
+    </div>
+
+    <div class="fiches">
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">New booking · Confirmation</span></div>
+        <div class="fiche-card">
+          <h3>The booking confirmation</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">Email</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span></div>
+          <p>The message goes out within seconds of the booking being recorded in the PMS, not at the next overnight batch. It carries the real details of the booking: dates, room, rate plan, amount, occupants, cancellation terms.</p>
+          <p>The email editor is visual. The property's brand, its fonts and its logo are set once and apply to every message. A fallback link opens the message in a browser when the recipient's mail client truncates it.</p>
+          <div class="equipe"><p class="equipe-k">Team side</p><p>The guest record is created or enriched automatically. A note can be posted back into the PMS so the front desk sees what was sent from the tool they already use.</p></div>
+          <div class="gain"><b>What this changes:</b> a confirmation in the property's brand, not the PMS's or the agency's.</div>
+          <div class="shot-row">
+            <figure class="figure"><img src="/doc/parcours/captures/05-constructeur-flow.jpg" alt="The flow builder: trigger three days before arrival, condition on the email, two branches" width="1456" height="821" loading="lazy" decoding="async"><figcaption><span>The flow builder: trigger three days before arrival, condition on the email, two branches</span></figcaption></figure>
+            <figure class="figure"><img src="/doc/parcours/captures/06-editeur-email.jpg" alt="The email editor: the pre-stay template, its variables and the block library" width="1155" height="757" loading="lazy" decoding="async"><figcaption><span>The email editor: the pre-stay template, its variables and the block library</span></figcaption></figure>
+          
+        </div>
+        </div>
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Booking confirmed</span></div>
+        <div class="fiche-card">
+          <h3>The card in the phone wallet</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-web">Apple Wallet</span><span class="cn cn-web">Google Wallet</span><span class="cn cn-web">Calendar file</span></div>
+          <p>The guest adds their booking to their phone wallet in one tap. The card carries the dates, the property name, the address, and the hotel's brand: logo, colours, image. It stays available offline, which matters when a flight lands.</p>
+          <p>Alongside it, an add-to-calendar link drops the stay dates into the guest's diary, with the address and the property's contact details.</p>
+          <div class="equipe"><p class="equipe-k">Team side</p><p>Nothing to do. The card is built from the booking data and the brand already configured.</p></div>
+          <div class="gain"><b>What this changes:</b> the property stays on the phone's home screen right up to the day of arrival.</div>
+          <div class="shot"><div><div class="shot-l">The booking card in the wallet, in the property's colours</div><div class="shot-s">To be added, portrait format</div></div></div>
+        </div>
+      
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Payment link: paid</span></div>
+        <div class="fiche-card">
+          <h3>The payment link</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">Email</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span></div>
+          <p>Deposit, balance, security deposit, card pre-authorisation: the link carries the property's brand and goes out on the channel of your choice. Several payment providers are supported.</p>
+          <p>A payment is an event, not just an accounting entry. So the scenario can branch on it: if the guest has paid, it moves on; if they have not paid after three days, a reminder goes out, and the front desk is alerted after five.</p>
+          <div class="equipe"><p class="equipe-k">Team side</p><p>Payment tracking, automatic reminders, alert when the deadline passes. The outstanding balance can also be read straight from the PMS with most connectors.</p></div>
+          <div class="gain"><b>What this changes:</b> chasing a deposit stops being a note scribbled in a diary.</div>
+          <div class="shot"><div><div class="shot-l">The payment page as the guest sees it, in the property's brand</div><div class="shot-s">To be added</div></div></div>
+        </div>
+      
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Generate document</span></div>
+        <div class="fiche-card">
+          <h3>Documents</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">Attachment</span><span class="cn cn-web">Permanent link</span></div>
+          <p>Contract, booking voucher, invoice, police form: a PDF is generated from the real booking data, stored and sent, or made available behind a permanent link. It can be signed electronically inside the pre-check-in form.</p>
+          <div class="equipe"><p class="equipe-k">Team side</p><p>The document is attached to the booking and stays available from the guest record.</p></div>
+          <div class="gain"><b>What this changes:</b> no more Word templates filled in by hand and renamed for every send.</div>
+        </div>
+      
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="band band-alt" id="p3">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Phase 03</span>
+      <h2>The pre-stay</h2></div>
+      <p class="intro">The most profitable window of the journey, and the one most often left empty. The guest has already paid, they are picturing the trip, and they are available. This is where they accept an upgrade, fill in a form, book a table.</p>
+    </div>
+
+    <div class="fiches">
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Arrival date, 3 days before, 10:00</span></div>
+        <div class="fiche-card">
+          <h3>Online pre-check-in</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">Email</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span><span class="cn cn-web">Web form</span></div>
+          <p>The guest fills in their details from their phone: identity of the occupants, estimated arrival time, preferences, special requests. The form is built by drag and drop, without a developer, and translates into the property's languages.</p>
+          <p>Two things change the front desk's day. The <b>ID document scan</b> reads the machine-readable zone of a passport or ID card and fills the fields on its own. The <b>electronic signature</b> lets you have the house rules or the contract signed before arrival.</p>
+          <div class="equipe"><p class="equipe-k">Team side</p><p>A table of the day's arrivals shows who has filled the form in, who has not, and who arrives late. An occupants view, protected by a code, can be shared with the emergency services.</p></div>
+          <div class="gain"><b>What this changes:</b> the time spent at the desk typing in identities disappears. This is also by far the phase where forms are best completed: close to a quarter of pre-stay sends are filled in, against under seven per cent after the stay.</div>
+          <div class="shot-row">
+            <figure class="figure"><img src="/doc/parcours/captures/09-precheckin-identite.jpg" alt="Pre-check-in on the guest side: the occupant identity step" width="1155" height="757" loading="lazy" decoding="async"><figcaption><span>Pre-check-in on the guest side: the occupant identity step</span></figcaption></figure>
+            <div class="shot"><div><div class="shot-l">The ID document scan and the fields filled in automatically</div><div class="shot-s">To be added</div></div></div>
+          </div>
+        
+        </div>
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Arrival date, 4 to 7 days before</span></div>
+        <div class="fiche-card">
+          <h3>Upselling</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">Email</span><span class="cn cn-wa">WhatsApp</span><span class="cn cn-web">Web catalogue</span></div>
+          <p>Breakfast, transfer, treatment, bottle in the room, parking, late check-out: the catalogue appears inside the pre-stay form, with photos, prices and terms. Products can be conditional, for example only showing for stays of two nights or more, or only for certain room categories.</p>
+          <p>The guest orders and pays online. The order reaches the property with its consumption date, ready to prepare.</p>
+          <div class="equipe"><p class="equipe-k">Team side</p><p>A view of the orders to prepare, by day and by department. A tracking view can be shared with an outside supplier, the baker for instance, who ticks off what they delivered without access to anything else.</p></div>
+          <div class="gain"><b>What this changes:</b> timing matters more than the offer. A proposal sent four to seven days before arrival converts markedly better than the same proposal sent the day before.</div>
+          <figure class="figure gallery">
+            <div class="gallery-track" tabindex="0" role="group" aria-label="Catalogue layouts, horizontal scrolling">
+              <img src="/doc/parcours/captures/11-catalogue-vitrine.jpg" alt="Showcase layout: one product featured, the rest in a list" width="1240" height="717" loading="lazy" decoding="async">
+              <img src="/doc/parcours/captures/11-catalogue-couple-fond.jpg" alt="A second catalogue, dedicated to romantic stays, with its own background image" width="1240" height="808" loading="lazy" decoding="async">
+            </div>
+            <figcaption><span>One catalogue per stay intent, and a layout you change without touching the products: showcase, cards, list or mini-page. Scroll horizontally.</span></figcaption>
+          </figure>
+        
+        </div>
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Upgrade accepted</span></div>
+        <div class="fiche-card">
+          <h3>The room upgrade</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">Email</span><span class="cn cn-wa">WhatsApp</span><span class="cn cn-web">Web catalogue</span></div>
+          <p>The upgrade offer only goes out if the higher category is genuinely available in the PMS on those dates. The check happens at the moment of sending, not the day before.</p>
+          <p>When the guest accepts and pays, the information flows back down into the PMS. The booking changes category without re-keying, and the acceptance itself becomes a trigger: you can follow up with a thank-you message or a particular room preparation.</p>
+          <div class="equipe"><p class="equipe-k">Team side</p><p>The change shows in the PMS as if it had been keyed in at the desk. No double entry, no risk of overbooking the higher category.</p></div>
+          <div class="gain"><b>What this changes:</b> extra revenue on rooms that would have gone at the lower category's rate.</div>
+          <div class="shot"><div><div class="shot-l">The upgrade offer with the higher room and the supplement</div><div class="shot-s">To be added</div></div></div>
+        </div>
+      
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Arrival date, 1 day before</span></div>
+        <div class="fiche-card">
+          <h3>Practical information</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">Email</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span></div>
+          <p>Address and directions, access by car and by public transport, parking, room availability time, direct contact for the front desk. This is the most read message of the journey and the least well used: it is the right place to slip in one last chance to book a table or a transfer.</p>
+          <div class="equipe"><p class="equipe-k">Team side</p><p>Fewer calls the day before and on the day asking for the gate code or the breakfast times.</p></div>
+          <div class="gain"><b>What this changes:</b> repetitive last-minute questions drop noticeably.</div>
+        </div>
+      
+        </div>
+      </article>
+
+
+    </div>
+
+      <div class="bilan" id="ventes-bilan">
+        <div class="bilan-head">
+          <span class="bilan-k">Team side</span>
+          <h3>What the extras bring in</h3>
+        </div>
+        <p class="bilan-lede">Offering services is one thing, knowing which ones sell is another. Sales tracking brings together on a single screen what was ordered, through which channel, in which category, and what it actually weighs. It also covers sales made during the stay and those placed from the loyalty portal.</p>
+
+        <div class="cols">
+          <div class="tile"><h4>Three headline figures</h4><p>Revenue, number of sales and average basket over the chosen period. The average basket is often the most telling: it says whether the guest is buying more expensively or simply more often.</p></div>
+          <div class="tile"><h4>Compare two periods</h4><p>The period can be set to seven days, thirty days, three months, six months, a year or free dates. A second selection compares against the previous period, the same period last year, or a chosen interval.</p></div>
+          <div class="tile"><h4>Compare two segments</h4><p>The comparison can also be between two guest segments rather than two periods. Couples and families do not buy the same things, and the catalogue can be adjusted accordingly.</p></div>
+          <div class="tile"><h4>The split by category</h4><p>The weight of each family of services, in euros and as a percentage, on revenue or on number of sales. This is the view that reveals the categories taking up space in the catalogue without bringing anything in.</p></div>
+          <div class="tile"><h4>The product ranking</h4><p>The ten best-selling services, sortable by volume or by revenue. A product that sells rarely but dear and one that sells often but cheap are not managed the same way.</p></div>
+          <div class="tile"><h4>Where the orders come from</h4><p>Every order keeps its source: the pre-stay form, the loyalty programme or the Guest App. So you know which channel is working, not just how much you sold.</p></div>
+        </div>
+
+        <figure class="figure"><img src="/doc/parcours/captures/12-ventes-statistiques.jpg" alt="Tracking of upsell revenue: turnover, number of sales and average basket, trend curves, split by category and product ranking" width="1240" height="1306" loading="lazy" decoding="async"><figcaption><span>In this example, breakfast leads the ranking by volume, but half the revenue comes from a single family of services, and another accounts for barely four per cent. The product that sells most often is not the one that brings in the most: that is the kind of finding that makes you rethink a catalogue, not the total takings alone.</span></figcaption></figure>
+      </div>
+  </div>
+</section>
+
+<section class="band" id="p4">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Phase 04</span>
+      <h2>Arrival</h2></div>
+      <p class="intro">The moment the promise is tested. A late arrival, a crowded desk or a code that does not work leave a lasting mark.</p>
+    </div>
+
+    <div class="fiches">
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Arrival date, on the moment, 14:00</span></div>
+        <div class="fiche-card">
+          <h3>Access codes and the smart lock</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">Email</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span><span class="cn cn-web">Secure page</span></div>
+          <p>The guest receives a personal link to a page showing their access codes and a QR code. Supported smart locks generate a code valid for the length of the stay, and only for that length.</p>
+          <p>The page also carries a configurable contact block: who to call if the code fails, on what number, at what hours. That is the detail that avoids the panicked midnight call to a closed switchboard.</p>
+          <div class="equipe"><p class="equipe-k">Team side</p><p>The code is generated and revoked automatically. No more keys handed over in person, no more keys never returned.</p></div>
+          <div class="gain"><b>What this changes:</b> a self-service arrival possible at any hour, with no one required on site.</div>
+          <div class="shot"><div><div class="shot-l">The access page: the code, the QR and the emergency contact block</div><div class="shot-s">To be added, portrait format</div></div></div>
+        </div>
+      
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">The guest identifies themselves at the kiosk</span></div>
+        <div class="fiche-card">
+          <h3>The check-in kiosk</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-web">Touchscreen on site</span></div>
+          <p>A tablet or a screen in the lobby. The guest finds their booking by name and dates, completes what is missing, picks their room when the property allows it, and leaves with their access details. The kiosk returns to its home screen on its own after a period of inactivity.</p>
+          <div class="equipe"><p class="equipe-k">Team side</p><p>The evening rush smooths out. The front desk handles the cases that need a conversation rather than the queue.</p></div>
+          <div class="gain"><b>What this changes:</b> a welcome capacity that no longer depends on how many people are behind the desk.</div>
+          <div class="shot"><div><div class="shot-l">The kiosk home screen and the room selection step</div><div class="shot-s">To be added</div></div></div>
+        </div>
+      
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Check-in on a room</span></div>
+        <div class="fiche-card">
+          <h3>The welcome message</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span></div>
+          <p>This message does not go out at a fixed time. It goes out when the check-in is actually recorded, so when the guest is physically in their room. The content follows: the wifi code, the breakfast times, the direct number to write to the front desk.</p>
+          <div class="equipe"><p class="equipe-k">Team side</p><p>This message is also what opens the conversation channel for the whole stay. The guest replies on the same thread.</p></div>
+          <div class="gain"><b>What this changes:</b> the guest knows who to write to, and writes instead of leaving unhappy without a word.</div>
+        </div>
+      
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="band band-alt" id="p5">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Phase 05</span>
+      <h2>During the stay</h2></div>
+      <p class="intro">The shortest phase to describe and the most decisive. A problem solved during the stay never becomes a one-star review.</p>
+    </div>
+
+    <div class="fiches">
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Incoming message from the guest</span></div>
+        <div class="fiche-card">
+          <h3>The conversation with the front desk</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-wa">WhatsApp</span><span class="cn cn-sms">SMS</span><span class="cn cn-email">Email</span><span class="cn cn-web">Chat</span><span class="cn">Messenger</span><span class="cn">Instagram</span></div>
+          <p>Six incoming channels, one conversation thread, attached to the right booking and the right guest record. The team sees who is writing, from which room, until when, and what has already been said.</p>
+          <p>The bot can answer simple questions at any hour and hand over as soon as it needs to. Service requests go straight to housekeeping: towels, an extra pillow, do not disturb.</p>
+          <div class="equipe"><p class="equipe-k">Team side</p><p>A messaging hub on the desktop, and a mobile app for staff on the move, with notifications. A housekeeper can answer from the corridor.</p></div>
+          <div class="gain"><b>What this changes:</b> the guest says during the stay what they would otherwise have written afterwards, in public.</div>
+          <div class="shot"><div><div class="shot-l">The staff mobile app: the conversation list and a reply in progress</div><div class="shot-s">To be added, portrait format</div></div></div>
+        </div>
+      
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Personal link sent to the guest</span></div>
+        <div class="fiche-card">
+          <h3>The Guest App</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-web">Traveller mobile app</span></div>
+          <p>An app for the guest, fed by the property's data: live stay information, room service and concierge, online check-in and check-out, direct chat with the front desk. The guest gets in through a personal link, with no account to create.</p>
+          <p>Catalogues, products, stock, booking and loyalty data are synchronised continuously. What the guest orders in the app lands in the same place as everything else.</p>
+          <div class="equipe"><p class="equipe-k">Team side</p><p>No database to keep twice. The catalogue set up once serves the pre-stay form, the guest portal and the app.</p></div>
+          <div class="gain"><b>What this changes:</b> a digital room directory, replacing the leatherette folder on the desk.</div>
+          <figure class="figure gallery">
+            <div class="gallery-track" tabindex="0" role="group" aria-label="Guest App screens, horizontal scrolling">
+              <img src="/doc/parcours/captures/guestapp-saint-james.png" alt="Saint James Paris: home, the story of the place, treatments and the breakfast menu" width="1200" height="646" loading="lazy" decoding="async">
+              <img src="/doc/parcours/captures/guestapp-sofitel.png" alt="Sofitel Marrakech: multilingual home, gardens, restaurants and places nearby" width="1200" height="607" loading="lazy" decoding="async">
+              <img src="/doc/parcours/captures/guestapp-cooks-bay.png" alt="Cook's Bay Moorea: island guide, rooms, restaurant and contact with the team" width="1200" height="682" loading="lazy" decoding="async">
+              <img src="/doc/parcours/captures/guestapp-1.png" alt="The blank template, ready to take a property's logo and content" width="774" height="760" loading="lazy" decoding="async">
+            </div>
+            <figcaption><span>Three properties, three apps: same foundation, each with its own identity and content. Scroll horizontally.</span></figcaption>
+          </figure>
+        </div>
+      
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">New order · Status change</span></div>
+        <div class="fiche-card">
+          <h3>In-stay orders</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-web">Catalogue</span><span class="cn cn-email">Confirmation</span><span class="cn">Notification to the point of sale</span></div>
+          <p>An order placed during the stay follows its own cycle: confirmation to the guest, notification to the department concerned, status change when it is prepared, then delivered. A restaurant booking can be created automatically, and the point of sale notified.</p>
+          <div class="equipe"><p class="equipe-k">Team side</p><p>Orders come up by department and by time slot. Extras already consumed and present in the PMS are reconciled to avoid counting the same revenue twice.</p></div>
+          <div class="gain"><b>What this changes:</b> extra revenue becomes measurable and attributable to the message that triggered it.</div>
+        </div>
+      
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="band" id="p6">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Phase 06</span>
+      <h2>Departure</h2></div>
+      <p class="intro">Often treated as an administrative formality. It is however the last impression, and the last moment when taking payment is simple.</p>
+    </div>
+
+    <div class="fiches">
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Departure date, on the moment</span></div>
+        <div class="fiche-card">
+          <h3>Payment and the invoice</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">Email</span><span class="cn cn-sms">SMS</span><span class="cn cn-web">Payment link</span></div>
+          <p>The invoice is generated from the real data of the stay and sent. When a balance remains, a payment link comes with it: the guest pays from their phone, in the taxi, rather than at the desk while three people wait behind them.</p>
+          <p>The detailed breakdown of services can be hidden to show only a total, when that is what the property wants.</p>
+          <div class="equipe"><p class="equipe-k">Team side</p><p>Tracking of unpaid balances, automatic reminders, reconciliation at cash-up.</p></div>
+          <div class="gain"><b>What this changes:</b> fewer unpaid bills to chase, and a desk free of queues in the morning.</div>
+        </div>
+      
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Check-out on a room</span></div>
+        <div class="fiche-card">
+          <h3>Check-out and the forgotten item</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-sms">SMS</span><span class="cn cn-email">Email</span></div>
+          <p>Check-out triggers both the message to the guest and the turnaround on the housekeeping side. When the housekeeper records an item found in the room, the information is attached to the booking that has just left: you know who to write to, and you write the same day.</p>
+          <div class="equipe"><p class="equipe-k">Team side</p><p>The room moves to turnaround, the found item is recorded with its photo and location, and the case stays available.</p></div>
+          <div class="gain"><b>What this changes:</b> a charger returned the same day is worth more than a perfectly written thank-you message.</div>
+        </div>
+      
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="band band-alt" id="p7">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Phase 07</span>
+      <h2>After the stay</h2></div>
+      <p class="intro">Two distinct goals, not to be confused: understanding what happened, and getting a public review. Mixing them into one message degrades both.</p>
+    </div>
+
+    <div class="fiches">
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Departure date, 1 day after, 09:30</span></div>
+        <div class="fiche-card">
+          <h3>The satisfaction survey</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">Email</span><span class="cn cn-wa">WhatsApp</span><span class="cn cn-web">Web form</span></div>
+          <p>The form is built by the property: overall score, questions by theme, free text, sections that only appear if the previous answer warrants it. A negative answer on cleanliness can open a follow-up question nobody else will see.</p>
+          <p>The sending time is not a detail. A message sent in the late morning is opened far more often than one sent in the middle of the night or at the end of the day.</p>
+          <div class="equipe"><p class="equipe-k">Team side</p><p>Answers feed dashboards by theme and by period, and stay attached to the guest record. A funnel shows where respondents drop out of the form.</p></div>
+          <div class="gain"><b>What this changes:</b> a measured signal on what works, rather than reading public reviews once a quarter.</div>
+          <figure class="figure"><img src="/doc/parcours/captures/16-statistiques-flow.jpg" alt="The statistics of a post-stay flow, action by action: sent, delivered, opened, clicked, complaints and errors" width="1240" height="609" loading="lazy" decoding="async"><figcaption><span>The statistics of a post-stay flow, action by action: sent, delivered, opened, clicked, complaints, errors, and the detail of which links were clicked.</span></figcaption></figure>
+        
+        </div>
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Form: answered</span></div>
+        <div class="fiche-card">
+          <h3>The review request and online reputation</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">Email</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span></div>
+          <p>The public review request is not sent to everyone. It is conditioned on the answer to the survey: a satisfied guest is pointed to the public review, an unhappy one is pointed to management. This is not a filter on the review, it is an order of priority on how each is handled.</p>
+          <p>Google reviews are collected, matched to the guest record where possible, and can receive a public reply from within the tool. Reviews from Booking, TripAdvisor and Airbnb are also pulled in for reading.</p>
+          <div class="equipe"><p class="equipe-k">Team side</p><p>Immediate alert on a negative review, periodic summary, reputation dashboards by property and by period.</p></div>
+          <div class="gain"><b>What this changes:</b> a rising volume of reviews and a response time counted in hours.</div>
+          <figure class="figure"><img src="/doc/parcours/captures/17-avis.jpg" alt="The reviews screen: Google, Booking and TripAdvisor together, rating distribution and published replies" width="1240" height="715" loading="lazy" decoding="async"><figcaption><span>Google, Booking and TripAdvisor on a single screen, with the rating distribution, the reply rate and the replies published from the tool.</span></figcaption></figure>
+        
+        </div>
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Email: opened · link clicked · no answer</span></div>
+        <div class="fiche-card">
+          <h3>Follow-up conditioned on what the guest actually did</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">Email</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span></div>
+          <p>This is what separates a scenario from a mass send. The journey continues differently depending on what the guest did: opened without clicking, clicked without answering, answered, or nothing at all. The follow-up message is neither the same, nor on the same channel.</p>
+          <p>An email left unopened can switch to SMS or WhatsApp after two days. A guest who has answered never receives the follow-up.</p>
+          <div class="equipe"><p class="equipe-k">Team side</p><p>The scenario is drawn visually, with its yes and no branches. Opens generated by corporate antivirus software are set aside so they do not distort the reading.</p></div>
+          <div class="gain"><b>What this changes:</b> nobody receives the same request three times, and nobody is forgotten.</div>
+        </div>
+      
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="band" id="p8">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Phase 08</span>
+      <h2>Loyalty and the return</h2></div>
+      <p class="intro">Eleven months during which almost nobody speaks to the guest, except to send a newsletter they did not ask for.</p>
+    </div>
+
+    <div class="fiches">
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">New loyalty account</span></div>
+        <div class="fiche-card">
+          <h3>The guest portal</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-web">Dedicated web space</span><span class="cn cn-email">Email</span></div>
+          <p>A space at the address of the property's or the group's programme, where the guest finds their past and upcoming bookings, their orders, their points, their tier, the associated benefits, their access codes, and their personal details, which they update themselves.</p>
+          <p>For a group, this is the space that gives multi-property its meaning: points earned in one hotel are spent in another.</p>
+          <div class="equipe"><p class="equipe-k">Team side</p><p>Updates made by the guest feed straight into the CRM. Tiers, points and benefits are configured without development.</p></div>
+          <div class="gain"><b>What this changes:</b> a reason to come back directly rather than through an online travel agency.</div>
+          <div class="shot"><div><div class="shot-l">The guest portal: bookings, points, tier and benefits</div><div class="shot-s">To be added</div></div></div>
+        </div>
+      
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Birthday · Loyalty anniversary</span></div>
+        <div class="fiche-card">
+          <h3>Personal dates</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">Email</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span></div>
+          <p>The guest's birthday, the anniversary of their first stay, the date they joined the programme, moving up a tier: all reasons to get in touch that do not feel like a sales approach, because they are personal.</p>
+          <div class="equipe"><p class="equipe-k">Team side</p><p>No list to maintain. The calculation runs on the real data of the guest record.</p></div>
+          <div class="gain"><b>What this changes:</b> one message a year whose open rate has nothing in common with a newsletter's.</div>
+        </div>
+      
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Set date · Recurring date</span></div>
+        <div class="fiche-card">
+          <h3>Segmented campaigns</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">Email</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span></div>
+          <p>Segments are built on real data: amount spent, number of stays, date of the last stay, country, room category booked, products already ordered, tags applied by the team. Some sixty criteria can be combined.</p>
+          <p>A campaign can be one-off or recurring, and automatically exclude guests already enrolled elsewhere. Unsubscribes are handled at group level, which prevents a guest who opted out of one hotel from being contacted by another.</p>
+          <div class="equipe"><p class="equipe-k">Team side</p><p>Results by campaign: opens, clicks, orders, attributed revenue. Sends that went through an online travel agency can be excluded from the statistics so they do not distort them.</p></div>
+          <div class="gain"><b>What this changes:</b> you stop sending the same thing to everyone.</div>
+        </div>
+      
+        </div>
+      </article>
+
+      <article class="fiche">
+        <div class="fiche-when"><span class="tick" aria-hidden="true"></span><span class="trig">Date of last booking: earlier than</span></div>
+        <div class="fiche-card">
+          <h3>Reactivation</h3>
+          <div class="fiche-body">
+          <div class="canaux"><span class="cn cn-email">Email</span><span class="cn cn-wa">WhatsApp</span></div>
+          <p>A guest who has not come back for eighteen months, who had spent above a certain amount and who has no future booking: the segment is described in three criteria and maintains itself. Guests enter and leave it over time, with no intervention.</p>
+          <div class="equipe"><p class="equipe-k">Team side</p><p>The segment is alive. There is no frozen list to re-export every quarter.</p></div>
+          <div class="gain"><b>What this changes:</b> a dormant database becomes an addressable one again.</div>
+        </div>
+      
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="band band-alt" id="hk">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Cross-cutting</span>
+      <h2>What happens on the floors</h2></div>
+      <p class="intro">Housekeeping is not a guest touchpoint. It is what makes several of them possible: a room ready at the time announced, a forgotten item found, a fault reported before the guest discovers it.</p>
+    </div>
+
+    <div class="cols">
+      <div class="tile"><h4>The room board</h4><p>A kanban by status: to clean, in progress, inspected, ready. The status recalculates from the day's arrivals, departures and stayovers.</p></div>
+      <div class="tile"><h4>Zones and buildings</h4><p>Rooms are organised into floors, wings and buildings, then into assignment zones. Manual sorting of the schedules is possible when the logic on the ground does not follow the numbering.</p></div>
+      <div class="tile"><h4>Checklists</h4><p>Different inspection templates depending on the type of clean. A clean is only finished once the list is complete.</p></div>
+      <div class="tile"><h4>Do not disturb</h4><p>Recorded and dated. The room is not counted as missed, and the guest is not disturbed twice.</p></div>
+      <div class="tile"><h4>Lost and found</h4><p>Recorded with their location, annotated, and attached to the booking concerned so you know who to write to.</p></div>
+      <div class="tile"><h4>Technical faults</h4><p>Reported from the room by category, annotated, followed through to resolution. Maintenance no longer runs through a notebook at the back of the office.</p></div>
+    </div>
+
+    <figure class="figure"><img src="/doc/parcours/captures/19-housekeeping.jpg" alt="The housekeeping board: rooms by floor and by building, with their status" width="1383" height="780" loading="lazy" decoding="async"><figcaption><span>The housekeeping board: rooms by floor and by building, with their status</span></figcaption></figure>
+
+    <div class="note"><p><b>The link with the journey.</b> A room status moving to « ready » can trigger the message telling the guest they can go up. A service request sent by the guest from their phone arrives straight on the floors. The two worlds are not separate.</p></div>
+  </div>
+</section>
+
+<!-- ============ GROUPE ============ -->
+<section class="band" id="groupe">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Cross-cutting</span>
+      <h2>At group scale</h2></div>
+      <p class="intro">The question a group asks is not « does it work », but « does it hold across seventy properties without a dedicated team to maintain it ». That is a question of architecture, not of features.</p>
+    </div>
+
+    <div class="cols">
+      <div class="tile"><h4>Shared templates</h4><p>A scenario written once at group level rolls out to the chosen properties. Changes propagate without rewriting hotel by hotel.</p></div>
+      <div class="tile"><h4>One brand per property</h4><p>Each hotel keeps its logo, its colours, its fonts and its sending address. The same scenario produces a different message depending on which property sends it.</p></div>
+      <div class="tile"><h4>A consolidated view</h4><p>A group portal aggregates the results of every property and lets you switch from one to another without logging out.</p></div>
+      <div class="tile"><h4>Rights per property</h4><p>A general manager sees their hotel. A regional manager sees their scope. Head office sees everything. Data stays partitioned by property.</p></div>
+      <div class="tile"><h4>A group guest database</h4><p>A guest known in one property is recognised in the others. Unsubscribes apply across the whole group, which protects compliance.</p></div>
+      <div class="tile"><h4>A gradual rollout</h4><p>A library of ready-made scenarios, sorted by moment of the stay, lets you start a property without beginning from a blank page.</p></div>
+    </div>
+
+    <figure class="figure"><img src="/doc/parcours/captures/09-groupe.jpg" alt="The group cardex: guests from both properties together, with their number of stays and their revenue" width="1240" height="747" loading="lazy" decoding="async"><figcaption><span>You switch at the top left. At group level, the guests of the properties are brought together in a single cardex, with their combined number of stays and revenue. Addresses and phone numbers are blurred here.</span></figcaption></figure>
+  </div>
+</section>
+
+<!-- ============ PMS ============ -->
+<section class="band band-alt" id="pms">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Cross-cutting</span>
+      <h2>The PMS connection</h2></div>
+      <p class="intro">None of the above works without accurate data. The PMS holds it, and the quality of the connection determines what it is possible to trigger.</p>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Direction</th><th>What flows</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">PMS to TriggerFlow</td><td>Bookings, occupants, dates, categories and rooms, rate plans, amounts and balances, check-in and check-out statuses, extras consumed, cancellations, guest records.</td></tr>
+          <tr><td class="mono">TriggerFlow to PMS</td><td>Note on the booking, notification to the front desk, notification to the point of sale, category change after an accepted upgrade, restaurant booking.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="intro" style="margin-top:28px">The connectors cover the main vendors on the French and international markets, on-premise as well as cloud. The current list, and the detail of what each one exposes, are established during the technical review.</p>
+
+    <div class="note"><p><b>To be checked property by property.</b> Not every PMS exposes the same events. A connector that does not report check-in in real time rules out the welcome message triggered on entering the room. The precise list of what is available for a given estate is established during the technical review, before any commitment.</p></div>
+  </div>
+</section>
+
+<!-- ============ TARIFS ============ -->
+<section class="band" id="tarifs">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Cross-cutting</span>
+      <h2>Pricing</h2></div>
+      <p class="intro">Priced per property, no commitment, with a fourteen-day trial on the paid plans. These are the prices published on trigger-flow.com.</p>
+    </div>
+
+    <div class="plans">
+      <div class="plan"><span class="plan-n">Discovery</span><span class="plan-p">0<sup>€</sup></span><span class="plan-m">per month</span><p class="plan-d">One scenario, a thousand emails. No card required.</p></div>
+      <div class="plan"><span class="plan-n">Communication</span><span class="plan-p">69<sup>€</sup></span><span class="plan-m">per month</span><p class="plan-d">Segments, scenarios, SMS and WhatsApp, messaging hub.</p></div>
+      <div class="plan pop"><span class="plan-n">Conversion</span><span class="plan-p">149<sup>€</sup></span><span class="plan-m">per month</span><p class="plan-d">Forms, sales catalogue, conditions on interactions.</p></div>
+      <div class="plan"><span class="plan-n">All Inclusive</span><span class="plan-p">249<sup>€</sup></span><span class="plan-m">per month</span><p class="plan-d">Every module included, no limits, with a dedicated contact.</p></div>
+    </div>
+
+    <div class="cols" style="margin-top:22px">
+      <div class="tile"><h4>SMS</h4><p>Billed on usage, from €0.06 per message. No SMS are included in the plans, apart from the All Inclusive plan's allowance.</p></div>
+      <div class="tile"><h4>Add-on modules</h4><p>Reviews and reputation, AI agent, payments, loyalty programme, Guest App and housekeeping can be added to any plan, and are all included in the All Inclusive plan.</p></div>
+      <div class="tile"><h4>Groups</h4><p>A multi-property estate benefits from volume pricing and dedicated support, on a commercial proposal.</p></div>
+    </div>
+
+    <div class="note"><p><b>Price changes.</b> The prices shown here are those in force at the date of this document. A change is scheduled for 1<sup></sup> January 2027.</p></div>
+  </div>
+</section>
+
+<!-- ============ SYNTHÈSE ============ -->
+<section class="band band-alt" id="synthese">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Summary</span>
+      <h2>How many of these moments do you cover today?</h2></div>
+      <p class="intro">The full list of touchpoints described in this document. Tick the ones already covered in your property, whatever tool you use. The count updates as you go and stays on this device.</p>
+    </div>
+
+    <div class="score">
+      <span class="score-n" id="scoreN">0</span>
+      <span class="score-l">of <span id="scoreT">0</span> moments covered</span>
+      <span class="score-bar"><span class="score-fill" id="scoreFill"></span></span>
+      <button class="reset" id="reset" type="button">Clear all</button>
+    </div>
+
+    <div id="checks">
+      <div class="check-group"><h4>01 · Before the booking</h4><div class="check-list">
+        <label class="check"><input type="checkbox" id="c1a"> Chat available on the website</label>
+        <label class="check"><input type="checkbox" id="c1b"> Automatic reply outside opening hours</label>
+        <label class="check"><input type="checkbox" id="c1c"> WhatsApp, Messenger and Instagram in one place</label>
+        <label class="check"><input type="checkbox" id="c1d"> Newsletter sign-ups collected on the website</label>
+        <label class="check"><input type="checkbox" id="c1e"> Reviews displayed on the website</label>
+      </div></div>
+      <div class="check-group"><h4>02 · The booking</h4><div class="check-list">
+        <label class="check"><input type="checkbox" id="c2a"> Confirmation in the property's brand</label>
+        <label class="check"><input type="checkbox" id="c2b"> Card added to the phone wallet</label>
+        <label class="check"><input type="checkbox" id="c2c"> Dates added to the calendar</label>
+        <label class="check"><input type="checkbox" id="c2d"> Payment link for the deposit</label>
+        <label class="check"><input type="checkbox" id="c2e"> Automatic reminder on an unpaid deposit</label>
+        <label class="check"><input type="checkbox" id="c2f"> Contract or booking voucher as a PDF</label>
+      </div></div>
+      <div class="check-group"><h4>03 · The pre-stay</h4><div class="check-list">
+        <label class="check"><input type="checkbox" id="c3a"> Online pre-check-in</label>
+        <label class="check"><input type="checkbox" id="c3b"> ID document scan</label>
+        <label class="check"><input type="checkbox" id="c3c"> Electronic signature before arrival</label>
+        <label class="check"><input type="checkbox" id="c3d"> Upsell offer</label>
+        <label class="check"><input type="checkbox" id="c3e"> Upgrade offer checked against availability</label>
+        <label class="check"><input type="checkbox" id="c3f"> Practical information the day before</label>
+      </div></div>
+      <div class="check-group"><h4>04 · Arrival</h4><div class="check-list">
+        <label class="check"><input type="checkbox" id="c4a"> Access codes sent to the guest</label>
+        <label class="check"><input type="checkbox" id="c4b"> Smart lock driven automatically</label>
+        <label class="check"><input type="checkbox" id="c4c"> Self-service check-in kiosk</label>
+        <label class="check"><input type="checkbox" id="c4d"> Welcome message at the actual check-in</label>
+      </div></div>
+      <div class="check-group"><h4>05 · During the stay</h4><div class="check-list">
+        <label class="check"><input type="checkbox" id="c5a"> Conversation channel open with the front desk</label>
+        <label class="check"><input type="checkbox" id="c5b"> Team able to reply from a mobile</label>
+        <label class="check"><input type="checkbox" id="c5c"> Mobile app for the guest</label>
+        <label class="check"><input type="checkbox" id="c5d"> Ordering services from the room</label>
+        <label class="check"><input type="checkbox" id="c5e"> Service request passed to housekeeping</label>
+      </div></div>
+      <div class="check-group"><h4>06 · Departure</h4><div class="check-list">
+        <label class="check"><input type="checkbox" id="c6a"> Invoice sent automatically</label>
+        <label class="check"><input type="checkbox" id="c6b"> Remote balance payment</label>
+        <label class="check"><input type="checkbox" id="c6c"> Forgotten item linked to the booking</label>
+      </div></div>
+      <div class="check-group"><h4>07 · After the stay</h4><div class="check-list">
+        <label class="check"><input type="checkbox" id="c7a"> Satisfaction survey</label>
+        <label class="check"><input type="checkbox" id="c7b"> Review request conditioned on satisfaction</label>
+        <label class="check"><input type="checkbox" id="c7c"> Immediate alert on a negative review</label>
+        <label class="check"><input type="checkbox" id="c7d"> Replies to reviews from a single tool</label>
+        <label class="check"><input type="checkbox" id="c7e"> Follow-up differentiated by interaction</label>
+      </div></div>
+      <div class="check-group"><h4>08 · Loyalty</h4><div class="check-list">
+        <label class="check"><input type="checkbox" id="c8a"> Personal guest portal</label>
+        <label class="check"><input type="checkbox" id="c8b"> Points and benefits programme</label>
+        <label class="check"><input type="checkbox" id="c8c"> Birthday message</label>
+        <label class="check"><input type="checkbox" id="c8d"> Campaigns segmented on real data</label>
+        <label class="check"><input type="checkbox" id="c8e"> Reactivation scenario for dormant guests</label>
+      </div></div>
+      <div class="check-group"><h4>Cross-cutting</h4><div class="check-list">
+        <label class="check"><input type="checkbox" id="c9a"> Housekeeping tracked in the same tool</label>
+        <label class="check"><input type="checkbox" id="c9b"> Scenarios shared between properties</label>
+        <label class="check"><input type="checkbox" id="c9c"> Consolidated group view</label>
+        <label class="check"><input type="checkbox" id="c9d"> Real-time connection with the PMS</label>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCHAINE ÉTAPE ============ -->
+<section class="band end" id="suite">
+  <div class="wrap">
+    <p class="eyebrow">Next step</p>
+    <h2>Mapping your own journey</h2>
+    <p class="intro">The table above describes a typical property. Yours has its own constraints: a particular PMS, late arrivals, business or leisure guests, a mixed estate. The useful work is to lay your real journey beside this one and look at the gaps.</p>
+
+    <div class="end-steps">
+      <div class="end-step"><span class="n">STEP 1</span><h4>Taking stock</h4><p>A one-hour session to list what is sent today, by whom, and when. The gaps show up on their own.</p></div>
+      <div class="end-step"><span class="n">STEP 2</span><h4>The technical review</h4><p>Checking what your PMS actually exposes, property by property, and which triggers follow from that.</p></div>
+      <div class="end-step"><span class="n">STEP 3</span><h4>A pilot property</h4><p>One hotel, three scenarios, six weeks. The pilot's figures form the basis for the decision on the rest of the estate.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>TriggerFlow reference document. The features described are in production at the date of publication. The prices shown are those published on trigger-flow.com and change on 1<sup></sup> January 2027.</p>
+    <p>The performance benchmarks quoted are medians observed across all properties on the platform and do not constitute a guarantee of results.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---- sommaire ---- */
+  var SECTIONS = [
+    {id:"frise",   n:"·",  t:"The journey, end to end", m:"overview"},
+    {id:"p1",      n:"01", t:"Before the booking",       m:"3 touchpoints"},
+    {id:"p2",      n:"02", t:"The booking",              m:"4 touchpoints"},
+    {id:"p3",      n:"03", t:"The pre-stay",             m:"4 touchpoints"},
+    {id:"p4",      n:"04", t:"Arrival",                  m:"3 touchpoints"},
+    {id:"p5",      n:"05", t:"During the stay",          m:"3 touchpoints"},
+    {id:"p6",      n:"06", t:"Departure",                m:"2 touchpoints"},
+    {id:"p7",      n:"07", t:"After the stay",           m:"3 touchpoints"},
+    {id:"p8",      n:"08", t:"Loyalty and the return",   m:"4 touchpoints"},
+    {id:"hk",      n:"·",  t:"What happens on the floors", m:"cross-cutting"},
+    {id:"groupe",  n:"·",  t:"At group scale", m:"cross-cutting"},
+    {id:"pms",     n:"·",  t:"The PMS connection",       m:"cross-cutting"},
+    {id:"tarifs",  n:"·",  t:"Pricing",                  m:"cross-cutting"},
+    {id:"synthese",n:"·",  t:"How many of these do you cover?", m:"summary"},
+    {id:"suite",   n:"·",  t:"Mapping your own journey", m:"next step"}
+  ];
+
+  var grid = document.getElementById("tocGrid");
+  SECTIONS.forEach(function(s){
+    var a = document.createElement("a");
+    a.href = "#" + s.id;
+    a.innerHTML = '<span class="n">'+s.n+'</span><span class="t"></span><span class="m"></span>';
+    a.querySelector(".t").textContent = s.t;
+    a.querySelector(".m").textContent = s.m;
+    a.addEventListener("click", closeToc);
+    grid.appendChild(a);
+  });
+
+  /* ---- vue résumée / vue détaillée ---- */
+  var MODE_KEY = "tf-parcours-mode";
+  var root = document.documentElement;
+  var modeBtn = document.getElementById("modeBtn");
+
+  function applyMode(mode){
+    var resume = mode === "resume";
+    root.setAttribute("data-read", resume ? "resume" : "detail");
+    modeBtn.textContent = resume ? "Expand all" : "Summary view";
+    modeBtn.setAttribute("aria-pressed", resume ? "false" : "true");
+    try { window.localStorage.setItem(MODE_KEY, resume ? "resume" : "detail"); }
+    catch (e) { /* stockage indisponible */ }
+  }
+
+  var savedMode = "resume";
+  try { savedMode = window.localStorage.getItem(MODE_KEY) || "resume"; }
+  catch (e) { /* stockage indisponible */ }
+  applyMode(savedMode);
+
+  modeBtn.addEventListener("click", function(){
+    applyMode(root.getAttribute("data-read") === "resume" ? "detail" : "resume");
+    lastKey = null;
+    onScroll();
+  });
+
+  var toc = document.getElementById("toc");
+  var openBtn = document.getElementById("tocOpen");
+  function openToc(){ toc.hidden = false; openBtn.setAttribute("aria-expanded","true"); }
+  function closeToc(){ toc.hidden = true; openBtn.setAttribute("aria-expanded","false"); }
+  openBtn.addEventListener("click", function(){ toc.hidden ? openToc() : closeToc(); });
+  document.getElementById("tocClose").addEventListener("click", closeToc);
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape" && !toc.hidden) closeToc(); });
+
+  /* ---- fil d'Ariane : la frise en permanence ---- */
+  var PHASES = [
+    {id:"p1", n:"01", t:"Before"},
+    {id:"p2", n:"02", t:"Booking"},
+    {id:"p3", n:"03", t:"Pre-stay"},
+    {id:"p4", n:"04", t:"Arrival"},
+    {id:"p5", n:"05", t:"Stay"},
+    {id:"p6", n:"06", t:"Departure"},
+    {id:"p7", n:"07", t:"After"},
+    {id:"p8", n:"08", t:"Loyalty"}
+  ];
+  var TRANSVERSE = ["hk","groupe","pms","tarifs","synthese","suite"];
+  var PHASE_IDX = {};
+  PHASES.forEach(function(p, i){ PHASE_IDX[p.id] = i; });
+
+  var railSteps = document.getElementById("railSteps");
+  var railScroll = document.getElementById("railScroll");
+  var railLinks = [];
+  var railSegs = [];
+
+  PHASES.forEach(function(ph, i){
+    var li = document.createElement("li");
+    var a = document.createElement("a");
+    a.href = "#" + ph.id;
+    a.className = "rail-link";
+    a.innerHTML = '<span class="rail-dot"></span><span class="rail-n"></span><span class="rail-t"></span>';
+    a.querySelector(".rail-n").textContent = ph.n;
+    a.querySelector(".rail-t").textContent = ph.t;
+    li.appendChild(a);
+    railLinks.push(a);
+    var seg = document.createElement("span");
+    seg.className = "rail-seg";
+    li.appendChild(seg);
+    railSegs.push(seg);
+    railSteps.appendChild(li);
+  });
+
+  var tailLi = document.createElement("li");
+  tailLi.style.flex = "none";
+  tailLi.innerHTML = '<span class="rail-tail" id="railTail" hidden><span class="rail-dot"></span><span class="rail-tail-t"></span></span>';
+  railSteps.appendChild(tailLi);
+  var railTail = document.getElementById("railTail");
+  var railTailT = railTail.querySelector(".rail-tail-t");
+
+  var lastKey = null;
+  function updateRail(id, label){
+    var key = id + "|" + label;
+    if (key === lastKey) return;
+    lastKey = key;
+
+    var isPhase = Object.prototype.hasOwnProperty.call(PHASE_IDX, id);
+    var isTransverse = TRANSVERSE.indexOf(id) !== -1;
+    var idx = isPhase ? PHASE_IDX[id] : -1;
+    var done = isTransverse ? PHASES.length : idx;
+
+    railLinks.forEach(function(a, i){
+      a.classList.toggle("now", isPhase && i === idx);
+      a.classList.toggle("done", i < done);
+      if (isPhase && i === idx) { a.setAttribute("aria-current", "step"); }
+      else { a.removeAttribute("aria-current"); }
+    });
+    railSegs.forEach(function(s, i){ s.classList.toggle("done", i < done); });
+
+    railTail.hidden = !isTransverse;
+    railSegs[railSegs.length - 1].hidden = !isTransverse;
+    if (isTransverse) railTailT.textContent = label;
+
+    /* recentrer l'étape courante quand le fil défile horizontalement */
+    var target = isTransverse ? railTail : (isPhase ? railLinks[idx] : null);
+    if (target && railScroll.scrollWidth > railScroll.clientWidth + 4){
+      var left = target.offsetLeft - (railScroll.clientWidth - target.offsetWidth) / 2;
+      railScroll.scrollLeft = Math.max(0, left);
+    }
+  }
+
+  /* ---- progression et contexte ---- */
+  var prog = document.getElementById("prog");
+  var ctx = document.getElementById("ctx");
+  var nodes = SECTIONS.map(function(s){ return document.getElementById(s.id); });
+  var hdr = 82;
+  function measure(){
+    var v = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--hdr"));
+    if (!isNaN(v)) hdr = v;
+  }
+  measure();
+
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+    prog.style.width = pct.toFixed(2) + "%";
+
+    var current = "The guest journey";
+    var currentId = null;
+    var line = h.scrollTop + hdr + 60;
+    for (var i = 0; i < nodes.length; i++){
+      if (nodes[i] && nodes[i].offsetTop <= line){
+        current = SECTIONS[i].t;
+        currentId = SECTIONS[i].id;
+      }
+    }
+    if (ctx.textContent !== current) ctx.textContent = current;
+    updateRail(currentId, current);
+  }
+  window.addEventListener("scroll", onScroll, {passive:true});
+  window.addEventListener("resize", function(){ measure(); lastKey = null; onScroll(); });
+  onScroll();
+
+  /* ---- synthèse cochable ---- */
+  var KEY = "tf-parcours-checks";
+  var boxes = Array.prototype.slice.call(document.querySelectorAll("#checks input[type=checkbox]"));
+  var scoreN = document.getElementById("scoreN");
+  var scoreFill = document.getElementById("scoreFill");
+  document.getElementById("scoreT").textContent = String(boxes.length);
+
+  function load(){
+    try {
+      var raw = window.localStorage.getItem(KEY);
+      if (!raw) return;
+      var saved = JSON.parse(raw);
+      if (!saved || typeof saved !== "object") return;
+      boxes.forEach(function(b){ if (saved[b.id]) b.checked = true; });
+    } catch (e) { /* stockage indisponible */ }
+  }
+  function save(){
+    try {
+      var state = {};
+      boxes.forEach(function(b){ if (b.checked) state[b.id] = 1; });
+      window.localStorage.setItem(KEY, JSON.stringify(state));
+    } catch (e) { /* stockage indisponible */ }
+  }
+  function render(){
+    var n = boxes.filter(function(b){ return b.checked; }).length;
+    scoreN.textContent = String(n);
+    scoreFill.style.width = (boxes.length ? (n / boxes.length) * 100 : 0).toFixed(1) + "%";
+  }
+
+  load();
+  render();
+  boxes.forEach(function(b){ b.addEventListener("change", function(){ save(); render(); }); });
+  document.getElementById("reset").addEventListener("click", function(){
+    boxes.forEach(function(b){ b.checked = false; });
+    save(); render();
+  });
+})();
+</script>
+
+</body>
+</html>
