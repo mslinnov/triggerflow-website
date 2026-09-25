@@ -215,7 +215,7 @@ body{
 :root[data-read="resume"] .fiche-body > p,
 :root[data-read="resume"] .fiche-body .duo-p,
 :root[data-read="resume"] .fiche-body .shot,
-:root[data-read="resume"] .fiche-body .shot-row{display:none}
+:root[data-read="resume"] .fiche-body .slider .shot{display:none}
 /* Les captures restent : dans une vue de survol, l'image est ce qui se lit le
    plus vite. C'est le texte qui s'efface, pas le visuel. */
 :root[data-read="resume"] .fiche{padding-block:20px}
@@ -551,13 +551,31 @@ h3{font-size:1.18rem;font-weight:600;letter-spacing:-.01em;margin:0;line-height:
 .shot > div{display:flex;flex-direction:column;gap:3px;min-width:0}
 .shot-l{font-size:13.5px;font-weight:500;color:var(--ink-2);line-height:1.4}
 .shot-s{font-size:11.5px;color:var(--ink-3);font-style:italic}
-.shot-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:18px}
-.shot-row .shot{margin-top:0}
+/* ---------- carrousel de captures ----------
+   Deux captures côte à côte tombaient à 300 px de large : illisibles. Chacune
+   prend maintenant toute la largeur, et l'on glisse de l'une à l'autre. */
+.slider{margin-top:20px}
+.slider-track{
+  display:flex;gap:16px;overflow-x:auto;overflow-y:hidden;
+  scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;
+}
+.slider-track::-webkit-scrollbar{display:none}
+.slider-track > *{flex:0 0 100%;max-width:100%;margin:0;scroll-snap-align:start}
+.slider-track .shot{aspect-ratio:16/9;max-width:100%}
+.slider-track:focus-visible{outline:2px solid var(--brand);outline-offset:4px;border-radius:12px}
+.slider-nav{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:12px}
+.slider-nav[hidden]{display:none}
+.slider-btn{
+  width:34px;height:34px;border-radius:50%;border:1px solid var(--brand-soft);
+  background:var(--surface);color:var(--brand-ink);font-size:16px;line-height:1;cursor:pointer;
+}
+.slider-btn:hover{background:var(--brand-wash)}
+.slider-btn:disabled{opacity:.35;cursor:default}
+.slider-count{font-family:var(--font-mono);font-size:12px;color:var(--ink-3);min-width:3.5em;text-align:center}
 
 /* Une capture ne dépasse jamais sa taille naturelle : agrandie, elle devient
    floue et mange la page. Trois gabarits selon la forme réelle de l'image. */
 .figure{margin:20px 0 0;max-width:min(100%, 760px)}
-.shot-row .figure{max-width:100%}
 
 /* Une capture en portrait ou presque carrée laissée seule dans une colonne
    large flotte au milieu d'un vide. On la pose sur un panneau qui occupe la
@@ -583,7 +601,6 @@ h3{font-size:1.18rem;font-weight:600;letter-spacing:-.01em;margin:0;line-height:
 .figure figcaption{
   margin-top:10px;font-size:12.5px;color:var(--ink-3);line-height:1.45;
 }
-.shot-row .figure{margin-top:0}
 
 /* ---------- galerie d'écrans ----------
    Plusieurs captures d'une même surface se lisent mieux côte à côte qu'empilées :
@@ -621,6 +638,8 @@ h3{font-size:1.18rem;font-weight:600;letter-spacing:-.01em;margin:0;line-height:
 @media print{
   .gallery-track{overflow:visible;flex-wrap:wrap;justify-content:center}
   .gallery-track img{height:210px}
+  .slider-track{overflow:visible;flex-wrap:wrap}
+  .slider-nav{display:none}
 }
 
 /* ---------- blocs divers ---------- */
@@ -984,10 +1003,7 @@ html{scroll-behavior:smooth}
           <div class="canaux"><span class="cn cn-web">Chat du site</span><span class="cn cn-wa">WhatsApp</span><span class="cn">Messenger</span><span class="cn">Instagram</span></div>
           <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">Le visiteur pose sa question depuis la page qu'il consulte, à toute heure.</p><p class="duo-p">Le chat s'ouvre sur le site de l'établissement, avec un message d'accueil dans sa langue. S'il préfère WhatsApp, Messenger ou Instagram, il écrit là où il en a l'habitude. Quand personne n'est disponible, il reçoit un lien pour reprendre la conversation plus tard sans rien ressaisir.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">Tous les messages arrivent dans un seul hub, quel que soit le canal.</p><p class="duo-p">Le widget s'installe en une ligne de code. Horaires d'ouverture, message d'accueil traduit, formulaire de pré-chat, message hors ligne et couleurs se règlent sans développeur. Un visiteur qui écrit sur Instagram puis revient deux jours plus tard sur WhatsApp reste la même conversation : pas de bascule entre cinq applications, pas de message que personne n'a vu parce qu'il était sur le mauvais canal.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> les demandes du soir et du week-end ne se perdent plus en attendant le lundi matin.</div>
-          <div class="shot-row">
-            <div class="shot"><div><div class="shot-l">Le chat du site vu par le visiteur, bulle ouverte sur une page de réservation</div><div class="shot-s">À intégrer</div></div></div>
-            <figure class="figure"><img src="/doc/parcours/captures/02-hub-messagerie.jpg" alt="Le hub de messagerie : un fil unique où s'enchaînent la réservation, l'arrivée, un message WhatsApp du client et le départ" width="1383" height="780" loading="lazy" decoding="async"><figcaption><span>Le hub de messagerie : un fil unique où s'enchaînent la réservation, l'arrivée, un message WhatsApp du client et le départ</span></figcaption></figure>
-          </div>
+          <div class="slider"><div class="slider-track" tabindex="0" role="group" aria-label="Captures, défilement horizontal"><div class="shot"><div><div class="shot-l">Le chat du site vu par le visiteur, bulle ouverte sur une page de réservation</div><div class="shot-s">À intégrer</div></div></div><figure class="figure"><img src="/doc/parcours/captures/02-hub-messagerie.jpg" alt="Le hub de messagerie : un fil unique où s'enchaînent la réservation, l'arrivée, un message WhatsApp du client et le départ" width="1383" height="780" loading="lazy" decoding="async"><figcaption><span>Le hub de messagerie : un fil unique où s'enchaînent la réservation, l'arrivée, un message WhatsApp du client et le départ</span></figcaption></figure></div><div class="slider-nav"><button class="slider-btn" type="button" data-dir="-1" aria-label="Capture précédente">&#8592;</button><span class="slider-count" aria-live="polite"></span><button class="slider-btn" type="button" data-dir="1" aria-label="Capture suivante">&#8594;</button></div></div>
         
         </div>
         </div>
@@ -1043,11 +1059,8 @@ html{scroll-behavior:smooth}
           <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span></div>
           <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">Il reçoit sa confirmation dans les secondes qui suivent, à la marque de l'hôtel.</p><p class="duo-p">Le message reprend les éléments réels de sa réservation : dates, chambre, régime tarifaire, montant, occupants, conditions d'annulation. Si sa messagerie tronque l'e-mail, un lien l'ouvre dans le navigateur.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">Le message part seul dès l'enregistrement dans le PMS, et la fiche client se met à jour.</p><p class="duo-p">L'éditeur d'e-mail est visuel : la charte, les polices et le logo s'appliquent une fois et valent pour tous les messages. La fiche client se crée ou s'enrichit automatiquement, et un commentaire peut être reposté dans le PMS pour que la réception voie, depuis son outil habituel, ce qui a été envoyé.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> une confirmation à la marque de l'établissement, pas celle du PMS ou de l'agence.</div>
-          <div class="shot-row">
-            <figure class="figure"><img src="/doc/parcours/captures/05-constructeur-flow.jpg" alt="Le constructeur de flow : déclencheur à trois jours de l'arrivée, condition sur l'e-mail, deux branches" width="1456" height="821" loading="lazy" decoding="async"><figcaption><span>Le constructeur de flow : déclencheur à trois jours de l'arrivée, condition sur l'e-mail, deux branches</span></figcaption></figure>
-            <figure class="figure"><img src="/doc/parcours/captures/06-editeur-email.jpg" alt="L'éditeur d'e-mail : le modèle pré-séjour, ses variables et la bibliothèque de blocs" width="1155" height="757" loading="lazy" decoding="async"><figcaption><span>L'éditeur d'e-mail : le modèle pré-séjour, ses variables et la bibliothèque de blocs</span></figcaption></figure>
+          <div class="slider"><div class="slider-track" tabindex="0" role="group" aria-label="Captures, défilement horizontal"><figure class="figure"><img src="/doc/parcours/captures/05-constructeur-flow.jpg" alt="Le constructeur de flow : déclencheur à trois jours de l'arrivée, condition sur l'e-mail, deux branches" width="1456" height="821" loading="lazy" decoding="async"><figcaption><span>Le constructeur de flow : déclencheur à trois jours de l'arrivée, condition sur l'e-mail, deux branches</span></figcaption></figure><figure class="figure"><img src="/doc/parcours/captures/06-editeur-email.jpg" alt="L'éditeur d'e-mail : le modèle pré-séjour, ses variables et la bibliothèque de blocs" width="1155" height="757" loading="lazy" decoding="async"><figcaption><span>L'éditeur d'e-mail : le modèle pré-séjour, ses variables et la bibliothèque de blocs</span></figcaption></figure></div><div class="slider-nav"><button class="slider-btn" type="button" data-dir="-1" aria-label="Capture précédente">&#8592;</button><span class="slider-count" aria-live="polite"></span><button class="slider-btn" type="button" data-dir="1" aria-label="Capture suivante">&#8594;</button></div></div>
           
-        </div>
         </div>
         </div>
       </article>
@@ -1115,10 +1128,7 @@ html{scroll-behavior:smooth}
           <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span><span class="cn cn-web">Formulaire web</span></div>
           <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">Il remplit ses formalités depuis son téléphone, avant de partir.</p><p class="duo-p">Identité des occupants, heure d'arrivée estimée, préférences, demandes particulières. Le scan de sa pièce d'identité remplit les champs tout seul, et il signe le règlement intérieur ou le contrat en ligne. Arrivé à l'hôtel, il n'a plus rien à remplir.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">La réception sait avant l'arrivée qui a rempli, qui arrive tard, et ce qu'il faut préparer.</p><p class="duo-p">Le formulaire se construit par glisser-déposer et se traduit dans les langues de l'établissement. Le scan lit la bande de lecture optique du passeport ou de la carte d'identité. Le tableau des arrivées du jour indique qui a rempli et qui ne l'a pas fait, et une vue des occupants, protégée par code, peut être partagée avec les services de secours.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> le temps passé au comptoir à taper des identités disparaît. C'est aussi la phase où les formulaires sont de loin les mieux remplis : près d'un quart des envois pré-séjour sont complétés, contre moins de sept pour cent en post-séjour.</div>
-          <div class="shot-row">
-            <figure class="figure"><img src="/doc/parcours/captures/09-precheckin-identite.jpg" alt="Le pré-check-in côté client : l'étape d'identité des occupants" width="1155" height="757" loading="lazy" decoding="async"><figcaption><span>Le pré-check-in côté client : l'étape d'identité des occupants</span></figcaption></figure>
-            <div class="shot"><div><div class="shot-l">Le scan de la pièce d'identité et les champs remplis automatiquement</div><div class="shot-s">À intégrer</div></div></div>
-          </div>
+          <div class="slider"><div class="slider-track" tabindex="0" role="group" aria-label="Captures, défilement horizontal"><figure class="figure"><img src="/doc/parcours/captures/09-precheckin-identite.jpg" alt="Le pré-check-in côté client : l'étape d'identité des occupants" width="1155" height="757" loading="lazy" decoding="async"><figcaption><span>Le pré-check-in côté client : l'étape d'identité des occupants</span></figcaption></figure><div class="shot"><div><div class="shot-l">Le scan de la pièce d'identité et les champs remplis automatiquement</div><div class="shot-s">À intégrer</div></div></div></div><div class="slider-nav"><button class="slider-btn" type="button" data-dir="-1" aria-label="Capture précédente">&#8592;</button><span class="slider-count" aria-live="polite"></span><button class="slider-btn" type="button" data-dir="1" aria-label="Capture suivante">&#8594;</button></div></div>
         
         </div>
         </div>
@@ -1496,8 +1506,7 @@ html{scroll-behavior:smooth}
           <div class="tile"><h4>Un écran à sa main</h4><p>Le tableau de bord se compose de modules que l'on dispose et redimensionne soi-même. On peut en créer plusieurs, par poste : un pour la réception, un pour la direction.</p></div>
           <div class="tile"><h4>Tout le reste, au même endroit</h4><p>D'autres modules reprennent les formulaires, les avis, les paiements (encaissé du jour, cautions à capturer), le housekeeping, les objets trouvés, la maintenance et les résultats des scénarios, sur la période choisie.</p></div>
         </div>
-        <figure class="figure"><img src="/doc/parcours/captures/20-tableau-de-bord.jpg" alt="Le tableau de bord : arrivées du jour, clients sur place, communications, et la liste des clients sur place avec chambre, dates et coordonnées" width="1456" height="840" loading="lazy" decoding="async"><figcaption><span>Les clients sur place, en temps réel : chambre, dates du séjour, nombre de personnes, coordonnées et statut de la réservation. Les données de cet exemple sont fictives.</span></figcaption></figure>
-        <div class="shot"><div><div class="shot-l">Le kanban des commandes du jour : à préparer, en cours, livrées</div><div class="shot-s">À intégrer</div></div></div>
+        <div class="slider"><div class="slider-track" tabindex="0" role="group" aria-label="Captures, défilement horizontal"><figure class="figure"><img src="/doc/parcours/captures/20-tableau-de-bord.jpg" alt="Le tableau de bord : arrivées du jour, clients sur place, communications, et la liste des clients sur place avec chambre, dates et coordonnées" width="1456" height="840" loading="lazy" decoding="async"><figcaption><span>Les clients sur place, en temps réel : chambre, dates du séjour, nombre de personnes, coordonnées et statut de la réservation. Les données de cet exemple sont fictives.</span></figcaption></figure><div class="shot"><div><div class="shot-l">Le kanban des commandes du jour : à préparer, en cours, livrées</div><div class="shot-s">À intégrer</div></div></div></div><div class="slider-nav"><button class="slider-btn" type="button" data-dir="-1" aria-label="Capture précédente">&#8592;</button><span class="slider-count" aria-live="polite"></span><button class="slider-btn" type="button" data-dir="1" aria-label="Capture suivante">&#8594;</button></div></div>
       </div>
 
       <div class="bilan" id="poste-planning">
@@ -1909,6 +1918,38 @@ html{scroll-behavior:smooth}
   window.addEventListener("scroll", onScroll, {passive:true});
   window.addEventListener("resize", function(){ measure(); lastKey = null; onScroll(); });
   onScroll();
+
+  /* ---- carrousels de captures ---- */
+  Array.prototype.forEach.call(document.querySelectorAll(".slider"), function(sl){
+    var track = sl.querySelector(".slider-track");
+    var nav = sl.querySelector(".slider-nav");
+    var count = sl.querySelector(".slider-count");
+    var btns = sl.querySelectorAll(".slider-btn");
+    function slides(){
+      return Array.prototype.filter.call(track.children, function(el){ return el.offsetParent !== null; });
+    }
+    function index(){
+      var w = track.clientWidth || 1;
+      return Math.round(track.scrollLeft / w);
+    }
+    function update(){
+      var n = slides().length, i = Math.min(index(), Math.max(n - 1, 0));
+      nav.hidden = n < 2;
+      count.textContent = (i + 1) + " / " + n;
+      btns[0].disabled = i <= 0;
+      btns[1].disabled = i >= n - 1;
+    }
+    Array.prototype.forEach.call(btns, function(b){
+      b.addEventListener("click", function(){
+        var d = parseInt(b.getAttribute("data-dir"), 10);
+        track.scrollTo({left: (index() + d) * track.clientWidth});
+      });
+    });
+    track.addEventListener("scroll", function(){ window.requestAnimationFrame(update); }, {passive:true});
+    window.addEventListener("resize", update);
+    modeBtn.addEventListener("click", function(){ window.requestAnimationFrame(update); });
+    update();
+  });
 
   /* ---- synthèse cochable ---- */
   var KEY = "tf-parcours-checks";
