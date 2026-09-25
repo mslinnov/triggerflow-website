@@ -228,6 +228,53 @@ body{
 .more-btn:hover{background:var(--brand-wash)}
 :root[data-read="resume"] .more-btn{display:inline-flex}
 .bilan-more,.annexe-more{margin:0 0 18px}
+
+/* ---------- vue résumée : le parcours en tableau face à face ----------
+   Une fiche fermée tient sur une ligne : son titre, ce que vit le client, ce
+   que fait l'hôtelier. Canaux et « Ce que ça change » attendent l'ouverture. */
+.fiches-head{display:none}
+:root[data-read="resume"] .fiches-head{
+  display:grid;grid-template-columns:var(--axis) minmax(0,1fr);
+  column-gap:clamp(20px,3vw,36px);margin:4px 0 2px;
+}
+.fiches-head-in{display:grid;grid-template-columns:minmax(150px,210px) minmax(0,1fr);column-gap:22px}
+.fiches-head-duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.fiches-head-duo span{
+  display:flex;align-items:center;gap:7px;padding-left:13px;
+  font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);
+}
+.fiches-head-duo span::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.fiches-head-duo .fh-client{color:var(--brand-ink)}
+:root[data-read="resume"] .fiche:not(.is-open){padding-block:14px}
+:root[data-read="resume"] .fiche:not(.is-open) .fiche-card{
+  display:grid;grid-template-columns:minmax(150px,210px) minmax(0,1fr);column-gap:22px;align-items:start;
+}
+:root[data-read="resume"] .fiche:not(.is-open) .fiche-body{display:contents}
+:root[data-read="resume"] .fiche:not(.is-open) .fiche-card h3{grid-column:1;grid-row:1;margin:0;font-size:1rem;line-height:1.35}
+:root[data-read="resume"] .fiche:not(.is-open) .more-btn{grid-column:1;grid-row:2;justify-self:start;margin-top:9px;padding:4px 11px;font-size:12px}
+:root[data-read="resume"] .fiche:not(.is-open) .duo{grid-column:2;grid-row:1 / span 2}
+:root[data-read="resume"] .fiche:not(.is-open) .canaux,
+:root[data-read="resume"] .fiche:not(.is-open) .gain,
+:root[data-read="resume"] .fiche:not(.is-open) .duo-k{display:none}
+:root[data-read="resume"] .fiche:not(.is-open) .duo-col{padding:10px 13px}
+:root[data-read="resume"] .fiche:not(.is-open) .duo-lead{font-size:14px;font-weight:500;line-height:1.45}
+@media (max-width:900px){
+  :root[data-read="resume"] .fiches-head{display:none}
+  :root[data-read="resume"] .fiche:not(.is-open) .fiche-card{grid-template-columns:minmax(0,1fr);row-gap:10px}
+  :root[data-read="resume"] .fiche:not(.is-open) .fiche-card h3{grid-row:1}
+  :root[data-read="resume"] .fiche:not(.is-open) .duo{grid-column:1;grid-row:2}
+  :root[data-read="resume"] .fiche:not(.is-open) .more-btn{grid-column:1;grid-row:3;margin-top:0}
+  :root[data-read="resume"] .fiche:not(.is-open) .duo-k{display:flex}
+}
+
+/* La frise garde son trait ; les cartes de phase, qui répètent le sommaire,
+   n'apparaissent qu'en vue dépliée. */
+:root[data-read="resume"] .phases{display:none}
+
+/* Chapitre de l'équipe : en vue résumée, les captures passent en vignettes et
+   reprennent toute la largeur à l'ouverture du module. */
+:root[data-read="resume"] .bilan:not(.is-open) > .figure,
+:root[data-read="resume"] .bilan:not(.is-open) > .slider{max-width:460px}
 /* Les captures restent : dans une vue de survol, l'image est ce qui se lit le
    plus vite. C'est le texte qui s'efface, pas le visuel. */
 :root[data-read="resume"] .fiche{padding-block:20px}
@@ -531,7 +578,7 @@ h3{font-size:1.18rem;font-weight:600;letter-spacing:-.01em;margin:0;line-height:
    client, et ce que fait l'équipe en face. L'accroche de chaque colonne reste
    visible en vue résumée ; le détail ne s'affiche qu'en vue dépliée. */
 .duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.duo-col{padding:14px 16px 15px;border-radius:10px;border:1px solid var(--line-2);background:var(--surface-2)}
+.duo-col{padding:14px 16px 15px;border-radius:10px;border:1px solid var(--line);background:var(--surface)}
 .duo-client{background:var(--brand-wash);border-color:var(--brand-soft)}
 .fiche-body .duo-k{
   display:flex;align-items:center;gap:7px;margin:0 0 8px;
@@ -995,7 +1042,7 @@ html{scroll-behavior:smooth}
 
       <div class="note">
       <p><b>Comment lire les fiches.</b> Chaque point de contact porte son déclencheur exact, écrit tel qu'il apparaît dans l'outil. C'est ce qui distingue une automatisation d'un envoi groupé : le message part parce qu'un événement précis a eu lieu sur cette réservation précise, pas parce qu'un lundi matin quelqu'un a lancé un envoi.</p>
-      <p style="margin-top:10px">Chaque fiche se lit ensuite en deux colonnes : <b>à gauche ce que vit le client</b>, <b>à droite ce que fait l'hôtelier</b>. En vue résumée, une phrase de chaque côté suffit à suivre le parcours. « Lire le détail » ouvre une fiche et ses captures ; « Tout déplier » ouvre tout le document.</p>
+      <p style="margin-top:10px">Chaque fiche se lit ensuite en deux colonnes : <b>à gauche ce que vit le client</b>, <b>à droite ce que fait l'hôtelier</b>. En vue résumée, chaque fiche tient sur une ligne : une phrase de chaque côté. « Lire le détail » ouvre une fiche et ses captures ; « Tout déplier » ouvre tout le document.</p>
     </div>
   </div>
 </section>
@@ -1009,6 +1056,7 @@ html{scroll-behavior:smooth}
       <p class="intro">Le visiteur hésite, compare, et repart si personne ne répond. La plupart des questions posées à ce stade arrivent en dehors des heures de présence de la réception.</p>
     </div>
 
+    <div class="fiches-head" aria-hidden="true"><span></span><div class="fiches-head-in"><span></span><div class="fiches-head-duo"><span class="fh-client">Côté client</span><span class="fh-hotel">Côté hôtelier</span></div></div></div>
     <div class="fiches">
 
       <article class="fiche">
@@ -1068,6 +1116,7 @@ html{scroll-behavior:smooth}
       <p class="intro">C'est le moment où l'attention du client est la plus forte. C'est aussi le seul message que presque tous les établissements envoient déjà, et le seul qu'ils envoient souvent sans y avoir réfléchi.</p>
     </div>
 
+    <div class="fiches-head" aria-hidden="true"><span></span><div class="fiches-head-in"><span></span><div class="fiches-head-duo"><span class="fh-client">Côté client</span><span class="fh-hotel">Côté hôtelier</span></div></div></div>
     <div class="fiches">
 
       <article class="fiche">
@@ -1141,6 +1190,7 @@ html{scroll-behavior:smooth}
       <p class="intro">La fenêtre la plus rentable du parcours, et la plus souvent vide. Le client a déjà payé, il se projette, et il est disponible. C'est là qu'il accepte un surclassement, remplit un formulaire, réserve une table.</p>
     </div>
 
+    <div class="fiches-head" aria-hidden="true"><span></span><div class="fiches-head-in"><span></span><div class="fiches-head-duo"><span class="fh-client">Côté client</span><span class="fh-hotel">Côté hôtelier</span></div></div></div>
     <div class="fiches">
 
       <article class="fiche">
@@ -1222,6 +1272,7 @@ html{scroll-behavior:smooth}
       <p class="intro">Le moment où la promesse se vérifie. Une arrivée tardive, un comptoir encombré ou un code qui ne fonctionne pas abîment durablement l'impression.</p>
     </div>
 
+    <div class="fiches-head" aria-hidden="true"><span></span><div class="fiches-head-in"><span></span><div class="fiches-head-duo"><span class="fh-client">Côté client</span><span class="fh-hotel">Côté hôtelier</span></div></div></div>
     <div class="fiches">
 
       <article class="fiche">
@@ -1280,6 +1331,7 @@ html{scroll-behavior:smooth}
       <p class="intro">La phase la plus courte à décrire et la plus décisive. Un problème résolu pendant le séjour ne devient jamais un avis à une étoile.</p>
     </div>
 
+    <div class="fiches-head" aria-hidden="true"><span></span><div class="fiches-head-in"><span></span><div class="fiches-head-duo"><span class="fh-client">Côté client</span><span class="fh-hotel">Côté hôtelier</span></div></div></div>
     <div class="fiches">
 
       <article class="fiche">
@@ -1346,6 +1398,7 @@ html{scroll-behavior:smooth}
       <p class="intro">Souvent traité comme une formalité administrative. C'est pourtant la dernière impression, et le dernier moment où un encaissement est simple.</p>
     </div>
 
+    <div class="fiches-head" aria-hidden="true"><span></span><div class="fiches-head-in"><span></span><div class="fiches-head-duo"><span class="fh-client">Côté client</span><span class="fh-hotel">Côté hôtelier</span></div></div></div>
     <div class="fiches">
 
       <article class="fiche">
@@ -1388,6 +1441,7 @@ html{scroll-behavior:smooth}
       <p class="intro">Deux objectifs distincts, à ne pas confondre : comprendre ce qui s'est passé, et obtenir un avis public. Les mêler dans un seul message dégrade les deux.</p>
     </div>
 
+    <div class="fiches-head" aria-hidden="true"><span></span><div class="fiches-head-in"><span></span><div class="fiches-head-duo"><span class="fh-client">Côté client</span><span class="fh-hotel">Côté hôtelier</span></div></div></div>
     <div class="fiches">
 
       <article class="fiche">
@@ -1446,6 +1500,7 @@ html{scroll-behavior:smooth}
       <p class="intro">Onze mois pendant lesquels presque personne ne parle au client, sauf pour lui envoyer une newsletter qu'il n'a pas demandée.</p>
     </div>
 
+    <div class="fiches-head" aria-hidden="true"><span></span><div class="fiches-head-in"><span></span><div class="fiches-head-duo"><span class="fh-client">Côté client</span><span class="fh-hotel">Côté hôtelier</span></div></div></div>
     <div class="fiches">
 
       <article class="fiche">
