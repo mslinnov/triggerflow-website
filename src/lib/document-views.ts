@@ -97,7 +97,8 @@ const SECRET = process.env.DOCUMENT_VIEW_SECRET?.trim();
 export async function recordDocumentView(
   document: DocumentName,
   slug: string,
-  request: Request
+  request: Request,
+  langue: Langue
 ): Promise<void> {
   if (!API_URL || !SECRET) return;
 
@@ -129,6 +130,10 @@ export async function recordDocumentView(
         slug,
         referer: request.headers.get('referer')?.slice(0, 512) ?? null,
         user_agent: request.headers.get('user-agent')?.slice(0, 1000) ?? null,
+        // Langue RÉELLEMENT servie, pas le paramètre brut : `langueDemandee`
+        // a déjà ramené une valeur inconnue au français, et c'est la version
+        // que le lecteur a sous les yeux qui nous intéresse.
+        lang: langue,
       }),
     });
   } catch {

@@ -34,13 +34,15 @@ export default function middleware(request: NextRequest, event: NextFetchEvent) 
     // dans le flot normal et finira sur la page 404 du site.
     if (!target) return intlMiddleware(request);
 
-    // Compté en tâche de fond : le lecteur n'attend pas TriggerFlow.
-    event.waitUntil(recordDocumentView(target.document, target.slug, request));
-
     // La langue vit dans l'URL (?lang=en) : elle survit au rechargement, au
     // partage du lien et aux ancres internes, et le compteur ne bouge pas
     // puisque le chemin, lui, reste le même.
     const langue = langueDemandee(request.nextUrl);
+
+    // Compté en tâche de fond : le lecteur n'attend pas TriggerFlow. La langue
+    // part avec, en champ OPTIONNEL : un backend qui ne la connaît pas encore
+    // l'ignore, et l'ordre de déploiement des deux dépôts est indifférent.
+    event.waitUntil(recordDocumentView(target.document, target.slug, request, langue));
     const fichier = DOCUMENTS[target.document][langue];
 
     const response = NextResponse.rewrite(new URL(fichier, request.url));
