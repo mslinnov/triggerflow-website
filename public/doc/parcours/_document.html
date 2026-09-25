@@ -561,6 +561,9 @@ h3{font-size:1.18rem;font-weight:600;letter-spacing:-.01em;margin:0;line-height:
 }
 .slider-track::-webkit-scrollbar{display:none}
 .slider-track > *{flex:0 0 100%;max-width:100%;margin:0;scroll-snap-align:start}
+/* plus spécifique que .figure, plafonnée à 760 px : une diapositive plus
+   étroite que le carrousel laisserait voir la suivante et fausserait le compteur */
+.slider-track > .figure{max-width:100%}
 .slider-track .shot{aspect-ratio:16/9;max-width:100%}
 .slider-track:focus-visible{outline:2px solid var(--brand);outline-offset:4px;border-radius:12px}
 .slider-nav{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:12px}
@@ -1506,7 +1509,7 @@ html{scroll-behavior:smooth}
           <div class="tile"><h4>Un écran à sa main</h4><p>Le tableau de bord se compose de modules que l'on dispose et redimensionne soi-même. On peut en créer plusieurs, par poste : un pour la réception, un pour la direction.</p></div>
           <div class="tile"><h4>Tout le reste, au même endroit</h4><p>D'autres modules reprennent les formulaires, les avis, les paiements (encaissé du jour, cautions à capturer), le housekeeping, les objets trouvés, la maintenance et les résultats des scénarios, sur la période choisie.</p></div>
         </div>
-        <div class="slider"><div class="slider-track" tabindex="0" role="group" aria-label="Captures, défilement horizontal"><figure class="figure"><img src="/doc/parcours/captures/20-tableau-de-bord.jpg" alt="Le tableau de bord : arrivées du jour, clients sur place, communications, et la liste des clients sur place avec chambre, dates et coordonnées" width="1456" height="840" loading="lazy" decoding="async"><figcaption><span>Les clients sur place, en temps réel : chambre, dates du séjour, nombre de personnes, coordonnées et statut de la réservation. Les données de cet exemple sont fictives.</span></figcaption></figure><div class="shot"><div><div class="shot-l">Le kanban des commandes du jour : à préparer, en cours, livrées</div><div class="shot-s">À intégrer</div></div></div></div><div class="slider-nav"><button class="slider-btn" type="button" data-dir="-1" aria-label="Capture précédente">&#8592;</button><span class="slider-count" aria-live="polite"></span><button class="slider-btn" type="button" data-dir="1" aria-label="Capture suivante">&#8594;</button></div></div>
+        <div class="slider"><div class="slider-track" tabindex="0" role="group" aria-label="Captures, défilement horizontal"><figure class="figure"><img src="/doc/parcours/captures/20-tableau-de-bord.jpg" alt="Le tableau de bord : arrivées du jour, clients sur place, communications, et la liste des clients sur place avec chambre, dates et coordonnées" width="1456" height="840" loading="lazy" decoding="async"><figcaption><span>Les clients sur place, en temps réel : chambre, dates du séjour, nombre de personnes, coordonnées et statut de la réservation. Les données de cet exemple sont fictives.</span></figcaption></figure><figure class="figure"><img src="/doc/parcours/captures/21-commandes.jpg" alt="La liste des commandes : numéro et date, client, statut, source, catalogue et montant" width="1200" height="600" loading="lazy" decoding="async"><figcaption><span>Les commandes, avec leur statut, leur source et leur montant. Celles du jour se suivent aussi en kanban directement sur le tableau de bord.</span></figcaption></figure></div><div class="slider-nav"><button class="slider-btn" type="button" data-dir="-1" aria-label="Capture précédente">&#8592;</button><span class="slider-count" aria-live="polite"></span><button class="slider-btn" type="button" data-dir="1" aria-label="Capture suivante">&#8594;</button></div></div>
       </div>
 
       <div class="bilan" id="poste-planning">
@@ -1521,7 +1524,7 @@ html{scroll-behavior:smooth}
           <div class="tile"><h4>Les statuts en couleur</h4><p>Confirmée, en attente, en cours, terminée, annulée : chaque réservation porte la couleur de son statut. Les annulations sont masquées par défaut, et les filtres sont mémorisés par établissement.</p></div>
           <div class="tile"><h4>La réservation d'un clic</h4><p>Le survol affiche le nom du client, le clic ouvre la réservation dans un panneau latéral, sans quitter le planning. L'écran reste utilisable sur mobile.</p></div>
         </div>
-        <div class="shot"><div><div class="shot-l">Le planning des chambres : la frise de trois semaines, les chambres par type et les réservations en couleur</div><div class="shot-s">À intégrer</div></div></div>
+        <figure class="figure"><img src="/doc/parcours/captures/22-planning.jpg" alt="Le planning des chambres : la frise de trois semaines, les chambres en lignes et les réservations en couleur selon leur statut" width="1200" height="797" loading="lazy" decoding="async"><figcaption><span>Trois semaines d'un regard, chambre par chambre. Le taux d'occupation du jour s'affiche en tête, et chaque réservation s'ouvre d'un clic. Les données de cet exemple sont fictives.</span></figcaption></figure>
       </div>
 
       <div class="bilan" id="poste-hub">
@@ -1542,7 +1545,7 @@ html{scroll-behavior:smooth}
           <div class="tile"><h4>Le suivi des envois</h4><p>Envoyé, délivré, lu, cliqué ou en erreur : chaque message porte son statut. Les échecs se regroupent dans un registre, avec renvoi en un clic pour les e-mails.</p></div>
           <div class="tile"><h4>Le groupe et le mobile</h4><p>Au niveau d'un groupe, les conversations de tous les hôtels se filtrent par établissement. L'application mobile du personnel reprend la messagerie, avec notifications, messages rapides et modèles, et un brouillon conservé d'une session à l'autre.</p></div>
         </div>
-        <div class="shot"><div><div class="shot-l">Le hub de messagerie : la liste des conversations et l'assistant de rédaction IA ouvert sur une réponse</div><div class="shot-s">À intégrer</div></div></div>
+        <div class="slider"><div class="slider-track" tabindex="0" role="group" aria-label="Captures, défilement horizontal"><figure class="figure"><img src="/doc/parcours/captures/23-hub-messagerie.jpg" alt="Le hub de messagerie : dossiers et filtres, la liste des conversations et un fil qui mêle SMS du client, réponse de l'équipe et e-mail de bienvenue automatique" width="1200" height="797" loading="lazy" decoding="async"><figcaption><span>Un seul fil par client : ici un SMS, la réponse de la réception, puis l'e-mail de bienvenue parti automatiquement. Dossiers, filtres et badges de langue à gauche.</span></figcaption></figure><figure class="figure"><img src="/doc/parcours/captures/24-hub-assistant-ia.jpg" alt="L'assistant de rédaction IA : une réponse générée à partir de la demande du client et de son historique" width="1200" height="797" loading="lazy" decoding="async"><figcaption><span>L'assistant IA propose une réponse à la demande de spa, à partir de l'historique du client. L'équipe l'applique, la modifie ou la rejette avant tout envoi.</span></figcaption></figure></div><div class="slider-nav"><button class="slider-btn" type="button" data-dir="-1" aria-label="Capture précédente">&#8592;</button><span class="slider-count" aria-live="polite"></span><button class="slider-btn" type="button" data-dir="1" aria-label="Capture suivante">&#8594;</button></div></div>
       </div>
 
       <div class="bilan" id="poste-avis">
@@ -1559,7 +1562,7 @@ html{scroll-behavior:smooth}
           <div class="tile"><h4>En série quand il le faut</h4><p>Jusqu'à cinquante avis traités d'un coup : chaque réponse proposée se relit, puis se publie, se copie ou se passe.</p></div>
           <div class="tile"><h4>Alertes et synthèse</h4><p>Alerte immédiate sous un seuil de note choisi, récapitulatif quotidien, toutes les douze heures ou hebdomadaire. Une synthèse IA résume ce que disent les avis, et les statistiques suivent l'évolution par plateforme et par établissement.</p></div>
         </div>
-        <div class="shot"><div><div class="shot-l">La réponse proposée par l'IA sur un avis, prête à être relue puis publiée</div><div class="shot-s">À intégrer</div></div></div>
+        <figure class="figure"><img src="/doc/parcours/captures/25-avis-reponse-ia.jpg" alt="La réponse proposée par l'IA sur un avis TripAdvisor, générée en s'inspirant des dix dernières réponses de l'établissement" width="1200" height="797" loading="lazy" decoding="async"><figcaption><span>La proposition reprend le prénom du client et ce qu'il a écrit, dans le ton des dix dernières réponses de l'hôtel. Pour TripAdvisor, elle se copie ; pour Google, elle se publie directement.</span></figcaption></figure>
       </div>
   </div>
 </section>
