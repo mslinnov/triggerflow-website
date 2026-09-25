@@ -213,7 +213,7 @@ body{
    complet pour qui veut tout vérifier ; par défaut il se lit en survol, et
    s'ouvre d'un clic. Le choix est mémorisé sur l'appareil du lecteur. */
 :root[data-read="resume"] .fiche-body > p,
-:root[data-read="resume"] .fiche-body .equipe,
+:root[data-read="resume"] .fiche-body .duo-p,
 :root[data-read="resume"] .fiche-body .shot,
 :root[data-read="resume"] .fiche-body .shot-row{display:none}
 /* Les captures restent : dans une vue de survol, l'image est ce qui se lit le
@@ -514,15 +514,23 @@ h3{font-size:1.18rem;font-weight:600;letter-spacing:-.01em;margin:0;line-height:
 .cn-sms{color:var(--ch-sms);border-color:color-mix(in srgb,var(--ch-sms) 34%,transparent)}
 .cn-wa{color:var(--ch-wa);border-color:color-mix(in srgb,var(--ch-wa) 34%,transparent)}
 .cn-web{color:var(--brand-ink);border-color:var(--brand-soft)}
-.equipe{
-  margin-top:16px;padding:14px 16px;border-radius:10px;
-  background:var(--surface-2);border-left:3px solid var(--ink-3);
+/* ---------- deux colonnes : côté client / côté hôtelier ----------
+   Chaque point de contact se lit des deux côtés à la fois : ce que vit le
+   client, et ce que fait l'équipe en face. L'accroche de chaque colonne reste
+   visible en vue résumée ; le détail ne s'affiche qu'en vue dépliée. */
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.duo-col{padding:14px 16px 15px;border-radius:10px;border:1px solid var(--line-2);background:var(--surface-2)}
+.duo-client{background:var(--brand-wash);border-color:var(--brand-soft)}
+.fiche-body .duo-k{
+  display:flex;align-items:center;gap:7px;margin:0 0 8px;
+  font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);
 }
-.equipe-k{
-  font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--ink-3);margin:0 0 6px;
-}
-.equipe p{margin:0;font-size:14.5px;color:var(--ink-2);max-width:none}
+.duo-k::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;flex:none}
+.duo-client .duo-k{color:var(--brand-ink)}
+.fiche-body .duo-lead{margin:0;font-weight:600;color:var(--ink);font-size:15px;line-height:1.45;max-width:none}
+.fiche-body .duo-p{margin:9px 0 0;font-size:14.5px;color:var(--ink-2);max-width:none}
+@media (max-width:760px){.duo{grid-template-columns:minmax(0,1fr)}}
+
 .gain{
   margin-top:14px;padding-left:14px;border-left:3px solid var(--gold);
   font-size:14.5px;color:var(--ink-2);
@@ -638,17 +646,6 @@ th{
 tr:last-child td{border-bottom:none}
 td.mono{font-family:var(--font-mono);font-size:12.5px;color:var(--ink-2);white-space:nowrap}
 
-.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:8px}
-.plan{
-  background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;
-  display:flex;flex-direction:column;gap:6px;
-}
-.plan.pop{border-color:var(--brand);box-shadow:inset 0 2px 0 var(--brand)}
-.plan-n{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
-.plan-p{font-family:var(--font-display);font-size:2.1rem;line-height:1;color:var(--ink)}
-.plan-p sup{font-family:var(--font-body);font-size:.95rem;font-weight:500;vertical-align:super;margin-left:2px}
-.plan-m{font-size:12px;color:var(--ink-3)}
-.plan-d{font-size:14px;color:var(--ink-2);margin-top:4px}
 
 /* ---------- synthèse cochable ---------- */
 .score{
@@ -741,7 +738,7 @@ a{color:var(--brand-ink)}
       animation-timeline:view();
       animation-range:entry 88% entry 100%;
     }
-    .fiche-card,.figure,.tile,.plan{
+    .fiche-card,.figure,.tile{
       animation:tf-rise linear both;
       animation-timeline:view();
       animation-range:entry 4% entry 46%;
@@ -760,12 +757,13 @@ html{scroll-behavior:smooth}
 @media print{
   .topbar,.toc,.score,.rail{display:none!important}
   /* un document imprimé se lit en entier, quel que soit le mode à l'écran */
-  .fiche-body > p,.fiche-body .equipe,.fiche-body .figure{display:block!important}
+  .fiche-body > p,.fiche-body .duo-p,.fiche-body .figure{display:block!important}
+  .duo{grid-template-columns:1fr 1fr}
   .fiches::after{display:none}
   .tick{background:var(--brand)!important}
   body{background:#fff;color:#1F2A2A;font-size:11pt}
   .band{border-bottom:1px solid #ddd;padding-block:18pt;break-inside:auto}
-  .fiche,.tile,.plan,.fr-step{break-inside:avoid}
+  .fiche,.tile,.fr-step{break-inside:avoid}
   .shot{break-inside:avoid;aspect-ratio:16/9}
   .end{background:#fff!important;color:#1F2A2A!important}
   h1{font-size:30pt}h2{font-size:19pt}
@@ -813,13 +811,13 @@ html{scroll-behavior:smooth}
       <h1>Le parcours client, point de contact par point de contact</h1>
       <div class="head-text">
         <p class="lede">Entre le moment où un voyageur découvre un établissement et celui où il y revient, il existe une trentaine d'occasions de lui parler. La plupart ne sont jamais utilisées, non par désintérêt, mais parce qu'aucune équipe de réception ne peut les tenir à la main.</p>
-        <p class="lede">Ce document recense ces moments un par un. Pour chacun : <strong>ce qui le déclenche</strong>, <strong>par quels canaux il passe</strong>, <strong>ce que l'équipe voit en face</strong>, et <strong>ce qu'il change concrètement</strong>. Tout ce qui est décrit ici fonctionne aujourd'hui en production.</p>
+        <p class="lede">Ce document recense ces moments un par un. Pour chacun : <strong>ce qui le déclenche</strong>, <strong>par quels canaux il passe</strong>, <strong>ce que vit le client</strong> d'un côté, <strong>ce que fait l'hôtelier</strong> de l'autre, et <strong>ce qu'il change concrètement</strong>. Tout ce qui est décrit ici fonctionne aujourd'hui en production.</p>
       </div>
     </div>
     <div class="cover-meta">
       <span class="meta-chip">8 phases du parcours</span>
-      <span class="meta-chip">Côté voyageur et côté équipe</span>
-      <span class="meta-chip">Lecture d'environ 25 minutes</span>
+      <span class="meta-chip">Côté client et côté hôtelier</span>
+      <span class="meta-chip">Lecture d'environ 30 minutes</span>
       <span class="meta-chip">Mis à jour en septembre 2026</span>
     </div>
   </div>
@@ -962,6 +960,7 @@ html{scroll-behavior:smooth}
 
       <div class="note">
       <p><b>Comment lire les fiches.</b> Chaque point de contact porte son déclencheur exact, écrit tel qu'il apparaît dans l'outil. C'est ce qui distingue une automatisation d'un envoi groupé : le message part parce qu'un événement précis a eu lieu sur cette réservation précise, pas parce qu'un lundi matin quelqu'un a lancé un envoi.</p>
+      <p style="margin-top:10px">Chaque fiche se lit ensuite en deux colonnes : <b>à gauche ce que vit le client</b>, <b>à droite ce que fait l'hôtelier</b>. En vue résumée, une phrase de chaque côté suffit à suivre le parcours ; « Tout déplier » affiche le détail.</p>
     </div>
   </div>
 </section>
@@ -983,9 +982,7 @@ html{scroll-behavior:smooth}
           <h3>Le chat du site</h3>
           <div class="fiche-body">
           <div class="canaux"><span class="cn cn-web">Chat du site</span><span class="cn cn-wa">WhatsApp</span><span class="cn">Messenger</span><span class="cn">Instagram</span></div>
-          <p>Un widget s'installe sur le site de l'établissement en une ligne de code. Horaires d'ouverture, message d'accueil traduit, formulaire de pré-chat, message hors ligne et couleurs sont paramétrables. Quand personne n'est disponible, le visiteur reçoit un lien pour reprendre la conversation plus tard sans rien ressaisir.</p>
-          <p>Les messages venus de WhatsApp, Messenger et Instagram arrivent dans le même fil que ceux du chat. Un visiteur qui écrit sur Instagram et qui rappelle deux jours plus tard sur WhatsApp reste la même conversation.</p>
-          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Tout arrive dans un hub de messagerie unique. Pas de bascule entre cinq applications, pas de message vu par personne parce qu'il était sur le mauvais canal.</p></div>
+          <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">Le visiteur pose sa question depuis la page qu'il consulte, à toute heure.</p><p class="duo-p">Le chat s'ouvre sur le site de l'établissement, avec un message d'accueil dans sa langue. S'il préfère WhatsApp, Messenger ou Instagram, il écrit là où il en a l'habitude. Quand personne n'est disponible, il reçoit un lien pour reprendre la conversation plus tard sans rien ressaisir.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">Tous les messages arrivent dans un seul hub, quel que soit le canal.</p><p class="duo-p">Le widget s'installe en une ligne de code. Horaires d'ouverture, message d'accueil traduit, formulaire de pré-chat, message hors ligne et couleurs se règlent sans développeur. Un visiteur qui écrit sur Instagram puis revient deux jours plus tard sur WhatsApp reste la même conversation : pas de bascule entre cinq applications, pas de message que personne n'a vu parce qu'il était sur le mauvais canal.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> les demandes du soir et du week-end ne se perdent plus en attendant le lundi matin.</div>
           <div class="shot-row">
             <div class="shot"><div><div class="shot-l">Le chat du site vu par le visiteur, bulle ouverte sur une page de réservation</div><div class="shot-s">À intégrer</div></div></div>
@@ -1002,9 +999,7 @@ html{scroll-behavior:smooth}
           <h3>Le bot IA et son escalade vers un humain</h3>
           <div class="fiche-body">
           <div class="canaux"><span class="cn cn-web">Chat du site</span><span class="cn cn-wa">WhatsApp</span><span class="cn cn-sms">SMS</span><span class="cn cn-email">E-mail</span></div>
-          <p>Le bot répond dans la langue du visiteur, détectée automatiquement, à partir d'une base de connaissance construite depuis le site de l'établissement et complétée à la main. Il connaît les horaires, les équipements, les conditions d'annulation, l'adresse, le parking.</p>
-          <p>Le point important n'est pas qu'il réponde, c'est qu'il sache s'arrêter. Dès qu'une question sort de son périmètre, ou que le visiteur demande un humain, il passe la main : la réception reçoit une alerte, reprend le fil exactement là où il s'est arrêté, et le visiteur n'a rien à répéter.</p>
-          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Alerte par e-mail et notification à l'escalade. L'historique complet de l'échange avec le bot est visible. Un simulateur permet de tester les réponses avant mise en ligne.</p></div>
+          <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">Il obtient une réponse immédiate, dans sa langue, même à trois heures du matin.</p><p class="duo-p">Le bot connaît les horaires, les équipements, les conditions d'annulation, l'adresse et le parking. Dès que la question sort de son périmètre, ou que le visiteur demande à parler à quelqu'un, un membre de l'équipe reprend le fil là où il s'est arrêté. Le visiteur n'a rien à répéter.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">L'équipe n'intervient que sur ce qui demande un humain, et elle est prévenue quand c'est le cas.</p><p class="duo-p">La base de connaissance se construit depuis le site de l'établissement et se complète à la main. À chaque passation, une alerte part par e-mail et par notification. Le hub affiche le motif et l'heure, avec un bouton pour prendre la main ou réactiver le bot. L'historique de l'échange reste visible, et un simulateur permet de tester les réponses avant la mise en ligne.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> une présence continue sans astreinte, et une main passée à l'humain avant que le visiteur ne s'agace.</div>
           <figure class="figure figure--narrow"><img src="/doc/parcours/captures/03-bot-simulateur.png" alt="Le bot répond à une question client, avec son indice de confiance et le nombre de sources utilisées" width="404" height="530" loading="lazy" decoding="async"><figcaption><span>Le bot répond à une question client, avec son indice de confiance et le nombre de sources utilisées</span></figcaption></figure>
         
@@ -1018,9 +1013,7 @@ html{scroll-behavior:smooth}
           <h3>La capture d'audience sur le site</h3>
           <div class="fiche-body">
           <div class="canaux"><span class="cn cn-web">Widget embarqué</span><span class="cn cn-email">E-mail de confirmation</span></div>
-          <p>Deux widgets s'intègrent au site de l'établissement. Le premier collecte les inscriptions à la newsletter avec double confirmation par e-mail, ce qui protège la délivrabilité et la conformité. Le second affiche les avis réels de l'établissement, dans une version lisible par les moteurs de recherche.</p>
-          <p>Une inscription crée directement une fiche dans le CRM, pose les étiquettes choisies et alimente les segments. Le contact est exploitable immédiatement, sans export ni import.</p>
-          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Fiche contact créée, étiquettes posées, segment alimenté. Aucune saisie.</p></div>
+          <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">Il s'inscrit à la newsletter et lit les avis réels de l'établissement, sans quitter le site.</p><p class="duo-p">Son inscription se confirme par un e-mail de double validation. Le widget d'avis lui montre ce que les clients ont réellement écrit, aux couleurs de l'hôtel.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">Chaque inscription devient une fiche client exploitable, sans export ni import.</p><p class="duo-p">L'inscription crée la fiche dans le CRM, pose les étiquettes choisies et alimente les segments. La double confirmation protège la délivrabilité et la conformité. Le widget d'avis est lisible par les moteurs de recherche.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> l'audience du site cesse d'être anonyme et devient une base adressable.</div>
           <figure class="figure figure--medium"><img src="/doc/parcours/captures/04-widget-avis.png" alt="Le widget d'avis embarqué sur le site de l'hôtel, à sa charte, avec les trois plateformes réunies" width="760" height="672" loading="lazy" decoding="async"><figcaption><span>Le widget d'avis embarqué sur le site de l'hôtel, à sa charte, avec les trois plateformes réunies</span></figcaption></figure>
         
@@ -1048,9 +1041,7 @@ html{scroll-behavior:smooth}
           <h3>La confirmation de réservation</h3>
           <div class="fiche-body">
           <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span></div>
-          <p>Le message part dans les secondes qui suivent l'enregistrement dans le PMS, pas au prochain passage d'un traitement nocturne. Il reprend les éléments réels de la réservation : dates, chambre, régime tarifaire, montant, occupants, conditions d'annulation.</p>
-          <p>L'éditeur d'e-mail est visuel. La charte de l'établissement, ses polices et son logo sont appliqués une fois et valent pour tous les messages. Un lien de repli permet d'ouvrir le message dans un navigateur quand la messagerie du destinataire le tronque.</p>
-          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>La fiche client se crée ou s'enrichit automatiquement. Un commentaire peut être reposté dans le PMS pour que la réception voie, depuis son outil habituel, ce qui a été envoyé.</p></div>
+          <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">Il reçoit sa confirmation dans les secondes qui suivent, à la marque de l'hôtel.</p><p class="duo-p">Le message reprend les éléments réels de sa réservation : dates, chambre, régime tarifaire, montant, occupants, conditions d'annulation. Si sa messagerie tronque l'e-mail, un lien l'ouvre dans le navigateur.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">Le message part seul dès l'enregistrement dans le PMS, et la fiche client se met à jour.</p><p class="duo-p">L'éditeur d'e-mail est visuel : la charte, les polices et le logo s'appliquent une fois et valent pour tous les messages. La fiche client se crée ou s'enrichit automatiquement, et un commentaire peut être reposté dans le PMS pour que la réception voie, depuis son outil habituel, ce qui a été envoyé.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> une confirmation à la marque de l'établissement, pas celle du PMS ou de l'agence.</div>
           <div class="shot-row">
             <figure class="figure"><img src="/doc/parcours/captures/05-constructeur-flow.jpg" alt="Le constructeur de flow : déclencheur à trois jours de l'arrivée, condition sur l'e-mail, deux branches" width="1456" height="821" loading="lazy" decoding="async"><figcaption><span>Le constructeur de flow : déclencheur à trois jours de l'arrivée, condition sur l'e-mail, deux branches</span></figcaption></figure>
@@ -1067,9 +1058,7 @@ html{scroll-behavior:smooth}
           <h3>La carte dans le portefeuille du téléphone</h3>
           <div class="fiche-body">
           <div class="canaux"><span class="cn cn-web">Apple Wallet</span><span class="cn cn-web">Google Wallet</span><span class="cn cn-web">Fichier calendrier</span></div>
-          <p>Le client ajoute sa réservation au portefeuille de son téléphone en un geste. La carte porte les dates, le nom de l'établissement, l'adresse, et la charte de l'hôtel : logo, couleurs, visuel. Elle reste accessible hors connexion, ce qui compte à l'arrivée d'un vol.</p>
-          <p>En parallèle, un lien d'ajout au calendrier place les dates du séjour dans l'agenda du client, avec l'adresse et le contact de l'établissement.</p>
-          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Rien à faire. La carte se construit à partir des données de la réservation et de la charte déjà paramétrée.</p></div>
+          <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">Il ajoute son séjour au portefeuille de son téléphone en un geste.</p><p class="duo-p">La carte porte les dates, l'adresse et l'identité visuelle de l'hôtel. Elle reste accessible hors connexion, ce qui compte à la descente d'un avion. Un lien place aussi les dates dans son agenda, avec l'adresse et le contact de l'établissement.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">Rien à faire : la carte se construit à partir de la réservation et de la charte déjà paramétrée.</p><p class="duo-p">Logo, couleurs et visuel sont ceux de l'établissement, sans réglage supplémentaire.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> l'établissement reste présent sur l'écran d'accueil du téléphone jusqu'au jour de l'arrivée.</div>
           <div class="shot"><div><div class="shot-l">La carte de réservation dans le portefeuille, aux couleurs de l'établissement</div><div class="shot-s">À intégrer, format portrait</div></div></div>
         </div>
@@ -1083,9 +1072,7 @@ html{scroll-behavior:smooth}
           <h3>Le lien de paiement</h3>
           <div class="fiche-body">
           <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span></div>
-          <p>Acompte, solde, caution, empreinte carte : le lien est à la marque de l'établissement et s'envoie par le canal de son choix. Plusieurs prestataires de paiement sont pris en charge.</p>
-          <p>Le paiement est un événement, pas seulement une écriture comptable. Le scénario peut donc s'embrancher dessus : si le client a payé, on passe à la suite ; s'il n'a pas payé au bout de trois jours, une relance part, et la réception est prévenue au bout de cinq.</p>
-          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Suivi des encaissements, relances automatiques, alerte quand le délai est dépassé. Le solde restant dû peut aussi être lu directement dans le PMS pour la plupart des connecteurs.</p></div>
+          <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">Il règle son acompte depuis une page à la marque de l'hôtel, sur le canal qu'il préfère.</p><p class="duo-p">Acompte, solde, caution ou empreinte carte : la page de paiement est celle de l'établissement, pas celle d'un prestataire anonyme.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">Les encaissements se suivent seuls, et les relances partent sans y penser.</p><p class="duo-p">Plusieurs prestataires de paiement sont pris en charge. Le paiement est un événement sur lequel le scénario s'embranche : payé, on passe à la suite ; pas payé au bout de trois jours, une relance part ; au bout de cinq, la réception est prévenue. Pour la plupart des connecteurs, le solde restant dû se lit aussi directement dans le PMS.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> la relance d'acompte cesse d'être un pense-bête sur un carnet.</div>
           <div class="shot"><div><div class="shot-l">La page de paiement vue par le client, à la charte de l'établissement</div><div class="shot-s">À intégrer</div></div></div>
         </div>
@@ -1099,8 +1086,7 @@ html{scroll-behavior:smooth}
           <h3>Les documents</h3>
           <div class="fiche-body">
           <div class="canaux"><span class="cn cn-email">Pièce jointe</span><span class="cn cn-web">Lien permanent</span></div>
-          <p>Contrat, bon de réservation, facture, fiche de police : un document PDF est généré à partir des données réelles de la réservation, stocké et envoyé, ou mis à disposition derrière un lien permanent. Il peut être signé électroniquement dans le formulaire de pré-check-in.</p>
-          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Le document est rattaché à la réservation et reste consultable depuis la fiche client.</p></div>
+          <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">Il reçoit son contrat ou son bon de réservation en PDF, et peut le signer en ligne.</p><p class="duo-p">Le document arrive en pièce jointe ou derrière un lien permanent. La signature électronique se fait dans le formulaire de pré-check-in.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">Le PDF se génère à partir des données réelles de la réservation, sans modèle Word à remplir.</p><p class="duo-p">Contrat, bon de réservation, facture, fiche de police : le document est stocké, rattaché à la réservation et consultable depuis la fiche client.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> fin des modèles Word remplis à la main et renommés à chaque envoi.</div>
         </div>
       
@@ -1127,9 +1113,7 @@ html{scroll-behavior:smooth}
           <h3>Le pré-check-in en ligne</h3>
           <div class="fiche-body">
           <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span><span class="cn cn-web">Formulaire web</span></div>
-          <p>Le client renseigne ses informations depuis son téléphone : identité des occupants, heure d'arrivée estimée, préférences, demandes particulières. Le formulaire se construit par glisser-déposer, sans développeur, et se traduit dans les langues de l'établissement.</p>
-          <p>Deux éléments changent le quotidien de la réception. Le <b>scan de la pièce d'identité</b> lit la bande de lecture optique du passeport ou de la carte d'identité et remplit les champs tout seul. La <b>signature électronique</b> permet de faire signer le règlement intérieur ou le contrat avant l'arrivée.</p>
-          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Un tableau des arrivées du jour indique qui a rempli, qui n'a pas rempli, qui arrive tard. Une vue des occupants, protégée par code, peut être partagée avec les services de secours.</p></div>
+          <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">Il remplit ses formalités depuis son téléphone, avant de partir.</p><p class="duo-p">Identité des occupants, heure d'arrivée estimée, préférences, demandes particulières. Le scan de sa pièce d'identité remplit les champs tout seul, et il signe le règlement intérieur ou le contrat en ligne. Arrivé à l'hôtel, il n'a plus rien à remplir.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">La réception sait avant l'arrivée qui a rempli, qui arrive tard, et ce qu'il faut préparer.</p><p class="duo-p">Le formulaire se construit par glisser-déposer et se traduit dans les langues de l'établissement. Le scan lit la bande de lecture optique du passeport ou de la carte d'identité. Le tableau des arrivées du jour indique qui a rempli et qui ne l'a pas fait, et une vue des occupants, protégée par code, peut être partagée avec les services de secours.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> le temps passé au comptoir à taper des identités disparaît. C'est aussi la phase où les formulaires sont de loin les mieux remplis : près d'un quart des envois pré-séjour sont complétés, contre moins de sept pour cent en post-séjour.</div>
           <div class="shot-row">
             <figure class="figure"><img src="/doc/parcours/captures/09-precheckin-identite.jpg" alt="Le pré-check-in côté client : l'étape d'identité des occupants" width="1155" height="757" loading="lazy" decoding="async"><figcaption><span>Le pré-check-in côté client : l'étape d'identité des occupants</span></figcaption></figure>
@@ -1146,9 +1130,7 @@ html{scroll-behavior:smooth}
           <h3>Les ventes additionnelles</h3>
           <div class="fiche-body">
           <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-wa">WhatsApp</span><span class="cn cn-web">Catalogue web</span></div>
-          <p>Petit-déjeuner, transfert, soin, bouteille en chambre, parking, départ tardif : le catalogue s'affiche dans le formulaire de pré-séjour, avec photos, prix et conditions. Les produits peuvent être conditionnés, par exemple n'apparaître que pour les séjours de deux nuits ou plus, ou que pour certaines catégories de chambre.</p>
-          <p>Le client commande et paie en ligne. La commande arrive dans l'établissement avec sa date de consommation, prête à préparer.</p>
-          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Vue des commandes à préparer par jour et par service. Une vue de suivi peut être partagée avec un prestataire extérieur, par exemple le boulanger, qui pointe ce qu'il a livré sans avoir accès au reste.</p></div>
+          <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">Il complète son séjour avant d'arriver : petit-déjeuner, transfert, soin, départ tardif.</p><p class="duo-p">Le catalogue s'affiche dans le formulaire de pré-séjour, avec photos, prix et conditions. Il commande et paie en ligne, et ne voit que ce qui correspond à son séjour.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">Les commandes arrivent datées, prêtes à préparer, et se suivent au jour le jour.</p><p class="duo-p">Les produits se conditionnent, par exemple aux séjours de deux nuits ou plus, ou à certaines catégories de chambre. Les commandes à préparer remontent par jour et par service sur le tableau de bord. Une vue de suivi peut être partagée avec un prestataire extérieur, le boulanger par exemple, qui pointe ce qu'il a livré sans accès au reste.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> le timing compte plus que l'offre. Une proposition envoyée quatre à sept jours avant l'arrivée convertit nettement mieux que la même proposition envoyée la veille.</div>
           <figure class="figure gallery">
             <div class="gallery-track" tabindex="0" role="group" aria-label="Mises en page du catalogue, défilement horizontal">
@@ -1168,9 +1150,7 @@ html{scroll-behavior:smooth}
           <h3>Le surclassement de chambre</h3>
           <div class="fiche-body">
           <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-wa">WhatsApp</span><span class="cn cn-web">Catalogue web</span></div>
-          <p>La proposition de montée en gamme n'est envoyée que si la catégorie supérieure est réellement disponible dans le PMS à ces dates. La vérification se fait au moment de l'envoi, pas la veille.</p>
-          <p>Quand le client accepte et paie, l'information redescend dans le PMS. La réservation change de catégorie sans ressaisie, et l'acceptation devient elle-même un déclencheur : on peut enchaîner sur un message de remerciement ou sur une préparation de chambre particulière.</p>
-          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Le changement est visible dans le PMS comme s'il avait été saisi à la réception. Aucune double saisie, aucun risque de surréservation de la catégorie supérieure.</p></div>
+          <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">On lui propose une chambre supérieure réellement disponible, qu'il accepte en ligne.</p><p class="duo-p">La proposition montre la chambre et le supplément. Une fois accepté et payé, le surclassement est acquis : aucune mauvaise surprise au comptoir.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">Le changement de catégorie redescend dans le PMS sans ressaisie.</p><p class="duo-p">La disponibilité de la catégorie supérieure est vérifiée dans le PMS au moment de l'envoi, pas la veille, ce qui écarte tout risque de surréservation. L'acceptation devient elle-même un déclencheur : message de remerciement, préparation de chambre particulière.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> une recette additionnelle sur des chambres qui seraient parties au tarif de la catégorie inférieure.</div>
           <div class="shot"><div><div class="shot-l">La proposition de surclassement avec la chambre supérieure et le supplément</div><div class="shot-s">À intégrer</div></div></div>
         </div>
@@ -1184,8 +1164,7 @@ html{scroll-behavior:smooth}
           <h3>Les informations pratiques</h3>
           <div class="fiche-body">
           <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span></div>
-          <p>Adresse et itinéraire, accès en voiture et en transport, parking, heure de mise à disposition de la chambre, contact direct de la réception. Ce message est le plus lu du parcours et le moins bien exploité : c'est le bon endroit pour glisser la dernière occasion de réserver une table ou un transfert.</p>
-          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Moins d'appels la veille et le jour même pour demander le code du portail ou l'heure du petit-déjeuner.</p></div>
+          <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">La veille, il reçoit tout ce qu'il faut pour arriver sans chercher.</p><p class="duo-p">Adresse et itinéraire, accès en voiture et en transport, parking, heure de mise à disposition de la chambre, contact direct de la réception. C'est aussi sa dernière occasion de réserver une table ou un transfert.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">Moins d'appels la veille et le jour même pour demander le code du portail ou l'heure du petit-déjeuner.</p><p class="duo-p">Ce message est le plus lu du parcours. C'est le bon endroit pour glisser une dernière proposition, sans effort supplémentaire pour l'équipe.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> les questions répétitives de dernière minute diminuent nettement.</div>
         </div>
       
@@ -1197,7 +1176,7 @@ html{scroll-behavior:smooth}
 
       <div class="bilan" id="ventes-bilan">
         <div class="bilan-head">
-          <span class="bilan-k">Côté équipe</span>
+          <span class="bilan-k">Côté hôtelier</span>
           <h3>Ce que les ventes rapportent</h3>
         </div>
         <p class="bilan-lede">Proposer des prestations est une chose, savoir lesquelles se vendent en est une autre. Le suivi des ventes réunit sur un seul écran ce qui a été commandé, par quel canal, dans quelle catégorie, et ce que ça pèse réellement. Il couvre aussi les ventes faites pendant le séjour et celles passées depuis l'espace fidélité.</p>
@@ -1232,9 +1211,7 @@ html{scroll-behavior:smooth}
           <h3>Les codes d'accès et la serrure connectée</h3>
           <div class="fiche-body">
           <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span><span class="cn cn-web">Page sécurisée</span></div>
-          <p>Le client reçoit un lien personnel vers une page qui affiche ses codes d'accès et un QR code. Les serrures connectées prises en charge génèrent un code valable sur la durée du séjour, et seulement sur cette durée.</p>
-          <p>La page porte aussi un bloc de contact paramétrable : qui appeler si le code ne passe pas, à quel numéro, à quelle heure. C'est le détail qui évite l'appel paniqué à minuit sur un standard fermé.</p>
-          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Le code est généré et révoqué automatiquement. Plus de trousseau remis en main propre, plus de clé non rendue.</p></div>
+          <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">Il reçoit ses codes et un QR code, et entre à l'heure qui lui convient.</p><p class="duo-p">Un lien personnel ouvre une page avec ses codes d'accès, valables sur la durée de son séjour. La page indique aussi qui appeler si le code ne passe pas, à quel numéro et à quelle heure.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">Le code se génère et se révoque tout seul. Plus de trousseau à remettre, plus de clé non rendue.</p><p class="duo-p">Les serrures connectées prises en charge produisent un code valable sur le seul séjour. Le bloc de contact d'urgence se règle une fois, ce qui évite l'appel paniqué à minuit sur un standard fermé.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> une arrivée autonome possible à toute heure, sans présence physique obligatoire.</div>
           <div class="shot"><div><div class="shot-l">La page d'accès : le code, le QR et le bloc de contact d'urgence</div><div class="shot-s">À intégrer, format portrait</div></div></div>
         </div>
@@ -1248,8 +1225,7 @@ html{scroll-behavior:smooth}
           <h3>La borne de check-in</h3>
           <div class="fiche-body">
           <div class="canaux"><span class="cn cn-web">Écran tactile sur place</span></div>
-          <p>Une tablette ou un écran dans le hall. Le client retrouve sa réservation par son nom et ses dates, finalise ce qui manque, choisit sa chambre quand l'établissement l'autorise, et repart avec ses accès. La borne revient d'elle-même à son écran d'accueil après un temps d'inactivité.</p>
-          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Le flux du soir se lisse. La réception traite les cas qui demandent un échange plutôt que la file d'attente.</p></div>
+          <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">Il fait son check-in seul sur une tablette du hall, sans attendre au comptoir.</p><p class="duo-p">Il retrouve sa réservation par son nom et ses dates, finalise ce qui manque, choisit sa chambre quand l'établissement l'autorise, et repart avec ses accès.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">La réception se consacre aux arrivées qui demandent un échange.</p><p class="duo-p">Le flux du soir se lisse. La borne revient d'elle-même à son écran d'accueil après un temps d'inactivité, et son lien s'ouvre directement depuis le tableau de bord.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> une capacité d'accueil qui ne dépend plus du nombre de personnes derrière le comptoir.</div>
           <div class="shot"><div><div class="shot-l">L'écran d'accueil de la borne et l'étape de choix de la chambre</div><div class="shot-s">À intégrer</div></div></div>
         </div>
@@ -1263,8 +1239,7 @@ html{scroll-behavior:smooth}
           <h3>Le mot de bienvenue</h3>
           <div class="fiche-body">
           <div class="canaux"><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span></div>
-          <p>Ce message ne part pas à une heure fixe. Il part au moment où le check-in est réellement enregistré, donc quand le client est physiquement dans sa chambre. Le contenu suit : le code du wifi, l'horaire du petit-déjeuner, le numéro direct pour écrire à la réception.</p>
-          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>C'est aussi ce message qui ouvre le canal de conversation pour tout le séjour. Le client répond sur le même fil.</p></div>
+          <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">Il reçoit le code du wifi et l'heure du petit-déjeuner au moment où il entre dans sa chambre.</p><p class="duo-p">Le message part quand le check-in est réellement enregistré, pas à une heure fixe. Il donne aussi le numéro direct pour écrire à la réception, sur le fil qui servira tout le séjour.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">Ce message ouvre le canal de conversation de tout le séjour.</p><p class="duo-p">Le client répond sur le même fil, qui arrive dans le hub. L'équipe le retrouve dans la liste des clients sur place du tableau de bord, avec sa chambre et ses dates.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> le client sait à qui écrire, et il écrit au lieu de repartir mécontent sans rien dire.</div>
         </div>
       
@@ -1291,9 +1266,7 @@ html{scroll-behavior:smooth}
           <h3>La conversation avec la réception</h3>
           <div class="fiche-body">
           <div class="canaux"><span class="cn cn-wa">WhatsApp</span><span class="cn cn-sms">SMS</span><span class="cn cn-email">E-mail</span><span class="cn cn-web">Chat</span><span class="cn">Messenger</span><span class="cn">Instagram</span></div>
-          <p>Six canaux entrants, un seul fil de conversation, rattaché à la bonne réservation et à la bonne fiche client. L'équipe voit qui écrit, dans quelle chambre, jusqu'à quand, et ce qui a déjà été échangé.</p>
-          <p>Le bot peut répondre aux questions simples à toute heure et passer la main dès que c'est nécessaire. Les demandes de service intéressent directement les étages : serviettes, oreiller supplémentaire, ne pas déranger.</p>
-          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Hub de messagerie sur poste fixe, et application mobile pour le personnel en mouvement, avec notifications. Un gouvernante peut répondre depuis le couloir.</p></div>
+          <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">Il écrit à la réception sur le canal qu'il utilise déjà : WhatsApp, SMS, e-mail, chat, Messenger ou Instagram.</p><p class="duo-p">Serviettes, oreiller supplémentaire, heure de départ : il demande pendant le séjour ce qu'il aurait écrit après, en public. Les questions simples trouvent une réponse à toute heure, grâce au bot.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">Un seul fil par client, rattaché à sa réservation, sur poste fixe comme sur mobile.</p><p class="duo-p">L'équipe voit qui écrit, dans quelle chambre, jusqu'à quand, et ce qui a déjà été échangé. Les demandes de service vont directement aux étages. L'application mobile du personnel envoie des notifications : une gouvernante peut répondre depuis le couloir. Tout ce que permet le hub est détaillé dans <a href="#poste-hub">le poste de travail de l'équipe</a>.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> le client dit pendant le séjour ce qu'il aurait écrit après, en public.</div>
           <div class="shot"><div><div class="shot-l">L'application mobile du personnel : la liste des conversations et une réponse en cours</div><div class="shot-s">À intégrer, format portrait</div></div></div>
         </div>
@@ -1307,9 +1280,7 @@ html{scroll-behavior:smooth}
           <h3>La Guest App</h3>
           <div class="fiche-body">
           <div class="canaux"><span class="cn cn-web">Application mobile du voyageur</span></div>
-          <p>Une application destinée au client, alimentée par les données de l'établissement : informations du séjour en temps réel, room service et conciergerie, check-in et check-out en ligne, chat direct avec la réception. Le client y entre par un lien personnel, sans créer de compte.</p>
-          <p>Catalogues, produits, stock, données de réservation et de fidélité y sont synchronisés en continu. Ce que le client commande dans l'application arrive au même endroit que le reste.</p>
-          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Aucune base de données à tenir en double. Le catalogue paramétré une fois sert le formulaire de pré-séjour, l'espace client et l'application.</p></div>
+          <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">Il a l'hôtel dans sa poche : informations du séjour, room service, conciergerie, check-in et check-out, chat.</p><p class="duo-p">Il y entre par un lien personnel, sans créer de compte. Ce qu'il commande dans l'application arrive directement à l'équipe.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">Aucune base à tenir en double : le catalogue paramétré une fois sert partout.</p><p class="duo-p">Catalogues, produits, stock, données de réservation et de fidélité sont synchronisés en continu. Le même catalogue sert le formulaire de pré-séjour, l'espace client et l'application.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> un répertoire de chambre numérique, qui remplace le classeur en similicuir posé sur le bureau.</div>
           <figure class="figure gallery">
             <div class="gallery-track" tabindex="0" role="group" aria-label="Écrans de la Guest App, défilement horizontal">
@@ -1331,8 +1302,7 @@ html{scroll-behavior:smooth}
           <h3>Les commandes en séjour</h3>
           <div class="fiche-body">
           <div class="canaux"><span class="cn cn-web">Catalogue</span><span class="cn cn-email">Confirmation</span><span class="cn">Notification au point de vente</span></div>
-          <p>Une commande passée en séjour suit son propre cycle : confirmation au client, notification au service concerné, changement de statut quand elle est préparée, puis livrée. Une réservation au restaurant peut être créée automatiquement, et le point de vente prévenu.</p>
-          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Les commandes remontent par service et par créneau. Les extras consommés déjà présents dans le PMS sont réconciliés pour éviter de compter deux fois le même revenu.</p></div>
+          <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">Il commande depuis sa chambre et suit sa commande jusqu'à la livraison.</p><p class="duo-p">Il reçoit une confirmation, puis un nouveau statut quand la commande est préparée, puis livrée. Une table au restaurant peut être réservée dans la foulée.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">Les commandes remontent par service et par créneau, et changent de statut d'un geste.</p><p class="duo-p">Le service concerné est notifié et le point de vente prévenu. Sur le tableau de bord, le kanban des commandes du jour fait passer une commande d'une colonne à l'autre par glisser-déposer. Les extras déjà présents dans le PMS sont réconciliés pour ne pas compter deux fois le même revenu.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> le chiffre d'affaires additionnel devient mesurable et attribuable au message qui l'a déclenché.</div>
         </div>
       
@@ -1359,9 +1329,7 @@ html{scroll-behavior:smooth}
           <h3>Le règlement et la facture</h3>
           <div class="fiche-body">
           <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-sms">SMS</span><span class="cn cn-web">Lien de paiement</span></div>
-          <p>La facture est générée depuis les données réelles du séjour et envoyée. Quand un solde reste dû, un lien de paiement l'accompagne : le client règle depuis son téléphone, dans le taxi, plutôt qu'au comptoir pendant que trois personnes attendent derrière lui.</p>
-          <p>La ventilation détaillée des prestations peut être masquée pour ne présenter qu'un total, quand c'est ce que l'établissement souhaite.</p>
-          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Suivi des soldes non réglés, relances automatiques, rapprochement à la fermeture de caisse.</p></div>
+          <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">Il reçoit sa facture et règle son solde depuis son téléphone, dans le taxi.</p><p class="duo-p">Il n'a plus à passer au comptoir pendant que d'autres attendent derrière lui. Quand l'établissement le souhaite, la facture ne présente qu'un total, sans le détail des prestations.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">La facture se génère depuis les données réelles du séjour, et les soldes non réglés se suivent seuls.</p><p class="duo-p">Un lien de paiement accompagne la facture quand un solde reste dû. Relances automatiques, suivi des soldes et rapprochement à la fermeture de caisse.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> moins d'impayés à courir après, et un comptoir désengorgé le matin.</div>
         </div>
       
@@ -1374,8 +1342,7 @@ html{scroll-behavior:smooth}
           <h3>Le check-out et l'objet oublié</h3>
           <div class="fiche-body">
           <div class="canaux"><span class="cn cn-sms">SMS</span><span class="cn cn-email">E-mail</span></div>
-          <p>Le check-out déclenche à la fois le message au client et la remise en ordre côté étages. Quand la gouvernante enregistre un objet trouvé dans la chambre, l'information est rattachée à la réservation qui vient de partir : on sait à qui écrire, et on écrit le jour même.</p>
-          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>La chambre passe en recouche, l'objet trouvé est enregistré avec sa photo et son emplacement, et le dossier reste consultable.</p></div>
+          <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">S'il a oublié un objet, l'hôtel le lui signale le jour même.</p><p class="duo-p">Le check-out déclenche son message de départ. Un chargeur oublié lui est signalé dans la journée, sans qu'il ait à appeler.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">Le check-out remet la chambre dans le circuit du ménage et rattache tout objet trouvé à la bonne réservation.</p><p class="duo-p">L'objet trouvé est enregistré avec sa photo et son emplacement, et rattaché à la réservation qui vient de partir : on sait à qui écrire, et on écrit le jour même. Le dossier reste consultable.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> un chargeur rendu dans la journée vaut plus qu'un message de remerciement parfaitement rédigé.</div>
         </div>
       
@@ -1402,9 +1369,7 @@ html{scroll-behavior:smooth}
           <h3>L'enquête de satisfaction</h3>
           <div class="fiche-body">
           <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-wa">WhatsApp</span><span class="cn cn-web">Formulaire web</span></div>
-          <p>Le formulaire est construit par l'établissement : note globale, questions par thème, champs libres, sections qui n'apparaissent que si la réponse précédente le justifie. Une réponse négative sur la propreté peut ouvrir une question de précision que personne d'autre ne verra.</p>
-          <p>L'heure d'envoi n'est pas un détail. Un message envoyé en fin de matinée est ouvert bien plus souvent qu'un message parti en pleine nuit ou en fin de journée.</p>
-          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Les réponses alimentent des tableaux par thème et par période, et restent attachées à la fiche client. Un entonnoir montre où les répondants abandonnent le formulaire.</p></div>
+          <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">Il reçoit une enquête courte, à une heure où il la lit, et qui s'adapte à ses réponses.</p><p class="duo-p">Note globale, questions par thème, champs libres. Une réponse négative sur la propreté ouvre une question de précision ; un client satisfait ne voit pas les questions qui ne le concernent pas.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">Les réponses alimentent des tableaux par thème et restent attachées à la fiche client.</p><p class="duo-p">Le formulaire est construit par l'établissement, avec des sections conditionnelles. Un envoi en fin de matinée est ouvert bien plus souvent qu'un envoi de nuit ou de fin de journée. Un entonnoir montre où les répondants abandonnent.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> un signal mesuré sur ce qui fonctionne, plutôt qu'une lecture d'avis publics une fois par trimestre.</div>
           <figure class="figure"><img src="/doc/parcours/captures/16-statistiques-flow.jpg" alt="Les statistiques d'un flow post-séjour, action par action : envoyés, délivrés, ouverts, cliqués, plaintes et erreurs" width="1240" height="609" loading="lazy" decoding="async"><figcaption><span>Les statistiques d'un flow post-séjour, action par action : envoyés, délivrés, ouverts, cliqués, plaintes, erreurs, et le détail des liens sur lesquels on a cliqué.</span></figcaption></figure>
         
@@ -1418,9 +1383,7 @@ html{scroll-behavior:smooth}
           <h3>La demande d'avis et la e-réputation</h3>
           <div class="fiche-body">
           <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span></div>
-          <p>La demande d'avis public n'est pas envoyée à tout le monde. Elle est conditionnée à la réponse à l'enquête : un client satisfait est orienté vers l'avis public, un client mécontent est orienté vers la direction. Ce n'est pas un filtre sur l'avis, c'est un ordre de priorité sur le traitement.</p>
-          <p>Les avis Google sont collectés, rattachés à la fiche client quand c'est possible, et peuvent recevoir une réponse publique depuis l'outil. Les avis venus de Booking, TripAdvisor et Airbnb sont également remontés en lecture.</p>
-          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Alerte immédiate sur avis négatif, récapitulatif périodique, tableaux d'e-réputation par établissement et par période.</p></div>
+          <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">Satisfait, il est invité à laisser un avis public. Mécontent, il est d'abord écouté par la direction.</p><p class="duo-p">La demande dépend de sa réponse à l'enquête. Ce n'est pas un filtre sur l'avis, c'est un ordre de priorité sur le traitement. Quand il publie un avis, il reçoit une réponse personnelle, rapidement.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">Tous les avis sur un seul écran, et une réponse proposée par l'IA pour chacun.</p><p class="duo-p">Les avis Google, Booking, TripAdvisor et Airbnb remontent au même endroit, rattachés à la fiche client quand c'est possible. L'IA rédige une proposition de réponse dans le ton de l'établissement ; l'équipe la relit, puis la publie directement sur Google ou la copie pour les autres plateformes. Une alerte part dès qu'un avis négatif arrive. Le détail est présenté dans <a href="#poste-avis">le poste de travail de l'équipe</a>.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> un volume d'avis en hausse et un délai de réaction qui se compte en heures.</div>
           <figure class="figure"><img src="/doc/parcours/captures/17-avis.jpg" alt="L'écran des avis : Google, Booking et TripAdvisor réunis, distribution des notes et réponses publiées" width="1240" height="715" loading="lazy" decoding="async"><figcaption><span>Google, Booking et TripAdvisor réunis sur un seul écran, avec la distribution des notes, le taux de réponse et les réponses publiées depuis l'outil.</span></figcaption></figure>
         
@@ -1434,9 +1397,7 @@ html{scroll-behavior:smooth}
           <h3>La relance conditionnée à l'interaction réelle</h3>
           <div class="fiche-body">
           <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span></div>
-          <p>C'est le point qui distingue un scénario d'un envoi de masse. Le parcours se poursuit différemment selon ce que le client a fait : ouvert sans cliquer, cliqué sans répondre, répondu, ou rien du tout. Le message de relance n'est ni le même, ni sur le même canal.</p>
-          <p>Un e-mail resté sans ouverture peut basculer en SMS ou en WhatsApp au bout de deux jours. Un client qui a répondu ne reçoit jamais la relance.</p>
-          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Le scénario se dessine visuellement, avec ses branches oui et non. Les ouvertures générées par les antivirus d'entreprise sont écartées pour ne pas fausser la lecture.</p></div>
+          <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">Il ne reçoit jamais trois fois la même demande, ni de relance après avoir répondu.</p><p class="duo-p">S'il n'a pas ouvert l'e-mail, la relance peut lui arriver par SMS ou WhatsApp deux jours plus tard. S'il a répondu, il ne reçoit rien de plus.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">Le scénario se poursuit selon ce que le client a réellement fait, sans tri à la main.</p><p class="duo-p">Ouvert sans cliquer, cliqué sans répondre, répondu, ou rien du tout : chaque cas a sa branche, dessinée visuellement avec ses oui et ses non. Les ouvertures générées par les antivirus d'entreprise sont écartées pour ne pas fausser la lecture.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> personne ne reçoit trois fois la même demande, et personne n'est oublié.</div>
         </div>
       
@@ -1463,9 +1424,7 @@ html{scroll-behavior:smooth}
           <h3>L'espace client</h3>
           <div class="fiche-body">
           <div class="canaux"><span class="cn cn-web">Espace web dédié</span><span class="cn cn-email">E-mail</span></div>
-          <p>Un espace à l'adresse du programme de l'établissement ou du groupe, où le client retrouve ses réservations passées et à venir, ses commandes, ses points, son niveau, les avantages associés, ses codes d'accès, et ses informations personnelles qu'il met à jour lui-même.</p>
-          <p>Pour un groupe, c'est l'espace qui donne son sens au multi-établissements : les points gagnés dans un hôtel se dépensent dans un autre.</p>
-          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Les mises à jour faites par le client alimentent directement le CRM. Les paliers, les points et les avantages se paramètrent sans développement.</p></div>
+          <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">Il retrouve ses séjours, ses commandes, ses points et ses avantages dans un espace à son nom.</p><p class="duo-p">Réservations passées et à venir, niveau, codes d'accès, et informations personnelles qu'il met à jour lui-même. Dans un groupe, les points gagnés dans un hôtel se dépensent dans un autre.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">Les mises à jour du client alimentent directement le CRM, et le programme se paramètre sans développement.</p><p class="duo-p">L'espace est à l'adresse du programme de l'établissement ou du groupe. Paliers, points et avantages se règlent dans l'outil.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> une raison de revenir en direct plutôt que par une agence en ligne.</div>
           <div class="shot"><div><div class="shot-l">L'espace client : réservations, points, niveau et avantages</div><div class="shot-s">À intégrer</div></div></div>
         </div>
@@ -1479,8 +1438,7 @@ html{scroll-behavior:smooth}
           <h3>Les dates personnelles</h3>
           <div class="fiche-body">
           <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span></div>
-          <p>Anniversaire du client, anniversaire de son premier séjour, date d'entrée dans le programme, passage à un palier supérieur : autant de motifs de prendre contact qui ne ressemblent pas à une sollicitation commerciale, parce qu'ils sont personnels.</p>
-          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Aucune liste à tenir. Le calcul se fait sur la donnée réelle de la fiche client.</p></div>
+          <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">Il reçoit un message pour son anniversaire ou celui de son premier séjour, pas une énième promotion.</p><p class="duo-p">Anniversaire, date d'entrée dans le programme, passage à un palier supérieur : des raisons de prendre contact qui ne ressemblent pas à une sollicitation commerciale, parce qu'elles sont personnelles.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">Aucune liste à tenir : le calcul se fait sur la donnée réelle de la fiche client.</p><p class="duo-p">Le message se prépare une fois et part au bon jour, pour chaque client concerné.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> un message par an dont le taux d'ouverture n'a rien à voir avec celui d'une newsletter.</div>
         </div>
       
@@ -1493,9 +1451,7 @@ html{scroll-behavior:smooth}
           <h3>Les campagnes segmentées</h3>
           <div class="fiche-body">
           <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-sms">SMS</span><span class="cn cn-wa">WhatsApp</span></div>
-          <p>Les segments se construisent sur la donnée réelle : montant dépensé, nombre de séjours, date du dernier séjour, pays, catégorie de chambre réservée, produits déjà commandés, étiquettes posées par l'équipe. Une soixantaine de critères sont combinables.</p>
-          <p>Une campagne peut être ponctuelle ou récurrente, et exclure automatiquement les clients déjà inscrits ailleurs. Les désinscriptions sont gérées à l'échelle du groupe, ce qui évite qu'un client désinscrit d'un hôtel soit recontacté par un autre.</p>
-          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Résultats par campagne : ouvertures, clics, commandes, revenu attribué. Les envois passés par une agence en ligne peuvent être exclus des statistiques pour ne pas les fausser.</p></div>
+          <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">Il reçoit des offres qui correspondent à ce qu'il a déjà vécu à l'hôtel.</p><p class="duo-p">S'il se désinscrit d'un hôtel du groupe, aucun autre ne le recontacte.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">Des segments construits sur la donnée réelle, et des résultats mesurés campagne par campagne.</p><p class="duo-p">Montant dépensé, nombre de séjours, date du dernier séjour, pays, catégorie de chambre, produits commandés, étiquettes : une soixantaine de critères combinables. Une campagne peut être ponctuelle ou récurrente. Ouvertures, clics, commandes et revenu attribué remontent par campagne, et les envois passés par une agence en ligne peuvent être exclus des statistiques.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> on cesse d'envoyer la même chose à tout le monde.</div>
         </div>
       
@@ -1508,8 +1464,7 @@ html{scroll-behavior:smooth}
           <h3>La réactivation</h3>
           <div class="fiche-body">
           <div class="canaux"><span class="cn cn-email">E-mail</span><span class="cn cn-wa">WhatsApp</span></div>
-          <p>Un client qui n'est pas revenu depuis dix-huit mois, qui avait dépensé au-delà d'un certain montant et qui n'a pas de réservation future : le segment se décrit en trois critères et se maintient tout seul. Le client y entre et en sort au fil du temps, sans intervention.</p>
-          <div class="equipe"><p class="equipe-k">Côté équipe</p><p>Le segment est vivant. Il n'y a pas de liste figée à réexporter tous les trimestres.</p></div>
+          <div class="duo"><div class="duo-col duo-client"><p class="duo-k">Côté client</p><p class="duo-lead">Un client qui n'est pas revenu depuis longtemps reçoit une vraie raison de revenir.</p><p class="duo-p">La relance part quand il remplit les critères, sans attendre un envoi groupé annuel.</p></div><div class="duo-col duo-hotel"><p class="duo-k">Côté hôtelier</p><p class="duo-lead">Un segment vivant qui se maintient tout seul, sans liste à réexporter.</p><p class="duo-p">Pas revenu depuis dix-huit mois, dépense au-delà d'un seuil, aucune réservation future : trois critères suffisent. Le client entre dans le segment et en sort au fil du temps, sans intervention.</p></div></div>
           <div class="gain"><b>Ce que ça change :</b> une base dormante redevient une base adressable.</div>
         </div>
       
@@ -1520,7 +1475,87 @@ html{scroll-behavior:smooth}
   </div>
 </section>
 
-<section class="band band-alt" id="hk">
+<!-- ============ POSTE DE TRAVAIL DE L'ÉQUIPE ============ -->
+<section class="band band-alt" id="equipe">
+  <div class="wrap">
+    <div class="head-row">
+      <div><span class="sec-num">Côté hôtelier</span>
+      <h2>Le poste de travail de l'équipe</h2></div>
+      <p class="intro">Le parcours décrit ce que vit le client. Voici ce que l'équipe a sous les yeux pour le tenir : quatre écrans ouverts chaque jour, branchés sur les mêmes données que les messages.</p>
+    </div>
+
+      <div class="bilan" id="poste-tdb">
+        <div class="bilan-head">
+          <span class="bilan-k">Tableau de bord</span>
+          <h3>Les arrivées, les présents et les commandes</h3>
+        </div>
+        <p class="bilan-lede">Le premier écran de la journée. Il dit qui arrive, qui est sur place, qui part, et ce qu'il faut préparer, en temps réel.</p>
+        <div class="cols">
+          <div class="tile"><h4>Arrivées, sur place, départs</h4><p>Des onglets pour les arrivées du jour, les clients sur place, les départs du jour et ceux du lendemain, avec la chambre, les dates, les coordonnées et le statut de chaque réservation. Un clic ouvre le détail.</p></div>
+          <div class="tile"><h4>Les commandes à préparer</h4><p>Les commandes à venir s'affichent en calendrier, et celles du jour en kanban : une commande passe d'une colonne à l'autre par glisser-déposer quand elle est préparée, puis livrée.</p></div>
+          <div class="tile"><h4>Un écran à sa main</h4><p>Le tableau de bord se compose de modules que l'on dispose et redimensionne soi-même. On peut en créer plusieurs, par poste : un pour la réception, un pour la direction.</p></div>
+          <div class="tile"><h4>Tout le reste, au même endroit</h4><p>D'autres modules reprennent les formulaires, les avis, les paiements (encaissé du jour, cautions à capturer), le housekeeping, les objets trouvés, la maintenance et les résultats des scénarios, sur la période choisie.</p></div>
+        </div>
+        <figure class="figure"><img src="/doc/parcours/captures/20-tableau-de-bord.jpg" alt="Le tableau de bord : arrivées du jour, clients sur place, communications, et la liste des clients sur place avec chambre, dates et coordonnées" width="1456" height="840" loading="lazy" decoding="async"><figcaption><span>Les clients sur place, en temps réel : chambre, dates du séjour, nombre de personnes, coordonnées et statut de la réservation. Les données de cet exemple sont fictives.</span></figcaption></figure>
+        <div class="shot"><div><div class="shot-l">Le kanban des commandes du jour : à préparer, en cours, livrées</div><div class="shot-s">À intégrer</div></div></div>
+      </div>
+
+      <div class="bilan" id="poste-planning">
+        <div class="bilan-head">
+          <span class="bilan-k">Planning</span>
+          <h3>Le planning des chambres</h3>
+        </div>
+        <p class="bilan-lede">Toutes les réservations sur une frise de trois semaines, chambre par chambre : ce qui est occupé, ce qui se libère, ce qui reste à vendre, d'un coup d'œil.</p>
+        <div class="cols">
+          <div class="tile"><h4>Trois semaines d'un regard</h4><p>La frise couvre vingt et un jours, en partant de trois jours avant aujourd'hui. Les week-ends et le jour courant ressortent, et le taux d'occupation du jour s'affiche en tête.</p></div>
+          <div class="tile"><h4>Regrouper comme on travaille</h4><p>Les chambres se regroupent par type, par étage ou par bâtiment, et chaque groupe se replie. L'ordre se règle à la main quand la logique du terrain ne suit pas la numérotation.</p></div>
+          <div class="tile"><h4>Les statuts en couleur</h4><p>Confirmée, en attente, en cours, terminée, annulée : chaque réservation porte la couleur de son statut. Les annulations sont masquées par défaut, et les filtres sont mémorisés par établissement.</p></div>
+          <div class="tile"><h4>La réservation d'un clic</h4><p>Le survol affiche le nom du client, le clic ouvre la réservation dans un panneau latéral, sans quitter le planning. L'écran reste utilisable sur mobile.</p></div>
+        </div>
+        <div class="shot"><div><div class="shot-l">Le planning des chambres : la frise de trois semaines, les chambres par type et les réservations en couleur</div><div class="shot-s">À intégrer</div></div></div>
+      </div>
+
+      <div class="bilan" id="poste-hub">
+        <div class="bilan-head">
+          <span class="bilan-k">Hub de messagerie</span>
+          <h3>Toutes les conversations, un seul écran</h3>
+        </div>
+        <p class="bilan-lede">Six canaux, un fil par client, et tout le séjour dans la conversation. L'équipe répond en connaissant le contexte, sans ouvrir trois outils.</p>
+        <div class="cols">
+          <div class="tile"><h4>Six canaux, un seul fil</h4><p>E-mail, SMS, WhatsApp, chat du site, Messenger et Instagram arrivent dans la même conversation, rattachée à la fiche client.</p></div>
+          <div class="tile"><h4>Le séjour dans la conversation</h4><p>Le fil mêle les messages avec la réservation, ses dates d'arrivée et de départ, les paiements, les formulaires, les commandes, les avis et les notes. Chaque type s'affiche ou se masque d'un filtre.</p></div>
+          <div class="tile"><h4>S'organiser à plusieurs</h4><p>Dossiers en couleur, conversations fermées puis rouvertes, filtres non lu, en attente de réponse ou assigné à moi. Une conversation s'attribue à un ou plusieurs collègues.</p></div>
+          <div class="tile"><h4>Les notes internes</h4><p>Des notes visibles de l'équipe seule, glissées dans le fil, pour passer une consigne sans que le client la voie.</p></div>
+          <div class="tile"><h4>Messages rapides et modèles</h4><p>Des réponses pré-écrites par catégorie et en plusieurs langues, proposées pendant la frappe. Des modèles d'e-mail avec aperçu, et les modèles WhatsApp validés quand la fenêtre de vingt-quatre heures est passée.</p></div>
+          <div class="tile"><h4>L'assistant de rédaction IA</h4><p>Corriger, générer une réponse, reformuler ou traduire, en trois tons et sept langues. La réponse générée s'appuie sur la base de connaissance, l'historique du client et son dernier message.</p></div>
+          <div class="tile"><h4>La traduction automatique</h4><p>Un message se traduit d'un bouton, ou toute une conversation d'un réglage. La réception répond dans sa langue à un client qui écrit dans la sienne.</p></div>
+          <div class="tile"><h4>Le bot et la passation</h4><p>Un badge indique si le bot ou un humain tient la conversation. Quand le bot passe la main, l'alerte donne le motif et l'heure, et un bouton permet de prendre la main.</p></div>
+          <div class="tile"><h4>Le suivi des envois</h4><p>Envoyé, délivré, lu, cliqué ou en erreur : chaque message porte son statut. Les échecs se regroupent dans un registre, avec renvoi en un clic pour les e-mails.</p></div>
+          <div class="tile"><h4>Le groupe et le mobile</h4><p>Au niveau d'un groupe, les conversations de tous les hôtels se filtrent par établissement. L'application mobile du personnel reprend la messagerie, avec notifications, messages rapides et modèles, et un brouillon conservé d'une session à l'autre.</p></div>
+        </div>
+        <div class="shot"><div><div class="shot-l">Le hub de messagerie : la liste des conversations et l'assistant de rédaction IA ouvert sur une réponse</div><div class="shot-s">À intégrer</div></div></div>
+      </div>
+
+      <div class="bilan" id="poste-avis">
+        <div class="bilan-head">
+          <span class="bilan-k">Avis</span>
+          <h3>Les avis et la réponse assistée par IA</h3>
+        </div>
+        <p class="bilan-lede">Répondre à chaque avis, vite et dans le bon ton, sans y passer ses soirées. L'IA propose, l'équipe décide.</p>
+        <div class="cols">
+          <div class="tile"><h4>Tous les avis réunis</h4><p>Google, Booking, TripAdvisor, Airbnb et les avis internes, filtrables par plateforme, par note, par présence d'une réponse et par période. Les avis internes passent par une modération avant affichage.</p></div>
+          <div class="tile"><h4>Une réponse proposée par l'IA</h4><p>Deux à quatre phrases qui reprennent le prénom du client, répondent à ce qu'il a écrit et s'inspirent des dix dernières réponses de l'établissement pour garder son ton. Empathique sur un avis négatif, reconnaissante sur un avis positif.</p></div>
+          <div class="tile"><h4>Toujours relue avant envoi</h4><p>La proposition arrive dans une zone modifiable, et une consigne libre permet d'orienter la rédaction. Rien ne part sans l'accord de l'équipe.</p></div>
+          <div class="tile"><h4>Publiée là où l'avis a été écrit</h4><p>La réponse se publie directement sur Google. Pour les autres plateformes, elle se copie en un clic pour être collée sur le site concerné.</p></div>
+          <div class="tile"><h4>En série quand il le faut</h4><p>Jusqu'à cinquante avis traités d'un coup : chaque réponse proposée se relit, puis se publie, se copie ou se passe.</p></div>
+          <div class="tile"><h4>Alertes et synthèse</h4><p>Alerte immédiate sous un seuil de note choisi, récapitulatif quotidien, toutes les douze heures ou hebdomadaire. Une synthèse IA résume ce que disent les avis, et les statistiques suivent l'évolution par plateforme et par établissement.</p></div>
+        </div>
+        <div class="shot"><div><div class="shot-l">La réponse proposée par l'IA sur un avis, prête à être relue puis publiée</div><div class="shot-s">À intégrer</div></div></div>
+      </div>
+  </div>
+</section>
+
+<section class="band" id="hk">
   <div class="wrap">
     <div class="head-row">
       <div><span class="sec-num">Transverse</span>
@@ -1544,7 +1579,7 @@ html{scroll-behavior:smooth}
 </section>
 
 <!-- ============ GROUPE ============ -->
-<section class="band" id="groupe">
+<section class="band band-alt" id="groupe">
   <div class="wrap">
     <div class="head-row">
       <div><span class="sec-num">Transverse</span>
@@ -1566,7 +1601,7 @@ html{scroll-behavior:smooth}
 </section>
 
 <!-- ============ PMS ============ -->
-<section class="band band-alt" id="pms">
+<section class="band" id="pms">
   <div class="wrap">
     <div class="head-row">
       <div><span class="sec-num">Transverse</span>
@@ -1587,32 +1622,6 @@ html{scroll-behavior:smooth}
     <p class="intro" style="margin-top:28px">Les connecteurs couvrent les principaux éditeurs du marché français et international, en local comme en infonuagique. La liste à jour et le détail de ce que chacun expose se cadrent lors de l'étude technique.</p>
 
     <div class="note"><p><b>À vérifier établissement par établissement.</b> Tous les PMS n'exposent pas les mêmes événements. Un connecteur qui ne remonte pas le check-in en temps réel interdit le message de bienvenue déclenché à l'entrée en chambre. La liste précise de ce qui est disponible pour un parc donné se cadre lors de l'étude technique, avant tout engagement.</p></div>
-  </div>
-</section>
-
-<!-- ============ TARIFS ============ -->
-<section class="band" id="tarifs">
-  <div class="wrap">
-    <div class="head-row">
-      <div><span class="sec-num">Transverse</span>
-      <h2>Les tarifs</h2></div>
-      <p class="intro">Tarification par établissement, sans engagement, avec quatorze jours d'essai sur les plans payants. Ce sont les tarifs publiés sur trigger-flow.com.</p>
-    </div>
-
-    <div class="plans">
-      <div class="plan"><span class="plan-n">Découverte</span><span class="plan-p">0<sup>€</sup></span><span class="plan-m">par mois</span><p class="plan-d">Un scénario, mille e-mails. Sans carte bancaire.</p></div>
-      <div class="plan"><span class="plan-n">Communication</span><span class="plan-p">69<sup>€</sup></span><span class="plan-m">par mois</span><p class="plan-d">Segments, scénarios, SMS et WhatsApp, hub de messagerie.</p></div>
-      <div class="plan pop"><span class="plan-n">Conversion</span><span class="plan-p">149<sup>€</sup></span><span class="plan-m">par mois</span><p class="plan-d">Formulaires, catalogue de ventes, conditions sur les interactions.</p></div>
-      <div class="plan"><span class="plan-n">All Inclusive</span><span class="plan-p">249<sup>€</sup></span><span class="plan-m">par mois</span><p class="plan-d">Tous les modules inclus, sans limites, avec un interlocuteur dédié.</p></div>
-    </div>
-
-    <div class="cols" style="margin-top:22px">
-      <div class="tile"><h4>Les SMS</h4><p>Facturés à l'usage, à partir de 0,06 € par message. Aucun SMS n'est inclus dans les plans, hormis le quota du plan All Inclusive.</p></div>
-      <div class="tile"><h4>Les modules complémentaires</h4><p>Avis et e-réputation, agent IA, paiements, programme de fidélité, Guest App et housekeeping s'ajoutent à n'importe quel plan, et sont tous inclus dans le plan All Inclusive.</p></div>
-      <div class="tile"><h4>Les groupes</h4><p>Un parc multi-établissements fait l'objet de tarifs dégressifs et d'un accompagnement dédié, sur proposition commerciale.</p></div>
-    </div>
-
-    <div class="note"><p><b>Évolution tarifaire.</b> Les tarifs présentés ici sont ceux en vigueur à la date de ce document. Une évolution est prévue au 1<sup>er</sup> janvier 2027.</p></div>
   </div>
 </section>
 
@@ -1679,6 +1688,7 @@ html{scroll-behavior:smooth}
         <label class="check"><input type="checkbox" id="c7b"> Demande d'avis conditionnée à la satisfaction</label>
         <label class="check"><input type="checkbox" id="c7c"> Alerte immédiate sur avis négatif</label>
         <label class="check"><input type="checkbox" id="c7d"> Réponse aux avis depuis un seul outil</label>
+        <label class="check"><input type="checkbox" id="c7f"> Réponse aux avis proposée par l'IA, relue avant envoi</label>
         <label class="check"><input type="checkbox" id="c7e"> Relance différenciée selon l'interaction</label>
       </div></div>
       <div class="check-group"><h4>08 · La fidélisation</h4><div class="check-list">
@@ -1687,6 +1697,11 @@ html{scroll-behavior:smooth}
         <label class="check"><input type="checkbox" id="c8c"> Message d'anniversaire</label>
         <label class="check"><input type="checkbox" id="c8d"> Campagnes segmentées sur la donnée réelle</label>
         <label class="check"><input type="checkbox" id="c8e"> Scénario de réactivation des clients dormants</label>
+      </div></div>
+      <div class="check-group"><h4>Le poste de travail de l'équipe</h4><div class="check-list">
+        <label class="check"><input type="checkbox" id="c9e"> Tableau de bord des arrivées, des présents et des commandes</label>
+        <label class="check"><input type="checkbox" id="c9f"> Planning des chambres sur une frise</label>
+        <label class="check"><input type="checkbox" id="c9g"> Hub de messagerie unique, avec assistant de rédaction IA</label>
       </div></div>
       <div class="check-group"><h4>Transverse</h4><div class="check-list">
         <label class="check"><input type="checkbox" id="c9a"> Housekeeping suivi dans le même outil</label>
@@ -1715,7 +1730,7 @@ html{scroll-behavior:smooth}
 
 <footer>
   <div class="wrap">
-    <p>Document de référence TriggerFlow. Les fonctionnalités décrites sont en production à la date de publication. Les tarifs indiqués sont ceux publiés sur trigger-flow.com et évoluent au 1<sup>er</sup> janvier 2027.</p>
+    <p>Document de référence TriggerFlow. Les fonctionnalités décrites sont en production à la date de publication.</p>
     <p>Les repères de performance cités sont des médianes observées sur l'ensemble des établissements de la plateforme et ne constituent pas un engagement de résultat.</p>
   </div>
 </footer>
@@ -1735,10 +1750,10 @@ html{scroll-behavior:smooth}
     {id:"p6",      n:"06", t:"Le départ",               m:"2 points de contact"},
     {id:"p7",      n:"07", t:"L'après-séjour",          m:"3 points de contact"},
     {id:"p8",      n:"08", t:"La fidélisation et le retour", m:"4 points de contact"},
+    {id:"equipe",  n:"·",  t:"Le poste de travail de l'équipe", m:"côté hôtelier"},
     {id:"hk",      n:"·",  t:"Ce qui se passe aux étages", m:"transverse"},
     {id:"groupe",  n:"·",  t:"À l'échelle d'un groupe", m:"transverse"},
     {id:"pms",     n:"·",  t:"La connexion au PMS",     m:"transverse"},
-    {id:"tarifs",  n:"·",  t:"Les tarifs",              m:"transverse"},
     {id:"synthese",n:"·",  t:"Combien de ces moments couvrez-vous ?", m:"synthèse"},
     {id:"suite",   n:"·",  t:"Cartographier votre parcours", m:"prochaine étape"}
   ];
@@ -1798,7 +1813,7 @@ html{scroll-behavior:smooth}
     {id:"p7", n:"07", t:"Après"},
     {id:"p8", n:"08", t:"Fidélisation"}
   ];
-  var TRANSVERSE = ["hk","groupe","pms","tarifs","synthese","suite"];
+  var TRANSVERSE = ["equipe","hk","groupe","pms","synthese","suite"];
   var PHASE_IDX = {};
   PHASES.forEach(function(p, i){ PHASE_IDX[p.id] = i; });
 
