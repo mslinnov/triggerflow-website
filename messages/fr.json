@@ -2640,5 +2640,156 @@
       "terms": "CGV",
       "copyright": "© {year} TriggerFlow. Tous droits réservés."
     }
+  },
+  "equiphotel": {
+    "meta": {
+      "title": "Equip'Hotel 2026 : TriggerFlow au stand H006, Pavillon 7.3",
+      "description": "TriggerFlow à Equip'Hotel 2026, du 2 au 5 novembre à Paris : 3 guides gratuits pour hôteliers, rendez-vous au stand H006 et apéro le 2 novembre."
+    },
+    "header": {
+      "badge": "Equip'Hotel 2026 · Stand H006",
+      "cta": "Prendre RDV",
+      "homeLabel": "Retour à l'accueil TriggerFlow"
+    },
+    "hero": {
+      "eyebrowBefore": "Equip'Hotel 2026 · du 2 au 5 novembre",
+      "eyebrowDuring": "En ce moment à Equip'Hotel · Stand H006",
+      "eyebrowAfter": "Merci de votre visite à Equip'Hotel 2026",
+      "titleLine1": "Plus de revenus.",
+      "titleLine2": "Plus de clients directs.",
+      "titleLine3": "Moins d’outils.",
+      "subtitle": "TriggerFlow est le CRM hôtelier qui centralise la relation client. Passez nous voir au stand H006, ou récupérez nos guides dès maintenant.",
+      "subtitleAfter": "Merci d'être passé nous voir. Vos guides restent disponibles ci-dessous, et on peut reprendre la discussion en visio quand vous voulez.",
+      "ctaGuides": "Accéder aux guides",
+      "ctaRdv": "Prendre rendez-vous",
+      "card": {
+        "label": "Retrouvez-nous",
+        "hall": "Pavillon",
+        "stand": "Stand",
+        "dates": "2 au 5 novembre 2026",
+        "venue": "Paris Expo Porte de Versailles",
+        "cta": "Voir l'accès"
+      }
+    },
+    "apero": {
+      "badge": "Sur notre stand",
+      "title": "Apéro TriggerFlow, lundi 2 novembre à 16h30",
+      "text": "Venez trinquer avec l'équipe au stand H006, Pavillon 7.3. On parle métier, PMS et saison à venir, un verre à la main.",
+      "cta": "Ajouter à mon agenda"
+    },
+    "guides": {
+      "eyebrow": "Guides gratuits pour hôteliers",
+      "title": "Trois guides pratiques, à télécharger gratuitement",
+      "subtitle": "Choisissez le sujet qui vous concerne et téléchargez votre guide en un clic.",
+      "cta": "Télécharger le guide",
+      "items": {
+        "revenus": {
+          "tag": "Revenus",
+          "title": "Générez plus de revenus à chaque séjour",
+          "description": "Upsell avant l'arrivée, catalogue d'extras, bon moment pour proposer un surclassement : les méthodes qui augmentent le panier moyen sans gêner vos clients."
+        },
+        "directs": {
+          "tag": "Réservation directe",
+          "title": "Transformez vos clients OTA en clients directs",
+          "description": "Récupérer le contact, entretenir la relation après le séjour et donner une vraie raison de réserver en direct la prochaine fois."
+        },
+        "avis": {
+          "tag": "E-réputation",
+          "title": "Obtenez plus d'avis positifs, automatiquement",
+          "description": "Quand demander un avis, sur quel canal, et comment traiter un client mécontent avant qu'il ne publie. Un processus simple à mettre en place."
+        }
+      }
+    },
+    "rdv": {
+      "eyebrow": "Rendez-vous",
+      "title": "Parlons de votre hôtel",
+      "subtitle": "Réservez un créneau au stand pendant le salon, ou une démo en visio après.",
+      "stand": {
+        "badge": "Pendant le salon",
+        "title": "Au stand H006",
+        "text": "20 minutes avec l'équipe, du 2 au 5 novembre. Réservez votre créneau pour être sûr de nous trouver disponibles, même aux heures d'affluence.",
+        "cta": "Réserver un créneau au stand"
+      },
+      "visio": {
+        "badge": "Après le salon",
+        "title": "En visio, 30 minutes",
+        "text": "Une démonstration personnalisée, construite à partir de votre PMS et de vos parcours clients actuels.",
+        "cta": "Réserver une démo en visio"
+      }
+    },
+    "infos": {
+      "eyebrow": "Infos pratiques",
+      "title": "Nous trouver à Paris Expo",
+      "where": {
+        "label": "Stand",
+        "value": "Pavillon 7.3 · Stand H006"
+      },
+      "when": {
+        "label": "Dates",
+        "value": "Du lundi 2 au jeudi 5 novembre 2026"
+      },
+      "hours": {
+        "label": "Horaires",
+        "value": "9h30 à 18h30, jeudi jusqu'à 17h30"
+      },
+      "address": {
+        "label": "Adresse",
+        "value": "Paris Expo Porte de Versailles, 1 place de la Porte de Versailles, 75015 Paris"
+      },
+      "access": {
+        "label": "Accès",
+        "value": "Métro 12, tramways T2 et T3a : station Porte de Versailles"
+      },
+      "mapsCta": "Ouvrir dans Google Maps"
+    },
+    "about": {
+      "eyebrow": "TriggerFlow en bref",
+      "titleLine1": "Toute votre relation client.",
+      "titleLine2": "De la réservation à la fidélisation.",
+      "features": {
+        "communication": {
+          "title": "Communication multicanale",
+          "text": "Email · SMS · WhatsApp · Messagerie centralisée"
+        },
+        "parcours": {
+          "title": "Parcours automatisés",
+          "text": "Confirmation · Pré-séjour · Pendant le séjour · Après le séjour"
+        },
+        "crm": {
+          "title": "CRM et personnalisation",
+          "text": "Fiches clients 360° · Segmentation · Historique"
+        },
+        "revenus": {
+          "title": "Revenus et fidélisation",
+          "text": "Upsell · Catalogue d'extras · Newsletters · Campagnes ciblées"
+        },
+        "experience": {
+          "title": "Expérience et réputation",
+          "text": "Formulaires · Pré-check-in · Satisfaction · Avis clients"
+        },
+        "paiements": {
+          "title": "Paiements et pilotage",
+          "text": "Liens de paiement · Acomptes · Statistiques · Rapports"
+        }
+      },
+      "pms": "Connecté à votre PMS · Plus de 50 intégrations",
+      "badges": {
+        "setup": "Opérationnel en 48 heures",
+        "support": "Support 7j/7",
+        "rgpd": "Conforme RGPD"
+      },
+      "cta": "Découvrir TriggerFlow"
+    },
+    "contact": {
+      "title": "Une question sur le salon ?",
+      "text": "Écrivez-nous ou appelez-nous, on vous répond rapidement.",
+      "linkedin": "Suivre TriggerFlow sur LinkedIn"
+    },
+    "footer": {
+      "rights": "© {year} TriggerFlow. Tous droits réservés.",
+      "legal": "Mentions légales",
+      "privacy": "Politique de confidentialité",
+      "site": "trigger-flow.com"
+    }
   }
 }

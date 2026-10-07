@@ -295,6 +295,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     );
   }
 
+  // ─── Landing Equip'Hotel 2026 (FR uniquement) ───────────────
+  sitemapEntries.push({
+    url: `${baseUrl}/fr/equiphotel`,
+    lastModified,
+    changeFrequency: 'weekly',
+    priority: 0.6,
+  });
+
   // ─── Landing pages (exclude noindex) ─────────────────────────
   const landingPages = getAllLandingPages().filter((lp) => !lp.noindex);
   for (const lp of landingPages) {

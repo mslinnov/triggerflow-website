@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//TriggerFlow//Equip Hotel 2026//FR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:apero-equiphotel-2026@trigger-flow.com
+DTSTAMP:20261007T000000Z
+DTSTART:20261102T153000Z
+DTEND:20261102T173000Z
+SUMMARY:Apéro TriggerFlow - Equip'Hotel 2026
+LOCATION:Paris Expo Porte de Versailles\, Pavillon 7.3\, Stand H006\, 75015 Paris
+DESCRIPTION:Apéro sur le stand TriggerFlow (H006\, Pavillon 7.3) à Equip'Hotel 2026.\nhttps://www.trigger-flow.com/fr/equiphotel
+URL:https://www.trigger-flow.com/fr/equiphotel
+END:VEVENT
+END:VCALENDAR

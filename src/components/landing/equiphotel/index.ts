@@ -1,0 +1,9 @@
+export { EquiphotelHeader } from './EquiphotelHeader';
+export { EquiphotelHero } from './EquiphotelHero';
+export { EquiphotelApero } from './EquiphotelApero';
+export { EquiphotelGuides } from './EquiphotelGuides';
+export { EquiphotelBooking } from './EquiphotelBooking';
+export { EquiphotelInfos } from './EquiphotelInfos';
+export { EquiphotelAbout } from './EquiphotelAbout';
+export { EquiphotelContact } from './EquiphotelContact';
+export { EquiphotelFooter } from './EquiphotelFooter';

@@ -58,6 +58,18 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // ── Landing Equip'Hotel 2026 : URL courte + page FR uniquement ──
+      {
+        source: '/equiphotel',
+        destination: '/fr/equiphotel',
+        permanent: false,
+      },
+      {
+        source: '/en/equiphotel',
+        destination: '/fr/equiphotel',
+        permanent: false,
+      },
+
       // ── Slugs légaux : anciens chemins WP → slugs réels (FR sur les 2 locales) ──
       {
         source: '/en/privacy-policy',
