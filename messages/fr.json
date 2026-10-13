@@ -2794,7 +2794,7 @@
   },
   "priceChange": {
     "banner": "Nos tarifs évoluent le 1er janvier 2027. Souscrivez avant le 31 décembre et gardez le tarif actuel à vie.",
-    "bannerShort": "Tarifs en hausse au 1er janvier : bloquez le tarif actuel à vie.",
+    "bannerShort": "Hausse au 1er janvier : bloquez votre tarif à vie",
     "bannerCta": "Voir les tarifs",
     "upcoming": "{price}€/mois à partir du 1er janvier 2027",
     "upcomingAddon": "+{price}€/mois à partir du 1er janvier 2027",

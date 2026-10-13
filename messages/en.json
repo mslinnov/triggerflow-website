@@ -2635,7 +2635,7 @@
   },
   "priceChange": {
     "banner": "Our prices change on January 1, 2027. Subscribe before December 31 and keep today's price for life.",
-    "bannerShort": "Prices rise on January 1: lock in today's price for life.",
+    "bannerShort": "Prices rise Jan 1: lock in today's price for life",
     "bannerCta": "See pricing",
     "upcoming": "€{price}/month from January 1, 2027",
     "upcomingAddon": "+€{price}/month from January 1, 2027",

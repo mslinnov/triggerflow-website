@@ -134,7 +134,12 @@ const menuItems = {
 
 type MenuKey = 'produit' | 'solutions' | 'ressources';
 
-export function Header() {
+interface HeaderProps {
+  /** Bandeau affiché au-dessus de la navigation, dans le header fixe (hauteur h-9). */
+  banner?: React.ReactNode;
+}
+
+export function Header({ banner }: HeaderProps = {}) {
   const t = useTranslations('header');
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -183,6 +188,7 @@ export function Header() {
             : 'none',
         }}
       >
+        {banner}
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between md:h-20">
             {/* Logo */}
@@ -320,7 +326,7 @@ export function Header() {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <MobileMenu t={t} onClose={() => setIsMobileMenuOpen(false)} />
+          <MobileMenu t={t} withBanner={Boolean(banner)} onClose={() => setIsMobileMenuOpen(false)} />
         )}
       </AnimatePresence>
     </>
@@ -457,10 +463,12 @@ function MegaMenuRessources() {
 
 interface MobileMenuProps {
   t: (key: string) => string;
+  /** Le header, plus haut d'un bandeau, recouvre le haut du panneau : on le décale d'autant. */
+  withBanner: boolean;
   onClose: () => void;
 }
 
-function MobileMenu({ t, onClose }: MobileMenuProps) {
+function MobileMenu({ t, withBanner, onClose }: MobileMenuProps) {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
 
   return (
@@ -486,7 +494,7 @@ function MobileMenu({ t, onClose }: MobileMenuProps) {
         animate={{ x: 0 }}
         exit={{ x: '100%' }}
         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-        className="absolute right-0 top-0 h-full w-full max-w-sm bg-white shadow-xl overflow-y-auto"
+        className={cn('absolute right-0 top-0 h-full w-full max-w-sm bg-white shadow-xl overflow-y-auto', withBanner && 'pt-9')}
       >
         <div className="flex h-16 items-center justify-between px-4 md:h-20 border-b border-border-light">
           <span className="text-lg font-semibold text-brand-dark">Menu</span>

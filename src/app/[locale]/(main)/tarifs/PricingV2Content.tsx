@@ -461,7 +461,11 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
             >
               <div className="min-w-[820px]">
                 {/* Sticky plan headers - account for fixed nav height */}
-                <div className="sticky top-[72px] z-20 bg-white/95 backdrop-blur-md rounded-t-2xl border border-zinc-200 border-b-0">
+                <div className={cn(
+                  'sticky z-20 bg-white/95 backdrop-blur-md rounded-t-2xl border border-zinc-200 border-b-0',
+                  // Le bandeau d'annonce ajoute 36px au header fixe.
+                  announcing ? 'top-[108px]' : 'top-[72px]'
+                )}>
                   <div className="grid grid-cols-[240px_repeat(4,1fr)]">
                     <div className="py-4 px-5" />
                     {plans.map((plan) => (
