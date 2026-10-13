@@ -16,7 +16,6 @@ export { ModulesGrid } from './ModulesGrid';
 export { ModulesShowcase } from './ModulesShowcase';
 export { FeaturesBento } from './FeaturesBento';
 export { SolutionsGrid } from './SolutionsGrid';
-export { Pricing } from './Pricing';
 export { PricingPreview } from './PricingPreview';
 export { Benefits } from './Benefits';
 export { DetailedFeatures } from './DetailedFeatures';

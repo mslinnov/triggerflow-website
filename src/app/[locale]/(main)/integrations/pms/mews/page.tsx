@@ -13,6 +13,7 @@ import {
   IntegrationCta,
   RelatedIntegrations,
 } from '@/components/integrations';
+import { getEntryPrice, getPricingPhase } from '@/data/pricing';
 
 const baseUrl = 'https://www.trigger-flow.com';
 
@@ -183,6 +184,7 @@ function HowToJsonLd({ locale }: { locale: string }) {
 }
 
 function MewsSoftwareApplicationJsonLd() {
+  const phase = getPricingPhase();
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
@@ -203,9 +205,9 @@ function MewsSoftwareApplicationJsonLd() {
     offers: {
       '@type': 'Offer',
       description: 'Intégration Mews incluse dans tous les plans',
-      price: '69',
+      price: getEntryPrice(phase),
       priceCurrency: 'EUR',
-      priceValidUntil: '2026-12-31',
+      ...(phase === 'announce' ? { priceValidUntil: '2026-12-31' } : {}),
     },
   };
 

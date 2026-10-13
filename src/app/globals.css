@@ -182,6 +182,11 @@ html {
   scroll-padding-top: 5rem;
 }
 
+/* Le bandeau d'annonce des tarifs ajoute 36px (h-9) au header fixe. */
+html:has([data-price-banner]) {
+  scroll-padding-top: calc(5rem + 36px);
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

@@ -893,7 +893,7 @@
   "pricing": {
     "meta": {
       "title": "Tarifs CRM hôtelier - Plans & Prix",
-      "description": "Tarifs TriggerFlow : CRM hôtelier + marketing automation dès 69€/mois. Plans adaptés du boutique-hôtel au groupe multi-établissements."
+      "description": "Tarifs TriggerFlow : CRM hôtelier + marketing automation dès {entryPrice}€/mois. Plans adaptés du boutique-hôtel au groupe multi-établissements."
     },
     "hero": {
       "badge": "Tarification",
@@ -2791,5 +2791,16 @@
       "privacy": "Politique de confidentialité",
       "site": "trigger-flow.com"
     }
+  },
+  "priceChange": {
+    "banner": "Nos tarifs évoluent le 1er janvier 2027. Souscrivez avant le 31 décembre et gardez le tarif actuel à vie.",
+    "bannerShort": "Hausse au 1er janvier : bloquez votre tarif à vie",
+    "bannerCta": "Voir les tarifs",
+    "upcoming": "{price}€/mois à partir du 1er janvier 2027",
+    "upcomingAddon": "+{price}€/mois à partir du 1er janvier 2027",
+    "lockTitle": "Votre tarif actuel, garanti à vie",
+    "lockBody": "Toute souscription payante avant le 31 décembre 2026 conserve la grille tarifaire 2026 à vie, y compris en cas de montée en gamme, tant que l'abonnement reste actif.",
+    "faqQuestion": "Que se passe-t-il au 1er janvier 2027 ?",
+    "faqAnswer": "Nos tarifs évoluent le 1er janvier 2027. Toute souscription à un plan payant avant le 31 décembre 2026 conserve la grille tarifaire 2026 à vie, tant que l'abonnement reste actif, y compris si vous passez ensuite à un plan supérieur. Un essai gratuit démarré avant le 31 décembre compte s'il est converti en abonnement payant ; le plan Découverte, lui, ne compte pas. Les modules ajoutés après le 1er janvier 2027 sont au nouveau tarif. En cas de résiliation, le tarif garanti est perdu."
   }
 }

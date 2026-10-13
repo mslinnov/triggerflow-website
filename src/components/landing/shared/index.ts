@@ -6,6 +6,7 @@ export { LPBenefits } from './LPBenefits';
 export { LPTestimonial } from './LPTestimonial';
 export { LPCTA } from './LPCTA';
 export { LPPricing } from './LPPricing';
+export { PricingRedirect } from './PricingRedirect';
 
 export type { LPHeaderProps } from './LPHeader';
 export type { LPHeroProps } from './LPHero';

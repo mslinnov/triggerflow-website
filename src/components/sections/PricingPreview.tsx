@@ -6,29 +6,8 @@ import { ArrowRight, Check, HeadphonesIcon, Settings, ShieldCheck } from 'lucide
 import { Container, ButtonLink, Badge } from '@/components/ui';
 import { cn } from '@/lib/utils';
 import { fadeInUp, staggerContainer, staggerItem, cardHover, defaultViewport } from '@/lib/animations';
-
-const plans = [
-  {
-    key: 'discovery',
-    price: '0',
-    popular: false,
-  },
-  {
-    key: 'communication',
-    price: '69',
-    popular: false,
-  },
-  {
-    key: 'conversion',
-    price: '149',
-    popular: true,
-  },
-  {
-    key: 'allInclusive',
-    price: '249',
-    popular: false,
-  },
-];
+import type { DisplayPlan } from '@/data/pricing';
+import { UpcomingPrice } from '@/components/pricing/UpcomingPrice';
 
 const includedFeatures = [
   { icon: HeadphonesIcon, key: 'support' },
@@ -36,7 +15,11 @@ const includedFeatures = [
   { icon: ShieldCheck, key: 'rgpd' },
 ];
 
-export function PricingPreview() {
+interface PricingPreviewProps {
+  plans: DisplayPlan[];
+}
+
+export function PricingPreview({ plans }: PricingPreviewProps) {
   const t = useTranslations('pricingPreview');
   const prefersReducedMotion = useReducedMotion();
 
@@ -121,6 +104,10 @@ export function PricingPreview() {
                   /{t('perMonth')}
                 </span>
               </div>
+              <UpcomingPrice
+                price={plan.upcomingPrice}
+                className={plan.popular ? 'text-white/80' : 'text-brand-primary'}
+              />
 
               {/* Description */}
               <p className={cn(

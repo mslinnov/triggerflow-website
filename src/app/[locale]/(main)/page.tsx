@@ -19,6 +19,7 @@ import {
   CTASection,
 } from '@/components/sections';
 import { HomePageJsonLd } from '@/components/seo';
+import { getDisplayPlans, getPricingPhase } from '@/data/pricing';
 import { StickyMobileCTA } from '@/components/layout/StickyMobileCTA';
 
 interface HomePageProps {
@@ -79,7 +80,7 @@ export default async function HomePage({ params }: HomePageProps) {
       <SolutionsGrid />
       <TestimonialsCarousel />
       <CustomerSuccess />
-      <PricingPreview />
+      <PricingPreview plans={getDisplayPlans(getPricingPhase())} />
       <FAQ />
       <CTASection />
       <StickyMobileCTA />
