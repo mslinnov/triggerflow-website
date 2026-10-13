@@ -260,7 +260,7 @@ export const solutions: Record<string, SolutionData> = {
       },
       {
         question: 'Quel est le coût pour un hôtel indépendant ?',
-        answer: 'Nos plans commencent à partir de 69€/mois, avec un plan gratuit pour démarrer. Pour un hôtel indépendant, le plan Communication ou Marketing couvre la majorité des besoins. Le ROI est généralement atteint dès le premier mois.',
+        answer: 'Nos tarifs sont publics, avec un plan gratuit pour démarrer. Pour un hôtel indépendant, le plan Communication ou Conversion couvre la majorité des besoins : le détail est sur notre page tarifs. Le ROI est généralement atteint dès le premier mois.',
       },
       {
         question: 'Est-ce que TriggerFlow respecte le RGPD ?',
