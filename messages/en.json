@@ -893,7 +893,7 @@
   "pricing": {
     "meta": {
       "title": "Hotel CRM Pricing - Plans & Pricing",
-      "description": "TriggerFlow pricing: hotel CRM + marketing automation from €69/month. Plans tailored from boutique hotels to multi-property groups."
+      "description": "TriggerFlow pricing: hotel CRM + marketing automation from €{entryPrice}/month. Plans tailored from boutique hotels to multi-property groups."
     },
     "hero": {
       "badge": "Pricing",
@@ -2632,5 +2632,16 @@
       "terms": "Terms of sale",
       "copyright": "© {year} TriggerFlow. All rights reserved."
     }
+  },
+  "priceChange": {
+    "banner": "Our prices change on January 1, 2027. Subscribe before December 31 and keep today's price for life.",
+    "bannerShort": "Prices rise on January 1: lock in today's price for life.",
+    "bannerCta": "See pricing",
+    "upcoming": "€{price}/month from January 1, 2027",
+    "upcomingAddon": "+€{price}/month from January 1, 2027",
+    "lockTitle": "Today's price, guaranteed for life",
+    "lockBody": "Any paid subscription started before December 31, 2026 keeps the 2026 price list for life, upgrades included, as long as the subscription stays active.",
+    "faqQuestion": "What happens on January 1, 2027?",
+    "faqAnswer": "Our prices change on January 1, 2027. Any paid subscription started before December 31, 2026 keeps the 2026 price list for life, as long as it stays active, including if you later move to a higher plan. A free trial started before December 31 counts if it converts into a paid subscription; the Discovery plan does not count. Modules added after January 1, 2027 are billed at the new price. If you cancel, the guaranteed price is lost."
   }
 }
