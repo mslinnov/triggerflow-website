@@ -89,7 +89,7 @@ images:
     height: 450
 ---
 
-Une enquête de satisfaction hôtel envoyée au bon moment peut transformer un client mécontent en ambassadeur, ou, à l'inverse, éviter qu'un avis négatif finisse sur Google. Pourtant, la majorité des hôtels indépendants laissent cette étape au hasard : un QR code sur le comptoir que personne ne scanne, ou un email envoyé à la main quand la réception y pense.
+Une enquête de satisfaction hôtel envoyée au bon moment peut transformer un client mécontent en ambassadeur, ou, à l'inverse, régler un problème avant qu'il ne devienne un avis négatif sur Google. Pourtant, la majorité des hôtels indépendants laissent cette étape au hasard : un QR code sur le comptoir que personne ne scanne, ou un email envoyé à la main quand la réception y pense.
 
 Le problème n'est pas le manque de volonté. C'est le manque de temps et d'outils adaptés. Automatiser l'envoi, la collecte et l'analyse des retours clients change la donne, pour la satisfaction comme pour la réputation en ligne.
 
@@ -107,14 +107,14 @@ Booking.com envoie son propre questionnaire dans les 24 à 48 heures après le d
 
 Un client insatisfait qui peut s'exprimer directement auprès de l'hôtel est moins susceptible de le faire publiquement. C'est votre filet de sécurité.
 
-### Augmenter le volume d'avis positifs
+### Augmenter le volume d'avis
 
-La logique est simple : si la note de l'enquête est élevée (8/10 ou plus), le client est automatiquement invité à laisser un avis sur Google ou TripAdvisor. Si la note est basse, le feedback reste interne pour traitement prioritaire.
+La logique est simple : une fois l'enquête remplie, tous vos clients sont invités à laisser un avis sur Google ou TripAdvisor, quelle que soit leur note. Si la note est basse, le directeur est alerté en plus pour rappeler le client et régler le problème, souvent avant qu'un avis ne soit écrit.
 
 <KeyFigure
   value="4x"
   label="plus d'avis Google collectés"
-  description="En moyenne, les hôtels qui automatisent la redirection vers les plateformes d'avis après une enquête positive"
+  description="En moyenne, les hôtels qui automatisent l'invitation à laisser un avis après une enquête de satisfaction"
 />
 
 ### Gagner du temps opérationnel
@@ -204,9 +204,11 @@ Dans le workflow builder, vous définissez :
 
 C'est là que l'automatisation prend tout son sens :
 
-- **Note ≥ 8/10** → email automatique avec lien vers Google ou TripAdvisor pour laisser un avis
-- **Note entre 5 et 7** → notification au responsable pour suivi personnalisé
-- **Note < 5** → alerte immédiate au directeur + email d'excuses personnalisé avec proposition de geste commercial
+- **Toutes les notes** → email automatique avec lien vers Google ou TripAdvisor pour laisser un avis, le même pour tous les clients
+- **Note entre 5 et 7** → en plus, notification au responsable pour suivi personnalisé
+- **Note < 5** → en plus, alerte immédiate au directeur + email d'excuses personnalisé avec proposition de geste commercial
+
+Le lien d'avis part chez tous les clients, pas seulement chez les plus satisfaits : le règlement des avis Google interdit de solliciter uniquement les avis positifs, au risque de voir des avis supprimés ou la fiche avertie.
 
 ### Étape 4 : Analyser et agir
 
@@ -218,13 +220,13 @@ Collecter du feedback sans agir dessus est pire que ne rien collecter. Chaque no
 
 <KeyFiguresGrid>
 <KeyFigureCard value="35%" label="taux de réponse moyen" />
-<KeyFigureCard value="4x" label="plus d'avis positifs" />
+<KeyFigureCard value="4x" label="plus d'avis collectés" />
 <KeyFigureCard value="0 min" label="de gestion manuelle" />
 </KeyFiguresGrid>
 
 ## Ce qu'il faut retenir
 
-L'enquête de satisfaction automatisée est votre premier rempart contre les avis négatifs et votre meilleur outil pour comprendre ce que vos clients pensent vraiment. En l'intégrant dans un parcours client automatisé - après l'[email pré-séjour](/fr/produit/email) et avant les relances de [fidélisation](/fr/produit/fidelite) - vous créez une boucle vertueuse : écouter, corriger, fidéliser.
+L'enquête de satisfaction automatisée est votre premier rempart contre les avis négatifs et votre meilleur outil pour comprendre ce que vos clients pensent vraiment. En l'intégrant dans un parcours client automatisé, après l'[email pré-séjour](/fr/produit/email), et avant les relances de [fidélisation](/fr/produit/fidelite) - vous créez une boucle vertueuse : écouter, corriger, fidéliser.
 
 Les hôtels qui automatisent ce processus ne se contentent pas de collecter des données. Ils transforment chaque retour en action concrète et chaque client satisfait en ambassadeur.
 
@@ -246,7 +248,7 @@ Trois règles : la personnaliser (prénom, dates du séjour, nom de l'hôtel), l
 
 **L'enquête fonctionne-t-elle avec les réservations OTA (Booking, Expedia) ?**
 
-Oui. Dès que la réservation remonte dans votre PMS, TriggerFlow récupère les données et déclenche le workflow. L'enjeu est même stratégique : en envoyant votre enquête avant celle de l'OTA, vous captez le feedback en premier et redirigez les avis positifs vers Google plutôt que Booking.
+Oui. Dès que la réservation remonte dans votre PMS, TriggerFlow récupère les données et déclenche le workflow. L'enjeu est même stratégique : en envoyant votre enquête avant celle de l'OTA, vous captez le feedback en premier et invitez tous vos clients à déposer leur avis sur Google plutôt que seulement sur Booking.
 
 **Comment exploiter les résultats au-delà de la simple lecture ?**
 
@@ -266,5 +268,5 @@ semantic_field: questionnaire, satisfaction client, feedback, avis en ligne, NPS
 hero [nano-banana-pro]: Professional hotel photography, a guest sitting in a bright modern hotel lobby using their smartphone, warm natural lighting, comfortable seating area with plants, the phone screen shows a blurred survey interface with star ratings (no readable text). Shallow depth of field focused on the guest. Warm, welcoming atmosphere --ar 16:9
 body_1 [nano-banana] [after:pourquoi-automatiser]: Flat design split illustration comparing manual vs automated hotel feedback collection. Left side: stressed receptionist at desk with scattered papers, speech bubbles with question marks, muted gray tones. Right side: smooth automated flow from hotel building to email icon to dashboard with star ratings, connected by arrows. Color scheme: left in muted grays, right in teal green (#006F68) and light mint (#CCE2E1), warm peach (#FFCFA2) on automation arrows. Dark teal (#002B28) outlines. No text or letters anywhere --ar 16:9
 body_2 [nano-banana] [after:questions-types]: Flat design illustration of a survey form concept for hotels. A large clipboard or card in center with abstract form elements (horizontal lines, star shapes, checkboxes as squares). Around it, floating category icons: a bed, a fork-and-knife, a reception bell, a WiFi symbol, a thumbs-up. Connected by thin dotted lines. Color scheme: teal green (#006F68) frame, dark teal (#002B28) icons, light mint (#CCE2E1) background, warm peach (#FFCFA2) highlights on star ratings. Clean modern vector style, absolutely no text or letters --ar 16:9
-body_3 [nano-banana] [after:mise-en-place]: Flat design illustration of an automated feedback workflow. Left: calendar icon with checkmark (check-out). Center: three branching paths from a diamond decision shape — top path leads to a Google/star icon (happy face), middle to a notification bell, bottom to an alert triangle. Right: dashboard with abstract bar charts. Flowing arrows connect all elements. Color scheme: teal green (#006F68), dark teal (#002B28), light mint (#CCE2E1) background, warm peach (#FFCFA2) on the happy path. Soft shadows, no text or letters --ar 16:9
+body_3 [nano-banana] [after:mise-en-place]: Flat design illustration of an automated feedback workflow. Left: calendar icon with checkmark (check-out). Center: three branching paths from a diamond decision shape: top path leads to a Google/star icon (happy face), middle to a notification bell, bottom to an alert triangle. Right: dashboard with abstract bar charts. Flowing arrows connect all elements. Color scheme: teal green (#006F68), dark teal (#002B28), light mint (#CCE2E1) background, warm peach (#FFCFA2) on the happy path. Soft shadows, no text or letters --ar 16:9
 */}

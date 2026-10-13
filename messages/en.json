@@ -459,7 +459,7 @@
       },
       "reviews": {
         "title": "Review Management",
-        "description": "Collect 5x more positive reviews. Filter unhappy guests before they publish.",
+        "description": "Collect 5x more positive reviews. Spot unhappy guests before they publish.",
         "highlights": [
           "Automated review collection",
           "Real-time dissatisfaction alerts"
@@ -496,7 +496,7 @@
       },
       "survey": {
         "title": "Satisfaction Surveys",
-        "description": "Collect feedback at the right time. Satisfied guests are redirected to Google.",
+        "description": "Collect feedback at the right time, then invite every guest to review you on Google.",
         "result": "+45% Google reviews"
       },
       "upsell": {
@@ -506,7 +506,7 @@
       },
       "reviews": {
         "title": "Review Collection",
-        "description": "Ask satisfied guests for reviews, intercept unhappy ones before they publish.",
+        "description": "Ask every guest for a review, and hear from unhappy ones before they publish.",
         "result": "8.2 → 9.1 Booking score"
       },
       "loyalty": {
@@ -745,7 +745,7 @@
         }
       },
       {
-        "quote": "Our Booking score went from 8.2 to 9.1 in 6 months thanks to pre-publication surveys. TriggerFlow filters unhappy guests before they post.",
+        "quote": "Our Booking score went from 8.2 to 9.1 in 6 months thanks to pre-publication surveys. TriggerFlow tells us about unhappy guests before they post.",
         "name": "Sophie Lefèvre",
         "title": "Quality Manager, Groupe Hôtels Patrimoine",
         "initials": "SL",
@@ -1807,7 +1807,7 @@
         },
         {
           "title": "Smart review management",
-          "description": "Post-stay surveys that redirect happy guests to Google and alert the manager for unhappy ones."
+          "description": "Post-stay surveys followed by a Google review invitation, with a manager alert for unhappy guests."
         },
         {
           "title": "OTA → direct reconversion",
@@ -1913,12 +1913,12 @@
               "description": "Email with personalized satisfaction survey. Automatically translated to Spanish — Mr. Sanchez's nationality is in Mews. 6 questions, 2 minutes to complete."
             },
             {
-              "day": "If score ≥ 8/10",
-              "description": "Thank-you email with direct link to the hotel's Google Business listing. \"Glad you enjoyed your stay — would you share your experience?\""
+              "day": "D+2 (Saturday)",
+              "description": "Thank-you email with a direct link to the hotel's Google Business listing. \"Thank you for staying with us. Would you share your experience?\""
             },
             {
               "day": "If score ≤ 5/10",
-              "description": "Immediate alert to the manager. No Google redirect. The issue is handled internally BEFORE it becomes a public 1-star review. The manager calls the guest within 24 hours."
+              "description": "Immediate alert to the manager, who calls the guest within 24 hours. The issue is often settled before the guest writes a review."
             }
           ],
           "result": "A Paris hotel went from 8 to 26 Google reviews per month in 4 months, with a 40% reduction in public negative reviews."

@@ -191,7 +191,7 @@ export const solutions: Record<string, SolutionData> = {
         slug: 'avis',
         highlight: "Plus d'avis Google",
         whyForPersona: "Vos clients satisfaits deviennent vos ambassadeurs. Le bon message au bon moment double vos avis.",
-        bullets: ['Filtre satisfaction avant demande', 'Lien direct vers Google', 'Réponses IA aux avis'],
+        bullets: ['Enquête satisfaction avant demande', 'Lien direct vers Google', 'Réponses IA aux avis'],
       },
       {
         slug: 'crm',
@@ -222,8 +222,8 @@ export const solutions: Record<string, SolutionData> = {
       },
       {
         title: "Collecte d'avis intelligente",
-        description: "Après le check-out, envoi automatique d'une enquête satisfaction. Si note > 4/5, invitation à laisser un avis Google.",
-        steps: ['Check-out', 'Email J+1', 'Si satisfait → lien Google', 'Si insatisfait → alerte manager'],
+        description: "Après le check-out, envoi automatique d'une enquête satisfaction puis d'une invitation à laisser un avis Google. Une note basse alerte le manager.",
+        steps: ['Check-out', 'Email J+1', 'Invitation à laisser un avis', 'Note basse → alerte manager'],
         result: 'Avis Google x2 en 3 mois',
       },
       {
@@ -1153,7 +1153,7 @@ export const solutions: Record<string, SolutionData> = {
       'Votre note Google stagne alors que vos concurrents progressent',
     ],
     benefits: [
-      'Demande d\'avis automatique envoyée uniquement aux clients satisfaits (>4/5)',
+      'Demande d\'avis automatique envoyée à chaque client, au bon moment',
       'Alerte en temps réel sur les avis négatifs pour réagir immédiatement',
       'Réponse IA personnalisée générée en 1 clic, vous validez et publiez',
       'Dashboard de suivi multi-plateformes (Google, TripAdvisor, Booking)',
@@ -1170,8 +1170,8 @@ export const solutions: Record<string, SolutionData> = {
       {
         slug: 'avis',
         highlight: "Collecte automatique d'avis",
-        whyForPersona: 'Seuls les clients satisfaits reçoivent la demande d\'avis. Vous ne dirigez jamais un client mécontent vers Google.',
-        bullets: ['Enquête satisfaction J+1', 'Filtre note > 4/5', 'Lien direct Google optimisé'],
+        whyForPersona: 'Chaque client reçoit la demande d\'avis au bon moment. Ceux qui ont mal noté leur séjour vous alertent d\'abord, pour que vous puissiez les rappeler.',
+        bullets: ['Enquête satisfaction J+1', 'Alerte manager si note basse', 'Lien direct Google optimisé'],
       },
       {
         slug: 'automatisations',
@@ -1182,7 +1182,7 @@ export const solutions: Record<string, SolutionData> = {
       {
         slug: 'formulaires',
         highlight: 'Enquête satisfaction avant avis',
-        whyForPersona: 'L\'enquête filtre les clients satisfaits ET vous donne des insights sur ceux qui ne le sont pas.',
+        whyForPersona: 'L\'enquête vous dit qui est content, et surtout qui ne l\'est pas, avant que l\'avis ne soit écrit.',
         bullets: ['Score NPS intégré', 'Questions personnalisables', 'Alerte manager si note basse'],
       },
       {
@@ -1195,9 +1195,9 @@ export const solutions: Record<string, SolutionData> = {
 
     useCases: [
       {
-        title: 'Filtre satisfaction',
-        description: "Seuls les clients satisfaits (>4/5) reçoivent la demande d'avis Google.",
-        steps: ['Email J+1 enquête', 'Si note > 4/5', 'Lien Google envoyé', 'Si note < 4/5 → alerte manager'],
+        title: 'Enquête puis avis',
+        description: "Chaque client reçoit l'enquête puis le lien Google. Une note basse prévient le manager en temps réel.",
+        steps: ['Email J+1 enquête', 'Lien Google envoyé à tous', 'Si note < 3/5 → alerte manager', 'Rappel du client'],
         result: 'Avis Google x2 en 3 mois',
       },
       {
@@ -1227,8 +1227,8 @@ export const solutions: Record<string, SolutionData> = {
 
     faq: [
       {
-        question: 'Comment éviter de diriger les clients mécontents vers Google ?',
-        answer: 'TriggerFlow envoie d\'abord une enquête de satisfaction. Seuls les clients ayant donné une note > 4/5 reçoivent le lien vers Google. Les clients insatisfaits déclenchent une alerte interne pour que vous puissiez traiter le problème.',
+        question: 'Et si un client mécontent laisse un avis ?',
+        answer: 'TriggerFlow envoie d\'abord une enquête de satisfaction. Une note basse déclenche une alerte interne : vous rappelez le client et réglez le problème, souvent avant qu\'il n\'écrive. Le lien Google part à tous les clients, sans tri selon la note, comme l\'exige le règlement de Google sur les avis.',
       },
       {
         question: 'L\'IA pour les réponses aux avis est-elle fiable ?',
@@ -1247,7 +1247,7 @@ export const solutions: Record<string, SolutionData> = {
     journey: [
       { label: 'Check-out', description: 'Départ du client', active: false },
       { label: 'J+1', description: 'Enquête satisfaction', active: true },
-      { label: 'Filtre', description: 'Note > 4/5 ?', active: true },
+      { label: 'Alerte', description: 'Note basse → manager', active: true },
       { label: 'Demande', description: 'Lien Google envoyé', active: true },
       { label: 'Publication', description: 'Avis publié', active: false },
       { label: 'Réponse', description: 'Réponse IA validée', active: true },
