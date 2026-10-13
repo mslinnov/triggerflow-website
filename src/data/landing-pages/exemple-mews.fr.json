@@ -89,68 +89,14 @@
       }
     },
     {
-      "type": "LPPricing",
-      "props": {
-        "sectionTitle": "Un prix simple, sans surprise",
-        "sectionSubtitle": "Tous les plans incluent la connexion Mews et le support français.",
-        "plans": [
-          {
-            "name": "Communication",
-            "description": "Pour automatiser vos emails de base",
-            "price": "49€/mois",
-            "originalPrice": "69€/mois",
-            "features": [
-              "Emails automatiques (confirmation, pré-séjour, après)",
-              "Jusqu'à 5 000 emails/mois",
-              "SMS et WhatsApp inclus",
-              "Connexion Mews incluse",
-              "Support par email"
-            ],
-            "ctaLabel": "Commencer",
-            "ctaHref": "https://app.lemcal.com/@trigger-flow/demo"
-          },
-          {
-            "name": "Conversion",
-            "description": "Pour aussi vendre plus de services",
-            "price": "110€/mois",
-            "originalPrice": "149€/mois",
-            "popular": true,
-            "features": [
-              "Tout Communication +",
-              "Jusqu'à 15 000 emails/mois",
-              "Propositions d'upsell automatiques",
-              "Formulaires de pré-check-in",
-              "Support prioritaire"
-            ],
-            "ctaLabel": "Choisir Conversion",
-            "ctaHref": "https://app.lemcal.com/@trigger-flow/demo"
-          },
-          {
-            "name": "All Inclusive",
-            "description": "Pour multi-établissements ou fort volume",
-            "price": "149€/mois",
-            "originalPrice": "249€/mois",
-            "features": [
-              "Tout Conversion +",
-              "Volume illimité",
-              "Campagnes marketing avancées",
-              "Rapports personnalisés",
-              "Account manager dédié"
-            ],
-            "ctaLabel": "Nous contacter",
-            "ctaHref": "https://app.lemcal.com/@trigger-flow/demo"
-          }
-        ],
-        "footnote": "Tous les prix sont HT. Sans engagement, annulation à tout moment."
-      }
-    },
-    {
       "type": "LPCTA",
       "props": {
         "title": "Prêt à automatiser votre hôtel ?",
         "subtitle": "Rejoignez les 500+ hôtels qui gagnent du temps chaque jour avec TriggerFlow.",
         "ctaLabel": "Réserver une démo gratuite",
         "ctaHref": "https://app.lemcal.com/@trigger-flow/demo",
+        "secondaryCtaLabel": "Voir les tarifs",
+        "secondaryCtaHref": "/fr/tarifs",
         "benefits": ["Configuration en 48h", "Support 7j/7", "Conformité RGPD", "Sans engagement"]
       }
     }
