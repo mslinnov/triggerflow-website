@@ -20,7 +20,7 @@
         "ctaLabel": "Réserver une démo gratuite",
         "ctaHref": "https://app.lemcal.com/@trigger-flow/demo",
         "secondaryCtaLabel": "Voir les tarifs",
-        "secondaryCtaHref": "#pricing",
+        "secondaryCtaHref": "/fr/tarifs",
         "trustIndicators": ["Sans code", "Configuration en 48h", "Support français 7j/7"]
       }
     },
