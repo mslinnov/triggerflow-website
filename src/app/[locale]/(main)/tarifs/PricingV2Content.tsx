@@ -11,7 +11,8 @@ import {
 import { Container, ButtonLink, Badge } from '@/components/ui';
 import { cn } from '@/lib/utils';
 import { fadeInUp, staggerContainer, staggerItem, defaultViewport } from '@/lib/animations';
-import { PLANS as plans } from '@/data/pricing';
+import type { AddonKey, DisplayAddon, DisplayPlan } from '@/data/pricing';
+import { UpcomingPrice } from '@/components/pricing/UpcomingPrice';
 
 /* ─── Data ──────────────────────────────────────────────────── */
 
@@ -55,38 +56,14 @@ const featureGroups = [
   },
 ];
 
-const addons = [
-  {
-    key: 'reviews',
-    icon: Star,
-    price: '19',
-    color: 'amber' as const,
-  },
-  {
-    key: 'aiAgent',
-    icon: Bot,
-    price: '19',
-    color: 'violet' as const,
-  },
-  {
-    key: 'payments',
-    icon: CreditCard,
-    price: '29',
-    color: 'emerald' as const,
-  },
-  {
-    key: 'loyalty',
-    icon: Heart,
-    price: '39',
-    color: 'rose' as const,
-  },
-  {
-    key: 'guestApp',
-    icon: Smartphone,
-    price: '49',
-    color: 'sky' as const,
-  },
-];
+/** Prix dans `@/data/pricing` ; ici, seulement l'habillage de chaque module. */
+const addonStyles: Record<AddonKey, { icon: typeof Star; color: keyof typeof addonColors }> = {
+  reviews: { icon: Star, color: 'amber' },
+  aiAgent: { icon: Bot, color: 'violet' },
+  payments: { icon: CreditCard, color: 'emerald' },
+  loyalty: { icon: Heart, color: 'rose' },
+  guestApp: { icon: Smartphone, color: 'sky' },
+};
 
 const addonColors = {
   amber: {
@@ -146,7 +123,7 @@ function MobilePlanSelector({
   onSelect,
   t,
 }: {
-  plans: typeof plans;
+  plans: DisplayPlan[];
   activePlan: number;
   onSelect: (idx: number) => void;
   t: ReturnType<typeof useTranslations>;
@@ -173,8 +150,16 @@ function MobilePlanSelector({
 
 /* ─── Component ─────────────────────────────────────────────── */
 
-export function PricingV2Content() {
+interface PricingV2ContentProps {
+  plans: DisplayPlan[];
+  addons: DisplayAddon[];
+  /** Période d'annonce de la hausse du 1er janvier 2027. */
+  announcing: boolean;
+}
+
+export function PricingV2Content({ plans, addons, announcing }: PricingV2ContentProps) {
   const t = useTranslations('pricing');
+  const tChange = useTranslations('priceChange');
   const prefersReducedMotion = useReducedMotion();
   const [activeMobilePlan, setActiveMobilePlan] = useState(2); // Default to "Conversion" (popular)
   const tableScrollRef = useRef<HTMLDivElement>(null);
@@ -223,6 +208,12 @@ export function PricingV2Content() {
             <p className="mx-auto mt-4 max-w-2xl text-base text-white/60 leading-relaxed md:text-lg md:mt-5">
               {t('hero.subtitle')}
             </p>
+            {announcing && (
+              <div className="mx-auto mt-6 max-w-2xl rounded-2xl border border-white/15 bg-white/10 p-4">
+                <p className="font-semibold text-white">{tChange('lockTitle')}</p>
+                <p className="mt-1 text-sm text-white/70">{tChange('lockBody')}</p>
+              </div>
+            )}
           </motion.div>
 
           {/* ─── Mobile: Plan selector tabs + single card ──── */}
@@ -283,6 +274,10 @@ export function PricingV2Content() {
                         /{t('perMonth')}
                       </span>
                     </div>
+                    <UpcomingPrice
+                      price={plan.upcomingPrice}
+                      className={plan.popular ? 'text-brand-primary' : 'text-white/60'}
+                    />
 
                     <p className={cn(
                       'mt-1.5 text-xs',
@@ -371,6 +366,10 @@ export function PricingV2Content() {
                     /{t('perMonth')}
                   </span>
                 </div>
+                <UpcomingPrice
+                  price={plan.upcomingPrice}
+                  className={plan.popular ? 'text-brand-primary' : 'text-white/60'}
+                />
 
                 <p className={cn(
                   'mt-1.5 text-xs',
@@ -490,6 +489,7 @@ export function PricingV2Content() {
                         )}>
                           {plan.price}€<span className="text-xs font-normal text-zinc-400">/{t('perMonth')}</span>
                         </div>
+                        <UpcomingPrice price={plan.upcomingPrice} className="text-zinc-500 font-normal" />
                       </div>
                     ))}
                   </div>
@@ -631,7 +631,8 @@ export function PricingV2Content() {
             className="space-y-4 max-w-4xl mx-auto"
           >
             {addons.map((addon) => {
-              const colors = addonColors[addon.color];
+              const { icon: AddonIcon, color } = addonStyles[addon.key];
+              const colors = addonColors[color];
               return (
                 <motion.div
                   key={addon.key}
@@ -650,7 +651,7 @@ export function PricingV2Content() {
                         'flex h-12 w-12 md:h-14 md:w-14 shrink-0 items-center justify-center rounded-2xl',
                         colors.bg
                       )}>
-                        <addon.icon className={cn('h-6 w-6 md:h-7 md:w-7', colors.icon)} />
+                        <AddonIcon className={cn('h-6 w-6 md:h-7 md:w-7', colors.icon)} />
                       </div>
                       <div>
                         <h3 className="text-base md:text-lg font-bold text-brand-dark">
@@ -660,6 +661,7 @@ export function PricingV2Content() {
                           <span className="text-lg md:text-xl font-bold text-brand-dark">+{addon.price}€</span>
                           <span className="text-xs text-zinc-400">/{t('perMonth')}</span>
                         </div>
+                        <UpcomingPrice price={addon.upcomingPrice} variant="addon" className="text-zinc-500" />
                       </div>
                     </div>
 
@@ -726,12 +728,21 @@ export function PricingV2Content() {
             viewport={defaultViewport}
             className="mx-auto max-w-3xl divide-y divide-zinc-200 rounded-2xl border border-zinc-200 bg-white overflow-hidden shadow-sm"
           >
+            {announcing && (
+              <motion.div variants={staggerItem}>
+                <FaqAccordion
+                  question={tChange('faqQuestion')}
+                  answer={tChange('faqAnswer')}
+                  defaultOpen
+                />
+              </motion.div>
+            )}
             {faqItems.map((item, idx) => (
               <motion.div key={item} variants={staggerItem}>
                 <FaqAccordion
                   question={t(`faq.items.${item}.question`)}
                   answer={t(`faq.items.${item}.answer`)}
-                  defaultOpen={idx === 0}
+                  defaultOpen={!announcing && idx === 0}
                 />
               </motion.div>
             ))}

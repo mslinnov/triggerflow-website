@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 import type { Article, FaqItem } from '@/types/blog';
-import { PLANS } from '@/data/pricing';
+import { getDisplayPlans, getPricingPhase, type PricingPhase } from '@/data/pricing';
 
 const baseUrl = 'https://www.trigger-flow.com';
 
@@ -12,8 +12,8 @@ interface JsonLdProps {
  * Un abonnement mensuel : le prix récurrent se déclare dans un
  * `UnitPriceSpecification` (unitCode `MON` = par mois), pas sur l'Offer nue.
  */
-function buildOffers(locale: string) {
-  return PLANS.map((plan) => ({
+function buildOffers(locale: string, phase: PricingPhase) {
+  return getDisplayPlans(phase).map((plan) => ({
     '@type': 'Offer',
     name: locale === 'fr' ? plan.name.fr : plan.name.en,
     description: locale === 'fr' ? plan.description.fr : plan.description.en,
@@ -21,7 +21,8 @@ function buildOffers(locale: string) {
     price: plan.price,
     priceCurrency: 'EUR',
     availability: 'https://schema.org/InStock',
-    priceValidUntil: '2026-12-31',
+    // La grille actuelle expire à la hausse du 1er janvier 2027 ; la suivante n'a pas d'échéance.
+    ...(phase === 'announce' ? { priceValidUntil: '2026-12-31' } : {}),
     priceSpecification: {
       '@type': 'UnitPriceSpecification',
       price: plan.price,
@@ -84,6 +85,7 @@ export function OrganizationJsonLd() {
 }
 
 export function SoftwareApplicationJsonLd({ locale = 'fr' }: { locale?: string } = {}) {
+  const phase = getPricingPhase();
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
@@ -100,7 +102,7 @@ export function SoftwareApplicationJsonLd({ locale = 'fr' }: { locale?: string }
       name: 'TriggerFlow',
       url: baseUrl,
     },
-    offers: buildOffers(locale),
+    offers: buildOffers(locale, phase),
     featureList: [
       'Synchronisation PMS',
       'SMS & Emails automatisés',
@@ -208,7 +210,8 @@ export function FaqJsonLd({ items }: { items: FaqItem[] }) {
  * Le prix public est le différenciateur n°1 de TriggerFlow face à des
  * concurrents en « devis sur demande » : autant le rendre lisible par machine.
  */
-export function PricingJsonLd({ locale }: JsonLdProps) {
+export function PricingJsonLd({ locale, phase }: JsonLdProps & { phase: PricingPhase }) {
+  const plans = getDisplayPlans(phase);
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Product',
@@ -227,10 +230,10 @@ export function PricingJsonLd({ locale }: JsonLdProps) {
     offers: {
       '@type': 'AggregateOffer',
       priceCurrency: 'EUR',
-      lowPrice: String(Math.min(...PLANS.map((plan) => Number(plan.price)))),
-      highPrice: String(Math.max(...PLANS.map((plan) => Number(plan.price)))),
-      offerCount: PLANS.length,
-      offers: buildOffers(locale),
+      lowPrice: String(Math.min(...plans.map((plan) => Number(plan.price)))),
+      highPrice: String(Math.max(...plans.map((plan) => Number(plan.price)))),
+      offerCount: plans.length,
+      offers: buildOffers(locale, phase),
     },
   };
 
