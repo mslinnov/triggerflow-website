@@ -36,7 +36,7 @@ export function PaymentSuiviMockup() {
         <LogRow
           type="payment"
           desc="Paiement reçu"
-          detail="Acompte séjour — Sophie Durand"
+          detail="Acompte séjour · Sophie Durand"
           amount="+250,00 €"
           time="14:32"
           positive
@@ -44,7 +44,7 @@ export function PaymentSuiviMockup() {
         <LogRow
           type="payment"
           desc="Paiement reçu"
-          detail="Late checkout — Marc Lefèvre"
+          detail="Late checkout · Marc Lefèvre"
           amount="+45,00 €"
           time="13:15"
           positive
@@ -52,14 +52,14 @@ export function PaymentSuiviMockup() {
         <LogRow
           type="refund"
           desc="Remboursement partiel"
-          detail="Spa annulé — Julie Roux"
+          detail="Spa annulé · Julie Roux"
           amount="-89,00 €"
           time="11:48"
         />
         <LogRow
           type="payment"
           desc="Caution capturée"
-          detail="Minibar — Pierre Martin"
+          detail="Minibar · Pierre Martin"
           amount="+32,00 €"
           time="10:20"
           positive
@@ -67,7 +67,7 @@ export function PaymentSuiviMockup() {
         <LogRow
           type="refund"
           desc="Caution libérée"
-          detail="Check-out OK — Elena García"
+          detail="Check-out OK · Elena García"
           amount="0,00 €"
           time="09:05"
         />

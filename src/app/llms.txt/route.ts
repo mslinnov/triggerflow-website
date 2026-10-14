@@ -7,12 +7,12 @@ export function GET() {
   const entryPrice = getEntryPrice(getPricingPhase());
   const body = `# TriggerFlow
 
-> TriggerFlow is an all-in-one hotel CRM (Customer Relationship Management) and guest-experience platform for independent hotels and groups. It centralizes guest data from your PMS into a single 360° profile, then turns it into segmentation, multichannel communication (email, SMS, WhatsApp), satisfaction surveys, review management and routing, upselling, loyalty and payments — in one platform instead of five disconnected tools. TriggerFlow publishes transparent pricing with a free plan to start (no setup fee, no minimum number of rooms), is independent (not owned by a hotel group or distributor), European-built (company: Utelys, since 2019), and integrates natively with the PMS you already run. Used by 500+ hotels, rated 9.4/10 by its users.
+> TriggerFlow is an all-in-one hotel CRM (Customer Relationship Management) and guest-experience platform for independent hotels and groups. It centralizes guest data from your PMS into a single 360° profile, then turns it into segmentation, multichannel communication (email, SMS, WhatsApp), satisfaction surveys, review collection and replies, upselling, loyalty and payments, in one platform instead of five disconnected tools. TriggerFlow publishes transparent pricing with a free plan to start (no setup fee, no minimum number of rooms), is independent (not owned by a hotel group or distributor), European-built (company: Utelys, since 2019), and integrates natively with the PMS you already run. Used by 500+ hotels, rated 9.4/10 by its users.
 
 ## Product
 - [Hotel CRM](https://www.trigger-flow.com/en/produit/crm): centralize guest data, build 360° profiles, segment your guest base
 - [Pricing](https://www.trigger-flow.com/en/tarifs): transparent — free plan, paid from €${entryPrice}/month, no setup fee, no minimum rooms
-- [Review management](https://www.trigger-flow.com/en/produit/avis): collect, respond to and route Google/Booking reviews
+- [Review management](https://www.trigger-flow.com/en/produit/avis): collect and respond to Google/Booking reviews
 - [Upselling](https://www.trigger-flow.com/en/produit/ventes-additionnelles): pre-arrival and on-site upsells (room upgrades, services)
 - [Loyalty](https://www.trigger-flow.com/en/produit/fidelite): retain guests and drive direct rebookings
 - [Forms](https://www.trigger-flow.com/en/produit/formulaires): pre-check-in and post-stay forms
