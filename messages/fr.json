@@ -496,7 +496,7 @@
       },
       "survey": {
         "title": "Enquêtes satisfaction",
-        "description": "Collectez les retours au bon moment. Les satisfaits sont redirigés vers Google.",
+        "description": "Collectez les retours au bon moment, puis invitez chaque client à laisser un avis Google.",
         "result": "+45% d'avis Google"
       },
       "upsell": {
@@ -506,7 +506,7 @@
       },
       "reviews": {
         "title": "Collecte d'avis",
-        "description": "Sollicitez un avis aux clients satisfaits, interceptez les insatisfaits avant publication.",
+        "description": "Sollicitez un avis à chaque client, et entendez les insatisfaits avant qu'ils ne publient.",
         "result": "8.2 → 9.1 note Booking"
       },
       "loyalty": {
@@ -745,7 +745,7 @@
         }
       },
       {
-        "quote": "Notre note Booking est passée de 8.2 à 9.1 en 6 mois grâce aux enquêtes pré-publication. TriggerFlow filtre les insatisfaits avant qu'ils ne publient.",
+        "quote": "Notre note Booking est passée de 8.2 à 9.1 en 6 mois grâce aux enquêtes pré-publication. TriggerFlow nous signale les insatisfaits avant qu'ils ne publient.",
         "name": "Sophie Lefèvre",
         "title": "Responsable Qualité, Groupe Hôtels Patrimoine",
         "initials": "SL",
@@ -1815,7 +1815,7 @@
         },
         {
           "title": "Gestion d'avis intelligente",
-          "description": "Enquêtes post-séjour qui redirigent les satisfaits vers Google et alertent le directeur pour les mécontents."
+          "description": "Enquêtes post-séjour suivies d'une invitation à laisser un avis Google, avec une alerte au directeur pour les mécontents."
         },
         {
           "title": "Reconquête OTA → direct",
@@ -1921,12 +1921,12 @@
               "description": "Email avec enquête de satisfaction personnalisée. Traduite automatiquement en espagnol : la nationalité de M. Sanchez est dans Mews. 6 questions, 2 minutes à remplir."
             },
             {
-              "day": "Si note ≥ 8/10",
-              "description": "Email de remerciement avec lien direct vers la fiche Google Business de l'hôtel. \"Votre retour nous fait plaisir, partagez-le ?\""
+              "day": "J+2 (samedi)",
+              "description": "Email de remerciement avec lien direct vers la fiche Google Business de l'hôtel. \"Merci pour votre séjour, accepteriez-vous de partager votre avis ?\""
             },
             {
               "day": "Si note ≤ 5/10",
-              "description": "Alerte immédiate au directeur. Pas de redirection Google. Le problème est traité en interne AVANT qu'il devienne un avis 1 étoile public. Le directeur appelle le client dans les 24h."
+              "description": "Alerte immédiate au directeur, qui appelle le client dans les 24h. Le problème est souvent réglé avant que le client n'écrive un avis."
             }
           ],
           "result": "Un hôtel parisien est passé de 8 à 26 avis Google par mois en 4 mois, avec une réduction de 40 % des avis négatifs publics."

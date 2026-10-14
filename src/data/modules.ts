@@ -746,7 +746,7 @@ export const modules: Record<string, ModuleData> = {
       },
       {
         title: 'Relance avis intelligente',
-        description: 'J+1 après le départ : si la satisfaction interne est > 4/5, envoi d\'une demande d\'avis Google. Si < 3/5, alerte manager pour traitement prioritaire.',
+        description: 'J+1 après le départ : enquête interne puis demande d\'avis Google. Si la note est < 3/5, alerte manager pour traitement prioritaire.',
         result: '+47% d\'avis positifs collectés'
       },
       {
@@ -973,7 +973,7 @@ export const modules: Record<string, ModuleData> = {
       },
       {
         title: 'Enquête de satisfaction',
-        description: 'J+1 après le départ : enquête courte (5 questions + NPS). Les réponses > 4/5 déclenchent une demande d\'avis Google. Les < 3/5 alertent le manager.',
+        description: 'J+1 après le départ : enquête courte (5 questions + NPS), suivie d\'une demande d\'avis Google. Les notes < 3/5 alertent le manager.',
         result: '60% de taux de réponse'
       },
       {
@@ -1032,8 +1032,8 @@ export const modules: Record<string, ModuleData> = {
       'Vous n\'avez aucune vue d\'ensemble : quelle est votre note moyenne ? Elle monte ou elle descend ?'
     ],
     benefits: [
-      'Demande d\'avis automatique envoyée uniquement aux clients satisfaits, vos bons clients postent enfin',
-      'Les clients insatisfaits sont interceptés : enquête interne d\'abord, avis Google seulement si > 4/5',
+      'Demande d\'avis automatique envoyée à chaque client au bon moment, vos bons clients postent enfin',
+      'Les clients insatisfaits sont repérés : l\'enquête interne alerte le manager, qui peut rappeler le client',
       'Dashboard unifié avec votre note moyenne sur Google, TripAdvisor, Booking, évolution semaine par semaine'
     ],
     stats: [
@@ -1052,10 +1052,10 @@ export const modules: Record<string, ModuleData> = {
     ],
     features: [
       {
-        title: 'Les bons clients postent, les autres sont traités en interne',
-        description: 'L\'enquête de satisfaction filtre automatiquement : > 4/5 → demande d\'avis Google. < 3/5 → alerte manager pour traitement prioritaire. Malin.',
+        title: 'Tout le monde est invité, les mécontents sont rappelés',
+        description: 'Chaque client reçoit l\'enquête puis la demande d\'avis Google. Une note < 3/5 alerte le manager pour un traitement prioritaire.',
         icon: Send,
-        bullets: ['Filtrage par score de satisfaction', 'Redirection intelligente par plateforme', 'Rappel si avis non posté'],
+        bullets: ['Alerte par score de satisfaction', 'Redirection intelligente par plateforme', 'Rappel si avis non posté'],
         mockup: 'ReviewCollectMockup',
       },
       {
@@ -1076,7 +1076,7 @@ export const modules: Record<string, ModuleData> = {
     useCases: [
       {
         title: 'Collecte proactive d\'avis',
-        description: 'J+1 après le départ, si le score de satisfaction interne est > 4/5, le client reçoit un email avec un lien direct vers Google. Simple, rapide, efficace.',
+        description: 'J+1 après le départ, le client reçoit un email avec un lien direct vers Google, au moment où le souvenir du séjour est encore frais.',
         result: '+47% d\'avis Google collectés'
       },
       {

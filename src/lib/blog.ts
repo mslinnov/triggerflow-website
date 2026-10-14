@@ -8,6 +8,15 @@ import type { Article, FaqItem, Silo, TOCItem } from '@/types/blog';
 
 const CONTENT_DIR = path.join(process.cwd(), 'content', 'blog');
 
+// YAML parse `2026-01-31` as a Date: String() would give "Sat Jan 31 2026 ...",
+// which is not ISO 8601 for JSON-LD and sorts by weekday name.
+function toIsoDate(value: unknown): string {
+  if (value instanceof Date && !Number.isNaN(value.getTime())) {
+    return value.toISOString().slice(0, 10);
+  }
+  return value == null ? '' : String(value);
+}
+
 function parseFrontmatter(
   fileContent: string,
   siloSlug: string,
@@ -41,9 +50,10 @@ function parseFrontmatter(
       metaDescription: data.meta_description ?? '',
       motClePrincipal: data.mot_cle_principal ?? '',
       motsClesSecondaires: data.mots_cles_secondaires ?? [],
-      datePublication: String(data.date_publication ?? ''),
-      dateMiseAJour: String(data.date_mise_a_jour ?? data.date_publication ?? ''),
-      longueurMots: data.longueur_mots ?? stats.words,
+      datePublication: toIsoDate(data.date_publication),
+      dateMiseAJour: toIsoDate(data.date_mise_a_jour ?? data.date_publication),
+      // Counted, never read from frontmatter: hand-written values were off by 40 %.
+      longueurMots: stats.words,
       tempsLecture: data.temps_lecture ?? Math.ceil(stats.minutes),
       personaCible: data.persona_cible ?? 'tous',
       ctaPrincipal: data.cta_principal ?? 'demo',
