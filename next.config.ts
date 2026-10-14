@@ -37,7 +37,10 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   images: {
-    minimumCacheTTL: 0,
+    // Un jour : à 0, chaque visite faisait recompresser les images (pages
+    // d'atterrissage payantes plus lentes). Une image remplacée sous le même
+    // nom met au plus un jour à se rafraîchir.
+    minimumCacheTTL: 86400,
   },
   webpack: (config, { dev }) => {
     if (dev) {

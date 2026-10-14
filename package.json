@@ -10,7 +10,7 @@
     "type-check": "tsc --noEmit",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-    "test": "tsx --test src/data/pricing.test.ts"
+    "test": "tsx --test src/data/pricing.test.ts src/lib/attribution.test.ts"
   },
   "dependencies": {
     "@opennextjs/cloudflare": "^1.16.1",

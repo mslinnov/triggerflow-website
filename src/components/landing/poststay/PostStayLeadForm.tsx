@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { CheckCircle2, Loader2 } from 'lucide-react';
 import { trackMetaEvent } from '@/components/analytics/MetaPixel';
+import { getAttribution } from '@/lib/attribution';
+import { trackAdsConversion } from '@/lib/ads';
 import { cn } from '@/lib/utils';
 import { UpsellButton } from '../upsell/primitives';
 
@@ -71,6 +73,7 @@ export function PostStayLeadForm({ idPrefix, className }: PostStayLeadFormProps)
           goal: 'whitepaper',
           locale,
           honeypot: data.get('company'),
+          attribution: getAttribution() ?? undefined,
           // Déclenche le relais vers l'API TriggerFlow, qui envoie le guide et
           // lance la séquence de relance.
           magnet: MAGNET,
@@ -85,6 +88,8 @@ export function PostStayLeadForm({ idPrefix, className }: PostStayLeadFormProps)
 
       trackMetaEvent('Lead', { content_name: 'lp-poststay' });
 
+      trackAdsConversion('lead');
+      window.gtag?.('event', 'generate_lead', { form: 'post-sejour' });
       setStatus('success');
       form.reset();
     } catch {

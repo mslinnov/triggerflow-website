@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { decorateBookingUrl } from '@/lib/attribution';
 
 declare global {
   interface Window {
@@ -33,6 +34,12 @@ export function DemoClickTracker() {
       if (!href || !href.includes('lemcal.com')) return;
 
       if (typeof window === 'undefined') return;
+
+      // La source de la visite (UTM, et gclid avec accord marketing) suit le
+      // visiteur jusqu'à lemcal : on sait d'où vient chaque rendez-vous. Le lien
+      // est réécrit avant la navigation, qui part donc avec les paramètres.
+      const decorated = decorateBookingUrl(href);
+      if (decorated !== href) link.href = decorated;
 
       // Analytics consent granted (gtag is defined).
       window.gtag?.('event', 'book_demo_click', {

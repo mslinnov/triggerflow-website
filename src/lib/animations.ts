@@ -62,8 +62,12 @@ export const fadeIn: Variants = {
 };
 
 // Hero stagger variants
+// Le contenu du hero est VISIBLE dès le premier affichage (opacité 1) et ne fait
+// que glisser en place : partir d'une opacité nulle retardait le plus grand
+// élément affiché (LCP) de toute la durée de l'animation, et Google Ads note la
+// page d'atterrissage sur sa vitesse.
 export const heroContainer: Variants = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 1 },
   visible: {
     opacity: 1,
     transition: {
@@ -74,7 +78,7 @@ export const heroContainer: Variants = {
 };
 
 export const heroItem: Variants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 1, y: 12 },
   visible: {
     opacity: 1,
     y: 0,
