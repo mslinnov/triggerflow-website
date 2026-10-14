@@ -1,12 +1,11 @@
 import { useTranslations } from 'next-intl';
-import { BookOpen, Download, Star, TrendingUp, Users } from 'lucide-react';
+import { BookOpen, Download, Star, TrendingUp } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import { Container } from '@/components/ui';
 import { EQUIPHOTEL_GUIDES, type GuideId } from '@/data/equiphotel';
 
 const icons: Record<GuideId, LucideIcon> = {
   revenus: TrendingUp,
-  directs: Users,
   avis: Star,
 };
 
@@ -22,7 +21,7 @@ export function EquiphotelGuides() {
           <p className="mt-4 text-lg text-text-secondary">{t('subtitle')}</p>
         </div>
 
-        <ul className="mt-10 grid gap-6 md:grid-cols-3">
+        <ul className="mx-auto mt-10 grid max-w-4xl gap-6 md:grid-cols-2">
           {EQUIPHOTEL_GUIDES.map((guide, index) => {
             const Icon = icons[guide.id];
             return (

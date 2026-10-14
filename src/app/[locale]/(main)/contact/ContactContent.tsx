@@ -1,16 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock, Linkedin, Send, ArrowRight, Calendar } from 'lucide-react';
 import { Container, ButtonLink } from '@/components/ui';
 import { fadeInUp, staggerContainer, staggerItem, slideInLeft, slideInRight, defaultViewport } from '@/lib/animations';
+import { getAttribution } from '@/lib/attribution';
+import { trackAdsConversion } from '@/lib/ads';
 
 const roomOptions = ['1-20', '21-50', '51-100', '100+'];
 
 export function ContactContent() {
   const t = useTranslations('contact');
+  const locale = useLocale();
   const prefersReducedMotion = useReducedMotion();
   const [formData, setFormData] = useState({
     name: '',
@@ -22,19 +25,44 @@ export function ContactContent() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [hasError, setHasError] = useState(false);
+  const [honeypot, setHoneypot] = useState('');
 
+  // Le message part par /api/leads (contact Brevo + e-mail à l'équipe). Jusqu'au
+  // 14/10/2026, ce formulaire affichait un succès sans rien envoyer.
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setHasError(false);
 
-    // Log form data (no backend yet)
-    console.log('Form submitted:', formData);
-
-    // Simulate submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    try {
+      const response = await fetch('/api/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: formData.email,
+          firstName: formData.name,
+          hotelName: formData.hotelName,
+          phone: formData.phone,
+          roomsRange: formData.rooms,
+          message: formData.message,
+          source: 'contact',
+          goal: 'contact',
+          locale,
+          attribution: getAttribution() ?? undefined,
+          honeypot,
+        }),
+      });
+      const result = (await response.json().catch(() => null)) as { success?: boolean } | null;
+      if (!response.ok || !result?.success) throw new Error('lead_failed');
+      trackAdsConversion('lead');
+      window.gtag?.('event', 'generate_lead', { form: 'contact' });
+      setIsSubmitted(true);
+    } catch {
+      setHasError(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -202,6 +230,24 @@ export function ContactContent() {
                       placeholder={t('form.placeholders.message')}
                     />
                   </div>
+
+                  {/* Piège à robots : invisible pour un humain, rempli par les robots. */}
+                  <input
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    className="hidden"
+                    value={honeypot}
+                    onChange={(e) => setHoneypot(e.target.value)}
+                  />
+
+                  {hasError && (
+                    <p role="alert" className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">
+                      {t('form.error')}
+                    </p>
+                  )}
 
                   {/* Submit Button */}
                   <motion.button

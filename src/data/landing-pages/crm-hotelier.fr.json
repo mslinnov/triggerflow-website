@@ -1,0 +1,136 @@
+{
+  "slug": "crm-hotelier",
+  "locale": "fr",
+  "noindex": true,
+  "header": {
+    "ctaLabel": "Réserver une démo",
+    "ctaHref": "https://app.lemcal.com/@trigger-flow/demo?utm_source=site&utm_medium=landing&utm_campaign=lp-crm-hotelier"
+  },
+  "metadata": {
+    "title": "CRM hôtelier connecté à votre PMS",
+    "description": "Un CRM pensé pour l'hôtellerie : fiches clients alimentées par votre PMS, e-mails, SMS et WhatsApp automatiques à chaque étape du séjour. Plan gratuit pour démarrer."
+  },
+  "sections": [
+    {
+      "type": "LPHero",
+      "props": {
+        "badge": "CRM hôtelier",
+        "title": "Le CRM hôtelier qui travaille avec votre PMS, pas à côté",
+        "subtitle": "Chaque réservation enregistrée dans votre PMS crée ou complète la fiche du client. TriggerFlow envoie ensuite le bon message au bon moment du séjour, par e-mail, SMS ou WhatsApp, sans ressaisie.",
+        "ctaLabel": "Réserver une démo",
+        "ctaHref": "https://app.lemcal.com/@trigger-flow/demo?utm_source=site&utm_medium=landing&utm_campaign=lp-crm-hotelier&utm_content=hero",
+        "secondaryCtaLabel": "Voir les tarifs",
+        "secondaryCtaHref": "/fr/tarifs",
+        "trustIndicators": [
+          "Plan gratuit pour démarrer",
+          "Sans frais d'installation",
+          "Entreprise française depuis 2019"
+        ]
+      }
+    },
+    {
+      "type": "LPSocialProof",
+      "props": {
+        "title": "Ils ont choisi TriggerFlow pour leur relation client",
+        "stats": [
+          {
+            "value": "500+",
+            "label": "hôtels utilisateurs"
+          },
+          {
+            "value": "9,4/10",
+            "label": "note moyenne des utilisateurs"
+          },
+          {
+            "value": "2M+",
+            "label": "messages envoyés"
+          }
+        ],
+        "testimonial": {
+          "quote": "Après avoir testé plusieurs solutions CRM, nous avons trouvé avec TriggerFlow l'outil qui correspond vraiment à nos besoins.",
+          "author": "Maxime Jullien",
+          "role": "Directeur, Edgar Hotel & Spa, Saint-Brieuc"
+        }
+      }
+    },
+    {
+      "type": "LPFeatures",
+      "props": {
+        "sectionTitle": "Tout le parcours client au même endroit",
+        "sectionSubtitle": "De la réservation au retour du client, TriggerFlow part des données de votre PMS.",
+        "features": [
+          {
+            "icon": "Users",
+            "title": "Une fiche par client",
+            "description": "Séjours, préférences, dépenses et échanges réunis sur une seule fiche, mise à jour à chaque réservation."
+          },
+          {
+            "icon": "Zap",
+            "title": "Des scénarios automatiques",
+            "description": "Confirmation enrichie, pré-séjour, message d'accueil, départ : chaque étape part seule, selon vos règles."
+          },
+          {
+            "icon": "MessageSquare",
+            "title": "E-mail, SMS et WhatsApp",
+            "description": "Chaque message part sur le canal adapté au client, et ses réponses arrivent dans une seule boîte de réception."
+          },
+          {
+            "icon": "TrendingUp",
+            "title": "Ventes additionnelles",
+            "description": "Surclassement, petit-déjeuner, spa ou late check-out proposés avant l'arrivée, avec paiement en ligne."
+          },
+          {
+            "icon": "Star",
+            "title": "Satisfaction et avis",
+            "description": "Questionnaire après le séjour, alerte du responsable sur une note basse, invitation à laisser un avis envoyée à tous."
+          },
+          {
+            "icon": "BarChart3",
+            "title": "Résultats mesurés",
+            "description": "Ouvertures, réponses et revenus générés, suivis par scénario et par établissement."
+          }
+        ]
+      }
+    },
+    {
+      "type": "LPBenefits",
+      "props": {
+        "sectionTitle": "Pourquoi un CRM conçu pour l'hôtellerie",
+        "layout": "list",
+        "benefits": [
+          {
+            "title": "Vos données arrivent seules",
+            "description": "TriggerFlow se connecte aux PMS du marché français. Les clients et les séjours remontent sans export ni fichier.",
+            "highlight": "Sans ressaisie"
+          },
+          {
+            "title": "Votre équipe garde la main",
+            "description": "Les scénarios se modifient sans développeur : textes, délais, conditions par type de chambre, de tarif ou de client.",
+            "highlight": "Sans code"
+          },
+          {
+            "title": "Vous démarrez sans engagement",
+            "description": "Le plan Découverte est gratuit, sans carte bancaire. Les plans payants s'ajoutent quand vous en avez besoin.",
+            "highlight": "Plan gratuit"
+          }
+        ]
+      }
+    },
+    {
+      "type": "LPCTA",
+      "props": {
+        "title": "Voyez ce que TriggerFlow ferait pour votre hôtel",
+        "subtitle": "Une démo à partir de votre situation : vos séjours, vos canaux, vos priorités.",
+        "ctaLabel": "Réserver une démo",
+        "ctaHref": "https://app.lemcal.com/@trigger-flow/demo?utm_source=site&utm_medium=landing&utm_campaign=lp-crm-hotelier&utm_content=cta-bas",
+        "secondaryCtaLabel": "Voir les tarifs",
+        "secondaryCtaHref": "/fr/tarifs",
+        "benefits": [
+          "Plan gratuit pour démarrer",
+          "Sans frais d'installation",
+          "Équipe basée en France"
+        ]
+      }
+    }
+  ]
+}

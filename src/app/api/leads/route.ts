@@ -89,7 +89,40 @@ interface LeadBody {
   /** Slug du livre blanc demandé, quand la page en propose un. */
   magnet?: string;
   locale?: string;
+  /** Message libre (formulaire de contact). Part dans la notification seulement. */
+  message?: string;
+  /** Tranche de chambres déclarée (« 21-50 »), quand le formulaire n'a pas de nombre. */
+  roomsRange?: string;
+  /** Source de la visite (gclid, UTM, page d'arrivée), lue par le navigateur. */
+  attribution?: Record<string, unknown>;
   honeypot?: string;
+}
+
+const MAX_MESSAGE_LENGTH = 2000;
+
+/**
+ * Champs d'attribution acceptés, et eux seuls : la valeur vient du navigateur.
+ * Ils vont dans la notification de l'équipe et dans les journaux, jamais dans
+ * des attributs Brevo, qui refuserait le contact entier pour un attribut non
+ * déclaré dans le compte.
+ */
+const ATTRIBUTION_FIELDS = [
+  'gclid', 'gbraid', 'wbraid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'landingPath',
+] as const;
+
+function readAttribution(value: unknown): Record<string, string> {
+  if (!value || typeof value !== 'object') return {};
+  const out: Record<string, string> = {};
+  for (const key of ATTRIBUTION_FIELDS) {
+    const v = sanitize((value as Record<string, unknown>)[key]);
+    if (v) out[key.toUpperCase()] = v;
+  }
+  return out;
+}
+
+/** Échappe le texte libre avant de l'insérer dans le HTML de la notification. */
+function escapeHtml(value: string): string {
+  return value.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] as string));
 }
 
 function sanitize(value: unknown): string {
@@ -284,7 +317,7 @@ async function notifyTeam(lead: Record<string, string>): Promise<void> {
   if (!BREVO_API_KEY || !LEADS_NOTIFICATION_EMAIL) return;
 
   const rows = Object.entries(lead)
-    .map(([key, value]) => `<tr><td style="padding:4px 12px 4px 0"><strong>${key}</strong></td><td>${value}</td></tr>`)
+    .map(([key, value]) => `<tr><td style="padding:4px 12px 4px 0;vertical-align:top"><strong>${escapeHtml(key)}</strong></td><td style="white-space:pre-line">${escapeHtml(value)}</td></tr>`)
     .join('');
 
   try {
@@ -303,7 +336,9 @@ async function notifyTeam(lead: Record<string, string>): Promise<void> {
         subject:
           lead.OFFRE === 'whitepaper'
             ? `Livre blanc à envoyer : ${lead.ETABLISSEMENT || lead.email}`
-            : `Demande de démo : ${lead.ETABLISSEMENT || lead.email}`,
+            : lead.OFFRE === 'contact'
+              ? `Message du site : ${lead.ETABLISSEMENT || lead.email}`
+              : `Demande de démo : ${lead.ETABLISSEMENT || lead.email}`,
         htmlContent: `<h2>Nouveau lead landing page</h2><table>${rows}</table>`,
       }),
     });
@@ -440,9 +475,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    await notifyTeam({ email, ...Object.fromEntries(
-      Object.entries(attributes).map(([key, value]) => [key, String(value)])
-    ) });
+    const message = typeof body.message === 'string' ? body.message.trim().slice(0, MAX_MESSAGE_LENGTH) : '';
+    const roomsRange = sanitize(body.roomsRange);
+    await notifyTeam({
+      email,
+      ...Object.fromEntries(Object.entries(attributes).map(([key, value]) => [key, String(value)])),
+      ...(roomsRange ? { CHAMBRES_TRANCHE: roomsRange } : {}),
+      ...(message ? { MESSAGE: message } : {}),
+      ...readAttribution(body.attribution),
+    });
 
     // Relais du livre blanc, en dernier : le lead est enregistré et l'équipe
     // prévenue, donc plus rien ne peut le faire perdre. Rien n'en remonte au

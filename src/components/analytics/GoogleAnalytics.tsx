@@ -11,8 +11,13 @@ import {
   hasValidConsent,
   getConsent,
 } from '@/lib/cookies';
+import { GOOGLE_ADS_ID } from '@/lib/ads';
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
+// Google Ads (AW-…) partage gtag.js avec GA4 : un seul chargement, deux `config`.
+const ADS_ID = GOOGLE_ADS_ID;
+// La bibliothèque se charge pour l'un OU l'autre identifiant.
+const TAG_ID = GA_ID || ADS_ID;
 
 /**
  * Consent Mode strategy, set via NEXT_PUBLIC_GA_CONSENT_MODE:
@@ -38,16 +43,25 @@ export function GoogleAnalytics() {
   const [granted, setGranted] = useState(false);
 
   useEffect(() => {
-    if (!GA_ID) return;
+    if (!TAG_ID) return;
 
     const apply = () => {
-      const isGranted = hasValidConsent() && getConsent()?.analytics === true;
-      setGranted(isGranted);
+      const valid = hasValidConsent();
+      const isGranted = valid && getConsent()?.analytics === true;
+      // Publicité (Google Ads) : suit le consentement « marketing », jamais
+      // celui de la mesure d'audience. Avant ce correctif, les trois signaux
+      // publicitaires restaient refusés même après un accord marketing.
+      const adsGranted = valid && getConsent()?.marketing === true;
+      setGranted(isGranted || adsGranted);
 
       if (CONSENT_MODE === 'advanced') {
         // gtag.js is already loaded; reflect runtime consent changes.
+        const ad = adsGranted ? 'granted' : 'denied';
         window.gtag?.('consent', 'update', {
           analytics_storage: isGranted ? 'granted' : 'denied',
+          ad_storage: ad,
+          ad_user_data: ad,
+          ad_personalization: ad,
         });
       }
       if (!isGranted) clearAnalyticsCookies();
@@ -58,7 +72,7 @@ export function GoogleAnalytics() {
     return () => window.removeEventListener(CONSENT_CHANGED_EVENT, apply);
   }, []);
 
-  if (!GA_ID) return null;
+  if (!TAG_ID) return null;
 
   // Basic mode: nothing reaches Google until the visitor grants consent.
   if (CONSENT_MODE === 'basic' && !granted) return null;
@@ -82,29 +96,33 @@ export function GoogleAnalytics() {
           function gtag(){dataLayer.push(arguments);}
           window.gtag = gtag;
           var granted = false;
+          var adsGranted = false;
           try {
             var raw = localStorage.getItem('${CONSENT_STORAGE_KEY}');
             if (raw) {
               var c = JSON.parse(raw);
-              if (c && c.analytics === true && c.version === '${CONSENT_VERSION}' &&
+              if (c && c.version === '${CONSENT_VERSION}' &&
                   (Date.now() - new Date(c.timestamp).getTime()) < ${CONSENT_MAX_AGE_MS}) {
-                granted = true;
+                granted = c.analytics === true;
+                adsGranted = c.marketing === true;
               }
             }
           } catch (e) {}
+          var ad = adsGranted ? 'granted' : 'denied';
           gtag('consent', 'default', {
-            ad_storage: 'denied',
-            ad_user_data: 'denied',
-            ad_personalization: 'denied',
+            ad_storage: ad,
+            ad_user_data: ad,
+            ad_personalization: ad,
             analytics_storage: granted ? 'granted' : 'denied',
             wait_for_update: 500
           });
           gtag('js', new Date());
-          gtag('config', '${GA_ID}');
+          ${GA_ID ? `gtag('config', '${GA_ID}');` : ''}
+          ${ADS_ID ? `gtag('config', '${ADS_ID}');` : ''}
         `}
       </Script>
       <Script
-        src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${TAG_ID}`}
         strategy="afterInteractive"
       />
     </>

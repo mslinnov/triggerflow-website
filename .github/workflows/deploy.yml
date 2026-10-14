@@ -42,12 +42,20 @@ jobs:
           # uniquement `vars` renvoyait une chaîne vide et le pixel ne se
           # chargeait jamais. On accepte les deux emplacements.
           NEXT_PUBLIC_META_PIXEL_ID: ${{ secrets.NEXT_PUBLIC_META_PIXEL_ID || vars.NEXT_PUBLIC_META_PIXEL_ID }}
+          # Google Ads (compte Utelys) : identifiant AW-… et libellés de conversion.
+          # Vides = aucune balise Google Ads, le site fonctionne comme avant.
+          NEXT_PUBLIC_GOOGLE_ADS_ID: ${{ secrets.NEXT_PUBLIC_GOOGLE_ADS_ID || vars.NEXT_PUBLIC_GOOGLE_ADS_ID }}
+          NEXT_PUBLIC_GOOGLE_ADS_LABEL_DEMO_BOOKED: ${{ secrets.NEXT_PUBLIC_GOOGLE_ADS_LABEL_DEMO_BOOKED || vars.NEXT_PUBLIC_GOOGLE_ADS_LABEL_DEMO_BOOKED }}
+          NEXT_PUBLIC_GOOGLE_ADS_LABEL_LEAD: ${{ secrets.NEXT_PUBLIC_GOOGLE_ADS_LABEL_LEAD || vars.NEXT_PUBLIC_GOOGLE_ADS_LABEL_LEAD }}
         run: |
           if [ -z "${NEXT_PUBLIC_GA_MEASUREMENT_ID:-}" ]; then
             echo "::warning::NEXT_PUBLIC_GA_MEASUREMENT_ID is empty — analytics will NOT be tracked in this build. Set the GitHub secret."
           fi
           if [ -z "${NEXT_PUBLIC_META_PIXEL_ID:-}" ]; then
             echo "::warning::NEXT_PUBLIC_META_PIXEL_ID is empty — the Meta pixel will NOT load in this build. Set the GitHub secret or variable."
+          fi
+          if [ -z "${NEXT_PUBLIC_GOOGLE_ADS_ID:-}" ]; then
+            echo "::warning::NEXT_PUBLIC_GOOGLE_ADS_ID is empty: Google Ads conversions will NOT be tracked in this build."
           fi
           NODE_ENV=production npm run build
 

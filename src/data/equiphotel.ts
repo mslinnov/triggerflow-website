@@ -22,15 +22,17 @@ export const EQUIPHOTEL = {
   },
 } as const;
 
-// RDV : créneau au stand pendant le salon, ou démo en visio après.
-// TODO : remplacer `stand` par l'événement lemcal dédié aux créneaux du salon.
+// RDV : créneau de 20 min au stand pendant le salon (type de réunion lemcal
+// dédié « equiphotel-2026 »), ou démo en visio. Ces UTM décrivent une visite
+// directe de la page ; quand le visiteur arrive d'une annonce, DemoClickTracker
+// les remplace par ceux de l'annonce au moment du clic.
 const UTM = 'utm_source=equiphotel&utm_medium=landing&utm_campaign=equiphotel-2026';
 export const EQUIPHOTEL_BOOKING = {
-  stand: `https://app.lemcal.com/@trigger-flow/demo?${UTM}&utm_content=rdv-stand`,
+  stand: `https://app.lemcal.com/@trigger-flow/equiphotel-2026?${UTM}&utm_content=rdv-stand`,
   visio: `https://app.lemcal.com/@trigger-flow/demo?${UTM}&utm_content=rdv-visio`,
 } as const;
 
-export type GuideId = 'revenus' | 'directs' | 'avis';
+export type GuideId = 'revenus' | 'avis';
 
 export interface EquiphotelGuide {
   id: GuideId;
@@ -38,11 +40,13 @@ export interface EquiphotelGuide {
   href: string;
 }
 
-// TODO : remplacer les '#guides' par les liens de téléchargement des PDF.
+// Les guides sont les livres blancs existants, sur leur page de capture. Le
+// guide « clients OTA en clients directs » n'existe pas encore : il revient ici
+// quand il sera écrit, pas avant (un bouton qui ne mène nulle part coûte plus
+// qu'un guide de moins).
 export const EQUIPHOTEL_GUIDES: EquiphotelGuide[] = [
-  { id: 'revenus', href: '#guides' },
-  { id: 'directs', href: '#guides' },
-  { id: 'avis', href: '#guides' },
+  { id: 'revenus', href: '/fr/lp/upsell-hotel-livre-blanc?utm_source=equiphotel&utm_medium=landing&utm_campaign=equiphotel-2026' },
+  { id: 'avis', href: '/fr/lp/post-sejour-hotel-livre-blanc?utm_source=equiphotel&utm_medium=landing&utm_campaign=equiphotel-2026' },
 ];
 
 export const EQUIPHOTEL_FEATURES = [

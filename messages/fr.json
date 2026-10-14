@@ -1105,7 +1105,8 @@
       "success": {
         "title": "Message envoyé !",
         "message": "Merci pour votre message. Notre équipe vous répondra dans les 24h."
-      }
+      },
+      "error": "Le message n'est pas parti. Réessayez, ou écrivez-nous à contact@trigger-flow.com."
     },
     "info": {
       "title": "Nos coordonnées",
@@ -2679,7 +2680,7 @@
     },
     "guides": {
       "eyebrow": "Guides gratuits pour hôteliers",
-      "title": "Trois guides pratiques, à télécharger gratuitement",
+      "title": "Deux guides pratiques, à télécharger gratuitement",
       "subtitle": "Choisissez le sujet qui vous concerne et téléchargez votre guide en un clic.",
       "cta": "Télécharger le guide",
       "items": {
@@ -2688,15 +2689,10 @@
           "title": "Générez plus de revenus à chaque séjour",
           "description": "Upsell avant l'arrivée, catalogue d'extras, bon moment pour proposer un surclassement : les méthodes qui augmentent le panier moyen sans gêner vos clients."
         },
-        "directs": {
-          "tag": "Réservation directe",
-          "title": "Transformez vos clients OTA en clients directs",
-          "description": "Récupérer le contact, entretenir la relation après le séjour et donner une vraie raison de réserver en direct la prochaine fois."
-        },
         "avis": {
           "tag": "E-réputation",
           "title": "Obtenez plus d'avis positifs, automatiquement",
-          "description": "Quand demander un avis, sur quel canal, et comment traiter un client mécontent avant qu'il ne publie. Un processus simple à mettre en place."
+          "description": "Quand demander un avis, sur quel canal, et comment répondre à un client mécontent. Tous vos clients reçoivent la même invitation, quelle que soit leur note : c'est la règle de Google."
         }
       }
     },

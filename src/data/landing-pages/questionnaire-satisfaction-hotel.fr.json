@@ -1,0 +1,112 @@
+{
+  "slug": "questionnaire-satisfaction-hotel",
+  "locale": "fr",
+  "noindex": true,
+  "header": {
+    "ctaLabel": "Réserver une démo",
+    "ctaHref": "https://app.lemcal.com/@trigger-flow/demo?utm_source=site&utm_medium=landing&utm_campaign=lp-questionnaire-satisfaction"
+  },
+  "metadata": {
+    "title": "Questionnaire de satisfaction hôtel automatique",
+    "description": "Un questionnaire de satisfaction envoyé à chaque client après son départ, par e-mail, SMS ou WhatsApp. Alerte sur les notes basses, invitation à l'avis pour tous."
+  },
+  "sections": [
+    {
+      "type": "LPHero",
+      "props": {
+        "badge": "Questionnaire de satisfaction",
+        "title": "Un questionnaire de satisfaction envoyé à chaque client, au bon moment",
+        "subtitle": "Le départ saisi dans votre PMS déclenche l'envoi par e-mail, SMS ou WhatsApp. Une note basse alerte votre responsable, et chaque client reçoit le lien vers vos avis Google, quelle que soit sa note.",
+        "ctaLabel": "Réserver une démo",
+        "ctaHref": "https://app.lemcal.com/@trigger-flow/demo?utm_source=site&utm_medium=landing&utm_campaign=lp-questionnaire-satisfaction&utm_content=hero",
+        "secondaryCtaLabel": "Voir les tarifs",
+        "secondaryCtaHref": "/fr/tarifs",
+        "trustIndicators": [
+          "Envoi automatique au départ",
+          "Questions conditionnelles",
+          "Plan gratuit pour démarrer"
+        ]
+      }
+    },
+    {
+      "type": "LPSocialProof",
+      "props": {
+        "title": "Des retours clients qui arrivent sans y penser",
+        "stats": [
+          {
+            "value": "500+",
+            "label": "hôtels utilisateurs"
+          },
+          {
+            "value": "+45 %",
+            "label": "d'avis Google en moyenne"
+          },
+          {
+            "value": "9,4/10",
+            "label": "note moyenne des utilisateurs"
+          }
+        ],
+        "testimonial": {
+          "quote": "Je gagne énormément de temps, tout en sachant que la relation à mes clients est assurée.",
+          "author": "Guillaume Broutin",
+          "role": "Propriétaire, Le Vieux Pressoir, Alsace"
+        }
+      }
+    },
+    {
+      "type": "LPFeatures",
+      "props": {
+        "sectionTitle": "Un questionnaire qui se remplit, et des réponses qui servent",
+        "sectionSubtitle": "Du départ du client à la décision de l'équipe, sans export ni tableur.",
+        "features": [
+          {
+            "icon": "Send",
+            "title": "Envoyé au départ",
+            "description": "Le questionnaire part le lendemain du départ, par e-mail, SMS ou WhatsApp selon les coordonnées du client."
+          },
+          {
+            "icon": "Smartphone",
+            "title": "Pensé pour le téléphone",
+            "description": "Première question en un clic depuis le message, commentaire libre ensuite, facultatif."
+          },
+          {
+            "icon": "Layers",
+            "title": "Questions conditionnelles",
+            "description": "Les questions suivantes s'adaptent aux réponses : un client ravi ne répond pas aux mêmes que celui qui a eu un souci."
+          },
+          {
+            "icon": "Bell",
+            "title": "Alerte sur note basse",
+            "description": "Votre responsable est prévenu tout de suite et peut rappeler le client dans la journée."
+          },
+          {
+            "icon": "Star",
+            "title": "Avis Google pour tous",
+            "description": "Chaque client reçoit la même invitation à laisser un avis, quelle que soit sa note : c'est la règle de Google."
+          },
+          {
+            "icon": "Users",
+            "title": "Réponses sur la fiche client",
+            "description": "Notes et commentaires rangés sur la fiche du client, retrouvés à son prochain séjour."
+          }
+        ]
+      }
+    },
+    {
+      "type": "LPCTA",
+      "props": {
+        "title": "Mettez en place votre questionnaire cette semaine",
+        "subtitle": "Une démo pour voir le parcours complet, de l'envoi au rappel des clients mécontents.",
+        "ctaLabel": "Réserver une démo",
+        "ctaHref": "https://app.lemcal.com/@trigger-flow/demo?utm_source=site&utm_medium=landing&utm_campaign=lp-questionnaire-satisfaction&utm_content=cta-bas",
+        "secondaryCtaLabel": "Voir les tarifs",
+        "secondaryCtaHref": "/fr/tarifs",
+        "benefits": [
+          "Plan gratuit pour démarrer",
+          "Sans frais d'installation",
+          "Équipe basée en France"
+        ]
+      }
+    }
+  ]
+}

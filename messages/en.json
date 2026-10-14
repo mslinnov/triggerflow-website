@@ -1097,7 +1097,8 @@
       "success": {
         "title": "Message sent!",
         "message": "Thank you for your message. Our team will respond within 24 hours."
-      }
+      },
+      "error": "Your message was not sent. Please try again, or write to contact@trigger-flow.com."
     },
     "info": {
       "title": "Contact information",

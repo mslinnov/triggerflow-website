@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { CalendarClock, CheckCircle2, Loader2 } from 'lucide-react';
 import { trackMetaEvent } from '@/components/analytics/MetaPixel';
+import { getAttribution } from '@/lib/attribution';
+import { trackAdsConversion } from '@/lib/ads';
 import { LEMCAL_DEMO_URL } from '@/data/upsell-links';
 import { cn } from '@/lib/utils';
 import { UpsellButton } from './primitives';
@@ -105,6 +107,7 @@ export function UpsellLeadForm({ idPrefix, className }: UpsellLeadFormProps) {
           goal,
           locale,
           honeypot: data.get('company'),
+          attribution: getAttribution() ?? undefined,
           // Déclenche le relais vers l'API TriggerFlow, qui envoie le guide et
           // lance la séquence. Absent sur la variante démo, volontairement.
           ...(isDemo ? {} : { magnet: WHITEPAPER_MAGNET }),
@@ -124,6 +127,8 @@ export function UpsellLeadForm({ idPrefix, className }: UpsellLeadFormProps) {
         currency: 'EUR',
       });
 
+      trackAdsConversion('lead');
+      window.gtag?.('event', 'generate_lead', { form: 'upsell' });
       setStatus('success');
       form.reset();
     } catch {

@@ -12,7 +12,7 @@ export interface LPHeaderProps {
 }
 
 export function LPHeader({
-  logoSrc = '/images/logo.svg',
+  logoSrc = '/images/logo.webp',
   logoAlt = 'TriggerFlow',
   ctaLabel,
   ctaHref,
