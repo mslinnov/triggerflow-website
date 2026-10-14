@@ -54,7 +54,7 @@ export function PaymentMultiMockup() {
           <div>
             <p className="text-[10px] font-semibold text-gray-800 mb-1">Architecture extensible</p>
             <p className="text-[9px] text-gray-600 leading-relaxed">
-              Commencez avec Stripe. Ajoutez Mollie ou Payline quand vous voulez. Vos liens de paiement existants continuent de fonctionner — aucune migration nécessaire.
+              Commencez avec Stripe. Ajoutez Mollie ou Payline quand vous voulez. Vos liens de paiement existants continuent de fonctionner, aucune migration nécessaire.
             </p>
           </div>
         </div>
