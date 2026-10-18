@@ -17,6 +17,13 @@ export default function middleware(request: NextRequest, event: NextFetchEvent) 
     return NextResponse.next();
   }
 
+  // Formation du stand Equip'Hôtel : route protégée par mot de passe, en
+  // français seulement. next-intl la redirigerait vers /fr/formation-salon,
+  // qui n'existe pas.
+  if (pathname === '/formation-salon') {
+    return NextResponse.next();
+  }
+
   // Documents commerciaux partagés (/doc/<document>/<suffixe>).
   //
   // Traités ICI et pas dans une page : le document est un fichier HTML complet,

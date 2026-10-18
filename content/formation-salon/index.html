@@ -1,0 +1,1033 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Formation stand Equip'Hôtel</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 rx=%2224%22 fill=%22%23006F68%22/%3E%3Ctext x=%2250%22 y=%2266%22 font-size=%2248%22 text-anchor=%22middle%22 fill=%22white%22 font-family=%22sans-serif%22 font-weight=%22700%22%3EJ0%3C/text%3E%3C/svg%3E">
+<meta name="description" content="Formation mobile pour l'équipe du stand Equip'Hôtel : le séjour d'une cliente, la démo, les profils de visiteurs, les questions fréquentes, l'offre salon, des mises en situation et un quiz.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:wght@400;600&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap">
+<style>
+/* Mise en page : une mini-appli en écrans courts. En-tête collant (sommaire, progression, frise des jours),
+   contenu au milieu, barre d'action fixée en bas sous le pouce. Signature : la frise graduée en jours J-30 à J+3. */
+:root {
+  --paper: #F3F6F5;
+  --surface: #FFFFFF;
+  --ink: #132624;
+  --muted: #536461;
+  --line: #D7E0DD;
+  --brand: #006F68;
+  --brand-ink: #005A54;
+  --brand-soft: #DCEDEA;
+  --on-brand: #FFFFFF;
+  --brass: #9A6A22;
+  --brass-soft: #F5EAD7;
+  --ok: #1D7845;
+  --ok-soft: #E2F3E8;
+  --ko: #B3261E;
+  --ko-soft: #FBE8E6;
+  --scrim: rgba(10, 22, 21, .45);
+  --font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Atkinson Hyperlegible", -apple-system, "Segoe UI", Roboto, system-ui, sans-serif;
+  --font-mono: "Atkinson Hyperlegible Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --radius: 14px;
+  --bar-h: 76px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0D1514; --surface: #16201F; --ink: #E4EDEB; --muted: #9AABA7; --line: #283634;
+    --brand: #4FC2B8; --brand-ink: #86DCD3; --brand-soft: #12312E; --on-brand: #06201E;
+    --brass: #E2B46C; --brass-soft: #30261A; --ok: #6FD39A; --ok-soft: #15301F; --ko: #FF8A80; --ko-soft: #3A1C1A;
+    --scrim: rgba(0, 0, 0, .6);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0D1514; --surface: #16201F; --ink: #E4EDEB; --muted: #9AABA7; --line: #283634;
+  --brand: #4FC2B8; --brand-ink: #86DCD3; --brand-soft: #12312E; --on-brand: #06201E;
+  --brass: #E2B46C; --brass-soft: #30261A; --ok: #6FD39A; --ok-soft: #15301F; --ko: #FF8A80; --ko-soft: #3A1C1A;
+  --scrim: rgba(0, 0, 0, .6);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 17px/1.55 var(--font-body);
+  -webkit-tap-highlight-color: transparent;
+}
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--brand); outline-offset: 2px; border-radius: 6px; }
+.icon { width: 20px; height: 20px; flex: none; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* En-tête */
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+.top-inner { max-width: 640px; margin: 0 auto; padding-inline: 16px; padding-block: 6px 12px; display: grid; gap: 8px; }
+.top-row { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.home-btn { display: inline-flex; align-items: center; gap: 6px; border: 0; background: none; padding: 8px 4px; margin-left: -4px; min-height: 44px; color: var(--brand-ink); font-weight: 700; font-size: 15px; cursor: pointer; }
+.top-title { flex: 1; min-width: 0; text-align: right; font-family: var(--font-mono); font-size: 13px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.progress { height: 6px; background: var(--line); border-radius: 99px; overflow: hidden; }
+.progress > span { display: block; height: 100%; background: var(--brand); border-radius: 99px; transition: width .35s ease; }
+
+/* Frise des jours (signature) */
+.ruler { position: relative; padding-top: 24px; }
+.ruler-track { position: absolute; left: calc(100% / 12); right: calc(100% / 12); top: 32px; height: 2px; background: var(--line); }
+.ruler-break { position: absolute; top: 24px; left: calc(100% / 6); transform: translateX(-50%); font-family: var(--font-mono); font-size: 12px; color: var(--muted); background: var(--paper); padding-inline: 3px; line-height: 16px; }
+.ruler-ticks { position: relative; display: grid; grid-template-columns: repeat(6, 1fr); list-style: none; margin: 0; padding: 0; }
+.ruler-ticks li { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.ruler-ticks .tick { width: 10px; height: 10px; border-radius: 50%; background: var(--paper); border: 2px solid var(--line); margin-top: 3px; }
+.ruler-ticks li.done .tick { background: var(--brand); border-color: var(--brand); }
+.ruler-ticks .d { font-family: var(--font-mono); font-size: 12px; font-weight: 600; color: var(--muted); line-height: 1; }
+.ruler-ticks li.here .d { color: var(--brand-ink); }
+.ruler-pin {
+  position: absolute; top: 0; left: calc((var(--i, 0) + .5) * 100% / 6);
+  transform: translateX(-50%);
+  transition: left .45s cubic-bezier(.3, .7, .2, 1);
+  font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: .02em;
+  background: var(--brand); color: var(--on-brand); padding: 2px 7px; border-radius: 6px; white-space: nowrap;
+}
+.ruler-pin::after { content: ""; position: absolute; left: 50%; bottom: -5px; transform: translateX(-50%); border: 5px solid transparent; border-bottom: 0; border-top-color: var(--brand); }
+.ruler-pin.first { transform: translateX(-20%); }
+.ruler-pin.first::after { left: 20%; }
+.ruler-pin.last { transform: translateX(-80%); }
+.ruler-pin.last::after { left: 80%; }
+
+/* Contenu */
+main { max-width: 640px; margin: 0 auto; padding-inline: 16px; padding-block: 20px calc(var(--bar-h) + 32px + env(safe-area-inset-bottom, 0px)); }
+.screen { display: grid; gap: 22px; animation: rise .3s ease both; }
+@keyframes rise { from { opacity: .4; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.eyebrow { margin: 0; font-family: var(--font-mono); font-size: 12.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--brand-ink); }
+h1, h2 { font-family: var(--font-display); font-weight: 800; letter-spacing: -.015em; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(30px, 8.5vw, 40px); line-height: 1.05; }
+h2 { font-size: 26px; line-height: 1.12; }
+.lead { margin: 0; color: var(--muted); font-size: 17px; }
+.stack { display: grid; gap: 10px; }
+.label { margin: 0; font-family: var(--font-mono); font-size: 12.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+.prose p { margin: 0 0 10px; }
+.prose p:last-child { margin: 0; }
+
+/* Accueil */
+.hero { display: grid; gap: 14px; padding-top: 6px; }
+.hero .ruler { margin-top: 6px; }
+.modules { display: grid; gap: 12px; }
+.module {
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 14px;
+  text-align: left; width: 100%; padding: 16px; min-height: 76px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); cursor: pointer;
+}
+.module .num { font-family: var(--font-display); font-weight: 800; font-size: 28px; color: var(--brand); width: 28px; text-align: center; }
+.module b { display: block; font-family: var(--font-display); font-size: 19px; font-weight: 700; line-height: 1.2; }
+.module small { display: block; margin-top: 3px; color: var(--muted); font-size: 14.5px; }
+.status { font-family: var(--font-mono); font-size: 12.5px; font-weight: 600; padding: 4px 9px; border-radius: 99px; background: var(--paper); color: var(--muted); white-space: nowrap; }
+.status.ok { background: var(--ok-soft); color: var(--ok); }
+.status.wip { background: var(--brand-soft); color: var(--brand-ink); }
+.lex-link { display: flex; align-items: center; gap: 12px; width: 100%; padding: 14px 16px; min-height: 56px; border: 1px dashed var(--line); background: transparent; border-radius: var(--radius); cursor: pointer; text-align: left; }
+.lex-link span { flex: 1; }
+.note { font-size: 14.5px; color: var(--muted); margin: 0; }
+.tag-option { display: inline-block; font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; background: var(--brass-soft); color: var(--brass); padding: 2px 7px; border-radius: 6px; vertical-align: 2px; }
+
+/* Étape */
+.duo { display: grid; gap: 14px; }
+.side { display: grid; gap: 8px; padding: 16px; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--line); min-width: 0; }
+.side.team { background: transparent; border-style: dashed; }
+.autos { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.auto { padding: 14px 16px; display: grid; gap: 6px; }
+.auto + .auto { border-top: 1px solid var(--line); }
+.auto .ben { font-family: var(--font-display); font-weight: 700; font-size: 18px; line-height: 1.25; }
+.auto .what { color: var(--muted); font-size: 15.5px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+.chip { display: inline-flex; align-items: center; gap: 5px; font-family: var(--font-mono); font-size: 12.5px; padding: 4px 8px; border-radius: 8px; background: var(--paper); border: 1px solid var(--line); color: var(--ink); }
+.chip .icon { width: 14px; height: 14px; }
+.chip.when { background: var(--brand-soft); border-color: transparent; color: var(--brand-ink); font-weight: 600; }
+.say { position: relative; padding: 18px 18px 18px 52px; border-radius: var(--radius); background: var(--brass-soft); }
+.say::before { content: "“"; position: absolute; left: 14px; top: 2px; font-family: var(--font-display); font-weight: 800; font-size: 56px; line-height: 1; color: var(--brass); }
+.say .label { color: var(--brass); margin-bottom: 6px; }
+.say q { quotes: none; font-size: 18px; font-style: italic; line-height: 1.45; }
+
+/* Termes et panneau de définition */
+.term { border: 0; background: none; padding: 0; cursor: pointer; color: var(--brand-ink); font-weight: 700; text-decoration: underline dotted 2px; text-underline-offset: 4px; }
+.prose .term, .auto .term { display: inline; }
+.term-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.term-chips .term { text-decoration: none; padding: 8px 12px; min-height: 40px; border-radius: 99px; background: var(--surface); border: 1px solid var(--line); font-size: 15px; }
+.sheet-scrim { position: fixed; inset: 0; background: var(--scrim); z-index: 40; animation: fade .2s ease both; }
+.sheet {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 41;
+  max-width: 640px; margin: 0 auto;
+  background: var(--surface); border-radius: 20px 20px 0 0;
+  padding: 10px 20px calc(20px + env(safe-area-inset-bottom, 0px));
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, .2);
+  animation: up .25s cubic-bezier(.3, .7, .2, 1) both;
+}
+.sheet .grab { width: 40px; height: 5px; border-radius: 99px; background: var(--line); margin: 0 auto 14px; }
+.sheet h3 { font-family: var(--font-display); font-size: 24px; margin: 0 0 8px; }
+.sheet p { margin: 0 0 18px; font-size: 17px; }
+.sheet .btn { width: 100%; }
+@keyframes up { from { transform: translateY(100%); } to { transform: none; } }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+
+/* Questions */
+.question { font-family: var(--font-display); font-weight: 700; font-size: 22px; line-height: 1.25; margin: 0; text-wrap: balance; }
+.opts { display: grid; gap: 10px; }
+.opt {
+  display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: start;
+  width: 100%; text-align: left; padding: 14px; min-height: 56px; cursor: pointer;
+  background: var(--surface); border: 1.5px solid var(--line); border-radius: var(--radius); font-size: 16.5px; line-height: 1.4;
+}
+.opt .letter { width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; font-family: var(--font-mono); font-size: 13px; font-weight: 600; background: var(--paper); color: var(--muted); }
+.opt:disabled { cursor: default; color: var(--ink); }
+.opt.good { border-color: var(--ok); background: var(--ok-soft); }
+.opt.good .letter { background: var(--ok); color: var(--surface); }
+.opt.bad { border-color: var(--ko); background: var(--ko-soft); }
+.opt.bad .letter { background: var(--ko); color: var(--surface); }
+.opt.faded { opacity: .55; }
+.feedback { padding: 14px 16px; border-radius: var(--radius); font-size: 16px; }
+.feedback b { display: block; font-family: var(--font-display); font-size: 18px; margin-bottom: 4px; }
+.feedback.ok { background: var(--ok-soft); }
+.feedback.ok b { color: var(--ok); }
+.feedback.ko { background: var(--ko-soft); }
+.feedback.ko b { color: var(--ko); }
+
+/* Mises en situation : conversation */
+.convo { display: grid; gap: 10px; }
+.who { display: flex; align-items: center; gap: 10px; }
+.avatar { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--brand-soft); color: var(--brand-ink); font-family: var(--font-display); font-weight: 800; font-size: 15px; flex: none; }
+.who small { display: block; color: var(--muted); font-size: 14px; line-height: 1.3; }
+.who b { display: block; font-size: 16px; line-height: 1.3; }
+.bubble { justify-self: start; max-width: 92%; padding: 12px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 4px 18px 18px 18px; font-size: 18px; }
+.context { margin: 0; font-size: 15px; color: var(--muted); font-style: italic; }
+
+/* Résultats */
+.result { display: grid; gap: 10px; justify-items: start; padding: 22px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.big { font-family: var(--font-display); font-weight: 800; font-size: 56px; line-height: 1; color: var(--brand); font-variant-numeric: tabular-nums; }
+.big small { font-size: 24px; color: var(--muted); }
+.review { display: grid; gap: 4px; }
+.review .btn { text-align: left; font-weight: 600; }
+
+/* Lexique */
+.search { width: 100%; font: inherit; font-size: 17px; padding: 12px 14px; min-height: 48px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); }
+.lex { display: grid; gap: 8px; }
+.lex details { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+.lex summary { list-style: none; cursor: pointer; padding: 14px 16px; min-height: 52px; display: flex; justify-content: space-between; align-items: center; gap: 10px; font-weight: 700; }
+.lex summary::-webkit-details-marker { display: none; }
+.lex summary::after { content: "+"; font-family: var(--font-mono); font-size: 20px; color: var(--brand); }
+.lex details[open] summary::after { content: "−"; }
+.lex details p { margin: 0; padding: 0 16px 14px; }
+.empty { color: var(--muted); margin: 0; }
+
+/* Barre d'action */
+.bar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
+  background: var(--surface); border-top: 1px solid var(--line);
+  padding-block: 12px calc(12px + env(safe-area-inset-bottom, 0px));
+}
+.bar-inner { max-width: 640px; margin: 0 auto; padding-inline: 16px; display: flex; gap: 10px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 0 18px; border-radius: 12px; border: 1.5px solid var(--line); background: var(--surface); font-weight: 700; font-size: 16.5px; cursor: pointer; }
+.btn.primary { flex: 1; min-width: 0; background: var(--brand); border-color: var(--brand); color: var(--on-brand); }
+.btn.primary span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.btn.primary:disabled { opacity: .45; cursor: default; }
+
+/* Fiches du salon */
+.profil .tag { display: inline-block; margin-top: 3px; font-family: var(--font-mono); font-size: 11.5px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--brand-ink); }
+.facts { margin: 4px 0 0; display: grid; gap: 4px; }
+.facts dt { font-family: var(--font-mono); font-size: 12px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+.facts dd { margin: 0; }
+.steps-list { margin: 0; padding: 0; list-style: none; counter-reset: q; display: grid; gap: 8px; }
+.steps-list li { counter-increment: q; display: flex; gap: 12px; align-items: baseline; padding: 12px 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; font-size: 17px; }
+.steps-list li::before { content: counter(q); font-family: var(--font-display); font-weight: 800; color: var(--brand); min-width: 16px; }
+.prices { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.price-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; }
+.price-row + .price-row { border-top: 1px solid var(--line); }
+.price-row b { display: block; font-family: var(--font-display); font-size: 18px; }
+.price-row small { display: block; color: var(--muted); font-size: 14px; }
+.num-col { display: grid; justify-items: end; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.num-col .was { color: var(--muted); text-decoration: line-through; font-size: 14px; }
+.num-col .now { font-family: var(--font-display); font-weight: 800; font-size: 20px; color: var(--brand-ink); }
+.btn.ghost { border-color: transparent; background: transparent; color: var(--brand-ink); padding: 0 4px; justify-content: flex-start; min-height: 44px; }
+.btn.square { width: 52px; padding: 0; flex: none; }
+
+@media (min-width: 700px) {
+  .duo { grid-template-columns: 1fr 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+<header class="top" id="top" hidden></header>
+<main id="main"></main>
+<nav class="bar" aria-label="Actions"><div class="bar-inner" id="bar"></div></nav>
+<div id="sheet-root"></div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- Icônes ---------- */
+  var ICONS = {
+    back: '<path d="M15 18l-6-6 6-6"/>',
+    next: '<path d="M9 18l6-6-6-6"/>',
+    grid: '<rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/>',
+    mail: '<rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.5 7l8.5 6 8.5-6"/>',
+    chat: '<path d="M4 5h16v11H9l-5 4z"/>',
+    db: '<ellipse cx="12" cy="6" rx="7" ry="2.6"/><path d="M5 6v12c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6V6"/><path d="M5 12c0 1.4 3.1 2.6 7 2.6s7-1.2 7-2.6"/>',
+    star: '<path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.8l-5.2 2.8 1-5.8L3.5 9.7l5.9-.8z"/>',
+    clock: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>',
+    user: '<circle cx="12" cy="8" r="3.8"/><path d="M4.5 20c.8-3.8 3.8-5.8 7.5-5.8s6.7 2 7.5 5.8"/>',
+    bell: '<path d="M5 17h14"/><path d="M6.5 17a5.5 5.5 0 0111 0"/><path d="M12 9.5V8"/><path d="M4 20h16"/>',
+    book: '<path d="M5 4.5h10.5a3 3 0 013 3V20H8a3 3 0 01-3-3z"/><path d="M5 17a3 3 0 013-3h10.5"/>',
+    redo: '<path d="M4 12a8 8 0 1 0 2.4-5.7"/><path d="M4 4v4.5h4.5"/>'
+  };
+  function icon(name) {
+    return '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">' + ICONS[name] + "</svg>";
+  }
+  var CANAL_ICON = { "E-mail": "mail", "E-mail interne": "mail", "SMS": "chat", "WhatsApp": "chat", "Chat du site": "chat", "PMS": "db", "Google": "star" };
+
+  /* ---------- Contenu ---------- */
+  var LEXIQUE = {
+    "PMS": "Le logiciel principal de l'hôtel : réservations, chambres, factures, clients. TriggerFlow se branche dessus.",
+    "OTA": "Les grands sites de réservation en ligne (Booking, Expedia, Airbnb). Ils prennent une commission sur chaque réservation.",
+    "Réservation directe": "Une réservation faite sans intermédiaire (site de l'hôtel, téléphone). Pas de commission à payer.",
+    "Commission": "Le pourcentage que l'OTA garde sur chaque réservation, souvent 15 à 25 %.",
+    "CRM": "L'outil qui garde l'historique de chaque client (séjours, messages, achats), comme la fiche que ton opérateur téléphonique a sur toi. TriggerFlow est un CRM pour hôtels.",
+    "API": "Le « tuyau » qui permet à deux logiciels de s'échanger des infos. TriggerFlow se branche sur le PMS par son API.",
+    "Régime tarifaire": "Les conditions d'un tarif. Non remboursable : moins cher, pas d'annulation. Flexible : un peu plus cher, annulable. Le message de confirmation peut changer selon le tarif.",
+    "Fiche de police": "Les infos obligatoires à demander aux clients étrangers. Le formulaire TriggerFlow les récupère avant l'arrivée.",
+    "Guest app": "Un livret d'accueil digital relié au séjour : infos de l'hôtel, room service, messagerie, ventes. Module en option.",
+    "Base de connaissances": "Les 30 à 40 questions-réponses que l'hôtel remplit une fois, et sur lesquelles le bot IA s'appuie pour répondre.",
+    "Transactionnel": "Les messages liés à un séjour : confirmation, avant l'arrivée, demande d'avis.",
+    "Campagne marketing": "Un message envoyé à tous les anciens clients ou à un segment, sans lien avec un séjour : offres de Noël, Saint-Valentin. Les hôteliers appellent ça des marronniers.",
+    "Centrale d'achat": "L'organisme qui choisit les fournisseurs pour toute une chaîne d'hôtels. Processus long : on passe la main à Soufiane ou Mounir.",
+    "Livre blanc": "Un guide PDF gratuit de bonnes pratiques pour hôteliers. Le QR code du flyer y mène.",
+    "Fiche client": "Aussi appelée cardex. La fiche d'un client avec ses séjours, préférences, messages et commandes.",
+    "Doublons": "Deux fiches pour le même client (par exemple avec deux adresses e-mail). TriggerFlow les repère pour les fusionner.",
+    "Acompte": "Une partie du séjour payée à l'avance pour garantir la réservation.",
+    "Empreinte bancaire": "La carte du client est enregistrée sans être débitée, pour garantir la réservation.",
+    "No-show": "Un client qui a réservé et ne vient pas, sans prévenir. La chambre reste vide pour rien.",
+    "Pre-stay": "« Avant le séjour » : la période entre la réservation et l'arrivée.",
+    "Upsell": "Vente additionnelle : vendre plus ou mieux à un client qui a déjà réservé (petit-déjeuner, chambre supérieure…).",
+    "Surclassement": "Passer le client dans une chambre de catégorie supérieure, ici contre un supplément.",
+    "Check-in": "L'arrivée officielle du client à l'hôtel : formalités et remise de la clé.",
+    "Check-in en ligne": "Le client remplit ses formalités d'arrivée sur internet avant de venir. À l'hôtel, tout va plus vite.",
+    "Catalogue": "La liste des produits et services que l'hôtel vend en plus de la chambre (petit-déjeuner, spa, parking…).",
+    "Serrure connectée": "Une serrure qui s'ouvre avec un code, sans clé. TriggerFlow fonctionne avec Sesame et Igloohome.",
+    "Borne de check-in": "Une tablette dans le hall où le client fait son arrivée tout seul, sans passer par la réception.",
+    "Front office": "L'équipe en contact direct avec les clients : réception, accueil, téléphone.",
+    "Early check-in": "Arriver avant l'heure normale (souvent 15 h). Souvent payant.",
+    "In-stay": "« Pendant le séjour » : quand le client est à l'hôtel.",
+    "Bot IA": "Un assistant automatique qui répond aux questions des clients à partir des infos de l'hôtel. Il passe la main à un humain quand il ne sait pas.",
+    "Messagerie unifiée": "Une seule boîte qui reçoit tous les messages des clients : e-mail, SMS, WhatsApp, chat du site.",
+    "Cross-sell": "Vente croisée : vendre un produit différent de la chambre (massage, dîner, bouteille…).",
+    "Housekeeping": "Le service ménage des chambres. TriggerFlow propose un module housekeeping en option.",
+    "Check-out": "Le départ officiel du client : il rend la chambre et règle sa note.",
+    "Late check-out": "Partir après l'heure normale (souvent 11 h). Souvent payant.",
+    "Folio": "La note du client dans le logiciel de l'hôtel : chambre, extras, taxes.",
+    "Solde": "Ce qui reste à payer à la fin du séjour.",
+    "Post-stay": "« Après le séjour » : la période qui suit le départ du client.",
+    "NPS": "Une note de 0 à 10 à la question « Recommanderiez-vous l'hôtel ? ». 9 ou 10 = client promoteur.",
+    "E-réputation": "L'image de l'hôtel sur internet, surtout à travers les avis clients (Google, Booking, TripAdvisor).",
+    "Fidélisation": "Tout ce qui donne envie au client de revenir : points, avantages, attentions personnalisées.",
+    "Segment": "Un groupe de clients qui ont un point commun, par exemple « clients venus 2 fois et plus ».",
+    "RGPD": "La loi européenne sur les données personnelles. Par exemple : on doit pouvoir se désinscrire en un clic.",
+    "RevPAR": "Revenu par chambre disponible : le chiffre d'affaires hébergement divisé par le nombre total de chambres.",
+    "Taux d'occupation": "Le pourcentage de chambres vendues. 32 chambres vendues sur 40 = 80 %.",
+    "Channel manager": "Un logiciel qui envoie prix et disponibilités vers Booking, Expedia, etc. Ce n'est pas le métier de TriggerFlow.",
+    "Directeur (GM)": "La personne qui dirige l'hôtel et décide des outils. C'est elle qu'on veut rencontrer."
+  };
+  var LEX_KEYS = Object.keys(LEXIQUE);
+  function lexKey(k) {
+    var low = k.toLowerCase();
+    for (var i = 0; i < LEX_KEYS.length; i++) if (LEX_KEYS[i].toLowerCase() === low) return LEX_KEYS[i];
+    return null;
+  }
+
+  var DAYS = ["J-30", "J-3", "J0", "J+1", "J+2", "J+3"];
+
+  // Le texte entre [[ ]] devient un terme cliquable : [[clé]] ou [[clé|texte affiché]].
+  var ETAPES = [
+    {
+      name: "Réservation", day: "J-30", title: "Julie réserve",
+      client: [
+        "Julie réserve 2 nuits à l'Hôtel des Arcades, sur le site de l'hôtel ou via une [[OTA]] comme Booking.",
+        "Quelques minutes après, elle reçoit un e-mail de confirmation aux couleurs de l'hôtel, avec un bouton pour ajouter son séjour à son agenda."
+      ],
+      team: [
+        "La réservation arrive dans le [[PMS]]. TriggerFlow la récupère automatiquement : la [[fiche client|fiche]] de Julie est créée ou complétée, et les [[doublons]] sont repérés.",
+        "Si Julie annule, personne n'a rien à faire : le message d'annulation part tout seul."
+      ],
+      autos: [
+        { ben: "Une première impression soignée, sans effort", what: "E-mail de confirmation personnalisé", canal: ["E-mail"], when: "Nouvelle réservation" },
+        { ben: "Moins de [[no-show]], des réservations garanties", what: "Lien de paiement : [[acompte]], caution ou [[empreinte bancaire]]", canal: ["E-mail", "SMS"], when: "Nouvelle réservation", option: true },
+        { ben: "Rien à gérer pour l'équipe", what: "Message d'annulation", canal: ["E-mail"], when: "Annulation" }
+      ],
+      say: "Dès qu'une réservation tombe dans votre logiciel, la confirmation part toute seule, à vos couleurs.",
+      terms: ["OTA", "PMS", "Fiche client", "No-show", "Empreinte bancaire"],
+      check: { q: "Julie a réservé sur Booking. Comment TriggerFlow connaît-il sa réservation ?", o: ["La réception la recopie à la main", "TriggerFlow la récupère tout seul dans le PMS de l'hôtel", "Julie doit créer un compte TriggerFlow"], a: 1, e: "TriggerFlow est branché sur le PMS : toutes les réservations y arrivent, quelle que soit leur origine." }
+    },
+    {
+      name: "Avant l'arrivée", day: "J-3", title: "Trois jours avant",
+      client: [
+        "Julie reçoit un e-mail de bienvenue : accès, parking, horaires du petit-déjeuner.",
+        "Un formulaire lui demande son heure d'arrivée et ses préférences. Elle peut faire son [[check-in en ligne]] et scanner sa pièce d'identité pour aller plus vite.",
+        "On lui propose le petit-déjeuner, une bouteille en chambre et un [[surclassement]], seulement si la chambre supérieure est vraiment libre. Si elle a déjà pris le petit-déjeuner en réservant, on ne le lui repropose pas.",
+        "Si Julie était étrangère, le formulaire lui demanderait aussi les infos de la [[fiche de police]]."
+      ],
+      team: [
+        "Les réponses de Julie arrivent dans sa fiche, et peuvent s'ajouter en commentaire sur sa réservation dans le PMS.",
+        "Ses commandes s'ajoutent à sa réservation dans le PMS, selon le logiciel utilisé. La réception sait déjà tout avant son arrivée."
+      ],
+      autos: [
+        { ben: "Moins d'appels à la réception", what: "E-mail de bienvenue avec formulaire", canal: ["E-mail"], when: "J-3 · 10 h" },
+        { ben: "Du chiffre d'affaires en plus", what: "Offres : petit-déjeuner, surclassement, extras du [[catalogue]]", canal: ["E-mail", "WhatsApp"], when: "Quelques jours avant" },
+        { ben: "Le message important arrive vraiment", what: "Relance si l'e-mail n'a pas été ouvert", canal: ["SMS", "WhatsApp"], when: "Si non ouvert" },
+        { ben: "Rien à ressaisir", what: "Réponses ajoutées en commentaire dans le PMS", canal: ["PMS"], when: "Réponse au formulaire" }
+      ],
+      say: "Trois jours avant l'arrivée, vos clients reçoivent toutes les infos, et on leur propose le petit-déjeuner ou une meilleure chambre.",
+      terms: ["Pre-stay", "Upsell", "Surclassement", "Check-in en ligne", "Catalogue", "Fiche de police"],
+      check: { q: "Julie n'a pas ouvert l'e-mail de bienvenue. Que peut faire TriggerFlow ?", o: ["Rien, tant pis", "Lui envoyer automatiquement un SMS ou un WhatsApp", "Demander à la réception de l'appeler"], a: 1, e: "Un flow peut tester « e-mail ouvert ? » et relancer sur un autre canal si la réponse est non." }
+    },
+    {
+      name: "Arrivée", day: "J0", title: "Le jour de l'arrivée",
+      client: [
+        "Julie arrive à 23 h, la réception est fermée. Elle a reçu le code de sa [[serrure connectée]], valable de son arrivée à son départ.",
+        "En journée, son [[check-in]] est express : tout est déjà rempli. Elle peut aussi passer par la [[borne de check-in]] du hall.",
+        "Une fois installée, un WhatsApp lui souhaite la bienvenue : « Besoin de quelque chose ? Répondez à ce message. »"
+      ],
+      team: [
+        "Le [[front office]] voit la liste des arrivées du jour, formulaires déjà remplis. Pour les autres, un QR code permet de le faire sur place.",
+        "Moins de saisie au comptoir, plus de temps pour vraiment accueillir."
+      ],
+      autos: [
+        { ben: "Arrivée possible à toute heure", what: "Code d'accès à la chambre (serrures Sesame ou Igloohome)", canal: ["E-mail"], when: "J0" },
+        { ben: "Le client sait où écrire", what: "Message de bienvenue", canal: ["WhatsApp"], when: "Check-in (selon le PMS)" }
+      ],
+      say: "Le check-in est fait avant l'arrivée. À la réception, il ne reste plus qu'à accueillir.",
+      terms: ["Check-in", "Front office", "Borne de check-in", "Serrure connectée", "Early check-in"],
+      check: { q: "Julie arrive à 23 h, réception fermée. Comment entre-t-elle ?", o: ["Avec le code d'accès reçu automatiquement", "Elle attend le réceptionniste du matin", "Elle appelle le directeur"], a: 0, e: "Avec une serrure Sesame ou Igloohome, TriggerFlow envoie un code valable de l'arrivée au départ." }
+    },
+    {
+      name: "Séjour", day: "J+1", title: "Pendant le séjour",
+      client: [
+        "À 7 h, Julie écrit sur WhatsApp : « Le petit-déjeuner est servi jusqu'à quelle heure ? ». Le [[bot IA]] lui répond tout de suite.",
+        "Elle commande un massage depuis son espace client, et demande une nuit de plus : la prolongation lui est proposée s'il reste une chambre.",
+        "Un message lui demande si tout se passe bien."
+      ],
+      team: [
+        "Tous les messages arrivent dans la [[messagerie unifiée]]. Un client écrit en allemand ? Le message est traduit, et la réponse aussi.",
+        "Si le bot ne sait pas répondre ou si le client est mécontent, il passe la main à l'équipe, qui est prévenue."
+      ],
+      autos: [
+        { ben: "Un souci réglé avant l'avis négatif", what: "Message « Tout se passe bien ? »", canal: ["WhatsApp", "SMS"], when: "J+1" },
+        { ben: "Une réponse en secondes, 24 h sur 24", what: "Réponses du bot IA, dans la langue du client", canal: ["WhatsApp", "Chat du site"], when: "Message du client", option: true },
+        { ben: "Client rassuré, équipe prévenue", what: "Confirmation de commande au client et e-mail à l'équipe", canal: ["E-mail"], when: "Nouvelle commande" }
+      ],
+      say: "Tous les messages de vos clients arrivent au même endroit, et l'IA traduit pour vous.",
+      terms: ["In-stay", "Bot IA", "Messagerie unifiée", "Cross-sell", "Housekeeping"],
+      check: { q: "Un client allemand écrit sur WhatsApp. Que se passe-t-il ?", o: ["Il faut trouver quelqu'un qui parle allemand", "Le message est traduit, et la réponse de l'équipe aussi", "Le message est refusé"], a: 1, e: "La messagerie traduit les messages reçus et les réponses, dans 7 langues." }
+    },
+    {
+      name: "Départ", day: "J+2", title: "Le jour du départ",
+      client: [
+        "Julie part à 11 h. Elle a pu régler le [[solde]] de son séjour en ligne, avec un lien de paiement.",
+        "Elle reçoit un message pour la remercier de sa visite."
+      ],
+      team: [
+        "Le massage est déjà sur la note du client ([[folio]]) dans le PMS, selon le logiciel. Rien à ressaisir.",
+        "Le [[check-out]] enregistré dans le PMS déclenche les messages d'après séjour."
+      ],
+      autos: [
+        { ben: "Moins d'attente au comptoir", what: "Lien de paiement du solde", canal: ["E-mail", "SMS"], when: "Matin du départ", option: true },
+        { ben: "Une dernière impression soignée", what: "Message de remerciement", canal: ["E-mail"], when: "Check-out (selon le PMS)" }
+      ],
+      say: "Le départ déclenche tout seul le remerciement, puis l'enquête du lendemain.",
+      terms: ["Check-out", "Late check-out", "Folio", "Solde"],
+      check: { q: "Le « check-out », c'est…", o: ["L'arrivée du client", "Le départ officiel du client", "Le ménage de la chambre"], a: 1, e: "Check-in = arrivée, check-out = départ. Le check-out peut déclencher des messages automatiques." }
+    },
+    {
+      name: "Après", day: "J+3", title: "Après le séjour",
+      client: [
+        "Le lendemain du départ, Julie reçoit une courte enquête avec une note de 0 à 10 (le [[NPS]]).",
+        "Ravie, elle laisse un avis : dans l'e-mail, chaque note peut mener vers une page choisie par l'hôtel, comme sa page Google.",
+        "Elle gagne des points de fidélité. Des mois plus tard, une offre d'anniversaire la fait revenir, en direct."
+      ],
+      team: [
+        "Une mauvaise note ? La direction est alertée tout de suite pour rappeler le client.",
+        "Les avis Google, Booking, TripAdvisor et Airbnb remontent dans TriggerFlow. L'IA propose des réponses, publiées directement sur Google.",
+        "Le marketing crée des [[segment|segments]] pour des offres ciblées, en respectant le [[RGPD]]."
+      ],
+      autos: [
+        { ben: "Les problèmes remontent avant d'aller sur Google", what: "Enquête de satisfaction", canal: ["E-mail"], when: "Départ + 1 jour" },
+        { ben: "La direction réagit vite", what: "Alerte en cas de mauvaise note", canal: ["E-mail interne"], when: "Note sous le seuil" },
+        { ben: "Des réponses soignées en quelques secondes", what: "Réponses aux avis écrites par l'IA", canal: ["Google"], when: "Nouvel avis", option: true },
+        { ben: "Une raison de revenir en [[réservation directe|direct]]", what: "Points et paliers de fidélité", canal: ["E-mail"], when: "Points gagnés", option: true },
+        { ben: "Des réservations sans commission", what: "Offre d'anniversaire et newsletters ciblées", canal: ["E-mail", "SMS", "WhatsApp"], when: "Date choisie" }
+      ],
+      say: "Un client mécontent vous le dit à vous, avant de le dire à Google.",
+      terms: ["Post-stay", "NPS", "E-réputation", "Fidélisation", "Segment", "RGPD"],
+      check: { q: "Pourquoi envoyer une enquête le lendemain du départ ?", o: ["Pour qu'un problème remonte à l'hôtel avant de finir en avis sur Google", "Parce que la loi l'impose", "Pour vendre une autre chambre"], a: 0, e: "Capter le retour en interne d'abord, c'est protéger l'e-réputation de l'hôtel." }
+    }
+  ];
+
+  var STAND = [
+    { who: "Directeur", role: "Hôtel de 30 chambres, en Normandie", init: "D", context: "Il s'arrête devant le stand, l'air intéressé.", say: "On est sous Hotello. Ça marche avec vous ?",
+      o: ["« Oui, Hotello est connecté. Le mieux, c'est que Soufiane vous montre ce que ça donne avec votre logiciel. »", "« Je ne crois pas, désolé. »", "« Oui, tout marche pareil quel que soit le logiciel. »"], a: 0,
+      e: "Hotello est dans la liste des PMS connectés. Mais ce qui est possible dépend du logiciel : on ne promet pas « tout pareil », on amène à la démo." },
+    { who: "Propriétaire", role: "Hôtel de 45 chambres, en Provence", init: "P", context: "Après 2 minutes de discussion :", say: "Et ça coûte combien, votre truc ?",
+      o: ["« Je ne peux pas vous le dire, voyez avec mes collègues. »", "« Autour de 150 € par mois pour l'essentiel, nos tarifs sont publics. Et si vous signez pendant le salon : 10 % de moins à vie et 2 mois offerts. Soufiane vous montre en 20 minutes ? »", "« Ça dépend, je ne sais pas trop. »"], a: 1,
+      e: "Les prix sont publics : on les donne simplement, puis on met en avant l'offre salon et on amène la démo." },
+    { who: "Responsable marketing", role: "Groupe de 3 hôtels", init: "M", context: "Elle a l'air sceptique.", say: "On a déjà Mailchimp pour nos e-mails.",
+      o: ["« Mailchimp, c'est dépassé. »", "« Ah, alors vous n'avez pas besoin de nous. »", "« Mailchimp ne connaît pas vos réservations. TriggerFlow, si : il sait quand le client arrive et quand il part, donc les messages partent tout seuls au bon moment. »"], a: 2,
+      e: "On ne critique jamais un outil. On montre la différence : TriggerFlow est branché sur le logiciel de l'hôtel." },
+    { who: "Directeur", role: "Hôtel de 50 chambres, à Bordeaux", init: "D", context: "Il croise les bras.", say: "J'ai déjà un CRM.",
+      o: ["« Ah d'accord, bonne journée alors. »", "« Il est mieux que le vôtre, croyez-moi. »", "« Très bien. Vous en êtes content ? Qu'est-ce qui vous manque aujourd'hui ? »"], a: 2,
+      e: "La plupart de nos clients avaient déjà un CRM. Celui qui en a un connaît le besoin : on cherche ce qui lui manque." },
+    { who: "Directrice", role: "Hôtel de 35 chambres, à Lille", init: "D", context: "Elle soupire.", say: "De toute façon, Booking ne nous donne plus les numéros de téléphone.",
+      o: ["« Justement : TriggerFlow écrit à vos clients Booking sur la messagerie Booking, avec un formulaire qui récupère leur vrai e-mail et leur téléphone. Environ 1 client OTA sur 4 les donne. »", "« C'est vrai, on ne peut rien y faire. »", "« On peut récupérer les numéros directement chez Booking. »"], a: 0,
+      e: "C'est l'argument « clients directs » du flyer : on passe par la messagerie de l'OTA pour récupérer les coordonnées." },
+    { who: "Directeur des opérations", role: "Groupe de 25 hôtels", init: "G", context: "Il a peu de temps.", say: "On a 25 hôtels. Vous travaillez avec des groupes ?",
+      o: ["« Oui, c'est même notre cœur de cible avec les indépendants. Je vous présente Mounir, il est justement libre dans 5 minutes. »", "« Plutôt les petits hôtels, en fait. »", "« Oui, pour 25 hôtels ça fera 25 fois 149 €. »"], a: 0,
+      e: "Les groupes de 10 à 30 hôtels sont au cœur de cible. Le prix d'un groupe se discute avec Soufiane ou Mounir : priorité à la démo." },
+    { who: "Étudiante", role: "École hôtelière", init: "É", context: "Elle pose des questions depuis 10 minutes. Le stand se remplit.", say: "Et vous avez combien de clients ? Vous recrutez des stagiaires ?",
+      o: ["« Je te laisse un flyer, tout est dessus. Bonne visite ! » puis tu vas vers les visiteurs suivants", "Tu continues 20 minutes, elle est sympa", "Tu lui bloques un créneau de démo avec Soufiane"], a: 0,
+      e: "Sympa, mais pas acheteuse. Un flyer et un sourire, et ton temps va aux hôteliers." },
+    { who: "Commercial", role: "Badge « Exposant », éditeur de logiciel", init: "C", context: "Il te pose beaucoup de questions sur TriggerFlow.", say: "Vous avez combien de clients ? Lesquels ? Vous êtes connectés à quels outils ?",
+      o: ["Tu lui cites quelques hôtels clients pour faire bonne impression", "« Je ne suis pas la bonne personne. Je vous laisse un flyer, l'adresse est dessus. »", "Tu lui détailles toutes les intégrations"], a: 1,
+      e: "Badge « Exposant » = vendeur, parfois concurrent. On ne cite aucun client et on écourte poliment." },
+    { who: "Réceptionniste", role: "Hôtel de 60 chambres, à Lyon", init: "R", context: "Elle trouve l'idée géniale.", say: "Moi je suis à la réception. C'est mon directeur qui décide.",
+      o: ["« Dommage ! Bonne journée. »", "Tu lui fais quand même le pitch complet pendant 15 minutes", "« Il est sur le salon aujourd'hui ? On adorerait lui montrer. Sinon, je peux noter son nom et celui de l'hôtel ? »"], a: 2,
+      e: "Une personne qui ne décide pas peut t'ouvrir la porte du décideur. Note le nom du directeur et de l'hôtel." },
+    { who: "Directrice", role: "Hôtel de 25 chambres, à Biarritz", init: "D", context: "Question précise, à laquelle tu ne sais pas répondre :", say: "Est-ce que vous gérez la facturation des séminaires ?",
+      o: ["« Oui, bien sûr ! »", "« Non, on ne fait pas ça. »", "« Très bonne question. Je préfère que Soufiane vous réponde précisément, je vous présente ? »"], a: 2,
+      e: "Quand tu ne sais pas : ni oui au hasard, ni non. Tu passes le relais (et tu poses la question dans le groupe WhatsApp), c'est même l'occasion d'amener la démo." }
+  ];
+
+  var QUIZ = [
+    { q: "Qu'est-ce qu'un PMS ?", o: ["Un site de réservation comme Booking", "Le logiciel principal de l'hôtel : réservations, chambres, factures", "Un programme de fidélité"], a: 1, e: "Le PMS est le logiciel central de l'hôtel. TriggerFlow se branche dessus.", step: 0 },
+    { q: "Un CRM, c'est…", o: ["L'outil qui garde l'historique de chaque client", "Le logiciel qui gère les chambres", "Un site de réservation"], a: 0, e: "Le CRM centralise tout ce qui touche au client. TriggerFlow est un CRM pour hôtels." },
+    { q: "TriggerFlow remplace-t-il le PMS de l'hôtel ?", o: ["Oui, l'hôtel doit changer de logiciel", "Non, TriggerFlow se branche sur le PMS existant", "Seulement pour les petits hôtels"], a: 1, e: "L'hôtel garde son logiciel. TriggerFlow travaille avec.", step: 0 },
+    { q: "Booking.com et Expedia sont…", o: ["des OTA", "des PMS", "des channel managers"], a: 0, e: "Des agences de voyage en ligne, qui prennent 15 à 25 % de commission.", step: 0 },
+    { q: "Pourquoi un hôtelier préfère une réservation directe ?", o: ["Elle est plus rapide à saisir", "Il ne paie pas de commission", "C'est obligatoire"], a: 1, e: "Pas d'intermédiaire, pas de commission. TriggerFlow aide à faire revenir les clients en direct.", step: 5 },
+    { q: "Booking ne transmet plus les téléphones. Comment TriggerFlow récupère-t-il les coordonnées ?", o: ["Il les achète à Booking", "Par un message sur la messagerie Booking, avec un formulaire", "Il ne peut pas"], a: 1, e: "Le message passe par la messagerie de l'OTA. Environ 1 client OTA sur 4 donne alors son vrai e-mail." },
+    { q: "Faire de l'upsell, c'est…", o: ["Augmenter le prix des chambres le week-end", "Vendre plus ou mieux à un client qui a déjà réservé", "Envoyer une newsletter"], a: 1, e: "Par exemple : proposer le petit-déjeuner ou une chambre supérieure avant l'arrivée.", step: 1 },
+    { q: "TriggerFlow intervient-il avant la réservation, pour trouver de nouveaux voyageurs ?", o: ["Oui, il fait de la publicité", "Non, il intervient à partir de la réservation", "Seulement sur Booking"], a: 1, e: "C'est la relation client : tout commence quand le client a réservé." },
+    { q: "Quand part l'enquête de satisfaction dans l'exemple de Julie ?", o: ["Le jour de la réservation", "Pendant le séjour", "Le lendemain du départ"], a: 2, e: "Déclencheur « date de départ » + 1 jour : le séjour est encore frais.", step: 5 },
+    { q: "Comment Julie entre-t-elle à 23 h, réception fermée ?", o: ["Avec un code reçu automatiquement (serrure connectée)", "Elle dort dans sa voiture", "Elle appelle un numéro d'urgence"], a: 0, e: "Avec Sesame ou Igloohome, le code est envoyé automatiquement.", step: 2 },
+    { q: "Un hôtelier demande le prix. Tu réponds…", o: ["« Je n'ai pas le droit de le dire »", "« Autour de 150 € par mois, et si vous signez sur le salon : 10 % de moins à vie et 2 mois offerts »", "« Regardez sur internet, je ne sais pas »"], a: 1, e: "Les prix sont publics. On les donne, et on met en avant l'offre salon." },
+    { q: "L'offre du stand, c'est…", o: ["10 % sur le tarif 2026, bloqué à vie, et 2 mois offerts", "Un mois gratuit", "50 % la première année"], a: 0, e: "Réservée aux signatures pendant le salon. Ensuite : 2 mois offerts jusqu'au 30/11, tarif 2026 bloqué jusqu'au 31/12." },
+    { q: "Un visiteur dit « j'ai déjà un CRM ». Tu…", o: ["le remercies et passes au suivant", "lui demandes s'il en est content et ce qui lui manque", "critiques son outil"], a: 1, e: "La plupart de nos clients avaient déjà un CRM : ils connaissent le besoin." },
+    { q: "Un prospect utilise un PMS que tu ne connais pas. Tu dis…", o: ["« Non, ça ne marchera pas »", "« Je le note, Soufiane vous dira ce qui est possible »", "« Oui, bien sûr, ça marche »"], a: 1, e: "Ni non, ni oui au hasard : on note et on passe le relais." },
+    { q: "Quel est le cœur de cible de TriggerFlow ?", o: ["Les grandes chaînes internationales", "Les hôtels indépendants et les groupes de 10 à 30 hôtels", "Les campings"], a: 1, e: "Les grandes marques ont souvent leurs outils maison et passent par des centrales d'achat." },
+    { q: "Lequel de ces visiteurs est le meilleur prospect ?", o: ["Un étudiant en école hôtelière", "Le commercial d'un éditeur de logiciel, badge « Exposant »", "La directrice d'un groupe de 4 hôtels"], a: 2, e: "Décideuse, et plusieurs hôtels d'un coup : relais immédiat vers la démo !" }
+  ];
+
+  /* ---------- Fiches pour le salon ---------- */
+  var PMS_LIST = "Thaïs, Mews, Opera Cloud, Apaleo, Medialog, Misterbooking, Asterio, Lean PMS, Beds24, Hotello, Vega, Reservit, Zeswitch";
+
+  var ROLE = [
+    { label: "Le salon", body: ["Equip'Hôtel, Paris Porte de Versailles, du 2 au 5 novembre 2026. Pavillon 7.3, stand H006.", "Le stand fait 120 m² et on le partage à six exposants. TriggerFlow a environ 12 m²."] },
+    { label: "L'objectif", body: ["Un maximum de démos de 15 à 20 minutes avec des hôteliers qui décident. L'idéal : signer sur place. Sinon, un rendez-vous fixé après le salon.", "Une heure de démo avec un curieux, c'est une heure perdue pour un vrai prospect."] },
+    { label: "Qui fait quoi", body: ["Soufiane et Mounir : les démos, derrière l'ordinateur.", "Tesnime et Hasna : au stand. Accueillir les visiteurs pendant les démos, répondre aux questions, qualifier. Remplir le formulaire de qualification si Soufiane et Mounir sont pris.", "Tristan et Adnane : dans les allées, surtout en zone tech. Aborder les visiteurs avec des questions, amener les décideurs au stand, donner le flyer."] },
+    { label: "Le flyer", body: ["Il se donne aux personnes qualifiées, et aux curieux pour les libérer gentiment.", "Deux QR codes : les livres blancs (guides gratuits de bonnes pratiques) et la prise de rendez-vous avec nous. La phrase du salon : plus de revenus, plus de clients directs."] },
+    { label: "Le formulaire de qualification", body: ["À remplir pendant l'échange : nom de l'hôtel, fonction de la personne, nombre de chambres ou d'hôtels, PMS, téléphone et e-mail, son besoin avec ses mots, son niveau d'intérêt, le créneau de démo, ton prénom."] },
+    { label: "Une question sans réponse ?", body: ["Tu ne réponds ni oui ni non au hasard. Tu écris la question dans le groupe WhatsApp : Mounir répond en direct, et toute l'équipe profite de la réponse."] },
+    { label: "Avant le salon", body: ["Une visio la veille du salon. Dimanche 1er novembre : rendez-vous sur le stand pour un dernier point d'environ une heure.", "Dress code : haut fourni par l'équipe, bas noir, baskets blanches."] }
+  ];
+
+  var PROFILS = [
+    { who: "Directeur ou propriétaire d'un hôtel indépendant", init: "D", tag: "Cœur de cible", spot: "Parle de « mon hôtel », connaît ses chiffres, décide seul.", say: "« Vous avez combien de chambres ? Vous utilisez quel logiciel pour les réservations ? »", act: "Tu qualifies, puis tu proposes la démo tout de suite." },
+    { who: "Directeur d'un groupe de 10 à 30 hôtels", init: "G", tag: "Cœur de cible", spot: "Parle « des hôtels », de siège, d'harmoniser les outils.", say: "« Vos hôtels ont tous le même PMS ? Qui gère la relation client aujourd'hui ? »", act: "Priorité absolue : démo avec Soufiane ou Mounir. Le prix d'un groupe se discute avec eux." },
+    { who: "Responsable marketing ou revenue", init: "M", tag: "Bon prospect", spot: "Parle e-mails, réseaux, avis, taux d'occupation.", say: "« Vous envoyez quoi à vos clients aujourd'hui ? Avec quel outil ? »", act: "Démo, et tu notes qui décide au-dessus d'elle." },
+    { who: "Réceptionniste ou employé", init: "R", tag: "Porte d'entrée", spot: "« C'est mon directeur qui décide. »", say: "« Il est sur le salon aujourd'hui ? Je peux noter son nom et celui de l'hôtel ? »", act: "Pas de démo complète. Tu récupères le contact du décideur." },
+    { who: "Grande chaîne ou centrale d'achat", init: "C", tag: "À passer", spot: "Marque internationale, achats centralisés, appels d'offres.", say: "« Les outils sont choisis par l'hôtel ou par le siège ? »", act: "Processus long : tu passes la main à Soufiane ou Mounir." },
+    { who: "Étudiant ou curieux", init: "É", tag: "À écarter", spot: "Badge « Visiteur » d'école, questions générales, beaucoup de temps.", say: "« Je te laisse un flyer, tout est dessus. Bonne visite ! »", act: "Un flyer, un sourire, et tu passes au visiteur suivant." },
+    { who: "Exposant ou concurrent", init: "X", tag: "À écarter", spot: "Badge « Exposant », questions sur nos clients, nos intégrations, nos prix.", say: "« Je ne suis pas la bonne personne, l'adresse est sur le flyer. »", act: "Tu restes poli, tu ne cites aucun client, tu écourtes." }
+  ];
+
+  var DECOUVERTE = [
+    "Vous avez un hôtel ? Vous y faites quoi ?",
+    "Combien de chambres, ou combien d'hôtels ?",
+    "Quel logiciel utilisez-vous pour les réservations ?",
+    "Vous avez déjà un outil pour écrire à vos clients ?",
+    "Qu'est-ce qui vous prend le plus de temps avec vos clients ?",
+    "Qu'est-ce qui vous manque aujourd'hui ?"
+  ];
+
+  var DEMO = [
+    { title: "La fiche client", body: "Exemple réel : l'Hôtel Arc-en-Ciel à Strasbourg, branché sur Thaïs. Sur la fiche d'une cliente : sa réservation (2 nuits, chambre Double, 288 €), les messages reçus, le formulaire rempli, et le supplément animal de 20 € acheté avant l'arrivée.", say: "Tout ce qui touche au client est au même endroit, sans rien ressaisir." },
+    { title: "Les automatisations", body: "Pour chaque message, l'hôtel choisit le déclencheur (nouvelle réservation, X jours avant l'arrivée, départ) et l'heure. Les 4 classiques : confirmation, pré-séjour 3 à 7 jours avant, message le jour de l'arrivée, demande d'avis au départ. Puis les idées de chaque hôtel : prévenir du passage du jardinier, offre de retour 2 mois après le séjour.", say: "Une fois configuré, tout part tout seul." },
+    { title: "Les segments", body: "Les messages changent selon le client : OTA ou direct, tarif non remboursable ou flexible, catégorie de chambre ou logement, client qui revient, séjour business ou loisirs. Un client qui revient toutes les deux semaines ne reçoit pas quatre e-mails à chaque fois.", say: "Le bon message, au bon client, au bon moment." },
+    { title: "Le formulaire et le catalogue", body: "Comme un Google Form fait pour l'hôtellerie, entièrement modifiable par l'hôtel. D'abord les coordonnées, qui remontent dans le PMS. Puis les ventes en plus, tirées du catalogue de l'hôtel, sans proposer ce que le client a déjà pris. Une cliente a fait 1 500 € de ventes en 30 jours pour un outil à 150 € par mois.", say: "Ce ne sont pas des modèles figés : l'hôtel modifie tout lui-même." },
+    { title: "Avis, messagerie et bot IA", body: "Après le séjour, une note : une bonne note mène où l'hôtel veut (souvent sa page Google), une mauvaise vers un formulaire interne. Tous les messages arrivent dans une seule messagerie, et le bot IA répond aux questions de tous les jours (petit-déjeuner, parking) à partir de la base de connaissances de l'hôtel.", say: "Un client mécontent vous le dit à vous, avant de le dire à Google." }
+  ];
+
+  var FAQ = [
+    { q: "Vous êtes connectés à mon PMS ?", a: "Nous sommes connectés à : " + PMS_LIST + ". Il n'est pas dans la liste : « Pas encore, mais on se connecte à tout PMS qui ouvre son API. Je note, Soufiane vous dira. »" },
+    { q: "J'ai déjà un CRM.", a: "« Très bien. Vous en êtes content ? Qu'est-ce qui vous manque ? » La plupart de nos clients avaient déjà un CRM avant de passer chez nous." },
+    { q: "Booking ne donne plus les téléphones.", a: "TriggerFlow écrit au client sur la messagerie Booking, avec un formulaire qui récupère son vrai e-mail et son téléphone. Environ 1 client OTA sur 4 les donne. Ensuite, on peut le faire revenir en direct." },
+    { q: "Quelle différence avec vos concurrents ?", a: "Chez nous, l'hôtel personnalise tout lui-même : segments, messages, moments d'envoi, formulaires. Ailleurs, on active des modèles tout faits et chaque modification passe par l'éditeur, souvent facturée. On ne critique jamais un concurrent : on montre la différence." },
+    { q: "Ça remplace du personnel ?", a: "Le but est d'être rentable pour l'hôtel : plus de ventes en plus, moins de temps perdu sur les questions répétitives et la saisie. Certains clients ont pu se passer de deux postes." },
+    { q: "Vous existez depuis quand ?", a: "L'équipe travaille pour l'hôtellerie depuis 2018. TriggerFlow a été lancé il y a deux ans, volontairement, pour partir sur des technologies récentes." },
+    { q: "Vous avez des clients connus ?", a: "Plus de 300 hôtels travaillent avec TriggerFlow. Par exemple : Le Cloître, Odomo, Beaucour, l'Hôtel Arc-en-Ciel à Strasbourg, Sezz, Urban Bivouac, Les Murets. Jamais de nom de client à un exposant." },
+    { q: "Ça coûte combien ?", a: "Les prix sont publics : 69, 149 ou 249 € par mois selon la formule, l'essentiel est autour de 150 €. Il existe aussi une formule Découverte gratuite. Signature pendant le salon : 10 % de moins sur le tarif 2026, bloqué à vie, et 2 mois offerts. Détail dans la fiche « Prix et offre salon »." },
+    { q: "Il y a un engagement ?", a: "Non, c'est sans engagement." },
+    { q: "Il y a un essai gratuit ?", a: "Oui : la formule Découverte est gratuite, sans carte bancaire, pour tester ses premiers scénarios clients. Pour aller plus loin, l'offre salon donne 2 mois offerts sur les formules payantes." },
+    { q: "Combien de temps pour la mise en place ?", a: "En 48 heures, le PMS est branché et les premiers messages partent. Le parcours complet personnalisé prend 1 à 2 semaines." },
+    { q: "Mes données sont où ?", a: "Hébergées en France. L'hôtel reste propriétaire de ses données et peut les exporter à tout moment." },
+    { q: "Si je laisse 5 étoiles, ça part sur Google ?", a: "L'hôtel choisit vers quelle page mène chaque note. Le plus courant : 5 étoiles vers Google, en dessous vers un formulaire interne pour comprendre ce qui n'allait pas." },
+    { q: "Vous gérez aussi le ménage, l'entretien ?", a: "Le cœur, c'est la relation client. Il existe aussi un module ménage en option : Soufiane ou Mounir peut le montrer." },
+    { q: "Vous intervenez avant la réservation ?", a: "Non. TriggerFlow intervient à partir du moment où le client a réservé : confirmation, avant l'arrivée, pendant, après." },
+    { q: "Vous vendez des billets, des activités ?", a: "Nous ne sommes pas une billetterie. Mais l'hôtel peut vendre ses services et ceux de ses partenaires (restaurant, visite) dans ses formulaires et sa guest app." },
+    { q: "Les serrures connectées, ça marche ?", a: "Oui, avec Sesame et Igloohome. Le client reçoit son code par e-mail, SMS ou WhatsApp et entre seul. Idéal pour les hôtels sans réception la nuit." },
+    { q: "Le bot IA répond comment ?", a: "À partir d'une base de connaissances de 30 à 40 questions que l'hôtel remplit une fois, et de la réservation du client (par exemple : parking inclus ou non). Il passe la main à l'équipe quand il ne sait pas. C'est un module en option." },
+    { q: "C'est quoi, une guest app ?", a: "Un livret d'accueil digital relié au séjour : infos de l'hôtel, room service, messagerie avec l'hôtel, ventes. Module en option." },
+    { q: "Vous faites aussi les newsletters ?", a: "Oui : en plus des messages liés au séjour (le transactionnel), l'hôtel envoie ses campagnes marketing (Noël, Saint-Valentin). Avantage sur Brevo ou Mailchimp : TriggerFlow connaît les séjours de chaque client." },
+    { q: "Comment savoir si le client vient pour le travail ou en couple ?", a: "On le lui demande dans le formulaire avant l'arrivée (motif du séjour), avec des relances. Les offres s'adaptent ensuite : salle de réunion pour l'un, accueil romantique pour l'autre." },
+    { q: "Vous travaillez avec les grands groupes ?", a: "Notre cœur de cible : les hôtels indépendants et les groupes de 10 à 30 hôtels. Les grandes chaînes ont souvent leurs outils et passent par des centrales d'achat : on passe la main à Soufiane ou Mounir." }
+  ];
+
+  var OFFRE = [
+    { name: "Communication", now: "69 €", salon: "62,10 €", next: "99 €", note: "Segments et messages automatisés" },
+    { name: "Conversion", now: "149 €", salon: "134,10 €", next: "179 €", note: "La plus prise : ventes en plus, enquêtes, avis" },
+    { name: "All Inclusive", now: "249 €", salon: "224,10 €", next: "299 €", note: "Tous les modules inclus" }
+  ];
+
+  /* ---------- Progression (gardée sur ce téléphone uniquement) ---------- */
+  var STORE_KEY = "tf-equiphotel-v3";
+  var P = { steps: {}, stand: {}, quizBest: null, demo: false };
+  try {
+    var raw = localStorage.getItem(STORE_KEY);
+    if (raw) {
+      var parsed = JSON.parse(raw);
+      if (parsed && typeof parsed === "object") {
+        P.steps = parsed.steps || {};
+        P.stand = parsed.stand || {};
+        P.quizBest = typeof parsed.quizBest === "number" ? parsed.quizBest : null;
+        P.demo = parsed.demo === true;
+      }
+    }
+  } catch (e) { /* stockage indisponible : la page marche sans */ }
+  function save() { try { localStorage.setItem(STORE_KEY, JSON.stringify(P)); } catch (e) { } }
+  function countDone(obj) { return Object.keys(obj).length; }
+
+  /* ---------- Utilitaires ---------- */
+  var $main = document.getElementById("main");
+  var $top = document.getElementById("top");
+  var $bar = document.getElementById("bar");
+  var $sheet = document.getElementById("sheet-root");
+  var actions = { back: null, primary: null };
+
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+  function termBtn(key, shown) { return '<button type="button" class="term" data-term="' + esc(key) + '">' + esc(shown || key) + "</button>"; }
+  function rich(text) {
+    return esc(text).replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, function (_, k, shown) {
+      var real = lexKey(k);
+      return real ? termBtn(real, shown || k) : esc(shown || k);
+    });
+  }
+  function para(list) { return list.map(function (p) { return "<p>" + rich(p) + "</p>"; }).join(""); }
+
+  function rulerHtml(i) {
+    var ticks = DAYS.map(function (d, k) {
+      var cls = (P.steps[k] ? "done" : "") + (k === i ? " here" : "");
+      return '<li class="' + cls + '"><span class="tick"></span><span class="d">' + d + "</span></li>";
+    }).join("");
+    var edge = i === 0 ? " first" : i === DAYS.length - 1 ? " last" : "";
+    var pin = i >= 0 ? '<span class="ruler-pin' + edge + '" style="--i:' + i + '">' + esc(ETAPES[i].name) + "</span>" : "";
+    return '<div class="ruler" aria-hidden="true"><div class="ruler-track"></div><span class="ruler-break">≈</span><ol class="ruler-ticks">' + ticks + "</ol>" + pin + "</div>";
+  }
+  function setTop(opts) {
+    if (!opts) { $top.hidden = true; $top.innerHTML = ""; return; }
+    $top.hidden = false;
+    $top.innerHTML = '<div class="top-inner"><div class="top-row">' +
+      '<button type="button" class="home-btn" data-act="home">' + icon("grid") + "Sommaire</button>" +
+      '<span class="top-title">' + esc(opts.title) + "</span></div>" +
+      '<div class="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + Math.round(opts.pct) + '" aria-label="Progression du module"><span style="width:' + opts.pct + '%"></span></div>' +
+      (opts.ruler != null ? rulerHtml(opts.ruler) : "") + "</div>";
+  }
+  function setBar(back, primary) {
+    var html = "";
+    if (back) html += '<button type="button" class="btn square" data-act="back" aria-label="' + esc(back.label) + '" title="' + esc(back.label) + '">' + icon("back") + "</button>";
+    if (primary) html += '<button type="button" class="btn primary" data-act="primary"' + (primary.disabled ? " disabled" : "") + "><span>" + esc(primary.label) + "</span>" + (primary.icon === false ? "" : icon("next")) + "</button>";
+    $bar.innerHTML = html;
+    actions.back = back ? back.fn : null;
+    actions.primary = primary ? primary.fn : null;
+  }
+  function paint(html) {
+    closeSheet(true);
+    $main.innerHTML = '<div class="screen">' + html + "</div>";
+    window.scrollTo(0, 0);
+  }
+
+  /* ---------- Question générique ---------- */
+  function questionBlock(item) {
+    return '<div class="opts">' + item.o.map(function (o, i) {
+      return '<button type="button" class="opt" data-o="' + i + '"><span class="letter">' + "ABC"[i] + "</span><span>" + esc(o) + "</span></button>";
+    }).join("") + '</div><div id="fb" aria-live="polite"></div>';
+  }
+  function armQuestion(item, onDone) {
+    var box = $main.querySelector(".opts");
+    box.addEventListener("click", function (e) {
+      var b = e.target.closest(".opt");
+      if (!b || b.disabled) return;
+      var chosen = +b.getAttribute("data-o");
+      var ok = chosen === item.a;
+      box.querySelectorAll(".opt").forEach(function (x, i) {
+        x.disabled = true;
+        if (i === item.a) x.classList.add("good");
+        else if (i === chosen) x.classList.add("bad");
+        else x.classList.add("faded");
+      });
+      var fb = document.getElementById("fb");
+      fb.innerHTML = '<div class="feedback ' + (ok ? "ok" : "ko") + '"><b>' + (ok ? "Bien vu !" : "Pas tout à fait.") + "</b>" + esc(item.e) + "</div>";
+      onDone(ok);
+      setTimeout(function () { fb.scrollIntoView({ behavior: "smooth", block: "nearest" }); }, 60);
+    });
+  }
+
+  /* ---------- Écrans ---------- */
+  function nextStepIndex() { for (var i = 0; i < ETAPES.length; i++) if (!P.steps[i]) return i; return -1; }
+  function firstUndoneStand() { for (var i = 0; i < STAND.length; i++) if (!(i in P.stand)) return i; return 0; }
+
+  function home() {
+    setTop(null);
+    var s = countDone(P.steps), st = countDone(P.stand);
+    function status(done, total) {
+      if (done >= total) return '<span class="status ok">Terminé</span>';
+      if (done > 0) return '<span class="status wip">' + done + " / " + total + "</span>";
+      return '<span class="status">À faire</span>';
+    }
+    var quizStatus = P.quizBest == null ? '<span class="status">À faire</span>' : '<span class="status ' + (P.quizBest >= Math.ceil(QUIZ.length * .8) ? "ok" : "wip") + '">' + P.quizBest + " / " + QUIZ.length + "</span>";
+    function fiche(go, ico, title, sub) {
+      return '<button type="button" class="lex-link" data-go="' + go + '">' + icon(ico) + "<span><b>" + title + "</b> · " + sub + "</span>" + icon("next") + "</button>";
+    }
+    paint(
+      '<section class="hero">' +
+        '<p class="eyebrow">Formation stand · Equip\'Hôtel</p>' +
+        "<h1>Prêt pour Equip'Hôtel</h1>" +
+        '<p class="lead">Du 2 au 5 novembre, pavillon 7.3, stand H006. Forme-toi en 15 minutes avec le séjour de Julie, puis garde les fiches sous la main sur le stand.</p>' +
+        rulerHtml(-1) +
+      "</section>" +
+      '<p class="label">Se former</p>' +
+      '<section class="modules" aria-label="Modules">' +
+        '<button type="button" class="module" data-go="steps"><span class="num">1</span><span><b>Le séjour de Julie</b><small>6 étapes · 5 min</small></span>' + status(s, ETAPES.length) + "</button>" +
+        '<button type="button" class="module" data-go="demo"><span class="num">2</span><span><b>Ce que montre la démo</b><small>' + DEMO.length + " écrans · 3 min</small></span>" + status(P.demo ? 1 : 0, 1) + "</button>" +
+        '<button type="button" class="module" data-go="stand"><span class="num">3</span><span><b>Sur le stand</b><small>' + STAND.length + " situations · 4 min</small></span>" + status(st, STAND.length) + "</button>" +
+        '<button type="button" class="module" data-go="quiz"><span class="num">4</span><span><b>Quiz final</b><small>' + QUIZ.length + " questions · 3 min</small></span>" + quizStatus + "</button>" +
+      "</section>" +
+      '<p class="label">Les fiches du salon</p>' +
+      '<section class="stack" aria-label="Fiches">' +
+        fiche("role", "user", "Ton rôle sur le salon", "qui fait quoi, le flyer, le formulaire") +
+        fiche("profils", "user", "Qui est en face ?", PROFILS.length + " profils de visiteurs") +
+        fiche("decouverte", "chat", "Poser les bonnes questions", DECOUVERTE.length + " questions de découverte") +
+        fiche("faq", "chat", "Les questions qu'on te posera", FAQ.length + " réponses") +
+        fiche("offre", "star", "Prix et offre salon", "à mettre en avant") +
+        fiche("lexique", "book", "Lexique", LEX_KEYS.length + " mots de l'hôtellerie") +
+      "</section>" +
+      '<p class="note">Les éléments marqués <span class="tag-option">Option</span> sont des modules qui s\'ajoutent au socle de TriggerFlow. Une question sans réponse sur le salon : écris-la dans le groupe WhatsApp. Ta progression est gardée sur ce téléphone.</p>'
+    );
+    var label, fn;
+    var ns = nextStepIndex();
+    if (s === 0) { label = "Commencer"; fn = function () { step(0); }; }
+    else if (ns >= 0) { label = "Reprendre : " + ETAPES[ns].name; fn = function () { step(ns); }; }
+    else if (!P.demo) { label = "Continuer : la démo"; fn = function () { demo(0); }; }
+    else if (st < STAND.length) { label = "Continuer : Sur le stand"; fn = function () { stand(firstUndoneStand()); }; }
+    else { label = P.quizBest == null ? "Passer le quiz final" : "Refaire le quiz"; fn = startQuiz; }
+    setBar(null, { label: label, fn: fn });
+  }
+
+  function step(i) {
+    var e = ETAPES[i];
+    setTop({ title: "Étape " + (i + 1) + " / " + ETAPES.length, pct: (i / ETAPES.length) * 100, ruler: i });
+    var autos = e.autos.map(function (a) {
+      var chips = a.canal.map(function (c) { return '<span class="chip">' + icon(CANAL_ICON[c] || "chat") + esc(c) + "</span>"; }).join("");
+      return '<div class="auto"><div class="ben">' + rich(a.ben) + (a.option ? ' <span class="tag-option">Option</span>' : "") + "</div>" +
+        '<div class="what">' + rich(a.what) + "</div>" +
+        '<div class="chips"><span class="chip when">' + icon("clock") + esc(a.when) + "</span>" + chips + "</div></div>";
+    }).join("");
+    paint(
+      '<div class="stack"><p class="eyebrow">' + esc(e.day) + " · " + esc(e.name) + "</p><h2>" + esc(e.title) + "</h2></div>" +
+      '<div class="duo">' +
+        '<section class="side"><p class="label">' + icon("user") + 'Ce que vit Julie</p><div class="prose">' + para(e.client) + "</div></section>" +
+        '<section class="side team"><p class="label">' + icon("bell") + 'En coulisses</p><div class="prose">' + para(e.team) + "</div></section>" +
+      "</div>" +
+      '<section class="stack"><p class="label">Ce que TriggerFlow fait tout seul</p><div class="autos">' + autos + "</div></section>" +
+      '<section class="say"><p class="label">La phrase à dire au salon</p><q>' + esc(e.say) + "</q></section>" +
+      '<section class="stack"><p class="label">Les mots à connaître</p><div class="term-chips">' + e.terms.map(function (t) { return termBtn(t); }).join("") + "</div></section>"
+    );
+    setBar(
+      i > 0 ? { label: "Étape précédente", fn: function () { step(i - 1); } } : { label: "Sommaire", fn: home },
+      { label: "Vérifier", fn: function () { check(i); } }
+    );
+  }
+
+  function check(i) {
+    var item = ETAPES[i].check;
+    var title = "Étape " + (i + 1) + " / " + ETAPES.length + " · vérification";
+    setTop({ title: title, pct: ((i + .5) / ETAPES.length) * 100, ruler: i });
+    paint('<div class="stack"><p class="eyebrow">Petite vérification</p><p class="question">' + esc(item.q) + "</p></div>" + questionBlock(item));
+    var last = i === ETAPES.length - 1;
+    var back = { label: "Revoir l'étape", fn: function () { step(i); } };
+    var go = { label: last ? "Terminer le séjour" : "Étape suivante", fn: function () { last ? stepsDone() : step(i + 1); }, disabled: true };
+    setBar(back, go);
+    armQuestion(item, function () {
+      P.steps[i] = true; save();
+      go.disabled = false;
+      setBar(back, go);
+      setTop({ title: title, pct: ((i + 1) / ETAPES.length) * 100, ruler: i });
+    });
+  }
+
+  function stepsDone() {
+    setTop({ title: "Le séjour de Julie", pct: 100, ruler: ETAPES.length - 1 });
+    paint(
+      '<div class="result"><p class="eyebrow">Module 1 terminé</p><h2>Tu connais le séjour de Julie</h2>' +
+      '<p class="lead">Six moments, et à chacun, des messages qui partent tout seuls. Voyons maintenant ce que Soufiane et Mounir montrent en démo.</p></div>'
+    );
+    setBar({ label: "Sommaire", fn: home }, { label: "Ce que montre la démo", fn: function () { demo(0); } });
+  }
+
+  function demo(i) {
+    var d = DEMO[i];
+    var title = "La démo · " + (i + 1) + " / " + DEMO.length;
+    setTop({ title: title, pct: ((i + 1) / DEMO.length) * 100 });
+    paint(
+      '<div class="stack"><p class="eyebrow">Écran ' + (i + 1) + " de la démo</p><h2>" + esc(d.title) + "</h2></div>" +
+      '<section class="side"><div class="prose"><p>' + esc(d.body) + "</p></div></section>" +
+      '<section class="say"><p class="label">La phrase à retenir</p><q>' + esc(d.say) + "</q></section>"
+    );
+    var last = i === DEMO.length - 1;
+    setBar(
+      i > 0 ? { label: "Écran précédent", fn: function () { demo(i - 1); } } : { label: "Sommaire", fn: home },
+      { label: last ? "Passer au stand" : "Écran suivant", fn: function () {
+        if (!last) { demo(i + 1); return; }
+        P.demo = true; save(); stand(firstUndoneStand());
+      } }
+    );
+  }
+
+  function stand(i) {
+    var s = STAND[i];
+    var title = "Sur le stand · " + (i + 1) + " / " + STAND.length;
+    setTop({ title: title, pct: (i / STAND.length) * 100 });
+    paint(
+      '<p class="eyebrow">Mise en situation ' + (i + 1) + "</p>" +
+      '<div class="convo"><div class="who"><span class="avatar" aria-hidden="true">' + esc(s.init) + "</span><span><b>" + esc(s.who) + "</b><small>" + esc(s.role) + "</small></span></div>" +
+      '<p class="context">' + esc(s.context) + '</p><div class="bubble">' + esc(s.say) + "</div></div>" +
+      '<p class="label">Ta meilleure réponse ?</p>' + questionBlock(s)
+    );
+    var last = i === STAND.length - 1;
+    var back = i > 0 ? { label: "Situation précédente", fn: function () { stand(i - 1); } } : { label: "Sommaire", fn: home };
+    var go = { label: last ? "Voir mon bilan" : "Situation suivante", fn: function () { last ? standDone() : stand(i + 1); }, disabled: true };
+    setBar(back, go);
+    armQuestion(s, function (ok) {
+      P.stand[i] = ok; save();
+      go.disabled = false;
+      setBar(back, go);
+      setTop({ title: title, pct: ((i + 1) / STAND.length) * 100 });
+    });
+  }
+
+  function standDone() {
+    var good = STAND.filter(function (_, i) { return P.stand[i] === true; }).length;
+    var missed = STAND.map(function (_, i) { return P.stand[i] === true ? null : i; }).filter(function (x) { return x !== null; });
+    setTop({ title: "Sur le stand", pct: 100 });
+    paint(
+      '<div class="result"><p class="eyebrow">Module 2 terminé</p><div class="big">' + good + "<small> / " + STAND.length + "</small></div>" +
+      '<p class="lead">' + (good === STAND.length ? "Parfait. Tu sais accrocher, filtrer et passer le relais." : "Les bons réflexes : des questions avant tout, jamais de « oui » ou de « non » au hasard, toujours le relais vers la démo.") + "</p></div>" +
+      (missed.length ? '<section class="stack"><p class="label">À rejouer</p><div class="review">' + missed.map(function (i) {
+        return '<button type="button" class="btn ghost" data-stand="' + i + '">' + icon("redo") + "<span>" + esc(STAND[i].say) + "</span></button>";
+      }).join("") + "</div></section>" : "")
+    );
+    setBar({ label: "Sommaire", fn: home }, { label: "Quiz final", fn: startQuiz });
+  }
+
+  /* Quiz : une question par écran, puis on rejoue les erreurs */
+  var Q = null;
+  function startQuiz() { Q = { queue: QUIZ.map(function (_, i) { return i; }), pos: 0, firstTry: {}, retry: false }; quiz(); }
+  function quiz() {
+    var qi = Q.queue[Q.pos], item = QUIZ[qi], total = Q.queue.length;
+    var title = (Q.retry ? "Rattrapage · " : "Quiz · ") + (Q.pos + 1) + " / " + total;
+    setTop({ title: title, pct: (Q.pos / total) * 100 });
+    paint('<div class="stack"><p class="eyebrow">' + (Q.retry ? "On rejoue tes erreurs" : "Question " + (Q.pos + 1)) + '</p><p class="question">' + esc(item.q) + "</p></div>" + questionBlock(item));
+    var last = Q.pos === total - 1;
+    var back = { label: "Sommaire", fn: home };
+    var go = { label: last ? "Voir mon score" : "Question suivante", fn: function () { if (last) quizDone(); else { Q.pos++; quiz(); } }, disabled: true };
+    setBar(back, go);
+    armQuestion(item, function (ok) {
+      if (!Q.retry) Q.firstTry[qi] = ok;
+      go.disabled = false;
+      setBar(back, go);
+      setTop({ title: title, pct: ((Q.pos + 1) / total) * 100 });
+    });
+  }
+  function quizDone() {
+    var good = QUIZ.filter(function (_, i) { return Q.firstTry[i] === true; }).length;
+    if (!Q.retry) { P.quizBest = Math.max(P.quizBest || 0, good); save(); }
+    var missed = QUIZ.map(function (_, i) { return Q.firstTry[i] === true ? null : i; }).filter(function (x) { return x !== null; });
+    var msg = good >= Math.ceil(QUIZ.length * .9) ? "Tu es prêt·e pour le salon !" : good >= Math.ceil(QUIZ.length * .6) ? "Pas mal. Rejoue tes erreurs et relis les fiches du salon." : "Refais un tour du séjour de Julie et des fiches, puis retente le quiz.";
+    var steps = {};
+    missed.forEach(function (i) { if (QUIZ[i].step != null) steps[QUIZ[i].step] = true; });
+    setTop({ title: "Quiz final", pct: 100 });
+    paint(
+      '<div class="result"><p class="eyebrow">' + (Q.retry ? "Rattrapage terminé · score du premier essai" : "Ton score") + '</p><div class="big">' + good + "<small> / " + QUIZ.length + "</small></div>" +
+      '<p class="lead">' + msg + "</p></div>" +
+      (Object.keys(steps).length ? '<section class="stack"><p class="label">Étapes à revoir</p><div class="review">' + Object.keys(steps).map(function (k) {
+        return '<button type="button" class="btn ghost" data-step="' + k + '">' + icon("redo") + "<span>" + esc(ETAPES[k].day + " · " + ETAPES[k].name) + "</span></button>";
+      }).join("") + "</div></section>" : "")
+    );
+    if (missed.length && !Q.retry) {
+      var firstTry = Q.firstTry;
+      setBar({ label: "Sommaire", fn: home }, { label: "Rejouer mes " + missed.length + " erreur" + (missed.length > 1 ? "s" : ""), fn: function () { Q = { queue: missed, pos: 0, firstTry: firstTry, retry: true }; quiz(); } });
+    } else {
+      setBar(null, { label: "Retour au sommaire", fn: home, icon: false });
+    }
+  }
+
+  /* ---------- Fiches du salon : à consulter sur le stand ---------- */
+  function fichePage(title, eyebrow, h2, html) {
+    setTop({ title: title, pct: 100 });
+    paint('<div class="stack"><p class="eyebrow">' + esc(eyebrow) + "</p><h2>" + esc(h2) + "</h2></div>" + html);
+    setBar(null, { label: "Retour au sommaire", fn: home, icon: false });
+  }
+
+  function role() {
+    fichePage("Ton rôle sur le salon", "Equip'Hôtel · 2 au 5 novembre", "Ton rôle sur le salon",
+      ROLE.map(function (r) {
+        return '<section class="side"><p class="label">' + esc(r.label) + '</p><div class="prose">' + r.body.map(function (p) { return "<p>" + esc(p) + "</p>"; }).join("") + "</div></section>";
+      }).join("")
+    );
+  }
+
+  function profils() {
+    fichePage("Qui est en face ?", "Les profils de visiteurs", "Qui est en face ?",
+      '<p class="lead">Repère vite à qui tu parles : ton temps va aux hôteliers qui décident.</p>' +
+      PROFILS.map(function (p) {
+        return '<section class="side profil"><div class="who"><span class="avatar" aria-hidden="true">' + esc(p.init) + "</span><span><b>" + esc(p.who) + '</b><small class="tag">' + esc(p.tag) + "</small></span></div>" +
+          '<dl class="facts"><dt>Comment le repérer</dt><dd>' + esc(p.spot) + "</dd><dt>Quoi dire</dt><dd>" + esc(p.say) + "</dd><dt>Quoi faire</dt><dd>" + esc(p.act) + "</dd></dl></section>";
+      }).join("")
+    );
+  }
+
+  function decouverte() {
+    fichePage("Poser les bonnes questions", "Avant de présenter quoi que ce soit", "Poser les bonnes questions",
+      '<section class="say"><p class="label">La règle</p><q>Ne parle pas en premier. Sans questions, tu vises les yeux fermés : tu risques de parler upsell à quelqu\'un dont le problème, c\'est Booking.</q></section>' +
+      '<section class="stack"><p class="label">Les questions de découverte</p><ol class="steps-list">' + DECOUVERTE.map(function (q) { return "<li>" + esc(q) + "</li>"; }).join("") + "</ol></section>" +
+      '<section class="side"><p class="label">Amener la démo</p><div class="prose"><p>Quand le besoin est là : « Le mieux, c\'est que Soufiane ou Mounir vous montre en 20 minutes. Maintenant, ou plutôt cet après-midi ? »</p><p>Le ton s\'adapte à la personne : certains tutoient, d\'autres vouvoient, certains sont en costume, d\'autres en survêt.</p></div></section>'
+    );
+  }
+
+  function faq() {
+    fichePage("Questions fréquentes", "Ce qu'on te demandera sur le stand", "Les questions qu'on te posera",
+      '<div class="stack"><label class="label" for="faq-q">Chercher</label><input id="faq-q" class="search" type="search" placeholder="Par exemple : Booking, prix, Mews" autocomplete="off"></div>' +
+      '<div class="lex" id="faq-list"></div>' +
+      '<p class="note">Pas de réponse ici ? Ni oui ni non au hasard : tu passes le relais et tu poses la question dans le groupe WhatsApp.</p>'
+    );
+    var list = document.getElementById("faq-list");
+    function draw(f) {
+      var n = f.trim().toLowerCase();
+      var items = FAQ.filter(function (x) { return !n || x.q.toLowerCase().indexOf(n) >= 0 || x.a.toLowerCase().indexOf(n) >= 0; });
+      list.innerHTML = items.length
+        ? items.map(function (x) { return "<details><summary>" + esc(x.q) + "</summary><p>" + esc(x.a) + "</p></details>"; }).join("")
+        : '<p class="empty">Aucune réponse ne correspond. Pose la question dans le groupe WhatsApp.</p>';
+    }
+    document.getElementById("faq-q").addEventListener("input", function (e) { draw(e.target.value); });
+    draw("");
+  }
+
+  function offre() {
+    var rows = OFFRE.map(function (o) {
+      return '<div class="price-row"><div><b>' + esc(o.name) + "</b><small>" + esc(o.note) + "</small></div>" +
+        '<div class="num-col"><span class="was">' + esc(o.now) + '</span><span class="now">' + esc(o.salon) + "</span></div></div>";
+    }).join("");
+    fichePage("Prix et offre salon", "Les prix sont publics", "Prix et offre salon",
+      '<section class="say"><p class="label">À mettre en avant</p><q>Signez pendant le salon : 10 % de moins sur le tarif 2026, bloqué pendant toute la durée du contrat, et 2 mois offerts.</q></section>' +
+      '<section class="stack"><p class="label">Par mois · tarif 2026, puis signé sur le stand</p><div class="prices">' + rows + "</div></section>" +
+      '<section class="side"><p class="label">À savoir</p><div class="prose">' +
+        "<p><b>Réponse simple :</b> « Autour de 150 € par mois pour l'essentiel. Et si vous signez pendant le salon, c'est 10 % de moins, à vie, plus 2 mois offerts. »</p>" +
+        "<p><b>Au 1er janvier 2027</b>, les prix montent : " + OFFRE.map(function (o) { return esc(o.name) + " " + esc(o.next); }).join(", ") + ".</p>" +
+        "<p><b>Après le salon :</b> 2 mois offerts pour toute signature jusqu'au 30 novembre, tarif 2026 bloqué pour toute signature avant le 31 décembre. Les 10 % sont réservés au stand.</p>" +
+        "<p><b>Sans engagement.</b> Pour un groupe, les 2 mois sont offerts par hôtel. Le tarif bloqué concerne l'abonnement : les crédits SMS, WhatsApp et IA restent au tarif en vigueur.</p>" +
+        "<p><b>Formule Découverte :</b> gratuite, sans carte bancaire, pour tester ses premiers scénarios clients. L'offre salon porte sur les formules payantes.</p>" +
+        "<p><b>Un groupe de plusieurs hôtels ?</b> « Ça dépend du nombre d'hôtels » : tu passes la main à Soufiane ou Mounir.</p>" +
+      "</div></section>"
+    );
+  }
+
+  function lexique() {
+    setTop({ title: "Lexique · " + LEX_KEYS.length + " mots", pct: 100 });
+    paint(
+      '<div class="stack"><p class="eyebrow">À réviser avant le salon</p><h2>Lexique</h2></div>' +
+      '<div class="stack"><label class="label" for="lex-q">Chercher un mot</label><input id="lex-q" class="search" type="search" placeholder="Par exemple : RevPAR" autocomplete="off"></div>' +
+      '<div class="lex" id="lex-list"></div>'
+    );
+    var list = document.getElementById("lex-list");
+    var sorted = LEX_KEYS.slice().sort(function (a, b) { return a.localeCompare(b, "fr"); });
+    function draw(f) {
+      var n = f.trim().toLowerCase();
+      var keys = sorted.filter(function (k) { return !n || k.toLowerCase().indexOf(n) >= 0 || LEXIQUE[k].toLowerCase().indexOf(n) >= 0; });
+      list.innerHTML = keys.length
+        ? keys.map(function (k) { return "<details><summary>" + esc(k) + "</summary><p>" + esc(LEXIQUE[k]) + "</p></details>"; }).join("")
+        : '<p class="empty">Aucun mot ne correspond. Essaie un autre terme, ou note-le pour Soufiane.</p>';
+    }
+    document.getElementById("lex-q").addEventListener("input", function (e) { draw(e.target.value); });
+    draw("");
+    setBar(null, { label: "Retour au sommaire", fn: home, icon: false });
+  }
+
+  /* ---------- Panneau de définition ---------- */
+  var lastFocus = null;
+  function openSheet(key) {
+    lastFocus = document.activeElement;
+    $sheet.innerHTML = '<div class="sheet-scrim" data-act="close-sheet"></div>' +
+      '<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-t"><div class="grab"></div><h3 id="sheet-t">' + esc(key) + "</h3><p>" + esc(LEXIQUE[key]) + "</p>" +
+      '<button type="button" class="btn primary" data-act="close-sheet"><span>J\'ai compris</span></button></div>';
+    var btn = $sheet.querySelector(".sheet .btn");
+    if (btn) btn.focus();
+  }
+  function closeSheet(silent) {
+    if (!$sheet.innerHTML) return;
+    $sheet.innerHTML = "";
+    if (!silent && lastFocus && document.body.contains(lastFocus)) lastFocus.focus();
+  }
+
+  /* ---------- Délégation des clics ---------- */
+  document.addEventListener("click", function (e) {
+    var t = e.target.closest("[data-term],[data-act],[data-go],[data-stand],[data-step]");
+    if (!t) return;
+    if (t.hasAttribute("data-term")) { openSheet(t.getAttribute("data-term")); return; }
+    var act = t.getAttribute("data-act");
+    if (act === "close-sheet") { closeSheet(); return; }
+    if (act === "home") { home(); return; }
+    if (act === "back") { if (actions.back) actions.back(); return; }
+    if (act === "primary") { if (actions.primary) actions.primary(); return; }
+    var go = t.getAttribute("data-go");
+    if (go === "steps") { var n = nextStepIndex(); step(n < 0 ? 0 : n); return; }
+    if (go === "stand") { stand(countDone(P.stand) >= STAND.length ? 0 : firstUndoneStand()); return; }
+    if (go === "quiz") { startQuiz(); return; }
+    if (go === "lexique") { lexique(); return; }
+    if (go === "demo") { demo(0); return; }
+    if (go === "role") { role(); return; }
+    if (go === "profils") { profils(); return; }
+    if (go === "decouverte") { decouverte(); return; }
+    if (go === "faq") { faq(); return; }
+    if (go === "offre") { offre(); return; }
+    if (t.hasAttribute("data-stand")) { stand(+t.getAttribute("data-stand")); return; }
+    if (t.hasAttribute("data-step")) { step(+t.getAttribute("data-step")); return; }
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeSheet(); });
+
+  home();
+})();
+</script>
+</body>
+</html>
