@@ -12,8 +12,8 @@ import { FORMATION_HTML } from '@/lib/formation-salon/html';
 
 export const dynamic = 'force-dynamic';
 
-// `.trim()` : un secret collé avec un retour à la ligne dans le tableau de
-// bord Cloudflare ne correspondrait à aucune saisie.
+// `.trim()` : un secret collé avec un retour à la ligne ne correspondrait à
+// aucune saisie.
 const PASSWORD = process.env.FORMATION_SALON_PASSWORD?.trim();
 
 const PATH = '/formation-salon';

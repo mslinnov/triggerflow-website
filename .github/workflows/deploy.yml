@@ -92,13 +92,16 @@ jobs:
           # (/doc/<document>/<suffixe>). Sans ce secret, la page est servie
           # normalement mais AUCUNE ouverture n'est comptee, en silence.
           DOCUMENT_VIEW_SECRET: ${{ secrets.DOCUMENT_VIEW_SECRET }}
+          # Mot de passe de la formation du stand (/formation-salon). Sans lui,
+          # la route reste fermee (503) : jamais la formation sans mot de passe.
+          FORMATION_SALON_PASSWORD: ${{ secrets.FORMATION_SALON_PASSWORD }}
         with:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USER }}
           key: ${{ secrets.DEPLOY_SSH_KEY }}
           port: 22
           command_timeout: 5m
-          envs: BREVO_API_KEY,BREVO_LIST_ID,BREVO_LEADS_LIST_ID,LEADS_NOTIFICATION_EMAIL,TRIGGERFLOW_API_URL,LEAD_MAGNET_SECRET,DOCUMENT_VIEW_SECRET
+          envs: BREVO_API_KEY,BREVO_LIST_ID,BREVO_LEADS_LIST_ID,LEADS_NOTIFICATION_EMAIL,TRIGGERFLOW_API_URL,LEAD_MAGNET_SECRET,DOCUMENT_VIEW_SECRET,FORMATION_SALON_PASSWORD
           script: |
             set -euo pipefail
             cd /srv/triggerflow-website
@@ -110,7 +113,7 @@ jobs:
             ENV_FILE=.env.production.local
             touch "$ENV_FILE"
             chmod 600 "$ENV_FILE"
-            grep -v -E '^(BREVO_API_KEY|BREVO_LIST_ID|BREVO_LEADS_LIST_ID|LEADS_NOTIFICATION_EMAIL|TRIGGERFLOW_API_URL|LEAD_MAGNET_SECRET|DOCUMENT_VIEW_SECRET)=' "$ENV_FILE" > "$ENV_FILE.tmp" || true
+            grep -v -E '^(BREVO_API_KEY|BREVO_LIST_ID|BREVO_LEADS_LIST_ID|LEADS_NOTIFICATION_EMAIL|TRIGGERFLOW_API_URL|LEAD_MAGNET_SECRET|DOCUMENT_VIEW_SECRET|FORMATION_SALON_PASSWORD)=' "$ENV_FILE" > "$ENV_FILE.tmp" || true
             mv "$ENV_FILE.tmp" "$ENV_FILE"
             # Une variable non fournie n'est pas ecrite, pour ne pas ecraser une
             # valeur deja presente ailleurs par une chaine vide.
@@ -121,11 +124,12 @@ jobs:
             [ -n "${TRIGGERFLOW_API_URL:-}" ] && printf 'TRIGGERFLOW_API_URL=%s\n' "$TRIGGERFLOW_API_URL" >> "$ENV_FILE"
             [ -n "${LEAD_MAGNET_SECRET:-}" ] && printf 'LEAD_MAGNET_SECRET=%s\n' "$LEAD_MAGNET_SECRET" >> "$ENV_FILE"
             [ -n "${DOCUMENT_VIEW_SECRET:-}" ] && printf 'DOCUMENT_VIEW_SECRET=%s\n' "$DOCUMENT_VIEW_SECRET" >> "$ENV_FILE"
+            [ -n "${FORMATION_SALON_PASSWORD:-}" ] && printf 'FORMATION_SALON_PASSWORD=%s\n' "$FORMATION_SALON_PASSWORD" >> "$ENV_FILE"
             true
             chmod 600 "$ENV_FILE"
 
             # Diagnostic : presence uniquement, jamais les valeurs.
-            for key in BREVO_API_KEY BREVO_LEADS_LIST_ID LEADS_NOTIFICATION_EMAIL TRIGGERFLOW_API_URL LEAD_MAGNET_SECRET DOCUMENT_VIEW_SECRET; do
+            for key in BREVO_API_KEY BREVO_LEADS_LIST_ID LEADS_NOTIFICATION_EMAIL TRIGGERFLOW_API_URL LEAD_MAGNET_SECRET DOCUMENT_VIEW_SECRET FORMATION_SALON_PASSWORD; do
               if grep -qE "^${key}=." .env* 2>/dev/null; then
                 echo "  ${key}: present dans un fichier .env"
               else

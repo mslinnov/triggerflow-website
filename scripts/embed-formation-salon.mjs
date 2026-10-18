@@ -3,9 +3,9 @@
  * module TypeScript servi par src/app/formation-salon/route.ts.
  *
  * Pourquoi un module et pas un fichier de public/ : tout fichier de public/
- * est servi tel quel, sans passer par la route, donc sans mot de passe. Et le
- * Worker Cloudflare n'a pas de système de fichiers pour lire le HTML à la
- * demande : il doit faire partie du bundle.
+ * est servi tel quel, sans passer par la route, donc sans mot de passe. Et un
+ * module fait partie du bundle : il marche aussi bien avec `next start` qu'avec
+ * le build OpenNext du dépôt, qui n'a pas de système de fichiers.
  *
  * À relancer après chaque modification du HTML :
  *   node scripts/embed-formation-salon.mjs

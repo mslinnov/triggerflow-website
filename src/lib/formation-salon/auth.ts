@@ -1,9 +1,9 @@
 /**
  * Accès à la formation du stand Equip'Hôtel (/formation-salon).
  *
- * Un seul mot de passe partagé par l'équipe du salon, posé en secret Cloudflare
- * (FORMATION_SALON_PASSWORD). Une fois saisi, un cookie garde l'accès 30 jours
- * sur le téléphone.
+ * Un seul mot de passe partagé par l'équipe du salon : secret GitHub
+ * FORMATION_SALON_PASSWORD, écrit dans .env.production.local par le déploiement.
+ * Une fois saisi, un cookie garde l'accès 30 jours sur le téléphone.
  *
  * Le cookie ne contient pas le mot de passe : il porte un HMAC calculé AVEC le
  * mot de passe comme clé. Changer le secret invalide donc tous les cookies
