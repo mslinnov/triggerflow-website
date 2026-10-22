@@ -1,9 +1,9 @@
 ---
 title: "Accord de sous-traitance (DPA)"
 slug: "dpa"
-version: "1.0"
+version: "1.1"
 effectiveDate: "2026-06-04"
-lastUpdated: "2026-06-04"
+lastUpdated: "2026-10-22"
 metaTitle: "Accord de sous-traitance (DPA)"
 metaDescription: "Accord de sous-traitance de TriggerFlow conforme à l'article 28 du RGPD : objet, obligations, sécurité, sous-traitants ultérieurs et transferts."
 ---
@@ -87,13 +87,15 @@ Lorsqu'un traitement implique un transfert de données hors de l'Union européen
 
 | Catégorie | Prestataire | Localisation |
 |---|---|---|
-| Hébergement infrastructure | DigitalOcean | Union européenne |
+| Hébergement infrastructure | Scaleway | France (Union européenne) |
 | Envoi d'emails | Mailgun | Union européenne |
 | Envoi de SMS | Twilio, Gateway API | Union européenne / international |
 | Paiement par carte | Stripe | Union européenne (Irlande) |
 | Prélèvements SEPA | GoCardless | Union européenne / Royaume-Uni |
 | Mesure d'audience | Google Analytics | États-Unis |
-| Assistance par intelligence artificielle | Anthropic | États-Unis |
+| Messagerie WhatsApp | Meta Platforms | Union européenne (Irlande) / États-Unis |
+| Assistance par intelligence artificielle | Anthropic, OpenAI | États-Unis |
+| Suivi des erreurs techniques | Bugsnag (SmartBear) | États-Unis |
 
 ## Annexe 2 : Mesures techniques et organisationnelles
 
@@ -111,7 +113,7 @@ Lorsqu'un traitement implique un transfert de données hors de l'Union européen
 Certaines fonctionnalités s'appuient sur des modèles d'IA (aide à la rédaction, résumé et analyse de conversations, traduction). Elles sont **activées à la demande** par le Responsable de traitement.
 
 - **Minimisation** : les données sont, autant que possible, anonymisées ou pseudonymisées avant traitement ; certaines données personnelles (notamment le contenu des messages) peuvent toutefois être transmises au modèle, le temps de produire le résultat demandé.
-- **Fournisseur** : Anthropic, traitement aux États-Unis encadré par les Clauses Contractuelles Types et le chiffrement des communications.
+- **Fournisseurs** : Anthropic et OpenAI, traitement aux États-Unis encadré par les Clauses Contractuelles Types et le chiffrement des communications.
 - **Non-entraînement** : les données transmises ne sont pas utilisées pour entraîner les modèles.
 - **Aucune décision automatisée** produisant des effets juridiques ou significatifs au sens de l'article 22 du RGPD.
 
