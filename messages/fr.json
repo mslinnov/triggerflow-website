@@ -1757,7 +1757,7 @@
   "mewsIntegration": {
     "meta": {
       "title": "CRM hôtelier pour Mews - Automatisez votre relation client",
-      "description": "Connectez Mews à un CRM conçu pour l'hôtellerie. Synchronisation bidirectionnelle temps réel, emails pré-séjour, upselling automatisé, fidélité. 120+ hôtels connectés. Configuration en 15 min."
+      "description": "Connectez Mews à un CRM conçu pour l'hôtellerie. Synchronisation bidirectionnelle temps réel, emails pré-séjour, upselling automatisé, fidélité. Configuration en 15 min."
     },
     "breadcrumb": {
       "integrations": "Intégrations",
@@ -1778,10 +1778,6 @@
     },
     "trustBar": {
       "stats": {
-        "hotels": {
-          "value": "120+",
-          "label": "hôtels sous Mews connectés"
-        },
         "openRate": {
           "value": "62%",
           "label": "taux d'ouverture emails pré-séjour"

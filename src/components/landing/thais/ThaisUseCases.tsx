@@ -22,7 +22,6 @@ const useCases = [
     role: 'Directrice',
     results: [
       'Automatisation complète des emails pré/post séjour',
-      '200+ avis Google collectés automatiquement',
       '15h/semaine économisées sur la gestion manuelle',
     ],
   },

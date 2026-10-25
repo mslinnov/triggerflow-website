@@ -1749,7 +1749,7 @@
   "mewsIntegration": {
     "meta": {
       "title": "Hotel CRM for Mews: Automate Your Guest Relations",
-      "description": "Connect Mews to a CRM built for hospitality. Real-time bidirectional sync, pre-stay emails, automated upselling, loyalty. 120+ hotels connected. Setup in 15 min."
+      "description": "Connect Mews to a CRM built for hospitality. Real-time bidirectional sync, pre-stay emails, automated upselling, loyalty. Setup in 15 min."
     },
     "breadcrumb": {
       "integrations": "Integrations",
@@ -1770,10 +1770,6 @@
     },
     "trustBar": {
       "stats": {
-        "hotels": {
-          "value": "120+",
-          "label": "Mews hotels connected"
-        },
         "openRate": {
           "value": "62%",
           "label": "pre-stay email open rate"
