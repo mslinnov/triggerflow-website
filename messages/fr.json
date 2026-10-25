@@ -530,7 +530,7 @@
     "steps": {
       "connect": {
         "title": "Connectez votre PMS",
-        "description": "Intégration native avec 12 PMS, dont Mews, Opera Cloud, Thaïs et Medialog. Vos données clients se synchronisent en temps réel."
+        "description": "Intégration native avec 13 PMS, dont Mews, Opera Cloud, Thaïs et Medialog. Vos données clients se synchronisent en temps réel."
       },
       "create": {
         "title": "Configurez vos workflows",
@@ -696,8 +696,8 @@
   "integrationsShowcase": {
     "badge": "Intégrations",
     "title": "Connecté à votre écosystème",
-    "subtitle": "Intégration native avec 12 PMS et vos outils hôteliers",
-    "count": "12 PMS connectés",
+    "subtitle": "Intégration native avec 13 PMS et vos outils hôteliers",
+    "count": "13 PMS connectés",
     "cta": "Voir toutes les intégrations"
   },
   "testimonialsCarousel": {
@@ -1187,8 +1187,8 @@
   },
   "integrations": {
     "meta": {
-      "title": "Intégrations PMS hôtel : 12 PMS connectés nativement",
-      "description": "Connectez TriggerFlow à votre PMS (12 PMS connectés, dont Mews, Opera Cloud, Thaïs, Misterbooking) et à vos outils hôteliers. Synchronisation temps réel sans développement."
+      "title": "Intégrations PMS hôtel : 13 PMS connectés nativement",
+      "description": "Connectez TriggerFlow à votre PMS (13 PMS connectés, dont Mews, Opera Cloud, Thaïs, Misterbooking) et à vos outils hôteliers. Synchronisation temps réel sans développement."
     },
     "hero": {
       "title": "Connectez TriggerFlow à vos outils",
@@ -1232,10 +1232,6 @@
           "leanpms": {
             "name": "Lean PMS",
             "description": "PMS léger et moderne"
-          },
-          "chloe": {
-            "name": "Chloë PMS",
-            "description": "PMS intuitif pour hôteliers"
           },
           "vega": {
             "name": "Vega",
@@ -1454,7 +1450,7 @@
     },
     "trustBadges": {
       "rgpd": "Conforme RGPD",
-      "pms": "12 PMS connectés",
+      "pms": "13 PMS connectés",
       "support": "Support 7j/7"
     },
     "badges": {
@@ -1468,7 +1464,7 @@
   "product": {
     "meta": {
       "title": "CRM hôtelier tout-en-un - Email, SMS, WhatsApp, Workflows",
-      "description": "Plateforme tout-en-un pour hôteliers : CRM, email, SMS, WhatsApp, workflows automatisés, fidélité, avis Google. Connecté à 12 PMS."
+      "description": "Plateforme tout-en-un pour hôteliers : CRM, email, SMS, WhatsApp, workflows automatisés, fidélité, avis Google. Connecté à 13 PMS."
     },
     "hero": {
       "title": "Une plateforme complète pour votre relation client",
@@ -2752,7 +2748,7 @@
           "text": "Liens de paiement · Acomptes · Statistiques · Rapports"
         }
       },
-      "pms": "Connecté à votre PMS · 12 PMS intégrés",
+      "pms": "Connecté à votre PMS · 13 PMS intégrés",
       "badges": {
         "setup": "Opérationnel en 48 heures",
         "support": "Support 7j/7",

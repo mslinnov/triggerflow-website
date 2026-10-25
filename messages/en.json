@@ -125,7 +125,7 @@
     },
     "trustBadges": {
       "rgpd": "GDPR Compliant",
-      "pms": "12 PMS connected",
+      "pms": "13 PMS connected",
       "support": "Support 7 days a week"
     }
   },
@@ -530,7 +530,7 @@
     "steps": {
       "connect": {
         "title": "Connect your PMS",
-        "description": "Native integration with 12 PMS, including Mews, Opera Cloud, Thaïs and Medialog. Your guest data syncs automatically."
+        "description": "Native integration with 13 PMS, including Mews, Opera Cloud, Thaïs and Medialog. Your guest data syncs automatically."
       },
       "create": {
         "title": "Create your automations",
@@ -696,8 +696,8 @@
   "integrationsShowcase": {
     "badge": "Integrations",
     "title": "Works with your PMS",
-    "subtitle": "Native connection with 12 PMS and your hotel tools",
-    "count": "12 PMS connected",
+    "subtitle": "Native connection with 13 PMS and your hotel tools",
+    "count": "13 PMS connected",
     "cta": "View all integrations"
   },
   "testimonialsCarousel": {
@@ -1179,8 +1179,8 @@
   },
   "integrations": {
     "meta": {
-      "title": "Hotel PMS Integrations: 12 PMS Connected Natively",
-      "description": "Connect TriggerFlow to your PMS (12 PMS connected, including Mews, Opera Cloud, Thaïs, Misterbooking) and your hotel tools. Real-time sync without development."
+      "title": "Hotel PMS Integrations: 13 PMS Connected Natively",
+      "description": "Connect TriggerFlow to your PMS (13 PMS connected, including Mews, Opera Cloud, Thaïs, Misterbooking) and your hotel tools. Real-time sync without development."
     },
     "hero": {
       "title": "Connect TriggerFlow to your tools",
@@ -1224,10 +1224,6 @@
           "leanpms": {
             "name": "Lean PMS",
             "description": "Lightweight and modern PMS"
-          },
-          "chloe": {
-            "name": "Chloë PMS",
-            "description": "Intuitive PMS for hoteliers"
           },
           "vega": {
             "name": "Vega",
@@ -1446,7 +1442,7 @@
     },
     "trustBadges": {
       "rgpd": "GDPR Compliant",
-      "pms": "12 PMS connected",
+      "pms": "13 PMS connected",
       "support": "Support 7 days a week"
     },
     "badges": {
@@ -1460,7 +1456,7 @@
   "product": {
     "meta": {
       "title": "All-in-One Hotel CRM - Email, SMS, WhatsApp, Workflows",
-      "description": "All-in-one platform for hoteliers: CRM, email, SMS, WhatsApp, automated workflows, loyalty, Google reviews. Connected to 12 PMS."
+      "description": "All-in-one platform for hoteliers: CRM, email, SMS, WhatsApp, automated workflows, loyalty, Google reviews. Connected to 13 PMS."
     },
     "hero": {
       "title": "A complete platform for your customer relationship",

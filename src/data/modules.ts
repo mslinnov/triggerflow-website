@@ -695,7 +695,7 @@ export const modules: Record<string, ModuleData> = {
       'TriggerFlow exécute vos workflows 24h/24, week-ends et jours fériés inclus, jamais de tâche oubliée'
     ],
     stats: [
-      { value: '12', label: 'PMS connectés pour déclencher vos scénarios', suffix: '' },
+      { value: '13', label: 'PMS connectés pour déclencher vos scénarios', suffix: '' },
       { value: '0', label: 'compétence technique requise', suffix: '' },
       { value: '24', label: 'heures sur 24 de fonctionnement', suffix: '/7' },
       { value: '5', label: 'pour créer un workflow', suffix: 'min' },
@@ -806,7 +806,7 @@ export const modules: Record<string, ModuleData> = {
     stats: [
       { value: '360', label: 'vue complète de chaque client', suffix: '°' },
       { value: '0', label: 'saisie manuelle nécessaire', suffix: '' },
-      { value: '12', label: 'PMS connectés', suffix: '' },
+      { value: '13', label: 'PMS connectés', suffix: '' },
       { value: '1', label: 'profil par client, tous canaux confondus', suffix: '' },
     ],
     journey: [

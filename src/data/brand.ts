@@ -43,6 +43,7 @@ export const brand = {
     'Beds24',
     'Zeswitch',
     'Reservit',
+    'Lean PMS',
   ],
   knowsAbout: {
     fr: ['CRM hôtelier', 'marketing automation hôtelier', 'enquête de satisfaction hôtel', 'gestion des avis clients', 'ventes additionnelles hôtel', 'fidélisation client hôtel'],

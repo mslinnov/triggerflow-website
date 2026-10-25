@@ -41,7 +41,6 @@ const integrationCategories: Category[] = [
       { key: 'mews', logo: '/images/integrations/mews.svg' },
       { key: 'asterio', logo: '/images/integrations/asterio.png' },
       { key: 'leanpms', logo: '/images/integrations/leanpms.webp' },
-      { key: 'chloe', logo: '/images/integrations/chloe.webp' },
       { key: 'vega', logo: '/images/integrations/vega.png' },
       { key: 'apaleo', logo: '/images/integrations/apaleo.png' },
       { key: 'zeswitch', logo: '/images/integrations/zeswitch.png' },

@@ -17,7 +17,7 @@ const stats = [
   },
   {
     icon: Plug,
-    value: '12',
+    value: '13',
     label: 'PMS connectés',
   },
   {

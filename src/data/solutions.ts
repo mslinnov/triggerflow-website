@@ -171,7 +171,7 @@ export const solutions: Record<string, SolutionData> = {
     stats: [
       { value: '300', suffix: '+', label: 'hôtels utilisent TriggerFlow' },
       { value: '94', suffix: ' %', label: 'des e-mails délivrés (12 derniers mois, tous nos hôtels)' },
-      { value: '12', suffix: '', label: 'PMS connectés' },
+      { value: '13', suffix: '', label: 'PMS connectés' },
     ],
 
     features: [
@@ -339,7 +339,7 @@ export const solutions: Record<string, SolutionData> = {
 
     stats: [
       { value: '1', suffix: '', label: 'tableau de bord pour tous vos établissements' },
-      { value: '12', suffix: '', label: 'PMS connectés' },
+      { value: '13', suffix: '', label: 'PMS connectés' },
       { value: '300', suffix: '+', label: 'hôtels utilisent TriggerFlow' },
     ],
 
@@ -504,7 +504,7 @@ export const solutions: Record<string, SolutionData> = {
     stats: [
       { value: '90', suffix: ' %', label: 'des SMS remis (12 derniers mois, tous nos hôtels)' },
       { value: '84', suffix: ' %', label: 'des messages WhatsApp remis sont lus (12 derniers mois)' },
-      { value: '12', suffix: '', label: 'PMS connectés' },
+      { value: '13', suffix: '', label: 'PMS connectés' },
     ],
 
     features: [
@@ -1006,7 +1006,7 @@ export const solutions: Record<string, SolutionData> = {
     stats: [
       { value: '94', suffix: ' %', label: 'des e-mails délivrés (12 derniers mois, tous nos hôtels)' },
       { value: '90', suffix: ' %', label: 'des SMS remis (12 derniers mois, tous nos hôtels)' },
-      { value: '12', suffix: '', label: 'PMS connectés pour déclencher les envois' },
+      { value: '13', suffix: '', label: 'PMS connectés pour déclencher les envois' },
     ],
 
     features: [

@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { test } from 'node:test';
+import { brand } from './brand';
 import { companyStats } from './company-stats';
 import { modules } from './modules';
 import { solutions } from './solutions';
@@ -154,4 +155,16 @@ test('affirmations retirées absentes du code, du blog et des LP', () => {
       });
   }
   assert.deepEqual(found, []);
+});
+
+test('nombre de PMS affiché = connecteurs listés dans brand.ts, Chloë absent (aucun connecteur)', () => {
+  const texts = [
+    readFileSync(join(root, 'messages', 'fr.json'), 'utf8'),
+    readFileSync(join(root, 'messages', 'en.json'), 'utf8'),
+    ...files(join(root, 'src'), /\.(ts|tsx)$/).filter((f) => !/\.test\.ts$/.test(f)).map((f) => readFileSync(f, 'utf8')),
+  ].join('\n');
+  const counts = [...texts.matchAll(/(\d+) PMS (connectés|connected|intégrés)|value: '(\d+)',\s*(suffix: '', )?label: 'PMS connectés/g)].map((m) => Number(m[1] ?? m[3]));
+  assert.ok(counts.length > 5, 'nombre de PMS introuvable');
+  assert.deepEqual([...new Set(counts)], [brand.pms.length]);
+  assert.doesNotMatch(texts, /Chloë|'chloe'/);
 });

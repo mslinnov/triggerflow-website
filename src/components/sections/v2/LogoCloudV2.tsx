@@ -30,7 +30,7 @@ const metrics = [
   },
   {
     icon: Plug,
-    value: '12',
+    value: '13',
     label: 'PMS connectés',
     accent: 'from-rose-500 to-orange-500',
   },
