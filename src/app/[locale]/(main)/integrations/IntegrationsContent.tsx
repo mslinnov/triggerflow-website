@@ -120,10 +120,8 @@ export function IntegrationsContent() {
   const locale = useLocale();
   const prefersReducedMotion = useReducedMotion();
 
-  const totalIntegrations = integrationCategories.reduce(
-    (acc, cat) => acc + cat.integrations.length,
-    0
-  );
+  // Les intégrations « bientôt disponibles » ne comptent pas : seuls les connecteurs existants.
+  const connectedCount = (category: Category) => category.integrations.filter((i) => !i.comingSoon).length;
 
   return (
     <main className="bg-white">
@@ -143,7 +141,7 @@ export function IntegrationsContent() {
             <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 mb-8">
               <div className="h-2 w-2 rounded-full bg-brand-primary animate-pulse" />
               <span className="text-sm font-medium text-white/90">
-                {totalIntegrations}+ {t('hero.count').replace(/\d+\+?\s*/, '')}
+                {t('hero.count')}
               </span>
             </div>
             <h1 className="text-3xl font-bold tracking-tight text-white md:text-4xl lg:text-5xl">
@@ -165,7 +163,7 @@ export function IntegrationsContent() {
                   >
                     <Icon className="h-4 w-4" />
                     {t(`categories.${category.key}.title`)}
-                    <span className="text-white/40">({category.integrations.length})</span>
+                    <span className="text-white/40">({connectedCount(category)})</span>
                   </a>
                 );
               })}
@@ -211,7 +209,7 @@ export function IntegrationsContent() {
                     </h2>
                   </div>
                   <Badge variant="secondary" className="ml-auto text-xs">
-                    {category.integrations.length} {category.integrations.length > 1 ? 'intégrations' : 'intégration'}
+                    {t('badges.count', { count: connectedCount(category) })}
                   </Badge>
                 </div>
                 <p className="text-zinc-500 max-w-2xl ml-14">

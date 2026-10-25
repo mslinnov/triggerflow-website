@@ -1193,7 +1193,8 @@
     "badges": {
       "native": "Native",
       "api": "API",
-      "comingSoon": "Coming soon"
+      "comingSoon": "Coming soon",
+      "count": "{count, plural, one {# integration} other {# integrations}}"
     },
     "categories": {
       "pms": {
@@ -1282,7 +1283,7 @@
           },
           "systempay": {
             "name": "SystemPay",
-            "description": "Lyra payments for Banque Populaire and Caisse d'Épargne"
+            "description": "Lyra payments for BPCE banks"
           },
           "thaispay": {
             "name": "Thaïs payments",
