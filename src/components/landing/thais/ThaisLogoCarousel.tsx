@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Container } from '@/components/ui';
 import { Star, MapPin } from 'lucide-react';
+// LP Thaïs : page FR seulement (textes rédigés en français), d'où les chiffres en version FR.
 import { companyStats } from '@/data/company-stats';
 
 // Anonymized hotel logos represented as styled cards

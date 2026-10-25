@@ -120,6 +120,7 @@
     "cta": "Book a demo",
     "ctaFree": "Free 14-day trial",
     "ctaSecondary": "Discover modules",
+    "hotelsLabel": "hotels",
     "socialProof": {
       "hotels": "Over 300 hotels trust us"
     },
@@ -171,7 +172,9 @@
     "metrics": {
       "hotels": "hotels equipped",
       "basket": "average basket",
-      "timeSaved": "saved per week"
+      "timeSaved": "saved per week",
+      "messages": "messages sent",
+      "pms": "PMS + Zapier and n8n"
     },
     "cta": "Discover their testimonials"
   },

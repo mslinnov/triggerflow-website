@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Zap, Sparkles, Mail, MessageSquare, Star, TrendingUp } from 'lucide-react';
 import { Container, ButtonLink } from '@/components/ui';
+// LP Thaïs : page FR seulement (textes rédigés en français), d'où les chiffres en version FR.
 import { companyStats } from '@/data/company-stats';
 
 const floatingNotifications = [

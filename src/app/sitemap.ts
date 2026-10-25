@@ -127,27 +127,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   // ─── Case study detail pages ─────────────────────────────────
+  // Rédigées en français seulement : l'URL /en a son canonical vers /fr (pageAlternates), donc
+  // seule l'URL fr figure ici, sans hreflang en.
   for (const slug of getCaseStudySlugs()) {
     const frUrl = `${baseUrl}/fr/ressources/cas-clients/${slug}`;
-    const enUrl = `${baseUrl}/en/ressources/cas-clients/${slug}`;
-    const languages = { fr: frUrl, en: enUrl, 'x-default': frUrl };
 
-    sitemapEntries.push(
-      {
-        url: frUrl,
-        lastModified,
-        changeFrequency: 'monthly',
-        priority: 0.5,
-        alternates: { languages },
-      },
-      {
-        url: enUrl,
-        lastModified,
-        changeFrequency: 'monthly',
-        priority: 0.4,
-        alternates: { languages },
-      }
-    );
+    sitemapEntries.push({
+      url: frUrl,
+      lastModified,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+      alternates: { languages: { fr: frUrl, 'x-default': frUrl } },
+    });
   }
 
   // ─── Blog listing page ───────────────────────────────────────

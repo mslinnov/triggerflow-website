@@ -113,7 +113,7 @@ export interface SolutionData {
 
 // ─── Solutions Data ─────────────────────────────────────────
 
-/** Nombre d'hôtels de company-stats.ts, découpé pour AnimatedStat (« N+ » → N puis « + »). */
+/** Nombre d'hôtels de company-stats.ts (version FR : solutions rédigées en français), découpé pour AnimatedStat (« N+ » → N puis « + »). */
 const hotelsStat: SolutionStat = {
   value: companyStats.hotels.fr.replace(/\+$/, ''),
   suffix: companyStats.hotels.fr.endsWith('+') ? '+' : '',
@@ -1121,13 +1121,13 @@ export const solutions: Record<string, SolutionData> = {
     category: 'objectif',
     heroMockup: 'ReviewCollectMockup',
     title: 'Augmenter vos avis Google',
-    headline: 'Doublez vos avis Google en 3 mois',
+    headline: 'Plus d\'avis Google, demandés au bon moment',
     description: 'Transformez vos clients satisfaits en ambassadeurs. Demandez des avis au bon moment, aux bonnes personnes, sur les bonnes plateformes.',
 
     persona: {
       role: 'Directeur / Responsable e-réputation',
       painStatement: 'Vos clients sont satisfaits mais ne pensent jamais à laisser un avis. Les rares avis négatifs plombent votre note.',
-      valueProposition: 'Doublez vos avis Google et augmentez votre note de +0.4 étoile en 3 mois.',
+      valueProposition: 'Chaque client satisfait est invité à laisser un avis Google, et une note basse vous alerte avant qu\'elle soit publiée.',
     },
 
     challenges: [
@@ -1165,7 +1165,7 @@ export const solutions: Record<string, SolutionData> = {
       'Alerte en temps réel sur les avis négatifs pour réagir immédiatement',
       'Réponse IA personnalisée générée en 1 clic, vous validez et publiez',
       'Dashboard de suivi multi-plateformes (Google, TripAdvisor, Booking)',
-      'Votre note Google augmente de +0.4 étoile en moyenne en 3 mois',
+      'Des avis récents et réguliers, pour une note qui reflète vos séjours d\'aujourd\'hui',
     ],
 
     stats: [
@@ -1263,7 +1263,7 @@ export const solutions: Record<string, SolutionData> = {
 
     relatedSolutions: ['automatiser-communication', 'hotels-independants', 'fideliser-clients'],
 
-    ctaTitle: "Doublez vos avis Google en 3 mois",
+    ctaTitle: "Prêt à recevoir plus d'avis Google ?",
     ctaSubtitle: "Activez la collecte automatique d'avis et boostez votre e-réputation",
   },
 

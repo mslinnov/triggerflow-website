@@ -1085,7 +1085,7 @@ export const modules: Record<string, ModuleData> = {
       },
       {
         title: 'Suivi de réputation en continu',
-        description: 'Votre note Google est passée de 4.2 à 4.5 ce mois-ci. Votre concurrent principal est à 4.3. Le dashboard vous montre l\'évolution et les tendances.',
+        description: 'Exemple : votre note Google passe de 4,2 à 4,5 dans le mois, votre concurrent principal est à 4,3. Le dashboard vous montre l\'évolution et les tendances.',
         result: 'L\'évolution de votre note suivie mois après mois'
       }
     ],
@@ -1115,7 +1115,7 @@ export const modules: Record<string, ModuleData> = {
         answer: 'Oui. Le module benchmark vous permet de suivre la note moyenne et le volume d\'avis de vos concurrents sur Google et TripAdvisor.'
       },
     ],
-    ctaTitle: 'Passez de 4.1 à 4.5 sur Google en 3 mois',
+    ctaTitle: 'Faites progresser votre note Google, avis après avis',
     ctaSubtitle: 'Demande d\'avis intelligente + réponses IA. Votre réputation mérite mieux.',
     relatedModules: ['automatisations', 'email', 'formulaires']
   },
@@ -1187,7 +1187,7 @@ export const modules: Record<string, ModuleData> = {
       },
       {
         title: 'Évolution satisfaction client',
-        description: 'Votre NPS est passé de 42 à 58 depuis l\'activation de la séquence pré-séjour. Corrélation directe visible dans le dashboard.',
+        description: 'Exemple : votre NPS passe de 42 à 58 après l\'activation de la séquence pré-séjour. Le dashboard rend la corrélation visible.',
         result: 'L\'effet de chaque séquence sur la satisfaction, visible'
       },
       {

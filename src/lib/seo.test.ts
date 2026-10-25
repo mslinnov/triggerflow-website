@@ -30,6 +30,16 @@ test('pageAlternates : canonical et hreflang de la page elle-même, en https', (
   });
 });
 
+test('pageAlternates : page rédigée en français seulement, ni hreflang en ni canonical en', () => {
+  assert.deepEqual(pageAlternates('en', '/ressources/cas-clients/x', ['fr']), {
+    canonical: 'https://www.trigger-flow.com/fr/ressources/cas-clients/x',
+    languages: {
+      fr: 'https://www.trigger-flow.com/fr/ressources/cas-clients/x',
+      'x-default': 'https://www.trigger-flow.com/fr/ressources/cas-clients/x',
+    },
+  });
+});
+
 test("aucune page n'hérite des alternates de l'accueil (layout [locale])", () => {
   // alternateLinks: false (routing.ts) : sans `alternates` déclarés par la page (ou son propre
   // layout), Next.js reprend ceux du layout racine, canonical et hreflang vers /fr et /en.
@@ -50,4 +60,17 @@ test("aucune page n'hérite des alternates de l'accueil (layout [locale])", () =
   }
   assert.ok(pages(appDir).length > 25, 'pages introuvables');
   assert.deepEqual(found, []);
+});
+
+test('pages rédigées en français seulement : hreflang fr et x-default, sans en', () => {
+  // Fiches cas clients (src/lib/case-studies.ts) et LP Thaïs : contenu en dur en français.
+  const frOnly = [
+    join(appDir, '(main)', 'ressources', 'cas-clients', '[slug]', 'page.tsx'),
+    ...['thais', 'thais-v2', 'thais-v3'].map((d) => join(appDir, '(lp)', 'lp', d, 'layout.tsx')),
+  ];
+  for (const file of frOnly) assert.match(readFileSync(file, 'utf8'), /pageAlternates\([^)]*, \['fr'\]\)/, file);
+});
+
+test("layout [locale] : alternates de l'accueil via pageAlternates, même forme que les pages", () => {
+  assert.match(readFileSync(join(appDir, 'layout.tsx'), 'utf8'), /alternates: pageAlternates\(locale, ''\)/);
 });

@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { Star, Users, Plug, Send } from 'lucide-react';
 import { Container } from '@/components/ui';
 import { brand } from '@/data/brand';
+// LP Thaïs : page FR seulement (textes rédigés en français), d'où les chiffres en version FR.
 import { companyStats } from '@/data/company-stats';
 
 const stats = [

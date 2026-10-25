@@ -37,7 +37,8 @@ const baseMetadata: Metadata = {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  return { ...baseMetadata, alternates: pageAlternates(locale, '/lp/thais') };
+  // Page FR seulement : pas de hreflang en tant qu'elle n'est pas traduite.
+  return { ...baseMetadata, alternates: pageAlternates(locale, '/lp/thais', ['fr']) };
 }
 
 export default function ThaisLandingLayout({ children }: { children: React.ReactNode }) {

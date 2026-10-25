@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Check, Mail } from 'lucide-react';
 import { Container, ButtonLink } from '@/components/ui';
+// LP Thaïs : page FR seulement (textes rédigés en français), d'où les chiffres en version FR.
 import { companyStats } from '@/data/company-stats';
 
 const benefits = ['Configuration en 48h', 'Support 7j/7', 'Conformité RGPD', 'Sans engagement'];
