@@ -248,7 +248,7 @@ export const solutions: Record<string, SolutionData> = {
     faq: [
       {
         question: 'Combien de temps prend la mise en place pour un hôtel indépendant ?',
-        answer: 'En moyenne 3 jours. Nous connectons votre PMS, configurons vos premières séquences et formons votre équipe. Vous êtes opérationnel dans la semaine.',
+        answer: 'Comptez 48 h. Nous connectons votre PMS, configurons vos premières séquences et formons votre équipe.',
       },
       {
         question: 'Faut-il des compétences techniques ?',
@@ -256,7 +256,7 @@ export const solutions: Record<string, SolutionData> = {
       },
       {
         question: 'Mon PMS est-il compatible ?',
-        answer: 'TriggerFlow se connecte aux principaux PMS du marché : Mews, Thaïs, Opera Cloud, Misterbooking, Medialog, Asterio, Vega, Reservit et Clock PMS. Si le vôtre n\'est pas listé, contactez-nous.',
+        answer: 'TriggerFlow se connecte aux principaux PMS du marché : Mews, Thaïs, Opera Cloud, Misterbooking, Medialog, Asterio, Vega, Apaleo et Reservit. Si le vôtre n\'est pas listé, contactez-nous.',
       },
       {
         question: 'Quel est le coût pour un hôtel indépendant ?',
@@ -377,7 +377,7 @@ export const solutions: Record<string, SolutionData> = {
       {
         slug: 'newsletter',
         highlight: 'Campagnes centralisées',
-        whyForPersona: 'Lancez une campagne nationale en 5 minutes, automatiquement personnalisée par chaque hôtel.',
+        whyForPersona: 'Lancez une campagne nationale en une fois, automatiquement personnalisée par chaque hôtel.',
         bullets: ['Envoi simultané multi-hôtels', 'Personnalisation locale automatique', 'A/B testing groupe'],
       },
     ],
@@ -399,12 +399,12 @@ export const solutions: Record<string, SolutionData> = {
         title: 'Campagne promotionnelle groupe',
         description: 'Lancez une campagne pour tout le groupe en un clic, avec personnalisation automatique par hôtel.',
         steps: ['Création siège', 'Variables par hôtel', 'Envoi simultané', 'Reporting groupe'],
-        result: 'Déploiement en 5 minutes au lieu de 2 jours',
+        result: 'Une campagne préparée une fois, déployée sur tous les hôtels',
       },
     ],
 
     testimonial: {
-      quote: 'Nous avons déployé TriggerFlow sur nos 12 hôtels en 2 semaines. Le reporting consolidé nous fait gagner un temps fou.',
+      quote: 'Nous avons déployé TriggerFlow sur nos 12 hôtels. Le reporting consolidé nous fait gagner un temps fou.',
       author: 'Philippe D.',
       role: 'Directeur Marketing',
       hotel: 'Groupe Hôtelier du Sud',
@@ -421,7 +421,7 @@ export const solutions: Record<string, SolutionData> = {
       },
       {
         question: 'Comment se passe le déploiement sur plusieurs hôtels ?',
-        answer: 'Nous commençons par un hôtel pilote (1 semaine), puis déployons en parallèle sur les autres. 12 hôtels sont opérationnels en 2 semaines environ.',
+        answer: 'Nous commençons par un hôtel pilote, puis déployons en parallèle sur les autres.',
       },
       {
         question: 'Les données sont-elles cloisonnées entre hôtels ?',
@@ -1210,7 +1210,7 @@ export const solutions: Record<string, SolutionData> = {
         title: 'Réponse assistée IA',
         description: "L'IA génère une réponse personnalisée, vous validez en 1 clic.",
         steps: ['Nouvel avis détecté', 'Génération réponse IA', 'Validation manager', 'Publication'],
-        result: '100% des avis avec réponse en < 24h',
+        result: '100% des avis reçoivent une réponse',
       },
     ],
 

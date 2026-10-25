@@ -106,7 +106,7 @@ export const modules: Record<string, ModuleData> = {
     title: 'Email',
     seoTitle: 'Email automatique hôtel : confirmations, pré-séjour & fidélisation',
     headline: 'Vos emails transactionnels envoyés automatiquement, 100% personnalisables',
-    description: 'Confirmation en 30 secondes, rappel pré-séjour à J-3, demande d\'avis à J+1. Chaque email est personnalisé aux couleurs de votre établissement, avec les données de votre PMS. Aucune compétence technique requise.',
+    description: 'Confirmation dès la réservation, rappel pré-séjour à J-3, demande d\'avis à J+1. Chaque email est personnalisé aux couleurs de votre établissement, avec les données de votre PMS. Aucune compétence technique requise.',
     mockup: 'EmailMockup',
     heroImage: '/images/produit/email/hero-email.webp',
     painPoints: [
@@ -137,7 +137,7 @@ export const modules: Record<string, ModuleData> = {
     features: [
       {
         title: 'Un email builder pensé pour l\'hôtellerie - 0 ligne de code',
-        description: 'Créez des emails 100% à votre image en drag & drop. Importez votre logo, vos couleurs, vos polices, chaque email que reçoit votre client est immédiatement identifiable comme venant de votre établissement. 15+ templates hôteliers prêts à l\'emploi pour démarrer en 2 minutes.',
+        description: 'Créez des emails 100% à votre image en drag & drop. Importez votre logo, vos couleurs, vos polices, chaque email que reçoit votre client est immédiatement identifiable comme venant de votre établissement. 15+ templates hôteliers prêts à l\'emploi.',
         icon: Layout,
         bullets: ['Charte graphique complète : logo, couleurs, polices', 'Templates hôteliers prêts à l\'emploi', 'Responsive mobile natif + preview avant envoi'],
         mockup: 'EmailEditorMockup',
@@ -163,7 +163,7 @@ export const modules: Record<string, ModuleData> = {
     useCases: [
       {
         title: 'Confirmation instantanée',
-        description: 'Le client réserve à 23h un dimanche sur Booking. En 30 secondes, il reçoit un email aux couleurs de votre hôtel avec son nom, ses dates, le type de chambre et un lien vers son espace client. Aucun collaborateur n\'a eu besoin d\'intervenir.',
+        description: 'Le client réserve à 23h un dimanche sur Booking. Dans la foulée, il reçoit un email aux couleurs de votre hôtel avec son nom, ses dates, le type de chambre et un lien vers son espace client. Aucun collaborateur n\'a eu besoin d\'intervenir.',
         result: '92% de taux d\'ouverture, 0 action manuelle'
       },
       {
@@ -208,11 +208,11 @@ export const modules: Record<string, ModuleData> = {
       },
       {
         question: 'Est-ce compatible avec mon PMS ?',
-        answer: 'TriggerFlow est connecté nativement aux principaux PMS du marché : Mews, Thaïs, Opera Cloud, Misterbooking, Medialog, Asterio, Vega, Reservit et Clock PMS. L\'intégration prend moins de 5 minutes, sans intervention technique.'
+        answer: 'TriggerFlow est connecté nativement aux principaux PMS du marché : Mews, Thaïs, Opera Cloud, Misterbooking, Medialog, Asterio, Vega, Apaleo et Reservit. L\'intégration se fait sans intervention technique.'
       },
       {
         question: 'Combien de temps pour être opérationnel ?',
-        answer: 'Comptez 1 heure pour connecter votre PMS, importer votre charte graphique et activer vos premiers emails automatiques. La plupart de nos clients envoient leur premier email le jour même de l\'inscription.'
+        answer: 'Comptez 48 h pour être opérationnel : connexion de votre PMS, import de votre charte graphique et activation de vos premiers emails automatiques, avec notre équipe.'
       },
       {
         question: 'Y a-t-il un engagement ou une durée minimum ?',
@@ -233,8 +233,8 @@ export const modules: Record<string, ModuleData> = {
     icon: MessageSquare,
     title: 'SMS',
     seoTitle: 'SMS hôtelier automatique : infos arrivée & offres',
-    headline: '98% de taux d\'ouverture, message lu en 3 min',
-    description: 'Le SMS est le canal le plus efficace pour les messages critiques. Infos d\'arrivée, code WiFi, offre flash : votre client lit en 3 minutes.',
+    headline: '98% de taux d\'ouverture, le canal des messages qui comptent',
+    description: 'Le SMS est le canal le plus efficace pour les messages critiques. Infos d\'arrivée, code WiFi, offre flash : votre client le voit tout de suite.',
     mockup: 'SmsHeroMockup',
     painPoints: [
       'Vos emails de check-in ne sont jamais lus, le client arrive sans les infos essentielles',
@@ -242,7 +242,7 @@ export const modules: Record<string, ModuleData> = {
       'Vos offres flash spa ou restaurant passent inaperçues par email'
     ],
     benefits: [
-      '98% de taux d\'ouverture, votre message est lu à coup sûr, en moins de 3 minutes',
+      '98% de taux d\'ouverture : votre message est lu',
       'Envoi automatique au bon moment : check-in, offre flash, notification urgente, 0 appel téléphonique',
       'SMS bidirectionnel : le client répond directement et vous le voyez dans votre dashboard'
     ],
@@ -270,7 +270,7 @@ export const modules: Record<string, ModuleData> = {
       },
       {
         title: 'Chaque réponse client, centralisée dans un seul écran',
-        description: 'Vos clients répondent par SMS et vous voyez tout dans votre dashboard. Historique, contexte, réservation, tout est là pour répondre en 30 secondes.',
+        description: 'Vos clients répondent par SMS et vous voyez tout dans votre dashboard. Historique, contexte, réservation, tout est là pour répondre sans chercher.',
         icon: MessageCircle,
         bullets: ['Réponses visibles dans le dashboard', 'Historique par client', 'Notification équipe en temps réel'],
         image: '/images/produit/sms/feature-sms-inbox.webp',
@@ -296,17 +296,17 @@ export const modules: Record<string, ModuleData> = {
       },
       {
         title: 'Offre flash pendant le séjour',
-        description: 'Il reste des places au spa cet après-midi ? Envoyez un SMS promo à vos clients en séjour. Résultat en 10 minutes.',
+        description: 'Il reste des places au spa cet après-midi ? Envoyez un SMS promo à vos clients en séjour.',
         result: '23% de taux de conversion offres flash'
       },
       {
         title: 'Notification urgente',
-        description: 'Changement de chambre, problème technique, événement météo : prévenez vos clients instantanément. Le SMS est lu dans les 3 minutes.',
+        description: 'Changement de chambre, problème technique, événement météo : prévenez vos clients instantanément.',
         result: '98% des clients informés en temps réel'
       }
     ],
     testimonial: {
-      quote: 'Le SMS a changé notre communication client. Nos clients ont toutes les infos avant même d\'arriver, et nos offres spa se remplissent en 30 minutes.',
+      quote: 'Le SMS a changé notre communication client. Nos clients ont toutes les infos avant même d\'arriver.',
       author: 'Thomas Moreau',
       role: 'Directeur des opérations',
       hotel: 'Le Domaine des Pins ***',
@@ -331,7 +331,7 @@ export const modules: Record<string, ModuleData> = {
         answer: 'Oui. Vous utilisez les mêmes variables dynamiques que pour les emails : prénom, date d\'arrivée, numéro de chambre, etc. Chaque SMS est personnalisé automatiquement.'
       },
     ],
-    ctaTitle: 'Envoyez votre premier SMS automatisé en 5 minutes',
+    ctaTitle: 'Envoyez votre premier SMS automatisé',
     ctaSubtitle: 'Démo personnalisée avec votre cas d\'usage. Résultats visibles dès le premier jour.',
     relatedModules: ['email', 'whatsapp', 'automatisations']
   },
@@ -351,7 +351,7 @@ export const modules: Record<string, ModuleData> = {
     ],
     benefits: [
       'Toutes les conversations WhatsApp centralisées dans un dashboard professionnel, fini le téléphone perso',
-      'Chatbot automatique pour les questions fréquentes : WiFi, horaires, parking, réponse en 2 secondes',
+      'Chatbot automatique pour les questions fréquentes : WiFi, horaires, parking, réponse automatique',
       'Historique complet par client : WhatsApp + email + SMS dans une seule vue'
     ],
     stats: [
@@ -394,7 +394,7 @@ export const modules: Record<string, ModuleData> = {
     useCases: [
       {
         title: 'Conciergerie digitale',
-        description: 'Le client envoie "spa demain 14h" sur WhatsApp. Le chatbot comprend, vérifie la disponibilité et propose un créneau. Réservation confirmée en 30 secondes.',
+        description: 'Le client envoie "spa demain 14h" sur WhatsApp. Le chatbot comprend, vérifie la disponibilité et propose un créneau. Réservation confirmée sans intervention de l\'équipe.',
         result: '+45% de réservations services annexes'
       },
       {
@@ -405,7 +405,7 @@ export const modules: Record<string, ModuleData> = {
       {
         title: 'Service client instantané',
         description: 'Le client a besoin d\'une serviette supplémentaire ? Un WhatsApp et c\'est réglé. Pas besoin d\'appeler la réception ni de se déplacer.',
-        result: 'Temps de réponse moyen : 45 secondes'
+        result: 'Demande réglée sans passer par la réception'
       },
       {
         title: 'Upsell conversationnel',
@@ -424,7 +424,7 @@ export const modules: Record<string, ModuleData> = {
     faq: [
       {
         question: 'Faut-il un numéro WhatsApp Business dédié ?',
-        answer: 'Oui. TriggerFlow vous accompagne pour créer votre compte WhatsApp Business API avec un numéro dédié à votre hôtel. Le processus prend moins de 48h.'
+        answer: 'Oui. TriggerFlow vous accompagne pour créer votre compte WhatsApp Business API avec un numéro dédié à votre hôtel.'
       },
       {
         question: 'Le chatbot peut-il gérer plusieurs langues ?',
@@ -440,7 +440,7 @@ export const modules: Record<string, ModuleData> = {
       },
     ],
     ctaTitle: 'Activez WhatsApp Business pour votre hôtel',
-    ctaSubtitle: 'Compte configuré en 48h. Vos premiers messages automatisés dès la première semaine.',
+    ctaSubtitle: 'Nous configurons votre compte WhatsApp Business avec vous, puis vos premiers messages automatisés.',
     relatedModules: ['sms', 'email', 'hub-messagerie']
   },
 
@@ -460,7 +460,7 @@ export const modules: Record<string, ModuleData> = {
     ],
     benefits: [
       'Restez dans l\'esprit de vos clients : ils pensent à vous quand ils planifient leurs vacances, pas à Booking',
-      'Éditeur drag & drop : créez une newsletter professionnelle en 30 minutes, pas une journée',
+      'Éditeur drag & drop : créez une newsletter professionnelle sans graphiste',
       'Segmentation automatique : les familles reçoivent les offres famille, les couples les offres romantiques'
     ],
     stats: [
@@ -479,7 +479,7 @@ export const modules: Record<string, ModuleData> = {
     ],
     features: [
       {
-        title: 'Des newsletters dignes d\'un magazine, en 30 minutes',
+        title: 'Des newsletters dignes d\'un magazine, sans graphiste',
         description: 'Éditeur drag & drop avec des blocs pensés pour l\'hôtellerie : hébergement, offre spéciale, événement local, témoignage client.',
         icon: Palette,
         bullets: ['Blocs spécialisés hôtellerie', 'Bibliothèque d\'images intégrée', 'Preview mobile avant envoi'],
@@ -559,7 +559,7 @@ export const modules: Record<string, ModuleData> = {
         answer: 'Oui. Gestion automatique du consentement, lien de désabonnement dans chaque email, et suppression des données sur demande. Vous êtes conforme sans effort.'
       },
     ],
-    ctaTitle: 'Créez votre première newsletter en 30 minutes',
+    ctaTitle: 'Créez votre première newsletter',
     ctaSubtitle: 'On vous montre comment transformer vos anciens clients en réservations directes.',
     relatedModules: ['email', 'fidelite', 'automatisations']
   },
@@ -579,7 +579,7 @@ export const modules: Record<string, ModuleData> = {
       'Vous ne savez pas quels clients reviennent et lesquels sont perdus, aucune visibilité'
     ],
     benefits: [
-      'Programme fidélité opérationnel en 1 jour, points, paliers et récompenses configurés en quelques clics',
+      'Points, paliers et récompenses configurés en quelques clics',
       'Les clients cumulent des points automatiquement à chaque séjour, zéro gestion manuelle',
       'Vos clients fidèles réservent en direct pour conserver leurs points, fini les commissions OTA sur vos meilleurs clients'
     ],
@@ -656,7 +656,7 @@ export const modules: Record<string, ModuleData> = {
     faq: [
       {
         question: 'Combien de temps faut-il pour mettre en place le programme ?',
-        answer: 'Le programme est opérationnel en 1 jour. Vous configurez les paliers, les points par euro et les récompenses. TriggerFlow s\'occupe du reste.'
+        answer: 'Notre équipe le met en place avec vous : vous configurez les paliers, les points par euro et les récompenses. TriggerFlow s\'occupe du reste.'
       },
       {
         question: 'Les clients doivent-ils créer un compte ?',
@@ -672,7 +672,7 @@ export const modules: Record<string, ModuleData> = {
       },
     ],
     ctaTitle: 'Lancez votre programme fidélité dès demain',
-    ctaSubtitle: 'Configuré en 1 jour. Vos premiers clients fidélisés dès cette semaine.',
+    ctaSubtitle: 'Paliers, points et récompenses configurés avec vous. TriggerFlow s\'occupe du reste.',
     relatedModules: ['crm', 'newsletter', 'email']
   },
 
@@ -692,7 +692,7 @@ export const modules: Record<string, ModuleData> = {
     ],
     benefits: [
       'Automatisez n\'importe quel scénario : de la simple confirmation à la séquence pré-séjour en 5 étapes',
-      'Interface intuitive : glissez-déposez des blocs, ajoutez des conditions, c\'est en production en 5 minutes, sans aucune compétence technique',
+      'Interface intuitive : glissez-déposez des blocs, ajoutez des conditions, et c\'est en production, sans aucune compétence technique',
       'TriggerFlow exécute vos workflows 24h/24, week-ends et jours fériés inclus, jamais de tâche oubliée'
     ],
     stats: [
@@ -780,7 +780,7 @@ export const modules: Record<string, ModuleData> = {
         answer: 'Oui. Le mode test vous permet de simuler un workflow avec un client fictif. Vous voyez chaque étape s\'exécuter avant de le mettre en production.'
       },
     ],
-    ctaTitle: 'Créez votre premier workflow en 5 minutes',
+    ctaTitle: 'Créez votre premier workflow',
     ctaSubtitle: 'Builder visuel, templates prêts à l\'emploi. Votre hôtel tourne tout seul.',
     relatedModules: ['email', 'sms', 'paiements']
   },
@@ -881,7 +881,7 @@ export const modules: Record<string, ModuleData> = {
       },
       {
         question: 'Comment se fait la synchronisation avec mon PMS ?',
-        answer: 'L\'intégration se configure en 5 minutes. Les données de réservation, séjour et facturation sont synchronisées automatiquement en temps réel.'
+        answer: 'L\'intégration se configure sans développeur. Les données de réservation, séjour et facturation sont synchronisées automatiquement en temps réel.'
       },
       {
         question: 'Puis-je importer mes données clients existantes ?',
@@ -893,7 +893,7 @@ export const modules: Record<string, ModuleData> = {
       },
     ],
     ctaTitle: 'Connaissez enfin vos clients par cœur',
-    ctaSubtitle: 'CRM synchronisé avec votre PMS en 5 minutes. Fiche client 360° dès le premier jour.',
+    ctaSubtitle: 'CRM synchronisé avec votre PMS. Fiche client 360° dès la première synchronisation.',
     relatedModules: ['automatisations', 'paiements', 'email']
   },
 
@@ -967,7 +967,7 @@ export const modules: Record<string, ModuleData> = {
     useCases: [
       {
         title: 'Pré-check-in en ligne',
-        description: 'J-3 : le client reçoit un formulaire avec identité, heure d\'arrivée, demandes spéciales. Il le remplit sur son téléphone en 2 minutes. À l\'arrivée, sa clé est prête.',
+        description: 'J-3 : le client reçoit un formulaire avec identité, heure d\'arrivée, demandes spéciales. Il le remplit sur son téléphone. À l\'arrivée, sa clé est prête.',
         result: '-75% de temps de check-in'
       },
       {
@@ -1012,7 +1012,7 @@ export const modules: Record<string, ModuleData> = {
         answer: 'Par email, SMS, WhatsApp ou QR code. Le lien est unique et pré-rempli avec les infos de la réservation. Le client n\'a qu\'à compléter.'
       },
     ],
-    ctaTitle: 'Digitalisez vos formulaires en 10 minutes',
+    ctaTitle: 'Digitalisez vos formulaires',
     ctaSubtitle: 'Pré-check-in, satisfaction, demandes de service. Tout en ligne, tout automatique.',
     relatedModules: ['automatisations', 'email', 'crm']
   },
@@ -1065,7 +1065,7 @@ export const modules: Record<string, ModuleData> = {
         mockup: 'ReviewDashboardMockup',
       },
       {
-        title: 'L\'IA rédige vos réponses en 2 minutes',
+        title: 'L\'IA rédige un premier jet de vos réponses',
         description: 'Pour chaque avis, l\'IA analyse le contenu et suggère une réponse personnalisée. Vous validez ou modifiez, puis publiez en 1 clic.',
         icon: MessageSquare,
         bullets: ['Réponses personnalisées par IA', 'Ton adapté (positif ou empathique)', 'Publication en 1 clic'],
@@ -1085,8 +1085,8 @@ export const modules: Record<string, ModuleData> = {
       },
       {
         title: 'Réponse rapide assistée IA',
-        description: 'Un avis arrive sur Google. L\'IA lit le contenu, identifie les points clés et génère une réponse personnalisée. Vous relisez et publiez en 2 minutes.',
-        result: 'Temps de réponse moyen : 2h vs 5 jours'
+        description: 'Un avis arrive sur Google. L\'IA lit le contenu, identifie les points clés et génère une réponse personnalisée. Vous relisez, ajustez et publiez.',
+        result: 'Plus d\'avis laissé sans réponse'
       },
       {
         title: 'Suivi de réputation en continu',
@@ -1229,7 +1229,7 @@ export const modules: Record<string, ModuleData> = {
       },
     ],
     ctaTitle: 'Visualisez vos performances en un clic',
-    ctaSubtitle: 'Dashboard prêt en 5 minutes. Premier rapport automatique dès lundi.',
+    ctaSubtitle: 'Vos indicateurs dans un seul tableau de bord, rapports automatiques compris.',
     relatedModules: ['automatisations', 'email', 'crm']
   },
 
@@ -1249,7 +1249,7 @@ export const modules: Record<string, ModuleData> = {
     benefits: [
       'Tous les messages (email, SMS, WhatsApp) arrivent au même endroit, plus rien ne passe entre les mailles',
       'En un clic, tout l\'historique du client : séjours passés, préférences, communications précédentes. Contexte complet.',
-      'Templates de réponse en 1 clic : la réponse "horaires check-in" prend 5 secondes au lieu de 2 minutes'
+      'Templates de réponse en 1 clic pour les questions fréquentes (horaires de check-in, parking, WiFi)'
     ],
     stats: [
       { value: '1', label: 'boîte de réception pour tout', suffix: '' },
@@ -1281,7 +1281,7 @@ export const modules: Record<string, ModuleData> = {
         mockup: 'HubClientViewMockup',
       },
       {
-        title: 'Répondez en 5 secondes avec les templates',
+        title: 'Répondez en un clic avec les templates',
         description: 'Horaires de check-in, code WiFi, plan d\'accès, confirmation spa... Vos réponses fréquentes sont prêtes. 1 clic, c\'est envoyé.',
         icon: FileText,
         bullets: ['Templates personnalisables', 'Variables automatiques', 'Réponses multi-canal'],
@@ -1291,8 +1291,8 @@ export const modules: Record<string, ModuleData> = {
     useCases: [
       {
         title: 'Demande client WhatsApp',
-        description: 'Un client envoie "À quelle heure le petit-déjeuner ?" sur WhatsApp. L\'agent voit l\'historique email, sait que c\'est un habitué, et répond en 5 secondes avec le template adapté.',
-        result: 'Temps de réponse moyen : 45 secondes'
+        description: 'Un client envoie "À quelle heure le petit-déjeuner ?" sur WhatsApp. L\'agent voit l\'historique email, sait que c\'est un habitué, et répond en un clic avec le template adapté.',
+        result: 'Réponses cohérentes, quel que soit le canal'
       },
       {
         title: 'Réclamation multi-canal',
@@ -1337,7 +1337,7 @@ export const modules: Record<string, ModuleData> = {
       },
     ],
     ctaTitle: 'Centralisez vos communications en un clic',
-    ctaSubtitle: 'Hub opérationnel en 5 minutes. Plus jamais un message perdu.',
+    ctaSubtitle: 'Tous vos canaux dans un seul hub. Plus jamais un message perdu.',
     relatedModules: ['email', 'sms', 'whatsapp', 'crm']
   },
 
@@ -1446,7 +1446,7 @@ export const modules: Record<string, ModuleData> = {
       },
     ],
     ctaTitle: 'Augmentez votre panier moyen dès cette semaine',
-    ctaSubtitle: 'Catalogue configuré en 1h. Premières ventes additionnelles automatiques dès demain.',
+    ctaSubtitle: 'Catalogue configuré avec vous. Ventes additionnelles proposées automatiquement à chaque séjour.',
     relatedModules: ['automatisations', 'email', 'paiements', 'crm']
   },
 
@@ -1530,7 +1530,7 @@ export const modules: Record<string, ModuleData> = {
     useCases: [
       {
         title: 'Acompte automatique à la réservation',
-        description: 'Le client réserve. En 30 secondes, il reçoit un lien de paiement aux couleurs de votre hôtel pour verser son acompte. Aucune relance, aucune action manuelle.',
+        description: 'Le client réserve. Dans la foulée, il reçoit un lien de paiement aux couleurs de votre hôtel pour verser son acompte. Aucune relance, aucune action manuelle.',
         result: '85% des acomptes payés dans les 2h'
       },
       {
@@ -1579,7 +1579,7 @@ export const modules: Record<string, ModuleData> = {
       metric: '-90% de temps sur les acomptes'
     },
     ctaTitle: 'Simplifiez vos encaissements dès cette semaine',
-    ctaSubtitle: 'Configuration en 15 minutes. Premiers paiements encaissés dès demain.',
+    ctaSubtitle: 'Paiements configurés avec vous. Acomptes et soldes encaissés sans relance manuelle.',
     relatedModules: ['crm', 'automatisations', 'ventes-additionnelles', 'email']
   },
 };

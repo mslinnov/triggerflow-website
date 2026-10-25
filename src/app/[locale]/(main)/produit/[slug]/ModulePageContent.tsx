@@ -483,7 +483,7 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
                 <Clock className="h-3.5 w-3.5 text-brand-primary" />
               </div>
               <div>
-                <p className="text-[10px] font-semibold text-gray-800">Réponse en 5 secondes</p>
+                <p className="text-[10px] font-semibold text-gray-800">Réponse en un clic</p>
                 <p className="text-[8px] text-gray-500">Templates pré-remplis</p>
               </div>
             </div>
@@ -1295,7 +1295,7 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
                         <Check className="h-3.5 w-3.5 text-green-600" />
                       </div>
                       <div>
-                        <p className="text-[11px] font-semibold text-gray-800">SMS lu en 2 min</p>
+                        <p className="text-[11px] font-semibold text-gray-800">SMS lu</p>
                         <p className="text-[10px] text-gray-500">Sophie D. - Ch. 204</p>
                       </div>
                     </motion.div>
@@ -1381,7 +1381,7 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
                         </div>
                         <div>
                           <p className="text-[10px] font-bold text-gray-800">Chatbot actif</p>
-                          <p className="text-[8px] text-gray-500">Réponse en 2 secondes</p>
+                          <p className="text-[8px] text-gray-500">Réponse automatique</p>
                         </div>
                       </div>
                       <div className="flex items-center gap-1.5">

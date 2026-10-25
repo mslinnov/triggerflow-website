@@ -304,7 +304,7 @@
     },
     "workflow": {
       "title": "Mon workflow personnalisé",
-      "subtitle": "Créé en 5 minutes",
+      "subtitle": "Créé en quelques clics",
       "active": "Actif",
       "trigger": "Déclencheur",
       "triggerDesc": "Check-in client",
@@ -767,7 +767,7 @@
       },
       "support": {
         "title": "Support 7j/7",
-        "description": "Chat, email ou téléphone. Temps de réponse moyen de 15 minutes en heures ouvrées."
+        "description": "Chat, email ou téléphone, avec une équipe qui connaît l'hôtellerie."
       },
       "training": {
         "title": "Formation incluse",
@@ -1104,7 +1104,7 @@
       "submitting": "Envoi en cours...",
       "success": {
         "title": "Message envoyé !",
-        "message": "Merci pour votre message. Notre équipe vous répondra dans les 24h."
+        "message": "Merci pour votre message. Notre équipe vous répondra rapidement."
       },
       "error": "Le message n'est pas parti. Réessayez, ou écrivez-nous à contact@trigger-flow.com."
     },
@@ -1429,7 +1429,7 @@
     },
     "integrations": {
       "badge": "Intégrations",
-      "title": "Se connecte à votre PMS en 5 minutes",
+      "title": "Se connecte à votre PMS sans développeur",
       "subtitle": "Compatible avec les principaux PMS et Channel Managers du marché"
     },
     "faq": {
@@ -1906,7 +1906,7 @@
           "timeline": [
             {
               "day": "J+1 (vendredi)",
-              "description": "Email avec enquête de satisfaction personnalisée. Traduite automatiquement en espagnol : la nationalité de M. Sanchez est dans Mews. 6 questions, 2 minutes à remplir."
+              "description": "Email avec enquête de satisfaction personnalisée. Traduite automatiquement en espagnol : la nationalité de M. Sanchez est dans Mews. 6 questions."
             },
             {
               "day": "J+2 (samedi)",
@@ -1959,20 +1959,17 @@
         {
           "number": "1",
           "title": "Activez TriggerFlow dans Mews Marketplace",
-          "description": "Depuis Mews Commander, Marketplace > TriggerFlow. Activez le connecteur, une clé API est générée automatiquement. Copiez-la.",
-          "duration": "~3 minutes"
+          "description": "Depuis Mews Commander, Marketplace > TriggerFlow. Activez le connecteur, une clé API est générée automatiquement. Copiez-la."
         },
         {
           "number": "2",
           "title": "Collez la clé dans TriggerFlow",
-          "description": "Réglages > Intégrations > Mews. La synchronisation bidirectionnelle démarre immédiatement. Clients, réservations, chambres, tout arrive via webhooks.",
-          "duration": "~2 min + sync auto"
+          "description": "Réglages > Intégrations > Mews. La synchronisation bidirectionnelle démarre immédiatement. Clients, réservations, chambres, tout arrive via webhooks."
         },
         {
           "number": "3",
           "title": "Activez vos workflows",
-          "description": "Scénarios pré-configurés ou création sur mesure avec le flow builder visuel en glisser-déposer. Pas de code, pas de consultant.",
-          "duration": "~10 minutes"
+          "description": "Scénarios pré-configurés ou création sur mesure avec le flow builder visuel en glisser-déposer. Pas de code, pas de consultant."
         }
       ]
     },
@@ -1991,11 +1988,11 @@
         },
         {
           "question": "Comment connecter un CRM à Mews PMS ?",
-          "answer": "Depuis Mews Commander, ouvrez la Marketplace et activez TriggerFlow. Une clé API est générée automatiquement. Collez-la dans TriggerFlow (Réglages > Intégrations > Mews). La synchronisation démarre immédiatement via webhooks temps réel. Pas de développeur nécessaire, pas de fichier à configurer. L'opération complète prend environ 3 minutes."
+          "answer": "Depuis Mews Commander, ouvrez la Marketplace et activez TriggerFlow. Une clé API est générée automatiquement. Collez-la dans TriggerFlow (Réglages > Intégrations > Mews). La synchronisation démarre immédiatement via webhooks temps réel. Pas de développeur nécessaire, pas de fichier à configurer."
         },
         {
           "question": "Combien de temps pour être opérationnel ?",
-          "answer": "La connexion technique prend 3 minutes. La synchronisation initiale dépend du volume d'historique. Avec l'activation des premiers workflows (email pré-séjour, enquête post-séjour), un hôtel est opérationnel en 48 h."
+          "answer": "La connexion technique se fait depuis la Marketplace Mews, sans développeur. La synchronisation initiale dépend du volume d'historique. Avec l'activation des premiers workflows (email pré-séjour, enquête post-séjour), un hôtel est opérationnel en 48 h."
         },
         {
           "question": "Quelles données sont synchronisées entre Mews et TriggerFlow ?",
@@ -2352,7 +2349,7 @@
       "demo": {
         "submit": "Recevoir mon plan",
         "successTitle": "C'est noté.",
-        "successBody": "Un membre de l'équipe vous écrit sous 24h ouvrées avec votre plan détaillé et deux créneaux de démo.",
+        "successBody": "Un membre de l'équipe vous écrit rapidement avec votre plan détaillé et deux créneaux de démo.",
         "privacy": "Vos coordonnées servent à préparer votre plan et à vous recontacter. Aucune revente à des tiers.",
         "book": "Réserver une démo"
       },

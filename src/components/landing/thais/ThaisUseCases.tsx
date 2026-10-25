@@ -42,7 +42,6 @@ const useCases = [
     results: [
       'Hub unifié Email/SMS/WhatsApp',
       '€12k de revenus upsell supplémentaires par mois',
-      'Temps de réponse divisé par 3 (8min → 2min)',
     ],
   },
   {

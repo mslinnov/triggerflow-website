@@ -16,11 +16,11 @@ import { LpMessagesProvider } from '@/components/landing/LpMessagesProvider';
 export const metadata: Metadata = {
   title: 'Combien votre hôtel peut-il gagner en ventes additionnelles ?',
   description:
-    'Late check-out, surclassement, spa, parking : calculez en 30 secondes le revenu additionnel que votre hôtel laisse passer chaque mois.',
+    'Late check-out, surclassement, spa, parking : calculez le revenu additionnel que votre hôtel laisse passer chaque mois.',
   openGraph: {
     title: 'Combien votre hôtel peut-il gagner en ventes additionnelles ?',
     description:
-      'Calculez en 30 secondes le revenu additionnel que votre hôtel laisse passer chaque mois.',
+      'Calculez le revenu additionnel que votre hôtel laisse passer chaque mois.',
     type: 'website',
     locale: 'fr_FR',
     siteName: 'TriggerFlow',
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Combien votre hôtel peut-il gagner en ventes additionnelles ?',
     description:
-      'Calculez en 30 secondes le revenu additionnel que votre hôtel laisse passer chaque mois.',
+      'Calculez le revenu additionnel que votre hôtel laisse passer chaque mois.',
     images: ['/og-image.jpg'],
   },
   robots: { index: false, follow: false },

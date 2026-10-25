@@ -27,7 +27,7 @@ const TESTIMONIALS = [
   },
   {
     quote:
-      'On a doublé nos avis Google en 3 mois grâce aux demandes automatiques post-séjour. Et l\'intégration avec Thaïs a pris 5 minutes.',
+      'On a doublé nos avis Google en 3 mois grâce aux demandes automatiques post-séjour.',
     author: 'Sophie Renard',
     role: 'Propriétaire',
     hotel: 'Maison d\'hôtes Les Jardins',

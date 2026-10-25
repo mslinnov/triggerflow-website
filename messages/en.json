@@ -304,7 +304,7 @@
     },
     "workflow": {
       "title": "My custom workflow",
-      "subtitle": "Created in 5 minutes",
+      "subtitle": "Created in a few clicks",
       "active": "Active",
       "trigger": "Trigger",
       "triggerDesc": "Guest check-in",
@@ -767,7 +767,7 @@
       },
       "support": {
         "title": "24/7 Support",
-        "description": "Chat, email or phone. Average response time of 15 minutes during business hours."
+        "description": "Chat, email or phone, with a team that knows hospitality."
       },
       "training": {
         "title": "Training included",
@@ -1096,7 +1096,7 @@
       "submitting": "Sending...",
       "success": {
         "title": "Message sent!",
-        "message": "Thank you for your message. Our team will respond within 24 hours."
+        "message": "Thank you for your message. Our team will get back to you shortly."
       },
       "error": "Your message was not sent. Please try again, or write to contact@trigger-flow.com."
     },
@@ -1421,7 +1421,7 @@
     },
     "integrations": {
       "badge": "Integrations",
-      "title": "Connects to your PMS in 5 minutes",
+      "title": "Connects to your PMS, no developer needed",
       "subtitle": "Compatible with the leading PMS and Channel Managers on the market"
     },
     "faq": {
@@ -1898,7 +1898,7 @@
           "timeline": [
             {
               "day": "D+1 (Friday)",
-              "description": "Email with personalized satisfaction survey. Automatically translated to Spanish, since Mr. Sanchez's nationality is in Mews. 6 questions, 2 minutes to complete."
+              "description": "Email with personalized satisfaction survey. Automatically translated to Spanish, since Mr. Sanchez's nationality is in Mews. 6 questions."
             },
             {
               "day": "D+2 (Saturday)",
@@ -1951,20 +1951,17 @@
         {
           "number": "1",
           "title": "Activate TriggerFlow in Mews Marketplace",
-          "description": "From Mews Commander, go to Marketplace > TriggerFlow. Activate the connector: an API key is generated automatically. Copy it.",
-          "duration": "~3 minutes"
+          "description": "From Mews Commander, go to Marketplace > TriggerFlow. Activate the connector: an API key is generated automatically. Copy it."
         },
         {
           "number": "2",
           "title": "Paste the key in TriggerFlow",
-          "description": "Settings > Integrations > Mews. Bidirectional sync starts immediately. Guests, reservations, rooms: everything arrives via webhooks.",
-          "duration": "~2 min + auto sync"
+          "description": "Settings > Integrations > Mews. Bidirectional sync starts immediately. Guests, reservations, rooms: everything arrives via webhooks."
         },
         {
           "number": "3",
           "title": "Activate your workflows",
-          "description": "Pre-configured scenarios or custom creation with the visual drag-and-drop flow builder. No code, no consultant.",
-          "duration": "~10 minutes"
+          "description": "Pre-configured scenarios or custom creation with the visual drag-and-drop flow builder. No code, no consultant."
         }
       ]
     },
@@ -1983,11 +1980,11 @@
         },
         {
           "question": "How do I connect a CRM to Mews PMS?",
-          "answer": "From Mews Commander, open the Marketplace and activate TriggerFlow. An API key is generated automatically. Paste it in TriggerFlow (Settings > Integrations > Mews). Sync starts immediately via real-time webhooks. No developer needed, no file to configure. The entire process takes about 3 minutes."
+          "answer": "From Mews Commander, open the Marketplace and activate TriggerFlow. An API key is generated automatically. Paste it in TriggerFlow (Settings > Integrations > Mews). Sync starts immediately via real-time webhooks. No developer needed, no file to configure."
         },
         {
           "question": "How long to get up and running?",
-          "answer": "The technical connection takes 3 minutes. Initial sync depends on how much history you have. Including the first workflows (pre-stay email, post-stay survey), a hotel is up and running in 48 h."
+          "answer": "The technical connection is done from the Mews Marketplace, no developer needed. Initial sync depends on how much history you have. Including the first workflows (pre-stay email, post-stay survey), a hotel is up and running in 48 h."
         },
         {
           "question": "What data is synced between Mews and TriggerFlow?",
@@ -2344,7 +2341,7 @@
       "demo": {
         "submit": "Get my revenue plan",
         "successTitle": "Noted.",
-        "successBody": "Someone from the team will write to you within one working day with your detailed plan and two demo slots.",
+        "successBody": "Someone from the team will write to you shortly with your detailed plan and two demo slots.",
         "privacy": "Your details are used to prepare your plan and to get back to you. Never sold on.",
         "book": "Book a demo"
       },

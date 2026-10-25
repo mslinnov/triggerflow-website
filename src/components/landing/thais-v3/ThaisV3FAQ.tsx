@@ -8,11 +8,11 @@ import { Container } from '@/components/ui';
 const faqs = [
   {
     question: 'Est-ce que c\'est vraiment facile à configurer ?',
-    answer: 'Oui ! On vous accompagne pendant 30 minutes pour configurer vos premiers emails automatiques. Pas besoin de compétences techniques. Si vous savez envoyer un email, vous saurez utiliser TriggerFlow.',
+    answer: 'Oui ! On vous accompagne pour configurer vos premiers emails automatiques. Pas besoin de compétences techniques. Si vous savez envoyer un email, vous saurez utiliser TriggerFlow.',
   },
   {
     question: 'Combien de temps ça prend à mettre en place ?',
-    answer: 'La configuration initiale prend environ 30 minutes avec notre équipe. Ensuite, tout fonctionne automatiquement. Vous pouvez être opérationnel dès le premier jour.',
+    answer: 'Comptez 48 h pour être opérationnel : notre équipe configure avec vous vos premiers emails automatiques, ensuite tout fonctionne tout seul.',
   },
   {
     question: 'Est-ce que mes données Thaïs sont en sécurité ?',
@@ -20,7 +20,7 @@ const faqs = [
   },
   {
     question: 'Que se passe-t-il si je me trompe dans la configuration ?',
-    answer: 'Pas de panique ! Vous pouvez modifier ou désactiver n\'importe quel email automatique en un clic. Et notre équipe support est là pour vous aider si besoin (réponse en moins de 2h).',
+    answer: 'Pas de panique ! Vous pouvez modifier ou désactiver n\'importe quel email automatique en un clic. Et notre équipe support est là pour vous aider si besoin.',
   },
   {
     question: 'Puis-je essayer avant de m\'engager ?',
@@ -28,7 +28,7 @@ const faqs = [
   },
   {
     question: 'Comment fonctionne le support ?',
-    answer: 'Notre équipe est 100% française et spécialisée dans l\'hôtellerie. Support par email avec réponse en moins de 2h, et appels téléphoniques disponibles pour les questions complexes.',
+    answer: 'Notre équipe est 100% française et spécialisée dans l\'hôtellerie. Support par email, et appels téléphoniques disponibles pour les questions complexes.',
   },
 ];
 
