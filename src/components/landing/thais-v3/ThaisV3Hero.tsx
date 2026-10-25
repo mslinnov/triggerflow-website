@@ -108,7 +108,7 @@ export function ThaisV3Hero() {
                   ))}
                 </div>
                 <span className="text-sm text-[var(--v3-text-secondary)]">
-                  <strong className="font-semibold text-[var(--v3-text-primary)]">200+</strong>{' '}
+                  <strong className="font-semibold text-[var(--v3-text-primary)]">300+</strong>{' '}
                   hôteliers nous font confiance
                 </span>
               </div>

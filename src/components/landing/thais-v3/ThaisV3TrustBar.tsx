@@ -7,7 +7,7 @@ import { Container } from '@/components/ui';
 const stats = [
   {
     icon: Users,
-    value: '200+',
+    value: '300+',
     label: 'Hôtels connectés',
   },
   {

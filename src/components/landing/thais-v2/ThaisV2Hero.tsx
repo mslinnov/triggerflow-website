@@ -207,7 +207,7 @@ export function ThaisV2Hero() {
                     ))}
                   </div>
                   <div className="text-sm">
-                    <span className="font-semibold text-white">200+</span>
+                    <span className="font-semibold text-white">300+</span>
                     <span className="text-zinc-400"> hôtels</span>
                   </div>
                 </div>

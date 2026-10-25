@@ -18,7 +18,7 @@ const logos = [
 const metrics = [
   {
     icon: Building2,
-    value: '200+',
+    value: '300+',
     label: 'hôtels équipés',
     accent: 'from-brand-primary to-emerald-500',
   },

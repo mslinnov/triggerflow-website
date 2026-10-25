@@ -165,7 +165,7 @@ export function ThaisHero() {
                   ))}
                 </div>
                 <span className="ml-2 text-sm font-medium text-zinc-700">
-                  200+ hôtels nous font confiance
+                  300+ hôtels nous font confiance
                 </span>
               </div>
             </motion.div>

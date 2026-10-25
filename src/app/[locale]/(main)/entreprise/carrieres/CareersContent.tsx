@@ -83,7 +83,7 @@ const openPositions = [
 const stats = [
   { value: '15', label: 'Collaborateurs' },
   { value: '100%', label: 'Remote' },
-  { value: '200+', label: 'Hôtels clients' },
+  { value: '300+', label: 'Hôtels clients' },
   { value: '2022', label: 'Création' },
 ];
 
