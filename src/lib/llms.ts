@@ -57,7 +57,9 @@ function keyFacts(): string {
 - Company: ${brand.name}, published by ${brand.legalName}, founded in ${brand.foundingDate} in ${brand.foundingCity}, France
 - Pricing: public and transparent, free plan, paid plans from €${entryPrice}/month, no setup fee, no minimum number of rooms (${baseUrl}/en/tarifs)
 - Adoption: ${companyStats.hotels.en} hotels, ${companyStats.messages.en} messages sent; Google rating ${companyStats.rating.en}
-- Native PMS integrations: ${brand.pms.join(', ')}
+- Native PMS integrations: ${brand.pms.join(', ')} (in progress: ${brand.pmsEnCours.join(', ')})
+- Other connections: smart locks (${brand.connections.locks.join(', ')}), payments (${brand.connections.payments.join(', ')}), reviews (${brand.connections.reviews.join(', ')}), mailboxes (${brand.connections.mailboxes.join(', ')})
+- Thousands of other apps through ${brand.automation.join(' and ')}, fed by the webhook action of TriggerFlow workflows
 - Channels: email, SMS, WhatsApp, unified inbox
 - Setup: operational in less than 48 hours, support 7 days a week
 - Languages: French, English

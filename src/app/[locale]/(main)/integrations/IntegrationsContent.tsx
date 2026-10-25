@@ -41,6 +41,7 @@ const integrationCategories: Category[] = [
       { key: 'mews', logo: '/images/integrations/mews.svg' },
       { key: 'asterio', logo: '/images/integrations/asterio.png' },
       { key: 'leanpms', logo: '/images/integrations/leanpms.webp' },
+      { key: 'chloe', logo: '/images/integrations/chloe.webp' },
       { key: 'vega', logo: '/images/integrations/vega.png' },
       { key: 'apaleo', logo: '/images/integrations/apaleo.png' },
       { key: 'zeswitch', logo: '/images/integrations/zeswitch.png' },
@@ -54,8 +55,6 @@ const integrationCategories: Category[] = [
     integrations: [
       { key: 'sesame', logo: '/images/integrations/sesame.png' },
       { key: 'igloohome', logo: '/images/integrations/igloohome.svg' },
-      { key: 'salto', logo: '/images/integrations/salto.svg' },
-      { key: 'printer', logo: '/images/integrations/printer.svg' },
     ],
   },
   {
@@ -65,8 +64,6 @@ const integrationCategories: Category[] = [
     icon: CreditCard,
     integrations: [
       { key: 'stripe', logo: '/images/integrations/stripe.svg' },
-      { key: 'mollie', logo: '/images/integrations/mollie.svg' },
-      { key: 'paypal', logo: '/images/integrations/paypal.svg' },
       { key: 'payzen', logo: '/images/integrations/payzen.png' },
       { key: 'applepay', logo: '/images/integrations/applepay.svg' },
       { key: 'googlepay', logo: '/images/integrations/googlepay.svg' },
@@ -82,8 +79,6 @@ const integrationCategories: Category[] = [
       { key: 'tripadvisor', logo: '/images/integrations/tripadvisor.svg' },
       { key: 'booking', logo: '/images/integrations/booking.svg' },
       { key: 'airbnb', logo: '/images/integrations/airbnb.svg' },
-      { key: 'trustpilot', logo: '/images/integrations/trustpilot.svg' },
-      { key: 'hotelscom', logo: '/images/integrations/hotelscom.svg' },
     ],
   },
   {

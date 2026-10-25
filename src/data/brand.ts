@@ -45,6 +45,27 @@ export const brand = {
     'Reservit',
     'Lean PMS',
   ],
+  /**
+   * PMS dont le connecteur est en cours de développement : affichés comme tels, jamais comptés
+   * dans `pms` tant que le connecteur n'existe pas dans l'app.
+   */
+  pmsEnCours: ['Chloé'],
+  /**
+   * Autres connexions, vérifiées dans l'app le 25/10/2026 (Models/Plug.php, Services/Locks,
+   * Services/Payments, Services/Reviews, Models/FacilityMailbox.php).
+   */
+  connections: {
+    locks: ['Sesame', 'Igloohome'],
+    payments: ['Stripe', 'PayZen', 'SystemPay', 'Thaïs'],
+    reviews: ['Google', 'TripAdvisor', 'Booking.com', 'Airbnb'],
+    mailboxes: ['Gmail', 'Microsoft 365'],
+  },
+  /**
+   * Zapier, n8n (et Make) reçoivent les données de TriggerFlow par l'action webhook des scénarios :
+   * TriggerFlow ne figure pas dans leur catalogue. Catalogues relevés le 25/10/2026 sur
+   * zapier.com/apps (« 10368+ apps ») et n8n.io/integrations (« 2,000+ integrations »).
+   */
+  automation: ['Zapier', 'n8n'],
   knowsAbout: {
     fr: ['CRM hôtelier', 'marketing automation hôtelier', 'enquête de satisfaction hôtel', 'gestion des avis clients', 'ventes additionnelles hôtel', 'fidélisation client hôtel'],
     en: ['hotel CRM', 'hotel marketing automation', 'hotel guest satisfaction survey', 'hotel review management', 'hotel upselling', 'hotel guest loyalty'],

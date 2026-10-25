@@ -125,7 +125,7 @@
     },
     "trustBadges": {
       "rgpd": "Conforme RGPD",
-      "pms": "PMS intégrés",
+      "pms": "13 PMS + Zapier et n8n",
       "support": "Support 7j/7"
     }
   },
@@ -530,7 +530,7 @@
     "steps": {
       "connect": {
         "title": "Connectez votre PMS",
-        "description": "Intégration native avec 13 PMS, dont Mews, Opera Cloud, Thaïs et Medialog. Vos données clients se synchronisent en temps réel."
+        "description": "Intégration native avec 13 PMS, dont Mews, Opera Cloud, Thaïs et Medialog, plus les serrures connectées, le paiement en ligne et des milliers d'applications via Zapier et n8n. Vos données clients se synchronisent en temps réel."
       },
       "create": {
         "title": "Configurez vos workflows",
@@ -696,8 +696,8 @@
   "integrationsShowcase": {
     "badge": "Intégrations",
     "title": "Connecté à votre écosystème",
-    "subtitle": "Intégration native avec 13 PMS et vos outils hôteliers",
-    "count": "13 PMS connectés",
+    "subtitle": "13 PMS, serrures connectées, paiement en ligne et des milliers d'applications via Zapier et n8n",
+    "count": "13 PMS + Zapier et n8n",
     "cta": "Voir toutes les intégrations"
   },
   "testimonialsCarousel": {
@@ -1187,14 +1187,14 @@
   },
   "integrations": {
     "meta": {
-      "title": "Intégrations PMS hôtel : 13 PMS connectés nativement",
-      "description": "Connectez TriggerFlow à votre PMS (13 PMS connectés, dont Mews, Opera Cloud, Thaïs, Misterbooking) et à vos outils hôteliers. Synchronisation temps réel sans développement."
+      "title": "Intégrations hôtel : 13 PMS, serrures, paiement, Zapier et n8n",
+      "description": "Connectez TriggerFlow à votre PMS (13 PMS, dont Mews, Opera Cloud, Thaïs, Misterbooking), à vos serrures connectées, à votre solution de paiement et à des milliers d'applications via Zapier et n8n. Synchronisation temps réel sans développement."
     },
     "hero": {
       "title": "Connectez TriggerFlow à vos outils",
       "subtitle": "Intégrations natives avec les principaux PMS hôteliers, serrures connectées, moyens de paiement et plateformes d'avis. Aucun développement nécessaire.",
       "cta": "Vous ne trouvez pas votre outil ?",
-      "count": "28+ intégrations"
+      "count": "13 PMS + des milliers d'apps via Zapier et n8n"
     },
     "badges": {
       "native": "Natif",
@@ -1233,6 +1233,10 @@
             "name": "Lean PMS",
             "description": "PMS léger et moderne"
           },
+          "chloe": {
+            "name": "Chloé PMS",
+            "description": "PMS intuitif pour hôteliers"
+          },
           "vega": {
             "name": "Vega",
             "description": "Solution de gestion hôtelière"
@@ -1258,14 +1262,6 @@
           "igloohome": {
             "name": "Igloohome",
             "description": "Serrures et boîtes à clés connectées"
-          },
-          "salto": {
-            "name": "Salto",
-            "description": "Contrôle d'accès électronique"
-          },
-          "printer": {
-            "name": "Imprimante",
-            "description": "Impression de fiches et tickets"
           }
         }
       },
@@ -1276,14 +1272,6 @@
           "stripe": {
             "name": "Stripe",
             "description": "Paiements en ligne"
-          },
-          "mollie": {
-            "name": "Mollie",
-            "description": "Paiements européens simplifiés"
-          },
-          "paypal": {
-            "name": "PayPal",
-            "description": "Paiements internationaux"
           },
           "payzen": {
             "name": "PayZen",
@@ -1318,14 +1306,6 @@
           "airbnb": {
             "name": "Airbnb",
             "description": "Avis hôtes et voyageurs"
-          },
-          "trustpilot": {
-            "name": "Trustpilot",
-            "description": "Plateforme d'avis vérifiés"
-          },
-          "hotelscom": {
-            "name": "Hotels.com",
-            "description": "Avis voyageurs Hotels.com"
           }
         }
       },
@@ -1361,15 +1341,15 @@
         "integrations": {
           "zapier": {
             "name": "Zapier",
-            "description": "Connectez 5000+ applications"
+            "description": "Plus de 10 000 applications (zapier.com, octobre 2026), via webhook"
           },
           "make": {
             "name": "Make",
-            "description": "Automatisation avancée"
+            "description": "Automatisation avancée, via webhook"
           },
           "n8n": {
             "name": "n8n",
-            "description": "Automatisation open source"
+            "description": "Automatisation open source, via webhook"
           },
           "webhook": {
             "name": "Webhook",
@@ -1450,7 +1430,7 @@
     },
     "trustBadges": {
       "rgpd": "Conforme RGPD",
-      "pms": "13 PMS connectés",
+      "pms": "13 PMS + Zapier et n8n",
       "support": "Support 7j/7"
     },
     "badges": {
@@ -1464,7 +1444,7 @@
   "product": {
     "meta": {
       "title": "CRM hôtelier tout-en-un - Email, SMS, WhatsApp, Workflows",
-      "description": "Plateforme tout-en-un pour hôteliers : CRM, email, SMS, WhatsApp, workflows automatisés, fidélité, avis Google. Connecté à 13 PMS."
+      "description": "Plateforme tout-en-un pour hôteliers : CRM, email, SMS, WhatsApp, workflows automatisés, fidélité, avis Google. Connectée à 13 PMS, aux serrures, au paiement en ligne et à des milliers d'applications via Zapier et n8n."
     },
     "hero": {
       "title": "Une plateforme complète pour votre relation client",
@@ -2025,7 +2005,7 @@
         {
           "label": "Catégorie",
           "title": "Toutes les intégrations PMS",
-          "description": "Mews, Opera Cloud, Thaïs, Medialog et 8 autres PMS connectés nativement.",
+          "description": "Mews, Opera Cloud, Thaïs, Medialog et 9 autres PMS connectés nativement, plus des milliers d'applications via Zapier et n8n.",
           "href": "/integrations"
         },
         {
@@ -2748,7 +2728,7 @@
           "text": "Liens de paiement · Acomptes · Statistiques · Rapports"
         }
       },
-      "pms": "Connecté à votre PMS · 13 PMS intégrés",
+      "pms": "Connecté à votre PMS · 13 PMS, serrures, paiement, Zapier et n8n",
       "badges": {
         "setup": "Opérationnel en 48 heures",
         "support": "Support 7j/7",

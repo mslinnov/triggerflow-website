@@ -157,14 +157,33 @@ test('affirmations retirées absentes du code, du blog et des LP', () => {
   assert.deepEqual(found, []);
 });
 
-test('nombre de PMS affiché = connecteurs listés dans brand.ts, Chloë absent (aucun connecteur)', () => {
-  const texts = [
-    readFileSync(join(root, 'messages', 'fr.json'), 'utf8'),
-    readFileSync(join(root, 'messages', 'en.json'), 'utf8'),
-    ...files(join(root, 'src'), /\.(ts|tsx)$/).filter((f) => !/\.test\.ts$/.test(f)).map((f) => readFileSync(f, 'utf8')),
-  ].join('\n');
-  const counts = [...texts.matchAll(/(\d+) PMS (connectés|connected|intégrés)|value: '(\d+)',\s*(suffix: '', )?label: 'PMS connectés/g)].map((m) => Number(m[1] ?? m[3]));
-  assert.ok(counts.length > 5, 'nombre de PMS introuvable');
-  assert.deepEqual([...new Set(counts)], [brand.pms.length]);
-  assert.doesNotMatch(texts, /Chloë|'chloe'/);
+test('connexions : nombre de PMS tiré de brand.ts, toujours présenté avec Zapier et n8n', () => {
+  // Une mention « N PMS » (ou « et N autres PMS » après 4 noms) se lit avec le reste des
+  // connexions : chaque chaîne qui la porte cite aussi Zapier et n8n.
+  const messageTexts = ['fr', 'en'].flatMap((locale) =>
+    strings(JSON.parse(readFileSync(join(root, 'messages', `${locale}.json`), 'utf8')), new Set(), locale).map(([, t]) => t),
+  );
+  const codeTexts = files(join(root, 'src'), /\.(ts|tsx)$/)
+    .filter((f) => !/\.test\.ts$/.test(f))
+    .flatMap((f) => [...readFileSync(f, 'utf8').matchAll(/value: '(\d+)',\s*(?:suffix: '', )?label: '([^']*PMS[^']*)'/g)].map((m) => `${m[1]} ${m[2]}`));
+  const found: string[] = [];
+  for (const text of [...messageTexts, ...codeTexts]) {
+    for (const m of text.matchAll(/\b(\d+) (autres |more )?PMS\b/g)) {
+      const shown = Number(m[1]) + (m[2] ? 4 : 0);
+      if (shown !== brand.pms.length || !/Zapier/.test(text) || !/n8n/.test(text)) found.push(text.slice(0, 120));
+    }
+  }
+  assert.ok(messageTexts.join('\n').match(/\b\d+ PMS\b/g)!.length > 5, 'nombre de PMS introuvable');
+  assert.deepEqual(found, []);
+});
+
+test('connexions sans connecteur dans l\'app : absentes ; PMS en cours seulement depuis brand.ts', () => {
+  const page = readFileSync(join(root, 'src', 'app', '[locale]', '(main)', 'integrations', 'IntegrationsContent.tsx'), 'utf8');
+  const keys = [...page.matchAll(/key: '([a-z0-9]+)', logo/g)].map((m) => m[1]);
+  for (const missing of ['salto', 'printer', 'mollie', 'paypal', 'trustpilot', 'hotelscom']) {
+    assert.ok(!keys.includes(missing), `${missing} affiché sans connecteur`);
+  }
+  assert.ok(brand.pmsEnCours.every((p) => !(brand.pms as readonly string[]).includes(p)), 'un PMS en cours compté comme connecté');
+  const all = ['fr', 'en'].map((l) => readFileSync(join(root, 'messages', `${l}.json`), 'utf8')).join('\n') + page;
+  assert.doesNotMatch(all, /Chloë/);
 });

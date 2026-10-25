@@ -18,7 +18,7 @@ const stats = [
   {
     icon: Plug,
     value: '13',
-    label: 'PMS connectés',
+    label: 'PMS + Zapier et n8n',
   },
   {
     icon: Send,

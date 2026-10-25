@@ -23,6 +23,7 @@ const integrations: PmsIntegration[] = [
   { name: 'Asterio', slug: 'asterio', src: '/images/integrations/asterio.png', color: '#FF6136' },
   { name: 'Medialog', slug: 'medialog', src: '/images/integrations/medialog.svg', color: '#0070B0' },
   { name: 'Lean PMS', slug: 'leanpms', src: '/images/integrations/leanpms.webp', color: '#2563EB' },
+  { name: 'Chloé', slug: 'chloe', src: '/images/integrations/chloe.webp', color: '#6D28D9' },
   { name: 'Vega', slug: 'vega', src: '/images/integrations/vega.png', color: '#1E40AF' },
 ];
 
@@ -87,7 +88,7 @@ export function IntegrationsShowcase() {
             <PMSCard key={pms.slug} pms={pms} />
           ))}
 
-          {/* Carte « 13 PMS connectés » */}
+          {/* Carte « 13 PMS + Zapier et n8n » */}
           <motion.div
             variants={cardReveal}
             whileHover={{ y: -4, scale: 1.02 }}
