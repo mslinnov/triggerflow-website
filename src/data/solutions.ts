@@ -576,7 +576,7 @@ export const solutions: Record<string, SolutionData> = {
       metric: '-80% d\'appels hors horaires',
     },
 
-    integrations: ['Medialog', 'Sesame', 'Igloohome', 'Salto'],
+    integrations: ['Medialog', 'Sesame', 'Igloohome'],
 
     faq: [
       {

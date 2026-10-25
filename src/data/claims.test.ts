@@ -120,6 +120,8 @@ const BANNED = [
   /85 ?% (payés|paid|des acomptes)/i,
   /statId="(googleReviews|avgBasket|hoursSaved|onlineCheckin|countries)"/,
   /<Stat id="(googleReviews|avgBasket|hoursSaved|onlineCheckin|countries)"/,
+  // Connexions sans connecteur dans l'app (25/10/2026).
+  /Mollie|Payline|PayPal|Trustpilot|'Salto'/,
 ];
 
 test('messages FR/EN : affirmations retirées absentes hors témoignages', () => {

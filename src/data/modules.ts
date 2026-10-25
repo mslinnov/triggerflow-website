@@ -1465,7 +1465,7 @@ export const modules: Record<string, ModuleData> = {
       'Un lien personnalisé aux couleurs de votre hôtel, envoyé automatiquement par email, SMS ou WhatsApp',
       '3 types de paiement : encaissement immédiat, caution (pré-autorisation 7-31j), empreinte carte (prélèvement ultérieur)',
       'Page de paiement multilingue - s\'adapte automatiquement à la langue du client',
-      'Compatible Stripe, et bientôt Mollie, Payline, etc., un seul système, plusieurs prestataires'
+      'Compatible Stripe, PayZen, SystemPay et paiement Thaïs : un seul système, plusieurs prestataires'
     ],
     stats: [
       { value: '3', label: 'types de paiement (paiement, caution, empreinte)', suffix: '' },
@@ -1518,9 +1518,9 @@ export const modules: Record<string, ModuleData> = {
       },
       {
         title: 'Multi-prestataires',
-        description: 'Connectez Stripe aujourd\'hui, Mollie ou Payline demain. Architecture extensible, pas de verrouillage prestataire.',
+        description: 'Stripe Connect, PayZen et SystemPay (Lyra) ou le paiement Thaïs : vous gardez le prestataire de votre choix. Architecture extensible, pas de verrouillage prestataire.',
         icon: RefreshCw,
-        bullets: ['Stripe Connect natif', 'Mollie & Payline bientôt', 'Changez de prestataire sans migration'],
+        bullets: ['Stripe Connect natif', 'PayZen, SystemPay et paiement Thaïs', 'Changez de prestataire sans migration'],
         mockup: 'PaymentProvidersMockup',
       },
     ],
@@ -1549,7 +1549,7 @@ export const modules: Record<string, ModuleData> = {
     faq: [
       {
         question: 'Quels prestataires de paiement sont supportés ?',
-        answer: 'Stripe Connect aujourd\'hui, Mollie et Payline bientôt. TriggerFlow s\'intègre directement à votre compte prestataire, vos fonds arrivent sur votre compte, pas le nôtre.'
+        answer: 'Stripe Connect, PayZen, SystemPay (Lyra) et le paiement Thaïs. TriggerFlow s\'intègre directement à votre compte prestataire, vos fonds arrivent sur votre compte, pas le nôtre.'
       },
       {
         question: 'Est-ce que TriggerFlow prend une commission ?',

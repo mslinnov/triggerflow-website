@@ -987,7 +987,7 @@
             "Branded payment links",
             "Security hold & pre-authorization",
             "Card on file",
-            "Multi-provider (Stripe, Mollie...)"
+            "Multi-provider (Stripe, PayZen, SystemPay, Thaïs)"
           ]
         }
       }
