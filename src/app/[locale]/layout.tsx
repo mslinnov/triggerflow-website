@@ -10,8 +10,9 @@ import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics';
 import { DemoClickTracker } from '@/components/analytics/DemoClickTracker';
 import { MetaPixel } from '@/components/analytics/MetaPixel';
 import { AttributionTracker } from '@/components/analytics/AttributionTracker';
+import { brand } from '@/data/brand';
 
-const baseUrl = 'https://www.trigger-flow.com';
+const baseUrl = brand.url;
 
 const ibmPlexSans = IBM_Plex_Sans({
   variable: '--font-ibm-plex-sans',

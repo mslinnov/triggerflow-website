@@ -31,12 +31,6 @@ export interface CompanyStat {
   source: string;
 }
 
-/** Période et périmètre des mesures en base du 25/10/2026, à afficher à côté des taux. */
-export const statsScope = {
-  fr: '12 derniers mois, tous les établissements clients',
-  en: 'last 12 months, all client properties',
-} as const;
-
 export const companyStats: Record<StatId, CompanyStat> = {
   hotels: {
     fr: '300+',
@@ -90,6 +84,11 @@ export const companyStats: Record<StatId, CompanyStat> = {
       'Étude ventes additionnelles (src/data/upsell-services.ts) : 5,15 % des offres envoyées 3 à 7 jours avant l\'arrivée achetées, sur 36 708 envois. Arrondi à 5 % pour l\'affichage en nombre entier.',
   },
 };
+
+/** Nombre de tête d'un chiffre officiel (« 94 % » → « 94 », « 300+ » → « 300 »), pour AnimatedStat qui anime `value` puis colle son `suffix`. */
+export function statNumber(id: StatId): string {
+  return companyStats[id].fr.match(/^\d+(?:[.,]\d+)?/)?.[0] ?? '';
+}
 
 export function stat(id: string, locale: string): string {
   const v = companyStats[id as StatId];

@@ -5,7 +5,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
-import { Calendar, Clock, Share2, Linkedin, Twitter } from 'lucide-react';
+import { Linkedin, Twitter } from 'lucide-react';
 
 import { getAllArticles, getArticleBySlug, getArticleByTranslationKey, generateTableOfContents, extractFaqItems } from '@/lib/blog';
 import { Container } from '@/components/ui/Container';
@@ -19,8 +19,9 @@ import { KeyFigure } from '@/components/mdx/KeyFigure';
 import { KeyFiguresGrid, KeyFigureCard } from '@/components/mdx/KeyFiguresGrid';
 import { Stat } from '@/components/mdx/Stat';
 import { getAuthor } from '@/data/authors';
+import { brand } from '@/data/brand';
 
-const BASE_URL = 'https://www.trigger-flow.com';
+const BASE_URL = brand.url;
 
 interface PageProps {
   params: Promise<{ locale: string; silo: string; slug: string }>;

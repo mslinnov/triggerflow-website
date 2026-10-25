@@ -8,8 +8,6 @@ import { Container } from '@/components/ui';
 import { cn } from '@/lib/utils';
 import { HOME_FAQ_KEYS } from '@/data/home-faq';
 
-const faqItems = HOME_FAQ_KEYS;
-
 export function FAQV2() {
   const t = useTranslations('faq');
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -66,7 +64,7 @@ export function FAQV2() {
           {/* Right side - FAQ items */}
           <div className="lg:col-span-8">
             <div className="space-y-4">
-              {faqItems.map((item, index) => (
+              {HOME_FAQ_KEYS.map((item, index) => (
                 <motion.div
                   key={item}
                   initial={{ opacity: 0, y: 20 }}
