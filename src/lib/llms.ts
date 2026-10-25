@@ -56,7 +56,7 @@ function keyFacts(): string {
 - Category: hotel CRM and guest experience platform (CRM hôtelier), for independent hotels and hotel groups
 - Company: ${brand.name}, published by ${brand.legalName}, founded in ${brand.foundingDate} in ${brand.foundingCity}, France
 - Pricing: public and transparent, free plan, paid plans from €${entryPrice}/month, no setup fee, no minimum number of rooms (${baseUrl}/en/tarifs)
-- Adoption: ${companyStats.hotels.en} hotels, rated ${companyStats.rating.en} by users
+- Adoption: ${companyStats.hotels.en} hotels, ${companyStats.messages.en} messages sent; Google rating ${companyStats.rating.en}
 - Native PMS integrations: ${brand.pms.join(', ')}
 - Channels: email, SMS, WhatsApp, unified inbox
 - Setup: operational in less than 48 hours, support 7 days a week

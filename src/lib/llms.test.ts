@@ -38,7 +38,7 @@ test('le texte brut résout les chiffres TriggerFlow et retire les composants', 
   const txt = mdxToPlainText(mdx, 'fr');
   assert.doesNotMatch(txt, /[<>]|METADATA_SEO|\{\/\*/);
   assert.match(txt, /Plus de 300\+ hôtels\./);
-  assert.match(txt, /- 9,4\/10 : Note/);
+  assert.match(txt, /- 5\/5 \(3 avis Google\) : Note/);
   assert.match(txt, /- 98% : Taux d'ouverture SMS/);
   assert.match(txt, /\(https:\/\/www\.trigger-flow\.com\/fr\/blog\/experience-client\/crm-hotelier-guide\/\)/);
 });

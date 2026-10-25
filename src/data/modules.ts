@@ -117,13 +117,13 @@ export const modules: Record<string, ModuleData> = {
     ],
     benefits: [
       'Emails envoyés automatiquement à chaque réservation, check-in, check-out, 0 action manuelle, dès le premier jour',
-      'Délivrabilité de 98% garantie, on configure SPF, DKIM et DMARC pour vous, vos emails arrivent en boîte de réception',
+      'SPF, DKIM et DMARC configurés pour vous sur votre domaine : 94 % des e-mails de nos clients sont délivrés (12 derniers mois)',
       'Chaque email porte votre logo, vos couleurs, votre charte, le client reconnaît votre hôtel au premier coup d\'œil',
       'Une identité visuelle cohérente sur tous vos points de contact : confirmation, pré-séjour, remerciement, offres'
     ],
     stats: [
-      { value: '98', label: 'de délivrabilité garantie', suffix: '%' },
-      { value: '3', label: 'plus de clics vs email générique', suffix: 'x' },
+      { value: '94', label: 'des e-mails délivrés (12 derniers mois, tous nos hôtels)', suffix: '%' },
+      { value: '35', label: 'd\'ouverture, hors adresses relais des OTA (12 derniers mois)', suffix: '%' },
       { value: '2', label: 'pour créer un email - sans code', suffix: 'min' },
     ],
     journey: [
@@ -164,22 +164,22 @@ export const modules: Record<string, ModuleData> = {
       {
         title: 'Confirmation instantanée',
         description: 'Le client réserve à 23h un dimanche sur Booking. Dans la foulée, il reçoit un email aux couleurs de votre hôtel avec son nom, ses dates, le type de chambre et un lien vers son espace client. Aucun collaborateur n\'a eu besoin d\'intervenir.',
-        result: '92% de taux d\'ouverture, 0 action manuelle'
+        result: 'Envoyé dès la réservation, sans action manuelle'
       },
       {
         title: 'Rappel pré-séjour J-3',
         description: 'Trois jours avant l\'arrivée : horaires de check-in, code WiFi, itinéraire, et une proposition de surclassement ou de soin spa. Le client arrive informé, serein, et a déjà acheté un extra.',
-        result: '+35% de ventes additionnelles pré-séjour'
+        result: 'Des extras vendus avant l\'arrivée'
       },
       {
         title: 'Demande d\'avis intelligente',
         description: 'J+1 après le départ : un email de remerciement personnalisé avec un lien direct vers Google. Le système n\'envoie la demande d\'avis que si le séjour s\'est bien passé, pour protéger votre note.',
-        result: '+47% d\'avis Google collectés'
+        result: 'Chaque client satisfait invité à laisser un avis Google'
       },
       {
         title: 'Offres ciblées post-séjour',
         description: 'Anniversaire du client, programme fidélité, promotion saisonnière, chaque offre est ciblée selon l\'historique de séjours et les préférences. Pas de spam, que de la pertinence.',
-        result: '12% de taux de conversion sur les offres'
+        result: 'Des offres envoyées aux bons clients seulement'
       }
     ],
     testimonial: {
@@ -196,7 +196,7 @@ export const modules: Record<string, ModuleData> = {
       },
       {
         question: 'Est-ce que les emails arrivent bien en boîte de réception ?',
-        answer: 'Oui. TriggerFlow configure automatiquement SPF, DKIM et DMARC sur votre domaine pour garantir un taux de délivrabilité de 98%. Vos emails arrivent en boîte principale, pas dans les spams ni les promotions.'
+        answer: 'Oui. TriggerFlow configure automatiquement SPF, DKIM et DMARC sur votre domaine. Sur les 12 derniers mois, 94 % des e-mails envoyés par nos clients ont été délivrés ; les échecs restants sont surtout des adresses invalides saisies à la réservation.'
       },
       {
         question: 'Les emails reprennent-ils vraiment la charte de mon hôtel ?',
@@ -233,7 +233,7 @@ export const modules: Record<string, ModuleData> = {
     icon: MessageSquare,
     title: 'SMS',
     seoTitle: 'SMS hôtelier automatique : infos arrivée & offres',
-    headline: '98% de taux d\'ouverture, le canal des messages qui comptent',
+    headline: 'Le SMS, le canal des messages qui comptent',
     description: 'Le SMS est le canal le plus efficace pour les messages critiques. Infos d\'arrivée, code WiFi, offre flash : votre client le voit tout de suite.',
     mockup: 'SmsHeroMockup',
     painPoints: [
@@ -242,14 +242,13 @@ export const modules: Record<string, ModuleData> = {
       'Vos offres flash spa ou restaurant passent inaperçues par email'
     ],
     benefits: [
-      '98% de taux d\'ouverture : votre message est lu',
+      'Un SMS arrive sur le téléphone, même sans connexion internet : 90 % des SMS de nos clients sont remis (12 derniers mois)',
       'Envoi automatique au bon moment : check-in, offre flash, notification urgente, 0 appel téléphonique',
       'SMS bidirectionnel : le client répond directement et vous le voyez dans votre dashboard'
     ],
     stats: [
-      { value: '98', label: 'de taux d\'ouverture', suffix: '%' },
-      { value: '3', label: 'minutes pour être lu', suffix: 'min' },
-      { value: '5', label: 'plus de réponses vs email', suffix: 'x' },
+      { value: '90', label: 'des SMS remis (12 derniers mois, tous nos hôtels)', suffix: '%' },
+      { value: '2', label: 'sens : le client répond, vous lisez la réponse', suffix: '' },
       { value: '0', label: 'appel téléphonique nécessaire', suffix: '' },
     ],
     journey: [
@@ -287,22 +286,22 @@ export const modules: Record<string, ModuleData> = {
       {
         title: 'SMS de bienvenue à l\'arrivée',
         description: 'Le client arrive à l\'hôtel. Il reçoit instantanément un SMS avec le code WiFi, le numéro de chambre et les horaires du restaurant. Pas d\'attente à la réception.',
-        result: '-40% de temps d\'attente au check-in'
+        result: 'Moins d\'attente au comptoir'
       },
       {
         title: 'Rappel check-in la veille',
         description: 'J-1 : un SMS rappelle les horaires de check-in, l\'adresse exacte et propose le check-in en ligne. Le client arrive préparé.',
-        result: '+60% de check-in en ligne'
+        result: 'Plus de clients enregistrés avant d\'arriver'
       },
       {
         title: 'Offre flash pendant le séjour',
         description: 'Il reste des places au spa cet après-midi ? Envoyez un SMS promo à vos clients en séjour.',
-        result: '23% de taux de conversion offres flash'
+        result: 'Des chambres vides proposées au bon moment'
       },
       {
         title: 'Notification urgente',
         description: 'Changement de chambre, problème technique, événement météo : prévenez vos clients instantanément.',
-        result: '98% des clients informés en temps réel'
+        result: 'Les clients prévenus en temps réel'
       }
     ],
     testimonial: {
@@ -356,9 +355,9 @@ export const modules: Record<string, ModuleData> = {
     ],
     stats: [
       { value: '2', label: 'milliards d\'utilisateurs WhatsApp', suffix: 'Mds' },
-      { value: '90', label: 'de taux d\'ouverture', suffix: '%' },
-      { value: '2', label: 'secondes de temps de réponse chatbot', suffix: 's' },
-      { value: '70', label: 'de questions traitées automatiquement', suffix: '%' },
+      { value: '84', label: 'des messages remis sont lus (12 derniers mois, tous nos hôtels)', suffix: '%' },
+      { value: '1', label: 'boîte de réception partagée avec vos autres canaux', suffix: '' },
+      { value: '24', label: 'l\'assistant IA répond aux questions fréquentes', suffix: '/7' },
     ],
     journey: [
       { label: 'Réservation', description: 'Confirmation WhatsApp', active: true },
@@ -395,12 +394,12 @@ export const modules: Record<string, ModuleData> = {
       {
         title: 'Conciergerie digitale',
         description: 'Le client envoie "spa demain 14h" sur WhatsApp. Le chatbot comprend, vérifie la disponibilité et propose un créneau. Réservation confirmée sans intervention de l\'équipe.',
-        result: '+45% de réservations services annexes'
+        result: 'Des services réservés par simple message'
       },
       {
         title: 'Check-in en ligne',
         description: 'J-2 : le client reçoit un WhatsApp avec un lien vers le formulaire de pré-check-in. Il arrive, sa clé est prête. Zéro file d\'attente.',
-        result: '72% de check-in complétés en avance'
+        result: 'Le check-in préparé avant l\'arrivée'
       },
       {
         title: 'Service client instantané',
@@ -410,7 +409,7 @@ export const modules: Record<string, ModuleData> = {
       {
         title: 'Upsell conversationnel',
         description: 'Pendant le séjour, proposez un surclassement ou un dîner spécial de manière naturelle dans la conversation. Le client répond "oui" et c\'est fait.',
-        result: '18% de taux de conversion upsell'
+        result: 'Des offres envoyées sur le canal que le client lit'
       }
     ],
     testimonial: {
@@ -464,8 +463,8 @@ export const modules: Record<string, ModuleData> = {
       'Segmentation automatique : les familles reçoivent les offres famille, les couples les offres romantiques'
     ],
     stats: [
-      { value: '32', label: 'de taux d\'ouverture moyen', suffix: '%' },
-      { value: '8', label: 'de réservations directes générées', suffix: '%' },
+      { value: '35', label: 'd\'ouverture des e-mails, hors relais OTA (12 derniers mois)', suffix: '%' },
+      { value: '1', label: 'segment par campagne, ciblé sur l\'historique', suffix: '' },
       { value: '30', label: 'pour créer une newsletter', suffix: 'min' },
       { value: '0', label: 'commission sur réservation directe', suffix: '€' },
     ],
@@ -515,22 +514,22 @@ export const modules: Record<string, ModuleData> = {
       {
         title: 'Newsletter mensuelle',
         description: 'Chaque mois, vos anciens clients reçoivent les actualités de votre hôtel et de la région : événements, nouveau restaurant, rénovation. Vous restez dans leur esprit.',
-        result: '32% de taux d\'ouverture moyen'
+        result: 'Une newsletter que vos clients reconnaissent'
       },
       {
         title: 'Offres saisonnières ciblées',
         description: 'Été : offre famille avec kids club aux familles. Noël : offre romantique aux couples. Saint-Valentin : spa duo. Chaque segment reçoit son offre.',
-        result: '11% de taux de conversion'
+        result: 'Des offres envoyées au bon segment'
       },
       {
         title: 'Relance clients dormants',
         description: 'Un client n\'est pas revenu depuis 6 mois ? Envoi automatique d\'une offre spéciale "Vous nous manquez" avec un code promo personnalisé.',
-        result: '7% de clients réactivés'
+        result: 'Les clients dormants relancés automatiquement'
       },
       {
         title: 'Anniversaire de séjour',
         description: '1 an après leur séjour, vos clients reçoivent un email souvenir avec une offre de retour exclusive. La nostalgie fait le reste.',
-        result: '15% de taux de réservation'
+        result: 'Des réservations directes, sans commission'
       }
     ],
     testimonial: {
@@ -584,8 +583,8 @@ export const modules: Record<string, ModuleData> = {
       'Vos clients fidèles réservent en direct pour conserver leurs points, fini les commissions OTA sur vos meilleurs clients'
     ],
     stats: [
-      { value: '24', label: 'de réservations directes en plus', suffix: '%' },
-      { value: '3', label: 'plus de dépenses clients fidèles', suffix: 'x' },
+      { value: '0', label: 'commission sur les réservations directes', suffix: '€' },
+      { value: '1', label: 'profil client unique, tous séjours confondus', suffix: '' },
       { value: '1', label: 'pour configurer le programme', suffix: 'jour' },
       { value: '0', label: 'compétence technique requise', suffix: '' },
     ],
@@ -627,22 +626,22 @@ export const modules: Record<string, ModuleData> = {
       {
         title: 'Points automatiques par séjour',
         description: 'Le client check-out. Ses points sont automatiquement crédités : 1€ dépensé = 1 point. Il reçoit un email avec son nouveau solde et les récompenses proches.',
-        result: '+24% de réservations directes'
+        result: 'Plus de séjours réservés en direct'
       },
       {
         title: 'Statuts VIP avec avantages',
         description: 'À 500 points, le client passe Gold. Il bénéficie automatiquement du late checkout gratuit et d\'un surclassement quand disponible. L\'équipe est notifiée.',
-        result: '3x plus de dépenses chez les VIP'
+        result: 'Vos meilleurs clients reconnus à chaque séjour'
       },
       {
         title: 'Programme de parrainage',
         description: 'Le client partage son code parrain. Son filleul réserve et ils reçoivent tous les deux des points bonus. Le bouche-à-oreille digital.',
-        result: '12% de nouveaux clients par parrainage'
+        result: 'De nouveaux clients amenés par les fidèles'
       },
       {
         title: 'Offre de retour personnalisée',
         description: '3 mois sans visite : le client fidèle reçoit une offre exclusive "Vos 200 points vous attendent". Il réserve en direct pour ne pas les perdre.',
-        result: '18% de taux de réactivation'
+        result: 'Les clients inactifs relancés au bon moment'
       }
     ],
     testimonial: {
@@ -696,7 +695,7 @@ export const modules: Record<string, ModuleData> = {
       'TriggerFlow exécute vos workflows 24h/24, week-ends et jours fériés inclus, jamais de tâche oubliée'
     ],
     stats: [
-      { value: '15', label: 'heures/semaine économisées', suffix: 'h' },
+      { value: '12', label: 'PMS connectés pour déclencher vos scénarios', suffix: '' },
       { value: '0', label: 'compétence technique requise', suffix: '' },
       { value: '24', label: 'heures sur 24 de fonctionnement', suffix: '/7' },
       { value: '5', label: 'pour créer un workflow', suffix: 'min' },
@@ -736,22 +735,22 @@ export const modules: Record<string, ModuleData> = {
       {
         title: 'Séquence pré-séjour complète',
         description: 'J-7 : email de bienvenue avec infos pratiques. J-3 : SMS rappel check-in + offre surclassement. J-1 : WhatsApp avec code WiFi et plan. Tout est automatique.',
-        result: '+35% de ventes additionnelles pré-séjour'
+        result: 'Des extras vendus avant l\'arrivée, sans la réception'
       },
       {
         title: 'Upsell intelligent',
         description: 'Le client est en chambre supérieure et c\'est un couple ? TriggerFlow envoie automatiquement l\'offre pack romantique à J-2. Budget > 200€/nuit ? Offre spa premium.',
-        result: '+17% de panier moyen'
+        result: 'Des services proposés à chaque séjour'
       },
       {
         title: 'Relance avis intelligente',
         description: 'J+1 après le départ : enquête interne puis demande d\'avis Google. Si la note est < 3/5, alerte manager pour traitement prioritaire.',
-        result: '+47% d\'avis positifs collectés'
+        result: 'Une demande d\'avis après chaque séjour réussi'
       },
       {
         title: 'Anniversaire client automatique',
         description: 'Le jour de l\'anniversaire du client (ou de l\'anniversaire de son premier séjour), envoi d\'un email + offre spéciale. Zéro action manuelle.',
-        result: '15% de taux de conversion'
+        result: 'Une relance qui part toute seule'
       }
     ],
     testimonial: {
@@ -807,8 +806,8 @@ export const modules: Record<string, ModuleData> = {
     stats: [
       { value: '360', label: 'vue complète de chaque client', suffix: '°' },
       { value: '0', label: 'saisie manuelle nécessaire', suffix: '' },
-      { value: '5', label: 'pour synchroniser votre PMS', suffix: 'min' },
-      { value: '100', label: 'de vos données centralisées', suffix: '%' },
+      { value: '12', label: 'PMS connectés', suffix: '' },
+      { value: '1', label: 'profil par client, tous canaux confondus', suffix: '' },
     ],
     journey: [
       { label: 'Réservation', description: 'Fiche créée auto', active: true },
@@ -848,22 +847,22 @@ export const modules: Record<string, ModuleData> = {
       {
         title: 'Accueil personnalisé VIP',
         description: 'M. Durand arrive pour son 5ème séjour. La réception voit : chambre préférée (vue mer, étage élevé), allergie gluten, dernière visite il y a 4 mois. L\'accueil est sur-mesure.',
-        result: '+40% de satisfaction client'
+        result: 'Chaque client fidèle reconnu dès l\'arrivée'
       },
       {
         title: 'Détection clients à risque',
         description: 'Un client habitué n\'est pas revenu depuis 8 mois. TriggerFlow le détecte automatiquement et déclenche une offre de réactivation personnalisée.',
-        result: '7% de clients dormants réactivés'
+        result: 'Les clients dormants identifiés et relancés'
       },
       {
         title: 'Segmentation marketing avancée',
         description: 'Envoyez l\'offre spa aux couples ayant dépensé > 300€, l\'offre kids club aux familles, et l\'offre business aux voyageurs solo en semaine. Chaque message est pertinent.',
-        result: '3x plus de conversions vs envoi mass'
+        result: 'Des messages ciblés plutôt qu\'un envoi en masse'
       },
       {
         title: 'Identification clients fidèles',
-        description: 'TriggerFlow calcule automatiquement le Lifetime Value de chaque client. Vos 10% meilleurs clients sont identifiés et reçoivent un traitement VIP.',
-        result: 'Top 10% clients = 40% du CA'
+        description: 'TriggerFlow calcule automatiquement le Lifetime Value de chaque client. Vos meilleurs clients sont identifiés et reçoivent un traitement VIP.',
+        result: 'Vos meilleurs clients identifiés'
       }
     ],
     testimonial: {
@@ -917,10 +916,9 @@ export const modules: Record<string, ModuleData> = {
       'NPS et satisfaction analysés en temps réel : vous identifiez les problèmes avant qu\'ils deviennent des avis négatifs'
     ],
     stats: [
-      { value: '75', label: 'de formulaires complétés', suffix: '%' },
-      { value: '2', label: 'minutes de check-in au lieu de 8', suffix: 'min' },
-      { value: '0', label: 'papier nécessaire', suffix: '' },
-      { value: '24', label: 'heures pour analyser les résultats', suffix: 'h' },
+      { value: '1', label: 'lien envoyé automatiquement avant l\'arrivée', suffix: '' },
+      { value: '0', label: 'papier à remplir au comptoir', suffix: '' },
+      { value: '0', label: 'ligne de code pour créer un formulaire', suffix: '' },
     ],
     journey: [
       { label: 'Réservation', description: 'Pré-check-in envoyé', active: true },
@@ -968,22 +966,22 @@ export const modules: Record<string, ModuleData> = {
       {
         title: 'Pré-check-in en ligne',
         description: 'J-3 : le client reçoit un formulaire avec identité, heure d\'arrivée, demandes spéciales. Il le remplit sur son téléphone. À l\'arrivée, sa clé est prête.',
-        result: '-75% de temps de check-in'
+        result: 'Un check-in plus court au comptoir'
       },
       {
         title: 'Enquête de satisfaction',
         description: 'J+1 après le départ : enquête courte (5 questions + NPS), suivie d\'une demande d\'avis Google. Les notes < 3/5 alertent le manager.',
-        result: '60% de taux de réponse'
+        result: 'Des retours collectés à chaque départ'
       },
       {
         title: 'Collecte des préférences',
         description: 'Oreiller ferme ou moelleux ? Étage élevé ou bas ? Allergie alimentaire ? Collectez avant l\'arrivée et enrichissez la fiche CRM automatiquement.',
-        result: '+35% de satisfaction sur l\'accueil'
+        result: 'Les problèmes repérés avant le départ'
       },
       {
         title: 'Demande de service en séjour',
         description: 'Le client scanne un QR code dans sa chambre pour réserver le spa, commander au room service ou signaler un problème. La demande arrive directement au bon service.',
-        result: '3x plus de demandes de services'
+        result: 'Les demandes de services centralisées'
       }
     ],
     testimonial: {
@@ -997,7 +995,7 @@ export const modules: Record<string, ModuleData> = {
     faq: [
       {
         question: 'Les formulaires sont-ils adaptés au mobile ?',
-        answer: 'Oui. Tous les formulaires sont responsive et optimisés pour le mobile. 80% de vos clients les rempliront depuis leur téléphone.'
+        answer: 'Oui. Tous les formulaires sont responsive et optimisés pour le mobile, là où la plupart de vos clients les remplissent.'
       },
       {
         question: 'Les données collectées alimentent-elles le CRM ?',
@@ -1036,10 +1034,9 @@ export const modules: Record<string, ModuleData> = {
       'Dashboard unifié avec votre note moyenne sur Google, TripAdvisor, Booking, évolution semaine par semaine'
     ],
     stats: [
-      { value: '47', label: 'd\'avis en plus collectés', suffix: '%' },
-      { value: '4.6', label: 'note moyenne de nos clients', suffix: '/5' },
-      { value: '2', label: 'heures pour répondre (IA)', suffix: 'min' },
-      { value: '90', label: 'des avis collectés sont positifs', suffix: '%' },
+      { value: '1', label: 'demande d\'avis après chaque séjour', suffix: '' },
+      { value: '3', label: 'plateformes suivies : Google, TripAdvisor, Booking', suffix: '' },
+      { value: '1', label: 'clic pour publier la réponse proposée par l\'IA', suffix: '' },
     ],
     journey: [
       { label: 'Réservation', description: 'Pas d\'envoi', active: false },
@@ -1076,12 +1073,12 @@ export const modules: Record<string, ModuleData> = {
       {
         title: 'Collecte proactive d\'avis',
         description: 'J+1 après le départ, le client reçoit un email avec un lien direct vers Google, au moment où le souvenir du séjour est encore frais.',
-        result: '+47% d\'avis Google collectés'
+        result: 'Plus d\'avis Google, demandés au bon moment'
       },
       {
         title: 'Interception des mécontents',
         description: 'Score < 3/5 ? Le manager reçoit une alerte immédiate avec le détail du problème. Il contacte le client AVANT qu\'il ne poste un avis négatif public.',
-        result: '60% de mécontents récupérés'
+        result: 'Les mécontents rappelés avant qu\'ils publient'
       },
       {
         title: 'Réponse rapide assistée IA',
@@ -1147,7 +1144,7 @@ export const modules: Record<string, ModuleData> = {
       { value: '1', label: 'dashboard pour tout suivre', suffix: '' },
       { value: '0', label: 'temps passé à compiler des rapports', suffix: 'min' },
       { value: '15', label: 'KPIs suivis en temps réel', suffix: '+' },
-      { value: '100', label: 'de vos données centralisées', suffix: '%' },
+      { value: '3', label: 'canaux mesurés : e-mail, SMS, WhatsApp', suffix: '' },
     ],
     journey: [
       { label: 'Réservation', description: 'Volume suivi', active: true },
@@ -1253,9 +1250,9 @@ export const modules: Record<string, ModuleData> = {
     ],
     stats: [
       { value: '1', label: 'boîte de réception pour tout', suffix: '' },
-      { value: '5', label: 'secondes pour répondre avec templates', suffix: 's' },
+      { value: '1', label: 'clic pour répondre avec un modèle', suffix: '' },
       { value: '0', label: 'message perdu', suffix: '' },
-      { value: '3', label: 'plus de demandes gérées par agent', suffix: 'x' },
+      { value: '4', label: 'canaux dans une boîte : e-mail, SMS, WhatsApp, chat', suffix: '' },
     ],
     journey: [
       { label: 'Réservation', description: 'Confirmation visible', active: true },
@@ -1302,12 +1299,12 @@ export const modules: Record<string, ModuleData> = {
       {
         title: 'Handover entre équipes',
         description: 'L\'équipe de jour a commencé à traiter une demande. L\'équipe de nuit prend le relais avec tout le contexte : messages échangés, notes internes, actions en cours.',
-        result: '100% de continuité inter-équipes'
+        result: 'Aucune conversation perdue entre deux équipes'
       },
       {
         title: 'Relance post-séjour contextuelle',
         description: 'Depuis la fiche client, l\'agent voit le dernier séjour (suite, vue mer, spa utilisé) et envoie une offre de retour personnalisée directement depuis le hub.',
-        result: '12% de taux de reconversion'
+        result: 'Des demandes relancées jusqu\'à la réservation'
       }
     ],
     testimonial: {
@@ -1345,8 +1342,8 @@ export const modules: Record<string, ModuleData> = {
     slug: 'ventes-additionnelles',
     icon: TrendingUp,
     title: 'Ventes Additionnelles',
-    seoTitle: 'Upsell hôtel automatique : +17% de panier moyen',
-    headline: '+17% de panier moyen, sans effort de la réception',
+    seoTitle: 'Upsell hôtel automatique : ventes additionnelles avant l\'arrivée',
+    headline: 'Des ventes additionnelles avant l\'arrivée, sans effort de la réception',
     description: 'Proposez automatiquement les bons services au bon moment : surclassement, spa, restaurant, late checkout. Le client achète en 2 clics depuis son email.',
     mockup: 'DashboardMockup',
     heroImage: '/images/produit/ventes-additionnelles/hero-upsell.webp',
@@ -1361,8 +1358,8 @@ export const modules: Record<string, ModuleData> = {
       'Le client réserve en 2 clics depuis l\'email ou le SMS, pas besoin d\'appeler, pas de risque d\'oubli'
     ],
     stats: [
-      { value: '17', label: 'de panier moyen en plus', suffix: '%' },
-      { value: '23', label: 'de taux de conversion offres', suffix: '%' },
+      { value: '5', label: 'des offres envoyées 3 à 7 jours avant l\'arrivée sont achetées (36 708 envois mesurés)', suffix: '%' },
+      { value: '0', label: 'commission TriggerFlow sur les ventes', suffix: '€' },
       { value: '0', label: 'effort de la réception', suffix: '' },
       { value: '2', label: 'clics pour réserver un extra', suffix: '' },
     ],
@@ -1401,22 +1398,22 @@ export const modules: Record<string, ModuleData> = {
       {
         title: 'Surclassement J-3',
         description: 'Le client a réservé une chambre Standard. J-3 : "Votre chambre Supérieure vue mer est disponible à 39€/nuit au lieu de 65€". Il clique, c\'est réservé.',
-        result: '28% de taux de conversion surclassement'
+        result: 'Le surclassement proposé avant l\'arrivée'
       },
       {
         title: 'Pack romantique pour les couples',
         description: 'Détection automatique : 2 adultes, 0 enfant, chambre double. Envoi de l\'offre champagne + pétales de rose + late checkout à 49€. Le couple est ravi.',
-        result: '35% des couples achètent le pack'
+        result: 'Un pack proposé aux seuls couples'
       },
       {
         title: 'Late checkout la veille du départ',
         description: 'J-1 : "Profitez de votre chambre jusqu\'à 14h pour seulement 25€". Le client qui a un vol à 18h dit oui sans hésiter.',
-        result: '42% de taux d\'achat late checkout'
+        result: 'Le late check-out vendu la veille du départ'
       },
       {
         title: 'Table restaurant pendant le séjour',
         description: 'Le premier soir, SMS à 16h : "Notre chef propose ce soir un menu découverte à 45€/pers. Réservez votre table en 1 clic". Le restaurant se remplit.',
-        result: '+22% de couverts au restaurant'
+        result: 'Des tables réservées avant l\'arrivée'
       }
     ],
     testimonial: {
@@ -1531,7 +1528,7 @@ export const modules: Record<string, ModuleData> = {
       {
         title: 'Acompte automatique à la réservation',
         description: 'Le client réserve. Dans la foulée, il reçoit un lien de paiement aux couleurs de votre hôtel pour verser son acompte. Aucune relance, aucune action manuelle.',
-        result: '85% des acomptes payés dans les 2h'
+        result: '91 % des paiements réglés dans les 2 h après ouverture du lien (12 derniers mois)'
       },
       {
         title: 'Caution digitale au pré-séjour',
@@ -1541,12 +1538,12 @@ export const modules: Record<string, ModuleData> = {
       {
         title: 'Empreinte carte pour les no-shows',
         description: 'Sécurisez vos réservations avec une empreinte carte. En cas de no-show, prélevez le montant prévu en un clic depuis votre dashboard.',
-        result: '-70% de pertes liées aux no-shows'
+        result: 'Moins de no-shows non garantis'
       },
       {
         title: 'Extras et minibar en fin de séjour',
         description: 'Le client a consommé au minibar ou réservé un soin ? Prélevez directement la carte enregistrée. Le client reçoit un reçu automatique.',
-        result: '100% des extras encaissés sans friction'
+        result: 'Les extras encaissés sans passer au comptoir'
       },
     ],
     faq: [
