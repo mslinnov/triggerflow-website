@@ -12,7 +12,7 @@ const useCases = [
     title: 'Email de confirmation personnalisé',
     description:
       'Soirée étape, coffret cadeau, NANR, corporate... Chaque profil reçoit un email adapté à son contexte.',
-    result: '+35% de taux d\'ouverture',
+    result: 'Un e-mail qui parle de son séjour',
     gradient: 'from-blue-500 to-indigo-600',
   },
   {
@@ -22,7 +22,7 @@ const useCases = [
     title: 'Alerte restaurant fermé',
     description:
       'Les clients arrivant dimanche ou lundi sont prévenus automatiquement que le restaurant ne sert pas le soir.',
-    result: '0 réclamation client',
+    result: 'Le client sait comment entrer, même tard',
     gradient: 'from-purple-500 to-violet-600',
   },
   {
@@ -32,7 +32,7 @@ const useCases = [
     title: 'Offre personnalisée selon le profil',
     description:
       'Vos clients fidèles reçoivent automatiquement une offre de surclassement ou un avantage exclusif.',
-    result: '23% de conversion upsell',
+    result: 'Une offre qui correspond au séjour',
     gradient: 'from-emerald-500 to-teal-600',
   },
   {
@@ -42,7 +42,7 @@ const useCases = [
     title: 'Demande d\'avis intelligente',
     description:
       'SMS ou WhatsApp envoyé 2h après le départ, avec lien direct vers Google ou TripAdvisor.',
-    result: '+47 avis/mois en moyenne',
+    result: 'Une demande d\'avis à chaque départ',
     gradient: 'from-amber-500 to-orange-600',
   },
 ];

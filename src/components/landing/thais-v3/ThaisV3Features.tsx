@@ -23,7 +23,7 @@ const features = [
     icon: Clock,
     badge: 'Automatisation',
     badgeColor: 'bg-blue-50 text-blue-600 border-blue-100',
-    title: 'Gagnez 4h par semaine',
+    title: 'Vos e-mails partent tout seuls',
     subtitle: 'Sans toucher à rien',
     description:
       "Vos emails se configurent une fois et s'envoient automatiquement. Plus besoin de copier-coller ou de vous souvenir d'envoyer.",

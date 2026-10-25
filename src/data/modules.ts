@@ -1358,7 +1358,7 @@ export const modules: Record<string, ModuleData> = {
       'Le client réserve en 2 clics depuis l\'email ou le SMS, pas besoin d\'appeler, pas de risque d\'oubli'
     ],
     stats: [
-      { value: '5', label: 'des offres envoyées 3 à 7 jours avant l\'arrivée sont achetées (36 708 envois mesurés)', suffix: '%' },
+      { value: '5', label: 'des offres envoyées 3 à 7 jours avant l\'arrivée sont achetées (mesure sur l\'ensemble de nos hôtels)', suffix: '%' },
       { value: '0', label: 'commission TriggerFlow sur les ventes', suffix: '€' },
       { value: '0', label: 'effort de la réception', suffix: '' },
       { value: '2', label: 'clics pour réserver un extra', suffix: '' },

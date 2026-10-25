@@ -1889,7 +1889,7 @@
               "description": "SMS with smart lock code and a pre-check-in link. The guest arrives, badges the door, settles in. Zero queue at the front desk."
             }
           ],
-          "result": "The offer goes out before arrival, only if the room is available in Mews. Across all our clients, 5% of offers sent 3 to 7 days before arrival are bought (36,708 sends measured)."
+          "result": "The offer goes out before arrival, only if the room is available in Mews. Across all our clients, 5% of offers sent 3 to 7 days before arrival are bought."
         },
         {
           "badge": "Scenario 2",

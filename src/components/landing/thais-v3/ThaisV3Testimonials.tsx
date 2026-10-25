@@ -107,7 +107,7 @@ export function ThaisV3Testimonials() {
             ))}
           </div>
           <span className="text-[var(--v3-text-secondary)]">
-            <strong className="font-semibold text-[var(--v3-text-primary)]">4.9/5</strong> basé sur 150+ avis
+            <strong className="font-semibold text-[var(--v3-text-primary)]">5/5</strong> sur Google (3 avis)
           </span>
         </motion.div>
       </Container>

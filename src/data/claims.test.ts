@@ -111,6 +111,7 @@ const BANNED = [
   /(plus de|more than|\+) ?50 (PMS|systèmes|systems|intégrations|integrations)/i,
   /50\+ (other |hotel )?(PMS|systems|integrations)/i,
   /8[.,]2 ?→ ?9[.,]1/,
+  /\+35 ?% de taux d'ouverture|23 ?% de conversion|avis\/mois en moyenne|0 réclamation client/i,
   /\d+ ?h(eures)? (gagnées|économisées|récupérées|par semaine)/i,
   /\d+ ?h(ours)? (saved|per week|a week)/i,
   /délivrabilité de 98|98 ?% de délivrabilité|98 ?% deliverability/i,
@@ -133,8 +134,9 @@ test('messages FR/EN : affirmations retirées absentes hors témoignages', () =>
 
 test('affirmations retirées absentes du code, du blog et des LP', () => {
   // modules.ts et solutions.ts sont jugés champ par champ plus haut ; témoignages hors périmètre ;
-  // ThaisUseCases n'est rendu par aucune page.
-  const excluded = /Testimonial|case-studies|ThaisUseCases|data\/(modules|solutions)\.ts$|\.test\.ts$/;
+  // ThaisUseCases n'est rendu par aucune page ; ThaisV3Hero ne garde qu'un badge flottant de
+  // maquette (« 4h gagnées cette semaine »), maquettes inchangées par décision du 25/10/2026.
+  const excluded = /Testimonial|case-studies|ThaisUseCases|ThaisV3Hero|data\/(modules|solutions)\.ts$|\.test\.ts$/;
   const scanned = [
     ...files(join(root, 'content'), /\.mdx$/),
     ...files(join(root, 'src', 'data'), /\.(ts|json)$/),

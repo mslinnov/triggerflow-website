@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
-import { Star, Users, Clock, TrendingUp } from 'lucide-react';
+import { Star, Users, Plug, Send } from 'lucide-react';
 import { Container } from '@/components/ui';
 
 const stats = [
@@ -12,18 +12,18 @@ const stats = [
   },
   {
     icon: Star,
-    value: '4.9/5',
-    label: 'Note de satisfaction',
+    value: '5/5',
+    label: 'Note Google (3 avis)',
   },
   {
-    icon: Clock,
-    value: '4h',
-    label: 'Gagnées par semaine',
+    icon: Plug,
+    value: '12',
+    label: 'PMS connectés',
   },
   {
-    icon: TrendingUp,
-    value: '+23%',
-    label: 'Revenus additionnels',
+    icon: Send,
+    value: '2M+',
+    label: 'Messages envoyés',
   },
 ];
 

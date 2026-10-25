@@ -152,7 +152,7 @@ export function HeroV2() {
                       <Star key={i} className="h-5 w-5 fill-amber-400 text-amber-400" />
                     ))}
                   </div>
-                  <span className="text-sm text-zinc-400">4.8/5 note moyenne</span>
+                  <span className="text-sm text-zinc-400">5/5 sur Google (3 avis)</span>
                 </div>
               </motion.div>
             </div>

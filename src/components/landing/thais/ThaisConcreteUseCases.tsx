@@ -12,7 +12,7 @@ const USE_CASES = [
     title: 'Email de confirmation personnalisé',
     description:
       'Soirée étape, coffret cadeau, NANR, corporate... Chaque profil reçoit un email adapté à son contexte.',
-    result: '+35% de taux d\'ouverture',
+    result: 'Un e-mail qui parle de son séjour',
   },
   {
     icon: Calendar,
@@ -21,7 +21,7 @@ const USE_CASES = [
     title: 'Gestion des arrivées tardives',
     description:
       'Les clients arrivant après la fermeture de la caisse reçoivent automatiquement les instructions pour une arrivée autonome.',
-    result: '0 réclamation client',
+    result: 'Le client sait comment entrer, même tard',
   },
   {
     icon: Heart,
@@ -30,7 +30,7 @@ const USE_CASES = [
     title: 'Upsell adapté au profil client',
     description:
       'En couple, en business, on ne propose pas la même chose. Fini l\'accueil romantique proposé aux clients corporate.',
-    result: '23% de conversion upsell',
+    result: 'Une offre qui correspond au séjour',
   },
   {
     icon: MessageSquare,
@@ -39,7 +39,7 @@ const USE_CASES = [
     title: 'Demande d\'avis intelligente',
     description:
       'SMS ou WhatsApp envoyé 2h après le départ, avec lien direct vers Google ou TripAdvisor.',
-    result: '+47 avis/mois en moyenne',
+    result: 'Une demande d\'avis à chaque départ',
   },
 ];
 

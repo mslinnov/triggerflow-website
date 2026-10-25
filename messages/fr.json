@@ -1897,7 +1897,7 @@
               "description": "SMS avec le code de la serrure connectée et un lien de pré-check-in. La cliente arrive, badge la porte, s'installe. Zéro file d'attente à la réception."
             }
           ],
-          "result": "L'offre part avant l'arrivée, seulement si la chambre est disponible dans Mews. Sur l'ensemble de nos clients, 5 % des offres envoyées 3 à 7 jours avant l'arrivée sont achetées (36 708 envois mesurés)."
+          "result": "L'offre part avant l'arrivée, seulement si la chambre est disponible dans Mews. Sur l'ensemble de nos clients, 5 % des offres envoyées 3 à 7 jours avant l'arrivée sont achetées."
         },
         {
           "badge": "Scénario 2",

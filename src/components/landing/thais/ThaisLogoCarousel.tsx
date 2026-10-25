@@ -91,7 +91,7 @@ export function ThaisLogoCarousel() {
         >
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-green-500" />
-            <span>98% de satisfaction client</span>
+            <span>Note Google 5/5 (3 avis)</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-[var(--thais-cyan)]" />

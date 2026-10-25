@@ -835,7 +835,7 @@ export const solutions: Record<string, SolutionData> = {
     stats: [
       { value: '1', suffix: '', label: 'profil client unique, tous séjours confondus' },
       { value: '35', suffix: ' %', label: 'd\'ouverture des e-mails, hors relais OTA (12 derniers mois)' },
-      { value: '5', suffix: ' %', label: 'des offres envoyées 3 à 7 jours avant l\'arrivée achetées (36 708 envois mesurés)' },
+      { value: '5', suffix: ' %', label: 'des offres envoyées 3 à 7 jours avant l\'arrivée achetées (mesure sur l\'ensemble de nos hôtels)' },
     ],
 
     features: [
@@ -1314,7 +1314,7 @@ export const solutions: Record<string, SolutionData> = {
     ],
 
     stats: [
-      { value: '5', suffix: ' %', label: 'des offres envoyées 3 à 7 jours avant l\'arrivée achetées (36 708 envois mesurés)' },
+      { value: '5', suffix: ' %', label: 'des offres envoyées 3 à 7 jours avant l\'arrivée achetées (mesure sur l\'ensemble de nos hôtels)' },
       { value: '91', suffix: ' %', label: 'des paiements réglés dans les 2 h après ouverture du lien (12 derniers mois)' },
       { value: '0', suffix: '€', label: 'de commission TriggerFlow sur les ventes' },
     ],
@@ -1389,7 +1389,7 @@ export const solutions: Record<string, SolutionData> = {
       },
       {
         question: 'Quel est le taux de conversion moyen ?',
-        answer: 'Sur 36 708 offres mesurées, 5,15 % des offres envoyées 3 à 7 jours avant l\'arrivée sont achetées ; l\'offre envoyée le jour de l\'arrivée convertit beaucoup moins. Le détail par prestation est sur notre page ventes additionnelles.',
+        answer: 'Sur l\'ensemble de nos hôtels clients, 5,15 % des offres envoyées 3 à 7 jours avant l\'arrivée sont achetées ; l\'offre envoyée le jour de l\'arrivée convertit beaucoup moins. Le détail par prestation est sur notre page ventes additionnelles.',
       },
       {
         question: 'Est-ce que TriggerFlow gère le paiement ?',
