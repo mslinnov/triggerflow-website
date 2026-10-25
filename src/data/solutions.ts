@@ -224,7 +224,7 @@ export const solutions: Record<string, SolutionData> = {
         title: "Collecte d'avis intelligente",
         description: "Après le check-out, envoi automatique d'une enquête satisfaction puis d'une invitation à laisser un avis Google. Une note basse alerte le manager.",
         steps: ['Check-out', 'Email J+1', 'Invitation à laisser un avis', 'Note basse → alerte manager'],
-        result: 'Avis Google x2 en 3 mois',
+        result: 'Une invitation à laisser un avis après chaque séjour',
       },
       {
         title: 'Réservation directe fidélité',
@@ -332,7 +332,7 @@ export const solutions: Record<string, SolutionData> = {
     benefits: [
       'Templates partagés au niveau groupe, personnalisables par chaque hôtel',
       'Dashboard consolidé avec KPIs en temps réel pour tous les établissements',
-      'Interface simple qui réduit le temps de formation à 30 minutes',
+      'Interface simple, vite prise en main par les équipes',
       'Programme fidélité multi-hôtels qui incite les séjours inter-établissements',
       'Campagnes déployées en un clic sur tout le groupe avec personnalisation locale',
     ],
@@ -563,7 +563,7 @@ export const solutions: Record<string, SolutionData> = {
         title: "Demande d'intervention",
         description: 'Le locataire signale un problème via formulaire. Alerte automatique au gestionnaire + propriétaire.',
         steps: ['Formulaire client', 'Alerte gestionnaire', 'Info propriétaire', 'Suivi résolution'],
-        result: 'Temps de réponse divisé par 3',
+        result: 'Le gestionnaire alerté dès le signalement',
       },
     ],
 
@@ -1198,7 +1198,7 @@ export const solutions: Record<string, SolutionData> = {
         title: 'Enquête puis avis',
         description: "Chaque client reçoit l'enquête puis le lien Google. Une note basse prévient le manager en temps réel.",
         steps: ['Email J+1 enquête', 'Lien Google envoyé à tous', 'Si note < 3/5 → alerte manager', 'Rappel du client'],
-        result: 'Avis Google x2 en 3 mois',
+        result: 'Une invitation à laisser un avis après chaque séjour',
       },
       {
         title: 'Multi-plateformes intelligent',

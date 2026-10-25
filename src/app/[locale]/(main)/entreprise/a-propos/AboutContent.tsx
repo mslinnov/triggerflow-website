@@ -6,11 +6,13 @@ import { Users, Hotel, Zap, Heart, Target, Lightbulb, ArrowRight, Linkedin } fro
 import { Container, ButtonLink } from '@/components/ui';
 import { fadeInUp, staggerContainer, staggerItem, slideInLeft, slideInRight, defaultViewport } from '@/lib/animations';
 import { authors } from '@/data/authors';
+import { stat as officialStat } from '@/data/company-stats';
 
+// Valeurs lues dans company-stats.ts, source unique des chiffres officiels.
 const stats = [
-  { key: 'hotels', icon: Hotel, value: '300+' },
-  { key: 'messages', icon: Zap, value: '2M+' },
-];
+  { key: 'hotels', icon: Hotel },
+  { key: 'messages', icon: Zap },
+] as const;
 
 const values = [
   { key: 'innovation', icon: Lightbulb },
@@ -119,7 +121,7 @@ export function AboutContent() {
                 <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-brand-primary/20">
                   <stat.icon className="h-7 w-7 text-brand-primary" />
                 </div>
-                <p className="text-4xl font-bold text-white">{stat.value}</p>
+                <p className="text-4xl font-bold text-white">{officialStat(stat.key, locale)}</p>
                 <p className="mt-1 text-sm text-white/70">{t(`stats.${stat.key}`)}</p>
               </motion.div>
             ))}

@@ -124,7 +124,7 @@ export const modules: Record<string, ModuleData> = {
     stats: [
       { value: '94', label: 'des e-mails délivrés (12 derniers mois, tous nos hôtels)', suffix: '%' },
       { value: '35', label: 'd\'ouverture, hors adresses relais des OTA (12 derniers mois)', suffix: '%' },
-      { value: '2', label: 'pour créer un email - sans code', suffix: 'min' },
+      { value: '0', label: 'ligne de code pour créer un e-mail (éditeur glisser-déposer)', suffix: '' },
     ],
     journey: [
       { label: 'Réservation', description: 'Confirmation automatique personnalisée', active: true },
@@ -465,7 +465,6 @@ export const modules: Record<string, ModuleData> = {
     stats: [
       { value: '35', label: 'd\'ouverture des e-mails, hors relais OTA (12 derniers mois)', suffix: '%' },
       { value: '1', label: 'segment par campagne, ciblé sur l\'historique', suffix: '' },
-      { value: '30', label: 'pour créer une newsletter', suffix: 'min' },
       { value: '0', label: 'commission sur réservation directe', suffix: '€' },
     ],
     journey: [
@@ -585,7 +584,6 @@ export const modules: Record<string, ModuleData> = {
     stats: [
       { value: '0', label: 'commission sur les réservations directes', suffix: '€' },
       { value: '1', label: 'profil client unique, tous séjours confondus', suffix: '' },
-      { value: '1', label: 'pour configurer le programme', suffix: 'jour' },
       { value: '0', label: 'compétence technique requise', suffix: '' },
     ],
     journey: [
@@ -698,7 +696,6 @@ export const modules: Record<string, ModuleData> = {
       { value: '12', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n', suffix: '' },
       { value: '0', label: 'compétence technique requise', suffix: '' },
       { value: '24', label: 'heures sur 24 de fonctionnement', suffix: '/7' },
-      { value: '5', label: 'pour créer un workflow', suffix: 'min' },
     ],
     journey: [
       { label: 'Réservation', description: 'Confirmation auto', active: true },
@@ -911,7 +908,7 @@ export const modules: Record<string, ModuleData> = {
       'Les enquêtes de satisfaction papier finissent à la poubelle, vous ne savez pas ce que pensent vos clients'
     ],
     benefits: [
-      'Check-in réduit à 2 minutes : le client a déjà rempli identité, heure d\'arrivée et préférences en ligne',
+      'Check-in plus court : le client a déjà rempli identité, heure d\'arrivée et préférences en ligne',
       'Préférences collectées avant l\'arrivée : chambre, oreiller, régime alimentaire - tout est prêt quand le client arrive',
       'NPS et satisfaction analysés en temps réel : vous identifiez les problèmes avant qu\'ils deviennent des avis négatifs'
     ],
@@ -1088,7 +1085,7 @@ export const modules: Record<string, ModuleData> = {
       {
         title: 'Suivi de réputation en continu',
         description: 'Votre note Google est passée de 4.2 à 4.5 ce mois-ci. Votre concurrent principal est à 4.3. Le dashboard vous montre l\'évolution et les tendances.',
-        result: '+0.3 points de note moyenne en 3 mois'
+        result: 'L\'évolution de votre note suivie mois après mois'
       }
     ],
     testimonial: {
@@ -1142,8 +1139,7 @@ export const modules: Record<string, ModuleData> = {
     ],
     stats: [
       { value: '1', label: 'dashboard pour tout suivre', suffix: '' },
-      { value: '0', label: 'temps passé à compiler des rapports', suffix: 'min' },
-      { value: '15', label: 'KPIs suivis en temps réel', suffix: '+' },
+      { value: '0', label: 'rapport à compiler à la main', suffix: '' },
       { value: '3', label: 'canaux mesurés : e-mail, SMS, WhatsApp', suffix: '' },
     ],
     journey: [
@@ -1191,12 +1187,12 @@ export const modules: Record<string, ModuleData> = {
       {
         title: 'Évolution satisfaction client',
         description: 'Votre NPS est passé de 42 à 58 depuis l\'activation de la séquence pré-séjour. Corrélation directe visible dans le dashboard.',
-        result: '+16 points de NPS'
+        result: 'L\'effet de chaque séquence sur la satisfaction, visible'
       },
       {
         title: 'Rapport mensuel pour la direction',
         description: 'Le 1er du mois, le rapport arrive dans la boîte mail de votre directeur : envois, ouvertures, revenus générés, satisfaction. Zéro compilation manuelle.',
-        result: '4h/mois économisées sur le reporting'
+        result: 'Le rapport part seul, chaque mois'
       }
     ],
     testimonial: {
@@ -1533,7 +1529,7 @@ export const modules: Record<string, ModuleData> = {
       {
         title: 'Caution digitale au pré-séjour',
         description: 'À J-3, le client reçoit automatiquement une demande de caution. Le montant est bloqué (pas débité) sur sa carte. Plus besoin de gérer ça à la réception.',
-        result: 'Check-in accéléré de 5 min → 30 sec'
+        result: 'Caution réglée avant l\'arrivée, rien à faire au comptoir'
       },
       {
         title: 'Empreinte carte pour les no-shows',

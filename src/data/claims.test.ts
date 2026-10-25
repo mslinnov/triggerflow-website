@@ -87,6 +87,45 @@ test('pages produit et solutions : aucun chiffre de résultat non mesuré hors t
   assert.deepEqual(found, []);
 });
 
+/** Durée, multiplicateur ou gain en points : promesses non mesurées (« 2 min pour créer un email »). */
+const UNMEASURED = /\b\d+(?:[.,]\d+)?\s?(?:min(?:utes?)?|sec(?:ondes?)?|s|h|heures?|jours?|semaines?|mois)\b|\bx\s?\d+\b|divisée? par \d|[+-]\s?\d+(?:[.,]\d+)?\s?points?\b|^\d+\+$/i;
+
+test('stats animées et résultats des cas d\'usage : ni durée, ni multiplicateur, ni gain non mesuré', () => {
+  // Les stats sont rendues « value + suffix » ; un « result » s'affiche comme un résultat obtenu.
+  type Data = Record<string, { stats?: Array<{ value: string; suffix?: string }>; useCases?: Array<{ result?: string }> }>;
+  const shown = (name: string, data: Data) =>
+    Object.entries(data).flatMap(([slug, d]) => [
+      ...(d.stats ?? []).map((s, i) => [`${name}.${slug}.stats[${i}]`, `${s.value}${s.suffix ?? ''}`] as const),
+      ...(d.useCases ?? []).map((u, i) => [`${name}.${slug}.useCases[${i}]`, u.result ?? ''] as const),
+    ]);
+  const found = [...shown('modules', modules), ...shown('solutions', solutions)]
+    // Un taux mesuré (company-stats.ts) garde sa fenêtre de mesure : « 91 % … dans les 2 h … (12 derniers mois) ».
+    .filter(([, text]) => UNMEASURED.test(text) && ![...allowedPercents].some((p) => p !== '0 %' && p !== '0%' && text.includes(p)))
+    .map(([path, text]) => `${path}: « ${text} »`);
+  assert.deepEqual(found, []);
+});
+
+test('pages À propos, Carrières, /v2 et étapes de l\'accueil : chiffres de marque lus dans brand.ts et company-stats.ts', () => {
+  const read = (...p: string[]) => readFileSync(join(root, 'src', ...p), 'utf8');
+  const pages = {
+    careers: read('app', '[locale]', '(main)', 'entreprise', 'carrieres', 'CareersContent.tsx'),
+    about: read('app', '[locale]', '(main)', 'entreprise', 'a-propos', 'AboutContent.tsx'),
+    heroV2: read('components', 'sections', 'v2', 'HeroV2.tsx'),
+    logoCloudV2: read('components', 'sections', 'v2', 'LogoCloudV2.tsx'),
+    howItWorks: read('components', 'sections', 'HowItWorks.tsx'),
+  };
+  for (const [name, src] of Object.entries(pages)) {
+    // Nombre d'hôtels, de messages, note Google, année de création ou nombre de PMS recopiés.
+    assert.doesNotMatch(src, /'(300|2M)\+'|>\s*(300|2M)\+\s*<|\d\s?\/\s?5 sur Google|\(\d+ avis\)|value: '20\d\d'|value: '\d+',\s*\n\s*label: '[^']*PMS/, name);
+    // Jamais de nombre de collaborateurs (décision du 25/10/2026).
+    assert.doesNotMatch(src, /'\d+'[^\n]*(collaborateurs|employés|employees|team members)|\d+ (collaborateurs|employés|employees|team members)/i, name);
+  }
+  assert.match(pages.careers, /brand\.foundingDate/);
+  // « +N » après les logos de PMS : le reste de brand.pms, pas un nombre figé.
+  assert.doesNotMatch(pages.howItWorks, /^\s*\+\d+\s*$/m);
+  assert.match(pages.howItWorks, /brand\.pms\.length - pmsLogos\.length/);
+});
+
 test('messages FR/EN : aucun chiffre de résultat non mesuré hors témoignages et études publiées', () => {
   // lpUpsell et lpPostStay publient des études mesurées (upsell-services.ts, post-stay.ts).
   // heroDashboard : valeurs d'exemple de la maquette du tableau de bord (maquettes hors périmètre).
@@ -205,4 +244,18 @@ test('logos des intégrations : fichier présent, SVG sans script ni gestionnair
     assert.ok(statSync(file).size > 0, `${logo} absent`);
     if (logo.endsWith('.svg')) assert.doesNotMatch(readFileSync(file, 'utf8'), /<script|\son[a-z]+=|javascript:|<foreignObject/i, logo);
   }
+});
+
+test('FAQ JSON-LD de la page Mews : construite depuis les messages de la FAQ visible', () => {
+  const page = readFileSync(join(root, 'src', 'app', '[locale]', '(main)', 'integrations', 'pms', 'mews', 'page.tsx'), 'utf8');
+  assert.doesNotMatch(page, /question: ['"]/, 'questions recopiées à la main dans la page');
+  assert.match(page, /namespace: 'mewsIntegration\.faq'/);
+  assert.match(page, /<FaqJsonLd items=\{faq\.raw\('items'\)/);
+});
+
+test('formulaire de la LP ventes additionnelles : PMS lus dans brand.ts', () => {
+  const form = readFileSync(join(root, 'src', 'components', 'landing', 'upsell', 'UpsellLeadForm.tsx'), 'utf8');
+  assert.doesNotMatch(form, /Clock PMS|PMS_OPTIONS/);
+  assert.match(form, /brand\.pms\.map/);
+  assert.match(form, /brand\.pmsEnCours\.map/);
 });

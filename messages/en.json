@@ -1752,7 +1752,12 @@
       "subtitle": "We are always looking for talent. Send us your spontaneous application!",
       "cta": "Send my application"
     },
-    "applyComingSoon": "Application system coming soon"
+    "applyComingSoon": "Application system coming soon",
+    "stats": {
+      "remote": "Remote",
+      "hotels": "Client hotels",
+      "founded": "Founded"
+    }
   },
   "mewsIntegration": {
     "meta": {
@@ -2341,6 +2346,7 @@
       "rooms": "Number of rooms",
       "pms": "Your PMS",
       "pmsPlaceholder": "Select",
+      "pmsComingSoon": "Coming soon",
       "pmsOther": "Other or not sure",
       "email": "Work email",
       "phone": "Phone",

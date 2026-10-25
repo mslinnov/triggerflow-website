@@ -6,6 +6,7 @@ import { CalendarClock, CheckCircle2, Loader2 } from 'lucide-react';
 import { trackMetaEvent } from '@/components/analytics/MetaPixel';
 import { getAttribution } from '@/lib/attribution';
 import { trackAdsConversion } from '@/lib/ads';
+import { brand } from '@/data/brand';
 import { LEMCAL_DEMO_URL } from '@/data/upsell-links';
 import { cn } from '@/lib/utils';
 import { UpsellButton } from './primitives';
@@ -45,19 +46,6 @@ import { useUpsell } from './UpsellContext';
  * déclencherait un envoi que le visiteur n'a pas demandé.
  */
 const WHITEPAPER_MAGNET = 'ventes-additionnelles';
-
-/** Les neuf PMS réellement connectés. Toute autre réponse passe par « Autre ». */
-const PMS_OPTIONS = [
-  'Mews',
-  'Thaïs',
-  'Opera Cloud',
-  'Misterbooking',
-  'Medialog',
-  'Asterio',
-  'Vega',
-  'Reservit',
-  'Clock PMS',
-] as const;
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -224,11 +212,19 @@ export function UpsellLeadForm({ idPrefix, className }: UpsellLeadFormProps) {
                 <option value="" disabled>
                   {t('pmsPlaceholder')}
                 </option>
-                {PMS_OPTIONS.map((pms) => (
+                {/* PMS connectés (brand.ts), puis ceux dont le connecteur est en cours, à part. */}
+                {brand.pms.map((pms) => (
                   <option key={pms} value={pms}>
                     {pms}
                   </option>
                 ))}
+                <optgroup label={t('pmsComingSoon')}>
+                  {brand.pmsEnCours.map((pms) => (
+                    <option key={pms} value={pms}>
+                      {pms}
+                    </option>
+                  ))}
+                </optgroup>
                 <option value="Autre">{t('pmsOther')}</option>
               </select>
             </Field>
