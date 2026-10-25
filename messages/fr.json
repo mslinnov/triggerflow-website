@@ -1260,6 +1260,18 @@
           "zeswitch": {
             "name": "Zeswitch",
             "description": "PMS nouvelle génération"
+          },
+          "infhotik": {
+            "name": "Infhotik",
+            "description": "PMS hôtels et restaurants, par Hotelios"
+          },
+          "protel": {
+            "name": "Protel Cloud PMS",
+            "description": "PMS cloud du groupe Planet"
+          },
+          "galaxy": {
+            "name": "Galaxy Hotels",
+            "description": "PMS et channel manager associatif"
           }
         }
       },

@@ -49,6 +49,9 @@ const integrationCategories: Category[] = [
       { key: 'beds24', logo: '/images/integrations/beds24.svg' },
       { key: 'reservit', logo: '/images/integrations/reservit.webp' },
       { key: 'chloe', logo: '/images/integrations/chloe.webp', comingSoon: true },
+      { key: 'infhotik', logo: '/images/integrations/infhotik.svg', comingSoon: true },
+      { key: 'protel', logo: '/images/integrations/protel-planet.svg', comingSoon: true },
+      { key: 'galaxy', logo: '/images/integrations/galaxy-hotels.png', comingSoon: true },
     ],
   },
   {

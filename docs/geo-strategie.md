@@ -149,7 +149,7 @@ Volumes absolus d'envois jamais publiés (même règle que `post-stay.ts`) : ils
 | Offres de vente additionnelle achetées | 5,15 % (5 % en stat) | 18/09/2026 | Étude ventes additionnelles, offres envoyées 3 à 7 jours avant l'arrivée (`src/data/upsell-services.ts`) |
 | Avis complétés selon l'heure d'envoi | 18,8 % (9 h-11 h), 8 % (11 h-14 h) | 18/09/2026 | Étude post-séjour, juin à septembre 2026 (`src/data/post-stay.ts`) |
 | PMS connectés | 12 | 25/10/2026 | Connecteurs présents dans l'app (`src/data/brand.ts`, Lean PMS ajouté à la revue, Hotello retiré) |
-| PMS bientôt disponibles | Chloé | 25/10/2026 | `brand.pmsEnCours`, affichés à part (« bientôt disponible »), jamais comptés dans le total ; d'autres seront ajoutés une fois nommés |
+| PMS bientôt disponibles | Chloé, Infhotik, Protel, Galaxy Hotels | 25/10/2026 | `brand.pmsEnCours`, affichés à part (« bientôt disponible »), jamais comptés dans le total |
 | Autres connexions | serrures Sesame, Igloohome ; paiement Stripe, PayZen, SystemPay, Thaïs ; avis Google, TripAdvisor, Booking.com, Airbnb ; boîtes Gmail, Microsoft 365 | 25/10/2026 | `brand.connections`, vérifiées dans l'app (Plug.php, Services/Locks, Services/Payments, Services/Reviews, FacilityMailbox) |
 | Zapier et n8n | « des milliers d'applications » | 25/10/2026 | Action webhook des scénarios vers Zapier, n8n ou Make (TriggerFlow n'est pas dans leur catalogue). Catalogues : zapier.com/apps « 10368+ apps », n8n.io/integrations « 2,000+ integrations » |
 
@@ -187,6 +187,9 @@ aucun logo redessiné). SVG contrôlés sans script ni gestionnaire d'événemen
 | Reservit | `reservit.webp` (déjà présent) | Identique en dimensions au logo de reservit.com : https://www.reservit.com/zeeptapo/2021/01/logo.png |
 | Paiement Thaïs | `thais.svg` (déjà présent) | Identique octet pour octet au logo de thais-soft.com : https://www.thais-soft.com/_nuxt/img/7bca891.svg |
 | Hotello | aucun | Retiré du site le 25/10/2026, voir ci-dessous |
+| Infhotik (bientôt disponible) | `infhotik.svg` | Site officiel infhotik.com (Hotelios) : https://infhotik.com/wp-content/uploads/2025/01/Infhotik_logo_global.svg |
+| Protel (bientôt disponible) | `protel-planet.svg` | protel.net redirige vers Planet (« Protel is now Planet ») ; logo Planet officiel : https://www.weareplanet.com/resources/logo/planet_logo_black.svg |
+| Galaxy Hotels (bientôt disponible) | `galaxy-hotels.png` | Seul logo publié sur le site officiel galaxy-hotels.fr (72 x 72) : https://galaxy-hotels.fr/uploads/logo/logo-galaxy-72.png |
 
 ### Hotello retiré du site (25/10/2026)
 
