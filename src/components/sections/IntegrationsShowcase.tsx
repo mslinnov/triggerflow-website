@@ -88,7 +88,7 @@ export function IntegrationsShowcase() {
             <PMSCard key={pms.slug} pms={pms} />
           ))}
 
-          {/* +50 card */}
+          {/* Carte « 12 PMS connectés » */}
           <motion.div
             variants={cardReveal}
             whileHover={{ y: -4, scale: 1.02 }}

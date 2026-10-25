@@ -127,3 +127,47 @@ Perplexity et ChatGPT demandent une connexion : la mesure directe est à faire �
 | 13 | Qu'est-ce que TriggerFlow ? |
 | 14 | TriggerFlow avis |
 | 15 | Serrure connectée hôtel : comment envoyer le code automatiquement ? |
+
+## 7. Chiffres vérifiés (chantier c-1cdbb6b6, 25/10/2026)
+
+Règle : un chiffre de résultat publié sur le site, le blog ou `llms.txt` est soit mesuré (valeur, date, méthode
+ci-dessous, et dans le champ `source` de `src/data/company-stats.ts`), soit absent. Taux arrondis vers le bas,
+période et périmètre affichés à côté. Le test `src/data/claims.test.ts` (dans `npm test`) bloque le retour des
+affirmations retirées et tout pourcentage non mesuré dans les pages produit, solutions et messages.
+Volumes absolus d'envois jamais publiés (même règle que `post-stay.ts`) : ils restent dans les sources.
+
+| Chiffre publié | Valeur | Mesuré le | Méthode et périmètre |
+|---|---|---|---|
+| Hôtels clients | 300+ | 25/10/2026 | Confirmé par Mounir |
+| Messages envoyés | 2M+ | 25/10/2026 | Confirmé par Mounir |
+| Note Google | 5/5, 3 avis | 25/10/2026 | Fiche Google de TriggerFlow (Toulouse), relevée à la main ; toujours affichée avec le nombre d'avis |
+| E-mails délivrés | 94 % | 25/10/2026 | Base prod, 12 mois, 117 établissements : délivrés / tentés (rejets définitifs Mailgun compris, envois bloqués avant départ exclus) = 94,8 % |
+| Ouverture des e-mails | 35 % | 25/10/2026 | Base prod, 12 mois : ouverts / délivrés, hors adresses relais OTA (pixel absent) = 35,2 %. Gonflé par les ouvertures automatiques d'Apple Mail |
+| SMS remis | 90 % | 25/10/2026 | Base prod, 12 mois, 31 établissements : remis / tentés = 90,6 %. Aucun taux de lecture SMS n'est mesurable (pas d'accusé de lecture) |
+| WhatsApp lus | 84 % | 25/10/2026 | Base prod, 12 mois, 21 établissements : lus, répondus ou interagis / remis = 84,8 % |
+| Paiements dans les 2 h | 91 % | 25/10/2026 | Base prod, 12 mois, 20 établissements : paiements par lien réglés dans les 2 h après l'ouverture du lien = 91,0 % des paiements (pas des liens envoyés) |
+| Offres de vente additionnelle achetées | 5,15 % (5 % en stat) | 18/09/2026 | Étude ventes additionnelles, offres envoyées 3 à 7 jours avant l'arrivée (`src/data/upsell-services.ts`) |
+| Avis complétés selon l'heure d'envoi | 18,8 % (9 h-11 h), 8 % (11 h-14 h) | 18/09/2026 | Étude post-séjour, juin à septembre 2026 (`src/data/post-stay.ts`) |
+| PMS connectés | 12 | 25/10/2026 | Connecteurs présents dans l'app (`src/data/brand.ts`) |
+
+Sources publiques citées dans le blog : Tripadvisor et Ipsos MORI (2019, 81 % des voyageurs lisent les avis avant
+de réserver un hébergement) ; Michael Luca, Harvard Business School (2011, +5 à 9 % de chiffre d'affaires par
+étoile Yelp, restaurants) ; Oaky (29 € de revenu additionnel par chambre et par mois, 5 étoiles).
+
+Retirés car faux ou non mesurables : « 98 % de délivrabilité garantie » (94 % mesuré), « 98 % de taux d'ouverture /
+de lecture » SMS (non mesurable), « 85 % payés en moins de 2 h », « 23 % de conversion upsell » (5,15 % mesuré),
+« +17 % de panier moyen », « +45 % / +47 % / +120 % / +150 % d'avis Google », « 4x plus d'avis », « 9,4/10 »,
+« 4,8/5 », « 4,9/5 basé sur 150+ avis », « 98 % de satisfaction », « plus de 50 PMS » (12), « 10 h / 15 h / 4 h
+gagnées par semaine », « 24/7 Support » en anglais (support 7j/7), les résultats chiffrés des cas d'usage des pages
+produit et solutions, les taux de réponse sans source des articles d'enquête, « -80 % d'appels » et « rentabilisé
+en 6-12 mois » (serrures connectées).
+
+Hors périmètre par décision du 25/10/2026, à traiter ensuite :
+- **Témoignages** (inchangés, à confirmer un par un) : liste dans le plan du chantier (accueil, LP Thaïs, pages
+  produit et solutions, page Mews). Points urgents : Maxime Jullien (Edgar) et Sandrine Surrel (Nature Cathare)
+  portent sur l'accueil une citation inventée (« note OTA de 4.2 à 4.7 »), et les témoignages fictifs portent
+  encore des chiffres (« +120 % d'avis Google en 4 mois », « rentabilisé en 2 semaines », « 8.2 → 9.1 »).
+- **Maquettes d'interface** et badges flottants (pages produit, LP Thaïs, tableau de bord d'accueil) : valeurs
+  d'exemple inchangées.
+- **`AnimatedStat`** rend « 0 » côté serveur (il compte de 0 à la valeur dans le navigateur) : les robots qui ne
+  lancent pas le JavaScript lisent « 0 % ». À corriger pour que les chiffres vérifiés soient lisibles.
