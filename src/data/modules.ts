@@ -1603,27 +1603,27 @@ export interface ModuleSerializable {
 }
 
 export function getModuleSerializable(slug: string): ModuleSerializable | null {
-  const module = modules[slug];
-  if (!module) return null;
+  const found = modules[slug];
+  if (!found) return null;
 
   return {
-    slug: module.slug,
-    title: module.title,
-    seoTitle: module.seoTitle,
-    headline: module.headline,
-    description: module.description,
-    mockup: module.mockup,
-    painPoints: module.painPoints,
-    benefits: module.benefits,
-    features: module.features.map(f => ({ title: f.title, description: f.description, bullets: f.bullets, mockup: f.mockup })),
-    useCases: module.useCases,
-    relatedModules: module.relatedModules,
-    stats: module.stats,
-    faq: module.faq,
-    testimonial: module.testimonial,
-    integrations: module.integrations,
-    journey: module.journey,
-    ctaTitle: module.ctaTitle,
-    ctaSubtitle: module.ctaSubtitle,
+    slug: found.slug,
+    title: found.title,
+    seoTitle: found.seoTitle,
+    headline: found.headline,
+    description: found.description,
+    mockup: found.mockup,
+    painPoints: found.painPoints,
+    benefits: found.benefits,
+    features: found.features.map(f => ({ title: f.title, description: f.description, bullets: f.bullets, mockup: f.mockup })),
+    useCases: found.useCases,
+    relatedModules: found.relatedModules,
+    stats: found.stats,
+    faq: found.faq,
+    testimonial: found.testimonial,
+    integrations: found.integrations,
+    journey: found.journey,
+    ctaTitle: found.ctaTitle,
+    ctaSubtitle: found.ctaSubtitle,
   };
 }
