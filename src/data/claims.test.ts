@@ -117,6 +117,10 @@ test('LP Thaïs et solutions : nombre d\'hôtels et de messages lus dans company
       .flatMap((line, i) => (/(300|2M) ?\+|value: '300'/.test(line) ? [`${file.slice(root.length + 1)}:${i + 1}`] : [])),
   );
   assert.deepEqual(found, []);
+  // La version FR des chiffres n'est permise que sur une page rédigée en français seulement, dite comme telle.
+  for (const file of scanned.filter((f) => /companyStats\.\w+\.fr/.test(readFileSync(f, 'utf8')))) {
+    if (!file.endsWith('solutions.ts')) assert.match(readFileSync(file, 'utf8'), /page FR seulement/, file);
+  }
 });
 
 test('chiffre externe dans les stats : source publique nommée, avec sa date', () => {
@@ -124,6 +128,24 @@ test('chiffre externe dans les stats : source publique nommée, avec sa date', (
   const external = Object.values(modules).flatMap((m) => (m.stats ?? []).filter((s) => /Mds|milliards|billion/i.test(`${s.suffix} ${s.label}`)));
   assert.ok(external.length > 0);
   for (const s of external) assert.match(s.label, /\((Meta|WhatsApp)[^)]*20\d\d\)/, s.label);
+});
+
+/**
+ * Promesse chiffrée dans n'importe quel texte : multiplicateur, « doublez », gain en points ou en étoiles,
+ * évolution « passée de X à Y », délai « en N mois ». Les durées neutres (heure d'envoi, « 6 mois sans
+ * visite », fenêtre de 24 h WhatsApp) ne sont pas des promesses et restent permises.
+ */
+const PROMISE = /\bx\s?\d+\b|\b\d+\s?x\b|(?:divisée?s?|multipliée?s?) par \d|\bdoubl(?:ez|er|ée?s?|ent)\b|\btripl\w*|[+-]\s?\d+(?:[.,]\d+)?\s?(?:points?|étoiles?)\b|passée? de \d+(?:[.,]\d+)? à \d|de \d[.,]\d à \d[.,]\d|\ben (?:moins de |seulement )?\d+\s?(?:min(?:utes?)?|h|heures?|jours?|semaines?|mois)\b|réduit à \d|rentabilisé en/i;
+
+/** Exceptions explicites : un exemple d'interface annoncé comme tel, le délai de mise en place confirmé. */
+const PROMISE_ALLOWED = [/^Exemple : /, new RegExp(`\\b${brand.setupHours} ?h\\b`)];
+
+test('modules et solutions : aucune promesse chiffrée non mesurée, dans aucun texte', () => {
+  const skip = new Set(['testimonial', 'icon', 'mockup', 'image', 'heroImage']);
+  const found = [...strings(modules, skip, 'modules'), ...strings(solutions, skip, 'solutions')]
+    .filter(([, text]) => PROMISE.test(text) && !PROMISE_ALLOWED.some((re) => re.test(text)))
+    .map(([path, text]) => `${path}: « ${text.slice(0, 90)} »`);
+  assert.deepEqual(found, []);
 });
 
 test('pages À propos, Carrières, /v2 et étapes de l\'accueil : chiffres de marque lus dans brand.ts et company-stats.ts', () => {
@@ -142,6 +164,8 @@ test('pages À propos, Carrières, /v2 et étapes de l\'accueil : chiffres de ma
     assert.doesNotMatch(src, /'\d+'[^\n]*(collaborateurs|employés|employees|team members)|\d+ (collaborateurs|employés|employees|team members)/i, name);
   }
   assert.match(pages.careers, /brand\.foundingDate/);
+  // /v2 est servie en FR et en EN : valeur de la langue de la page, pas la version FR figée.
+  for (const name of ['heroV2', 'logoCloudV2'] as const) assert.doesNotMatch(pages[name], /companyStats\.\w+\.fr/, name);
   // « +N » après les logos de PMS : le reste de brand.pms, pas un nombre figé.
   assert.doesNotMatch(pages.howItWorks, /^\s*\+\d+\s*$/m);
   assert.match(pages.howItWorks, /brand\.pms\.length - pmsLogos\.length/);

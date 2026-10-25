@@ -7,6 +7,7 @@ import { ArrowRight, Sparkles, Lightbulb, Check, Mail, MessageSquare, Clock, Tre
 import Image from 'next/image';
 import { Container, ButtonLink, Badge } from '@/components/ui';
 import { heroContainer, heroItem } from '@/lib/animations';
+// LP Thaïs : page FR seulement (textes rédigés en français), d'où les chiffres en version FR.
 import { companyStats } from '@/data/company-stats';
 
 export function ThaisHero() {

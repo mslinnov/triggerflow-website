@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { IBM_Plex_Sans, Geist_Mono, Fraunces } from 'next/font/google';
 import { routing } from '@/i18n/routing';
+import { pageAlternates } from '@/lib/seo';
 import { CookieConsentBanner } from '@/components/cookies';
 import { GoogleAnalytics } from '@/components/analytics/GoogleAnalytics';
 import { DemoClickTracker } from '@/components/analytics/DemoClickTracker';
@@ -103,14 +104,7 @@ export async function generateMetadata({
       apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
     },
     manifest: '/site.webmanifest',
-    alternates: {
-      canonical: `${baseUrl}/${locale}`,
-      languages: {
-        fr: `${baseUrl}/fr`,
-        en: `${baseUrl}/en`,
-        'x-default': `${baseUrl}/fr`,
-      },
-    },
+    alternates: pageAlternates(locale, ''),
     robots: {
       index: true,
       follow: true,

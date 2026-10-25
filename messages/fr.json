@@ -120,6 +120,7 @@
     "cta": "Demander une démo",
     "ctaFree": "Essai gratuit - 14 jours",
     "ctaSecondary": "Découvrir les modules",
+    "hotelsLabel": "hôtels",
     "socialProof": {
       "hotels": "Plus de 300 hôtels nous font confiance"
     },
@@ -171,7 +172,9 @@
     "metrics": {
       "hotels": "hôtels équipés",
       "basket": "de panier moyen",
-      "timeSaved": "gagnées par semaine"
+      "timeSaved": "gagnées par semaine",
+      "messages": "messages envoyés",
+      "pms": "PMS + Zapier et n8n"
     },
     "cta": "Découvrir leurs témoignages"
   },

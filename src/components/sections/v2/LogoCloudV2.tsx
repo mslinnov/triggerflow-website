@@ -1,12 +1,12 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Building2, Send, Plug } from 'lucide-react';
 import { Container } from '@/components/ui';
 import { brand } from '@/data/brand';
-import { companyStats } from '@/data/company-stats';
+import { stat } from '@/data/company-stats';
 
 const logos = [
   { name: 'Accor', src: '/images/logo-accor.webp' },
@@ -17,29 +17,18 @@ const logos = [
   { name: 'Saint James', src: '/images/logo-saintjames.webp' },
 ];
 
-const metrics = [
-  {
-    icon: Building2,
-    value: companyStats.hotels.fr,
-    label: 'hôtels équipés',
-    accent: 'from-brand-primary to-emerald-500',
-  },
-  {
-    icon: Send,
-    value: companyStats.messages.fr,
-    label: 'messages envoyés',
-    accent: 'from-blue-500 to-cyan-500',
-  },
-  {
-    icon: Plug,
-    value: String(brand.pms.length),
-    label: 'PMS + Zapier et n8n',
-    accent: 'from-rose-500 to-orange-500',
-  },
-];
+// Valeurs lues dans company-stats.ts et brand.ts, libellés dans logoCloud.metrics.
+function metricsFor(locale: string) {
+  return [
+    { key: 'hotels', icon: Building2, value: stat('hotels', locale), accent: 'from-brand-primary to-emerald-500' },
+    { key: 'messages', icon: Send, value: stat('messages', locale), accent: 'from-blue-500 to-cyan-500' },
+    { key: 'pms', icon: Plug, value: String(brand.pms.length), accent: 'from-rose-500 to-orange-500' },
+  ] as const;
+}
 
 export function LogoCloudV2() {
   const t = useTranslations('logoCloud');
+  const metrics = metricsFor(useLocale());
 
   return (
     <section className="relative overflow-hidden bg-white py-20 md:py-28">
@@ -98,7 +87,7 @@ export function LogoCloudV2() {
         <div className="grid gap-6 md:grid-cols-3">
           {metrics.map((metric, index) => (
             <motion.div
-              key={metric.label}
+              key={metric.key}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -123,7 +112,7 @@ export function LogoCloudV2() {
                 </div>
 
                 {/* Label */}
-                <p className="text-lg text-zinc-500">{metric.label}</p>
+                <p className="text-lg text-zinc-500">{t(`metrics.${metric.key}`)}</p>
               </div>
 
               {/* Decorative corner */}

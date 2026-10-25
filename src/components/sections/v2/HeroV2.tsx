@@ -1,10 +1,10 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Mail, MessageSquare, Star, Bell, Zap } from 'lucide-react';
 import { Container, ButtonLink } from '@/components/ui';
-import { companyStats } from '@/data/company-stats';
+import { stat } from '@/data/company-stats';
 
 const floatingCards = [
   { icon: Mail, label: 'Email envoyé', color: 'bg-emerald-500', delay: 0 },
@@ -15,6 +15,7 @@ const floatingCards = [
 
 export function HeroV2() {
   const t = useTranslations('hero');
+  const locale = useLocale();
   const prefersReducedMotion = useReducedMotion();
 
   return (
@@ -140,8 +141,8 @@ export function HeroV2() {
                     ))}
                   </div>
                   <div className="text-sm">
-                    <span className="font-semibold text-white">{companyStats.hotels.fr}</span>
-                    <span className="text-zinc-400"> hôtels</span>
+                    <span className="font-semibold text-white">{stat('hotels', locale)}</span>
+                    <span className="text-zinc-400"> {t('hotelsLabel')}</span>
                   </div>
                 </div>
 
@@ -153,7 +154,7 @@ export function HeroV2() {
                       <Star key={i} className="h-5 w-5 fill-amber-400 text-amber-400" />
                     ))}
                   </div>
-                  <span className="text-sm text-zinc-400">{companyStats.rating.fr}</span>
+                  <span className="text-sm text-zinc-400">{stat('rating', locale)}</span>
                 </div>
               </motion.div>
             </div>

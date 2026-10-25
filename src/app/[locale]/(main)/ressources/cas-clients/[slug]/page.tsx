@@ -30,7 +30,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       images: [caseStudy.image],
     },
-    alternates: pageAlternates(locale, `/ressources/cas-clients/${slug}`),
+    // Fiches rédigées en français seulement (src/lib/case-studies.ts) : pas de hreflang en tant qu'elles ne sont pas traduites.
+    alternates: pageAlternates(locale, `/ressources/cas-clients/${slug}`, ['fr']),
   };
 }
 
