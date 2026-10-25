@@ -8,6 +8,7 @@ import { Container } from '@/components/ui/Container';
 import { SiloNav, ArticleList, BlogBreadcrumb } from '@/components/blog';
 import { BreadcrumbListJsonLd } from '@/components/seo';
 import { pageAlternates } from '@/lib/seo';
+import { brand } from '@/data/brand';
 
 interface Props {
   params: Promise<{ locale: string; silo: string }>;
@@ -49,7 +50,7 @@ export default async function SiloListingPage({ params }: Props) {
   const t = await getTranslations({ locale, namespace: 'blog' });
   const allArticles = getArticlesBySilo(siloSlug, locale);
 
-  const baseUrl = 'https://www.trigger-flow.com';
+  const baseUrl = brand.url;
   const breadcrumbItems = [
     { name: t('breadcrumb.blog'), url: `${baseUrl}/${locale}/blog` },
     { name: siloName(silo, locale), url: `${baseUrl}/${locale}/blog/${silo.slug}` },

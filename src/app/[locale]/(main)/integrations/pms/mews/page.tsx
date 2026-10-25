@@ -15,8 +15,10 @@ import {
   RelatedIntegrations,
 } from '@/components/integrations';
 import { getEntryPrice, getPricingPhase } from '@/data/pricing';
+import { brand } from '@/data/brand';
+import { pageAlternates } from '@/lib/seo';
 
-const baseUrl = 'https://www.trigger-flow.com';
+const baseUrl = brand.url;
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -29,14 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: t('meta.title'),
     description: t('meta.description'),
-    alternates: {
-      canonical: `${baseUrl}/${locale}/integrations/pms/mews`,
-      languages: {
-        fr: `${baseUrl}/fr/integrations/pms/mews`,
-        en: `${baseUrl}/en/integrations/pms/mews`,
-        'x-default': `${baseUrl}/fr/integrations/pms/mews`,
-      },
-    },
+    alternates: pageAlternates(locale, '/integrations/pms/mews'),
     openGraph: {
       title: t('meta.title'),
       description: t('meta.description'),

@@ -30,7 +30,8 @@ import {
   Mail,
   type LucideIcon,
 } from 'lucide-react';
-import { companyStats } from './company-stats';
+import { brand } from './brand';
+import { companyStats, statNumber } from './company-stats';
 
 // ─── Interfaces ─────────────────────────────────────────────
 
@@ -115,8 +116,8 @@ export interface SolutionData {
 
 /** Nombre d'hôtels de company-stats.ts (version FR : solutions rédigées en français), découpé pour AnimatedStat (« N+ » → N puis « + »). */
 const hotelsStat: SolutionStat = {
-  value: companyStats.hotels.fr.replace(/\+$/, ''),
-  suffix: companyStats.hotels.fr.endsWith('+') ? '+' : '',
+  value: statNumber('hotels'),
+  suffix: companyStats.hotels.fr.slice(statNumber('hotels').length),
   label: 'hôtels utilisent TriggerFlow',
 };
 
@@ -178,8 +179,8 @@ export const solutions: Record<string, SolutionData> = {
 
     stats: [
       hotelsStat,
-      { value: '94', suffix: ' %', label: 'des e-mails délivrés (12 derniers mois, tous nos hôtels)' },
-      { value: '12', suffix: '', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n' },
+      { value: statNumber('emailDelivered'), suffix: ' %', label: 'des e-mails délivrés (12 derniers mois, tous nos hôtels)' },
+      { value: String(brand.pms.length), suffix: '', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n' },
     ],
 
     features: [
@@ -256,7 +257,7 @@ export const solutions: Record<string, SolutionData> = {
     faq: [
       {
         question: 'Combien de temps prend la mise en place pour un hôtel indépendant ?',
-        answer: 'Comptez 48 h. Nous connectons votre PMS, configurons vos premières séquences et formons votre équipe.',
+        answer: `Comptez ${brand.setupHours} h. Nous connectons votre PMS, configurons vos premières séquences et formons votre équipe.`,
       },
       {
         question: 'Faut-il des compétences techniques ?',
@@ -347,7 +348,7 @@ export const solutions: Record<string, SolutionData> = {
 
     stats: [
       { value: '1', suffix: '', label: 'tableau de bord pour tous vos établissements' },
-      { value: '12', suffix: '', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n' },
+      { value: String(brand.pms.length), suffix: '', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n' },
       hotelsStat,
     ],
 
@@ -510,9 +511,9 @@ export const solutions: Record<string, SolutionData> = {
     ],
 
     stats: [
-      { value: '90', suffix: ' %', label: 'des SMS remis (12 derniers mois, tous nos hôtels)' },
-      { value: '84', suffix: ' %', label: 'des messages WhatsApp remis sont lus (12 derniers mois)' },
-      { value: '12', suffix: '', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n' },
+      { value: statNumber('smsDelivered'), suffix: ' %', label: 'des SMS remis (12 derniers mois, tous nos hôtels)' },
+      { value: statNumber('whatsappRead'), suffix: ' %', label: 'des messages WhatsApp remis sont lus (12 derniers mois)' },
+      { value: String(brand.pms.length), suffix: '', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n' },
     ],
 
     features: [
@@ -675,9 +676,9 @@ export const solutions: Record<string, SolutionData> = {
     ],
 
     stats: [
-      { value: '94', suffix: ' %', label: 'des e-mails délivrés (12 derniers mois, tous nos hôtels)' },
-      { value: '90', suffix: ' %', label: 'des SMS remis (12 derniers mois, tous nos hôtels)' },
-      { value: '84', suffix: ' %', label: 'des messages WhatsApp remis sont lus (12 derniers mois)' },
+      { value: statNumber('emailDelivered'), suffix: ' %', label: 'des e-mails délivrés (12 derniers mois, tous nos hôtels)' },
+      { value: statNumber('smsDelivered'), suffix: ' %', label: 'des SMS remis (12 derniers mois, tous nos hôtels)' },
+      { value: statNumber('whatsappRead'), suffix: ' %', label: 'des messages WhatsApp remis sont lus (12 derniers mois)' },
     ],
 
     features: [
@@ -842,8 +843,8 @@ export const solutions: Record<string, SolutionData> = {
 
     stats: [
       { value: '1', suffix: '', label: 'profil client unique, tous séjours confondus' },
-      { value: '35', suffix: ' %', label: 'd\'ouverture des e-mails, hors relais OTA (12 derniers mois)' },
-      { value: '5', suffix: ' %', label: 'des offres envoyées 3 à 7 jours avant l\'arrivée achetées (mesure sur l\'ensemble de nos hôtels)' },
+      { value: statNumber('emailOpened'), suffix: ' %', label: 'd\'ouverture des e-mails, hors relais OTA (12 derniers mois)' },
+      { value: statNumber('upsellAccepted'), suffix: ' %', label: 'des offres envoyées 3 à 7 jours avant l\'arrivée achetées (mesure sur l\'ensemble de nos hôtels)' },
     ],
 
     features: [
@@ -1012,9 +1013,9 @@ export const solutions: Record<string, SolutionData> = {
     ],
 
     stats: [
-      { value: '94', suffix: ' %', label: 'des e-mails délivrés (12 derniers mois, tous nos hôtels)' },
-      { value: '90', suffix: ' %', label: 'des SMS remis (12 derniers mois, tous nos hôtels)' },
-      { value: '12', suffix: '', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n' },
+      { value: statNumber('emailDelivered'), suffix: ' %', label: 'des e-mails délivrés (12 derniers mois, tous nos hôtels)' },
+      { value: statNumber('smsDelivered'), suffix: ' %', label: 'des SMS remis (12 derniers mois, tous nos hôtels)' },
+      { value: String(brand.pms.length), suffix: '', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n' },
     ],
 
     features: [
@@ -1322,8 +1323,8 @@ export const solutions: Record<string, SolutionData> = {
     ],
 
     stats: [
-      { value: '5', suffix: ' %', label: 'des offres envoyées 3 à 7 jours avant l\'arrivée achetées (mesure sur l\'ensemble de nos hôtels)' },
-      { value: '91', suffix: ' %', label: 'des paiements réglés dans les 2 h après ouverture du lien (12 derniers mois)' },
+      { value: statNumber('upsellAccepted'), suffix: ' %', label: 'des offres envoyées 3 à 7 jours avant l\'arrivée achetées (mesure sur l\'ensemble de nos hôtels)' },
+      { value: statNumber('paidWithin2h'), suffix: ' %', label: 'des paiements réglés dans les 2 h après ouverture du lien (12 derniers mois)' },
       { value: '0', suffix: '€', label: 'de commission TriggerFlow sur les ventes' },
     ],
 
@@ -1477,7 +1478,7 @@ export const solutions: Record<string, SolutionData> = {
     stats: [
       { value: '0', suffix: '€', label: 'de commission sur les réservations directes' },
       { value: '1', suffix: '', label: 'profil client unique, tous séjours confondus' },
-      { value: '35', suffix: ' %', label: 'd\'ouverture des e-mails, hors relais OTA (12 derniers mois)' },
+      { value: statNumber('emailOpened'), suffix: ' %', label: 'd\'ouverture des e-mails, hors relais OTA (12 derniers mois)' },
     ],
 
     features: [

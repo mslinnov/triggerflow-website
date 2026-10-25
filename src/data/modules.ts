@@ -35,6 +35,8 @@ import {
   CreditCard,
   type LucideIcon,
 } from 'lucide-react';
+import { brand } from './brand';
+import { statNumber } from './company-stats';
 
 export interface ModuleFeature {
   title: string;
@@ -122,8 +124,8 @@ export const modules: Record<string, ModuleData> = {
       'Une identité visuelle cohérente sur tous vos points de contact : confirmation, pré-séjour, remerciement, offres'
     ],
     stats: [
-      { value: '94', label: 'des e-mails délivrés (12 derniers mois, tous nos hôtels)', suffix: '%' },
-      { value: '35', label: 'd\'ouverture, hors adresses relais des OTA (12 derniers mois)', suffix: '%' },
+      { value: statNumber('emailDelivered'), label: 'des e-mails délivrés (12 derniers mois, tous nos hôtels)', suffix: '%' },
+      { value: statNumber('emailOpened'), label: 'd\'ouverture, hors adresses relais des OTA (12 derniers mois)', suffix: '%' },
       { value: '0', label: 'ligne de code pour créer un e-mail (éditeur glisser-déposer)', suffix: '' },
     ],
     journey: [
@@ -212,7 +214,7 @@ export const modules: Record<string, ModuleData> = {
       },
       {
         question: 'Combien de temps pour être opérationnel ?',
-        answer: 'Comptez 48 h pour être opérationnel : connexion de votre PMS, import de votre charte graphique et activation de vos premiers emails automatiques, avec notre équipe.'
+        answer: `Comptez ${brand.setupHours} h pour être opérationnel : connexion de votre PMS, import de votre charte graphique et activation de vos premiers emails automatiques, avec notre équipe.`
       },
       {
         question: 'Y a-t-il un engagement ou une durée minimum ?',
@@ -247,7 +249,7 @@ export const modules: Record<string, ModuleData> = {
       'SMS bidirectionnel : le client répond directement et vous le voyez dans votre dashboard'
     ],
     stats: [
-      { value: '90', label: 'des SMS remis (12 derniers mois, tous nos hôtels)', suffix: '%' },
+      { value: statNumber('smsDelivered'), label: 'des SMS remis (12 derniers mois, tous nos hôtels)', suffix: '%' },
       { value: '2', label: 'sens : le client répond, vous lisez la réponse', suffix: '' },
       { value: '0', label: 'appel téléphonique nécessaire', suffix: '' },
     ],
@@ -356,7 +358,7 @@ export const modules: Record<string, ModuleData> = {
     stats: [
       // Source publique : annonce WhatsApp (Meta) « Two Billion Users », 12 février 2020.
       { value: '2', label: 'd\'utilisateurs WhatsApp dans le monde (Meta, février 2020)', suffix: 'Mds' },
-      { value: '84', label: 'des messages remis sont lus (12 derniers mois, tous nos hôtels)', suffix: '%' },
+      { value: statNumber('whatsappRead'), label: 'des messages remis sont lus (12 derniers mois, tous nos hôtels)', suffix: '%' },
       { value: '1', label: 'boîte de réception partagée avec vos autres canaux', suffix: '' },
       { value: '24', label: 'l\'assistant IA répond aux questions fréquentes', suffix: '/7' },
     ],
@@ -464,7 +466,7 @@ export const modules: Record<string, ModuleData> = {
       'Segmentation automatique : les familles reçoivent les offres famille, les couples les offres romantiques'
     ],
     stats: [
-      { value: '35', label: 'd\'ouverture des e-mails, hors relais OTA (12 derniers mois)', suffix: '%' },
+      { value: statNumber('emailOpened'), label: 'd\'ouverture des e-mails, hors relais OTA (12 derniers mois)', suffix: '%' },
       { value: '1', label: 'segment par campagne, ciblé sur l\'historique', suffix: '' },
       { value: '0', label: 'commission sur réservation directe', suffix: '€' },
     ],
@@ -694,7 +696,7 @@ export const modules: Record<string, ModuleData> = {
       'TriggerFlow exécute vos workflows 24h/24, week-ends et jours fériés inclus, jamais de tâche oubliée'
     ],
     stats: [
-      { value: '12', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n', suffix: '' },
+      { value: String(brand.pms.length), label: 'PMS connectés, plus serrures, paiement, Zapier et n8n', suffix: '' },
       { value: '0', label: 'compétence technique requise', suffix: '' },
       { value: '24', label: 'heures sur 24 de fonctionnement', suffix: '/7' },
     ],
@@ -804,7 +806,7 @@ export const modules: Record<string, ModuleData> = {
     stats: [
       { value: '360', label: 'vue complète de chaque client', suffix: '°' },
       { value: '0', label: 'saisie manuelle nécessaire', suffix: '' },
-      { value: '12', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n', suffix: '' },
+      { value: String(brand.pms.length), label: 'PMS connectés, plus serrures, paiement, Zapier et n8n', suffix: '' },
       { value: '1', label: 'profil par client, tous canaux confondus', suffix: '' },
     ],
     journey: [
@@ -1355,7 +1357,7 @@ export const modules: Record<string, ModuleData> = {
       'Le client réserve en 2 clics depuis l\'email ou le SMS, pas besoin d\'appeler, pas de risque d\'oubli'
     ],
     stats: [
-      { value: '5', label: 'des offres envoyées 3 à 7 jours avant l\'arrivée sont achetées (mesure sur l\'ensemble de nos hôtels)', suffix: '%' },
+      { value: statNumber('upsellAccepted'), label: 'des offres envoyées 3 à 7 jours avant l\'arrivée sont achetées (mesure sur l\'ensemble de nos hôtels)', suffix: '%' },
       { value: '0', label: 'commission TriggerFlow sur les ventes', suffix: '€' },
       { value: '0', label: 'effort de la réception', suffix: '' },
       { value: '2', label: 'clics pour réserver un extra', suffix: '' },

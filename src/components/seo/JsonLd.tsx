@@ -5,7 +5,8 @@ import { brand } from '@/data/brand';
 import { getAuthor } from '@/data/authors';
 import { HOME_FAQ_KEYS } from '@/data/home-faq';
 
-const baseUrl = 'https://www.trigger-flow.com';
+const baseUrl = brand.url;
+const ORG_ID = `${baseUrl}/#organization`;
 
 interface JsonLdProps {
   locale: string;
@@ -42,7 +43,7 @@ export function OrganizationJsonLd({ locale = 'fr' }: { locale?: string } = {}) 
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    '@id': `${baseUrl}/#organization`,
+    '@id': ORG_ID,
     name: brand.name,
     legalName: brand.legalName,
     url: baseUrl,
@@ -88,6 +89,7 @@ export function OrganizationJsonLd({ locale = 'fr' }: { locale?: string } = {}) 
 
 export function SoftwareApplicationJsonLd({ locale = 'fr' }: { locale?: string } = {}) {
   const phase = getPricingPhase();
+  const lang = locale === 'fr' ? 'fr' : 'en';
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
@@ -95,13 +97,13 @@ export function SoftwareApplicationJsonLd({ locale = 'fr' }: { locale?: string }
     applicationCategory: 'BusinessApplication',
     applicationSubCategory: 'CRM',
     operatingSystem: 'Web',
-    slogan: brand.slogan[locale === 'fr' ? 'fr' : 'en'],
-    description: brand.definition[locale === 'fr' ? 'fr' : 'en'],
+    slogan: brand.slogan[lang],
+    description: brand.definition[lang],
     url: baseUrl,
-    author: { '@id': `${baseUrl}/#organization` },
-    publisher: { '@id': `${baseUrl}/#organization` },
+    author: { '@id': ORG_ID },
+    publisher: { '@id': ORG_ID },
     offers: buildOffers(locale, phase),
-    featureList: [...brand.featureList[locale === 'fr' ? 'fr' : 'en']],
+    featureList: [...brand.featureList[lang]],
   };
 
   return (
@@ -254,12 +256,12 @@ export function BlogPostingJsonLd({ article, locale }: BlogPostingJsonLdProps) {
       '@type': 'Person',
       name: author.name,
       jobTitle: author.role[locale === 'fr' ? 'fr' : 'en'],
-      worksFor: { '@type': 'Organization', '@id': `${baseUrl}/#organization`, name: brand.name },
+      worksFor: { '@type': 'Organization', '@id': ORG_ID, name: brand.name },
       ...(author.linkedin ? { sameAs: [author.linkedin] } : {}),
     },
     publisher: {
       '@type': 'Organization',
-      '@id': `${baseUrl}/#organization`,
+      '@id': ORG_ID,
       name: brand.name,
       logo: { '@type': 'ImageObject', url: brand.logo },
     },
