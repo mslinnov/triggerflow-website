@@ -30,7 +30,7 @@ const metrics = [
   },
   {
     icon: Plug,
-    value: '13',
+    value: '12',
     label: 'PMS + Zapier et n8n',
     accent: 'from-rose-500 to-orange-500',
   },

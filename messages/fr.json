@@ -125,7 +125,7 @@
     },
     "trustBadges": {
       "rgpd": "Conforme RGPD",
-      "pms": "13 PMS + Zapier et n8n",
+      "pms": "12 PMS + Zapier et n8n",
       "support": "Support 7j/7"
     }
   },
@@ -530,7 +530,7 @@
     "steps": {
       "connect": {
         "title": "Connectez votre PMS",
-        "description": "Intégration native avec 13 PMS, dont Mews, Opera Cloud, Thaïs et Medialog, plus les serrures connectées, le paiement en ligne et des milliers d'applications via Zapier et n8n. Vos données clients se synchronisent en temps réel."
+        "description": "Intégration native avec 12 PMS, dont Mews, Opera Cloud, Thaïs et Medialog, plus les serrures connectées, le paiement en ligne et des milliers d'applications via Zapier et n8n. Vos données clients se synchronisent en temps réel."
       },
       "create": {
         "title": "Configurez vos workflows",
@@ -696,8 +696,8 @@
   "integrationsShowcase": {
     "badge": "Intégrations",
     "title": "Connecté à votre écosystème",
-    "subtitle": "13 PMS, serrures connectées, paiement en ligne et des milliers d'applications via Zapier et n8n",
-    "count": "13 PMS + Zapier et n8n",
+    "subtitle": "12 PMS, serrures connectées, paiement en ligne et des milliers d'applications via Zapier et n8n",
+    "count": "12 PMS + Zapier et n8n",
     "cta": "Voir toutes les intégrations",
     "comingSoon": "Bientôt disponible",
     "native": "Natif"
@@ -1189,14 +1189,14 @@
   },
   "integrations": {
     "meta": {
-      "title": "Intégrations hôtel : 13 PMS, serrures, paiement, Zapier et n8n",
-      "description": "Connectez TriggerFlow à votre PMS (13 PMS, dont Mews, Opera Cloud, Thaïs, Misterbooking), à vos serrures connectées, à votre solution de paiement et à des milliers d'applications via Zapier et n8n. Synchronisation temps réel sans développement."
+      "title": "Intégrations hôtel : 12 PMS, serrures, paiement, Zapier et n8n",
+      "description": "Connectez TriggerFlow à votre PMS (12 PMS, dont Mews, Opera Cloud, Thaïs, Misterbooking), à vos serrures connectées, à votre solution de paiement et à des milliers d'applications via Zapier et n8n. Synchronisation temps réel sans développement."
     },
     "hero": {
       "title": "Connectez TriggerFlow à vos outils",
       "subtitle": "Intégrations natives avec les principaux PMS hôteliers, serrures connectées, moyens de paiement et plateformes d'avis. Aucun développement nécessaire.",
       "cta": "Vous ne trouvez pas votre outil ?",
-      "count": "13 PMS + des milliers d'apps via Zapier et n8n"
+      "count": "12 PMS + des milliers d'apps via Zapier et n8n"
     },
     "badges": {
       "native": "Natif",
@@ -1450,7 +1450,7 @@
     },
     "trustBadges": {
       "rgpd": "Conforme RGPD",
-      "pms": "13 PMS + Zapier et n8n",
+      "pms": "12 PMS + Zapier et n8n",
       "support": "Support 7j/7"
     },
     "badges": {
@@ -1464,7 +1464,7 @@
   "product": {
     "meta": {
       "title": "CRM hôtelier tout-en-un - Email, SMS, WhatsApp, Workflows",
-      "description": "Plateforme tout-en-un pour hôteliers : CRM, email, SMS, WhatsApp, workflows automatisés, fidélité, avis Google. Connectée à 13 PMS, aux serrures, au paiement en ligne et à des milliers d'applications via Zapier et n8n."
+      "description": "Plateforme tout-en-un pour hôteliers : CRM, email, SMS, WhatsApp, workflows automatisés, fidélité, avis Google. Connectée à 12 PMS, aux serrures, au paiement en ligne et à des milliers d'applications via Zapier et n8n."
     },
     "hero": {
       "title": "Une plateforme complète pour votre relation client",
@@ -2025,7 +2025,7 @@
         {
           "label": "Catégorie",
           "title": "Toutes les intégrations PMS",
-          "description": "Mews, Opera Cloud, Thaïs, Medialog et 9 autres PMS connectés nativement, plus des milliers d'applications via Zapier et n8n.",
+          "description": "Mews, Opera Cloud, Thaïs, Medialog et 8 autres PMS connectés nativement, plus des milliers d'applications via Zapier et n8n.",
           "href": "/integrations"
         },
         {
@@ -2748,7 +2748,7 @@
           "text": "Liens de paiement · Acomptes · Statistiques · Rapports"
         }
       },
-      "pms": "Connecté à votre PMS · 13 PMS, serrures, paiement, Zapier et n8n",
+      "pms": "Connecté à votre PMS · 12 PMS, serrures, paiement, Zapier et n8n",
       "badges": {
         "setup": "Opérationnel en 48 heures",
         "support": "Support 7j/7",

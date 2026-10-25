@@ -17,7 +17,7 @@ const stats = [
   },
   {
     icon: Plug,
-    value: '13',
+    value: '12',
     label: 'PMS + Zapier et n8n',
   },
   {

@@ -148,7 +148,7 @@ Volumes absolus d'envois jamais publiés (même règle que `post-stay.ts`) : ils
 | Paiements dans les 2 h | 91 % | 25/10/2026 | Base prod, 12 mois, 20 établissements : paiements par lien réglés dans les 2 h après l'ouverture du lien = 91,0 % des paiements (pas des liens envoyés) |
 | Offres de vente additionnelle achetées | 5,15 % (5 % en stat) | 18/09/2026 | Étude ventes additionnelles, offres envoyées 3 à 7 jours avant l'arrivée (`src/data/upsell-services.ts`) |
 | Avis complétés selon l'heure d'envoi | 18,8 % (9 h-11 h), 8 % (11 h-14 h) | 18/09/2026 | Étude post-séjour, juin à septembre 2026 (`src/data/post-stay.ts`) |
-| PMS connectés | 13 | 25/10/2026 | Connecteurs présents dans l'app (`src/data/brand.ts`, Lean PMS ajouté à la revue) |
+| PMS connectés | 12 | 25/10/2026 | Connecteurs présents dans l'app (`src/data/brand.ts`, Lean PMS ajouté à la revue, Hotello retiré) |
 | PMS bientôt disponibles | Chloé | 25/10/2026 | `brand.pmsEnCours`, affichés à part (« bientôt disponible »), jamais comptés dans le total ; d'autres seront ajoutés une fois nommés |
 | Autres connexions | serrures Sesame, Igloohome ; paiement Stripe, PayZen, SystemPay, Thaïs ; avis Google, TripAdvisor, Booking.com, Airbnb ; boîtes Gmail, Microsoft 365 | 25/10/2026 | `brand.connections`, vérifiées dans l'app (Plug.php, Services/Locks, Services/Payments, Services/Reviews, FacilityMailbox) |
 | Zapier et n8n | « des milliers d'applications » | 25/10/2026 | Action webhook des scénarios vers Zapier, n8n ou Make (TriggerFlow n'est pas dans leur catalogue). Catalogues : zapier.com/apps « 10368+ apps », n8n.io/integrations « 2,000+ integrations » |
@@ -160,7 +160,7 @@ de réserver un hébergement) ; Michael Luca, Harvard Business School (2011, +5 
 Retirés car faux ou non mesurables : « 98 % de délivrabilité garantie » (94 % mesuré), « 98 % de taux d'ouverture /
 de lecture » SMS (non mesurable), « 85 % payés en moins de 2 h », « 23 % de conversion upsell » (5,15 % mesuré),
 « +17 % de panier moyen », « +45 % / +47 % / +120 % / +150 % d'avis Google », « 4x plus d'avis », « 9,4/10 »,
-« 4,8/5 », « 4,9/5 basé sur 150+ avis », « 98 % de satisfaction », « plus de 50 PMS » (13 PMS, présentés avec les autres connexions), les intégrations sans connecteur de la page intégrations (Salto, imprimante, supprimée de l'app en mai 2026, Mollie, PayPal, Trustpilot, Hotels.com), « 5000+ applications » Zapier (10 000+ relevé sur zapier.com), « 10 h / 15 h / 4 h
+« 4,8/5 », « 4,9/5 basé sur 150+ avis », « 98 % de satisfaction », « plus de 50 PMS » (12 PMS, présentés avec les autres connexions), les intégrations sans connecteur de la page intégrations (Salto, imprimante, supprimée de l'app en mai 2026, Mollie, PayPal, Trustpilot, Hotels.com), « 5000+ applications » Zapier (10 000+ relevé sur zapier.com), « 10 h / 15 h / 4 h
 gagnées par semaine », « 24/7 Support » en anglais (support 7j/7), les résultats chiffrés des cas d'usage des pages
 produit et solutions, les taux de réponse sans source des articles d'enquête, « -80 % d'appels » et « rentabilisé
 en 6-12 mois » (serrures connectées).
@@ -186,5 +186,13 @@ aucun logo redessiné). SVG contrôlés sans script ni gestionnaire d'événemen
 | SystemPay | `systempay.png` | Documentation officielle Systempay : https://paiement.systempay.fr/doc/api/assets/assets/doc/images/systempay/white_labels/systempay/logo.png |
 | Reservit | `reservit.webp` (déjà présent) | Identique en dimensions au logo de reservit.com : https://www.reservit.com/zeeptapo/2021/01/logo.png |
 | Paiement Thaïs | `thais.svg` (déjà présent) | Identique octet pour octet au logo de thais-soft.com : https://www.thais-soft.com/_nuxt/img/7bca891.svg |
-| Hotello | aucun | hotello.com et app.hotello.com servent un site de jeux d'argent (relevé le 25/10/2026) : aucune carte en attendant la décision |
+| Hotello | aucun | Retiré du site le 25/10/2026, voir ci-dessous |
+
+### Hotello retiré du site (25/10/2026)
+
+Connecteur suspendu : le domaine de l'API Hotello (`app.hotello.com`, appelé par le connecteur de l'app) ne pointe plus
+vers l'éditeur et sert depuis août 2026 un site sans rapport (relevé le 25/10/2026). Aucune connexion Hotello active en
+prod (la dernière a été supprimée le 19/02/2026). Hotello est retiré de `brand.pms` (12 PMS), des cartes, listes de
+logos, articles et de la formation du stand ; il n'est pas présenté en « bientôt disponible ». Un correctif séparé
+coupe le connecteur dans l'app.
 

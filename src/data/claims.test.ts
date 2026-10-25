@@ -122,6 +122,8 @@ const BANNED = [
   /<Stat id="(googleReviews|avgBasket|hoursSaved|onlineCheckin|countries)"/,
   // Connexions sans connecteur dans l'app (25/10/2026).
   /Mollie|Payline|PayPal|Trustpilot|'Salto'/,
+  // Connecteur suspendu : domaine de l'API ne pointant plus vers l'éditeur (25/10/2026).
+  /Hotello/i,
 ];
 
 test('messages FR/EN : affirmations retirées absentes hors témoignages', () => {
@@ -147,6 +149,7 @@ test('affirmations retirées absentes du code, du blog et des LP', () => {
     ...files(join(root, 'src', 'components', 'sections'), /\.tsx$/),
     ...files(join(root, 'src', 'app'), /\.tsx?$/),
     join(root, 'src', 'lib', 'llms.ts'),
+    join(root, 'content', 'formation-salon', 'index.html'),
   ].filter((f) => !excluded.test(f));
   const found: string[] = [];
   for (const file of scanned) {

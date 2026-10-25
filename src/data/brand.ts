@@ -38,7 +38,6 @@ export const brand = {
     'Misterbooking',
     'Asterio',
     'Apaleo',
-    'Hotello',
     'Vega',
     'Beds24',
     'Zeswitch',

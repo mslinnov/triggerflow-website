@@ -125,7 +125,7 @@
     },
     "trustBadges": {
       "rgpd": "GDPR Compliant",
-      "pms": "13 PMS + Zapier & n8n",
+      "pms": "12 PMS + Zapier & n8n",
       "support": "Support 7 days a week"
     }
   },
@@ -530,7 +530,7 @@
     "steps": {
       "connect": {
         "title": "Connect your PMS",
-        "description": "Native integration with 13 PMS, including Mews, Opera Cloud, Thaïs and Medialog, plus smart locks, online payments and thousands of apps via Zapier and n8n. Your guest data syncs automatically."
+        "description": "Native integration with 12 PMS, including Mews, Opera Cloud, Thaïs and Medialog, plus smart locks, online payments and thousands of apps via Zapier and n8n. Your guest data syncs automatically."
       },
       "create": {
         "title": "Create your automations",
@@ -696,8 +696,8 @@
   "integrationsShowcase": {
     "badge": "Integrations",
     "title": "Works with your PMS",
-    "subtitle": "13 PMS, smart locks, online payments and thousands of apps via Zapier and n8n",
-    "count": "13 PMS + Zapier & n8n",
+    "subtitle": "12 PMS, smart locks, online payments and thousands of apps via Zapier and n8n",
+    "count": "12 PMS + Zapier & n8n",
     "cta": "View all integrations",
     "comingSoon": "Coming soon",
     "native": "Native"
@@ -1181,14 +1181,14 @@
   },
   "integrations": {
     "meta": {
-      "title": "Hotel Integrations: 13 PMS, Smart Locks, Payments, Zapier and n8n",
-      "description": "Connect TriggerFlow to your PMS (13 PMS, including Mews, Opera Cloud, Thaïs, Misterbooking), your smart locks, your payment provider and thousands of apps via Zapier and n8n. Real-time sync without development."
+      "title": "Hotel Integrations: 12 PMS, Smart Locks, Payments, Zapier and n8n",
+      "description": "Connect TriggerFlow to your PMS (12 PMS, including Mews, Opera Cloud, Thaïs, Misterbooking), your smart locks, your payment provider and thousands of apps via Zapier and n8n. Real-time sync without development."
     },
     "hero": {
       "title": "Connect TriggerFlow to your tools",
       "subtitle": "Native integrations with leading hotel PMS, smart locks, payment solutions and review platforms. No development required.",
       "cta": "Can't find your tool?",
-      "count": "13 PMS + thousands of apps via Zapier & n8n"
+      "count": "12 PMS + thousands of apps via Zapier & n8n"
     },
     "badges": {
       "native": "Native",
@@ -1442,7 +1442,7 @@
     },
     "trustBadges": {
       "rgpd": "GDPR Compliant",
-      "pms": "13 PMS + Zapier & n8n",
+      "pms": "12 PMS + Zapier & n8n",
       "support": "Support 7 days a week"
     },
     "badges": {
@@ -1456,7 +1456,7 @@
   "product": {
     "meta": {
       "title": "All-in-One Hotel CRM - Email, SMS, WhatsApp, Workflows",
-      "description": "All-in-one platform for hoteliers: CRM, email, SMS, WhatsApp, automated workflows, loyalty, Google reviews. Connected to 13 PMS, smart locks, online payments and thousands of apps via Zapier and n8n."
+      "description": "All-in-one platform for hoteliers: CRM, email, SMS, WhatsApp, automated workflows, loyalty, Google reviews. Connected to 12 PMS, smart locks, online payments and thousands of apps via Zapier and n8n."
     },
     "hero": {
       "title": "A complete platform for your customer relationship",
@@ -2017,7 +2017,7 @@
         {
           "label": "Category",
           "title": "All PMS integrations",
-          "description": "Mews, Opera Cloud, Thaïs, Medialog and 9 more PMS connected natively, plus thousands of apps via Zapier and n8n.",
+          "description": "Mews, Opera Cloud, Thaïs, Medialog and 8 more PMS connected natively, plus thousands of apps via Zapier and n8n.",
           "href": "/integrations"
         },
         {
