@@ -1,6 +1,9 @@
 import { useTranslations } from 'next-intl';
 import type { Article, FaqItem } from '@/types/blog';
 import { getDisplayPlans, getPricingPhase, type PricingPhase } from '@/data/pricing';
+import { brand } from '@/data/brand';
+import { getAuthor } from '@/data/authors';
+import { HOME_FAQ_KEYS } from '@/data/home-faq';
 
 const baseUrl = 'https://www.trigger-flow.com';
 
@@ -34,46 +37,45 @@ function buildOffers(locale: string, phase: PricingPhase) {
   }));
 }
 
-export function OrganizationJsonLd() {
+export function OrganizationJsonLd({ locale = 'fr' }: { locale?: string } = {}) {
+  const lang = locale === 'fr' ? 'fr' : 'en';
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'TriggerFlow',
-    alternateName: 'TriggerFlow by Utelys',
+    '@id': `${baseUrl}/#organization`,
+    name: brand.name,
+    legalName: brand.legalName,
     url: baseUrl,
-    logo: `${baseUrl}/images/logo.webp`,
-    description:
-      'TriggerFlow est la solution SaaS leader pour l\'automatisation de la relation client dans l\'hôtellerie.',
+    logo: brand.logo,
+    description: brand.definition[lang],
     slogan: 'Le CRM hôtelier qui centralise toute la relation client',
-    foundingDate: '2020',
-    founders: [
-      {
-        '@type': 'Organization',
-        name: 'Utelys',
-        url: 'https://www.utelys.fr',
-      },
-    ],
+    foundingDate: brand.foundingDate,
+    foundingLocation: {
+      '@type': 'Place',
+      address: { '@type': 'PostalAddress', addressLocality: brand.foundingCity, addressCountry: brand.country },
+    },
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Paris',
-      addressCountry: 'FR',
+      addressLocality: brand.foundingCity,
+      addressCountry: brand.country,
     },
+    knowsAbout: brand.knowsAbout[lang],
     contactPoint: [
       {
         '@type': 'ContactPoint',
         contactType: 'customer service',
-        email: 'contact@trigger-flow.com',
+        email: brand.email,
         availableLanguage: ['French', 'English'],
       },
       {
         '@type': 'ContactPoint',
         contactType: 'sales',
-        email: 'contact@trigger-flow.com',
-        url: 'https://app.lemcal.com/@trigger-flow/demo',
+        email: brand.email,
+        url: brand.demoUrl,
         availableLanguage: ['French', 'English'],
       },
     ],
-    sameAs: ['https://www.linkedin.com/company/triggerflow/'],
+    sameAs: [...brand.sameAs],
   };
 
   return (
@@ -94,14 +96,10 @@ export function SoftwareApplicationJsonLd({ locale = 'fr' }: { locale?: string }
     applicationSubCategory: 'CRM',
     operatingSystem: 'Web',
     slogan: 'Le CRM hôtelier qui centralise toute la relation client',
-    description:
-      'Solution SaaS pour automatiser SMS, emails et fidélisation client dans l\'hôtellerie. Synchronisation PMS, enquêtes satisfaction, upselling.',
+    description: brand.definition[locale === 'fr' ? 'fr' : 'en'],
     url: baseUrl,
-    author: {
-      '@type': 'Organization',
-      name: 'TriggerFlow',
-      url: baseUrl,
-    },
+    author: { '@id': `${baseUrl}/#organization` },
+    publisher: { '@id': `${baseUrl}/#organization` },
     offers: buildOffers(locale, phase),
     featureList: [
       'Synchronisation PMS',
@@ -121,53 +119,17 @@ export function SoftwareApplicationJsonLd({ locale = 'fr' }: { locale?: string }
   );
 }
 
-export function FAQPageJsonLd({ locale }: JsonLdProps) {
-  const faqItems =
-    locale === 'fr'
-      ? [
-          {
-            question: 'Combien de temps prend la mise en place ?',
-            answer:
-              'La mise en place est rapide et simple. En moyenne, nos clients sont opérationnels en moins de 48h. Notre équipe vous accompagne à chaque étape pour configurer vos premières automatisations.',
-          },
-          {
-            question: 'TriggerFlow est-il compatible avec mon PMS ?',
-            answer:
-              'Nous sommes compatibles avec les principaux PMS du marché : Mews, Opera, Clock, Misterbooking, Asterio et bien d\'autres. Si votre PMS n\'est pas dans la liste, contactez-nous pour vérifier la compatibilité.',
-          },
-          {
-            question: 'Puis-je personnaliser les messages envoyés ?',
-            answer:
-              'Absolument ! Tous les messages sont entièrement personnalisables. Vous pouvez utiliser des variables dynamiques (nom du client, dates de séjour, numéro de chambre...) et adapter le ton à votre établissement.',
-          },
-          {
-            question: 'Quelles actions marketing puis-je automatiser ?',
-            answer:
-              'TriggerFlow permet d\'automatiser de nombreuses actions : SMS/emails de bienvenue, enquêtes satisfaction, offres de services additionnels, programmes de fidélité, relances post-séjour et bien plus encore.',
-          },
-        ]
-      : [
-          {
-            question: 'How long does the setup take?',
-            answer:
-              'Setup is quick and simple. On average, our customers are operational in less than 48 hours. Our team supports you every step of the way to configure your first automations.',
-          },
-          {
-            question: 'Is TriggerFlow compatible with my PMS?',
-            answer:
-              'We are compatible with major PMS on the market: Mews, Opera, Clock, Misterbooking, Asterio and many more. If your PMS is not on the list, contact us to check compatibility.',
-          },
-          {
-            question: 'Can I customize the messages sent?',
-            answer:
-              'Absolutely! All messages are fully customizable. You can use dynamic variables (guest name, stay dates, room number...) and adapt the tone to your property.',
-          },
-          {
-            question: 'What marketing actions can I automate?',
-            answer:
-              'TriggerFlow allows you to automate many actions: welcome SMS/emails, satisfaction surveys, additional services offers, loyalty programs, post-stay follow-ups and much more.',
-          },
-        ];
+/**
+ * FAQ de la page d'accueil : lit les mêmes messages que la section FAQ visible, pour que
+ * le balisage reflète exactement ce que la page affiche (exigence Google, et un seul
+ * endroit à tenir à jour).
+ */
+export function FAQPageJsonLd() {
+  const t = useTranslations('faq.items');
+  const faqItems = HOME_FAQ_KEYS.map((key) => ({
+    question: t(`${key}.question`),
+    answer: t(`${key}.answer`),
+  }));
 
   return <FaqJsonLd items={faqItems} />;
 }
@@ -264,9 +226,9 @@ export function WebsiteJsonLd() {
 export function HomePageJsonLd({ locale }: JsonLdProps) {
   return (
     <>
-      <OrganizationJsonLd />
+      <OrganizationJsonLd locale={locale} />
       <SoftwareApplicationJsonLd locale={locale} />
-      <FAQPageJsonLd locale={locale} />
+      <FAQPageJsonLd />
       <WebsiteJsonLd />
     </>
   );
@@ -280,6 +242,7 @@ interface BlogPostingJsonLdProps {
 export function BlogPostingJsonLd({ article, locale }: BlogPostingJsonLdProps) {
   const url = `${baseUrl}/${locale}/blog/${article.siloSlug}/${article.slug}`;
   const heroImage = article.images.find((img) => img.id === 'hero');
+  const author = getAuthor(article.auteur);
 
   const schema: Record<string, unknown> = {
     '@context': 'https://schema.org',
@@ -295,14 +258,17 @@ export function BlogPostingJsonLd({ article, locale }: BlogPostingJsonLdProps) {
     keywords: [article.motClePrincipal, ...article.motsClesSecondaires].join(', '),
     inLanguage: locale === 'fr' ? 'fr-FR' : 'en-US',
     author: {
-      '@type': 'Organization',
-      name: 'TriggerFlow',
-      url: baseUrl,
+      '@type': 'Person',
+      name: author.name,
+      jobTitle: author.role[locale === 'fr' ? 'fr' : 'en'],
+      worksFor: { '@type': 'Organization', '@id': `${baseUrl}/#organization`, name: brand.name },
+      ...(author.linkedin ? { sameAs: [author.linkedin] } : {}),
     },
     publisher: {
       '@type': 'Organization',
-      name: 'TriggerFlow',
-      logo: { '@type': 'ImageObject', url: `${baseUrl}/images/logo.webp` },
+      '@id': `${baseUrl}/#organization`,
+      name: brand.name,
+      logo: { '@type': 'ImageObject', url: brand.logo },
     },
   };
 

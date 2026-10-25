@@ -42,7 +42,6 @@ const PMS_LOGOS = [
   { file: 'misterbooking.png', name: 'Misterbooking', width: 498, height: 100, size: 'h-6' },
   { file: 'medialog.svg', name: 'Medialog', width: 152, height: 36, size: 'h-5' },
   { file: 'asterio.png', name: 'Asterio', width: 300, height: 157, size: 'h-8' },
-  { file: 'clockpms.svg', name: 'Clock PMS', width: 600, height: 183, size: 'h-6' },
   { file: 'reservit.webp', name: 'Reservit', width: 300, height: 173, size: 'h-8' },
   { file: 'vega.png', name: 'Vega', width: 512, height: 512, size: 'h-7' },
 ] as const;

@@ -1,16 +1,15 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { motion, useReducedMotion } from 'framer-motion';
-import { Users, Hotel, Zap, Globe, Heart, Target, Lightbulb, ArrowRight, Linkedin } from 'lucide-react';
+import { Users, Hotel, Zap, Heart, Target, Lightbulb, ArrowRight, Linkedin } from 'lucide-react';
 import { Container, ButtonLink } from '@/components/ui';
 import { fadeInUp, staggerContainer, staggerItem, slideInLeft, slideInRight, defaultViewport } from '@/lib/animations';
+import { authors } from '@/data/authors';
 
 const stats = [
   { key: 'hotels', icon: Hotel, value: '500+' },
   { key: 'messages', icon: Zap, value: '2M+' },
-  { key: 'countries', icon: Globe, value: '15' },
-  { key: 'team', icon: Users, value: '20' },
 ];
 
 const values = [
@@ -19,15 +18,12 @@ const values = [
   { key: 'excellence', icon: Target },
 ];
 
-const team = [
-  { name: 'Alexandre Martin', role: 'CEO & Co-founder', linkedin: '#' },
-  { name: 'Marie Dubois', role: 'CTO & Co-founder', linkedin: '#' },
-  { name: 'Thomas Bernard', role: 'Head of Product', linkedin: '#' },
-  { name: 'Sophie Laurent', role: 'Head of Customer Success', linkedin: '#' },
-];
+// Les personnes réelles qui signent aussi les articles du blog (src/data/authors.ts).
+const team = Object.values(authors);
 
 export function AboutContent() {
   const t = useTranslations('about');
+  const locale = useLocale();
   const prefersReducedMotion = useReducedMotion();
 
   return (
@@ -80,7 +76,7 @@ export function AboutContent() {
             >
               {/* Timeline visual */}
               <div className="space-y-6">
-                {['2020', '2021', '2022', '2024'].map((year, index) => (
+                {['2019', '2021', '2022', '2024'].map((year, index) => (
                   <motion.div
                     key={year}
                     initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, x: 20 }}
@@ -112,7 +108,7 @@ export function AboutContent() {
             whileInView="visible"
             variants={staggerContainer}
             viewport={defaultViewport}
-            className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4"
+            className="mx-auto grid max-w-2xl gap-8 sm:grid-cols-2"
           >
             {stats.map((stat) => (
               <motion.div
@@ -201,7 +197,7 @@ export function AboutContent() {
             whileInView="visible"
             variants={staggerContainer}
             viewport={defaultViewport}
-            className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4"
+            className="mx-auto grid max-w-2xl gap-8 sm:grid-cols-2"
           >
             {team.map((member) => (
               <motion.div
@@ -215,17 +211,18 @@ export function AboutContent() {
                   <Users className="h-10 w-10 text-brand-primary/50" />
                 </div>
                 <h3 className="font-bold text-brand-dark">{member.name}</h3>
-                <p className="text-sm text-zinc-600">{member.role}</p>
-                {/* eslint-disable-next-line */}
-                <a
-                  href={member.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-3 inline-flex items-center gap-1 text-sm text-brand-primary hover:underline"
-                >
-                  <Linkedin className="h-4 w-4" />
-                  LinkedIn
-                </a>
+                <p className="text-sm text-zinc-600">{locale === 'fr' ? member.role.fr : member.role.en}</p>
+                {member.linkedin && (
+                  <a
+                    href={member.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 inline-flex items-center gap-1 text-sm text-brand-primary hover:underline"
+                  >
+                    <Linkedin className="h-4 w-4" />
+                    LinkedIn
+                  </a>
+                )}
               </motion.div>
             ))}
           </motion.div>

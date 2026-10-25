@@ -341,6 +341,7 @@ mots_cles_secondaires:
 slug: "marketing-automation-hotelier-guide"
 date_publication: 2026-01-31
 date_mise_a_jour: 2026-01-31
+auteur: mounir-lakhfif         # mounir-lakhfif | soufiane-bouyahia (src/data/authors.ts), défaut mounir-lakhfif
 
 # === CONTENU ===
 longueur_mots: 4200             # auto-calculé si absent
@@ -418,6 +419,7 @@ Lister 5-10 termes sémantiquement liés au mot-clé principal. Ces termes doive
 
 #### Structure MDX
 
+0. **Résumé en tête** : un `<Callout type="info">` qui commence par `**En bref :**` (FR) ou `**In short:**` (EN), 2-3 phrases qui répondent à la requête principale (GEO, vérifié par `npm test`)
 1. **PAS de H1** dans le body (le titre est dans le frontmatter)
 2. **PAS de sommaire/table des matières** (généré automatiquement par `generateTableOfContents()`)
 3. Commencer directement par le premier paragraphe (pas de H2 en première ligne)

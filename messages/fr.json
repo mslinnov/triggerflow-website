@@ -644,7 +644,7 @@
       },
       "pms": {
         "question": "TriggerFlow est-il compatible avec mon PMS ?",
-        "answer": "Nous sommes compatibles avec les principaux PMS du marché : Mews, Opera, Clock, Misterbooking, Asterio, Thaïs et bien d'autres. Si votre PMS n'est pas dans la liste, contactez-nous pour vérifier la compatibilité."
+        "answer": "Nous sommes compatibles avec les principaux PMS du marché : Mews, Thaïs, Opera Cloud, Medialog, Misterbooking, Asterio, Apaleo et bien d'autres. Si votre PMS n'est pas dans la liste, contactez-nous pour vérifier la compatibilité."
       },
       "customization": {
         "question": "Puis-je personnaliser les messages envoyés ?",
@@ -1135,16 +1135,16 @@
     "history": {
       "title": "Notre histoire",
       "p1": "TriggerFlow est né d'un constat simple : les hôteliers passent trop de temps sur des tâches répétitives qui pourraient être automatisées.",
-      "p2": "Fondée en 2020 par des passionnés de l'hôtellerie et du digital, notre entreprise s'est donnée pour mission de créer des outils simples et puissants pour transformer la relation client.",
+      "p2": "Fondée en 2019 à Toulouse par des passionnés de l'hôtellerie et du digital, notre entreprise s'est donnée pour mission de créer des outils simples et puissants pour transformer la relation client.",
       "p3": "Aujourd'hui, TriggerFlow accompagne plus de 500 établissements en France et en Europe dans leur transformation digitale.",
       "timeline": {
-        "2020": {
+        "2019": {
           "title": "Création",
-          "description": "Lancement de TriggerFlow à Paris"
+          "description": "Lancement de TriggerFlow à Toulouse"
         },
         "2021": {
           "title": "Croissance",
-          "description": "100 premiers clients et levée de fonds"
+          "description": "100 premiers clients"
         },
         "2022": {
           "title": "Expansion",
@@ -1152,15 +1152,13 @@
         },
         "2024": {
           "title": "Leadership",
-          "description": "500+ hôtels et 20 collaborateurs"
+          "description": "500+ hôtels équipés"
         }
       }
     },
     "stats": {
       "hotels": "Hôtels équipés",
-      "messages": "Messages envoyés",
-      "countries": "Pays",
-      "team": "Collaborateurs"
+      "messages": "Messages envoyés"
     },
     "values": {
       "title": "Nos valeurs",
@@ -1254,10 +1252,6 @@
           "zeswitch": {
             "name": "Zeswitch",
             "description": "PMS nouvelle génération"
-          },
-          "clockpms": {
-            "name": "Clock PMS",
-            "description": "PMS cloud tout-en-un"
           }
         }
       },
@@ -1620,6 +1614,7 @@
       "minRead": "min de lecture",
       "writtenBy": "Par",
       "publishedOn": "Publié le",
+      "updatedOn": "Mis à jour le",
       "ctaTitle": "Prêt à automatiser votre relation client ?",
       "ctaButton": "Réserver une démo"
     },
@@ -2336,7 +2331,7 @@
       },
       "pms": {
         "q": "Est-ce compatible avec mon PMS ?",
-        "a": "TriggerFlow est connecté à Mews, Thaïs, Opera Cloud, Misterbooking, Medialog, Asterio, Vega, Reservit et Clock PMS. Si le vôtre n'y figure pas, dites-le nous, nous vérifions la faisabilité avant tout engagement."
+        "a": "TriggerFlow est connecté à Mews, Thaïs, Opera Cloud, Misterbooking, Medialog, Asterio, Vega, Apaleo et Reservit. Si le vôtre n'y figure pas, dites-le nous, nous vérifions la faisabilité avant tout engagement."
       },
       "setup": {
         "q": "Combien de temps pour être opérationnel ?",
