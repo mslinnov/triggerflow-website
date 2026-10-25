@@ -12,7 +12,7 @@ const badgeKeys = ['gdpr', 'eu', 'support'] as const;
 export function TrustBar() {
   const t = useTranslations('mewsIntegration.trustBar');
 
-  const stats = ['hotels', 'openRate', 'setup'] as const;
+  const stats = ['setup', 'sync'] as const;
 
   return (
     <section className="relative border-b border-border-light bg-white py-10 md:py-14">

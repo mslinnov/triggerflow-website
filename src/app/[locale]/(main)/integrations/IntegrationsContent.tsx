@@ -17,6 +17,8 @@ const integrationLinks: Record<string, string> = {
 interface Integration {
   key: string;
   logo: string;
+  /** PMS de brand.pmsEnCours : badge « bientôt disponible », jamais compté dans le total connecté. */
+  comingSoon?: boolean;
 }
 
 interface Category {
@@ -41,11 +43,15 @@ const integrationCategories: Category[] = [
       { key: 'mews', logo: '/images/integrations/mews.svg' },
       { key: 'asterio', logo: '/images/integrations/asterio.png' },
       { key: 'leanpms', logo: '/images/integrations/leanpms.webp' },
-      { key: 'chloe', logo: '/images/integrations/chloe.webp' },
       { key: 'vega', logo: '/images/integrations/vega.png' },
       { key: 'apaleo', logo: '/images/integrations/apaleo.png' },
       { key: 'zeswitch', logo: '/images/integrations/zeswitch.png' },
-      { key: 'clockpms', logo: '/images/integrations/clockpms.svg' },
+      { key: 'beds24', logo: '/images/integrations/beds24.svg' },
+      { key: 'reservit', logo: '/images/integrations/reservit.webp' },
+      { key: 'chloe', logo: '/images/integrations/chloe.webp', comingSoon: true },
+      { key: 'infhotik', logo: '/images/integrations/infhotik.svg', comingSoon: true },
+      { key: 'protel', logo: '/images/integrations/protel-planet.svg', comingSoon: true },
+      { key: 'galaxy', logo: '/images/integrations/galaxy-hotels.png', comingSoon: true },
     ],
   },
   {
@@ -56,8 +62,6 @@ const integrationCategories: Category[] = [
     integrations: [
       { key: 'sesame', logo: '/images/integrations/sesame.png' },
       { key: 'igloohome', logo: '/images/integrations/igloohome.svg' },
-      { key: 'salto', logo: '/images/integrations/salto.svg' },
-      { key: 'printer', logo: '/images/integrations/printer.svg' },
     ],
   },
   {
@@ -67,9 +71,9 @@ const integrationCategories: Category[] = [
     icon: CreditCard,
     integrations: [
       { key: 'stripe', logo: '/images/integrations/stripe.svg' },
-      { key: 'mollie', logo: '/images/integrations/mollie.svg' },
-      { key: 'paypal', logo: '/images/integrations/paypal.svg' },
       { key: 'payzen', logo: '/images/integrations/payzen.png' },
+      { key: 'systempay', logo: '/images/integrations/systempay.png' },
+      { key: 'thaispay', logo: '/images/integrations/thais.svg' },
       { key: 'applepay', logo: '/images/integrations/applepay.svg' },
       { key: 'googlepay', logo: '/images/integrations/googlepay.svg' },
     ],
@@ -84,8 +88,6 @@ const integrationCategories: Category[] = [
       { key: 'tripadvisor', logo: '/images/integrations/tripadvisor.svg' },
       { key: 'booking', logo: '/images/integrations/booking.svg' },
       { key: 'airbnb', logo: '/images/integrations/airbnb.svg' },
-      { key: 'trustpilot', logo: '/images/integrations/trustpilot.svg' },
-      { key: 'hotelscom', logo: '/images/integrations/hotelscom.svg' },
     ],
   },
   {
@@ -121,10 +123,8 @@ export function IntegrationsContent() {
   const locale = useLocale();
   const prefersReducedMotion = useReducedMotion();
 
-  const totalIntegrations = integrationCategories.reduce(
-    (acc, cat) => acc + cat.integrations.length,
-    0
-  );
+  // Les intégrations « bientôt disponibles » ne comptent pas : seuls les connecteurs existants.
+  const connectedCount = (category: Category) => category.integrations.filter((i) => !i.comingSoon).length;
 
   return (
     <main className="bg-white">
@@ -144,7 +144,7 @@ export function IntegrationsContent() {
             <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 mb-8">
               <div className="h-2 w-2 rounded-full bg-brand-primary animate-pulse" />
               <span className="text-sm font-medium text-white/90">
-                {totalIntegrations}+ {t('hero.count').replace(/\d+\+?\s*/, '')}
+                {t('hero.count')}
               </span>
             </div>
             <h1 className="text-3xl font-bold tracking-tight text-white md:text-4xl lg:text-5xl">
@@ -166,7 +166,7 @@ export function IntegrationsContent() {
                   >
                     <Icon className="h-4 w-4" />
                     {t(`categories.${category.key}.title`)}
-                    <span className="text-white/40">({category.integrations.length})</span>
+                    <span className="text-white/40">({connectedCount(category)})</span>
                   </a>
                 );
               })}
@@ -212,7 +212,7 @@ export function IntegrationsContent() {
                     </h2>
                   </div>
                   <Badge variant="secondary" className="ml-auto text-xs">
-                    {category.integrations.length} {category.integrations.length > 1 ? 'intégrations' : 'intégration'}
+                    {t('badges.count', { count: connectedCount(category) })}
                   </Badge>
                 </div>
                 <p className="text-zinc-500 max-w-2xl ml-14">
@@ -235,6 +235,12 @@ export function IntegrationsContent() {
                       'hover:shadow-lg hover:shadow-zinc-200/50',
                       category.borderColor
                     )}>
+                      {integration.comingSoon && (
+                        <span className="absolute right-2 top-2 z-10 rounded-full bg-brand-primary/10 px-2 py-0.5 text-[10px] font-medium text-brand-primary">
+                          {t('badges.comingSoon')}
+                        </span>
+                      )}
+
                       {/* Logo container */}
                       <div className="flex items-center justify-center rounded-xl h-24 mb-1 bg-gradient-to-b from-zinc-50/80 to-white">
                         <Image

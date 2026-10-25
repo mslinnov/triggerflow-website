@@ -169,9 +169,9 @@ export const solutions: Record<string, SolutionData> = {
     ],
 
     stats: [
-      { value: '10', suffix: 'h', label: 'gagnées par semaine' },
-      { value: '120', suffix: '%', label: "d'avis Google en plus" },
-      { value: '25', suffix: '%', label: 'de réservations directes en plus' },
+      { value: '300', suffix: '+', label: 'hôtels utilisent TriggerFlow' },
+      { value: '94', suffix: ' %', label: 'des e-mails délivrés (12 derniers mois, tous nos hôtels)' },
+      { value: '12', suffix: '', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n' },
     ],
 
     features: [
@@ -190,7 +190,7 @@ export const solutions: Record<string, SolutionData> = {
       {
         slug: 'avis',
         highlight: "Plus d'avis Google",
-        whyForPersona: "Vos clients satisfaits deviennent vos ambassadeurs. Le bon message au bon moment double vos avis.",
+        whyForPersona: "Vos clients satisfaits deviennent vos ambassadeurs. Le bon message au bon moment les invite à publier un avis.",
         bullets: ['Enquête satisfaction avant demande', 'Lien direct vers Google', 'Réponses IA aux avis'],
       },
       {
@@ -203,7 +203,7 @@ export const solutions: Record<string, SolutionData> = {
         slug: 'sms',
         highlight: 'SMS au bon moment',
         whyForPersona: "Code d'accès la veille, rappel check-out le matin : vos clients ont toujours la bonne info au bon moment.",
-        bullets: ['Envoi automatique par événement PMS', 'Taux d\'ouverture > 95%', 'Conforme RGPD'],
+        bullets: ['Envoi automatique par événement PMS', 'Suivi des ouvertures et des clics', 'Conforme RGPD'],
       },
       {
         slug: 'fidelite',
@@ -218,7 +218,7 @@ export const solutions: Record<string, SolutionData> = {
         title: 'Séquence pré-séjour automatique',
         description: "Dès la réservation, TriggerFlow envoie automatiquement : confirmation, email J-7 avec infos pratiques, SMS J-1 avec code d'accès.",
         steps: ['Réservation PMS', 'Email confirmation', 'Email J-7', 'SMS J-1'],
-        result: '95% des clients arrivent informés',
+        result: 'Les clients arrivent informés',
       },
       {
         title: "Collecte d'avis intelligente",
@@ -230,7 +230,7 @@ export const solutions: Record<string, SolutionData> = {
         title: 'Réservation directe fidélité',
         description: 'Offrez des avantages aux clients qui réservent en direct : -10% newsletter, points fidélité, surclassement...',
         steps: ['Client newsletter', 'Offre exclusive', 'Réservation directe', 'Points fidélité'],
-        result: '+25% de réservations directes',
+        result: 'Plus de clients qui réservent en direct',
       },
     ],
 
@@ -248,7 +248,7 @@ export const solutions: Record<string, SolutionData> = {
     faq: [
       {
         question: 'Combien de temps prend la mise en place pour un hôtel indépendant ?',
-        answer: 'En moyenne 3 jours. Nous connectons votre PMS, configurons vos premières séquences et formons votre équipe. Vous êtes opérationnel dans la semaine.',
+        answer: 'Comptez 48 h. Nous connectons votre PMS, configurons vos premières séquences et formons votre équipe.',
       },
       {
         question: 'Faut-il des compétences techniques ?',
@@ -256,15 +256,15 @@ export const solutions: Record<string, SolutionData> = {
       },
       {
         question: 'Mon PMS est-il compatible ?',
-        answer: 'TriggerFlow se connecte aux principaux PMS du marché : Mews, Thaïs, Opera Cloud, Misterbooking, Medialog, Asterio, Vega, Reservit et Clock PMS. Si le vôtre n\'est pas listé, contactez-nous.',
+        answer: 'TriggerFlow se connecte aux principaux PMS du marché : Mews, Thaïs, Opera Cloud, Misterbooking, Medialog, Asterio, Vega, Apaleo et Reservit. Si le vôtre n\'est pas listé, contactez-nous.',
       },
       {
         question: 'Quel est le coût pour un hôtel indépendant ?',
-        answer: 'Nos tarifs sont publics, avec un plan gratuit pour démarrer. Pour un hôtel indépendant, le plan Communication ou Conversion couvre la majorité des besoins : le détail est sur notre page tarifs. Le ROI est généralement atteint dès le premier mois.',
+        answer: 'Nos tarifs sont publics, avec un plan gratuit pour démarrer. Pour un hôtel indépendant, le plan Communication ou Conversion couvre la majorité des besoins : le détail est sur notre page tarifs. Comme les tarifs sont publics, vous pouvez comparer le coût de l\'abonnement aux commissions OTA que vous payez aujourd\'hui.',
       },
       {
         question: 'Est-ce que TriggerFlow respecte le RGPD ?',
-        answer: 'Oui, à 100%. Données hébergées en Europe, consentement géré automatiquement, droit d\'effacement intégré. Vous êtes en conformité sans effort.',
+        answer: 'Oui. Données hébergées en Europe, consentement géré automatiquement, droit d\'effacement intégré. Vous êtes en conformité sans effort.',
       },
     ],
 
@@ -280,7 +280,7 @@ export const solutions: Record<string, SolutionData> = {
     relatedSolutions: ['automatiser-communication', 'augmenter-avis', 'fideliser-clients'],
 
     ctaTitle: "Prêt à automatiser votre hôtel indépendant ?",
-    ctaSubtitle: "Rejoignez les hôteliers qui gagnent 10h par semaine grâce à TriggerFlow",
+    ctaSubtitle: "Rejoignez les 300+ hôtels qui ont automatisé leur relation client avec TriggerFlow",
   },
 
   'groupes-hoteliers': {
@@ -338,9 +338,9 @@ export const solutions: Record<string, SolutionData> = {
     ],
 
     stats: [
-      { value: '40', suffix: 'h', label: 'gagnées par semaine sur le groupe' },
-      { value: '2', suffix: ' sem.', label: 'pour déployer sur 12 hôtels' },
-      { value: '12', suffix: '', label: 'établissements pilotés depuis un cockpit' },
+      { value: '1', suffix: '', label: 'tableau de bord pour tous vos établissements' },
+      { value: '12', suffix: '', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n' },
+      { value: '300', suffix: '+', label: 'hôtels utilisent TriggerFlow' },
     ],
 
     features: [
@@ -377,7 +377,7 @@ export const solutions: Record<string, SolutionData> = {
       {
         slug: 'newsletter',
         highlight: 'Campagnes centralisées',
-        whyForPersona: 'Lancez une campagne nationale en 5 minutes, automatiquement personnalisée par chaque hôtel.',
+        whyForPersona: 'Lancez une campagne nationale en une fois, automatiquement personnalisée par chaque hôtel.',
         bullets: ['Envoi simultané multi-hôtels', 'Personnalisation locale automatique', 'A/B testing groupe'],
       },
     ],
@@ -387,24 +387,24 @@ export const solutions: Record<string, SolutionData> = {
         title: 'Templates groupe personnalisables',
         description: 'Créez des templates au niveau groupe, personnalisables par chaque hôtel (logo, couleurs, signature).',
         steps: ['Template siège', 'Personnalisation locale', 'Déploiement', 'Reporting unifié'],
-        result: '80% de temps gagné sur la création de contenu',
+        result: 'Un modèle créé une fois au siège, décliné partout',
       },
       {
         title: 'Programme fidélité multi-hôtels',
         description: 'Les clients cumulent des points dans tous vos établissements. Vue unifiée de leur historique groupe.',
         steps: ['Séjour Hôtel A', 'Points groupe', 'Réservation Hôtel B', 'Récompense'],
-        result: '+30% de séjours inter-hôtels',
+        result: 'Les clients orientés vers les autres hôtels du groupe',
       },
       {
         title: 'Campagne promotionnelle groupe',
         description: 'Lancez une campagne pour tout le groupe en un clic, avec personnalisation automatique par hôtel.',
         steps: ['Création siège', 'Variables par hôtel', 'Envoi simultané', 'Reporting groupe'],
-        result: 'Déploiement en 5 minutes au lieu de 2 jours',
+        result: 'Une campagne préparée une fois, déployée sur tous les hôtels',
       },
     ],
 
     testimonial: {
-      quote: 'Nous avons déployé TriggerFlow sur nos 12 hôtels en 2 semaines. Le reporting consolidé nous fait gagner un temps fou.',
+      quote: 'Nous avons déployé TriggerFlow sur nos 12 hôtels. Le reporting consolidé nous fait gagner un temps fou.',
       author: 'Philippe D.',
       role: 'Directeur Marketing',
       hotel: 'Groupe Hôtelier du Sud',
@@ -421,7 +421,7 @@ export const solutions: Record<string, SolutionData> = {
       },
       {
         question: 'Comment se passe le déploiement sur plusieurs hôtels ?',
-        answer: 'Nous commençons par un hôtel pilote (1 semaine), puis déployons en parallèle sur les autres. 12 hôtels sont opérationnels en 2 semaines environ.',
+        answer: 'Nous commençons par un hôtel pilote, puis déployons en parallèle sur les autres.',
       },
       {
         question: 'Les données sont-elles cloisonnées entre hôtels ?',
@@ -502,9 +502,9 @@ export const solutions: Record<string, SolutionData> = {
     ],
 
     stats: [
-      { value: '80', suffix: '%', label: 'd\'appels en moins le week-end' },
-      { value: '98', suffix: '%', label: 'de satisfaction propriétaires' },
-      { value: '2', suffix: ' min', label: 'pour un check-in autonome' },
+      { value: '90', suffix: ' %', label: 'des SMS remis (12 derniers mois, tous nos hôtels)' },
+      { value: '84', suffix: ' %', label: 'des messages WhatsApp remis sont lus (12 derniers mois)' },
+      { value: '12', suffix: '', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n' },
     ],
 
     features: [
@@ -551,13 +551,13 @@ export const solutions: Record<string, SolutionData> = {
         title: 'Arrivée autonome parfaite',
         description: "SMS automatique avec code boîte à clés, instructions parking, code WiFi. Le client a tout avant d'arriver.",
         steps: ['Réservation', 'Email infos', 'SMS J-1 code', 'WhatsApp bienvenue'],
-        result: '-80% d\'appels le dimanche soir',
+        result: 'Moins d\'appels le dimanche soir',
       },
       {
         title: 'Rapport propriétaire mensuel',
         description: "Email automatique chaque mois : taux d'occupation, revenus, planning, interventions.",
         steps: ['Fin de mois', 'Compilation données', 'Email automatique', 'PDF joint'],
-        result: '98% de satisfaction propriétaires',
+        result: 'Les propriétaires informés sans relance',
       },
       {
         title: "Demande d'intervention",
@@ -576,7 +576,7 @@ export const solutions: Record<string, SolutionData> = {
       metric: '-80% d\'appels hors horaires',
     },
 
-    integrations: ['Medialog', 'Sesame', 'Igloohome', 'Salto'],
+    integrations: ['Medialog', 'Sesame', 'Igloohome'],
 
     faq: [
       {
@@ -667,9 +667,9 @@ export const solutions: Record<string, SolutionData> = {
     ],
 
     stats: [
-      { value: '35', suffix: '%', label: 'de taux de re-réservation' },
-      { value: '50', suffix: '%', label: 'de revenus annexes en plus' },
-      { value: '40', suffix: '%', label: 'de participation aux animations' },
+      { value: '94', suffix: ' %', label: 'des e-mails délivrés (12 derniers mois, tous nos hôtels)' },
+      { value: '90', suffix: ' %', label: 'des SMS remis (12 derniers mois, tous nos hôtels)' },
+      { value: '84', suffix: ' %', label: 'des messages WhatsApp remis sont lus (12 derniers mois)' },
     ],
 
     features: [
@@ -716,19 +716,19 @@ export const solutions: Record<string, SolutionData> = {
         title: 'Newsletter animations hebdo',
         description: 'Chaque lundi, les vacanciers reçoivent le programme de la semaine : soirées, activités, sorties.',
         steps: ['Lundi matin', 'Envoi automatique', 'Programme semaine', 'Liens réservation'],
-        result: '+40% de participation aux animations',
+        result: 'Les animations annoncées au bon moment',
       },
       {
         title: 'Early booking saison suivante',
         description: "Dès septembre, campagne automatique vers les clients de l'été : offre early bird pour la saison prochaine.",
         steps: ['Septembre', 'Segmentation clients été', 'Email offre -15%', 'Relance J+7'],
-        result: '35% de taux de re-réservation',
+        result: 'Les campeurs de l\'été relancés pour la saison suivante',
       },
       {
         title: 'Promotion services sur place',
         description: 'SMS J+2 : "Découvrez notre restaurant le Cabanon, -10% pour les résidents cette semaine".',
         steps: ['Arrivée', 'SMS J+2 resto', 'SMS J+4 spa', 'SMS J+5 location vélos'],
-        result: '+50% de revenus sur les services annexes',
+        result: 'Les services du camping proposés pendant le séjour',
       },
     ],
 
@@ -833,9 +833,9 @@ export const solutions: Record<string, SolutionData> = {
     ],
 
     stats: [
-      { value: '4.8', suffix: '/5', label: 'note satisfaction moyenne' },
-      { value: '40', suffix: '%', label: 'de clients qui reviennent' },
-      { value: '35', suffix: '%', label: 'de revenus upsell en plus' },
+      { value: '1', suffix: '', label: 'profil client unique, tous séjours confondus' },
+      { value: '35', suffix: ' %', label: 'd\'ouverture des e-mails, hors relais OTA (12 derniers mois)' },
+      { value: '5', suffix: ' %', label: 'des offres envoyées 3 à 7 jours avant l\'arrivée achetées (mesure sur l\'ensemble de nos hôtels)' },
     ],
 
     features: [
@@ -882,19 +882,19 @@ export const solutions: Record<string, SolutionData> = {
         title: 'Accueil VIP personnalisé',
         description: "Un client fidèle réserve. TriggerFlow alerte l'équipe avec sa fiche complète : préférences, historique, occasion spéciale. Le staff prépare un accueil sur-mesure.",
         steps: ['Réservation détectée', 'Fiche client enrichie', 'Alerte staff VIP', 'Accueil personnalisé'],
-        result: '4.8/5 de satisfaction client',
+        result: 'Chaque client accueilli avec ses préférences',
       },
       {
         title: 'Séquence pré-séjour luxe',
         description: "Email élégant J-10 avec questionnaire préférences, email J-3 avec programme sur-mesure, SMS J-1 avec accès et consigne bagages.",
         steps: ['Email J-10 préférences', 'Email J-3 programme', 'SMS J-1 accès', 'WhatsApp bienvenue'],
-        result: '95% des clients arrivent avec leurs préférences renseignées',
+        result: 'Les préférences connues avant l\'arrivée',
       },
       {
         title: 'Relance premium post-séjour',
         description: "Email de remerciement avec photos du séjour, enquête satisfaction discrète, offre fidélité personnalisée, relance anniversaire.",
         steps: ['Email J+1 remerciement', 'Enquête J+2', 'Points fidélité crédités', 'Offre anniversaire automatique'],
-        result: '40% de taux de retour client',
+        result: 'Les clients fidèles reconnus et invités à revenir',
       },
     ],
 
@@ -956,13 +956,13 @@ export const solutions: Record<string, SolutionData> = {
     category: 'objectif',
     heroMockup: 'WorkflowBuilderMockup',
     title: 'Automatiser votre communication',
-    headline: 'Gagnez 10h par semaine sur vos communications clients',
+    headline: 'Vos communications clients envoyées toutes seules, au bon moment',
     description: 'Fini les emails manuels, les copier-coller et les oublis. TriggerFlow envoie automatiquement le bon message au bon moment, 24h/24.',
 
     persona: {
       role: 'Responsable réservations / Réceptionniste',
       painStatement: "Vous perdez un temps fou à écrire les mêmes emails et il y a toujours des oublis.",
-      valueProposition: "10h par semaine récupérées. Plus un seul message oublié.",
+      valueProposition: "Des heures de copier-coller en moins. Plus un seul message oublié.",
     },
 
     challenges: [
@@ -1004,9 +1004,9 @@ export const solutions: Record<string, SolutionData> = {
     ],
 
     stats: [
-      { value: '10', suffix: 'h', label: 'récupérées par semaine' },
-      { value: '95', suffix: '%', label: 'de messages envoyés dans les temps' },
-      { value: '1', suffix: ' min', label: 'temps de réponse moyen' },
+      { value: '94', suffix: ' %', label: 'des e-mails délivrés (12 derniers mois, tous nos hôtels)' },
+      { value: '90', suffix: ' %', label: 'des SMS remis (12 derniers mois, tous nos hôtels)' },
+      { value: '12', suffix: '', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n' },
     ],
 
     features: [
@@ -1026,7 +1026,7 @@ export const solutions: Record<string, SolutionData> = {
         slug: 'sms',
         highlight: 'SMS déclenchés par événements',
         whyForPersona: 'Check-in demain ? Le SMS part automatiquement avec le code d\'accès. Vous n\'avez rien à faire.',
-        bullets: ['Déclenchement par événement PMS', 'Taux d\'ouverture > 95%', 'Envoi international'],
+        bullets: ['Déclenchement par événement PMS', 'Suivi des ouvertures et des clics', 'Envoi international'],
       },
       {
         slug: 'whatsapp',
@@ -1053,7 +1053,7 @@ export const solutions: Record<string, SolutionData> = {
         title: 'Relance intelligente',
         description: "Si le client n'ouvre pas l'email, relance automatique par SMS.",
         steps: ['Email envoyé', "Pas d'ouverture 24h", 'SMS de relance', 'Notification équipe'],
-        result: '98% des clients reçoivent l\'info',
+        result: 'Chaque client reçoit l\'info, dans sa langue',
       },
     ],
 
@@ -1102,7 +1102,7 @@ export const solutions: Record<string, SolutionData> = {
 
     relatedSolutions: ['hotels-independants', 'augmenter-avis', 'booster-upsell'],
 
-    ctaTitle: "Récupérez vos 10h par semaine",
+    ctaTitle: "Arrêtez de copier-coller vos e-mails",
     ctaSubtitle: "Automatisez votre communication client en quelques clics",
   },
 
@@ -1146,7 +1146,7 @@ export const solutions: Record<string, SolutionData> = {
     ],
 
     painPoints: [
-      'Moins de 5% de vos clients laissent un avis spontanément',
+      'Peu de clients satisfaits laissent un avis spontanément, les mécontents si',
       'Les clients mécontents sont les plus rapides à publier un avis négatif',
       'Vous découvrez un avis négatif 3 semaines après sa publication',
       'Répondre à chaque avis prend 10 minutes que vous n\'avez pas',
@@ -1161,9 +1161,9 @@ export const solutions: Record<string, SolutionData> = {
     ],
 
     stats: [
-      { value: '150', suffix: '%', label: 'd\'avis Google en plus' },
-      { value: '0.4', suffix: '', label: 'étoile gagnée en moyenne' },
-      { value: '100', suffix: '%', label: 'des avis avec réponse' },
+      { value: '1', suffix: '', label: 'demande d\'avis après chaque séjour' },
+      { value: '3', suffix: '', label: 'plateformes suivies : Google, TripAdvisor, Booking' },
+      { value: '1', suffix: '', label: 'clic pour publier la réponse proposée par l\'IA' },
     ],
 
     features: [
@@ -1210,7 +1210,7 @@ export const solutions: Record<string, SolutionData> = {
         title: 'Réponse assistée IA',
         description: "L'IA génère une réponse personnalisée, vous validez en 1 clic.",
         steps: ['Nouvel avis détecté', 'Génération réponse IA', 'Validation manager', 'Publication'],
-        result: '100% des avis avec réponse en < 24h',
+        result: 'Chaque avis reçoit une réponse',
       },
     ],
 
@@ -1236,7 +1236,7 @@ export const solutions: Record<string, SolutionData> = {
       },
       {
         question: 'Combien de temps faut-il pour voir des résultats ?',
-        answer: 'Les premiers résultats sont visibles dès le premier mois. En moyenne, nos clients doublent leur nombre d\'avis en 3 mois et gagnent +0.4 étoile sur leur note Google.',
+        answer: 'Les premières demandes d\'avis partent dès l\'activation du scénario. Le nombre d\'avis gagnés dépend de votre volume de séjours et de la part de clients qui laissent une adresse e-mail valide.',
       },
       {
         question: 'TriggerFlow fonctionne-t-il avec TripAdvisor et Booking ?',
@@ -1266,13 +1266,13 @@ export const solutions: Record<string, SolutionData> = {
     category: 'objectif',
     heroMockup: 'UpsellOfferMockup',
     title: 'Booster vos ventes additionnelles',
-    headline: "+17% de panier moyen grâce à l'upsell automatisé",
+    headline: "Des ventes additionnelles avant l'arrivée, grâce à l'upsell automatisé",
     description: "Vos services annexes sont une mine d'or inexploitée. TriggerFlow propose automatiquement le spa, le restaurant, les surclassements... et vos revenus décollent.",
 
     persona: {
       role: 'Revenue Manager / Directeur',
       painStatement: 'Vos services annexes ont de la capacité disponible et la réception ne propose rien.',
-      valueProposition: '+17% de panier moyen sans embaucher un commercial.',
+      valueProposition: 'Un panier moyen qui augmente sans embaucher un commercial.',
     },
 
     challenges: [
@@ -1299,7 +1299,7 @@ export const solutions: Record<string, SolutionData> = {
     ],
 
     painPoints: [
-      'Le spa a 40% de capacité inutilisée mais la réception ne le propose jamais',
+      'Le spa a des créneaux vides mais la réception ne le propose jamais',
       'Les surclassements sont bradés en dernière minute au lieu d\'être vendus en amont',
       'Pas de segmentation : le couple en voyage romantique reçoit la même offre que la famille',
       'L\'offre de late checkout arrive après que le client a fait sa valise',
@@ -1314,9 +1314,9 @@ export const solutions: Record<string, SolutionData> = {
     ],
 
     stats: [
-      { value: '17', suffix: '%', label: 'de panier moyen en plus' },
-      { value: '23', suffix: '%', label: 'de taux de conversion upsell' },
-      { value: '10', suffix: 'x', label: 'retour sur investissement' },
+      { value: '5', suffix: ' %', label: 'des offres envoyées 3 à 7 jours avant l\'arrivée achetées (mesure sur l\'ensemble de nos hôtels)' },
+      { value: '91', suffix: ' %', label: 'des paiements réglés dans les 2 h après ouverture du lien (12 derniers mois)' },
+      { value: '0', suffix: '€', label: 'de commission TriggerFlow sur les ventes' },
     ],
 
     features: [
@@ -1351,19 +1351,19 @@ export const solutions: Record<string, SolutionData> = {
         title: 'Surclassement pré-séjour',
         description: 'J-3 : proposez la chambre supérieure avec une réduction.',
         steps: ['J-3 avant arrivée', 'Email offre surclassement', 'Paiement en ligne', 'PMS mis à jour'],
-        result: '+3 000€/mois de revenus additionnels',
+        result: 'La chambre supérieure vendue avant l\'arrivée',
       },
       {
         title: 'Cross-sell contextuel',
         description: 'Couple en séjour romantique → pack champagne. Famille → kids club.',
         steps: ['Analyse réservation', 'Détection profil', 'Offre personnalisée', 'Conversion'],
-        result: '23% de taux de conversion',
+        result: 'Le late check-out vendu sans passer par le comptoir',
       },
       {
         title: 'Late checkout jour J',
         description: 'Le matin du départ, SMS avec offre late checkout.',
         steps: ['Jour départ 8h', 'SMS offre -20€', 'Réponse client', 'Mise à jour système'],
-        result: '35% d\'acceptation late checkout',
+        result: 'Le client accepte d\'un simple clic',
       },
     ],
 
@@ -1389,7 +1389,7 @@ export const solutions: Record<string, SolutionData> = {
       },
       {
         question: 'Quel est le taux de conversion moyen ?',
-        answer: 'En moyenne, 23% des offres upsell sont acceptées. Le surclassement pré-séjour est le plus performant avec des taux allant jusqu\'à 30%.',
+        answer: 'Sur l\'ensemble de nos hôtels clients, 5,15 % des offres envoyées 3 à 7 jours avant l\'arrivée sont achetées ; l\'offre envoyée le jour de l\'arrivée convertit beaucoup moins. Le détail par prestation est sur notre page ventes additionnelles.',
       },
       {
         question: 'Est-ce que TriggerFlow gère le paiement ?',
@@ -1408,7 +1408,7 @@ export const solutions: Record<string, SolutionData> = {
 
     relatedSolutions: ['automatiser-communication', 'fideliser-clients', 'hotels-independants'],
 
-    ctaTitle: "Débloquez +17% de panier moyen",
+    ctaTitle: "Vendez vos extras avant l'arrivée",
     ctaSubtitle: "Automatisez vos ventes additionnelles et boostez vos revenus",
   },
 
@@ -1425,7 +1425,7 @@ export const solutions: Record<string, SolutionData> = {
     persona: {
       role: 'Propriétaire / Directeur',
       painStatement: 'Vos clients satisfaits réservent quand même via Booking la fois suivante et vous payez 15% de commission.',
-      valueProposition: '+25% de réservations directes. Des milliers d\'euros de commissions OTA économisées.',
+      valueProposition: 'Plus de réservations directes, donc moins de commissions OTA.',
     },
 
     challenges: [
@@ -1467,9 +1467,9 @@ export const solutions: Record<string, SolutionData> = {
     ],
 
     stats: [
-      { value: '25', suffix: '%', label: 'de réservations directes en plus' },
-      { value: '35', suffix: '%', label: 'de taux de retour' },
-      { value: '15', suffix: 'K€', label: 'de commissions OTA économisées/an' },
+      { value: '0', suffix: '€', label: 'de commission sur les réservations directes' },
+      { value: '1', suffix: '', label: 'profil client unique, tous séjours confondus' },
+      { value: '35', suffix: ' %', label: 'd\'ouverture des e-mails, hors relais OTA (12 derniers mois)' },
     ],
 
     features: [
@@ -1504,19 +1504,19 @@ export const solutions: Record<string, SolutionData> = {
         title: 'Programme points automatique',
         description: 'Les clients cumulent des points à chaque séjour, échangeables contre des nuits ou services.',
         steps: ['Séjour terminé', 'Points crédités', 'Email récap points', 'Offre fidélité'],
-        result: '+25% de réservations directes',
+        result: 'Plus de séjours réservés en direct',
       },
       {
         title: 'Anniversaire client',
         description: "Email automatique avec offre spéciale le jour de l'anniversaire.",
         steps: ['Date anniversaire', 'Email + offre -15%', 'Validité 30 jours', 'Relance J+15'],
-        result: '18% de taux de conversion',
+        result: 'Une offre d\'anniversaire qui part toute seule',
       },
       {
         title: 'Campagne win-back',
         description: "Client pas revenu depuis 12 mois ? Offre de reconquête.",
         steps: ['Détection inactivité', 'Email "Vous nous manquez"', 'Offre exclusive', 'Relance SMS'],
-        result: '12% de clients reconquis',
+        result: 'Les clients perdus relancés automatiquement',
       },
     ],
 
@@ -1550,7 +1550,7 @@ export const solutions: Record<string, SolutionData> = {
       },
       {
         question: 'Combien coûte le programme fidélité en commissions OTA économisées ?',
-        answer: 'En moyenne, nos clients passent de 30% à 50%+ de réservations directes, économisant 15 000€ à 50 000€ par an de commissions OTA. Le ROI est généralement atteint dès le 2ème mois.',
+        answer: 'Chaque client qui revient en direct plutôt que par une OTA vous épargne la commission de la plateforme. Le gain dépend de votre part de clients qui reviennent et de votre canal de réservation actuel.',
       },
     ],
 

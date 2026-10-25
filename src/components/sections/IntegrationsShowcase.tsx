@@ -13,6 +13,8 @@ interface PmsIntegration {
   slug: string;
   src: string;
   color: string;
+  /** PMS de brand.pmsEnCours : affiché à part, jamais compté dans le total connecté. */
+  comingSoon?: boolean;
 }
 
 const integrations: PmsIntegration[] = [
@@ -23,8 +25,11 @@ const integrations: PmsIntegration[] = [
   { name: 'Asterio', slug: 'asterio', src: '/images/integrations/asterio.png', color: '#FF6136' },
   { name: 'Medialog', slug: 'medialog', src: '/images/integrations/medialog.svg', color: '#0070B0' },
   { name: 'Lean PMS', slug: 'leanpms', src: '/images/integrations/leanpms.webp', color: '#2563EB' },
-  { name: 'Chloë', slug: 'chloe', src: '/images/integrations/chloe.webp', color: '#6D28D9' },
   { name: 'Vega', slug: 'vega', src: '/images/integrations/vega.png', color: '#1E40AF' },
+  { name: 'Chloé', slug: 'chloe', src: '/images/integrations/chloe.webp', color: '#6D28D9', comingSoon: true },
+  { name: 'Infhotik', slug: 'infhotik', src: '/images/integrations/infhotik.svg', color: '#0E3A5D', comingSoon: true },
+  { name: 'Protel', slug: 'protel', src: '/images/integrations/protel-planet.svg', color: '#000000', comingSoon: true },
+  { name: 'Galaxy Hotels', slug: 'galaxy', src: '/images/integrations/galaxy-hotels.png', color: '#1E5AA8', comingSoon: true },
 ];
 
 // --- Animations ---
@@ -85,10 +90,10 @@ export function IntegrationsShowcase() {
           className="mx-auto max-w-5xl grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5"
         >
           {integrations.map((pms) => (
-            <PMSCard key={pms.slug} pms={pms} />
+            <PMSCard key={pms.slug} pms={pms} badge={pms.comingSoon ? t('comingSoon') : t('native')} />
           ))}
 
-          {/* +50 card */}
+          {/* Carte « 12 PMS + Zapier et n8n » */}
           <motion.div
             variants={cardReveal}
             whileHover={{ y: -4, scale: 1.02 }}
@@ -127,7 +132,7 @@ export function IntegrationsShowcase() {
 
 /* ——— Sub-components ——— */
 
-function PMSCard({ pms }: { pms: PmsIntegration }) {
+function PMSCard({ pms, badge }: { pms: PmsIntegration; badge: string }) {
   return (
     <motion.div
       variants={cardReveal}
@@ -164,10 +169,10 @@ function PMSCard({ pms }: { pms: PmsIntegration }) {
         {pms.name}
       </span>
 
-      {/* Native badge */}
+      {/* Badge : connecteur natif, ou bientôt disponible */}
       <span className="inline-flex items-center gap-1 text-[10px] font-medium text-brand-primary bg-brand-primary/8 rounded-full px-2 py-0.5">
-        <Check className="h-2.5 w-2.5" />
-        Natif
+        {!pms.comingSoon && <Check className="h-2.5 w-2.5" />}
+        {badge}
       </span>
     </motion.div>
   );

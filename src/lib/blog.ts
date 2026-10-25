@@ -4,6 +4,7 @@ import matter from 'gray-matter';
 import readingTime from 'reading-time';
 import GithubSlugger from 'github-slugger';
 import { silos, getSiloBySlug } from '@/data/silos';
+import { getAuthor } from '@/data/authors';
 import type { Article, FaqItem, Silo, TOCItem } from '@/types/blog';
 
 const CONTENT_DIR = path.join(process.cwd(), 'content', 'blog');
@@ -52,6 +53,7 @@ function parseFrontmatter(
       motsClesSecondaires: data.mots_cles_secondaires ?? [],
       datePublication: toIsoDate(data.date_publication),
       dateMiseAJour: toIsoDate(data.date_mise_a_jour ?? data.date_publication),
+      auteur: getAuthor(data.auteur).id,
       // Counted, never read from frontmatter: hand-written values were off by 40 %.
       longueurMots: stats.words,
       tempsLecture: data.temps_lecture ?? Math.ceil(stats.minutes),

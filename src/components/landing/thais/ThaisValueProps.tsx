@@ -25,7 +25,7 @@ const VALUE_PROPS = [
     example: {
       trigger: 'Client séjour romantique',
       action: 'Offre spa envoyée 3 jours avant l\'arrivée',
-      result: '+23% de conversion upsell',
+      result: 'Une offre adaptée au profil client',
     },
   },
   {

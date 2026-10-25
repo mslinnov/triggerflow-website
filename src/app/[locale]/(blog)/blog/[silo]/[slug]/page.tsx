@@ -18,6 +18,7 @@ import { NewsletterInline } from '@/components/mdx/NewsletterInline';
 import { KeyFigure } from '@/components/mdx/KeyFigure';
 import { KeyFiguresGrid, KeyFigureCard } from '@/components/mdx/KeyFiguresGrid';
 import { Stat } from '@/components/mdx/Stat';
+import { getAuthor } from '@/data/authors';
 
 const BASE_URL = 'https://www.trigger-flow.com';
 
@@ -115,10 +116,17 @@ export default async function ArticlePage({ params }: PageProps) {
     Stat: (props: { id: string }) => <Stat id={props.id} locale={locale} />,
   };
 
-  const formattedDate = new Date(article.datePublication).toLocaleDateString(
-    locale === 'fr' ? 'fr-FR' : 'en-US',
-    { year: 'numeric', month: 'long', day: 'numeric' }
-  );
+  const formatDate = (iso: string) =>
+    new Date(iso).toLocaleDateString(locale === 'fr' ? 'fr-FR' : 'en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+  const formattedDate = formatDate(article.datePublication);
+  // Date de fraîcheur visible : les moteurs IA privilégient un contenu daté et à jour.
+  const formattedUpdate =
+    article.dateMiseAJour > article.datePublication ? formatDate(article.dateMiseAJour) : null;
+  const author = getAuthor(article.auteur);
 
   const toc = generateTableOfContents(article.content);
   const h2Count = toc.filter((i) => i.level === 2).length;
@@ -167,12 +175,27 @@ export default async function ArticlePage({ params }: PageProps) {
               <div className="flex items-center gap-6">
                 <div>
                   <p className="text-xs text-gray-400">{t('writtenBy', { defaultValue: 'Par' })}</p>
-                  <p className="text-sm font-medium text-brand-dark">TriggerFlow</p>
+                  <p className="text-sm font-medium text-brand-dark">
+                    {author.linkedin ? (
+                      <a href={author.linkedin} target="_blank" rel="noopener noreferrer author" className="hover:text-brand-primary">
+                        {author.name}
+                      </a>
+                    ) : (
+                      author.name
+                    )}
+                  </p>
+                  <p className="text-xs text-gray-500">{locale === 'fr' ? author.role.fr : author.role.en}</p>
                 </div>
                 <div>
                   <p className="text-xs text-gray-400">{t('publishedOn', { defaultValue: 'Publi\u00e9 le' })}</p>
                   <p className="text-sm font-medium text-brand-dark">{formattedDate}</p>
                 </div>
+                {formattedUpdate && (
+                  <div>
+                    <p className="text-xs text-gray-400">{t('updatedOn')}</p>
+                    <p className="text-sm font-medium text-brand-dark">{formattedUpdate}</p>
+                  </div>
+                )}
               </div>
               <div className="flex items-center gap-2">
                 <a

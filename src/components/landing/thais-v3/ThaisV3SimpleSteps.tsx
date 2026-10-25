@@ -8,7 +8,7 @@ const steps = [
   {
     number: '1',
     icon: Settings,
-    title: 'Configurez en 30 minutes',
+    title: 'Configurez avec nous',
     description: 'On vous guide pour créer vos premiers emails automatiques. Pas de code, pas de formation longue.',
   },
   {

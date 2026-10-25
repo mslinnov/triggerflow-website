@@ -121,11 +121,11 @@
     "ctaFree": "Essai gratuit - 14 jours",
     "ctaSecondary": "Découvrir les modules",
     "socialProof": {
-      "hotels": "Plus de 500 hôteliers nous font confiance"
+      "hotels": "Plus de 300 hôtels nous font confiance"
     },
     "trustBadges": {
       "rgpd": "Conforme RGPD",
-      "pms": "PMS intégrés",
+      "pms": "12 PMS + Zapier et n8n",
       "support": "Support 7j/7"
     }
   },
@@ -200,9 +200,9 @@
     },
     "results": {
       "label": "Résultats",
-      "reviews": "+45% d'avis Google",
-      "timeSaved": "10h gagnées / semaine",
-      "upsell": "+17% de ventes additionnelles"
+      "reviews": "Une demande d'avis après chaque séjour",
+      "timeSaved": "Moins de copier-coller à la réception",
+      "upsell": "Des extras vendus avant l'arrivée"
     },
     "result": {
       "title": "Automatisation déclenchée"
@@ -304,7 +304,7 @@
     },
     "workflow": {
       "title": "Mon workflow personnalisé",
-      "subtitle": "Créé en 5 minutes",
+      "subtitle": "Créé en quelques clics",
       "active": "Actif",
       "trigger": "Déclencheur",
       "triggerDesc": "Check-in client",
@@ -342,7 +342,7 @@
       },
       "sms": {
         "title": "SMS",
-        "description": "Messages courts et lus à 98%. Idéal pour le check-in, les rappels et les offres de dernière minute."
+        "description": "Messages courts, remis même sans connexion internet : 90 % des SMS de nos clients sont remis (12 derniers mois). Idéal pour le check-in, les rappels et les offres de dernière minute."
       },
       "whatsapp": {
         "title": "WhatsApp",
@@ -443,7 +443,7 @@
       },
       "forms": {
         "title": "Formulaires intelligents",
-        "description": "Pré-check-in, enquêtes, préférences. Taux de réponse multiplié par 3 grâce à l'envoi automatisé.",
+        "description": "Pré-check-in, enquêtes, préférences : envoyés automatiquement au bon moment du séjour.",
         "highlights": [
           "Pré-check-in automatisé",
           "Enquêtes de satisfaction"
@@ -459,7 +459,7 @@
       },
       "reviews": {
         "title": "Gestion des avis",
-        "description": "Collectez 5 fois plus d'avis positifs. Identifiez les insatisfaits avant qu'ils ne publient.",
+        "description": "Invitez chaque client à laisser un avis. Identifiez les insatisfaits avant qu'ils ne publient.",
         "highlights": [
           "Collecte d'avis automatisée",
           "Alerte insatisfaction en temps réel"
@@ -473,7 +473,7 @@
   },
   "examples": {
     "badge": "Cas d'usage",
-    "title": "Des scénarios concrets, des résultats mesurés",
+    "title": "Des scénarios concrets, prêts à l'emploi",
     "subtitle": "Les automatisations les plus déployées par nos clients hôteliers.",
     "bottomTitle": "Un besoin spécifique ?",
     "bottomText": "Chaque établissement est unique. Échangeons sur votre projet pour concevoir les automatisations adaptées à votre réalité.",
@@ -482,42 +482,42 @@
       "sms": {
         "title": "SMS de bienvenue",
         "description": "Message personnalisé envoyé automatiquement au check-in avec infos pratiques du séjour.",
-        "result": "98% de taux de lecture"
+        "result": "90 % des SMS remis (12 derniers mois)"
       },
       "precheckin": {
         "title": "Pré-check-in en ligne",
         "description": "Formulaire envoyé avant l'arrivée pour collecter identité, préférences et heure d'arrivée.",
-        "result": "73% de complétion"
+        "result": "Identité et préférences connues avant l'arrivée"
       },
       "event": {
         "title": "Promotion d'événements",
         "description": "Notifiez vos clients des événements à venir avec inscription en un clic.",
-        "result": "+35% de participation"
+        "result": "Inscription en un clic"
       },
       "survey": {
         "title": "Enquêtes satisfaction",
         "description": "Collectez les retours au bon moment, puis invitez chaque client à laisser un avis Google.",
-        "result": "+45% d'avis Google"
+        "result": "Chaque client invité à laisser un avis"
       },
       "upsell": {
         "title": "Ventes additionnelles",
         "description": "Proposez surclassement, spa, late checkout au moment idéal du parcours client.",
-        "result": "+17% de revenu additionnel"
+        "result": "5 % des offres envoyées 3 à 7 jours avant l'arrivée achetées"
       },
       "reviews": {
         "title": "Collecte d'avis",
         "description": "Sollicitez un avis à chaque client, et entendez les insatisfaits avant qu'ils ne publient.",
-        "result": "8.2 → 9.1 note Booking"
+        "result": "Les insatisfaits repérés avant de publier"
       },
       "loyalty": {
         "title": "Fidélité & Newsletter",
         "description": "Campagnes ciblées post-séjour, offres de retour personnalisées et programme fidélité.",
-        "result": "+28% de clients fidélisés"
+        "result": "Des offres de retour ciblées"
       },
       "payments": {
         "title": "Liens de paiement",
         "description": "Acompte, caution, empreinte carte : envoyez des liens de paiement personnalisés automatiquement.",
-        "result": "85% payés en moins de 2h"
+        "result": "91 % des paiements réglés dans les 2 h après ouverture du lien"
       }
     }
   },
@@ -530,7 +530,7 @@
     "steps": {
       "connect": {
         "title": "Connectez votre PMS",
-        "description": "Intégration native avec Mews, Opera, Thaïs et plus de 50 systèmes. Vos données clients se synchronisent en temps réel."
+        "description": "Intégration native avec 12 PMS, dont Mews, Opera Cloud, Thaïs et Medialog, plus les serrures connectées, le paiement en ligne et des milliers d'applications via Zapier et n8n. Vos données clients se synchronisent en temps réel."
       },
       "create": {
         "title": "Configurez vos workflows",
@@ -644,7 +644,7 @@
       },
       "pms": {
         "question": "TriggerFlow est-il compatible avec mon PMS ?",
-        "answer": "Nous sommes compatibles avec les principaux PMS du marché : Mews, Opera, Clock, Misterbooking, Asterio, Thaïs et bien d'autres. Si votre PMS n'est pas dans la liste, contactez-nous pour vérifier la compatibilité."
+        "answer": "Nous sommes compatibles avec les principaux PMS du marché : Mews, Thaïs, Opera Cloud, Medialog, Misterbooking, Asterio, Apaleo et bien d'autres. Si votre PMS n'est pas dans la liste, contactez-nous pour vérifier la compatibilité."
       },
       "customization": {
         "question": "Puis-je personnaliser les messages envoyés ?",
@@ -696,9 +696,11 @@
   "integrationsShowcase": {
     "badge": "Intégrations",
     "title": "Connecté à votre écosystème",
-    "subtitle": "Intégration native avec plus de 50 PMS et logiciels hôteliers",
-    "count": "+50 intégrations",
-    "cta": "Voir toutes les intégrations"
+    "subtitle": "12 PMS, serrures connectées, paiement en ligne et des milliers d'applications via Zapier et n8n",
+    "count": "12 PMS + Zapier et n8n",
+    "cta": "Voir toutes les intégrations",
+    "comingSoon": "Bientôt disponible",
+    "native": "Natif"
   },
   "testimonialsCarousel": {
     "badge": "Témoignages",
@@ -767,7 +769,7 @@
       },
       "support": {
         "title": "Support 7j/7",
-        "description": "Chat, email ou téléphone. Temps de réponse moyen de 15 minutes en heures ouvrées."
+        "description": "Chat, email ou téléphone, avec une équipe qui connaît l'hôtellerie."
       },
       "training": {
         "title": "Formation incluse",
@@ -779,8 +781,8 @@
       }
     },
     "satisfaction": {
-      "value": "9.4/10",
-      "label": "Satisfaction client"
+      "value": "5/5",
+      "label": "Note Google (3 avis)"
     }
   },
   "stickyMobileCta": {
@@ -993,7 +995,7 @@
             "Liens de paiement brandés",
             "Caution & pré-autorisation",
             "Empreinte carte",
-            "Multi-prestataires (Stripe, Mollie...)"
+            "Multi-prestataires (Stripe, PayZen, SystemPay, Thaïs)"
           ]
         }
       }
@@ -1104,7 +1106,7 @@
       "submitting": "Envoi en cours...",
       "success": {
         "title": "Message envoyé !",
-        "message": "Merci pour votre message. Notre équipe vous répondra dans les 24h."
+        "message": "Merci pour votre message. Notre équipe vous répondra rapidement."
       },
       "error": "Le message n'est pas parti. Réessayez, ou écrivez-nous à contact@trigger-flow.com."
     },
@@ -1135,32 +1137,26 @@
     "history": {
       "title": "Notre histoire",
       "p1": "TriggerFlow est né d'un constat simple : les hôteliers passent trop de temps sur des tâches répétitives qui pourraient être automatisées.",
-      "p2": "Fondée en 2020 par des passionnés de l'hôtellerie et du digital, notre entreprise s'est donnée pour mission de créer des outils simples et puissants pour transformer la relation client.",
-      "p3": "Aujourd'hui, TriggerFlow accompagne plus de 500 établissements en France et en Europe dans leur transformation digitale.",
+      "p2": "Fondée en 2019 à Toulouse par des passionnés de l'hôtellerie et du digital, notre entreprise s'est donnée pour mission de créer des outils simples et puissants pour transformer la relation client.",
+      "p3": "Aujourd'hui, TriggerFlow accompagne plus de 300 établissements en France et en Europe dans leur transformation digitale.",
       "timeline": {
-        "2020": {
+        "2019": {
           "title": "Création",
-          "description": "Lancement de TriggerFlow à Paris"
-        },
-        "2021": {
-          "title": "Croissance",
-          "description": "100 premiers clients et levée de fonds"
-        },
-        "2022": {
-          "title": "Expansion",
-          "description": "Ouverture à l'international"
+          "description": "Lancement de TriggerFlow à Toulouse"
         },
         "2024": {
-          "title": "Leadership",
-          "description": "500+ hôtels et 20 collaborateurs"
+          "title": "International",
+          "description": "Ouverture à l'international"
+        },
+        "today": {
+          "title": "Aujourd'hui",
+          "description": "300+ hôtels équipés"
         }
       }
     },
     "stats": {
       "hotels": "Hôtels équipés",
-      "messages": "Messages envoyés",
-      "countries": "Pays",
-      "team": "Collaborateurs"
+      "messages": "Messages envoyés"
     },
     "values": {
       "title": "Nos valeurs",
@@ -1193,18 +1189,20 @@
   },
   "integrations": {
     "meta": {
-      "title": "Intégrations PMS hôtel - 50+ connecteurs natifs",
-      "description": "Connectez TriggerFlow à vos PMS (Mews, Opera Cloud, Thaïs, Misterbooking...) et 50+ outils hôteliers. Synchronisation temps réel sans développement."
+      "title": "Intégrations hôtel : 12 PMS, serrures, paiement, Zapier et n8n",
+      "description": "Connectez TriggerFlow à votre PMS (12 PMS, dont Mews, Opera Cloud, Thaïs, Misterbooking), à vos serrures connectées, à votre solution de paiement et à des milliers d'applications via Zapier et n8n. Synchronisation temps réel sans développement."
     },
     "hero": {
       "title": "Connectez TriggerFlow à vos outils",
       "subtitle": "Intégrations natives avec les principaux PMS hôteliers, serrures connectées, moyens de paiement et plateformes d'avis. Aucun développement nécessaire.",
       "cta": "Vous ne trouvez pas votre outil ?",
-      "count": "28+ intégrations"
+      "count": "12 PMS + des milliers d'apps via Zapier et n8n"
     },
     "badges": {
       "native": "Natif",
-      "api": "API"
+      "api": "API",
+      "comingSoon": "Bientôt disponible",
+      "count": "{count, plural, one {# intégration} other {# intégrations}}"
     },
     "categories": {
       "pms": {
@@ -1239,8 +1237,16 @@
             "name": "Lean PMS",
             "description": "PMS léger et moderne"
           },
+          "beds24": {
+            "name": "Beds24",
+            "description": "PMS et channel manager"
+          },
+          "reservit": {
+            "name": "Reservit",
+            "description": "PMS et moteur de réservation"
+          },
           "chloe": {
-            "name": "Chloë PMS",
+            "name": "Chloé PMS",
             "description": "PMS intuitif pour hôteliers"
           },
           "vega": {
@@ -1255,9 +1261,17 @@
             "name": "Zeswitch",
             "description": "PMS nouvelle génération"
           },
-          "clockpms": {
-            "name": "Clock PMS",
-            "description": "PMS cloud tout-en-un"
+          "infhotik": {
+            "name": "Infhotik",
+            "description": "PMS hôtels et restaurants, par Hotelios"
+          },
+          "protel": {
+            "name": "Protel Cloud PMS",
+            "description": "PMS cloud du groupe Planet"
+          },
+          "galaxy": {
+            "name": "Galaxy Hotels",
+            "description": "PMS et channel manager associatif"
           }
         }
       },
@@ -1272,14 +1286,6 @@
           "igloohome": {
             "name": "Igloohome",
             "description": "Serrures et boîtes à clés connectées"
-          },
-          "salto": {
-            "name": "Salto",
-            "description": "Contrôle d'accès électronique"
-          },
-          "printer": {
-            "name": "Imprimante",
-            "description": "Impression de fiches et tickets"
           }
         }
       },
@@ -1291,17 +1297,17 @@
             "name": "Stripe",
             "description": "Paiements en ligne"
           },
-          "mollie": {
-            "name": "Mollie",
-            "description": "Paiements européens simplifiés"
-          },
-          "paypal": {
-            "name": "PayPal",
-            "description": "Paiements internationaux"
-          },
           "payzen": {
             "name": "PayZen",
             "description": "Solution de paiement sécurisée"
+          },
+          "systempay": {
+            "name": "SystemPay",
+            "description": "Paiement Lyra des banques BPCE"
+          },
+          "thaispay": {
+            "name": "Paiement Thaïs",
+            "description": "Liens de paiement encaissés via Thaïs"
           },
           "applepay": {
             "name": "Apple Pay",
@@ -1332,14 +1338,6 @@
           "airbnb": {
             "name": "Airbnb",
             "description": "Avis hôtes et voyageurs"
-          },
-          "trustpilot": {
-            "name": "Trustpilot",
-            "description": "Plateforme d'avis vérifiés"
-          },
-          "hotelscom": {
-            "name": "Hotels.com",
-            "description": "Avis voyageurs Hotels.com"
           }
         }
       },
@@ -1375,15 +1373,15 @@
         "integrations": {
           "zapier": {
             "name": "Zapier",
-            "description": "Connectez 5000+ applications"
+            "description": "Plus de 10 000 applications (zapier.com, octobre 2026), via webhook"
           },
           "make": {
             "name": "Make",
-            "description": "Automatisation avancée"
+            "description": "Automatisation avancée, via webhook"
           },
           "n8n": {
             "name": "n8n",
-            "description": "Automatisation open source"
+            "description": "Automatisation open source, via webhook"
           },
           "webhook": {
             "name": "Webhook",
@@ -1421,7 +1419,7 @@
       "title": "Ce qui change quand vos emails se gèrent tout seuls",
       "subtitle": "",
       "before": "Sans TriggerFlow",
-      "beforeSubtitle": "La réalité de 80% des hôtels encore aujourd'hui",
+      "beforeSubtitle": "La réalité de beaucoup d'hôtels encore aujourd'hui",
       "after": "Avec TriggerFlow",
       "afterSubtitle": "Dès la première semaine"
     },
@@ -1439,7 +1437,7 @@
     },
     "integrations": {
       "badge": "Intégrations",
-      "title": "Se connecte à votre PMS en 5 minutes",
+      "title": "Se connecte à votre PMS sans développeur",
       "subtitle": "Compatible avec les principaux PMS et Channel Managers du marché"
     },
     "faq": {
@@ -1453,7 +1451,7 @@
     },
     "related": {
       "title": "Encore plus puissant combiné",
-      "subtitle": "Ajoutez SMS ou WhatsApp pour 2x plus d'engagement"
+      "subtitle": "Ajoutez SMS ou WhatsApp pour joindre vos clients sur leur téléphone"
     },
     "cta": {
       "title": "Prêt à découvrir ce module ?",
@@ -1464,7 +1462,7 @@
     },
     "trustBadges": {
       "rgpd": "Conforme RGPD",
-      "pms": "Connecté à 8+ PMS",
+      "pms": "12 PMS + Zapier et n8n",
       "support": "Support 7j/7"
     },
     "badges": {
@@ -1478,7 +1476,7 @@
   "product": {
     "meta": {
       "title": "CRM hôtelier tout-en-un - Email, SMS, WhatsApp, Workflows",
-      "description": "Plateforme tout-en-un pour hôteliers : CRM, email, SMS, WhatsApp, workflows automatisés, fidélité, avis Google. Connecté à 8+ PMS français."
+      "description": "Plateforme tout-en-un pour hôteliers : CRM, email, SMS, WhatsApp, workflows automatisés, fidélité, avis Google. Connectée à 12 PMS, aux serrures, au paiement en ligne et à des milliers d'applications via Zapier et n8n."
     },
     "hero": {
       "title": "Une plateforme complète pour votre relation client",
@@ -1620,6 +1618,7 @@
       "minRead": "min de lecture",
       "writtenBy": "Par",
       "publishedOn": "Publié le",
+      "updatedOn": "Mis à jour le",
       "ctaTitle": "Prêt à automatiser votre relation client ?",
       "ctaButton": "Réserver une démo"
     },
@@ -1766,7 +1765,7 @@
   "mewsIntegration": {
     "meta": {
       "title": "CRM hôtelier pour Mews - Automatisez votre relation client",
-      "description": "Connectez Mews à un CRM conçu pour l'hôtellerie. Synchronisation bidirectionnelle temps réel, emails pré-séjour, upselling automatisé, fidélité. 120+ hôtels connectés. Configuration en 15 min."
+      "description": "Connectez Mews à un CRM conçu pour l'hôtellerie. Synchronisation bidirectionnelle temps réel, emails pré-séjour, upselling automatisé, fidélité. Opérationnel en 48 h."
     },
     "breadcrumb": {
       "integrations": "Intégrations",
@@ -1778,7 +1777,7 @@
       "badgeMarketplace": "Mews Marketplace",
       "title": "Le CRM hôtelier qui se connecte nativement à Mews",
       "subtitle": "Automatisez toute votre relation client depuis les données Mews. Conçu pour les hôtels indépendants et les groupes.",
-      "details": "Synchronisation bidirectionnelle temps réel · Emails, SMS, WhatsApp · Enquêtes satisfaction · Programme de fidélité · Configuration en 15 min",
+      "details": "Synchronisation bidirectionnelle temps réel · Emails, SMS, WhatsApp · Enquêtes satisfaction · Programme de fidélité · Opérationnel en 48 h",
       "ctaDemo": "Réserver une démo",
       "ctaDemoMicro": "Gratuite, 20 min, sans engagement",
       "ctaData": "Données synchronisées",
@@ -1787,17 +1786,13 @@
     },
     "trustBar": {
       "stats": {
-        "hotels": {
-          "value": "120+",
-          "label": "hôtels sous Mews connectés"
-        },
-        "openRate": {
-          "value": "62%",
-          "label": "taux d'ouverture emails pré-séjour"
-        },
         "setup": {
-          "value": "15 min",
+          "value": "48 h",
           "label": "pour être opérationnel"
+        },
+        "sync": {
+          "value": "Temps réel",
+          "label": "synchronisation bidirectionnelle"
         }
       },
       "badges": {
@@ -1910,7 +1905,7 @@
               "description": "SMS avec le code de la serrure connectée et un lien de pré-check-in. La cliente arrive, badge la porte, s'installe. Zéro file d'attente à la réception."
             }
           ],
-          "result": "12-18 % de conversion sur l'upselling pré-séjour. Pour un hôtel de 80 chambres à 130 € d'ADR, ça représente 15 000 à 25 000 € de revenus additionnels par an."
+          "result": "L'offre part avant l'arrivée, seulement si la chambre est disponible dans Mews. Sur l'ensemble de nos clients, 5 % des offres envoyées 3 à 7 jours avant l'arrivée sont achetées."
         },
         {
           "badge": "Scénario 2",
@@ -1919,7 +1914,7 @@
           "timeline": [
             {
               "day": "J+1 (vendredi)",
-              "description": "Email avec enquête de satisfaction personnalisée. Traduite automatiquement en espagnol : la nationalité de M. Sanchez est dans Mews. 6 questions, 2 minutes à remplir."
+              "description": "Email avec enquête de satisfaction personnalisée. Traduite automatiquement en espagnol : la nationalité de M. Sanchez est dans Mews. 6 questions."
             },
             {
               "day": "J+2 (samedi)",
@@ -1930,7 +1925,7 @@
               "description": "Alerte immédiate au directeur, qui appelle le client dans les 24h. Le problème est souvent réglé avant que le client n'écrive un avis."
             }
           ],
-          "result": "Un hôtel parisien est passé de 8 à 26 avis Google par mois en 4 mois, avec une réduction de 40 % des avis négatifs publics."
+          "result": "Les clients satisfaits sont invités à publier un avis, les insatisfaits sont rappelés par le directeur avant d'écrire en ligne."
         },
         {
           "badge": "Scénario 3",
@@ -1950,7 +1945,7 @@
               "description": "Si pas de nouvelle réservation : relance saisonnière adaptée au profil. Si le client a réservé en direct entre-temps, il sort automatiquement du workflow, pas de spam."
             }
           ],
-          "result": "Sur 15-18 % de commission OTA, chaque client reconverti en direct représente un gain immédiat. Un hôtel qui reconvertit 20 clients/mois économise 4 000-6 000 €/mois de commissions."
+          "result": "Chaque client qui revient en direct plutôt que par une OTA vous épargne la commission de la plateforme."
         }
       ],
       "ctaMid1": {
@@ -1967,25 +1962,22 @@
       }
     },
     "howItWorks": {
-      "title": "Connexion en 3 étapes - 15 minutes, sans développeur",
+      "title": "Connexion en 3 étapes, sans développeur",
       "steps": [
         {
           "number": "1",
           "title": "Activez TriggerFlow dans Mews Marketplace",
-          "description": "Depuis Mews Commander, Marketplace > TriggerFlow. Activez le connecteur, une clé API est générée automatiquement. Copiez-la.",
-          "duration": "~3 minutes"
+          "description": "Depuis Mews Commander, Marketplace > TriggerFlow. Activez le connecteur, une clé API est générée automatiquement. Copiez-la."
         },
         {
           "number": "2",
           "title": "Collez la clé dans TriggerFlow",
-          "description": "Réglages > Intégrations > Mews. La synchronisation bidirectionnelle démarre immédiatement. Clients, réservations, chambres, tout arrive via webhooks.",
-          "duration": "~2 min + sync auto"
+          "description": "Réglages > Intégrations > Mews. La synchronisation bidirectionnelle démarre immédiatement. Clients, réservations, chambres, tout arrive via webhooks."
         },
         {
           "number": "3",
           "title": "Activez vos workflows",
-          "description": "Scénarios pré-configurés ou création sur mesure avec le flow builder visuel en glisser-déposer. Pas de code, pas de consultant.",
-          "duration": "~10 minutes"
+          "description": "Scénarios pré-configurés ou création sur mesure avec le flow builder visuel en glisser-déposer. Pas de code, pas de consultant."
         }
       ]
     },
@@ -2004,11 +1996,11 @@
         },
         {
           "question": "Comment connecter un CRM à Mews PMS ?",
-          "answer": "Depuis Mews Commander, ouvrez la Marketplace et activez TriggerFlow. Une clé API est générée automatiquement. Collez-la dans TriggerFlow (Réglages > Intégrations > Mews). La synchronisation démarre immédiatement via webhooks temps réel. Pas de développeur nécessaire, pas de fichier à configurer. L'opération complète prend environ 3 minutes."
+          "answer": "Depuis Mews Commander, ouvrez la Marketplace et activez TriggerFlow. Une clé API est générée automatiquement. Collez-la dans TriggerFlow (Réglages > Intégrations > Mews). La synchronisation démarre immédiatement via webhooks temps réel. Pas de développeur nécessaire, pas de fichier à configurer."
         },
         {
           "question": "Combien de temps pour être opérationnel ?",
-          "answer": "La connexion technique prend 3 minutes. La synchronisation initiale dépend du volume : quelques minutes pour un hôtel de 50 chambres avec 2 ans d'historique. L'activation des premiers workflows (email pré-séjour, enquête post-séjour) prend 10 à 15 minutes supplémentaires. Total : un hôtel est opérationnel en moins de 30 minutes."
+          "answer": "La connexion technique se fait depuis la Marketplace Mews, sans développeur. La synchronisation initiale dépend du volume d'historique. Avec l'activation des premiers workflows (email pré-séjour, enquête post-séjour), un hôtel est opérationnel en 48 h."
         },
         {
           "question": "Quelles données sont synchronisées entre Mews et TriggerFlow ?",
@@ -2045,7 +2037,7 @@
         {
           "label": "Catégorie",
           "title": "Toutes les intégrations PMS",
-          "description": "Mews, Opera Cloud, Thaïs, Medialog et 8 autres PMS connectés nativement.",
+          "description": "Mews, Opera Cloud, Thaïs, Medialog et 8 autres PMS connectés nativement, plus des milliers d'applications via Zapier et n8n.",
           "href": "/integrations"
         },
         {
@@ -2336,7 +2328,7 @@
       },
       "pms": {
         "q": "Est-ce compatible avec mon PMS ?",
-        "a": "TriggerFlow est connecté à Mews, Thaïs, Opera Cloud, Misterbooking, Medialog, Asterio, Vega, Reservit et Clock PMS. Si le vôtre n'y figure pas, dites-le nous, nous vérifions la faisabilité avant tout engagement."
+        "a": "TriggerFlow est connecté à Mews, Thaïs, Opera Cloud, Misterbooking, Medialog, Asterio, Vega, Apaleo et Reservit. Si le vôtre n'y figure pas, dites-le nous, nous vérifions la faisabilité avant tout engagement."
       },
       "setup": {
         "q": "Combien de temps pour être opérationnel ?",
@@ -2365,7 +2357,7 @@
       "demo": {
         "submit": "Recevoir mon plan",
         "successTitle": "C'est noté.",
-        "successBody": "Un membre de l'équipe vous écrit sous 24h ouvrées avec votre plan détaillé et deux créneaux de démo.",
+        "successBody": "Un membre de l'équipe vous écrit rapidement avec votre plan détaillé et deux créneaux de démo.",
         "privacy": "Vos coordonnées servent à préparer votre plan et à vous recontacter. Aucune revente à des tiers.",
         "book": "Réserver une démo"
       },
@@ -2768,7 +2760,7 @@
           "text": "Liens de paiement · Acomptes · Statistiques · Rapports"
         }
       },
-      "pms": "Connecté à votre PMS · Plus de 50 intégrations",
+      "pms": "Connecté à votre PMS · 12 PMS, serrures, paiement, Zapier et n8n",
       "badges": {
         "setup": "Opérationnel en 48 heures",
         "support": "Support 7j/7",

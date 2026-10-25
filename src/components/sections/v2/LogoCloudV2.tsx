@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Building2, TrendingUp, Heart } from 'lucide-react';
+import { Building2, Send, Plug } from 'lucide-react';
 import { Container } from '@/components/ui';
 
 const logos = [
@@ -18,20 +18,20 @@ const logos = [
 const metrics = [
   {
     icon: Building2,
-    value: '200+',
+    value: '300+',
     label: 'hôtels équipés',
     accent: 'from-brand-primary to-emerald-500',
   },
   {
-    icon: TrendingUp,
-    value: '+17%',
-    label: 'de panier moyen',
+    icon: Send,
+    value: '2M+',
+    label: 'messages envoyés',
     accent: 'from-blue-500 to-cyan-500',
   },
   {
-    icon: Heart,
-    value: '+80%',
-    label: 'de satisfaction',
+    icon: Plug,
+    value: '12',
+    label: 'PMS + Zapier et n8n',
     accent: 'from-rose-500 to-orange-500',
   },
 ];

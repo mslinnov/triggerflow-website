@@ -6,8 +6,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Plus, Minus, MessageCircle, ArrowRight } from 'lucide-react';
 import { Container } from '@/components/ui';
 import { cn } from '@/lib/utils';
+import { HOME_FAQ_KEYS } from '@/data/home-faq';
 
-const faqItems = ['setup', 'pms', 'customization', 'marketing', 'trial', 'support'] as const;
+const faqItems = HOME_FAQ_KEYS;
 
 export function FAQV2() {
   const t = useTranslations('faq');

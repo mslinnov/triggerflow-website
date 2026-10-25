@@ -1,3 +1,5 @@
+import type { AuthorId } from '@/data/authors';
+
 export type SiloId = 'S1' | 'S2' | 'S3' | 'S4' | 'S5';
 
 export type ArticleType = 'pilier' | 'support' | 'satellite';
@@ -63,6 +65,7 @@ export interface Article {
   motsClesSecondaires: string[];
   datePublication: string;
   dateMiseAJour: string;
+  auteur: AuthorId;
   longueurMots: number;
   tempsLecture: number;
   personaCible: PersonaCible;

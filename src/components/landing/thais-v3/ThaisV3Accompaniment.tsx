@@ -8,12 +8,12 @@ const supportPillars = [
   {
     icon: Users,
     title: 'Formation personnalisée',
-    description: '30 minutes pour configurer ensemble vos premiers emails automatiques. On fait avec vous, pas pour vous.',
+    description: 'Une séance pour configurer ensemble vos premiers emails automatiques. On fait avec vous, pas pour vous.',
   },
   {
     icon: MessageCircle,
     title: 'Support humain en français',
-    description: 'Des vraies personnes qui comprennent l\'hôtellerie. Réponse en moins de 2h, pas des jours.',
+    description: 'Des vraies personnes qui comprennent l\'hôtellerie.',
   },
   {
     icon: BookOpen,
@@ -108,7 +108,7 @@ export function ThaisV3Accompaniment() {
             <div>
               <blockquote className="mb-6 font-[family-name:var(--font-cormorant)] text-2xl leading-relaxed text-[var(--v3-text-primary)] md:text-3xl">
                 "J'avais peur de ne pas y arriver avec la technologie. Leur équipe m'a guidé pas à pas.{' '}
-                <span className="text-[var(--v3-accent-green)]">En 2 semaines, j'étais autonome.</span>"
+                <span className="text-[var(--v3-accent-green)]">Aujourd'hui, je suis autonome.</span>"
               </blockquote>
               <div className="flex items-center gap-4">
                 <div className="h-14 w-14 rounded-full bg-[var(--v3-bg-card)]" />

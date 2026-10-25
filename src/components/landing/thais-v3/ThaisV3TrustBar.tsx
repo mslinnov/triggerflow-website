@@ -1,29 +1,29 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
-import { Star, Users, Clock, TrendingUp } from 'lucide-react';
+import { Star, Users, Plug, Send } from 'lucide-react';
 import { Container } from '@/components/ui';
 
 const stats = [
   {
     icon: Users,
-    value: '200+',
+    value: '300+',
     label: 'Hôtels connectés',
   },
   {
     icon: Star,
-    value: '4.9/5',
-    label: 'Note de satisfaction',
+    value: '5/5',
+    label: 'Note Google (3 avis)',
   },
   {
-    icon: Clock,
-    value: '4h',
-    label: 'Gagnées par semaine',
+    icon: Plug,
+    value: '12',
+    label: 'PMS + Zapier et n8n',
   },
   {
-    icon: TrendingUp,
-    value: '+23%',
-    label: 'Revenus additionnels',
+    icon: Send,
+    value: '2M+',
+    label: 'Messages envoyés',
   },
 ];
 

@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
-import { Clock, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Container } from '@/components/ui';
 import { fadeInUp, staggerContainer, staggerItem, defaultViewport } from '@/lib/animations';
 
@@ -73,11 +73,6 @@ export function IntegrationHowItWorks() {
                   {t(`steps.${i}.description`)}
                 </p>
 
-                {/* Duration badge */}
-                <div className="mt-5 inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-white/30">
-                  <Clock className="h-3 w-3" />
-                  {t(`steps.${i}.duration`)}
-                </div>
               </div>
 
               {/* Connector arrow between cards (desktop) */}

@@ -59,7 +59,7 @@ function FAQPageJsonLd({ locale }: { locale: string }) {
           },
           {
             question: 'Combien de temps pour être opérationnel ?',
-            answer: 'La connexion technique prend 3 minutes. La synchronisation initiale dépend du volume. L\'activation des premiers workflows prend 10 à 15 minutes supplémentaires. Total : un hôtel est opérationnel en moins de 30 minutes.',
+            answer: 'La connexion technique se fait depuis la Marketplace Mews, sans développeur. La synchronisation initiale dépend du volume d\'historique. Avec l\'activation des premiers workflows, un hôtel est opérationnel en 48 h.',
           },
           {
             question: 'Quelles données sont synchronisées entre Mews et TriggerFlow ?',
@@ -85,7 +85,7 @@ function FAQPageJsonLd({ locale }: { locale: string }) {
           },
           {
             question: 'How long to get up and running?',
-            answer: 'The technical connection takes 3 minutes. Initial sync depends on volume. Activating the first workflows takes 10-15 additional minutes. Total: a hotel is operational in under 30 minutes.',
+            answer: 'The technical connection is done from the Mews Marketplace, no developer needed. Initial sync depends on how much history you have. Including the first workflows, a hotel is up and running in 48 h.',
           },
           {
             question: 'What data is synced between Mews and TriggerFlow?',
@@ -132,9 +132,8 @@ function HowToJsonLd({ locale }: { locale: string }) {
         : 'How to connect TriggerFlow to Mews PMS',
     description:
       locale === 'fr'
-        ? 'Connexion en 3 étapes - 15 minutes, sans développeur'
-        : 'Connect in 3 steps - 15 minutes, no developer needed',
-    totalTime: 'PT15M',
+        ? 'Connexion en 3 étapes, sans développeur'
+        : 'Connect in 3 steps, no developer needed',
     step: [
       {
         '@type': 'HowToStep',

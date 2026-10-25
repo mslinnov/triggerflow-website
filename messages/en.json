@@ -121,12 +121,12 @@
     "ctaFree": "Free 14-day trial",
     "ctaSecondary": "Discover modules",
     "socialProof": {
-      "hotels": "Thousands of satisfied users"
+      "hotels": "Over 300 hotels trust us"
     },
     "trustBadges": {
       "rgpd": "GDPR Compliant",
-      "pms": "50+ PMS integrated",
-      "support": "24/7 Support"
+      "pms": "12 PMS + Zapier & n8n",
+      "support": "Support 7 days a week"
     }
   },
   "heroDashboard": {
@@ -200,9 +200,9 @@
     },
     "results": {
       "label": "Results",
-      "reviews": "+45% Google reviews",
-      "timeSaved": "10h saved / week",
-      "upsell": "+17% additional sales"
+      "reviews": "A review request after every stay",
+      "timeSaved": "Less copy-pasting at the front desk",
+      "upsell": "Extras sold before arrival"
     },
     "result": {
       "title": "Automation triggered"
@@ -304,7 +304,7 @@
     },
     "workflow": {
       "title": "My custom workflow",
-      "subtitle": "Created in 5 minutes",
+      "subtitle": "Created in a few clicks",
       "active": "Active",
       "trigger": "Trigger",
       "triggerDesc": "Guest check-in",
@@ -342,7 +342,7 @@
       },
       "sms": {
         "title": "SMS",
-        "description": "Short messages read 98% of the time. Perfect for check-in, reminders and last-minute offers."
+        "description": "Short messages that arrive even without mobile data: 90% of our clients' SMS are delivered (last 12 months). Perfect for check-in, reminders and last-minute offers."
       },
       "whatsapp": {
         "title": "WhatsApp",
@@ -443,7 +443,7 @@
       },
       "forms": {
         "title": "Smart Forms",
-        "description": "Pre-check-in, surveys, preferences. 3x response rate with automated delivery.",
+        "description": "Pre-check-in, surveys, preferences: sent automatically at the right moment of the stay.",
         "highlights": [
           "Automated pre-check-in",
           "Satisfaction surveys"
@@ -459,7 +459,7 @@
       },
       "reviews": {
         "title": "Review Management",
-        "description": "Collect 5x more positive reviews. Spot unhappy guests before they publish.",
+        "description": "Invite every guest to leave a review. Spot unhappy guests before they publish.",
         "highlights": [
           "Automated review collection",
           "Real-time dissatisfaction alerts"
@@ -482,42 +482,42 @@
       "sms": {
         "title": "Welcome SMS",
         "description": "Personalized message sent automatically at check-in with practical stay information.",
-        "result": "98% read rate"
+        "result": "90% of SMS delivered (last 12 months)"
       },
       "precheckin": {
         "title": "Online Pre-check-in",
         "description": "Form sent before arrival to collect identity, preferences and arrival time.",
-        "result": "73% completion rate"
+        "result": "ID and preferences known before arrival"
       },
       "event": {
         "title": "Event Promotion",
         "description": "Notify guests about upcoming events with one-click registration.",
-        "result": "+35% participation"
+        "result": "One-click registration"
       },
       "survey": {
         "title": "Satisfaction Surveys",
         "description": "Collect feedback at the right time, then invite every guest to review you on Google.",
-        "result": "+45% Google reviews"
+        "result": "Every guest invited to leave a review"
       },
       "upsell": {
         "title": "Upselling",
         "description": "Offer upgrades, spa, late checkout at the ideal moment in the guest journey.",
-        "result": "+17% additional revenue"
+        "result": "5% of offers sent 3 to 7 days before arrival are bought"
       },
       "reviews": {
         "title": "Review Collection",
         "description": "Ask every guest for a review, and hear from unhappy ones before they publish.",
-        "result": "8.2 → 9.1 Booking score"
+        "result": "Unhappy guests spotted before they post"
       },
       "loyalty": {
         "title": "Loyalty & Newsletter",
         "description": "Targeted post-stay campaigns, personalized return offers and loyalty program.",
-        "result": "+28% repeat guests"
+        "result": "Targeted come-back offers"
       },
       "payments": {
         "title": "Payment Links",
         "description": "Deposit, security hold, card on file: send branded payment links automatically.",
-        "result": "85% paid within 2 hours"
+        "result": "91% of payments made within 2 hours of opening the link"
       }
     }
   },
@@ -530,7 +530,7 @@
     "steps": {
       "connect": {
         "title": "Connect your PMS",
-        "description": "1-click integration with Mews, Opera, Thaïs and 50+ other systems. Your guest data syncs automatically."
+        "description": "Native integration with 12 PMS, including Mews, Opera Cloud, Thaïs and Medialog, plus smart locks, online payments and thousands of apps via Zapier and n8n. Your guest data syncs automatically."
       },
       "create": {
         "title": "Create your automations",
@@ -644,7 +644,7 @@
       },
       "pms": {
         "question": "Is TriggerFlow compatible with my PMS?",
-        "answer": "We are compatible with major PMS on the market: Mews, Opera, Clock, Misterbooking, Asterio, Thaïs and many more. If your PMS is not on the list, contact us to check compatibility."
+        "answer": "We are compatible with major PMS on the market: Mews, Thaïs, Opera Cloud, Medialog, Misterbooking, Asterio, Apaleo and many more. If your PMS is not on the list, contact us to check compatibility."
       },
       "customization": {
         "question": "Can I customize the messages sent?",
@@ -696,9 +696,11 @@
   "integrationsShowcase": {
     "badge": "Integrations",
     "title": "Works with your PMS",
-    "subtitle": "1-click connection with 50+ hotel systems",
-    "count": "50+ integrations",
-    "cta": "View all integrations"
+    "subtitle": "12 PMS, smart locks, online payments and thousands of apps via Zapier and n8n",
+    "count": "12 PMS + Zapier & n8n",
+    "cta": "View all integrations",
+    "comingSoon": "Coming soon",
+    "native": "Native"
   },
   "testimonialsCarousel": {
     "badge": "Testimonials",
@@ -766,8 +768,8 @@
         "description": "Guided setup, data import, first workflows active in less than 2 days."
       },
       "support": {
-        "title": "24/7 Support",
-        "description": "Chat, email or phone. Average response time of 15 minutes during business hours."
+        "title": "Support 7 days a week",
+        "description": "Chat, email or phone, with a team that knows hospitality."
       },
       "training": {
         "title": "Training included",
@@ -779,8 +781,8 @@
       }
     },
     "satisfaction": {
-      "value": "9.4/10",
-      "label": "Customer satisfaction"
+      "value": "5/5",
+      "label": "Google rating (3 reviews)"
     }
   },
   "stickyMobileCta": {
@@ -821,7 +823,7 @@
   },
   "ctaSection": {
     "title": "Ready to create your first automations?",
-    "subtitle": "Join 200+ hotels that have regained control of their customer relationship",
+    "subtitle": "Join 300+ hotels that have regained control of their customer relationship",
     "ctaPrimary": "Book a demo",
     "ctaSecondary": "Contact us"
   },
@@ -985,7 +987,7 @@
             "Branded payment links",
             "Security hold & pre-authorization",
             "Card on file",
-            "Multi-provider (Stripe, Mollie...)"
+            "Multi-provider (Stripe, PayZen, SystemPay, Thaïs)"
           ]
         }
       }
@@ -1096,7 +1098,7 @@
       "submitting": "Sending...",
       "success": {
         "title": "Message sent!",
-        "message": "Thank you for your message. Our team will respond within 24 hours."
+        "message": "Thank you for your message. Our team will get back to you shortly."
       },
       "error": "Your message was not sent. Please try again, or write to contact@trigger-flow.com."
     },
@@ -1127,32 +1129,26 @@
     "history": {
       "title": "Our story",
       "p1": "TriggerFlow was born from a simple observation: hoteliers spend too much time on repetitive tasks that could be automated.",
-      "p2": "Founded in 2020 by hospitality and digital enthusiasts, our company set out to create simple and powerful tools to transform customer relationships.",
-      "p3": "Today, TriggerFlow supports over 500 properties across France and Europe in their digital transformation.",
+      "p2": "Founded in 2019 in Toulouse by hospitality and digital enthusiasts, our company set out to create simple and powerful tools to transform customer relationships.",
+      "p3": "Today, TriggerFlow supports over 300 properties across France and Europe in their digital transformation.",
       "timeline": {
-        "2020": {
+        "2019": {
           "title": "Founded",
-          "description": "TriggerFlow launched in Paris"
-        },
-        "2021": {
-          "title": "Growth",
-          "description": "First 100 customers and funding round"
-        },
-        "2022": {
-          "title": "Expansion",
-          "description": "International expansion"
+          "description": "TriggerFlow launched in Toulouse"
         },
         "2024": {
-          "title": "Leadership",
-          "description": "500+ hotels and 20 team members"
+          "title": "International",
+          "description": "International expansion"
+        },
+        "today": {
+          "title": "Today",
+          "description": "300+ hotels equipped"
         }
       }
     },
     "stats": {
       "hotels": "Hotels equipped",
-      "messages": "Messages sent",
-      "countries": "Countries",
-      "team": "Team members"
+      "messages": "Messages sent"
     },
     "values": {
       "title": "Our values",
@@ -1185,18 +1181,20 @@
   },
   "integrations": {
     "meta": {
-      "title": "Hotel PMS Integrations - 50+ Native Connectors",
-      "description": "Connect TriggerFlow to your PMS (Mews, Opera Cloud, Thaïs, Misterbooking...) and 50+ hotel tools. Real-time sync without development."
+      "title": "Hotel Integrations: 12 PMS, Smart Locks, Payments, Zapier and n8n",
+      "description": "Connect TriggerFlow to your PMS (12 PMS, including Mews, Opera Cloud, Thaïs, Misterbooking), your smart locks, your payment provider and thousands of apps via Zapier and n8n. Real-time sync without development."
     },
     "hero": {
       "title": "Connect TriggerFlow to your tools",
       "subtitle": "Native integrations with leading hotel PMS, smart locks, payment solutions and review platforms. No development required.",
       "cta": "Can't find your tool?",
-      "count": "28+ integrations"
+      "count": "12 PMS + thousands of apps via Zapier & n8n"
     },
     "badges": {
       "native": "Native",
-      "api": "API"
+      "api": "API",
+      "comingSoon": "Coming soon",
+      "count": "{count, plural, one {# integration} other {# integrations}}"
     },
     "categories": {
       "pms": {
@@ -1231,8 +1229,16 @@
             "name": "Lean PMS",
             "description": "Lightweight and modern PMS"
           },
+          "beds24": {
+            "name": "Beds24",
+            "description": "PMS and channel manager"
+          },
+          "reservit": {
+            "name": "Reservit",
+            "description": "PMS and booking engine"
+          },
           "chloe": {
-            "name": "Chloë PMS",
+            "name": "Chloé PMS",
             "description": "Intuitive PMS for hoteliers"
           },
           "vega": {
@@ -1247,9 +1253,17 @@
             "name": "Zeswitch",
             "description": "Next-generation PMS"
           },
-          "clockpms": {
-            "name": "Clock PMS",
-            "description": "All-in-one cloud PMS"
+          "infhotik": {
+            "name": "Infhotik",
+            "description": "PMS for hotels and restaurants, by Hotelios"
+          },
+          "protel": {
+            "name": "Protel Cloud PMS",
+            "description": "Cloud PMS by Planet"
+          },
+          "galaxy": {
+            "name": "Galaxy Hotels",
+            "description": "Cooperative PMS and channel manager"
           }
         }
       },
@@ -1264,14 +1278,6 @@
           "igloohome": {
             "name": "Igloohome",
             "description": "Smart locks and key boxes"
-          },
-          "salto": {
-            "name": "Salto",
-            "description": "Electronic access control"
-          },
-          "printer": {
-            "name": "Printer",
-            "description": "Print guest cards and tickets"
           }
         }
       },
@@ -1283,17 +1289,17 @@
             "name": "Stripe",
             "description": "Online payments"
           },
-          "mollie": {
-            "name": "Mollie",
-            "description": "Simplified European payments"
-          },
-          "paypal": {
-            "name": "PayPal",
-            "description": "International payments"
-          },
           "payzen": {
             "name": "PayZen",
             "description": "Secure payment solution"
+          },
+          "systempay": {
+            "name": "SystemPay",
+            "description": "Lyra payments for BPCE banks"
+          },
+          "thaispay": {
+            "name": "Thaïs payments",
+            "description": "Payment links collected through Thaïs"
           },
           "applepay": {
             "name": "Apple Pay",
@@ -1324,14 +1330,6 @@
           "airbnb": {
             "name": "Airbnb",
             "description": "Host and guest reviews"
-          },
-          "trustpilot": {
-            "name": "Trustpilot",
-            "description": "Verified review platform"
-          },
-          "hotelscom": {
-            "name": "Hotels.com",
-            "description": "Hotels.com traveller reviews"
           }
         }
       },
@@ -1367,15 +1365,15 @@
         "integrations": {
           "zapier": {
             "name": "Zapier",
-            "description": "Connect 5000+ applications"
+            "description": "10,000+ apps (zapier.com, October 2026), via webhook"
           },
           "make": {
             "name": "Make",
-            "description": "Advanced automation"
+            "description": "Advanced automation, via webhook"
           },
           "n8n": {
             "name": "n8n",
-            "description": "Open source automation"
+            "description": "Open-source automation, via webhook"
           },
           "webhook": {
             "name": "Webhook",
@@ -1413,7 +1411,7 @@
       "title": "What changes when your emails run themselves",
       "subtitle": "",
       "before": "Without TriggerFlow",
-      "beforeSubtitle": "The reality for 80% of hotels today",
+      "beforeSubtitle": "The reality for many hotels today",
       "after": "With TriggerFlow",
       "afterSubtitle": "From week one"
     },
@@ -1431,7 +1429,7 @@
     },
     "integrations": {
       "badge": "Integrations",
-      "title": "Connects to your PMS in 5 minutes",
+      "title": "Connects to your PMS, no developer needed",
       "subtitle": "Compatible with the leading PMS and Channel Managers on the market"
     },
     "faq": {
@@ -1445,7 +1443,7 @@
     },
     "related": {
       "title": "Even more powerful combined",
-      "subtitle": "Add SMS or WhatsApp for 2x more engagement"
+      "subtitle": "Add SMS or WhatsApp to reach guests on their phone"
     },
     "cta": {
       "title": "Ready to discover this module?",
@@ -1456,8 +1454,8 @@
     },
     "trustBadges": {
       "rgpd": "GDPR Compliant",
-      "pms": "Connected to 8+ PMS",
-      "support": "24/7 Support"
+      "pms": "12 PMS + Zapier & n8n",
+      "support": "Support 7 days a week"
     },
     "badges": {
       "journey": "Guest journey",
@@ -1470,7 +1468,7 @@
   "product": {
     "meta": {
       "title": "All-in-One Hotel CRM - Email, SMS, WhatsApp, Workflows",
-      "description": "All-in-one platform for hoteliers: CRM, email, SMS, WhatsApp, automated workflows, loyalty, Google reviews. Connected to 8+ PMS."
+      "description": "All-in-one platform for hoteliers: CRM, email, SMS, WhatsApp, automated workflows, loyalty, Google reviews. Connected to 12 PMS, smart locks, online payments and thousands of apps via Zapier and n8n."
     },
     "hero": {
       "title": "A complete platform for your customer relationship",
@@ -1612,6 +1610,7 @@
       "minRead": "min read",
       "writtenBy": "By",
       "publishedOn": "Published on",
+      "updatedOn": "Updated on",
       "ctaTitle": "Ready to automate your guest communication?",
       "ctaButton": "Book a demo"
     },
@@ -1758,7 +1757,7 @@
   "mewsIntegration": {
     "meta": {
       "title": "Hotel CRM for Mews: Automate Your Guest Relations",
-      "description": "Connect Mews to a CRM built for hospitality. Real-time bidirectional sync, pre-stay emails, automated upselling, loyalty. 120+ hotels connected. Setup in 15 min."
+      "description": "Connect Mews to a CRM built for hospitality. Real-time bidirectional sync, pre-stay emails, automated upselling, loyalty. Up and running in 48 h."
     },
     "breadcrumb": {
       "integrations": "Integrations",
@@ -1770,7 +1769,7 @@
       "badgeMarketplace": "Mews Marketplace",
       "title": "The hotel CRM that connects natively to Mews",
       "subtitle": "Automate your entire guest journey from Mews data. Built for independent hotels and groups.",
-      "details": "Real-time bidirectional sync · Emails, SMS, WhatsApp · Satisfaction surveys · Loyalty program · Setup in 15 min",
+      "details": "Real-time bidirectional sync · Emails, SMS, WhatsApp · Satisfaction surveys · Loyalty program · Up and running in 48 h",
       "ctaDemo": "Book a demo",
       "ctaDemoMicro": "Free, 20 min, no commitment",
       "ctaData": "Synced data",
@@ -1779,17 +1778,13 @@
     },
     "trustBar": {
       "stats": {
-        "hotels": {
-          "value": "120+",
-          "label": "Mews hotels connected"
-        },
-        "openRate": {
-          "value": "62%",
-          "label": "pre-stay email open rate"
-        },
         "setup": {
-          "value": "15 min",
-          "label": "to go live"
+          "value": "48 h",
+          "label": "to be up and running"
+        },
+        "sync": {
+          "value": "Real-time",
+          "label": "two-way sync"
         }
       },
       "badges": {
@@ -1902,7 +1897,7 @@
               "description": "SMS with smart lock code and a pre-check-in link. The guest arrives, badges the door, settles in. Zero queue at the front desk."
             }
           ],
-          "result": "12-18% conversion on pre-stay upselling. For an 80-room hotel at €130 ADR, that's €15,000-25,000 in additional revenue per year."
+          "result": "The offer goes out before arrival, only if the room is available in Mews. Across all our clients, 5% of offers sent 3 to 7 days before arrival are bought."
         },
         {
           "badge": "Scenario 2",
@@ -1911,7 +1906,7 @@
           "timeline": [
             {
               "day": "D+1 (Friday)",
-              "description": "Email with personalized satisfaction survey. Automatically translated to Spanish, since Mr. Sanchez's nationality is in Mews. 6 questions, 2 minutes to complete."
+              "description": "Email with personalized satisfaction survey. Automatically translated to Spanish, since Mr. Sanchez's nationality is in Mews. 6 questions."
             },
             {
               "day": "D+2 (Saturday)",
@@ -1922,7 +1917,7 @@
               "description": "Immediate alert to the manager, who calls the guest within 24 hours. The issue is often settled before the guest writes a review."
             }
           ],
-          "result": "A Paris hotel went from 8 to 26 Google reviews per month in 4 months, with a 40% reduction in public negative reviews."
+          "result": "Happy guests are invited to post a review; unhappy ones get a call from the manager before they write online."
         },
         {
           "badge": "Scenario 3",
@@ -1942,7 +1937,7 @@
               "description": "If no new booking: seasonal reminder tailored to their profile. If the guest has booked direct since, they automatically exit the workflow. No spam."
             }
           ],
-          "result": "On 15-18% OTA commission, every guest converted to direct represents immediate savings. A hotel converting 20 guests/month saves €4,000-6,000/month in commissions."
+          "result": "Every guest who comes back direct rather than through an OTA saves you the platform's commission."
         }
       ],
       "ctaMid1": {
@@ -1959,25 +1954,22 @@
       }
     },
     "howItWorks": {
-      "title": "Connect in 3 steps: 15 minutes, no developer needed",
+      "title": "Connect in 3 steps, no developer needed",
       "steps": [
         {
           "number": "1",
           "title": "Activate TriggerFlow in Mews Marketplace",
-          "description": "From Mews Commander, go to Marketplace > TriggerFlow. Activate the connector: an API key is generated automatically. Copy it.",
-          "duration": "~3 minutes"
+          "description": "From Mews Commander, go to Marketplace > TriggerFlow. Activate the connector: an API key is generated automatically. Copy it."
         },
         {
           "number": "2",
           "title": "Paste the key in TriggerFlow",
-          "description": "Settings > Integrations > Mews. Bidirectional sync starts immediately. Guests, reservations, rooms: everything arrives via webhooks.",
-          "duration": "~2 min + auto sync"
+          "description": "Settings > Integrations > Mews. Bidirectional sync starts immediately. Guests, reservations, rooms: everything arrives via webhooks."
         },
         {
           "number": "3",
           "title": "Activate your workflows",
-          "description": "Pre-configured scenarios or custom creation with the visual drag-and-drop flow builder. No code, no consultant.",
-          "duration": "~10 minutes"
+          "description": "Pre-configured scenarios or custom creation with the visual drag-and-drop flow builder. No code, no consultant."
         }
       ]
     },
@@ -1996,11 +1988,11 @@
         },
         {
           "question": "How do I connect a CRM to Mews PMS?",
-          "answer": "From Mews Commander, open the Marketplace and activate TriggerFlow. An API key is generated automatically. Paste it in TriggerFlow (Settings > Integrations > Mews). Sync starts immediately via real-time webhooks. No developer needed, no file to configure. The entire process takes about 3 minutes."
+          "answer": "From Mews Commander, open the Marketplace and activate TriggerFlow. An API key is generated automatically. Paste it in TriggerFlow (Settings > Integrations > Mews). Sync starts immediately via real-time webhooks. No developer needed, no file to configure."
         },
         {
           "question": "How long to get up and running?",
-          "answer": "The technical connection takes 3 minutes. Initial sync depends on volume: a few minutes for a 50-room hotel with 2 years of history. Activating the first workflows (pre-stay email, post-stay survey) takes 10-15 additional minutes. Total: a hotel is operational in under 30 minutes."
+          "answer": "The technical connection is done from the Mews Marketplace, no developer needed. Initial sync depends on how much history you have. Including the first workflows (pre-stay email, post-stay survey), a hotel is up and running in 48 h."
         },
         {
           "question": "What data is synced between Mews and TriggerFlow?",
@@ -2037,7 +2029,7 @@
         {
           "label": "Category",
           "title": "All PMS integrations",
-          "description": "Mews, Opera Cloud, Thaïs, Medialog and 8 more PMS connected natively.",
+          "description": "Mews, Opera Cloud, Thaïs, Medialog and 8 more PMS connected natively, plus thousands of apps via Zapier and n8n.",
           "href": "/integrations"
         },
         {
@@ -2328,7 +2320,7 @@
       },
       "pms": {
         "q": "Does it work with my PMS?",
-        "a": "TriggerFlow connects to Mews, Thaïs, Opera Cloud, Misterbooking, Medialog, Asterio, Vega, Reservit and Clock PMS. If yours is not on the list, tell us and we will check feasibility before you commit to anything."
+        "a": "TriggerFlow connects to Mews, Thaïs, Opera Cloud, Misterbooking, Medialog, Asterio, Vega, Apaleo and Reservit. If yours is not on the list, tell us and we will check feasibility before you commit to anything."
       },
       "setup": {
         "q": "How long until it runs?",
@@ -2357,7 +2349,7 @@
       "demo": {
         "submit": "Get my revenue plan",
         "successTitle": "Noted.",
-        "successBody": "Someone from the team will write to you within one working day with your detailed plan and two demo slots.",
+        "successBody": "Someone from the team will write to you shortly with your detailed plan and two demo slots.",
         "privacy": "Your details are used to prepare your plan and to get back to you. Never sold on.",
         "book": "Book a demo"
       },

@@ -94,7 +94,7 @@ export function ThaisV2CTA() {
             transition={{ delay: 0.2 }}
             className="mx-auto mt-6 max-w-2xl text-lg text-zinc-400 md:text-xl"
           >
-            Rejoignez les 200+ hôtels qui utilisent TriggerFlow pour gagner du temps et améliorer la
+            Rejoignez les 300+ hôtels qui utilisent TriggerFlow pour gagner du temps et améliorer la
             satisfaction client
           </motion.p>
 

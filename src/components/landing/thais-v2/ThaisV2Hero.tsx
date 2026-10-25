@@ -207,7 +207,7 @@ export function ThaisV2Hero() {
                     ))}
                   </div>
                   <div className="text-sm">
-                    <span className="font-semibold text-white">200+</span>
+                    <span className="font-semibold text-white">300+</span>
                     <span className="text-zinc-400"> hôtels</span>
                   </div>
                 </div>
@@ -215,7 +215,7 @@ export function ThaisV2Hero() {
                   {[1, 2, 3, 4, 5].map((i) => (
                     <Star key={i} className="h-5 w-5 fill-amber-400 text-amber-400" />
                   ))}
-                  <span className="text-sm text-zinc-400">4.8/5</span>
+                  <span className="text-sm text-zinc-400">5/5 sur Google (3 avis)</span>
                 </div>
               </motion.div>
             </div>
@@ -282,9 +282,9 @@ export function ThaisV2Hero() {
               >
                 <div className="grid grid-cols-3 gap-6">
                   {[
-                    { value: '98%', label: 'Délivrabilité' },
-                    { value: '4h', label: 'Gagnées/sem' },
-                    { value: '+45%', label: 'Avis clients' },
+                    { value: '94 %', label: 'E-mails délivrés (12 mois)' },
+                    { value: '90 %', label: 'SMS remis (12 mois)' },
+                    { value: '300+', label: 'Hôtels clients' },
                   ].map((stat) => (
                     <div key={stat.label} className="text-center">
                       <p className="text-2xl font-bold text-white">{stat.value}</p>

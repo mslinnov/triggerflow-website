@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'TriggerFlow x Thaïs PMS | Automatisation relation client',
     description:
-      'Automatisez vos emails clients avec TriggerFlow, partenaire officiel Thaïs PMS. Gagnez 4h par semaine.',
+      'Automatisez vos emails clients avec TriggerFlow, partenaire officiel Thaïs PMS. Configurez une fois, vos emails partent tout seuls.',
     images: ['/images/og/thais-v3.jpg'],
     locale: 'fr_FR',
     type: 'website',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'TriggerFlow x Thaïs PMS',
-    description: 'Automatisez vos emails clients. Gagnez 4h par semaine.',
+    description: 'Automatisez vos emails clients avec Thaïs PMS.',
   },
   robots: {
     index: true,
