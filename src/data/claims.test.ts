@@ -193,3 +193,12 @@ test('connexions sans connecteur dans l\'app : absentes ; PMS en cours seulement
   const all = ['fr', 'en'].map((l) => readFileSync(join(root, 'messages', `${l}.json`), 'utf8')).join('\n') + page;
   assert.doesNotMatch(all, /Chloë/);
 });
+
+test('logos des intégrations : fichier présent, SVG sans script ni gestionnaire d\'événement', () => {
+  const page = readFileSync(join(root, 'src', 'app', '[locale]', '(main)', 'integrations', 'IntegrationsContent.tsx'), 'utf8');
+  for (const [, logo] of page.matchAll(/logo: '(\/images\/integrations\/[^']+)'/g)) {
+    const file = join(root, 'public', logo);
+    assert.ok(statSync(file).size > 0, `${logo} absent`);
+    if (logo.endsWith('.svg')) assert.doesNotMatch(readFileSync(file, 'utf8'), /<script|\son[a-z]+=|javascript:|<foreignObject/i, logo);
+  }
+});

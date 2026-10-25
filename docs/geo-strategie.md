@@ -174,3 +174,17 @@ Hors périmètre par décision du 25/10/2026, à traiter ensuite :
   d'exemple inchangées.
 - **`AnimatedStat`** rend « 0 » côté serveur (il compte de 0 à la valeur dans le navigateur) : les robots qui ne
   lancent pas le JavaScript lisent « 0 % ». À corriger pour que les chiffres vérifiés soient lisibles.
+
+### Provenance des logos d'intégration ajoutés le 25/10/2026
+
+Fichiers dans `public/images/integrations/`, pris sur le site officiel de chaque éditeur (aucune banque d'images,
+aucun logo redessiné). SVG contrôlés sans script ni gestionnaire d'événement (test `claims.test.ts`).
+
+| Logo | Fichier | Source officielle |
+|---|---|---|
+| Beds24 | `beds24.svg` | Logo du site beds24.com : https://beds24.citybreakweb.com/themes/custom/citybreakweb/cb_beds24/logo.svg |
+| SystemPay | `systempay.png` | Documentation officielle Systempay : https://paiement.systempay.fr/doc/api/assets/assets/doc/images/systempay/white_labels/systempay/logo.png |
+| Reservit | `reservit.webp` (déjà présent) | Identique en dimensions au logo de reservit.com : https://www.reservit.com/zeeptapo/2021/01/logo.png |
+| Paiement Thaïs | `thais.svg` (déjà présent) | Identique octet pour octet au logo de thais-soft.com : https://www.thais-soft.com/_nuxt/img/7bca891.svg |
+| Hotello | aucun | hotello.com et app.hotello.com servent un site de jeux d'argent (relevé le 25/10/2026) : aucune carte en attendant la décision |
+

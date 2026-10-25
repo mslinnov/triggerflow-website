@@ -1236,6 +1236,14 @@
             "name": "Lean PMS",
             "description": "PMS léger et moderne"
           },
+          "beds24": {
+            "name": "Beds24",
+            "description": "PMS et channel manager"
+          },
+          "reservit": {
+            "name": "Reservit",
+            "description": "PMS et moteur de réservation"
+          },
           "chloe": {
             "name": "Chloé PMS",
             "description": "PMS intuitif pour hôteliers"
@@ -1279,6 +1287,14 @@
           "payzen": {
             "name": "PayZen",
             "description": "Solution de paiement sécurisée"
+          },
+          "systempay": {
+            "name": "SystemPay",
+            "description": "Paiement Lyra des Banques Populaires et Caisses d'Épargne"
+          },
+          "thaispay": {
+            "name": "Paiement Thaïs",
+            "description": "Liens de paiement encaissés via Thaïs"
           },
           "applepay": {
             "name": "Apple Pay",

@@ -46,6 +46,8 @@ const integrationCategories: Category[] = [
       { key: 'vega', logo: '/images/integrations/vega.png' },
       { key: 'apaleo', logo: '/images/integrations/apaleo.png' },
       { key: 'zeswitch', logo: '/images/integrations/zeswitch.png' },
+      { key: 'beds24', logo: '/images/integrations/beds24.svg' },
+      { key: 'reservit', logo: '/images/integrations/reservit.webp' },
       { key: 'chloe', logo: '/images/integrations/chloe.webp', comingSoon: true },
     ],
   },
@@ -67,6 +69,8 @@ const integrationCategories: Category[] = [
     integrations: [
       { key: 'stripe', logo: '/images/integrations/stripe.svg' },
       { key: 'payzen', logo: '/images/integrations/payzen.png' },
+      { key: 'systempay', logo: '/images/integrations/systempay.png' },
+      { key: 'thaispay', logo: '/images/integrations/thais.svg' },
       { key: 'applepay', logo: '/images/integrations/applepay.svg' },
       { key: 'googlepay', logo: '/images/integrations/googlepay.svg' },
     ],
