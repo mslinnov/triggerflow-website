@@ -8,14 +8,34 @@ interface AnimatedStatProps {
   suffix?: string;
 }
 
+/**
+ * Le HTML serveur porte la valeur finale : les robots IA ne lancent pas le JavaScript et
+ * liraient sinon « 0 % » à la place d'un chiffre vérifié (test AnimatedStat.test.ts).
+ * Le comptage depuis 0 ne se prépare côté client que pour un chiffre encore hors écran,
+ * et jamais si l'utilisateur limite les animations.
+ */
 export function AnimatedStat({ value, suffix }: AnimatedStatProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true });
-  const [displayValue, setDisplayValue] = useState(0);
   const targetValue = parseInt(value);
+  const [displayValue, setDisplayValue] = useState(targetValue);
+  const [armed, setArmed] = useState(false);
 
   useEffect(() => {
-    if (!isInView) return;
+    const el = ref.current;
+    if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) return;
+    // Hors écran : on repart de 0 à la frame suivante, invisible pour le lecteur.
+    const frame = requestAnimationFrame(() => {
+      setDisplayValue(0);
+      setArmed(true);
+    });
+    return () => cancelAnimationFrame(frame);
+  }, []);
+
+  useEffect(() => {
+    if (!armed || !isInView) return;
     const duration = 1500;
     const start = performance.now();
     function tick(now: number) {
@@ -26,7 +46,7 @@ export function AnimatedStat({ value, suffix }: AnimatedStatProps) {
       if (progress < 1) requestAnimationFrame(tick);
     }
     requestAnimationFrame(tick);
-  }, [isInView, targetValue]);
+  }, [armed, isInView, targetValue]);
 
   return (
     <span ref={ref}>
