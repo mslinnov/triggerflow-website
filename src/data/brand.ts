@@ -21,6 +21,13 @@ export const brand = {
   demoUrl: 'https://app.lemcal.com/@trigger-flow/demo',
   sameAs: ['https://www.linkedin.com/company/triggerflow/'],
   category: { fr: 'CRM hôtelier', en: 'Hotel CRM' },
+  slogan: {
+    fr: 'Le CRM hôtelier qui centralise toute la relation client',
+    en: 'The hotel CRM that brings your whole guest relationship together',
+  },
+  /** Mise en place en moins de 48 h et support 7j/7 (confirmés le 25/10/2026). */
+  setupHours: 48,
+  supportDays: 7,
   /** Une phrase qui définit l'entité : le nom de marque seul est ambigu (Power Automate, n8n…). */
   definition: {
     fr: "TriggerFlow est un CRM hôtelier pour hôtels indépendants et groupes : il centralise les données clients issues du PMS et automatise emails, SMS, WhatsApp, enquêtes de satisfaction, avis, ventes additionnelles et fidélité.",
