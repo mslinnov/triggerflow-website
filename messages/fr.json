@@ -1757,7 +1757,7 @@
   "mewsIntegration": {
     "meta": {
       "title": "CRM hôtelier pour Mews - Automatisez votre relation client",
-      "description": "Connectez Mews à un CRM conçu pour l'hôtellerie. Synchronisation bidirectionnelle temps réel, emails pré-séjour, upselling automatisé, fidélité. Configuration en 15 min."
+      "description": "Connectez Mews à un CRM conçu pour l'hôtellerie. Synchronisation bidirectionnelle temps réel, emails pré-séjour, upselling automatisé, fidélité. Opérationnel en 48 h."
     },
     "breadcrumb": {
       "integrations": "Intégrations",
@@ -1769,7 +1769,7 @@
       "badgeMarketplace": "Mews Marketplace",
       "title": "Le CRM hôtelier qui se connecte nativement à Mews",
       "subtitle": "Automatisez toute votre relation client depuis les données Mews. Conçu pour les hôtels indépendants et les groupes.",
-      "details": "Synchronisation bidirectionnelle temps réel · Emails, SMS, WhatsApp · Enquêtes satisfaction · Programme de fidélité · Configuration en 15 min",
+      "details": "Synchronisation bidirectionnelle temps réel · Emails, SMS, WhatsApp · Enquêtes satisfaction · Programme de fidélité · Opérationnel en 48 h",
       "ctaDemo": "Réserver une démo",
       "ctaDemoMicro": "Gratuite, 20 min, sans engagement",
       "ctaData": "Données synchronisées",
@@ -1778,13 +1778,13 @@
     },
     "trustBar": {
       "stats": {
-        "openRate": {
-          "value": "62%",
-          "label": "taux d'ouverture emails pré-séjour"
-        },
         "setup": {
-          "value": "15 min",
+          "value": "48 h",
           "label": "pour être opérationnel"
+        },
+        "sync": {
+          "value": "Temps réel",
+          "label": "synchronisation bidirectionnelle"
         }
       },
       "badges": {
@@ -1954,7 +1954,7 @@
       }
     },
     "howItWorks": {
-      "title": "Connexion en 3 étapes - 15 minutes, sans développeur",
+      "title": "Connexion en 3 étapes, sans développeur",
       "steps": [
         {
           "number": "1",
@@ -1995,7 +1995,7 @@
         },
         {
           "question": "Combien de temps pour être opérationnel ?",
-          "answer": "La connexion technique prend 3 minutes. La synchronisation initiale dépend du volume : quelques minutes pour un hôtel de 50 chambres avec 2 ans d'historique. L'activation des premiers workflows (email pré-séjour, enquête post-séjour) prend 10 à 15 minutes supplémentaires. Total : un hôtel est opérationnel en moins de 30 minutes."
+          "answer": "La connexion technique prend 3 minutes. La synchronisation initiale dépend du volume d'historique. Avec l'activation des premiers workflows (email pré-séjour, enquête post-séjour), un hôtel est opérationnel en 48 h."
         },
         {
           "question": "Quelles données sont synchronisées entre Mews et TriggerFlow ?",

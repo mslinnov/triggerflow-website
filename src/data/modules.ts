@@ -183,11 +183,10 @@ export const modules: Record<string, ModuleData> = {
       }
     ],
     testimonial: {
-      quote: 'On a mis en place les emails automatiques en une matinée, sans aucune compétence technique. Nos emails de pré-séjour ont un taux d\'ouverture de 62%. Les clients arrivent mieux préparés et achètent plus de services avant même d\'arriver.',
+      quote: 'On a mis en place les emails automatiques en une matinée, sans aucune compétence technique. Les clients arrivent mieux préparés et achètent plus de services avant même d\'arriver.',
       author: 'Sophie Laurent',
       role: 'Directrice Générale',
       hotel: 'Hôtel & Spa du Lac ****',
-      metric: '62% de taux d\'ouverture (vs 21% avant)'
     },
     integrations: ['Thaïs PMS', 'Misterbooking', 'Medialog', 'Opera Cloud', 'Mews', 'Asterio', 'Lean PMS', 'Apaleo'],
     faq: [
@@ -1184,7 +1183,7 @@ export const modules: Record<string, ModuleData> = {
     useCases: [
       {
         title: 'Suivi performance email',
-        description: 'Votre email de pré-séjour a 62% d\'ouverture et 28% de clics. L\'email de post-séjour seulement 35%. Vous savez lequel optimiser en priorité.',
+        description: 'Taux d\'ouverture et de clics de chaque email, pré-séjour comme post-séjour, côte à côte. Vous savez lequel optimiser en priorité.',
         result: 'Identification des emails à optimiser'
       },
       {

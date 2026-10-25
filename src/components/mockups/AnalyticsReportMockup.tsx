@@ -48,10 +48,6 @@ export function AnalyticsReportMockup() {
               <p className="text-[10px] text-emerald-700 font-medium mb-0.5">Meilleur workflow</p>
               <p className="text-xs font-semibold text-gray-900">Séquence pré-séjour</p>
             </div>
-            <div className="text-right">
-              <p className="text-sm font-bold text-brand-primary">62%</p>
-              <p className="text-[10px] text-gray-500">d&apos;ouverture</p>
-            </div>
           </div>
         </div>
 

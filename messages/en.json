@@ -1749,7 +1749,7 @@
   "mewsIntegration": {
     "meta": {
       "title": "Hotel CRM for Mews: Automate Your Guest Relations",
-      "description": "Connect Mews to a CRM built for hospitality. Real-time bidirectional sync, pre-stay emails, automated upselling, loyalty. Setup in 15 min."
+      "description": "Connect Mews to a CRM built for hospitality. Real-time bidirectional sync, pre-stay emails, automated upselling, loyalty. Up and running in 48 h."
     },
     "breadcrumb": {
       "integrations": "Integrations",
@@ -1761,7 +1761,7 @@
       "badgeMarketplace": "Mews Marketplace",
       "title": "The hotel CRM that connects natively to Mews",
       "subtitle": "Automate your entire guest journey from Mews data. Built for independent hotels and groups.",
-      "details": "Real-time bidirectional sync · Emails, SMS, WhatsApp · Satisfaction surveys · Loyalty program · Setup in 15 min",
+      "details": "Real-time bidirectional sync · Emails, SMS, WhatsApp · Satisfaction surveys · Loyalty program · Up and running in 48 h",
       "ctaDemo": "Book a demo",
       "ctaDemoMicro": "Free, 20 min, no commitment",
       "ctaData": "Synced data",
@@ -1770,13 +1770,13 @@
     },
     "trustBar": {
       "stats": {
-        "openRate": {
-          "value": "62%",
-          "label": "pre-stay email open rate"
-        },
         "setup": {
-          "value": "15 min",
-          "label": "to go live"
+          "value": "48 h",
+          "label": "to be up and running"
+        },
+        "sync": {
+          "value": "Real-time",
+          "label": "two-way sync"
         }
       },
       "badges": {
@@ -1946,7 +1946,7 @@
       }
     },
     "howItWorks": {
-      "title": "Connect in 3 steps: 15 minutes, no developer needed",
+      "title": "Connect in 3 steps, no developer needed",
       "steps": [
         {
           "number": "1",
@@ -1987,7 +1987,7 @@
         },
         {
           "question": "How long to get up and running?",
-          "answer": "The technical connection takes 3 minutes. Initial sync depends on volume: a few minutes for a 50-room hotel with 2 years of history. Activating the first workflows (pre-stay email, post-stay survey) takes 10-15 additional minutes. Total: a hotel is operational in under 30 minutes."
+          "answer": "The technical connection takes 3 minutes. Initial sync depends on how much history you have. Including the first workflows (pre-stay email, post-stay survey), a hotel is up and running in 48 h."
         },
         {
           "question": "What data is synced between Mews and TriggerFlow?",
