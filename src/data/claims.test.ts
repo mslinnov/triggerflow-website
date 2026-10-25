@@ -178,9 +178,9 @@ test('messages FR/EN : affirmations retirées absentes hors témoignages', () =>
 
 test('affirmations retirées absentes du code, du blog et des LP', () => {
   // modules.ts et solutions.ts sont jugés champ par champ plus haut ; témoignages hors périmètre ;
-  // ThaisUseCases n'est rendu par aucune page ; ThaisV3Hero ne garde qu'un badge flottant de
-  // maquette (« 4h gagnées cette semaine »), maquettes inchangées par décision du 25/10/2026.
-  const excluded = /Testimonial|case-studies|ThaisUseCases|ThaisV3Hero|data\/(modules|solutions)\.ts$|\.test\.ts$/;
+  // ThaisV3Hero ne garde qu'un badge flottant de maquette (« 4h gagnées cette semaine »),
+  // maquettes inchangées par décision du 25/10/2026.
+  const excluded = /Testimonial|case-studies|ThaisV3Hero|data\/(modules|solutions)\.ts$|\.test\.ts$/;
   const scanned = [
     ...files(join(root, 'content'), /\.mdx$/),
     ...files(join(root, 'src', 'data'), /\.(ts|json)$/),
@@ -258,4 +258,14 @@ test('formulaire de la LP ventes additionnelles : PMS lus dans brand.ts', () => 
   assert.doesNotMatch(form, /Clock PMS|PMS_OPTIONS/);
   assert.match(form, /brand\.pms\.map/);
   assert.match(form, /brand\.pmsEnCours\.map/);
+});
+
+test('formation du stand : PMS_LIST = brand.pms, et module embarqué à jour', async () => {
+  const html = readFileSync(join(root, 'content', 'formation-salon', 'index.html'), 'utf8');
+  const list = html.match(/var PMS_LIST = "([^"]+)";/);
+  assert.ok(list, 'PMS_LIST introuvable');
+  assert.deepEqual(list[1].split(', ').sort(), [...brand.pms].sort());
+  // Le HTML servi est le module généré par scripts/embed-formation-salon.mjs : il doit suivre la source.
+  const { FORMATION_HTML } = await import('../lib/formation-salon/html');
+  assert.equal(FORMATION_HTML, html, 'relancer node scripts/embed-formation-salon.mjs');
 });
