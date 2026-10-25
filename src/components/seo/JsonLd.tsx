@@ -48,7 +48,7 @@ export function OrganizationJsonLd({ locale = 'fr' }: { locale?: string } = {}) 
     url: baseUrl,
     logo: brand.logo,
     description: brand.definition[lang],
-    slogan: 'Le CRM hôtelier qui centralise toute la relation client',
+    slogan: brand.slogan[lang],
     foundingDate: brand.foundingDate,
     foundingLocation: {
       '@type': 'Place',
@@ -95,20 +95,13 @@ export function SoftwareApplicationJsonLd({ locale = 'fr' }: { locale?: string }
     applicationCategory: 'BusinessApplication',
     applicationSubCategory: 'CRM',
     operatingSystem: 'Web',
-    slogan: 'Le CRM hôtelier qui centralise toute la relation client',
+    slogan: brand.slogan[locale === 'fr' ? 'fr' : 'en'],
     description: brand.definition[locale === 'fr' ? 'fr' : 'en'],
     url: baseUrl,
     author: { '@id': `${baseUrl}/#organization` },
     publisher: { '@id': `${baseUrl}/#organization` },
     offers: buildOffers(locale, phase),
-    featureList: [
-      'Synchronisation PMS',
-      'SMS & Emails automatisés',
-      'Enquêtes de satisfaction',
-      'Ventes additionnelles',
-      'Tableaux de bord analytiques',
-      'Templates personnalisables',
-    ],
+    featureList: [...brand.featureList[locale === 'fr' ? 'fr' : 'en']],
   };
 
   return (

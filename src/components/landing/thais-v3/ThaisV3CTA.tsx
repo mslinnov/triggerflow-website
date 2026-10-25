@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Check, Mail } from 'lucide-react';
 import { Container, ButtonLink } from '@/components/ui';
+import { companyStats } from '@/data/company-stats';
 
 const benefits = ['Configuration en 48h', 'Support 7j/7', 'Conformité RGPD', 'Sans engagement'];
 
@@ -65,7 +66,7 @@ export function ThaisV3CTA() {
             transition={{ delay: 0.2 }}
             className="mx-auto mt-4 max-w-xl text-lg text-[var(--v3-text-secondary)]"
           >
-            Rejoignez les 300+ hôteliers qui ont choisi TriggerFlow pour gagner du temps et améliorer
+            Rejoignez les {companyStats.hotels.fr} hôteliers qui ont choisi TriggerFlow pour gagner du temps et améliorer
             leur relation client.
           </motion.p>
 

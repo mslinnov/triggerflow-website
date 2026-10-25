@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Zap, Sparkles, Mail, MessageSquare, Star, TrendingUp } from 'lucide-react';
 import { Container, ButtonLink } from '@/components/ui';
+import { companyStats } from '@/data/company-stats';
 
 const floatingNotifications = [
   { icon: Mail, text: 'Email envoyé', subtext: 'Confirmation résa', color: 'from-blue-500 to-indigo-600', delay: 0 },
@@ -207,7 +208,7 @@ export function ThaisV2Hero() {
                     ))}
                   </div>
                   <div className="text-sm">
-                    <span className="font-semibold text-white">300+</span>
+                    <span className="font-semibold text-white">{companyStats.hotels.fr}</span>
                     <span className="text-zinc-400"> hôtels</span>
                   </div>
                 </div>
@@ -282,9 +283,9 @@ export function ThaisV2Hero() {
               >
                 <div className="grid grid-cols-3 gap-6">
                   {[
-                    { value: '94 %', label: 'E-mails délivrés (12 mois)' },
-                    { value: '90 %', label: 'SMS remis (12 mois)' },
-                    { value: '300+', label: 'Hôtels clients' },
+                    { value: companyStats.emailDelivered.fr, label: 'E-mails délivrés (12 mois)' },
+                    { value: companyStats.smsDelivered.fr, label: 'SMS remis (12 mois)' },
+                    { value: companyStats.hotels.fr, label: 'Hôtels clients' },
                   ].map((stat) => (
                     <div key={stat.label} className="text-center">
                       <p className="text-2xl font-bold text-white">{stat.value}</p>

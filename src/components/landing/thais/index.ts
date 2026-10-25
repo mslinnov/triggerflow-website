@@ -8,7 +8,6 @@ export { ThaisPricing } from './ThaisPricing';
 export { ThaisCTA } from './ThaisCTA';
 export { ThaisFooter } from './ThaisFooter';
 export { ThaisNavigation } from './ThaisNavigation';
-export { ThaisUseCases } from './ThaisUseCases';
 export { ThaisTestimonials } from './ThaisTestimonials';
 export { ThaisConcreteUseCases } from './ThaisConcreteUseCases';
 export { ThaisCTASection } from './ThaisCTASection';

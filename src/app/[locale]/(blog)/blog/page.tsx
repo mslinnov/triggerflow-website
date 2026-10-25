@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { getAllArticles } from '@/lib/blog';
 import { Container } from '@/components/ui/Container';
 import { ArticleCard, SiloNav, ArticleList } from '@/components/blog';
+import { pageAlternates } from '@/lib/seo';
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -19,6 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: t('meta.title'),
+    alternates: pageAlternates(locale, '/blog'),
     description: t('meta.description'),
   };
 }

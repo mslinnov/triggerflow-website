@@ -1760,7 +1760,12 @@
       "subtitle": "Nous sommes toujours à la recherche de talents. Envoyez-nous votre candidature spontanée !",
       "cta": "Envoyer ma candidature"
     },
-    "applyComingSoon": "Système de candidature bientôt disponible"
+    "applyComingSoon": "Système de candidature bientôt disponible",
+    "stats": {
+      "remote": "Remote",
+      "hotels": "Hôtels clients",
+      "founded": "Création"
+    }
   },
   "mewsIntegration": {
     "meta": {
@@ -2349,6 +2354,7 @@
       "rooms": "Nombre de chambres",
       "pms": "Votre PMS",
       "pmsPlaceholder": "Sélectionnez",
+      "pmsComingSoon": "Bientôt disponibles",
       "pmsOther": "Autre ou je ne sais pas",
       "email": "Email professionnel",
       "phone": "Téléphone",

@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
 import { AboutContent } from './AboutContent';
+import { pageAlternates } from '@/lib/seo';
 
 interface PageProps {
   params: Promise<{ locale: string }>;
@@ -12,6 +13,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: t('meta.title'),
+    alternates: pageAlternates(locale, '/entreprise/a-propos'),
     description: t('meta.description'),
   };
 }

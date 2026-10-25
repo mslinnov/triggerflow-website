@@ -12,10 +12,16 @@ import {
   CTAV2,
 } from '@/components/sections/v2';
 import { HomePageJsonLd } from '@/components/seo';
+import { pageAlternates } from '@/lib/seo';
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   robots: { index: false, follow: false },
 };
+
+export async function generateMetadata({ params }: HomePageV2Props): Promise<Metadata> {
+  const { locale } = await params;
+  return { ...baseMetadata, alternates: pageAlternates(locale, '/v2') };
+}
 
 interface HomePageV2Props {
   params: Promise<{ locale: string }>;

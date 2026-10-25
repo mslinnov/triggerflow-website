@@ -1,5 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { getAllArticles, extractFaqItems } from './blog';
 import { buildLlmsTxt, buildLlmsFullTxt, mdxToPlainText } from './llms';
 
@@ -16,8 +18,18 @@ test('llms.txt liste chaque article publié, en FR et en EN', () => {
 test('llms.txt et llms-full.txt : faits de marque sans claim retiré ni tiret cadratin', () => {
   for (const txt of [buildLlmsTxt(articles), buildLlmsFullTxt(articles)]) {
     assert.match(txt, /founded in 2019 in Toulouse/);
+    assert.match(txt, /operational in less than 48 hours, support 7 days a week/);
     assert.doesNotMatch(txt, /Clock|leader|—/);
   }
+});
+
+test('faits de marque lus dans brand.ts : délai de mise en place, support, slogan localisé', () => {
+  const read = (...p: string[]) => readFileSync(join(__dirname, '..', ...p), 'utf8');
+  assert.doesNotMatch(read('lib', 'llms.ts'), /\b48 hours|7 days a week/);
+  const jsonLd = read('components', 'seo', 'JsonLd.tsx');
+  assert.doesNotMatch(jsonLd, /slogan: '/, 'slogan en dur (français sur les pages EN)');
+  assert.equal(jsonLd.match(/slogan: brand\.slogan\[/g)?.length, 2);
+  assert.match(jsonLd, /featureList: \[\.\.\.brand\.featureList\[/, 'featureList en dur (français sur les pages EN)');
 });
 
 test('le texte brut résout les chiffres TriggerFlow et retire les composants', () => {

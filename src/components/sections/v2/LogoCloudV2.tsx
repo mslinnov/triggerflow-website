@@ -5,6 +5,8 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Building2, Send, Plug } from 'lucide-react';
 import { Container } from '@/components/ui';
+import { brand } from '@/data/brand';
+import { companyStats } from '@/data/company-stats';
 
 const logos = [
   { name: 'Accor', src: '/images/logo-accor.webp' },
@@ -18,19 +20,19 @@ const logos = [
 const metrics = [
   {
     icon: Building2,
-    value: '300+',
+    value: companyStats.hotels.fr,
     label: 'hôtels équipés',
     accent: 'from-brand-primary to-emerald-500',
   },
   {
     icon: Send,
-    value: '2M+',
+    value: companyStats.messages.fr,
     label: 'messages envoyés',
     accent: 'from-blue-500 to-cyan-500',
   },
   {
     icon: Plug,
-    value: '12',
+    value: String(brand.pms.length),
     label: 'PMS + Zapier et n8n',
     accent: 'from-rose-500 to-orange-500',
   },

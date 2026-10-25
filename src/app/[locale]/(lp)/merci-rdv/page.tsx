@@ -4,6 +4,7 @@ import { setRequestLocale } from 'next-intl/server';
 import { CalendarCheck } from 'lucide-react';
 import { Container } from '@/components/ui';
 import { BookingConversion } from './BookingConversion';
+import { pageAlternates } from '@/lib/seo';
 
 /**
  * Page de confirmation après une réservation lemcal : chaque type de réunion
@@ -29,10 +30,15 @@ interface PageProps {
   params: Promise<{ locale: string }>;
 }
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: { absolute: 'TriggerFlow' },
   robots: { index: false, follow: false },
 };
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const { locale } = await params;
+  return { ...baseMetadata, alternates: pageAlternates(locale, '/merci-rdv') };
+}
 
 export default async function MerciRdvPage({ params }: PageProps) {
   const { locale } = await params;

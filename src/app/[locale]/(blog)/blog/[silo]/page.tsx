@@ -7,6 +7,7 @@ import { getSiloBySlug, siloName, siloDescription } from '@/data/silos';
 import { Container } from '@/components/ui/Container';
 import { SiloNav, ArticleList, BlogBreadcrumb } from '@/components/blog';
 import { BreadcrumbListJsonLd } from '@/components/seo';
+import { pageAlternates } from '@/lib/seo';
 
 interface Props {
   params: Promise<{ locale: string; silo: string }>;
@@ -34,6 +35,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: t('silo.metaTitle', { siloName: siloName(silo, locale) }),
     description: t('silo.metaDescription', { siloName: siloName(silo, locale) }),
+    alternates: pageAlternates(locale, `/blog/${silo.slug}`),
   };
 }
 

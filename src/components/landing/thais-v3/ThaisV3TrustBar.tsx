@@ -3,11 +3,13 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { Star, Users, Plug, Send } from 'lucide-react';
 import { Container } from '@/components/ui';
+import { brand } from '@/data/brand';
+import { companyStats } from '@/data/company-stats';
 
 const stats = [
   {
     icon: Users,
-    value: '300+',
+    value: companyStats.hotels.fr,
     label: 'Hôtels connectés',
   },
   {
@@ -17,12 +19,12 @@ const stats = [
   },
   {
     icon: Plug,
-    value: '12',
+    value: String(brand.pms.length),
     label: 'PMS + Zapier et n8n',
   },
   {
     icon: Send,
-    value: '2M+',
+    value: companyStats.messages.fr,
     label: 'Messages envoyés',
   },
 ];

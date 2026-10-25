@@ -1,7 +1,9 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+import { brand } from '@/data/brand';
+import { stat } from '@/data/company-stats';
 import {
   Rocket,
   Heart,
@@ -80,15 +82,18 @@ const openPositions = [
   },
 ];
 
-const stats = [
-  { value: '15', label: 'Collaborateurs' },
-  { value: '100%', label: 'Remote' },
-  { value: '300+', label: 'Hôtels clients' },
-  { value: '2022', label: 'Création' },
-];
+// Pas de nombre de collaborateurs (décision du 25/10/2026) ; faits lus dans brand.ts et company-stats.ts.
+function careerStats(locale: string) {
+  return [
+    { value: '100%', key: 'remote' },
+    { value: stat('hotels', locale), key: 'hotels' },
+    { value: brand.foundingDate, key: 'founded' },
+  ] as const;
+}
 
 export default function CareersContent() {
   const t = useTranslations('careers');
+  const stats = careerStats(useLocale());
   const prefersReducedMotion = useReducedMotion();
 
   const fadeIn = prefersReducedMotion
@@ -143,8 +148,8 @@ export default function CareersContent() {
       {/* Stats */}
       <section className="py-12 bg-brand-dark">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => (
+          <div className="grid grid-cols-3 gap-8">
+            {stats.map((item, index) => (
               <motion.div
                 key={index}
                 {...stagger}
@@ -152,9 +157,9 @@ export default function CareersContent() {
                 className="text-center"
               >
                 <div className="text-3xl md:text-4xl font-bold text-brand-primary mb-2">
-                  {stat.value}
+                  {item.value}
                 </div>
-                <div className="text-white/70">{stat.label}</div>
+                <div className="text-white/70">{t(`stats.${item.key}`)}</div>
               </motion.div>
             ))}
           </div>

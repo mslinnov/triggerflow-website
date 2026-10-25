@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Container } from '@/components/ui';
 import { Star, MapPin } from 'lucide-react';
+import { companyStats } from '@/data/company-stats';
 
 // Anonymized hotel logos represented as styled cards
 const hotels = [
@@ -29,7 +30,7 @@ export function ThaisLogoCarousel() {
           viewport={{ once: true }}
           className="text-center text-sm font-medium text-zinc-500 mb-8"
         >
-          Ils nous font confiance - <span className="text-[var(--thais-primary)] font-semibold">300+ hôtels</span>
+          Ils nous font confiance - <span className="text-[var(--thais-primary)] font-semibold">{companyStats.hotels.fr} hôtels</span>
         </motion.p>
       </Container>
 

@@ -61,7 +61,7 @@ function keyFacts(): string {
 - Other connections: smart locks (${brand.connections.locks.join(', ')}), payments (${brand.connections.payments.join(', ')}), reviews (${brand.connections.reviews.join(', ')}), mailboxes (${brand.connections.mailboxes.join(', ')})
 - Thousands of other apps through ${brand.automation.join(' and ')}, fed by the webhook action of TriggerFlow workflows
 - Channels: email, SMS, WhatsApp, unified inbox
-- Setup: operational in less than 48 hours, support 7 days a week
+- Setup: operational in less than ${brand.setupHours} hours, support ${brand.supportDays} days a week
 - Languages: French, English
 - Book a demo: ${brand.demoUrl}`;
 }

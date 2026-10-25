@@ -1,6 +1,7 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
-import { BreadcrumbListJsonLd } from '@/components/seo';
+import { BreadcrumbListJsonLd, FaqJsonLd } from '@/components/seo';
+import type { FaqItem } from '@/types/blog';
 import {
   IntegrationHero,
   TrustBar,
@@ -43,83 +44,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: 'website',
     },
   };
-}
-
-function FAQPageJsonLd({ locale }: { locale: string }) {
-  const faqItems =
-    locale === 'fr'
-      ? [
-          {
-            question: 'Qu\'est-ce que l\'intégration Mews + TriggerFlow ?',
-            answer: 'C\'est une connexion native entre le PMS cloud Mews et le CRM hôtelier TriggerFlow. Elle synchronise en temps réel les profils clients, réservations, charges et commentaires via l\'API ouverte Mews et des webhooks.',
-          },
-          {
-            question: 'Comment connecter un CRM à Mews PMS ?',
-            answer: 'Depuis Mews Commander, ouvrez la Marketplace et activez TriggerFlow. Une clé API est générée automatiquement. Collez-la dans TriggerFlow (Réglages > Intégrations > Mews). La synchronisation démarre immédiatement via webhooks temps réel.',
-          },
-          {
-            question: 'Combien de temps pour être opérationnel ?',
-            answer: 'La connexion technique se fait depuis la Marketplace Mews, sans développeur. La synchronisation initiale dépend du volume d\'historique. Avec l\'activation des premiers workflows, un hôtel est opérationnel en 48 h.',
-          },
-          {
-            question: 'Quelles données sont synchronisées entre Mews et TriggerFlow ?',
-            answer: 'Profils clients, réservations, charges et extras, notes et commentaires internes, données de chambres et catégories, entreprises et groupes. La sync est bidirectionnelle.',
-          },
-          {
-            question: 'Est-ce que Mews est compatible avec un CRM hôtelier externe ?',
-            answer: 'Oui. Mews dispose d\'une API ouverte documentée et d\'une Marketplace officielle qui référence les CRM compatibles, dont TriggerFlow. La connexion est native, pas de Zapier, pas de middleware.',
-          },
-          {
-            question: 'TriggerFlow peut-il modifier mes réservations dans Mews ?',
-            answer: 'Non. TriggerFlow lit les données de Mews et peut y écrire des informations complémentaires (tags CRM, commentaires, scores de satisfaction), mais il ne modifie jamais les réservations, tarifs ou disponibilités.',
-          },
-        ]
-      : [
-          {
-            question: 'What is the Mews + TriggerFlow integration?',
-            answer: 'It\'s a native connection between Mews cloud PMS and TriggerFlow hotel CRM. It syncs guest profiles, reservations, charges and comments in real time via the Mews open API and webhooks.',
-          },
-          {
-            question: 'How do I connect a CRM to Mews PMS?',
-            answer: 'From Mews Commander, open the Marketplace and activate TriggerFlow. An API key is generated automatically. Paste it in TriggerFlow (Settings > Integrations > Mews). Sync starts immediately via real-time webhooks.',
-          },
-          {
-            question: 'How long to get up and running?',
-            answer: 'The technical connection is done from the Mews Marketplace, no developer needed. Initial sync depends on how much history you have. Including the first workflows, a hotel is up and running in 48 h.',
-          },
-          {
-            question: 'What data is synced between Mews and TriggerFlow?',
-            answer: 'Guest profiles, reservations, charges and extras, internal notes and comments, room data and categories, companies and groups. Sync is bidirectional.',
-          },
-          {
-            question: 'Is Mews compatible with an external hotel CRM?',
-            answer: 'Yes. Mews has a well-documented open API and an official Marketplace listing compatible CRMs, including TriggerFlow. The connection is native, no Zapier, no middleware.',
-          },
-          {
-            question: 'Can TriggerFlow modify my reservations in Mews?',
-            answer: 'No. TriggerFlow reads Mews data and can write supplementary information (CRM tags, comments, satisfaction scores), but it never modifies reservations, rates or availability.',
-          },
-        ];
-
-  const schema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqItems.map((item) => ({
-      '@type': 'Question',
-      name: item.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: item.answer,
-      },
-    })),
-  };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
 }
 
 function HowToJsonLd({ locale }: { locale: string }) {
@@ -221,6 +145,8 @@ function MewsSoftwareApplicationJsonLd() {
 export default async function MewsIntegrationPage({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
+  // Mêmes messages que la FAQ visible (IntegrationFaq) : le balisage reflète ce que la page affiche.
+  const faq = await getTranslations({ locale, namespace: 'mewsIntegration.faq' });
 
   return (
     <>
@@ -236,7 +162,7 @@ export default async function MewsIntegrationPage({ params }: PageProps) {
           { name: 'Mews', url: `${baseUrl}/${locale}/integrations/pms/mews` },
         ]}
       />
-      <FAQPageJsonLd locale={locale} />
+      <FaqJsonLd items={faq.raw('items') as FaqItem[]} />
       <HowToJsonLd locale={locale} />
       <MewsSoftwareApplicationJsonLd />
 
