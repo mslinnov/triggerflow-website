@@ -190,7 +190,7 @@ export const solutions: Record<string, SolutionData> = {
       {
         slug: 'avis',
         highlight: "Plus d'avis Google",
-        whyForPersona: "Vos clients satisfaits deviennent vos ambassadeurs. Le bon message au bon moment double vos avis.",
+        whyForPersona: "Vos clients satisfaits deviennent vos ambassadeurs. Le bon message au bon moment les invite à publier un avis.",
         bullets: ['Enquête satisfaction avant demande', 'Lien direct vers Google', 'Réponses IA aux avis'],
       },
       {
@@ -1236,7 +1236,7 @@ export const solutions: Record<string, SolutionData> = {
       },
       {
         question: 'Combien de temps faut-il pour voir des résultats ?',
-        answer: 'Les premiers résultats sont visibles dès le premier mois. En moyenne, nos clients doublent leur nombre d\'avis en 3 mois et gagnent +0.4 étoile sur leur note Google.',
+        answer: 'Les premières demandes d\'avis partent dès l\'activation du scénario. Le nombre d\'avis gagnés dépend de votre volume de séjours et de la part de clients qui laissent une adresse e-mail valide.',
       },
       {
         question: 'TriggerFlow fonctionne-t-il avec TripAdvisor et Booking ?',

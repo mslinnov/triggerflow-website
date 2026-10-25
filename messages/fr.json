@@ -200,9 +200,9 @@
     },
     "results": {
       "label": "Résultats",
-      "reviews": "+45% d'avis Google",
-      "timeSaved": "10h gagnées / semaine",
-      "upsell": "+17% de ventes additionnelles"
+      "reviews": "Une demande d'avis après chaque séjour",
+      "timeSaved": "Moins de copier-coller à la réception",
+      "upsell": "Des extras vendus avant l'arrivée"
     },
     "result": {
       "title": "Automatisation déclenchée"
@@ -342,7 +342,7 @@
       },
       "sms": {
         "title": "SMS",
-        "description": "Messages courts et lus à 98%. Idéal pour le check-in, les rappels et les offres de dernière minute."
+        "description": "Messages courts, remis même sans connexion internet : 90 % des SMS de nos clients sont remis (12 derniers mois). Idéal pour le check-in, les rappels et les offres de dernière minute."
       },
       "whatsapp": {
         "title": "WhatsApp",
@@ -443,7 +443,7 @@
       },
       "forms": {
         "title": "Formulaires intelligents",
-        "description": "Pré-check-in, enquêtes, préférences. Taux de réponse multiplié par 3 grâce à l'envoi automatisé.",
+        "description": "Pré-check-in, enquêtes, préférences : envoyés automatiquement au bon moment du séjour.",
         "highlights": [
           "Pré-check-in automatisé",
           "Enquêtes de satisfaction"
@@ -459,7 +459,7 @@
       },
       "reviews": {
         "title": "Gestion des avis",
-        "description": "Collectez 5 fois plus d'avis positifs. Identifiez les insatisfaits avant qu'ils ne publient.",
+        "description": "Invitez chaque client à laisser un avis. Identifiez les insatisfaits avant qu'ils ne publient.",
         "highlights": [
           "Collecte d'avis automatisée",
           "Alerte insatisfaction en temps réel"
@@ -473,7 +473,7 @@
   },
   "examples": {
     "badge": "Cas d'usage",
-    "title": "Des scénarios concrets, des résultats mesurés",
+    "title": "Des scénarios concrets, prêts à l'emploi",
     "subtitle": "Les automatisations les plus déployées par nos clients hôteliers.",
     "bottomTitle": "Un besoin spécifique ?",
     "bottomText": "Chaque établissement est unique. Échangeons sur votre projet pour concevoir les automatisations adaptées à votre réalité.",
@@ -482,42 +482,42 @@
       "sms": {
         "title": "SMS de bienvenue",
         "description": "Message personnalisé envoyé automatiquement au check-in avec infos pratiques du séjour.",
-        "result": "98% de taux de lecture"
+        "result": "90 % des SMS remis (12 derniers mois)"
       },
       "precheckin": {
         "title": "Pré-check-in en ligne",
         "description": "Formulaire envoyé avant l'arrivée pour collecter identité, préférences et heure d'arrivée.",
-        "result": "73% de complétion"
+        "result": "Identité et préférences connues avant l'arrivée"
       },
       "event": {
         "title": "Promotion d'événements",
         "description": "Notifiez vos clients des événements à venir avec inscription en un clic.",
-        "result": "+35% de participation"
+        "result": "Inscription en un clic"
       },
       "survey": {
         "title": "Enquêtes satisfaction",
         "description": "Collectez les retours au bon moment, puis invitez chaque client à laisser un avis Google.",
-        "result": "+45% d'avis Google"
+        "result": "Chaque client invité à laisser un avis"
       },
       "upsell": {
         "title": "Ventes additionnelles",
         "description": "Proposez surclassement, spa, late checkout au moment idéal du parcours client.",
-        "result": "+17% de revenu additionnel"
+        "result": "5 % des offres envoyées 3 à 7 jours avant l'arrivée achetées"
       },
       "reviews": {
         "title": "Collecte d'avis",
         "description": "Sollicitez un avis à chaque client, et entendez les insatisfaits avant qu'ils ne publient.",
-        "result": "8.2 → 9.1 note Booking"
+        "result": "Les insatisfaits repérés avant de publier"
       },
       "loyalty": {
         "title": "Fidélité & Newsletter",
         "description": "Campagnes ciblées post-séjour, offres de retour personnalisées et programme fidélité.",
-        "result": "+28% de clients fidélisés"
+        "result": "Des offres de retour ciblées"
       },
       "payments": {
         "title": "Liens de paiement",
         "description": "Acompte, caution, empreinte carte : envoyez des liens de paiement personnalisés automatiquement.",
-        "result": "85% payés en moins de 2h"
+        "result": "91 % des paiements réglés dans les 2 h après ouverture du lien"
       }
     }
   },
@@ -530,7 +530,7 @@
     "steps": {
       "connect": {
         "title": "Connectez votre PMS",
-        "description": "Intégration native avec Mews, Opera, Thaïs et plus de 50 systèmes. Vos données clients se synchronisent en temps réel."
+        "description": "Intégration native avec 12 PMS, dont Mews, Opera Cloud, Thaïs et Medialog. Vos données clients se synchronisent en temps réel."
       },
       "create": {
         "title": "Configurez vos workflows",
@@ -696,8 +696,8 @@
   "integrationsShowcase": {
     "badge": "Intégrations",
     "title": "Connecté à votre écosystème",
-    "subtitle": "Intégration native avec plus de 50 PMS et logiciels hôteliers",
-    "count": "+50 intégrations",
+    "subtitle": "Intégration native avec 12 PMS et vos outils hôteliers",
+    "count": "12 PMS connectés",
     "cta": "Voir toutes les intégrations"
   },
   "testimonialsCarousel": {
@@ -779,8 +779,8 @@
       }
     },
     "satisfaction": {
-      "value": "9.4/10",
-      "label": "Satisfaction client"
+      "value": "5/5",
+      "label": "Note Google (3 avis)"
     }
   },
   "stickyMobileCta": {
@@ -1411,7 +1411,7 @@
       "title": "Ce qui change quand vos emails se gèrent tout seuls",
       "subtitle": "",
       "before": "Sans TriggerFlow",
-      "beforeSubtitle": "La réalité de 80% des hôtels encore aujourd'hui",
+      "beforeSubtitle": "La réalité de beaucoup d'hôtels encore aujourd'hui",
       "after": "Avec TriggerFlow",
       "afterSubtitle": "Dès la première semaine"
     },
@@ -1443,7 +1443,7 @@
     },
     "related": {
       "title": "Encore plus puissant combiné",
-      "subtitle": "Ajoutez SMS ou WhatsApp pour 2x plus d'engagement"
+      "subtitle": "Ajoutez SMS ou WhatsApp pour joindre vos clients sur leur téléphone"
     },
     "cta": {
       "title": "Prêt à découvrir ce module ?",
@@ -1454,7 +1454,7 @@
     },
     "trustBadges": {
       "rgpd": "Conforme RGPD",
-      "pms": "Connecté à 8+ PMS",
+      "pms": "12 PMS connectés",
       "support": "Support 7j/7"
     },
     "badges": {
@@ -1468,7 +1468,7 @@
   "product": {
     "meta": {
       "title": "CRM hôtelier tout-en-un - Email, SMS, WhatsApp, Workflows",
-      "description": "Plateforme tout-en-un pour hôteliers : CRM, email, SMS, WhatsApp, workflows automatisés, fidélité, avis Google. Connecté à 8+ PMS français."
+      "description": "Plateforme tout-en-un pour hôteliers : CRM, email, SMS, WhatsApp, workflows automatisés, fidélité, avis Google. Connecté à 12 PMS."
     },
     "hero": {
       "title": "Une plateforme complète pour votre relation client",
@@ -1897,7 +1897,7 @@
               "description": "SMS avec le code de la serrure connectée et un lien de pré-check-in. La cliente arrive, badge la porte, s'installe. Zéro file d'attente à la réception."
             }
           ],
-          "result": "12-18 % de conversion sur l'upselling pré-séjour. Pour un hôtel de 80 chambres à 130 € d'ADR, ça représente 15 000 à 25 000 € de revenus additionnels par an."
+          "result": "L'offre part avant l'arrivée, seulement si la chambre est disponible dans Mews. Sur l'ensemble de nos clients, 5 % des offres envoyées 3 à 7 jours avant l'arrivée sont achetées (36 708 envois mesurés)."
         },
         {
           "badge": "Scénario 2",
@@ -1917,7 +1917,7 @@
               "description": "Alerte immédiate au directeur, qui appelle le client dans les 24h. Le problème est souvent réglé avant que le client n'écrive un avis."
             }
           ],
-          "result": "Un hôtel parisien est passé de 8 à 26 avis Google par mois en 4 mois, avec une réduction de 40 % des avis négatifs publics."
+          "result": "Les clients satisfaits sont invités à publier un avis, les insatisfaits sont rappelés par le directeur avant d'écrire en ligne."
         },
         {
           "badge": "Scénario 3",
@@ -1937,7 +1937,7 @@
               "description": "Si pas de nouvelle réservation : relance saisonnière adaptée au profil. Si le client a réservé en direct entre-temps, il sort automatiquement du workflow, pas de spam."
             }
           ],
-          "result": "Sur 15-18 % de commission OTA, chaque client reconverti en direct représente un gain immédiat. Un hôtel qui reconvertit 20 clients/mois économise 4 000-6 000 €/mois de commissions."
+          "result": "Chaque client qui revient en direct plutôt que par une OTA vous épargne la commission de la plateforme."
         }
       ],
       "ctaMid1": {
@@ -2752,7 +2752,7 @@
           "text": "Liens de paiement · Acomptes · Statistiques · Rapports"
         }
       },
-      "pms": "Connecté à votre PMS · Plus de 50 intégrations",
+      "pms": "Connecté à votre PMS · 12 PMS intégrés",
       "badges": {
         "setup": "Opérationnel en 48 heures",
         "support": "Support 7j/7",

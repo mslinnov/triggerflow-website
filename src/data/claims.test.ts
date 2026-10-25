@@ -88,7 +88,8 @@ test('pages produit et solutions : aucun chiffre de résultat non mesuré hors t
 
 test('messages FR/EN : aucun chiffre de résultat non mesuré hors témoignages et études publiées', () => {
   // lpUpsell et lpPostStay publient des études mesurées (upsell-services.ts, post-stay.ts).
-  const skip = new Set(['testimonialFeatured', 'testimonialsCarousel', 'testimonial', 'lpUpsell', 'lpPostStay', 'pricing', 'priceChange']);
+  // heroDashboard : valeurs d'exemple de la maquette du tableau de bord (maquettes hors périmètre).
+  const skip = new Set(['testimonialFeatured', 'testimonialsCarousel', 'testimonial', 'heroDashboard', 'lpUpsell', 'lpPostStay', 'pricing', 'priceChange']);
   for (const locale of ['fr', 'en']) {
     const messages = JSON.parse(readFileSync(join(root, 'messages', `${locale}.json`), 'utf8'));
     assert.deepEqual(offenders(strings(messages, skip, locale)), []);
@@ -108,6 +109,8 @@ const BANNED = [
   /150\+ (avis|reviews)/,
   /98 ?% de satisfaction/i,
   /(plus de|more than|\+) ?50 (PMS|systèmes|systems|intégrations|integrations)/i,
+  /50\+ (other |hotel )?(PMS|systems|integrations)/i,
+  /8[.,]2 ?→ ?9[.,]1/,
   /\d+ ?h(eures)? (gagnées|économisées|récupérées|par semaine)/i,
   /\d+ ?h(ours)? (saved|per week|a week)/i,
   /délivrabilité de 98|98 ?% de délivrabilité|98 ?% deliverability/i,

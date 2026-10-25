@@ -125,8 +125,8 @@
     },
     "trustBadges": {
       "rgpd": "GDPR Compliant",
-      "pms": "50+ PMS integrated",
-      "support": "24/7 Support"
+      "pms": "12 PMS connected",
+      "support": "Support 7 days a week"
     }
   },
   "heroDashboard": {
@@ -200,9 +200,9 @@
     },
     "results": {
       "label": "Results",
-      "reviews": "+45% Google reviews",
-      "timeSaved": "10h saved / week",
-      "upsell": "+17% additional sales"
+      "reviews": "A review request after every stay",
+      "timeSaved": "Less copy-pasting at the front desk",
+      "upsell": "Extras sold before arrival"
     },
     "result": {
       "title": "Automation triggered"
@@ -342,7 +342,7 @@
       },
       "sms": {
         "title": "SMS",
-        "description": "Short messages read 98% of the time. Perfect for check-in, reminders and last-minute offers."
+        "description": "Short messages that arrive even without mobile data: 90% of our clients' SMS are delivered (last 12 months). Perfect for check-in, reminders and last-minute offers."
       },
       "whatsapp": {
         "title": "WhatsApp",
@@ -443,7 +443,7 @@
       },
       "forms": {
         "title": "Smart Forms",
-        "description": "Pre-check-in, surveys, preferences. 3x response rate with automated delivery.",
+        "description": "Pre-check-in, surveys, preferences: sent automatically at the right moment of the stay.",
         "highlights": [
           "Automated pre-check-in",
           "Satisfaction surveys"
@@ -459,7 +459,7 @@
       },
       "reviews": {
         "title": "Review Management",
-        "description": "Collect 5x more positive reviews. Spot unhappy guests before they publish.",
+        "description": "Invite every guest to leave a review. Spot unhappy guests before they publish.",
         "highlights": [
           "Automated review collection",
           "Real-time dissatisfaction alerts"
@@ -482,42 +482,42 @@
       "sms": {
         "title": "Welcome SMS",
         "description": "Personalized message sent automatically at check-in with practical stay information.",
-        "result": "98% read rate"
+        "result": "90% of SMS delivered (last 12 months)"
       },
       "precheckin": {
         "title": "Online Pre-check-in",
         "description": "Form sent before arrival to collect identity, preferences and arrival time.",
-        "result": "73% completion rate"
+        "result": "ID and preferences known before arrival"
       },
       "event": {
         "title": "Event Promotion",
         "description": "Notify guests about upcoming events with one-click registration.",
-        "result": "+35% participation"
+        "result": "One-click registration"
       },
       "survey": {
         "title": "Satisfaction Surveys",
         "description": "Collect feedback at the right time, then invite every guest to review you on Google.",
-        "result": "+45% Google reviews"
+        "result": "Every guest invited to leave a review"
       },
       "upsell": {
         "title": "Upselling",
         "description": "Offer upgrades, spa, late checkout at the ideal moment in the guest journey.",
-        "result": "+17% additional revenue"
+        "result": "5% of offers sent 3 to 7 days before arrival are bought"
       },
       "reviews": {
         "title": "Review Collection",
         "description": "Ask every guest for a review, and hear from unhappy ones before they publish.",
-        "result": "8.2 → 9.1 Booking score"
+        "result": "Unhappy guests spotted before they post"
       },
       "loyalty": {
         "title": "Loyalty & Newsletter",
         "description": "Targeted post-stay campaigns, personalized return offers and loyalty program.",
-        "result": "+28% repeat guests"
+        "result": "Targeted come-back offers"
       },
       "payments": {
         "title": "Payment Links",
         "description": "Deposit, security hold, card on file: send branded payment links automatically.",
-        "result": "85% paid within 2 hours"
+        "result": "91% of payments made within 2 hours of opening the link"
       }
     }
   },
@@ -530,7 +530,7 @@
     "steps": {
       "connect": {
         "title": "Connect your PMS",
-        "description": "1-click integration with Mews, Opera, Thaïs and 50+ other systems. Your guest data syncs automatically."
+        "description": "Native integration with 12 PMS, including Mews, Opera Cloud, Thaïs and Medialog. Your guest data syncs automatically."
       },
       "create": {
         "title": "Create your automations",
@@ -696,8 +696,8 @@
   "integrationsShowcase": {
     "badge": "Integrations",
     "title": "Works with your PMS",
-    "subtitle": "1-click connection with 50+ hotel systems",
-    "count": "50+ integrations",
+    "subtitle": "Native connection with 12 PMS and your hotel tools",
+    "count": "12 PMS connected",
     "cta": "View all integrations"
   },
   "testimonialsCarousel": {
@@ -766,7 +766,7 @@
         "description": "Guided setup, data import, first workflows active in less than 2 days."
       },
       "support": {
-        "title": "24/7 Support",
+        "title": "Support 7 days a week",
         "description": "Chat, email or phone, with a team that knows hospitality."
       },
       "training": {
@@ -779,8 +779,8 @@
       }
     },
     "satisfaction": {
-      "value": "9.4/10",
-      "label": "Customer satisfaction"
+      "value": "5/5",
+      "label": "Google rating (3 reviews)"
     }
   },
   "stickyMobileCta": {
@@ -1403,7 +1403,7 @@
       "title": "What changes when your emails run themselves",
       "subtitle": "",
       "before": "Without TriggerFlow",
-      "beforeSubtitle": "The reality for 80% of hotels today",
+      "beforeSubtitle": "The reality for many hotels today",
       "after": "With TriggerFlow",
       "afterSubtitle": "From week one"
     },
@@ -1435,7 +1435,7 @@
     },
     "related": {
       "title": "Even more powerful combined",
-      "subtitle": "Add SMS or WhatsApp for 2x more engagement"
+      "subtitle": "Add SMS or WhatsApp to reach guests on their phone"
     },
     "cta": {
       "title": "Ready to discover this module?",
@@ -1446,8 +1446,8 @@
     },
     "trustBadges": {
       "rgpd": "GDPR Compliant",
-      "pms": "Connected to 8+ PMS",
-      "support": "24/7 Support"
+      "pms": "12 PMS connected",
+      "support": "Support 7 days a week"
     },
     "badges": {
       "journey": "Guest journey",
@@ -1460,7 +1460,7 @@
   "product": {
     "meta": {
       "title": "All-in-One Hotel CRM - Email, SMS, WhatsApp, Workflows",
-      "description": "All-in-one platform for hoteliers: CRM, email, SMS, WhatsApp, automated workflows, loyalty, Google reviews. Connected to 8+ PMS."
+      "description": "All-in-one platform for hoteliers: CRM, email, SMS, WhatsApp, automated workflows, loyalty, Google reviews. Connected to 12 PMS."
     },
     "hero": {
       "title": "A complete platform for your customer relationship",
@@ -1889,7 +1889,7 @@
               "description": "SMS with smart lock code and a pre-check-in link. The guest arrives, badges the door, settles in. Zero queue at the front desk."
             }
           ],
-          "result": "12-18% conversion on pre-stay upselling. For an 80-room hotel at €130 ADR, that's €15,000-25,000 in additional revenue per year."
+          "result": "The offer goes out before arrival, only if the room is available in Mews. Across all our clients, 5% of offers sent 3 to 7 days before arrival are bought (36,708 sends measured)."
         },
         {
           "badge": "Scenario 2",
@@ -1909,7 +1909,7 @@
               "description": "Immediate alert to the manager, who calls the guest within 24 hours. The issue is often settled before the guest writes a review."
             }
           ],
-          "result": "A Paris hotel went from 8 to 26 Google reviews per month in 4 months, with a 40% reduction in public negative reviews."
+          "result": "Happy guests are invited to post a review; unhappy ones get a call from the manager before they write online."
         },
         {
           "badge": "Scenario 3",
@@ -1929,7 +1929,7 @@
               "description": "If no new booking: seasonal reminder tailored to their profile. If the guest has booked direct since, they automatically exit the workflow. No spam."
             }
           ],
-          "result": "On 15-18% OTA commission, every guest converted to direct represents immediate savings. A hotel converting 20 guests/month saves €4,000-6,000/month in commissions."
+          "result": "Every guest who comes back direct rather than through an OTA saves you the platform's commission."
         }
       ],
       "ctaMid1": {
