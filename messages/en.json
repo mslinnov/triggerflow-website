@@ -698,7 +698,9 @@
     "title": "Works with your PMS",
     "subtitle": "13 PMS, smart locks, online payments and thousands of apps via Zapier and n8n",
     "count": "13 PMS + Zapier & n8n",
-    "cta": "View all integrations"
+    "cta": "View all integrations",
+    "comingSoon": "Coming soon",
+    "native": "Native"
   },
   "testimonialsCarousel": {
     "badge": "Testimonials",
@@ -1190,7 +1192,8 @@
     },
     "badges": {
       "native": "Native",
-      "api": "API"
+      "api": "API",
+      "comingSoon": "Coming soon"
     },
     "categories": {
       "pms": {

@@ -184,6 +184,10 @@ test('connexions sans connecteur dans l\'app : absentes ; PMS en cours seulement
     assert.ok(!keys.includes(missing), `${missing} affiché sans connecteur`);
   }
   assert.ok(brand.pmsEnCours.every((p) => !(brand.pms as readonly string[]).includes(p)), 'un PMS en cours compté comme connecté');
+  const showcase = readFileSync(join(root, 'src', 'components', 'sections', 'IntegrationsShowcase.tsx'), 'utf8');
+  // Chaque PMS en cours est marqué « bientôt disponible » là où il s'affiche.
+  assert.match(page, /key: 'chloe', logo: '[^']+', comingSoon: true/);
+  for (const name of brand.pmsEnCours) assert.match(showcase, new RegExp(`name: '${name}'[^\n]*comingSoon: true`));
   const all = ['fr', 'en'].map((l) => readFileSync(join(root, 'messages', `${l}.json`), 'utf8')).join('\n') + page;
   assert.doesNotMatch(all, /Chloë/);
 });

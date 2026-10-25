@@ -46,8 +46,9 @@ export const brand = {
     'Lean PMS',
   ],
   /**
-   * PMS dont le connecteur est en cours de développement : affichés comme tels, jamais comptés
-   * dans `pms` tant que le connecteur n'existe pas dans l'app.
+   * PMS dont le connecteur est en cours de développement : affichés à part, « bientôt disponible » /
+   * « coming soon », jamais comptés dans `pms` tant que le connecteur n'existe pas dans l'app.
+   * Un PMS n'entre ici qu'avec son nom (décision du 25/10/2026 : pas de « + N » anonyme).
    */
   pmsEnCours: ['Chloé'],
   /**

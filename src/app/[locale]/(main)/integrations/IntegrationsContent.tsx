@@ -17,6 +17,8 @@ const integrationLinks: Record<string, string> = {
 interface Integration {
   key: string;
   logo: string;
+  /** PMS de brand.pmsEnCours : badge « bientôt disponible », jamais compté dans le total connecté. */
+  comingSoon?: boolean;
 }
 
 interface Category {
@@ -41,10 +43,10 @@ const integrationCategories: Category[] = [
       { key: 'mews', logo: '/images/integrations/mews.svg' },
       { key: 'asterio', logo: '/images/integrations/asterio.png' },
       { key: 'leanpms', logo: '/images/integrations/leanpms.webp' },
-      { key: 'chloe', logo: '/images/integrations/chloe.webp' },
       { key: 'vega', logo: '/images/integrations/vega.png' },
       { key: 'apaleo', logo: '/images/integrations/apaleo.png' },
       { key: 'zeswitch', logo: '/images/integrations/zeswitch.png' },
+      { key: 'chloe', logo: '/images/integrations/chloe.webp', comingSoon: true },
     ],
   },
   {
@@ -228,6 +230,12 @@ export function IntegrationsContent() {
                       'hover:shadow-lg hover:shadow-zinc-200/50',
                       category.borderColor
                     )}>
+                      {integration.comingSoon && (
+                        <span className="absolute right-2 top-2 z-10 rounded-full bg-brand-primary/10 px-2 py-0.5 text-[10px] font-medium text-brand-primary">
+                          {t('badges.comingSoon')}
+                        </span>
+                      )}
+
                       {/* Logo container */}
                       <div className="flex items-center justify-center rounded-xl h-24 mb-1 bg-gradient-to-b from-zinc-50/80 to-white">
                         <Image

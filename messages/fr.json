@@ -698,7 +698,9 @@
     "title": "Connecté à votre écosystème",
     "subtitle": "13 PMS, serrures connectées, paiement en ligne et des milliers d'applications via Zapier et n8n",
     "count": "13 PMS + Zapier et n8n",
-    "cta": "Voir toutes les intégrations"
+    "cta": "Voir toutes les intégrations",
+    "comingSoon": "Bientôt disponible",
+    "native": "Natif"
   },
   "testimonialsCarousel": {
     "badge": "Témoignages",
@@ -1198,7 +1200,8 @@
     },
     "badges": {
       "native": "Natif",
-      "api": "API"
+      "api": "API",
+      "comingSoon": "Bientôt disponible"
     },
     "categories": {
       "pms": {
