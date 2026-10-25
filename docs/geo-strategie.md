@@ -38,6 +38,9 @@ Perplexity et ChatGPT demandent une connexion : la mesure directe est à faire �
 - **Faits de marque uniques** : `src/data/brand.ts` (création 2019 à Toulouse, éditeur Utelys, PMS connectés vérifiés
   dans le code de l'app, définition FR/EN). Utilisé par le JSON-LD Organization et par `llms.txt`.
   Retirés : « leader », « levée de fonds 2021 », « 20 collaborateurs », « 15 pays », création 2020 à Paris.
+  Nombre d'hôtels : 300+ partout (chiffre confirmé le 25/10/2026, `src/data/company-stats.ts`).
+- **Frise À propos** réduite aux faits confirmés : 2019 création à Toulouse, 2024 ouverture à l'international,
+  aujourd'hui 300+ hôtels.
 - **À propos** : l'équipe fictive (noms d'exemple) remplacée par les vraies personnes (`src/data/authors.ts`).
 - **Clock PMS retiré** (FAQ accueil, FAQ ventes additionnelles, page intégrations, bandeaux de logos) : aucun
   connecteur Clock n'existe dans l'app.
@@ -99,7 +102,6 @@ Perplexity et ChatGPT demandent une connexion : la mesure directe est à faire �
   d'avis Google », « 98 % de taux d'ouverture SMS », « 6-12 mois de retour sur investissement »). À sourcer ou à
   retirer lors de la prochaine révision de chaque article.
 - La page intégration Mews présente Soufiane avec une bio (« 8 ans… », « Food Hotel Tech 2025 ») à confirmer.
-- Timeline À propos : « 100 premiers clients » (2021) et « ouverture à l'international » (2022) à confirmer.
 
 ## 6. Mesure
 

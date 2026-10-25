@@ -21,6 +21,7 @@ export const authors: Record<AuthorId, Author> = {
     id: 'mounir-lakhfif',
     name: 'Mounir Lakhfif',
     role: { fr: 'Fondateur de TriggerFlow', en: 'Founder of TriggerFlow' },
+    linkedin: 'https://www.linkedin.com/in/mounir-lakhfif/',
   },
   'soufiane-bouyahia': {
     id: 'soufiane-bouyahia',

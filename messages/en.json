@@ -121,7 +121,7 @@
     "ctaFree": "Free 14-day trial",
     "ctaSecondary": "Discover modules",
     "socialProof": {
-      "hotels": "Thousands of satisfied users"
+      "hotels": "Over 300 hotels trust us"
     },
     "trustBadges": {
       "rgpd": "GDPR Compliant",
@@ -1128,23 +1128,19 @@
       "title": "Our story",
       "p1": "TriggerFlow was born from a simple observation: hoteliers spend too much time on repetitive tasks that could be automated.",
       "p2": "Founded in 2019 in Toulouse by hospitality and digital enthusiasts, our company set out to create simple and powerful tools to transform customer relationships.",
-      "p3": "Today, TriggerFlow supports over 500 properties across France and Europe in their digital transformation.",
+      "p3": "Today, TriggerFlow supports over 300 properties across France and Europe in their digital transformation.",
       "timeline": {
         "2019": {
           "title": "Founded",
           "description": "TriggerFlow launched in Toulouse"
         },
-        "2021": {
-          "title": "Growth",
-          "description": "First 100 customers"
-        },
-        "2022": {
-          "title": "Expansion",
+        "2024": {
+          "title": "International",
           "description": "International expansion"
         },
-        "2024": {
-          "title": "Leadership",
-          "description": "500+ hotels equipped"
+        "today": {
+          "title": "Today",
+          "description": "300+ hotels equipped"
         }
       }
     },

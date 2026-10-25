@@ -19,7 +19,7 @@ export type StatId =
   | 'countries';
 
 export const companyStats: Record<StatId, { fr: string; en: string }> = {
-  hotels: { fr: '500+', en: '500+' },
+  hotels: { fr: '300+', en: '300+' },
   rating: { fr: '9,4/10', en: '9.4/10' },
   googleReviews: { fr: '+45 %', en: '+45%' },
   avgBasket: { fr: '+17 %', en: '+17%' },

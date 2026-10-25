@@ -8,7 +8,7 @@ import { fadeInUp, staggerContainer, staggerItem, slideInLeft, slideInRight, def
 import { authors } from '@/data/authors';
 
 const stats = [
-  { key: 'hotels', icon: Hotel, value: '500+' },
+  { key: 'hotels', icon: Hotel, value: '300+' },
   { key: 'messages', icon: Zap, value: '2M+' },
 ];
 
@@ -76,7 +76,7 @@ export function AboutContent() {
             >
               {/* Timeline visual */}
               <div className="space-y-6">
-                {['2019', '2021', '2022', '2024'].map((year, index) => (
+                {['2019', '2024', 'today'].map((year, index) => (
                   <motion.div
                     key={year}
                     initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, x: 20 }}
@@ -86,7 +86,7 @@ export function AboutContent() {
                     className="flex items-start gap-4"
                   >
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-primary text-white font-bold text-sm">
-                      {year.slice(2)}
+                      {year === 'today' ? <Hotel className="h-4 w-4" aria-hidden="true" /> : year.slice(2)}
                     </div>
                     <div className="pt-2">
                       <p className="font-semibold text-brand-dark">{t(`history.timeline.${year}.title`)}</p>
