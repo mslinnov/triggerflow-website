@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
+import { pageAlternates } from '@/lib/seo';
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: 'TriggerFlow x Thaïs | Automatisation Communication Hôtelière',
   description:
     'Intégration 1-clic entre Thaïs PMS et TriggerFlow. Automatisez vos communications SMS, Email et WhatsApp directement depuis votre interface Thaïs. Synchronisation temps réel et hub de messagerie unifié.',
@@ -26,6 +27,11 @@ export const metadata: Metadata = {
     ],
   },
 };
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  return { ...baseMetadata, alternates: pageAlternates(locale, '/lp/thais-v2') };
+}
 
 export default function ThaisV2LandingLayout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;

@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import { getCaseStudyBySlug, getAllSlugs } from '@/lib/case-studies';
 import CaseStudyDetail from './CaseStudyDetail';
+import { pageAlternates } from '@/lib/seo';
 
 interface Props {
   params: Promise<{ locale: string; slug: string }>;
@@ -13,7 +14,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const caseStudy = getCaseStudyBySlug(slug);
 
   if (!caseStudy) return {};
@@ -29,6 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       images: [caseStudy.image],
     },
+    alternates: pageAlternates(locale, `/ressources/cas-clients/${slug}`),
   };
 }
 

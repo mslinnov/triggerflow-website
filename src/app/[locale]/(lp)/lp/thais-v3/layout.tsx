@@ -1,7 +1,8 @@
 import { Metadata } from 'next';
 import { Suspense } from 'react';
+import { pageAlternates } from '@/lib/seo';
 
-export const metadata: Metadata = {
+const baseMetadata: Metadata = {
   title: 'TriggerFlow x Thaïs PMS | Automatisation relation client hôtelière',
   description:
     'Solution d\'automatisation email et SMS pour hôtels utilisant Thaïs PMS. Configurez une fois, vos emails s\'envoient automatiquement. Support français.',
@@ -23,6 +24,11 @@ export const metadata: Metadata = {
     follow: true,
   },
 };
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  return { ...baseMetadata, alternates: pageAlternates(locale, '/lp/thais-v3') };
+}
 
 export default function ThaisV3Layout({ children }: { children: React.ReactNode }) {
   return <Suspense fallback={null}>{children}</Suspense>;
