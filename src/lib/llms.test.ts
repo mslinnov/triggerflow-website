@@ -29,6 +29,7 @@ test('faits de marque lus dans brand.ts : délai de mise en place, support, slog
   const jsonLd = read('components', 'seo', 'JsonLd.tsx');
   assert.doesNotMatch(jsonLd, /slogan: '/, 'slogan en dur (français sur les pages EN)');
   assert.equal(jsonLd.match(/slogan: brand\.slogan\[/g)?.length, 2);
+  assert.match(jsonLd, /featureList: \[\.\.\.brand\.featureList\[/, 'featureList en dur (français sur les pages EN)');
 });
 
 test('le texte brut résout les chiffres TriggerFlow et retire les composants', () => {

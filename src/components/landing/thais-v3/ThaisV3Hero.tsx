@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, Check, Mail, Clock } from 'lucide-react';
 import { Container, ButtonLink } from '@/components/ui';
+import { companyStats } from '@/data/company-stats';
 
 export function ThaisV3Hero() {
   const searchParams = useSearchParams();
@@ -68,9 +69,9 @@ export function ThaisV3Hero() {
 
             {/* Subheadline */}
             <p className="mx-auto mt-6 max-w-lg text-lg leading-relaxed text-[var(--v3-text-secondary)] lg:mx-0">
-              Configurez une fois, TriggerFlow s'occupe du reste.{' '}
+              Configurez une fois, TriggerFlow s’occupe du reste.{' '}
               <strong className="font-semibold text-[var(--v3-text-primary)]">
-                Même quand vous n'êtes pas là.
+                Même quand vous n’êtes pas là.
               </strong>
             </p>
 
@@ -108,7 +109,7 @@ export function ThaisV3Hero() {
                   ))}
                 </div>
                 <span className="text-sm text-[var(--v3-text-secondary)]">
-                  <strong className="font-semibold text-[var(--v3-text-primary)]">300+</strong>{' '}
+                  <strong className="font-semibold text-[var(--v3-text-primary)]">{companyStats.hotels.fr}</strong>{' '}
                   hôteliers nous font confiance
                 </span>
               </div>

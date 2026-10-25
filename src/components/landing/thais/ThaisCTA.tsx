@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Mail, Check } from 'lucide-react';
 import Image from 'next/image';
 import { Container, ButtonLink } from '@/components/ui';
+import { companyStats } from '@/data/company-stats';
 
 export function ThaisCTA() {
   const searchParams = useSearchParams();
@@ -40,10 +41,10 @@ export function ThaisCTA() {
           className="text-center"
         >
           <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
-            Prêt à vous libérer l'esprit ?
+            Prêt à vous libérer l’esprit ?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-white/80">
-            Rejoignez les 300+ hôtels qui utilisent TriggerFlow pour gagner du temps et améliorer
+            Rejoignez les {companyStats.hotels.fr} hôtels qui utilisent TriggerFlow pour gagner du temps et améliorer
             la satisfaction client
           </p>
 

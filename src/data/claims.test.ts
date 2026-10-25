@@ -105,6 +105,27 @@ test('stats animées et résultats des cas d\'usage : ni durée, ni multiplicate
   assert.deepEqual(found, []);
 });
 
+test('LP Thaïs et solutions : nombre d\'hôtels et de messages lus dans company-stats.ts', () => {
+  const landing = join(root, 'src', 'components', 'landing');
+  const scanned = [
+    ...['thais', 'thais-v2', 'thais-v3'].flatMap((d) => files(join(landing, d), /\.tsx$/)),
+    join(root, 'src', 'data', 'solutions.ts'),
+  ];
+  const found = scanned.flatMap((file) =>
+    readFileSync(file, 'utf8')
+      .split('\n')
+      .flatMap((line, i) => (/(300|2M) ?\+|value: '300'/.test(line) ? [`${file.slice(root.length + 1)}:${i + 1}`] : [])),
+  );
+  assert.deepEqual(found, []);
+});
+
+test('chiffre externe dans les stats : source publique nommée, avec sa date', () => {
+  // Un chiffre qui n'est pas mesuré par TriggerFlow (ex. utilisateurs WhatsApp) cite son éditeur et son année.
+  const external = Object.values(modules).flatMap((m) => (m.stats ?? []).filter((s) => /Mds|milliards|billion/i.test(`${s.suffix} ${s.label}`)));
+  assert.ok(external.length > 0);
+  for (const s of external) assert.match(s.label, /\((Meta|WhatsApp)[^)]*20\d\d\)/, s.label);
+});
+
 test('pages À propos, Carrières, /v2 et étapes de l\'accueil : chiffres de marque lus dans brand.ts et company-stats.ts', () => {
   const read = (...p: string[]) => readFileSync(join(root, 'src', ...p), 'utf8');
   const pages = {
@@ -265,6 +286,9 @@ test('formation du stand : PMS_LIST = brand.pms, et module embarqué à jour', a
   const list = html.match(/var PMS_LIST = "([^"]+)";/);
   assert.ok(list, 'PMS_LIST introuvable');
   assert.deepEqual(list[1].split(', ').sort(), [...brand.pms].sort());
+  // Même date de création que brand.ts (et que le JSON-LD, llms.txt et la page À propos).
+  assert.match(html, new RegExp(`créé en ${brand.foundingDate} à ${brand.foundingCity}`));
+  assert.doesNotMatch(html, /depuis 2018|lancé il y a/);
   // Le HTML servi est le module généré par scripts/embed-formation-salon.mjs : il doit suivre la source.
   const { FORMATION_HTML } = await import('../lib/formation-salon/html');
   assert.equal(FORMATION_HTML, html, 'relancer node scripts/embed-formation-salon.mjs');

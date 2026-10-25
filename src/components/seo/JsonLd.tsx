@@ -101,14 +101,7 @@ export function SoftwareApplicationJsonLd({ locale = 'fr' }: { locale?: string }
     author: { '@id': `${baseUrl}/#organization` },
     publisher: { '@id': `${baseUrl}/#organization` },
     offers: buildOffers(locale, phase),
-    featureList: [
-      'Synchronisation PMS',
-      'SMS & Emails automatisés',
-      'Enquêtes de satisfaction',
-      'Ventes additionnelles',
-      'Tableaux de bord analytiques',
-      'Templates personnalisables',
-    ],
+    featureList: [...brand.featureList[locale === 'fr' ? 'fr' : 'en']],
   };
 
   return (

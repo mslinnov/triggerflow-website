@@ -354,7 +354,8 @@ export const modules: Record<string, ModuleData> = {
       'Historique complet par client : WhatsApp + email + SMS dans une seule vue'
     ],
     stats: [
-      { value: '2', label: 'milliards d\'utilisateurs WhatsApp', suffix: 'Mds' },
+      // Source publique : annonce WhatsApp (Meta) « Two Billion Users », 12 février 2020.
+      { value: '2', label: 'd\'utilisateurs WhatsApp dans le monde (Meta, février 2020)', suffix: 'Mds' },
       { value: '84', label: 'des messages remis sont lus (12 derniers mois, tous nos hôtels)', suffix: '%' },
       { value: '1', label: 'boîte de réception partagée avec vos autres canaux', suffix: '' },
       { value: '24', label: 'l\'assistant IA répond aux questions fréquentes', suffix: '/7' },

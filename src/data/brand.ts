@@ -73,6 +73,11 @@ export const brand = {
    * zapier.com/apps (« 10368+ apps ») et n8n.io/integrations (« 2,000+ integrations »).
    */
   automation: ['Zapier', 'n8n'],
+  /** Fonctionnalités du JSON-LD SoftwareApplication. */
+  featureList: {
+    fr: ['Synchronisation PMS', 'SMS & Emails automatisés', 'Enquêtes de satisfaction', 'Ventes additionnelles', 'Tableaux de bord analytiques', 'Templates personnalisables'],
+    en: ['PMS sync', 'Automated SMS & emails', 'Guest satisfaction surveys', 'Upselling', 'Analytics dashboards', 'Customizable templates'],
+  },
   knowsAbout: {
     fr: ['CRM hôtelier', 'marketing automation hôtelier', 'enquête de satisfaction hôtel', 'gestion des avis clients', 'ventes additionnelles hôtel', 'fidélisation client hôtel'],
     en: ['hotel CRM', 'hotel marketing automation', 'hotel guest satisfaction survey', 'hotel review management', 'hotel upselling', 'hotel guest loyalty'],

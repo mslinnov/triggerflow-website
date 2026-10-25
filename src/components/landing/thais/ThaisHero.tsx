@@ -7,6 +7,7 @@ import { ArrowRight, Sparkles, Lightbulb, Check, Mail, MessageSquare, Clock, Tre
 import Image from 'next/image';
 import { Container, ButtonLink, Badge } from '@/components/ui';
 import { heroContainer, heroItem } from '@/lib/animations';
+import { companyStats } from '@/data/company-stats';
 
 export function ThaisHero() {
   const searchParams = useSearchParams();
@@ -96,7 +97,7 @@ export function ThaisHero() {
               variants={heroItem}
               className="mt-5 max-w-lg text-base leading-relaxed text-zinc-600 md:text-lg lg:mx-0 mx-auto"
             >
-              TriggerFlow personnalise automatiquement vos communications selon le profil de chaque client Thaïs, <strong>réduisez votre charge mentale</strong> et concentrez-vous sur l'accueil.
+              TriggerFlow personnalise automatiquement vos communications selon le profil de chaque client Thaïs, <strong>réduisez votre charge mentale</strong> et concentrez-vous sur l’accueil.
             </motion.p>
 
             {/* Exemple concret */}
@@ -165,7 +166,7 @@ export function ThaisHero() {
                   ))}
                 </div>
                 <span className="ml-2 text-sm font-medium text-zinc-700">
-                  300+ hôtels nous font confiance
+                  {companyStats.hotels.fr} hôtels nous font confiance
                 </span>
               </div>
             </motion.div>
