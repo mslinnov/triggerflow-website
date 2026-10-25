@@ -109,7 +109,7 @@ const BANNED = [
   /150\+ (avis|reviews)/,
   /98 ?% de satisfaction/i,
   /(plus de|more than|\+) ?50 (PMS|systèmes|systems|intégrations|integrations)/i,
-  /50\+ (other |hotel )?(PMS|systems|integrations)/i,
+  /50\+ (other |hotel |outils |native )?(PMS|systems|integrations|connecteurs|connectors|tools|hôteliers)/i,
   /8[.,]2 ?→ ?9[.,]1/,
   /\+35 ?% de taux d'ouverture|23 ?% de conversion|avis\/mois en moyenne|0 réclamation client/i,
   /\d+ ?h(eures)? (gagnées|économisées|récupérées|par semaine)/i,
