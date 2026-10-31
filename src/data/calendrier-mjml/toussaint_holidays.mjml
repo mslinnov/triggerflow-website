@@ -1,0 +1,115 @@
+<mjml><mj-head><!-- VISIBILITY_STYLES --><mj-style>
+      /* Desktop-first : les clients qui ne supportent pas @media
+         (Outlook Web, Nouveau Outlook) gardent le comportement desktop. */
+      .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+        display: block;
+        width: auto;
+        max-height: none;
+        overflow: visible;
+        line-height: inherit;
+      }
+      .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+        display: none;
+        width: 0;
+        max-height: 0;
+        overflow: hidden;
+        line-height: 0;
+      }
+      /* Mobile : afficher mobile-only, masquer desktop-only */
+      @media only screen and (max-width:599px) {
+        .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+        .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+          display: block !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+      }
+      /* Desktop explicit (pour spécificité) */
+      @media only screen and (min-width:600px) {
+        .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+          display: block !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+        .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+      }
+      /* Fallback : vrais appareils mobiles (Outlook mobile peut avoir un viewport &gt;600px) */
+      @media only screen and (max-device-width:599px) {
+        .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+          display: block !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+        .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+      }
+    </mj-style><!--[if mso | IE]>
+      <style type="text/css">
+        .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+          display: block !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+        .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+        table.desktop-only, table.desktop-only-outlook, table[class*="desktop-only"],
+        tr.desktop-only, tr.desktop-only-outlook, tr[class*="desktop-only"],
+        td.desktop-only, td.desktop-only-outlook, td[class*="desktop-only"] {
+          display: table !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+        table.mobile-only, table.mobile-only-outlook, table[class*="mobile-only"],
+        tr.mobile-only, tr.mobile-only-outlook, tr[class*="mobile-only"],
+        td.mobile-only, td.mobile-only-outlook, td[class*="mobile-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+      </style>
+    <![endif]--><mj-attributes><mj-all padding="0">
+            </mj-all></mj-attributes><mj-preview>Deux semaines de vacances, pour toutes les zones.</mj-preview></mj-head><mj-body background-color="#EAEAEA" width="700px"><mj-section background-color="#ededed" background-position="center center" background-repeat="no-repeat" background-size="cover" vertical-align="top" padding="20px 0px 20px 0px" border-radius="0px 0px 0px 0px"><mj-column><mj-text font-size="20px" align="center" color="#1D2D44" line-height="22px" font-family="Arial, Helvetica, sans-serif" font-weight="bold" container-background-color="transparent" padding="0px 25px 0px 25px"><p>{{facility_name}}</p></mj-text></mj-column></mj-section><mj-section padding="0px 0px 0px 0px" cellpadding="0px" padding-top="0px" padding-bottom="0px" background-position="center center" background-repeat="no-repeat" background-size="cover" vertical-align="top" background-color="#FFFFFF" border-radius="20px 20px 0px 0px"><mj-column padding="12px 0px 10px 0px" border-radius="0px 0px 0px 0px"><mj-text font-size="28px" align="center" color="#000000" line-height="34px" font-family="Arial, Helvetica, sans-serif" font-weight="bold" container-background-color="transparent" padding="10px 25px 10px 25px"><p>Les vacances de la Toussaint en famille</p></mj-text><mj-image src="https://api.trigger-flow.com/storage/files/file_xoc893wyP7FACtFV.png" width="500px" border-radius="12px 12px 12px 12px" container-background-color="transparent" alt="{{facility_name}}" data-image-type="static" target="_blank" padding="10px 10px 10px 10px" data-static-src="https://api.trigger-flow.com/storage/files/file_xoc893wyP7FACtFV.png"></mj-image><mj-text font-size="16px" align="left" color="#1D2D44" line-height="24px" font-family="Arial, sans-serif" container-background-color="transparent" padding="8px 40px 8px 40px"><p>Bonjour {{firstname}},</p></mj-text><mj-text font-size="16px" align="left" color="#1D2D44" line-height="24px" font-family="Arial, sans-serif" container-background-color="transparent" padding="8px 40px 8px 40px"><p>Les vacances de la Toussaint durent deux semaines, pour toutes les zones : du [[Date de début|samedi 23 octobre]] au [[Date de fin|dimanche 7 novembre]].</p></mj-text><mj-text font-size="16px" align="left" color="#1D2D44" line-height="24px" font-family="Arial, sans-serif" container-background-color="transparent" padding="8px 40px 8px 40px"><p>Pour les familles : [[Votre programme|chambres communicantes, menu enfant, balades d'automne]].</p></mj-text></mj-column></mj-section><mj-section padding="0px 0px 0px 0px" cellpadding="0px" padding-top="0px" padding-bottom="0px" background-position="center center" background-repeat="no-repeat" background-size="cover" vertical-align="top" background-color="#FFFFFF" border-radius="0px 0px 20px 20px"><mj-column padding="10px 0px 30px 0px"><mj-button href="{{booking_page_url}}" background-color="#213333" color="#FFFFFF" font-size="16px" font-weight="bold" font-family="Arial, sans-serif" inner-padding="14px 28px" border-radius="4px" padding="10px 20px 10px 20px" container-background-color="transparent">Réserver la Toussaint</mj-button></mj-column></mj-section><mj-section padding="0px 0px 0px 0px" cellpadding="0px" padding-top="0px" padding-bottom="0px" background-position="center center" background-repeat="no-repeat" background-size="cover" vertical-align="top" background-color="transparent"><mj-column><mj-spacer height="20px"></mj-spacer></mj-column></mj-section><mj-section padding="0px 0px 0px 0px" cellpadding="0px" padding-top="0px" padding-bottom="0px" background-position="center center" background-repeat="no-repeat" background-size="cover" vertical-align="top" background-color="transparent"><mj-column background-color="#FFFFFF" padding="20px 25px 20px 25px" border-radius="20px 20px 20px 20px"><mj-text font-size="15px" color="#000000" line-height="22px" font-family="Arial, sans-serif" container-background-color="transparent" padding="0px 0px 0px 0px"><p>Réservez en direct : [[Votre avantage|le petit-déjeuner offert aux enfants]].</p></mj-text></mj-column></mj-section><mj-section padding="0px 0px 0px 0px" cellpadding="0px" padding-top="0px" padding-bottom="0px" background-position="center center" background-repeat="no-repeat" background-size="cover" vertical-align="top" background-color="transparent"><mj-column><mj-spacer height="20px"></mj-spacer></mj-column></mj-section><mj-section padding="0px 0px 0px 0px" cellpadding="0px" padding-top="0px" padding-bottom="0px" background-position="center center" background-repeat="no-repeat" background-size="cover" vertical-align="top" background-color="transparent"><mj-column padding="20px 10px 20px 10px" border-radius="12px 12px 12px 12px" background-color="#FFFFFF"><mj-text font-size="18px" align="center" color="#000000" line-height="22px" font-family="Arial, sans-serif" font-weight="bold" container-background-color="transparent" padding="10px 0px 0px 0px"><p>{{facility_name}}</p></mj-text><mj-text font-size="14px" align="center" color="#1D2D44" line-height="22px" font-family="Arial, sans-serif" container-background-color="transparent" padding="0px 0px 0px 0px"><p>{{facility_address}} - {{facility_zip_code}} {{facility_city}}</p></mj-text><mj-social font-size="12px" icon-size="32px" border-radius="80px" mode="horizontal" padding="10px 0px 10px 0px"><mj-social-element name="instagram" href="{{social_instagram}}" src="https://app.trigger-flow.com/socialIcons/light/instagram.png" icon-size="32px" border-radius="80px" padding="0 8px" background-color="transparent"></mj-social-element><mj-social-element name="tripadvisor" href="{{social_tripadvisor}}" src="https://app.trigger-flow.com/socialIcons/light/tripadvisor.png" icon-size="32px" border-radius="80px" padding="0 8px" background-color="transparent"></mj-social-element><mj-social-element name="tiktok" href="{{social_tiktok}}" src="https://app.trigger-flow.com/socialIcons/light/tiktok.png" icon-size="32px" border-radius="80px" padding="0 8px" background-color="transparent"></mj-social-element></mj-social></mj-column></mj-section></mj-body></mjml>

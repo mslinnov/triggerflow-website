@@ -641,6 +641,13 @@ export const EXAMPLE_VARIABLES: Record<string, string> = {
   firstname: 'Camille',
   facility_name: 'Hôtel des Tilleuls',
   booking_page_url: 'https://hotel-des-tilleuls.fr/reserver',
+  website_url: 'https://hotel-des-tilleuls.fr',
+  facility_address: '12 rue des Tilleuls',
+  facility_zip_code: '69002',
+  facility_city: 'Lyon',
+  social_instagram: 'https://www.instagram.com/',
+  social_tripadvisor: 'https://www.tripadvisor.fr/',
+  social_tiktok: 'https://www.tiktok.com/',
 };
 
 /** Bloc « Toute l'année, en automatique ». */
