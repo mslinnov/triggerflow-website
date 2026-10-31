@@ -2635,6 +2635,266 @@
       "copyright": "© {year} TriggerFlow. All rights reserved."
     }
   },
+  "lpClientsOta": {
+    "cta": {
+      "compare": "Compare the two forms",
+      "simulate": "Run your own numbers",
+      "bookDemo": "Book 30 minutes",
+      "guide": "Get the guide"
+    },
+    "hero": {
+      "badge": "Summer 2026 study, independent hotels",
+      "titleLead": "One OTA guest in four will give you their real email address,",
+      "titleStatement": "if you ask at the right moment.",
+      "subtitle": "Booking.com and Expedia bring you the guest once, with a relay address you do not own. We followed a full summer of OTA guests across independent hotels, from the first message to the real address typed in. Here is what makes the difference.",
+      "funnelTitle": "Out of 100 guests who booked through an OTA",
+      "funnelNote": "The capture rate is measured per OTA guest, never per opened message: it is the figure you can check in your own guest database."
+    },
+    "funnel": {
+      "guests": "Guests with an OTA relay address",
+      "reached": "Receive a form that asks for their address",
+      "reachedNote": "Figure to come from the study.",
+      "formOpened": "Open the form",
+      "formOpenedNote": "Figure to come from the study.",
+      "formSent": "Submit it",
+      "formSentNote": "Figure to come from the study.",
+      "captured": "Give their real address",
+      "capturedNote": "Figure to come from the study."
+    },
+    "trust": {
+      "figures": {
+        "capture": "of OTA guests give their real address in hotels where the form is running",
+        "hotelSpread": "capture gap between the best and the weakest hotels",
+        "ruleSpread": "gap on the single most powerful setting in the study"
+      },
+      "title": "More than 400 properties equipped, connected to the PMS of independent hotels",
+      "turnkey": "Form and email templates delivered pre-configured",
+      "pms": "Every booking triggers the send from your PMS",
+      "gdpr": "GDPR compliant, DPA available",
+      "support": "French-speaking team and support"
+    },
+    "comparator": {
+      "eyebrow": "Side by side",
+      "title": "The two forms, side by side",
+      "subtitle": "The same Booking.com guest, the same stay, two ways of asking for their address. Your pre-arrival form looks like one of them.",
+      "reconstructionTitle": "These two forms are reconstructions.",
+      "reconstructionBody": "We rebuilt them from the settings the study compares. They are not screenshots of real forms: no property is named or recognisable. Only the rates are measurements.",
+      "effective": {
+        "badge": "The form that gets the address",
+        "timing": "Send moment: per the study",
+        "intro": "Your arrival is coming up. Tell us how to reach you directly, so we can send your confirmation and the practical details of your stay.",
+        "fieldLabel": "Your personal email address",
+        "fieldValue": "sam.taylor@example.com",
+        "fieldHint": "Empty to start with: the Booking address is not pre-filled.",
+        "consent": "I agree to receive offers from the hotel (optional).",
+        "button": "Send"
+      },
+      "ineffective": {
+        "badge": "The form that does not",
+        "timing": "Send moment: per the study",
+        "intro": "Please complete the form below.",
+        "fieldLabel": "Email",
+        "fieldValue": "sam.t.123456@guest.booking.com",
+        "fieldHint": "The relay address is pre-filled: the guest confirms without changing it.",
+        "button": "Confirm"
+      },
+      "annotationsTitle": "The three differences, and what they are worth",
+      "annotations": {
+        "a1": {
+          "title": "Difference 1: to be written after the study",
+          "body": "The setting and its two capture rates, measured per OTA guest."
+        },
+        "a2": {
+          "title": "Difference 2: to be written after the study",
+          "body": "The setting and its two capture rates, measured per OTA guest."
+        },
+        "a3": {
+          "title": "Difference 3: to be written after the study",
+          "body": "The setting and its two capture rates, measured per OTA guest."
+        }
+      },
+      "methodNote": "Each difference is measured one criterion at a time, on the same population of OTA guests: the rates do not add up. And they are correlations, not proof of cause."
+    },
+    "gap": {
+      "title": "The three most expensive mistakes",
+      "subtitle": "All three can be fixed in your current settings, without changing PMS.",
+      "mistake1": {
+        "figure": "…",
+        "statement": "Mistake 1: to be written after the study",
+        "consequence": "What it costs, measured per OTA guest."
+      },
+      "mistake2": {
+        "figure": "…",
+        "statement": "Mistake 2: to be written after the study",
+        "consequence": "What it costs, measured per OTA guest."
+      },
+      "mistake3": {
+        "figure": "…",
+        "statement": "Mistake 3: to be written after the study",
+        "consequence": "What it costs, measured per OTA guest."
+      }
+    },
+    "evidence": {
+      "title": "The five rules",
+      "subtitle": "Each rule sets two capture rates against each other, measured per OTA guest: the share of guests who booked through an OTA and end up giving you their real address.",
+      "rateValue": "{rate, number, ::.0}%",
+      "rule1": {
+        "title": "Rule 1: to be written after the study",
+        "body": "The setting, what it changes, and why.",
+        "best": "With",
+        "worst": "Without"
+      },
+      "rule2": {
+        "title": "Rule 2: to be written after the study",
+        "body": "The setting, what it changes, and why.",
+        "best": "With",
+        "worst": "Without"
+      },
+      "rule3": {
+        "title": "Rule 3: to be written after the study",
+        "body": "The setting, what it changes, and why.",
+        "best": "With",
+        "worst": "Without"
+      },
+      "rule4": {
+        "title": "Rule 4: to be written after the study",
+        "body": "The setting, what it changes, and why.",
+        "best": "With",
+        "worst": "Without"
+      },
+      "rule5": {
+        "title": "Rule 5: to be written after the study",
+        "body": "The setting, what it changes, and why.",
+        "best": "With",
+        "worst": "Without"
+      }
+    },
+    "demoBridge": {
+      "cta": "Book 30 minutes",
+      "bandTitle": "How many of your OTA guests have a real address in your database?",
+      "bandBody": "We run the audit with you, free of charge: the share of your OTA guests you can already reach, and the setting to start with. Thirty minutes, no commitment."
+    },
+    "simulator": {
+      "eyebrow": "Simulator",
+      "title": "What an OTA guest who comes back direct is worth",
+      "subtitle": "Set the sliders to your hotel. Only the default capture rate is based on our measurement; the other values are assumptions to replace with your own.",
+      "otaStaysPerYear": {
+        "label": "OTA stays per year",
+        "hint": "Bookings from Booking.com, Expedia and the other platforms.",
+        "suffix": "stays"
+      },
+      "averageBasket": {
+        "label": "Average stay value",
+        "hint": "Room revenue only, all nights included.",
+        "suffix": "€"
+      },
+      "commissionRate": {
+        "label": "OTA commission",
+        "hint": "The rate in your contract.",
+        "suffix": "%"
+      },
+      "captureRate": {
+        "label": "OTA guests who give their real address",
+        "hint": "About one in four measured in hotels where the form is running.",
+        "suffix": "%"
+      },
+      "directReturnRate": {
+        "label": "Captured guests who come back direct",
+        "hint": "Illustrative assumption: we do not publish a measurement yet.",
+        "suffix": "%"
+      },
+      "resultLabel": "Commission you do not pay",
+      "perYear": "per year, on the stays that came back direct",
+      "captured": "OTA guests whose real address you have",
+      "returns": "Stays that came back direct",
+      "revenue": "Revenue from those stays",
+      "assumptions": "Calculation: OTA stays × share captured × share returning direct × average stay value × commission. An order of magnitude, not a promise: the direct return rate is an assumption, and a returning guest would not necessarily have booked through the OTA."
+    },
+    "how": {
+      "title": "The form to copy",
+      "subtitle": "A pre-arrival form that asks for the address and gives a reason, followed by the eight-point checklist.",
+      "form": {
+        "header": "Pre-arrival form",
+        "title": "Prepare your arrival",
+        "timing": "Send: moment and channel per the study",
+        "intro": "Your stay is coming up. Tell us your arrival time and the address where we can reach you directly: we will send your confirmation and practical details there.",
+        "fieldLabel": "Your personal email address",
+        "fieldValue": "sam.taylor@example.com",
+        "fieldHint": "For your confirmation and your invoice.",
+        "consent": "I agree to receive offers from the hotel (optional).",
+        "button": "Send",
+        "footnote": "Field linked to the guest profile: the address typed in replaces the relay address, the old one is kept in the history."
+      },
+      "checklistTitle": "The eight-point checklist",
+      "checklist": {
+        "c1": "Point 1: to be written after the study (send moment)",
+        "c2": "Point 2: to be written after the study (channel)",
+        "c3": "A reason given to the guest for asking their address",
+        "c4": "Email field empty to start with, never pre-filled with the relay address",
+        "c5": "Field linked to the guest profile, so the real address replaces the relay one",
+        "c6": "A separate, optional consent box for offers",
+        "c7": "Point 7: to be written after the study",
+        "c8": "A win-back campaign with a direct link to your booking engine"
+      },
+      "checklistNote": "Half a day is enough. Form, send and win-back campaign are set up with TriggerFlow from your current PMS."
+    },
+    "faq": {
+      "title": "The questions we get asked",
+      "measure": {
+        "q": "Where do these figures come from?",
+        "a": "From real stays of OTA guests at independent hotels equipped with TriggerFlow, arriving between 1 June and 30 September 2026. An address counts as recovered when the guest types it into a form linked to their stay; addresses coming from the PMS are not counted. No property is named, and no guest personal data was used."
+      },
+      "causality": {
+        "q": "Are these causes or correlations?",
+        "a": "Correlations. A hotel that times its send carefully often takes care of its form too. The guide says which gaps hold when settings are compared within the same hotel: those are the ones to start with."
+      },
+      "parity": {
+        "q": "Can I offer a better direct rate to a guest who came through an OTA?",
+        "a": "In France, since the law of 6 August 2015 known as the Macron law, hoteliers remain free to set their prices on their own channels. What your OTA contract does govern is how you use the data the platform passes on. An address the guest gives you themselves, in your own form, belongs to your own relationship with them. Have your contract checked by your adviser: this guide is not legal advice."
+      },
+      "consent": {
+        "q": "Can I write to these guests to invite them back?",
+        "a": "The guide recommends a separate, optional consent box for offers next to the email field: it removes any doubt about what the guest agreed to. Messages about their stay go out in any case. And a guest who unsubscribes receives nothing more."
+      },
+      "pms": {
+        "q": "Do I need to change PMS?",
+        "a": "No. TriggerFlow connects to your current PMS, including Mews, Thaïs, Opera Cloud, Apaleo, Misterbooking and Medialog: every booking triggers the form, and the recovered address replaces the relay address in the guest profile."
+      },
+      "setup": {
+        "q": "How long does it take to set up?",
+        "a": "Half a day: the pre-arrival form from a template, the scheduled send from your PMS, then the win-back campaign pointing to your booking engine. After that, every OTA stay goes down the same path with no manual work."
+      }
+    },
+    "form": {
+      "email": "Your email address",
+      "emailHint": "One address, nothing else to fill in. The guide arrives by email.",
+      "submit": "Get the guide",
+      "successTitle": "You are all set.",
+      "successBody": "The OTA guest guide will reach your inbox in the next few minutes. Check your spam folder if it takes a while.",
+      "privacy": "Your address is used to send you this guide and our content for hoteliers. One-click unsubscribe, nothing is sold to third parties.",
+      "error": "The request did not go through. Please try again in a moment."
+    },
+    "finalCta": {
+      "title": "Get the OTA guest guide",
+      "subtitle": "The full study, the five rules with their rates, the form to copy and the eight-point checklist.",
+      "formTitle": "Where should we send the guide?",
+      "format": "PDF, a twenty-minute read, no jargon. The guide is written in French.",
+      "chapters": {
+        "funnel": "The journey of an OTA guest, from the first message to the real address",
+        "rules": "The five rules, each with the measured rate behind it",
+        "mistakes": "The three most expensive mistakes, and what they cost",
+        "template": "The form to copy, the checklist and what it is worth for your hotel",
+        "legal": "Rate parity and consent: what the rules say, on one page",
+        "method": "The measurement method, its limits and what it does not prove"
+      }
+    },
+    "footer": {
+      "legal": "Legal notice",
+      "privacy": "Privacy policy",
+      "terms": "Terms of sale",
+      "copyright": "© {year} TriggerFlow. All rights reserved."
+    }
+  },
   "priceChange": {
     "banner": "Our prices change on January 1, 2027. Subscribe before December 31 and keep today's price for life.",
     "bannerShort": "Prices rise Jan 1: lock in today's price for life",

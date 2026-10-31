@@ -57,7 +57,7 @@ const RELAY_TIMEOUT_MS = 3000;
  * libre ouvrirait la porte à un chemin fabriqué, et ferait de toute façon
  * répondre 404 au backend.
  */
-const LEAD_MAGNET_SLUGS = ['post-sejour', 'ventes-additionnelles'] as const;
+const LEAD_MAGNET_SLUGS = ['post-sejour', 'ventes-additionnelles', 'clients-ota'] as const;
 type LeadMagnetSlug = (typeof LEAD_MAGNET_SLUGS)[number];
 
 const MAX_TEXT_LENGTH = 120;

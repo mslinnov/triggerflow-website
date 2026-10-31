@@ -172,9 +172,9 @@ test('pages À propos, Carrières, /v2 et étapes de l\'accueil : chiffres de ma
 });
 
 test('messages FR/EN : aucun chiffre de résultat non mesuré hors témoignages et études publiées', () => {
-  // lpUpsell et lpPostStay publient des études mesurées (upsell-services.ts, post-stay.ts).
+  // lpUpsell, lpPostStay et lpClientsOta publient des études mesurées (upsell-services.ts, post-stay.ts, clients-ota.ts).
   // heroDashboard : valeurs d'exemple de la maquette du tableau de bord (maquettes hors périmètre).
-  const skip = new Set(['testimonialFeatured', 'testimonialsCarousel', 'testimonial', 'heroDashboard', 'lpUpsell', 'lpPostStay', 'pricing', 'priceChange']);
+  const skip = new Set(['testimonialFeatured', 'testimonialsCarousel', 'testimonial', 'heroDashboard', 'lpUpsell', 'lpPostStay', 'lpClientsOta', 'pricing', 'priceChange']);
   for (const locale of ['fr', 'en']) {
     const messages = JSON.parse(readFileSync(join(root, 'messages', `${locale}.json`), 'utf8'));
     assert.deepEqual(offenders(strings(messages, skip, locale)), []);
