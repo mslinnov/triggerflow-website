@@ -2777,7 +2777,12 @@
     "simulator": {
       "eyebrow": "Simulator",
       "title": "What an OTA guest who comes back direct is worth",
-      "subtitle": "Set the sliders to your hotel. Only the default capture rate is based on our measurement; the other values are assumptions to replace with your own.",
+      "subtitle": "Set the sliders to your hotel. All default values are illustrative assumptions to replace with your own; the rates measured by the study will take their place.",
+      "groups": {
+        "volume": "Your hotel",
+        "capture": "Getting the real address, in three steps",
+        "return": "Bringing them back direct"
+      },
       "otaStaysPerYear": {
         "label": "OTA stays per year",
         "hint": "Bookings from Booking.com, Expedia and the other platforms.",
@@ -2793,14 +2798,24 @@
         "hint": "The rate in your contract.",
         "suffix": "%"
       },
-      "captureRate": {
-        "label": "OTA guests who give their real address",
-        "hint": "About one in four measured in hotels where the form is running.",
+      "captureBeforeArrival": {
+        "label": "Before arrival",
+        "hint": "Pre-arrival form sent three days ahead. Illustrative assumption.",
+        "suffix": "%"
+      },
+      "captureAtArrival": {
+        "label": "At arrival",
+        "hint": "Among guests still without an address: asked at check-in. Illustrative assumption.",
+        "suffix": "%"
+      },
+      "captureSurvey": {
+        "label": "After the stay",
+        "hint": "Among those left: the satisfaction survey. Illustrative assumption.",
         "suffix": "%"
       },
       "directReturnRate": {
         "label": "Captured guests who come back direct",
-        "hint": "Illustrative assumption: we do not publish a measurement yet.",
+        "hint": "Within 24 months. Illustrative assumption: we do not publish a measurement yet.",
         "suffix": "%"
       },
       "resultLabel": "Commission you do not pay",
@@ -2808,7 +2823,13 @@
       "captured": "OTA guests whose real address you have",
       "returns": "Stays that came back direct",
       "revenue": "Revenue from those stays",
-      "assumptions": "Calculation: OTA stays × share captured × share returning direct × average stay value × commission. An order of magnitude, not a promise: the direct return rate is an assumption, and a returning guest would not necessarily have booked through the OTA."
+      "legend": {
+        "otaOnly": "OTA contact only",
+        "captured": "Contact recovered",
+        "returned": "Came back direct"
+      },
+      "gridLabel": "Out of 100 OTA guests: {captured} leave you their real address, {returned} come back to book direct.",
+      "assumptions": "Calculation: the three steps add up over guests still without an address, then OTA stays × share captured × share returning direct × average stay value × commission. An order of magnitude, not a promise: every default value is an assumption, and a returning guest would not necessarily have booked through the OTA again."
     },
     "how": {
       "title": "The form to copy",

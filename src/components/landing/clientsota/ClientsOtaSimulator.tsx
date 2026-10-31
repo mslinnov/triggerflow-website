@@ -3,7 +3,12 @@
 import { useMemo, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { trackMetaEvent } from '@/components/analytics/MetaPixel';
-import { calculateAvoidedCommission, OTA_SIMULATOR_BOUNDS, type OtaSimulatorInput } from '@/lib/ota-simulator';
+import {
+  calculateAvoidedCommission,
+  capturedShare,
+  OTA_SIMULATOR_BOUNDS,
+  type OtaSimulatorInput,
+} from '@/lib/ota-simulator';
 import { cn } from '@/lib/utils';
 import { UpsellAmount, UpsellEyebrow, UpsellLinkButton, UpsellSection } from '../upsell/primitives';
 
@@ -15,18 +20,23 @@ import { UpsellAmount, UpsellEyebrow, UpsellLinkButton, UpsellSection } from '..
  * additionnelles, rien n'est transmis au formulaire, qui ne demande que
  * l'adresse e-mail. Un contexte partagé n'aurait aucun lecteur.
  *
+ * Mécanique de l'artefact d'origine : trois étapes de capture (avant
+ * l'arrivée, à l'arrivée, enquête) qui se cumulent sur les clients restants,
+ * puis un retour en direct sous 24 mois. La grille de 100 points montre la
+ * même chose sans chiffre : contact OTA seul, contact récupéré, revenu en
+ * direct.
+ *
  * Le paragraphe d'hypothèses est affiché en permanence sous le résultat, pas
  * replié : un montant en euros lu sans ses hypothèses passerait pour une
  * promesse.
  */
 type SliderKey = keyof OtaSimulatorInput;
 
-const SLIDERS: readonly SliderKey[] = [
-  'otaStaysPerYear',
-  'averageBasket',
-  'commissionRate',
-  'captureRate',
-  'directReturnRate',
+/** Curseurs regroupés comme le parcours : le volume, les trois étapes de capture, le retour. */
+const GROUPS: readonly { id: 'volume' | 'capture' | 'return'; sliders: readonly SliderKey[] }[] = [
+  { id: 'volume', sliders: ['otaStaysPerYear', 'averageBasket', 'commissionRate'] },
+  { id: 'capture', sliders: ['captureBeforeArrival', 'captureAtArrival', 'captureSurvey'] },
+  { id: 'return', sliders: ['directReturnRate'] },
 ];
 
 function defaults(): OtaSimulatorInput {
@@ -34,9 +44,18 @@ function defaults(): OtaSimulatorInput {
     otaStaysPerYear: OTA_SIMULATOR_BOUNDS.otaStaysPerYear.default,
     averageBasket: OTA_SIMULATOR_BOUNDS.averageBasket.default,
     commissionRate: OTA_SIMULATOR_BOUNDS.commissionRate.default,
-    captureRate: OTA_SIMULATOR_BOUNDS.captureRate.default,
+    captureBeforeArrival: OTA_SIMULATOR_BOUNDS.captureBeforeArrival.default,
+    captureAtArrival: OTA_SIMULATOR_BOUNDS.captureAtArrival.default,
+    captureSurvey: OTA_SIMULATOR_BOUNDS.captureSurvey.default,
     directReturnRate: OTA_SIMULATOR_BOUNDS.directReturnRate.default,
   };
+}
+
+/** Grille de 100 clients OTA : combien gardent le seul contact OTA, combien sont captés, combien reviennent. */
+function dotCounts(input: OtaSimulatorInput): { captured: number; returned: number } {
+  const share = capturedShare(input);
+  const returnShare = share * (Math.min(Math.max(input.directReturnRate, 0), 100) / 100);
+  return { captured: Math.round(share * 100), returned: Math.round(returnShare * 100) };
 }
 
 export function ClientsOtaSimulator() {
@@ -46,6 +65,7 @@ export function ClientsOtaSimulator() {
   const tracked = useRef(false);
 
   const result = useMemo(() => calculateAvoidedCommission(input), [input]);
+  const dots = useMemo(() => dotCounts(input), [input]);
 
   function update(key: SliderKey, value: number) {
     if (!tracked.current) {
@@ -65,18 +85,28 @@ export function ClientsOtaSimulator() {
         </div>
 
         <div className="mt-12 grid gap-8 lg:grid-cols-[1fr_26rem] lg:items-start lg:gap-12">
-          <div className="space-y-8 rounded-2xl border border-[var(--up-line)] bg-[var(--up-surface)] p-6 md:p-8">
-            {SLIDERS.map((key) => (
-              <Slider
-                key={key}
-                id={key}
-                label={t(`${key}.label`)}
-                hint={t(`${key}.hint`)}
-                value={input[key]}
-                suffix={t(`${key}.suffix`)}
-                bounds={OTA_SIMULATOR_BOUNDS[key]}
-                onChange={(value) => update(key, value)}
-              />
+          <div className="rounded-2xl border border-[var(--up-line)] bg-[var(--up-surface)] p-6 md:p-8">
+            {GROUPS.map((group) => (
+              <fieldset
+                key={group.id}
+                className="mt-8 space-y-7 border-t border-[var(--up-line)] pt-7 first:mt-0 first:border-t-0 first:pt-0"
+              >
+                <legend className="mb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--up-ink-muted)]">
+                  {t(`groups.${group.id}`)}
+                </legend>
+                {group.sliders.map((key) => (
+                  <Slider
+                    key={key}
+                    id={key}
+                    label={t(`${key}.label`)}
+                    hint={t(`${key}.hint`)}
+                    value={input[key]}
+                    suffix={t(`${key}.suffix`)}
+                    bounds={OTA_SIMULATOR_BOUNDS[key]}
+                    onChange={(value) => update(key, value)}
+                  />
+                ))}
+              </fieldset>
             ))}
           </div>
 
@@ -86,6 +116,22 @@ export function ClientsOtaSimulator() {
               <UpsellAmount amount={result.avoidedCommission} />
             </p>
             <p className="mt-1.5 text-sm text-[var(--up-ink-muted)]">{t('perYear')}</p>
+
+            <DotGrid captured={dots.captured} returned={dots.returned} />
+            <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-[12px] text-[var(--up-ink-soft)]">
+              <li className="flex items-center gap-1.5">
+                <span aria-hidden className="h-2.5 w-2.5 rounded-full bg-[var(--up-highlight)]" />
+                {t('legend.otaOnly')}
+              </li>
+              <li className="flex items-center gap-1.5">
+                <span aria-hidden className="h-2.5 w-2.5 rounded-full bg-[var(--up-accent)] opacity-40" />
+                {t('legend.captured')}
+              </li>
+              <li className="flex items-center gap-1.5">
+                <span aria-hidden className="h-2.5 w-2.5 rounded-full bg-[var(--up-accent)]" />
+                {t('legend.returned')}
+              </li>
+            </ul>
 
             <dl className="mt-6 space-y-3 border-t border-[var(--up-line)] pt-6 text-sm">
               <div className="flex items-baseline justify-between gap-4">
@@ -119,6 +165,37 @@ export function ClientsOtaSimulator() {
         </div>
       </div>
     </UpsellSection>
+  );
+}
+
+/**
+ * 100 points, un par client OTA. Décorative pour les lecteurs d'écran : la
+ * phrase qui l'accompagne (`gridLabel`) porte la même information en clair.
+ */
+function DotGrid({ captured, returned }: { captured: number; returned: number }) {
+  const t = useTranslations('lpClientsOta.simulator');
+
+  return (
+    <figure className="mt-6 border-t border-[var(--up-line)] pt-6">
+      <div aria-hidden className="grid grid-cols-10 gap-1.5">
+        {Array.from({ length: 100 }, (_, index) => (
+          <span
+            key={index}
+            className={cn(
+              'aspect-square rounded-full',
+              index < returned
+                ? 'bg-[var(--up-accent)]'
+                : index < captured
+                  ? 'bg-[var(--up-accent)] opacity-40'
+                  : 'bg-[var(--up-highlight)]'
+            )}
+          />
+        ))}
+      </div>
+      <figcaption className="mt-3 text-[13px] leading-relaxed text-[var(--up-ink-soft)]">
+        {t('gridLabel', { captured, returned })}
+      </figcaption>
+    </figure>
   );
 }
 

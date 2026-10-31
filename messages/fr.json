@@ -2785,7 +2785,12 @@
     "simulator": {
       "eyebrow": "Simulateur",
       "title": "Ce que vaut un client OTA qui revient en direct",
-      "subtitle": "Réglez les curseurs sur votre hôtel. Seul le taux de capture par défaut s'appuie sur notre mesure ; les autres valeurs sont des hypothèses à remplacer par les vôtres.",
+      "subtitle": "Réglez les curseurs sur votre hôtel. Toutes les valeurs par défaut sont des hypothèses illustratives, à remplacer par les vôtres ; les taux que l'étude mesure prendront leur place.",
+      "groups": {
+        "volume": "Votre hôtel",
+        "capture": "Récupérer la vraie adresse, en trois temps",
+        "return": "Faire revenir en direct"
+      },
       "otaStaysPerYear": {
         "label": "Séjours OTA par an",
         "hint": "Réservations venues de Booking.com, Expedia et des autres plateformes.",
@@ -2801,14 +2806,24 @@
         "hint": "Le taux prévu dans votre contrat.",
         "suffix": "%"
       },
-      "captureRate": {
-        "label": "Clients OTA qui vous donnent leur vraie adresse",
-        "hint": "Environ un sur quatre mesuré dans les hôtels où le formulaire tourne.",
+      "captureBeforeArrival": {
+        "label": "Avant l'arrivée",
+        "hint": "Formulaire de préparation envoyé à J-3. Hypothèse illustrative.",
+        "suffix": "%"
+      },
+      "captureAtArrival": {
+        "label": "À l'arrivée",
+        "hint": "Parmi les clients encore sans adresse : demande à l'enregistrement. Hypothèse illustrative.",
+        "suffix": "%"
+      },
+      "captureSurvey": {
+        "label": "Après le séjour",
+        "hint": "Parmi ceux qui restent : l'enquête de satisfaction. Hypothèse illustrative.",
         "suffix": "%"
       },
       "directReturnRate": {
         "label": "Clients captés qui reviennent en direct",
-        "hint": "Hypothèse illustrative : nous ne publions pas encore de mesure.",
+        "hint": "Dans les 24 mois. Hypothèse illustrative : nous ne publions pas encore de mesure.",
         "suffix": "%"
       },
       "resultLabel": "Commission que vous ne versez pas",
@@ -2816,7 +2831,13 @@
       "captured": "Clients OTA dont vous avez la vraie adresse",
       "returns": "Séjours revenus en direct",
       "revenue": "Chiffre d'affaires de ces séjours",
-      "assumptions": "Calcul : séjours OTA × part captée × part revenue en direct × montant moyen × commission. Un ordre de grandeur, pas une promesse : le taux de retour en direct est une hypothèse, et un client qui revient n'aurait pas forcément réservé par l'OTA."
+      "legend": {
+        "otaOnly": "Contact OTA seul",
+        "captured": "Contact récupéré",
+        "returned": "Revenu en direct"
+      },
+      "gridLabel": "Sur 100 clients OTA : {captured} vous laissent leur vraie adresse, {returned} reviennent réserver en direct.",
+      "assumptions": "Calcul : les trois étapes se cumulent sur les clients encore sans adresse, puis séjours OTA × part captée × part revenue en direct × montant moyen × commission. Un ordre de grandeur, pas une promesse : toutes les valeurs par défaut sont des hypothèses, et un client qui revient n'aurait pas forcément réservé de nouveau par l'OTA."
     },
     "how": {
       "title": "Le formulaire à copier",
