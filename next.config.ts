@@ -73,6 +73,25 @@ const nextConfig: NextConfig = {
         permanent: false,
       },
 
+      // ── Calendrier marketing : adresse courte imprimée dans le QR du flyer
+      // (evergreen). Ne jamais la supprimer : seule la destination peut changer.
+      // La query (UTM du flyer) est conservée par Next.
+      {
+        source: '/calendrier',
+        destination: '/fr/calendrier-marketing',
+        permanent: false,
+      },
+      {
+        source: '/:locale(fr|en)/calendrier',
+        destination: '/fr/calendrier-marketing',
+        permanent: false,
+      },
+      {
+        source: '/en/calendrier-marketing',
+        destination: '/fr/calendrier-marketing',
+        permanent: false,
+      },
+
       // ── Slugs légaux : anciens chemins WP → slugs réels (FR sur les 2 locales) ──
       {
         source: '/en/privacy-policy',
