@@ -13,7 +13,9 @@ interface MonthSectionProps {
 }
 
 function formatKeyDate(k: KeyDate): string {
-  return k.end ? `${formatDateShort(k.start)} au ${formatDateShort(k.end)}` : formatDateShort(k.start);
+  if (!k.end) return formatDateShort(k.start);
+  // Vacances : de la fin des cours au jour de la reprise, comme le calendrier officiel.
+  return `${formatDateShort(k.start)} au ${formatDateShort(k.end)}${k.school ? ' (reprise)' : ''}`;
 }
 
 export function MonthSection({ month, scrollMarginClass, muted }: MonthSectionProps) {

@@ -12,8 +12,9 @@
 //
 // Dates vérifiées le 31/10/2026 : fêtes mobiles recalculées (calendrier-marketing.test.ts),
 // vacances scolaires confrontées à l'open data du ministère (data.education.gouv.fr,
-// jeu « fr-en-calendrier-scolaire », 2026-2027 et 2027-2028). Les vacances s'écrivent du
-// premier au dernier jour sans école (samedi au dimanche), la reprise est le lendemain.
+// jeu « fr-en-calendrier-scolaire », 2026-2027 et 2027-2028). Les vacances s'écrivent comme
+// le calendrier officiel et les modèles de l'app : de la fin des cours (samedi) au jour de
+// la reprise (« du 10 au 26 avril »).
 
 import type { EmailModel } from '@/lib/calendrier';
 import { brand } from './brand';
@@ -137,8 +138,10 @@ export interface Campaign {
 export interface KeyDate {
   /** Premier jour (AAAA-MM-JJ). */
   start: string;
-  /** Dernier jour, pour une période. */
+  /** Dernier jour d'une période ; pour des vacances scolaires (`school`), le jour de la reprise. */
   end?: string;
+  /** Vacances scolaires : `end` est le jour de la reprise, affiché comme tel. */
+  school?: boolean;
   label: string;
   /** Précision affichée après le libellé (zone, reprise, « à confirmer ») ; jetons {date:…} permis. */
   note?: string;
@@ -249,7 +252,7 @@ export const CALENDAR: CalendarMonth[] = [
     chip: 'Déc. 2026',
     title: 'Décembre 2026',
     keyDates: [
-      { start: '2026-12-19', end: '2027-01-03', label: 'Vacances de Noël', note: 'toutes zones, reprise le {date:2027-01-04}' },
+      { start: '2026-12-19', end: '2027-01-04', school: true, label: 'Vacances de Noël', note: 'toutes zones' },
       { start: '2026-12-25', label: 'Noël (férié)' },
       { start: '2026-12-31', label: 'Saint-Sylvestre' },
     ],
@@ -300,10 +303,10 @@ export const CALENDAR: CalendarMonth[] = [
     chip: 'Févr.',
     title: 'Février 2027',
     keyDates: [
-      { start: '2027-02-06', end: '2027-02-21', label: "Vacances d'hiver", note: 'zone C (Paris, Toulouse, Montpellier)' },
-      { start: '2027-02-13', end: '2027-02-28', label: "Vacances d'hiver", note: 'zone A (Lyon, Bordeaux, Grenoble)' },
+      { start: '2027-02-06', end: '2027-02-22', school: true, label: "Vacances d'hiver", note: 'zone C (Paris, Toulouse, Montpellier)' },
+      { start: '2027-02-13', end: '2027-03-01', school: true, label: "Vacances d'hiver", note: 'zone A (Lyon, Bordeaux, Grenoble)' },
       { start: '2027-02-14', label: 'Saint-Valentin' },
-      { start: '2027-02-20', end: '2027-03-07', label: "Vacances d'hiver", note: 'zone B (Marseille, Lille, Nantes)' },
+      { start: '2027-02-20', end: '2027-03-08', school: true, label: "Vacances d'hiver", note: 'zone B (Marseille, Lille, Nantes)' },
     ],
     campaigns: [
       {
@@ -342,17 +345,17 @@ export const CALENDAR: CalendarMonth[] = [
         code: 'spring_holidays',
         send: 'Le {date:2027-03-01}, un mois avant la première zone',
         reminder: 'Mi-mars, aux familles qui n’ont pas réservé',
-        endsOn: '2027-05-02',
+        endsOn: '2027-05-03',
         email: {
           subject: 'Vacances de printemps : on vous garde une chambre familiale ?',
           preheader: 'Les dates de votre zone et nos chambres pour toute la famille.',
           body: [
             'Bonjour {{firstname}},',
-            'Les vacances de printemps approchent. Voici les dates, selon votre zone :',
+            'Les vacances de printemps approchent. Voici les dates, de la fin des cours à la reprise, selon votre zone :',
             [
-              'Zone C (Paris, Toulouse, Montpellier) : du {date:2027-04-03} au {date:2027-04-18}',
-              'Zone A (Lyon, Bordeaux, Grenoble) : du {date:2027-04-10} au {date:2027-04-25}',
-              'Zone B (Marseille, Lille, Nantes) : du {date:2027-04-17} au {date:2027-05-02}',
+              'Zone C (Paris, Toulouse, Montpellier) : du {date:2027-04-03} au {date:2027-04-19}',
+              'Zone A (Lyon, Bordeaux, Grenoble) : du {date:2027-04-10} au {date:2027-04-26}',
+              'Zone B (Marseille, Lille, Nantes) : du {date:2027-04-17} au {date:2027-05-03}',
             ],
             'Pour les familles, nous proposons [[Ce que vous offrez aux familles|des chambres communicantes, le petit-déjeuner offert aux moins de 12 ans et le prêt de vélos]].',
             'Les chambres familiales partent en premier : dites-nous vite vos dates.',
@@ -368,9 +371,9 @@ export const CALENDAR: CalendarMonth[] = [
     chip: 'Avr.',
     title: 'Avril 2027',
     keyDates: [
-      { start: '2027-04-03', end: '2027-04-18', label: 'Vacances de printemps', note: 'zone C' },
-      { start: '2027-04-10', end: '2027-04-25', label: 'Vacances de printemps', note: 'zone A' },
-      { start: '2027-04-17', end: '2027-05-02', label: 'Vacances de printemps', note: 'zone B' },
+      { start: '2027-04-03', end: '2027-04-19', school: true, label: 'Vacances de printemps', note: 'zone C' },
+      { start: '2027-04-10', end: '2027-04-26', school: true, label: 'Vacances de printemps', note: 'zone A' },
+      { start: '2027-04-17', end: '2027-05-03', school: true, label: 'Vacances de printemps', note: 'zone B' },
     ],
     campaigns: [
       {
@@ -462,7 +465,7 @@ export const CALENDAR: CalendarMonth[] = [
     chip: 'Juil.',
     title: 'Juillet 2027',
     keyDates: [
-      { start: '2027-07-03', end: '2027-09-01', label: "Vacances d'été", note: 'toutes zones, reprise le {date:2027-09-02}' },
+      { start: '2027-07-03', end: '2027-09-02', school: true, label: "Vacances d'été", note: 'toutes zones' },
       { start: '2027-07-14', label: 'Fête nationale (férié)' },
     ],
     campaigns: [
@@ -499,13 +502,13 @@ export const CALENDAR: CalendarMonth[] = [
         code: 'toussaint_holidays',
         send: 'La semaine du {date:2027-08-23}, avant la rentrée',
         reminder: 'Fin septembre, aux familles qui n’ont pas réservé',
-        endsOn: '2027-11-07',
+        endsOn: '2027-11-08',
         email: {
           subject: 'Vacances de la Toussaint : vos dates sont fixées ?',
-          preheader: 'Deux semaines pour toutes les zones, du {date:2027-10-23} au {date:2027-11-07}.',
+          preheader: 'Deux semaines pour toutes les zones, du {date:2027-10-23} au {date:2027-11-08}.',
           body: [
             'Bonjour {{firstname}},',
-            'Cette année, les vacances de la Toussaint durent deux semaines pour toutes les zones : du {date:2027-10-23} au {date:2027-11-07}.',
+            'Cette année, les vacances de la Toussaint durent deux semaines pour toutes les zones : du {date:2027-10-23} au {date:2027-11-08}.',
             'Halloween tombe en plein milieu, le {date:2027-10-31}. Pour les enfants, nous préparons [[Votre programme|une chasse aux bonbons dans le jardin et un goûter]].',
             'Les chambres familiales partent toujours en premier : réservez dès maintenant.',
             SIGNATURE,
@@ -550,7 +553,7 @@ export const CALENDAR: CalendarMonth[] = [
     chip: 'Oct.',
     title: 'Octobre 2027',
     keyDates: [
-      { start: '2027-10-23', end: '2027-11-07', label: 'Vacances de la Toussaint', note: 'toutes zones' },
+      { start: '2027-10-23', end: '2027-11-08', school: true, label: 'Vacances de la Toussaint', note: 'toutes zones' },
       { start: '2027-10-31', label: "Halloween et passage à l'heure d'hiver" },
     ],
     campaigns: [
@@ -590,7 +593,7 @@ export const CALENDAR: CalendarMonth[] = [
     chip: 'Déc.',
     title: 'Décembre 2027',
     keyDates: [
-      { start: '2027-12-18', end: '2028-01-02', label: 'Vacances de Noël', note: 'toutes zones, reprise le {date:2028-01-03}' },
+      { start: '2027-12-18', end: '2028-01-03', school: true, label: 'Vacances de Noël', note: 'toutes zones' },
       { start: '2027-12-25', label: 'Noël (férié)' },
       { start: '2027-12-31', label: 'Saint-Sylvestre' },
     ],

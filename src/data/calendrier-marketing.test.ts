@@ -110,20 +110,21 @@ test('fêtes mobiles et dates calculées : recalculées, pas recopiées', () => 
 
 /**
  * Calendrier scolaire officiel (data.education.gouv.fr, « fr-en-calendrier-scolaire »,
- * relevé le 31/10/2026) : premier et dernier jour sans école, heure de Paris.
+ * relevé le 31/10/2026) : fin des cours (samedi) et jour de la reprise, heure de Paris.
+ * Le pont de l'Ascension, lui, s'écrit du jeudi férié au dimanche (les quatre jours du pont).
  */
 const OFFICIAL_HOLIDAYS: Array<[RegExp, string, string]> = [
-  [/^Vacances de Noël$/, '2026-12-19', '2027-01-03'],
-  [/^Vacances d'hiver$/, '2027-02-06', '2027-02-21'], // zone C
-  [/^Vacances d'hiver$/, '2027-02-13', '2027-02-28'], // zone A
-  [/^Vacances d'hiver$/, '2027-02-20', '2027-03-07'], // zone B
-  [/^Vacances de printemps$/, '2027-04-03', '2027-04-18'], // zone C
-  [/^Vacances de printemps$/, '2027-04-10', '2027-04-25'], // zone A
-  [/^Vacances de printemps$/, '2027-04-17', '2027-05-02'], // zone B
+  [/^Vacances de Noël$/, '2026-12-19', '2027-01-04'],
+  [/^Vacances d'hiver$/, '2027-02-06', '2027-02-22'], // zone C
+  [/^Vacances d'hiver$/, '2027-02-13', '2027-03-01'], // zone A
+  [/^Vacances d'hiver$/, '2027-02-20', '2027-03-08'], // zone B
+  [/^Vacances de printemps$/, '2027-04-03', '2027-04-19'], // zone C
+  [/^Vacances de printemps$/, '2027-04-10', '2027-04-26'], // zone A
+  [/^Vacances de printemps$/, '2027-04-17', '2027-05-03'], // zone B
   [/^Pont de l'Ascension$/, '2027-05-06', '2027-05-09'],
-  [/^Vacances d'été$/, '2027-07-03', '2027-09-01'],
-  [/^Vacances de la Toussaint$/, '2027-10-23', '2027-11-07'],
-  [/^Vacances de Noël$/, '2027-12-18', '2028-01-02'],
+  [/^Vacances d'été$/, '2027-07-03', '2027-09-02'],
+  [/^Vacances de la Toussaint$/, '2027-10-23', '2027-11-08'],
+  [/^Vacances de Noël$/, '2027-12-18', '2028-01-03'],
 ];
 
 test('vacances scolaires : exactement celles du calendrier officiel', () => {
@@ -133,6 +134,12 @@ test('vacances scolaires : exactement celles du calendrier officiel', () => {
     .sort();
   const official = OFFICIAL_HOLIDAYS.map(([label, start, end]) => `${label.source.replace(/[\^$]/g, '')} ${start} ${end}`).sort();
   assert.deepEqual(shown, official);
+  // Fin des cours un samedi, reprise un lundi (jeudi 2 septembre pour la rentrée) : la convention officielle.
+  for (const k of allKeyDates.filter((x) => x.school)) {
+    assert.equal(weekday(k.start), 6, `${k.label} ${k.start} : fin des cours un samedi`);
+    assert.ok([1, 4].includes(weekday(k.end!)), `${k.label} ${k.end} : reprise un lundi (ou la rentrée)`);
+  }
+  assert.equal(allKeyDates.filter((x) => x.school).length, OFFICIAL_HOLIDAYS.length - 1);
   // Les e-mails citent les mêmes bornes (zones du printemps, Toussaint).
   const text = JSON.stringify(CAMPAIGNS);
   for (const [, start, end] of OFFICIAL_HOLIDAYS.filter(([l]) => /printemps|Toussaint/.test(l.source))) {
