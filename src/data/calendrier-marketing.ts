@@ -648,7 +648,12 @@ export const EXAMPLE_VARIABLES: Record<string, string> = {
   facility_address: '12 rue des Tilleuls',
   facility_zip_code: '69002',
   facility_city: 'Lyon',
+  facility_phone: '04 78 00 00 00',
+  facility_email: 'contact@hotel-des-tilleuls.fr',
   social_instagram: 'https://www.instagram.com/',
+  social_facebook: 'https://www.facebook.com/',
+  social_linkedin: 'https://www.linkedin.com/',
+  social_youtube: 'https://www.youtube.com/',
   social_tripadvisor: 'https://www.tripadvisor.fr/',
   social_tiktok: 'https://www.tiktok.com/',
 };
