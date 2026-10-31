@@ -1,0 +1,262 @@
+<title>Le guide du client OTA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --encre: #14201d; --doux: #556662; --creme: #f7f3ec; --carte: #fffdfa;
+    --trait: #e3ddd1; --teal: #00514c; --teal-vif: #006f68; --teal-pale: #e3edeb;
+    --terre: #9a3414; --terre-pale: #f9e8e1; --sable: #f0e7d7;
+    --ombre: 0 1px 2px rgba(20,32,29,.05), 0 10px 30px -16px rgba(20,32,29,.25);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --encre: #f0ece3; --doux: #a3b0ab; --creme: #0f1614; --carte: #161f1d; --trait: #29332f;
+      --teal: #6fc9bd; --teal-vif: #6fc9bd; --teal-pale: #14302c; --terre: #e99570; --terre-pale: #33201a;
+      --sable: #1d2724; --ombre: 0 1px 2px rgba(0,0,0,.5), 0 12px 34px -18px rgba(0,0,0,.8);
+    }
+  }
+  :root[data-theme="dark"] {
+    --encre: #f0ece3; --doux: #a3b0ab; --creme: #0f1614; --carte: #161f1d; --trait: #29332f;
+    --teal: #6fc9bd; --teal-vif: #6fc9bd; --teal-pale: #14302c; --terre: #e99570; --terre-pale: #33201a;
+    --sable: #1d2724; --ombre: 0 1px 2px rgba(0,0,0,.5), 0 12px 34px -18px rgba(0,0,0,.8);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--creme); color: var(--encre);
+         font-family: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+         font-size: 17px; line-height: 1.6; -webkit-text-size-adjust: 100%; }
+  .couv { background: var(--teal); color: #f3faf8; padding: 46px 18px 40px; }
+  .couv-in, .wrap { max-width: 700px; margin: 0 auto; }
+  .wrap { padding: 0 18px 70px; }
+  .marque { font-size: 12px; letter-spacing: .24em; text-transform: uppercase; font-weight: 600; opacity: .85; margin: 0 0 22px; }
+  .couv h1 { font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: clamp(34px, 9vw, 58px);
+             line-height: 1.02; letter-spacing: -.02em; margin: 0 0 16px; text-wrap: balance; }
+  .couv .promesse { font-size: clamp(17px, 4.4vw, 21px); line-height: 1.45; margin: 0 0 24px; opacity: .93; }
+  .couv .socle { font-size: 14px; opacity: .8; border-top: 1px solid rgba(243,250,248,.25); padding-top: 14px; }
+  .chiffres-couv { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 26px 0 0; }
+  .chiffres-couv div { border-left: 2px solid rgba(243,250,248,.4); padding-left: 10px; }
+  .chiffres-couv .n { font-family: Fraunces, Georgia, serif; font-size: clamp(22px, 6vw, 30px); font-weight: 600; line-height: 1.1; }
+  .chiffres-couv .l { font-size: 12px; opacity: .82; line-height: 1.3; }
+  h2 { font-family: Fraunces, Georgia, serif; font-weight: 600; font-size: clamp(24px, 5.6vw, 32px);
+       line-height: 1.15; letter-spacing: -.01em; margin: 46px 0 8px; text-wrap: balance; }
+  .num { display: block; font-family: "Instrument Sans", sans-serif; font-size: 12px; letter-spacing: .18em;
+         text-transform: uppercase; color: var(--teal-vif); font-weight: 600; margin-bottom: 6px; }
+  h3 { font-size: 17px; font-weight: 600; margin: 24px 0 6px; }
+  p { margin: 0 0 14px; }
+  .intro { font-size: 19px; line-height: 1.5; color: var(--encre); margin-top: 26px; }
+  ul, ol { margin: 0 0 14px; padding-left: 22px; }
+  li { margin-bottom: 8px; }
+  .etape { display: grid; grid-template-columns: 1fr auto; gap: 3px 12px; padding: 11px 0; border-bottom: 1px solid var(--trait); }
+  .etape .n2 { font-family: Fraunces, Georgia, serif; font-size: 21px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .etape .s { grid-column: 1 / -1; font-size: 13.5px; color: var(--doux); }
+  .jauge { grid-column: 1 / -1; height: 8px; border-radius: 5px; background: var(--sable); overflow: hidden; margin-top: 4px; }
+  .jauge > i { display: block; height: 100%; background: var(--teal-vif); border-radius: 5px; }
+  .regle { background: var(--carte); border: 1px solid var(--trait); border-radius: 14px; padding: 18px 18px 16px;
+           margin: 0 0 14px; box-shadow: var(--ombre); }
+  .regle .tete { display: flex; align-items: baseline; gap: 10px; margin-bottom: 8px; }
+  .regle .rn { font-family: Fraunces, Georgia, serif; font-size: 30px; font-weight: 600; color: var(--teal-vif); line-height: 1; }
+  .regle h3 { margin: 0; font-size: 19px; font-family: Fraunces, Georgia, serif; font-weight: 600; }
+  .preuve { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+  .preuve span { font-size: 13px; font-weight: 500; padding: 3px 10px; border-radius: 20px; background: var(--teal-pale); color: var(--teal-vif); white-space: nowrap; }
+  .preuve span.mal { background: var(--terre-pale); color: var(--terre); }
+  .citation { font-family: Fraunces, Georgia, serif; font-size: clamp(20px, 5vw, 26px); line-height: 1.3;
+              border-left: 3px solid var(--terre); padding: 4px 0 4px 18px; margin: 28px 0; color: var(--encre); }
+  .erreur { border: 1px solid var(--trait); border-left: 4px solid var(--terre); background: var(--terre-pale);
+            border-radius: 12px; padding: 15px 16px; margin-bottom: 12px; }
+  .erreur h3 { margin: 0 0 6px; }
+  .erreur .cout { font-weight: 600; color: var(--terre); }
+  .modele { background: var(--carte); border: 1px solid var(--trait); border-radius: 14px; overflow: hidden; box-shadow: var(--ombre); margin-bottom: 18px; }
+  .modele .entete { background: var(--sable); padding: 12px 16px; border-bottom: 1px solid var(--trait); font-size: 14px; }
+  .modele .entete b { display: block; font-size: 16px; }
+  .modele .corps { padding: 18px 16px; }
+  .modele .bouton { display: inline-block; background: var(--teal-vif); color: #fff; font-weight: 600;
+                    padding: 12px 22px; border-radius: 8px; margin: 12px 0; }
+  .modele .petit { font-size: 13px; color: var(--doux); }
+  .check { background: var(--carte); border: 1px solid var(--trait); border-radius: 14px; padding: 16px 18px; box-shadow: var(--ombre); }
+  .check ul { list-style: none; padding: 0; margin: 0; }
+  .check li { padding-left: 28px; position: relative; margin-bottom: 10px; }
+  .check li::before { content: "✓"; position: absolute; left: 0; top: -1px; color: var(--teal-vif); font-weight: 700; }
+  .cta { background: var(--teal); color: #f3faf8; border-radius: 16px; padding: 26px 20px; margin: 44px 0 0; }
+  .cta h2 { color: #f3faf8; margin: 0 0 10px; }
+  .cta p { opacity: .92; }
+  .cta a { display: inline-block; background: #f3faf8; color: var(--teal); font-weight: 600; text-decoration: none;
+           padding: 13px 24px; border-radius: 9px; margin-top: 8px; }
+  .cta a:focus-visible { outline: 3px solid #f3faf8; outline-offset: 3px; }
+  .cta .etapes-cta { padding-left: 20px; margin: 0 0 14px; }
+  .cta .etapes-cta li { margin-bottom: 7px; opacity: .95; }
+  .cta .cta-note { font-size: 14.5px; opacity: .82; margin: 14px 0 0; }
+  .relance { background: var(--carte); border: 1px solid var(--teal-vif); border-radius: 14px;
+             padding: 16px 18px; margin: 22px 0 0; box-shadow: var(--ombre); }
+  .relance b { color: var(--teal-vif); }
+  .relance a { color: var(--teal-vif); font-weight: 600; }
+  .methode { font-size: 14.5px; color: var(--doux); }
+  footer { margin-top: 34px; padding-top: 16px; border-top: 1px solid var(--trait); color: var(--doux); font-size: 13.5px; }
+  /* Ajouts du guide du client OTA : tableau de valeur (repris du guide des
+     ventes additionnelles), encadré légal, champ de la maquette, repères
+     « à venir » à retirer avant publication. */
+  .calcul { background: var(--carte); border: 1px solid var(--trait); border-radius: 14px; padding: 16px 18px;
+            box-shadow: var(--ombre); margin-bottom: 16px; }
+  .calcul .ligne { display: flex; justify-content: space-between; gap: 12px; padding: 7px 0; border-bottom: 1px solid var(--trait); }
+  .calcul .ligne:last-of-type { border-bottom: 0; }
+  .calcul .ligne b { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .calcul .total { margin-top: 10px; padding-top: 10px; border-top: 2px solid var(--teal-vif);
+                   display: flex; justify-content: space-between; gap: 12px; font-weight: 600; }
+  .calcul .total b { font-family: Fraunces, Georgia, serif; font-size: 22px; color: var(--teal-vif); white-space: nowrap; }
+  .encadre { background: var(--sable); border: 1px solid var(--trait); border-radius: 14px; padding: 18px 18px 14px; margin: 22px 0 0; }
+  .encadre .petit { font-size: 13px; color: var(--doux); }
+  .modele .champ { border: 1px solid var(--trait); border-radius: 8px; padding: 9px 12px; color: var(--doux); background: var(--creme); margin-bottom: 8px; }
+  .cta .num { color: rgba(243,250,248,.75); }
+  .avenir { background: #fff3a8; color: #3b3300; outline: 1px dashed #b59b00; }
+</style>
+
+<header class="couv">
+  <div class="couv-in">
+    <p class="marque">TriggerFlow · Livre blanc</p>
+    <h1>Le guide du client OTA</h1>
+    <p class="promesse">Un client OTA sur quatre vous donne sa vraie adresse si vous la lui demandez au bon moment, et les cinq réglages pour aller plus loin. Une étude menée sur un été complet de séjours réels, chez des hôtels indépendants.</p>
+    <div class="chiffres-couv">
+      <div><div class="n">1 sur 4</div><div class="l">des clients OTA donnent leur vraie adresse, dans les hôtels où le formulaire tourne</div></div>
+      <div><div class="n avenir">×…</div><div class="l">entre les meilleurs et les moins bons hôtels</div></div>
+      <div><div class="n avenir">×…</div><div class="l">sur le réglage le plus puissant de l'étude</div></div>
+    </div>
+    <p class="socle">Été 2026 · Hôtels indépendants · Résultats exprimés en taux, données anonymisées</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <p class="intro">Booking.com et Expedia vous amènent un client, et repartent avec lui. Vous gardez la réservation, la commission est payée, mais l'adresse e-mail que vous recevez est une adresse relais : elle ne sert qu'au séjour en cours, et elle n'est pas à vous. Le jour où ce client voudra revenir, il repassera par la plateforme.</p>
+
+  <p>Nous avons suivi un été complet de clients OTA chez des hôtels indépendants, du premier message envoyé jusqu'à la vraie adresse saisie. Le résultat tient en une phrase : <strong class="avenir">[à écrire après l'étude : le constat principal]</strong>. Voici ce que montrent les données, et comment reconstruire votre formulaire de préparation en une heure.</p>
+
+  <h2><span class="num">Chapitre 1</span>Le parcours d'un client OTA</h2>
+  <p>Sur 100 clients venus d'une OTA, voici ce qui se passe réellement.</p>
+
+  <div class="etape"><span>Clients avec une adresse relais</span><span class="n2">100</span><span class="jauge"><i style="width:100%"></i></span></div>
+  <div class="etape"><span>Reçoivent un formulaire qui demande l'adresse</span><span class="n2 avenir">…</span><span class="jauge"><i style="width:0%"></i></span><span class="s avenir">Note à écrire après l'étude (M2).</span></div>
+  <div class="etape"><span>Ouvrent le formulaire</span><span class="n2 avenir">…</span><span class="jauge"><i style="width:0%"></i></span><span class="s avenir">Note à écrire après l'étude (M4).</span></div>
+  <div class="etape"><span>L'envoient</span><span class="n2 avenir">…</span><span class="jauge"><i style="width:0%"></i></span><span class="s avenir">Note à écrire après l'étude (M5).</span></div>
+  <div class="etape"><span>Donnent leur vraie adresse</span><span class="n2 avenir">…</span><span class="jauge"><i style="width:0%"></i></span><span class="s avenir">Note à écrire après l'étude (M6).</span></div>
+
+  <p class="citation avenir">[Citation à écrire après l'étude : l'endroit où le parcours casse.]</p>
+
+  <p class="avenir">[Écart entre hôtels (M8) : médiane, meilleurs, moins bons, puis « la différence vient de cinq réglages ».]</p>
+
+  <h2><span class="num">Chapitre 2</span>Les cinq règles</h2>
+  <p class="avenir">[Les cinq règles sont choisies après l'étude parmi les découpages D1 à D14, et proposées à Mounir avant rédaction. Seules celles qui tiennent quand on compare les réglages à l'intérieur d'un même hôtel sont retenues.]</p>
+
+  <div class="regle">
+    <div class="tete"><span class="rn">1</span><h3 class="avenir">[Règle 1]</h3></div>
+    <p class="avenir">[Le réglage, ses deux taux de capture, et pourquoi.]</p>
+    <div class="preuve"><span class="avenir">avec : … %</span><span class="mal avenir">sans : … %</span></div>
+  </div>
+  <div class="regle">
+    <div class="tete"><span class="rn">2</span><h3 class="avenir">[Règle 2]</h3></div>
+    <p class="avenir">[Le réglage, ses deux taux de capture, et pourquoi.]</p>
+    <div class="preuve"><span class="avenir">avec : … %</span><span class="mal avenir">sans : … %</span></div>
+  </div>
+  <div class="regle">
+    <div class="tete"><span class="rn">3</span><h3 class="avenir">[Règle 3]</h3></div>
+    <p class="avenir">[Le réglage, ses deux taux de capture, et pourquoi.]</p>
+    <div class="preuve"><span class="avenir">avec : … %</span><span class="mal avenir">sans : … %</span></div>
+  </div>
+  <div class="regle">
+    <div class="tete"><span class="rn">4</span><h3 class="avenir">[Règle 4]</h3></div>
+    <p class="avenir">[Le réglage, ses deux taux de capture, et pourquoi.]</p>
+    <div class="preuve"><span class="avenir">avec : … %</span><span class="mal avenir">sans : … %</span></div>
+  </div>
+  <div class="regle">
+    <div class="tete"><span class="rn">5</span><h3 class="avenir">[Règle 5]</h3></div>
+    <p class="avenir">[Le réglage, ses deux taux de capture, et pourquoi.]</p>
+    <div class="preuve"><span class="avenir">avec : … %</span><span class="mal avenir">sans : … %</span></div>
+  </div>
+
+  <h2><span class="num">Chapitre 3</span>Les trois erreurs les plus coûteuses</h2>
+  <div class="erreur">
+    <h3 class="avenir">[Erreur 1, parmi E1 à E7]</h3>
+    <p style="margin:0" class="avenir">[Ce qu'elle coûte : <span class="cout">… par client OTA</span>.]</p>
+  </div>
+  <div class="erreur">
+    <h3 class="avenir">[Erreur 2]</h3>
+    <p style="margin:0" class="avenir">[Ce qu'elle coûte : <span class="cout">…</span>.]</p>
+  </div>
+  <div class="erreur">
+    <h3 class="avenir">[Erreur 3]</h3>
+    <p style="margin:0" class="avenir">[Ce qu'elle coûte : <span class="cout">…</span>.]</p>
+  </div>
+
+  <div class="relance">
+    <p style="margin:0"><b>Deux heures de paramétrage suffisent.</b> Formulaire de préparation, envoi depuis votre PMS et campagne de retour se mettent en place en une demi-journée avec TriggerFlow. <a href="https://app.lemcal.com/@trigger-flow/clients-ota">Réserver 30 minutes</a></p>
+  </div>
+
+  <h2><span class="num">Chapitre 4</span>Le formulaire à copier</h2>
+  <div class="modele">
+    <div class="entete">
+      <span class="petit">Formulaire de préparation</span>
+      <b>Préparez votre arrivée</b>
+      <span class="petit avenir">Envoi : [moment et canal selon l'étude]</span>
+    </div>
+    <div class="corps">
+      <p>Bonjour,</p>
+      <p>Votre séjour approche. Indiquez-nous votre heure d'arrivée et l'adresse à laquelle vous joindre directement : nous y enverrons votre confirmation et les informations pratiques.</p>
+      <p class="petit" style="margin-bottom:4px">Votre adresse e-mail personnelle</p>
+      <p class="champ">camille.martin@exemple.fr</p>
+      <p class="petit">☐ J'accepte de recevoir les offres de l'hôtel (facultatif)</p>
+      <p style="text-align:center"><span class="bouton">Envoyer</span></p>
+      <p class="petit" style="margin-bottom:0">Champ vide au départ, jamais pré-rempli avec l'adresse Booking · Champ relié à la fiche client : la vraie adresse remplace l'adresse relais, l'ancienne reste dans l'historique</p>
+    </div>
+  </div>
+
+  <div class="check">
+    <h3 style="margin-top:0">La checklist en huit points</h3>
+    <ul>
+      <li class="avenir">[Moment d'envoi, selon l'étude]</li>
+      <li class="avenir">[Canal, selon l'étude]</li>
+      <li>Une raison donnée au client pour demander son adresse : confirmation, facture, informations pratiques</li>
+      <li>Champ e-mail vide au départ, jamais pré-rempli avec l'adresse relais</li>
+      <li>Champ relié à la fiche client, pour que la vraie adresse remplace l'adresse relais</li>
+      <li>Une case d'accord distincte et facultative pour les offres</li>
+      <li class="avenir">[Point 7, selon l'étude]</li>
+      <li>Une campagne de retour avec un lien direct vers votre moteur de réservation</li>
+    </ul>
+  </div>
+
+  <h3>Ce que ça vaut chez vous</h3>
+  <p>Un exemple, pour fixer les ordres de grandeur. Toutes les valeurs ci-dessous sont des <strong>hypothèses</strong>, sauf la part de clients captés, qui reprend notre mesure. Remplacez-les par les vôtres.</p>
+  <div class="calcul">
+    <div class="ligne"><span>Séjours OTA par an (hypothèse)</span><b>2 000</b></div>
+    <div class="ligne"><span>Clients qui donnent leur vraie adresse (environ un sur quatre, mesuré)</span><b>500</b></div>
+    <div class="ligne"><span>Qui reviennent ensuite en direct (hypothèse : 1 sur 10)</span><b>50</b></div>
+    <div class="ligne"><span>Montant moyen d'un séjour (hypothèse)</span><b>250 €</b></div>
+    <div class="ligne"><span>Chiffre d'affaires de ces séjours directs</span><b>12 500 €</b></div>
+    <div class="total"><span>Commission que vous ne versez pas, à 17 % <span class="avenir">[taux à sourcer]</span></span><b>2 125 € / an</b></div>
+  </div>
+  <p>C'est un ordre de grandeur, pas une promesse : un client qui revient n'aurait pas forcément réservé de nouveau par la plateforme, et le taux de retour en direct varie d'un hôtel à l'autre. Le simulateur de notre site refait ce calcul avec vos propres valeurs.</p>
+
+  <div class="encadre">
+    <h3 style="margin-top:0">Parité tarifaire et consentement : ce que dit le cadre</h3>
+    <p><strong>Vos prix.</strong> En France, depuis la loi du 6 août 2015 dite loi Macron, l'hôtelier reste libre de fixer ses prix sur ses propres canaux, y compris pour un client venu d'une plateforme.</p>
+    <p><strong>Les données de la plateforme.</strong> Votre contrat OTA encadre l'usage des données transmises par la plateforme, dont l'adresse relais. L'adresse que le client vous donne lui-même, dans votre formulaire, relève de votre propre relation avec lui.</p>
+    <p><strong>Le consentement.</strong> Pour lui écrire ensuite des offres, demandez son accord par une case distincte et facultative, à côté du champ e-mail. Les messages liés à son séjour partent dans tous les cas.</p>
+    <p class="petit" style="margin:0">Cet encadré décrit un cadre général, il ne remplace pas un avis juridique : faites vérifier votre contrat par votre conseil. <span class="avenir">[Relecture Soufiane]</span></p>
+  </div>
+
+  <h2><span class="num">Chapitre 5</span>Comment nous avons mesuré</h2>
+  <p class="methode">Les chiffres viennent des séjours réels de clients OTA chez des hôtels indépendants, arrivés entre le 1<sup>er</sup> juin et le 30 septembre 2026, hors réservations annulées. Un client OTA est le client principal d'une réservation dont l'adresse d'origine est une adresse relais de plateforme. Il compte comme capté quand il saisit lui-même sa vraie adresse dans un formulaire lié à son séjour ; les adresses venues du PMS ne sont pas comptées. Chaque taux est calculé par client OTA, et les groupes trop peu fournis pour être significatifs sont écartés.</p>
+  <p class="methode">Ce sont des corrélations, pas des preuves de cause : un hôtel qui soigne le moment de son envoi soigne souvent aussi son formulaire. <span class="avenir">[Les écarts qui résistent à la comparaison à l'intérieur d'un même hôtel sont : …]</span> Aucun nom d'établissement n'est cité, et aucune donnée personnelle de client n'a été utilisée.</p>
+
+  <div class="cta">
+    <h2 style="margin-top:0"><span class="num">Passer à l'action</span>Récupérez vos clients OTA en 2 heures avec TriggerFlow</h2>
+    <p>Tout ce qui précède se règle une fois, puis tourne tout seul. Avec TriggerFlow, le parcours complet se met en place en une demi-journée :</p>
+    <ol class="etapes-cta">
+      <li><strong>30 minutes</strong> : votre formulaire de préparation, à partir d'un modèle qui applique déjà les cinq règles, champ e-mail relié à la fiche client.</li>
+      <li><strong>45 minutes</strong> : l'envoi à votre charte, au bon moment avant l'arrivée.</li>
+      <li><strong>15 minutes</strong> : le branchement sur votre PMS (Mews, Thaïs, Opera Cloud, Apaleo, Misterbooking, Medialog et d'autres), pour que chaque réservation déclenche l'envoi.</li>
+      <li><strong>30 minutes</strong> : la campagne de retour, avec un lien direct vers votre moteur de réservation, adressée aux clients qui ont donné leur accord.</li>
+    </ol>
+    <p>Ensuite, chaque séjour OTA passe par le même chemin. Les adresses relais restent écartées de vos campagnes, et chaque vraie adresse récupérée remplace l'adresse relais dans la fiche du client.</p>
+    <a href="https://app.lemcal.com/@trigger-flow/clients-ota">Réserver 30 minutes de mise en place</a>
+    <p class="cta-note">Vous préférez commencer par un état des lieux ? Nous regardons gratuitement avec vous quelle part de vos clients OTA a déjà une vraie adresse dans votre base, et par quel réglage commencer.</p>
+  </div>
+
+  <footer>TriggerFlow · Livre blanc publié le <span class="avenir">[date]</span> · Étude réalisée sur les données anonymisées d'hôtels indépendants, été 2026. Tous les résultats sont exprimés en taux.</footer>
+</div>
