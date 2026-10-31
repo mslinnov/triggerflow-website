@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
 import { CheckCircle2 } from 'lucide-react';
 import { trackAdsConversion } from '@/lib/ads';
@@ -10,7 +10,10 @@ interface RappelFormProps {
   tempsFort: string;
 }
 
-type Status = 'idle' | 'submitting' | 'success' | 'error' | 'busy';
+type Status = 'idle' | 'submitting' | 'success' | 'error' | 'busy' | 'invalid';
+
+/** Rien à écouter : seul compte le passage du rendu serveur (false) au client (true). */
+const subscribeNothing = () => () => {};
 
 const inputClass =
   'w-full rounded-xl border border-border-default bg-white px-4 py-3 text-base text-text-primary placeholder:text-text-muted focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/20';
@@ -19,6 +22,9 @@ const inputClass =
 export function RappelForm({ tempsFort }: RappelFormProps) {
   const t = useTranslations('calendrierMarketing.activatePage');
   const [status, setStatus] = useState<Status>('idle');
+  // Bouton actif seulement une fois le composant monté : avant l'hydratation, un envoi
+  // natif partirait sans notre gestionnaire.
+  const mounted = useSyncExternalStore(subscribeNothing, () => true, () => false);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -38,11 +44,17 @@ export function RappelForm({ tempsFort }: RappelFormProps) {
           email: data.get('email'),
           phone: data.get('phone'),
           wantsDemo: data.get('wantsDemo') === 'on',
-          website: data.get('website'),
+          // Champ piège : nommé hp_check dans la page (l'autoremplissage ne le remplit pas),
+          // relu sous le nom attendu par le relais.
+          website: data.get('hp_check'),
         }),
       });
       if (response.status === 429) {
         setStatus('busy');
+        return;
+      }
+      if (response.status === 400) {
+        setStatus('invalid');
         return;
       }
       if (!response.ok) {
@@ -68,13 +80,14 @@ export function RappelForm({ tempsFort }: RappelFormProps) {
     );
   }
 
+  // method="post" : même envoyé avant l'hydratation, les coordonnées ne finissent jamais dans l'URL.
   return (
-    <form onSubmit={handleSubmit} className="space-y-3">
+    <form method="post" onSubmit={handleSubmit} className="space-y-3">
       {/* Champ piège : invisible pour un humain, masqué aux lecteurs d'écran. */}
       <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
         <label>
           Site web
-          <input type="text" name="website" tabIndex={-1} autoComplete="off" />
+          <input type="text" name="hp_check" tabIndex={-1} autoComplete="off" />
         </label>
       </div>
 
@@ -109,15 +122,15 @@ export function RappelForm({ tempsFort }: RappelFormProps) {
         {t('formWantsDemo')}
       </label>
 
-      {(status === 'error' || status === 'busy') && (
+      {(status === 'error' || status === 'busy' || status === 'invalid') && (
         <p role="alert" className="text-sm font-medium text-red-700">
-          {status === 'busy' ? t('formBusy') : t('formError')}
+          {status === 'busy' ? t('formBusy') : status === 'invalid' ? t('formInvalid') : t('formError')}
         </p>
       )}
 
       <button
         type="submit"
-        disabled={status === 'submitting'}
+        disabled={!mounted || status === 'submitting'}
         className="inline-flex w-full items-center justify-center rounded-full bg-brand-dark px-6 py-3 font-semibold text-white transition-colors hover:bg-brand-dark/90 disabled:opacity-60"
       >
         {status === 'submitting' ? t('formSubmitting') : t('formSubmit')}

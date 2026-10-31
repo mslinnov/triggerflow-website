@@ -29,7 +29,9 @@ export interface SalonFlyerLeadPayload {
 
 const MAX_TEXT = 100;
 const MAX_EMAIL = 255;
-const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+// Aligné sur la règle `email` de l'app pour les cas courants : domaine avec un point,
+// extension d'au moins deux lettres, pas de point doublé. L'app reste juge (422).
+const EMAIL = /^[^\s@]+@[^\s@.]+(\.[^\s@.]+)*\.[a-z]{2,}$/i;
 
 function text(value: unknown, max = MAX_TEXT): string {
   return typeof value === 'string' ? value.replace(/[\u0000-\u001f\u007f]/g, ' ').trim().slice(0, max) : '';
@@ -64,7 +66,7 @@ export function parseRappelBody(body: unknown): ParseResult {
   if (!input.firstname) fields.push('firstname');
   // Une adresse trop longue est refusée, jamais tronquée : tronquée, elle resterait
   // « valide » et créerait un prospect sur une adresse qui n'existe pas.
-  if (!email || email.length > MAX_EMAIL || !EMAIL.test(email)) fields.push('email');
+  if (!email || email.length > MAX_EMAIL || !EMAIL.test(email) || email.includes('..')) fields.push('email');
 
   return fields.length ? { kind: 'invalid', fields } : { kind: 'ok', input };
 }
@@ -105,3 +107,55 @@ export function relayOutcome(status: number): RelayOutcome {
   if (status === 422) return 'invalid';
   return 'error';
 }
+
+/**
+ * Limite de débit du formulaire, par IP visiteur, côté site.
+ *
+ * Indispensable : l'app voit toutes les demandes venir de l'IP du serveur du site,
+ * et son limiteur (30 par minute par jeton et par IP) deviendrait un quota unique
+ * pour tous les visiteurs. Sans cette limite, un robot créerait des dizaines de faux
+ * prospects par minute et ferait répondre 429 aux vrais.
+ *
+ * En mémoire : le site tourne en un seul processus `next start` (deploy.yml). Un
+ * redémarrage remet les compteurs à zéro, ce qui est sans conséquence.
+ * Une IP inconnue (en-tête absent) partage un même compteur : plus strict, jamais
+ * plus permissif.
+ */
+export class SlidingWindowLimiter {
+  private readonly hits = new Map<string, number[]>();
+
+  constructor(
+    private readonly limit: number,
+    private readonly windowMs: number,
+    /** Au-delà, les entrées expirées sont purgées pour borner la mémoire. */
+    private readonly maxKeys = 10_000,
+  ) {}
+
+  /** Enregistre une tentative ; false si la limite est déjà atteinte (la tentative n'est pas comptée). */
+  allow(key: string, now: number = Date.now()): boolean {
+    const since = now - this.windowMs;
+    const recent = (this.hits.get(key) ?? []).filter((t) => t > since);
+    if (recent.length >= this.limit) {
+      this.hits.set(key, recent);
+      return false;
+    }
+    recent.push(now);
+    this.hits.set(key, recent);
+    if (this.hits.size > this.maxKeys) this.prune(since);
+    return true;
+  }
+
+  /** Nombre d'IP suivies (pour les tests de la purge). */
+  get size(): number {
+    return this.hits.size;
+  }
+
+  private prune(since: number): void {
+    for (const [key, times] of this.hits) {
+      if (!times.some((t) => t > since)) this.hits.delete(key);
+    }
+  }
+}
+
+/** 5 demandes de rappel par IP visiteur sur 10 minutes. */
+export const RAPPEL_LIMIT = { limit: 5, windowMs: 10 * 60 * 1000 } as const;

@@ -2892,6 +2892,7 @@
       "formSuccessText": "Nous vous rappelons très vite. À bientôt !",
       "formError": "L'envoi n'a pas abouti. Réessayez, ou réservez directement une démo.",
       "formBusy": "Trop de demandes en même temps. Réessayez dans une minute.",
+      "formInvalid": "Vérifiez votre adresse e-mail et les champs marqués d'un astérisque.",
       "formPrivacy": "Vos coordonnées servent uniquement à vous recontacter."
     }
   }

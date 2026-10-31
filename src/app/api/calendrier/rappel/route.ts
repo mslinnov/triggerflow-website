@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { parseRappelBody, relayOutcome, salonLeadUrl, toSalonPayload } from '@/lib/calendrier-rappel';
+import { parseRappelBody, RAPPEL_LIMIT, relayOutcome, salonLeadUrl, SlidingWindowLimiter, toSalonPayload } from '@/lib/calendrier-rappel';
+import { readVisitorIp } from '@/lib/visitor-ip';
 
 /**
  * Formulaire « Être rappelé » du calendrier marketing : relaie la demande à l'API
@@ -13,6 +14,9 @@ import { parseRappelBody, relayOutcome, salonLeadUrl, toSalonPayload } from '@/l
 
 // Le visiteur attend cette réponse : trois secondes, comme le relais des livres blancs.
 const RELAY_TIMEOUT_MS = 3000;
+
+// Par IP visiteur : voir SlidingWindowLimiter (l'app ne voit que l'IP du site).
+const limiter = new SlidingWindowLimiter(RAPPEL_LIMIT.limit, RAPPEL_LIMIT.windowMs);
 
 export async function POST(request: NextRequest) {
   const url = salonLeadUrl(process.env.TRIGGERFLOW_API_URL, process.env.CALENDRIER_SALON_FLYER_TOKEN);
@@ -28,6 +32,11 @@ export async function POST(request: NextRequest) {
   if (parsed.kind === 'bot') return NextResponse.json({ success: true });
   if (parsed.kind === 'invalid') {
     return NextResponse.json({ success: false, error: 'invalid', fields: parsed.fields }, { status: 400 });
+  }
+
+  // Compté après validation : une faute de frappe ne consomme pas le quota d'un humain.
+  if (!limiter.allow(readVisitorIp(request) ?? 'ip-inconnue')) {
+    return NextResponse.json({ success: false, error: 'busy' }, { status: 429 });
   }
 
   try {

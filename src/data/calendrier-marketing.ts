@@ -184,7 +184,7 @@ function newYearEve(christmasEve: string, newYearsEve: string): EmailModel {
 
 function blackFriday(lastDay: string): EmailModel {
   return {
-    subject: '[[Durée de l’offre|48 h]] seulement : [[Remise|-20 %]] sur nos bons cadeaux',
+    subject: '[[Durée de l’offre|4 jours]] seulement : [[Remise|-20 %]] sur nos bons cadeaux',
     preheader: `Jusqu'au ${d(lastDay)} à minuit, de quoi offrir un séjour à Noël.`,
     body: [
       'Bonjour {{firstname}},',
