@@ -12,6 +12,8 @@ interface TemplatePreviewProps {
   /** Libellé humain de chaque variable (« Prénom ») en mode template, valeur fictive en mode example. */
   variables: Record<string, string>;
   labels: { subject: string; preheader: string; preview: string };
+  /** Objet et pré-en-tête seuls (le corps est rendu ailleurs, ex. iframe MJML). */
+  headerOnly?: boolean;
   className?: string;
 }
 
@@ -51,7 +53,7 @@ function RichText({ text, mode, variables }: { text: string; mode: TemplatePrevi
   );
 }
 
-export function TemplatePreview({ email, mode, variables, labels, className }: TemplatePreviewProps) {
+export function TemplatePreview({ email, mode, variables, labels, headerOnly, className }: TemplatePreviewProps) {
   return (
     <figure
       aria-label={labels.preview}
@@ -70,28 +72,30 @@ export function TemplatePreview({ email, mode, variables, labels, className }: T
         </p>
       </div>
 
-      <div className="space-y-3 px-4 py-5 text-[15px] leading-relaxed text-text-primary sm:px-5">
-        {email.body.map((block, i) =>
-          Array.isArray(block) ? (
-            <ul key={i} className="list-disc space-y-1 pl-5">
-              {block.map((item, j) => (
-                <li key={j}>
-                  <RichText text={item} mode={mode} variables={variables} />
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p key={i} className="whitespace-pre-line">
-              <RichText text={block} mode={mode} variables={variables} />
-            </p>
-          ),
-        )}
-        <p className="pt-2">
-          <span className="inline-flex rounded-full bg-brand-primary px-5 py-2.5 text-sm font-semibold text-white">
-            <RichText text={email.cta.label} mode={mode} variables={variables} />
-          </span>
-        </p>
-      </div>
+      {!headerOnly && (
+        <div className="space-y-3 px-4 py-5 text-[15px] leading-relaxed text-text-primary sm:px-5">
+          {email.body.map((block, i) =>
+            Array.isArray(block) ? (
+              <ul key={i} className="list-disc space-y-1 pl-5">
+                {block.map((item, j) => (
+                  <li key={j}>
+                    <RichText text={item} mode={mode} variables={variables} />
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p key={i} className="whitespace-pre-line">
+                <RichText text={block} mode={mode} variables={variables} />
+              </p>
+            ),
+          )}
+          <p className="pt-2">
+            <span className="inline-flex rounded-full bg-brand-primary px-5 py-2.5 text-sm font-semibold text-white">
+              <RichText text={email.cta.label} mode={mode} variables={variables} />
+            </span>
+          </p>
+        </div>
+      )}
     </figure>
   );
 }

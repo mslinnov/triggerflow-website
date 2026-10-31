@@ -4,7 +4,7 @@
  * Un texte de modèle mêle trois sortes de jetons au texte libre :
  * - `{{firstname}}` : variable de fusion réelle de l'app TriggerFlow, gardée telle
  *   quelle dans le texte copié (l'app la remplace à l'envoi) ;
- * - `[[Libellé|exemple]]` : champ que l'hôtelier remplit (prix, avantage, lien).
+ * - `[[Libellé|exemple]]` (ou `[[exemple]]`) : champ que l'hôtelier remplit (prix, avantage, lien).
  *   Tout chiffre promis passe par un champ (décision 16 du plan EquipHotel) ;
  * - `{date:2027-05-06}` : une date du calendrier. Le jour de la semaine est
  *   CALCULÉ ici, jamais écrit à la main : un « jeudi 7 mai » faux ne peut pas
@@ -17,7 +17,7 @@ export type Token =
   | { kind: 'field'; label: string; example: string }
   | { kind: 'date'; iso: string };
 
-const TOKEN = /(\{\{[a-z_]+\}\}|\[\[[^\]|]+\|[^\]]*\]\]|\{date:\d{4}-\d{2}-\d{2}\})/;
+const TOKEN = /(\{\{[a-z_]+\}\}|\[\[[^\]|]+(?:\|[^\]]*)?\]\]|\{date:\d{4}-\d{2}-\d{2}\})/;
 
 export function tokenize(text: string): Token[] {
   return text
@@ -27,7 +27,7 @@ export function tokenize(text: string): Token[] {
       if (part.startsWith('{{')) return { kind: 'variable', name: part.slice(2, -2) };
       if (part.startsWith('[[')) {
         const [label, example] = part.slice(2, -2).split('|');
-        return { kind: 'field', label, example };
+        return { kind: 'field', label, example: example ?? label };
       }
       if (part.startsWith('{date:')) return { kind: 'date', iso: part.slice(6, -1) };
       return { kind: 'text', value: part };

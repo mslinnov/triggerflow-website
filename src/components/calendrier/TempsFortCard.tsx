@@ -2,8 +2,10 @@ import { useTranslations } from 'next-intl';
 import { CalendarClock, Repeat, Users } from 'lucide-react';
 import { TEMPS_FORTS, type Campaign } from '@/data/calendrier-marketing';
 import { emailToPlainText, toPlainText } from '@/lib/calendrier';
+import { loadMjmlTemplate } from '@/lib/calendrier-mjml';
 import { ActivateLink } from './ActivateLink';
 import { CopyTemplateButton } from './CopyTemplateButton';
+import { MjmlPreview } from './MjmlPreview';
 import { TemplatePreview } from './TemplatePreview';
 import { useVariableLabels } from './useVariableLabels';
 
@@ -15,6 +17,9 @@ export function TempsFortCard({ campaign }: TempsFortCardProps) {
   const t = useTranslations('calendrierMarketing.card');
   const variables = useVariableLabels();
   const info = TEMPS_FORTS[campaign.code];
+  // Modèle MJML de la bibliothèque de l'app s'il est livré, sinon le modèle texte.
+  const mjml = loadMjmlTemplate(campaign.code);
+  const copyLabels = { copied: t('copied'), fallback: t('copyFallback') };
 
   return (
     <article
@@ -50,23 +55,52 @@ export function TempsFortCard({ campaign }: TempsFortCardProps) {
         </dl>
 
         <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap lg:mt-auto lg:pt-6">
-          <CopyTemplateButton
-            text={emailToPlainText(campaign.email)}
-            tempsFort={campaign.code}
-            labels={{ copy: t('copy'), copied: t('copied'), fallback: t('copyFallback') }}
-          />
+          {mjml ? (
+            <>
+              <CopyTemplateButton
+                url={`/api/calendrier/modele/${campaign.code}/mjml`}
+                tempsFort={campaign.code}
+                format="mjml"
+                labels={{ copy: t('copyMjml'), ...copyLabels }}
+              />
+              <CopyTemplateButton
+                url={`/api/calendrier/modele/${campaign.code}/html`}
+                tempsFort={campaign.code}
+                format="html"
+                variant="secondary"
+                labels={{ copy: t('copyHtml'), ...copyLabels }}
+              />
+            </>
+          ) : (
+            <CopyTemplateButton
+              text={emailToPlainText(campaign.email)}
+              tempsFort={campaign.code}
+              format="text"
+              labels={{ copy: t('copy'), ...copyLabels }}
+            />
+          )}
           <ActivateLink href={`/fr/calendrier-marketing/${info.slug}`} tempsFort={campaign.code} destination="page">
             {t('activate')}
           </ActivateLink>
         </div>
       </div>
 
-      <TemplatePreview
-        email={campaign.email}
-        mode="template"
-        variables={variables}
-        labels={{ subject: t('subject'), preheader: t('preheader'), preview: t('previewLabel') }}
-      />
+      {mjml ? (
+        <MjmlPreview
+          code={campaign.code}
+          subject={mjml.subject}
+          preheader={mjml.preheader}
+          variables={variables}
+          labels={{ subject: t('subject'), preheader: t('preheader'), preview: t('previewLabel'), frameTitle: t('mjmlPreviewTitle') }}
+        />
+      ) : (
+        <TemplatePreview
+          email={campaign.email}
+          mode="template"
+          variables={variables}
+          labels={{ subject: t('subject'), preheader: t('preheader'), preview: t('previewLabel') }}
+        />
+      )}
     </article>
   );
 }

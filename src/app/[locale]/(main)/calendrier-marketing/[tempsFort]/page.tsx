@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { ArrowLeft, CalendarClock, Repeat, Users } from 'lucide-react';
 import { ActivateLink } from '@/components/calendrier/ActivateLink';
+import { MjmlPreview } from '@/components/calendrier/MjmlPreview';
 import { RappelForm } from '@/components/calendrier/RappelForm';
 import { TemplatePreview } from '@/components/calendrier/TemplatePreview';
 import { ButtonLink, Container } from '@/components/ui';
@@ -16,6 +17,7 @@ import {
   tempsFortBySlug,
 } from '@/data/calendrier-marketing';
 import { toPlainText } from '@/lib/calendrier';
+import { loadMjmlTemplate } from '@/lib/calendrier-mjml';
 
 /**
  * Page « Activer » d'un temps fort (décision 22) : le client ouvre le modèle dans
@@ -73,6 +75,8 @@ export default async function ActivateTempsFortPage({ params }: PageProps) {
   const tCard = await getTranslations('calendrierMarketing.card');
   const campaign = currentCampaign(info.code, today());
   const send = toPlainText(campaign.send);
+  const mjml = loadMjmlTemplate(info.code);
+  const previewLabels = { subject: tCard('subject'), preheader: tCard('preheader'), preview: tCard('previewLabel') };
 
   const steps = [
     { icon: Users, title: t('howTarget'), text: t('howTargetText', { audience: info.audience }) },
@@ -109,18 +113,31 @@ export default async function ActivateTempsFortPage({ params }: PageProps) {
           <div>
             <h2 className="font-serif text-2xl font-bold text-text-primary md:text-3xl">{t('previewTitle')}</h2>
             <p className="mt-2 text-sm text-text-muted">{t('previewNote')}</p>
-            <div className="mt-6 overflow-hidden rounded-2xl border border-border-light">
-              <p className="bg-brand-dark px-5 py-4 text-center font-serif text-xl font-semibold text-white">
-                {EXAMPLE_VARIABLES.facility_name}
-              </p>
-              <TemplatePreview
-                email={campaign.email}
-                mode="example"
-                variables={EXAMPLE_VARIABLES}
-                labels={{ subject: tCard('subject'), preheader: tCard('preheader'), preview: tCard('previewLabel') }}
-                className="rounded-none border-0 shadow-none"
-              />
-            </div>
+            {mjml ? (
+              <div className="mt-6">
+                <MjmlPreview
+                  code={info.code}
+                  subject={mjml.subject}
+                  preheader={mjml.preheader}
+                  variables={EXAMPLE_VARIABLES}
+                  mode="example"
+                  labels={{ ...previewLabels, frameTitle: tCard('mjmlPreviewTitle') }}
+                />
+              </div>
+            ) : (
+              <div className="mt-6 overflow-hidden rounded-2xl border border-border-light">
+                <p className="bg-brand-dark px-5 py-4 text-center font-serif text-xl font-semibold text-white">
+                  {EXAMPLE_VARIABLES.facility_name}
+                </p>
+                <TemplatePreview
+                  email={campaign.email}
+                  mode="example"
+                  variables={EXAMPLE_VARIABLES}
+                  labels={previewLabels}
+                  className="rounded-none border-0 shadow-none"
+                />
+              </div>
+            )}
           </div>
 
           <div>
