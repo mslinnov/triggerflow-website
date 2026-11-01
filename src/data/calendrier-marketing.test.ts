@@ -3,6 +3,8 @@ import { test } from 'node:test';
 import { emailToPlainText, formatDateLong, formatDateShort, toExampleText, tokenize, toPlainText, weekday } from '../lib/calendrier';
 import {
   activateInAppName,
+  campaignSendDeadline,
+  upcomingCampaigns,
   activateInAppUrl,
   ALL_YEAR,
   CALENDAR,
@@ -246,4 +248,19 @@ test('lien « ouvrir dans TriggerFlow » : code, style de l’app selon le thèm
   // Sans thème : style par défaut, nom du temps fort seul. Aucun nom ne porte d'année.
   assert.equal(activateInAppUrl('valentines_day'), 'https://app.trigger-flow.com/email-templates/ai/new?type=valentines_day&style=modern&name=Saint-Valentin');
   for (const code of TEMPS_FORT_CODES) assert.doesNotMatch(activateInAppName(code, 'Élégant'), /20\d\d/, code);
+});
+
+test('« À préparer maintenant » : seulement les campagnes dont l’envoi n’est pas passé', () => {
+  const byId = (id: string) => CAMPAIGNS.find((c) => c.id === id)!;
+  // Dernière date de la fenêtre d'envoi ; sinon la relance.
+  assert.equal(campaignSendDeadline(byId('black_friday_voucher-2026')), '2026-11-26');
+  assert.equal(campaignSendDeadline(byId('last_minute_gift-2026')), '2026-12-23');
+  assert.equal(campaignSendDeadline(byId('new_year_eve-2026')), '2026-11-16');
+  const ids = (today: string) => upcomingCampaigns(today).map((c) => c.id);
+  assert.deepEqual(ids('2026-11-01'), ['black_friday_voucher-2026', 'new_year_eve-2026']);
+  // Relance des réveillons passée : elle n'est plus à préparer.
+  assert.deepEqual(ids('2026-11-20'), ['black_friday_voucher-2026', 'last_minute_gift-2026']);
+  // Black Friday envoyé la veille : place au suivant.
+  assert.deepEqual(ids('2026-11-27'), ['last_minute_gift-2026', 'early_booking_summer-2027']);
+  assert.deepEqual(ids('2028-01-15'), []);
 });

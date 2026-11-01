@@ -9,7 +9,7 @@ import { MonthSection } from '@/components/calendrier/MonthSection';
 import { BreadcrumbListJsonLd } from '@/components/seo';
 import { ButtonLink, Container } from '@/components/ui';
 import { brand } from '@/data/brand';
-import { CALENDAR, CAMPAIGNS, calendarDemoUrl, monthYear, TEMPS_FORTS } from '@/data/calendrier-marketing';
+import { CALENDAR, CAMPAIGNS, calendarDemoUrl, monthYear, TEMPS_FORTS, upcomingCampaigns } from '@/data/calendrier-marketing';
 import { toPlainText } from '@/lib/calendrier';
 import { getPricingPhase } from '@/data/pricing';
 import { pageAlternates } from '@/lib/seo';
@@ -62,9 +62,10 @@ export default async function CalendrierMarketingPage({ params }: PageProps) {
   const scrollMarginClass = announcing ? 'scroll-mt-[180px] md:scroll-mt-[196px]' : 'scroll-mt-[144px] md:scroll-mt-[160px]';
   const stickyColumnClass = announcing ? 'lg:top-[208px]' : 'lg:top-[172px]';
 
-  // Arrivée par le QR : les deux prochains temps forts à préparer, à la date du jour.
+  // Arrivée par le QR : les deux prochains temps forts dont l'envoi n'est pas passé, à la
+  // date du jour (page régénérée toutes les heures, cf. (main)/layout.tsx).
   const today = new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Paris' }).format(new Date());
-  const upcoming = CAMPAIGNS.filter((c) => c.endsOn >= today).slice(0, 2);
+  const upcoming = upcomingCampaigns(today);
 
   const years = [...new Set(CALENDAR.map(monthYear))].map((year) => ({
     year,

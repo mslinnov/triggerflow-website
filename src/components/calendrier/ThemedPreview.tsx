@@ -45,13 +45,18 @@ interface ThemedPreviewProps {
   labels: ThemedPreviewLabels;
 }
 
-/** L'e-mail rendu dans une iframe sans script, avec un squelette tant qu'il charge. */
+/**
+ * L'e-mail rendu dans une iframe sans script, avec un squelette tant qu'il charge. Le
+ * squelette est SOUS l'iframe (transparente tant qu'elle est vide) : l'e-mail le
+ * recouvre dès qu'il se peint (tous les modèles ont un fond sur <body>), même si le
+ * chargement a fini avant l'hydratation et que React n'a pas vu l'événement load.
+ */
 function PreviewFrame({ src, title, loading, interactive, className }: { src: string; title: string; loading: string; interactive: boolean; className?: string }) {
   const [loaded, setLoaded] = useState(false);
   return (
     <div className={cn('relative', className)}>
       {!loaded && (
-        <div role="status" aria-label={loading} className="absolute inset-0 space-y-4 bg-white p-5">
+        <div aria-hidden="true" title={loading} className="absolute inset-0 z-0 space-y-4 bg-white p-5">
           <div className="mx-auto h-5 w-1/2 rounded bg-surface-secondary motion-safe:animate-pulse" />
           <div className="h-40 rounded-lg bg-surface-secondary motion-safe:animate-pulse" />
           <div className="h-3 w-5/6 rounded bg-surface-secondary motion-safe:animate-pulse" />
@@ -69,7 +74,7 @@ function PreviewFrame({ src, title, loading, interactive, className }: { src: st
         // plein écran, elle, se lit et se fait défiler normalement.
         tabIndex={interactive ? undefined : -1}
         aria-hidden={interactive ? undefined : true}
-        className={cn('block w-full border-0 bg-white', interactive ? 'h-full' : 'pointer-events-none h-[1400px]')}
+        className={cn('relative z-10 block w-full border-0 bg-transparent', interactive ? 'h-full' : 'pointer-events-none h-[1400px]')}
       />
     </div>
   );
@@ -88,18 +93,33 @@ export function ThemedPreview({ code, title, variants, variables, mode = 'templa
   const current = variants.find((v) => v.theme === selected) ?? variants[0];
   const src = `/api/calendrier/modele/${code}/apercu?theme=${current.theme}`;
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const openerRef = useRef<HTMLButtonElement>(null);
+  const openerRef = useRef<HTMLAnchorElement>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
-    if (open && !dialog.open) dialog.showModal();
-    if (!open && dialog.open) dialog.close();
-    // Pas de défilement de la page derrière la vue plein écran (iOS en particulier).
-    document.documentElement.classList.toggle('overflow-hidden', open);
+    if (!open) {
+      if (dialog.open) dialog.close();
+      return;
+    }
+    if (!dialog.open) dialog.showModal();
+    // Focus d'arrivée sur « Fermer » plutôt que sur la première pastille.
+    closeRef.current?.focus();
+    // Pas de défilement de la page derrière la vue plein écran (iOS en particulier) ;
+    // seule la carte ouverte touche à la page, jamais les autres au montage.
+    document.documentElement.classList.add('overflow-hidden');
     return () => document.documentElement.classList.remove('overflow-hidden');
   }, [open]);
+
+  // « Voir l'e-mail en entier » est un vrai lien vers l'aperçu (sans JavaScript, il
+  // l'ouvre dans un onglet) ; avec JavaScript, un clic simple ouvre la vue plein écran.
+  const openFull = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    setOpen(true);
+  };
 
   const header = (
     <TemplatePreview
@@ -120,18 +140,20 @@ export function ThemedPreview({ code, title, variants, variables, mode = 'templa
         {header}
         <div className="relative h-[380px] overflow-hidden sm:h-[460px] lg:h-[380px]">
           <PreviewFrame key={src} src={src} title={labels.frameTitle} loading={labels.loading} interactive={false} />
-          {/* Toute la zone ouvre la vue complète au doigt ; le bouton visible porte le nom pour le clavier. */}
-          <button type="button" tabIndex={-1} aria-hidden="true" onClick={() => setOpen(true)} className="absolute inset-0 cursor-zoom-in" />
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 flex h-32 items-end justify-center bg-gradient-to-t from-white via-white/90 to-transparent pb-4">
-            <button
+          {/* Toute la zone ouvre la vue complète au doigt ; le lien visible porte le nom pour le clavier. */}
+          <a href={src} target="_blank" rel="noopener" tabIndex={-1} aria-hidden="true" onClick={openFull} className="absolute inset-0 z-20 cursor-zoom-in" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex h-32 items-end justify-center bg-gradient-to-t from-white via-white/90 to-transparent pb-4">
+            <a
               ref={openerRef}
-              type="button"
-              onClick={() => setOpen(true)}
+              href={src}
+              target="_blank"
+              rel="noopener"
+              onClick={openFull}
               className="pointer-events-auto inline-flex min-h-11 items-center gap-2 rounded-full border border-border-default bg-white px-5 text-sm font-semibold text-text-primary shadow-sm transition-colors hover:border-brand-primary hover:text-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2"
             >
               <Maximize2 className="h-4 w-4" aria-hidden="true" />
               {labels.seeFull}
-            </button>
+            </a>
           </div>
         </div>
       </div>
@@ -157,9 +179,8 @@ export function ThemedPreview({ code, title, variants, variables, mode = 'templa
                 <ThemePills themes={themes} themeNames={labels.themeNames} label={labels.themePicker} />
               </div>
               <button
+                ref={closeRef}
                 type="button"
-                // Focus d'arrivée sur « Fermer » plutôt que sur la première pastille.
-                autoFocus
                 onClick={() => setOpen(false)}
                 aria-label={labels.close}
                 className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-text-secondary transition-colors hover:bg-surface-secondary hover:text-text-primary focus:outline-none focus:ring-2 focus:ring-brand-primary"

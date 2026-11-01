@@ -254,7 +254,7 @@ export const CALENDAR: CalendarMonth[] = [
         id: 'new_year_eve-2026',
         code: 'new_year_eve',
         send: 'Si ce n’est pas encore fait : dès maintenant',
-        reminder: 'Mi-novembre, aux clients qui n’ont pas réservé',
+        reminder: 'Le {date:2026-11-16}, aux clients qui n’ont pas réservé',
         endsOn: '2026-12-31',
         email: newYearEve('2026-12-24', '2026-12-31'),
       },
@@ -630,6 +630,26 @@ export function monthYear(month: CalendarMonth): string {
 
 /** Toutes les campagnes, dans l'ordre du calendrier. */
 export const CAMPAIGNS: Campaign[] = CALENDAR.flatMap((month) => month.campaigns);
+
+const DATE_TOKEN = /\{date:(\d{4}-\d{2}-\d{2})\}/g;
+
+/**
+ * Dernier jour utile pour préparer une campagne : la dernière date de « Quand
+ * l'envoyer » (fin de la fenêtre d'envoi), sinon celle de la relance, sinon la fin de
+ * la campagne. Lu dans les jetons {date:…} du texte : aucune date en double.
+ */
+export function campaignSendDeadline(campaign: Campaign): string {
+  for (const text of [campaign.send, campaign.reminder ?? '']) {
+    const dates = [...text.matchAll(DATE_TOKEN)].map((m) => m[1]);
+    if (dates.length > 0) return dates[dates.length - 1];
+  }
+  return campaign.endsOn;
+}
+
+/** « À préparer maintenant » : les prochaines campagnes dont l'envoi n'est pas passé. */
+export function upcomingCampaigns(today: string, count = 2): Campaign[] {
+  return CAMPAIGNS.filter((campaign) => campaignSendDeadline(campaign) >= today).slice(0, count);
+}
 
 /**
  * Campagne à montrer sur la page « Activer » d'un temps fort : la première qui n'est
