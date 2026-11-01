@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { calendarStatFor, createStatsQueue, loadOrCreateVisit, trackCalendarEvent, uuidV4 } from './calendrier-tracking';
+import { calendarStatFor, calendarStatForClick, createStatsQueue, loadOrCreateVisit, trackCalendarEvent, uuidV4 } from './calendrier-tracking';
 
 test('suivi du calendrier : un événement GA4 par action, paramètres absents retirés, rien sans consentement', () => {
   const calls: unknown[][] = [];
@@ -55,6 +55,8 @@ test('visite : UUID v4 et UTM d’arrivée figés le temps de l’onglet ; stock
   // Sans UTM dans l'URL : ceux de l'attribution connue, sinon rien.
   assert.equal(loadOrCreateVisit(null, '', { utm_source: 'google' }).utm_source, 'google');
   assert.equal(loadOrCreateVisit(null, '').utm_campaign, null);
+  // UTM bornés dès le navigateur (100 points de code), pour que le lot reste petit.
+  assert.equal(loadOrCreateVisit(null, `?utm_campaign=${encodeURIComponent('é'.repeat(300))}`).utm_campaign, 'é'.repeat(100));
   // Navigation privée : le stockage lève une erreur, la visite existe quand même.
   const refusing = {
     getItem: () => {
@@ -73,6 +75,25 @@ test('visite : UUID v4 et UTM d’arrivée figés le temps de l’onglet ; stock
   } finally {
     Object.defineProperty(crypto, 'randomUUID', { value: realRandomUUID, configurable: true });
   }
+});
+
+test('clics : démo avec le temps fort de son attribut, pas de son utm_content réécrit par la visite', () => {
+  // DemoClickTracker a déjà remplacé utm_content par celui de la visite (« stand »).
+  const demo = { href: 'https://app.lemcal.com/@trigger-flow/demo?utm_content=stand', dataset: { tempsFort: 'black_friday_voucher' } };
+  assert.deepEqual(calendarStatForClick(demo, null), { type: 'demo_click', temps_fort: 'black_friday_voucher' });
+  // Visite arrivée avec un utm_content qui est un autre temps fort : l'attribut l'emporte.
+  const misleading = { href: 'https://app.lemcal.com/@trigger-flow/demo?utm_content=valentines_day', dataset: { tempsFort: 'new_year_eve' } };
+  assert.equal(calendarStatForClick(misleading, null)?.temps_fort, 'new_year_eve');
+  // Démo de la page calendrier (hors temps fort), puis page « Activer » (temps fort de la page).
+  const generic = { href: 'https://app.lemcal.com/@trigger-flow/demo?utm_content=valentines_day', dataset: {} };
+  assert.deepEqual(calendarStatForClick(generic, null), { type: 'demo_click', temps_fort: null });
+  assert.equal(calendarStatForClick(generic, 'last_minute_gift')?.temps_fort, 'last_minute_gift');
+  // « Déjà client : se connecter », puis un lien ordinaire.
+  assert.deepEqual(calendarStatForClick({ href: 'https://app.trigger-flow.com/login', dataset: { calendarStat: 'client_click' } }, null), {
+    type: 'client_click',
+    temps_fort: null,
+  });
+  assert.equal(calendarStatForClick({ href: 'https://www.trigger-flow.com/fr/tarifs', dataset: {} }, null), null);
 });
 
 function fakeQueue({ beaconAccepts = true, postThrows = false } = {}) {
