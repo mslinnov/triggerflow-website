@@ -2646,26 +2646,26 @@
       "badge": "Summer 2026 study, independent hotels",
       "titleLead": "One OTA guest in four will give you their real email address,",
       "titleStatement": "if you ask at the right moment.",
-      "subtitle": "Booking.com and Expedia bring you the guest once, with a relay address you do not own. We followed a full summer of OTA guests across independent hotels, from the first message to the real address typed in. Here is what makes the difference.",
+      "subtitle": "Booking.com and Expedia bring you the guest once, with a relay address you do not own. We followed a full summer of OTA guests across independent hotels, from the first message to the real address typed in. The timing of the first message outweighs everything else.",
       "funnelTitle": "Out of 100 guests who booked through an OTA",
-      "funnelNote": "The capture rate is measured per OTA guest, never per opened message: it is the figure you can check in your own guest database."
+      "funnelNote": "The journey breaks when the form is opened, not after: three guests in four who open it finish it. Rates measured per OTA guest, which you can check in your own database."
     },
     "funnel": {
       "guests": "Guests with an OTA relay address",
       "reached": "Receive a form that asks for their address",
-      "reachedNote": "Figure to come from the study.",
+      "reachedNote": "The message almost always goes out: sending is not what is missing.",
       "formOpened": "Open the form",
-      "formOpenedNote": "Figure to come from the study.",
+      "formOpenedNote": "This is where it splits: when the message goes out, on which channel, and what it promises.",
       "formSent": "Submit it",
-      "formSentNote": "Figure to come from the study.",
+      "formSentNote": "Three guests in four who open the form submit it.",
       "captured": "Give their real address",
-      "capturedNote": "Figure to come from the study."
+      "capturedNote": "Almost everyone who submits it leaves a usable address."
     },
     "trust": {
       "figures": {
-        "capture": "of OTA guests give their real address in hotels where the form is running",
-        "hotelSpread": "capture gap between the best and the weakest hotels",
-        "ruleSpread": "gap on the single most powerful setting in the study"
+        "capture": "of OTA guests leave their real address in hotels where the form is running",
+        "hotelSpread": "capture gap between the 10% most effective hotels and the 10% least effective",
+        "ruleSpread": "between a first message sent at booking and a first message on arrival day"
       },
       "title": "More than 400 properties equipped, connected to the PMS of independent hotels",
       "turnkey": "Form and email templates delivered pre-configured",
@@ -2676,97 +2676,100 @@
     "comparator": {
       "eyebrow": "Side by side",
       "title": "The two forms, side by side",
-      "subtitle": "The same Booking.com guest, the same stay, two ways of asking for their address. Your pre-arrival form looks like one of them.",
+      "subtitle": "The same Booking.com guest, the same stay, two ways of asking for their address. Your form looks like one of them.",
       "reconstructionTitle": "These two forms are reconstructions.",
       "reconstructionBody": "We rebuilt them from the settings the study compares. They are not screenshots of real forms: no property is named or recognisable. Only the rates are measurements.",
       "effective": {
         "badge": "The form that gets the address",
-        "timing": "Send moment: per the study",
-        "intro": "Your arrival is coming up. Tell us how to reach you directly, so we can send your confirmation and the practical details of your stay.",
+        "timing": "Sent: at booking, more than two weeks before arrival",
+        "intro": "Your booking is confirmed. To receive the details of your stay directly, please give us your personal email address.",
         "fieldLabel": "Your personal email address",
         "fieldValue": "sam.taylor@example.com",
-        "fieldHint": "Empty to start with: the Booking address is not pre-filled.",
-        "consent": "I agree to receive offers from the hotel (optional).",
+        "fieldHint": "First and only question of the form.",
         "button": "Send"
       },
       "ineffective": {
         "badge": "The form that does not",
-        "timing": "Send moment: per the study",
-        "intro": "Please complete the form below.",
+        "timing": "Sent: on arrival day",
+        "intro": "Prepare your arrival: arrival time, breakfast, parking, room preferences, special requests…",
         "fieldLabel": "Email",
-        "fieldValue": "sam.t.123456@guest.booking.com",
-        "fieldHint": "The relay address is pre-filled: the guest confirms without changing it.",
+        "fieldValue": "name@example.com",
+        "fieldHint": "Question eight of nine, after the stay preferences.",
         "button": "Confirm"
       },
       "annotationsTitle": "The three differences, and what they are worth",
       "annotations": {
         "a1": {
-          "title": "Difference 1: to be written after the study",
-          "body": "The setting and its two capture rates, measured per OTA guest."
+          "title": "When the first message goes out",
+          "body": "In hotels where the first message goes out at booking, 56.4% of OTA guests leave their real address; when it goes out on arrival day, 19.0%. The gap holds in 10 hotels out of 10 that do both."
         },
         "a2": {
-          "title": "Difference 2: to be written after the study",
-          "body": "The setting and its two capture rates, measured per OTA guest."
+          "title": "A dedicated, short form",
+          "body": "A form that only asks for contact details: 52.0%. The same field slipped into a pre-arrival form with a catalogue: 33.4%. And one to three questions give 49.1%, against 31.1% from seven questions up."
         },
         "a3": {
-          "title": "Difference 3: to be written after the study",
-          "body": "The setting and its two capture rates, measured per OTA guest."
+          "title": "The email field first",
+          "body": "As the first question: 46.2%. Further down the first page: 32.2%. A guest who has to answer six questions first often stops before the seventh."
         }
       },
-      "methodNote": "Each difference is measured one criterion at a time, on the same population of OTA guests: the rates do not add up. And they are correlations, not proof of cause."
+      "methodNote": "Each difference is measured one criterion at a time, on the same population of OTA guests: the rates do not add up. They are correlations, not proof of cause; differences 2 and 3 have not yet been checked within the same hotel."
     },
     "gap": {
-      "title": "The three most expensive mistakes",
-      "subtitle": "All three can be fixed in your current settings, without changing PMS.",
-      "mistake1": {
-        "figure": "…",
-        "statement": "Mistake 1: to be written after the study",
-        "consequence": "What it costs, measured per OTA guest."
-      },
-      "mistake2": {
-        "figure": "…",
-        "statement": "Mistake 2: to be written after the study",
-        "consequence": "What it costs, measured per OTA guest."
-      },
-      "mistake3": {
-        "figure": "…",
-        "statement": "Mistake 3: to be written after the study",
-        "consequence": "What it costs, measured per OTA guest."
+      "title": "The most expensive mistake",
+      "subtitle": "It affects nearly one OTA guest in three in the hotels studied, and it can be fixed without changing PMS.",
+      "noMessage": {
+        "figure": "11.0% vs 35.8%",
+        "statement": "No message before arrival",
+        "consequence": "29.9% of OTA guests receive no email, text or WhatsApp before they walk in. Among them, 11.0% end up leaving their real address, against 35.8% among those who received at least one message. A booking made the day before, a send set too late: that guest leaves with their relay address."
       }
     },
     "evidence": {
-      "title": "The five rules",
-      "subtitle": "Each rule sets two capture rates against each other, measured per OTA guest: the share of guests who booked through an OTA and end up giving you their real address.",
+      "title": "The seven rules",
+      "subtitle": "Each rule sets two capture rates against each other, measured per OTA guest: the share of guests who booked through an OTA and end up giving you their real address. They are correlations; under each rule, the check within the same hotel.",
       "rateValue": "{rate, number, ::.0}%",
       "rule1": {
-        "title": "Rule 1: to be written after the study",
-        "body": "The setting, what it changes, and why.",
-        "best": "With",
-        "worst": "Without"
+        "title": "Ask early",
+        "body": "The strongest factor in the study. More than two weeks before arrival, the guest has time to read and nothing else to do; on the day itself, they are on the road.",
+        "best": "At booking",
+        "worst": "On arrival day"
       },
       "rule2": {
-        "title": "Rule 2: to be written after the study",
-        "body": "The setting, what it changes, and why.",
-        "best": "With",
-        "worst": "Without"
+        "title": "Follow up",
+        "body": "One message: 25.8%. Two: 40.5%. Three or more for the same stay: 64.8%. The second message does not annoy, it catches those who never opened the first.",
+        "best": "3 messages or more",
+        "worst": "A single message"
       },
       "rule3": {
-        "title": "Rule 3: to be written after the study",
-        "body": "The setting, what it changes, and why.",
-        "best": "With",
-        "worst": "Without"
+        "title": "Add WhatsApp",
+        "body": "The email goes to the relay address, which forwards poorly and is rarely read. WhatsApp lands on the guest's phone, with no middleman.",
+        "best": "Email + WhatsApp",
+        "worst": "Email only"
       },
       "rule4": {
-        "title": "Rule 4: to be written after the study",
-        "body": "The setting, what it changes, and why.",
-        "best": "With",
-        "worst": "Without"
+        "title": "A dedicated, short form",
+        "body": "A form that only asks for contact details gives 52.0%, against 33.4% for the same field slipped into a pre-arrival form with a catalogue. One to three questions: 49.1%; seven or more: 31.1%.",
+        "best": "Dedicated form",
+        "worst": "Mixed into pre-arrival"
       },
       "rule5": {
-        "title": "Rule 5: to be written after the study",
-        "body": "The setting, what it changes, and why.",
-        "best": "With",
-        "worst": "Without"
+        "title": "The email field first",
+        "body": "The first question almost always gets answered. The one that comes after room preferences and arrival time, much less often.",
+        "best": "First question",
+        "worst": "Further down"
+      },
+      "withinHotels": "Confirmed in {wins} hotels out of {of} that do both.",
+      "betweenHotelsOnly": "Gap observed between hotels, not yet checked within the same hotel.",
+      "rule6": {
+        "title": "A subject line about the stay",
+        "body": "“Prepare your stay” gives the guest a reason to open. “Save time” and “Online check-in” promise them paperwork.",
+        "best": "Prepare your stay",
+        "worst": "Save time"
+      },
+      "rule7": {
+        "title": "A short email",
+        "body": "Under 400 characters of visible text: 34.5%, against 25.7% between 400 and 1,000. But from 1,000 to 2,000 it climbs back to 32.3%: short beats medium, it is not “the longer, the worse”.",
+        "best": "Under 400 characters",
+        "worst": "400 to 1,000"
       }
     },
     "demoBridge": {
@@ -2833,41 +2836,41 @@
     },
     "how": {
       "title": "The form to copy",
-      "subtitle": "A pre-arrival form that asks for the address and gives a reason, followed by the eight-point checklist.",
+      "subtitle": "A dedicated, short form that asks for the address first and says why, followed by the eight-point checklist.",
       "form": {
-        "header": "Pre-arrival form",
-        "title": "Prepare your arrival",
-        "timing": "Send: moment and channel per the study",
-        "intro": "Your stay is coming up. Tell us your arrival time and the address where we can reach you directly: we will send your confirmation and practical details there.",
+        "header": "Dedicated form",
+        "title": "Let us stay in touch",
+        "timing": "Sent: at booking, then a reminder before arrival, by email and WhatsApp",
+        "intro": "Your booking is confirmed. Tell us the address where we can reach you directly: we will send your confirmation and the practical details of your stay there.",
         "fieldLabel": "Your personal email address",
         "fieldValue": "sam.taylor@example.com",
-        "fieldHint": "For your confirmation and your invoice.",
+        "fieldHint": "First question of the form.",
         "consent": "I agree to receive offers from the hotel (optional).",
         "button": "Send",
         "footnote": "Field linked to the guest profile: the address typed in replaces the relay address, the old one is kept in the history."
       },
       "checklistTitle": "The eight-point checklist",
       "checklist": {
-        "c1": "Point 1: to be written after the study (send moment)",
-        "c2": "Point 2: to be written after the study (channel)",
-        "c3": "A reason given to the guest for asking their address",
-        "c4": "Email field empty to start with, never pre-filled with the relay address",
-        "c5": "Field linked to the guest profile, so the real address replaces the relay one",
-        "c6": "A separate, optional consent box for offers",
-        "c7": "Point 7: to be written after the study",
-        "c8": "A win-back campaign with a direct link to your booking engine"
+        "c1": "First message at booking, never on arrival day",
+        "c2": "Two to three messages for the same stay, not just one",
+        "c3": "WhatsApp on top of email when you have the number",
+        "c4": "A dedicated form, one to three questions",
+        "c5": "The email field as the first question",
+        "c6": "A subject line about preparing the stay, not about saving time",
+        "c7": "A short email, under 400 characters of text",
+        "c8": "A field linked to the guest profile, and an optional consent box for offers"
       },
-      "checklistNote": "Half a day is enough. Form, send and win-back campaign are set up with TriggerFlow from your current PMS."
+      "checklistNote": "Half a day is enough. Form, sends and a win-back campaign pointing to your booking engine are set up with TriggerFlow from your current PMS."
     },
     "faq": {
       "title": "The questions we get asked",
       "measure": {
         "q": "Where do these figures come from?",
-        "a": "From real stays of OTA guests at independent hotels equipped with TriggerFlow, arriving between 1 June and 30 September 2026. An address counts as recovered when the guest types it into a form linked to their stay; addresses coming from the PMS are not counted. No property is named, and no guest personal data was used."
+        "a": "From real stays of OTA guests at independent hotels equipped with TriggerFlow, arriving between 1 June and 30 September 2026, cancellations excluded. An address counts as recovered when the guest types it into a form linked to their stay and the guest profile confirms it; addresses coming from the PMS are not counted. No property is named, and no guest personal data was used."
       },
       "causality": {
         "q": "Are these causes or correlations?",
-        "a": "Correlations. A hotel that times its send carefully often takes care of its form too. The guide says which gaps hold when settings are compared within the same hotel: those are the ones to start with."
+        "a": "Correlations. A hotel that writes early often takes care of its form too. That is why each rule states whether the gap holds within the same hotel when it uses both settings: it does for the timing of the first message, follow-ups, WhatsApp, the subject line and the length of the email."
       },
       "parity": {
         "q": "Can I offer a better direct rate to a guest who came through an OTA?",
@@ -2897,13 +2900,13 @@
     },
     "finalCta": {
       "title": "Get the OTA guest guide",
-      "subtitle": "The full study, the five rules with their rates, the form to copy and the eight-point checklist.",
+      "subtitle": "The full study, the seven rules with their rates, the form to copy and the eight-point checklist.",
       "formTitle": "Where should we send the guide?",
       "format": "PDF, a twenty-minute read, no jargon. The guide is written in French.",
       "chapters": {
         "funnel": "The journey of an OTA guest, from the first message to the real address",
-        "rules": "The five rules, each with the measured rate behind it",
-        "mistakes": "The three most expensive mistakes, and what they cost",
+        "rules": "The seven rules, each with the measured rate behind it",
+        "mistakes": "The most expensive mistake, and what it costs",
         "template": "The form to copy, the checklist and what it is worth for your hotel",
         "legal": "Rate parity and consent: what the rules say, on one page",
         "method": "The measurement method, its limits and what it does not prove"

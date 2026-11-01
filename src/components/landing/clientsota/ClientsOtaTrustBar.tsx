@@ -30,7 +30,7 @@ const PMS_LOGOS = [
   { file: 'vega.png', name: 'Vega', width: 512, height: 512, size: 'h-7' },
 ] as const;
 
-/** Écart de la règle n°1 : la plus forte des cinq, choisie comme telle après l'étude. */
+/** Écart de la règle n°1, le moment du premier message : vérifié dans 10 hôtels sur 10. */
 const FIRST_RULE = CLIENTS_OTA_RULES[0];
 const FIRST_RULE_SPREAD =
   FIRST_RULE.best !== null && FIRST_RULE.worst !== null && FIRST_RULE.worst > 0

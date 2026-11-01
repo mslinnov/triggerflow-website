@@ -148,156 +148,169 @@
   .regle { box-shadow: none; }
   p, li { orphans: 3; widows: 3; }
   a { color: inherit; text-decoration: none; }
+  /* Le pied reste avec le bloc final : seul, il ouvrait une page blanche. */
+  .cta { margin-top: 28px; }
+  footer { margin-top: 12px; padding-top: 8px; break-before: avoid; }
 </style>
 
 <header class="couv">
   <div class="couv-in">
     <p class="marque">TriggerFlow · Livre blanc</p>
     <h1>Le guide du client OTA</h1>
-    <p class="promesse">Un client OTA sur quatre vous donne sa vraie adresse si vous la lui demandez au bon moment, et les cinq réglages pour aller plus loin. Une étude menée sur un été complet de séjours réels, chez des hôtels indépendants.</p>
+    <p class="promesse">Un client OTA sur quatre vous donne sa vraie adresse si vous la lui demandez au bon moment, et les sept réglages pour aller plus loin. Une étude menée sur un été complet de séjours réels, chez des hôtels indépendants.</p>
     <div class="chiffres-couv">
-      <div><div class="n">1 sur 4</div><div class="l">des clients OTA donnent leur vraie adresse, dans les hôtels où le formulaire tourne</div></div>
-      <div><div class="n avenir">×…</div><div class="l">entre les meilleurs et les moins bons hôtels</div></div>
-      <div><div class="n avenir">×…</div><div class="l">sur le réglage le plus puissant de l'étude</div></div>
+      <div><div class="n">1 sur 4</div><div class="l">des clients OTA laissent leur vraie adresse, dans les hôtels où le formulaire tourne</div></div>
+      <div><div class="n">×3</div><div class="l">entre un premier message envoyé dès la réservation et le jour d'arrivée</div></div>
+      <div><div class="n">×2,5</div><div class="l">entre un seul message et trois messages pour le même séjour</div></div>
     </div>
     <p class="socle">Été 2026 · Hôtels indépendants · Résultats exprimés en taux, données anonymisées</p>
   </div>
 </header>
 
 <div class="wrap">
-  <p class="intro">Booking.com et Expedia vous amènent un client, et repartent avec lui. Vous gardez la réservation, la commission est payée, mais l'adresse e-mail que vous recevez est une adresse relais : elle ne sert qu'au séjour en cours, et elle n'est pas à vous. Le jour où ce client voudra revenir, il repassera par la plateforme.</p>
+  <p class="intro">Booking.com et Expedia vous amènent un client, et repartent avec lui. Vous gardez la réservation, vous payez la commission, et l'adresse e-mail que vous recevez est une adresse relais : elle sert au séjour en cours, elle n'est pas à vous. Le jour où ce client voudra revenir, il repassera par la plateforme.</p>
 
-  <p>Nous avons suivi un été complet de clients OTA chez des hôtels indépendants, du premier message envoyé jusqu'à la vraie adresse saisie. Le résultat tient en une phrase : <strong class="avenir">[à écrire après l'étude : le constat principal]</strong>. Voici ce que montrent les données, et comment reconstruire votre formulaire de préparation en une heure.</p>
+  <p>Ce n'est pas un sujet marginal. Dans les hôtels de l'étude, près d'une réservation sur deux (47,8 %) vient d'une OTA, et Booking.com en apporte plus des trois quarts. Nous avons suivi un été complet de ces clients, du premier message envoyé jusqu'à la vraie adresse saisie. Le résultat tient en une phrase : <strong>le moment où vous demandez compte plus que la façon dont vous demandez</strong>. Voici ce que montrent les données, et comment reconstruire votre parcours en une heure.</p>
 
   <h2><span class="num">Chapitre 1</span>Le parcours d'un client OTA</h2>
-  <p>Sur 100 clients venus d'une OTA, voici ce qui se passe réellement.</p>
+  <p>Sur 100 clients venus d'une OTA, dans les hôtels où un formulaire demande l'adresse, voici ce qui se passe réellement.</p>
 
   <div class="etape"><span>Clients avec une adresse relais</span><span class="n2">100</span><span class="jauge"><i style="width:100%"></i></span></div>
-  <div class="etape"><span>Reçoivent un formulaire qui demande l'adresse</span><span class="n2 avenir">…</span><span class="jauge"><i style="width:0%"></i></span><span class="s avenir">Note à écrire après l'étude (M2).</span></div>
-  <div class="etape"><span>Ouvrent le formulaire</span><span class="n2 avenir">…</span><span class="jauge"><i style="width:0%"></i></span><span class="s avenir">Note à écrire après l'étude (M4).</span></div>
-  <div class="etape"><span>L'envoient</span><span class="n2 avenir">…</span><span class="jauge"><i style="width:0%"></i></span><span class="s avenir">Note à écrire après l'étude (M5).</span></div>
-  <div class="etape"><span>Donnent leur vraie adresse</span><span class="n2 avenir">…</span><span class="jauge"><i style="width:0%"></i></span><span class="s avenir">Note à écrire après l'étude (M6).</span></div>
+  <div class="etape"><span>Reçoivent un message qui mène au formulaire</span><span class="n2">86</span><span class="jauge"><i style="width:86%"></i></span><span class="s">Le message part presque toujours : ce n'est pas l'envoi qui manque.</span></div>
+  <div class="etape"><span>Ouvrent le formulaire</span><span class="n2">39</span><span class="jauge"><i style="width:39%"></i></span><span class="s">Le tri se fait ici : quand le message part, sur quel canal, et ce qu'il promet.</span></div>
+  <div class="etape"><span>L'envoient</span><span class="n2">30</span><span class="jauge"><i style="width:30%"></i></span><span class="s">Trois clients sur quatre qui ouvrent le formulaire vont au bout.</span></div>
+  <div class="etape"><span>Laissent leur vraie adresse</span><span class="n2">28</span><span class="jauge"><i style="width:28%"></i></span><span class="s">Presque tous ceux qui l'envoient laissent une adresse exploitable.</span></div>
 
-  <p class="citation avenir">[Citation à écrire après l'étude : l'endroit où le parcours casse.]</p>
+  <p class="citation">Le parcours ne casse pas dans le formulaire. Il casse avant : six clients sur dix ne l'ouvrent jamais.</p>
 
-  <p class="avenir">[Écart entre hôtels (M8) : médiane, meilleurs, moins bons, puis « la différence vient de cinq réglages ».]</p>
+  <p>La moyenne de 28,4 % cache des écarts considérables. Dans les hôtels de l'étude, 10 % restent sous 11,6 % et 10 % dépassent 49,5 %, avec le même logiciel et une clientèle comparable. La différence ne vient pas du hasard : elle vient de sept réglages.</p>
 
-  <h2><span class="num">Chapitre 2</span>Les cinq règles</h2>
-  <p class="avenir">[Les cinq règles sont choisies après l'étude parmi les découpages D1 à D14, et proposées à Mounir avant rédaction. Seules celles qui tiennent quand on compare les réglages à l'intérieur d'un même hôtel sont retenues.]</p>
+  <h2><span class="num">Chapitre 2</span>Les sept règles</h2>
+  <p>Chaque règle oppose deux taux de capture, mesurés par client OTA, et indique si l'écart se retrouve à l'intérieur d'un même hôtel qui pratique les deux réglages.</p>
 
   <div class="regle">
-    <div class="tete"><span class="rn">1</span><h3 class="avenir">[Règle 1]</h3></div>
-    <p class="avenir">[Le réglage, ses deux taux de capture, et pourquoi.]</p>
-    <div class="preuve"><span class="avenir">avec : … %</span><span class="mal avenir">sans : … %</span></div>
-  </div>
-  <div class="regle">
-    <div class="tete"><span class="rn">2</span><h3 class="avenir">[Règle 2]</h3></div>
-    <p class="avenir">[Le réglage, ses deux taux de capture, et pourquoi.]</p>
-    <div class="preuve"><span class="avenir">avec : … %</span><span class="mal avenir">sans : … %</span></div>
-  </div>
-  <div class="regle">
-    <div class="tete"><span class="rn">3</span><h3 class="avenir">[Règle 3]</h3></div>
-    <p class="avenir">[Le réglage, ses deux taux de capture, et pourquoi.]</p>
-    <div class="preuve"><span class="avenir">avec : … %</span><span class="mal avenir">sans : … %</span></div>
-  </div>
-  <div class="regle">
-    <div class="tete"><span class="rn">4</span><h3 class="avenir">[Règle 4]</h3></div>
-    <p class="avenir">[Le réglage, ses deux taux de capture, et pourquoi.]</p>
-    <div class="preuve"><span class="avenir">avec : … %</span><span class="mal avenir">sans : … %</span></div>
-  </div>
-  <div class="regle">
-    <div class="tete"><span class="rn">5</span><h3 class="avenir">[Règle 5]</h3></div>
-    <p class="avenir">[Le réglage, ses deux taux de capture, et pourquoi.]</p>
-    <div class="preuve"><span class="avenir">avec : … %</span><span class="mal avenir">sans : … %</span></div>
+    <div class="tete"><span class="rn">1</span><h3>Demander tôt</h3></div>
+    <p>C'est le facteur le plus puissant de toute l'étude. Quand le premier message part dès la réservation, plus de deux semaines avant l'arrivée, 56,4 % des clients OTA laissent leur vraie adresse. Quand il part le jour d'arrivée, 19,0 %.</p>
+    <p>Deux semaines avant, le client a le temps de lire. Le jour même, il est sur la route. Et l'écart tient aussi pour les seules réservations prises plus d'un mois à l'avance : ce n'est pas qu'une affaire de profil.</p>
+    <div class="preuve"><span>dès la réservation : 56,4 %</span><span class="mal">le jour d'arrivée : 19,0 %</span><span>vérifié dans 10 hôtels sur 10</span></div>
   </div>
 
-  <h2><span class="num">Chapitre 3</span>Les trois erreurs les plus coûteuses</h2>
+  <div class="regle">
+    <div class="tete"><span class="rn">2</span><h3>Relancer</h3></div>
+    <p>Un seul message pour le séjour : 25,8 %. Deux : 40,5 %. Trois et plus : 64,8 %. Le deuxième message n'agace pas : il rattrape ceux qui n'avaient pas ouvert le premier.</p>
+    <div class="preuve"><span>3 messages et plus : 64,8 %</span><span>2 messages : 40,5 %</span><span class="mal">1 message : 25,8 %</span><span>vérifié dans 5 hôtels sur 5</span></div>
+  </div>
+
+  <div class="regle">
+    <div class="tete"><span class="rn">3</span><h3>Ajouter WhatsApp</h3></div>
+    <p>L'e-mail part vers l'adresse relais, qui transmet mal et se lit peu. WhatsApp arrive sur le téléphone du client, sans intermédiaire. Les clients qui reçoivent l'e-mail et un WhatsApp laissent leur adresse à 64,3 %, contre 29,5 % pour l'e-mail seul.</p>
+    <div class="preuve"><span>e-mail + WhatsApp : 64,3 %</span><span class="mal">e-mail seul : 29,5 %</span><span>vérifié dans 5 hôtels sur 5</span></div>
+  </div>
+
+  <div class="regle">
+    <div class="tete"><span class="rn">4</span><h3>Un formulaire dédié et court</h3></div>
+    <p>Un formulaire qui ne demande que les coordonnées fait 52,0 %. Le même champ glissé dans une préparation de séjour avec catalogue : 33,4 %. La longueur va dans le même sens : de une à trois questions, 49,1 % ; à partir de sept, 31,1 %.</p>
+    <p>Rien n'empêche de vendre un petit-déjeuner ou une place de parking. Simplement pas dans le même formulaire que l'adresse.</p>
+    <div class="preuve"><span>formulaire dédié : 52,0 %</span><span class="mal">mêlé à la préparation : 33,4 %</span><span>écart entre hôtels, pas encore vérifié dans un même hôtel</span></div>
+  </div>
+
+  <div class="regle">
+    <div class="tete"><span class="rn">5</span><h3>Le champ e-mail en premier</h3></div>
+    <p>En première question, le champ e-mail est rempli par 46,2 % des clients OTA. Plus loin sur la première page, après l'heure d'arrivée et les préférences de chambre, 32,2 %.</p>
+    <div class="preuve"><span>première question : 46,2 %</span><span class="mal">plus loin sur la page : 32,2 %</span><span>écart entre hôtels, pas encore vérifié dans un même hôtel</span></div>
+  </div>
+
+  <div class="regle">
+    <div class="tete"><span class="rn">6</span><h3>Un objet qui parle du séjour</h3></div>
+    <p>« Préparez votre séjour » donne au client une raison d'ouvrir : 38,8 %. « Gagnez du temps » ou « Check-in en ligne » lui promettent une démarche administrative : 27,8 %.</p>
+    <div class="preuve"><span>préparer le séjour : 38,8 %</span><span class="mal">gagner du temps : 27,8 %</span><span>vérifié dans 5 hôtels sur 6</span></div>
+  </div>
+
+  <div class="regle">
+    <div class="tete"><span class="rn">7</span><h3>Un e-mail court</h3></div>
+    <p>Moins de 400 caractères de texte visible : 34,5 %. Entre 400 et 1 000 : 25,7 %. Attention à la lecture trop rapide : entre 1 000 et 2 000, on remonte à 32,3 %. Le court bat le moyen ; ce n'est pas « plus c'est long, pire c'est ». Un message de trois phrases et un bouton suffit.</p>
+    <div class="preuve"><span>moins de 400 caractères : 34,5 %</span><span class="mal">400 à 1 000 : 25,7 %</span><span>vérifié dans 7 hôtels sur 8</span></div>
+  </div>
+
+  <h2><span class="num">Chapitre 3</span>L'erreur la plus coûteuse</h2>
   <div class="erreur">
-    <h3 class="avenir">[Erreur 1, parmi E1 à E7]</h3>
-    <p style="margin:0" class="avenir">[Ce qu'elle coûte : <span class="cout">… par client OTA</span>.]</p>
-  </div>
-  <div class="erreur">
-    <h3 class="avenir">[Erreur 2]</h3>
-    <p style="margin:0" class="avenir">[Ce qu'elle coûte : <span class="cout">…</span>.]</p>
-  </div>
-  <div class="erreur">
-    <h3 class="avenir">[Erreur 3]</h3>
-    <p style="margin:0" class="avenir">[Ce qu'elle coûte : <span class="cout">…</span>.]</p>
+    <h3>Aucun message avant l'arrivée</h3>
+    <p style="margin:0">Dans les hôtels de l'étude, 29,9 % des clients OTA ne reçoivent ni e-mail, ni SMS, ni WhatsApp avant de passer la porte. Parmi eux, <span class="cout">11,0 % seulement</span> finissent par laisser leur vraie adresse, contre 35,8 % chez ceux qui ont reçu au moins un message. Une réservation prise la veille, un envoi réglé trop tard, et ce client repart avec son adresse relais.</p>
   </div>
 
   <div class="relance">
-    <p style="margin:0"><b>Deux heures de paramétrage suffisent.</b> Formulaire de préparation, envoi depuis votre PMS et campagne de retour se mettent en place en une demi-journée avec TriggerFlow. <a href="https://app.lemcal.com/@trigger-flow/clients-ota">Réserver 30 minutes</a></p>
+    <p style="margin:0"><b>Deux heures de paramétrage suffisent.</b> Formulaire dédié, envois depuis votre PMS et campagne de retour se mettent en place en une demi-journée avec TriggerFlow. <a href="https://app.lemcal.com/@trigger-flow/clients-ota">Réserver 30 minutes</a> <span class="avenir">[À CONFIRMER : calendrier lemcal clients-ota]</span></p>
   </div>
 
   <h2><span class="num">Chapitre 4</span>Le formulaire à copier</h2>
   <div class="modele">
     <div class="entete">
-      <span class="petit">Formulaire de préparation</span>
-      <b>Préparez votre arrivée</b>
-      <span class="petit avenir">Envoi : [moment et canal selon l'étude]</span>
+      <span class="petit">Objet</span>
+      <b>Préparez votre séjour</b>
+      <span class="petit">Envoi : dès la réservation, puis une relance avant l'arrivée, par e-mail et WhatsApp</span>
     </div>
     <div class="corps">
       <p>Bonjour,</p>
-      <p>Votre séjour approche. Indiquez-nous votre heure d'arrivée et l'adresse à laquelle vous joindre directement : nous y enverrons votre confirmation et les informations pratiques.</p>
+      <p>Votre réservation est confirmée. Indiquez-nous l'adresse à laquelle vous joindre directement : nous y enverrons votre confirmation et les informations pratiques de votre séjour.</p>
       <p class="petit" style="margin-bottom:4px">Votre adresse e-mail personnelle</p>
       <p class="champ">camille.martin@exemple.fr</p>
       <p class="petit">☐ J'accepte de recevoir les offres de l'hôtel (facultatif)</p>
       <p style="text-align:center"><span class="bouton">Envoyer</span></p>
-      <p class="petit" style="margin-bottom:0">Champ vide au départ, jamais pré-rempli avec l'adresse Booking · Champ relié à la fiche client : la vraie adresse remplace l'adresse relais, l'ancienne reste dans l'historique</p>
+      <p class="petit" style="margin-bottom:0">Moins de 400 caractères · Le champ e-mail en première et seule question · Champ relié à la fiche client : la vraie adresse remplace l'adresse relais, l'ancienne reste dans l'historique</p>
     </div>
   </div>
 
   <div class="check">
     <h3 style="margin-top:0">La checklist en huit points</h3>
     <ul>
-      <li class="avenir">[Moment d'envoi, selon l'étude]</li>
-      <li class="avenir">[Canal, selon l'étude]</li>
-      <li>Une raison donnée au client pour demander son adresse : confirmation, facture, informations pratiques</li>
-      <li>Champ e-mail vide au départ, jamais pré-rempli avec l'adresse relais</li>
-      <li>Champ relié à la fiche client, pour que la vraie adresse remplace l'adresse relais</li>
-      <li>Une case d'accord distincte et facultative pour les offres</li>
-      <li class="avenir">[Point 7, selon l'étude]</li>
-      <li>Une campagne de retour avec un lien direct vers votre moteur de réservation</li>
+      <li>Premier message dès la réservation, jamais le jour de l'arrivée</li>
+      <li>Deux à trois messages pour le même séjour, pas un seul</li>
+      <li>WhatsApp en plus de l'e-mail quand vous avez le numéro</li>
+      <li>Un formulaire dédié, une à trois questions</li>
+      <li>Le champ e-mail en première question</li>
+      <li>Un objet qui parle de préparer le séjour, pas de gagner du temps</li>
+      <li>Un e-mail court, moins de 400 caractères de texte</li>
+      <li>Un champ relié à la fiche client, et une case d'accord facultative pour les offres</li>
     </ul>
   </div>
 
   <h3>Ce que ça vaut chez vous</h3>
-  <p>Un exemple, pour fixer les ordres de grandeur. Toutes les valeurs ci-dessous sont des <strong>hypothèses illustratives</strong> <span class="avenir">[remplacées par les taux mesurés de l'étude quand ils existent]</span>. Remplacez-les par les vôtres.</p>
+  <p>Un exemple, pour fixer les ordres de grandeur. Toutes les valeurs ci-dessous sont des <strong>hypothèses illustratives</strong> : l'étude mesure la capture par message, pas encore le retour en direct. Remplacez-les par les vôtres.</p>
   <div class="calcul">
     <div class="ligne"><span>Séjours OTA par an</span><b>3 000</b></div>
-    <div class="ligne"><span>Vraie adresse donnée avant l'arrivée (J-3), à l'arrivée, puis à l'enquête : 25 %, puis 35 % et 10 % des clients restants</span><b>1 684</b></div>
-    <div class="ligne"><span>Qui reviennent ensuite en direct, dans les 24 mois (8 %)</span><b>135</b></div>
+    <div class="ligne"><span>Vraie adresse donnée avant l'arrivée, à l'arrivée, puis à l'enquête : 25 %, puis 35 % et 10 % des clients restants</span><b>1 684</b></div>
+    <div class="ligne"><span>Qui reviennent ensuite en direct, dans les 24 mois (8 %)</span><b>135</b></div>
     <div class="ligne"><span>Montant moyen d'un séjour</span><b>320 €</b></div>
     <div class="ligne"><span>Chiffre d'affaires de ces séjours directs</span><b>43 200 €</b></div>
-    <div class="total"><span>Commission que vous ne versez pas, à 17 % <span class="avenir">[taux à sourcer]</span></span><b>7 344 € / an</b></div>
+    <div class="total"><span>Commission que vous ne versez pas, à 17 % <span class="avenir">[À CONFIRMER : source du taux]</span></span><b>7 344 € / an</b></div>
   </div>
-  <p>C'est un ordre de grandeur, pas une promesse : un client qui revient n'aurait pas forcément réservé de nouveau par la plateforme, et le taux de retour en direct varie d'un hôtel à l'autre. Le simulateur de notre site refait ce calcul avec vos propres valeurs.</p>
+  <p>Un ordre de grandeur, pas une promesse : un client qui revient n'aurait pas forcément réservé de nouveau par la plateforme. Le simulateur de notre site refait ce calcul avec vos valeurs.</p>
 
   <div class="encadre">
     <h3 style="margin-top:0">Parité tarifaire et consentement : ce que dit le cadre</h3>
     <p><strong>Vos prix.</strong> En France, depuis la loi du 6 août 2015 dite loi Macron, l'hôtelier reste libre de fixer ses prix sur ses propres canaux, y compris pour un client venu d'une plateforme.</p>
     <p><strong>Les données de la plateforme.</strong> Votre contrat OTA encadre l'usage des données transmises par la plateforme, dont l'adresse relais. L'adresse que le client vous donne lui-même, dans votre formulaire, relève de votre propre relation avec lui.</p>
-    <p><strong>Le consentement.</strong> Pour lui écrire ensuite des offres, demandez son accord par une case distincte et facultative, à côté du champ e-mail. Les messages liés à son séjour partent dans tous les cas.</p>
-    <p class="petit" style="margin:0">Cet encadré décrit un cadre général, il ne remplace pas un avis juridique : faites vérifier votre contrat par votre conseil. <span class="avenir">[Relecture Soufiane]</span></p>
+    <p><strong>Le consentement.</strong> Pour lui écrire ensuite des offres, demandez son accord par une case distincte et facultative, à côté du champ e-mail. C'est rare aujourd'hui : dans l'étude, à peine 2,6 % des adresses récupérées l'ont été par un formulaire qui proposait cette case. Les messages liés à son séjour partent dans tous les cas.</p>
+    <p class="petit" style="margin:0">Cet encadré décrit un cadre général, il ne remplace pas un avis juridique : faites vérifier votre contrat par votre conseil. <span class="avenir">[À CONFIRMER : relecture Soufiane]</span></p>
   </div>
 
   <h2><span class="num">Chapitre 5</span>Comment nous avons mesuré</h2>
-  <p class="methode">Les chiffres viennent des séjours réels de clients OTA chez des hôtels indépendants, arrivés entre le 1<sup>er</sup> juin et le 30 septembre 2026, hors réservations annulées. Un client OTA est le client principal d'une réservation dont l'adresse d'origine est une adresse relais de plateforme. Il compte comme capté quand il saisit lui-même sa vraie adresse dans un formulaire lié à son séjour ; les adresses venues du PMS ne sont pas comptées. Chaque taux est calculé par client OTA, et les groupes trop peu fournis pour être significatifs sont écartés.</p>
-  <p class="methode">Ce sont des corrélations, pas des preuves de cause : un hôtel qui soigne le moment de son envoi soigne souvent aussi son formulaire. <span class="avenir">[Les écarts qui résistent à la comparaison à l'intérieur d'un même hôtel sont : …]</span> Aucun nom d'établissement n'est cité, et aucune donnée personnelle de client n'a été utilisée.</p>
+  <p class="methode">Les chiffres viennent des séjours réels de clients OTA, arrivés entre le 1<sup>er</sup> juin et le 30 septembre 2026 hors annulations, chez des hôtels indépendants équipés d'un formulaire qui demande l'adresse. Un client OTA est le client principal d'une réservation dont l'adresse d'origine est une adresse relais. Il compte comme capté quand il saisit lui-même sa vraie adresse dans un formulaire lié à son séjour, confirmée par l'historique de sa fiche ; les adresses venues du PMS ne comptent pas. Les groupes trop peu fournis sont écartés.</p>
+  <p class="methode">Ce sont des corrélations, pas des preuves de cause : un hôtel qui écrit tôt soigne souvent aussi son formulaire. L'écart se retrouve à l'intérieur d'un même hôtel pour le moment du premier message, la relance, WhatsApp, l'objet et la longueur de l'e-mail ; pour le formulaire dédié et la place du champ, trop peu d'hôtels font les deux pour conclure. Le retour en direct des clients captés demande plus de recul : nous attendrons une saison complète avant d'en publier un taux. Aucun établissement n'est cité, aucune donnée personnelle de client n'a été utilisée.</p>
 
   <div class="cta">
     <h2 style="margin-top:0"><span class="num">Passer à l'action</span>Récupérez vos clients OTA en 2 heures avec TriggerFlow</h2>
-    <p>Tout ce qui précède se règle une fois, puis tourne tout seul. Avec TriggerFlow, le parcours complet se met en place en une demi-journée :</p>
+    <p>Tout ce qui précède se règle une fois, puis tourne tout seul :</p>
     <ol class="etapes-cta">
-      <li><strong>30 minutes</strong> : votre formulaire de préparation, à partir d'un modèle qui applique déjà les cinq règles, champ e-mail relié à la fiche client.</li>
-      <li><strong>45 minutes</strong> : l'envoi à votre charte, au bon moment avant l'arrivée.</li>
+      <li><strong>30 minutes</strong> : votre formulaire dédié, à partir d'un modèle qui applique déjà les sept règles.</li>
+      <li><strong>45 minutes</strong> : les envois à votre charte, dès la réservation puis en relance, par e-mail et WhatsApp.</li>
       <li><strong>15 minutes</strong> : le branchement sur votre PMS (Mews, Thaïs, Opera Cloud, Apaleo, Misterbooking, Medialog et d'autres), pour que chaque réservation déclenche l'envoi.</li>
       <li><strong>30 minutes</strong> : la campagne de retour, avec un lien direct vers votre moteur de réservation, adressée aux clients qui ont donné leur accord.</li>
     </ol>
-    <p>Ensuite, chaque séjour OTA passe par le même chemin. Les adresses relais restent écartées de vos campagnes, et chaque vraie adresse récupérée remplace l'adresse relais dans la fiche du client.</p>
+    <p>Ensuite, chaque séjour OTA passe par le même chemin, et chaque vraie adresse récupérée remplace l'adresse relais dans la fiche du client.</p>
     <a href="https://app.lemcal.com/@trigger-flow/clients-ota">Réserver 30 minutes de mise en place</a>
     <p class="cta-note">Vous préférez commencer par un état des lieux ? Nous regardons gratuitement avec vous quelle part de vos clients OTA a déjà une vraie adresse dans votre base, et par quel réglage commencer.</p>
   </div>
 
-  <footer>TriggerFlow · Livre blanc publié le <span class="avenir">[date]</span> · Étude réalisée sur les données anonymisées d'hôtels indépendants, été 2026. Tous les résultats sont exprimés en taux.</footer>
+  <footer>TriggerFlow · Livre blanc publié en novembre 2026 · Étude réalisée sur les données anonymisées d'hôtels indépendants, été 2026. Tous les résultats sont exprimés en taux.</footer>
 </div>

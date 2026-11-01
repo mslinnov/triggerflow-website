@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { CLIENTS_OTA_FUNNEL } from '@/data/clients-ota';
 import { UpsellLinkButton } from '../upsell/primitives';
@@ -18,7 +18,6 @@ export function ClientsOtaHero() {
   const t = useTranslations('lpClientsOta.hero');
   const tf = useTranslations('lpClientsOta.funnel');
   const tc = useTranslations('lpClientsOta.cta');
-  const reduce = useReducedMotion();
 
   return (
     <section className="relative overflow-hidden bg-[var(--up-bg)] pt-12 pb-16 md:pt-20 md:pb-24">
@@ -28,7 +27,7 @@ export function ClientsOtaHero() {
       />
       <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14 lg:px-8">
         <motion.div
-          initial={reduce ? false : { opacity: 1, y: 20 }}
+          initial={{ opacity: 1, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
         >
@@ -56,7 +55,7 @@ export function ClientsOtaHero() {
         </motion.div>
 
         <motion.div
-          initial={reduce ? false : { opacity: 1, scale: 0.96 }}
+          initial={{ opacity: 1, scale: 0.96 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
           className="rounded-2xl border border-[var(--up-line)] bg-[var(--up-surface)] p-5 shadow-[var(--up-shadow-lg)] sm:p-7"

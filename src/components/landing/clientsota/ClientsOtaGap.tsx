@@ -1,21 +1,21 @@
 'use client';
 
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { CLIENTS_OTA_MISTAKES } from '@/data/clients-ota';
 import { UpsellSection } from '../upsell/primitives';
 
 /**
- * Les trois erreurs les plus coûteuses, en bande sombre, avant les cinq
- * règles : comme sur la landing post-séjour, le visiteur veut d'abord savoir
- * ce qui cloche dans le formulaire qu'il vient de reconnaître.
+ * L'erreur la plus coûteuse, en bande sombre, avant les sept règles : comme sur
+ * la landing post-séjour, le visiteur veut d'abord savoir ce qui cloche.
  *
- * Le chiffre de chaque erreur est écrit dans les traductions : les erreurs
- * viennent de mesures dédiées de l'étude (E1 à E7), pas des taux des règles.
+ * Une seule erreur retenue (décision de Mounir du 1er novembre 2026) : les
+ * autres erreurs mesurées par l'étude sont déjà corrigées par défaut dans
+ * TriggerFlow. La liste reste un tableau pour garder la mise en page des
+ * landings jumelles. Le chiffre est écrit dans les traductions.
  */
 export function ClientsOtaGap() {
   const t = useTranslations('lpClientsOta.gap');
-  const reduce = useReducedMotion();
 
   return (
     <UpsellSection className="bg-[var(--up-ink)] text-[var(--up-bg)]">
@@ -29,7 +29,7 @@ export function ClientsOtaGap() {
           {CLIENTS_OTA_MISTAKES.map((mistake, index) => (
             <motion.li
               key={mistake}
-              initial={reduce ? false : { opacity: 0, y: 16 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.5, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}

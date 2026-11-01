@@ -8,7 +8,9 @@ Règles d'écriture :
 - **Aucun nom propre** : le formulaire ne demande que l'adresse e-mail, une formule d'appel nominative s'afficherait
   vide. « Bonjour, » seul.
 - Aucun tiret cadratin, aucun chiffre sans source : les taux viennent du guide, donc de l'étude.
-- Les passages entre crochets attendent l'étude ou une décision.
+- Chiffres repris du guide, donc de l'étude du 1er novembre 2026 (été 2026, hôtels équipés), toujours formulés en
+  corrélation : « dans les hôtels qui le font », jamais « vous gagnerez ».
+- Reste à confirmer : le calendrier lemcal `clients-ota` (créé par le chantier de câblage).
 
 ---
 
@@ -26,8 +28,8 @@ Il se lit en vingt minutes. Si vous n'avez que deux minutes aujourd'hui, allez d
 formulaire à copier et la checklist en huit points. C'est ce qui se met en place le plus vite.
 
 Une question à vous poser en le lisant : quelle part de vos clients Booking.com et Expedia avez-vous aujourd'hui avec
-une vraie adresse dans votre base ? Dans les hôtels de notre étude où le formulaire tourne, c'est environ un client OTA
-sur quatre.
+une vraie adresse dans votre base ? Dans les hôtels de notre étude où le formulaire tourne, c'est un peu plus d'un
+client OTA sur quatre.
 
 Bonne lecture,
 L'équipe TriggerFlow
@@ -36,20 +38,22 @@ L'équipe TriggerFlow
 
 ## E-mail 2 : J+3, la règle n°1
 
-**Objet :** [Règle n°1, formulée en question, moins de 40 caractères]
+**Objet :** Quand demandez-vous l'adresse ?
 
 **Aperçu :** Le réglage qui pèse le plus dans l'étude.
 
 Bonjour,
 
-Dans le guide, une règle pèse plus que les quatre autres : [règle n°1].
+Dans le guide, une règle pèse plus que les six autres : demander tôt.
 
-[Deux phrases : ce que l'étude mesure, avec les deux taux de capture par client OTA.]
+Dans les hôtels où le premier message part dès la réservation, plus de deux semaines avant l'arrivée, 56,4 % des
+clients OTA laissent leur vraie adresse. Quand il part le jour d'arrivée, 19,0 %. L'écart se retrouve dans les
+10 hôtels sur 10 qui font les deux.
 
-[Une phrase : pourquoi, côté client.]
+Deux semaines avant, votre client a le temps de lire. Le jour même, il est sur la route.
 
-Ce réglage se change en quelques minutes dans votre outil actuel. Si vous voulez vérifier où vous en êtes, le
-chapitre 2 du guide détaille les quatre autres : [lien vers le guide].
+Ce réglage se change en quelques minutes. Le chapitre 2 du guide détaille les six autres, de la relance à la
+longueur de l'e-mail : [lien vers le guide].
 
 L'équipe TriggerFlow
 
@@ -71,7 +75,7 @@ Nous vous proposons de faire cet état des lieux ensemble, gratuitement, en 30 m
 - le réglage de votre formulaire de préparation qui vous en coûte le plus ;
 - ce que la campagne de retour donnerait sur vos propres volumes.
 
-[Réserver 30 minutes](https://app.lemcal.com/@trigger-flow/clients-ota)
+[Réserver 30 minutes](https://app.lemcal.com/@trigger-flow/clients-ota) [À CONFIRMER : calendrier lemcal clients-ota]
 
 Rien à préparer de votre côté, sans engagement.
 

@@ -1,24 +1,26 @@
 'use client';
 
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { CLIENTS_OTA_RULES } from '@/data/clients-ota';
 import { UpsellSection } from '../upsell/primitives';
 import { PENDING } from './format';
 
 /**
- * Les cinq règles, chacune avec les deux taux de capture qui l'opposent, lus
+ * Les sept règles, chacune avec les deux taux de capture qui l'opposent, lus
  * dans `@/data/clients-ota` : la page et le guide ne peuvent pas diverger.
  *
  * Toutes les valeurs sont des taux de capture PAR CLIENT OTA, c'est écrit en
- * sous-titre parce que c'est ce qui rend les cinq lignes comparables.
+ * sous-titre parce que c'est ce qui rend les sept lignes comparables. Sous
+ * chaque règle, le contrôle à l'intérieur d'un même hôtel est affiché en clair,
+ * y compris quand il manque : deux règles ne reposent que sur un écart entre
+ * hôtels, et le visiteur doit pouvoir le lire.
  */
 const MEASURED_BEST = CLIENTS_OTA_RULES.flatMap((rule) => (rule.best === null ? [] : [rule.best]));
 const MAX_RATE = MEASURED_BEST.length > 0 ? Math.max(...MEASURED_BEST) : 1;
 
 export function ClientsOtaEvidence() {
   const t = useTranslations('lpClientsOta.evidence');
-  const reduce = useReducedMotion();
 
   return (
     <UpsellSection className="bg-[var(--up-bg-sunken)]">
@@ -32,7 +34,7 @@ export function ClientsOtaEvidence() {
           {CLIENTS_OTA_RULES.map((rule, index) => (
             <motion.li
               key={rule.id}
-              initial={reduce ? false : { opacity: 0, y: 18 }}
+              initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.5, delay: (index % 2) * 0.08, ease: [0.16, 1, 0.3, 1] }}
@@ -69,6 +71,12 @@ export function ClientsOtaEvidence() {
                   );
                 })}
               </dl>
+
+              <p className="mt-4 text-[13px] leading-relaxed text-[var(--up-ink-muted)]">
+                {rule.withinHotels
+                  ? t('withinHotels', { wins: rule.withinHotels.wins, of: rule.withinHotels.of })
+                  : t('betweenHotelsOnly')}
+              </p>
             </motion.li>
           ))}
         </ol>

@@ -11,7 +11,7 @@ import { LpMessagesProvider } from '@/components/landing/LpMessagesProvider';
  */
 const TITLE = 'Le guide du client OTA | Livre blanc hôtellerie';
 const DESCRIPTION =
-  "Un client OTA sur quatre vous donne sa vraie adresse si vous la lui demandez au bon moment. Les cinq réglages pour la récupérer, mesurés chez des hôtels indépendants, résultats exprimés en taux.";
+  "Un client OTA sur quatre vous donne sa vraie adresse si vous la lui demandez au bon moment. Les sept réglages pour la récupérer, mesurés chez des hôtels indépendants, résultats exprimés en taux.";
 
 export const metadata: Metadata = {
   title: TITLE,

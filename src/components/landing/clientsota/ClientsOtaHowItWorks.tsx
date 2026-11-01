@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { UpsellSection } from '../upsell/primitives';
@@ -17,7 +17,6 @@ const CHECKLIST = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8'] as const;
 
 export function ClientsOtaHowItWorks() {
   const t = useTranslations('lpClientsOta.how');
-  const reduce = useReducedMotion();
 
   return (
     <UpsellSection className="bg-[var(--up-bg-sunken)]">
@@ -29,7 +28,7 @@ export function ClientsOtaHowItWorks() {
 
         <div className="mt-12 grid gap-8 lg:grid-cols-2 lg:gap-12">
           <motion.div
-            initial={reduce ? false : { opacity: 0, y: 18 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -68,7 +67,7 @@ export function ClientsOtaHowItWorks() {
           </motion.div>
 
           <motion.div
-            initial={reduce ? false : { opacity: 0, y: 18 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.5, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}

@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Info } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
@@ -16,6 +16,10 @@ import { UpsellEyebrow, UpsellSection } from '../upsell/primitives';
  * comme telles : aucun formulaire réel n'est montré, seuls les taux (à venir de
  * l'étude) sont des mesures.
  *
+ * Seuls les réglages mesurés y figurent (moment d'envoi, formulaire dédié et
+ * court, champ e-mail en premier) : la case d'accord, qui est un conseil et
+ * non une mesure, n'apparaît que dans le formulaire à copier.
+ *
  * Les champs sont des maquettes : ni saisissables ni focalisables, masqués aux
  * lecteurs d'écran qui liraient sinon un formulaire sans destination.
  */
@@ -24,7 +28,6 @@ const ANNOTATIONS = ['a1', 'a2', 'a3'] as const;
 
 export function ClientsOtaComparator() {
   const t = useTranslations('lpClientsOta.comparator');
-  const reduce = useReducedMotion();
 
   return (
     <UpsellSection id="comparatif" className="bg-[var(--up-bg-sunken)]">
@@ -47,7 +50,7 @@ export function ClientsOtaComparator() {
           {SIDES.map((side, index) => (
             <motion.div
               key={side}
-              initial={reduce ? false : { opacity: 0, y: 18 }}
+              initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
               transition={{ duration: 0.5, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
@@ -76,13 +79,6 @@ export function ClientsOtaComparator() {
                   {t(`${side}.fieldValue`)}
                 </p>
                 <p className="mt-2 text-xs text-[var(--up-ink-soft)]">{t(`${side}.fieldHint`)}</p>
-
-                {side === 'effective' && (
-                  <p className="mt-5 flex gap-2.5 text-[13px] leading-relaxed text-[var(--up-ink-soft)]">
-                    <span className="mt-0.5 h-4 w-4 shrink-0 rounded border border-[var(--up-line-strong)]" />
-                    {t('effective.consent')}
-                  </p>
-                )}
 
                 <p className="mt-7 inline-flex min-h-11 items-center justify-center rounded-full bg-[var(--up-accent)] px-6 py-3 text-sm font-semibold text-[var(--up-accent-ink)]">
                   {t(`${side}.button`)}

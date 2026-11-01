@@ -1,5 +1,6 @@
 'use client';
 
+import { MotionConfig } from 'framer-motion';
 import { ClientsOtaComparator } from './ClientsOtaComparator';
 import { ClientsOtaDemoCta } from './ClientsOtaDemoCta';
 import { ClientsOtaEvidence } from './ClientsOtaEvidence';
@@ -25,25 +26,37 @@ import { ClientsOtaTrustBar } from './ClientsOtaTrustBar';
  * le visiteur règle lui-même.
  *
  * L'attribut `data-lp` porte les jetons de couleur définis dans globals.css.
+ *
+ * ─── MOUVEMENTS RÉDUITS : CONFIÉS À FRAMER, PAS AUX COMPOSANTS ───────────
+ * Les composants ne testent plus `useReducedMotion()` pour choisir leur état
+ * de départ. Le serveur ne connaît pas cette préférence : il rendait
+ * `opacity: 0`, le client hydratait avec `initial={false}`, React ne corrige
+ * pas un attribut d'hydratation divergent, et les blocs révélés au défilement
+ * restaient invisibles pour tout visiteur qui a réduit les animations
+ * (constaté le 01/11/2026, même défaut sur la landing post-séjour).
+ * `reducedMotion="user"` laisse Framer couper les déplacements chez ces
+ * visiteurs tout en jouant le fondu : même HTML côté serveur et client.
  */
 export function ClientsOtaLandingPage({ locale }: { locale: string }) {
   return (
-    <div data-lp="clientsota" className="bg-[var(--up-bg)] text-[var(--up-ink)]">
-      <ClientsOtaHeader />
-      <main>
-        <ClientsOtaHero />
-        <ClientsOtaTrustBar />
-        <ClientsOtaComparator />
-        <ClientsOtaGap />
-        <ClientsOtaEvidence />
-        <ClientsOtaDemoCta />
-        <ClientsOtaSimulator />
-        <ClientsOtaHowItWorks />
-        <ClientsOtaFaq />
-        <ClientsOtaFinalCta />
-      </main>
-      <ClientsOtaFooter locale={locale} />
-      <ClientsOtaStickyCta />
-    </div>
+    <MotionConfig reducedMotion="user">
+      <div data-lp="clientsota" className="bg-[var(--up-bg)] text-[var(--up-ink)]">
+        <ClientsOtaHeader />
+        <main>
+          <ClientsOtaHero />
+          <ClientsOtaTrustBar />
+          <ClientsOtaComparator />
+          <ClientsOtaGap />
+          <ClientsOtaEvidence />
+          <ClientsOtaDemoCta />
+          <ClientsOtaSimulator />
+          <ClientsOtaHowItWorks />
+          <ClientsOtaFaq />
+          <ClientsOtaFinalCta />
+        </main>
+        <ClientsOtaFooter locale={locale} />
+        <ClientsOtaStickyCta />
+      </div>
+    </MotionConfig>
   );
 }
