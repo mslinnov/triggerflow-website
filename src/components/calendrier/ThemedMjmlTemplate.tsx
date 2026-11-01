@@ -31,6 +31,7 @@ interface ThemedMjmlTemplateProps {
     copyHtml: string;
     copied: string;
     fallback: string;
+    error: string;
   };
 }
 
@@ -44,18 +45,17 @@ export function ThemedMjmlTemplate({ code, variants, variables, mode = 'template
   const [theme, setTheme] = useState<MjmlTheme>(variants[0].theme);
   const current = variants.find((v) => v.theme === theme) ?? variants[0];
   const fileUrl = (format: 'mjml' | 'html') => `/api/calendrier/modele/${code}/${format}?theme=${current.theme}`;
-  const copyLabels = { copied: labels.copied, fallback: labels.fallback };
+  const copyLabels = { copied: labels.copied, fallback: labels.fallback, error: labels.error };
 
   return (
     <div className="space-y-3">
       {variants.length > 1 && (
-        <div role="radiogroup" aria-label={labels.themePicker} className="flex flex-wrap gap-2">
+        <div role="group" aria-label={labels.themePicker} className="flex flex-wrap gap-2">
           {variants.map(({ theme: value }) => (
             <button
               key={value}
               type="button"
-              role="radio"
-              aria-checked={value === current.theme}
+              aria-pressed={value === current.theme}
               onClick={() => setTheme(value)}
               className={cn(
                 'rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2',

@@ -6,7 +6,7 @@ import {
   TEMPS_FORT_CODES,
   type TempsFortCode,
 } from '@/data/calendrier-marketing';
-import { loadMjmlTemplate, toPreviewHtml } from '@/lib/calendrier-mjml';
+import { loadMjmlTemplate, previewFor } from '@/lib/calendrier-mjml';
 
 /**
  * Fichiers d'un modèle MJML du calendrier marketing, servis à la demande plutôt
@@ -38,14 +38,15 @@ export async function GET(request: Request, { params }: { params: Promise<{ code
   const template = loadMjmlTemplate(code as TempsFortCode, theme);
   if (!template) return new NextResponse('Not found', { status: 404 });
 
-  const headers: Record<string, string> = { 'Cache-Control': 'public, max-age=3600' };
+  // Cinq minutes : un modèle corrigé puis redéployé n'est pas servi longtemps dans sa version périmée.
+  const headers: Record<string, string> = { 'Cache-Control': 'public, max-age=300' };
   switch (format as Format) {
     case 'mjml':
       return new NextResponse(template.mjml, { headers: { ...headers, 'Content-Type': 'text/plain; charset=utf-8' } });
     case 'html':
       return new NextResponse(template.html, { headers: { ...headers, 'Content-Type': 'text/plain; charset=utf-8' } });
     case 'apercu':
-      return new NextResponse(toPreviewHtml(template.html, EXAMPLE_VARIABLES), {
+      return new NextResponse(previewFor(template, EXAMPLE_VARIABLES), {
         headers: {
           ...headers,
           'Content-Type': 'text/html; charset=utf-8',

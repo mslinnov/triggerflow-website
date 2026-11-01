@@ -4,7 +4,7 @@ import { test } from 'node:test';
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { EXAMPLE_VARIABLES, TEMPS_FORT_CODES } from '../data/calendrier-marketing';
-import { auditMjmlDir, fixedText, loadMjmlTemplate, loadMjmlThemes, MJML_DIR, toPreviewHtml } from './calendrier-mjml';
+import { auditMjmlDir, fixedText, loadMjmlTemplate, loadMjmlThemes, MJML_DIR, previewFor, toPreviewHtml } from './calendrier-mjml';
 
 const FIXTURES = path.join(MJML_DIR, '__fixtures__');
 const VALID = path.join(FIXTURES, 'valide');
@@ -67,4 +67,25 @@ test('texte visible : sans styles, balises, champs ni variables', () => {
   const text = fixedText(loadMjmlTemplate('valentines_day', 'moderne', VALID)!.html);
   assert.doesNotMatch(text, /font-size|24px|Camille|11 h|avec vue/);
   assert.match(text, /Bonjour , Une chambre et le petit-déjeuner/);
+});
+
+test('modèles et aperçus gardés en mémoire hors développement : un fichier n’est lu qu’une fois', () => {
+  const dir = mkdtempSync(path.join(tmpdir(), 'calendrier-mjml-cache-'));
+  try {
+    mkdirSync(path.join(dir, 'moderne'));
+    const write = (body: string) => {
+      writeFileSync(path.join(dir, 'moderne', 'late_season.mjml'), `<mjml>${body}</mjml>`);
+      writeFileSync(path.join(dir, 'moderne', 'late_season.html'), `<p>${body}</p>`);
+      writeFileSync(path.join(dir, 'moderne', 'late_season.json'), '{"subject":"s","preheader":"p"}');
+    };
+    write('premier');
+    const first = loadMjmlTemplate('late_season', 'moderne', dir);
+    write('second');
+    // Les tests ne tournent pas en NODE_ENV=development : le cache est actif.
+    assert.equal(loadMjmlTemplate('late_season', 'moderne', dir), first);
+    assert.equal(previewFor(first!, EXAMPLE_VARIABLES), previewFor(first!, EXAMPLE_VARIABLES));
+    assert.match(previewFor(first!, EXAMPLE_VARIABLES), /premier/);
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
 });

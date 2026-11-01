@@ -38,12 +38,29 @@ export interface MjmlTemplate {
 
 export type MjmlFormat = 'mjml' | 'html';
 
+/**
+ * Modèles lus, gardés en mémoire du processus : les fichiers ne changent qu'au
+ * déploiement, qui redémarre le serveur. En développement, relus à chaque appel pour
+ * qu'un modèle recopié s'affiche sans redémarrer.
+ */
+const templateCache = new Map<string, MjmlTemplate | null>();
+const previewCache = new Map<string, string>();
+const cacheEnabled = () => process.env.NODE_ENV !== 'development';
+
 /** Lit les trois fichiers d'un code dans `<baseDir>/<theme>/` ; null s'il en manque un. */
 export function loadMjmlTemplate(
   code: TempsFortCode,
   theme: MjmlTheme = DEFAULT_MJML_THEME,
   baseDir: string = MJML_DIR,
 ): MjmlTemplate | null {
+  const key = `${baseDir}|${theme}|${code}`;
+  if (cacheEnabled() && templateCache.has(key)) return templateCache.get(key) ?? null;
+  const template = readMjmlTemplate(code, theme, baseDir);
+  if (cacheEnabled()) templateCache.set(key, template);
+  return template;
+}
+
+function readMjmlTemplate(code: TempsFortCode, theme: MjmlTheme, baseDir: string): MjmlTemplate | null {
   const file = (ext: string) => path.join(baseDir, theme, `${code}.${ext}`);
   if (!['mjml', 'html', 'json'].every((ext) => fs.existsSync(file(ext)))) return null;
   const meta = JSON.parse(fs.readFileSync(file('json'), 'utf8')) as { subject?: unknown; preheader?: unknown };
@@ -99,6 +116,16 @@ export function toPreviewHtml(html: string, variables: Record<string, string>): 
       });
     })
     .join('');
+}
+
+/** Aperçu d'un modèle, calculé une fois par thème et code (voir templateCache). */
+export function previewFor(template: MjmlTemplate, variables: Record<string, string>): string {
+  const key = `${template.theme}|${template.code}`;
+  const cached = cacheEnabled() ? previewCache.get(key) : undefined;
+  if (cached !== undefined) return cached;
+  const html = toPreviewHtml(template.html, variables);
+  if (cacheEnabled()) previewCache.set(key, html);
+  return html;
 }
 
 /** Texte visible d'un modèle, sans balises, styles, commentaires, champs ni variables (pour les tests de contenu). */

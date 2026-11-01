@@ -14,7 +14,7 @@ interface CopyTemplateButtonProps {
   format: 'text' | 'mjml' | 'html';
   /** Thème copié (modèles MJML), envoyé à GA4. */
   theme?: string;
-  labels: { copy: string; copied: string; fallback: string };
+  labels: { copy: string; copied: string; fallback: string; error: string };
   variant?: 'primary' | 'secondary';
 }
 
@@ -34,7 +34,7 @@ async function fetchText(url: string): Promise<string> {
  * zone sélectionnée : le visiteur le copie lui-même.
  */
 export function CopyTemplateButton({ text, url, tempsFort, format, theme, labels, variant = 'primary' }: CopyTemplateButtonProps) {
-  const [state, setState] = useState<'idle' | 'copied' | 'fallback'>('idle');
+  const [state, setState] = useState<'idle' | 'copied' | 'fallback' | 'error'>('idle');
   const [fallbackText, setFallbackText] = useState('');
   const fallbackRef = useRef<HTMLTextAreaElement>(null);
 
@@ -65,7 +65,8 @@ export function CopyTemplateButton({ text, url, tempsFort, format, theme, labels
         setFallbackText(text ?? (url ? await fetchText(url) : ''));
         setState('fallback');
       } catch {
-        setState('idle');
+        // Fichier injoignable (réseau, serveur) : le dire, plutôt que revenir sans rien.
+        setState('error');
       }
     }
   }
@@ -88,6 +89,11 @@ export function CopyTemplateButton({ text, url, tempsFort, format, theme, labels
       <span className="sr-only" role="status">
         {state === 'copied' ? labels.copied : ''}
       </span>
+      {state === 'error' && (
+        <p role="alert" className="mt-2 text-sm font-medium text-red-700">
+          {labels.error}
+        </p>
+      )}
       {state === 'fallback' && (
         <div className="mt-3">
           <p className="text-sm text-text-secondary">{labels.fallback}</p>

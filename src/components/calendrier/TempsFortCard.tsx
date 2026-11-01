@@ -61,7 +61,7 @@ export function TempsFortCard({ campaign }: TempsFortCardProps) {
               text={emailToPlainText(campaign.email)}
               tempsFort={campaign.code}
               format="text"
-              labels={{ copy: t('copy'), copied: t('copied'), fallback: t('copyFallback') }}
+              labels={{ copy: t('copy'), copied: t('copied'), fallback: t('copyFallback'), error: t('copyError') }}
             />
           )}
           <ActivateLink href={`/fr/calendrier-marketing/${info.slug}`} tempsFort={campaign.code} destination="page">

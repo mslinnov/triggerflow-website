@@ -15,5 +15,6 @@ export function useThemedTemplateLabels() {
     copyHtml: t('copyHtml'),
     copied: t('copied'),
     fallback: t('copyFallback'),
+    error: t('copyError'),
   };
 }
