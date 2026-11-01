@@ -7,6 +7,7 @@
  * Rien ici ne doit casser la page ni un bouton : tout échec est avalé.
  */
 import { getAttribution } from './attribution';
+import { utmValue } from './calendrier-evenements';
 
 export interface CalendarEvents {
   calendar_copy: { temps_fort: string; format: 'text' | 'mjml' | 'html'; theme?: string };
@@ -56,6 +57,22 @@ export function calendarStatFor(
   return { type, temps_fort: params.temps_fort, theme: params.theme ?? null, format };
 }
 
+/**
+ * Clic suivi sur les pages du calendrier : démo (lien lemcal) ou « Déjà client » marqué
+ * `data-calendar-stat="client_click"` ; null pour les autres liens. Le temps fort vient de
+ * l'attribut `data-temps-fort` du lien, sinon de la page « Activer » : jamais de
+ * l'utm_content du lien, que DemoClickTracker remplace par celui de la visite.
+ */
+export function calendarStatForClick(
+  link: { href: string; dataset: { tempsFort?: string; calendarStat?: string } },
+  pageTempsFort: string | null,
+): CalendarStat | null {
+  const temps_fort = link.dataset.tempsFort ?? pageTempsFort;
+  if (link.href.includes('lemcal.com')) return { type: 'demo_click', temps_fort };
+  if (link.dataset.calendarStat === 'client_click') return { type: 'client_click', temps_fort };
+  return null;
+}
+
 /** UUID v4, y compris hors contexte sécurisé (crypto.randomUUID absent). */
 export function uuidV4(): string {
   if (typeof crypto.randomUUID === 'function') return crypto.randomUUID();
@@ -86,7 +103,7 @@ export function loadOrCreateVisit(
   const params = new URLSearchParams(search);
   const visit: CalendarVisit = {
     visit_id: newId(),
-    ...(Object.fromEntries(UTM_KEYS.map((key) => [key, params.get(key)?.trim() || fallbackUtm?.[key] || null])) as Omit<CalendarVisit, 'visit_id'>),
+    ...(Object.fromEntries(UTM_KEYS.map((key) => [key, utmValue(params.get(key)) ?? utmValue(fallbackUtm?.[key])])) as Omit<CalendarVisit, 'visit_id'>),
   };
   try {
     storage?.setItem(VISIT_KEY, JSON.stringify(visit));

@@ -165,6 +165,7 @@ export default async function ActivateTempsFortPage({ params }: PageProps) {
               <p className="mt-1 text-sm text-text-secondary">{t('prospectText')}</p>
               <ButtonLink
                 href={calendarDemoUrl(info.code)}
+                data-temps-fort={info.code}
                 target="_blank"
                 rel="noopener noreferrer"
                 variant="accent"

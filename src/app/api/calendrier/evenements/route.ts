@@ -1,5 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { calendarEventsUrl, EVENTS_LIMIT, isBotUserAgent, parseCalendarEventsBody } from '@/lib/calendrier-evenements';
+import {
+  calendarEventsUrl,
+  EVENTS_LIMIT,
+  isBotUserAgent,
+  MAX_BODY_BYTES,
+  parseCalendarEventsBody,
+  readBoundedText,
+} from '@/lib/calendrier-evenements';
 import { SlidingWindowLimiter } from '@/lib/calendrier-rappel';
 import { readVisitorIp } from '@/lib/visitor-ip';
 
@@ -8,10 +15,11 @@ import { readVisitorIp } from '@/lib/visitor-ip';
  * navigateur (src/lib/calendrier-tracking.ts), filtrés selon le contrat de l'app
  * (src/lib/calendrier-evenements.ts). Le jeton du salon ne part jamais dans le navigateur.
  *
- * Répond toujours 202 : le navigateur n'attend rien (sendBeacon, fetch keepalive) et
- * une statistique perdue ne doit rien changer pour le visiteur. Robots, lots vides,
- * relais non configuré (TRIGGERFLOW_API_URL, CALENDRIER_SALON_FLYER_TOKEN, comme le
- * rappel) ou limite atteinte : rien n'est relayé.
+ * Répond 202 (413 pour un corps de plus de 16 Ko) : le navigateur n'attend rien
+ * (sendBeacon, fetch keepalive) et une statistique perdue ne doit rien changer pour le
+ * visiteur. Robots, lots vides, relais non configuré (TRIGGERFLOW_API_URL,
+ * CALENDRIER_SALON_FLYER_TOKEN, comme le rappel) ou limite atteinte : rien n'est relayé.
+ * La limite par IP passe avant la lecture du corps : un abus ne coûte pas de lecture.
  */
 
 const RELAY_TIMEOUT_MS = 3000;
@@ -40,10 +48,19 @@ export async function POST(request: NextRequest) {
     return accepted();
   }
 
-  // sendBeacon envoie le JSON en text/plain : lu tel quel, quel que soit le Content-Type.
-  const events = parseCalendarEventsBody(await request.json().catch(() => null));
-  if (events.length === 0) return accepted();
   if (!limiter.allow(readVisitorIp(request) ?? 'ip-inconnue')) return accepted();
+
+  // sendBeacon envoie le JSON en text/plain : lu tel quel, quel que soit le Content-Type.
+  const text = await readBoundedText(request, MAX_BODY_BYTES).catch(() => '');
+  if (text === null) return new NextResponse(null, { status: 413 });
+  let body: unknown = null;
+  try {
+    body = JSON.parse(text);
+  } catch {
+    // Corps illisible : aucun événement.
+  }
+  const events = parseCalendarEventsBody(body);
+  if (events.length === 0) return accepted();
 
   try {
     const response = await fetch(url, {

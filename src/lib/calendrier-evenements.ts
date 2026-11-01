@@ -54,9 +54,16 @@ function optionalOf(list: readonly string[], value: unknown): string | null | un
   return oneOf(list, value) ? value : undefined;
 }
 
-function utm(value: unknown): string | null {
+/**
+ * Valeur d'UTM : 100 points de code au plus (couper en unités UTF-16 laisserait une
+ * moitié d'emoji, et l'app refuserait tout le lot), moitiés orphelines remplacées.
+ * Partagée avec le navigateur (calendrier-tracking.ts), qui borne dès la visite.
+ */
+export function utmValue(value: unknown): string | null {
   if (typeof value !== 'string') return null;
-  const clean = value.replace(/[\u0000-\u001f\u007f]/g, ' ').trim().slice(0, MAX_UTM);
+  // Paires gardées, moitiés seules remplacées ; sans lookbehind, inconnu de Safari avant 16.4.
+  const wellFormed = value.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDFFF]/g, (unit) => (unit.length === 2 ? unit : '\uFFFD'));
+  const clean = Array.from(wellFormed.replace(/[\u0000-\u001f\u007f]/g, ' ').trim()).slice(0, MAX_UTM).join('').trim();
   return clean || null;
 }
 
@@ -86,9 +93,9 @@ export function sanitizeCalendarEvent(raw: unknown): AppCalendarEvent | null {
     temps_fort: tempsFort,
     theme,
     format,
-    utm_source: utm(data.utm_source),
-    utm_medium: utm(data.utm_medium),
-    utm_campaign: utm(data.utm_campaign),
+    utm_source: utmValue(data.utm_source),
+    utm_medium: utmValue(data.utm_medium),
+    utm_campaign: utmValue(data.utm_campaign),
   };
   const when = occurredAt(data.occurred_at);
   return when ? { ...event, occurred_at: when } : event;
@@ -104,9 +111,39 @@ export function parseCalendarEventsBody(body: unknown): AppCalendarEvent[] {
     .filter((event): event is AppCalendarEvent => event !== null);
 }
 
-/** Robots d'indexation et de supervision : jamais comptés. */
+/**
+ * Robots d'indexation et de supervision : jamais comptés. Mot entier ou « …bot/ »
+ * (Googlebot/2.1), pour ne pas écarter les téléphones Cubot (« CUBOT X30 »). Même
+ * motif que l'app.
+ */
 export function isBotUserAgent(userAgent: string | null): boolean {
-  return /bot|crawler|spider/i.test(userAgent ?? '');
+  return /\b(bot|crawler|spider)\b|bot\//i.test(userAgent ?? '');
+}
+
+/** Taille maximale du corps reçu : un lot de 20 pèse 5 à 11 Ko. */
+export const MAX_BODY_BYTES = 16 * 1024;
+
+/**
+ * Corps de la requête en texte, ou null s'il dépasse `maxBytes` : refusé dès l'en-tête
+ * Content-Length, sinon pendant la lecture (flux sans en-tête), sans jamais tout charger.
+ */
+export async function readBoundedText(request: Request, maxBytes: number): Promise<string | null> {
+  if (Number(request.headers.get('content-length')) > maxBytes) return null;
+  if (!request.body) return '';
+  const reader = request.body.getReader();
+  const decoder = new TextDecoder();
+  let text = '';
+  let size = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) return text + decoder.decode();
+    size += value.byteLength;
+    if (size > maxBytes) {
+      await reader.cancel().catch(() => undefined);
+      return null;
+    }
+    text += decoder.decode(value, { stream: true });
+  }
 }
 
 /** URL de l'API des événements de l'app, ou null si le relais n'est pas configuré. */

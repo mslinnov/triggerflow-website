@@ -7,9 +7,12 @@ import {
   calendarEventsUrl,
   EVENTS_LIMIT,
   isBotUserAgent,
+  MAX_BODY_BYTES,
   MAX_EVENTS_PER_BATCH,
   parseCalendarEventsBody,
+  readBoundedText,
   sanitizeCalendarEvent,
+  utmValue,
 } from './calendrier-evenements';
 
 const VISIT = '3f2b8c1e-9a4d-4e2f-8b1a-2c3d4e5f6a7b';
@@ -80,10 +83,53 @@ test('lot : seuls les événements valides, 20 au plus ; corps illisible → auc
   assert.deepEqual(parseCalendarEventsBody({ events: 'copy' }), []);
 });
 
-test('robots écartés, navigateurs gardés', () => {
-  for (const ua of ['Googlebot/2.1', 'Mozilla/5.0 (compatible; bingbot/2.0)', 'AhrefsBot', 'Some Crawler', 'Baiduspider']) assert.ok(isBotUserAgent(ua), ua);
-  assert.equal(isBotUserAgent('Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 Safari/604.1'), false);
+test('UTM : 100 points de code au plus, jamais un emoji coupé en deux (PHP refuserait tout le lot)', () => {
+  assert.equal(utmValue(`${'a'.repeat(99)}😀b`), `${'a'.repeat(99)}😀`);
+  assert.equal(utmValue('😀'.repeat(120)), '😀'.repeat(100));
+  // Moitié d'emoji orpheline envoyée telle quelle : remplacée.
+  assert.equal(utmValue('\udc00salon'), '\ufffdsalon');
+  assert.equal(utmValue('  \n '), null);
+  assert.equal(utmValue(42), null);
+});
+
+test('robots écartés (même motif que l’app), navigateurs gardés, y compris les téléphones Cubot', () => {
+  for (const ua of [
+    'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)',
+    'Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)',
+    'Mozilla/5.0 (compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/)',
+    'Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)',
+    'Screaming Frog SEO Spider/19.0',
+    'Some Crawler',
+    'GPTBot/1.0',
+  ]) {
+    assert.ok(isBotUserAgent(ua), ua);
+  }
+  for (const ua of [
+    'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 Safari/604.1',
+    'Mozilla/5.0 (Linux; Android 12; CUBOT X30) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Mobile Safari/537.36',
+    'Mozilla/5.0 (Linux; Android 10; CUBOT NOTE 7 Build/QP1A) AppleWebKit/537.36 Chrome/120.0 Mobile Safari/537.36',
+  ]) {
+    assert.equal(isBotUserAgent(ua), false, ua);
+  }
   assert.equal(isBotUserAgent(null), false);
+});
+
+test('corps borné : refusé dès l’en-tête s’il annonce trop, ou en cours de lecture sans en-tête', async () => {
+  const post = (body: BodyInit, headers: Record<string, string> = {}) =>
+    new Request('https://www.trigger-flow.com/api/calendrier/evenements', { method: 'POST', body, headers, duplex: 'half' } as RequestInit);
+  assert.equal(await readBoundedText(post('{"events":[]}'), MAX_BODY_BYTES), '{"events":[]}');
+  assert.equal(await readBoundedText(post('{}', { 'content-length': String(MAX_BODY_BYTES + 1) }), MAX_BODY_BYTES), null);
+  // Flux sans Content-Length : lecture arrêtée dès le dépassement.
+  let pulled = 0;
+  const stream = new ReadableStream<Uint8Array>({
+    pull(controller) {
+      pulled++;
+      if (pulled > 100) controller.close();
+      else controller.enqueue(new Uint8Array(1024).fill(32));
+    },
+  });
+  assert.equal(await readBoundedText(post(stream), MAX_BODY_BYTES), null);
+  assert.ok(pulled < 30, `lecture arrêtée tôt (${pulled} morceaux)`);
 });
 
 test('adresse de l’app : jeton du salon dans le chemin, sinon pas de relais', () => {
@@ -154,6 +200,26 @@ test('route : robot, lot vide ou relais non configuré : rien n’est relayé', 
   await POST(request('pas du json'));
   delete process.env.CALENDRIER_SALON_FLYER_TOKEN;
   assert.equal((await POST(request({ events: [copy] }))).status, 202);
+  assert.equal(relayed.length, 0);
+});
+
+test('route : corps trop gros refusé sans être lu ni relayé', async () => {
+  const big = { events: Array.from({ length: 20 }, () => ({ ...copy, utm_campaign: 'x'.repeat(5000) })) };
+  const response = await POST(request(big));
+  assert.equal(response.status, 413);
+  const announced = new NextRequest('https://www.trigger-flow.com/api/calendrier/evenements', {
+    method: 'POST',
+    headers: { 'user-agent': 'Mozilla/5.0', 'x-forwarded-for': '203.0.113.250', 'content-length': '999999' },
+    body: JSON.stringify({ events: [copy] }),
+  });
+  assert.equal((await POST(announced)).status, 413);
+  assert.equal(relayed.length, 0);
+});
+
+test('route : la limite par IP s’applique avant la lecture, corps illisibles compris', async () => {
+  const ip = '198.51.100.20';
+  for (let i = 0; i < EVENTS_LIMIT.limit; i++) await POST(request('pas du json', { ip }));
+  await POST(request({ events: [copy] }, { ip }));
   assert.equal(relayed.length, 0);
 });
 
