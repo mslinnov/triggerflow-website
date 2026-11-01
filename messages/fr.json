@@ -2799,5 +2799,122 @@
     "lockBody": "Toute souscription payante avant le 31 décembre 2026 conserve la grille tarifaire 2026 à vie, y compris en cas de montée en gamme, tant que l'abonnement reste actif.",
     "faqQuestion": "Que se passe-t-il au 1er janvier 2027 ?",
     "faqAnswer": "Nos tarifs évoluent le 1er janvier 2027. Toute souscription à un plan payant avant le 31 décembre 2026 conserve la grille tarifaire 2026 à vie, tant que l'abonnement reste actif, y compris si vous passez ensuite à un plan supérieur. Un essai gratuit démarré avant le 31 décembre compte s'il est converti en abonnement payant ; le plan Découverte, lui, ne compte pas. Les modules ajoutés après le 1er janvier 2027 sont au nouveau tarif. En cas de résiliation, le tarif garanti est perdu."
+  },
+  "calendrierMarketing": {
+    "meta": {
+      "title": "Calendrier marketing hôtelier : dates et modèles d'e-mails",
+      "description": "Les 12 temps forts de l'année pour votre hôtel : dates exactes, quand écrire à vos clients et un modèle d'e-mail prêt à copier ou à activer dans TriggerFlow.",
+      "breadcrumbHome": "Accueil",
+      "breadcrumbPage": "Calendrier marketing hôtelier"
+    },
+    "hero": {
+      "eyebrow": "Calendrier marketing hôtelier",
+      "title": "Les 12 temps forts de l'année, et quand écrire à vos clients",
+      "subtitle": "Pour chaque temps fort : les dates exactes, le bon moment pour envoyer et un modèle d'e-mail prêt à copier ou à activer dans TriggerFlow.",
+      "goldenRuleTitle": "Règle d'or",
+      "goldenRule": "Lancez chaque campagne quatre semaines avant, relancez une semaine avant.",
+      "legendTitle": "Dans les modèles",
+      "legendField": "à remplir avec vos propres valeurs",
+      "legendVariable": "rempli automatiquement par TriggerFlow",
+      "legendExample": "Exemple"
+    },
+    "nav": {
+      "label": "Aller au mois",
+      "years": "Mois de {year}"
+    },
+    "month": {
+      "keyDates": "Dates clés",
+      "campaignsTitle": "À envoyer"
+    },
+    "card": {
+      "audience": "Pour qui",
+      "send": "Quand l'envoyer",
+      "reminder": "Relance",
+      "subject": "Objet",
+      "preheader": "Pré-en-tête",
+      "button": "Bouton",
+      "copy": "Copier le template",
+      "copyMjml": "Copier le MJML",
+      "copyHtml": "Copier le HTML",
+      "mjmlPreviewTitle": "Aperçu de l'e-mail, avec des valeurs d'exemple",
+      "themePicker": "Thème du modèle",
+      "themes": {
+        "moderne": "Élégant",
+        "soiree": "Soirée",
+        "editorial": "Éditorial"
+      },
+      "copied": "Copié dans le presse-papier",
+      "copyFallback": "La copie automatique est bloquée par votre navigateur : le texte est sélectionné ci-dessous, copiez-le avec Ctrl+C ou Cmd+C.",
+      "copyError": "Copie impossible, réessayez.",
+      "activate": "Activer dans TriggerFlow",
+      "openInApp": "Déjà client : ouvrir dans TriggerFlow",
+      "previewLabel": "Aperçu de l'e-mail",
+      "seeFull": "Voir l'e-mail en entier",
+      "close": "Fermer",
+      "loading": "Chargement de l'aperçu"
+    },
+    "variables": {
+      "firstname": "Prénom",
+      "lastname": "Nom",
+      "facility_name": "Nom de l'hôtel",
+      "booking_page_url": "Lien de réservation",
+      "website_url": "Site de l'hôtel",
+      "facility_email": "E-mail de l'hôtel",
+      "facility_phone": "Téléphone de l'hôtel"
+    },
+    "allYear": {
+      "title": "Toute l'année, en automatique",
+      "subtitle": "En plus des temps forts, six e-mails partent seuls, au bon moment du séjour de chaque client.",
+      "cta": "Voir comment en démo"
+    },
+    "finalCta": {
+      "title": "Envoyez ces e-mails sans y penser",
+      "subtitle": "TriggerFlow cible les bons clients dans votre PMS, programme chaque envoi à votre charte et relance ceux qui n'ont pas cliqué.",
+      "demo": "Réserver une démo",
+      "login": "Déjà client : se connecter"
+    },
+    "activatePage": {
+      "metaTitle": "{title} : modèle d'e-mail pour hôtel",
+      "metaDescription": "Le modèle d'e-mail « {title} » pour votre hôtel : à qui l'envoyer, quand, et comment TriggerFlow l'envoie et le relance pour vous.",
+      "back": "Retour au calendrier",
+      "eyebrow": "Modèle d'e-mail",
+      "clientTitle": "Déjà client TriggerFlow ?",
+      "clientText": "Ouvrez ce modèle dans l'assistant e-mails, adaptez-le à votre hôtel, puis programmez-le.",
+      "clientCta": "Ouvrir dans TriggerFlow",
+      "clientCaption": "Modèle ouvert",
+      "previewTitle": "L'e-mail, sur une charte d'exemple",
+      "previewNote": "Exemple : hôtel et valeurs fictifs. Dans TriggerFlow, l'e-mail reprend votre logo, vos couleurs et vos offres.",
+      "howTitle": "Comment TriggerFlow l'envoie pour vous",
+      "howTarget": "La cible",
+      "howTargetText": "{audience} : TriggerFlow les retrouve dans l'historique de séjours de votre PMS.",
+      "howSend": "L'envoi",
+      "howSendText": "Programmé à la bonne date ({send}), à votre nom et à votre charte.",
+      "howReminder": "La relance",
+      "howReminderText": "Une relance part seule aux clients qui n'ont pas cliqué. Vous suivez les ouvertures et les clics de chaque envoi.",
+      "prospectTitle": "Pas encore client ?",
+      "prospectText": "Voyez ce modèle, et les autres, fonctionner sur votre hôtel pendant une démo, ou laissez-nous vos coordonnées pour être rappelé.",
+      "demoCta": "Réserver une démo",
+      "formTitle": "Être rappelé",
+      "formHotel": "Nom de l'hôtel",
+      "formCity": "Ville",
+      "formFirstname": "Prénom",
+      "formLastname": "Nom",
+      "formEmail": "E-mail professionnel",
+      "formPhone": "Téléphone",
+      "formWantsDemo": "Je souhaite aussi une démo",
+      "formSubmit": "Être rappelé",
+      "formSubmitting": "Envoi…",
+      "formSuccessTitle": "C'est noté",
+      "formSuccessText": "Nous vous rappelons très vite. À bientôt !",
+      "formError": "L'envoi n'a pas abouti. Réessayez, ou réservez directement une démo.",
+      "formBusy": "Trop de demandes en même temps. Réessayez dans une minute.",
+      "formInvalid": "Vérifiez votre adresse e-mail et les champs marqués d'un astérisque.",
+      "formPrivacy": "Vos coordonnées servent uniquement à vous recontacter."
+    },
+    "now": {
+      "title": "À préparer maintenant",
+      "cta": "Voir le modèle"
+    },
+    "backToTop": "Haut de page"
   }
 }
