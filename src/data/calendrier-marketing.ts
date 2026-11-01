@@ -669,6 +669,28 @@ export function activateInAppName(code: TempsFortCode, themeName?: string): stri
   return themeName ? `${TEMPS_FORTS[code].title} · ${themeName}` : TEMPS_FORTS[code].title;
 }
 
+/**
+ * Signature des modèles copiés depuis la page (MJML, HTML, texte) : un e-mail envoyé
+ * par un autre outil porte la marque. `term` : le thème copié, ou « texte ».
+ */
+export const SIGNATURE_PREFIX = 'Modèle créé avec';
+
+export function signatureUrl(code: TempsFortCode, term: string): string {
+  const params = [
+    ['utm_source', 'calendrier-marketing'],
+    ['utm_medium', 'email'],
+    ['utm_campaign', 'modele-copie'],
+    ['utm_content', code],
+    ['utm_term', term],
+  ];
+  return `https://www.trigger-flow.com/?${params.map(([k, v]) => `${k}=${encodeURIComponent(v)}`).join('&')}`;
+}
+
+/** Dernière ligne du texte copié (modèle texte de repli). */
+export function signatureTextLine(code: TempsFortCode): string {
+  return `${SIGNATURE_PREFIX} TriggerFlow : ${signatureUrl(code, 'texte')}`;
+}
+
 /** Nom du style dans l'app pour chaque thème du site (`style=` du lien profond). */
 const APP_STYLES: Record<MjmlTheme, string> = { moderne: 'modern', soiree: 'soiree', editorial: 'editorial' };
 

@@ -20,6 +20,8 @@ import path from 'path';
 import {
   DEFAULT_MJML_THEME,
   MJML_THEMES,
+  SIGNATURE_PREFIX,
+  signatureUrl,
   TEMPS_FORT_CODES,
   type MjmlTheme,
   type TempsFortCode,
@@ -118,12 +120,79 @@ export function toPreviewHtml(html: string, variables: Record<string, string>): 
     .join('');
 }
 
-/** Aperçu d'un modèle, calculé une fois par thème et code (voir templateCache). */
+// ── Signature TriggerFlow des modèles copiés ─────────────────────────────────
+
+/** Luminance relative WCAG d'une couleur #RRGGBB. */
+function luminance(hex: string): number {
+  const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255);
+  const lin = (c: number) => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4);
+  return 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
+}
+
+/** Contraste WCAG entre deux couleurs #RRGGBB. */
+export function contrastRatio(a: string, b: string): number {
+  const [hi, lo] = [luminance(a), luminance(b)].sort((x, y) => y - x);
+  return (hi + 0.05) / (lo + 0.05);
+}
+
+/** Gris neutre de la signature, lisible (AA) sur le fond du thème, clair ou sombre. */
+export function signatureColor(background: string): string {
+  return luminance(background) > 0.18 ? '#595959' : '#A8A8A8';
+}
+
+/** Fond extérieur d'un modèle : `<mj-body background-color>` (MJML) ou le style de `<body>` (HTML). */
+export function templateBackground(source: string): string {
+  const match =
+    source.match(/<mj-body[^>]*\bbackground-color="(#[0-9a-fA-F]{6})"/) ?? source.match(/<body[^>]*background-color:\s*(#[0-9a-fA-F]{6})/);
+  return match ? match[1].toUpperCase() : '#FFFFFF';
+}
+
+const attr = (value: string) => value.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+
+/**
+ * MJML et HTML tels que copiés depuis la page : signature « Modèle créé avec
+ * TriggerFlow » ajoutée en bas (avant `</mj-body>` / `</body>`). Les fichiers de l'app
+ * restent intacts : ils servent aussi à la bibliothèque. Le fond du thème est posé sur
+ * la signature elle-même (Outlook ignore le fond de `<body>`).
+ */
+export function signTemplate(template: MjmlTemplate): { mjml: string; html: string } {
+  const background = templateBackground(template.mjml);
+  const color = signatureColor(background);
+  const href = attr(signatureUrl(template.code, template.theme));
+  const link = `<a href="${href}" style="color:${color};text-decoration:underline;">TriggerFlow</a>`;
+  const font = 'Helvetica, Arial, sans-serif';
+
+  const mjmlSignature =
+    `<mj-section background-color="${background}" padding="16px 20px 24px 20px"><mj-column>` +
+    `<mj-text align="center" font-family="${font}" font-size="12px" line-height="18px" color="${color}" padding="0">` +
+    `${SIGNATURE_PREFIX} ${link}</mj-text></mj-column></mj-section>`;
+
+  const htmlBackground = templateBackground(template.html);
+  const htmlColor = signatureColor(htmlBackground);
+  const htmlLink = `<a href="${href}" style="color:${htmlColor};text-decoration:underline;">TriggerFlow</a>`;
+  const htmlSignature =
+    `<table role="presentation" align="center" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="${htmlBackground}" ` +
+    `style="width:100%;max-width:640px;margin:0 auto;background-color:${htmlBackground};"><tr>` +
+    `<td align="center" style="padding:16px 20px 24px 20px;font-family:${font};font-size:12px;line-height:18px;color:${htmlColor};">` +
+    `${SIGNATURE_PREFIX} ${htmlLink}</td></tr></table>`;
+
+  return {
+    mjml: insertBeforeLast(template.mjml, '</mj-body>', mjmlSignature),
+    html: insertBeforeLast(template.html, '</body>', htmlSignature),
+  };
+}
+
+function insertBeforeLast(source: string, closing: string, insert: string): string {
+  const index = source.lastIndexOf(closing);
+  return index === -1 ? source + insert : source.slice(0, index) + insert + source.slice(index);
+}
+
+/** Aperçu d'un modèle, calculé une fois par thème et code (voir templateCache). La signature y figure. */
 export function previewFor(template: MjmlTemplate, variables: Record<string, string>): string {
   const key = `${template.theme}|${template.code}`;
   const cached = cacheEnabled() ? previewCache.get(key) : undefined;
   if (cached !== undefined) return cached;
-  const html = toPreviewHtml(template.html, variables);
+  const html = toPreviewHtml(signTemplate(template).html, variables);
   if (cacheEnabled()) previewCache.set(key, html);
   return html;
 }

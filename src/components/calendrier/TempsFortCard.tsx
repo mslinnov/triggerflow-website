@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { CalendarClock, Repeat, Users } from 'lucide-react';
-import { DEFAULT_MJML_THEME, TEMPS_FORTS, type Campaign } from '@/data/calendrier-marketing';
+import { DEFAULT_MJML_THEME, signatureTextLine, TEMPS_FORTS, type Campaign } from '@/data/calendrier-marketing';
 import { emailToPlainText, toPlainText } from '@/lib/calendrier';
 import { loadMjmlThemes } from '@/lib/calendrier-mjml';
 import { ActivateLink } from './ActivateLink';
@@ -83,7 +83,7 @@ export function TempsFortCard({ campaign, scrollMarginClass }: TempsFortCardProp
               <CopyMjmlButtons code={campaign.code} themes={themes} labels={labels} />
             ) : (
               <CopyTemplateButton
-                text={emailToPlainText(campaign.email)}
+                text={emailToPlainText(campaign.email, signatureTextLine(campaign.code))}
                 tempsFort={campaign.code}
                 format="text"
                 labels={{ copy: t('copy'), copied: t('copied'), fallback: t('copyFallback'), error: t('copyError') }}
