@@ -51,10 +51,10 @@ export function ClientsOtaHowItWorks() {
               </p>
               <p className="mt-2 text-xs text-[var(--up-ink-soft)]">{t('form.fieldHint')}</p>
 
-              <p className="mt-5 flex gap-2.5 text-[13px] leading-relaxed text-[var(--up-ink-soft)]">
-                <span className="mt-0.5 h-4 w-4 shrink-0 rounded border border-[var(--up-line-strong)]" />
-                {t('form.consent')}
-              </p>
+              {/* Pas de case d'accord : position de Mounir du 1er novembre 2026, le client
+                  qui a séjourné reçoit les offres par défaut (exception « client existant »).
+                  La ligne l'en informe à la collecte, chaque e-mail porte un lien de désinscription. */}
+              <p className="mt-3 text-[13px] leading-relaxed text-[var(--up-ink-soft)]">{t('form.notice')}</p>
 
               <p className="mt-7 inline-flex min-h-11 items-center justify-center rounded-full bg-[var(--up-accent)] px-6 py-3 text-sm font-semibold text-[var(--up-accent-ink)]">
                 {t('form.button')}

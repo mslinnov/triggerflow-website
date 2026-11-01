@@ -2844,7 +2844,7 @@
         "fieldLabel": "Your personal email address",
         "fieldValue": "sam.taylor@example.com",
         "fieldHint": "First question of the form.",
-        "consent": "I agree to receive offers from the hotel (optional).",
+        "notice": "You will also receive news from the hotel. Unsubscribe in one click, at any time.",
         "button": "Send",
         "footnote": "Field linked to the guest profile: the address typed in replaces the relay address, the old one is kept in the history."
       },
@@ -2857,7 +2857,7 @@
         "c5": "The email field as the first question",
         "c6": "A subject line about preparing the stay, not about saving time",
         "c7": "A short email, under 400 characters of text",
-        "c8": "A field linked to the guest profile, and an optional consent box for offers"
+        "c8": "A field linked to the guest profile, and a line announcing news from the hotel"
       },
       "checklistNote": "Half a day is enough. Form, sends and a win-back campaign pointing to your booking engine are set up with TriggerFlow from your current PMS."
     },
@@ -2877,7 +2877,7 @@
       },
       "consent": {
         "q": "Can I write to these guests to invite them back?",
-        "a": "The guide recommends a separate, optional consent box for offers next to the email field: it removes any doubt about what the guest agreed to. Messages about their stay go out in any case. And a guest who unsubscribes receives nothing more."
+        "a": "Yes. In France, a guest who has stayed with you can receive your offers for comparable services without a tick box, provided they are told when they give you their address and can easily object. The form tells them in one line under the field, and every email carries an unsubscribe link. A guest who unsubscribes receives nothing more; messages about their stay go out in any case."
       },
       "pms": {
         "q": "Do I need to change PMS?",

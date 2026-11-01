@@ -10,7 +10,7 @@ Règles d'écriture :
 - Aucun tiret cadratin, aucun chiffre sans source : les taux viennent du guide, donc de l'étude.
 - Chiffres repris du guide, donc de l'étude du 1er novembre 2026 (été 2026, hôtels équipés), toujours formulés en
   corrélation : « dans les hôtels qui le font », jamais « vous gagnerez ».
-- Reste à confirmer : le calendrier lemcal `clients-ota` (créé par le chantier de câblage).
+- Calendrier lemcal `clients-ota` confirmé par Mounir le 1er novembre 2026 (créé par le chantier de câblage).
 
 ---
 
@@ -75,7 +75,7 @@ Nous vous proposons de faire cet état des lieux ensemble, gratuitement, en 30 m
 - le réglage de votre formulaire de préparation qui vous en coûte le plus ;
 - ce que la campagne de retour donnerait sur vos propres volumes.
 
-[Réserver 30 minutes](https://app.lemcal.com/@trigger-flow/clients-ota) [À CONFIRMER : calendrier lemcal clients-ota]
+[Réserver 30 minutes](https://app.lemcal.com/@trigger-flow/clients-ota)
 
 Rien à préparer de votre côté, sans engagement.
 

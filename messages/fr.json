@@ -2852,7 +2852,7 @@
         "fieldLabel": "Votre adresse e-mail personnelle",
         "fieldValue": "camille.martin@exemple.fr",
         "fieldHint": "Première question du formulaire.",
-        "consent": "J'accepte de recevoir les offres de l'hôtel (facultatif).",
+        "notice": "Vous recevrez aussi les nouvelles de l'hôtel. Désinscription en un clic, à tout moment.",
         "button": "Envoyer",
         "footnote": "Champ relié à la fiche client : l'adresse saisie remplace l'adresse relais, l'ancienne reste dans l'historique."
       },
@@ -2865,7 +2865,7 @@
         "c5": "Le champ e-mail en première question",
         "c6": "Un objet qui parle de préparer le séjour, pas de gagner du temps",
         "c7": "Un e-mail court, moins de 400 caractères de texte",
-        "c8": "Un champ relié à la fiche client, et une case d'accord facultative pour les offres"
+        "c8": "Un champ relié à la fiche client, et une ligne qui annonce les nouvelles de l'hôtel"
       },
       "checklistNote": "Une demi-journée suffit. Formulaire, envois et campagne de retour vers votre moteur de réservation se montent avec TriggerFlow à partir de votre PMS actuel."
     },
@@ -2885,7 +2885,7 @@
       },
       "consent": {
         "q": "Puis-je écrire à ces clients pour leur proposer de revenir ?",
-        "a": "Le guide recommande une case d'accord distincte et facultative pour les offres, à côté du champ e-mail : elle lève toute ambiguïté sur ce que le client a accepté. Les messages liés à son séjour, eux, partent dans tous les cas. Et un client qui se désabonne ne reçoit plus rien."
+        "a": "Oui. En France, un client qui a séjourné chez vous peut recevoir vos offres pour des prestations comparables sans case à cocher, à condition d'en être informé quand il vous donne son adresse et de pouvoir s'y opposer simplement. Le formulaire le prévient en une ligne sous le champ, et chaque e-mail porte un lien de désinscription. Un client qui se désabonne ne reçoit plus rien ; les messages liés à son séjour partent dans tous les cas."
       },
       "pms": {
         "q": "Faut-il changer de PMS ?",

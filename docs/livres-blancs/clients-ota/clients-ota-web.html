@@ -106,7 +106,6 @@
   .encadre .petit { font-size: 13px; color: var(--doux); }
   .modele .champ { border: 1px solid var(--trait); border-radius: 8px; padding: 9px 12px; color: var(--doux); background: var(--creme); margin-bottom: 8px; }
   .cta .num { color: rgba(243,250,248,.75); }
-  .avenir { background: #fff3a8; color: #3b3300; outline: 1px dashed #b59b00; }
 </style>
 
 <header class="couv">
@@ -189,7 +188,7 @@
   </div>
 
   <div class="relance">
-    <p style="margin:0"><b>Deux heures de paramétrage suffisent.</b> Formulaire dédié, envois depuis votre PMS et campagne de retour se mettent en place en une demi-journée avec TriggerFlow. <a href="https://app.lemcal.com/@trigger-flow/clients-ota">Réserver 30 minutes</a> <span class="avenir">[À CONFIRMER : calendrier lemcal clients-ota]</span></p>
+    <p style="margin:0"><b>Deux heures de paramétrage suffisent.</b> Formulaire dédié, envois depuis votre PMS et campagne de retour se mettent en place en une demi-journée avec TriggerFlow. <a href="https://app.lemcal.com/@trigger-flow/clients-ota">Réserver 30 minutes</a></p>
   </div>
 
   <h2><span class="num">Chapitre 4</span>Le formulaire à copier</h2>
@@ -204,7 +203,7 @@
       <p>Votre réservation est confirmée. Indiquez-nous l'adresse à laquelle vous joindre directement : nous y enverrons votre confirmation et les informations pratiques de votre séjour.</p>
       <p class="petit" style="margin-bottom:4px">Votre adresse e-mail personnelle</p>
       <p class="champ">camille.martin@exemple.fr</p>
-      <p class="petit">☐ J'accepte de recevoir les offres de l'hôtel (facultatif)</p>
+      <p class="petit">Vous recevrez aussi les nouvelles de l'hôtel. Désinscription en un clic, à tout moment.</p>
       <p style="text-align:center"><span class="bouton">Envoyer</span></p>
       <p class="petit" style="margin-bottom:0">Moins de 400 caractères · Le champ e-mail en première et seule question · Champ relié à la fiche client : la vraie adresse remplace l'adresse relais, l'ancienne reste dans l'historique</p>
     </div>
@@ -220,7 +219,7 @@
       <li>Le champ e-mail en première question</li>
       <li>Un objet qui parle de préparer le séjour, pas de gagner du temps</li>
       <li>Un e-mail court, moins de 400 caractères de texte</li>
-      <li>Un champ relié à la fiche client, et une case d'accord facultative pour les offres</li>
+      <li>Un champ relié à la fiche client, et une ligne qui annonce les nouvelles de l'hôtel</li>
     </ul>
   </div>
 
@@ -232,7 +231,7 @@
     <div class="ligne"><span>Qui reviennent ensuite en direct, dans les 24 mois (8 %)</span><b>135</b></div>
     <div class="ligne"><span>Montant moyen d'un séjour</span><b>320 €</b></div>
     <div class="ligne"><span>Chiffre d'affaires de ces séjours directs</span><b>43 200 €</b></div>
-    <div class="total"><span>Commission que vous ne versez pas, à 17 % <span class="avenir">[À CONFIRMER : source du taux]</span></span><b>7 344 € / an</b></div>
+    <div class="total"><span>Commission que vous ne versez pas, à 17 %</span><b>7 344 € / an</b></div>
   </div>
   <p>Un ordre de grandeur, pas une promesse : un client qui revient n'aurait pas forcément réservé de nouveau par la plateforme. Le simulateur de notre site refait ce calcul avec vos valeurs.</p>
 
@@ -240,8 +239,8 @@
     <h3 style="margin-top:0">Parité tarifaire et consentement : ce que dit le cadre</h3>
     <p><strong>Vos prix.</strong> En France, depuis la loi du 6 août 2015 dite loi Macron, l'hôtelier reste libre de fixer ses prix sur ses propres canaux, y compris pour un client venu d'une plateforme.</p>
     <p><strong>Les données de la plateforme.</strong> Votre contrat OTA encadre l'usage des données transmises par la plateforme, dont l'adresse relais. L'adresse que le client vous donne lui-même, dans votre formulaire, relève de votre propre relation avec lui.</p>
-    <p><strong>Le consentement.</strong> Pour lui écrire ensuite des offres, demandez son accord par une case distincte et facultative, à côté du champ e-mail. C'est rare aujourd'hui : dans l'étude, à peine 2,6 % des adresses récupérées l'ont été par un formulaire qui proposait cette case. Les messages liés à son séjour partent dans tous les cas.</p>
-    <p class="petit" style="margin:0">Cet encadré décrit un cadre général, il ne remplace pas un avis juridique : faites vérifier votre contrat par votre conseil. <span class="avenir">[À CONFIRMER : relecture Soufiane]</span></p>
+    <p><strong>Le client existant.</strong> Un client qui a séjourné chez vous peut recevoir vos offres pour des prestations comparables sans case à cocher, à condition d'en être informé quand il vous donne son adresse et de pouvoir s'y opposer simplement. D'où une ligne courte sous le champ, qui le prévient qu'il recevra les nouvelles de l'hôtel, et un lien de désinscription dans chaque e-mail. Les messages liés à son séjour partent dans tous les cas.</p>
+    <p class="petit" style="margin:0">Cet encadré décrit un cadre général, il ne remplace pas un avis juridique : faites vérifier votre contrat par votre conseil.</p>
   </div>
 
   <h2><span class="num">Chapitre 5</span>Comment nous avons mesuré</h2>
@@ -255,7 +254,7 @@
       <li><strong>30 minutes</strong> : votre formulaire dédié, à partir d'un modèle qui applique déjà les cinq règles.</li>
       <li><strong>45 minutes</strong> : les envois à votre charte, dès la réservation puis en relance, par e-mail et WhatsApp.</li>
       <li><strong>15 minutes</strong> : le branchement sur votre PMS (Mews, Thaïs, Opera Cloud, Apaleo, Misterbooking, Medialog et d'autres), pour que chaque réservation déclenche l'envoi.</li>
-      <li><strong>30 minutes</strong> : la campagne de retour, avec un lien direct vers votre moteur de réservation, adressée aux clients qui ont donné leur accord.</li>
+      <li><strong>30 minutes</strong> : la campagne de retour, avec un lien direct vers votre moteur de réservation et un lien de désinscription dans chaque envoi.</li>
     </ol>
     <p>Ensuite, chaque séjour OTA passe par le même chemin, et chaque vraie adresse récupérée remplace l'adresse relais dans la fiche du client.</p>
     <a href="https://app.lemcal.com/@trigger-flow/clients-ota">Réserver 30 minutes de mise en place</a>
