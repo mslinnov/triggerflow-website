@@ -18,6 +18,7 @@ export function useThemedTemplateLabels(): ThemedPreviewLabels {
     downloadMjml: t('downloadMjml'),
     downloadHtml: t('downloadHtml'),
     copied: t('copied'),
+    copiedShort: t('copiedShort'),
     fallback: t('copyFallback'),
     error: t('copyError'),
     seeFull: t('seeFull'),

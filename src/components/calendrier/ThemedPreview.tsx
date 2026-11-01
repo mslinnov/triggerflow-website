@@ -28,6 +28,7 @@ export interface ThemedPreviewLabels {
   downloadMjml: string;
   downloadHtml: string;
   copied: string;
+  copiedShort: string;
   fallback: string;
   error: string;
   seeFull: string;

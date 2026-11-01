@@ -2847,6 +2847,7 @@
         "editorial": "Éditorial"
       },
       "copied": "Copié dans le presse-papier",
+      "copiedShort": "Copié",
       "copyFallback": "La copie automatique est bloquée par votre navigateur : le texte est sélectionné ci-dessous, copiez-le avec Ctrl+C ou Cmd+C.",
       "copyError": "Copie impossible, réessayez.",
       "activate": "Activer dans TriggerFlow",

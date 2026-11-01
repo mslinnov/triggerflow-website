@@ -87,7 +87,7 @@ export function TempsFortCard({ campaign, scrollMarginClass }: TempsFortCardProp
                 text={emailToPlainText(campaign.email, signatureTextLine(campaign.code))}
                 tempsFort={campaign.code}
                 format="text"
-                labels={{ copy: t('copy'), copied: t('copied'), fallback: t('copyFallback'), error: t('copyError') }}
+                labels={{ copy: t('copy'), copied: t('copied'), copiedShort: t('copiedShort'), fallback: t('copyFallback'), error: t('copyError') }}
               />
             )}
           </div>

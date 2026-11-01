@@ -15,7 +15,8 @@ interface CopyTemplateButtonProps {
   format: 'text' | 'mjml' | 'html';
   /** Thème copié (modèles MJML), envoyé à GA4. */
   theme?: string;
-  labels: { copy: string; copied: string; fallback: string; error: string };
+  /** `copied` : annoncé aux lecteurs d'écran ; `copiedShort` : affiché dans le bouton, sans en changer la largeur. */
+  labels: { copy: string; copied: string; copiedShort: string; fallback: string; error: string };
   variant?: 'primary' | 'secondary';
   /** Action sur le même fichier, à côté du bouton (« Télécharger ») ; erreur et repli s'affichent sous la paire. */
   children?: React.ReactNode;
@@ -87,8 +88,17 @@ export function CopyTemplateButton({ text, url, tempsFort, format, theme, labels
       {/* Côte à côte si la paire tient, sinon l'une sous l'autre, pleine largeur. */}
       <div className="flex flex-wrap gap-2">
         <button type="button" onClick={handleClick} className={cn(templateButtonClass(variant), 'flex-auto')}>
-          {state === 'copied' ? <Check className="h-4 w-4" aria-hidden="true" /> : <Copy className="h-4 w-4" aria-hidden="true" />}
-          {state === 'copied' ? labels.copied : labels.copy}
+          {/* Les deux libellés dans la même case : le bouton garde sa largeur et la paire ne se réorganise pas pendant « Copié ». */}
+          <span className="grid justify-items-center">
+            <span className={cn('col-start-1 row-start-1 inline-flex items-center gap-2', state === 'copied' && 'invisible')}>
+              <Copy className="h-4 w-4" aria-hidden="true" />
+              {labels.copy}
+            </span>
+            <span className={cn('col-start-1 row-start-1 inline-flex items-center gap-2', state !== 'copied' && 'invisible')}>
+              <Check className="h-4 w-4" aria-hidden="true" />
+              {labels.copiedShort}
+            </span>
+          </span>
         </button>
         {children}
       </div>

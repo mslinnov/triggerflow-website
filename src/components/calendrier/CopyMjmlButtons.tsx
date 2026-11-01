@@ -15,6 +15,7 @@ interface CopyMjmlButtonsProps {
     downloadMjml: string;
     downloadHtml: string;
     copied: string;
+    copiedShort: string;
     fallback: string;
     error: string;
   };
@@ -28,7 +29,7 @@ interface CopyMjmlButtonsProps {
 export function CopyMjmlButtons({ code, themes, labels }: CopyMjmlButtonsProps) {
   const [selected] = useThemeSelection(themes[0]);
   const theme = themes.includes(selected) ? selected : themes[0];
-  const copyLabels = { copied: labels.copied, fallback: labels.fallback, error: labels.error };
+  const copyLabels = { copied: labels.copied, copiedShort: labels.copiedShort, fallback: labels.fallback, error: labels.error };
   const pairs = [
     { format: 'mjml', variant: 'primary', copy: labels.copyMjml, download: labels.downloadMjml },
     { format: 'html', variant: 'secondary', copy: labels.copyHtml, download: labels.downloadHtml },
