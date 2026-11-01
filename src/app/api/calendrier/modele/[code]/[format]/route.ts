@@ -6,13 +6,14 @@ import {
   TEMPS_FORT_CODES,
   type TempsFortCode,
 } from '@/data/calendrier-marketing';
-import { loadMjmlTemplate, previewFor } from '@/lib/calendrier-mjml';
+import { loadMjmlTemplate, previewFor, signTemplate } from '@/lib/calendrier-mjml';
 
 /**
  * Fichiers d'un modèle MJML du calendrier marketing, servis à la demande plutôt
  * qu'embarqués dans la page (une quinzaine de modèles × MJML + HTML alourdirait
  * d'autant une page ouverte sur mobile depuis un QR) :
- * - `mjml` et `html` : le texte copié par « Copier le MJML » / « Copier le HTML » ;
+ * - `mjml` et `html` : le texte copié par « Copier le MJML » / « Copier le HTML »,
+ *   signé « Modèle créé avec TriggerFlow » (signTemplate) ;
  * - `apercu` : le HTML rendu dans l'iframe de la page, valeurs d'exemple et champs
  *   surlignés. Encadrable par le site seul (next.config.ts), sans aucun script (CSP).
  *
@@ -40,11 +41,12 @@ export async function GET(request: Request, { params }: { params: Promise<{ code
 
   // Cinq minutes : un modèle corrigé puis redéployé n'est pas servi longtemps dans sa version périmée.
   const headers: Record<string, string> = { 'Cache-Control': 'public, max-age=300' };
+  const signed = signTemplate(template);
   switch (format as Format) {
     case 'mjml':
-      return new NextResponse(template.mjml, { headers: { ...headers, 'Content-Type': 'text/plain; charset=utf-8' } });
+      return new NextResponse(signed.mjml, { headers: { ...headers, 'Content-Type': 'text/plain; charset=utf-8' } });
     case 'html':
-      return new NextResponse(template.html, { headers: { ...headers, 'Content-Type': 'text/plain; charset=utf-8' } });
+      return new NextResponse(signed.html, { headers: { ...headers, 'Content-Type': 'text/plain; charset=utf-8' } });
     case 'apercu':
       return new NextResponse(previewFor(template, EXAMPLE_VARIABLES), {
         headers: {

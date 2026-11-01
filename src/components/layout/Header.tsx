@@ -152,6 +152,9 @@ export function Header({ banner }: HeaderProps = {}) {
       setScrollProgress(progress);
     };
 
+    // État initial : une page ouverte déjà défilée (ancre, retour arrière) ne doit pas
+    // garder un en-tête transparent par-dessus le contenu jusqu'au premier défilement.
+    handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);

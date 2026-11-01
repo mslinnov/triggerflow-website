@@ -2,16 +2,18 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { ArrowLeft, CalendarClock, Repeat, Users } from 'lucide-react';
-import { ActivateLink } from '@/components/calendrier/ActivateLink';
+import { OpenInAppLink } from '@/components/calendrier/OpenInAppLink';
 import { ThemedTemplateBlock } from '@/components/calendrier/ThemedTemplateBlock';
+import { ThemeSelectionProvider } from '@/components/calendrier/ThemeSelection';
 import { RappelForm } from '@/components/calendrier/RappelForm';
 import { TemplatePreview } from '@/components/calendrier/TemplatePreview';
 import { ButtonLink, Container } from '@/components/ui';
 import { brand } from '@/data/brand';
 import {
-  activateInAppUrl,
   calendarDemoUrl,
   currentCampaign,
+  DEFAULT_MJML_THEME,
+  MJML_THEMES,
   EXAMPLE_VARIABLES,
   TEMPS_FORTS,
   tempsFortBySlug,
@@ -76,6 +78,11 @@ export default async function ActivateTempsFortPage({ params }: PageProps) {
   const campaign = currentCampaign(info.code, today());
   const send = toPlainText(campaign.send);
   const variants = loadMjmlThemes(info.code).map(({ theme, subject, preheader }) => ({ theme, subject, preheader }));
+  const themes = variants.length > 0 ? variants.map((v) => v.theme) : [DEFAULT_MJML_THEME];
+  const themeNames = Object.fromEntries(MJML_THEMES.map((theme) => [theme, tCard(`themes.${theme}`)])) as Record<
+    (typeof MJML_THEMES)[number],
+    string
+  >;
   const previewLabels = { subject: tCard('subject'), preheader: tCard('preheader'), preview: tCard('previewLabel') };
 
   const steps = [
@@ -85,7 +92,7 @@ export default async function ActivateTempsFortPage({ params }: PageProps) {
   ];
 
   return (
-    <>
+    <ThemeSelectionProvider initial={themes[0]}>
       <section className="bg-surface-dark text-text-on-dark">
         <Container className="py-10 md:py-16">
           <a
@@ -101,9 +108,9 @@ export default async function ActivateTempsFortPage({ params }: PageProps) {
           <div className="mt-8 max-w-2xl rounded-2xl bg-white p-5 text-text-primary shadow-xl sm:p-6">
             <h2 className="text-lg font-semibold">{t('clientTitle')}</h2>
             <p className="mt-1 text-sm text-text-secondary">{t('clientText')}</p>
-            <ActivateLink href={activateInAppUrl(info.code)} tempsFort={info.code} destination="app" className="mt-4">
+            <OpenInAppLink code={info.code} themes={themes} themeNames={themeNames} caption={t('clientCaption')} className="mt-4">
               {t('clientCta')}
-            </ActivateLink>
+            </OpenInAppLink>
           </div>
         </Container>
       </section>
@@ -115,7 +122,7 @@ export default async function ActivateTempsFortPage({ params }: PageProps) {
             <p className="mt-2 text-sm text-text-muted">{t('previewNote')}</p>
             {variants.length > 0 ? (
               <div className="mt-6">
-                <ThemedTemplateBlock code={info.code} variants={variants} variables={EXAMPLE_VARIABLES} mode="example" />
+                <ThemedTemplateBlock code={info.code} title={info.title} variants={variants} variables={EXAMPLE_VARIABLES} mode="example" />
               </div>
             ) : (
               <div className="mt-6 overflow-hidden rounded-2xl border border-border-light">
@@ -172,6 +179,6 @@ export default async function ActivateTempsFortPage({ params }: PageProps) {
           </div>
         </Container>
       </section>
-    </>
+    </ThemeSelectionProvider>
   );
 }

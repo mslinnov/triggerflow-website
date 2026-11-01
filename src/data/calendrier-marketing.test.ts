@@ -2,6 +2,10 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { emailToPlainText, formatDateLong, formatDateShort, toExampleText, tokenize, toPlainText, weekday } from '../lib/calendrier';
 import {
+  activateInAppName,
+  campaignSendDeadline,
+  upcomingCampaigns,
+  activateInAppUrl,
   ALL_YEAR,
   CALENDAR,
   CAMPAIGNS,
@@ -225,4 +229,38 @@ test('page « Activer » : la campagne en cours, puis la suivante quand elle est
   assert.equal(currentCampaign('black_friday_voucher', '2026-11-30').id, 'black_friday_voucher-2027');
   assert.equal(currentCampaign('black_friday_voucher', '2028-06-01').id, 'black_friday_voucher-2027');
   assert.equal(currentCampaign('valentines_day', '2026-11-02').id, 'valentines_day-2027');
+});
+
+test('lien « ouvrir dans TriggerFlow » : code, style de l’app selon le thème, nom pré-rédigé encodé', () => {
+  assert.equal(
+    activateInAppUrl('valentines_day', 'moderne', 'Élégant'),
+    'https://app.trigger-flow.com/email-templates/ai/new?type=valentines_day&style=modern&name=Saint-Valentin%20%C2%B7%20%C3%89l%C3%A9gant',
+  );
+  const url = new URL(activateInAppUrl('new_year_eve', 'soiree', 'Soirée'));
+  assert.equal(url.searchParams.get('type'), 'new_year_eve');
+  assert.equal(url.searchParams.get('style'), 'soiree');
+  assert.equal(url.searchParams.get('name'), 'Réveillons de Noël et du Nouvel An · Soirée');
+  assert.equal(new URL(activateInAppUrl('late_season', 'editorial', 'Éditorial')).searchParams.get('style'), 'editorial');
+  // Apostrophe, deux-points : encodés, le lien reste un seul paramètre `name`.
+  const tricky = new URL(activateInAppUrl('corporate_year_end', 'moderne', 'Élégant'));
+  assert.equal(tricky.searchParams.get('name'), "Fin d'année des entreprises · Élégant");
+  assert.deepEqual([...tricky.searchParams.keys()], ['type', 'style', 'name']);
+  // Sans thème : style par défaut, nom du temps fort seul. Aucun nom ne porte d'année.
+  assert.equal(activateInAppUrl('valentines_day'), 'https://app.trigger-flow.com/email-templates/ai/new?type=valentines_day&style=modern&name=Saint-Valentin');
+  for (const code of TEMPS_FORT_CODES) assert.doesNotMatch(activateInAppName(code, 'Élégant'), /20\d\d/, code);
+});
+
+test('« À préparer maintenant » : seulement les campagnes dont l’envoi n’est pas passé', () => {
+  const byId = (id: string) => CAMPAIGNS.find((c) => c.id === id)!;
+  // Dernière date de la fenêtre d'envoi ; sinon la relance.
+  assert.equal(campaignSendDeadline(byId('black_friday_voucher-2026')), '2026-11-26');
+  assert.equal(campaignSendDeadline(byId('last_minute_gift-2026')), '2026-12-23');
+  assert.equal(campaignSendDeadline(byId('new_year_eve-2026')), '2026-11-16');
+  const ids = (today: string) => upcomingCampaigns(today).map((c) => c.id);
+  assert.deepEqual(ids('2026-11-01'), ['black_friday_voucher-2026', 'new_year_eve-2026']);
+  // Relance des réveillons passée : elle n'est plus à préparer.
+  assert.deepEqual(ids('2026-11-20'), ['black_friday_voucher-2026', 'last_minute_gift-2026']);
+  // Black Friday envoyé la veille : place au suivant.
+  assert.deepEqual(ids('2026-11-27'), ['last_minute_gift-2026', 'early_booking_summer-2027']);
+  assert.deepEqual(ids('2028-01-15'), []);
 });

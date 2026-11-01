@@ -110,8 +110,8 @@ export interface EmailModel {
   cta: { label: string; url: string };
 }
 
-/** E-mail complet en texte brut, tel que copié par « Copier le template ». */
-export function emailToPlainText(email: EmailModel): string {
+/** E-mail complet en texte brut, tel que copié par « Copier le template » ; `signature` en dernière ligne. */
+export function emailToPlainText(email: EmailModel, signature?: string): string {
   const body = email.body
     .map((block) => (Array.isArray(block) ? block.map((item) => `- ${toPlainText(item)}`).join('\n') : toPlainText(block)))
     .join('\n\n');
@@ -122,5 +122,6 @@ export function emailToPlainText(email: EmailModel): string {
     body,
     '',
     `Bouton : ${toPlainText(email.cta.label)} (${toPlainText(email.cta.url)})`,
+    ...(signature ? ['', signature] : []),
   ].join('\n');
 }

@@ -163,7 +163,7 @@ export interface KeyDate {
 export interface CalendarMonth {
   /** Ancre (#janvier… ; #novembre-2026 pour l'année en cours). */
   id: string;
-  /** Libellé de la puce (« Nov. 2026 », « Janv. »). */
+  /** Libellé court de la puce (« Nov. ») ; l'année est donnée par le groupe de puces. */
   chip: string;
   /** Titre de la section (« Novembre 2026 »). */
   title: string;
@@ -233,7 +233,7 @@ function lastMinuteGift(christmasEve: string): EmailModel {
 export const CALENDAR: CalendarMonth[] = [
   {
     id: 'novembre-2026',
-    chip: 'Nov. 2026',
+    chip: 'Nov.',
     title: 'Novembre 2026',
     keyDates: [
       { start: '2026-11-01', label: 'Toussaint (férié)' },
@@ -254,7 +254,7 @@ export const CALENDAR: CalendarMonth[] = [
         id: 'new_year_eve-2026',
         code: 'new_year_eve',
         send: 'Si ce n’est pas encore fait : dès maintenant',
-        reminder: 'Mi-novembre, aux clients qui n’ont pas réservé',
+        reminder: 'Le {date:2026-11-16}, aux clients qui n’ont pas réservé',
         endsOn: '2026-12-31',
         email: newYearEve('2026-12-24', '2026-12-31'),
       },
@@ -262,7 +262,7 @@ export const CALENDAR: CalendarMonth[] = [
   },
   {
     id: 'decembre-2026',
-    chip: 'Déc. 2026',
+    chip: 'Déc.',
     title: 'Décembre 2026',
     keyDates: [
       { start: '2026-12-19', end: '2027-01-04', school: true, label: 'Vacances de Noël', note: 'toutes zones' },
@@ -623,8 +623,33 @@ export const CALENDAR: CalendarMonth[] = [
   },
 ];
 
+/** Année d'un mois du calendrier (fin de son titre : « Novembre 2026 »). */
+export function monthYear(month: CalendarMonth): string {
+  return month.title.slice(-4);
+}
+
 /** Toutes les campagnes, dans l'ordre du calendrier. */
 export const CAMPAIGNS: Campaign[] = CALENDAR.flatMap((month) => month.campaigns);
+
+const DATE_TOKEN = /\{date:(\d{4}-\d{2}-\d{2})\}/g;
+
+/**
+ * Dernier jour utile pour préparer une campagne : la dernière date de « Quand
+ * l'envoyer » (fin de la fenêtre d'envoi), sinon celle de la relance, sinon la fin de
+ * la campagne. Lu dans les jetons {date:…} du texte : aucune date en double.
+ */
+export function campaignSendDeadline(campaign: Campaign): string {
+  for (const text of [campaign.send, campaign.reminder ?? '']) {
+    const dates = [...text.matchAll(DATE_TOKEN)].map((m) => m[1]);
+    if (dates.length > 0) return dates[dates.length - 1];
+  }
+  return campaign.endsOn;
+}
+
+/** « À préparer maintenant » : les prochaines campagnes dont l'envoi n'est pas passé. */
+export function upcomingCampaigns(today: string, count = 2): Campaign[] {
+  return CAMPAIGNS.filter((campaign) => campaignSendDeadline(campaign) >= today).slice(0, count);
+}
 
 /**
  * Campagne à montrer sur la page « Activer » d'un temps fort : la première qui n'est
@@ -639,9 +664,44 @@ export function tempsFortBySlug(slug: string): TempsFortInfo | undefined {
   return Object.values(TEMPS_FORTS).find((info) => info.slug === slug);
 }
 
-/** Lien profond de l'app : ouvre l'assistant e-mails IA sur ce modèle (connexion si besoin). */
-export function activateInAppUrl(code: TempsFortCode): string {
-  return `https://app.trigger-flow.com/email-templates/ai/new?type=${code}`;
+/** Nom pré-rédigé du modèle créé dans l'app : le temps fort, puis le thème. */
+export function activateInAppName(code: TempsFortCode, themeName?: string): string {
+  return themeName ? `${TEMPS_FORTS[code].title} · ${themeName}` : TEMPS_FORTS[code].title;
+}
+
+/**
+ * Signature des modèles copiés depuis la page (MJML, HTML, texte) : un e-mail envoyé
+ * par un autre outil porte la marque. `term` : le thème copié, ou « texte ».
+ */
+export const SIGNATURE_PREFIX = 'Modèle créé avec';
+
+export function signatureUrl(code: TempsFortCode, term: string): string {
+  const params = [
+    ['utm_source', 'calendrier-marketing'],
+    ['utm_medium', 'email'],
+    ['utm_campaign', 'modele-copie'],
+    ['utm_content', code],
+    ['utm_term', term],
+  ];
+  return `https://www.trigger-flow.com/?${params.map(([k, v]) => `${k}=${encodeURIComponent(v)}`).join('&')}`;
+}
+
+/** Dernière ligne du texte copié (modèle texte de repli). */
+export function signatureTextLine(code: TempsFortCode): string {
+  return `${SIGNATURE_PREFIX} TriggerFlow : ${signatureUrl(code, 'texte')}`;
+}
+
+/** Nom du style dans l'app pour chaque thème du site (`style=` du lien profond). */
+const APP_STYLES: Record<MjmlTheme, string> = { moderne: 'modern', soiree: 'soiree', editorial: 'editorial' };
+
+/**
+ * Lien profond de l'app : ouvre l'assistant e-mails IA sur ce modèle, dans le style
+ * choisi, avec un nom pré-rédigé court et sans année (« Saint-Valentin · Élégant »),
+ * connexion comprise si besoin. `themeName` : le nom affiché du thème.
+ */
+export function activateInAppUrl(code: TempsFortCode, theme: MjmlTheme = DEFAULT_MJML_THEME, themeName?: string): string {
+  const name = activateInAppName(code, themeName);
+  return `https://app.trigger-flow.com/email-templates/ai/new?type=${code}&style=${APP_STYLES[theme]}&name=${encodeURIComponent(name)}`;
 }
 
 /**

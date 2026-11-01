@@ -2819,7 +2819,8 @@
       "legendExample": "Exemple"
     },
     "nav": {
-      "label": "Aller au mois"
+      "label": "Aller au mois",
+      "years": "Mois de {year}"
     },
     "month": {
       "keyDates": "Dates clés",
@@ -2846,7 +2847,11 @@
       "copyFallback": "La copie automatique est bloquée par votre navigateur : le texte est sélectionné ci-dessous, copiez-le avec Ctrl+C ou Cmd+C.",
       "copyError": "Copie impossible, réessayez.",
       "activate": "Activer dans TriggerFlow",
-      "previewLabel": "Aperçu de l'e-mail"
+      "openInApp": "Déjà client : ouvrir dans TriggerFlow",
+      "previewLabel": "Aperçu de l'e-mail",
+      "seeFull": "Voir l'e-mail en entier",
+      "close": "Fermer",
+      "loading": "Chargement de l'aperçu"
     },
     "variables": {
       "firstname": "Prénom",
@@ -2876,6 +2881,7 @@
       "clientTitle": "Déjà client TriggerFlow ?",
       "clientText": "Ouvrez ce modèle dans l'assistant e-mails, adaptez-le à votre hôtel, puis programmez-le.",
       "clientCta": "Ouvrir dans TriggerFlow",
+      "clientCaption": "Modèle ouvert",
       "previewTitle": "L'e-mail, sur une charte d'exemple",
       "previewNote": "Exemple : hôtel et valeurs fictifs. Dans TriggerFlow, l'e-mail reprend votre logo, vos couleurs et vos offres.",
       "howTitle": "Comment TriggerFlow l'envoie pour vous",
@@ -2904,6 +2910,11 @@
       "formBusy": "Trop de demandes en même temps. Réessayez dans une minute.",
       "formInvalid": "Vérifiez votre adresse e-mail et les champs marqués d'un astérisque.",
       "formPrivacy": "Vos coordonnées servent uniquement à vous recontacter."
-    }
+    },
+    "now": {
+      "title": "À préparer maintenant",
+      "cta": "Voir le modèle"
+    },
+    "backToTop": "Haut de page"
   }
 }
