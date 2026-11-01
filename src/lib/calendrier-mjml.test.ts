@@ -3,7 +3,16 @@ import path from 'node:path';
 import { test } from 'node:test';
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { CAMPAIGNS, EXAMPLE_VARIABLES, signatureTextLine, signatureUrl, TEMPS_FORT_CODES } from '../data/calendrier-marketing';
+import {
+  CAMPAIGNS,
+  EXAMPLE_VARIABLES,
+  signatureTextLine,
+  signatureUrl,
+  TEMPS_FORT_CODES,
+  templateFileName,
+  templateFileUrl,
+} from '../data/calendrier-marketing';
+import { GET } from '../app/api/calendrier/modele/[code]/[format]/route';
 import {
   auditMjmlDir,
   contentIssues,
@@ -154,4 +163,45 @@ test('texte copié (repli) : se termine par la signature et son lien', () => {
     assert.doesNotMatch(text, /[—–]/, campaign.id);
   }
   assert.match(signatureTextLine('valentines_day'), /utm_content=valentines_day&utm_term=texte$/);
+});
+
+/** Appelle la route des modèles avec l'adresse que la page utilise (code et format tirés du chemin). */
+async function fetchTemplateFile(url: string): Promise<Response> {
+  const match = url.match(/^\/api\/calendrier\/modele\/([^/]+)\/([^/?]+)\?/);
+  assert.ok(match, url);
+  return GET(new Request(`https://www.trigger-flow.com${url}`), { params: Promise.resolve({ code: match[1], format: match[2] }) });
+}
+
+test('« Télécharger » : le fichier de « Copier » (signé, UTM), en pièce jointe <code>-<thème>.<format>, pour les 36 modèles', async () => {
+  assert.equal(templateFileName('valentines_day', 'soiree', 'mjml'), 'valentines_day-soiree.mjml');
+  assert.equal(templateFileName('new_year_eve', 'moderne', 'html'), 'new_year_eve-moderne.html');
+  let count = 0;
+  for (const code of TEMPS_FORT_CODES) {
+    for (const template of loadMjmlThemes(code)) {
+      const signed = signTemplate(template);
+      for (const format of ['mjml', 'html'] as const) {
+        count++;
+        const where = `${template.theme}/${code}.${format}`;
+        const name = templateFileName(code, template.theme, format);
+        assert.match(name, /^[a-z0-9_]+-[a-z]+\.(mjml|html)$/, where);
+
+        const copied = await fetchTemplateFile(templateFileUrl(code, template.theme, format));
+        const downloaded = await fetchTemplateFile(templateFileUrl(code, template.theme, format, true));
+        assert.equal(copied.status, 200, where);
+        assert.equal(downloaded.status, 200, where);
+        const copiedText = await copied.text();
+        assert.equal(copiedText, signed[format], where);
+        assert.ok(copiedText.includes(signatureUrl(code, template.theme).replace(/&/g, '&amp;')), `${where} : UTM`);
+        assert.equal(await downloaded.text(), copiedText, where);
+
+        assert.equal(downloaded.headers.get('content-disposition'), `attachment; filename="${name}"`, where);
+        // Type neutre : Safari n'ajoute pas « .txt » au nom.
+        assert.equal(downloaded.headers.get('content-type'), 'application/octet-stream', where);
+        // La copie ne change pas.
+        assert.equal(copied.headers.get('content-disposition'), null, where);
+        assert.equal(copied.headers.get('content-type'), 'text/plain; charset=utf-8', where);
+      }
+    }
+  }
+  assert.equal(count, 72);
 });

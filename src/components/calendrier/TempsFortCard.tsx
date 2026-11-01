@@ -78,7 +78,8 @@ export function TempsFortCard({ campaign, scrollMarginClass }: TempsFortCardProp
         </div>
 
         <div className="flex flex-col gap-3 [grid-area:actions] lg:self-start">
-          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap lg:flex-col xl:flex-row">
+          {/* Une paire « Copier | Télécharger » par ligne : deux paires côte à côte brouilleraient à quel format va chaque bouton. */}
+          <div className="flex flex-col items-start gap-3">
             {variants.length > 0 ? (
               <CopyMjmlButtons code={campaign.code} themes={themes} labels={labels} />
             ) : (

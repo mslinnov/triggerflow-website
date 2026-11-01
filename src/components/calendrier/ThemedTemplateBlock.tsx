@@ -1,8 +1,9 @@
+import type { TempsFortCode } from '@/data/calendrier-marketing';
 import { ThemedPreview, type ThemeVariant } from './ThemedPreview';
 import { useThemedTemplateLabels } from './useThemedTemplateLabels';
 
 interface ThemedTemplateBlockProps {
-  code: string;
+  code: TempsFortCode;
   title: string;
   variants: ThemeVariant[];
   variables: Record<string, string>;

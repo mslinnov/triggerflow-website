@@ -2836,6 +2836,9 @@
       "copy": "Copier le template",
       "copyMjml": "Copier le MJML",
       "copyHtml": "Copier le HTML",
+      "download": "Télécharger",
+      "downloadMjml": "Télécharger le MJML",
+      "downloadHtml": "Télécharger le HTML",
       "mjmlPreviewTitle": "Aperçu de l'e-mail, avec des valeurs d'exemple",
       "themePicker": "Thème du modèle",
       "themes": {

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Maximize2, X } from 'lucide-react';
-import type { MjmlTheme } from '@/data/calendrier-marketing';
+import type { MjmlTheme, TempsFortCode } from '@/data/calendrier-marketing';
 import { cn } from '@/lib/utils';
 import { CopyMjmlButtons } from './CopyMjmlButtons';
 import { TemplatePreview } from './TemplatePreview';
@@ -24,6 +24,9 @@ export interface ThemedPreviewLabels {
   themeNames: Record<MjmlTheme, string>;
   copyMjml: string;
   copyHtml: string;
+  download: string;
+  downloadMjml: string;
+  downloadHtml: string;
   copied: string;
   fallback: string;
   error: string;
@@ -33,14 +36,14 @@ export interface ThemedPreviewLabels {
 }
 
 interface ThemedPreviewProps {
-  code: string;
+  code: TempsFortCode;
   /** Titre du temps fort, en tête de la vue plein écran. */
   title: string;
   /** Thèmes livrés pour ce code, dans l'ordre d'affichage. */
   variants: ThemeVariant[];
   variables: Record<string, string>;
   mode?: 'template' | 'example';
-  /** Boutons de copie dans la vue plein écran (page calendrier). */
+  /** Boutons copier / télécharger dans la vue plein écran (page calendrier). */
   withCopy?: boolean;
   labels: ThemedPreviewLabels;
 }
@@ -191,7 +194,7 @@ export function ThemedPreview({ code, title, variants, variables, mode = 'templa
             {header}
             <PreviewFrame key={`plein-${src}`} src={src} title={labels.frameTitle} loading={labels.loading} interactive className="min-h-0 flex-1" />
             {withCopy && (
-              <div className="flex flex-col gap-2 border-t border-border-light px-4 py-3 sm:flex-row sm:px-5">
+              <div className="flex flex-col items-start gap-3 border-t border-border-light px-4 py-3 sm:px-5">
                 <CopyMjmlButtons code={code} themes={themes} labels={labels} />
               </div>
             )}
