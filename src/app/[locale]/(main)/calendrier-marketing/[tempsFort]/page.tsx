@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { ArrowLeft, CalendarClock, Repeat, Users } from 'lucide-react';
+import { CalendarStatsTracker } from '@/components/calendrier/CalendarStatsTracker';
 import { OpenInAppLink } from '@/components/calendrier/OpenInAppLink';
 import { ThemedTemplateBlock } from '@/components/calendrier/ThemedTemplateBlock';
 import { ThemeSelectionProvider } from '@/components/calendrier/ThemeSelection';
@@ -93,6 +94,7 @@ export default async function ActivateTempsFortPage({ params }: PageProps) {
 
   return (
     <ThemeSelectionProvider initial={themes[0]}>
+      <CalendarStatsTracker tempsFort={info.code} />
       <section className="bg-surface-dark text-text-on-dark">
         <Container className="py-10 md:py-16">
           <a
@@ -163,6 +165,7 @@ export default async function ActivateTempsFortPage({ params }: PageProps) {
               <p className="mt-1 text-sm text-text-secondary">{t('prospectText')}</p>
               <ButtonLink
                 href={calendarDemoUrl(info.code)}
+                data-temps-fort={info.code}
                 target="_blank"
                 rel="noopener noreferrer"
                 variant="accent"

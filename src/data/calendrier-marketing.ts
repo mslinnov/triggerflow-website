@@ -686,6 +686,21 @@ export function signatureUrl(code: TempsFortCode, term: string): string {
   return `https://www.trigger-flow.com/?${params.map(([k, v]) => `${k}=${encodeURIComponent(v)}`).join('&')}`;
 }
 
+export type TemplateFileFormat = 'mjml' | 'html';
+
+/**
+ * Adresse du MJML ou du HTML d'un modèle (route api/calendrier/modele), tel que copié
+ * par « Copier ». `download` : le même fichier, servi en pièce jointe pour « Télécharger ».
+ */
+export function templateFileUrl(code: TempsFortCode, theme: MjmlTheme, format: TemplateFileFormat, download = false): string {
+  return `/api/calendrier/modele/${code}/${format}?theme=${theme}${download ? '&telecharger=1' : ''}`;
+}
+
+/** Nom du fichier téléchargé : `valentines_day-soiree.mjml` (minuscules, sans accent). */
+export function templateFileName(code: TempsFortCode, theme: MjmlTheme, format: TemplateFileFormat): string {
+  return `${code}-${theme}.${format}`;
+}
+
 /** Dernière ligne du texte copié (modèle texte de repli). */
 export function signatureTextLine(code: TempsFortCode): string {
   return `${SIGNATURE_PREFIX} TriggerFlow : ${signatureUrl(code, 'texte')}`;

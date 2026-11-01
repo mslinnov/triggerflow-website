@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Check, Copy } from 'lucide-react';
+import { trackCalendarEvent } from '@/lib/calendrier-tracking';
 import { cn } from '@/lib/utils';
 
 interface CopyTemplateButtonProps {
@@ -14,8 +15,19 @@ interface CopyTemplateButtonProps {
   format: 'text' | 'mjml' | 'html';
   /** Thème copié (modèles MJML), envoyé à GA4. */
   theme?: string;
-  labels: { copy: string; copied: string; fallback: string; error: string };
+  /** `copied` : annoncé aux lecteurs d'écran ; `copiedShort` : affiché dans le bouton, sans en changer la largeur. */
+  labels: { copy: string; copied: string; copiedShort: string; fallback: string; error: string };
   variant?: 'primary' | 'secondary';
+  /** Action sur le même fichier, à côté du bouton (« Télécharger ») ; erreur et repli s'affichent sous la paire. */
+  children?: React.ReactNode;
+}
+
+/** Style des boutons de modèle (copier, télécharger) : vert pour le MJML, foncé pour le HTML et le texte. */
+export function templateButtonClass(variant: 'primary' | 'secondary'): string {
+  return cn(
+    'inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold text-white transition-colors focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2',
+    variant === 'primary' ? 'bg-brand-primary shadow-md shadow-brand-primary/20 hover:bg-brand-primary/90' : 'bg-brand-dark hover:bg-brand-dark/90',
+  );
 }
 
 async function fetchText(url: string): Promise<string> {
@@ -33,7 +45,7 @@ async function fetchText(url: string): Promise<string> {
  * En cas de refus (permission, contexte non sécurisé), le texte s'affiche dans une
  * zone sélectionnée : le visiteur le copie lui-même.
  */
-export function CopyTemplateButton({ text, url, tempsFort, format, theme, labels, variant = 'primary' }: CopyTemplateButtonProps) {
+export function CopyTemplateButton({ text, url, tempsFort, format, theme, labels, variant = 'primary', children }: CopyTemplateButtonProps) {
   const [state, setState] = useState<'idle' | 'copied' | 'fallback' | 'error'>('idle');
   const [fallbackText, setFallbackText] = useState('');
   const fallbackRef = useRef<HTMLTextAreaElement>(null);
@@ -56,7 +68,7 @@ export function CopyTemplateButton({ text, url, tempsFort, format, theme, labels
   }
 
   async function handleClick() {
-    window.gtag?.('event', 'calendar_copy', { temps_fort: tempsFort, format, ...(theme ? { theme } : {}) });
+    trackCalendarEvent('calendar_copy', { temps_fort: tempsFort, format, theme });
     try {
       await copy();
       setState('copied');
@@ -73,19 +85,23 @@ export function CopyTemplateButton({ text, url, tempsFort, format, theme, labels
 
   return (
     <div className="w-full sm:w-auto">
-      <button
-        type="button"
-        onClick={handleClick}
-        className={cn(
-          'inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 sm:w-auto',
-          variant === 'primary'
-            ? 'bg-brand-primary text-white shadow-md shadow-brand-primary/20 hover:bg-brand-primary/90'
-            : 'bg-brand-dark text-white hover:bg-brand-dark/90',
-        )}
-      >
-        {state === 'copied' ? <Check className="h-4 w-4" aria-hidden="true" /> : <Copy className="h-4 w-4" aria-hidden="true" />}
-        {state === 'copied' ? labels.copied : labels.copy}
-      </button>
+      {/* Côte à côte si la paire tient, sinon l'une sous l'autre, pleine largeur. */}
+      <div className="flex flex-wrap gap-2">
+        <button type="button" onClick={handleClick} className={cn(templateButtonClass(variant), 'flex-auto')}>
+          {/* Les deux libellés dans la même case : le bouton garde sa largeur et la paire ne se réorganise pas pendant « Copié ». */}
+          <span className="grid justify-items-center">
+            <span className={cn('col-start-1 row-start-1 inline-flex items-center gap-2', state === 'copied' && 'invisible')}>
+              <Copy className="h-4 w-4" aria-hidden="true" />
+              {labels.copy}
+            </span>
+            <span className={cn('col-start-1 row-start-1 inline-flex items-center gap-2', state !== 'copied' && 'invisible')}>
+              <Check className="h-4 w-4" aria-hidden="true" />
+              {labels.copiedShort}
+            </span>
+          </span>
+        </button>
+        {children}
+      </div>
       <span className="sr-only" role="status">
         {state === 'copied' ? labels.copied : ''}
       </span>

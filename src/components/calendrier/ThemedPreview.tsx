@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Maximize2, X } from 'lucide-react';
-import type { MjmlTheme } from '@/data/calendrier-marketing';
+import type { MjmlTheme, TempsFortCode } from '@/data/calendrier-marketing';
+import { recordCalendarStat } from '@/lib/calendrier-tracking';
 import { cn } from '@/lib/utils';
 import { CopyMjmlButtons } from './CopyMjmlButtons';
 import { TemplatePreview } from './TemplatePreview';
@@ -24,7 +25,11 @@ export interface ThemedPreviewLabels {
   themeNames: Record<MjmlTheme, string>;
   copyMjml: string;
   copyHtml: string;
+  download: string;
+  downloadMjml: string;
+  downloadHtml: string;
   copied: string;
+  copiedShort: string;
   fallback: string;
   error: string;
   seeFull: string;
@@ -33,14 +38,14 @@ export interface ThemedPreviewLabels {
 }
 
 interface ThemedPreviewProps {
-  code: string;
+  code: TempsFortCode;
   /** Titre du temps fort, en tête de la vue plein écran. */
   title: string;
   /** Thèmes livrés pour ce code, dans l'ordre d'affichage. */
   variants: ThemeVariant[];
   variables: Record<string, string>;
   mode?: 'template' | 'example';
-  /** Boutons de copie dans la vue plein écran (page calendrier). */
+  /** Boutons copier / télécharger dans la vue plein écran (page calendrier, où son ouverture est comptée). */
   withCopy?: boolean;
   labels: ThemedPreviewLabels;
 }
@@ -118,6 +123,8 @@ export function ThemedPreview({ code, title, variants, variables, mode = 'templa
   const openFull = (event: React.MouseEvent<HTMLAnchorElement>) => {
     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     event.preventDefault();
+    // Ouverture d'un temps fort depuis le calendrier ; sur la page « Activer », c'est la page qui compte.
+    if (withCopy) recordCalendarStat({ type: 'page_view', temps_fort: code });
     setOpen(true);
   };
 
@@ -134,7 +141,7 @@ export function ThemedPreview({ code, title, variants, variables, mode = 'templa
 
   return (
     <div className="space-y-3">
-      <ThemePills themes={themes} themeNames={labels.themeNames} label={labels.themePicker} />
+      <ThemePills code={code} themes={themes} themeNames={labels.themeNames} label={labels.themePicker} />
 
       <div className="overflow-hidden rounded-2xl border border-border-light bg-white shadow-sm">
         {header}
@@ -176,7 +183,7 @@ export function ThemedPreview({ code, title, variants, variables, mode = 'templa
             <div className="flex items-start justify-between gap-3 border-b border-border-light px-4 py-3 sm:px-5">
               <div className="min-w-0 space-y-2">
                 <p className="truncate text-base font-semibold text-text-primary">{title}</p>
-                <ThemePills themes={themes} themeNames={labels.themeNames} label={labels.themePicker} />
+                <ThemePills code={code} themes={themes} themeNames={labels.themeNames} label={labels.themePicker} />
               </div>
               <button
                 ref={closeRef}
@@ -191,7 +198,7 @@ export function ThemedPreview({ code, title, variants, variables, mode = 'templa
             {header}
             <PreviewFrame key={`plein-${src}`} src={src} title={labels.frameTitle} loading={labels.loading} interactive className="min-h-0 flex-1" />
             {withCopy && (
-              <div className="flex flex-col gap-2 border-t border-border-light px-4 py-3 sm:flex-row sm:px-5">
+              <div className="flex flex-col items-start gap-3 border-t border-border-light px-4 py-3 sm:px-5">
                 <CopyMjmlButtons code={code} themes={themes} labels={labels} />
               </div>
             )}
