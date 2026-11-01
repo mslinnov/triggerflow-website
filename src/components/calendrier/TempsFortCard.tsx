@@ -78,7 +78,8 @@ export function TempsFortCard({ campaign, scrollMarginClass }: TempsFortCardProp
         </div>
 
         <div className="flex flex-col gap-3 [grid-area:actions] lg:self-start">
-          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap lg:flex-col xl:flex-row">
+          {/* Une paire « Copier | Télécharger » par ligne : deux paires côte à côte brouilleraient à quel format va chaque bouton. */}
+          <div className="flex flex-col items-start gap-3">
             {variants.length > 0 ? (
               <CopyMjmlButtons code={campaign.code} themes={themes} labels={labels} />
             ) : (
@@ -86,7 +87,7 @@ export function TempsFortCard({ campaign, scrollMarginClass }: TempsFortCardProp
                 text={emailToPlainText(campaign.email, signatureTextLine(campaign.code))}
                 tempsFort={campaign.code}
                 format="text"
-                labels={{ copy: t('copy'), copied: t('copied'), fallback: t('copyFallback'), error: t('copyError') }}
+                labels={{ copy: t('copy'), copied: t('copied'), copiedShort: t('copiedShort'), fallback: t('copyFallback'), error: t('copyError') }}
               />
             )}
           </div>

@@ -2836,6 +2836,9 @@
       "copy": "Copier le template",
       "copyMjml": "Copier le MJML",
       "copyHtml": "Copier le HTML",
+      "download": "Télécharger",
+      "downloadMjml": "Télécharger le MJML",
+      "downloadHtml": "Télécharger le HTML",
       "mjmlPreviewTitle": "Aperçu de l'e-mail, avec des valeurs d'exemple",
       "themePicker": "Thème du modèle",
       "themes": {
@@ -2844,6 +2847,7 @@
         "editorial": "Éditorial"
       },
       "copied": "Copié dans le presse-papier",
+      "copiedShort": "Copié",
       "copyFallback": "La copie automatique est bloquée par votre navigateur : le texte est sélectionné ci-dessous, copiez-le avec Ctrl+C ou Cmd+C.",
       "copyError": "Copie impossible, réessayez.",
       "activate": "Activer dans TriggerFlow",

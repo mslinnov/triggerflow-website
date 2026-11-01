@@ -1,6 +1,7 @@
 'use client';
 
 import { ArrowRight } from 'lucide-react';
+import { trackCalendarEvent } from '@/lib/calendrier-tracking';
 import { cn } from '@/lib/utils';
 
 interface ActivateLinkProps {
@@ -22,9 +23,7 @@ export function ActivateLink({ href, tempsFort, destination, theme, variant = 'b
   return (
     <a
       href={href}
-      onClick={() =>
-        window.gtag?.('event', 'calendar_activate', { temps_fort: tempsFort, destination, ...(theme ? { theme } : {}) })
-      }
+      onClick={() => trackCalendarEvent('calendar_activate', { temps_fort: tempsFort, destination, theme })}
       className={cn(
         variant === 'button'
           ? 'inline-flex w-full items-center justify-center gap-2 rounded-full border border-brand-primary px-5 py-3 text-sm font-semibold text-brand-primary transition-colors hover:bg-brand-light focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 sm:w-auto'

@@ -85,16 +85,23 @@ export function toSalonPayload(input: RappelInput): SalonFlyerLeadPayload {
 }
 
 /**
- * URL de l'API salon, ou null si le relais n'est pas configuré ou mal configuré.
- * Le jeton finit dans un chemin d'URL : seuls lettres, chiffres, `-` et `_` passent.
- * Le transport doit être chiffré (seul http://localhost est toléré, pour le local).
+ * Racine de l'API salon du QR de flyer, ou null si le relais n'est pas configuré ou
+ * mal configuré. Le jeton finit dans un chemin d'URL : seuls lettres, chiffres, `-`
+ * et `_` passent. Le transport doit être chiffré (seul http://localhost est toléré,
+ * pour le local). Partagée avec les statistiques (calendrier-evenements.ts).
  */
-export function salonLeadUrl(apiUrl: string | undefined, token: string | undefined): string | null {
+export function salonFlyerBaseUrl(apiUrl: string | undefined, token: string | undefined): string | null {
   const base = apiUrl?.trim().replace(/\/+$/, '');
   const flyerToken = token?.trim();
   if (!base || !flyerToken || !/^[A-Za-z0-9_-]{8,128}$/.test(flyerToken)) return null;
   if (!base.startsWith('https://') && !base.startsWith('http://localhost')) return null;
-  return `${base}/api/public-salon-flyer/${flyerToken}/leads`;
+  return `${base}/api/public-salon-flyer/${flyerToken}`;
+}
+
+/** URL de création du prospect, ou null si le relais n'est pas configuré. */
+export function salonLeadUrl(apiUrl: string | undefined, token: string | undefined): string | null {
+  const base = salonFlyerBaseUrl(apiUrl, token);
+  return base ? `${base}/leads` : null;
 }
 
 export type RelayOutcome = 'ok' | 'busy' | 'invalid' | 'error';

@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { ArrowDown, LogIn } from 'lucide-react';
 import { AllYearBlock } from '@/components/calendrier/AllYearBlock';
 import { BackToTop } from '@/components/calendrier/BackToTop';
+import { CalendarStatsTracker } from '@/components/calendrier/CalendarStatsTracker';
 import { MonthChips } from '@/components/calendrier/MonthChips';
 import { MonthSection } from '@/components/calendrier/MonthSection';
 import { BreadcrumbListJsonLd } from '@/components/seo';
@@ -188,6 +189,7 @@ export default async function CalendrierMarketingPage({ params }: PageProps) {
             </ButtonLink>
             <a
               href={LOGIN_URL}
+              data-calendar-stat="client_click"
               className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-8 py-4 text-lg font-medium text-white transition-colors hover:bg-white/10"
             >
               <LogIn className="h-5 w-5" aria-hidden="true" />
@@ -197,6 +199,7 @@ export default async function CalendrierMarketingPage({ params }: PageProps) {
         </Container>
       </section>
       <BackToTop label={t('backToTop')} />
+      <CalendarStatsTracker />
     </>
   );
 }
