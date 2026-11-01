@@ -2836,6 +2836,12 @@
       "copyMjml": "Copier le MJML",
       "copyHtml": "Copier le HTML",
       "mjmlPreviewTitle": "Aperçu de l'e-mail, avec des valeurs d'exemple",
+      "themePicker": "Thème du modèle",
+      "themes": {
+        "moderne": "Élégant",
+        "soiree": "Soirée",
+        "editorial": "Éditorial"
+      },
       "copied": "Copié dans le presse-papier",
       "copyFallback": "La copie automatique est bloquée par votre navigateur : le texte est sélectionné ci-dessous, copiez-le avec Ctrl+C ou Cmd+C.",
       "activate": "Activer dans TriggerFlow",

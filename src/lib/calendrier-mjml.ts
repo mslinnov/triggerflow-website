@@ -2,27 +2,34 @@
  * Modèles MJML du calendrier marketing (/fr/calendrier-marketing).
  *
  * Source unique : la bibliothèque de l'app (backend/resources/email-library/seasonal/
- * moderne/<code>.{mjml,html,json}), recopiée telle quelle dans
- * src/data/calendrier-mjml/. Le HTML arrive déjà compilé : aucune dépendance MJML
- * côté site.
+ * <thème>/<code>.{mjml,html,json}), recopiée telle quelle dans
+ * src/data/calendrier-mjml/<thème>/. Le HTML arrive déjà compilé : aucune dépendance
+ * MJML côté site. Thèmes : MJML_THEMES (src/data/calendrier-marketing.ts).
  *
  * Conventions des fichiers :
  * - `{{firstname}}`… : variables de fusion de l'app, gardées dans le texte copié ;
  * - `[[Libellé|exemple]]` (ou `[[exemple]]`) : champ que l'hôtelier remplit ;
  * - `<code>.json` : { "subject": "…", "preheader": "…" }.
  *
- * Un code sans ses trois fichiers n'a pas de modèle MJML : la page retombe sur le
- * modèle texte (src/data/calendrier-marketing.ts).
+ * Un thème sans les trois fichiers d'un code n'est pas proposé pour ce code ; un code
+ * sans aucun thème complet retombe sur le modèle texte (src/data/calendrier-marketing.ts).
  */
 
 import fs from 'fs';
 import path from 'path';
-import { TEMPS_FORT_CODES, type TempsFortCode } from '@/data/calendrier-marketing';
+import {
+  DEFAULT_MJML_THEME,
+  MJML_THEMES,
+  TEMPS_FORT_CODES,
+  type MjmlTheme,
+  type TempsFortCode,
+} from '@/data/calendrier-marketing';
 
 export const MJML_DIR = path.join(process.cwd(), 'src', 'data', 'calendrier-mjml');
 
 export interface MjmlTemplate {
   code: TempsFortCode;
+  theme: MjmlTheme;
   mjml: string;
   html: string;
   subject: string;
@@ -31,13 +38,18 @@ export interface MjmlTemplate {
 
 export type MjmlFormat = 'mjml' | 'html';
 
-/** Lit les trois fichiers d'un code dans `dir` ; null s'il en manque un. */
-export function loadMjmlTemplate(code: TempsFortCode, dir: string = MJML_DIR): MjmlTemplate | null {
-  const file = (ext: string) => path.join(dir, `${code}.${ext}`);
+/** Lit les trois fichiers d'un code dans `<baseDir>/<theme>/` ; null s'il en manque un. */
+export function loadMjmlTemplate(
+  code: TempsFortCode,
+  theme: MjmlTheme = DEFAULT_MJML_THEME,
+  baseDir: string = MJML_DIR,
+): MjmlTemplate | null {
+  const file = (ext: string) => path.join(baseDir, theme, `${code}.${ext}`);
   if (!['mjml', 'html', 'json'].every((ext) => fs.existsSync(file(ext)))) return null;
   const meta = JSON.parse(fs.readFileSync(file('json'), 'utf8')) as { subject?: unknown; preheader?: unknown };
   return {
     code,
+    theme,
     mjml: fs.readFileSync(file('mjml'), 'utf8'),
     html: fs.readFileSync(file('html'), 'utf8'),
     subject: typeof meta.subject === 'string' ? meta.subject : '',
@@ -45,9 +57,9 @@ export function loadMjmlTemplate(code: TempsFortCode, dir: string = MJML_DIR): M
   };
 }
 
-/** Codes qui ont leur modèle MJML complet. */
-export function availableMjmlCodes(dir: string = MJML_DIR): TempsFortCode[] {
-  return TEMPS_FORT_CODES.filter((code) => loadMjmlTemplate(code, dir) !== null);
+/** Thèmes livrés (trois fichiers présents) pour un code, dans l'ordre de MJML_THEMES. */
+export function loadMjmlThemes(code: TempsFortCode, baseDir: string = MJML_DIR): MjmlTemplate[] {
+  return MJML_THEMES.map((theme) => loadMjmlTemplate(code, theme, baseDir)).filter((t): t is MjmlTemplate => t !== null);
 }
 
 // ── Aperçu ──────────────────────────────────────────────────────────────────
@@ -112,29 +124,44 @@ export function contentIssues(visibleText: string): string[] {
   return issues;
 }
 
-/** Problèmes de tous les modèles d'un dossier (fichiers orphelins, contenu), pour les tests. */
-export function auditMjmlDir(dir: string = MJML_DIR): string[] {
+/** Problèmes de tous les modèles (tous thèmes) : fichiers hors thème ou orphelins, contenu. */
+export function auditMjmlDir(baseDir: string = MJML_DIR): string[] {
   const issues: string[] = [];
-  const files = fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => /\.(mjml|html|json)$/.test(f)) : [];
-  for (const file of files) {
-    const code = file.replace(/\.(mjml|html|json)$/, '');
-    if (!(TEMPS_FORT_CODES as readonly string[]).includes(code)) issues.push(`${file} : code inconnu`);
-  }
-  for (const code of new Set(files.map((f) => f.replace(/\.(mjml|html|json)$/, '')))) {
-    if (!(TEMPS_FORT_CODES as readonly string[]).includes(code)) continue;
-    const template = loadMjmlTemplate(code as TempsFortCode, dir);
-    if (!template) {
-      issues.push(`${code} : il manque un des trois fichiers (.mjml, .html, .json)`);
-      continue;
+  const isTemplateFile = (f: string) => /\.(mjml|html|json)$/.test(f);
+  const codeOf = (f: string) => f.replace(/\.(mjml|html|json)$/, '');
+  if (!fs.existsSync(baseDir)) return issues;
+
+  for (const entry of fs.readdirSync(baseDir, { withFileTypes: true })) {
+    if (entry.isFile() && isTemplateFile(entry.name)) issues.push(`${entry.name} : hors d'un dossier de thème`);
+    if (entry.isDirectory() && !entry.name.startsWith('__') && !(MJML_THEMES as readonly string[]).includes(entry.name)) {
+      issues.push(`${entry.name}/ : thème inconnu`);
     }
-    if (!template.subject || !template.preheader) issues.push(`${code}.json : objet ou pré-en-tête vide`);
-    const parts: Array<[string, string]> = [
-      [`${code}.mjml`, fixedText(template.mjml)],
-      [`${code}.html`, fixedText(template.html)],
-      [`${code}.json objet`, fixedText(template.subject)],
-      [`${code}.json pré-en-tête`, fixedText(template.preheader)],
-    ];
-    for (const [where, text] of parts) issues.push(...contentIssues(text).map((issue) => `${where} : ${issue}`));
+  }
+
+  for (const theme of MJML_THEMES) {
+    const dir = path.join(baseDir, theme);
+    if (!fs.existsSync(dir)) continue;
+    const files = fs.readdirSync(dir).filter(isTemplateFile);
+    for (const code of new Set(files.map(codeOf))) {
+      const where = `${theme}/${code}`;
+      if (!(TEMPS_FORT_CODES as readonly string[]).includes(code)) {
+        issues.push(`${where} : code inconnu`);
+        continue;
+      }
+      const template = loadMjmlTemplate(code as TempsFortCode, theme, baseDir);
+      if (!template) {
+        issues.push(`${where} : il manque un des trois fichiers (.mjml, .html, .json)`);
+        continue;
+      }
+      if (!template.subject || !template.preheader) issues.push(`${where}.json : objet ou pré-en-tête vide`);
+      const parts: Array<[string, string]> = [
+        [`${where}.mjml`, fixedText(template.mjml)],
+        [`${where}.html`, fixedText(template.html)],
+        [`${where}.json objet`, fixedText(template.subject)],
+        [`${where}.json pré-en-tête`, fixedText(template.preheader)],
+      ];
+      for (const [label, text] of parts) issues.push(...contentIssues(text).map((issue) => `${label} : ${issue}`));
+    }
   }
   return issues;
 }

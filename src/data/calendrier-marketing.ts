@@ -19,6 +19,19 @@
 import type { EmailModel } from '@/lib/calendrier';
 import { brand } from './brand';
 
+/**
+ * Thèmes visuels des modèles MJML, un dossier chacun (src/data/calendrier-mjml/<thème>/),
+ * même nom que dans la bibliothèque de l'app (seasonal/<thème>/). Liste fermée : le
+ * thème vient de l'URL de l'aperçu. Le premier est le thème par défaut.
+ */
+export const MJML_THEMES = ['moderne', 'soiree', 'editorial'] as const;
+export type MjmlTheme = (typeof MJML_THEMES)[number];
+export const DEFAULT_MJML_THEME: MjmlTheme = 'moderne';
+
+export function isMjmlTheme(value: unknown): value is MjmlTheme {
+  return typeof value === 'string' && (MJML_THEMES as readonly string[]).includes(value);
+}
+
 /** Codes partagés avec l'app : /email-templates/ai/new?type=<code> ouvre l'assistant sur ce modèle. */
 export const TEMPS_FORT_CODES = [
   'early_booking_summer',

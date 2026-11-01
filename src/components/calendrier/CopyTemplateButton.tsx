@@ -12,6 +12,8 @@ interface CopyTemplateButtonProps {
   /** Code du temps fort, envoyé à GA4 (`calendar_copy`). */
   tempsFort: string;
   format: 'text' | 'mjml' | 'html';
+  /** Thème copié (modèles MJML), envoyé à GA4. */
+  theme?: string;
   labels: { copy: string; copied: string; fallback: string };
   variant?: 'primary' | 'secondary';
 }
@@ -31,7 +33,7 @@ async function fetchText(url: string): Promise<string> {
  * En cas de refus (permission, contexte non sécurisé), le texte s'affiche dans une
  * zone sélectionnée : le visiteur le copie lui-même.
  */
-export function CopyTemplateButton({ text, url, tempsFort, format, labels, variant = 'primary' }: CopyTemplateButtonProps) {
+export function CopyTemplateButton({ text, url, tempsFort, format, theme, labels, variant = 'primary' }: CopyTemplateButtonProps) {
   const [state, setState] = useState<'idle' | 'copied' | 'fallback'>('idle');
   const [fallbackText, setFallbackText] = useState('');
   const fallbackRef = useRef<HTMLTextAreaElement>(null);
@@ -54,7 +56,7 @@ export function CopyTemplateButton({ text, url, tempsFort, format, labels, varia
   }
 
   async function handleClick() {
-    window.gtag?.('event', 'calendar_copy', { temps_fort: tempsFort, format });
+    window.gtag?.('event', 'calendar_copy', { temps_fort: tempsFort, format, ...(theme ? { theme } : {}) });
     try {
       await copy();
       setState('copied');

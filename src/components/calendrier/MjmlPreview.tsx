@@ -2,6 +2,8 @@ import { TemplatePreview } from './TemplatePreview';
 
 interface MjmlPreviewProps {
   code: string;
+  /** Thème de l'aperçu (dossier src/data/calendrier-mjml/<thème>/). */
+  theme: string;
   subject: string;
   preheader: string;
   /** Libellé humain de chaque variable (mode template) ou valeur d'exemple (mode example), pour l'objet et le pré-en-tête. */
@@ -16,7 +18,7 @@ interface MjmlPreviewProps {
  * formulaire, origine opaque. La largeur de l'iframe suit celle de l'écran : les
  * règles mobiles du MJML s'appliquent sur téléphone.
  */
-export function MjmlPreview({ code, subject, preheader, variables, mode = 'template', labels }: MjmlPreviewProps) {
+export function MjmlPreview({ code, theme, subject, preheader, variables, mode = 'template', labels }: MjmlPreviewProps) {
   return (
     <div className="overflow-hidden rounded-2xl border border-border-light bg-white shadow-sm">
       <TemplatePreview
@@ -28,7 +30,7 @@ export function MjmlPreview({ code, subject, preheader, variables, mode = 'templ
         className="rounded-none border-0 shadow-none"
       />
       <iframe
-        src={`/api/calendrier/modele/${code}/apercu`}
+        src={`/api/calendrier/modele/${code}/apercu?theme=${theme}`}
         title={labels.frameTitle}
         sandbox=""
         loading="lazy"

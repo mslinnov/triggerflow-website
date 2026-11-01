@@ -2,11 +2,12 @@ import { useTranslations } from 'next-intl';
 import { CalendarClock, Repeat, Users } from 'lucide-react';
 import { TEMPS_FORTS, type Campaign } from '@/data/calendrier-marketing';
 import { emailToPlainText, toPlainText } from '@/lib/calendrier';
-import { loadMjmlTemplate } from '@/lib/calendrier-mjml';
+import { loadMjmlThemes } from '@/lib/calendrier-mjml';
 import { ActivateLink } from './ActivateLink';
 import { CopyTemplateButton } from './CopyTemplateButton';
-import { MjmlPreview } from './MjmlPreview';
 import { TemplatePreview } from './TemplatePreview';
+import { ThemedMjmlTemplate } from './ThemedMjmlTemplate';
+import { useThemedTemplateLabels } from './useThemedTemplateLabels';
 import { useVariableLabels } from './useVariableLabels';
 
 interface TempsFortCardProps {
@@ -17,9 +18,9 @@ export function TempsFortCard({ campaign }: TempsFortCardProps) {
   const t = useTranslations('calendrierMarketing.card');
   const variables = useVariableLabels();
   const info = TEMPS_FORTS[campaign.code];
-  // Modèle MJML de la bibliothèque de l'app s'il est livré, sinon le modèle texte.
-  const mjml = loadMjmlTemplate(campaign.code);
-  const copyLabels = { copied: t('copied'), fallback: t('copyFallback') };
+  const themedLabels = useThemedTemplateLabels();
+  // Modèles MJML de la bibliothèque de l'app (un par thème livré), sinon le modèle texte.
+  const variants = loadMjmlThemes(campaign.code).map(({ theme, subject, preheader }) => ({ theme, subject, preheader }));
 
   return (
     <article
@@ -55,28 +56,12 @@ export function TempsFortCard({ campaign }: TempsFortCardProps) {
         </dl>
 
         <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap lg:mt-auto lg:pt-6">
-          {mjml ? (
-            <>
-              <CopyTemplateButton
-                url={`/api/calendrier/modele/${campaign.code}/mjml`}
-                tempsFort={campaign.code}
-                format="mjml"
-                labels={{ copy: t('copyMjml'), ...copyLabels }}
-              />
-              <CopyTemplateButton
-                url={`/api/calendrier/modele/${campaign.code}/html`}
-                tempsFort={campaign.code}
-                format="html"
-                variant="secondary"
-                labels={{ copy: t('copyHtml'), ...copyLabels }}
-              />
-            </>
-          ) : (
+          {variants.length === 0 && (
             <CopyTemplateButton
               text={emailToPlainText(campaign.email)}
               tempsFort={campaign.code}
               format="text"
-              labels={{ copy: t('copy'), ...copyLabels }}
+              labels={{ copy: t('copy'), copied: t('copied'), fallback: t('copyFallback') }}
             />
           )}
           <ActivateLink href={`/fr/calendrier-marketing/${info.slug}`} tempsFort={campaign.code} destination="page">
@@ -85,14 +70,8 @@ export function TempsFortCard({ campaign }: TempsFortCardProps) {
         </div>
       </div>
 
-      {mjml ? (
-        <MjmlPreview
-          code={campaign.code}
-          subject={mjml.subject}
-          preheader={mjml.preheader}
-          variables={variables}
-          labels={{ subject: t('subject'), preheader: t('preheader'), preview: t('previewLabel'), frameTitle: t('mjmlPreviewTitle') }}
-        />
+      {variants.length > 0 ? (
+        <ThemedMjmlTemplate code={campaign.code} variants={variants} variables={variables} withCopy labels={themedLabels} />
       ) : (
         <TemplatePreview
           email={campaign.email}
