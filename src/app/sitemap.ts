@@ -294,6 +294,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   });
 
+  // ─── Calendrier marketing hôtelier (FR uniquement ; pages « Activer » en noindex) ───
+  sitemapEntries.push({
+    url: `${baseUrl}/fr/calendrier-marketing`,
+    lastModified,
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  });
+
   // ─── Landing pages (exclude noindex) ─────────────────────────
   const landingPages = getAllLandingPages().filter((lp) => !lp.noindex);
   for (const lp of landingPages) {

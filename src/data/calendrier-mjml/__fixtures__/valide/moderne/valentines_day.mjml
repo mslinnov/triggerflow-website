@@ -1,0 +1,11 @@
+<mjml>
+  <mj-head><mj-style>.titre { font-size: 24px; width: 100%; }</mj-style></mj-head>
+  <mj-body>
+    <mj-section><mj-column>
+      <mj-text>Bonjour {{firstname}},</mj-text>
+      <mj-text>Une chambre [[Catégorie de chambre|avec vue]] et le petit-déjeuner jusqu'à [[Heure|11 h]].</mj-text>
+      <mj-button href="[[Lien de réservation|https://votre-hotel.fr/reserver]]">Je réserve</mj-button>
+      <mj-text>L'équipe de {{facility_name}}</mj-text>
+    </mj-column></mj-section>
+  </mj-body>
+</mjml>
