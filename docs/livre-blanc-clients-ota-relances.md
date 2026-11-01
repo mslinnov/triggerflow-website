@@ -44,7 +44,7 @@ L'équipe TriggerFlow
 
 Bonjour,
 
-Dans le guide, une règle pèse plus que les six autres : demander tôt.
+Dans le guide, une règle pèse plus que les quatre autres : demander tôt.
 
 Dans les hôtels où le premier message part dès la réservation, plus de deux semaines avant l'arrivée, 56,4 % des
 clients OTA laissent leur vraie adresse. Quand il part le jour d'arrivée, 19,0 %. L'écart se retrouve dans les
@@ -52,7 +52,7 @@ clients OTA laissent leur vraie adresse. Quand il part le jour d'arrivée, 19,0�
 
 Deux semaines avant, votre client a le temps de lire. Le jour même, il est sur la route.
 
-Ce réglage se change en quelques minutes. Le chapitre 2 du guide détaille les six autres, de la relance à la
+Ce réglage se change en quelques minutes. Le chapitre 2 du guide détaille les quatre autres, de la relance à la
 longueur de l'e-mail : [lien vers le guide].
 
 L'équipe TriggerFlow

@@ -6,7 +6,7 @@ import { CLIENTS_OTA_MISTAKES } from '@/data/clients-ota';
 import { UpsellSection } from '../upsell/primitives';
 
 /**
- * L'erreur la plus coûteuse, en bande sombre, avant les sept règles : comme sur
+ * L'erreur la plus coûteuse, en bande sombre, avant les cinq règles : comme sur
  * la landing post-séjour, le visiteur veut d'abord savoir ce qui cloche.
  *
  * Une seule erreur retenue (décision de Mounir du 1er novembre 2026) : les

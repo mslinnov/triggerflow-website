@@ -63,15 +63,24 @@ export interface WithinHotelCheck {
 
 /** Une règle du chapitre 2 : le réglage, son meilleur et son pire taux de capture. */
 export interface ClientsOtaRule {
-  id: 'rule1' | 'rule2' | 'rule3' | 'rule4' | 'rule5' | 'rule6' | 'rule7';
+  id: 'rule1' | 'rule2' | 'rule3' | 'rule4' | 'rule5';
   /** Taux de capture par client OTA, en fraction (0.564 = 56,4 %). */
   best: number | null;
   worst: number | null;
-  /** `null` : trop peu d'hôtels pratiquent les deux modalités pour vérifier l'écart chez eux. */
-  withinHotels: WithinHotelCheck | null;
+  /** Une règle n'entre ici que si son écart se retrouve à l'intérieur d'un même hôtel. */
+  withinHotels: WithinHotelCheck;
 }
 
-/** Les sept règles retenues par Mounir le 1er novembre 2026, dans l'ordre du guide. */
+/**
+ * Les cinq règles retenues par Mounir le 1er novembre 2026, dans l'ordre du guide : toutes
+ * vérifiées à l'intérieur d'un même hôtel.
+ *
+ * Écartées des règles et présentées à part comme « bonnes pratiques », chiffres et limite écrits
+ * dans les traductions : le formulaire dédié (D4, mise à jour des coordonnées seule 52,0 %,
+ * 1 235 clients / 7 hôtels, contre préparation avec catalogue 33,4 %, 17 426 / 33 ; contrôle
+ * 2 hôtels sur 5) et le champ e-mail en première question (D5a, 46,2 %, 1 466 / 9, contre
+ * ailleurs sur la première page 32,2 %, 24 018 / 40 ; contrôle 1 hôtel sur 3, mince).
+ */
 export const CLIENTS_OTA_RULES: readonly ClientsOtaRule[] = [
   // D1, 1er message porteur : à la réservation (plus de 14 jours avant) 1 564 clients / 22 hôtels,
   // contre le jour d'arrivée 5 042 / 44. Contrôle : 10 hôtels sur 10.
@@ -81,20 +90,13 @@ export const CLIENTS_OTA_RULES: readonly ClientsOtaRule[] = [
   { id: 'rule2', best: 0.648, worst: 0.258, withinHotels: { wins: 5, of: 5 } },
   // D3, canaux reçus : e-mail + WhatsApp 1 083 / 11, e-mail seul 21 995 / 45. Contrôle : 5 sur 5.
   { id: 'rule3', best: 0.643, worst: 0.295, withinHotels: { wins: 5, of: 5 } },
-  // D4, formulaire dédié (mise à jour des coordonnées seule) 1 235 / 7, contre préparation avec
-  // catalogue 17 426 / 33 ; D7, 1 à 3 questions 49,1 % (1 158 / 6) contre 7 et plus 31,1 % (20 753 / 37).
-  // Contrôle non concluant (2 hôtels sur 5 pour D4, 1 sur 3 pour D7) : écart entre hôtels seulement.
-  { id: 'rule4', best: 0.52, worst: 0.334, withinHotels: null },
-  // D5a, champ e-mail en première question 1 466 / 9, ailleurs sur la première page 24 018 / 40.
-  // Contrôle : 3 hôtels seulement, mince. Écart entre hôtels seulement.
-  { id: 'rule5', best: 0.462, worst: 0.322, withinHotels: null },
   // P4d, objet du 1er e-mail porteur : préparer / personnaliser le séjour 6 456 / 11, contre gagner du
   // temps / check-in en ligne 7 533 / 17. Contrôle : 5 hôtels sur 6.
-  { id: 'rule6', best: 0.388, worst: 0.278, withinHotels: { wins: 5, of: 6 } },
+  { id: 'rule4', best: 0.388, worst: 0.278, withinHotels: { wins: 5, of: 6 } },
   // P5c, texte visible du 1er e-mail porteur : moins de 400 caractères 12 162 / 22, contre 400 à 1 000
   // 6 625 / 36. Contrôle : 7 hôtels sur 8. Attention, 1 000 à 2 000 fait 32,3 % : court bat moyen,
   // la longueur seule n'explique pas tout.
-  { id: 'rule7', best: 0.345, worst: 0.257, withinHotels: { wins: 7, of: 8 } },
+  { id: 'rule5', best: 0.345, worst: 0.257, withinHotels: { wins: 7, of: 8 } },
 ];
 
 /**

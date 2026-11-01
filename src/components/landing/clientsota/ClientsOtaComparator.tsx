@@ -7,21 +7,23 @@ import { cn } from '@/lib/utils';
 import { UpsellEyebrow, UpsellSection } from '../upsell/primitives';
 
 /**
- * Deux formulaires de préparation de séjour côte à côte : celui qui récupère
- * la vraie adresse du client OTA, et celui qui ne la récupère pas.
+ * Deux messages au même client OTA côte à côte : celui qui ramène sa vraie
+ * adresse, et celui qui ne la ramène pas.
  *
  * Même rôle que le comparateur de la landing post-séjour : le visiteur arrive
- * d'une publicité, il doit reconnaître son propre formulaire dans l'une des
- * deux colonnes avant tout argumentaire. Ce sont des RECONSTRUCTIONS, annoncées
- * comme telles : aucun formulaire réel n'est montré, seuls les taux (à venir de
- * l'étude) sont des mesures.
+ * d'une publicité, il doit reconnaître son propre message dans l'une des deux
+ * colonnes avant tout argumentaire. Ce sont des RECONSTRUCTIONS, annoncées
+ * comme telles : aucun message réel n'est montré, seuls les taux sont des
+ * mesures.
  *
- * Seuls les réglages mesurés y figurent (moment d'envoi, formulaire dédié et
- * court, champ e-mail en premier) : la case d'accord, qui est un conseil et
- * non une mesure, n'apparaît que dans le formulaire à copier.
+ * Les trois différences sont trois des cinq règles, toutes vérifiées à
+ * l'intérieur d'un même hôtel : le moment du premier message, l'objet et la
+ * longueur. Le formulaire dédié et la place du champ, écarts observés entre
+ * hôtels seulement, n'y figurent pas (décision de Mounir du 1er novembre
+ * 2026) : ils vivent dans l'encadré « bonnes pratiques » des règles.
  *
- * Les champs sont des maquettes : ni saisissables ni focalisables, masqués aux
- * lecteurs d'écran qui liraient sinon un formulaire sans destination.
+ * Le bouton est une maquette, masquée aux lecteurs d'écran qui liraient sinon
+ * un bouton sans destination.
  */
 const SIDES = ['effective', 'ineffective'] as const;
 const ANNOTATIONS = ['a1', 'a2', 'a3'] as const;
@@ -68,20 +70,26 @@ export function ClientsOtaComparator() {
                 >
                   {t(`${side}.badge`)}
                 </p>
+                <p className="mt-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-[var(--up-ink-muted)]">
+                  {t('subjectLabel')}
+                </p>
+                <p className="mt-1 text-[17px] font-semibold text-[var(--up-ink)]">{t(`${side}.subject`)}</p>
                 <p className="mt-1.5 text-[13px] text-[var(--up-ink-muted)]">{t(`${side}.timing`)}</p>
               </div>
 
-              <div aria-hidden className="px-5 py-7 sm:px-7">
-                <p className="max-w-[44ch] text-[15px] leading-relaxed text-[var(--up-ink-soft)]">{t(`${side}.intro`)}</p>
+              <div className="px-5 py-7 sm:px-7">
+                <p className="text-[15px] text-[var(--up-ink)]">{t('greeting')}</p>
+                <p className="mt-3 max-w-[48ch] text-[15px] leading-relaxed text-[var(--up-ink-soft)]">{t(`${side}.body`)}</p>
 
-                <p className="mt-6 text-sm font-medium text-[var(--up-ink)]">{t(`${side}.fieldLabel`)}</p>
-                <p className="mt-2 min-h-11 rounded-xl border border-[var(--up-line-strong)] px-3.5 py-3 text-[15px] text-[var(--up-ink-muted)]">
-                  {t(`${side}.fieldValue`)}
-                </p>
-                <p className="mt-2 text-xs text-[var(--up-ink-soft)]">{t(`${side}.fieldHint`)}</p>
-
-                <p className="mt-7 inline-flex min-h-11 items-center justify-center rounded-full bg-[var(--up-accent)] px-6 py-3 text-sm font-semibold text-[var(--up-accent-ink)]">
+                <p
+                  aria-hidden
+                  className="mt-7 inline-flex min-h-11 items-center justify-center rounded-full bg-[var(--up-accent)] px-6 py-3 text-sm font-semibold text-[var(--up-accent-ink)]"
+                >
                   {t(`${side}.button`)}
+                </p>
+
+                <p className="mt-7 border-t border-[var(--up-line)] pt-5 text-[13px] leading-relaxed text-[var(--up-ink-muted)]">
+                  {t(`${side}.footnote`)}
                 </p>
               </div>
             </motion.div>

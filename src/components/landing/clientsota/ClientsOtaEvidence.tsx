@@ -7,15 +7,20 @@ import { UpsellSection } from '../upsell/primitives';
 import { PENDING } from './format';
 
 /**
- * Les sept règles, chacune avec les deux taux de capture qui l'opposent, lus
+ * Les cinq règles, chacune avec les deux taux de capture qui l'opposent, lus
  * dans `@/data/clients-ota` : la page et le guide ne peuvent pas diverger.
  *
  * Toutes les valeurs sont des taux de capture PAR CLIENT OTA, c'est écrit en
- * sous-titre parce que c'est ce qui rend les sept lignes comparables. Sous
- * chaque règle, le contrôle à l'intérieur d'un même hôtel est affiché en clair,
- * y compris quand il manque : deux règles ne reposent que sur un écart entre
- * hôtels, et le visiteur doit pouvoir le lire.
+ * sous-titre parce que c'est ce qui rend les cinq lignes comparables. Sous
+ * chaque règle, son contrôle à l'intérieur d'un même hôtel.
+ *
+ * Puis l'encadré « bonnes pratiques » : le formulaire dédié et la place du
+ * champ, écarts observés entre hôtels mais pas vérifiés à l'intérieur d'un
+ * même hôtel. Ils sortent des règles (décision de Mounir du 1er novembre
+ * 2026) et leur limite est écrite à côté de leurs chiffres.
  */
+const PRACTICES = ['dedicatedForm', 'emailFirst'] as const;
+
 const MEASURED_BEST = CLIENTS_OTA_RULES.flatMap((rule) => (rule.best === null ? [] : [rule.best]));
 const MAX_RATE = MEASURED_BEST.length > 0 ? Math.max(...MEASURED_BEST) : 1;
 
@@ -73,13 +78,26 @@ export function ClientsOtaEvidence() {
               </dl>
 
               <p className="mt-4 text-[13px] leading-relaxed text-[var(--up-ink-muted)]">
-                {rule.withinHotels
-                  ? t('withinHotels', { wins: rule.withinHotels.wins, of: rule.withinHotels.of })
-                  : t('betweenHotelsOnly')}
+                {t('withinHotels', { wins: rule.withinHotels.wins, of: rule.withinHotels.of })}
               </p>
             </motion.li>
           ))}
         </ol>
+
+        <aside className="mt-10 rounded-2xl border border-dashed border-[var(--up-line-strong)] bg-[var(--up-surface)] p-6 md:p-8">
+          <h3 className="text-lg font-semibold text-[var(--up-ink)]">{t('practices.title')}</h3>
+          <ul className="mt-4 grid gap-5 md:grid-cols-2 md:gap-8">
+            {PRACTICES.map((key) => (
+              <li key={key}>
+                <p className="font-semibold leading-snug text-[var(--up-ink)]">{t(`practices.${key}.title`)}</p>
+                <p className="mt-2 text-[15px] leading-relaxed text-[var(--up-ink-soft)]">{t(`practices.${key}.body`)}</p>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-5 border-t border-[var(--up-line)] pt-4 text-[13px] leading-relaxed text-[var(--up-ink-muted)]">
+            {t('practices.limit')}
+          </p>
+        </aside>
       </div>
     </UpsellSection>
   );

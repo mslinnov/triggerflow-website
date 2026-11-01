@@ -2645,7 +2645,7 @@
   },
   "lpClientsOta": {
     "cta": {
-      "compare": "Comparer les deux formulaires",
+      "compare": "Comparer les deux messages",
       "simulate": "Chiffrer chez vous",
       "bookDemo": "Réserver 30 minutes",
       "guide": "Recevoir le guide"
@@ -2683,44 +2683,44 @@
     },
     "comparator": {
       "eyebrow": "Comparatif",
-      "title": "Les deux formulaires, côte à côte",
-      "subtitle": "Le même client Booking.com, le même séjour, deux façons de lui demander son adresse. Votre formulaire ressemble à l'un des deux.",
-      "reconstructionTitle": "Ces deux formulaires sont des reconstructions.",
-      "reconstructionBody": "Nous les avons recomposés d'après les réglages que l'étude compare. Ce ne sont pas des captures de formulaires réels : aucun établissement n'est cité ni reconnaissable. Seuls les taux sont des mesures.",
+      "title": "Les deux messages, côte à côte",
+      "subtitle": "Le même client Booking.com, le même séjour, deux façons de lui écrire pour lui demander son adresse. Votre message ressemble à l'un des deux.",
+      "reconstructionTitle": "Ces deux messages sont des reconstructions.",
+      "reconstructionBody": "Nous les avons recomposés d'après les réglages que l'étude compare. Ce ne sont pas des captures d'e-mails réels : aucun établissement n'est cité ni reconnaissable. Seuls les taux sont des mesures.",
       "effective": {
-        "badge": "Le formulaire qui récupère l'adresse",
+        "badge": "Le message qui ramène l'adresse",
         "timing": "Envoi : dès la réservation, plus de deux semaines avant l'arrivée",
-        "intro": "Votre réservation est confirmée. Pour recevoir directement les informations de votre séjour, indiquez-nous votre adresse e-mail personnelle.",
-        "fieldLabel": "Votre adresse e-mail personnelle",
-        "fieldValue": "camille.martin@exemple.fr",
-        "fieldHint": "Première et seule question du formulaire.",
-        "button": "Envoyer"
+        "button": "Préparer mon séjour",
+        "subject": "Préparez votre séjour",
+        "body": "Votre réservation est confirmée. Laissez-nous l'adresse à laquelle vous joindre directement : nous y enverrons les informations pratiques de votre séjour.",
+        "footnote": "Moins de 400 caractères de texte. Une relance part avant l'arrivée si le client n'a pas répondu."
       },
       "ineffective": {
-        "badge": "Le formulaire qui ne la récupère pas",
+        "badge": "Le message qui ne la ramène pas",
         "timing": "Envoi : le jour de l'arrivée",
-        "intro": "Préparez votre arrivée : heure d'arrivée, petit-déjeuner, parking, préférences de chambre, demandes particulières…",
-        "fieldLabel": "E-mail",
-        "fieldValue": "nom@exemple.fr",
-        "fieldHint": "Huitième question sur neuf, après les préférences de séjour.",
-        "button": "Valider"
+        "button": "Faire mon check-in en ligne",
+        "subject": "Gagnez du temps : faites votre check-in en ligne",
+        "body": "Afin de faciliter votre arrivée et de réduire votre attente à la réception, nous vous invitons à compléter dès à présent votre check-in en ligne. Vous pourrez y renseigner votre heure d'arrivée, vos coordonnées, vos préférences de chambre et vos demandes particulières. La réception est ouverte de 7 h à 23 h, le parking est disponible sur réservation et le petit-déjeuner est servi de 7 h à 10 h 30. La taxe de séjour est à régler sur place.",
+        "footnote": "Environ 500 caractères de texte, envoyé une seule fois."
       },
       "annotationsTitle": "Les trois différences, et ce qu'elles pèsent",
       "annotations": {
         "a1": {
           "title": "Le moment du premier message",
-          "body": "Dans les hôtels où le premier message part dès la réservation, 56,4 % des clients OTA laissent leur vraie adresse ; quand il part le jour d'arrivée, 19,0 %. L'écart se retrouve dans 10 hôtels sur 10 qui font les deux."
+          "body": "Dans les hôtels où le premier message part dès la réservation, 56,4 % des clients OTA laissent leur vraie adresse ; quand il part le jour d'arrivée, 19,0 %. Vérifié dans 10 hôtels sur 10 qui font les deux."
         },
         "a2": {
-          "title": "Un formulaire dédié et court",
-          "body": "Un formulaire qui ne demande que les coordonnées : 52,0 %. Le même champ glissé dans une préparation de séjour avec catalogue : 33,4 %. Et de une à trois questions, 49,1 %, contre 31,1 % à partir de sept."
+          "title": "L'objet",
+          "body": "« Préparez votre séjour » : 38,8 %. « Gagnez du temps » ou « Check-in en ligne » : 27,8 %. L'un annonce le séjour, l'autre une démarche administrative. Vérifié dans 5 hôtels sur 6 qui font les deux."
         },
         "a3": {
-          "title": "Le champ e-mail en premier",
-          "body": "En première question : 46,2 %. Plus loin sur la première page : 32,2 %. Le client qui doit d'abord répondre à six questions s'arrête souvent avant la septième."
+          "title": "La longueur",
+          "body": "Moins de 400 caractères de texte : 34,5 %. Entre 400 et 1 000 : 25,7 %. Vérifié dans 7 hôtels sur 8. Au-delà de 1 000, on remonte à 32,3 % : c'est le message moyen qui perd, pas le message long."
         }
       },
-      "methodNote": "Les taux de chaque différence sont mesurés un critère à la fois, sur la même population de clients OTA : ils ne s'additionnent pas. Ce sont des corrélations, pas des preuves de cause ; les différences 2 et 3 ne sont pas encore vérifiées à l'intérieur d'un même hôtel."
+      "methodNote": "Les taux de chaque différence sont mesurés un critère à la fois, sur la même population de clients OTA : ils ne s'additionnent pas. Ce sont des corrélations, pas des preuves de cause ; chacune se retrouve à l'intérieur d'un même hôtel qui pratique les deux réglages.",
+      "subjectLabel": "Objet",
+      "greeting": "Bonjour,"
     },
     "gap": {
       "title": "L'erreur la plus coûteuse",
@@ -2732,8 +2732,8 @@
       }
     },
     "evidence": {
-      "title": "Les sept règles",
-      "subtitle": "Chaque règle oppose deux taux de capture, mesurés par client OTA : la part des clients venus d'une OTA qui finissent par vous donner leur vraie adresse. Ce sont des corrélations ; sous chaque règle, le contrôle à l'intérieur d'un même hôtel.",
+      "title": "Les cinq règles",
+      "subtitle": "Chaque règle oppose deux taux de capture, mesurés par client OTA : la part des clients venus d'une OTA qui finissent par vous donner leur vraie adresse. Ce sont des corrélations ; chacune se retrouve à l'intérieur d'un même hôtel qui pratique les deux réglages.",
       "rateValue": "{rate, number, ::.0} %",
       "rule1": {
         "title": "Demander tôt",
@@ -2753,31 +2753,30 @@
         "best": "E-mail + WhatsApp",
         "worst": "E-mail seul"
       },
-      "rule4": {
-        "title": "Un formulaire dédié et court",
-        "body": "Un formulaire qui ne demande que les coordonnées fait 52,0 %, contre 33,4 % pour le même champ glissé dans une préparation avec catalogue. De une à trois questions : 49,1 % ; sept et plus : 31,1 %.",
-        "best": "Formulaire dédié",
-        "worst": "Mêlé à la préparation"
-      },
-      "rule5": {
-        "title": "Le champ e-mail en premier",
-        "body": "La première question se remplit presque toujours. Celle qui arrive après les préférences de chambre et l'heure d'arrivée, beaucoup moins.",
-        "best": "Première question",
-        "worst": "Plus loin sur la page"
-      },
       "withinHotels": "Vérifié dans {wins} hôtels sur {of} qui pratiquent les deux.",
-      "betweenHotelsOnly": "Écart observé entre hôtels, pas encore vérifié à l'intérieur d'un même hôtel.",
-      "rule6": {
+      "rule4": {
         "title": "Un objet qui parle du séjour",
         "body": "« Préparez votre séjour » donne au client une raison d'ouvrir. « Gagnez du temps » et « Check-in en ligne » lui promettent une démarche administrative.",
         "best": "Préparer le séjour",
         "worst": "Gagner du temps"
       },
-      "rule7": {
+      "rule5": {
         "title": "Un e-mail court",
         "body": "Moins de 400 caractères de texte visible : 34,5 %, contre 25,7 % entre 400 et 1 000. Mais de 1 000 à 2 000, on remonte à 32,3 % : le court bat le moyen, ce n'est pas « plus c'est long, pire c'est ».",
         "best": "Moins de 400 caractères",
         "worst": "400 à 1 000"
+      },
+      "practices": {
+        "title": "Deux bonnes pratiques, pas encore des règles",
+        "dedicatedForm": {
+          "title": "Un formulaire dédié et court",
+          "body": "Les hôtels qui demandent l'adresse dans un formulaire à part, qui ne demande que les coordonnées, captent 52,0 % de leurs clients OTA, contre 33,4 % quand le champ est glissé dans une préparation de séjour avec catalogue."
+        },
+        "emailFirst": {
+          "title": "Le champ e-mail en premier",
+          "body": "En première question : 46,2 %. Plus loin sur la première page, après l'heure d'arrivée et les préférences de chambre : 32,2 %."
+        },
+        "limit": "Ces écarts s'observent d'un hôtel à l'autre, pas à l'intérieur d'un même hôtel : trop peu d'hôtels font les deux pour conclure, et ceux qui les font ne confirment pas toujours l'écart. Nous les donnons comme des bonnes pratiques, pas comme des règles mesurées."
       }
     },
     "demoBridge": {
@@ -2878,7 +2877,7 @@
       },
       "causality": {
         "q": "Est-ce que ce sont des causes ou des corrélations ?",
-        "a": "Des corrélations. Un hôtel qui écrit tôt soigne souvent aussi son formulaire. C'est pourquoi chaque règle indique si l'écart se retrouve à l'intérieur d'un même hôtel qui pratique les deux réglages : c'est le cas du moment du premier message, de la relance, de WhatsApp, de l'objet et de la longueur de l'e-mail."
+        "a": "Des corrélations. Un hôtel qui écrit tôt soigne souvent aussi son formulaire. C'est pourquoi chaque règle indique combien d'hôtels confirment l'écart quand ils pratiquent les deux réglages. Les cinq règles passent ce contrôle ; deux autres réglages, qui ne le passent pas, sont donnés à part comme bonnes pratiques."
       },
       "parity": {
         "q": "Ai-je le droit de proposer un meilleur prix en direct à un client venu par une OTA ?",
@@ -2908,12 +2907,12 @@
     },
     "finalCta": {
       "title": "Recevez le guide du client OTA",
-      "subtitle": "L'étude complète, les sept règles avec leurs taux, le formulaire à copier et la checklist en huit points.",
+      "subtitle": "L'étude complète, les cinq règles avec leurs taux, le formulaire à copier et la checklist en huit points.",
       "formTitle": "Où envoyons-nous le guide ?",
       "format": "PDF, lisible en vingt minutes, sans jargon. Le guide est en français.",
       "chapters": {
         "funnel": "Le parcours d'un client OTA, du premier message à la vraie adresse",
-        "rules": "Les sept règles, chacune avec le taux mesuré qui la porte",
+        "rules": "Les cinq règles, chacune avec le taux mesuré qui la porte, et deux bonnes pratiques",
         "mistakes": "L'erreur la plus coûteuse, et ce qu'elle coûte",
         "template": "Le formulaire à copier, la checklist et ce que ça vaut chez vous",
         "legal": "Parité tarifaire et consentement : ce que dit le cadre, en une page",
