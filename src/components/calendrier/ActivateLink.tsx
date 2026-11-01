@@ -28,7 +28,7 @@ export function ActivateLink({ href, tempsFort, destination, theme, variant = 'b
       className={cn(
         variant === 'button'
           ? 'inline-flex w-full items-center justify-center gap-2 rounded-full border border-brand-primary px-5 py-3 text-sm font-semibold text-brand-primary transition-colors hover:bg-brand-light focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 sm:w-auto'
-          : 'inline-flex items-center gap-1.5 text-sm font-semibold text-brand-primary underline-offset-4 hover:underline focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2',
+          : 'inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-brand-primary underline-offset-4 hover:underline focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2',
         className,
       )}
     >

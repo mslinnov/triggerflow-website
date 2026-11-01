@@ -163,7 +163,7 @@ export interface KeyDate {
 export interface CalendarMonth {
   /** Ancre (#janvier… ; #novembre-2026 pour l'année en cours). */
   id: string;
-  /** Libellé de la puce (« Nov. 2026 », « Janv. »). */
+  /** Libellé court de la puce (« Nov. ») ; l'année est donnée par le groupe de puces. */
   chip: string;
   /** Titre de la section (« Novembre 2026 »). */
   title: string;
@@ -233,7 +233,7 @@ function lastMinuteGift(christmasEve: string): EmailModel {
 export const CALENDAR: CalendarMonth[] = [
   {
     id: 'novembre-2026',
-    chip: 'Nov. 2026',
+    chip: 'Nov.',
     title: 'Novembre 2026',
     keyDates: [
       { start: '2026-11-01', label: 'Toussaint (férié)' },
@@ -262,7 +262,7 @@ export const CALENDAR: CalendarMonth[] = [
   },
   {
     id: 'decembre-2026',
-    chip: 'Déc. 2026',
+    chip: 'Déc.',
     title: 'Décembre 2026',
     keyDates: [
       { start: '2026-12-19', end: '2027-01-04', school: true, label: 'Vacances de Noël', note: 'toutes zones' },
@@ -622,6 +622,11 @@ export const CALENDAR: CalendarMonth[] = [
     ],
   },
 ];
+
+/** Année d'un mois du calendrier (fin de son titre : « Novembre 2026 »). */
+export function monthYear(month: CalendarMonth): string {
+  return month.title.slice(-4);
+}
 
 /** Toutes les campagnes, dans l'ordre du calendrier. */
 export const CAMPAIGNS: Campaign[] = CALENDAR.flatMap((month) => month.campaigns);

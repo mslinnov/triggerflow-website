@@ -2819,7 +2819,8 @@
       "legendExample": "Exemple"
     },
     "nav": {
-      "label": "Aller au mois"
+      "label": "Aller au mois",
+      "years": "Mois de {year}"
     },
     "month": {
       "keyDates": "Dates clés",
@@ -2847,7 +2848,10 @@
       "copyError": "Copie impossible, réessayez.",
       "activate": "Activer dans TriggerFlow",
       "openInApp": "Déjà client : ouvrir dans TriggerFlow",
-      "previewLabel": "Aperçu de l'e-mail"
+      "previewLabel": "Aperçu de l'e-mail",
+      "seeFull": "Voir l'e-mail en entier",
+      "close": "Fermer",
+      "loading": "Chargement de l'aperçu"
     },
     "variables": {
       "firstname": "Prénom",
@@ -2906,6 +2910,11 @@
       "formBusy": "Trop de demandes en même temps. Réessayez dans une minute.",
       "formInvalid": "Vérifiez votre adresse e-mail et les champs marqués d'un astérisque.",
       "formPrivacy": "Vos coordonnées servent uniquement à vous recontacter."
-    }
+    },
+    "now": {
+      "title": "À préparer maintenant",
+      "cta": "Voir le modèle"
+    },
+    "backToTop": "Haut de page"
   }
 }

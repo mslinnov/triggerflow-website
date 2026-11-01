@@ -9,6 +9,8 @@ interface MonthSectionProps {
   month: CalendarMonth;
   /** Marge de défilement des ancres : en-tête fixe du site + barre des mois. */
   scrollMarginClass: string;
+  /** Desktop : colonne des dates clés collante sous la barre des mois. */
+  stickyColumnClass: string;
   muted?: boolean;
 }
 
@@ -18,7 +20,7 @@ function formatKeyDate(k: KeyDate): string {
   return `${formatDateShort(k.start)} au ${formatDateShort(k.end)}${k.school ? ' (reprise)' : ''}`;
 }
 
-export function MonthSection({ month, scrollMarginClass, muted }: MonthSectionProps) {
+export function MonthSection({ month, scrollMarginClass, stickyColumnClass, muted }: MonthSectionProps) {
   const t = useTranslations('calendrierMarketing.month');
 
   return (
@@ -29,7 +31,7 @@ export function MonthSection({ month, scrollMarginClass, muted }: MonthSectionPr
     >
       <Container>
         <div className="grid gap-6 lg:grid-cols-[16rem_minmax(0,1fr)] lg:gap-10">
-          <div>
+          <div className={cn('lg:sticky lg:self-start', stickyColumnClass)}>
             <h2 id={`${month.id}-titre`} className="font-serif text-3xl font-bold tracking-tight text-text-primary">
               {month.title}
             </h2>
@@ -49,7 +51,7 @@ export function MonthSection({ month, scrollMarginClass, muted }: MonthSectionPr
 
           <div className="space-y-6">
             {month.campaigns.map((campaign) => (
-              <TempsFortCard key={campaign.id} campaign={campaign} />
+              <TempsFortCard key={campaign.id} campaign={campaign} scrollMarginClass={scrollMarginClass} />
             ))}
           </div>
         </div>

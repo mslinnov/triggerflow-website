@@ -122,7 +122,7 @@ export default async function ActivateTempsFortPage({ params }: PageProps) {
             <p className="mt-2 text-sm text-text-muted">{t('previewNote')}</p>
             {variants.length > 0 ? (
               <div className="mt-6">
-                <ThemedTemplateBlock code={info.code} variants={variants} variables={EXAMPLE_VARIABLES} mode="example" />
+                <ThemedTemplateBlock code={info.code} title={info.title} variants={variants} variables={EXAMPLE_VARIABLES} mode="example" />
               </div>
             ) : (
               <div className="mt-6 overflow-hidden rounded-2xl border border-border-light">

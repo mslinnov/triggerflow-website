@@ -1,8 +1,9 @@
 import { useTranslations } from 'next-intl';
 import { MJML_THEMES, type MjmlTheme } from '@/data/calendrier-marketing';
+import type { ThemedPreviewLabels } from './ThemedPreview';
 
-/** Libellés du bloc ThemedMjmlTemplate (page calendrier et page Activer). */
-export function useThemedTemplateLabels() {
+/** Libellés de l'aperçu à thèmes et des boutons de copie (page calendrier et page Activer). */
+export function useThemedTemplateLabels(): ThemedPreviewLabels {
   const t = useTranslations('calendrierMarketing.card');
   return {
     subject: t('subject'),
@@ -16,5 +17,8 @@ export function useThemedTemplateLabels() {
     copied: t('copied'),
     fallback: t('copyFallback'),
     error: t('copyError'),
+    seeFull: t('seeFull'),
+    close: t('close'),
+    loading: t('loading'),
   };
 }
