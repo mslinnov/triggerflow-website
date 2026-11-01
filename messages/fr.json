@@ -2846,6 +2846,7 @@
       "copyFallback": "La copie automatique est bloquée par votre navigateur : le texte est sélectionné ci-dessous, copiez-le avec Ctrl+C ou Cmd+C.",
       "copyError": "Copie impossible, réessayez.",
       "activate": "Activer dans TriggerFlow",
+      "openInApp": "Déjà client : ouvrir dans TriggerFlow",
       "previewLabel": "Aperçu de l'e-mail"
     },
     "variables": {
@@ -2876,6 +2877,7 @@
       "clientTitle": "Déjà client TriggerFlow ?",
       "clientText": "Ouvrez ce modèle dans l'assistant e-mails, adaptez-le à votre hôtel, puis programmez-le.",
       "clientCta": "Ouvrir dans TriggerFlow",
+      "clientCaption": "Modèle ouvert",
       "previewTitle": "L'e-mail, sur une charte d'exemple",
       "previewNote": "Exemple : hôtel et valeurs fictifs. Dans TriggerFlow, l'e-mail reprend votre logo, vos couleurs et vos offres.",
       "howTitle": "Comment TriggerFlow l'envoie pour vous",

@@ -1,10 +1,10 @@
 'use client';
 
-import { useState } from 'react';
 import type { MjmlTheme } from '@/data/calendrier-marketing';
 import { cn } from '@/lib/utils';
 import { CopyTemplateButton } from './CopyTemplateButton';
 import { MjmlPreview } from './MjmlPreview';
+import { useThemeSelection } from './ThemeSelection';
 
 export interface ThemeVariant {
   theme: MjmlTheme;
@@ -42,7 +42,8 @@ interface ThemedMjmlTemplateProps {
  * /api/calendrier/modele/<code>/<format>?theme=<thème>.
  */
 export function ThemedMjmlTemplate({ code, variants, variables, mode = 'template', withCopy = false, labels }: ThemedMjmlTemplateProps) {
-  const [theme, setTheme] = useState<MjmlTheme>(variants[0].theme);
+  // Partagé avec le lien « ouvrir dans TriggerFlow » quand un ThemeSelectionProvider l'entoure.
+  const [theme, setTheme] = useThemeSelection(variants[0].theme);
   const current = variants.find((v) => v.theme === theme) ?? variants[0];
   const fileUrl = (format: 'mjml' | 'html') => `/api/calendrier/modele/${code}/${format}?theme=${current.theme}`;
   const copyLabels = { copied: labels.copied, fallback: labels.fallback, error: labels.error };

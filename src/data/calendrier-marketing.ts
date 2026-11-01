@@ -639,9 +639,22 @@ export function tempsFortBySlug(slug: string): TempsFortInfo | undefined {
   return Object.values(TEMPS_FORTS).find((info) => info.slug === slug);
 }
 
-/** Lien profond de l'app : ouvre l'assistant e-mails IA sur ce modèle (connexion si besoin). */
-export function activateInAppUrl(code: TempsFortCode): string {
-  return `https://app.trigger-flow.com/email-templates/ai/new?type=${code}`;
+/** Nom pré-rédigé du modèle créé dans l'app : le temps fort, puis le thème. */
+export function activateInAppName(code: TempsFortCode, themeName?: string): string {
+  return themeName ? `${TEMPS_FORTS[code].title} · ${themeName}` : TEMPS_FORTS[code].title;
+}
+
+/** Nom du style dans l'app pour chaque thème du site (`style=` du lien profond). */
+const APP_STYLES: Record<MjmlTheme, string> = { moderne: 'modern', soiree: 'soiree', editorial: 'editorial' };
+
+/**
+ * Lien profond de l'app : ouvre l'assistant e-mails IA sur ce modèle, dans le style
+ * choisi, avec un nom pré-rédigé court et sans année (« Saint-Valentin · Élégant »),
+ * connexion comprise si besoin. `themeName` : le nom affiché du thème.
+ */
+export function activateInAppUrl(code: TempsFortCode, theme: MjmlTheme = DEFAULT_MJML_THEME, themeName?: string): string {
+  const name = activateInAppName(code, themeName);
+  return `https://app.trigger-flow.com/email-templates/ai/new?type=${code}&style=${APP_STYLES[theme]}&name=${encodeURIComponent(name)}`;
 }
 
 /**
