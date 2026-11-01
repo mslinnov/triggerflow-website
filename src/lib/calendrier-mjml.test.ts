@@ -57,6 +57,8 @@ test('aperçu : variables d’exemple, champs surlignés dans le texte, en clair
   assert.match(html, /Bonjour Camille,/);
   assert.match(html, /L'équipe de Hôtel des Tilleuls/);
   assert.match(html, /<mark title="Catégorie de chambre"[^>]*>avec vue<\/mark>/);
+  // Texte sombre imposé : lisible aussi sur les thèmes à fond sombre (Soirée).
+  for (const mark of html.match(/<mark [^>]*>/g) ?? []) assert.match(mark, /color:#002B28;/, mark);
   assert.match(html, /href="https:\/\/votre-hotel\.fr\/reserver"/);
   assert.doesNotMatch(html, /\[\[|\{\{|<script/);
 });

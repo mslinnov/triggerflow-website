@@ -79,7 +79,9 @@ function fieldExample(label: string, example: string | undefined): string {
 /**
  * HTML d'aperçu : variables remplacées par des valeurs d'exemple, champs à remplir
  * surlignés. Dans une balise (un lien, un attribut), le champ devient sa valeur
- * d'exemple en clair : un <mark> y casserait le HTML. Les scripts sont retirés
+ * d'exemple en clair : un <mark> y casserait le HTML. Le surlignage impose son texte
+ * sombre : hérité, il serait blanc sur pêche dans les thèmes à fond sombre (Soirée).
+ * Les scripts sont retirés
  * (l'iframe est de toute façon en sandbox sans scripts).
  */
 export function toPreviewHtml(html: string, variables: Record<string, string>): string {
@@ -93,7 +95,7 @@ export function toPreviewHtml(html: string, variables: Record<string, string>): 
         const value = escapeHtml(fieldExample(label, example));
         return inTag
           ? value
-          : `<mark title="${escapeHtml(label.trim())}" style="background:#FFF4E8;color:inherit;border-radius:3px;padding:0 2px;box-shadow:0 0 0 1px #FFCFA2;">${value}</mark>`;
+          : `<mark title="${escapeHtml(label.trim())}" style="background:#FFF4E8;color:#002B28;border-radius:3px;padding:0 2px;box-shadow:0 0 0 1px #FFCFA2;">${value}</mark>`;
       });
     })
     .join('');
