@@ -114,14 +114,14 @@ export function createStatsQueue(transport: StatsTransport, schedule: (run: () =
   function flush(leaving = false): void {
     cancel?.();
     cancel = null;
-    while (queue.length > 0) {
-      const body = JSON.stringify({ events: queue.slice(0, MAX_BATCH) });
-      queue = queue.slice(MAX_BATCH);
-      try {
-        if (!(leaving && transport.beacon(body))) transport.post(body);
-      } catch {
-        // Lot perdu : une statistique en moins, jamais une erreur dans la page.
-      }
+    if (queue.length === 0) return;
+    // 20 au plus : `push` envoie dès le 20e.
+    const body = JSON.stringify({ events: queue });
+    queue = [];
+    try {
+      if (!(leaving && transport.beacon(body))) transport.post(body);
+    } catch {
+      // Lot perdu : une statistique en moins, jamais une erreur dans la page.
     }
   }
 
