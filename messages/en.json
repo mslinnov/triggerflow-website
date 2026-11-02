@@ -2363,11 +2363,13 @@
         "book": "Book a demo"
       },
       "whitepaper": {
-        "emailHint": "One field only: the address the guide is sent to.",
+        "emailHint": "One field only: your email address. The guide downloads right after.",
         "submit": "Get the 5 automations",
-        "successTitle": "On its way.",
-        "successBody": "It reaches you by email within the next few hours. Do check your spam folder if you do not see it.",
-        "privacy": "Your email is used to send you the guide. You can unsubscribe in one click, and nothing is sold on."
+        "successTitle": "All set.",
+        "successReady": "Your guide is ready:",
+        "download": "Download the guide",
+        "successFallback": "Thank you, we will get back to you very soon with the guide.",
+        "privacy": "Your email is used to give you the guide. You can unsubscribe in one click, and nothing is sold on."
       }
     },
     "finalCta": {
@@ -2380,8 +2382,8 @@
       "whitepaper": {
         "title": "The 5 automations that earn the most",
         "subtitle": "We went back through our customers' sales to work out what actually sells, when to send it and on which channel. It is all in this guide.",
-        "formTitle": "Where should we send it?",
-        "format": "PDF, sent by email. Built on sales actually measured at independent hotels, with results given as rates.",
+        "formTitle": "Your address, and the guide is yours",
+        "format": "PDF, ready to download right away. Built on sales actually measured at independent hotels, with results given as rates.",
         "chapters": {
           "timing": "The right moment for each offer, and why sending on arrival day cuts sales by three.",
           "channel": "Email, SMS or WhatsApp: what the channel really changes, compared inside one property at a time.",
@@ -2603,17 +2605,19 @@
     },
     "form": {
       "email": "Your email address",
-      "emailHint": "One address, nothing else to fill in. The guide arrives by email.",
+      "emailHint": "One address, nothing else to fill in. The guide downloads right after.",
       "submit": "Get the guide",
       "successTitle": "All set.",
-      "successBody": "The post-stay guide is on its way by email, within the next few minutes. Do check your spam folder if it keeps you waiting.",
-      "privacy": "Your address is used to send you this guide and our content for hoteliers. One click to unsubscribe, and nothing is sold to third parties.",
+      "successReady": "Your guide is ready:",
+      "download": "Download the guide",
+      "successFallback": "Thank you, we will get back to you very soon with the guide.",
+      "privacy": "Your address is used to give you this guide and to send you our content for hoteliers. One click to unsubscribe, and nothing is sold to third parties.",
       "error": "The submission did not go through. Please try again in a moment."
     },
     "finalCta": {
       "title": "Get the post-stay guide",
       "subtitle": "The full study, the five rules with the rates behind them, the email template and the eight point checklist.",
-      "formTitle": "Where do we send the guide?",
+      "formTitle": "Your address, and the guide is yours",
       "format": "PDF, readable in twenty minutes, no jargon.",
       "chapters": {
         "funnel": "The real journey of a review, from the send to the completed review",
@@ -2890,17 +2894,19 @@
     },
     "form": {
       "email": "Your email address",
-      "emailHint": "One address, nothing else to fill in. The guide arrives by email.",
+      "emailHint": "One address, nothing else to fill in. The guide downloads right after.",
       "submit": "Get the guide",
       "successTitle": "You are all set.",
-      "successBody": "The OTA guest guide will reach your inbox in the next few minutes. Check your spam folder if it takes a while.",
-      "privacy": "Your address is used to send you this guide and our content for hoteliers. One-click unsubscribe, nothing is sold to third parties.",
+      "successReady": "Your guide is ready:",
+      "download": "Download the guide",
+      "successFallback": "Thank you, we will get back to you very soon with the guide.",
+      "privacy": "Your address is used to give you this guide and to send you our content for hoteliers. One-click unsubscribe, nothing is sold to third parties.",
       "error": "The request did not go through. Please try again in a moment."
     },
     "finalCta": {
       "title": "Get the OTA guest guide",
       "subtitle": "The full study, the five rules with their rates, the form to copy and the eight-point checklist.",
-      "formTitle": "Where should we send the guide?",
+      "formTitle": "Your address, and the guide is yours",
       "format": "PDF, a twenty-minute read, no jargon. The guide is written in French.",
       "chapters": {
         "funnel": "The journey of an OTA guest, from the first message to the real address",

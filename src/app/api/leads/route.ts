@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { readDownloadUrl } from '@/lib/lead-magnet-download';
 import { readVisitorIp } from '@/lib/visitor-ip';
 
 /**
@@ -8,8 +9,10 @@ import { readVisitorIp } from '@/lib/visitor-ip';
  *    attributs de qualification (hôtel, chambres, PMS, potentiel estimé).
  * 2. Notifie l'équipe par email transactionnel pour un rappel à chaud.
  * 3. Quand le corps porte un `magnet` (le slug d'un livre blanc), relaie la
- *    capture à l'API TriggerFlow, qui envoie le guide et lance la séquence de
- *    relance. Ce relais est un effet en plus, jamais une condition de succès.
+ *    capture à l'API TriggerFlow, qui enregistre le lead et rend le lien compté
+ *    du guide. Ce lien repart vers le navigateur (`downloadUrl`) pour un
+ *    téléchargement immédiat. Le relais reste un effet en plus, jamais une
+ *    condition de succès.
  *
  * Calqué sur src/app/api/newsletter/route.ts (même validation, même honeypot,
  * même traitement du contact déjà existant).
@@ -46,9 +49,9 @@ function isTransportSafe(baseUrl: string): boolean {
 
 /**
  * Délai maximal du relais. Le visiteur attend cette réponse, derrière deux
- * appels Brevo eux-mêmes non bornés : trois secondes suffisent, puisque le
- * guide part par e-mail et non par affichage immédiat. L'attente n'achèterait
- * qu'un lien de téléchargement, et le lead est de toute façon déjà dans Brevo.
+ * appels Brevo eux-mêmes non bornés. Elle porte le lien du guide, mais trois
+ * secondes suffisent : au-delà, le formulaire affiche un succès sans bouton et
+ * l'équipe reprend le lead, déjà dans Brevo, à la main.
  */
 const RELAY_TIMEOUT_MS = 3000;
 
@@ -173,8 +176,8 @@ function readMagnetSlug(value: unknown): LeadMagnetSlug | null {
 }
 
 /**
- * Relaie la capture au backend TriggerFlow, qui envoie le guide et lance la
- * séquence de relance.
+ * Relaie la capture au backend TriggerFlow, qui enregistre le lead et rend le
+ * lien compté du guide.
  *
  * Best-effort strict : cette fonction ne lève jamais. Un échec du relais ne
  * doit pas faire perdre le lead, déjà enregistré dans Brevo et déjà signalé à
@@ -182,33 +185,32 @@ function readMagnetSlug(value: unknown): LeadMagnetSlug | null {
  * l'adresse : ces journaux sont consultables largement, une adresse qui y
  * entre n'en ressort plus.
  *
- * Ne retourne rien. Le `download_url` que le backend renvoie sur 201 est
- * volontairement ignoré : le guide part par e-mail, c'est la décision produit,
- * et aucun des deux formulaires n'affiche de lien immédiat. Le remonter au
- * navigateur ferait vivre du code que personne ne consomme.
- *
- * L'attente du relais est en revanche conservée. Elle n'est plus là pour ce
- * lien mais parce qu'elle est notre seule garantie que le lead a bien atteint
- * le backend : sans elle, un échec partirait sans trace.
+ * Retourne le `download_url` que le backend renvoie sur 201, pour le
+ * téléchargement immédiat : les séquences d'e-mails des guides sont éteintes
+ * (décision de Mounir du 02/11/2026), ce lien est donc le seul moyen pour le
+ * visiteur d'avoir son guide. Il n'est rendu que s'il s'agit d'une URL https
+ * sur le domaine des liens comptés du backend (`readDownloadUrl`) ; dans tous
+ * les autres cas, et à chaque échec, la fonction rend null et le formulaire
+ * affiche un succès sans bouton.
  */
 async function relayLeadMagnet(
   slug: LeadMagnetSlug,
   email: string,
   firstName: string,
   visitorIp: string | null
-): Promise<void> {
+): Promise<string | null> {
   if (!TRIGGERFLOW_API_URL || !LEAD_MAGNET_SECRET) {
     const missing = [
       !TRIGGERFLOW_API_URL && 'TRIGGERFLOW_API_URL',
       !LEAD_MAGNET_SECRET && 'LEAD_MAGNET_SECRET',
     ].filter(Boolean);
     console.error('[leads] Relais lead magnet non configuré:', missing.join(', '), 'slug:', slug);
-    return;
+    return null;
   }
 
   if (!isTransportSafe(TRIGGERFLOW_API_URL)) {
     console.error('[leads] Relais refusé, base non chiffrée, le secret ne part pas. Slug:', slug);
-    return;
+    return null;
   }
 
   const headers: Record<string, string> = {
@@ -244,19 +246,35 @@ async function relayLeadMagnet(
     });
 
     if (!response.ok) {
-      // 409 = capture concurrente, le guide part quand même par l'autre
-      // requête ; 422 = adresse refusée ; 404 = slug inconnu ; 503 = secret
-      // absent côté backend. Aucun de ces cas ne justifie de réessayer ici :
-      // le visiteur attend, et rien n'est perdu.
+      // 409 = capture concurrente, le lien est rendu à l'autre requête ;
+      // 422 = adresse refusée ; 404 = slug inconnu ; 503 = secret absent côté
+      // backend. Aucun de ces cas ne justifie de réessayer ici : le visiteur
+      // attend, et le lead est déjà dans Brevo.
       console.error('[leads] Relais TriggerFlow en échec, slug:', slug, 'statut:', response.status);
+      return null;
     }
+
+    const downloadUrl = await readDownloadUrl(response);
+    if (!downloadUrl) {
+      // Captation acceptée mais aucun lien exploitable : guide sans document
+      // câblé côté backend, ou lien hors du domaine attendu. Le visiteur repart
+      // sans bouton, l'équipe doit le savoir.
+      console.error('[leads] Relais réussi sans lien de téléchargement exploitable, slug:', slug);
+    }
+    return downloadUrl;
   } catch (error) {
     // Délai dépassé ou réseau injoignable. On journalise le nom de l'erreur
     // seulement : le corps de la requête, donc l'adresse, n'a pas à s'y
     // retrouver par un message d'exception trop bavard.
     const reason = error instanceof Error ? error.name : 'unknown';
     console.error('[leads] Relais TriggerFlow injoignable, slug:', slug, 'cause:', reason);
+    return null;
   }
+}
+
+/** Réponse de succès, avec le lien du guide quand le relais l'a obtenu. */
+function successResponse(downloadUrl: string | null): NextResponse {
+  return NextResponse.json({ success: true, ...(downloadUrl ? { downloadUrl } : {}) });
 }
 
 /**
@@ -371,11 +389,8 @@ export async function POST(request: NextRequest) {
       // En développement le relais est quand même tenté : c'est la seule façon
       // de travailler la chaîne du livre blanc contre un backend local sans
       // avoir à se procurer les identifiants Brevo.
-      if (magnet) {
-        await relayLeadMagnet(magnet, email, firstName, readVisitorIp(request));
-      }
-
-      return NextResponse.json({ success: true });
+      const downloadUrl = magnet ? await relayLeadMagnet(magnet, email, firstName, readVisitorIp(request)) : null;
+      return successResponse(downloadUrl);
     }
 
     const response = await fetch('https://api.brevo.com/v3/contacts', {
@@ -404,8 +419,8 @@ export async function POST(request: NextRequest) {
       // Brevo est en panne, pas nous : le relais est tenté quand même, sans
       // quoi le visiteur repartirait sans guide alors que notre propre backend
       // était disponible. Le lien de téléchargement n'est pas remonté ici, la
-      // réponse étant un échec du point de vue du formulaire ; le guide part
-      // par e-mail, ce qui est le chemin normal.
+      // réponse étant un échec du point de vue du formulaire : le visiteur
+      // réessaie, et le backend rend le lien à la seconde captation.
       if (magnet) {
         await relayLeadMagnet(magnet, email, firstName, readVisitorIp(request));
       }
@@ -436,14 +451,10 @@ export async function POST(request: NextRequest) {
     });
 
     // Relais du livre blanc, en dernier : le lead est enregistré et l'équipe
-    // prévenue, donc plus rien ne peut le faire perdre. Rien n'en remonte au
-    // navigateur, le guide part par e-mail ; l'attente reste néanmoins, elle
-    // est notre seule garantie que le lead a bien atteint le backend.
-    if (magnet) {
-      await relayLeadMagnet(magnet, email, firstName, readVisitorIp(request));
-    }
-
-    return NextResponse.json({ success: true });
+    // prévenue, donc plus rien ne peut le faire perdre. Son lien de
+    // téléchargement repart vers le navigateur, qui l'affiche en bouton.
+    const downloadUrl = magnet ? await relayLeadMagnet(magnet, email, firstName, readVisitorIp(request)) : null;
+    return successResponse(downloadUrl);
   } catch (error) {
     console.error('[leads] Error:', error);
     return NextResponse.json(

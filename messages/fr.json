@@ -2371,11 +2371,13 @@
         "book": "Réserver une démo"
       },
       "whitepaper": {
-        "emailHint": "Une seule information demandée : l'adresse à laquelle envoyer le guide.",
+        "emailHint": "Une seule information demandée : votre adresse e-mail. Le guide se télécharge juste après.",
         "submit": "Recevoir les 5 automatisations",
-        "successTitle": "C'est envoyé.",
-        "successBody": "Vous le recevez par email dans les prochaines heures. Pensez à vérifier vos indésirables si vous ne le voyez pas arriver.",
-        "privacy": "Votre email sert à vous envoyer le guide. Vous pouvez vous désabonner en un clic, et rien n'est revendu à des tiers."
+        "successTitle": "C'est enregistré.",
+        "successReady": "Votre guide est prêt :",
+        "download": "Télécharger le guide",
+        "successFallback": "Merci, nous revenons vers vous très vite avec le guide.",
+        "privacy": "Votre email sert à vous donner le guide. Vous pouvez vous désabonner en un clic, et rien n'est revendu à des tiers."
       }
     },
     "finalCta": {
@@ -2388,8 +2390,8 @@
       "whitepaper": {
         "title": "Les 5 automatisations qui rapportent le plus",
         "subtitle": "Nous avons repris les ventes de nos établissements clients pour identifier ce qui se vend vraiment, quand l'envoyer et sur quel canal. Tout est dans ce guide.",
-        "formTitle": "Où faut-il l'envoyer ?",
-        "format": "Format PDF, envoyé par email. Fondé sur les ventes réellement mesurées chez des hôtels indépendants, résultats exprimés en taux.",
+        "formTitle": "Votre adresse, et le guide est à vous",
+        "format": "Format PDF, à télécharger tout de suite. Fondé sur les ventes réellement mesurées chez des hôtels indépendants, résultats exprimés en taux.",
         "chapters": {
           "timing": "Le bon moment pour chaque offre, et pourquoi envoyer le jour de l'arrivée divise les ventes par trois.",
           "channel": "Email, SMS ou WhatsApp : ce que change réellement le canal, comparé à l'intérieur d'un même établissement.",
@@ -2611,17 +2613,19 @@
     },
     "form": {
       "email": "Votre adresse e-mail",
-      "emailHint": "Une seule adresse, rien d'autre à remplir. Le guide arrive par e-mail.",
+      "emailHint": "Une seule adresse, rien d'autre à remplir. Le guide se télécharge juste après.",
       "submit": "Recevoir le guide",
       "successTitle": "C'est enregistré.",
-      "successBody": "Le guide du post-séjour arrive par e-mail dans les prochaines minutes. Pensez à regarder vos indésirables s'il se fait attendre.",
-      "privacy": "Votre adresse sert à vous envoyer ce guide et nos contenus pour hôteliers. Désinscription en un clic, rien n'est revendu à des tiers.",
+      "successReady": "Votre guide est prêt :",
+      "download": "Télécharger le guide",
+      "successFallback": "Merci, nous revenons vers vous très vite avec le guide.",
+      "privacy": "Votre adresse sert à vous donner ce guide et à vous adresser nos contenus pour hôteliers. Désinscription en un clic, rien n'est revendu à des tiers.",
       "error": "L'envoi n'a pas abouti. Réessayez dans un instant."
     },
     "finalCta": {
       "title": "Recevez le guide du post-séjour",
       "subtitle": "L'étude complète, les cinq règles avec leurs taux, le modèle d'e-mail et la checklist en huit points.",
-      "formTitle": "Où envoyons-nous le guide ?",
+      "formTitle": "Votre adresse, et le guide est à vous",
       "format": "PDF, lisible en vingt minutes, sans jargon.",
       "chapters": {
         "funnel": "Le vrai parcours d'un avis, de l'envoi jusqu'à l'avis terminé",
@@ -2898,17 +2902,19 @@
     },
     "form": {
       "email": "Votre adresse e-mail",
-      "emailHint": "Une seule adresse, rien d'autre à remplir. Le guide arrive par e-mail.",
+      "emailHint": "Une seule adresse, rien d'autre à remplir. Le guide se télécharge juste après.",
       "submit": "Recevoir le guide",
       "successTitle": "C'est enregistré.",
-      "successBody": "Le guide du client OTA arrive par e-mail dans les prochaines minutes. Pensez à regarder vos indésirables s'il se fait attendre.",
-      "privacy": "Votre adresse sert à vous envoyer ce guide et nos contenus pour hôteliers. Désinscription en un clic, rien n'est revendu à des tiers.",
+      "successReady": "Votre guide est prêt :",
+      "download": "Télécharger le guide",
+      "successFallback": "Merci, nous revenons vers vous très vite avec le guide.",
+      "privacy": "Votre adresse sert à vous donner ce guide et à vous adresser nos contenus pour hôteliers. Désinscription en un clic, rien n'est revendu à des tiers.",
       "error": "L'envoi n'a pas abouti. Réessayez dans un instant."
     },
     "finalCta": {
       "title": "Recevez le guide du client OTA",
       "subtitle": "L'étude complète, les cinq règles avec leurs taux, le formulaire à copier et la checklist en huit points.",
-      "formTitle": "Où envoyons-nous le guide ?",
+      "formTitle": "Votre adresse, et le guide est à vous",
       "format": "PDF, lisible en vingt minutes, sans jargon. Le guide est en français.",
       "chapters": {
         "funnel": "Le parcours d'un client OTA, du premier message à la vraie adresse",
