@@ -37,6 +37,10 @@ test('modèles livrés, TOUS THÈMES (src/data/calendrier-mjml/<thème>) : trios
   assert.deepEqual(auditMjmlDir(), []);
   // Le thème par défaut couvre les 12 temps forts : la page ne retombe jamais sur le texte.
   assert.equal(TEMPS_FORT_CODES.filter((code) => loadMjmlTemplate(code)).length, 12);
+  // Les cinq thèmes de l'app sont livrés pour chaque temps fort, dans l'ordre du sélecteur.
+  for (const code of TEMPS_FORT_CODES) {
+    assert.deepEqual(loadMjmlThemes(code).map((t) => t.theme), ['moderne', 'soiree', 'editorial', 'galerie', 'lettre'], code);
+  }
 });
 
 test('le contrôle de contenu attrape un tiret cadratin et des chiffres promis en clair', () => {
@@ -113,7 +117,7 @@ test('modèles et aperçus gardés en mémoire hors développement : un fichier 
   }
 });
 
-test('signature « Modèle créé avec TriggerFlow » : dans le MJML, le HTML et l’aperçu copiés des 36 modèles, lien exact, lisible', () => {
+test('signature « Modèle créé avec TriggerFlow » : dans le MJML, le HTML et l’aperçu copiés des 60 modèles, lien exact, lisible', () => {
   let count = 0;
   for (const code of TEMPS_FORT_CODES) {
     for (const template of loadMjmlThemes(code)) {
@@ -147,7 +151,7 @@ test('signature « Modèle créé avec TriggerFlow » : dans le MJML, le HTML et
       assert.match(previewFor(template, EXAMPLE_VARIABLES), /Modèle créé avec <a href=/, where);
     }
   }
-  assert.equal(count, 36);
+  assert.equal(count, 60);
   // Les deux familles de fonds : sombre (Soirée) et clair.
   assert.equal(signatureColor('#161618'), '#A8A8A8');
   assert.equal(signatureColor('#F4F4F4'), '#595959');
@@ -172,9 +176,11 @@ async function fetchTemplateFile(url: string): Promise<Response> {
   return GET(new Request(`https://www.trigger-flow.com${url}`), { params: Promise.resolve({ code: match[1], format: match[2] }) });
 }
 
-test('« Télécharger » : le fichier de « Copier » (signé, UTM), en pièce jointe <code>-<thème>.<format>, pour les 36 modèles', async () => {
+test('« Télécharger » : le fichier de « Copier » (signé, UTM), en pièce jointe <code>-<thème>.<format>, pour les 60 modèles', async () => {
   assert.equal(templateFileName('valentines_day', 'soiree', 'mjml'), 'valentines_day-soiree.mjml');
   assert.equal(templateFileName('new_year_eve', 'moderne', 'html'), 'new_year_eve-moderne.html');
+  assert.equal(templateFileName('valentines_day', 'galerie', 'mjml'), 'valentines_day-galerie.mjml');
+  assert.equal(templateFileName('valentines_day', 'lettre', 'html'), 'valentines_day-lettre.html');
   let count = 0;
   for (const code of TEMPS_FORT_CODES) {
     for (const template of loadMjmlThemes(code)) {
@@ -203,5 +209,5 @@ test('« Télécharger » : le fichier de « Copier » (signé, UTM), en pièce 
       }
     }
   }
-  assert.equal(count, 72);
+  assert.equal(count, 120);
 });

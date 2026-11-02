@@ -24,7 +24,7 @@ import { brand } from './brand';
  * même nom que dans la bibliothèque de l'app (seasonal/<thème>/). Liste fermée : le
  * thème vient de l'URL de l'aperçu. Le premier est le thème par défaut.
  */
-export const MJML_THEMES = ['moderne', 'soiree', 'editorial'] as const;
+export const MJML_THEMES = ['moderne', 'soiree', 'editorial', 'galerie', 'lettre'] as const;
 export type MjmlTheme = (typeof MJML_THEMES)[number];
 export const DEFAULT_MJML_THEME: MjmlTheme = 'moderne';
 
@@ -707,7 +707,13 @@ export function signatureTextLine(code: TempsFortCode): string {
 }
 
 /** Nom du style dans l'app pour chaque thème du site (`style=` du lien profond). */
-const APP_STYLES: Record<MjmlTheme, string> = { moderne: 'modern', soiree: 'soiree', editorial: 'editorial' };
+const APP_STYLES: Record<MjmlTheme, string> = {
+  moderne: 'modern',
+  soiree: 'soiree',
+  editorial: 'editorial',
+  galerie: 'galerie',
+  lettre: 'lettre',
+};
 
 /**
  * Lien profond de l'app : ouvre l'assistant e-mails IA sur ce modèle, dans le style
