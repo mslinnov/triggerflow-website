@@ -235,11 +235,17 @@ test('affirmations retirées absentes du code, du blog et des LP', () => {
     join(root, 'src', 'lib', 'llms.ts'),
     join(root, 'content', 'formation-salon', 'index.html'),
   ].filter((f) => !excluded.test(f));
+  // Seule exception, décidée le 02/11/2026 : l'antisèche des allées (formation du stand, page protégée par mot de
+  // passe et non indexée) cite mot pour mot le flyer TriggerFlow déjà imprimé, pour que l'équipe sache ce qui y est
+  // écrit, et la corrige dans la même ligne (« 12 PMS connectés… »). Aucun autre fichier ni aucune autre ligne.
+  const formation = join(root, 'content', 'formation-salon', 'index.html');
+  const printedFlyerQuote = '{ b: "« Connecté à votre PMS, plus de 50 intégrations »", t: "12 PMS connectés, ';
   const found: string[] = [];
   for (const file of scanned) {
     readFileSync(file, 'utf8')
       .split('\n')
       .forEach((line, i) => {
+        if (file === formation && line.trimStart().startsWith(printedFlyerQuote)) return;
         for (const re of BANNED) if (re.test(line)) found.push(`${file.slice(root.length + 1)}:${i + 1} ${re}`);
       });
   }

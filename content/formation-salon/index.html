@@ -224,6 +224,49 @@ h2 { font-size: 26px; line-height: 1.12; }
 .lex details p { margin: 0; padding: 0 16px 14px; }
 .empty { color: var(--muted); margin: 0; }
 
+/* Antisèche des allées : sections repliables, réponse courte toujours visible, détail dépliable. */
+.module.anti-entry { background: var(--brand-soft); border-color: var(--brand); }
+.module.anti-entry .num { display: grid; place-items: center; }
+.anti { display: grid; gap: 10px; }
+.anti-sec { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.anti-sec > summary { list-style: none; cursor: pointer; padding: 14px 16px; min-height: 56px; display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700; font-size: 18px; line-height: 1.25; }
+.anti-sec > summary::-webkit-details-marker { display: none; }
+.anti-sec > summary span:first-child { flex: 1; }
+.anti-sec > summary::after { content: "+"; font-family: var(--font-mono); font-size: 22px; color: var(--brand); }
+.anti-sec[open] > summary::after { content: "−"; }
+.anti-sec[open] > summary { border-bottom: 1px solid var(--line); }
+.anti-count { font-family: var(--font-mono); font-size: 12.5px; font-weight: 600; padding: 3px 8px; border-radius: 99px; background: var(--brand-soft); color: var(--brand-ink); }
+.anti-body { display: grid; gap: 14px; padding: 14px 16px 16px; min-width: 0; }
+.anti-q { display: grid; gap: 6px; padding-top: 12px; border-top: 1px dashed var(--line); }
+.anti-body > .anti-q:first-child { padding-top: 0; border-top: 0; }
+.anti-q h3 { margin: 0; font-size: 16.5px; line-height: 1.3; }
+.anti-short { margin: 0; }
+.anti-tag { display: inline-block; margin-right: 8px; padding: 1px 7px; border-radius: 6px; background: var(--brass-soft); color: var(--brass); font-family: var(--font-mono); font-size: 11.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; vertical-align: 2px; }
+.anti-more > summary { cursor: pointer; color: var(--brand-ink); font-weight: 700; min-height: 44px; display: inline-flex; align-items: center; }
+.anti-more > .prose { padding: 2px 0 4px 12px; border-left: 3px solid var(--brand-soft); }
+.anti-body ul, .anti-body ol { margin: 0; padding-left: 20px; }
+.anti-body li { margin: 4px 0; }
+.anti-points { display: grid; gap: 4px; }
+.anti-sub { margin: 4px 0 0; font-weight: 700; }
+.anti-words { margin: 0; display: grid; gap: 10px; }
+.anti-words dt { font-weight: 700; }
+.anti-words dd { margin: 2px 0 0; color: var(--muted); }
+.anti-table { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+.anti-table table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+.anti-table th, .anti-table td { padding: 8px 10px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+.anti-table thead th { background: var(--paper); font-family: var(--font-mono); font-size: 12.5px; }
+.anti-table tr:last-child > * { border-bottom: 0; }
+/* Sur téléphone, chaque ligne devient une fiche : le nom de la colonne précède chaque valeur, rien ne déborde. */
+@media (max-width: 560px) {
+  .anti-table thead { display: none; }
+  .anti-table tr { display: block; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+  .anti-table tr:last-child { border-bottom: 0; }
+  .anti-table th, .anti-table td { display: block; padding: 0; border: 0; }
+  .anti-table tbody th { font-family: var(--font-display); font-size: 16px; margin-bottom: 4px; }
+  .anti-table td { margin-top: 6px; }
+  .anti-table td::before { content: attr(data-label); display: block; font-family: var(--font-mono); font-size: 11.5px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+}
+
 /* Barre d'action */
 .bar {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 20;
@@ -601,6 +644,203 @@ h2 { font-size: 26px; line-height: 1.12; }
     { name: "All Inclusive", now: "249 €", salon: "224,10 €", next: "299 €", note: "Tous les modules inclus" }
   ];
 
+  /* ---------- Antisèche des allées (Adnane et Tristan) ----------
+     Reprise telle quelle du document « Antisèche EquipHotel : questions des hôteliers » (Claude Docs, super session).
+     Chaque question : `court` toujours visible, `detail` dépliable. Blocs de détail : chaîne = paragraphe,
+     { ul: [...] } = liste, { table: { head, rows } } = tableau. **gras** est la seule mise en forme reconnue. */
+  var ANTI = {
+    role: {
+      intro: "Vous n'avez pas à vendre : votre but est d'amener l'hôtelier au stand H006, Pavillon 7.3, où Mounir et Soufiane font la démo. Chaque fiche ci-dessous donne une réponse courte, à dire telle quelle, puis le détail si la personne creuse.",
+      items: [
+        { b: "Accroche", t: "« Bonjour, vous êtes hôtelier ? On aide les hôtels à centraliser la gestion de leur relation client. Je vous laisse notre calendrier marketing de l'année. / Je vous laisse un flyer pour télécharger nos livres blancs. »" },
+        { b: "Le flyer", t: "le calendrier marketing hôtelier, les 12 temps forts de l'année et quand écrire à ses clients. Le QR code ouvre les dates exactes et des modèles d'e-mails prêts à copier." },
+        { b: "L'invitation au stand", t: "« Passez au stand H006, Pavillon 7.3 : en 5 minutes on vous fait un diagnostic gratuit de votre marketing direct. »" },
+        { b: "Lundi 2 novembre, 16 h 30 à 18 h 30", t: "apéro TriggerFlow sur le stand. Bon prétexte pour inviter." },
+        { b: "Une personne intéressée mais pressée", t: "elle scanne le QR du flyer, ou réserve un créneau sur trigger-flow.com/fr/equiphotel." }
+      ]
+    },
+    flyers: {
+      intro: "Vous avez deux flyers : le flyer TriggerFlow, qui présente la solution, et le calendrier marketing, qui donne une raison de le garder toute l'année. Donnez les deux.",
+      table: { head: ["", "Flyer TriggerFlow", "Calendrier marketing"], rows: [
+        ["À quoi il sert", "Présenter TriggerFlow et donner envie d'une démo", "Offrir un outil utile, valable plusieurs années"],
+        ["Recto", "« Plus de revenus. Plus de clients directs. Moins d'outils. », et le parcours client avant, pendant et après le séjour", "Janvier à juin : les temps forts de chaque mois et quand écrire aux clients"],
+        ["Verso", "Les 6 blocs de la solution, les 3 guides gratuits et 2 QR codes", "Juillet à décembre, et un QR code"],
+        ["Les QR codes", "« Accéder aux guides » : choisir et recevoir un des 3 guides. « Réserver une démo » : une démo de 30 minutes en visio", "Les dates exactes de l'année et un modèle d'e-mail à copier pour chaque temps fort"]
+      ] },
+      legendTitle: "Ce qui est écrit sur le flyer TriggerFlow, et ce que ça veut dire",
+      legend: [
+        { b: "Avant le séjour", t: "confirmation de réservation, pré-check-in en ligne, vente d'extras et surclassements. Le client reçoit ses informations, remplit sa fiche et se voit proposer des options avant d'arriver." },
+        { b: "Pendant le séjour", t: "check-in, messagerie centralisée (e-mail, SMS, WhatsApp), message d'accueil. Toutes les conversations avec les clients arrivent au même endroit." },
+        { b: "Après le séjour", t: "collecte d'avis, programme de fidélité, campagnes ciblées. Le client est invité à laisser un avis, puis à revenir." },
+        { b: "« Connecté à votre PMS, plus de 50 intégrations »", t: "12 PMS connectés, plus les serrures, les paiements, les avis, les boîtes e-mail, Zapier et n8n." },
+        { b: "« Opérationnel en 48 heures »", t: "le PMS est branché et les premiers messages partent en 48 heures. Le parcours complet prend 1 à 2 semaines." },
+        { b: "« Support 7j/7 » et « Conforme RGPD »", t: "données hébergées en France, propriété de l'hôtel." },
+        { b: "La capture d'écran « Mes Flows »", t: "un flow est un scénario automatique (confirmation, proposition de services, questionnaire de satisfaction), qu'on allume ou éteint d'un clic." }
+      ],
+      items: [
+        { q: "C'est quoi la différence entre vos deux QR codes ?",
+          court: "le premier envoie un guide gratuit, le second réserve une démo en visio.",
+          detail: ["pendant le salon, la démo la plus rapide reste au stand H006, en 20 minutes, sans rendez-vous."] }
+      ]
+    },
+    mots: [
+      ["PMS", "Le logiciel de gestion de l'hôtel : réservations, chambres, factures. Exemples : Mews, Thaïs, Medialog, Misterbooking. TriggerFlow se branche dessus."],
+      ["OTA", "Les sites de réservation en ligne : Booking.com, Expedia, Airbnb. Ils prennent une commission de 15 à 25 % par réservation."],
+      ["Réservation directe", "Le client réserve sur le site de l'hôtel, par téléphone ou par e-mail : pas de commission. C'est ce que tous les hôteliers veulent augmenter."],
+      ["Adresse relais OTA", "L'adresse e-mail masquée que Booking donne à l'hôtel (du type xxx@guest.booking.com). L'hôtel ne peut pas recontacter le client après le séjour."],
+      ["Pré-séjour", "Les messages envoyés avant l'arrivée : informations pratiques, formulaire, offres."],
+      ["Post-séjour", "Les messages après le départ : merci, enquête de satisfaction, demande d'avis Google."],
+      ["Upsell (vente additionnelle)", "Vendre en plus avant ou pendant le séjour : petit-déjeuner, surclassement, spa, dîner, départ tardif."],
+      ["Pré-check-in / check-in en ligne", "Le client remplit ses informations avant d'arriver, pour gagner du temps à la réception."],
+      ["CRM", "Le fichier clients centralisé : qui est venu, quand, combien il a dépensé, ce qu'il aime."],
+      ["Segment", "Un groupe de clients choisi par critères (familles, clients d'affaires, venus l'été dernier…) pour leur envoyer le bon message."],
+      ["E-réputation", "Les avis en ligne (Google, TripAdvisor, Booking) et la note de l'hôtel."],
+      ["RevPAR", "Le revenu par chambre disponible : l'indicateur clé de l'hôtellerie."],
+      ["Taux d'occupation", "La part des chambres occupées sur une période."]
+    ],
+    sections: [
+      { title: "Questions sur TriggerFlow", items: [
+        { q: "C'est quoi, TriggerFlow ?",
+          court: "un CRM pour hôtels qui envoie automatiquement les bons messages aux clients, avant, pendant et après leur séjour.",
+          detail: ["il récupère les réservations du PMS, construit une fiche par client et déclenche des e-mails, SMS et messages WhatsApp aux bons moments : confirmation, informations avant l'arrivée, offres, enquête de satisfaction, demande d'avis, newsletters. Tout est centralisé au même endroit."] },
+        { q: "À qui ça s'adresse ?",
+          court: "aux hôtels indépendants et aux groupes, du petit hôtel au groupe de plusieurs établissements.",
+          detail: ["plus de 300 hôtels l'utilisent. Une seule personne peut le faire tourner : une fois les scénarios en place, les messages partent seuls."] },
+        { q: "Concrètement, ça m'apporte quoi ?",
+          court: "plus de réservations directes, plus de ventes additionnelles, plus d'avis positifs, et moins de temps passé à la réception.",
+          detail: [{ ul: [
+            "récupérer la vraie adresse e-mail des clients Booking pour les faire revenir en direct, sans commission ;",
+            "vendre des extras avant l'arrivée (petit-déjeuner, surclassement, spa) ;",
+            "demander un avis à tous les clients après le séjour, et repérer les mécontents avant qu'ils écrivent en ligne ;",
+            "répondre aux questions répétitives (parking, horaires, code d'entrée) sans que la réception décroche."
+          ] }] },
+        { q: "Qu'est-ce que ça fait exactement ?",
+          court: "six blocs, tous reliés au PMS.",
+          detail: [{ ul: [
+            "**communication** : e-mail, SMS, WhatsApp, et une messagerie qui regroupe toutes les réponses des clients ;",
+            "**parcours automatiques** : confirmation, pré-séjour, pendant le séjour, après le séjour ;",
+            "**CRM** : fiche client complète, historique, segments ;",
+            "**revenus** : ventes additionnelles, catalogue d'extras, newsletters, campagnes ;",
+            "**expérience** : formulaires, pré-check-in, enquêtes de satisfaction, avis ;",
+            "**paiements** : liens de paiement, acomptes, statistiques et rapports."
+          ] }] },
+        { q: "Il y a de l'intelligence artificielle ?",
+          court: "oui, en option : un assistant qui répond aux clients 24 h sur 24 et aide à écrire les e-mails.",
+          detail: ["l'agent IA répond en plus de 30 langues par WhatsApp, SMS et e-mail, et passe la main à la réception si besoin. L'assistant d'e-mails propose des modèles prêts à l'emploi, aux couleurs de l'hôtel."] },
+        { q: "Et pour mes clients Booking ?",
+          court: "c'est notre point fort. Dans les hôtels équipés, environ 1 client Booking sur 4 nous laisse sa vraie adresse, et l'hôtel peut ensuite le faire revenir en direct.",
+          detail: ["avant l'arrivée, le client reçoit un formulaire de préparation de séjour qui lui demande sa vraie adresse. Un guide gratuit l'explique : « Faire revenir les clients OTA en direct »."] }
+      ] },
+      { title: "Questions techniques", items: [
+        { q: "Ça marche avec mon PMS ?",
+          court: "très probablement : on est connectés à 12 PMS. Lequel utilisez-vous ?",
+          detail: ["connectés aujourd'hui : Mews, Thaïs, Opera Cloud, Medialog, Misterbooking, Asterio, Apaleo, Vega, Beds24, Zeswitch, Reservit, Lean PMS. En cours de développement : Chloé, Infhotik, Protel, Galaxy Hotels. Un autre PMS ? « Passez au stand, on regarde ensemble. » Ne jamais promettre un PMS absent de cette liste."] },
+        { q: "Et mes autres outils ?",
+          court: "on se branche aussi aux serrures connectées, aux paiements et aux avis.",
+          detail: ["serrures Sesame et Igloohome ; paiements Stripe, PayZen, SystemPay et Thaïs ; avis Google, TripAdvisor, Booking.com et Airbnb ; boîtes Gmail et Microsoft 365 ; Zapier et n8n pour le reste."] },
+        { q: "C'est long à mettre en place ?",
+          court: "le PMS est branché et les premiers messages partent en 48 heures.",
+          detail: ["le parcours complet (pré-séjour, offres, enquête, avis) se met en place en 1 à 2 semaines, avec notre équipe. L'hôtelier n'a rien à installer : tout se passe dans le navigateur."] },
+        { q: "Il faut une formation ? C'est compliqué ?",
+          court: "non, on configure avec vous, puis ça tourne tout seul.",
+          detail: ["des modèles d'e-mails et de scénarios sont prêts à l'emploi. Le support répond 7 jours sur 7."] },
+        { q: "Où sont mes données ? Et le RGPD ?",
+          court: "hébergées en France, conformes au RGPD, et elles restent à l'hôtel.",
+          detail: ["l'hôtel reste propriétaire de ses données et peut tout exporter à tout moment. Les clients peuvent se désinscrire en un clic. Chaque hôtel ne voit que ses propres clients."] },
+        { q: "Les e-mails arrivent vraiment ? Pas en spam ?",
+          court: "oui : 94 % des e-mails sont délivrés, et ils partent depuis l'adresse de l'hôtel.",
+          detail: ["mesuré sur 12 mois dans 117 établissements. Les messages WhatsApp sont lus à 84 %."] }
+      ] },
+      { title: "Questions sur le prix et l'engagement", items: [
+        { q: "Ça coûte combien ?",
+          court: "de 69 à 249 € HT par mois et par hôtel, selon la formule.",
+          detail: [
+            { table: { head: ["Formule", "Prix 2026 (HT par mois)", "Au 1er janvier 2027", "Pour qui"], rows: [
+              ["Communication", "69 €", "99 €", "Messages automatiques avant, pendant et après le séjour"],
+              ["Conversion (la plus choisie)", "149 €", "179 €", "En plus : ventes additionnelles, enquêtes, avis"],
+              ["All Inclusive", "249 €", "299 €", "Tous les modules, sans limite, account manager dédié"]
+            ] } },
+            "Modules en option, de 19 à 49 € par mois : avis et e-réputation, agent IA, paiements, fidélité, application client. Les SMS et WhatsApp se paient à l'usage."
+          ] },
+        { q: "Il y a une offre salon ?",
+          court: "oui, et elle vaut le détour au stand.",
+          detail: [{ ul: [
+            "signé pendant le salon : -10 % sur le tarif 2026, bloqué tant que le contrat dure, plus 2 mois offerts ;",
+            "signé après le salon : 2 mois offerts jusqu'au 30 novembre, et tarif 2026 bloqué jusqu'au 31 décembre.",
+            "Le tarif bloqué concerne l'abonnement, pas les SMS ni WhatsApp. Pour un groupe, les 2 mois sont offerts par hôtel."
+          ] }] },
+        { q: "Je suis engagé combien de temps ?",
+          court: "sans engagement." },
+        { q: "Il y a un essai gratuit ?",
+          court: "pas d'essai, mais une démo sur un vrai hôtel au stand, puis une démo personnalisée en visio avec votre PMS." },
+        { q: "C'est cher.",
+          court: "une seule réservation récupérée en direct par mois rembourse souvent l'abonnement.",
+          detail: ["sur une nuit à 150 €, Booking prend de 22 à 37 € de commission. Le diagnostic du stand chiffre le gain pour l'hôtel en 5 minutes. Proposez-le."] }
+      ] },
+      { title: "Questions sur les résultats et la concurrence", items: [
+        { q: "Vous avez des résultats ?",
+          court: "oui, mesurés sur nos hôtels.",
+          detail: [
+            { ul: [
+              "environ 1 client Booking sur 4 laisse sa vraie adresse via notre formulaire, dans les hôtels équipés ;",
+              "94 % des e-mails sont délivrés, et 84 % des WhatsApp sont lus ;",
+              "91 % des liens de paiement sont réglés dans les 2 heures ;",
+              "5 % des offres envoyées 3 à 7 jours avant l'arrivée sont achetées ;",
+              "plus de 300 hôtels, plus de 2 millions de messages envoyés."
+            ] },
+            "Ne jamais promettre un résultat « garanti » : dire « dans les hôtels qui le font »."
+          ] },
+        { q: "Qui l'utilise ?",
+          court: "plus de 300 hôtels, indépendants et groupes.",
+          detail: ["pour des noms d'hôtels clients, renvoyez vers Mounir ou Soufiane au stand. Ne citez aucun nom vous-même."] },
+        { q: "Qui êtes-vous ?",
+          court: "une société française, née à Toulouse en 2019 (Utelys)." },
+        { q: "J'ai déjà un outil (ou mon PMS fait déjà des e-mails).",
+          court: "très bien, on vous montre en 5 minutes ce qu'on fait en plus.",
+          detail: ["l'avantage est d'avoir tout au même endroit : messages, avis, ventes additionnelles, paiements, messagerie, et une fiche client complète. Ne critiquez jamais un concurrent : posez une question (« Qu'est-ce qui vous manque aujourd'hui ? ») et invitez au stand."] },
+        { q: "Vous êtes différents de qui ?",
+          court: "d'un PMS, d'une application d'accueil ou d'un outil d'e-mailing : nous sommes le CRM qui relie tout.",
+          detail: ["un PMS gère les réservations, nous gérons la relation avec le client. Une application d'accueil sert pendant le séjour ; nous couvrons tout le parcours, de la réservation à la fidélisation."] }
+      ] },
+      { title: "Questions sur le salon", items: [
+        { q: "C'est quoi ce flyer ?",
+          court: "le calendrier marketing de l'hôtelier : les 12 temps forts de l'année et quand écrire à vos clients.",
+          detail: ["le QR code ouvre les dates exactes de l'année et, pour chaque temps fort (Saint-Valentin, ponts de mai, Black Friday, réveillons…), un modèle d'e-mail à copier gratuitement, même sans être client. Règle d'or : lancer la campagne 4 semaines avant, relancer une semaine avant."] },
+        { q: "Vous avez de la documentation ?",
+          court: "trois guides gratuits, à recevoir par e-mail via le QR du flyer.",
+          detail: [{ ul: [
+            "faire revenir les clients OTA en direct (nouveau) ;",
+            "générer plus de revenus à chaque séjour (ventes additionnelles) ;",
+            "obtenir plus d'avis positifs, automatiquement (post-séjour).",
+            "Ils sont aussi sur trigger-flow.com/fr/equiphotel."
+          ] }] },
+        { q: "C'est quoi le diagnostic ?",
+          court: "5 minutes sur iPad au stand : un score de marketing direct sur 100 et 3 actions prioritaires pour votre hôtel.",
+          detail: ["l'hôtelier donne quelques chiffres (chambres, prix moyen, taux d'occupation, part Booking). Il voit ce que lui coûtent les commissions et ce qu'il peut regagner en direct, puis reçoit le résultat par e-mail. Ce sont des estimations indicatives. C'est gratuit et sans engagement."] },
+        { q: "Je peux voir une démo ?",
+          court: "oui, au stand H006, sur un vrai hôtel de démonstration, en 20 minutes.",
+          detail: ["pour être sûr d'avoir quelqu'un, il peut réserver un créneau sur trigger-flow.com/fr/equiphotel. Après le salon : une démo de 30 minutes en visio, construite à partir de son PMS."] },
+        { q: "C'est où, votre stand ?",
+          court: "Pavillon 7.3, stand H006.",
+          detail: ["salon ouvert de 9 h 30 à 18 h 30, jusqu'à 17 h 30 le jeudi. Apéro TriggerFlow le lundi 2 novembre, de 16 h 30 à 18 h 30."] }
+      ] }
+    ],
+    relais: {
+      intro: "Une question sans réponse ici : ne devinez jamais. Dites « Bonne question, l'équipe au stand vous répond précisément », notez-la, et posez-la sur le groupe WhatsApp du salon.",
+      items: [
+        { b: "Toujours renvoyer au stand", t: "prix d'un groupe ou d'un réseau, PMS absent de la liste, intégration sur mesure, contrat, données d'un client, nom de nos clients." },
+        { b: "Ne jamais promettre", t: "un PMS non listé, un résultat chiffré « garanti », une remise qui n'est pas l'offre salon." },
+        { b: "Avant de le quitter", ol: [
+          "son nom et son hôtel ;",
+          "le flyer dans les mains ;",
+          "un moment précis pour passer au stand (« dans 10 minutes ? », « à l'apéro de 16 h 30 ? ») ;",
+          "s'il est pressé : il scanne le QR devant vous."
+        ] },
+        { b: "Les trois questions qui qualifient", t: "combien de chambres ? quel PMS ? quelle part de vos réservations vient de Booking ? Transmettez les réponses à l'équipe du stand." }
+      ]
+    }
+  };
+
   /* ---------- Progression (gardée sur ce téléphone uniquement) ---------- */
   var STORE_KEY = "tf-equiphotel-v3";
   var P = { steps: {}, stand: {}, quizBest: null, demo: false };
@@ -700,6 +940,7 @@ h2 { font-size: 26px; line-height: 1.12; }
 
   function home() {
     setTop(null);
+    if (location.hash) { try { history.replaceState(null, "", location.pathname + location.search); } catch (e) { } }
     var s = countDone(P.steps), st = countDone(P.stand);
     function status(done, total) {
       if (done >= total) return '<span class="status ok">Terminé</span>';
@@ -717,6 +958,8 @@ h2 { font-size: 26px; line-height: 1.12; }
         '<p class="lead">Du 2 au 5 novembre, pavillon 7.3, stand H006. Forme-toi en 15 minutes avec le séjour de Julie, puis garde les fiches sous la main sur le stand.</p>' +
         rulerHtml(-1) +
       "</section>" +
+      '<p class="label">Dans les allées</p>' +
+      '<button type="button" class="module anti-entry" data-go="antiseche"><span class="num" aria-hidden="true">' + icon("chat") + "</span><span><b>Antisèche</b><small>Les questions des hôteliers, la réponse à dire, le détail si on creuse</small></span>" + icon("next") + "</button>" +
       '<p class="label">Se former</p>' +
       '<section class="modules" aria-label="Modules">' +
         '<button type="button" class="module" data-go="steps"><span class="num">1</span><span><b>Le séjour de Julie</b><small>6 étapes · 5 min</small></span>' + status(s, ETAPES.length) + "</button>" +
@@ -984,6 +1227,105 @@ h2 { font-size: 26px; line-height: 1.12; }
     setBar(null, { label: "Retour au sommaire", fn: home, icon: false });
   }
 
+  /* ---------- Antisèche : à consulter vite sur téléphone, dans les allées ----------
+     Sections repliables ; chaque question en titre, la réponse courte toujours visible, le détail dépliable.
+     La recherche filtre questions, mots et fiches (sans tenir compte des accents) et ouvre les sections trouvées. */
+  function antiInline(s) { return esc(s).replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>"); }
+  function antiTable(t) {
+    return '<div class="anti-table"><table><thead><tr>' + t.head.map(function (h) { return "<th>" + esc(h) + "</th>"; }).join("") + "</tr></thead><tbody>" +
+      t.rows.map(function (r) { return "<tr>" + r.map(function (c, i) { return i === 0 ? '<th scope="row">' + esc(c) + "</th>" : '<td data-label="' + esc(t.head[i]) + '">' + esc(c) + "</td>"; }).join("") + "</tr>"; }).join("") + "</tbody></table></div>";
+  }
+  function antiBlocks(blocks) {
+    return blocks.map(function (b) {
+      if (typeof b === "string") return "<p>" + antiInline(b) + "</p>";
+      if (b.ul) return "<ul>" + b.ul.map(function (x) { return "<li>" + antiInline(x) + "</li>"; }).join("") + "</ul>";
+      if (b.table) return antiTable(b.table);
+      return "";
+    }).join("");
+  }
+  /* Texte à plat, pour la recherche. */
+  function antiText(blocks) {
+    return (blocks || []).map(function (b) {
+      if (typeof b === "string") return b;
+      if (b.ul) return b.ul.join(" ");
+      if (b.table) return b.table.head.concat.apply(b.table.head, b.table.rows).join(" ");
+      return "";
+    }).join(" ");
+  }
+  function antiFold(s) { return String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, ""); }
+  function antiPoints(items) {
+    return '<ul class="anti-points">' + items.map(function (it) {
+      return "<li><b>" + esc(it.b) + "</b> :" + (it.t ? " " + antiInline(it.t) : "") +
+        (it.ol ? "<ol>" + it.ol.map(function (x) { return "<li>" + antiInline(x) + "</li>"; }).join("") + "</ol>" : "") + "</li>";
+    }).join("") + "</ul>";
+  }
+  function antiPointsText(items) { return items.map(function (i) { return i.b + " " + (i.t || "") + " " + (i.ol || []).join(" "); }).join(" "); }
+  /* Le détail s'ouvre de lui-même quand la recherche ne trouve le mot que dedans : sinon on ne verrait pas pourquoi la question sort. */
+  function antiQuestion(item, n) {
+    var openDetail = n && antiFold(item.q + " " + item.court).indexOf(n) < 0;
+    return '<article class="anti-q"><h3>« ' + esc(item.q) + " »</h3>" +
+      '<p class="anti-short"><span class="anti-tag">Court</span>' + antiInline(item.court) + "</p>" +
+      (item.detail ? '<details class="anti-more"' + (openDetail ? " open" : "") + '><summary>Détail</summary><div class="prose">' + antiBlocks(item.detail) + "</div></details>" : "") +
+      "</article>";
+  }
+  function antiMatch(item, n) { return !n || antiFold(item.q + " " + item.court + " " + antiText(item.detail)).indexOf(n) >= 0; }
+  function antiQuestions(items, n) { return items.map(function (it) { return antiQuestion(it, n); }).join(""); }
+
+  /* Sections dans l'ordre du document. `count` dit combien d'éléments correspondent à la recherche, `body` les rend. */
+  var ANTI_SECTIONS = [
+    { title: "Votre rôle en 30 secondes", open: true, render: function (n) {
+      var hit = !n || antiFold(ANTI.role.intro + " " + antiPointsText(ANTI.role.items)).indexOf(n) >= 0;
+      return { count: hit ? 1 : 0, body: '<div class="prose"><p>' + esc(ANTI.role.intro) + "</p></div>" + antiPoints(ANTI.role.items) };
+    } },
+    { title: "Les deux flyers que vous distribuez", render: function (n) {
+      var f = ANTI.flyers;
+      var fiche = !n || antiFold(f.intro + " " + antiText([{ table: f.table }]) + " " + f.legendTitle + " " + antiPointsText(f.legend)).indexOf(n) >= 0;
+      var qs = f.items.filter(function (it) { return antiMatch(it, n); });
+      return { count: (fiche ? 1 : 0) + qs.length, body:
+        (fiche ? '<div class="prose"><p>' + esc(f.intro) + "</p></div>" + antiTable(f.table) + '<p class="anti-sub">' + esc(f.legendTitle) + "</p>" + antiPoints(f.legend) : "") +
+        antiQuestions(qs, n) };
+    } },
+    { title: "Les mots de l'hôtellerie à connaître", render: function (n) {
+      var words = ANTI.mots.filter(function (w) { return !n || antiFold(w[0] + " " + w[1]).indexOf(n) >= 0; });
+      return { count: words.length, body: '<dl class="anti-words">' + words.map(function (w) { return "<dt>" + esc(w[0]) + "</dt><dd>" + esc(w[1]) + "</dd>"; }).join("") + "</dl>" };
+    } }
+  ].concat(ANTI.sections.map(function (s) {
+    return { title: s.title, questions: true, render: function (n) {
+      var qs = s.items.filter(function (it) { return antiMatch(it, n); });
+      return { count: qs.length, body: antiQuestions(qs, n) };
+    } };
+  })).concat([
+    { title: "Quand passer la main", render: function (n) {
+      var hit = !n || antiFold(ANTI.relais.intro + " " + antiPointsText(ANTI.relais.items)).indexOf(n) >= 0;
+      return { count: hit ? 1 : 0, body: '<div class="prose"><p>' + esc(ANTI.relais.intro) + "</p></div>" + antiPoints(ANTI.relais.items) };
+    } }
+  ]);
+
+  function antiseche() {
+    setTop({ title: "Antisèche des allées", pct: 100 });
+    try { history.replaceState(null, "", "#antiseche"); } catch (e) { }
+    paint(
+      '<div class="stack"><p class="eyebrow">Equip\'Hôtel · dans les allées</p><h2>Antisèche : les questions des hôteliers</h2></div>' +
+      '<div class="stack"><label class="label" for="anti-q">Chercher</label><input id="anti-q" class="search" type="search" placeholder="Par exemple : Booking, prix, Mews, RGPD" autocomplete="off"></div>' +
+      '<div class="anti" id="anti-list"></div>'
+    );
+    var list = document.getElementById("anti-list");
+    function draw(f) {
+      var n = antiFold(f.trim());
+      var html = ANTI_SECTIONS.map(function (s) {
+        var r = s.render(n);
+        if (n && !r.count) return "";
+        var open = n || s.open ? " open" : "";
+        var badge = s.questions ? '<span class="anti-count">' + r.count + "</span>" : "";
+        return '<details class="anti-sec"' + open + "><summary><span>" + esc(s.title) + "</span>" + badge + '</summary><div class="anti-body">' + r.body + "</div></details>";
+      }).join("");
+      list.innerHTML = html || '<p class="empty">Rien ne correspond. Ne devinez pas : « Bonne question, l\'équipe au stand vous répond précisément », puis posez-la sur le groupe WhatsApp du salon.</p>';
+    }
+    document.getElementById("anti-q").addEventListener("input", function (e) { draw(e.target.value); });
+    draw("");
+    setBar(null, { label: "Retour au sommaire", fn: home, icon: false });
+  }
+
   /* ---------- Panneau de définition ---------- */
   var lastFocus = null;
   function openSheet(key) {
@@ -1021,12 +1363,14 @@ h2 { font-size: 26px; line-height: 1.12; }
     if (go === "decouverte") { decouverte(); return; }
     if (go === "faq") { faq(); return; }
     if (go === "offre") { offre(); return; }
+    if (go === "antiseche") { antiseche(); return; }
     if (t.hasAttribute("data-stand")) { stand(+t.getAttribute("data-stand")); return; }
     if (t.hasAttribute("data-step")) { step(+t.getAttribute("data-step")); return; }
   });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeSheet(); });
 
-  home();
+  /* Lien direct vers l'antisèche (…/formation-salon#antiseche), à garder en favori sur le téléphone. */
+  if (location.hash === "#antiseche") antiseche(); else home();
 })();
 </script>
 </body>
