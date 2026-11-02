@@ -2371,11 +2371,13 @@
         "book": "Réserver une démo"
       },
       "whitepaper": {
-        "emailHint": "Une seule information demandée : l'adresse à laquelle envoyer le guide.",
+        "emailHint": "Une seule information demandée : votre adresse e-mail. Le guide se télécharge juste après.",
         "submit": "Recevoir les 5 automatisations",
-        "successTitle": "C'est envoyé.",
-        "successBody": "Vous le recevez par email dans les prochaines heures. Pensez à vérifier vos indésirables si vous ne le voyez pas arriver.",
-        "privacy": "Votre email sert à vous envoyer le guide. Vous pouvez vous désabonner en un clic, et rien n'est revendu à des tiers."
+        "successTitle": "C'est enregistré.",
+        "successReady": "Votre guide est prêt :",
+        "download": "Télécharger le guide",
+        "successFallback": "Merci, nous revenons vers vous très vite avec le guide.",
+        "privacy": "Votre email sert à vous donner le guide. Vous pouvez vous désabonner en un clic, et rien n'est revendu à des tiers."
       }
     },
     "finalCta": {
@@ -2388,8 +2390,8 @@
       "whitepaper": {
         "title": "Les 5 automatisations qui rapportent le plus",
         "subtitle": "Nous avons repris les ventes de nos établissements clients pour identifier ce qui se vend vraiment, quand l'envoyer et sur quel canal. Tout est dans ce guide.",
-        "formTitle": "Où faut-il l'envoyer ?",
-        "format": "Format PDF, envoyé par email. Fondé sur les ventes réellement mesurées chez des hôtels indépendants, résultats exprimés en taux.",
+        "formTitle": "Votre adresse, et le guide est à vous",
+        "format": "Format PDF, à télécharger tout de suite. Fondé sur les ventes réellement mesurées chez des hôtels indépendants, résultats exprimés en taux.",
         "chapters": {
           "timing": "Le bon moment pour chaque offre, et pourquoi envoyer le jour de l'arrivée divise les ventes par trois.",
           "channel": "Email, SMS ou WhatsApp : ce que change réellement le canal, comparé à l'intérieur d'un même établissement.",
@@ -2611,17 +2613,19 @@
     },
     "form": {
       "email": "Votre adresse e-mail",
-      "emailHint": "Une seule adresse, rien d'autre à remplir. Le guide arrive par e-mail.",
+      "emailHint": "Une seule adresse, rien d'autre à remplir. Le guide se télécharge juste après.",
       "submit": "Recevoir le guide",
       "successTitle": "C'est enregistré.",
-      "successBody": "Le guide du post-séjour arrive par e-mail dans les prochaines minutes. Pensez à regarder vos indésirables s'il se fait attendre.",
-      "privacy": "Votre adresse sert à vous envoyer ce guide et nos contenus pour hôteliers. Désinscription en un clic, rien n'est revendu à des tiers.",
+      "successReady": "Votre guide est prêt :",
+      "download": "Télécharger le guide",
+      "successFallback": "Merci, nous revenons vers vous très vite avec le guide.",
+      "privacy": "Votre adresse sert à vous donner ce guide et à vous adresser nos contenus pour hôteliers. Désinscription en un clic, rien n'est revendu à des tiers.",
       "error": "L'envoi n'a pas abouti. Réessayez dans un instant."
     },
     "finalCta": {
       "title": "Recevez le guide du post-séjour",
       "subtitle": "L'étude complète, les cinq règles avec leurs taux, le modèle d'e-mail et la checklist en huit points.",
-      "formTitle": "Où envoyons-nous le guide ?",
+      "formTitle": "Votre adresse, et le guide est à vous",
       "format": "PDF, lisible en vingt minutes, sans jargon.",
       "chapters": {
         "funnel": "Le vrai parcours d'un avis, de l'envoi jusqu'à l'avis terminé",
@@ -2635,6 +2639,291 @@
       "cta": "Réserver 30 minutes",
       "bandTitle": "Vous voulez savoir lequel des cinq réglages vous coûte le plus ?",
       "bandBody": "Nous regardons vos e-mails post-séjour actuels et nous vous disons par quoi commencer. Trente minutes, sans engagement."
+    },
+    "footer": {
+      "legal": "Mentions légales",
+      "privacy": "Politique de confidentialité",
+      "terms": "CGV",
+      "copyright": "© {year} TriggerFlow. Tous droits réservés."
+    }
+  },
+  "lpClientsOta": {
+    "cta": {
+      "compare": "Comparer les deux messages",
+      "simulate": "Chiffrer chez vous",
+      "bookDemo": "Réserver 30 minutes",
+      "guide": "Recevoir le guide"
+    },
+    "hero": {
+      "badge": "Étude été 2026, hôtels indépendants",
+      "titleLead": "Un client OTA sur quatre vous donne sa vraie adresse,",
+      "titleStatement": "si vous la lui demandez au bon moment.",
+      "subtitle": "Booking.com et Expedia vous amènent le client une fois, avec une adresse relais qui ne vous appartient pas. Nous avons suivi un été complet de clients OTA chez des hôtels indépendants, du premier message jusqu'à la vraie adresse saisie. Le moment du premier message pèse plus que tout le reste.",
+      "funnelTitle": "Sur 100 clients venus d'une OTA",
+      "funnelNote": "Le parcours casse à l'ouverture du formulaire, pas après : trois clients sur quatre qui l'ouvrent vont au bout. Taux mesurés par client OTA, vérifiables dans votre propre base."
+    },
+    "funnel": {
+      "guests": "Clients avec une adresse relais OTA",
+      "reached": "Reçoivent un formulaire qui demande l'adresse",
+      "reachedNote": "Le message part presque toujours : ce n'est pas l'envoi qui manque.",
+      "formOpened": "Ouvrent le formulaire",
+      "formOpenedNote": "Le tri se fait ici : quand le message part, sur quel canal, et ce qu'il promet.",
+      "formSent": "L'envoient",
+      "formSentNote": "Trois clients sur quatre qui ouvrent le formulaire l'envoient.",
+      "captured": "Donnent leur vraie adresse",
+      "capturedNote": "Presque tous ceux qui l'envoient laissent une adresse exploitable."
+    },
+    "trust": {
+      "figures": {
+        "capture": "des clients OTA laissent leur vraie adresse dans les hôtels où le formulaire tourne",
+        "hotelSpread": "d'écart de capture entre les 10 % d'hôtels les plus efficaces et les 10 % les moins efficaces",
+        "ruleSpread": "entre un premier message envoyé dès la réservation et un premier message le jour d'arrivée"
+      },
+      "title": "Plus de 400 établissements équipés, connectés aux PMS des hôtels indépendants",
+      "turnkey": "Modèles de formulaire et d'e-mail livrés préréglés",
+      "pms": "Chaque réservation déclenche l'envoi depuis votre PMS",
+      "gdpr": "Conforme RGPD, DPA signable",
+      "support": "Équipe et support en français"
+    },
+    "comparator": {
+      "eyebrow": "Comparatif",
+      "title": "Les deux messages, côte à côte",
+      "subtitle": "Le même client Booking.com, le même séjour, deux façons de lui écrire pour lui demander son adresse. Votre message ressemble à l'un des deux.",
+      "reconstructionTitle": "Ces deux messages sont des reconstructions.",
+      "reconstructionBody": "Nous les avons recomposés d'après les réglages que l'étude compare. Ce ne sont pas des captures d'e-mails réels : aucun établissement n'est cité ni reconnaissable. Seuls les taux sont des mesures.",
+      "effective": {
+        "badge": "Le message qui ramène l'adresse",
+        "timing": "Envoi : dès la réservation, plus de deux semaines avant l'arrivée",
+        "button": "Préparer mon séjour",
+        "subject": "Préparez votre séjour",
+        "body": "Votre réservation est confirmée. Laissez-nous l'adresse à laquelle vous joindre directement : nous y enverrons les informations pratiques de votre séjour.",
+        "footnote": "Moins de 400 caractères de texte. Une relance part avant l'arrivée si le client n'a pas répondu."
+      },
+      "ineffective": {
+        "badge": "Le message qui ne la ramène pas",
+        "timing": "Envoi : le jour de l'arrivée",
+        "button": "Faire mon check-in en ligne",
+        "subject": "Gagnez du temps : faites votre check-in en ligne",
+        "body": "Afin de faciliter votre arrivée et de réduire votre attente à la réception, nous vous invitons à compléter dès à présent votre check-in en ligne. Vous pourrez y renseigner votre heure d'arrivée, vos coordonnées, vos préférences de chambre et vos demandes particulières. La réception est ouverte de 7 h à 23 h, le parking est disponible sur réservation et le petit-déjeuner est servi de 7 h à 10 h 30. La taxe de séjour est à régler sur place.",
+        "footnote": "Environ 500 caractères de texte, envoyé une seule fois."
+      },
+      "annotationsTitle": "Les trois différences, et ce qu'elles pèsent",
+      "annotations": {
+        "a1": {
+          "title": "Le moment du premier message",
+          "body": "Dans les hôtels où le premier message part dès la réservation, 56,4 % des clients OTA laissent leur vraie adresse ; quand il part le jour d'arrivée, 19,0 %. Vérifié dans 10 hôtels sur 10 qui font les deux."
+        },
+        "a2": {
+          "title": "L'objet",
+          "body": "« Préparez votre séjour » : 38,8 %. « Gagnez du temps » ou « Check-in en ligne » : 27,8 %. L'un annonce le séjour, l'autre une démarche administrative. Vérifié dans 5 hôtels sur 6 qui font les deux."
+        },
+        "a3": {
+          "title": "La longueur",
+          "body": "Moins de 400 caractères de texte : 34,5 %. Entre 400 et 1 000 : 25,7 %. Vérifié dans 7 hôtels sur 8. Au-delà de 1 000, on remonte à 32,3 % : c'est le message moyen qui perd, pas le message long."
+        }
+      },
+      "methodNote": "Les taux de chaque différence sont mesurés un critère à la fois, sur la même population de clients OTA : ils ne s'additionnent pas. Ce sont des corrélations, pas des preuves de cause ; chacune se retrouve à l'intérieur d'un même hôtel qui pratique les deux réglages.",
+      "subjectLabel": "Objet",
+      "greeting": "Bonjour,"
+    },
+    "gap": {
+      "title": "L'erreur la plus coûteuse",
+      "subtitle": "Elle concerne près d'un client OTA sur trois dans les hôtels de l'étude, et elle se corrige sans changer de PMS.",
+      "noMessage": {
+        "figure": "11,0 % contre 35,8 %",
+        "statement": "Aucun message avant l'arrivée",
+        "consequence": "29,9 % des clients OTA ne reçoivent ni e-mail, ni SMS, ni WhatsApp avant de passer la porte. Parmi eux, 11,0 % finissent par laisser leur vraie adresse, contre 35,8 % chez ceux qui ont reçu au moins un message. Une réservation prise la veille, un envoi réglé trop tard : ce client repart avec son adresse relais."
+      }
+    },
+    "evidence": {
+      "title": "Les cinq règles",
+      "subtitle": "Chaque règle oppose deux taux de capture, mesurés par client OTA : la part des clients venus d'une OTA qui finissent par vous donner leur vraie adresse. Ce sont des corrélations ; chacune se retrouve à l'intérieur d'un même hôtel qui pratique les deux réglages.",
+      "rateValue": "{rate, number, ::.0} %",
+      "rule1": {
+        "title": "Demander tôt",
+        "body": "Le facteur le plus puissant de l'étude. Plus de deux semaines avant l'arrivée, le client a le temps de lire et rien d'autre à faire ; le jour même, il est sur la route.",
+        "best": "Dès la réservation",
+        "worst": "Le jour d'arrivée"
+      },
+      "rule2": {
+        "title": "Relancer",
+        "body": "Un seul message : 25,8 %. Deux : 40,5 %. Trois et plus pour le même séjour : 64,8 %. Le deuxième message n'agace pas, il rattrape ceux qui n'avaient pas ouvert le premier.",
+        "best": "3 messages et plus",
+        "worst": "Un seul message"
+      },
+      "rule3": {
+        "title": "Ajouter WhatsApp",
+        "body": "L'e-mail part vers l'adresse relais, qui transmet mal et se lit peu. WhatsApp arrive sur le téléphone du client, sans intermédiaire.",
+        "best": "E-mail + WhatsApp",
+        "worst": "E-mail seul"
+      },
+      "withinHotels": "Vérifié dans {wins} hôtels sur {of} qui pratiquent les deux.",
+      "rule4": {
+        "title": "Un objet qui parle du séjour",
+        "body": "« Préparez votre séjour » donne au client une raison d'ouvrir. « Gagnez du temps » et « Check-in en ligne » lui promettent une démarche administrative.",
+        "best": "Préparer le séjour",
+        "worst": "Gagner du temps"
+      },
+      "rule5": {
+        "title": "Un e-mail court",
+        "body": "Moins de 400 caractères de texte visible : 34,5 %, contre 25,7 % entre 400 et 1 000. Mais de 1 000 à 2 000, on remonte à 32,3 % : le court bat le moyen, ce n'est pas « plus c'est long, pire c'est ».",
+        "best": "Moins de 400 caractères",
+        "worst": "400 à 1 000"
+      },
+      "practices": {
+        "title": "Deux bonnes pratiques, pas encore des règles",
+        "dedicatedForm": {
+          "title": "Un formulaire dédié et court",
+          "body": "Les hôtels qui demandent l'adresse dans un formulaire à part, qui ne demande que les coordonnées, captent 52,0 % de leurs clients OTA, contre 33,4 % quand le champ est glissé dans une préparation de séjour avec catalogue."
+        },
+        "emailFirst": {
+          "title": "Le champ e-mail en premier",
+          "body": "En première question : 46,2 %. Plus loin sur la première page, après l'heure d'arrivée et les préférences de chambre : 32,2 %."
+        },
+        "limit": "Ces écarts s'observent d'un hôtel à l'autre, pas à l'intérieur d'un même hôtel : trop peu d'hôtels font les deux pour conclure, et ceux qui les font ne confirment pas toujours l'écart. Nous les donnons comme des bonnes pratiques, pas comme des règles mesurées."
+      }
+    },
+    "demoBridge": {
+      "cta": "Réserver 30 minutes",
+      "bandTitle": "Combien de vos clients OTA ont une vraie adresse dans votre base ?",
+      "bandBody": "Nous faisons l'état des lieux avec vous, gratuitement : la part de vos clients OTA déjà joignables, et le réglage par lequel commencer. Trente minutes, sans engagement."
+    },
+    "simulator": {
+      "eyebrow": "Simulateur",
+      "title": "Ce que vaut un client OTA qui revient en direct",
+      "subtitle": "Réglez les curseurs sur votre hôtel. Toutes les valeurs par défaut sont des hypothèses illustratives, à remplacer par les vôtres.",
+      "groups": {
+        "volume": "Votre hôtel",
+        "capture": "Récupérer la vraie adresse, en trois temps",
+        "return": "Faire revenir en direct"
+      },
+      "otaStaysPerYear": {
+        "label": "Séjours OTA par an",
+        "hint": "Réservations venues de Booking.com, Expedia et des autres plateformes.",
+        "suffix": "séjours"
+      },
+      "averageBasket": {
+        "label": "Montant moyen d'un séjour",
+        "hint": "Hébergement seul, toutes nuits comprises.",
+        "suffix": "€"
+      },
+      "commissionRate": {
+        "label": "Commission de l'OTA",
+        "hint": "Le taux prévu dans votre contrat.",
+        "suffix": "%"
+      },
+      "captureBeforeArrival": {
+        "label": "Avant l'arrivée",
+        "hint": "Formulaire de préparation envoyé à la réservation. Hypothèse illustrative.",
+        "suffix": "%"
+      },
+      "captureAtArrival": {
+        "label": "À l'arrivée",
+        "hint": "Parmi les clients encore sans adresse : demande à l'enregistrement. Hypothèse illustrative.",
+        "suffix": "%"
+      },
+      "captureSurvey": {
+        "label": "Après le séjour",
+        "hint": "Parmi ceux qui restent : l'enquête de satisfaction. Hypothèse illustrative.",
+        "suffix": "%"
+      },
+      "directReturnRate": {
+        "label": "Clients captés qui reviennent en direct",
+        "hint": "Dans les 24 mois. Hypothèse illustrative : nous ne publions pas encore de mesure.",
+        "suffix": "%"
+      },
+      "resultLabel": "Commission que vous ne versez pas",
+      "perYear": "par an, sur les séjours revenus en direct",
+      "captured": "Clients OTA dont vous avez la vraie adresse",
+      "returns": "Séjours revenus en direct",
+      "revenue": "Chiffre d'affaires de ces séjours",
+      "legend": {
+        "otaOnly": "Contact OTA seul",
+        "captured": "Contact récupéré",
+        "returned": "Revenu en direct"
+      },
+      "gridLabel": "Sur 100 clients OTA : {captured} vous laissent leur vraie adresse, {returned} reviennent réserver en direct.",
+      "assumptions": "Calcul : les trois étapes se cumulent sur les clients encore sans adresse, puis séjours OTA × part captée × part revenue en direct × montant moyen × commission. Par défaut, les trois étapes totalisent environ 28 %, la part captée mesurée par l'étude ; leur répartition, le retour en direct, le panier et la commission sont des hypothèses. Un ordre de grandeur, pas une promesse : un client qui revient n'aurait pas forcément réservé de nouveau par l'OTA."
+    },
+    "how": {
+      "title": "Le formulaire à copier",
+      "subtitle": "Un formulaire dédié, court, qui demande l'adresse en premier et dit pourquoi, puis la checklist en huit points.",
+      "form": {
+        "header": "Formulaire dédié",
+        "title": "Restons en contact",
+        "timing": "Envoi : dès la réservation, puis relance avant l'arrivée, par e-mail et WhatsApp",
+        "intro": "Votre réservation est confirmée. Indiquez-nous l'adresse à laquelle vous joindre directement : nous y enverrons votre confirmation et les informations pratiques de votre séjour.",
+        "fieldLabel": "Votre adresse e-mail personnelle",
+        "fieldValue": "camille.martin@exemple.fr",
+        "fieldHint": "Première question du formulaire.",
+        "notice": "Vous recevrez aussi les nouvelles de l'hôtel. Désinscription en un clic, à tout moment.",
+        "button": "Envoyer",
+        "footnote": "Champ relié à la fiche client : l'adresse saisie remplace l'adresse relais, l'ancienne reste dans l'historique."
+      },
+      "checklistTitle": "La checklist en huit points",
+      "checklist": {
+        "c1": "Premier message dès la réservation, jamais le jour de l'arrivée",
+        "c2": "Deux à trois messages pour le même séjour, pas un seul",
+        "c3": "WhatsApp en plus de l'e-mail quand vous avez le numéro",
+        "c4": "Un formulaire dédié, une à trois questions",
+        "c5": "Le champ e-mail en première question",
+        "c6": "Un objet qui parle de préparer le séjour, pas de gagner du temps",
+        "c7": "Un e-mail court, moins de 400 caractères de texte",
+        "c8": "Un champ relié à la fiche client, et une ligne qui annonce les nouvelles de l'hôtel"
+      },
+      "checklistNote": "Une demi-journée suffit. Formulaire, envois et campagne de retour vers votre moteur de réservation se montent avec TriggerFlow à partir de votre PMS actuel."
+    },
+    "faq": {
+      "title": "Les questions qu'on nous pose",
+      "measure": {
+        "q": "D'où viennent ces chiffres ?",
+        "a": "Des séjours réels de clients OTA chez des hôtels indépendants équipés de TriggerFlow, arrivés entre le 1er juin et le 30 septembre 2026, hors annulations. Une adresse compte comme récupérée quand le client la saisit lui-même dans un formulaire lié à son séjour, et que la fiche client le confirme ; les adresses venues du PMS ne sont pas comptées. Aucun établissement n'est cité, aucune donnée personnelle de client n'a été utilisée."
+      },
+      "causality": {
+        "q": "Est-ce que ce sont des causes ou des corrélations ?",
+        "a": "Des corrélations. Un hôtel qui écrit tôt soigne souvent aussi son formulaire. C'est pourquoi chaque règle indique combien d'hôtels confirment l'écart quand ils pratiquent les deux réglages. Les cinq règles passent ce contrôle ; deux autres réglages, qui ne le passent pas, sont donnés à part comme bonnes pratiques."
+      },
+      "parity": {
+        "q": "Ai-je le droit de proposer un meilleur prix en direct à un client venu par une OTA ?",
+        "a": "En France, depuis la loi du 6 août 2015 dite loi Macron, l'hôtelier reste libre de fixer ses prix sur ses propres canaux. Ce que votre contrat OTA encadre, en revanche, c'est l'usage des données transmises par la plateforme. L'adresse que le client vous donne lui-même, dans votre formulaire, relève de votre propre relation avec lui. Faites vérifier votre contrat par votre conseil : ce guide ne remplace pas un avis juridique."
+      },
+      "consent": {
+        "q": "Puis-je écrire à ces clients pour leur proposer de revenir ?",
+        "a": "Oui. En France, un client qui a séjourné chez vous peut recevoir vos offres pour des prestations comparables sans case à cocher, à condition d'en être informé quand il vous donne son adresse et de pouvoir s'y opposer simplement. Le formulaire le prévient en une ligne sous le champ, et chaque e-mail porte un lien de désinscription. Un client qui se désabonne ne reçoit plus rien ; les messages liés à son séjour partent dans tous les cas."
+      },
+      "pms": {
+        "q": "Faut-il changer de PMS ?",
+        "a": "Non. TriggerFlow se branche sur votre PMS actuel, dont Mews, Thaïs, Opera Cloud, Apaleo, Misterbooking et Medialog : chaque réservation déclenche l'envoi du formulaire, et l'adresse récupérée remplace l'adresse relais dans la fiche du client."
+      },
+      "setup": {
+        "q": "Combien de temps pour tout mettre en place ?",
+        "a": "Une demi-journée : le formulaire de préparation à partir d'un modèle, l'envoi programmé depuis votre PMS, puis la campagne de retour vers votre moteur de réservation. Ensuite, chaque séjour OTA passe par le même chemin sans intervention."
+      }
+    },
+    "form": {
+      "email": "Votre adresse e-mail",
+      "emailHint": "Une seule adresse, rien d'autre à remplir. Le guide se télécharge juste après.",
+      "submit": "Recevoir le guide",
+      "successTitle": "C'est enregistré.",
+      "successReady": "Votre guide est prêt :",
+      "download": "Télécharger le guide",
+      "successFallback": "Merci, nous revenons vers vous très vite avec le guide.",
+      "privacy": "Votre adresse sert à vous donner ce guide et à vous adresser nos contenus pour hôteliers. Désinscription en un clic, rien n'est revendu à des tiers.",
+      "error": "L'envoi n'a pas abouti. Réessayez dans un instant."
+    },
+    "finalCta": {
+      "title": "Recevez le guide du client OTA",
+      "subtitle": "L'étude complète, les cinq règles avec leurs taux, le formulaire à copier et la checklist en huit points.",
+      "formTitle": "Votre adresse, et le guide est à vous",
+      "format": "PDF, lisible en vingt minutes, sans jargon. Le guide est en français.",
+      "chapters": {
+        "funnel": "Le parcours d'un client OTA, du premier message à la vraie adresse",
+        "rules": "Les cinq règles, chacune avec le taux mesuré qui la porte, et deux bonnes pratiques",
+        "mistakes": "L'erreur la plus coûteuse, et ce qu'elle coûte",
+        "template": "Le formulaire à copier, la checklist et ce que ça vaut chez vous",
+        "legal": "Parité tarifaire et consentement : ce que dit le cadre, en une page",
+        "method": "La méthode de mesure, ses limites et ce qu'elle ne prouve pas"
+      }
     },
     "footer": {
       "legal": "Mentions légales",
@@ -2681,10 +2970,17 @@
     },
     "guides": {
       "eyebrow": "Guides gratuits pour hôteliers",
-      "title": "Deux guides pratiques, à télécharger gratuitement",
+      "title": "Trois guides pratiques, à télécharger gratuitement",
       "subtitle": "Choisissez le sujet qui vous concerne et téléchargez votre guide en un clic.",
       "cta": "Télécharger le guide",
       "items": {
+        "clientsOta": {
+          "tag": "Clients OTA",
+          "title": "Faites revenir vos clients OTA en direct",
+          "description": "Booking.com et Expedia vous amènent le client une fois, avec une adresse qui n'est pas la sienne. Le guide montre comment récupérer sa vraie adresse avant l'arrivée, avec les cinq réglages mesurés dans les hôtels équipés, puis le faire revenir réserver en direct.",
+          "figure": "1 sur 4",
+          "figureLabel": "C'est, environ, la part des clients OTA qui laissent leur vraie adresse dans les hôtels équipés d'un formulaire TriggerFlow."
+        },
         "revenus": {
           "tag": "Revenus",
           "title": "Générez plus de revenus à chaque séjour",
@@ -2695,7 +2991,8 @@
           "title": "Obtenez plus d'avis positifs, automatiquement",
           "description": "Quand demander un avis, sur quel canal, et comment répondre à un client mécontent. Tous vos clients reçoivent la même invitation, quelle que soit leur note : c'est la règle de Google."
         }
-      }
+      },
+      "new": "Nouveau"
     },
     "rdv": {
       "eyebrow": "Rendez-vous",

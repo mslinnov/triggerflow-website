@@ -2,11 +2,13 @@
 
 import { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { CheckCircle2, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import { trackMetaEvent } from '@/components/analytics/MetaPixel';
 import { getAttribution } from '@/lib/attribution';
 import { trackAdsConversion } from '@/lib/ads';
+import { safeDownloadUrl } from '@/lib/lead-magnet-download';
 import { cn } from '@/lib/utils';
+import { LeadMagnetSuccess } from '../LeadMagnetSuccess';
 import { UpsellButton } from '../upsell/primitives';
 
 /**
@@ -56,6 +58,8 @@ export function PostStayLeadForm({ idPrefix, className }: PostStayLeadFormProps)
   const locale = useLocale();
 
   const [status, setStatus] = useState<Status>('idle');
+  // Lien compté du guide, rendu par /api/leads : le guide se télécharge ici, il n'arrive plus par e-mail.
+  const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -80,7 +84,7 @@ export function PostStayLeadForm({ idPrefix, className }: PostStayLeadFormProps)
         }),
       });
 
-      const payload = (await response.json().catch(() => null)) as { success?: boolean } | null;
+      const payload = (await response.json().catch(() => null)) as { success?: boolean; downloadUrl?: unknown } | null;
       if (!response.ok || !payload?.success) {
         setStatus('error');
         return;
@@ -90,6 +94,7 @@ export function PostStayLeadForm({ idPrefix, className }: PostStayLeadFormProps)
 
       trackAdsConversion('lead');
       window.gtag?.('event', 'generate_lead', { form: 'post-sejour' });
+      setDownloadUrl(safeDownloadUrl(payload.downloadUrl));
       setStatus('success');
       form.reset();
     } catch {
@@ -99,19 +104,14 @@ export function PostStayLeadForm({ idPrefix, className }: PostStayLeadFormProps)
 
   if (status === 'success') {
     return (
-      <div
-        className={cn(
-          'rounded-2xl border border-[var(--up-accent)] bg-[var(--up-accent-wash)] p-6 text-center',
-          className
-        )}
-        role="status"
-      >
-        <CheckCircle2 className="mx-auto h-8 w-8 text-[var(--up-accent)]" strokeWidth={1.8} />
-        <p className="mt-3 text-lg font-semibold text-[var(--up-ink)]">{t('successTitle')}</p>
-        <p className="mt-1.5 text-sm leading-relaxed text-[var(--up-ink-soft)]">
-          {t('successBody')}
-        </p>
-      </div>
+      <LeadMagnetSuccess
+        title={t('successTitle')}
+        ready={t('successReady')}
+        download={t('download')}
+        fallback={t('successFallback')}
+        downloadUrl={downloadUrl}
+        className={className}
+      />
     );
   }
 
