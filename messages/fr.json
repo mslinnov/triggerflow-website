@@ -2787,7 +2787,7 @@
     "simulator": {
       "eyebrow": "Simulateur",
       "title": "Ce que vaut un client OTA qui revient en direct",
-      "subtitle": "Réglez les curseurs sur votre hôtel. Toutes les valeurs par défaut sont des hypothèses illustratives, à remplacer par les vôtres ; les taux que l'étude mesure prendront leur place.",
+      "subtitle": "Réglez les curseurs sur votre hôtel. Toutes les valeurs par défaut sont des hypothèses illustratives, à remplacer par les vôtres.",
       "groups": {
         "volume": "Votre hôtel",
         "capture": "Récupérer la vraie adresse, en trois temps",
@@ -2810,7 +2810,7 @@
       },
       "captureBeforeArrival": {
         "label": "Avant l'arrivée",
-        "hint": "Formulaire de préparation envoyé à J-3. Hypothèse illustrative.",
+        "hint": "Formulaire de préparation envoyé à la réservation. Hypothèse illustrative.",
         "suffix": "%"
       },
       "captureAtArrival": {
@@ -2839,7 +2839,7 @@
         "returned": "Revenu en direct"
       },
       "gridLabel": "Sur 100 clients OTA : {captured} vous laissent leur vraie adresse, {returned} reviennent réserver en direct.",
-      "assumptions": "Calcul : les trois étapes se cumulent sur les clients encore sans adresse, puis séjours OTA × part captée × part revenue en direct × montant moyen × commission. Un ordre de grandeur, pas une promesse : toutes les valeurs par défaut sont des hypothèses, et un client qui revient n'aurait pas forcément réservé de nouveau par l'OTA."
+      "assumptions": "Calcul : les trois étapes se cumulent sur les clients encore sans adresse, puis séjours OTA × part captée × part revenue en direct × montant moyen × commission. Par défaut, les trois étapes totalisent environ 28 %, la part captée mesurée par l'étude ; leur répartition, le retour en direct, le panier et la commission sont des hypothèses. Un ordre de grandeur, pas une promesse : un client qui revient n'aurait pas forcément réservé de nouveau par l'OTA."
     },
     "how": {
       "title": "Le formulaire à copier",

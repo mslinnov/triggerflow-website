@@ -2779,7 +2779,7 @@
     "simulator": {
       "eyebrow": "Simulator",
       "title": "What an OTA guest who comes back direct is worth",
-      "subtitle": "Set the sliders to your hotel. All default values are illustrative assumptions to replace with your own; the rates measured by the study will take their place.",
+      "subtitle": "Set the sliders to your hotel. All default values are illustrative assumptions to replace with your own.",
       "groups": {
         "volume": "Your hotel",
         "capture": "Getting the real address, in three steps",
@@ -2802,7 +2802,7 @@
       },
       "captureBeforeArrival": {
         "label": "Before arrival",
-        "hint": "Pre-arrival form sent three days ahead. Illustrative assumption.",
+        "hint": "Pre-arrival form sent at booking. Illustrative assumption.",
         "suffix": "%"
       },
       "captureAtArrival": {
@@ -2831,7 +2831,7 @@
         "returned": "Came back direct"
       },
       "gridLabel": "Out of 100 OTA guests: {captured} leave you their real address, {returned} come back to book direct.",
-      "assumptions": "Calculation: the three steps add up over guests still without an address, then OTA stays × share captured × share returning direct × average stay value × commission. An order of magnitude, not a promise: every default value is an assumption, and a returning guest would not necessarily have booked through the OTA again."
+      "assumptions": "Calculation: the three steps add up over guests still without an address, then OTA stays × share captured × share returning direct × average stay value × commission. By default, the three steps add up to about 28%, the share captured measured by the study; how it splits between steps, the direct return rate, the stay value and the commission are assumptions. An order of magnitude, not a promise: a returning guest would not necessarily have booked through the OTA again."
     },
     "how": {
       "title": "The form to copy",

@@ -20,9 +20,10 @@ import { UpsellAmount, UpsellEyebrow, UpsellLinkButton, UpsellSection } from '..
  * additionnelles, rien n'est transmis au formulaire, qui ne demande que
  * l'adresse e-mail. Un contexte partagé n'aurait aucun lecteur.
  *
- * Mécanique de l'artefact d'origine : trois étapes de capture (avant
- * l'arrivée, à l'arrivée, enquête) qui se cumulent sur les clients restants,
- * puis un retour en direct sous 24 mois. La grille de 100 points montre la
+ * Trois étapes de capture (avant l'arrivée, à l'arrivée, enquête) qui se
+ * cumulent sur les clients restants, puis un retour en direct sous 24 mois.
+ * Par défaut, les trois étapes totalisent la part captée mesurée par l'étude
+ * (voir `@/lib/ota-simulator`). La grille de 100 points montre la
  * même chose sans chiffre : contact OTA seul, contact récupéré, revenu en
  * direct.
  *
