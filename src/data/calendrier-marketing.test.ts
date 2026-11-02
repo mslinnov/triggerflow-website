@@ -241,6 +241,8 @@ test('lien « ouvrir dans TriggerFlow » : code, style de l’app selon le thèm
   assert.equal(url.searchParams.get('style'), 'soiree');
   assert.equal(url.searchParams.get('name'), 'Réveillons de Noël et du Nouvel An · Soirée');
   assert.equal(new URL(activateInAppUrl('late_season', 'editorial', 'Éditorial')).searchParams.get('style'), 'editorial');
+  assert.equal(new URL(activateInAppUrl('valentines_day', 'galerie', 'Galerie')).searchParams.get('style'), 'galerie');
+  assert.equal(new URL(activateInAppUrl('valentines_day', 'lettre', 'Lettre')).searchParams.get('style'), 'lettre');
   // Apostrophe, deux-points : encodés, le lien reste un seul paramètre `name`.
   const tricky = new URL(activateInAppUrl('corporate_year_end', 'moderne', 'Élégant'));
   assert.equal(tricky.searchParams.get('name'), "Fin d'année des entreprises · Élégant");

@@ -14,7 +14,7 @@ interface ThemePillsProps {
   className?: string;
 }
 
-/** Pastilles de thème (Élégant, Soirée, Éditorial), masquées tant qu'un seul thème est livré. */
+/** Pastilles de thème (Élégant, Soirée, Éditorial, Galerie, Lettre), masquées tant qu'un seul thème est livré. */
 export function ThemePills({ code, themes, themeNames, label, className }: ThemePillsProps) {
   const [selected, setSelected] = useThemeSelection(themes[0]);
   const current = themes.includes(selected) ? selected : themes[0];

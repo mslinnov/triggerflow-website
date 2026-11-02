@@ -3141,7 +3141,9 @@
       "themes": {
         "moderne": "Élégant",
         "soiree": "Soirée",
-        "editorial": "Éditorial"
+        "editorial": "Éditorial",
+        "galerie": "Galerie",
+        "lettre": "Lettre"
       },
       "copied": "Copié dans le presse-papier",
       "copiedShort": "Copié",

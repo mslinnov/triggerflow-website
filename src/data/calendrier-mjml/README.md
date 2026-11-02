@@ -9,6 +9,8 @@ par thème et un trio par code de temps fort (`src/data/calendrier-marketing.ts`
 | `moderne/` | Élégant (thème par défaut, les 12 codes) |
 | `soiree/` | Soirée |
 | `editorial/` | Éditorial |
+| `galerie/` | Galerie |
+| `lettre/` | Lettre |
 
 - `<code>.mjml` : source, copiée par « Copier le MJML » ;
 - `<code>.html` : HTML compilé par l'app, copié par « Copier le HTML » et rendu en aperçu ;
