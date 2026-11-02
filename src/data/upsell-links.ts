@@ -18,3 +18,10 @@ export const LEMCAL_DEMO_URL_WHITEPAPER = 'https://app.lemcal.com/@trigger-flow/
 
 /** Thème « post-séjour » : calendrier de la landing du guide avis clients. */
 export const LEMCAL_DEMO_URL_POST_STAY = 'https://app.lemcal.com/@trigger-flow/post-sejour';
+
+/**
+ * Thème « clients OTA » : calendrier de la landing du guide du client OTA.
+ * Le calendrier lemcal est créé par le chantier de câblage TriggerFlow : la page
+ * ne doit pas partir en production avant lui.
+ */
+export const LEMCAL_DEMO_URL_CLIENTS_OTA = 'https://app.lemcal.com/@trigger-flow/clients-ota';

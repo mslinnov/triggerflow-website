@@ -32,19 +32,25 @@ export const EQUIPHOTEL_BOOKING = {
   visio: `https://app.lemcal.com/@trigger-flow/demo?${UTM}&utm_content=rdv-visio`,
 } as const;
 
-export type GuideId = 'revenus' | 'avis';
+export type GuideId = 'clientsOta' | 'revenus' | 'avis';
 
 export interface EquiphotelGuide {
   id: GuideId;
   // Lien de téléchargement du guide.
   href: string;
+  // Guide mis en avant : en tête, sur toute la largeur, avec le badge « Nouveau ».
+  featured?: boolean;
 }
 
-// Les guides sont les livres blancs existants, sur leur page de capture. Le
-// guide « clients OTA en clients directs » n'existe pas encore : il revient ici
-// quand il sera écrit, pas avant (un bouton qui ne mène nulle part coûte plus
-// qu'un guide de moins).
+// Les guides sont les livres blancs, sur leur page de capture. Le guide du client
+// OTA, le plus récent, passe en tête et en avant ; les deux autres gardent leur
+// place côte à côte.
 export const EQUIPHOTEL_GUIDES: EquiphotelGuide[] = [
+  {
+    id: 'clientsOta',
+    href: '/fr/lp/clients-ota-hotel-livre-blanc?utm_source=equiphotel&utm_medium=landing&utm_campaign=equiphotel-2026',
+    featured: true,
+  },
   { id: 'revenus', href: '/fr/lp/upsell-hotel-livre-blanc?utm_source=equiphotel&utm_medium=landing&utm_campaign=equiphotel-2026' },
   { id: 'avis', href: '/fr/lp/post-sejour-hotel-livre-blanc?utm_source=equiphotel&utm_medium=landing&utm_campaign=equiphotel-2026' },
 ];

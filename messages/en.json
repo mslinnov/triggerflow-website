@@ -2363,11 +2363,13 @@
         "book": "Book a demo"
       },
       "whitepaper": {
-        "emailHint": "One field only: the address the guide is sent to.",
+        "emailHint": "One field only: your email address. The guide downloads right after.",
         "submit": "Get the 5 automations",
-        "successTitle": "On its way.",
-        "successBody": "It reaches you by email within the next few hours. Do check your spam folder if you do not see it.",
-        "privacy": "Your email is used to send you the guide. You can unsubscribe in one click, and nothing is sold on."
+        "successTitle": "All set.",
+        "successReady": "Your guide is ready:",
+        "download": "Download the guide",
+        "successFallback": "Thank you, we will get back to you very soon with the guide.",
+        "privacy": "Your email is used to give you the guide. You can unsubscribe in one click, and nothing is sold on."
       }
     },
     "finalCta": {
@@ -2380,8 +2382,8 @@
       "whitepaper": {
         "title": "The 5 automations that earn the most",
         "subtitle": "We went back through our customers' sales to work out what actually sells, when to send it and on which channel. It is all in this guide.",
-        "formTitle": "Where should we send it?",
-        "format": "PDF, sent by email. Built on sales actually measured at independent hotels, with results given as rates.",
+        "formTitle": "Your address, and the guide is yours",
+        "format": "PDF, ready to download right away. Built on sales actually measured at independent hotels, with results given as rates.",
         "chapters": {
           "timing": "The right moment for each offer, and why sending on arrival day cuts sales by three.",
           "channel": "Email, SMS or WhatsApp: what the channel really changes, compared inside one property at a time.",
@@ -2603,17 +2605,19 @@
     },
     "form": {
       "email": "Your email address",
-      "emailHint": "One address, nothing else to fill in. The guide arrives by email.",
+      "emailHint": "One address, nothing else to fill in. The guide downloads right after.",
       "submit": "Get the guide",
       "successTitle": "All set.",
-      "successBody": "The post-stay guide is on its way by email, within the next few minutes. Do check your spam folder if it keeps you waiting.",
-      "privacy": "Your address is used to send you this guide and our content for hoteliers. One click to unsubscribe, and nothing is sold to third parties.",
+      "successReady": "Your guide is ready:",
+      "download": "Download the guide",
+      "successFallback": "Thank you, we will get back to you very soon with the guide.",
+      "privacy": "Your address is used to give you this guide and to send you our content for hoteliers. One click to unsubscribe, and nothing is sold to third parties.",
       "error": "The submission did not go through. Please try again in a moment."
     },
     "finalCta": {
       "title": "Get the post-stay guide",
       "subtitle": "The full study, the five rules with the rates behind them, the email template and the eight point checklist.",
-      "formTitle": "Where do we send the guide?",
+      "formTitle": "Your address, and the guide is yours",
       "format": "PDF, readable in twenty minutes, no jargon.",
       "chapters": {
         "funnel": "The real journey of a review, from the send to the completed review",
@@ -2627,6 +2631,291 @@
       "cta": "Book 30 minutes",
       "bandTitle": "Want to know which of the five settings costs you the most?",
       "bandBody": "We look at your current post-stay emails and tell you where to start. Thirty minutes, no commitment."
+    },
+    "footer": {
+      "legal": "Legal notice",
+      "privacy": "Privacy policy",
+      "terms": "Terms of sale",
+      "copyright": "© {year} TriggerFlow. All rights reserved."
+    }
+  },
+  "lpClientsOta": {
+    "cta": {
+      "compare": "Compare the two messages",
+      "simulate": "Run your own numbers",
+      "bookDemo": "Book 30 minutes",
+      "guide": "Get the guide"
+    },
+    "hero": {
+      "badge": "Summer 2026 study, independent hotels",
+      "titleLead": "One OTA guest in four will give you their real email address,",
+      "titleStatement": "if you ask at the right moment.",
+      "subtitle": "Booking.com and Expedia bring you the guest once, with a relay address you do not own. We followed a full summer of OTA guests across independent hotels, from the first message to the real address typed in. The timing of the first message outweighs everything else.",
+      "funnelTitle": "Out of 100 guests who booked through an OTA",
+      "funnelNote": "The journey breaks when the form is opened, not after: three guests in four who open it finish it. Rates measured per OTA guest, which you can check in your own database."
+    },
+    "funnel": {
+      "guests": "Guests with an OTA relay address",
+      "reached": "Receive a form that asks for their address",
+      "reachedNote": "The message almost always goes out: sending is not what is missing.",
+      "formOpened": "Open the form",
+      "formOpenedNote": "This is where it splits: when the message goes out, on which channel, and what it promises.",
+      "formSent": "Submit it",
+      "formSentNote": "Three guests in four who open the form submit it.",
+      "captured": "Give their real address",
+      "capturedNote": "Almost everyone who submits it leaves a usable address."
+    },
+    "trust": {
+      "figures": {
+        "capture": "of OTA guests leave their real address in hotels where the form is running",
+        "hotelSpread": "capture gap between the 10% most effective hotels and the 10% least effective",
+        "ruleSpread": "between a first message sent at booking and a first message on arrival day"
+      },
+      "title": "More than 400 properties equipped, connected to the PMS of independent hotels",
+      "turnkey": "Form and email templates delivered pre-configured",
+      "pms": "Every booking triggers the send from your PMS",
+      "gdpr": "GDPR compliant, DPA available",
+      "support": "French-speaking team and support"
+    },
+    "comparator": {
+      "eyebrow": "Side by side",
+      "title": "The two messages, side by side",
+      "subtitle": "The same Booking.com guest, the same stay, two ways of writing to ask for their address. Your message looks like one of them.",
+      "reconstructionTitle": "These two messages are reconstructions.",
+      "reconstructionBody": "We rebuilt them from the settings the study compares. They are not screenshots of real emails: no property is named or recognisable. Only the rates are measurements.",
+      "effective": {
+        "badge": "The message that brings the address back",
+        "timing": "Sent: at booking, more than two weeks before arrival",
+        "button": "Prepare my stay",
+        "subject": "Prepare your stay",
+        "body": "Your booking is confirmed. Leave us the address where we can reach you directly: we will send the practical details of your stay there.",
+        "footnote": "Under 400 characters of text. A reminder goes out before arrival if the guest has not replied."
+      },
+      "ineffective": {
+        "badge": "The message that does not",
+        "timing": "Sent: on arrival day",
+        "button": "Complete my online check-in",
+        "subject": "Save time: complete your online check-in",
+        "body": "To make your arrival easier and reduce your wait at reception, we invite you to complete your online check-in now. You can enter your arrival time, your contact details, your room preferences and any special requests. Reception is open from 7am to 11pm, parking is available on request and breakfast is served from 7am to 10.30am. The city tax is payable on site.",
+        "footnote": "About 500 characters of text, sent once."
+      },
+      "annotationsTitle": "The three differences, and what they are worth",
+      "annotations": {
+        "a1": {
+          "title": "When the first message goes out",
+          "body": "In hotels where the first message goes out at booking, 56.4% of OTA guests leave their real address; when it goes out on arrival day, 19.0%. Confirmed in 10 hotels out of 10 that do both."
+        },
+        "a2": {
+          "title": "The subject line",
+          "body": "“Prepare your stay”: 38.8%. “Save time” or “Online check-in”: 27.8%. One announces the stay, the other some paperwork. Confirmed in 5 hotels out of 6 that do both."
+        },
+        "a3": {
+          "title": "The length",
+          "body": "Under 400 characters of text: 34.5%. Between 400 and 1,000: 25.7%. Confirmed in 7 hotels out of 8. Above 1,000 it climbs back to 32.3%: the medium message loses, not the long one."
+        }
+      },
+      "methodNote": "Each difference is measured one criterion at a time, on the same population of OTA guests: the rates do not add up. They are correlations, not proof of cause; each one holds within the same hotel when it uses both settings.",
+      "subjectLabel": "Subject",
+      "greeting": "Hello,"
+    },
+    "gap": {
+      "title": "The most expensive mistake",
+      "subtitle": "It affects nearly one OTA guest in three in the hotels studied, and it can be fixed without changing PMS.",
+      "noMessage": {
+        "figure": "11.0% vs 35.8%",
+        "statement": "No message before arrival",
+        "consequence": "29.9% of OTA guests receive no email, text or WhatsApp before they walk in. Among them, 11.0% end up leaving their real address, against 35.8% among those who received at least one message. A booking made the day before, a send set too late: that guest leaves with their relay address."
+      }
+    },
+    "evidence": {
+      "title": "The five rules",
+      "subtitle": "Each rule sets two capture rates against each other, measured per OTA guest: the share of guests who booked through an OTA and end up giving you their real address. They are correlations; each one holds within the same hotel when it uses both settings.",
+      "rateValue": "{rate, number, ::.0}%",
+      "rule1": {
+        "title": "Ask early",
+        "body": "The strongest factor in the study. More than two weeks before arrival, the guest has time to read and nothing else to do; on the day itself, they are on the road.",
+        "best": "At booking",
+        "worst": "On arrival day"
+      },
+      "rule2": {
+        "title": "Follow up",
+        "body": "One message: 25.8%. Two: 40.5%. Three or more for the same stay: 64.8%. The second message does not annoy, it catches those who never opened the first.",
+        "best": "3 messages or more",
+        "worst": "A single message"
+      },
+      "rule3": {
+        "title": "Add WhatsApp",
+        "body": "The email goes to the relay address, which forwards poorly and is rarely read. WhatsApp lands on the guest's phone, with no middleman.",
+        "best": "Email + WhatsApp",
+        "worst": "Email only"
+      },
+      "withinHotels": "Confirmed in {wins} hotels out of {of} that do both.",
+      "rule4": {
+        "title": "A subject line about the stay",
+        "body": "“Prepare your stay” gives the guest a reason to open. “Save time” and “Online check-in” promise them paperwork.",
+        "best": "Prepare your stay",
+        "worst": "Save time"
+      },
+      "rule5": {
+        "title": "A short email",
+        "body": "Under 400 characters of visible text: 34.5%, against 25.7% between 400 and 1,000. But from 1,000 to 2,000 it climbs back to 32.3%: short beats medium, it is not “the longer, the worse”.",
+        "best": "Under 400 characters",
+        "worst": "400 to 1,000"
+      },
+      "practices": {
+        "title": "Two good practices, not yet rules",
+        "dedicatedForm": {
+          "title": "A dedicated, short form",
+          "body": "Hotels that ask for the address in a separate form, which only asks for contact details, capture 52.0% of their OTA guests, against 33.4% when the field is slipped into a pre-arrival form with a catalogue."
+        },
+        "emailFirst": {
+          "title": "The email field first",
+          "body": "As the first question: 46.2%. Further down the first page, after arrival time and room preferences: 32.2%."
+        },
+        "limit": "These gaps show up from one hotel to another, not within the same hotel: too few hotels do both to conclude, and those that do do not always confirm the gap. We give them as good practices, not as measured rules."
+      }
+    },
+    "demoBridge": {
+      "cta": "Book 30 minutes",
+      "bandTitle": "How many of your OTA guests have a real address in your database?",
+      "bandBody": "We run the audit with you, free of charge: the share of your OTA guests you can already reach, and the setting to start with. Thirty minutes, no commitment."
+    },
+    "simulator": {
+      "eyebrow": "Simulator",
+      "title": "What an OTA guest who comes back direct is worth",
+      "subtitle": "Set the sliders to your hotel. All default values are illustrative assumptions to replace with your own.",
+      "groups": {
+        "volume": "Your hotel",
+        "capture": "Getting the real address, in three steps",
+        "return": "Bringing them back direct"
+      },
+      "otaStaysPerYear": {
+        "label": "OTA stays per year",
+        "hint": "Bookings from Booking.com, Expedia and the other platforms.",
+        "suffix": "stays"
+      },
+      "averageBasket": {
+        "label": "Average stay value",
+        "hint": "Room revenue only, all nights included.",
+        "suffix": "€"
+      },
+      "commissionRate": {
+        "label": "OTA commission",
+        "hint": "The rate in your contract.",
+        "suffix": "%"
+      },
+      "captureBeforeArrival": {
+        "label": "Before arrival",
+        "hint": "Pre-arrival form sent at booking. Illustrative assumption.",
+        "suffix": "%"
+      },
+      "captureAtArrival": {
+        "label": "At arrival",
+        "hint": "Among guests still without an address: asked at check-in. Illustrative assumption.",
+        "suffix": "%"
+      },
+      "captureSurvey": {
+        "label": "After the stay",
+        "hint": "Among those left: the satisfaction survey. Illustrative assumption.",
+        "suffix": "%"
+      },
+      "directReturnRate": {
+        "label": "Captured guests who come back direct",
+        "hint": "Within 24 months. Illustrative assumption: we do not publish a measurement yet.",
+        "suffix": "%"
+      },
+      "resultLabel": "Commission you do not pay",
+      "perYear": "per year, on the stays that came back direct",
+      "captured": "OTA guests whose real address you have",
+      "returns": "Stays that came back direct",
+      "revenue": "Revenue from those stays",
+      "legend": {
+        "otaOnly": "OTA contact only",
+        "captured": "Contact recovered",
+        "returned": "Came back direct"
+      },
+      "gridLabel": "Out of 100 OTA guests: {captured} leave you their real address, {returned} come back to book direct.",
+      "assumptions": "Calculation: the three steps add up over guests still without an address, then OTA stays × share captured × share returning direct × average stay value × commission. By default, the three steps add up to about 28%, the share captured measured by the study; how it splits between steps, the direct return rate, the stay value and the commission are assumptions. An order of magnitude, not a promise: a returning guest would not necessarily have booked through the OTA again."
+    },
+    "how": {
+      "title": "The form to copy",
+      "subtitle": "A dedicated, short form that asks for the address first and says why, followed by the eight-point checklist.",
+      "form": {
+        "header": "Dedicated form",
+        "title": "Let us stay in touch",
+        "timing": "Sent: at booking, then a reminder before arrival, by email and WhatsApp",
+        "intro": "Your booking is confirmed. Tell us the address where we can reach you directly: we will send your confirmation and the practical details of your stay there.",
+        "fieldLabel": "Your personal email address",
+        "fieldValue": "sam.taylor@example.com",
+        "fieldHint": "First question of the form.",
+        "notice": "You will also receive news from the hotel. Unsubscribe in one click, at any time.",
+        "button": "Send",
+        "footnote": "Field linked to the guest profile: the address typed in replaces the relay address, the old one is kept in the history."
+      },
+      "checklistTitle": "The eight-point checklist",
+      "checklist": {
+        "c1": "First message at booking, never on arrival day",
+        "c2": "Two to three messages for the same stay, not just one",
+        "c3": "WhatsApp on top of email when you have the number",
+        "c4": "A dedicated form, one to three questions",
+        "c5": "The email field as the first question",
+        "c6": "A subject line about preparing the stay, not about saving time",
+        "c7": "A short email, under 400 characters of text",
+        "c8": "A field linked to the guest profile, and a line announcing news from the hotel"
+      },
+      "checklistNote": "Half a day is enough. Form, sends and a win-back campaign pointing to your booking engine are set up with TriggerFlow from your current PMS."
+    },
+    "faq": {
+      "title": "The questions we get asked",
+      "measure": {
+        "q": "Where do these figures come from?",
+        "a": "From real stays of OTA guests at independent hotels equipped with TriggerFlow, arriving between 1 June and 30 September 2026, cancellations excluded. An address counts as recovered when the guest types it into a form linked to their stay and the guest profile confirms it; addresses coming from the PMS are not counted. No property is named, and no guest personal data was used."
+      },
+      "causality": {
+        "q": "Are these causes or correlations?",
+        "a": "Correlations. A hotel that writes early often takes care of its form too. That is why each rule states how many hotels confirm the gap when they use both settings. The five rules pass this check; two other settings, which do not, are given separately as good practices."
+      },
+      "parity": {
+        "q": "Can I offer a better direct rate to a guest who came through an OTA?",
+        "a": "In France, since the law of 6 August 2015 known as the Macron law, hoteliers remain free to set their prices on their own channels. What your OTA contract does govern is how you use the data the platform passes on. An address the guest gives you themselves, in your own form, belongs to your own relationship with them. Have your contract checked by your adviser: this guide is not legal advice."
+      },
+      "consent": {
+        "q": "Can I write to these guests to invite them back?",
+        "a": "Yes. In France, a guest who has stayed with you can receive your offers for comparable services without a tick box, provided they are told when they give you their address and can easily object. The form tells them in one line under the field, and every email carries an unsubscribe link. A guest who unsubscribes receives nothing more; messages about their stay go out in any case."
+      },
+      "pms": {
+        "q": "Do I need to change PMS?",
+        "a": "No. TriggerFlow connects to your current PMS, including Mews, Thaïs, Opera Cloud, Apaleo, Misterbooking and Medialog: every booking triggers the form, and the recovered address replaces the relay address in the guest profile."
+      },
+      "setup": {
+        "q": "How long does it take to set up?",
+        "a": "Half a day: the pre-arrival form from a template, the scheduled send from your PMS, then the win-back campaign pointing to your booking engine. After that, every OTA stay goes down the same path with no manual work."
+      }
+    },
+    "form": {
+      "email": "Your email address",
+      "emailHint": "One address, nothing else to fill in. The guide downloads right after.",
+      "submit": "Get the guide",
+      "successTitle": "You are all set.",
+      "successReady": "Your guide is ready:",
+      "download": "Download the guide",
+      "successFallback": "Thank you, we will get back to you very soon with the guide.",
+      "privacy": "Your address is used to give you this guide and to send you our content for hoteliers. One-click unsubscribe, nothing is sold to third parties.",
+      "error": "The request did not go through. Please try again in a moment."
+    },
+    "finalCta": {
+      "title": "Get the OTA guest guide",
+      "subtitle": "The full study, the five rules with their rates, the form to copy and the eight-point checklist.",
+      "formTitle": "Your address, and the guide is yours",
+      "format": "PDF, a twenty-minute read, no jargon. The guide is written in French.",
+      "chapters": {
+        "funnel": "The journey of an OTA guest, from the first message to the real address",
+        "rules": "The five rules, each with the measured rate behind it, and two good practices",
+        "mistakes": "The most expensive mistake, and what it costs",
+        "template": "The form to copy, the checklist and what it is worth for your hotel",
+        "legal": "Rate parity and consent: what the rules say, on one page",
+        "method": "The measurement method, its limits and what it does not prove"
+      }
     },
     "footer": {
       "legal": "Legal notice",

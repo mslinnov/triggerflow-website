@@ -6,9 +6,11 @@ import { CalendarClock, CheckCircle2, Loader2 } from 'lucide-react';
 import { trackMetaEvent } from '@/components/analytics/MetaPixel';
 import { getAttribution } from '@/lib/attribution';
 import { trackAdsConversion } from '@/lib/ads';
+import { safeDownloadUrl } from '@/lib/lead-magnet-download';
 import { brand } from '@/data/brand';
 import { LEMCAL_DEMO_URL } from '@/data/upsell-links';
 import { cn } from '@/lib/utils';
+import { LeadMagnetSuccess } from '../LeadMagnetSuccess';
 import { UpsellButton } from './primitives';
 import { useUpsell } from './UpsellContext';
 
@@ -64,6 +66,8 @@ export function UpsellLeadForm({ idPrefix, className }: UpsellLeadFormProps) {
   const { rooms, result, goal } = useUpsell();
 
   const [status, setStatus] = useState<Status>('idle');
+  // Variante livre blanc : lien compté du guide rendu par /api/leads, téléchargé ici (plus d'envoi par e-mail).
+  const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
 
   // Le champ suit le curseur du simulateur tant que l'utilisateur ne l'a pas
   // édité lui-même. Valeur dérivée plutôt que synchronisée : pas d'effet, donc
@@ -102,7 +106,7 @@ export function UpsellLeadForm({ idPrefix, className }: UpsellLeadFormProps) {
         }),
       });
 
-      const payload = (await response.json().catch(() => null)) as { success?: boolean } | null;
+      const payload = (await response.json().catch(() => null)) as { success?: boolean; downloadUrl?: unknown } | null;
       if (!response.ok || !payload?.success) {
         setStatus('error');
         return;
@@ -117,11 +121,25 @@ export function UpsellLeadForm({ idPrefix, className }: UpsellLeadFormProps) {
 
       trackAdsConversion('lead');
       window.gtag?.('event', 'generate_lead', { form: 'upsell' });
+      setDownloadUrl(safeDownloadUrl(payload.downloadUrl));
       setStatus('success');
       form.reset();
     } catch {
       setStatus('error');
     }
+  }
+
+  if (status === 'success' && !isDemo) {
+    return (
+      <LeadMagnetSuccess
+        title={t('whitepaper.successTitle')}
+        ready={t('whitepaper.successReady')}
+        download={t('whitepaper.download')}
+        fallback={t('whitepaper.successFallback')}
+        downloadUrl={downloadUrl}
+        className={className}
+      />
+    );
   }
 
   if (status === 'success') {
@@ -135,26 +153,24 @@ export function UpsellLeadForm({ idPrefix, className }: UpsellLeadFormProps) {
       >
         <CheckCircle2 className="mx-auto h-8 w-8 text-[var(--up-accent)]" strokeWidth={1.8} />
         <p className="mt-3 text-lg font-semibold text-[var(--up-ink)]">
-          {t(isDemo ? 'demo.successTitle' : 'whitepaper.successTitle')}
+          {t('demo.successTitle')}
         </p>
         <p className="mt-1.5 text-sm text-[var(--up-ink-soft)]">
-          {t(isDemo ? 'demo.successBody' : 'whitepaper.successBody')}
+          {t('demo.successBody')}
         </p>
 
         {/* Le lead est déjà enregistré : proposer le créneau ici ne risque plus
             rien et évite un aller-retour d'emails pour caler la démo. */}
-        {isDemo && (
-          <a
-            href={LEMCAL_DEMO_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => trackMetaEvent('CompleteRegistration', { content_name: 'lp-upsell-booking', variant: goal })}
-            className="mt-5 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[var(--up-accent)] px-6 py-3 text-sm font-semibold text-[var(--up-accent-ink)] transition-colors hover:bg-[var(--up-accent-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--up-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--up-accent-wash)] active:translate-y-[1px]"
-          >
-            <CalendarClock className="h-4 w-4" strokeWidth={2} aria-hidden />
-            {t('demo.book')}
-          </a>
-        )}
+        <a
+          href={LEMCAL_DEMO_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => trackMetaEvent('CompleteRegistration', { content_name: 'lp-upsell-booking', variant: goal })}
+          className="mt-5 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[var(--up-accent)] px-6 py-3 text-sm font-semibold text-[var(--up-accent-ink)] transition-colors hover:bg-[var(--up-accent-hover)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--up-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--up-accent-wash)] active:translate-y-[1px]"
+        >
+          <CalendarClock className="h-4 w-4" strokeWidth={2} aria-hidden />
+          {t('demo.book')}
+        </a>
       </div>
     );
   }

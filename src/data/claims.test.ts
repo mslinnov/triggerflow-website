@@ -172,9 +172,9 @@ test('pages À propos, Carrières, /v2 et étapes de l\'accueil : chiffres de ma
 });
 
 test('messages FR/EN : aucun chiffre de résultat non mesuré hors témoignages et études publiées', () => {
-  // lpUpsell et lpPostStay publient des études mesurées (upsell-services.ts, post-stay.ts).
+  // lpUpsell, lpPostStay et lpClientsOta publient des études mesurées (upsell-services.ts, post-stay.ts, clients-ota.ts).
   // heroDashboard : valeurs d'exemple de la maquette du tableau de bord (maquettes hors périmètre).
-  const skip = new Set(['testimonialFeatured', 'testimonialsCarousel', 'testimonial', 'heroDashboard', 'lpUpsell', 'lpPostStay', 'pricing', 'priceChange']);
+  const skip = new Set(['testimonialFeatured', 'testimonialsCarousel', 'testimonial', 'heroDashboard', 'lpUpsell', 'lpPostStay', 'lpClientsOta', 'pricing', 'priceChange']);
   for (const locale of ['fr', 'en']) {
     const messages = JSON.parse(readFileSync(join(root, 'messages', `${locale}.json`), 'utf8'));
     assert.deepEqual(offenders(strings(messages, skip, locale)), []);
@@ -235,12 +235,24 @@ test('affirmations retirées absentes du code, du blog et des LP', () => {
     join(root, 'src', 'lib', 'llms.ts'),
     join(root, 'content', 'formation-salon', 'index.html'),
   ].filter((f) => !excluded.test(f));
+  // Seule exception, décidée le 02/11/2026 : l'antisèche des allées (formation du stand, page protégée par mot de
+  // passe et non indexée) cite mot pour mot le flyer TriggerFlow déjà imprimé, pour que l'équipe sache ce qui y est
+  // écrit, et la corrige dans la même ligne (« 12 PMS connectés… »). Aucun autre fichier, aucune autre ligne, et sur
+  // cette ligne seule l'expression des « 50 intégrations » est tolérée : toutes les autres restent contrôlées.
+  const formation = join(root, 'content', 'formation-salon', 'index.html');
+  const printedFlyerQuote = '{ b: "« Connecté à votre PMS, plus de 50 intégrations »", t: "12 PMS connectés, ';
+  const fiftyIntegrations = BANNED.find((re) => re.test('plus de 50 intégrations'));
+  assert.ok(fiftyIntegrations, 'expression des « 50 intégrations » introuvable dans BANNED');
   const found: string[] = [];
   for (const file of scanned) {
     readFileSync(file, 'utf8')
       .split('\n')
       .forEach((line, i) => {
-        for (const re of BANNED) if (re.test(line)) found.push(`${file.slice(root.length + 1)}:${i + 1} ${re}`);
+        const isFlyerQuote = file === formation && line.trimStart().startsWith(printedFlyerQuote);
+        for (const re of BANNED) {
+          if (isFlyerQuote && re === fiftyIntegrations) continue;
+          if (re.test(line)) found.push(`${file.slice(root.length + 1)}:${i + 1} ${re}`);
+        }
       });
   }
   assert.deepEqual(found, []);
