@@ -24,7 +24,7 @@ export function HomePricing({ plans }: { plans: DisplayPlan[] }) {
                 </p>
                 <p className="mt-2 text-[12.5px] text-ink-3">{t('perMonth')}</p>
                 <p className="mt-5 flex-1 text-[14.5px] leading-relaxed text-ink-2">{tp(`${plan.key}.description`)}</p>
-                <DsButton href={brand.demoUrl} variant={plan.popular ? 'primary' : 'secondary'} size="sm" className="mt-6 w-full">
+                <DsButton href={brand.demoPage} variant={plan.popular ? 'primary' : 'secondary'} size="sm" className="mt-6 w-full">
                   {t('startFree')}
                 </DsButton>
               </div>

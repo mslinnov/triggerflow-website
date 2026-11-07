@@ -1802,7 +1802,7 @@
       "subtitle": "Automate your entire guest journey from Mews data. Built for independent hotels and groups.",
       "details": "Real-time bidirectional sync · Emails, SMS, WhatsApp · Satisfaction surveys · Loyalty program · Up and running in 48 h",
       "ctaDemo": "Book a demo",
-      "ctaDemoMicro": "Free, 20 min, no commitment",
+      "ctaDemoMicro": "45 min, no commitment",
       "ctaData": "Synced data",
       "ctaPricing": "View pricing",
       "lastUpdated": "Last updated: February 2026"
@@ -2042,7 +2042,7 @@
     },
     "ctaFinal": {
       "title": "Using Mews?",
-      "text": "Discover in 20 minutes how TriggerFlow automates your guest relations, using the data you already have in Mews.",
+      "text": "Discover in 45 minutes how TriggerFlow automates your guest relations, using the data you already have in Mews.",
       "cta": "Book a demo",
       "href": "https://app.lemcal.com/@trigger-flow/demo",
       "alternative": "Prefer to chat directly?",
@@ -3826,5 +3826,23 @@
     },
     "cta": "Not a client yet? Let’s look at your project together.",
     "contactCta": "Contact us"
+  },
+  "demoPage": {
+    "meta": {
+      "title": "Book a TriggerFlow demo, the hotel CRM",
+      "description": "Book 45 minutes with the TriggerFlow team: we start from your hotel, your PMS and your channels to show you the real platform."
+    },
+    "eyebrow": "Demo",
+    "title": "Let's see together what TriggerFlow can do for your hotel.",
+    "subtitle": "Pick a slot in the calendar. We show you the platform starting from your property, not a canned presentation.",
+    "points": [
+      "45 minutes on video with our team, based in Toulouse",
+      "We start from your hotel: your PMS, your channels, your habits",
+      "You see the real platform, on scenarios close to yours",
+      "You leave with the right plan for your property, no commitment"
+    ],
+    "calendarTitle": "TriggerFlow booking calendar",
+    "openCalendar": "Open the calendar in a new tab",
+    "logosTitle": "They chose TriggerFlow"
   }
 }

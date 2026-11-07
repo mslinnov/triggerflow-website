@@ -24,7 +24,7 @@ export async function ProductOverview({ locale }: { locale: string }) {
             <h1 className="mt-5 text-balance text-[2.25rem] font-medium leading-[1.08] tracking-[-0.025em] text-ink md:text-[3.5rem]">{t('title')}</h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-2 md:text-lead">{t('subtitle')}</p>
             <div className="mt-9 flex justify-center">
-              <DsButton href={brand.demoUrl} arrow>{nav('startFree')}</DsButton>
+              <DsButton href={brand.demoPage} arrow>{nav('startFree')}</DsButton>
             </div>
             <TrustStrip className="mt-7" />
           </div>
@@ -72,7 +72,7 @@ export async function ProductOverview({ locale }: { locale: string }) {
         </Container>
       </section>
 
-      <CtaBand title={t('cta')} primary={{ label: nav('startFree'), href: brand.demoUrl }} secondary={{ label: nav('pricing'), href: '/tarifs' }} />
+      <CtaBand title={t('cta')} primary={{ label: nav('startFree'), href: brand.demoPage }} secondary={{ label: nav('pricing'), href: '/tarifs' }} />
     </>
   );
 }

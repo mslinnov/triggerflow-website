@@ -208,11 +208,11 @@ export function IntegrationsContent() {
         <Container narrow className="text-center">
           <h2 className="text-h3 font-medium text-ink md:text-[2rem]">{t('request.title')}</h2>
           <p className="mt-3 text-[16px] text-ink-2">{t('request.description')}</p>
-          <DsButton href={brand.demoUrl} variant="secondary" className="mt-7">{t('request.cta')}</DsButton>
+          <DsButton href={brand.demoPage} variant="secondary" className="mt-7">{t('request.cta')}</DsButton>
         </Container>
       </Section>
 
-      <CtaBand title={t('cta.title')} primary={{ label: nav('startFree'), href: brand.demoUrl }} secondary={{ label: t('cta.pricing'), href: '/tarifs' }} />
+      <CtaBand title={t('cta.title')} primary={{ label: nav('startFree'), href: brand.demoPage }} secondary={{ label: t('cta.pricing'), href: '/tarifs' }} />
     </>
   );
 }

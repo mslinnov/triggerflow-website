@@ -43,7 +43,7 @@ export async function ProductLandingPage({ product, locale }: { product: Product
             <h1 className="mt-5 text-balance text-[2.25rem] font-medium leading-[1.08] tracking-[-0.025em] text-ink md:text-[3.5rem]">{l(product.hero.title)}</h1>
             <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-2 md:text-lead">{l(product.hero.subtitle)}</p>
             <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <DsButton href={brand.demoUrl} arrow className="w-full sm:w-auto">{nav('startFree')}</DsButton>
+              <DsButton href={brand.demoPage} arrow className="w-full sm:w-auto">{nav('startFree')}</DsButton>
               <DsButton href="#comment" variant="secondary" className="w-full sm:w-auto">{t('seeHow')}</DsButton>
             </div>
             <TrustStrip className="mt-7" />
@@ -233,7 +233,7 @@ export async function ProductLandingPage({ product, locale }: { product: Product
       <CtaBand
         title={l(product.cta.title)}
         text={t('ctaText')}
-        primary={{ label: nav('startFree'), href: brand.demoUrl }}
+        primary={{ label: nav('startFree'), href: brand.demoPage }}
         secondary={{ label: t('seePricing'), href: '/tarifs' }}
       />
     </>

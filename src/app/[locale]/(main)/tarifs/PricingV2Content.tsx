@@ -125,7 +125,7 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
                 <p className="mt-2 text-[12.5px] text-ink-3">{t('perMonthFull')}</p>
                 <UpcomingPrice price={plan.upcomingPrice} className="font-normal text-ink-3" />
                 <p className="mt-5 flex-1 text-[14.5px] leading-relaxed text-ink-2">{t(`plans.${plan.key}.description`)}</p>
-                <DsButton href={brand.demoUrl} variant={plan.popular ? 'primary' : 'secondary'} size="sm" className="mt-6 w-full">
+                <DsButton href={brand.demoPage} variant={plan.popular ? 'primary' : 'secondary'} size="sm" className="mt-6 w-full">
                   {t('cta.demo')}
                 </DsButton>
               </div>
@@ -224,7 +224,7 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
         </Container>
       </section>
 
-      <CtaBand title={t('ctaBand')} primary={{ label: tNav('startFree'), href: brand.demoUrl }} secondary={{ label: tNav('seeProduct'), href: '/produit' }} />
+      <CtaBand title={t('ctaBand')} primary={{ label: tNav('startFree'), href: brand.demoPage }} secondary={{ label: tNav('seeProduct'), href: '/produit' }} />
     </>
   );
 }

@@ -57,7 +57,7 @@ export default async function IntegrationCategoryRoute({ params }: Props) {
           <h1 className="mx-auto mt-5 max-w-3xl text-balance text-[2.25rem] font-medium leading-[1.08] tracking-[-0.025em] text-ink md:text-[3.25rem]">{page.title[lang]}</h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-2">{page.subtitle[lang]}</p>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <DsButton href={brand.demoUrl} arrow>{nav('startFree')}</DsButton>
+            <DsButton href={brand.demoPage} arrow>{nav('startFree')}</DsButton>
             <DsButton href={`/produit/${page.product.slug}`} variant="secondary">{page.product.label[lang]}</DsButton>
           </div>
           <TrustStrip className="mt-7" />
@@ -101,7 +101,7 @@ export default async function IntegrationCategoryRoute({ params }: Props) {
         </Container>
       </Section>
 
-      <CtaBand title={t('cta.title')} primary={{ label: nav('startFree'), href: brand.demoUrl }} secondary={{ label: t('allIntegrations'), href: '/integrations' }} />
+      <CtaBand title={t('cta.title')} primary={{ label: nav('startFree'), href: brand.demoPage }} secondary={{ label: t('allIntegrations'), href: '/integrations' }} />
     </>
   );
 }

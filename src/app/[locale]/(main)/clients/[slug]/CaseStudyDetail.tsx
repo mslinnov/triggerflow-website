@@ -92,7 +92,7 @@ export default async function CaseStudyDetail({ slug, locale }: { slug: string; 
         </Container>
       </Section>
 
-      <CtaBand title={t('cta')} primary={{ label: nav('startFree'), href: brand.demoUrl }} secondary={{ label: nav('seeProduct'), href: '/produit' }} />
+      <CtaBand title={t('cta')} primary={{ label: nav('startFree'), href: brand.demoPage }} secondary={{ label: nav('seeProduct'), href: '/produit' }} />
     </>
   );
 }

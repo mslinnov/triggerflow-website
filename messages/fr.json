@@ -1810,7 +1810,7 @@
       "subtitle": "Automatisez toute votre relation client depuis les données Mews. Conçu pour les hôtels indépendants et les groupes.",
       "details": "Synchronisation bidirectionnelle temps réel · Emails, SMS, WhatsApp · Enquêtes satisfaction · Programme de fidélité · Opérationnel en 48 h",
       "ctaDemo": "Demander une démo",
-      "ctaDemoMicro": "Gratuite, 20 min, sans engagement",
+      "ctaDemoMicro": "45 min, sans engagement",
       "ctaData": "Données synchronisées",
       "ctaPricing": "Voir les tarifs",
       "lastUpdated": "Dernière mise à jour : février 2026"
@@ -1985,7 +1985,7 @@
       },
       "ctaMid2": {
         "title": "Vous utilisez Mews et ces scénarios vous parlent ?",
-        "cta": "Planifier un échange de 20 minutes",
+        "cta": "Planifier un échange de 45 minutes",
         "href": "https://app.lemcal.com/@trigger-flow/demo",
         "note": "Intégration Mews incluse dans tous les plans.",
         "noteLink": "Voir les tarifs",
@@ -2050,7 +2050,7 @@
     },
     "ctaFinal": {
       "title": "Vous utilisez Mews ?",
-      "text": "Découvrez en 20 minutes comment TriggerFlow automatise votre relation client, depuis les données que vous avez déjà dans Mews.",
+      "text": "Découvrez en 45 minutes comment TriggerFlow automatise votre relation client, depuis les données que vous avez déjà dans Mews.",
       "cta": "Demander une démo",
       "href": "https://app.lemcal.com/@trigger-flow/demo",
       "alternative": "Besoin d'échanger directement ?",
@@ -4111,5 +4111,23 @@
     },
     "cta": "Pas encore client ? Voyons ensemble votre projet.",
     "contactCta": "Nous contacter"
+  },
+  "demoPage": {
+    "meta": {
+      "title": "Demander une démo de TriggerFlow, CRM hôtelier",
+      "description": "Réservez 45 minutes avec l'équipe TriggerFlow : on part de votre hôtel, de votre PMS et de vos canaux pour vous montrer la plateforme en vrai."
+    },
+    "eyebrow": "Démo",
+    "title": "Voyons ensemble ce que TriggerFlow peut faire pour votre hôtel.",
+    "subtitle": "Choisissez un créneau dans le calendrier. On vous montre la plateforme à partir de votre établissement, pas avec une présentation toute faite.",
+    "points": [
+      "45 minutes en visio avec notre équipe, basée à Toulouse",
+      "On part de votre hôtel : votre PMS, vos canaux, vos habitudes",
+      "Vous voyez la plateforme en vrai, sur des scénarios proches des vôtres",
+      "Vous repartez avec le plan adapté à votre établissement, sans engagement"
+    ],
+    "calendarTitle": "Calendrier de prise de rendez-vous TriggerFlow",
+    "openCalendar": "Ouvrir le calendrier dans un nouvel onglet",
+    "logosTitle": "Ils ont choisi TriggerFlow"
   }
 }

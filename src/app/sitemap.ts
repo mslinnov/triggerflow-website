@@ -28,6 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { frPath: '/fr/integrations', enPath: '/en/integrations', priority: 0.8, changeFrequency: 'monthly' as const },
     { frPath: '/fr/contact', enPath: '/en/contact', priority: 0.7, changeFrequency: 'monthly' as const },
     { frPath: '/fr/a-propos', enPath: '/en/a-propos', priority: 0.5, changeFrequency: 'monthly' as const },
+    { frPath: '/fr/demo', enPath: '/en/demo', priority: 0.8, changeFrequency: 'monthly' as const },
     { frPath: '/fr/carrieres', enPath: '/en/carrieres', priority: 0.4, changeFrequency: 'monthly' as const },
     { frPath: '/fr/ressources/aide', enPath: '/en/ressources/aide', priority: 0.5, changeFrequency: 'monthly' as const },
     { frPath: '/fr/clients', enPath: '/en/clients', priority: 0.6, changeFrequency: 'monthly' as const },

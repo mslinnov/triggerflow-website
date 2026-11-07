@@ -72,7 +72,7 @@ export default async function HelpCenterContent({ locale }: { locale: string }) 
           </div>
         </Container>
       </Section>
-      <CtaBand title={t('cta')} primary={{ label: nav('startFree'), href: brand.demoUrl }} secondary={{ label: t('contactCta'), href: '/contact' }} />
+      <CtaBand title={t('cta')} primary={{ label: nav('startFree'), href: brand.demoPage }} secondary={{ label: t('contactCta'), href: '/contact' }} />
     </>
   );
 }

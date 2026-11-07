@@ -99,7 +99,7 @@ export async function AboutContent() {
         </Container>
       </Section>
 
-      <CtaBand title={t('cta')} primary={{ label: nav('startFree'), href: brand.demoUrl }} secondary={{ label: t('join'), href: '/carrieres' }} />
+      <CtaBand title={t('cta')} primary={{ label: nav('startFree'), href: brand.demoPage }} secondary={{ label: t('join'), href: '/carrieres' }} />
     </>
   );
 }

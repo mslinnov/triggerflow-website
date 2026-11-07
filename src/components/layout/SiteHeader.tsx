@@ -80,24 +80,14 @@ export function SiteHeader({ banner }: SiteHeaderProps) {
             <a href="https://app.trigger-flow.com/login" target="_blank" rel="noopener noreferrer" className="px-2 text-[14px] font-medium text-ink-2 hover:text-ink">
               {t('login')}
             </a>
-            <a
-              href={brand.demoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex h-10 items-center rounded-lg bg-accent px-4 font-mono text-[13px] font-medium uppercase tracking-[0.04em] text-white transition-colors hover:bg-accent-hover"
-            >
+            <Link href={brand.demoPage} onClick={() => setMobile(false)} className="inline-flex h-10 items-center rounded-lg bg-accent px-4 font-mono text-[13px] font-medium uppercase tracking-[0.04em] text-white transition-colors hover:bg-accent-hover">
               {t('startFree')}
-            </a>
+            </Link>
           </div>
 
-          <a
-            href={brand.demoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ml-auto inline-flex h-9 items-center rounded-lg bg-accent px-3 font-mono text-[12px] font-medium uppercase tracking-[0.04em] text-white lg:hidden"
-          >
+          <Link href={brand.demoPage} onClick={() => setMobile(false)} className="ml-auto inline-flex h-9 items-center rounded-lg bg-accent px-3 font-mono text-[12px] font-medium uppercase tracking-[0.04em] text-white lg:hidden">
             {t('demoShort')}
-          </a>
+          </Link>
           <button
             type="button"
             className="flex h-10 w-10 items-center justify-center rounded-lg text-ink lg:hidden"
@@ -153,9 +143,9 @@ export function SiteHeader({ banner }: SiteHeaderProps) {
             </div>
           </div>
           <div className="fixed inset-x-0 bottom-0 grid gap-2 border-t border-line bg-white p-4">
-            <a href={brand.demoUrl} target="_blank" rel="noopener noreferrer" className="flex h-12 items-center justify-center rounded-lg bg-accent font-mono text-sm font-medium uppercase tracking-[0.04em] text-white">
+            <Link href={brand.demoPage} onClick={() => setMobile(false)} className="flex h-12 items-center justify-center rounded-lg bg-accent font-mono text-sm font-medium uppercase tracking-[0.04em] text-white">
               {t('startFree')}
-            </a>
+            </Link>
             <a href="https://app.trigger-flow.com/login" target="_blank" rel="noopener noreferrer" className="flex h-12 items-center justify-center rounded-lg border border-ink/80 font-mono text-sm font-medium uppercase tracking-[0.04em] text-ink">
               {t('login')}
             </a>

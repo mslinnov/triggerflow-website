@@ -75,7 +75,7 @@ export default async function HomePage({ params }: HomePageProps) {
       <CtaBand
         title={t('title')}
         text={t('text')}
-        primary={{ label: nav('startFree'), href: brand.demoUrl }}
+        primary={{ label: nav('startFree'), href: brand.demoPage }}
         secondary={{ label: nav('seeProduct'), href: '#produit' }}
       />
     </>

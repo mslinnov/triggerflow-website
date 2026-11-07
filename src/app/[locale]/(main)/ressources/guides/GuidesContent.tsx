@@ -49,7 +49,7 @@ export default async function GuidesContent({ locale }: { locale: string }) {
           <p className="mt-10 flex items-center gap-2 text-[14px] text-ink-3"><BookOpen aria-hidden className="h-4 w-4" />{t('note')}</p>
         </Container>
       </Section>
-      <CtaBand title={t('cta')} primary={{ label: nav('startFree'), href: brand.demoUrl }} secondary={{ label: nav('seeProduct'), href: '/produit' }} />
+      <CtaBand title={t('cta')} primary={{ label: nav('startFree'), href: brand.demoPage }} secondary={{ label: nav('seeProduct'), href: '/produit' }} />
     </>
   );
 }

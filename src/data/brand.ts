@@ -19,6 +19,8 @@ export const brand = {
   country: 'FR',
   email: 'contact@trigger-flow.com',
   demoUrl: 'https://app.lemcal.com/@trigger-flow/demo',
+  /** Page du site qui présente la démo et intègre le calendrier : cible de tous les boutons « Demander une démo ». */
+  demoPage: '/demo',
   sameAs: ['https://www.linkedin.com/company/triggerflow/'],
   category: { fr: 'CRM hôtelier', en: 'Hotel CRM' },
   /** Promesse validée par Soufiane le 07/11/2026 (docs/messages.md). */

@@ -81,7 +81,7 @@ export default async function PlatformRoute({ params }: Props) {
         </Container>
       </Section>
 
-      <CtaBand title={l(page.cta)} primary={{ label: nav('startFree'), href: brand.demoUrl }} secondary={{ label: nav('seeProduct'), href: '/produit' }} />
+      <CtaBand title={l(page.cta)} primary={{ label: nav('startFree'), href: brand.demoPage }} secondary={{ label: nav('seeProduct'), href: '/produit' }} />
     </>
   );
 }
