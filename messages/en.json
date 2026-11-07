@@ -1091,8 +1091,8 @@
   },
   "contact": {
     "meta": {
-      "title": "Contact",
-      "description": "Contact the TriggerFlow team. We're here to answer your questions."
+      "title": "Contact the TriggerFlow team, hotel CRM",
+      "description": "A question about TriggerFlow? Write to our Toulouse-based team or call us Monday to Friday. Quick answers from people who know the hotel industry."
     },
     "hero": {
       "title": "Let's talk about your project",
@@ -1142,8 +1142,8 @@
   },
   "about": {
     "meta": {
-      "title": "About",
-      "description": "Discover the story and team behind TriggerFlow, the automation solution for hospitality."
+      "title": "About TriggerFlow, the hotel CRM from Toulouse",
+      "description": "TriggerFlow is the hotel CRM built by Utelys in Toulouse since 2019: a platform built with hoteliers, connected to 12 PMS, hosted in France."
     },
     "hero": {
       "title": "Our mission: simplifying hoteliers' lives",
@@ -1204,8 +1204,8 @@
   },
   "integrations": {
     "meta": {
-      "title": "Hotel Integrations: 12 PMS, Smart Locks, Payments, Zapier and n8n",
-      "description": "Connect TriggerFlow to your PMS (12 PMS, including Mews, Opera Cloud, Thaïs, Misterbooking), your smart locks, your payment provider and thousands of apps via Zapier and n8n. Real-time sync without development."
+      "title": "Integrations: PMS, locks, payments, reviews",
+      "description": "TriggerFlow connects to 12 PMS (Mews, Thaïs, Opera Cloud, Medialog…), smart locks, payment providers, review platforms and messaging channels."
     },
     "hero": {
       "title": "Connect TriggerFlow to your tools",
@@ -1493,8 +1493,8 @@
   },
   "product": {
     "meta": {
-      "title": "All-in-One Hotel CRM - Email, SMS, WhatsApp, Workflows",
-      "description": "All-in-one platform for hoteliers: CRM, email, SMS, WhatsApp, automated workflows, loyalty, Google reviews. Connected to 12 PMS, smart locks, online payments and thousands of apps via Zapier and n8n."
+      "title": "The TriggerFlow hotel CRM platform",
+      "description": "Flows, segments, inbox, upsell, payments, reviews and loyalty: your hotel’s whole guest relationship in one platform connected to your PMS, hosted in France."
     },
     "hero": {
       "title": "A complete platform for your customer relationship",
@@ -1616,8 +1616,8 @@
   },
   "blog": {
     "meta": {
-      "title": "Blog",
-      "description": "Tips, trends and best practices to optimize customer relationships in hospitality."
+      "title": "TriggerFlow blog: hotel guest relationship",
+      "description": "Automation, guest experience, upsell and integrations: practical articles written for independent hotels and hotel groups, with real numbers."
     },
     "hero": {
       "title": "The TriggerFlow Blog",
@@ -1669,8 +1669,8 @@
   },
   "caseStudies": {
     "meta": {
-      "title": "Case Studies",
-      "description": "Discover how our hotel customers transform their guest relationships with TriggerFlow."
+      "title": "Case studies: hotels using TriggerFlow",
+      "description": "See how independent hotels and hotel groups use TriggerFlow to automate their guest relationship, sell more before arrival and save time."
     },
     "hero": {
       "title": "They trust us",
@@ -1702,8 +1702,8 @@
   },
   "guides": {
     "meta": {
-      "title": "Guides & Resources",
-      "description": "Download our guides, ebooks and templates to optimize your hotel customer relationships."
+      "title": "Free guides for hoteliers: upsell, post-stay",
+      "description": "Three PDF guides built from our client hotels (pre-arrival upsell, post-stay, OTA guests) and the TriggerFlow blog for hoteliers."
     },
     "hero": {
       "title": "Guides & Resources",
@@ -1721,8 +1721,8 @@
   },
   "helpCenter": {
     "meta": {
-      "title": "Help Center",
-      "description": "Find answers to your questions about TriggerFlow. Documentation, tutorials and FAQ."
+      "title": "TriggerFlow Help Center: support and FAQ",
+      "description": "Need help with TriggerFlow? Contact support by email or phone, Monday to Friday, and find answers to the most frequent questions."
     },
     "hero": {
       "title": "How can we help you?",
@@ -1750,8 +1750,8 @@
   },
   "careers": {
     "meta": {
-      "title": "Careers",
-      "description": "Join the TriggerFlow team and participate in the transformation of hospitality."
+      "title": "Careers: join the TriggerFlow team",
+      "description": "Join the TriggerFlow team in Toulouse and build the CRM for independent hotels and hotel groups. See our open roles and how we work."
     },
     "hero": {
       "badge": "We're hiring",
@@ -3704,7 +3704,7 @@
     "cta": "See what we’re building."
   },
   "pmsPage": {
-    "seoTitle": "TriggerFlow for {pms}: the hotel CRM connected to {pms}",
+    "seoTitle": "Hotel CRM for {pms} | TriggerFlow",
     "seoDescription": "Connect {pms} to TriggerFlow: bookings and profiles synced, scenarios triggered by your bookings, upsell and payments, with no development.",
     "eyebrow": "Native integration",
     "title": "The hotel CRM connected to {pms}.",

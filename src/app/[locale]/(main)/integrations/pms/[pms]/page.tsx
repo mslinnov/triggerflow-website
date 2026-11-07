@@ -1,3 +1,4 @@
+import { clampDescription } from '@/lib/utils';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!page) return {};
   const t = await getTranslations({ locale, namespace: 'pmsPage' });
   const title = t('seoTitle', { pms: page.name });
-  const description = t('seoDescription', { pms: page.name });
+  const description = clampDescription(t('seoDescription', { pms: page.name }));
   return {
     title: { absolute: title },
     description,

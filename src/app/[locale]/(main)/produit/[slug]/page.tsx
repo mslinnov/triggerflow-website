@@ -1,3 +1,4 @@
+import { clampDescription } from '@/lib/utils';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
@@ -45,8 +46,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const lang = locale === 'en' ? 'en' : 'fr';
     return {
       title: { absolute: landing.seo.title[lang] },
-      description: landing.seo.description[lang],
-      openGraph: { title: landing.seo.title[lang], description: landing.seo.description[lang], type: 'website' },
+      description: clampDescription(landing.seo.description[lang]),
+      openGraph: { title: landing.seo.title[lang], description: clampDescription(landing.seo.description[lang]), type: 'website' },
       alternates: {
         canonical: `${baseUrl}/${locale}/produit/${slug}`,
         languages: { fr: `${baseUrl}/fr/produit/${slug}`, en: `${baseUrl}/en/produit/${slug}`, 'x-default': `${baseUrl}/fr/produit/${slug}` },

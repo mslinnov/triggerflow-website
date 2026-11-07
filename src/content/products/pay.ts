@@ -5,7 +5,7 @@ export const pay: ProductLanding = {
   legacySlug: 'paiements',
   name: { fr: 'Pay', en: 'Pay' },
   seo: {
-    title: { fr: 'Paiement hôtel : acomptes, cautions et liens de paiement | TriggerFlow', en: 'Hotel payments: deposits, holds and payment links | TriggerFlow' },
+    title: { fr: 'Paiement hôtel : acomptes et cautions | TriggerFlow', en: 'Hotel payments: deposits, holds and payment links | TriggerFlow' },
     description: {
       fr: 'Envoyez acomptes, cautions et liens de paiement automatiquement, suivez qui a payé et relancez sans y penser. Stripe, PayZen, SystemPay, Apaleo Pay, Thaïs.',
       en: 'Send deposits, holds and payment links automatically, see who has paid and chase without thinking about it. Stripe, PayZen, SystemPay, Apaleo Pay, Thaïs.',

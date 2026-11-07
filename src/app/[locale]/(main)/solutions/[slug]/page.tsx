@@ -1,3 +1,4 @@
+import { clampDescription } from '@/lib/utils';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
@@ -38,14 +39,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!solutions[slug]) return {};
   const solutionData = localizeSolution(solutions[slug], locale);
-  const title = locale === 'en' ? `TriggerFlow for ${solutionData.title}` : `TriggerFlow pour ${solutionData.title}`;
-  const description = solutionData.description;
+  const name = solutionData.title.charAt(0).toLowerCase() + solutionData.title.slice(1);
+  const title = locale === 'en' ? `Hotel CRM for ${name} | TriggerFlow` : `CRM pour ${name} | TriggerFlow`;
+  const description = clampDescription(solutionData.description);
 
   return {
     title: { absolute: title },
     description,
     openGraph: {
-      title: `${title} | TriggerFlow`,
+      title,
       description,
       type: 'website',
     },

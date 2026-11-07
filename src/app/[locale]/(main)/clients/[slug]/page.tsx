@@ -23,8 +23,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!caseStudy) return {};
 
-  const title = `${caseStudy.name} | Cas client TriggerFlow`;
-  const description = `Découvrez comment ${caseStudy.name} (${caseStudy.location}) utilise TriggerFlow pour ${caseStudy.objectives.slice(0, 2).join(' et ').toLowerCase()}.`;
+  const name = caseStudy.name.replace(/\s*\*+$/, '');
+  const title = `${name} : cas client`;
+  const description = `Découvrez comment ${name} (${caseStudy.location}) utilise TriggerFlow pour ${caseStudy.objectives.slice(0, 2).join(' et ').toLowerCase()}.`;
 
   return {
     title,

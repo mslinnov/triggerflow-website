@@ -27,7 +27,7 @@ export interface CaseStudy {
 export const caseStudies: CaseStudy[] = [
   {
     slug: 'edgar-hotel-spa',
-    name: 'Edgar Hotel & Spa ****',
+    name: 'Edgar Hôtel & Spa ****',
     type: 'Hôtel indépendant',
     location: 'Saint-Brieuc',
     contactName: 'Maxime Jullien',

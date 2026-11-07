@@ -5,7 +5,7 @@ export const upsell: ProductLanding = {
   legacySlug: 'ventes-additionnelles',
   name: { fr: 'Upsell', en: 'Upsell' },
   seo: {
-    title: { fr: 'Upsell hôtel : ventes additionnelles avant l’arrivée | TriggerFlow', en: 'Hotel upselling before arrival | TriggerFlow' },
+    title: { fr: 'Upsell hôtel : vendre avant l’arrivée | TriggerFlow', en: 'Hotel upselling before arrival | TriggerFlow' },
     description: {
       fr: 'Surclassement, petit-déjeuner, spa, late check-out : proposez le bon extra au bon client avant son arrivée, paiement en ligne et PMS mis à jour.',
       en: 'Room upgrades, breakfast, spa, late check-out: offer the right extra to the right guest before arrival, with online payment and PMS sync.',

@@ -5,7 +5,7 @@ export const inbox: ProductLanding = {
   legacySlug: 'hub-messagerie',
   name: { fr: 'Messagerie unifiée', en: 'Unified inbox' },
   seo: {
-    title: { fr: 'Messagerie hôtelière unifiée : email, SMS, WhatsApp, OTA | TriggerFlow', en: 'Unified hotel inbox: email, SMS, WhatsApp, OTAs | TriggerFlow' },
+    title: { fr: 'Messagerie hôtelière unifiée | TriggerFlow', en: 'Unified hotel inbox: email, SMS, WhatsApp, OTAs | TriggerFlow' },
     description: { fr: 'Email, SMS, WhatsApp, Messenger, Instagram, chat et messageries OTA dans une seule boîte, avec l’historique du client et des réponses suggérées par l’IA.', en: 'Email, SMS, WhatsApp, Messenger, Instagram, chat and OTA messaging in one inbox, with the guest history and AI-suggested replies.' },
   },
   hero: {

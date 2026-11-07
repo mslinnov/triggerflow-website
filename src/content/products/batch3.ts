@@ -9,7 +9,7 @@ export const campaigns: ProductLanding = {
   slug: 'campaigns',
   legacySlug: 'newsletter',
   name: { fr: 'Campagnes', en: 'Campaigns' },
-  seo: { title: { fr: 'Campagnes email et SMS pour hôtels : marketing ciblé | TriggerFlow', en: 'Email and SMS campaigns for hotels | TriggerFlow' }, description: { fr: 'Segments, éditeur d’emails assisté par l’IA, newsletter et statistiques : le marketing des grandes chaînes, à la taille de votre hôtel, sur des données PMS à jour.', en: 'Segments, AI-assisted email editor, newsletter and statistics: chain-grade marketing sized for your hotel, on up-to-date PMS data.' } },
+  seo: { title: { fr: 'Campagnes email et SMS pour hôtels | TriggerFlow', en: 'Email and SMS campaigns for hotels | TriggerFlow' }, description: { fr: 'Segments, éditeur d’emails assisté par l’IA, newsletter et statistiques : le marketing des grandes chaînes, à la taille de votre hôtel, sur des données PMS à jour.', en: 'Segments, AI-assisted email editor, newsletter and statistics: chain-grade marketing sized for your hotel, on up-to-date PMS data.' } },
   hero: { title: { fr: 'Vos anciens clients, votre meilleur canal de réservation directe.', en: 'Past guests, your best direct booking channel.' }, subtitle: { fr: 'Segments, campagnes email et SMS, newsletter : parlez à chaque client selon ce qu’il a vécu chez vous, avec des données synchronisées avec votre PMS.', en: 'Segments, email and SMS campaigns, newsletter: speak to each guest based on their stay with you, using data synced with your PMS.' }, visual: 'campaign' },
   proof: { stat: 'messages', statLabel: { fr: 'messages envoyés par nos hôtels clients', en: 'messages sent by our client hotels' }, clients: ['Urban Bivouac', 'Hôtel Causse Comtal'] },
   problem: { title: { fr: 'Votre fichier clients dort, ou part en vrac.', en: 'Your guest list sleeps, or gets blasted.' }, items: [
@@ -46,7 +46,7 @@ export const campaigns: ProductLanding = {
 export const guestApp: ProductLanding = {
   slug: 'guest-app',
   name: { fr: 'Guest App', en: 'Guest App' },
-  seo: { title: { fr: 'Guest App hôtel : livret d’accueil digital à vos couleurs | TriggerFlow', en: 'Hotel guest app: digital welcome book in your branding | TriggerFlow' }, description: { fr: 'Votre livret d’accueil digital (Utelys) : informations, services et commandes dans le téléphone du client, sans application à télécharger.', en: 'Your digital welcome book (Utelys): information, services and orders on the guest’s phone, with no app to download.' } },
+  seo: { title: { fr: 'Guest App : livret d’accueil digital hôtel | TriggerFlow', en: 'Hotel guest app: digital welcome book | TriggerFlow' }, description: { fr: 'Votre livret d’accueil digital (Utelys) : informations, services et commandes dans le téléphone du client, sans application à télécharger.', en: 'Your digital welcome book (Utelys): information, services and orders on the guest’s phone, with no app to download.' } },
   hero: { title: { fr: 'Votre livret d’accueil, dans le téléphone de vos clients.', en: 'Your welcome book, on your guests’ phones.' }, subtitle: { fr: 'Informations du séjour, services, recommandations et commandes, à vos couleurs. Un QR code ou un lien, rien à télécharger.', en: 'Stay information, services, recommendations and orders, in your branding. A QR code or a link, nothing to download.' }, visual: 'guestApp' },
   proof: { clients: ['Château Autignac', 'Le Phébus & Spa', 'Hôtel Estrimont'] },
   problem: { title: { fr: 'Le classeur en chambre, personne ne le lit.', en: 'Nobody reads the in-room binder.' }, items: [
@@ -82,7 +82,7 @@ export const guestApp: ProductLanding = {
 export const events: ProductLanding = {
   slug: 'events',
   name: { fr: 'Événements', en: 'Events' },
-  seo: { title: { fr: 'Gestion des séminaires, mariages et groupes à l’hôtel | TriggerFlow', en: 'Seminars, weddings and groups at your hotel | TriggerFlow' }, description: { fr: 'Participants, réponses, régimes alimentaires, rooming list, messages et réservations PMS : séminaires, mariages et groupes suivis au même endroit.', en: 'Attendees, RSVPs, dietary needs, rooming list, messages and PMS bookings: seminars, weddings and groups in one place.' } },
+  seo: { title: { fr: 'Séminaires, mariages et groupes à l’hôtel | TriggerFlow', en: 'Seminars, weddings and groups at your hotel | TriggerFlow' }, description: { fr: 'Participants, réponses, régimes alimentaires, rooming list, messages et réservations PMS : séminaires, mariages et groupes suivis au même endroit.', en: 'Attendees, RSVPs, dietary needs, rooming list, messages and PMS bookings: seminars, weddings and groups in one place.' } },
   hero: { title: { fr: 'Séminaires, mariages et groupes, suivis au même endroit.', en: 'Seminars, weddings and groups, all in one place.' }, subtitle: { fr: 'Participants, réponses, accompagnants, régimes alimentaires, rooming list et réservations PMS : fini les tableurs qui circulent par email.', en: 'Attendees, RSVPs, plus-ones, dietary needs, rooming list and PMS bookings: no more spreadsheets bouncing around by email.' }, visual: 'events' },
   proof: { clients: [] },
   problem: { title: { fr: 'Un événement, dix tableurs et cent emails.', en: 'One event, ten spreadsheets, a hundred emails.' }, items: [
@@ -152,7 +152,7 @@ export const b2b: ProductLanding = {
 export const checkin: ProductLanding = {
   slug: 'check-in',
   name: { fr: 'Check-in en ligne', en: 'Online check-in' },
-  seo: { title: { fr: 'Check-in en ligne hôtel avec lecture de pièce d’identité | TriggerFlow', en: 'Hotel online check-in with ID scanning | TriggerFlow' }, description: { fr: 'Le client s’enregistre avant d’arriver, sa pièce d’identité est lue automatiquement et les données repartent dans le PMS. La réception accueille au lieu de saisir.', en: 'Guests check in before arriving, their ID is read automatically and data flows back to the PMS. The front desk welcomes instead of typing.' } },
+  seo: { title: { fr: 'Check-in en ligne pour hôtels | TriggerFlow', en: 'Hotel online check-in with ID scanning | TriggerFlow' }, description: { fr: 'Le client s’enregistre avant d’arriver, sa pièce d’identité est lue automatiquement et les données repartent dans le PMS. La réception accueille au lieu de saisir.', en: 'Guests check in before arriving, their ID is read automatically and data flows back to the PMS. The front desk welcomes instead of typing.' } },
   hero: { title: { fr: 'Le client arrive enregistré. La réception accueille.', en: 'Guests arrive checked in. The front desk welcomes.' }, subtitle: { fr: 'Le formulaire de check-in part avant l’arrivée, la pièce d’identité est lue automatiquement, les informations repartent dans le PMS. Plus de file au comptoir.', en: 'The check-in form goes out before arrival, the ID is read automatically, the information flows back to the PMS. No more queue at the desk.' }, visual: 'checkin' },
   proof: { clients: [] },
   problem: { title: { fr: 'L’arrivée se passe à recopier des papiers.', en: 'Arrival is spent copying paperwork.' }, items: [
