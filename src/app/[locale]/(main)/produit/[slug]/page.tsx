@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { moduleSlugs, getModuleSerializable } from '@/data/modules';
 import { BreadcrumbListJsonLd, FaqJsonLd } from '@/components/seo';
-import { productLandings } from '@/content/products';
+import { productLandings, redirectedProductSlugs } from '@/content/products';
 import { ProductLandingPage } from '@/components/product/ProductLandingPage';
 import ModulePageContent from './ModulePageContent';
 
@@ -16,13 +16,17 @@ interface Props {
   }>;
 }
 
+
+/** Toute adresse hors generateStaticParams renvoie une vraie 404 (pas de soft 404). */
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const locales = ['fr', 'en'];
   const params = [];
 
   for (const locale of locales) {
     // Anciennes pages remplacées par une landing (redirigées en 301 dans next.config.ts).
-    const legacy = new Set([...Object.keys(productLandings), ...Object.values(productLandings).flatMap((p) => (p.legacySlug ? [p.legacySlug] : []))]);
+    const legacy = redirectedProductSlugs;
     for (const slug of moduleSlugs.filter((s) => !legacy.has(s))) {
       params.push({ locale, slug });
     }

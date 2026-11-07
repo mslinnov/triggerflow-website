@@ -15,6 +15,10 @@ interface Props {
   params: Promise<{ locale: string; slug: string }>;
 }
 
+
+/** Toute adresse hors generateStaticParams renvoie une vraie 404 (pas de soft 404). */
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return ['fr', 'en'].flatMap((locale) => Object.keys(platformPages).map((slug) => ({ locale, slug })));
 }

@@ -5,6 +5,9 @@ import { Container, CtaBand, DsButton, Eyebrow, Section, TrustStrip } from '@/co
 import { Link } from '@/i18n/navigation';
 import { brand } from '@/data/brand';
 import { pmsPages } from '@/content/pms';
+import { integrationCategoryPages } from '@/content/integration-categories';
+
+const categoryPageSlug = (key: string) => Object.values(integrationCategoryPages).find((p) => p.key === key)?.slug;
 
 /** Pages dédiées : Mews (page historique) et les pages générées depuis src/content/pms.ts. */
 const integrationLinks: Record<string, string> = {
@@ -27,7 +30,7 @@ interface Category {
   integrations: Integration[];
 }
 
-const integrationCategories: Category[] = [
+export const integrationCategories: Category[] = [
   {
     key: 'pms',
     borderColor: 'group-hover:border-blue-200',
@@ -149,6 +152,11 @@ export function IntegrationsContent() {
                   <h2 className="mt-3 text-h3 font-medium text-ink md:text-[2rem]">{t(`categories.${category.key}.title`)}</h2>
                   <p className="mt-2 max-w-2xl text-[15px] text-ink-2">{t(`categories.${category.key}.description`)}</p>
                 </div>
+                {categoryPageSlug(category.key) && (
+                  <Link href={`/integrations/${categoryPageSlug(category.key)}`} className="inline-flex shrink-0 items-center gap-1.5 text-[14px] font-medium text-accent hover:text-accent-hover">
+                    {t('categoryLink')} <ArrowRight aria-hidden className="h-4 w-4" />
+                  </Link>
+                )}
               </div>
               <ul className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
                 {category.integrations.map((integration) => {

@@ -4,8 +4,9 @@ import { getAllLandingPages } from '@/lib/landing-pages';
 import { getAllLegalSlugs, getLegalDoc } from '@/lib/legal';
 import { moduleSlugs } from '@/data/modules';
 import { solutionSlugs } from '@/data/solutions';
-import { productLandings } from '@/content/products';
+import { productLandings, redirectedProductSlugs } from '@/content/products';
 import { pmsPages } from '@/content/pms';
+import { integrationCategoryPages } from '@/content/integration-categories';
 import { platformPages } from '@/content/platform';
 import { getAllSlugs as getCaseStudySlugs } from '@/lib/case-studies';
 
@@ -33,6 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { frPath: '/fr/ressources/guides', enPath: '/en/ressources/guides', priority: 0.5, changeFrequency: 'monthly' as const },
     { frPath: '/fr/solutions', enPath: '/en/solutions', priority: 0.7, changeFrequency: 'monthly' as const },
     ...Object.keys(platformPages).map((slug) => ({ frPath: `/fr/plateforme/${slug}`, enPath: `/en/plateforme/${slug}`, priority: 0.6, changeFrequency: 'monthly' as const })),
+    ...Object.keys(integrationCategoryPages).map((slug) => ({ frPath: `/fr/integrations/${slug}`, enPath: `/en/integrations/${slug}`, priority: 0.6, changeFrequency: 'monthly' as const })),
     ...Object.keys(pmsPages).map((slug) => ({ frPath: `/fr/integrations/pms/${slug}`, enPath: `/en/integrations/pms/${slug}`, priority: 0.6, changeFrequency: 'monthly' as const })),
   ];
 
@@ -64,7 +66,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // ─── Product / Module pages ──────────────────────────────────
   // Les anciens slugs remplacés par une landing sont redirigés : on publie la nouvelle URL.
-  const legacySlugs = new Set([...Object.keys(productLandings), ...Object.values(productLandings).flatMap((p) => (p.legacySlug ? [p.legacySlug] : []))]);
+  const legacySlugs = redirectedProductSlugs;
   const productSlugs = [...moduleSlugs.filter((s) => !legacySlugs.has(s)), ...Object.keys(productLandings)];
   for (const slug of productSlugs) {
     const frUrl = `${baseUrl}/fr/produit/${slug}`;

@@ -21,8 +21,8 @@ interface ScenarioCardProps {
 
 const accentColors = [
   { dot: 'bg-brand-primary', ring: 'border-brand-primary/30 bg-brand-primary/5', text: 'text-brand-primary', result: 'bg-brand-primary/[0.06] border-brand-primary/10' },
-  { dot: 'bg-amber-500', ring: 'border-amber-300/40 bg-amber-50', text: 'text-amber-600', result: 'bg-amber-50 border-amber-200/30' },
-  { dot: 'bg-sky-500', ring: 'border-sky-300/40 bg-sky-50', text: 'text-sky-600', result: 'bg-sky-50 border-sky-200/30' },
+  { dot: 'bg-peach', ring: 'border-peach bg-peach/30', text: 'text-ink', result: 'bg-peach/30 border-peach' },
+  { dot: 'bg-accent', ring: 'border-mint bg-mint/40', text: 'text-accent', result: 'bg-mint/40 border-mint' },
 ];
 
 export function ScenarioCard({ badge, title, context, timeline, result, index }: ScenarioCardProps) {

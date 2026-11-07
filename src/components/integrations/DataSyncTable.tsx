@@ -14,11 +14,11 @@ const directionConfig: Record<string, { icon: React.ReactNode; color: string }> 
   },
   fromMews: {
     icon: <ArrowRight className="h-3.5 w-3.5" />,
-    color: 'text-sky-600 bg-sky-50 border-sky-200',
+    color: 'text-accent bg-mint/40 border-mint',
   },
   toMews: {
     icon: <ArrowRight className="h-3.5 w-3.5 rotate-180" />,
-    color: 'text-amber-600 bg-amber-50 border-amber-200',
+    color: 'text-ink bg-peach/30 border-peach',
   },
 };
 

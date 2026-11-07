@@ -18,3 +18,13 @@ export const productLandings: Record<string, ProductLanding> = {
   'booking-requests': bookingRequests,
 };
 export type { ProductLanding, L } from './types';
+
+/** Anciennes pages /produit/* redirigées en 301 (next.config.ts) : hors sitemap et hors build. */
+export const redirectedProductSlugs = new Set([
+  ...Object.keys(productLandings),
+  ...Object.values(productLandings).flatMap((p) => (p.legacySlug ? [p.legacySlug] : [])),
+  'sms',
+  'whatsapp',
+  'email',
+  'newsletter',
+]);

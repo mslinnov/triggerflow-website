@@ -14,6 +14,10 @@ interface Props {
   }>;
 }
 
+
+/** Toute adresse hors generateStaticParams renvoie une vraie 404 (pas de soft 404). */
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const locales = ['fr', 'en'];
   const params = [];

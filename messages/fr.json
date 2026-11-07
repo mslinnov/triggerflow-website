@@ -1289,7 +1289,7 @@
       },
       "hardware": {
         "title": "Serrures & Équipements connectés",
-        "description": "Gérez vos serrures connectées, imprimantes et équipements directement depuis TriggerFlow.",
+        "description": "Envoyez automatiquement les codes de vos serrures et boîtes à clés connectées.",
         "integrations": {
           "sesame": {
             "name": "Sesame",
@@ -1421,7 +1421,14 @@
       "demo": "Réserver une démo",
       "pricing": "Voir les tarifs"
     },
-    "pmsPage": "Page dédiée"
+    "pmsPage": "Page dédiée",
+    "categoryPage": {
+      "usesEyebrow": "Ce que vous pouvez faire",
+      "usesTitle": "Concrètement, dans TriggerFlow.",
+      "others": "Autres intégrations"
+    },
+    "allIntegrations": "Toutes les intégrations",
+    "categoryLink": "Voir la page"
   },
   "modulePage": {
     "meta": {

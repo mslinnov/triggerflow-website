@@ -12,6 +12,10 @@ import { pmsPages } from '@/content/pms';
 const baseUrl = 'https://www.trigger-flow.com';
 interface Props { params: Promise<{ locale: string; pms: string }> }
 
+
+/** Toute adresse hors generateStaticParams renvoie une vraie 404 (pas de soft 404). */
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return ['fr', 'en'].flatMap((locale) => Object.keys(pmsPages).map((pms) => ({ locale, pms })));
 }

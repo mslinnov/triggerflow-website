@@ -1281,7 +1281,7 @@
       },
       "hardware": {
         "title": "Smart Locks & Connected Devices",
-        "description": "Manage your smart locks, printers and devices directly from TriggerFlow.",
+        "description": "Automatically send the codes for your connected locks and key boxes.",
         "integrations": {
           "sesame": {
             "name": "Sesame",
@@ -1413,7 +1413,14 @@
       "demo": "Book a demo",
       "pricing": "View pricing"
     },
-    "pmsPage": "Dedicated page"
+    "pmsPage": "Dedicated page",
+    "categoryPage": {
+      "usesEyebrow": "What you can do",
+      "usesTitle": "In practice, inside TriggerFlow.",
+      "others": "Other integrations"
+    },
+    "allIntegrations": "All integrations",
+    "categoryLink": "See the page"
   },
   "modulePage": {
     "meta": {
