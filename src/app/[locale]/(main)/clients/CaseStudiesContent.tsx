@@ -4,7 +4,7 @@ import { ArrowRight, MapPin } from 'lucide-react';
 import { Container, CtaBand, Eyebrow, LogoWall, Section, SectionHeader, TestimonialCard } from '@/components/ds';
 import { Link } from '@/i18n/navigation';
 import { brand } from '@/data/brand';
-import { homeClients } from '@/data/clients';
+import { clientLogos, homeClients } from '@/data/clients';
 import { caseStudies } from '@/lib/case-studies';
 
 interface Voice {
@@ -71,7 +71,7 @@ export default async function CaseStudiesContent({ locale }: { locale: string })
       <Section tone="paper" compact>
         <Container>
           <p className="text-center font-mono text-eyebrow font-medium uppercase text-ink-3">{t('logos')}</p>
-          <LogoWall names={homeClients} className="mt-8" />
+          <LogoWall names={homeClients} logos={clientLogos} className="mt-8" />
         </Container>
       </Section>
 
