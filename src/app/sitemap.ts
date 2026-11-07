@@ -59,7 +59,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // ─── Product / Module pages ──────────────────────────────────
   // Les anciens slugs remplacés par une landing sont redirigés : on publie la nouvelle URL.
-  const legacySlugs = new Set(Object.values(productLandings).map((p) => p.legacySlug));
+  const legacySlugs = new Set(Object.values(productLandings).flatMap((p) => (p.legacySlug ? [p.legacySlug] : [])));
   const productSlugs = [...moduleSlugs.filter((s) => !legacySlugs.has(s)), ...Object.keys(productLandings)];
   for (const slug of productSlugs) {
     const frUrl = `${baseUrl}/fr/produit/${slug}`;

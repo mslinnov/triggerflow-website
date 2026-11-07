@@ -3222,7 +3222,7 @@
     "badge": "Nouveau",
     "text": "Appel réception : la fin du téléphone en chambre. Vos clients appellent la réception depuis leur téléphone, gratuitement.",
     "short": "Appel réception : la fin du téléphone en chambre",
-    "cta": "Voir une démo"
+    "cta": "Découvrir"
   },
   "ds": {
     "trust": {
@@ -3307,6 +3307,21 @@
       "status": "Statut",
       "pending": "En attente",
       "paid": "Payé"
+    },
+    "voice": {
+      "space": "Espace client",
+      "hotel": "Hôtel des Tilleuls (démo)",
+      "call": "Appeler la réception",
+      "calling": "Appel en cours…",
+      "connected": "En ligne avec la réception",
+      "noNumber": "Gratuit, sans numéro à composer",
+      "incoming": "Appel entrant",
+      "inCall": "En communication",
+      "room": "Chambre 204",
+      "stay": "Séjour du 14 au 16 · Client fidèle",
+      "fallback": "Hors horaires : message vocal transcrit et traduit",
+      "original": "« Hello, could we get two extra towels please? »",
+      "translated": "Bonjour, pourrions-nous avoir deux serviettes supplémentaires ?"
     }
   },
   "nav": {
@@ -3354,7 +3369,8 @@
       "security": "Sécurité",
       "sync": "Synchronisation PMS",
       "ai": "IA intégrée",
-      "integrationsHub": "Intégrations"
+      "integrationsHub": "Intégrations",
+      "voice": "Appel réception"
     },
     "descriptions": {
       "upsell": "Le bon extra, avant l'arrivée",
@@ -3369,7 +3385,8 @@
       "email": "Emails automatiques du séjour",
       "flows": "Vos scénarios, sans code",
       "crm": "Une fiche par client, sans doublons",
-      "analytics": "Vos chiffres, sans tableur"
+      "analytics": "Vos chiffres, sans tableur",
+      "voice": "La fin du téléphone en chambre"
     },
     "footer": {
       "tagline": "Le CRM hôtelier qui s'adapte à votre hôtel. Pas l'inverse.",
@@ -3588,6 +3605,7 @@
     "addonThen": "{price} € à partir du 1er janvier 2027",
     "seePricing": "Voir les tarifs",
     "faqTitle": "Vos questions, nos réponses.",
-    "ctaText": "Mise en place accompagnée, opérationnel en 48 h."
+    "ctaText": "Mise en place accompagnée, opérationnel en 48 h.",
+    "trustLine": "Hébergé en France, sous-traitants publics, DPA signé avec chaque client."
   }
 }

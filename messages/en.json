@@ -2937,7 +2937,7 @@
     "badge": "New",
     "text": "Reception call: goodbye to in-room phones. Guests call the front desk from their own phone, for free.",
     "short": "Reception call: goodbye to in-room phones",
-    "cta": "See a demo"
+    "cta": "Learn more"
   },
   "ds": {
     "trust": {
@@ -3022,6 +3022,21 @@
       "status": "Status",
       "pending": "Pending",
       "paid": "Paid"
+    },
+    "voice": {
+      "space": "Guest space",
+      "hotel": "Hôtel des Tilleuls (demo)",
+      "call": "Call the front desk",
+      "calling": "Calling…",
+      "connected": "Connected to the front desk",
+      "noNumber": "Free, no number to dial",
+      "incoming": "Incoming call",
+      "inCall": "On call",
+      "room": "Room 204",
+      "stay": "Stay from 14 to 16 · Returning guest",
+      "fallback": "After hours: voicemail transcribed and translated",
+      "original": "« Bonjour, pourrions-nous avoir deux serviettes de plus ? »",
+      "translated": "Hello, could we get two extra towels please?"
     }
   },
   "nav": {
@@ -3069,7 +3084,8 @@
       "security": "Security",
       "sync": "PMS sync",
       "ai": "Built-in AI",
-      "integrationsHub": "Integrations"
+      "integrationsHub": "Integrations",
+      "voice": "Reception call"
     },
     "descriptions": {
       "upsell": "The right extra, before arrival",
@@ -3084,7 +3100,8 @@
       "email": "Automated stay emails",
       "flows": "Your scenarios, no code",
       "crm": "One profile per guest, no duplicates",
-      "analytics": "Your numbers, no spreadsheet"
+      "analytics": "Your numbers, no spreadsheet",
+      "voice": "Goodbye to in-room phones"
     },
     "footer": {
       "tagline": "The hotel CRM that fits your hotel, not the other way around.",
@@ -3303,6 +3320,7 @@
     "addonThen": "€{price} from 1 January 2027",
     "seePricing": "See pricing",
     "faqTitle": "Your questions, answered.",
-    "ctaText": "Guided setup, live in 48 hours."
+    "ctaText": "Guided setup, live in 48 hours.",
+    "trustLine": "Hosted in France, public subprocessors, a DPA with every customer."
   }
 }

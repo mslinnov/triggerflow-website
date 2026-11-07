@@ -25,6 +25,7 @@ export const productMenu: NavColumn[] = [
   {
     key: 'during',
     items: [
+      { key: 'voice', href: '/produit/voice' },
       { key: 'inbox', href: '/produit/hub-messagerie' },
       { key: 'whatsapp', href: '/produit/whatsapp' },
       { key: 'sms', href: '/produit/sms' },

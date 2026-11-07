@@ -1,6 +1,6 @@
 import { getTranslations } from 'next-intl/server';
 import { ArrowRight } from 'lucide-react';
-import { brand } from '@/data/brand';
+import { Link } from '@/i18n/navigation';
 
 /**
  * Bandeau d'annonce produit, en tête du header fixe (remplace l'annonce de hausse des tarifs,
@@ -10,10 +10,8 @@ import { brand } from '@/data/brand';
 export async function AnnouncementBar() {
   const t = await getTranslations('announcement');
   return (
-    <a
-      href={brand.demoUrl}
-      target="_blank"
-      rel="noopener noreferrer"
+    <Link
+      href="/produit/voice"
       data-price-banner
       className="flex h-9 items-center justify-center gap-2 bg-brand-dark px-4 text-xs font-medium text-white sm:text-sm"
     >
@@ -26,6 +24,6 @@ export async function AnnouncementBar() {
         {t('cta')}
         <ArrowRight className="h-3.5 w-3.5" />
       </span>
-    </a>
+    </Link>
   );
 }

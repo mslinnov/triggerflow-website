@@ -22,7 +22,7 @@ export async function generateStaticParams() {
 
   for (const locale of locales) {
     // Anciennes pages remplacées par une landing (redirigées en 301 dans next.config.ts).
-    const legacy = new Set(Object.values(productLandings).map((p) => p.legacySlug));
+    const legacy = new Set(Object.values(productLandings).flatMap((p) => (p.legacySlug ? [p.legacySlug] : [])));
     for (const slug of moduleSlugs.filter((s) => !legacy.has(s))) {
       params.push({ locale, slug });
     }

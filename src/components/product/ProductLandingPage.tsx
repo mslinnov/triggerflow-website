@@ -1,10 +1,10 @@
 import { getTranslations } from 'next-intl/server';
 import {
   BarChart3, BedDouble, Bell, Calendar, ClipboardList, Clock, CreditCard, Filter, Layers, Link2, Lock, Mail,
-  MessageSquare, Package, Receipt, RefreshCw, Repeat, Shield, Sparkles, Users, Workflow, Zap, ArrowRight, type LucideIcon,
+  MessageSquare, Package, Receipt, RefreshCw, Repeat, Shield, Sparkles, Users, Workflow, Zap, ArrowRight, Phone, Mic, Globe, Moon, type LucideIcon,
 } from 'lucide-react';
 import { Container, CtaBand, DsButton, Eyebrow, FaqList, FeatureItem, ProductFrame, ProofStat, Section, SectionHeader, TrustStrip } from '@/components/ds';
-import { UpsellScenario, FlowTreeScenario, PayScenario } from '@/components/visuals';
+import { UpsellScenario, FlowTreeScenario, PayScenario, VoiceScenario } from '@/components/visuals';
 import { Link } from '@/i18n/navigation';
 import { brand } from '@/data/brand';
 import { stat } from '@/data/company-stats';
@@ -16,10 +16,10 @@ const ICONS: Record<IconKey, LucideIcon> = {
   sparkles: Sparkles, users: Users, mail: Mail, creditCard: CreditCard, clipboard: ClipboardList, bed: BedDouble,
   package: Package, barChart: BarChart3, workflow: Workflow, filter: Filter, clock: Clock, zap: Zap,
   messageSquare: MessageSquare, refresh: RefreshCw, shield: Shield, link: Link2, bell: Bell, repeat: Repeat,
-  calendar: Calendar, layers: Layers, lock: Lock, receipt: Receipt,
+  calendar: Calendar, layers: Layers, lock: Lock, receipt: Receipt, phone: Phone, mic: Mic, globe: Globe, moon: Moon,
 };
 
-const VISUALS = { upsell: UpsellScenario, flows: FlowTreeScenario, pay: PayScenario };
+const VISUALS = { upsell: UpsellScenario, flows: FlowTreeScenario, pay: PayScenario, voice: VoiceScenario };
 
 /** Gabarit des landings produit (13 blocs, docs/wireframes.md). Contenu : src/content/products. */
 export async function ProductLandingPage({ product, locale }: { product: ProductLanding; locale: string }) {
@@ -53,11 +53,12 @@ export async function ProductLandingPage({ product, locale }: { product: Product
         </Container>
       </section>
 
-      {/* 2. Preuves */}
+      {/* 2. Preuves (masquées tant qu'aucun client ni chiffre mesuré n'est disponible) */}
+      {(product.proof.clients.length > 0 || product.proof.stat) && (
       <section className="border-y border-line bg-white py-10 md:py-12">
         <Container className="flex flex-col items-center gap-8 md:flex-row md:justify-between">
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 md:justify-start">
-            <span className="font-mono text-eyebrow uppercase text-ink-3">{t('usedBy')}</span>
+            {product.proof.clients.length > 0 && <span className="font-mono text-eyebrow uppercase text-ink-3">{t('usedBy')}</span>}
             {product.proof.clients.map((c) => (
               <span key={c} className="text-[15px] font-semibold tracking-[-0.01em] text-ink/70">{c}</span>
             ))}
@@ -70,6 +71,7 @@ export async function ProductLandingPage({ product, locale }: { product: Product
           )}
         </Container>
       </section>
+      )}
 
       {/* 3. Problème */}
       <Section tone="paper">
@@ -162,7 +164,11 @@ export async function ProductLandingPage({ product, locale }: { product: Product
       {/* 9. Fiabilité et sécurité */}
       <section className="bg-ink py-14 text-white md:py-16">
         <Container className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-          <ProofStat value={stat(product.reliability.stat, locale)} label={l(product.reliability.label)} source={t('source')} onDark />
+          {product.reliability ? (
+            <ProofStat value={stat(product.reliability.stat, locale)} label={l(product.reliability.label)} source={t('source')} onDark />
+          ) : (
+            <p className="max-w-md text-h3 font-medium">{t('trustLine')}</p>
+          )}
           <TrustStrip onDark align="left" />
         </Container>
       </section>

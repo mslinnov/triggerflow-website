@@ -6,16 +6,17 @@ export type L = { fr: string; en: string };
 export type IconKey =
   | 'sparkles' | 'users' | 'mail' | 'creditCard' | 'clipboard' | 'bed' | 'package' | 'barChart'
   | 'workflow' | 'filter' | 'clock' | 'zap' | 'messageSquare' | 'refresh' | 'shield' | 'link'
-  | 'bell' | 'repeat' | 'calendar' | 'layers' | 'lock' | 'receipt';
+  | 'bell' | 'repeat' | 'calendar' | 'layers' | 'lock' | 'receipt' | 'phone' | 'mic' | 'globe' | 'moon';
 
 export interface ProductLanding {
   /** Slug de la nouvelle URL (/produit/<slug>). */
   slug: string;
   /** Ancien slug redirigé en 301. */
-  legacySlug: string;
+  /** Ancien slug redirigé en 301 (absent pour une page nouvelle). */
+  legacySlug?: string;
   name: L;
   seo: { title: L; description: L };
-  hero: { title: L; subtitle: L; visual: 'upsell' | 'flows' | 'pay' };
+  hero: { title: L; subtitle: L; visual: 'upsell' | 'flows' | 'pay' | 'voice' };
   /** clients : uniquement ceux dont le témoignage confirme l'usage du module (docs/preuves.md). */
   proof: { stat?: StatId; statLabel?: L; clients: string[] };
   problem: { title: L; items: L[] };
@@ -24,7 +25,7 @@ export interface ProductLanding {
   tailored: { title: L; items: { client: string | L; text: L }[] };
   caseStudy?: { quote: L; name: string; role: L; company: string; href?: string };
   integrations: { title: L; text: L; extra?: string[] };
-  reliability: { stat: StatId; label: L };
+  reliability?: { stat: StatId; label: L };
   related: { slug: string; href: string; name: L; text: L }[];
   pricing: { text: L; addon?: 'payments' | 'reviews' | 'loyalty' | 'aiAgent' | 'guestApp' };
   faq: { q: L; a: L }[];

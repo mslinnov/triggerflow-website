@@ -3,3 +3,4 @@ export { FlowTreeScenario } from './FlowTreeScenario';
 export { DedupScenario } from './DedupScenario';
 export { UpsellScenario } from './UpsellScenario';
 export { PayScenario } from './PayScenario';
+export { VoiceScenario } from './VoiceScenario';
