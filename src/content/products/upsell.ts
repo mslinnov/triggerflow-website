@@ -67,7 +67,7 @@ export const upsell: ProductLanding = {
     name: 'Baptiste Legout',
     role: { fr: 'Propriétaire', en: 'Owner' },
     company: 'Hôtel Causse Comtal',
-    href: '/ressources/cas-clients/causse-comtal',
+    href: '/clients/causse-comtal',
   },
   integrations: {
     title: { fr: 'La commande remonte dans votre PMS.', en: 'Orders flow back into your PMS.' },

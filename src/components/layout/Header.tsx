@@ -123,7 +123,7 @@ const menuItems = {
         title: 'Ressources',
         items: [
           { icon: BookOpen, label: 'Blog', description: 'Articles et actualités', href: '/blog' },
-          { icon: Building2, label: 'Cas clients', description: 'Témoignages et succès', href: '/ressources/cas-clients' },
+          { icon: Building2, label: 'Cas clients', description: 'Témoignages et succès', href: '/clients' },
           { icon: FileQuestion, label: 'Guides & Ebooks', description: 'Contenus téléchargeables', href: '/ressources/guides' },
           { icon: HelpCircle, label: 'Centre d\'aide', description: 'FAQ et documentation', href: '/ressources/aide' },
         ],

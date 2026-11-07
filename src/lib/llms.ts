@@ -93,7 +93,7 @@ ${keyFacts()}
 - [Pricing / Tarifs](${baseUrl}/fr/tarifs)
 - [PMS integrations / Intégrations](${baseUrl}/fr/integrations)
 - [Mews integration](${baseUrl}/fr/integrations/pms/mews)
-- [Customer stories / Cas clients](${baseUrl}/fr/ressources/cas-clients)
+- [Customer stories / Cas clients](${baseUrl}/fr/clients)
 - [About / À propos](${baseUrl}/fr/entreprise/a-propos)
 
 ## Product modules (FR pages, EN at /en/)

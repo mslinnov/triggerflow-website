@@ -68,7 +68,7 @@ export function SiteHeader({ banner }: SiteHeaderProps) {
             <MenuTrigger label={t('product')} active={open === 'product'} onEnter={() => enter('product')} onToggle={() => setOpen(open === 'product' ? null : 'product')} />
             <MenuTrigger label={t('platform')} active={open === 'platform'} onEnter={() => enter('platform')} onToggle={() => setOpen(open === 'platform' ? null : 'platform')} />
             <MenuTrigger label={t('solutions')} active={open === 'solutions'} onEnter={() => enter('solutions')} onToggle={() => setOpen(open === 'solutions' ? null : 'solutions')} />
-            <TopLink href="/ressources/cas-clients" onEnter={leave}>{t('clients')}</TopLink>
+            <TopLink href="/clients" onEnter={leave}>{t('clients')}</TopLink>
             <TopLink href="/tarifs" onEnter={leave}>{t('pricing')}</TopLink>
             <MenuTrigger label={t('resources')} active={open === 'resources'} onEnter={() => enter('resources')} onToggle={() => setOpen(open === 'resources' ? null : 'resources')} />
           </nav>
@@ -156,7 +156,7 @@ export function SiteHeader({ banner }: SiteHeaderProps) {
                 <MobileLink key={item.key} href={item.href} onPick={() => setMobile(false)}>{t(`items.${item.key}`)}</MobileLink>
               ))}
             </MobileGroup>
-            <MobileLink href="/ressources/cas-clients" onPick={() => setMobile(false)} strong>{t('clients')}</MobileLink>
+            <MobileLink href="/clients" onPick={() => setMobile(false)} strong>{t('clients')}</MobileLink>
             <MobileLink href="/tarifs" onPick={() => setMobile(false)} strong>{t('pricing')}</MobileLink>
             <MobileGroup title={t('resources')}>
               {resourcesMenu.map((item) => (

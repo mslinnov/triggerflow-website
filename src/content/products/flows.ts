@@ -67,7 +67,7 @@ export const flows: ProductLanding = {
     name: 'Baptiste Legout',
     role: { fr: 'Propriétaire', en: 'Owner' },
     company: 'Hôtel Causse Comtal',
-    href: '/ressources/cas-clients/causse-comtal',
+    href: '/clients/causse-comtal',
   },
   integrations: {
     title: { fr: 'Déclenchés par votre PMS, en temps réel.', en: 'Triggered by your PMS, in real time.' },

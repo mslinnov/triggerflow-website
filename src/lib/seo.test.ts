@@ -31,11 +31,11 @@ test('pageAlternates : canonical et hreflang de la page elle-même, en https', (
 });
 
 test('pageAlternates : page rédigée en français seulement, ni hreflang en ni canonical en', () => {
-  assert.deepEqual(pageAlternates('en', '/ressources/cas-clients/x', ['fr']), {
-    canonical: 'https://www.trigger-flow.com/fr/ressources/cas-clients/x',
+  assert.deepEqual(pageAlternates('en', '/clients/x', ['fr']), {
+    canonical: 'https://www.trigger-flow.com/fr/clients/x',
     languages: {
-      fr: 'https://www.trigger-flow.com/fr/ressources/cas-clients/x',
-      'x-default': 'https://www.trigger-flow.com/fr/ressources/cas-clients/x',
+      fr: 'https://www.trigger-flow.com/fr/clients/x',
+      'x-default': 'https://www.trigger-flow.com/fr/clients/x',
     },
   });
 });
@@ -65,7 +65,7 @@ test("aucune page n'hérite des alternates de l'accueil (layout [locale])", () =
 test('pages rédigées en français seulement : hreflang fr et x-default, sans en', () => {
   // Fiches cas clients (src/lib/case-studies.ts) et LP Thaïs : contenu en dur en français.
   const frOnly = [
-    join(appDir, '(main)', 'ressources', 'cas-clients', '[slug]', 'page.tsx'),
+    join(appDir, '(main)', 'clients', '[slug]', 'page.tsx'),
     ...['thais', 'thais-v2', 'thais-v3'].map((d) => join(appDir, '(lp)', 'lp', d, 'layout.tsx')),
   ];
   for (const file of frOnly) assert.match(readFileSync(file, 'utf8'), /pageAlternates\([^)]*, \['fr'\]\)/, file);

@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
-import { ProductContent } from './ProductContent';
+import { ProductOverview } from '@/components/product/ProductOverview';
 import { BreadcrumbListJsonLd } from '@/components/seo';
 
 const baseUrl = 'https://www.trigger-flow.com';
@@ -39,7 +39,7 @@ export default async function ProductPage({ params }: PageProps) {
           { name: locale === 'fr' ? 'Produit' : 'Product', url: `${baseUrl}/${locale}/produit` },
         ]}
       />
-      <ProductContent />
+      <ProductOverview locale={locale} />
     </>
   );
 }

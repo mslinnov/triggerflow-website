@@ -50,7 +50,7 @@ export const crm: ProductLanding = {
   },
   caseStudy: {
     quote: { fr: 'Après avoir testé plusieurs solutions CRM, nous avons trouvé avec TriggerFlow l’outil qui correspond vraiment à nos besoins.', en: 'After testing several CRM tools, we found in TriggerFlow the one that truly fits our needs.' },
-    name: 'Maxime Jullien', role: { fr: 'Directeur', en: 'General manager' }, company: 'Edgar Hôtel & Spa', href: '/ressources/cas-clients/edgar-hotel-spa',
+    name: 'Maxime Jullien', role: { fr: 'Directeur', en: 'General manager' }, company: 'Edgar Hôtel & Spa', href: '/clients/edgar-hotel-spa',
   },
   integrations: { title: { fr: 'Alimenté par votre PMS, dans les deux sens.', en: 'Fed by your PMS, both ways.' }, text: { fr: 'Les fiches se mettent à jour depuis le PMS, et vos modifications y redescendent.', en: 'Profiles update from the PMS, and your edits flow back.' } },
   reliability: { stat: 'emailDelivered', label: { fr: 'des e-mails délivrés', en: 'of emails delivered' } },

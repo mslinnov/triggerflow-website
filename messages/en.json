@@ -3287,7 +3287,7 @@
           "tag": "Aveyron · Thaïs",
           "title": "Chain-grade emails, in one week",
           "text": "“In one week, we set up automated emails you'd normally only find at very large hotel chains.”",
-          "href": "/ressources/cas-clients/causse-comtal",
+          "href": "/clients/causse-comtal",
           "cta": "Read the Causse Comtal story"
         },
         {
@@ -3295,7 +3295,7 @@
           "tag": "Nice · 6 properties",
           "title": "One tool for the whole group",
           "text": "A CRM and a WhatsApp tool replaced by TriggerFlow. Head office sees everything, each front desk sees what matters.",
-          "href": "/ressources/cas-clients",
+          "href": "/clients",
           "cta": "See customer stories"
         },
         {
@@ -3303,7 +3303,7 @@
           "tag": "Colmar · 43 rooms",
           "title": "Payments tracked and chased automatically",
           "text": "“Sending a payment request automatically, seeing whether the guest has paid, then triggering reminders: a huge time saver.”",
-          "href": "/ressources/cas-clients",
+          "href": "/clients",
           "cta": "See customer stories"
         }
       ]
@@ -3429,5 +3429,84 @@
     "faqTitle": "Your questions, answered.",
     "ctaText": "Guided setup, live in 48 hours.",
     "trustLine": "Hosted in France, public subprocessors, a DPA with every customer."
+  },
+  "clientsPage": {
+    "eyebrow": "Customers",
+    "title": "Different hotels, each with its own journey.",
+    "subtitle": "Independent hotels, groups, residences, high-end properties: what they built with TriggerFlow, in their own words.",
+    "casesEyebrow": "Customer stories",
+    "casesTitle": "How they set it up.",
+    "read": "Read the story",
+    "voicesEyebrow": "Testimonials",
+    "voicesTitle": "What they say.",
+    "logos": "They chose TriggerFlow and Utelys",
+    "cta": "Build your hotel’s guest journey.",
+    "voices": [
+      {
+        "quote": "Our biggest win is payment link tracking: sending a request automatically, seeing whether the guest has paid, then triggering reminders.",
+        "name": "Carine Chausson",
+        "role": "Manager",
+        "company": "Hôtel Arc en Ciel, Colmar"
+      },
+      {
+        "quote": "TriggerFlow gives head office a complete view and receptionists a simplified one.",
+        "name": "Romain Coste-Chareyre",
+        "role": "Group",
+        "company": "AMMI Hôtels, Nice"
+      },
+      {
+        "quote": "I was already using another CRM well established in Paris, but it no longer let me go further.",
+        "name": "Idir Mazari",
+        "role": "Manager",
+        "company": "Urban Bivouac Paris"
+      },
+      {
+        "quote": "On site, the QR code is very handy: our guests open the app in 2 seconds.",
+        "name": "Martine Feigel",
+        "role": "Owner",
+        "company": "Château Autignac"
+      },
+      {
+        "quote": "We want to highlight the responsiveness of the whole Utelys team, which helped us create and innovate on several projects.",
+        "name": "The team",
+        "role": "Management",
+        "company": "Le Phébus & Spa"
+      },
+      {
+        "quote": "The team's support is extremely responsive. 100% trust and availability!",
+        "name": "Charlotte Laine",
+        "role": "Google review",
+        "company": "La Ferme de l’Oudon"
+      }
+    ]
+  },
+  "productOverview": {
+    "eyebrow": "The platform",
+    "title": "The whole guest journey, in one platform.",
+    "subtitle": "Before, during and after the stay, and between stays: every product plugs into the same CRM, the same flows and your PMS.",
+    "moments": {
+      "before": "Prepare the arrival and sell before the guest is even there.",
+      "during": "Make the stay easier for guests and for the team.",
+      "after": "Turn departure into a review and the next booking.",
+      "marketing": "Bring your guests back direct.",
+      "core": "The shared foundation: scenarios, guest data and reporting."
+    },
+    "foundationEyebrow": "The foundation",
+    "foundationTitle": "Synced, smart, secure.",
+    "pillars": {
+      "sync": {
+        "title": "PMS sync",
+        "text": "Both ways, in real time, with duplicate-free data."
+      },
+      "ai": {
+        "title": "Built-in AI",
+        "text": "Help in every module; your team stays in control."
+      },
+      "security": {
+        "title": "Security",
+        "text": "Hosted in France, public DPA, listed subprocessors."
+      }
+    },
+    "cta": "Build your hotel’s guest journey."
   }
 }

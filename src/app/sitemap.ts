@@ -27,7 +27,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { frPath: '/fr/entreprise/a-propos', enPath: '/en/entreprise/a-propos', priority: 0.5, changeFrequency: 'monthly' as const },
     { frPath: '/fr/entreprise/carrieres', enPath: '/en/entreprise/carrieres', priority: 0.4, changeFrequency: 'monthly' as const },
     { frPath: '/fr/ressources/aide', enPath: '/en/ressources/aide', priority: 0.5, changeFrequency: 'monthly' as const },
-    { frPath: '/fr/ressources/cas-clients', enPath: '/en/ressources/cas-clients', priority: 0.6, changeFrequency: 'monthly' as const },
+    { frPath: '/fr/clients', enPath: '/en/clients', priority: 0.6, changeFrequency: 'monthly' as const },
     { frPath: '/fr/ressources/guides', enPath: '/en/ressources/guides', priority: 0.5, changeFrequency: 'monthly' as const },
   ];
 
@@ -135,7 +135,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Rédigées en français seulement : l'URL /en a son canonical vers /fr (pageAlternates), donc
   // seule l'URL fr figure ici, sans hreflang en.
   for (const slug of getCaseStudySlugs()) {
-    const frUrl = `${baseUrl}/fr/ressources/cas-clients/${slug}`;
+    const frUrl = `${baseUrl}/fr/clients/${slug}`;
 
     sitemapEntries.push({
       url: frUrl,

@@ -31,7 +31,7 @@ const productLinks = [
 // Resources links
 const resourceLinks = [
   { href: '/blog', labelKey: 'resources.blog' },
-  { href: '/ressources/cas-clients', labelKey: 'resources.caseStudies' },
+  { href: '/clients', labelKey: 'resources.caseStudies' },
   // { href: '/ressources/guides', labelKey: 'resources.guides' },      // masqué pour le lancement
   // { href: '/ressources/aide', labelKey: 'resources.helpCenter' },     // masqué pour le lancement
 ] as const;

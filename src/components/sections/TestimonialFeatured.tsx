@@ -107,7 +107,7 @@ export function TestimonialFeatured() {
               className="mt-8 text-center"
             >
               <Link
-                href="/ressources/cas-clients/edgar-hotel-spa"
+                href="/clients/edgar-hotel-spa"
                 className="inline-flex items-center gap-2 text-sm font-medium text-brand-primary transition-colors hover:text-brand-dark"
               >
                 {t('cta')}

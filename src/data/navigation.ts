@@ -105,11 +105,11 @@ export const footerColumns: NavColumn[] = [
   {
     key: 'clients',
     items: [
-      { key: 'allCases', href: '/ressources/cas-clients' },
-      { key: 'edgar', href: '/ressources/cas-clients/edgar-hotel-spa' },
-      { key: 'causse', href: '/ressources/cas-clients/causse-comtal' },
-      { key: 'pressoir', href: '/ressources/cas-clients/le-vieux-pressoir' },
-      { key: 'noemys', href: '/ressources/cas-clients/groupe-noemys' },
+      { key: 'allCases', href: '/clients' },
+      { key: 'edgar', href: '/clients/edgar-hotel-spa' },
+      { key: 'causse', href: '/clients/causse-comtal' },
+      { key: 'pressoir', href: '/clients/le-vieux-pressoir' },
+      { key: 'noemys', href: '/clients/groupe-noemys' },
     ],
   },
   {

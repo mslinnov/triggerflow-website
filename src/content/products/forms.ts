@@ -51,7 +51,7 @@ export const forms: ProductLanding = {
   },
   caseStudy: {
     quote: { fr: 'Les formulaires peuvent se personnaliser en fonction des réponses aux questions. Selon les réponses que le client donne, on va pouvoir ouvrir d’autres questions, c’est vraiment un point fort.', en: 'Forms can adapt to the answers. Depending on what the guest says, other questions open up: that’s a real strength.' },
-    name: 'Maxime Jullien', role: { fr: 'Directeur', en: 'General manager' }, company: 'Edgar Hôtel & Spa', href: '/ressources/cas-clients/edgar-hotel-spa',
+    name: 'Maxime Jullien', role: { fr: 'Directeur', en: 'General manager' }, company: 'Edgar Hôtel & Spa', href: '/clients/edgar-hotel-spa',
   },
   integrations: { title: { fr: 'Les réponses rejoignent la fiche et le PMS.', en: 'Answers reach the profile and the PMS.' }, text: { fr: 'Les formulaires utilisent les données de réservation pour se pré-remplir.', en: 'Forms use booking data to pre-fill.' } },
   reliability: { stat: 'emailDelivered', label: { fr: 'des e-mails délivrés', en: 'of emails delivered' } },

@@ -30,7 +30,7 @@ export default function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
       <div className="bg-brand-light/50 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <nav className="flex items-center gap-2 text-sm text-gray-500">
-            <Link href="/ressources/cas-clients" className="hover:text-brand-primary transition-colors">
+            <Link href="/clients" className="hover:text-brand-primary transition-colors">
               {t('breadcrumb.caseStudies')}
             </Link>
             <ChevronRight className="w-3.5 h-3.5" />
@@ -179,7 +179,7 @@ export default function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
             <div className="py-8 md:pr-8">
               {prev ? (
                 <Link
-                  href={`/ressources/cas-clients/${prev.slug}`}
+                  href={`/clients/${prev.slug}`}
                   className="group flex items-center gap-4 hover:opacity-80 transition-opacity"
                 >
                   <ArrowLeft className="w-5 h-5 text-gray-400 group-hover:-translate-x-1 transition-transform" />
@@ -194,7 +194,7 @@ export default function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
                 </Link>
               ) : (
                 <Link
-                  href="/ressources/cas-clients"
+                  href="/clients"
                   className="group flex items-center gap-4 hover:opacity-80 transition-opacity"
                 >
                   <ArrowLeft className="w-5 h-5 text-gray-400 group-hover:-translate-x-1 transition-transform" />
@@ -214,7 +214,7 @@ export default function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
             <div className="py-8 md:pl-8 flex justify-end">
               {next ? (
                 <Link
-                  href={`/ressources/cas-clients/${next.slug}`}
+                  href={`/clients/${next.slug}`}
                   className="group flex items-center gap-4 text-right hover:opacity-80 transition-opacity"
                 >
                   <div>
@@ -229,7 +229,7 @@ export default function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
                 </Link>
               ) : (
                 <Link
-                  href="/ressources/cas-clients"
+                  href="/clients"
                   className="group flex items-center gap-4 text-right hover:opacity-80 transition-opacity"
                 >
                   <div>

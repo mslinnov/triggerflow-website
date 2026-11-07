@@ -3572,7 +3572,7 @@
           "tag": "Aveyron · Thaïs",
           "title": "Des emails dignes d'une grande chaîne, en une semaine",
           "text": "« Nous avons pu, en une semaine, mettre en place une solution d'e-mails automatisés qu'on retrouve normalement dans les très grosses chaînes d'hôtellerie. »",
-          "href": "/ressources/cas-clients/causse-comtal",
+          "href": "/clients/causse-comtal",
           "cta": "Lire le cas Causse Comtal"
         },
         {
@@ -3580,7 +3580,7 @@
           "tag": "Nice · 6 établissements",
           "title": "Un seul outil pour tout le groupe",
           "text": "Un CRM et un outil WhatsApp remplacés par TriggerFlow. Le siège voit tout, chaque réception voit l'essentiel.",
-          "href": "/ressources/cas-clients",
+          "href": "/clients",
           "cta": "Voir les cas clients"
         },
         {
@@ -3588,7 +3588,7 @@
           "tag": "Colmar · 43 chambres",
           "title": "Des paiements suivis et relancés tout seuls",
           "text": "« Envoyer automatiquement une demande de paiement, suivre si le client a payé, puis déclencher des relances : un énorme gain de temps et de sérénité. »",
-          "href": "/ressources/cas-clients",
+          "href": "/clients",
           "cta": "Voir les cas clients"
         }
       ]
@@ -3714,5 +3714,84 @@
     "faqTitle": "Vos questions, nos réponses.",
     "ctaText": "Mise en place accompagnée, opérationnel en 48 h.",
     "trustLine": "Hébergé en France, sous-traitants publics, DPA signé avec chaque client."
+  },
+  "clientsPage": {
+    "eyebrow": "Clients",
+    "title": "Des hôtels différents, chacun avec son parcours.",
+    "subtitle": "Hôtels indépendants, groupes, résidences, établissements haut de gamme : ce qu’ils ont construit avec TriggerFlow, racontés par eux.",
+    "casesEyebrow": "Cas clients",
+    "casesTitle": "Ils racontent leur mise en place.",
+    "read": "Lire le cas client",
+    "voicesEyebrow": "Témoignages",
+    "voicesTitle": "Ce qu’ils en disent.",
+    "logos": "Ils ont choisi TriggerFlow et Utelys",
+    "cta": "Construisez le parcours client de votre hôtel.",
+    "voices": [
+      {
+        "quote": "Le vrai gros point fort pour nous reste le suivi des liens de paiement : envoyer automatiquement une demande, suivre si le client a payé, puis déclencher des relances.",
+        "name": "Carine Chausson",
+        "role": "Directrice",
+        "company": "Hôtel Arc en Ciel, Colmar"
+      },
+      {
+        "quote": "TriggerFlow permet d’avoir une vue complète pour le siège et simplifiée pour les réceptionnistes.",
+        "name": "Romain Coste-Chareyre",
+        "role": "Groupe",
+        "company": "AMMI Hôtels, Nice"
+      },
+      {
+        "quote": "Je travaillais déjà avec un autre CRM bien implanté sur le marché parisien, mais celui-ci ne me permettait plus d’aller plus loin.",
+        "name": "Idir Mazari",
+        "role": "Directeur",
+        "company": "Urban Bivouac Paris"
+      },
+      {
+        "quote": "Une fois sur place, le système de QR code est très pratique : nos clients accèdent à l’application en 2 secondes.",
+        "name": "Martine Feigel",
+        "role": "Propriétaire",
+        "company": "Château Autignac"
+      },
+      {
+        "quote": "Nous souhaitons souligner la réactivité de toute l’équipe d’Utelys qui nous a permis de créer et d’innover sur différents projets.",
+        "name": "L’équipe",
+        "role": "Direction",
+        "company": "Le Phébus & Spa"
+      },
+      {
+        "quote": "Le support de l’équipe est extrêmement réactif. Confiance et disponibilité à 100 % !",
+        "name": "Charlotte Laine",
+        "role": "Avis Google",
+        "company": "La Ferme de l’Oudon"
+      }
+    ]
+  },
+  "productOverview": {
+    "eyebrow": "La plateforme",
+    "title": "Tout le parcours client, dans une seule plateforme.",
+    "subtitle": "Avant, pendant et après le séjour, et entre deux séjours : chaque produit se branche sur le même CRM, les mêmes flows et votre PMS.",
+    "moments": {
+      "before": "Préparez l’arrivée et vendez avant même que le client soit là.",
+      "during": "Simplifiez le séjour pour le client et pour l’équipe.",
+      "after": "Transformez le départ en avis et en prochaine réservation.",
+      "marketing": "Faites revenir vos clients en direct.",
+      "core": "Le socle commun : scénarios, données clients et pilotage."
+    },
+    "foundationEyebrow": "Le socle",
+    "foundationTitle": "Synchronisé, intelligent, sécurisé.",
+    "pillars": {
+      "sync": {
+        "title": "Synchronisation PMS",
+        "text": "Dans les deux sens, en temps réel, avec des données sans doublons."
+      },
+      "ai": {
+        "title": "IA intégrée",
+        "text": "Une aide dans chaque module ; votre équipe garde la main."
+      },
+      "security": {
+        "title": "Sécurité",
+        "text": "Hébergé en France, DPA public, sous-traitants listés."
+      }
+    },
+    "cta": "Construisez le parcours client de votre hôtel."
   }
 }

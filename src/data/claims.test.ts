@@ -172,7 +172,7 @@ test('messages FR/EN : aucun chiffre de résultat non mesuré hors témoignages 
   // lpUpsell, lpPostStay et lpClientsOta publient des études mesurées (upsell-services.ts, post-stay.ts, clients-ota.ts).
   // heroDashboard : valeurs d'exemple de la maquette du tableau de bord (maquettes hors périmètre).
   // testimonials : citations exactes de clients (home2, docs/preuves.md), comme les autres témoignages.
-  const skip = new Set(['testimonialFeatured', 'testimonialsCarousel', 'testimonial', 'testimonials', 'heroDashboard', 'lpUpsell', 'lpPostStay', 'lpClientsOta', 'pricing', 'priceChange']);
+  const skip = new Set(['testimonialFeatured', 'testimonialsCarousel', 'testimonial', 'testimonials', 'voices', 'heroDashboard', 'lpUpsell', 'lpPostStay', 'lpClientsOta', 'pricing', 'priceChange']);
   for (const locale of ['fr', 'en']) {
     const messages = JSON.parse(readFileSync(join(root, 'messages', `${locale}.json`), 'utf8'));
     assert.deepEqual(offenders(strings(messages, skip, locale)), []);

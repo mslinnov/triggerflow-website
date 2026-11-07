@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: t('meta.title'),
-    alternates: pageAlternates(locale, '/ressources/cas-clients'),
+    alternates: pageAlternates(locale, '/clients'),
     description: t('meta.description'),
   };
 }
@@ -22,5 +22,5 @@ export default async function CaseStudiesPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  return <CaseStudiesContent />;
+  return <CaseStudiesContent locale={locale} />;
 }
