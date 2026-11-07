@@ -13,3 +13,4 @@ export { FaqList, type FaqEntry } from './FaqList';
 export { LogoWall } from './LogoWall';
 export { CtaBand, LogoMotif } from './CtaBand';
 export { useScenario } from './useScenario';
+export { BrandMark } from './BrandMark';

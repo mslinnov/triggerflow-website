@@ -1,5 +1,5 @@
 import { getLocale, getTranslations } from 'next-intl/server';
-import { Container, CtaBand, Eyebrow, ProofStat, Section, SectionHeader, TrustStrip } from '@/components/ds';
+import { BrandMark, Container, CtaBand, Eyebrow, ProofStat, Section, SectionHeader, TrustStrip } from '@/components/ds';
 import { brand } from '@/data/brand';
 import { stat } from '@/data/company-stats';
 
@@ -10,6 +10,8 @@ export async function AboutContent() {
   const nav = await getTranslations({ locale, namespace: 'nav' });
   const story = t.raw('story') as { year: string; title: string; text: string }[];
   const principles = t.raw('principles') as { title: string; text: string }[];
+  const logoParts = t.raw('logo.parts') as { name: string; text: string }[];
+  const partShapes = ['trigger', 'flows', 'arrow'] as const;
   return (
     <>
       <section className="bg-white pb-16 pt-14 md:pb-24 md:pt-20">
@@ -42,6 +44,34 @@ export async function AboutContent() {
               </li>
             ))}
           </ol>
+        </Container>
+      </Section>
+
+      <Section tone="dark" aria-labelledby="logo-title">
+        <Container className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+          <div className="flex aspect-square w-full max-w-[240px] sm:max-w-[440px] items-center justify-center justify-self-center rounded-3xl bg-accent">
+            <BrandMark className="h-[46%] w-auto text-white" />
+          </div>
+          <div>
+            <p className="font-mono text-eyebrow font-medium uppercase text-mint">{t('logo.eyebrow')}</p>
+            <h2 id="logo-title" className="mt-4 text-balance text-h2 font-medium tracking-[-0.02em] text-white">{t('logo.title')}</h2>
+            <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-white/80">{t('logo.text')}</p>
+            <ol className="mt-10 grid gap-4">
+              {logoParts.map((p, i) => (
+                <li key={p.name} className="flex items-center gap-5 rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+                  <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl bg-mint text-accent-hover">
+                    <BrandMark part={partShapes[i]} className={partShapes[i] === 'flows' ? 'h-auto w-11' : 'h-10 w-auto'} />
+                  </span>
+                  <span>
+                    <span className="block font-mono text-[11px] uppercase tracking-[0.08em] text-white/60">0{i + 1}</span>
+                    <span className="mt-0.5 block text-[17px] font-semibold text-white">{p.name}</span>
+                    <span className="mt-1 block text-[14.5px] leading-relaxed text-white/75">{p.text}</span>
+                  </span>
+                </li>
+              ))}
+            </ol>
+            <p className="mt-6 text-[13px] text-white/60">{t('logo.credit')}</p>
+          </div>
         </Container>
       </Section>
 

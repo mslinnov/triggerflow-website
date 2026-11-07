@@ -3634,7 +3634,27 @@
     "companyEyebrow": "The company",
     "company": "TriggerFlow is published by Utelys SAS, 13 rue Saint-Ursule, 31000 Toulouse, France.",
     "cta": "Let’s build your hotel’s guest journey.",
-    "join": "Join us"
+    "join": "Join us",
+    "logo": {
+      "eyebrow": "Our logo",
+      "title": "Three shapes, one idea.",
+      "text": "The TriggerFlow symbol brings together three shapes. Together they tell what the platform does: an event triggers a scenario that leads the guest to act.",
+      "parts": [
+        {
+          "name": "The trigger",
+          "text": "The arc is the event that starts it all: a booking, an arrival, a departure."
+        },
+        {
+          "name": "Automation flows",
+          "text": "The scenario unfolds and sends the right message, at the right time, on the right channel."
+        },
+        {
+          "name": "The arrow, the click",
+          "text": "The guest takes action: they reply, add an extra, leave a review."
+        }
+      ],
+      "credit": "Visual identity designed by the La rampe agency."
+    }
   },
   "careersPage": {
     "eyebrow": "Careers",
