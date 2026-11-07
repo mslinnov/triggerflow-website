@@ -1,4 +1,6 @@
+import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
+import { productScreenshots } from '@/content/products/screenshots';
 import {
   BarChart3, BedDouble, Bell, Calendar, ClipboardList, Clock, CreditCard, Filter, Layers, Link2, Lock, Mail,
   MessageSquare, Package, Receipt, RefreshCw, Repeat, Shield, Sparkles, Users, Workflow, Zap, ArrowRight, Phone, Mic, Globe, Moon, type LucideIcon,
@@ -27,6 +29,7 @@ export async function ProductLandingPage({ product, locale }: { product: Product
   const l = (v: L | string) => (typeof v === 'string' ? v : v[lang]);
   const t = await getTranslations({ locale, namespace: 'productPage' });
   const nav = await getTranslations({ locale, namespace: 'nav' });
+  const shot = productScreenshots[product.slug];
   const Visual = VISUALS[product.hero.visual];
   const addon = product.pricing.addon ? getDisplayAddons(getPricingPhase()).find((a) => a.key === product.pricing.addon) : undefined;
 
@@ -101,6 +104,14 @@ export async function ProductLandingPage({ product, locale }: { product: Product
               </li>
             ))}
           </ol>
+          {shot && (
+            <figure className="mt-12">
+              <ProductFrame className="mx-auto max-w-[1080px]" label={`app.trigger-flow.com/${product.slug}`}>
+                <Image src={shot.src} alt={l(shot.alt)} width={shot.width} height={shot.height} sizes="(min-width: 1080px) 1080px, 100vw" className="h-auto w-full" />
+              </ProductFrame>
+              <figcaption className="mt-3 text-center font-mono text-[12px] uppercase tracking-[0.06em] text-ink-3">{t('realScreenshot')}</figcaption>
+            </figure>
+          )}
         </Container>
       </Section>
 

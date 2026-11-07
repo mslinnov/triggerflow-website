@@ -12,7 +12,7 @@ interface ScenarioOptions {
 /**
  * Moteur des visuels animés (docs/visuels.md). `durations[i]` = temps passé à l'étape i (ms).
  * - Rendu serveur et « animations réduites » : dernière étape, état final complet (jamais de bloc vide).
- * - Lecture quand le visuel entre à l'écran, pause quand il en sort.
+ * - Arrivée à l'écran : état complet, puis lecture en boucle ; pause quand il sort de l'écran.
  */
 export function useScenario<T extends HTMLElement = HTMLDivElement>(durations: number[], { loop = true, hold = 2200 }: ScenarioOptions = {}) {
   const last = durations.length - 1;
@@ -31,13 +31,14 @@ export function useScenario<T extends HTMLElement = HTMLDivElement>(durations: n
     return () => io.disconnect();
   }, []);
 
-  // Premier passage à l'écran : on repart du début.
+  // Premier passage à l'écran : le visuel s'affiche complet, puis le scénario se rejoue
+  // depuis le début après la pause (jamais de cadre vide à l'arrivée).
   const started = useRef(false);
   useEffect(() => {
     if (!enabled || !visible || started.current) return;
     started.current = true;
-    setStep(0);
-  }, [enabled, visible]);
+    setStep(last);
+  }, [enabled, visible, last]);
 
   useEffect(() => {
     if (!enabled || !visible || !started.current) return;

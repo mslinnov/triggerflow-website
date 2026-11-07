@@ -3507,7 +3507,8 @@
     "seePricing": "See pricing",
     "faqTitle": "Your questions, answered.",
     "ctaText": "Guided setup, live in 48 hours.",
-    "trustLine": "Hosted in France, public subprocessors, a DPA with every customer."
+    "trustLine": "Hosted in France, public subprocessors, a DPA with every customer.",
+    "realScreenshot": "Screenshot of the app, demo account"
   },
   "clientsPage": {
     "eyebrow": "Customers",

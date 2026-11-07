@@ -3792,7 +3792,8 @@
     "seePricing": "Voir les tarifs",
     "faqTitle": "Vos questions, nos réponses.",
     "ctaText": "Mise en place accompagnée, opérationnel en 48 h.",
-    "trustLine": "Hébergé en France, sous-traitants publics, DPA signé avec chaque client."
+    "trustLine": "Hébergé en France, sous-traitants publics, DPA signé avec chaque client.",
+    "realScreenshot": "Capture de l'application, compte de démonstration"
   },
   "clientsPage": {
     "eyebrow": "Clients",
