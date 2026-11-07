@@ -8,7 +8,7 @@ import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import { brand } from '@/data/brand';
 import { companyMenu, platformMenu, productMenu, resourcesMenu, solutionsMenu } from '@/data/navigation';
-import { PlatformMenu, ResourcesMenu, SolutionsMenu } from './MegaMenus';
+import { PlatformMenu, ProductMenu, ResourcesMenu, SolutionsMenu } from './MegaMenus';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
 type MenuKey = 'product' | 'platform' | 'solutions' | 'resources';
@@ -104,32 +104,7 @@ export function SiteHeader({ banner }: SiteHeaderProps) {
         {open && (
           <div className="hidden border-t border-line bg-white lg:block" onMouseEnter={() => window.clearTimeout(closeTimer.current)}>
             <div className="mx-auto max-w-[1200px] px-8 py-8">
-              {open === 'product' && (
-                <>
-                  <div className="grid grid-cols-5 gap-8">
-                    {productMenu.map((col) => (
-                      <div key={col.key}>
-                        <p className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-ink-3">{t(`columns.${col.key}`)}</p>
-                        <ul className="mt-4 space-y-4">
-                          {col.items.map((item) => (
-                            <li key={item.key}>
-                              <Link href={item.href} onClick={() => setOpen(null)} className="group block">
-                                <span className="block text-[14px] font-semibold text-ink group-hover:text-accent">{t(`items.${item.key}`)}</span>
-                                <span className="mt-0.5 block text-[13px] text-ink-3">{t(`descriptions.${item.key}`)}</span>
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="mt-8 border-t border-line pt-5">
-                    <Link href="/produit" onClick={() => setOpen(null)} className="text-[14px] font-medium text-accent hover:text-accent-hover">
-                      {t('seePlatform')} →
-                    </Link>
-                  </div>
-                </>
-              )}
+              {open === 'product' && <ProductMenu onPick={() => setOpen(null)} />}
               {open === 'platform' && <PlatformMenu onPick={() => setOpen(null)} />}
               {open === 'solutions' && <SolutionsMenu onPick={() => setOpen(null)} />}
               {open === 'resources' && <ResourcesMenu onPick={() => setOpen(null)} />}

@@ -3319,7 +3319,10 @@
       "guideEyebrow": "Free PDF guide",
       "guideTitle": "Selling extras before arrival",
       "guideText": "What actually sells, when to send it and on which channel.",
-      "guideCta": "Get the guide"
+      "guideCta": "Get the guide",
+      "newLabel": "New",
+      "newText": "Guests call reception from their own phone",
+      "pricingLink": "See pricing"
     }
   },
   "home2": {

@@ -6,6 +6,23 @@ import {
   ArrowRight,
   BedDouble,
   BookOpen,
+  CalendarCheck,
+  ChartColumn,
+  ClipboardList,
+  CreditCard,
+  Heart,
+  IdCard,
+  KeyRound,
+  Megaphone,
+  MessagesSquare,
+  PartyPopper,
+  Phone,
+  ShoppingBag,
+  Smartphone,
+  SprayCan,
+  Star,
+  UserRound,
+  Workflow,
   Briefcase,
   Building,
   Building2,
@@ -27,10 +44,28 @@ import {
 import { Link } from '@/i18n/navigation';
 import { brand } from '@/data/brand';
 import { clientLogos, homeTestimonials } from '@/data/clients';
-import { companyMenu, platformMenu, resourcesMenu, solutionsMenu, type NavItem } from '@/data/navigation';
+import { companyMenu, platformMenu, productMenu, resourcesMenu, solutionsMenu, type NavItem } from '@/data/navigation';
 import { pmsPages } from '@/content/pms';
 
 const icons: Record<string, LucideIcon> = {
+  upsell: ShoppingBag,
+  pay: CreditCard,
+  forms: ClipboardList,
+  checkin: IdCard,
+  bookingRequests: CalendarCheck,
+  guestApp: Smartphone,
+  voice: Phone,
+  inbox: MessagesSquare,
+  housekeeping: SprayCan,
+  keys: KeyRound,
+  reviews: Star,
+  campaigns: Megaphone,
+  loyalty: Heart,
+  flows: Workflow,
+  crm: UserRound,
+  analytics: ChartColumn,
+  events: PartyPopper,
+  b2b: Briefcase,
   sync: RefreshCw,
   ai: Sparkles,
   security: ShieldCheck,
@@ -59,10 +94,69 @@ const pmsLogos = [
   })),
 ];
 
+/** Colonnes du menu Produit : « Après le séjour » et « Marketing » partagent une colonne. */
+const productSlots = [['before'], ['during'], ['after', 'marketing'], ['core']];
+
 type T = ReturnType<typeof useTranslations>;
 
 interface MenuProps {
   onPick: () => void;
+}
+
+export function ProductMenu({ onPick }: MenuProps) {
+  const t = useTranslations('nav');
+  return (
+    <>
+      <div className="grid grid-cols-4 gap-8">
+        {productSlots.map((slot) => (
+          <div key={slot.join('-')} className="space-y-6">
+            {slot.map((key) => {
+              const col = productMenu.find((c) => c.key === key);
+              if (!col) return null;
+              return (
+                <div key={col.key}>
+                  <ColumnTitle>{t(`columns.${col.key}`)}</ColumnTitle>
+                  <ul className="mt-3 grid gap-0.5">
+                    {col.items.map((item) => {
+                      const Icon = icons[item.key] ?? FileText;
+                      return (
+                        <li key={item.key}>
+                          <Link href={item.href} onClick={onPick} className="group -mx-2.5 flex items-start gap-3 rounded-xl p-2.5 transition-colors hover:bg-paper">
+                            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-line bg-white text-accent transition-colors group-hover:border-accent/40 group-hover:bg-mint/60">
+                              <Icon aria-hidden className="h-[17px] w-[17px]" strokeWidth={1.75} />
+                            </span>
+                            <span className="min-w-0">
+                              <span className="block text-[14px] font-semibold leading-tight text-ink group-hover:text-accent-hover">{t(`items.${item.key}`)}</span>
+                              <span className="mt-1 block text-[13px] leading-snug text-ink-2">{t(`descriptions.${item.key}`)}</span>
+                            </span>
+                          </Link>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+        ))}
+      </div>
+      <div className="mt-6 flex items-center gap-6 rounded-2xl border border-line bg-paper px-5 py-3.5">
+        <Link href="/produit/voice" onClick={onPick} className="group flex min-w-0 items-center gap-3">
+          <span className="rounded-full bg-ink px-2.5 py-1 font-mono text-[10.5px] font-medium uppercase tracking-[0.08em] text-white">{t('featured.newLabel')}</span>
+          <span className="truncate text-[14px] text-ink-2">
+            <span className="font-semibold text-ink group-hover:text-accent-hover">{t('items.voice')}</span> · {t('featured.newText')}
+          </span>
+        </Link>
+        <div className="ml-auto flex shrink-0 items-center gap-6">
+          <Link href="/tarifs" onClick={onPick} className="text-[14px] font-semibold text-ink-2 hover:text-ink">{t('featured.pricingLink')}</Link>
+          <Link href="/produit" onClick={onPick} className="group inline-flex items-center gap-1.5 text-[14px] font-semibold text-accent hover:text-accent-hover">
+            {t('seePlatform')}
+            <ArrowRight aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          </Link>
+        </div>
+      </div>
+    </>
+  );
 }
 
 export function PlatformMenu({ onPick }: MenuProps) {

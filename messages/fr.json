@@ -3604,7 +3604,10 @@
       "guideEyebrow": "Guide PDF gratuit",
       "guideTitle": "Les ventes additionnelles avant l’arrivée",
       "guideText": "Ce qui se vend vraiment, quand l’envoyer et sur quel canal.",
-      "guideCta": "Recevoir le guide"
+      "guideCta": "Recevoir le guide",
+      "newLabel": "Nouveau",
+      "newText": "Vos clients appellent la réception depuis leur téléphone",
+      "pricingLink": "Voir les tarifs"
     }
   },
   "home2": {
