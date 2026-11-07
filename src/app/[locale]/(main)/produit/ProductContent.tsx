@@ -56,7 +56,7 @@ const modules = [
   {
     key: 'automation',
     icon: Zap,
-    href: '/produit/automatisations',
+    href: '/produit/flows',
     category: 'automation',
   },
   {
@@ -86,7 +86,7 @@ const modules = [
   {
     key: 'paymentLinks',
     icon: CreditCard,
-    href: '/produit/paiements',
+    href: '/produit/pay',
     category: 'tools',
   },
 ];

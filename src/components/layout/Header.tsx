@@ -59,7 +59,7 @@ const menuItems = {
       {
         title: 'Automatisation',
         items: [
-          { icon: Workflow, label: 'Workflows & Triggers', description: 'Scénarios automatiques', href: '/produit/automatisations' },
+          { icon: Workflow, label: 'Workflows & Triggers', description: 'Scénarios automatiques', href: '/produit/flows' },
           { icon: Users, label: 'CRM & Segments', description: 'Ciblez vos audiences', href: '/produit/crm' },
         ],
       },
@@ -74,8 +74,8 @@ const menuItems = {
         title: 'Outils',
         items: [
           { icon: FileText, label: 'Formulaires', description: 'Collectez des données', href: '/produit/formulaires' },
-          { icon: ShoppingBag, label: 'Ventes additionnelles', description: 'Boostez votre CA', href: '/produit/ventes-additionnelles' },
-          { icon: CreditCard, label: 'Liens de paiement', description: 'Encaissez vos clients', href: '/produit/paiements' },
+          { icon: ShoppingBag, label: 'Ventes additionnelles', description: 'Boostez votre CA', href: '/produit/upsell' },
+          { icon: CreditCard, label: 'Liens de paiement', description: 'Encaissez vos clients', href: '/produit/pay' },
           { icon: BarChart3, label: 'Analytics', description: 'Tableaux de bord', href: '/produit/analytics' },
         ],
       },
@@ -108,9 +108,9 @@ const menuItems = {
       {
         title: 'Par objectif',
         items: [
-          { icon: Zap, label: 'Automatiser communication', description: 'Gagnez du temps', href: '/solutions/automatiser-communication' },
+          { icon: Zap, label: 'Automatiser communication', description: 'Gagnez du temps', href: '/produit/flows' },
           { icon: ThumbsUp, label: 'Augmenter avis Google', description: 'Boostez votre réputation', href: '/solutions/augmenter-avis' },
-          { icon: TrendingUp, label: 'Booster upsell', description: 'Augmentez votre CA', href: '/solutions/booster-upsell' },
+          { icon: TrendingUp, label: 'Booster upsell', description: 'Augmentez votre CA', href: '/produit/upsell' },
           { icon: UserPlus, label: 'Fidéliser clients', description: 'Créez des ambassadeurs', href: '/solutions/fideliser-clients' },
         ],
       },

@@ -2,7 +2,9 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { moduleSlugs, getModuleSerializable } from '@/data/modules';
-import { BreadcrumbListJsonLd } from '@/components/seo';
+import { BreadcrumbListJsonLd, FaqJsonLd } from '@/components/seo';
+import { productLandings } from '@/content/products';
+import { ProductLandingPage } from '@/components/product/ProductLandingPage';
 import ModulePageContent from './ModulePageContent';
 
 const baseUrl = 'https://www.trigger-flow.com';
@@ -19,7 +21,12 @@ export async function generateStaticParams() {
   const params = [];
 
   for (const locale of locales) {
-    for (const slug of moduleSlugs) {
+    // Anciennes pages remplacées par une landing (redirigées en 301 dans next.config.ts).
+    const legacy = new Set(Object.values(productLandings).map((p) => p.legacySlug));
+    for (const slug of moduleSlugs.filter((s) => !legacy.has(s))) {
+      params.push({ locale, slug });
+    }
+    for (const slug of Object.keys(productLandings)) {
       params.push({ locale, slug });
     }
   }
@@ -29,7 +36,19 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
-  const t = await getTranslations({ locale, namespace: 'modulePage' });
+  const landing = productLandings[slug];
+  if (landing) {
+    const lang = locale === 'en' ? 'en' : 'fr';
+    return {
+      title: { absolute: landing.seo.title[lang] },
+      description: landing.seo.description[lang],
+      openGraph: { title: landing.seo.title[lang], description: landing.seo.description[lang], type: 'website' },
+      alternates: {
+        canonical: `${baseUrl}/${locale}/produit/${slug}`,
+        languages: { fr: `${baseUrl}/fr/produit/${slug}`, en: `${baseUrl}/en/produit/${slug}`, 'x-default': `${baseUrl}/fr/produit/${slug}` },
+      },
+    };
+  }
 
   const moduleData = getModuleSerializable(slug);
   if (!moduleData) {
@@ -63,6 +82,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ModulePage({ params }: Props) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
+
+  const landing = productLandings[slug];
+  if (landing) {
+    const lang = locale === 'en' ? 'en' : 'fr';
+    return (
+      <>
+        <BreadcrumbListJsonLd
+          items={[
+            { name: 'TriggerFlow', url: `${baseUrl}/${locale}` },
+            { name: locale === 'fr' ? 'Produit' : 'Product', url: `${baseUrl}/${locale}/produit` },
+            { name: landing.name[lang], url: `${baseUrl}/${locale}/produit/${slug}` },
+          ]}
+        />
+        <FaqJsonLd items={landing.faq.map((f) => ({ question: f.q[lang], answer: f.a[lang] }))} />
+        <ProductLandingPage product={landing} locale={locale} />
+      </>
+    );
+  }
 
   const moduleData = getModuleSerializable(slug);
 

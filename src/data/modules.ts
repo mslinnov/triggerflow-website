@@ -668,7 +668,7 @@ export const modules: Record<string, ModuleData> = {
     headline: 'Votre hôtel tourne en pilote automatique',
     description: 'Un builder intuitif, zéro code. Déclencheur, conditions, actions - vous dessinez le workflow en quelques clics, TriggerFlow l\'exécute 24h/24.',
     mockup: 'WorkflowBuilderMockup',
-    heroImage: '/images/produit/automatisations/hero-automatisations.webp',
+    heroImage: '/images/produit/flows/hero-automatisations.webp',
     painPoints: [
       'Votre équipe répète les mêmes tâches 50 fois par jour : envoyer un email, vérifier un check-in, rappeler un client',
       'Des actions importantes sont oubliées quand c\'est le rush, la demande de chambre avec berceau passe à la trappe',
@@ -698,7 +698,7 @@ export const modules: Record<string, ModuleData> = {
         description: 'Glissez-déposez des blocs dans le builder visuel : déclencheur, délai, condition, action. Prise en main immédiate, même sans profil technique.',
         icon: Workflow,
         bullets: ['Drag & drop intuitif', 'Templates prêts à l\'emploi', 'Duplication et modification'],
-        image: '/images/produit/automatisations/hero-automatisations.webp',
+        image: '/images/produit/flows/hero-automatisations.webp',
       },
       {
         title: 'Tout peut déclencher un workflow',
@@ -712,7 +712,7 @@ export const modules: Record<string, ModuleData> = {
         description: 'Couple → offre spa. Famille → kids club. VIP → surclassement. Chaque profil client déclenche le bon scénario, automatiquement.',
         icon: GitBranch,
         bullets: ['Conditions Si/Sinon illimitées', 'Branches parallèles', 'Délais configurables entre étapes'],
-        image: '/images/produit/automatisations/feature-conditions.webp',
+        image: '/images/produit/flows/feature-conditions.webp',
       }
     ],
     useCases: [
@@ -1311,7 +1311,7 @@ export const modules: Record<string, ModuleData> = {
     headline: 'Des ventes additionnelles avant l\'arrivée, sans effort de la réception',
     description: 'Proposez automatiquement les bons services au bon moment : surclassement, spa, restaurant, late checkout. Le client achète en 2 clics depuis son email.',
     mockup: 'DashboardMockup',
-    heroImage: '/images/produit/ventes-additionnelles/hero-upsell.webp',
+    heroImage: '/images/produit/upsell/hero-upsell.webp',
     painPoints: [
       'Votre spa, votre restaurant et vos surclassements sont sous-vendus, la réception n\'a pas le temps de proposer',
       'Vous proposez les mêmes extras à tout le monde, le voyageur solo reçoit l\'offre kids club',

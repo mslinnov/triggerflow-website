@@ -2992,6 +2992,36 @@
       "phone": "Phone",
       "stays": "4 stays",
       "merged": "Profiles merged"
+    },
+    "upsell": {
+      "hotel": "Hôtel des Tilleuls (demo)",
+      "greeting": "Hello Camille, your stay is coming up",
+      "offer": "Superior room with balcony",
+      "offerText": "Garden view, 4 m² more",
+      "price": "+€35 / night",
+      "add": "Add",
+      "paid": "Upgrade confirmed",
+      "orders": "Orders",
+      "today": "Today",
+      "order1": "Late check-out · Room 12",
+      "order1Price": "€25",
+      "order2": "Upgrade · Camille L.",
+      "synced": "Booking updated in the PMS"
+    },
+    "pay": {
+      "timeline": "Hold · Stay from 14 to 16",
+      "sent": "Hold link sent",
+      "sentTime": "D-7",
+      "reminder": "Automatic reminder",
+      "reminderTime": "D-5",
+      "paidRow": "Hold settled",
+      "paidTime": "D-5, 14:02",
+      "stay": "Arriving on the 14th · 2 nights",
+      "deposit": "Hold",
+      "amount": "€150",
+      "status": "Status",
+      "pending": "Pending",
+      "paid": "Paid"
     }
   },
   "nav": {
@@ -3245,5 +3275,26 @@
       "title": "Build your hotel's guest journey.",
       "text": "Guided setup, live in 48 hours."
     }
+  },
+  "productPage": {
+    "seeHow": "See how it works",
+    "usedBy": "Used by",
+    "problem": "The problem",
+    "how": "How it works",
+    "features": "Features",
+    "tailored": "Real examples",
+    "caseStudy": "Customer story",
+    "readCase": "Read the customer story",
+    "integrations": "Integrations",
+    "allIntegrations": "All integrations",
+    "source": "Last 12 months, all client properties",
+    "related": "Related modules",
+    "relatedTitle": "Even more powerful together.",
+    "pricing": "Pricing",
+    "addonPrice": "€{price} per month per property, excl. VAT",
+    "addonThen": "€{price} from 1 January 2027",
+    "seePricing": "See pricing",
+    "faqTitle": "Your questions, answered.",
+    "ctaText": "Guided setup, live in 48 hours."
   }
 }

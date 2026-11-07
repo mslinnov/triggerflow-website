@@ -17,8 +17,8 @@ export const productMenu: NavColumn[] = [
   {
     key: 'before',
     items: [
-      { key: 'upsell', href: '/produit/ventes-additionnelles' },
-      { key: 'pay', href: '/produit/paiements' },
+      { key: 'upsell', href: '/produit/upsell' },
+      { key: 'pay', href: '/produit/pay' },
       { key: 'forms', href: '/produit/formulaires' },
     ],
   },
@@ -47,7 +47,7 @@ export const productMenu: NavColumn[] = [
   {
     key: 'core',
     items: [
-      { key: 'flows', href: '/produit/automatisations' },
+      { key: 'flows', href: '/produit/flows' },
       { key: 'crm', href: '/produit/crm' },
       { key: 'analytics', href: '/produit/analytics' },
     ],
@@ -73,10 +73,10 @@ export const footerColumns: NavColumn[] = [
     key: 'product',
     items: [
       { key: 'platform', href: '/produit' },
-      { key: 'flows', href: '/produit/automatisations' },
+      { key: 'flows', href: '/produit/flows' },
       { key: 'inbox', href: '/produit/hub-messagerie' },
-      { key: 'upsell', href: '/produit/ventes-additionnelles' },
-      { key: 'pay', href: '/produit/paiements' },
+      { key: 'upsell', href: '/produit/upsell' },
+      { key: 'pay', href: '/produit/pay' },
       { key: 'reviews', href: '/produit/avis' },
       { key: 'crm', href: '/produit/crm' },
       { key: 'pricing', href: '/tarifs' },

@@ -68,6 +68,13 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // ── Landings produit de la refonte : anciennes URL → nouvelles (docs/arborescence.md) ──
+      { source: '/:locale(fr|en)/produit/ventes-additionnelles', destination: '/:locale/produit/upsell', permanent: true },
+      { source: '/:locale(fr|en)/produit/automatisations', destination: '/:locale/produit/flows', permanent: true },
+      { source: '/:locale(fr|en)/produit/paiements', destination: '/:locale/produit/pay', permanent: true },
+      { source: '/:locale(fr|en)/solutions/booster-upsell', destination: '/:locale/produit/upsell', permanent: true },
+      { source: '/:locale(fr|en)/solutions/automatiser-communication', destination: '/:locale/produit/flows', permanent: true },
+
       // ── Ancien brouillon de home /v2 supprimé (07/11/2026) ──
       { source: '/:locale(fr|en)/v2', destination: '/:locale', permanent: true },
 

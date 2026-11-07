@@ -13,11 +13,11 @@ import { cn } from '@/lib/utils';
 // Product links to individual module pages
 const productLinks = [
   { href: '/produit/hub-messagerie', labelKey: 'product.communication', isLink: true },
-  { href: '/produit/automatisations', labelKey: 'product.automation', isLink: true },
+  { href: '/produit/flows', labelKey: 'product.automation', isLink: true },
   { href: '/produit/newsletter', labelKey: 'product.marketing', isLink: true },
   { href: '/produit/crm', labelKey: 'product.tools', isLink: true },
   { href: '/produit/avis', labelKey: 'product.reputation', isLink: true },
-  { href: '/produit/paiements', labelKey: 'product.payments', isLink: true },
+  { href: '/produit/pay', labelKey: 'product.payments', isLink: true },
 ] as const;
 
 // Solutions links — masqué pour le lancement

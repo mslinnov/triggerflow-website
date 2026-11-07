@@ -3277,6 +3277,36 @@
       "phone": "Téléphone",
       "stays": "4 séjours",
       "merged": "Fiches fusionnées"
+    },
+    "upsell": {
+      "hotel": "Hôtel des Tilleuls (démo)",
+      "greeting": "Bonjour Camille, votre séjour approche",
+      "offer": "Chambre Supérieure avec balcon",
+      "offerText": "Vue jardin, 4 m² de plus",
+      "price": "+35 € / nuit",
+      "add": "Ajouter",
+      "paid": "Surclassement confirmé",
+      "orders": "Commandes",
+      "today": "Aujourd'hui",
+      "order1": "Late check-out · Chambre 12",
+      "order1Price": "25 €",
+      "order2": "Surclassement · Camille L.",
+      "synced": "Réservation mise à jour dans le PMS"
+    },
+    "pay": {
+      "timeline": "Caution · Séjour du 14 au 16",
+      "sent": "Lien de caution envoyé",
+      "sentTime": "J-7",
+      "reminder": "Rappel automatique",
+      "reminderTime": "J-5",
+      "paidRow": "Caution réglée",
+      "paidTime": "J-5, 14:02",
+      "stay": "Arrivée le 14 · 2 nuits",
+      "deposit": "Caution",
+      "amount": "150 €",
+      "status": "Statut",
+      "pending": "En attente",
+      "paid": "Payé"
     }
   },
   "nav": {
@@ -3530,5 +3560,26 @@
       "title": "Construisez le parcours client de votre hôtel.",
       "text": "Mise en place accompagnée, opérationnel en 48 h."
     }
+  },
+  "productPage": {
+    "seeHow": "Voir comment ça marche",
+    "usedBy": "Utilisé par",
+    "problem": "Le problème",
+    "how": "Comment ça marche",
+    "features": "Fonctionnalités",
+    "tailored": "Exemples réels",
+    "caseStudy": "Cas client",
+    "readCase": "Lire le cas client",
+    "integrations": "Intégrations",
+    "allIntegrations": "Toutes les intégrations",
+    "source": "12 derniers mois, tous établissements clients",
+    "related": "Modules liés",
+    "relatedTitle": "Encore plus puissant combiné.",
+    "pricing": "Tarif",
+    "addonPrice": "{price} € par mois et par établissement, HT",
+    "addonThen": "{price} € à partir du 1er janvier 2027",
+    "seePricing": "Voir les tarifs",
+    "faqTitle": "Vos questions, nos réponses.",
+    "ctaText": "Mise en place accompagnée, opérationnel en 48 h."
   }
 }

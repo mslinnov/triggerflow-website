@@ -240,7 +240,7 @@ export function FeaturesBento() {
                 iconBg="bg-brand-accent/15"
                 iconColor="text-brand-accent"
                 t={t}
-                href="/produit/ventes-additionnelles"
+                href="/produit/upsell"
                 highlightCount={2}
               />
             </motion.div>
@@ -311,7 +311,7 @@ export function FeaturesBento() {
                 <p className="text-xs leading-relaxed text-text-secondary">
                   {t('items.automation.description')}
                 </p>
-                <Link href="/produit/automatisations" className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-brand-primary">
+                <Link href="/produit/flows" className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-brand-primary">
                   {t('cta')}
                   <ArrowRight className="h-3 w-3 transition-transform duration-200 group-hover:translate-x-0.5" />
                 </Link>

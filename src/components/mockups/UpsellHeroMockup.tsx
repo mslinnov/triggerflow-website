@@ -6,7 +6,7 @@ export function UpsellHeroMockup() {
   return (
     <div className="relative w-full h-full min-h-[400px] overflow-visible">
       <Image
-        src="/images/produit/ventes-additionnelles/hero-upsell-desktop.webp"
+        src="/images/produit/upsell/hero-upsell-desktop.webp"
         alt="Dashboard ventes additionnelles TriggerFlow"
         width={1400}
         height={875}

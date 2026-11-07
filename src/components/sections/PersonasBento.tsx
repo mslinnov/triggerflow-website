@@ -114,13 +114,13 @@ export function PersonasBento() {
   const frontDeskLinks: CtaLink[] = [
     { label: t('personas.frontDesk.ctas.messaging'), href: `/${locale}/produit/hub-messagerie` },
     { label: t('personas.frontDesk.ctas.checkin'), href: `/${locale}/produit/formulaires` },
-    { label: t('personas.frontDesk.ctas.sms'), href: `/${locale}/produit/automatisations` },
+    { label: t('personas.frontDesk.ctas.sms'), href: `/${locale}/produit/flows` },
   ];
 
   const marketingLinks: CtaLink[] = [
-    { label: t('personas.marketing.ctas.journeys'), href: `/${locale}/produit/automatisations` },
+    { label: t('personas.marketing.ctas.journeys'), href: `/${locale}/produit/flows` },
     { label: t('personas.marketing.ctas.email'), href: `/${locale}/produit/hub-messagerie` },
-    { label: t('personas.marketing.ctas.campaigns'), href: `/${locale}/produit/ventes-additionnelles` },
+    { label: t('personas.marketing.ctas.campaigns'), href: `/${locale}/produit/upsell` },
   ];
 
   const directionLinks: CtaLink[] = [

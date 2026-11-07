@@ -4,6 +4,7 @@ import { getAllLandingPages } from '@/lib/landing-pages';
 import { getAllLegalSlugs, getLegalDoc } from '@/lib/legal';
 import { moduleSlugs } from '@/data/modules';
 import { solutionSlugs } from '@/data/solutions';
+import { productLandings } from '@/content/products';
 import { getAllSlugs as getCaseStudySlugs } from '@/lib/case-studies';
 
 const baseUrl = 'https://www.trigger-flow.com';
@@ -57,7 +58,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   // ─── Product / Module pages ──────────────────────────────────
-  for (const slug of moduleSlugs) {
+  // Les anciens slugs remplacés par une landing sont redirigés : on publie la nouvelle URL.
+  const legacySlugs = new Set(Object.values(productLandings).map((p) => p.legacySlug));
+  const productSlugs = [...moduleSlugs.filter((s) => !legacySlugs.has(s)), ...Object.keys(productLandings)];
+  for (const slug of productSlugs) {
     const frUrl = `${baseUrl}/fr/produit/${slug}`;
     const enUrl = `${baseUrl}/en/produit/${slug}`;
     const languages = { fr: frUrl, en: enUrl, 'x-default': frUrl };
@@ -80,7 +84,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   // ─── Solution pages ──────────────────────────────────────────
-  for (const slug of solutionSlugs) {
+  const redirectedSolutions = new Set(['booster-upsell', 'automatiser-communication']);
+  for (const slug of solutionSlugs.filter((s) => !redirectedSolutions.has(s))) {
     const frUrl = `${baseUrl}/fr/solutions/${slug}`;
     const enUrl = `${baseUrl}/en/solutions/${slug}`;
     const languages = { fr: frUrl, en: enUrl, 'x-default': frUrl };
