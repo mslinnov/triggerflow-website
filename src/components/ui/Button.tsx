@@ -11,18 +11,22 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean;
 }
 
+// Aligné sur la charte (docs/charte.md) : mono, majuscules, rayon 8 px, une seule couleur d'action.
 const variants: Record<ButtonVariant, string> = {
-  primary: 'bg-brand-primary text-white hover:bg-brand-primary/90',
-  secondary: 'bg-brand-dark text-white hover:bg-brand-dark/90',
-  accent: 'bg-brand-accent text-brand-dark hover:bg-brand-accent/90',
-  ghost: 'bg-transparent text-brand-dark hover:bg-brand-light border border-brand-light',
+  primary: 'bg-accent text-white hover:bg-accent-hover',
+  secondary: 'bg-ink text-white hover:bg-ink/90',
+  accent: 'bg-peach text-ink hover:bg-peach/90',
+  ghost: 'bg-transparent text-ink border border-ink/80 hover:bg-ink hover:text-white',
 };
 
 const sizes: Record<ButtonSize, string> = {
-  sm: 'px-4 py-2 text-sm',
-  md: 'px-6 py-3 text-base',
-  lg: 'px-8 py-4 text-lg',
+  sm: 'h-10 px-4 text-[13px]',
+  md: 'h-12 px-6 text-sm',
+  lg: 'h-12 px-7 text-sm',
 };
+
+const base =
+  'inline-flex items-center justify-center gap-2 rounded-lg font-mono font-medium uppercase tracking-[0.04em] transition-colors duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2';
 
 export function Button({
   variant = 'primary',
@@ -34,8 +38,8 @@ export function Button({
   return (
     <button
       className={cn(
-        'inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
-        variant === 'primary' ? 'shadow-md shadow-brand-primary/20 hover:shadow-lg hover:shadow-brand-primary/25' : '',
+        base,
+        'disabled:pointer-events-none disabled:opacity-50',
         variants[variant],
         sizes[size],
         className
@@ -61,8 +65,7 @@ export function ButtonLink({
   ...props
 }: ButtonLinkProps) {
   const classes = cn(
-    'inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2',
-    variant === 'primary' ? 'shadow-md shadow-brand-primary/20 hover:shadow-lg hover:shadow-brand-primary/25' : '',
+    base,
     variants[variant],
     sizes[size],
     className

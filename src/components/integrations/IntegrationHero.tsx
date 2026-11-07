@@ -12,7 +12,7 @@ export function IntegrationHero() {
   const t = useTranslations('mewsIntegration.hero');
 
   return (
-    <section className="relative overflow-hidden bg-surface-dark pt-28 pb-0 md:pt-36">
+    <section className="relative overflow-hidden bg-ink pt-14 pb-0 md:pt-20">
       {/* Layered ambient glows — richer depth */}
       <div className="absolute top-0 left-1/4 h-[700px] w-[900px] bg-[radial-gradient(ellipse,rgba(0,111,104,0.18),transparent_60%)]" />
       <div className="absolute top-20 right-0 h-[500px] w-[500px] bg-[radial-gradient(ellipse,rgba(0,111,104,0.08),transparent_70%)]" />

@@ -186,11 +186,7 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
   return (
     <main className="bg-white">
       {/* ─── Hero ─────────────────────────────────────────── */}
-      <section className="relative overflow-hidden pt-32 pb-16 md:pt-40 md:pb-28">
-        <div className="absolute inset-0 bg-gradient-to-b from-brand-dark via-brand-dark/98 to-brand-dark/90" />
-        {/* Decorative circles */}
-        <div className="absolute top-20 left-10 h-72 w-72 rounded-full bg-brand-primary/10 blur-3xl" />
-        <div className="absolute bottom-10 right-10 h-96 w-96 rounded-full bg-brand-primary/5 blur-3xl" />
+      <section className="relative overflow-hidden bg-ink pt-14 pb-16 md:pt-20 md:pb-28">
 
         <Container className="relative">
           <motion.div
@@ -199,10 +195,11 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
             variants={fadeInUp}
             className="text-center"
           >
-            <Badge variant="secondary" className="mb-6 bg-white/10 text-white/80 border-white/10">
+            <p className="mb-6 inline-flex items-center gap-2 font-mono text-eyebrow font-medium uppercase text-mint">
+              <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-mint" />
               {t('hero.badge')}
-            </Badge>
-            <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-[3.5rem] lg:leading-tight">
+            </p>
+            <h1 className="text-balance text-[2.25rem] font-medium leading-[1.08] tracking-[-0.025em] text-white md:text-[3.5rem]">
               {t('hero.title')}
             </h1>
             <p className="mx-auto mt-4 max-w-2xl text-base text-white/60 leading-relaxed md:text-lg md:mt-5">

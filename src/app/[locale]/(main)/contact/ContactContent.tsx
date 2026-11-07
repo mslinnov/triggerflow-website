@@ -75,7 +75,7 @@ export function ContactContent() {
   return (
     <main className="bg-white">
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-brand-light/30 to-white pt-32 pb-16 md:pt-40 md:pb-24">
+      <section className="bg-white pt-14 pb-16 md:pt-20 md:pb-24">
         <Container>
           <motion.div
             initial={prefersReducedMotion ? 'visible' : 'hidden'}

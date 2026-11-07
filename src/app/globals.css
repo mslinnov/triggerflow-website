@@ -209,7 +209,8 @@
   /* Fonts */
   --font-sans: var(--font-ibm-plex-sans);
   --font-mono: var(--font-plex-mono);
-  --font-serif: var(--font-playfair);
+  /* Charte : une seule famille de titres (IBM Plex Sans). Les anciens « font-serif » en héritent. */
+  --font-serif: var(--font-ibm-plex-sans);
 }
 
 html {
