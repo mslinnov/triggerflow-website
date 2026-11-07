@@ -25,7 +25,7 @@ export function ReviewsScenario() {
   return (
     <div ref={ref} className="grid gap-4 p-5 sm:p-8 md:grid-cols-2">
       {[
-        { n: 5, name: 'Léa M.', comment: t('good'), at: 1, out: t('invite'), icon: ExternalLink, tone: 'bg-mint/60 text-accent' },
+        { n: 5, name: 'Léa M.', comment: t('good'), at: 1, out: t('invite'), icon: ExternalLink, tone: 'bg-mint/60 text-accent-hover' },
         { n: 2, name: 'Marc D.', comment: t('bad'), at: 2, out: t('alert'), icon: AlertTriangle, tone: 'bg-peach/70 text-ink' },
       ].map((r) => (
         <div key={r.name} className="space-y-3">

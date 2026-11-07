@@ -62,7 +62,7 @@ export function Pagination({ currentPage, totalPages, basePath, labels }: Pagina
               1
             </Link>
             {pages[0] > 2 && (
-              <span className="px-1 text-gray-400">&hellip;</span>
+              <span className="px-1 text-ink-3">&hellip;</span>
             )}
           </>
         )}
@@ -83,7 +83,7 @@ export function Pagination({ currentPage, totalPages, basePath, labels }: Pagina
         {pages[pages.length - 1] < totalPages && (
           <>
             {pages[pages.length - 1] < totalPages - 1 && (
-              <span className="px-1 text-gray-400">&hellip;</span>
+              <span className="px-1 text-ink-3">&hellip;</span>
             )}
             <Link
               href={pageHref(totalPages)}

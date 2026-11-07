@@ -103,6 +103,12 @@ export default async function ArticlePage({ params }: PageProps) {
   const tBlog = await getTranslations({ locale, namespace: 'blog' });
 
   const mdxComponents = {
+    // Les tableaux défilent dans leur cadre sur mobile au lieu d'élargir la page.
+    table: (props: React.ComponentProps<'table'>) => (
+      <div className="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
+        <table {...props} />
+      </div>
+    ),
     ImageBlock: (props: { id: string }) => (
       <ImageBlock id={props.id} images={article.images} slug={article.slug} />
     ),
@@ -175,7 +181,7 @@ export default async function ArticlePage({ params }: PageProps) {
             <div className="mx-auto mt-8 flex max-w-3xl items-center justify-between border-t border-gray-100 py-5">
               <div className="flex items-center gap-6">
                 <div>
-                  <p className="text-xs text-gray-400">{t('writtenBy', { defaultValue: 'Par' })}</p>
+                  <p className="text-xs text-ink-3">{t('writtenBy', { defaultValue: 'Par' })}</p>
                   <p className="text-sm font-medium text-brand-dark">
                     {author.linkedin ? (
                       <a href={author.linkedin} target="_blank" rel="noopener noreferrer author" className="hover:text-brand-primary">
@@ -188,12 +194,12 @@ export default async function ArticlePage({ params }: PageProps) {
                   <p className="text-xs text-gray-500">{locale === 'fr' ? author.role.fr : author.role.en}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-gray-400">{t('publishedOn', { defaultValue: 'Publi\u00e9 le' })}</p>
+                  <p className="text-xs text-ink-3">{t('publishedOn', { defaultValue: 'Publi\u00e9 le' })}</p>
                   <p className="text-sm font-medium text-brand-dark">{formattedDate}</p>
                 </div>
                 {formattedUpdate && (
                   <div>
-                    <p className="text-xs text-gray-400">{t('updatedOn')}</p>
+                    <p className="text-xs text-ink-3">{t('updatedOn')}</p>
                     <p className="text-sm font-medium text-brand-dark">{formattedUpdate}</p>
                   </div>
                 )}
@@ -203,7 +209,7 @@ export default async function ArticlePage({ params }: PageProps) {
                   href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(articleUrl)}&text=${encodeURIComponent(article.title)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 text-gray-400 transition-colors hover:border-brand-primary hover:text-brand-primary"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 text-ink-3 transition-colors hover:border-brand-primary hover:text-brand-primary"
                   aria-label="Share on Twitter"
                 >
                   <Twitter className="h-4 w-4" />
@@ -212,7 +218,7 @@ export default async function ArticlePage({ params }: PageProps) {
                   href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(articleUrl)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 text-gray-400 transition-colors hover:border-brand-primary hover:text-brand-primary"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 text-ink-3 transition-colors hover:border-brand-primary hover:text-brand-primary"
                   aria-label="Share on LinkedIn"
                 >
                   <Linkedin className="h-4 w-4" />

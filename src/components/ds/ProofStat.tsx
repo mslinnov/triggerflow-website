@@ -16,7 +16,7 @@ export function ProofStat({ value, label, source, onDark, className }: ProofStat
         {value}
       </span>
       <span className={cn('mt-3 text-base', onDark ? 'text-white/80' : 'text-ink-2')}>{label}</span>
-      {source && <span className={cn('mt-1 font-mono text-[11px] uppercase tracking-[0.06em]', onDark ? 'text-white/45' : 'text-ink-3')}>{source}</span>}
+      {source && <span className={cn('mt-1 font-mono text-[11px] uppercase tracking-[0.06em]', onDark ? 'text-white/60' : 'text-ink-3')}>{source}</span>}
     </div>
   );
 }

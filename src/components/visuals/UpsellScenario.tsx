@@ -24,7 +24,7 @@ export function UpsellScenario() {
           <div className="p-3">
             <Reveal show={step >= 1}>
               <div className="overflow-hidden rounded-xl border border-line">
-                <div className="flex h-20 items-center justify-center bg-mint/60 text-accent">
+                <div className="flex h-20 items-center justify-center bg-mint/60 text-accent-hover">
                   <BedDouble aria-hidden className="h-8 w-8" strokeWidth={1.25} />
                 </div>
                 <div className="p-3">
@@ -60,11 +60,11 @@ export function UpsellScenario() {
             <span>{t('order1')}</span>
             <span className="font-mono">{t('order1Price')}</span>
           </li>
-          <Reveal show={step >= 4}>
-            <li className="flex items-center justify-between rounded-lg border border-accent bg-white px-3 py-2 text-[12px] text-ink shadow-[0_0_0_3px_rgba(0,111,104,0.10)]">
+          <Reveal as="li" show={step >= 4}>
+            <div className="flex items-center justify-between rounded-lg border border-accent bg-white px-3 py-2 text-[12px] text-ink shadow-[0_0_0_3px_rgba(0,111,104,0.10)]">
               <span className="font-semibold">{t('order2')}</span>
               <span className="font-mono">{t('price')}</span>
-            </li>
+            </div>
           </Reveal>
         </ul>
         <Reveal show={step >= 5} className="mt-3">

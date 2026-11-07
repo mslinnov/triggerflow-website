@@ -20,7 +20,7 @@ export function VoiceScenario() {
             <p className="font-mono text-[10px] uppercase tracking-[0.08em] text-ink-3">{t('space')}</p>
             <p className="mt-1 text-[14px] font-semibold text-ink">{t('hotel')}</p>
           </div>
-          <span className={cn('flex h-20 w-20 items-center justify-center rounded-full transition-all duration-500', step >= 1 ? 'bg-accent text-white shadow-[0_0_0_10px_rgba(0,111,104,0.12)]' : 'bg-mint text-accent')}>
+          <span className={cn('flex h-20 w-20 items-center justify-center rounded-full transition-all duration-500', step >= 1 ? 'bg-accent text-white shadow-[0_0_0_10px_rgba(0,111,104,0.12)]' : 'bg-mint text-accent-hover')}>
             {step >= 1 ? <PhoneCall aria-hidden className="h-8 w-8" strokeWidth={1.5} /> : <Phone aria-hidden className="h-8 w-8" strokeWidth={1.5} />}
           </span>
           <div>

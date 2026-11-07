@@ -22,5 +22,5 @@ export default async function HelpCenterPage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
 
-  return <HelpCenterContent />;
+  return <HelpCenterContent locale={locale} />;
 }

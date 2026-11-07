@@ -94,9 +94,9 @@ export function ContactContent() {
       </section>
 
       {/* Contact Form & Info Section */}
-      <section className="py-16 md:py-24">
+      <section className="overflow-x-clip py-16 md:py-24">
         <Container>
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 [&>*]:min-w-0">
             {/* Left Column - Form */}
             <motion.div
               initial={prefersReducedMotion ? 'visible' : 'hidden'}

@@ -1,341 +1,78 @@
-'use client';
+import { getTranslations } from 'next-intl/server';
+import { ArrowRight, Clock, LogIn, Mail, Phone } from 'lucide-react';
+import { Container, CtaBand, Eyebrow, FaqList, Section, SectionHeader } from '@/components/ds';
+import { Link } from '@/i18n/navigation';
+import { brand } from '@/data/brand';
+import { HOME_FAQ_KEYS } from '@/data/home-faq';
 
-import { useState } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
-import {
-  Search,
-  BookOpen,
-  Settings,
-  Zap,
-  MessageSquare,
-  CreditCard,
-  Shield,
-  ChevronRight,
-  HelpCircle,
-  Play,
-  FileText,
-  Headphones,
-} from 'lucide-react';
-
-const categories = [
-  {
-    slug: 'demarrage',
-    title: 'Prise en main',
-    description: 'Premiers pas avec TriggerFlow',
-    icon: Play,
-    articles: 12,
-  },
-  {
-    slug: 'configuration',
-    title: 'Configuration',
-    description: 'Paramétrage de votre compte',
-    icon: Settings,
-    articles: 18,
-  },
-  {
-    slug: 'automatisation',
-    title: 'Automatisation',
-    description: 'Créer et gérer vos workflows',
-    icon: Zap,
-    articles: 24,
-  },
-  {
-    slug: 'communication',
-    title: 'Communication',
-    description: 'Email, SMS et WhatsApp',
-    icon: MessageSquare,
-    articles: 15,
-  },
-  {
-    slug: 'facturation',
-    title: 'Facturation',
-    description: 'Abonnement et paiements',
-    icon: CreditCard,
-    articles: 8,
-  },
-  {
-    slug: 'securite',
-    title: 'Sécurité & RGPD',
-    description: 'Protection des données',
-    icon: Shield,
-    articles: 10,
-  },
-];
-
-const popularArticles = [
-  {
-    slug: 'connecter-pms',
-    title: 'Comment connecter mon PMS à TriggerFlow ?',
-    category: 'Configuration',
-    views: '2.4k',
-  },
-  {
-    slug: 'premier-workflow',
-    title: 'Créer mon premier workflow automatique',
-    category: 'Automatisation',
-    views: '1.8k',
-  },
-  {
-    slug: 'template-email',
-    title: "Personnaliser les templates d'emails",
-    category: 'Communication',
-    views: '1.5k',
-  },
-  {
-    slug: 'demande-avis',
-    title: 'Automatiser les demandes d\'avis Google',
-    category: 'Automatisation',
-    views: '1.3k',
-  },
-  {
-    slug: 'importer-contacts',
-    title: 'Importer ma base de contacts existante',
-    category: 'Configuration',
-    views: '1.1k',
-  },
-];
-
-const quickLinks = [
-  {
-    title: 'Documentation API',
-    description: 'Intégrez TriggerFlow à vos outils',
-    icon: FileText,
-    href: '#',
-  },
-  {
-    title: 'Tutoriels vidéo',
-    description: 'Apprenez en regardant',
-    icon: Play,
-    href: '#',
-  },
-  {
-    title: 'Support technique',
-    description: 'Contactez notre équipe',
-    icon: Headphones,
-    href: '#',
-  },
-];
-
-export default function HelpCenterContent() {
-  const t = useTranslations('helpCenter');
-  const prefersReducedMotion = useReducedMotion();
-  const [searchQuery, setSearchQuery] = useState('');
-
-  const fadeIn = prefersReducedMotion
-    ? {}
-    : {
-        initial: { opacity: 0, y: 20 },
-        whileInView: { opacity: 1, y: 0 },
-        viewport: { once: true },
-        transition: { duration: 0.6 },
-      };
-
-  const stagger = prefersReducedMotion
-    ? {}
-    : {
-        initial: { opacity: 0, y: 20 },
-        whileInView: { opacity: 1, y: 0 },
-        viewport: { once: true },
-      };
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert(t('searchComingSoon'));
-  };
-
-  const handleCategoryClick = (_slug: string) => {
-    alert(t('comingSoon'));
-  };
-
-  const handleArticleClick = (_slug: string) => {
-    alert(t('comingSoon'));
-  };
+/** Page d'aide : contacts réels du support, FAQ existante et liens utiles. Pas de base d'articles fictive. */
+export default async function HelpCenterContent({ locale }: { locale: string }) {
+  const t = await getTranslations({ locale, namespace: 'helpPage' });
+  const faq = await getTranslations({ locale, namespace: 'faq' });
+  const nav = await getTranslations({ locale, namespace: 'nav' });
+  const items = HOME_FAQ_KEYS.map((k) => ({ question: faq(`items.${k}.question`), answer: faq(`items.${k}.answer`) }));
+  const contacts = [
+    { icon: Mail, label: t('email'), value: brand.email, href: `mailto:${brand.email}` },
+    { icon: Phone, label: t('phone'), value: t('phoneValue'), href: `tel:${t('phoneHref')}` },
+    { icon: Clock, label: t('hours'), value: t('hoursValue') },
+    { icon: LogIn, label: t('app'), value: 'app.trigger-flow.com', href: 'https://app.trigger-flow.com/login' },
+  ];
+  const links = [
+    { href: '/plateforme/securite', key: 'security' },
+    { href: '/plateforme/synchronisation', key: 'sync' },
+    { href: '/integrations', key: 'integrations' },
+    { href: '/dpa', key: 'dpa' },
+  ] as const;
 
   return (
-    <main className="min-h-screen bg-white">
-      {/* Hero Section with Search */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-brand-light via-white to-emerald-50/30">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeIn} className="text-center">
-            <HelpCircle className="w-16 h-16 text-brand-primary mx-auto mb-6" />
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-brand-dark mb-6">
-              {t('hero.title')}
-            </h1>
-            <p className="text-xl text-gray-600 leading-relaxed mb-8">
-              {t('hero.subtitle')}
-            </p>
-
-            {/* Search Bar */}
-            <form onSubmit={handleSearch} className="max-w-2xl mx-auto">
-              <div className="relative">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder={t('hero.searchPlaceholder')}
-                  className="w-full pl-12 pr-4 py-4 rounded-xl border border-gray-200 bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent text-lg"
-                />
-                <button
-                  type="submit"
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2 px-6 py-2 bg-brand-primary hover:bg-brand-primary/90 text-white font-medium rounded-lg transition-colors"
-                >
-                  {t('hero.searchButton')}
-                </button>
-              </div>
-            </form>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Quick Links */}
-      <section className="py-8 bg-brand-dark">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-4">
-            {quickLinks.map((link, index) => {
-              const Icon = link.icon;
+    <>
+      <section className="bg-white pb-14 pt-14 md:pb-20 md:pt-20">
+        <Container className="text-center">
+          <Eyebrow>{t('eyebrow')}</Eyebrow>
+          <h1 className="mx-auto mt-5 max-w-3xl text-balance text-[2.25rem] font-medium leading-[1.08] tracking-[-0.025em] text-ink md:text-[3.5rem]">{t('title')}</h1>
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-2">{t('subtitle')}</p>
+          <ul className="mx-auto mt-12 grid max-w-4xl gap-3 text-left sm:grid-cols-2 lg:grid-cols-4">
+            {contacts.map((c) => {
+              const Icon = c.icon;
+              const inner = (
+                <>
+                  <Icon aria-hidden className="h-5 w-5 text-accent" strokeWidth={1.5} />
+                  <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.06em] text-ink-3">{c.label}</p>
+                  <p className="mt-1 text-[15px] font-semibold text-ink">{c.value}</p>
+                </>
+              );
               return (
-                <motion.div
-                  key={link.title}
-                  {...stagger}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <button
-                    onClick={() => alert(t('comingSoon'))}
-                    className="w-full flex items-center gap-4 p-4 rounded-lg bg-white/10 hover:bg-white/20 transition-colors text-left"
-                  >
-                    <div className="w-10 h-10 rounded-lg bg-brand-primary/20 flex items-center justify-center">
-                      <Icon className="w-5 h-5 text-brand-primary" />
-                    </div>
-                    <div>
-                      <div className="text-white font-medium">{link.title}</div>
-                      <div className="text-white/60 text-sm">{link.description}</div>
-                    </div>
-                  </button>
-                </motion.div>
+                <li key={c.label}>
+                  {c.href ? (
+                    <a href={c.href} {...(c.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})} className="block h-full rounded-xl border border-line p-5 transition-colors hover:border-accent">{inner}</a>
+                  ) : (
+                    <div className="h-full rounded-xl border border-line p-5">{inner}</div>
+                  )}
+                </li>
               );
             })}
-          </div>
-        </div>
+          </ul>
+        </Container>
       </section>
-
-      {/* Categories Grid */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeIn} className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold text-brand-dark mb-4">
-              {t('categories.title')}
-            </h2>
-            <p className="text-gray-600">{t('categories.subtitle')}</p>
-          </motion.div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {categories.map((category, index) => {
-              const Icon = category.icon;
-              return (
-                <motion.div
-                  key={category.slug}
-                  {...stagger}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <button
-                    onClick={() => handleCategoryClick(category.slug)}
-                    className="w-full group bg-white rounded-xl border border-gray-100 p-6 hover:shadow-lg hover:border-brand-primary/20 transition-all text-left"
-                  >
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center">
-                        <Icon className="w-6 h-6 text-brand-primary" />
-                      </div>
-                      <span className="text-sm text-gray-500">
-                        {category.articles} {t('categories.articles')}
-                      </span>
-                    </div>
-                    <h3 className="text-lg font-bold text-brand-dark mb-2 group-hover:text-brand-primary transition-colors">
-                      {category.title}
-                    </h3>
-                    <p className="text-gray-600 text-sm">{category.description}</p>
-                  </button>
-                </motion.div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Popular Articles */}
-      <section className="py-16 md:py-24 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div {...fadeIn} className="text-center mb-12">
-            <BookOpen className="w-10 h-10 text-brand-primary mx-auto mb-4" />
-            <h2 className="text-2xl md:text-3xl font-bold text-brand-dark mb-4">
-              {t('popular.title')}
-            </h2>
-            <p className="text-gray-600">{t('popular.subtitle')}</p>
-          </motion.div>
-
-          <div className="space-y-3">
-            {popularArticles.map((article, index) => (
-              <motion.div
-                key={article.slug}
-                {...stagger}
-                transition={{ delay: index * 0.05 }}
-              >
-                <button
-                  onClick={() => handleArticleClick(article.slug)}
-                  className="w-full group flex items-center justify-between p-4 bg-white rounded-lg border border-gray-100 hover:shadow-md hover:border-brand-primary/20 transition-all text-left"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="w-8 h-8 rounded-lg bg-brand-primary/10 flex items-center justify-center">
-                      <FileText className="w-4 h-4 text-brand-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-medium text-brand-dark group-hover:text-brand-primary transition-colors">
-                        {article.title}
-                      </h3>
-                      <span className="text-sm text-gray-500">{article.category}</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="text-sm text-gray-400">{article.views} vues</span>
-                    <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-brand-primary group-hover:translate-x-1 transition-all" />
-                  </div>
-                </button>
-              </motion.div>
+      <Section tone="paper">
+        <Container narrow>
+          <SectionHeader eyebrow="FAQ" title={t('faqTitle')} align="left" />
+          <div className="mt-10"><FaqList items={items} /></div>
+        </Container>
+      </Section>
+      <Section tone="white" compact>
+        <Container>
+          <p className="font-mono text-eyebrow uppercase text-ink-3">{t('linksTitle')}</p>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {links.map((l) => (
+              <Link key={l.key} href={l.href} className="group flex items-center justify-between rounded-xl border border-line p-5 text-[15px] font-semibold text-ink hover:border-accent">
+                {t(`links.${l.key}`)}<ArrowRight aria-hidden className="h-4 w-4 text-accent transition-transform group-hover:translate-x-0.5" />
+              </Link>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Contact Support CTA */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-brand-primary to-emerald-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div {...fadeIn}>
-            <Headphones className="w-12 h-12 text-white/80 mx-auto mb-6" />
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              {t('support.title')}
-            </h2>
-            <p className="text-white/80 mb-8 max-w-2xl mx-auto">
-              {t('support.subtitle')}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={() => alert(t('comingSoon'))}
-                className="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-100 text-brand-primary px-8 py-4 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl"
-              >
-                <MessageSquare className="w-5 h-5" />
-                {t('support.chatButton')}
-              </button>
-              <a
-                href="mailto:support@trigger-flow.com"
-                className="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-lg font-semibold transition-all border border-white/20"
-              >
-                {t('support.emailButton')}
-              </a>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-    </main>
+        </Container>
+      </Section>
+      <CtaBand title={t('cta')} primary={{ label: nav('startFree'), href: brand.demoUrl }} secondary={{ label: t('contactCta'), href: '/contact' }} />
+    </>
   );
 }

@@ -5,6 +5,7 @@ import { HeroScenario } from '@/components/visuals';
 import { Link } from '@/i18n/navigation';
 import { brand } from '@/data/brand';
 import { solutions } from '@/data/solutions';
+import { localizeSolution } from '@/data/solutions-en';
 import { productLandings } from '@/content/products';
 
 /** Anciens slugs de modules (solutions.ts) → nouvelles landings produit. */
@@ -19,8 +20,8 @@ const landingName = (slug: string, lang: 'fr' | 'en') => productLandings[MODULE_
 
 /** Page segment (hôtels indépendants, groupes…) dans la charte, à partir de src/data/solutions.ts. */
 export async function SolutionLanding({ slug, locale }: { slug: string; locale: string }) {
-  const s = solutions[slug];
-  if (!s) return null;
+  if (!solutions[slug]) return null;
+  const s = localizeSolution(solutions[slug], locale);
   const lang = locale === 'en' ? 'en' : 'fr';
   const t = await getTranslations({ locale, namespace: 'solutionLanding' });
   const nav = await getTranslations({ locale, namespace: 'nav' });

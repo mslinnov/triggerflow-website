@@ -11,7 +11,7 @@ export function ArticleList({ articles, locale, emptyMessage }: ArticleListProps
   if (articles.length === 0) {
     return (
       <div className="border-t border-gray-200 py-20 text-center">
-        <p className="text-gray-400 text-sm">{emptyMessage}</p>
+        <p className="text-ink-3 text-sm">{emptyMessage}</p>
       </div>
     );
   }

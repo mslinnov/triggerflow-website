@@ -59,7 +59,7 @@ export default async function BlogListingPage({ params }: Props) {
       {recentFeatured && (
         <section className="py-12 md:py-16">
           <Container>
-            <h2 className="text-sm font-semibold uppercase tracking-widest text-gray-400">
+            <h2 className="text-sm font-semibold uppercase tracking-widest text-ink-3">
               {t('listing.recentPosts', { defaultValue: 'Articles r\u00e9cents' })}
             </h2>
             <div className="mt-8 grid gap-8 lg:grid-cols-2">
@@ -98,7 +98,7 @@ export default async function BlogListingPage({ params }: Props) {
       {/* All blog posts grid */}
       <section className="py-10 pb-16 md:pb-24">
         <Container>
-          <h2 className="mb-8 text-sm font-semibold uppercase tracking-widest text-gray-400">
+          <h2 className="mb-8 text-sm font-semibold uppercase tracking-widest text-ink-3">
             {t('listing.allPosts', { defaultValue: 'Tous les articles' })}
           </h2>
 

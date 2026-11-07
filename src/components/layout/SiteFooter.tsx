@@ -23,7 +23,7 @@ export function SiteFooter() {
           <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-4 lg:grid-cols-7">
             {footerColumns.map((col) => (
               <div key={col.key}>
-                <p className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-white/45">{t(`columns.${col.key}`)}</p>
+                <p className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-white/60">{t(`columns.${col.key}`)}</p>
                 <ul className="mt-4 space-y-2.5">
                   {col.items.map((item) => (
                     <li key={item.key}>
@@ -42,7 +42,7 @@ export function SiteFooter() {
             ))}
           </div>
         </div>
-        <div className="mt-16 flex flex-col gap-3 border-t border-white/10 pt-6 font-mono text-[12px] uppercase tracking-[0.06em] text-white/45 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-16 flex flex-col gap-3 border-t border-white/10 pt-6 font-mono text-[12px] uppercase tracking-[0.06em] text-white/60 sm:flex-row sm:items-center sm:justify-between">
           <span>© {new Date().getFullYear()} TriggerFlow · {t('company')}</span>
           <span>{t('hosted')}</span>
         </div>

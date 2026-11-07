@@ -16,7 +16,7 @@ export function HomeTestimonials() {
           ))}
         </div>
         <div className="mt-8 flex flex-col gap-2 rounded-xl border border-line bg-white px-6 py-5 sm:flex-row sm:items-center sm:gap-5">
-          <span className="flex gap-0.5" aria-label="5/5">
+          <span className="flex gap-0.5" role="img" aria-label="5/5">
             {[0, 1, 2, 3, 4].map((i) => (
               <Star key={i} aria-hidden className="h-4 w-4 fill-peach text-peach" />
             ))}

@@ -26,7 +26,7 @@ export function ImageBlock({ id, images, slug }: ImageBlockProps) {
         />
       </div>
       {image.alt && (
-        <figcaption className="mt-3 text-center text-sm italic text-gray-400">
+        <figcaption className="mt-3 text-center text-sm italic text-ink-3">
           {image.alt}
         </figcaption>
       )}

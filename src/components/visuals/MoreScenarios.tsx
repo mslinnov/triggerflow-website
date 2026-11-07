@@ -110,8 +110,8 @@ export function B2bScenario() {
         </div>
         <ul className="mt-4 space-y-2">
           {rows.map(([n, s], i) => (
-            <Reveal key={n} show={step >= i + 1} from="left">
-              <li className="flex items-center justify-between rounded-lg bg-paper px-3 py-2 text-[12.5px]"><span className="text-ink">{n}</span><span className="font-mono text-ink-3">{s} {t('stays')}</span></li>
+            <Reveal as="li" key={n} show={step >= i + 1} from="left">
+              <div className="flex items-center justify-between rounded-lg bg-paper px-3 py-2 text-[12.5px]"><span className="text-ink">{n}</span><span className="font-mono text-ink-3">{s} {t('stays')}</span></div>
             </Reveal>
           ))}
         </ul>

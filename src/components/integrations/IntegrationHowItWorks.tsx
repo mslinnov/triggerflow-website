@@ -69,7 +69,7 @@ export function IntegrationHowItWorks() {
                 <h3 className="mb-3 text-base font-semibold leading-snug text-white">
                   {t(`steps.${i}.title`)}
                 </h3>
-                <p className="text-sm leading-relaxed text-white/40">
+                <p className="text-sm leading-relaxed text-white/60">
                   {t(`steps.${i}.description`)}
                 </p>
 

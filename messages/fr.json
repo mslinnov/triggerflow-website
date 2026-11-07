@@ -1084,7 +1084,9 @@
       "title": "Vous gérez plusieurs établissements ?",
       "description": "Bénéficiez de tarifs préférentiels et d'un accompagnement dédié pour déployer TriggerFlow à grande échelle.",
       "cta": "Demander un devis groupe"
-    }
+    },
+    "scrollLeft": "Faire défiler vers la gauche",
+    "scrollRight": "Faire défiler vers la droite"
   },
   "contact": {
     "meta": {
@@ -2142,7 +2144,7 @@
       "accept": "Accepter",
       "reject": "Refuser",
       "customize": "Personnaliser",
-      "learnMore": "En savoir plus"
+      "learnMore": "Lire notre politique de confidentialité"
     },
     "modal": {
       "title": "Préférences de cookies",
@@ -3970,5 +3972,66 @@
     "indexEyebrow": "Solutions",
     "indexTitle": "Une solution à la mesure de votre établissement.",
     "indexSubtitle": "Hôtel indépendant, groupe, hôtel de luxe, résidence, camping ou maison d’hôtes : TriggerFlow s’adapte à votre façon de recevoir."
+  },
+  "guidesPage": {
+    "eyebrow": "Ressources",
+    "title": "Des guides tirés de ce qui marche chez nos hôtels.",
+    "subtitle": "Trois guides gratuits en PDF, un calendrier marketing et le blog : des chiffres réels et des méthodes que vous pouvez appliquer dès cette semaine.",
+    "note": "Les guides sont gratuits : une adresse email suffit, le PDF se télécharge aussitôt.",
+    "cta": "Passez des idées à vos premiers scénarios.",
+    "items": {
+      "upsell": {
+        "type": "Guide PDF",
+        "title": "Les ventes additionnelles avant l’arrivée",
+        "text": "Ce qui se vend vraiment, quand l’envoyer et sur quel canal, à partir des ventes de nos établissements clients.",
+        "cta": "Recevoir le guide"
+      },
+      "postStay": {
+        "type": "Guide PDF",
+        "title": "Le guide du post-séjour",
+        "text": "Un été d’emails post-séjour suivi de l’envoi jusqu’à l’avis : ce qui fait vraiment répondre vos clients.",
+        "cta": "Recevoir le guide"
+      },
+      "clientsOta": {
+        "type": "Guide PDF",
+        "title": "Le guide du client OTA",
+        "text": "Comment récupérer la vraie adresse des clients Booking.com et Expedia, et à quel moment la demander.",
+        "cta": "Recevoir le guide"
+      },
+      "calendar": {
+        "type": "Calendrier",
+        "title": "Le calendrier marketing hôtelier",
+        "text": "Les temps forts de l’année, quand écrire à vos clients et un modèle d’email pour chacun.",
+        "cta": "Voir le calendrier"
+      },
+      "blog": {
+        "type": "Blog",
+        "title": "Le blog TriggerFlow",
+        "text": "Automatisation, expérience client, upsell et intégrations : des articles écrits pour les hôteliers.",
+        "cta": "Lire le blog"
+      }
+    }
+  },
+  "helpPage": {
+    "eyebrow": "Aide",
+    "title": "Une question ? Parlez à quelqu’un de l’équipe.",
+    "subtitle": "Notre support est assuré par l’équipe TriggerFlow, à Toulouse. Écrivez-nous ou appelez-nous, nous répondons aux jours ouvrés.",
+    "email": "Email",
+    "phone": "Téléphone",
+    "phoneValue": "+33 (0)5 54 54 48 52",
+    "phoneHref": "+33554544852",
+    "hours": "Horaires",
+    "hoursValue": "Lun - Ven, 9h - 18h",
+    "app": "Accès à l’application",
+    "faqTitle": "Les questions les plus fréquentes.",
+    "linksTitle": "Pour aller plus loin",
+    "links": {
+      "security": "Sécurité et hébergement",
+      "sync": "Synchronisation avec le PMS",
+      "integrations": "Intégrations",
+      "dpa": "Accord de traitement des données (DPA)"
+    },
+    "cta": "Pas encore client ? Voyons ensemble votre projet.",
+    "contactCta": "Nous contacter"
   }
 }

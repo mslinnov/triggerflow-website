@@ -36,7 +36,7 @@ export function IntegrationCta() {
           <h2 className="font-serif text-4xl font-bold tracking-tight text-white md:text-5xl">
             {t('title')}
           </h2>
-          <p className="mt-5 text-lg leading-relaxed text-white/45">
+          <p className="mt-5 text-lg leading-relaxed text-white/60">
             {t('text')}
           </p>
           <div className="mt-10">
@@ -56,7 +56,7 @@ export function IntegrationCta() {
             {t('alternative')}{' '}
             <a
               href={`mailto:${t('email')}`}
-              className="text-white/40 underline underline-offset-4 transition-colors hover:text-white/60"
+              className="text-white/60 underline underline-offset-4 transition-colors hover:text-white/60"
             >
               {t('email')}
             </a>

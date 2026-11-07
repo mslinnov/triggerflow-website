@@ -1,7 +1,8 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { solutionSlugs, getSolutionSerializable } from '@/data/solutions';
+import { setRequestLocale } from 'next-intl/server';
+import { solutionSlugs, getSolutionSerializable, solutions } from '@/data/solutions';
+import { localizeSolution } from '@/data/solutions-en';
 import { BreadcrumbListJsonLd } from '@/components/seo';
 import { SolutionLanding } from '@/components/solutions/SolutionLanding';
 
@@ -34,20 +35,14 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
-  const t = await getTranslations({ locale, namespace: 'solutionPage' });
 
-  const solutionData = getSolutionSerializable(slug);
-  if (!solutionData) {
-    return {
-      title: 'Solution non trouvée | TriggerFlow',
-    };
-  }
-
-  const title = `TriggerFlow pour ${solutionData.title}`;
+  if (!solutions[slug]) return {};
+  const solutionData = localizeSolution(solutions[slug], locale);
+  const title = locale === 'en' ? `TriggerFlow for ${solutionData.title}` : `TriggerFlow pour ${solutionData.title}`;
   const description = solutionData.description;
 
   return {
-    title,
+    title: { absolute: title },
     description,
     openGraph: {
       title: `${title} | TriggerFlow`,
@@ -81,7 +76,7 @@ export default async function SolutionPage({ params }: Props) {
         items={[
           { name: 'TriggerFlow', url: `${baseUrl}/${locale}` },
           { name: 'Solutions', url: `${baseUrl}/${locale}/solutions` },
-          { name: solutionData.title, url: `${baseUrl}/${locale}/solutions/${slug}` },
+          { name: localizeSolution(solutions[slug], locale).title, url: `${baseUrl}/${locale}/solutions/${slug}` },
         ]}
       />
       <SolutionLanding slug={slug} locale={locale} />

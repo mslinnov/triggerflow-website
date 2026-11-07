@@ -164,7 +164,7 @@ export const solutions: Record<string, SolutionData> = {
     ],
 
     painPoints: [
-      "2h par jour perdues en emails manuels de confirmation et d'informations",
+      "Des heures perdues chaque semaine en emails manuels de confirmation et d'informations",
       'Les clients satisfaits partent sans laisser un avis Google',
       'Les clients réservent via Booking même après un premier séjour chez vous',
       "Aucune relance post-séjour, vous perdez le contact avec vos anciens clients",
@@ -238,7 +238,7 @@ export const solutions: Record<string, SolutionData> = {
       },
       {
         title: 'Réservation directe fidélité',
-        description: 'Offrez des avantages aux clients qui réservent en direct : -10% newsletter, points fidélité, surclassement...',
+        description: 'Offrez des avantages aux clients qui réservent en direct : offre réservée aux abonnés, points fidélité, surclassement...',
         steps: ['Client newsletter', 'Offre exclusive', 'Réservation directe', 'Points fidélité'],
         result: 'Plus de clients qui réservent en direct',
       },
@@ -357,7 +357,7 @@ export const solutions: Record<string, SolutionData> = {
         slug: 'automatisations',
         highlight: 'Templates groupe partagés',
         whyForPersona: 'Créez un template au siège, chaque hôtel le personnalise avec son logo et ses couleurs. Fini la duplication.',
-        bullets: ['Bibliothèque de templates centralisée', 'Variables locales par établissement', 'Versioning et historique'],
+        bullets: ['Bibliothèque de templates centralisée', 'Variables locales par établissement', 'Modèles partagés entre établissements'],
       },
       {
         slug: 'analytics',
@@ -387,7 +387,7 @@ export const solutions: Record<string, SolutionData> = {
         slug: 'newsletter',
         highlight: 'Campagnes centralisées',
         whyForPersona: 'Lancez une campagne nationale en une fois, automatiquement personnalisée par chaque hôtel.',
-        bullets: ['Envoi simultané multi-hôtels', 'Personnalisation locale automatique', 'A/B testing groupe'],
+        bullets: ['Envoi simultané multi-hôtels', 'Personnalisation locale automatique', 'Segments par établissement'],
       },
     ],
 
@@ -437,7 +437,7 @@ export const solutions: Record<string, SolutionData> = {
       },
       {
         question: 'Quel PMS multi-propriétés est supporté ?',
-        answer: 'Opera Cloud et Mews sont nativement supportés en mode multi-propriétés. Pour d\'autres PMS, notre équipe technique évalue la faisabilité.',
+        answer: 'Chaque établissement est connecté à son PMS, et vous pilotez l\'ensemble depuis un seul compte. Pour un PMS que nous ne connectons pas encore, notre équipe technique évalue la faisabilité.',
       },
     ],
 
@@ -446,7 +446,7 @@ export const solutions: Record<string, SolutionData> = {
       { label: 'Déploiement', description: 'Config par hôtel', active: true },
       { label: 'Opérations', description: 'Exécution locale', active: false },
       { label: 'Monitoring', description: 'Dashboard groupe', active: true },
-      { label: 'Optimisation', description: 'A/B testing & itérations', active: true },
+      { label: 'Optimisation', description: 'Suivi des résultats et ajustements', active: true },
     ],
 
     relatedSolutions: ['hotels-independants', 'automatiser-communication', 'fideliser-clients'],
@@ -538,13 +538,13 @@ export const solutions: Record<string, SolutionData> = {
         slug: 'email',
         highlight: 'Rapports propriétaires',
         whyForPersona: 'Chaque mois, le propriétaire reçoit son rapport : taux d\'occupation, revenus, interventions. Sans que vous leviez le petit doigt.',
-        bullets: ['Rapport mensuel automatique', 'PDF avec données PMS', 'Historique accessible en ligne'],
+        bullets: ['Rapport mensuel automatique', 'PDF avec données PMS', 'Envoi par email au propriétaire'],
       },
       {
         slug: 'whatsapp',
         highlight: 'Support locataires',
         whyForPersona: 'Un problème de plomberie à 22h ? Le locataire envoie un WhatsApp, vous recevez l\'alerte et le propriétaire est informé.',
-        bullets: ['Canal WhatsApp dédié par résidence', 'Réponses automatiques FAQ', 'Escalade intelligente'],
+        bullets: ['Canal WhatsApp dédié par résidence', 'Réponses suggérées par l’IA', 'Historique de conversation'],
       },
       {
         slug: 'crm',
@@ -581,11 +581,11 @@ export const solutions: Record<string, SolutionData> = {
     faq: [
       {
         question: 'TriggerFlow gère-t-il les serrures connectées ?',
-        answer: 'Oui, nous nous intégrons avec Nuki, Sesame et d\'autres systèmes de serrures connectées. Le code est envoyé automatiquement au locataire avant son arrivée.',
+        answer: 'Oui, TriggerFlow se connecte aux serrures Sesame et Igloohome. Le code est envoyé automatiquement au locataire avant son arrivée.',
       },
       {
         question: 'Les propriétaires ont-ils accès à un portail ?',
-        answer: 'Les propriétaires reçoivent un rapport mensuel automatique par email. Un accès en ligne à l\'historique de leurs données est en cours de développement.',
+        answer: 'Les propriétaires reçoivent un rapport mensuel automatique par email.',
       },
       {
         question: 'Comment gérer les séjours de plusieurs mois ?',
@@ -721,12 +721,12 @@ export const solutions: Record<string, SolutionData> = {
       {
         title: 'Early booking saison suivante',
         description: "Dès septembre, campagne automatique vers les clients de l'été : offre early bird pour la saison prochaine.",
-        steps: ['Septembre', 'Segmentation clients été', 'Email offre -15%', 'Relance J+7'],
+        steps: ['Septembre', 'Segmentation clients été', 'Email avec offre de réservation anticipée', 'Relance une semaine plus tard'],
         result: 'Les campeurs de l\'été relancés pour la saison suivante',
       },
       {
         title: 'Promotion services sur place',
-        description: 'SMS J+2 : "Découvrez notre restaurant le Cabanon, -10% pour les résidents cette semaine".',
+        description: 'SMS pendant le séjour : une invitation à découvrir le restaurant du camping, avec une offre réservée aux résidents.',
         steps: ['Arrivée', 'SMS J+2 resto', 'SMS J+4 spa', 'SMS J+5 location vélos'],
         result: 'Les services du camping proposés pendant le séjour',
       },
@@ -795,7 +795,7 @@ export const solutions: Record<string, SolutionData> = {
       {
         icon: Users,
         title: 'Personnalisation à grande échelle',
-        description: "Impossible de traiter chaque client comme un VIP manuellement quand vous avez 80+ chambres.",
+        description: "Impossible de traiter chaque client comme un VIP manuellement quand les arrivées s'enchaînent.",
       },
       {
         icon: Clock,
@@ -847,7 +847,7 @@ export const solutions: Record<string, SolutionData> = {
         slug: 'email',
         highlight: 'Emails dignes de votre marque',
         whyForPersona: "Templates élégants personnalisables à votre charte graphique. Chaque email reflète l'excellence de votre établissement.",
-        bullets: ['Design premium personnalisable', 'Variables dynamiques (nom, chambre, dates)', 'Multilingue automatique (FR, EN, DE, ES, IT)'],
+        bullets: ['Design premium personnalisable', 'Variables dynamiques (nom, chambre, dates)', 'Messages dans la langue du client'],
       },
       {
         slug: 'whatsapp',
@@ -896,7 +896,7 @@ export const solutions: Record<string, SolutionData> = {
     faq: [
       {
         question: 'TriggerFlow convient-il à un hôtel 5 étoiles ou un palace ?',
-        answer: "Oui. TriggerFlow s'adapte à l'exigence du luxe : templates élégants personnalisables, gestion fine des préférences clients, alertes VIP, et programme fidélité premium. Plusieurs hôtels 4 et 5 étoiles l'utilisent déjà.",
+        answer: "Oui. TriggerFlow s'adapte à l'exigence du luxe : templates élégants personnalisables, gestion fine des préférences clients, alertes VIP, et programme fidélité premium.",
       },
       {
         question: 'Les emails et SMS reflètent-ils notre image de marque ?',

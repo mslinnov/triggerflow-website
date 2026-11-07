@@ -250,12 +250,12 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
                       </div>
                     )}
 
-                    <h3 className={cn(
+                    <h2 className={cn(
                       'text-sm font-semibold uppercase tracking-wider',
                       plan.popular ? 'text-brand-primary' : 'text-white/50'
                     )}>
                       {t(`plans.${plan.key}.name`)}
-                    </h3>
+                    </h2>
 
                     <div className="mt-3 flex items-baseline gap-1">
                       <span className={cn(
@@ -266,7 +266,7 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
                       </span>
                       <span className={cn(
                         'text-sm',
-                        plan.popular ? 'text-zinc-400' : 'text-white/40'
+                        plan.popular ? 'text-ink-3' : 'text-white/60'
                       )}>
                         /{t('perMonth')}
                       </span>
@@ -278,7 +278,7 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
 
                     <p className={cn(
                       'mt-1.5 text-xs',
-                      plan.popular ? 'text-brand-primary/70' : 'text-white/40'
+                      plan.popular ? 'text-accent' : 'text-white/60'
                     )}>
                       {t(`plans.${plan.key}.trial`)}
                     </p>
@@ -342,12 +342,12 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
                   </div>
                 )}
 
-                <h3 className={cn(
+                <h2 className={cn(
                   'text-sm font-semibold uppercase tracking-wider',
                   plan.popular ? 'text-brand-primary' : 'text-white/50'
                 )}>
                   {t(`plans.${plan.key}.name`)}
-                </h3>
+                </h2>
 
                 <div className="mt-3 flex items-baseline gap-1">
                   <span className={cn(
@@ -358,7 +358,7 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
                   </span>
                   <span className={cn(
                     'text-sm',
-                    plan.popular ? 'text-zinc-400' : 'text-white/40'
+                    plan.popular ? 'text-ink-3' : 'text-white/60'
                   )}>
                     /{t('perMonth')}
                   </span>
@@ -370,7 +370,7 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
 
                 <p className={cn(
                   'mt-1.5 text-xs',
-                  plan.popular ? 'text-brand-primary/70' : 'text-white/40'
+                  plan.popular ? 'text-accent' : 'text-white/60'
                 )}>
                   {t(`plans.${plan.key}.trial`)}
                 </p>
@@ -434,6 +434,7 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
             {canScrollLeft && (
               <button
                 onClick={() => tableScrollRef.current?.scrollBy({ left: -200, behavior: 'smooth' })}
+                aria-label={t('scrollLeft')}
                 className="absolute left-0 top-1/2 -translate-y-1/2 z-30 flex h-8 w-8 items-center justify-center rounded-full bg-white shadow-lg border border-zinc-200 md:hidden"
               >
                 <ChevronLeft className="h-4 w-4 text-zinc-600" />
@@ -442,6 +443,7 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
             {canScrollRight && (
               <button
                 onClick={() => tableScrollRef.current?.scrollBy({ left: 200, behavior: 'smooth' })}
+                aria-label={t('scrollRight')}
                 className="absolute right-0 top-1/2 -translate-y-1/2 z-30 flex h-8 w-8 items-center justify-center rounded-full bg-white shadow-lg border border-zinc-200 md:hidden"
               >
                 <ChevronRight className="h-4 w-4 text-zinc-600" />
@@ -488,7 +490,7 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
                           'text-lg font-bold mt-0.5',
                           plan.popular ? 'text-brand-primary' : 'text-brand-dark'
                         )}>
-                          {plan.price}€<span className="text-xs font-normal text-zinc-400">/{t('perMonth')}</span>
+                          {plan.price}€<span className="text-xs font-normal text-ink-3">/{t('perMonth')}</span>
                         </div>
                         <UpcomingPrice price={plan.upcomingPrice} className="text-zinc-500 font-normal" />
                       </div>
@@ -660,7 +662,7 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
                         </h3>
                         <div className="flex items-baseline gap-1 mt-0.5">
                           <span className="text-lg md:text-xl font-bold text-brand-dark">+{addon.price}€</span>
-                          <span className="text-xs text-zinc-400">/{t('perMonth')}</span>
+                          <span className="text-xs text-ink-3">/{t('perMonth')}</span>
                         </div>
                         <UpcomingPrice price={addon.upcomingPrice} variant="addon" className="text-zinc-500" />
                       </div>

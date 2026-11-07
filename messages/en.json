@@ -1076,7 +1076,9 @@
       "title": "Managing multiple properties?",
       "description": "Benefit from preferential rates and dedicated support to deploy TriggerFlow at scale.",
       "cta": "Request a group quote"
-    }
+    },
+    "scrollLeft": "Scroll left",
+    "scrollRight": "Scroll right"
   },
   "contact": {
     "meta": {
@@ -2134,7 +2136,7 @@
       "accept": "Accept",
       "reject": "Decline",
       "customize": "Customize",
-      "learnMore": "Learn more"
+      "learnMore": "Read our privacy policy"
     },
     "modal": {
       "title": "Cookie preferences",
@@ -3685,5 +3687,66 @@
     "indexEyebrow": "Solutions",
     "indexTitle": "A solution sized for your property.",
     "indexSubtitle": "Independent hotel, group, luxury hotel, residence, campsite or guesthouse: TriggerFlow adapts to the way you host."
+  },
+  "guidesPage": {
+    "eyebrow": "Resources",
+    "title": "Guides built from what works in our hotels.",
+    "subtitle": "Three free PDF guides, a marketing calendar and the blog: real numbers and methods you can apply this week.",
+    "note": "The guides are free: an email address is enough, and the PDF downloads right away.",
+    "cta": "Turn ideas into your first scenarios.",
+    "items": {
+      "upsell": {
+        "type": "PDF guide",
+        "title": "Selling extras before arrival",
+        "text": "What actually sells, when to send it and on which channel, based on our client properties’ sales.",
+        "cta": "Get the guide"
+      },
+      "postStay": {
+        "type": "PDF guide",
+        "title": "The post-stay guide",
+        "text": "A summer of post-stay emails followed from send to review: what really makes guests reply.",
+        "cta": "Get the guide"
+      },
+      "clientsOta": {
+        "type": "PDF guide",
+        "title": "The OTA guest guide",
+        "text": "How to get the real email address of Booking.com and Expedia guests, and when to ask for it.",
+        "cta": "Get the guide"
+      },
+      "calendar": {
+        "type": "Calendar",
+        "title": "The hotel marketing calendar",
+        "text": "The key dates of the year, when to write to guests and an email template for each.",
+        "cta": "See the calendar"
+      },
+      "blog": {
+        "type": "Blog",
+        "title": "The TriggerFlow blog",
+        "text": "Automation, guest experience, upsell and integrations: articles written for hoteliers.",
+        "cta": "Read the blog"
+      }
+    }
+  },
+  "helpPage": {
+    "eyebrow": "Help",
+    "title": "A question? Talk to someone on the team.",
+    "subtitle": "Support is handled by the TriggerFlow team in Toulouse, France. Email or call us, we reply on business days.",
+    "email": "Email",
+    "phone": "Phone",
+    "phoneValue": "+33 5 54 54 48 52",
+    "phoneHref": "+33554544852",
+    "hours": "Hours",
+    "hoursValue": "Mon - Fri, 9am - 6pm (CET)",
+    "app": "App access",
+    "faqTitle": "Frequently asked questions.",
+    "linksTitle": "Learn more",
+    "links": {
+      "security": "Security and hosting",
+      "sync": "PMS sync",
+      "integrations": "Integrations",
+      "dpa": "Data processing agreement (DPA)"
+    },
+    "cta": "Not a client yet? Let’s look at your project together.",
+    "contactCta": "Contact us"
   }
 }

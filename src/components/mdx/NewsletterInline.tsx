@@ -24,7 +24,7 @@ export function NewsletterInline() {
     <div className="my-8 rounded-lg border border-brand-light bg-brand-light/20 p-6">
       <div className="flex items-center gap-2 mb-2">
         <Mail className="h-5 w-5 text-brand-primary" />
-        <h4 className="text-base font-semibold text-brand-dark">{t('title')}</h4>
+        <p className="text-base font-semibold text-brand-dark">{t('title')}</p>
       </div>
       <p className="text-sm text-brand-dark/70 mb-4">{t('subtitle')}</p>
 
@@ -77,7 +77,7 @@ export function NewsletterInline() {
             onChange={(e) => setConsent(e.target.checked)}
             className="mt-0.5 h-4 w-4 shrink-0 rounded border-brand-light bg-white text-brand-primary focus:ring-brand-primary"
           />
-          <span className="text-xs text-brand-dark/60">
+          <span className="text-xs text-ink-2">
             {tConsent('consent')}{' '}
             <Link href="/politique-confidentialite" className="text-brand-primary underline hover:text-brand-primary/80">
               {tConsent('privacyLink')}

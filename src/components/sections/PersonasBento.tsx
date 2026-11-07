@@ -206,7 +206,7 @@ export function PersonasBento() {
                   <div className="font-mono text-3xl font-bold text-white md:text-5xl">
                     {stat('emailDelivered', locale)}
                   </div>
-                  <div className="mt-1 text-sm text-white/40">
+                  <div className="mt-1 text-sm text-white/60">
                     {t('socialProof')}
                   </div>
                 </div>

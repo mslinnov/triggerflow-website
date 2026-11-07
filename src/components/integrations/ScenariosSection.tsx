@@ -103,7 +103,7 @@ export function ScenariosSection() {
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </ButtonLink>
               </div>
-              <p className="relative mt-4 text-sm text-white/40">
+              <p className="relative mt-4 text-sm text-white/60">
                 {t('ctaMid2.note')}{' '}
                 <Link href={t('ctaMid2.noteHref')} className="font-medium text-brand-primary transition-colors hover:text-brand-primary/80">
                   {t('ctaMid2.noteLink')}

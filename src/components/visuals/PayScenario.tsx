@@ -25,7 +25,7 @@ export function PayScenario() {
           {rows.map(({ icon: Icon, label, time, at }) => (
             <Reveal key={label} show={step >= at} from="left">
               <li className="flex items-center gap-3">
-                <span className={cn('flex h-8 w-8 items-center justify-center rounded-lg', at === 3 ? 'bg-peach text-ink' : 'bg-mint/70 text-accent')}>
+                <span className={cn('flex h-8 w-8 items-center justify-center rounded-lg', at === 3 ? 'bg-peach text-ink' : 'bg-mint/70 text-accent-hover')}>
                   <Icon aria-hidden className="h-4 w-4" strokeWidth={1.75} />
                 </span>
                 <span className="text-[13px] text-ink">{label}</span>

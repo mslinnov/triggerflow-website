@@ -5,6 +5,7 @@ import { Container, CtaBand, Eyebrow, Section } from '@/components/ds';
 import { Link } from '@/i18n/navigation';
 import { brand } from '@/data/brand';
 import { solutions } from '@/data/solutions';
+import { localizeSolution } from '@/data/solutions-en';
 import { solutionsMenu } from '@/data/navigation';
 import { pageAlternates } from '@/lib/seo';
 
@@ -34,8 +35,9 @@ export default async function SolutionsIndex({ params }: Props) {
         <Container>
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {solutionsMenu.map((item) => {
-              const s = solutions[item.href.split('/').pop() as string];
-              if (!s) return null;
+              const raw = solutions[item.href.split('/').pop() as string];
+              if (!raw) return null;
+              const s = localizeSolution(raw, locale);
               const Icon = s.icon;
               return (
                 <Link key={item.key} href={item.href} className="group flex flex-col rounded-xl border border-line bg-white p-7 transition-colors hover:border-accent">

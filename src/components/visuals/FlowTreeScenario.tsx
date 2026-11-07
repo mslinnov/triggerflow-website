@@ -18,7 +18,7 @@ export function FlowTreeScenario() {
       <div className="mx-auto max-w-[260px]">
         <Reveal show={step >= 1}>
           <div className="mb-2 text-center">
-            <span className="rounded-full bg-mint px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.06em] text-accent">{t('triggered')}</span>
+            <span className="rounded-full bg-mint px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.06em] text-accent-hover">{t('triggered')}</span>
           </div>
         </Reveal>
         <FlowNode kind="trigger" label={t('trigger')} title={t('triggerTitle')} active={step >= 1} icon={<CalendarClock className="h-3.5 w-3.5" />} />

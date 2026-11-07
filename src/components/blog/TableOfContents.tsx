@@ -79,7 +79,7 @@ export function TableOfContents({ items, title, showLabel, hideLabel }: TableOfC
           <span>{title}</span>
           <ChevronDown
             className={cn(
-              'h-4 w-4 text-gray-400 transition-transform duration-200',
+              'h-4 w-4 text-ink-3 transition-transform duration-200',
               isOpen && 'rotate-180'
             )}
           />
@@ -111,7 +111,7 @@ export function TableOfContents({ items, title, showLabel, hideLabel }: TableOfC
       {/* Desktop: sticky sidebar */}
       <aside className="hidden lg:block">
         <div className="sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto">
-          <p className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-gray-400">
+          <p className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-ink-3">
             {title}
           </p>
           <nav>
@@ -126,7 +126,7 @@ export function TableOfContents({ items, title, showLabel, hideLabel }: TableOfC
                       'block border-l-2 -ml-px py-1.5 pl-4 text-[12.5px] leading-snug transition-colors duration-150',
                       activeId === item.id
                         ? 'border-brand-primary text-brand-primary font-medium'
-                        : 'border-transparent text-gray-400 hover:text-brand-dark hover:border-gray-300'
+                        : 'border-transparent text-ink-3 hover:text-brand-dark hover:border-gray-300'
                     )}
                   >
                     {item.text}

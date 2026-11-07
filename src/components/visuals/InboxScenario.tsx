@@ -21,14 +21,14 @@ export function InboxScenario() {
     <div ref={ref} className="grid gap-4 p-5 sm:p-8 md:grid-cols-[0.95fr_1.05fr]">
       <ul className="space-y-2">
         {threads.map((th, i) => (
-          <Reveal key={th.name} show={step >= i} from="left">
-            <li className={cn('rounded-xl border bg-white px-4 py-3', i === 0 && step >= 3 ? 'border-accent' : 'border-line')}>
+          <Reveal as="li" key={th.name} show={step >= i} from="left">
+            <div className={cn('rounded-xl border bg-white px-4 py-3', i === 0 && step >= 3 ? 'border-accent' : 'border-line')}>
               <div className="flex items-center justify-between">
                 <span className="text-[13px] font-semibold text-ink">{th.name}</span>
                 <span className="rounded-full bg-paper px-2 py-0.5 font-mono text-[10px] uppercase text-ink-3">{th.ch}</span>
               </div>
               <p className="mt-1 truncate text-[12.5px] text-ink-2">{th.msg}</p>
-            </li>
+            </div>
           </Reveal>
         ))}
       </ul>

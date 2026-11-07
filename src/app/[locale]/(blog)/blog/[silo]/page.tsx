@@ -90,7 +90,7 @@ export default async function SiloListingPage({ params }: Props) {
           <Container>
             {allArticles.length === 0 ? (
               <div className="border-t border-gray-200 py-20 text-center">
-                <p className="text-gray-400 text-sm">{t('listing.noArticles')}</p>
+                <p className="text-ink-3 text-sm">{t('listing.noArticles')}</p>
               </div>
             ) : (
               <ArticleList
