@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { Container, ButtonLink } from '@/components/ui';
 import { fadeInUp, defaultViewport } from '@/lib/animations';
 import { ScenarioCard } from './ScenarioCard';

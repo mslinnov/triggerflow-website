@@ -300,7 +300,7 @@ export function ContactContent() {
       </section>
 
       {/* Démo */}
-      <CtaBand title={t('demo.title')} text={t('demo.description')} primary={{ label: t('demo.cta'), href: brand.demoUrl }} />
+      <CtaBand title={t('demo.title')} text={t('demo.description')} primary={{ label: t('demo.cta'), href: brand.demoPage }} />
     </>
   );
 }

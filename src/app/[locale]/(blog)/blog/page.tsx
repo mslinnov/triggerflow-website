@@ -95,7 +95,7 @@ export default async function BlogListingPage({ params }: Props) {
 
       <CtaBand
         title={t('article.ctaTitle')}
-        primary={{ label: t('article.ctaButton'), href: brand.demoUrl }}
+        primary={{ label: t('article.ctaButton'), href: brand.demoPage }}
         secondary={{ label: nav('seeProduct'), href: '/produit' }}
       />
     </>

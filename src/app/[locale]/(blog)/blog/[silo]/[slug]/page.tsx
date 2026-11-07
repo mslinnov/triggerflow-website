@@ -297,7 +297,7 @@ export default async function ArticlePage({ params }: PageProps) {
 
       {/* CTA de fin d'article */}
       {article.ctaPrincipal !== 'newsletter' && (
-        <CtaBand title={t('ctaTitle')} primary={{ label: t('ctaButton'), href: brand.demoUrl }} />
+        <CtaBand title={t('ctaTitle')} primary={{ label: t('ctaButton'), href: brand.demoPage }} />
       )}
     </>
   );
