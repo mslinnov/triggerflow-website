@@ -3065,7 +3065,11 @@
       "campsites": "Campsites",
       "blog": "Blog",
       "guides": "Guides",
-      "help": "Help center"
+      "help": "Help center",
+      "security": "Security",
+      "sync": "PMS sync",
+      "ai": "Built-in AI",
+      "integrationsHub": "Integrations"
     },
     "descriptions": {
       "upsell": "The right extra, before arrival",
@@ -3124,11 +3128,15 @@
         "legalNotice": "Legal notice",
         "terms": "Terms of sale",
         "termsOfUse": "Terms of use",
-        "cookies": "Manage cookies"
+        "cookies": "Manage cookies",
+        "security": "Security",
+        "sync": "PMS sync",
+        "ai": "Built-in AI"
       },
       "hosted": "Hosted in France · GDPR",
       "company": "A Utelys product"
-    }
+    },
+    "platform": "Platform"
   },
   "home2": {
     "meta": {
@@ -3239,11 +3247,11 @@
     },
     "security": {
       "eyebrow": "Trust",
-      "title": "Your data stays in France.",
+      "title": "Hosted in France, fully transparent.",
       "items": [
         {
           "title": "Hosted in France",
-          "text": "Your data and your guests' data are hosted in France."
+          "text": "Infrastructure at Scaleway, in France. Every subprocessor is publicly listed."
         },
         {
           "title": "GDPR and public DPA",
@@ -3259,7 +3267,7 @@
         }
       ],
       "sso": "SSO available for hotel groups.",
-      "link": "Read the data processing agreement"
+      "link": "See the security page"
     },
     "pricing": {
       "eyebrow": "Pricing",

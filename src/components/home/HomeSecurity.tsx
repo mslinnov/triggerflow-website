@@ -20,7 +20,7 @@ export function HomeSecurity() {
         </div>
         <div className="mt-12 flex flex-col gap-3 border-t border-line pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-[15px] text-ink-2">{t('sso')}</p>
-          <DsButton href="/dpa" variant="link" arrow>
+          <DsButton href="/plateforme/securite" variant="link" arrow>
             {t('link')}
           </DsButton>
         </div>

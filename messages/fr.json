@@ -3350,7 +3350,11 @@
       "campsites": "Campings",
       "blog": "Blog",
       "guides": "Guides",
-      "help": "Centre d'aide"
+      "help": "Centre d'aide",
+      "security": "Sécurité",
+      "sync": "Synchronisation PMS",
+      "ai": "IA intégrée",
+      "integrationsHub": "Intégrations"
     },
     "descriptions": {
       "upsell": "Le bon extra, avant l'arrivée",
@@ -3409,11 +3413,15 @@
         "legalNotice": "Mentions légales",
         "terms": "CGV",
         "termsOfUse": "CGU",
-        "cookies": "Gérer mes cookies"
+        "cookies": "Gérer mes cookies",
+        "security": "Sécurité",
+        "sync": "Synchronisation PMS",
+        "ai": "IA intégrée"
       },
       "hosted": "Hébergé en France · RGPD",
       "company": "Une solution Utelys"
-    }
+    },
+    "platform": "Plateforme"
   },
   "home2": {
     "meta": {
@@ -3524,11 +3532,11 @@
     },
     "security": {
       "eyebrow": "Confiance",
-      "title": "Vos données restent en France.",
+      "title": "Hébergé en France, en toute transparence.",
       "items": [
         {
           "title": "Hébergé en France",
-          "text": "Vos données et celles de vos clients sont hébergées en France."
+          "text": "Infrastructure chez Scaleway, en France. Chaque sous-traitant est listé publiquement."
         },
         {
           "title": "RGPD et DPA public",
@@ -3544,7 +3552,7 @@
         }
       ],
       "sso": "Connexion SSO disponible pour les groupes.",
-      "link": "Lire l'accord de sous-traitance"
+      "link": "Voir la page sécurité"
     },
     "pricing": {
       "eyebrow": "Tarifs",

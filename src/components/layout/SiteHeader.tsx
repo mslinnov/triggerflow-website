@@ -7,10 +7,10 @@ import { ChevronDown, Menu, X } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import { brand } from '@/data/brand';
-import { productMenu, resourcesMenu, solutionsMenu, type NavItem } from '@/data/navigation';
+import { platformMenu, productMenu, resourcesMenu, solutionsMenu, type NavItem } from '@/data/navigation';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
-type MenuKey = 'product' | 'solutions' | 'resources';
+type MenuKey = 'product' | 'platform' | 'solutions' | 'resources';
 
 interface SiteHeaderProps {
   banner?: React.ReactNode;
@@ -66,9 +66,9 @@ export function SiteHeader({ banner }: SiteHeaderProps) {
 
           <nav className="hidden items-center gap-1 lg:flex" aria-label={t('product')}>
             <MenuTrigger label={t('product')} active={open === 'product'} onEnter={() => enter('product')} onToggle={() => setOpen(open === 'product' ? null : 'product')} />
+            <MenuTrigger label={t('platform')} active={open === 'platform'} onEnter={() => enter('platform')} onToggle={() => setOpen(open === 'platform' ? null : 'platform')} />
             <MenuTrigger label={t('solutions')} active={open === 'solutions'} onEnter={() => enter('solutions')} onToggle={() => setOpen(open === 'solutions' ? null : 'solutions')} />
             <TopLink href="/ressources/cas-clients" onEnter={leave}>{t('clients')}</TopLink>
-            <TopLink href="/integrations" onEnter={leave}>{t('integrations')}</TopLink>
             <TopLink href="/tarifs" onEnter={leave}>{t('pricing')}</TopLink>
             <MenuTrigger label={t('resources')} active={open === 'resources'} onEnter={() => enter('resources')} onToggle={() => setOpen(open === 'resources' ? null : 'resources')} />
           </nav>
@@ -129,6 +129,7 @@ export function SiteHeader({ banner }: SiteHeaderProps) {
                   </div>
                 </>
               )}
+              {open === 'platform' && <SimpleMenu items={platformMenu} t={t} onPick={() => setOpen(null)} />}
               {open === 'solutions' && <SimpleMenu items={solutionsMenu} t={t} onPick={() => setOpen(null)} />}
               {open === 'resources' && <SimpleMenu items={resourcesMenu} t={t} onPick={() => setOpen(null)} />}
             </div>
@@ -145,13 +146,17 @@ export function SiteHeader({ banner }: SiteHeaderProps) {
                 <MobileLink key={item.key} href={item.href} onPick={() => setMobile(false)}>{t(`items.${item.key}`)}</MobileLink>
               ))}
             </MobileGroup>
+            <MobileGroup title={t('platform')}>
+              {platformMenu.map((item) => (
+                <MobileLink key={item.key} href={item.href} onPick={() => setMobile(false)}>{t(`items.${item.key}`)}</MobileLink>
+              ))}
+            </MobileGroup>
             <MobileGroup title={t('solutions')}>
               {solutionsMenu.map((item) => (
                 <MobileLink key={item.key} href={item.href} onPick={() => setMobile(false)}>{t(`items.${item.key}`)}</MobileLink>
               ))}
             </MobileGroup>
             <MobileLink href="/ressources/cas-clients" onPick={() => setMobile(false)} strong>{t('clients')}</MobileLink>
-            <MobileLink href="/integrations" onPick={() => setMobile(false)} strong>{t('integrations')}</MobileLink>
             <MobileLink href="/tarifs" onPick={() => setMobile(false)} strong>{t('pricing')}</MobileLink>
             <MobileGroup title={t('resources')}>
               {resourcesMenu.map((item) => (

@@ -34,7 +34,7 @@ Pour que la promesse soit crue, il faut la **prouver visuellement dès le hero**
 |---|---|---|
 | **Sur-mesure** | Vos règles, vos parcours, votre marque. | Éditeur visuel de flows ; segments sur des dizaines de critères (langue, canal de réservation, historique, ouverture des emails…) ; formulaires libres ; upsell dans n'importe quel formulaire ; marque blanche ; 12 PMS natifs |
 | **Fiabilité** | Ce que vous envoyez arrive. Ce que vous vendez est payé. | 94 % d'emails délivrés, 90 % de SMS remis, 91 % de paiements réglés en 2 h, sur 12 mois `[période et méthode À FOURNIR]` ; synchronisation bidirectionnelle temps réel ; dédoublonnage des profils clients |
-| **Confiance** | Vos données restent en France, vos tarifs sont publics. | Hébergé en France, RGPD, DPA public, sous-traitants listés, tarifs publics par établissement, cas clients nommés |
+| **Confiance** | Hébergé en France, sous-traitants publics, tarifs publics. | Hébergé en France, RGPD, DPA public, sous-traitants listés, tarifs publics par établissement, cas clients nommés |
 
 ---
 

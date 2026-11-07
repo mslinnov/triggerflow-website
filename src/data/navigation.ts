@@ -62,6 +62,13 @@ export const solutionsMenu: NavItem[] = [
   { key: 'campsites', href: '/solutions/campings' },
 ];
 
+export const platformMenu: NavItem[] = [
+  { key: 'sync', href: '/plateforme/synchronisation' },
+  { key: 'ai', href: '/plateforme/ia' },
+  { key: 'security', href: '/plateforme/securite' },
+  { key: 'integrationsHub', href: '/integrations' },
+];
+
 export const resourcesMenu: NavItem[] = [
   { key: 'blog', href: '/blog' },
   { key: 'guides', href: '/ressources/guides' },
@@ -122,6 +129,9 @@ export const footerColumns: NavColumn[] = [
   {
     key: 'trust',
     items: [
+      { key: 'security', href: '/plateforme/securite' },
+      { key: 'sync', href: '/plateforme/synchronisation' },
+      { key: 'ai', href: '/plateforme/ia' },
       { key: 'dpa', href: '/dpa' },
       { key: 'privacy', href: '/politique-confidentialite' },
     ],

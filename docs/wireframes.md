@@ -78,7 +78,7 @@ Section sombre (encre), chiffres en mono.
 ## 8. Sécurité et données
 Fond blanc, grille de 4 cartes + lien.
 - Étiquette : `● CONFIANCE`
-- H2 : Vos données restent en France.
+- H2 : Hébergé en France, en toute transparence. (corrigé : certains sous-traitants, IA et suivi d erreurs, sont hors UE selon le DPA)
 - Cartes : Hébergé en France · Conforme RGPD, DPA public · Sous-traitants listés · Suppression automatique des données quand elles ne servent plus (participants d'événements, enregistrements d'appels).
 - Ligne : connexion SSO pour les groupes. Lien : Tout savoir sur la sécurité →
 
