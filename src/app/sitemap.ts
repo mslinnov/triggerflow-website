@@ -5,6 +5,8 @@ import { getAllLegalSlugs, getLegalDoc } from '@/lib/legal';
 import { moduleSlugs } from '@/data/modules';
 import { solutionSlugs } from '@/data/solutions';
 import { productLandings } from '@/content/products';
+import { pmsPages } from '@/content/pms';
+import { platformPages } from '@/content/platform';
 import { getAllSlugs as getCaseStudySlugs } from '@/lib/case-studies';
 
 const baseUrl = 'https://www.trigger-flow.com';
@@ -24,11 +26,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { frPath: '/fr/tarifs', enPath: '/en/tarifs', priority: 0.9, changeFrequency: 'monthly' as const },
     { frPath: '/fr/integrations', enPath: '/en/integrations', priority: 0.8, changeFrequency: 'monthly' as const },
     { frPath: '/fr/contact', enPath: '/en/contact', priority: 0.7, changeFrequency: 'monthly' as const },
-    { frPath: '/fr/entreprise/a-propos', enPath: '/en/entreprise/a-propos', priority: 0.5, changeFrequency: 'monthly' as const },
-    { frPath: '/fr/entreprise/carrieres', enPath: '/en/entreprise/carrieres', priority: 0.4, changeFrequency: 'monthly' as const },
+    { frPath: '/fr/a-propos', enPath: '/en/a-propos', priority: 0.5, changeFrequency: 'monthly' as const },
+    { frPath: '/fr/carrieres', enPath: '/en/carrieres', priority: 0.4, changeFrequency: 'monthly' as const },
     { frPath: '/fr/ressources/aide', enPath: '/en/ressources/aide', priority: 0.5, changeFrequency: 'monthly' as const },
     { frPath: '/fr/clients', enPath: '/en/clients', priority: 0.6, changeFrequency: 'monthly' as const },
     { frPath: '/fr/ressources/guides', enPath: '/en/ressources/guides', priority: 0.5, changeFrequency: 'monthly' as const },
+    ...Object.keys(platformPages).map((slug) => ({ frPath: `/fr/plateforme/${slug}`, enPath: `/en/plateforme/${slug}`, priority: 0.6, changeFrequency: 'monthly' as const })),
+    ...Object.keys(pmsPages).map((slug) => ({ frPath: `/fr/integrations/pms/${slug}`, enPath: `/en/integrations/pms/${slug}`, priority: 0.6, changeFrequency: 'monthly' as const })),
   ];
 
   for (const page of staticPages) {

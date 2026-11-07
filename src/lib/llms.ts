@@ -94,7 +94,7 @@ ${keyFacts()}
 - [PMS integrations / Intégrations](${baseUrl}/fr/integrations)
 - [Mews integration](${baseUrl}/fr/integrations/pms/mews)
 - [Customer stories / Cas clients](${baseUrl}/fr/clients)
-- [About / À propos](${baseUrl}/fr/entreprise/a-propos)
+- [About / À propos](${baseUrl}/fr/a-propos)
 
 ## Product modules (FR pages, EN at /en/)
 ${products}

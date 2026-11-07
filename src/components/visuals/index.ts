@@ -8,4 +8,4 @@ export { InboxScenario } from './InboxScenario';
 export { ReviewsScenario } from './ReviewsScenario';
 export { FormsScenario } from './FormsScenario';
 export { LoyaltyScenario } from './LoyaltyScenario';
-export { CampaignScenario, GuestAppScenario, EventsScenario, B2bScenario, CheckinScenario, HousekeepingScenario, KeysScenario, AnalyticsScenario } from './MoreScenarios';
+export { CampaignScenario, GuestAppScenario, EventsScenario, B2bScenario, CheckinScenario, HousekeepingScenario, KeysScenario, AnalyticsScenario, BookingScenario } from './MoreScenarios';

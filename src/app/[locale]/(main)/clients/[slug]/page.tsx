@@ -42,5 +42,5 @@ export default async function CaseStudyPage({ params }: Props) {
   const caseStudy = getCaseStudyBySlug(slug);
   if (!caseStudy) notFound();
 
-  return <CaseStudyDetail slug={slug} />;
+  return <CaseStudyDetail slug={slug} locale={locale} />;
 }

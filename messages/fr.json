@@ -1420,7 +1420,8 @@
       "title": "Prêt à connecter vos outils ?",
       "demo": "Réserver une démo",
       "pricing": "Voir les tarifs"
-    }
+    },
+    "pmsPage": "Page dédiée"
   },
   "modulePage": {
     "meta": {
@@ -3417,6 +3418,14 @@
       "k1": "messages envoyés ce mois",
       "k2": "ventes additionnelles",
       "demo": "Données de démonstration"
+    },
+    "booking": {
+      "place": "Spa · Soin 60 min",
+      "date": "Samedi 15 novembre",
+      "send": "Envoyer la demande",
+      "request": "Nouvelle demande de réservation",
+      "detail": "Soin 60 min · samedi 14:00",
+      "linked": "rattachée au séjour"
     }
   },
   "nav": {
@@ -3471,7 +3480,8 @@
       "housekeeping": "Ménage",
       "keys": "Clés digitales",
       "events": "Événements",
-      "b2b": "B2B"
+      "b2b": "B2B",
+      "bookingRequests": "Demandes de réservation"
     },
     "descriptions": {
       "upsell": "Le bon extra, avant l'arrivée",
@@ -3493,7 +3503,8 @@
       "housekeeping": "Le ménage en temps réel",
       "keys": "La clé par message",
       "events": "Séminaires, mariages, groupes",
-      "b2b": "Vos comptes entreprises"
+      "b2b": "Vos comptes entreprises",
+      "bookingRequests": "Vos espaces réservables en ligne"
     },
     "footer": {
       "tagline": "Le CRM hôtelier qui s'adapte à votre hôtel. Pas l'inverse.",
@@ -3793,5 +3804,144 @@
       }
     },
     "cta": "Construisez le parcours client de votre hôtel."
+  },
+  "caseDetail": {
+    "back": "Tous les cas clients",
+    "eyebrow": "Cas client",
+    "objectives": "Objectifs",
+    "highlights": "Ce qu’ils ont mis en place",
+    "prev": "Cas précédent",
+    "next": "Cas suivant",
+    "cta": "Écrivez votre propre histoire avec TriggerFlow."
+  },
+  "aboutPage": {
+    "eyebrow": "À propos",
+    "title": "Des outils qui s’adaptent aux hôtels. Pas l’inverse.",
+    "subtitle": "Nous construisons TriggerFlow depuis Toulouse, avec et pour les hôteliers : une plateforme puissante, simple à prendre en main, et une équipe qui répond.",
+    "facts": {
+      "founded": "Création",
+      "city": "Siège",
+      "pms": "PMS connectés nativement",
+      "messages": "messages envoyés"
+    },
+    "storyEyebrow": "Notre histoire",
+    "storyTitle": "De l’application hôtelière au CRM.",
+    "story": [
+      {
+        "year": "2019",
+        "title": "Création à Toulouse",
+        "text": "Utelys naît avec un premier produit : des applications hôtelières à la marque de chaque établissement."
+      },
+      {
+        "year": "Puis",
+        "title": "Naissance de TriggerFlow",
+        "text": "Les hôteliers nous demandent d’aller plus loin : automatiser leurs messages, connaître leurs clients, vendre avant l’arrivée. TriggerFlow devient leur CRM, connecté à leur PMS."
+      },
+      {
+        "year": "Avec nos clients",
+        "title": "Un produit construit avec eux",
+        "text": "Le module e-réputation est né des retours d’AMMI Hôtels ; la connexion bidirectionnelle avec Medialog, des besoins d’Urban Bivouac. Les idées des hôteliers deviennent des fonctionnalités."
+      },
+      {
+        "year": "Aujourd’hui",
+        "title": "Une plateforme complète",
+        "text": "Flows, CRM, messagerie, upsell, paiements, avis, fidélité, Guest App, appel réception : tout le parcours client, dans une seule plateforme."
+      }
+    ],
+    "principlesEyebrow": "Ce qui nous guide",
+    "principlesTitle": "Trois principes.",
+    "principles": [
+      {
+        "title": "Le sur-mesure, sans la complexité",
+        "text": "Chaque hôtel est différent. Nos outils s’adaptent à vos règles, avec des modèles prêts pour démarrer et une équipe pour vous accompagner."
+      },
+      {
+        "title": "La transparence",
+        "text": "Tarifs publics, accord de sous-traitance public, sous-traitants listés, chiffres mesurés et sourcés."
+      },
+      {
+        "title": "La proximité",
+        "text": "Vous parlez aux personnes qui construisent le produit. Vos retours sont écoutés, et souvent mis en place."
+      }
+    ],
+    "companyEyebrow": "L’entreprise",
+    "company": "TriggerFlow est édité par Utelys SAS, 13 rue Saint-Ursule, 31000 Toulouse, France.",
+    "cta": "Construisons le parcours client de votre hôtel.",
+    "join": "Nous rejoindre"
+  },
+  "careersPage": {
+    "eyebrow": "Carrières",
+    "title": "Construisez les outils des hôteliers de demain.",
+    "subtitle": "Une équipe à taille humaine, basée à Toulouse, qui travaille au plus près des hôtels qu’elle équipe.",
+    "facts": {
+      "founded": "Création",
+      "city": "Siège",
+      "remote": "Organisation",
+      "remoteValue": "Remote"
+    },
+    "valuesEyebrow": "Comment nous travaillons",
+    "valuesTitle": "Ce que vous trouverez chez nous.",
+    "values": [
+      {
+        "title": "Un impact visible",
+        "text": "Ce que vous construisez est utilisé chaque jour par des réceptions, des directions et des équipes marketing d’hôtels."
+      },
+      {
+        "title": "La proximité avec les clients",
+        "text": "Les hôteliers nous parlent directement ; leurs retours orientent la feuille de route."
+      },
+      {
+        "title": "L’exigence, sans la lourdeur",
+        "text": "Un produit puissant, mais simple à utiliser : c’est notre standard, pour le code comme pour le service."
+      }
+    ],
+    "openTitle": "Aucun poste ouvert pour le moment.",
+    "openText": "Vous voulez participer à l’aventure ? Envoyez-nous une candidature spontanée, nous lisons tout.",
+    "cta": "Découvrez ce que nous construisons."
+  },
+  "pmsPage": {
+    "seoTitle": "TriggerFlow pour {pms} : le CRM hôtelier connecté à {pms}",
+    "seoDescription": "Connectez {pms} à TriggerFlow : réservations et profils synchronisés, scénarios déclenchés par vos réservations, upsell et paiements, sans développement.",
+    "eyebrow": "Intégration native",
+    "title": "Le CRM hôtelier connecté à {pms}.",
+    "subtitle": "Vos réservations {pms} déclenchent vos scénarios, vos profils clients se construisent tout seuls. Connexion native, sans développement.",
+    "subtitleTwoWay": "Vos réservations {pms} déclenchent vos scénarios, et les informations utiles redescendent dans {pms}. Connexion native dans les deux sens, sans développement.",
+    "allIntegrations": "Toutes les intégrations",
+    "usedBy": "Ils utilisent TriggerFlow avec {pms}",
+    "usesEyebrow": "Ce que vous pouvez faire",
+    "usesTitle": "Ce que {pms} et TriggerFlow font ensemble.",
+    "u1": {
+      "title": "Des scénarios déclenchés",
+      "text": "Une réservation {pms}, une arrivée ou un départ lancent vos flows automatiquement."
+    },
+    "u2": {
+      "title": "Des segments à jour",
+      "text": "Canal de réservation, dates, type de chambre : vos segments s’appuient sur les données {pms}."
+    },
+    "u3": {
+      "title": "Upsell et paiements",
+      "text": "Proposez des extras et encaissez avant l’arrivée, pour chaque réservation {pms}."
+    },
+    "u4": {
+      "title": "Une fiche par client",
+      "text": "Les profils venus de {pms} sont regroupés et dédoublonnés dans le CRM."
+    },
+    "twoWay": "Synchronisation dans les deux sens avec {pms}.",
+    "faqTitle": "TriggerFlow et {pms} : vos questions.",
+    "faq": {
+      "q1": "Faut-il un développement pour connecter {pms} ?",
+      "a1": "Non. La connexion est native : notre équipe l’active avec vous lors de la mise en place.",
+      "q2": "Quelles données de {pms} TriggerFlow utilise-t-il ?",
+      "a2": "Les réservations et les profils clients (dates, chambre, nombre de personnes, canal de réservation), pour déclencher vos scénarios et construire vos fiches.",
+      "a2TwoWay": "Les réservations et les profils clients remontent de {pms}, et les informations mises à jour dans TriggerFlow y redescendent.",
+      "q3": "Combien de temps pour démarrer avec {pms} ?",
+      "a3": "En général 48 h pour vos premiers scénarios, à partir de modèles adaptés à votre établissement."
+    },
+    "points": {
+      "p1": "Hébergé en France, RGPD, DPA public",
+      "p2": "Mise en place accompagnée",
+      "p3": "Plan Découverte gratuit pour démarrer"
+    },
+    "cta": "Connectez {pms} à TriggerFlow cette semaine."
   }
 }

@@ -1,280 +1,98 @@
-'use client';
-
-import { motion, useReducedMotion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
-import { ArrowLeft, ArrowRight, Quote, MapPin, Building2, ChevronRight, CalendarDays } from 'lucide-react';
-import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
-import { cn } from '@/lib/utils';
-import { getCaseStudyBySlug, getAdjacentCaseStudies } from '@/lib/case-studies';
-import {
-  fadeInUp,
-  staggerContainer,
-  staggerItem,
-  defaultViewport,
-} from '@/lib/animations';
+import { getTranslations } from 'next-intl/server';
+import { ArrowLeft, ArrowRight, Check, MapPin, Server } from 'lucide-react';
+import { Container, CtaBand, Eyebrow, Section } from '@/components/ds';
+import { Link } from '@/i18n/navigation';
+import { brand } from '@/data/brand';
+import { getAdjacentCaseStudies, getCaseStudyBySlug } from '@/lib/case-studies';
 
-interface CaseStudyDetailProps {
-  slug: string;
-}
-
-export default function CaseStudyDetail({ slug }: CaseStudyDetailProps) {
-  const t = useTranslations('caseStudyDetail');
-  const caseStudy = getCaseStudyBySlug(slug)!;
+/** Fiche cas client (charte) : récit en questions-réponses, citation, points clés. Rédigée en français. */
+export default async function CaseStudyDetail({ slug, locale }: { slug: string; locale: string }) {
+  const cs = getCaseStudyBySlug(slug);
+  if (!cs) return null;
   const { prev, next } = getAdjacentCaseStudies(slug);
-  const prefersReducedMotion = useReducedMotion();
+  const t = await getTranslations({ locale, namespace: 'caseDetail' });
+  const nav = await getTranslations({ locale, namespace: 'nav' });
 
   return (
-    <main className="min-h-screen bg-white">
-      {/* Breadcrumb */}
-      <div className="bg-brand-light/50 border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <nav className="flex items-center gap-2 text-sm text-gray-500">
-            <Link href="/clients" className="hover:text-brand-primary transition-colors">
-              {t('breadcrumb.caseStudies')}
-            </Link>
-            <ChevronRight className="w-3.5 h-3.5" />
-            <span className="text-brand-dark font-medium">{caseStudy.name}</span>
-          </nav>
-        </div>
-      </div>
-
-      {/* Hero */}
-      <section className="py-12 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={prefersReducedMotion ? 'visible' : 'hidden'}
-            whileInView="visible"
-            variants={fadeInUp}
-            viewport={defaultViewport}
-            className="grid md:grid-cols-2 gap-8 md:gap-12 items-center"
-          >
-            {/* Content */}
+    <>
+      <section className="bg-white pb-12 pt-10 md:pb-16 md:pt-14">
+        <Container>
+          <Link href="/clients" className="inline-flex items-center gap-1.5 text-[14px] text-ink-3 hover:text-ink">
+            <ArrowLeft aria-hidden className="h-4 w-4" /> {t('back')}
+          </Link>
+          <div className="mt-8 grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
             <div>
-              <div className="flex flex-wrap items-center gap-3 mb-6">
-                <span className="px-3 py-1 rounded-full text-xs font-medium bg-brand-primary/10 text-brand-primary">
-                  {caseStudy.type}
-                </span>
-                <span className="flex items-center gap-1 text-sm text-gray-500">
-                  <MapPin className="w-3.5 h-3.5" />
-                  {caseStudy.location}
-                </span>
-                {caseStudy.pms && (
-                  <span className="flex items-center gap-1 text-sm text-gray-500">
-                    <Building2 className="w-3.5 h-3.5" />
-                    {caseStudy.pms}
-                  </span>
-                )}
-              </div>
-
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-dark mb-6">
-                {caseStudy.name}
-              </h1>
-
-              <blockquote className="text-xl text-gray-600 italic leading-relaxed mb-8">
-                <Quote className="w-6 h-6 text-brand-primary/40 inline mr-2 -mt-1" />
-                {caseStudy.quote}
-              </blockquote>
-
-              {/* Author */}
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-brand-primary to-brand-dark flex items-center justify-center text-sm font-bold text-white">
-                  {caseStudy.initials}
-                </div>
-                <div>
-                  {caseStudy.contactName ? (
-                    <>
-                      <p className="font-semibold text-brand-dark">{caseStudy.contactName}</p>
-                      <p className="text-sm text-gray-500">{caseStudy.contactRole}</p>
-                    </>
-                  ) : (
-                    <p className="font-semibold text-brand-dark">{caseStudy.contactRole}</p>
-                  )}
-                </div>
+              <Eyebrow>{t('eyebrow')}</Eyebrow>
+              <h1 className="mt-4 text-balance text-[2.25rem] font-medium leading-[1.08] tracking-[-0.025em] text-ink md:text-[3.25rem]">{cs.name}</h1>
+              <p className="mt-3 text-lg text-ink-2">{cs.type}</p>
+              <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 font-mono text-[12px] uppercase tracking-[0.06em] text-ink-3">
+                <span className="inline-flex items-center gap-1.5"><MapPin aria-hidden className="h-4 w-4" />{cs.location}</span>
+                <span className="inline-flex items-center gap-1.5"><Server aria-hidden className="h-4 w-4" />{cs.pms}</span>
               </div>
             </div>
-
-            {/* Image */}
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 shadow-lg">
-              <Image
-                src={caseStudy.image}
-                alt={caseStudy.name}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                priority
-              />
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Info Bar */}
-      <section className="bg-brand-dark py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            {caseStudy.highlights.map((highlight, i) => (
-              <div key={i} className="flex items-start gap-3">
-                <span className="mt-1 w-2 h-2 rounded-full bg-brand-primary shrink-0" />
-                <p className="text-white/90 text-sm">{highlight}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Objectives Tags */}
-      <section className="py-8 border-b border-gray-100">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="text-sm font-medium text-gray-500">{t('objectives')} :</span>
-            {caseStudy.objectives.map((objective) => (
-              <span
-                key={objective}
-                className="px-3 py-1 rounded-full text-sm font-medium bg-brand-primary/10 text-brand-primary"
-              >
-                {objective}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Interview / Content Sections */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-12">
-            {caseStudy.sections.map((section, index) => (
-              <motion.div
-                key={index}
-                initial={prefersReducedMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-50px' }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-              >
-                <h2 className="text-xl md:text-2xl font-bold text-brand-dark mb-4 flex items-start gap-3">
-                  <span className="mt-1 w-8 h-8 rounded-lg bg-brand-primary/10 flex items-center justify-center shrink-0">
-                    <CalendarDays className="w-4 h-4 text-brand-primary" />
-                  </span>
-                  {section.question}
-                </h2>
-                <div className="pl-11">
-                  {section.answer.split('\n\n').map((paragraph, pIndex) => (
-                    <p key={pIndex} className="text-gray-600 leading-relaxed mb-4 last:mb-0">
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Navigation between case studies */}
-      <section className="border-t border-gray-100 bg-brand-light/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-gray-200">
-            {/* Previous */}
-            <div className="py-8 md:pr-8">
-              {prev ? (
-                <Link
-                  href={`/clients/${prev.slug}`}
-                  className="group flex items-center gap-4 hover:opacity-80 transition-opacity"
-                >
-                  <ArrowLeft className="w-5 h-5 text-gray-400 group-hover:-translate-x-1 transition-transform" />
-                  <div>
-                    <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">
-                      {t('nav.previous')}
-                    </p>
-                    <p className="font-semibold text-brand-dark group-hover:text-brand-primary transition-colors">
-                      {prev.name}
-                    </p>
-                  </div>
-                </Link>
-              ) : (
-                <Link
-                  href="/clients"
-                  className="group flex items-center gap-4 hover:opacity-80 transition-opacity"
-                >
-                  <ArrowLeft className="w-5 h-5 text-gray-400 group-hover:-translate-x-1 transition-transform" />
-                  <div>
-                    <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">
-                      {t('nav.backToList')}
-                    </p>
-                    <p className="font-semibold text-brand-dark group-hover:text-brand-primary transition-colors">
-                      {t('nav.allCaseStudies')}
-                    </p>
-                  </div>
-                </Link>
-              )}
-            </div>
-
-            {/* Next */}
-            <div className="py-8 md:pl-8 flex justify-end">
-              {next ? (
-                <Link
-                  href={`/clients/${next.slug}`}
-                  className="group flex items-center gap-4 text-right hover:opacity-80 transition-opacity"
-                >
-                  <div>
-                    <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">
-                      {t('nav.next')}
-                    </p>
-                    <p className="font-semibold text-brand-dark group-hover:text-brand-primary transition-colors">
-                      {next.name}
-                    </p>
-                  </div>
-                  <ArrowRight className="w-5 h-5 text-gray-400 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              ) : (
-                <Link
-                  href="/clients"
-                  className="group flex items-center gap-4 text-right hover:opacity-80 transition-opacity"
-                >
-                  <div>
-                    <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">
-                      {t('nav.backToList')}
-                    </p>
-                    <p className="font-semibold text-brand-dark group-hover:text-brand-primary transition-colors">
-                      {t('nav.allCaseStudies')}
-                    </p>
-                  </div>
-                  <ArrowRight className="w-5 h-5 text-gray-400 group-hover:translate-x-1 transition-transform" />
-                </Link>
-              )}
+            <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-line">
+              <Image src={cs.image} alt={cs.name} fill priority sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-brand-primary to-emerald-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={prefersReducedMotion ? 'visible' : 'hidden'}
-            whileInView="visible"
-            variants={fadeInUp}
-            viewport={defaultViewport}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              {t('cta.title')}
-            </h2>
-            <p className="text-white/80 text-lg mb-8">
-              {t('cta.subtitle')}
-            </p>
-            <a
-              href="https://app.lemcal.com/@trigger-flow/demo"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-white hover:bg-gray-100 text-brand-primary px-8 py-4 rounded-lg font-semibold transition-all shadow-lg hover:shadow-xl"
-            >
-              {t('cta.button')}
-              <ArrowRight className="w-5 h-5" />
-            </a>
-          </motion.div>
-        </div>
-      </section>
-    </main>
+      <Section tone="paper" compact>
+        <Container narrow className="text-center">
+          <blockquote className="text-balance text-[1.5rem] font-medium leading-[1.35] tracking-[-0.015em] text-ink md:text-[2rem]">« {cs.quote} »</blockquote>
+          <p className="mt-6 text-[15px] font-semibold text-ink">{cs.contactName}</p>
+          <p className="text-[14px] text-ink-3">{cs.contactRole}, {cs.name}</p>
+        </Container>
+      </Section>
+
+      <Section tone="white">
+        <Container>
+          <div className="grid gap-14 lg:grid-cols-[0.75fr_1.25fr]">
+            <aside className="lg:sticky lg:top-28 lg:self-start">
+              <p className="font-mono text-eyebrow font-medium uppercase text-accent">{t('objectives')}</p>
+              <ul className="mt-4 flex flex-wrap gap-2">
+                {cs.objectives.map((o) => <li key={o} className="rounded-full bg-mint px-3 py-1 text-[13px] text-ink">{o}</li>)}
+              </ul>
+              <p className="mt-8 font-mono text-eyebrow font-medium uppercase text-accent">{t('highlights')}</p>
+              <ul className="mt-4 space-y-3">
+                {cs.highlights.map((h) => (
+                  <li key={h} className="flex gap-2.5 text-[15px] text-ink"><Check aria-hidden className="mt-1 h-4 w-4 shrink-0 text-accent" />{h}</li>
+                ))}
+              </ul>
+            </aside>
+            <div className="space-y-12">
+              {cs.sections.map((s) => (
+                <article key={s.question}>
+                  <h2 className="text-h3 font-medium text-ink">{s.question}</h2>
+                  <div className="mt-4 space-y-4 text-[17px] leading-relaxed text-ink-2">
+                    {s.answer.split('\n\n').map((p, i) => <p key={i}>{p}</p>)}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      <Section tone="paper" compact>
+        <Container className="grid gap-4 sm:grid-cols-2">
+          {prev ? (
+            <Link href={`/clients/${prev.slug}`} className="group rounded-xl border border-line bg-white p-6 hover:border-accent">
+              <p className="font-mono text-[11px] uppercase text-ink-3">{t('prev')}</p>
+              <p className="mt-2 flex items-center gap-2 text-[16px] font-semibold text-ink"><ArrowLeft aria-hidden className="h-4 w-4" />{prev.name}</p>
+            </Link>
+          ) : <span />}
+          {next && (
+            <Link href={`/clients/${next.slug}`} className="group rounded-xl border border-line bg-white p-6 text-right hover:border-accent">
+              <p className="font-mono text-[11px] uppercase text-ink-3">{t('next')}</p>
+              <p className="mt-2 flex items-center justify-end gap-2 text-[16px] font-semibold text-ink">{next.name}<ArrowRight aria-hidden className="h-4 w-4" /></p>
+            </Link>
+          )}
+        </Container>
+      </Section>
+
+      <CtaBand title={t('cta')} primary={{ label: nav('startFree'), href: brand.demoUrl }} secondary={{ label: nav('seeProduct'), href: '/produit' }} />
+    </>
   );
 }

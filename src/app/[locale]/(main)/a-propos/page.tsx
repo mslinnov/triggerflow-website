@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: t('meta.title'),
-    alternates: pageAlternates(locale, '/entreprise/a-propos'),
+    alternates: pageAlternates(locale, '/a-propos'),
     description: t('meta.description'),
   };
 }

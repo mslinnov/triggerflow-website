@@ -13,7 +13,7 @@ function pages(dir: string): string[] {
   });
 }
 
-/** Route de la page, sans locale ni groupes : « (main)/entreprise/a-propos » → « /entreprise/a-propos ». */
+/** Route de la page, sans locale ni groupes : « (main)/a-propos » → « /a-propos ». */
 function route(page: string): string {
   const segments = relative(appDir, dirname(page)).split(sep).filter((s) => s && !/^\(.*\)$/.test(s));
   return segments.length ? `/${segments.join('/')}` : '';

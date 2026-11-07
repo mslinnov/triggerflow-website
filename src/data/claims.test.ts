@@ -151,8 +151,8 @@ test('modules et solutions : aucune promesse chiffrée non mesurée, dans aucun 
 test('pages À propos, Carrières et étapes de l\'accueil : chiffres de marque lus dans brand.ts et company-stats.ts', () => {
   const read = (...p: string[]) => readFileSync(join(root, 'src', ...p), 'utf8');
   const pages = {
-    careers: read('app', '[locale]', '(main)', 'entreprise', 'carrieres', 'CareersContent.tsx'),
-    about: read('app', '[locale]', '(main)', 'entreprise', 'a-propos', 'AboutContent.tsx'),
+    careers: read('app', '[locale]', '(main)', 'carrieres', 'CareersContent.tsx'),
+    about: read('app', '[locale]', '(main)', 'a-propos', 'AboutContent.tsx'),
     howItWorks: read('components', 'sections', 'HowItWorks.tsx'),
   };
   for (const [name, src] of Object.entries(pages)) {

@@ -1,17 +1,15 @@
-'use client';
-
 import { useTranslations } from 'next-intl';
-import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowRight, ArrowDown, MessageCircle, MessageSquare, Hotel, Lock, Printer, CreditCard, Star, Zap, ExternalLink } from 'lucide-react';
+import { ArrowRight, MessageSquare, Hotel, Lock, CreditCard, Star, Zap, ExternalLink } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
-import { useLocale } from 'next-intl';
-import { Container, ButtonLink, Badge } from '@/components/ui';
-import { cn } from '@/lib/utils';
-import { fadeInUp, staggerContainer, staggerItem, defaultViewport } from '@/lib/animations';
+import { Container, CtaBand, DsButton, Eyebrow, Section, TrustStrip } from '@/components/ds';
+import { Link } from '@/i18n/navigation';
+import { brand } from '@/data/brand';
+import { pmsPages } from '@/content/pms';
 
+/** Pages dédiées : Mews (page historique) et les pages générées depuis src/content/pms.ts. */
 const integrationLinks: Record<string, string> = {
   mews: '/integrations/pms/mews',
+  ...Object.fromEntries(Object.values(pmsPages).map((p) => [p.key, `/integrations/pms/${p.slug}`])),
 };
 
 interface Integration {
@@ -116,296 +114,97 @@ const integrationCategories: Category[] = [
 
 export function IntegrationsContent() {
   const t = useTranslations('integrations');
-  const locale = useLocale();
-  const prefersReducedMotion = useReducedMotion();
-
+  const nav = useTranslations('nav');
   // Les intégrations « bientôt disponibles » ne comptent pas : seuls les connecteurs existants.
   const connectedCount = (category: Category) => category.integrations.filter((i) => !i.comingSoon).length;
 
   return (
-    <main className="bg-white">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-brand-dark via-brand-dark to-brand-primary/80 pt-32 pb-20 md:pt-40 md:pb-28">
-        <div className="absolute inset-0 opacity-[0.07]" style={{
-          backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
-          backgroundSize: '32px 32px',
-        }} />
-        <Container className="relative">
-          <motion.div
-            initial={prefersReducedMotion ? 'visible' : 'hidden'}
-            animate="visible"
-            variants={fadeInUp}
-            className="text-center"
-          >
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-2 mb-8">
-              <div className="h-2 w-2 rounded-full bg-brand-primary animate-pulse" />
-              <span className="text-sm font-medium text-white/90">
-                {t('hero.count')}
-              </span>
-            </div>
-            <h1 className="text-3xl font-bold tracking-tight text-white md:text-4xl lg:text-5xl">
-              {t('hero.title')}
-            </h1>
-            <p className="mx-auto mt-5 max-w-2xl text-lg text-white/70">
-              {t('hero.subtitle')}
-            </p>
-
-            {/* Category pills */}
-            <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-              {integrationCategories.map((category) => {
-                const Icon = category.icon;
-                return (
-                  <a
-                    key={category.key}
-                    href={`#cat-${category.key}`}
-                    className="inline-flex items-center gap-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 px-4 py-2 text-sm text-white/80 hover:bg-white/20 hover:text-white transition-colors"
-                  >
-                    <Icon className="h-4 w-4" />
-                    {t(`categories.${category.key}.title`)}
-                    <span className="text-white/40">({connectedCount(category)})</span>
-                  </a>
-                );
-              })}
-            </div>
-
-            <div className="mt-10">
-              <a
-                href="#request-integration"
-                className="inline-flex items-center gap-2 text-white font-medium hover:text-white transition-colors bg-white/15 backdrop-blur-sm rounded-full px-5 py-2.5 border border-white/20 hover:bg-white/25"
-              >
-                {t('hero.cta')}
-                <ArrowDown className="h-4 w-4" />
+    <>
+      <section className="bg-white pb-14 pt-14 md:pb-20 md:pt-20">
+        <Container className="text-center">
+          <Eyebrow>{t('hero.count')}</Eyebrow>
+          <h1 className="mx-auto mt-5 max-w-3xl text-balance text-[2.25rem] font-medium leading-[1.08] tracking-[-0.025em] text-ink md:text-[3.5rem]">{t('hero.title')}</h1>
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-2 md:text-lead">{t('hero.subtitle')}</p>
+          <nav className="mt-9 flex flex-wrap justify-center gap-2" aria-label={t('hero.title')}>
+            {integrationCategories.map((c) => (
+              <a key={c.key} href={`#${c.key}`} className="rounded-full border border-line px-3.5 py-1.5 text-[14px] text-ink-2 hover:border-accent hover:text-ink">
+                {t(`categories.${c.key}.title`)}
               </a>
-            </div>
-          </motion.div>
+            ))}
+          </nav>
+          <TrustStrip className="mt-8" />
         </Container>
       </section>
 
-      {/* Integration Categories */}
-      {integrationCategories.map((category) => {
+      {integrationCategories.map((category, idx) => {
         const Icon = category.icon;
         return (
-          <section
-            key={category.key}
-            id={`cat-${category.key}`}
-            className="py-16 md:py-20 border-b border-zinc-100 last:border-b-0 scroll-mt-20"
-          >
+          <Section key={category.key} id={category.key} tone={idx % 2 === 0 ? 'paper' : 'white'} compact>
             <Container>
-              <motion.div
-                initial={prefersReducedMotion ? 'visible' : 'hidden'}
-                whileInView="visible"
-                variants={fadeInUp}
-                viewport={defaultViewport}
-                className="mb-10"
-              >
-                <div className="flex items-center gap-4 mb-3">
-                  <div className={cn('flex items-center justify-center w-10 h-10 rounded-xl', category.iconBg)}>
-                    <Icon className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h2 className="text-2xl font-bold text-brand-dark">
-                      {t(`categories.${category.key}.title`)}
-                    </h2>
-                  </div>
-                  <Badge variant="secondary" className="ml-auto text-xs">
-                    {t('badges.count', { count: connectedCount(category) })}
-                  </Badge>
+              <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+                <div>
+                  <p className="flex items-center gap-2 font-mono text-eyebrow font-medium uppercase text-accent">
+                    <Icon className="h-4 w-4" /> {t('badges.count', { count: connectedCount(category) })}
+                  </p>
+                  <h2 className="mt-3 text-h3 font-medium text-ink md:text-[2rem]">{t(`categories.${category.key}.title`)}</h2>
+                  <p className="mt-2 max-w-2xl text-[15px] text-ink-2">{t(`categories.${category.key}.description`)}</p>
                 </div>
-                <p className="text-zinc-500 max-w-2xl ml-14">
-                  {t(`categories.${category.key}.description`)}
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={prefersReducedMotion ? 'visible' : 'hidden'}
-                whileInView="visible"
-                variants={staggerContainer}
-                viewport={defaultViewport}
-                className="grid gap-4 grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
-              >
+              </div>
+              <ul className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
                 {category.integrations.map((integration) => {
-                  const href = integrationLinks[integration.key];
-                  const cardContent = (
-                    <div className={cn(
-                      'relative rounded-2xl border border-zinc-200/80 bg-white p-1 transition-all duration-200',
-                      'hover:shadow-lg hover:shadow-zinc-200/50',
-                      category.borderColor
-                    )}>
-                      {integration.comingSoon && (
-                        <span className="absolute right-2 top-2 z-10 rounded-full bg-brand-primary/10 px-2 py-0.5 text-[10px] font-medium text-brand-primary">
-                          {t('badges.comingSoon')}
-                        </span>
-                      )}
-
-                      {/* Logo container */}
-                      <div className="flex items-center justify-center rounded-xl h-24 mb-1 bg-gradient-to-b from-zinc-50/80 to-white">
-                        <Image
-                          src={integration.logo}
-                          alt={t(`categories.${category.key}.integrations.${integration.key}.name`)}
-                          width={160}
-                          height={48}
-                          className="max-h-10 w-auto max-w-[130px] object-contain"
-                        />
+                  const name = t(`categories.${category.key}.integrations.${integration.key}.name`);
+                  const href = category.key === 'pms' ? integrationLinks[integration.key] : undefined;
+                  const inner = (
+                    <>
+                      <div className="flex h-12 items-center justify-center">
+                        <Image src={integration.logo} alt={name} width={120} height={48} className="max-h-10 w-auto object-contain" />
                       </div>
-
-                      {/* Info */}
-                      <div className="px-3 pb-3 pt-1 text-center">
-                        <h3 className="font-semibold text-brand-dark text-[13px] truncate">
-                          {t(`categories.${category.key}.integrations.${integration.key}.name`)}
-                        </h3>
-                        <p className="text-[11px] text-zinc-400 mt-0.5 truncate">
-                          {t(`categories.${category.key}.integrations.${integration.key}.description`)}
-                        </p>
-                      </div>
-                    </div>
+                      <p className="mt-3 text-[14px] font-semibold text-ink">{name}</p>
+                      <p className="mt-0.5 line-clamp-2 text-[12.5px] text-ink-3">{t(`categories.${category.key}.integrations.${integration.key}.description`)}</p>
+                      {integration.comingSoon && <span className="mt-2 inline-block rounded-full bg-peach px-2 py-0.5 text-[11px] text-ink">{t('badges.comingSoon')}</span>}
+                      {href && <span className="mt-2 inline-flex items-center gap-1 text-[12.5px] font-medium text-accent">{t('pmsPage')} <ArrowRight className="h-3.5 w-3.5" /></span>}
+                    </>
                   );
-
                   return (
-                    <motion.div
-                      key={integration.key}
-                      variants={staggerItem}
-                      whileHover={!prefersReducedMotion ? { y: -4 } : {}}
-                      className="group relative"
-                    >
+                    <li key={category.key + integration.key}>
                       {href ? (
-                        <Link href={`/${locale}${href}`}>
-                          {cardContent}
-                        </Link>
+                        <Link href={href} className="block h-full rounded-xl border border-line bg-white p-4 transition-colors hover:border-accent">{inner}</Link>
                       ) : (
-                        cardContent
+                        <div className="h-full rounded-xl border border-line bg-white p-4">{inner}</div>
                       )}
-                    </motion.div>
+                    </li>
                   );
                 })}
-              </motion.div>
+              </ul>
             </Container>
-          </section>
+          </Section>
         );
       })}
 
-      {/* Synapse Label Section */}
-      <section className="py-16 md:py-20 border-b border-zinc-100">
-        <Container>
-          <motion.div
-            initial={prefersReducedMotion ? 'visible' : 'hidden'}
-            whileInView="visible"
-            variants={fadeInUp}
-            viewport={defaultViewport}
-            className="relative overflow-hidden rounded-2xl border border-zinc-200/80 bg-gradient-to-br from-[#1a1f3c] to-[#2d1b69] p-8 md:p-12"
-          >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
-
-            <div className="relative flex flex-col md:flex-row items-center gap-8 md:gap-12">
-              <div className="flex-shrink-0 bg-white rounded-2xl p-6 shadow-lg">
-                <Image
-                  src="/images/integrations/synapse.svg"
-                  alt="Label Synapse"
-                  width={180}
-                  height={60}
-                  className="h-12 w-auto object-contain"
-                />
-              </div>
-              <div className="text-center md:text-left">
-                <h2 className="text-xl font-bold text-white md:text-2xl">
-                  {t('synapse.title')}
-                </h2>
-                <p className="mt-3 text-white/70 leading-relaxed max-w-xl">
-                  {t('synapse.description')}
-                </p>
-                <a
-                  href="https://synapse-hotel.fr/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 mt-5 text-sm font-medium text-white/90 hover:text-white transition-colors"
-                >
-                  {t('synapse.link')}
-                  <ExternalLink className="h-4 w-4" />
-                </a>
-              </div>
-            </div>
-          </motion.div>
+      <section className="bg-ink py-16 text-white md:py-20">
+        <Container className="flex flex-col items-center gap-8 md:flex-row">
+          <div className="shrink-0 rounded-2xl bg-white p-5">
+            <Image src="/images/integrations/synapse.svg" alt="Label Synapse" width={160} height={54} className="h-11 w-auto object-contain" />
+          </div>
+          <div className="text-center md:text-left">
+            <h2 className="text-h3 font-medium">{t('synapse.title')}</h2>
+            <p className="mt-3 max-w-xl text-[15px] leading-relaxed text-white/70">{t('synapse.description')}</p>
+            <a href="https://synapse-hotel.fr/" target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 text-[14px] font-medium text-mint hover:text-white">
+              {t('synapse.link')} <ExternalLink className="h-4 w-4" />
+            </a>
+          </div>
         </Container>
       </section>
 
-      {/* Request Integration Section */}
-      <section id="request-integration" className="py-20 md:py-28 bg-gradient-to-b from-zinc-50 to-white scroll-mt-20">
-        <Container>
-          <motion.div
-            initial={prefersReducedMotion ? 'visible' : 'hidden'}
-            whileInView="visible"
-            variants={fadeInUp}
-            viewport={defaultViewport}
-            className="max-w-xl mx-auto text-center"
-          >
-            <div className="w-16 h-16 bg-brand-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <MessageCircle className="h-8 w-8 text-brand-primary" />
-            </div>
-            <h2 className="text-2xl font-bold text-brand-dark md:text-3xl">
-              {t('request.title')}
-            </h2>
-            <p className="mt-4 text-zinc-500 leading-relaxed">
-              {t('request.description')}
-            </p>
-            <div className="mt-8">
-              <ButtonLink
-                href="https://app.lemcal.com/@trigger-flow/demo"
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="primary"
-                size="lg"
-                className="gap-2"
-              >
-                {t('request.cta')}
-                <ArrowRight className="h-4 w-4" />
-              </ButtonLink>
-            </div>
-          </motion.div>
+      <Section tone="white" id="request-integration" compact>
+        <Container narrow className="text-center">
+          <h2 className="text-h3 font-medium text-ink md:text-[2rem]">{t('request.title')}</h2>
+          <p className="mt-3 text-[16px] text-ink-2">{t('request.description')}</p>
+          <DsButton href={brand.demoUrl} variant="secondary" className="mt-7">{t('request.cta')}</DsButton>
         </Container>
-      </section>
+      </Section>
 
-      {/* CTA Section */}
-      <section className="py-16 md:py-24">
-        <Container>
-          <motion.div
-            initial={prefersReducedMotion ? 'visible' : 'hidden'}
-            whileInView="visible"
-            variants={fadeInUp}
-            viewport={defaultViewport}
-            className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-dark to-brand-dark/90 p-10 md:p-16 text-center"
-          >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-brand-primary/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-brand-primary/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
-
-            <div className="relative">
-              <h2 className="text-2xl font-bold text-white md:text-3xl">
-                {t('cta.title')}
-              </h2>
-              <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <ButtonLink
-                  href="https://app.lemcal.com/@trigger-flow/demo"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variant="primary"
-                  size="lg"
-                  className="gap-2"
-                >
-                  {t('cta.demo')}
-                  <ArrowRight className="h-4 w-4" />
-                </ButtonLink>
-                <ButtonLink
-                  href="/tarifs"
-                  variant="secondary"
-                  size="lg"
-                  className="border-white/20 text-white hover:bg-white/10"
-                >
-                  {t('cta.pricing')}
-                </ButtonLink>
-              </div>
-            </div>
-          </motion.div>
-        </Container>
-      </section>
-    </main>
+      <CtaBand title={t('cta.title')} primary={{ label: nav('startFree'), href: brand.demoUrl }} secondary={{ label: t('cta.pricing'), href: '/tarifs' }} />
+    </>
   );
 }

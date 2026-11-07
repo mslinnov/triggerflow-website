@@ -89,6 +89,9 @@ const nextConfig: NextConfig = {
       { source: '/:locale(fr|en)/ressources/cas-clients', destination: '/:locale/clients', permanent: true },
       { source: '/:locale(fr|en)/ressources/cas-clients/:slug', destination: '/:locale/clients/:slug', permanent: true },
 
+      { source: '/:locale(fr|en)/entreprise/a-propos', destination: '/:locale/a-propos', permanent: true },
+      { source: '/:locale(fr|en)/entreprise/carrieres', destination: '/:locale/carrieres', permanent: true },
+
       // ── Ancien brouillon de home /v2 supprimé (07/11/2026) ──
       { source: '/:locale(fr|en)/v2', destination: '/:locale', permanent: true },
 

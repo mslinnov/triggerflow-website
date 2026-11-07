@@ -1412,7 +1412,8 @@
       "title": "Ready to connect your tools?",
       "demo": "Book a demo",
       "pricing": "View pricing"
-    }
+    },
+    "pmsPage": "Dedicated page"
   },
   "modulePage": {
     "meta": {
@@ -3132,6 +3133,14 @@
       "k1": "messages sent this month",
       "k2": "additional sales",
       "demo": "Demo data"
+    },
+    "booking": {
+      "place": "Spa · 60-min treatment",
+      "date": "Saturday 15 November",
+      "send": "Send request",
+      "request": "New booking request",
+      "detail": "60-min treatment · Saturday 2 pm",
+      "linked": "linked to the stay"
     }
   },
   "nav": {
@@ -3186,7 +3195,8 @@
       "housekeeping": "Housekeeping",
       "keys": "Digital keys",
       "events": "Events",
-      "b2b": "B2B"
+      "b2b": "B2B",
+      "bookingRequests": "Booking requests"
     },
     "descriptions": {
       "upsell": "The right extra, before arrival",
@@ -3208,7 +3218,8 @@
       "housekeeping": "Real-time housekeeping",
       "keys": "The key by message",
       "events": "Seminars, weddings, groups",
-      "b2b": "Your corporate accounts"
+      "b2b": "Your corporate accounts",
+      "bookingRequests": "Your bookable spaces online"
     },
     "footer": {
       "tagline": "The hotel CRM that fits your hotel, not the other way around.",
@@ -3508,5 +3519,144 @@
       }
     },
     "cta": "Build your hotel’s guest journey."
+  },
+  "caseDetail": {
+    "back": "All customer stories",
+    "eyebrow": "Customer story",
+    "objectives": "Goals",
+    "highlights": "What they set up",
+    "prev": "Previous story",
+    "next": "Next story",
+    "cta": "Write your own story with TriggerFlow."
+  },
+  "aboutPage": {
+    "eyebrow": "About",
+    "title": "Tools that fit hotels, not the other way around.",
+    "subtitle": "We build TriggerFlow in Toulouse, with and for hoteliers: a powerful platform that’s easy to pick up, and a team that answers.",
+    "facts": {
+      "founded": "Founded",
+      "city": "Headquarters",
+      "pms": "Natively connected PMS",
+      "messages": "messages sent"
+    },
+    "storyEyebrow": "Our story",
+    "storyTitle": "From hotel apps to a CRM.",
+    "story": [
+      {
+        "year": "2019",
+        "title": "Founded in Toulouse",
+        "text": "Utelys starts with a first product: hotel apps branded for each property."
+      },
+      {
+        "year": "Then",
+        "title": "TriggerFlow is born",
+        "text": "Hoteliers ask us to go further: automate their messages, know their guests, sell before arrival. TriggerFlow becomes their CRM, connected to their PMS."
+      },
+      {
+        "year": "With our customers",
+        "title": "A product built with them",
+        "text": "The reputation module came from AMMI Hôtels’ feedback; the two-way Medialog connection from Urban Bivouac’s needs. Hoteliers’ ideas become features."
+      },
+      {
+        "year": "Today",
+        "title": "A complete platform",
+        "text": "Flows, CRM, inbox, upsell, payments, reviews, loyalty, Guest App, reception call: the whole guest journey, in one platform."
+      }
+    ],
+    "principlesEyebrow": "What guides us",
+    "principlesTitle": "Three principles.",
+    "principles": [
+      {
+        "title": "Tailored, without the complexity",
+        "text": "Every hotel is different. Our tools adapt to your rules, with ready-made templates to start and a team to help."
+      },
+      {
+        "title": "Transparency",
+        "text": "Public pricing, public DPA, listed subprocessors, measured and sourced numbers."
+      },
+      {
+        "title": "Closeness",
+        "text": "You talk to the people who build the product. Your feedback is heard, and often implemented."
+      }
+    ],
+    "companyEyebrow": "The company",
+    "company": "TriggerFlow is published by Utelys SAS, 13 rue Saint-Ursule, 31000 Toulouse, France.",
+    "cta": "Let’s build your hotel’s guest journey.",
+    "join": "Join us"
+  },
+  "careersPage": {
+    "eyebrow": "Careers",
+    "title": "Build the tools tomorrow’s hoteliers will use.",
+    "subtitle": "A human-sized team, based in Toulouse, working closely with the hotels it equips.",
+    "facts": {
+      "founded": "Founded",
+      "city": "Headquarters",
+      "remote": "Setup",
+      "remoteValue": "Remote"
+    },
+    "valuesEyebrow": "How we work",
+    "valuesTitle": "What you’ll find with us.",
+    "values": [
+      {
+        "title": "Visible impact",
+        "text": "What you build is used every day by hotel front desks, managers and marketing teams."
+      },
+      {
+        "title": "Close to customers",
+        "text": "Hoteliers talk to us directly; their feedback shapes the roadmap."
+      },
+      {
+        "title": "High standards, low overhead",
+        "text": "A powerful product that stays simple to use: our standard, for code and service alike."
+      }
+    ],
+    "openTitle": "No open positions right now.",
+    "openText": "Want to join the adventure? Send us a spontaneous application, we read everything.",
+    "cta": "See what we’re building."
+  },
+  "pmsPage": {
+    "seoTitle": "TriggerFlow for {pms}: the hotel CRM connected to {pms}",
+    "seoDescription": "Connect {pms} to TriggerFlow: bookings and profiles synced, scenarios triggered by your bookings, upsell and payments, with no development.",
+    "eyebrow": "Native integration",
+    "title": "The hotel CRM connected to {pms}.",
+    "subtitle": "Your {pms} bookings trigger your scenarios, and guest profiles build themselves. Native connection, no development.",
+    "subtitleTwoWay": "Your {pms} bookings trigger your scenarios, and useful information flows back into {pms}. Native two-way connection, no development.",
+    "allIntegrations": "All integrations",
+    "usedBy": "They use TriggerFlow with {pms}",
+    "usesEyebrow": "What you can do",
+    "usesTitle": "What {pms} and TriggerFlow do together.",
+    "u1": {
+      "title": "Triggered scenarios",
+      "text": "A {pms} booking, arrival or departure starts your flows automatically."
+    },
+    "u2": {
+      "title": "Up-to-date segments",
+      "text": "Booking channel, dates, room type: your segments rely on {pms} data."
+    },
+    "u3": {
+      "title": "Upsell and payments",
+      "text": "Offer extras and get paid before arrival, for every {pms} booking."
+    },
+    "u4": {
+      "title": "One profile per guest",
+      "text": "Profiles from {pms} are grouped and deduplicated in the CRM."
+    },
+    "twoWay": "Two-way sync with {pms}.",
+    "faqTitle": "TriggerFlow and {pms}: your questions.",
+    "faq": {
+      "q1": "Does connecting {pms} require development?",
+      "a1": "No. The connection is native: our team switches it on with you during setup.",
+      "q2": "Which {pms} data does TriggerFlow use?",
+      "a2": "Bookings and guest profiles (dates, room, number of guests, booking channel), to trigger your scenarios and build profiles.",
+      "a2TwoWay": "Bookings and guest profiles flow in from {pms}, and information updated in TriggerFlow flows back.",
+      "q3": "How long to get started with {pms}?",
+      "a3": "Usually 48 hours for your first scenarios, from templates adapted to your property."
+    },
+    "points": {
+      "p1": "Hosted in France, GDPR, public DPA",
+      "p2": "Guided setup",
+      "p3": "Free Discovery plan to start"
+    },
+    "cta": "Connect {pms} to TriggerFlow this week."
   }
 }

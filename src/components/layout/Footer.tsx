@@ -38,9 +38,9 @@ const resourceLinks = [
 
 // Company links
 const companyLinks = [
-  // { href: '/entreprise/a-propos', labelKey: 'company.about', isLink: true },   // masqué pour le lancement
+  // { href: '/a-propos', labelKey: 'company.about', isLink: true },   // masqué pour le lancement
   { href: '/contact', labelKey: 'company.contact', isLink: true },
-  // { href: '/entreprise/carrieres', labelKey: 'company.careers', isLink: true }, // masqué pour le lancement
+  // { href: '/carrieres', labelKey: 'company.careers', isLink: true }, // masqué pour le lancement
 ] as const;
 
 const legalLinks = [

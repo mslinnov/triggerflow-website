@@ -21,6 +21,7 @@ export const productMenu: NavColumn[] = [
       { key: 'pay', href: '/produit/pay' },
       { key: 'forms', href: '/produit/forms' },
       { key: 'checkin', href: '/produit/check-in' },
+      { key: 'bookingRequests', href: '/produit/booking-requests' },
     ],
   },
   {
@@ -123,8 +124,8 @@ export const footerColumns: NavColumn[] = [
   {
     key: 'company',
     items: [
-      { key: 'about', href: '/entreprise/a-propos' },
-      { key: 'careers', href: '/entreprise/carrieres' },
+      { key: 'about', href: '/a-propos' },
+      { key: 'careers', href: '/carrieres' },
       { key: 'contact', href: '/contact' },
     ],
   },

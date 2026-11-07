@@ -223,3 +223,31 @@ export function AnalyticsScenario() {
     </div>
   );
 }
+
+/** Demandes de réservation : un créneau choisi sur la page publique, la demande arrive à l'équipe. */
+export function BookingScenario() {
+  const t = useTranslations('visuals.booking');
+  const { ref, step } = useScenario([900, 900, 1000, 1]);
+  const slots = ['10:00', '11:30', '14:00', '15:30'];
+  return (
+    <div ref={ref} className="grid items-center gap-5 p-5 sm:p-8 md:grid-cols-2">
+      <div className="rounded-xl border border-line bg-white p-5">
+        <p className="font-mono text-[10px] uppercase tracking-[0.06em] text-ink-3">{t('place')}</p>
+        <p className="mt-1 text-[15px] font-semibold text-ink">{t('date')}</p>
+        <div className="mt-4 grid grid-cols-2 gap-2">
+          {slots.map((s, i) => (
+            <span key={s} className={cn('rounded-lg border px-3 py-2 text-center font-mono text-[12px] transition-colors', step >= 1 && i === 2 ? 'border-accent bg-accent text-white' : i === 1 ? 'border-line bg-paper text-ink-3 line-through' : 'border-line text-ink')}>{s}</span>
+          ))}
+        </div>
+        <Reveal show={step >= 2} className="mt-3"><p className="rounded-lg bg-accent px-3 py-2 text-center font-mono text-[11px] uppercase text-white">{t('send')}</p></Reveal>
+      </div>
+      <Reveal show={step >= 3}>
+        <div className="rounded-xl border border-accent bg-white p-4 shadow-[0_0_0_3px_rgba(0,111,104,0.10)]">
+          <p className="flex items-center gap-2 font-mono text-[10px] uppercase text-accent"><CalendarDays aria-hidden className="h-3.5 w-3.5" />{t('request')}</p>
+          <p className="mt-2 text-[14px] font-semibold text-ink">{t('detail')}</p>
+          <p className="text-[12px] text-ink-3">Camille Laurent · {t('linked')}</p>
+        </div>
+      </Reveal>
+    </div>
+  );
+}
