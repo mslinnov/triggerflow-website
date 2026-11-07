@@ -52,3 +52,6 @@ next-env.d.ts
 # Variables locales Cloudflare (contiennent des clés API)
 .dev.vars
 .dev.vars.*
+
+# Captures pleine page de l audit (lourdes, regenerables)
+docs/audit/full/
