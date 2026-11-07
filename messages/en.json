@@ -112,13 +112,13 @@
         "helpCenterDesc": "Documentation and tutorials"
       }
     },
-    "startFree": "Start for free"
+    "startFree": "Book a demo"
   },
   "hero": {
     "badge": "Hotel automation platform",
     "title": "The hotel CRM that centralizes your entire guest relationship",
     "subtitle": "Automate your emails, SMS, WhatsApp, reviews, upsells and payments, from check-in to check-out. Connected to your PMS, everything runs effortlessly.",
-    "cta": "Start for free",
+    "cta": "Book a demo",
     "ctaFree": "Free 14-day trial",
     "ctaSecondary": "See the product",
     "hotelsLabel": "hotels",
@@ -939,7 +939,7 @@
     },
     "cta": {
       "demo": "Book a demo",
-      "startFree": "Start for free"
+      "startFree": "Book a demo"
     },
     "addons": {
       "badge": "Add-on modules",
@@ -1465,7 +1465,7 @@
     "cta": {
       "title": "Ready to discover this module?",
       "subtitle": "Book a personalized demo with our team",
-      "demo": "Start for free",
+      "demo": "Book a demo",
       "pricing": "View pricing",
       "contact": "Ask a question"
     },
@@ -3160,7 +3160,7 @@
     "pricing": "Pricing",
     "resources": "Resources",
     "login": "Log in",
-    "startFree": "Start for free",
+    "startFree": "Book a demo",
     "seeProduct": "See the product",
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
@@ -3468,7 +3468,7 @@
       "titleMuted": "per property.",
       "perMonth": "/month excl. VAT per property",
       "then": "then €{price} from 1 January 2027",
-      "startFree": "Start for free",
+      "startFree": "Book a demo",
       "startTrial": "Start the trial",
       "compare": "Compare plans and modules"
     },
@@ -3733,7 +3733,7 @@
     "points": {
       "p1": "Hosted in France, GDPR, public DPA",
       "p2": "Guided setup",
-      "p3": "Free Discovery plan to start"
+      "p3": "Up and running in 48 hours"
     },
     "cta": "Connect {pms} to TriggerFlow this week."
   },

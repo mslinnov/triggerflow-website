@@ -112,13 +112,13 @@
         "helpCenterDesc": "Documentation et tutoriels"
       }
     },
-    "startFree": "Démarrer gratuitement"
+    "startFree": "Demander une démo"
   },
   "hero": {
     "badge": "La plateforme CRM des hôteliers exigeants",
     "title": "Le CRM hôtelier qui centralise toute la relation client",
     "subtitle": "Automatisez vos emails, SMS, WhatsApp, avis, upsells et paiements, du check-in au check-out. Connecté à votre PMS, tout fonctionne sans effort.",
-    "cta": "Démarrer gratuitement",
+    "cta": "Demander une démo",
     "ctaFree": "Essai gratuit - 14 jours",
     "ctaSecondary": "Voir le produit",
     "hotelsLabel": "hôtels",
@@ -946,8 +946,8 @@
       }
     },
     "cta": {
-      "demo": "Réserver une démo",
-      "startFree": "Démarrer gratuitement"
+      "demo": "Demander une démo",
+      "startFree": "Demander une démo"
     },
     "addons": {
       "badge": "Modules complémentaires",
@@ -1473,7 +1473,7 @@
     "cta": {
       "title": "Prêt à découvrir ce module ?",
       "subtitle": "Réservez une démo personnalisée avec notre équipe",
-      "demo": "Démarrer gratuitement",
+      "demo": "Demander une démo",
       "pricing": "Voir les tarifs",
       "contact": "Poser une question"
     },
@@ -3445,7 +3445,7 @@
     "pricing": "Tarifs",
     "resources": "Ressources",
     "login": "Connexion",
-    "startFree": "Démarrer gratuitement",
+    "startFree": "Demander une démo",
     "seeProduct": "Voir le produit",
     "openMenu": "Ouvrir le menu",
     "closeMenu": "Fermer le menu",
@@ -3753,7 +3753,7 @@
       "titleMuted": "par établissement.",
       "perMonth": "/mois HT par établissement",
       "then": "puis {price} € à partir du 1er janvier 2027",
-      "startFree": "Démarrer gratuitement",
+      "startFree": "Demander une démo",
       "startTrial": "Démarrer l'essai",
       "compare": "Comparer les plans et les modules"
     },
@@ -4018,7 +4018,7 @@
     "points": {
       "p1": "Hébergé en France, RGPD, DPA public",
       "p2": "Mise en place accompagnée",
-      "p3": "Plan Découverte gratuit pour démarrer"
+      "p3": "Opérationnel en 48 h"
     },
     "cta": "Connectez {pms} à TriggerFlow cette semaine."
   },
