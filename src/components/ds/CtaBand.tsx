@@ -1,3 +1,4 @@
+import { BrandMark } from './BrandMark';
 import { Container } from './Container';
 import { DsButton } from './Button';
 import { TrustStrip } from './TrustStrip';
@@ -35,12 +36,5 @@ export function CtaBand({ title, text, primary, secondary }: CtaBandProps) {
 
 /** Les 3 formes du logo (déclencheur, flux, flèche), en motif graphique. */
 export function LogoMotif({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 120 120" fill="currentColor" aria-hidden className={className}>
-      <path d="M48 8c10 6 16 17 16 29H52c0-8-4-15-10-19l6-10Z" />
-      <path d="M48 112c10-6 16-17 16-29H52c0 8-4 15-10 19l6 10Z" />
-      <rect x="8" y="54" width="56" height="12" rx="2" />
-      <path d="M70 36c13 0 24 11 24 24S83 84 70 84V36Z" />
-    </svg>
-  );
+  return <BrandMark className={className} />;
 }
