@@ -16,22 +16,11 @@ export function ImageBlock({ id, images, slug }: ImageBlockProps) {
   const src = `/images/blog/${slug}/${image.filename}`;
 
   return (
-    <figure className="my-10">
-      <div className="overflow-hidden rounded-sm">
-        <Image
-          src={src}
-          alt={image.alt}
-          width={image.width}
-          height={image.height}
-          className="w-full"
-          priority={id === 'hero'}
-        />
+    <figure className="not-prose my-10">
+      <div className="overflow-hidden rounded-xl border border-line bg-paper">
+        <Image src={src} alt={image.alt} width={image.width} height={image.height} className="h-auto w-full" />
       </div>
-      {image.alt && (
-        <figcaption className="mt-3 text-center text-sm italic text-ink-3">
-          {image.alt}
-        </figcaption>
-      )}
+      {image.alt && <figcaption className="mt-3 text-center text-[13px] leading-snug text-ink-3">{image.alt}</figcaption>}
     </figure>
   );
 }

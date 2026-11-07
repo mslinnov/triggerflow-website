@@ -13,10 +13,10 @@ export function InternalLink({ href, children }: InternalLinkProps) {
   return (
     <Link
       href={normalizeInternalHref(href, locale)}
-      className="group my-4 flex items-center gap-2 rounded-lg border border-brand-light bg-brand-light/20 px-4 py-3 text-sm font-medium text-brand-primary transition-colors hover:bg-brand-light/40"
+      className="not-prose group my-6 flex items-center justify-between gap-4 rounded-xl border border-line bg-white px-5 py-4 text-[16px] font-medium text-ink no-underline transition-colors duration-150 hover:border-accent hover:text-accent"
     >
-      <span>{children}</span>
-      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+      <span className="min-w-0">{children}</span>
+      <ArrowRight aria-hidden className="h-4 w-4 shrink-0 text-accent transition-transform duration-150 group-hover:translate-x-0.5" />
     </Link>
   );
 }

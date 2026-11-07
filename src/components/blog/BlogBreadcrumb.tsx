@@ -9,31 +9,31 @@ interface BlogBreadcrumbProps {
 
 export function BlogBreadcrumb({ blogLabel, silo, articleTitle }: BlogBreadcrumbProps) {
   return (
-    <nav className="flex items-center gap-1.5 text-sm text-gray-500" aria-label="Breadcrumb">
-      <Link href="/blog" className="transition-colors hover:text-brand-primary">
+    <nav className="flex min-w-0 items-center gap-1.5 font-mono text-[12px] uppercase tracking-[0.06em] text-ink-3" aria-label="Breadcrumb">
+      <Link href="/blog" className="shrink-0 transition-colors hover:text-accent">
         {blogLabel}
       </Link>
 
       {silo && (
         <>
-          <ChevronRight className="h-3.5 w-3.5 shrink-0" />
+          <ChevronRight aria-hidden className="h-3.5 w-3.5 shrink-0 text-ink-3/60" />
           {articleTitle ? (
             <Link
               href={`/blog/${silo.slug}`}
-              className="transition-colors hover:text-brand-primary"
+              className="shrink-0 transition-colors hover:text-accent"
             >
               {silo.nom}
             </Link>
           ) : (
-            <span className="text-brand-dark font-medium">{silo.nom}</span>
+            <span className="text-ink">{silo.nom}</span>
           )}
         </>
       )}
 
       {articleTitle && (
         <>
-          <ChevronRight className="h-3.5 w-3.5 shrink-0" />
-          <span className="line-clamp-1 text-brand-dark font-medium">{articleTitle}</span>
+          <ChevronRight aria-hidden className="hidden h-3.5 w-3.5 shrink-0 text-ink-3/60 sm:block" />
+          <span className="hidden min-w-0 truncate text-ink sm:block">{articleTitle}</span>
         </>
       )}
     </nav>

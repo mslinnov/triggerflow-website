@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { ArrowUpRight } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { BrandMark } from '@/components/ds';
 import type { Article } from '@/types/blog';
 
 interface ArticleCardProps {
@@ -14,12 +14,10 @@ function ArticleImage({
   article,
   sizes,
   priority = false,
-  className,
 }: {
   article: Article;
   sizes: string;
   priority?: boolean;
-  className?: string;
 }) {
   const heroImage = article.images.find((img) => img.id === 'hero');
 
@@ -29,18 +27,17 @@ function ArticleImage({
         src={`/images/blog/${article.slug}/${heroImage.filename}`}
         alt={heroImage.alt || article.title}
         fill
-        className={cn('object-cover transition-transform duration-500 group-hover:scale-[1.03]', className)}
+        className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
         sizes={sizes}
         priority={priority}
       />
     );
   }
 
+  // Sans image : fond menthe et motif du logo (charte, pas de dégradé).
   return (
-    <div className="absolute inset-0 bg-gradient-to-br from-brand-primary via-brand-primary/80 to-brand-dark flex items-end p-6">
-      <span className="text-white/90 font-serif text-lg leading-snug line-clamp-3">
-        {article.title}
-      </span>
+    <div className="absolute inset-0 flex items-center justify-center bg-mint">
+      <BrandMark className="h-1/2 w-auto text-accent/25" />
     </div>
   );
 }
@@ -54,13 +51,16 @@ function formatDate(dateStr: string, locale: string, format: 'short' | 'long' = 
   );
 }
 
-function CategoryTags({ article }: { article: Article }) {
+/** Ligne méta : silo en étiquette mono accent, date en texte discret. */
+function Meta({ article, locale, format }: { article: Article; locale: string; format?: 'short' | 'long' }) {
   return (
-    <div className="flex flex-wrap gap-1.5">
-      <span className="inline-flex rounded-full border border-gray-200 px-2.5 py-0.5 text-xs font-medium text-gray-600">
-        {article.siloNom}
-      </span>
-    </div>
+    <p className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-[0.06em]">
+      <span className="text-accent">{article.siloNom}</span>
+      <span aria-hidden className="h-1 w-1 rounded-full bg-line" />
+      <time dateTime={article.datePublication} className="text-ink-3">
+        {formatDate(article.datePublication, locale, format)}
+      </time>
+    </p>
   );
 }
 
@@ -69,28 +69,23 @@ export function ArticleCard({ article, locale, variant = 'grid' }: ArticleCardPr
 
   if (variant === 'featured') {
     return (
-      <Link href={href} className="group block">
-        <div className="relative aspect-[4/3] overflow-hidden rounded-none bg-gray-100">
-          <ArticleImage
-            article={article}
-            sizes="(max-width: 768px) 100vw, 55vw"
-            priority
-          />
+      <Link
+        href={href}
+        className="group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white transition-colors duration-150 hover:border-accent"
+      >
+        <div className="relative aspect-[16/9] overflow-hidden border-b border-line bg-paper">
+          <ArticleImage article={article} sizes="(max-width: 1024px) 100vw, 600px" priority />
         </div>
-        <div className="mt-5">
-          <p className="text-sm text-gray-500">
-            {formatDate(article.datePublication, locale, 'long')}
-          </p>
-          <h3 className="mt-2 font-serif text-2xl font-bold text-brand-dark transition-colors group-hover:text-brand-primary leading-tight">
+        <div className="flex flex-1 flex-col p-6 md:p-8">
+          <Meta article={article} locale={locale} format="long" />
+          <h3 className="mt-4 text-balance text-[1.5rem] font-medium leading-[1.2] tracking-[-0.015em] text-ink md:text-[1.75rem]">
             {article.title}
-            <ArrowUpRight className="ml-1.5 inline-block h-5 w-5 opacity-0 transition-all group-hover:opacity-100 -translate-y-0.5" />
           </h3>
-          <p className="mt-2.5 line-clamp-2 text-[15px] leading-relaxed text-gray-600">
-            {article.metaDescription}
-          </p>
-          <div className="mt-4">
-            <CategoryTags article={article} />
-          </div>
+          <p className="mt-3 line-clamp-3 text-[16px] leading-relaxed text-ink-2">{article.metaDescription}</p>
+          <ArrowUpRight
+            aria-hidden
+            className="mt-6 h-5 w-5 text-accent transition-transform duration-150 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+          />
         </div>
       </Link>
     );
@@ -98,26 +93,16 @@ export function ArticleCard({ article, locale, variant = 'grid' }: ArticleCardPr
 
   if (variant === 'horizontal') {
     return (
-      <Link href={href} className="group flex gap-5 py-5 border-b border-gray-100 last:border-0">
-        <div className="relative h-[120px] w-[180px] shrink-0 overflow-hidden rounded-none bg-gray-100">
-          <ArticleImage
-            article={article}
-            sizes="180px"
-          />
+      <Link href={href} className="group flex gap-4 border-b border-line py-5 first:pt-0 last:border-0 last:pb-0 sm:gap-5">
+        <div className="relative aspect-[4/3] w-[104px] shrink-0 overflow-hidden rounded-lg border border-line bg-paper sm:w-[156px]">
+          <ArticleImage article={article} sizes="156px" />
         </div>
-        <div className="flex flex-col justify-center min-w-0">
-          <p className="text-xs text-gray-500">
-            {formatDate(article.datePublication, locale, 'long')}
-          </p>
-          <h3 className="mt-1.5 font-serif text-base font-bold text-brand-dark leading-snug transition-colors group-hover:text-brand-primary line-clamp-2">
+        <div className="flex min-w-0 flex-col justify-center">
+          <Meta article={article} locale={locale} />
+          <h3 className="mt-2 line-clamp-2 text-[16px] font-medium leading-snug text-ink transition-colors duration-150 group-hover:text-accent sm:text-[17px]">
             {article.title}
           </h3>
-          <p className="mt-1 text-sm text-gray-500 line-clamp-1 hidden sm:block">
-            {article.metaDescription}
-          </p>
-          <div className="mt-2">
-            <CategoryTags article={article} />
-          </div>
+          <p className="mt-1.5 hidden text-[14px] leading-relaxed text-ink-3 sm:line-clamp-2">{article.metaDescription}</p>
         </div>
       </Link>
     );
@@ -125,27 +110,21 @@ export function ArticleCard({ article, locale, variant = 'grid' }: ArticleCardPr
 
   // Grid variant (default)
   return (
-    <Link href={href} className="group block h-full">
-      <div className="relative aspect-[16/10] overflow-hidden rounded-none bg-gray-100">
-        <ArticleImage
-          article={article}
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-        />
+    <Link
+      href={href}
+      className="group flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white transition-colors duration-150 hover:border-accent"
+    >
+      <div className="relative aspect-[16/10] overflow-hidden border-b border-line bg-paper">
+        <ArticleImage article={article} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px" />
       </div>
-      <div className="pt-4">
-        <p className="text-xs text-gray-500">
-          {formatDate(article.datePublication, locale)}
-        </p>
-        <h3 className="mt-1.5 font-serif text-lg font-bold leading-snug text-brand-dark transition-colors group-hover:text-brand-primary line-clamp-2">
-          {article.title}
-          <ArrowUpRight className="ml-1 inline-block h-4 w-4 opacity-0 transition-all group-hover:opacity-100 -translate-y-0.5" />
-        </h3>
-        <p className="mt-1.5 line-clamp-2 text-sm leading-relaxed text-gray-600">
-          {article.metaDescription}
-        </p>
-        <div className="mt-3">
-          <CategoryTags article={article} />
-        </div>
+      <div className="flex flex-1 flex-col p-6">
+        <Meta article={article} locale={locale} />
+        <h3 className="mt-3 line-clamp-3 text-lg font-medium leading-snug tracking-[-0.01em] text-ink">{article.title}</h3>
+        <p className="mt-2 line-clamp-2 flex-1 text-[15px] leading-relaxed text-ink-2">{article.metaDescription}</p>
+        <ArrowUpRight
+          aria-hidden
+          className="mt-5 h-4 w-4 text-accent transition-transform duration-150 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+        />
       </div>
     </Link>
   );

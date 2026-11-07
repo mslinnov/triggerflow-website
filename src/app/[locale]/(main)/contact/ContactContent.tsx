@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { motion, useReducedMotion } from 'framer-motion';
-import { Mail, Phone, MapPin, Clock, Linkedin, Send, ArrowRight, Calendar } from 'lucide-react';
-import { Container, ButtonLink } from '@/components/ui';
-import { fadeInUp, staggerContainer, staggerItem, slideInLeft, slideInRight, defaultViewport } from '@/lib/animations';
+import { Mail, Phone, MapPin, Clock, Linkedin, Send } from 'lucide-react';
+import { Container, CtaBand, Eyebrow } from '@/components/ds';
+import { brand } from '@/data/brand';
+import { cn } from '@/lib/utils';
 import { getAttribution } from '@/lib/attribution';
 import { trackAdsConversion } from '@/lib/ads';
 
@@ -14,7 +14,6 @@ const roomOptions = ['1-20', '21-50', '51-100', '100+'];
 export function ContactContent() {
   const t = useTranslations('contact');
   const locale = useLocale();
-  const prefersReducedMotion = useReducedMotion();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -72,139 +71,123 @@ export function ContactContent() {
     }));
   };
 
+  const inputClass =
+    'w-full rounded-lg border border-line bg-white px-4 py-3 text-[15px] text-ink placeholder:text-ink-3/80 outline-none transition-colors duration-150 hover:border-ink-3/40 focus:border-accent focus:ring-2 focus:ring-accent/20';
+  const labelClass = 'mb-1.5 block text-[14px] font-medium text-ink';
+
+  const contactItems = [
+    { icon: Mail, label: t('info.email'), value: 'contact@trigger-flow.com', href: 'mailto:contact@trigger-flow.com' },
+    { icon: Phone, label: t('info.phone'), value: '+33 (0)5 54 54 48 52', href: 'tel:+33554544852' },
+    { icon: MapPin, label: t('info.address'), value: 'Toulouse, France' },
+    { icon: Clock, label: t('info.hours'), value: t('info.hoursValue') },
+  ];
+
   return (
-    <main className="bg-white">
-      {/* Hero Section */}
-      <section className="bg-white pt-14 pb-16 md:pt-20 md:pb-24">
-        <Container>
-          <motion.div
-            initial={prefersReducedMotion ? 'visible' : 'hidden'}
-            animate="visible"
-            variants={fadeInUp}
-            className="text-center"
-          >
-            <h1 className="text-3xl font-bold tracking-tight text-brand-dark md:text-4xl lg:text-5xl">
-              {t('hero.title')}
-            </h1>
-            <p className="mx-auto mt-4 max-w-2xl text-lg text-zinc-600">
-              {t('hero.subtitle')}
-            </p>
-          </motion.div>
+    <>
+      {/* Hero */}
+      <section className="bg-white pb-14 pt-14 md:pb-20 md:pt-20">
+        <Container className="text-center">
+          <Eyebrow>{t('meta.title')}</Eyebrow>
+          <h1 className="mx-auto mt-5 max-w-3xl text-balance text-[2.25rem] font-medium leading-[1.08] tracking-[-0.025em] text-ink md:text-[3.5rem]">
+            {t('hero.title')}
+          </h1>
+          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-2 md:text-lead">{t('hero.subtitle')}</p>
         </Container>
       </section>
 
-      {/* Contact Form & Info Section */}
-      <section className="overflow-x-clip py-16 md:py-24">
+      {/* Formulaire + coordonnées */}
+      <section className="border-t border-line bg-paper py-16 md:py-24">
         <Container>
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 [&>*]:min-w-0">
-            {/* Left Column - Form */}
-            <motion.div
-              initial={prefersReducedMotion ? 'visible' : 'hidden'}
-              whileInView="visible"
-              variants={slideInLeft}
-              viewport={defaultViewport}
-            >
-              <h2 className="text-2xl font-bold text-brand-dark mb-6">
-                {t('form.title')}
-              </h2>
+          <div className="grid gap-8 lg:grid-cols-[1.35fr_1fr] lg:gap-10 [&>*]:min-w-0">
+            {/* Form */}
+            <div className="rounded-2xl border border-line bg-white p-6 sm:p-8 md:p-10">
+              <h2 className="text-[1.5rem] font-medium leading-[1.2] tracking-[-0.015em] text-ink md:text-[1.75rem]">{t('form.title')}</h2>
 
               {isSubmitted ? (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  className="rounded-2xl bg-brand-primary/10 p-8 text-center"
-                >
-                  <div className="w-16 h-16 bg-brand-primary rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Send className="h-8 w-8 text-white" />
+                <div role="status" className="mt-8 rounded-xl border border-mint bg-mint/40 p-8 text-center">
+                  <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-accent">
+                    <Send aria-hidden className="h-6 w-6 text-white" strokeWidth={1.75} />
                   </div>
-                  <h3 className="text-xl font-bold text-brand-dark">
-                    {t('form.success.title')}
-                  </h3>
-                  <p className="mt-2 text-zinc-600">
-                    {t('form.success.message')}
-                  </p>
-                </motion.div>
+                  <h3 className="mt-5 text-h3 font-semibold text-ink">{t('form.success.title')}</h3>
+                  <p className="mt-2 text-[16px] leading-relaxed text-ink-2">{t('form.success.message')}</p>
+                </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  {/* Name */}
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-zinc-700 mb-1">
-                      {t('form.fields.name')} *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      value={formData.name}
-                      onChange={handleChange}
-                      className="w-full rounded-lg border border-zinc-300 px-4 py-3 text-sm focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none transition-colors"
-                      placeholder={t('form.placeholders.name')}
-                    />
-                  </div>
+                <form onSubmit={handleSubmit} className="mt-8 space-y-5">
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    {/* Name */}
+                    <div>
+                      <label htmlFor="name" className={labelClass}>
+                        {t('form.fields.name')} <span className="text-accent">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        value={formData.name}
+                        onChange={handleChange}
+                        className={inputClass}
+                        placeholder={t('form.placeholders.name')}
+                      />
+                    </div>
 
-                  {/* Email */}
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-zinc-700 mb-1">
-                      {t('form.fields.email')} *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="w-full rounded-lg border border-zinc-300 px-4 py-3 text-sm focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none transition-colors"
-                      placeholder={t('form.placeholders.email')}
-                    />
-                  </div>
+                    {/* Email */}
+                    <div>
+                      <label htmlFor="email" className={labelClass}>
+                        {t('form.fields.email')} <span className="text-accent">*</span>
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        value={formData.email}
+                        onChange={handleChange}
+                        className={inputClass}
+                        placeholder={t('form.placeholders.email')}
+                      />
+                    </div>
 
-                  {/* Phone */}
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-zinc-700 mb-1">
-                      {t('form.fields.phone')}
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      className="w-full rounded-lg border border-zinc-300 px-4 py-3 text-sm focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none transition-colors"
-                      placeholder={t('form.placeholders.phone')}
-                    />
-                  </div>
+                    {/* Phone */}
+                    <div>
+                      <label htmlFor="phone" className={labelClass}>
+                        {t('form.fields.phone')}
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        className={inputClass}
+                        placeholder={t('form.placeholders.phone')}
+                      />
+                    </div>
 
-                  {/* Hotel Name */}
-                  <div>
-                    <label htmlFor="hotelName" className="block text-sm font-medium text-zinc-700 mb-1">
-                      {t('form.fields.hotelName')} *
-                    </label>
-                    <input
-                      type="text"
-                      id="hotelName"
-                      name="hotelName"
-                      required
-                      value={formData.hotelName}
-                      onChange={handleChange}
-                      className="w-full rounded-lg border border-zinc-300 px-4 py-3 text-sm focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none transition-colors"
-                      placeholder={t('form.placeholders.hotelName')}
-                    />
+                    {/* Hotel Name */}
+                    <div>
+                      <label htmlFor="hotelName" className={labelClass}>
+                        {t('form.fields.hotelName')} <span className="text-accent">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        id="hotelName"
+                        name="hotelName"
+                        required
+                        value={formData.hotelName}
+                        onChange={handleChange}
+                        className={inputClass}
+                        placeholder={t('form.placeholders.hotelName')}
+                      />
+                    </div>
                   </div>
 
                   {/* Rooms */}
                   <div>
-                    <label htmlFor="rooms" className="block text-sm font-medium text-zinc-700 mb-1">
+                    <label htmlFor="rooms" className={labelClass}>
                       {t('form.fields.rooms')}
                     </label>
-                    <select
-                      id="rooms"
-                      name="rooms"
-                      value={formData.rooms}
-                      onChange={handleChange}
-                      className="w-full rounded-lg border border-zinc-300 px-4 py-3 text-sm focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none transition-colors bg-white"
-                    >
+                    <select id="rooms" name="rooms" value={formData.rooms} onChange={handleChange} className={inputClass}>
                       <option value="">{t('form.placeholders.rooms')}</option>
                       {roomOptions.map((option) => (
                         <option key={option} value={option}>
@@ -216,17 +199,17 @@ export function ContactContent() {
 
                   {/* Message */}
                   <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-zinc-700 mb-1">
-                      {t('form.fields.message')} *
+                    <label htmlFor="message" className={labelClass}>
+                      {t('form.fields.message')} <span className="text-accent">*</span>
                     </label>
                     <textarea
                       id="message"
                       name="message"
                       required
-                      rows={4}
+                      rows={5}
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full rounded-lg border border-zinc-300 px-4 py-3 text-sm focus:border-brand-primary focus:ring-1 focus:ring-brand-primary outline-none transition-colors resize-none"
+                      className={cn(inputClass, 'resize-none')}
                       placeholder={t('form.placeholders.message')}
                     />
                   </div>
@@ -244,170 +227,80 @@ export function ContactContent() {
                   />
 
                   {hasError && (
-                    <p role="alert" className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">
+                    <p role="alert" className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-[14px] text-red-800">
                       {t('form.error')}
                     </p>
                   )}
 
                   {/* Submit Button */}
-                  <motion.button
+                  <button
                     type="submit"
                     disabled={isSubmitting}
-                    whileHover={!prefersReducedMotion ? { scale: 1.02 } : {}}
-                    whileTap={!prefersReducedMotion ? { scale: 0.98 } : {}}
-                    className="w-full bg-brand-primary text-white font-medium py-3 px-6 rounded-lg hover:bg-brand-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-accent px-6 font-mono text-sm font-medium uppercase tracking-[0.04em] text-white transition-colors duration-150 hover:bg-accent-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
                   >
                     {isSubmitting ? (
                       <span>{t('form.submitting')}</span>
                     ) : (
                       <>
                         {t('form.submit')}
-                        <Send className="h-4 w-4" />
+                        <Send aria-hidden className="h-4 w-4" />
                       </>
                     )}
-                  </motion.button>
+                  </button>
                 </form>
               )}
-            </motion.div>
+            </div>
 
-            {/* Right Column - Contact Info */}
-            <motion.div
-              initial={prefersReducedMotion ? 'visible' : 'hidden'}
-              whileInView="visible"
-              variants={slideInRight}
-              viewport={defaultViewport}
-            >
-              <h2 className="text-2xl font-bold text-brand-dark mb-6">
-                {t('info.title')}
-              </h2>
+            {/* Coordonnées */}
+            <div>
+              <h2 className="font-mono text-eyebrow font-medium uppercase text-ink-3">{t('info.title')}</h2>
+              <ul className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+                {contactItems.map(({ icon: Icon, label, value, href }) => {
+                  const inner = (
+                    <>
+                      <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-mint text-accent">
+                        <Icon aria-hidden className="h-5 w-5" strokeWidth={1.5} />
+                      </span>
+                      <span className="min-w-0">
+                        <span className="block font-mono text-[11px] uppercase tracking-[0.06em] text-ink-3">{label}</span>
+                        <span className="mt-0.5 block break-words text-[16px] font-medium text-ink">{value}</span>
+                      </span>
+                    </>
+                  );
+                  return (
+                    <li key={label}>
+                      {href ? (
+                        <a
+                          href={href}
+                          className="flex items-center gap-4 rounded-xl border border-line bg-white p-4 transition-colors duration-150 hover:border-accent"
+                        >
+                          {inner}
+                        </a>
+                      ) : (
+                        <div className="flex items-center gap-4 rounded-xl border border-line bg-white p-4">{inner}</div>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
 
-              {/* Contact Card */}
-              <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm mb-8">
-                <motion.div
-                  initial={prefersReducedMotion ? 'visible' : 'hidden'}
-                  whileInView="visible"
-                  variants={staggerContainer}
-                  viewport={defaultViewport}
-                  className="space-y-5"
-                >
-                  {/* Email */}
-                  {/* eslint-disable-next-line */}
-                  <motion.a
-                    variants={staggerItem}
-                    href="mailto:contact@trigger-flow.com"
-                    className="flex items-center gap-4 p-3 rounded-xl hover:bg-brand-light/50 transition-colors group"
-                  >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-primary/10 group-hover:bg-brand-primary/20 transition-colors">
-                      <Mail className="h-6 w-6 text-brand-primary" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-zinc-500">{t('info.email')}</p>
-                      <p className="font-medium text-brand-dark">contact@trigger-flow.com</p>
-                    </div>
-                  </motion.a>
-
-                  {/* Phone */}
-                  {/* eslint-disable-next-line */}
-                  <motion.a
-                    variants={staggerItem}
-                    href="tel:+33554544852"
-                    className="flex items-center gap-4 p-3 rounded-xl hover:bg-brand-light/50 transition-colors group"
-                  >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-primary/10 group-hover:bg-brand-primary/20 transition-colors">
-                      <Phone className="h-6 w-6 text-brand-primary" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-zinc-500">{t('info.phone')}</p>
-                      <p className="font-medium text-brand-dark">+33 (0)5 54 54 48 52</p>
-                    </div>
-                  </motion.a>
-
-                  {/* Address */}
-                  <motion.div
-                    variants={staggerItem}
-                    className="flex items-center gap-4 p-3 rounded-xl"
-                  >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-primary/10">
-                      <MapPin className="h-6 w-6 text-brand-primary" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-zinc-500">{t('info.address')}</p>
-                      <p className="font-medium text-brand-dark">Toulouse, France</p>
-                    </div>
-                  </motion.div>
-
-                  {/* Hours */}
-                  <motion.div
-                    variants={staggerItem}
-                    className="flex items-center gap-4 p-3 rounded-xl"
-                  >
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-primary/10">
-                      <Clock className="h-6 w-6 text-brand-primary" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-zinc-500">{t('info.hours')}</p>
-                      <p className="font-medium text-brand-dark">{t('info.hoursValue')}</p>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              </div>
-
-              {/* Social Links */}
-              <div className="mb-8">
-                <h3 className="text-sm font-semibold text-zinc-500 uppercase tracking-wider mb-4">
-                  {t('info.social')}
-                </h3>
-                {/* eslint-disable-next-line */}
-                <a
-                  href="https://www.linkedin.com/company/triggerflow"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-zinc-200 hover:border-brand-primary hover:text-brand-primary transition-colors"
-                >
-                  <Linkedin className="h-5 w-5" />
-                  <span className="text-sm font-medium">LinkedIn</span>
-                </a>
-              </div>
-            </motion.div>
+              <h3 className="mt-10 font-mono text-eyebrow font-medium uppercase text-ink-3">{t('info.social')}</h3>
+              <a
+                href="https://www.linkedin.com/company/triggerflow"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex h-11 items-center gap-2 rounded-lg border border-line bg-white px-4 text-[15px] font-medium text-ink transition-colors duration-150 hover:border-accent hover:text-accent"
+              >
+                <Linkedin aria-hidden className="h-4 w-4" strokeWidth={1.75} />
+                LinkedIn
+              </a>
+            </div>
           </div>
         </Container>
       </section>
 
-      {/* Demo Section */}
-      <section className="py-16 md:py-24 bg-zinc-50">
-        <Container>
-          <motion.div
-            initial={prefersReducedMotion ? 'visible' : 'hidden'}
-            whileInView="visible"
-            variants={fadeInUp}
-            viewport={defaultViewport}
-            className="text-center max-w-2xl mx-auto"
-          >
-            <div className="w-16 h-16 bg-brand-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <Calendar className="h-8 w-8 text-brand-primary" />
-            </div>
-            <h2 className="text-2xl font-bold text-brand-dark md:text-3xl">
-              {t('demo.title')}
-            </h2>
-            <p className="mt-4 text-zinc-600">
-              {t('demo.description')}
-            </p>
-            <div className="mt-8">
-              <ButtonLink
-                href="https://app.lemcal.com/@trigger-flow/demo"
-                target="_blank"
-                rel="noopener noreferrer"
-                variant="primary"
-                size="lg"
-                className="gap-2"
-              >
-                {t('demo.cta')}
-                <ArrowRight className="h-4 w-4" />
-              </ButtonLink>
-            </div>
-          </motion.div>
-        </Container>
-      </section>
-    </main>
+      {/* Démo */}
+      <CtaBand title={t('demo.title')} text={t('demo.description')} primary={{ label: t('demo.cta'), href: brand.demoUrl }} />
+    </>
   );
 }

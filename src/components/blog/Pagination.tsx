@@ -32,20 +32,20 @@ export function Pagination({ currentPage, totalPages, basePath, labels }: Pagina
 
   return (
     <nav
-      className="mt-16 flex items-center justify-between border-t border-gray-200 pt-5"
+      className="mt-16 flex items-center justify-between border-t border-line pt-5"
       aria-label="Pagination"
     >
       {/* Previous */}
       {currentPage > 1 ? (
         <Link
           href={pageHref(currentPage - 1)}
-          className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors hover:text-brand-dark"
+          className="inline-flex items-center gap-2 text-sm font-medium text-ink-2 transition-colors hover:text-accent"
         >
           <ArrowLeft className="h-4 w-4" />
           {labels.previous}
         </Link>
       ) : (
-        <span className="inline-flex items-center gap-2 text-sm font-medium text-gray-300">
+        <span className="inline-flex items-center gap-2 text-sm font-medium text-ink-3/40">
           <ArrowLeft className="h-4 w-4" />
           {labels.previous}
         </span>
@@ -57,7 +57,7 @@ export function Pagination({ currentPage, totalPages, basePath, labels }: Pagina
           <>
             <Link
               href={pageHref(1)}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full text-sm font-medium text-gray-600 transition-colors hover:bg-gray-50"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-lg font-mono text-[13px] font-medium text-ink-2 transition-colors hover:bg-paper"
             >
               1
             </Link>
@@ -71,10 +71,10 @@ export function Pagination({ currentPage, totalPages, basePath, labels }: Pagina
             key={page}
             href={pageHref(page)}
             className={cn(
-              'inline-flex h-10 w-10 items-center justify-center rounded-full text-sm font-medium transition-colors',
+              'inline-flex h-10 w-10 items-center justify-center rounded-lg font-mono text-[13px] font-medium transition-colors',
               page === currentPage
-                ? 'bg-brand-dark text-white'
-                : 'text-gray-600 hover:bg-gray-50'
+                ? 'bg-ink text-white'
+                : 'text-ink-2 hover:bg-paper'
             )}
           >
             {page}
@@ -87,7 +87,7 @@ export function Pagination({ currentPage, totalPages, basePath, labels }: Pagina
             )}
             <Link
               href={pageHref(totalPages)}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full text-sm font-medium text-gray-600 transition-colors hover:bg-gray-50"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-lg font-mono text-[13px] font-medium text-ink-2 transition-colors hover:bg-paper"
             >
               {totalPages}
             </Link>
@@ -99,13 +99,13 @@ export function Pagination({ currentPage, totalPages, basePath, labels }: Pagina
       {currentPage < totalPages ? (
         <Link
           href={pageHref(currentPage + 1)}
-          className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors hover:text-brand-dark"
+          className="inline-flex items-center gap-2 text-sm font-medium text-ink-2 transition-colors hover:text-accent"
         >
           {labels.next}
           <ArrowRight className="h-4 w-4" />
         </Link>
       ) : (
-        <span className="inline-flex items-center gap-2 text-sm font-medium text-gray-300">
+        <span className="inline-flex items-center gap-2 text-sm font-medium text-ink-3/40">
           {labels.next}
           <ArrowRight className="h-4 w-4" />
         </span>

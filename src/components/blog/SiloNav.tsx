@@ -17,10 +17,10 @@ export function SiloNav({ activeSilo, allLabel, locale }: SiloNavProps) {
       <Link
         href="/blog"
         className={cn(
-          'rounded-full border px-4 py-1.5 text-sm font-medium transition-all duration-200',
+          'rounded-full border px-4 py-1.5 text-[14px] font-medium transition-colors duration-150',
           !activeSilo
-            ? 'border-brand-primary bg-brand-primary text-white'
-            : 'border-gray-200 text-gray-600 hover:border-brand-primary hover:text-brand-primary'
+            ? 'border-ink bg-ink text-white'
+            : 'border-line bg-white text-ink-2 hover:border-accent hover:text-accent'
         )}
       >
         {allLabel}
@@ -30,10 +30,10 @@ export function SiloNav({ activeSilo, allLabel, locale }: SiloNavProps) {
           key={silo.id}
           href={`/blog/${silo.slug}`}
           className={cn(
-            'rounded-full border px-4 py-1.5 text-sm font-medium transition-all duration-200',
+            'rounded-full border px-4 py-1.5 text-[14px] font-medium transition-colors duration-150',
             activeSilo === silo.slug
-              ? 'border-brand-primary bg-brand-primary text-white'
-              : 'border-gray-200 text-gray-600 hover:border-brand-primary hover:text-brand-primary'
+              ? 'border-ink bg-ink text-white'
+              : 'border-line bg-white text-ink-2 hover:border-accent hover:text-accent'
           )}
         >
           {siloName(silo, locale)}

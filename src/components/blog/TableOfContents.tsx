@@ -71,10 +71,10 @@ export function TableOfContents({ items, title, showLabel, hideLabel }: TableOfC
   return (
     <>
       {/* Mobile: collapsible */}
-      <div className="mb-10 border-y border-gray-200 lg:hidden">
+      <div className="mb-10 rounded-xl border border-line bg-paper px-5 lg:hidden">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="flex w-full items-center justify-between py-4 text-sm font-medium text-brand-dark"
+          className="flex w-full items-center justify-between py-4 font-mono text-[12px] font-medium uppercase tracking-[0.06em] text-ink"
         >
           <span>{title}</span>
           <ChevronDown
@@ -85,7 +85,7 @@ export function TableOfContents({ items, title, showLabel, hideLabel }: TableOfC
           />
         </button>
         {isOpen && (
-          <nav className="border-t border-gray-100 pb-4">
+          <nav className="border-t border-line pb-4">
             <ul className="pt-2">
               {h2Items.map((item) => (
                 <li key={item.id}>
@@ -93,10 +93,10 @@ export function TableOfContents({ items, title, showLabel, hideLabel }: TableOfC
                     href={`#${item.id}`}
                     onClick={(e) => handleClick(e, item.id)}
                     className={cn(
-                      'block py-1.5 text-[13px] leading-snug transition-colors',
+                      'block py-1.5 text-[14px] leading-snug transition-colors',
                       activeId === item.id
-                        ? 'text-brand-primary font-medium'
-                        : 'text-gray-500 hover:text-brand-dark'
+                        ? 'font-medium text-accent'
+                        : 'text-ink-2 hover:text-ink'
                     )}
                   >
                     {item.text}
@@ -111,11 +111,11 @@ export function TableOfContents({ items, title, showLabel, hideLabel }: TableOfC
       {/* Desktop: sticky sidebar */}
       <aside className="hidden lg:block">
         <div className="sticky top-28 max-h-[calc(100vh-8rem)] overflow-y-auto">
-          <p className="mb-3 text-[11px] font-semibold uppercase tracking-widest text-ink-3">
+          <p className="mb-4 font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-ink-3">
             {title}
           </p>
           <nav>
-            <ul className="border-l border-gray-200">
+            <ul className="border-l border-line">
               {h2Items.map((item) => (
                 <li key={item.id}>
                   <a
@@ -123,10 +123,10 @@ export function TableOfContents({ items, title, showLabel, hideLabel }: TableOfC
                     href={`#${item.id}`}
                     onClick={(e) => handleClick(e, item.id)}
                     className={cn(
-                      'block border-l-2 -ml-px py-1.5 pl-4 text-[12.5px] leading-snug transition-colors duration-150',
+                      'block border-l-2 -ml-px py-1.5 pl-4 text-[13px] leading-snug transition-colors duration-150',
                       activeId === item.id
-                        ? 'border-brand-primary text-brand-primary font-medium'
-                        : 'border-transparent text-ink-3 hover:text-brand-dark hover:border-gray-300'
+                        ? 'border-accent font-medium text-accent'
+                        : 'border-transparent text-ink-3 hover:border-ink-3 hover:text-ink'
                     )}
                   >
                     {item.text}

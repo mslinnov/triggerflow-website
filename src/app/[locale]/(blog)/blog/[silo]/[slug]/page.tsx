@@ -5,10 +5,10 @@ import remarkGfm from 'remark-gfm';
 import rehypeSlug from 'rehype-slug';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
-import { Linkedin, Twitter } from 'lucide-react';
+import { Linkedin } from 'lucide-react';
 
 import { getAllArticles, getArticleBySlug, getArticleByTranslationKey, generateTableOfContents, extractFaqItems } from '@/lib/blog';
-import { Container } from '@/components/ui/Container';
+import { Container, CtaBand, Eyebrow } from '@/components/ds';
 import { BlogBreadcrumb, TableOfContents } from '@/components/blog';
 import { BlogPostingJsonLd, BreadcrumbListJsonLd, FaqJsonLd } from '@/components/seo';
 import { ImageBlock } from '@/components/mdx/ImageBlock';
@@ -106,8 +106,11 @@ export default async function ArticlePage({ params }: PageProps) {
   const mdxComponents = {
     // Les tableaux défilent dans leur cadre sur mobile au lieu d'élargir la page.
     table: (props: React.ComponentProps<'table'>) => (
-      <div className="-mx-4 overflow-x-auto px-4 sm:mx-0 sm:px-0">
-        <table {...props} />
+      <div className="not-prose my-8 overflow-x-auto rounded-xl border border-line bg-white">
+        <table
+          {...props}
+          className="w-full border-collapse text-left text-[15px] leading-snug [&_td]:border-t [&_td]:border-line [&_td]:px-4 [&_td]:py-3 [&_td]:align-top [&_td]:text-ink-2 [&_th]:bg-paper [&_th]:px-4 [&_th]:py-3 [&_th]:font-semibold [&_th]:text-ink [&_strong]:font-semibold [&_strong]:text-ink"
+        />
       </div>
     ),
     a: ({ href = '', ...props }: React.ComponentProps<'a'>) => <a href={normalizeInternalHref(href, locale)} {...props} />,
@@ -158,10 +161,9 @@ export default async function ArticlePage({ params }: PageProps) {
 
       <article>
         {/* Article header */}
-        <header className="border-b border-gray-100 pb-0">
+        <header className="bg-white">
           <Container>
-            {/* Breadcrumb */}
-            <div className="pt-8 pb-6">
+            <div className="pb-10 pt-8 md:pb-14">
               <BlogBreadcrumb
                 blogLabel={tBlog('breadcrumb.blog')}
                 silo={{ nom: article.siloNom, slug: article.siloSlug }}
@@ -169,111 +171,87 @@ export default async function ArticlePage({ params }: PageProps) {
               />
             </div>
 
-            {/* Title */}
-            <div className="mx-auto max-w-3xl">
-              <h1 className="font-serif text-3xl font-bold leading-tight tracking-tight text-brand-dark md:text-[2.75rem] md:leading-[1.15]">
-                {article.title}
+            <div className="mx-auto max-w-[800px] text-center">
+              <Eyebrow>{article.siloNom}</Eyebrow>
+              <h1 className="mt-5 text-balance text-[2rem] font-medium leading-[1.12] tracking-[-0.02em] text-ink md:text-[3rem] md:leading-[1.08]">
+                {/* Espace insécable avant « : ; ? ! » : la ponctuation ne part pas seule à la ligne. */}
+                {article.title.replace(/ ([:;?!])/g, ' $1')}
               </h1>
-              <p className="mt-5 text-lg leading-relaxed text-gray-500">
-                {article.metaDescription}
-              </p>
+              <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-ink-2 md:text-lead">{article.metaDescription}</p>
             </div>
 
             {/* Author & meta bar */}
-            <div className="mx-auto mt-8 flex max-w-3xl items-center justify-between border-t border-gray-100 py-5">
-              <div className="flex items-center gap-6">
+            <div className="mx-auto mt-10 flex max-w-[800px] flex-wrap items-center justify-between gap-x-8 gap-y-5 border-y border-line py-5">
+              <dl className="flex flex-wrap gap-x-8 gap-y-4">
                 <div>
-                  <p className="text-xs text-ink-3">{t('writtenBy', { defaultValue: 'Par' })}</p>
-                  <p className="text-sm font-medium text-brand-dark">
+                  <dt className="font-mono text-[11px] uppercase tracking-[0.06em] text-ink-3">{t('writtenBy', { defaultValue: 'Par' })}</dt>
+                  <dd className="mt-1 text-[15px] font-medium text-ink">
                     {author.linkedin ? (
-                      <a href={author.linkedin} target="_blank" rel="noopener noreferrer author" className="hover:text-brand-primary">
+                      <a href={author.linkedin} target="_blank" rel="noopener noreferrer author" className="transition-colors hover:text-accent">
                         {author.name}
                       </a>
                     ) : (
                       author.name
                     )}
-                  </p>
-                  <p className="text-xs text-gray-500">{locale === 'fr' ? author.role.fr : author.role.en}</p>
+                  </dd>
+                  <dd className="text-[13px] text-ink-3">{locale === 'fr' ? author.role.fr : author.role.en}</dd>
                 </div>
                 <div>
-                  <p className="text-xs text-ink-3">{t('publishedOn', { defaultValue: 'Publi\u00e9 le' })}</p>
-                  <p className="text-sm font-medium text-brand-dark">{formattedDate}</p>
+                  <dt className="font-mono text-[11px] uppercase tracking-[0.06em] text-ink-3">{t('publishedOn', { defaultValue: 'Publié le' })}</dt>
+                  <dd className="mt-1 text-[15px] font-medium text-ink">
+                    <time dateTime={article.datePublication}>{formattedDate}</time>
+                  </dd>
+                  <dd className="text-[13px] text-ink-3">
+                    {article.tempsLecture} {t('minRead')}
+                  </dd>
                 </div>
                 {formattedUpdate && (
                   <div>
-                    <p className="text-xs text-ink-3">{t('updatedOn')}</p>
-                    <p className="text-sm font-medium text-brand-dark">{formattedUpdate}</p>
+                    <dt className="font-mono text-[11px] uppercase tracking-[0.06em] text-ink-3">{t('updatedOn')}</dt>
+                    <dd className="mt-1 text-[15px] font-medium text-ink">
+                      <time dateTime={article.dateMiseAJour}>{formattedUpdate}</time>
+                    </dd>
                   </div>
                 )}
-              </div>
-              <div className="flex items-center gap-2">
-                <a
-                  href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(articleUrl)}&text=${encodeURIComponent(article.title)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 text-ink-3 transition-colors hover:border-brand-primary hover:text-brand-primary"
-                  aria-label="Share on Twitter"
-                >
-                  <Twitter className="h-4 w-4" />
-                </a>
-                <a
-                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(articleUrl)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 text-ink-3 transition-colors hover:border-brand-primary hover:text-brand-primary"
-                  aria-label="Share on LinkedIn"
-                >
-                  <Linkedin className="h-4 w-4" />
-                </a>
-              </div>
+              </dl>
+              <a
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(articleUrl)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-10 w-10 items-center justify-center rounded-lg border border-line text-ink-2 transition-colors duration-150 hover:border-accent hover:text-accent"
+                aria-label="Share on LinkedIn"
+              >
+                <Linkedin aria-hidden strokeWidth={1.75} className="h-4 w-4" />
+              </a>
             </div>
-          </Container>
 
-          {/* Hero image — full width within container */}
-          {heroImage && (
-            <Container>
-              <div className="relative aspect-[21/9] overflow-hidden bg-gray-100">
+            {heroImage && (
+              <div className="relative mx-auto mt-10 aspect-[16/9] max-w-[1040px] overflow-hidden rounded-2xl border border-line bg-paper md:mt-14 md:aspect-[21/9]">
                 <Image
                   src={`/images/blog/${article.slug}/${heroImage.filename}`}
                   alt={heroImage.alt || article.title}
                   fill
                   className="object-cover"
-                  sizes="100vw"
+                  sizes="(max-width: 1100px) 100vw, 1040px"
                   priority
                 />
               </div>
-            </Container>
-          )}
-
-          {/* Gradient placeholder when no hero image */}
-          {!heroImage && (
-            <Container>
-              <div className="relative aspect-[21/9] overflow-hidden bg-gradient-to-br from-brand-primary via-brand-primary/80 to-brand-dark" />
-            </Container>
-          )}
+            )}
+          </Container>
         </header>
 
         {/* Article body */}
-        <div className="py-12 md:py-16">
+        <div className="bg-white pb-20 pt-12 md:pb-28 md:pt-16">
           <Container>
-            {/* Mobile TOC */}
-            {showToc && (
-              <div className="mx-auto max-w-3xl lg:hidden">
-                <TableOfContents
-                  items={toc}
-                  title={tBlog('toc.title')}
-                  showLabel={tBlog('toc.show')}
-                  hideLabel={tBlog('toc.hide')}
-                />
-              </div>
-            )}
-
-            {/* Content grid: TOC LEFT + content RIGHT */}
-            <div className={showToc
-              ? 'mx-auto max-w-5xl lg:grid lg:grid-cols-[200px_1fr] lg:gap-16'
-              : 'mx-auto max-w-3xl'
-            }>
-              {/* Desktop TOC — LEFT sidebar */}
+            {/* Content grid: TOC left + reading column. TableOfContents rend lui-même
+                sa version mobile repliable (lg:hidden) et la colonne collante desktop. */}
+            <div
+              className={
+                showToc
+                  ? 'mx-auto max-w-[720px] lg:grid lg:max-w-none lg:grid-cols-[220px_minmax(0,720px)] lg:justify-center lg:gap-16'
+                  : 'mx-auto max-w-[720px]'
+              }
+            >
               {showToc && (
                 <TableOfContents
                   items={toc}
@@ -283,57 +261,44 @@ export default async function ArticlePage({ params }: PageProps) {
                 />
               )}
 
-              <div>
-                {/* MDX content */}
-                <div className="prose max-w-none
-                  prose-headings:font-serif prose-headings:tracking-tight prose-headings:text-brand-dark
-                  prose-h1:text-2xl prose-h1:mt-10 prose-h1:mb-3
-                  prose-h2:text-[1.5rem] prose-h2:mt-10 prose-h2:mb-3 prose-h2:border-b prose-h2:border-gray-100 prose-h2:pb-3
-                  prose-h3:text-lg prose-h3:mt-7 prose-h3:mb-2
-                  prose-h4:text-base prose-h4:mt-5 prose-h4:mb-2 prose-h4:font-bold
-                  prose-p:text-gray-600 prose-p:leading-[1.6] prose-p:mt-1.5 prose-p:mb-1.5
-                  prose-a:text-brand-primary prose-a:no-underline prose-a:font-medium hover:prose-a:underline
-                  prose-strong:text-brand-dark prose-strong:font-semibold
-                  prose-ul:my-3 prose-ul:pl-5 prose-ul:space-y-1
-                  prose-ol:my-3 prose-ol:pl-5 prose-ol:space-y-1
-                  prose-li:text-gray-600 prose-li:leading-[1.65] prose-li:pl-1
-                  prose-img:rounded-sm
-                  prose-blockquote:border-l-2 prose-blockquote:border-brand-primary prose-blockquote:bg-brand-light/20 prose-blockquote:py-3 prose-blockquote:px-5 prose-blockquote:my-5 prose-blockquote:rounded-r-sm prose-blockquote:not-italic prose-blockquote:text-brand-dark prose-blockquote:font-serif prose-blockquote:text-lg prose-blockquote:leading-relaxed
-                  prose-table:text-sm prose-th:bg-brand-light/30 prose-th:px-4 prose-th:py-2.5
-                  prose-td:px-4 prose-td:py-2.5 prose-td:border-b prose-td:border-gray-100
-                  prose-hr:border-gray-100 prose-hr:my-8
-                  [&>h2+p]:mt-0 [&>h3+p]:mt-0
-                ">
+              <div className="min-w-0">
+                {/* MDX content : variables de @tailwindcss/typography calées sur la charte */}
+                <div
+                  className="prose max-w-none text-[17px] leading-[1.7]
+                    [--tw-prose-body:var(--color-ink-2)] [--tw-prose-headings:var(--color-ink)] [--tw-prose-lead:var(--color-ink-2)]
+                    [--tw-prose-links:var(--color-accent)] [--tw-prose-bold:var(--color-ink)] [--tw-prose-counters:var(--color-ink-3)]
+                    [--tw-prose-bullets:var(--color-accent)] [--tw-prose-hr:var(--color-line)] [--tw-prose-quotes:var(--color-ink)]
+                    [--tw-prose-quote-borders:var(--color-accent)] [--tw-prose-captions:var(--color-ink-3)] [--tw-prose-code:var(--color-ink)]
+                    [--tw-prose-th-borders:var(--color-line)] [--tw-prose-td-borders:var(--color-line)]
+                    prose-headings:scroll-mt-28 prose-headings:font-medium prose-headings:tracking-[-0.015em]
+                    prose-h2:mb-4 prose-h2:mt-14 prose-h2:text-[1.625rem] prose-h2:leading-[1.2] md:prose-h2:text-[1.875rem]
+                    prose-h3:mb-3 prose-h3:mt-10 prose-h3:text-[1.25rem] prose-h3:font-semibold prose-h3:leading-[1.3] prose-h3:tracking-[-0.01em]
+                    prose-h4:mb-2 prose-h4:mt-8 prose-h4:text-[1.0625rem] prose-h4:font-semibold
+                    prose-p:my-5
+                    prose-a:font-medium prose-a:underline prose-a:decoration-accent/30 prose-a:underline-offset-4 hover:prose-a:decoration-accent
+                    prose-strong:font-semibold
+                    prose-ol:my-5 prose-ul:my-5 prose-li:my-1.5
+                    prose-blockquote:my-8 prose-blockquote:border-l-2 prose-blockquote:pl-6 prose-blockquote:text-[1.1875rem] prose-blockquote:font-normal prose-blockquote:not-italic prose-blockquote:leading-relaxed
+                    [&_blockquote_p]:before:content-none [&_blockquote_p]:after:content-none
+                    prose-code:rounded prose-code:bg-paper prose-code:px-1.5 prose-code:py-0.5 prose-code:text-[0.9em] prose-code:font-normal prose-code:before:content-none prose-code:after:content-none
+                    prose-img:rounded-xl prose-hr:my-12"
+                >
                   <MDXRemote
                     source={article.content}
                     components={mdxComponents}
                     options={{ mdxOptions: { remarkPlugins: [remarkGfm], rehypePlugins: [rehypeSlug] } }}
                   />
                 </div>
-
-                {/* CTA footer */}
-                {article.ctaPrincipal !== 'newsletter' && (
-                  <div className="mt-16 border-t border-gray-100 pt-12">
-                    <div className="rounded-none bg-brand-dark px-8 py-10 text-center md:px-12">
-                      <p className="font-serif text-xl font-bold text-white md:text-2xl">
-                        {t('ctaTitle')}
-                      </p>
-                      <a
-                        href="https://app.lemcal.com/@trigger-flow/demo"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-5 inline-flex rounded-none bg-white px-8 py-3 text-sm font-semibold text-brand-dark transition-colors hover:bg-brand-light"
-                      >
-                        {t('ctaButton')}
-                      </a>
-                    </div>
-                  </div>
-                )}
               </div>
             </div>
           </Container>
         </div>
       </article>
+
+      {/* CTA de fin d'article */}
+      {article.ctaPrincipal !== 'newsletter' && (
+        <CtaBand title={t('ctaTitle')} primary={{ label: t('ctaButton'), href: brand.demoUrl }} />
+      )}
     </>
   );
 }
