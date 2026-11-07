@@ -150,6 +150,37 @@
 }
 
 @theme inline {
+  /* ── Charte 2026 (docs/charte.md) : une seule couleur d'action, neutres chauds ── */
+  --color-ink: #002B28;
+  --color-ink-2: #3D4F4D;
+  --color-ink-3: #5B6B69;
+  --color-accent: #006F68;
+  --color-accent-hover: #005A54;
+  --color-mint: #CCE2E1;
+  --color-peach: #FFCFA2;
+  --color-paper: #FAF9F6;
+  --color-line: #E4E8E7;
+
+  /* Échelle typographique de la charte (taille, interligne, approche) */
+  --text-display: 4rem;
+  --text-display--line-height: 1.05;
+  --text-display--letter-spacing: -0.025em;
+  --text-h1: 3.25rem;
+  --text-h1--line-height: 1.1;
+  --text-h1--letter-spacing: -0.02em;
+  --text-h2: 2.5rem;
+  --text-h2--line-height: 1.15;
+  --text-h2--letter-spacing: -0.02em;
+  --text-h3: 1.5rem;
+  --text-h3--line-height: 1.3;
+  --text-h3--letter-spacing: -0.01em;
+  --text-lead: 1.25rem;
+  --text-lead--line-height: 1.55;
+  --text-eyebrow: 0.75rem;
+  --text-eyebrow--line-height: 1.4;
+  --text-eyebrow--letter-spacing: 0.08em;
+
+  --shadow-product: 0 24px 48px -12px rgba(0, 43, 40, 0.18);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-brand-primary: var(--brand-primary);
@@ -177,7 +208,7 @@
 
   /* Fonts */
   --font-sans: var(--font-ibm-plex-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: var(--font-plex-mono);
   --font-serif: var(--font-playfair);
 }
 
@@ -187,7 +218,7 @@ html {
 
 /* Le bandeau d'annonce des tarifs ajoute 36px (h-9) au header fixe. */
 html:has([data-price-banner]) {
-  scroll-padding-top: calc(5rem + 36px);
+  scroll-padding-top: calc(4rem + 36px);
 }
 
 body {

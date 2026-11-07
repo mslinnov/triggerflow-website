@@ -21,9 +21,10 @@ export const brand = {
   demoUrl: 'https://app.lemcal.com/@trigger-flow/demo',
   sameAs: ['https://www.linkedin.com/company/triggerflow/'],
   category: { fr: 'CRM hôtelier', en: 'Hotel CRM' },
+  /** Promesse validée par Soufiane le 07/11/2026 (docs/messages.md). */
   slogan: {
-    fr: 'Le CRM hôtelier qui centralise toute la relation client',
-    en: 'The hotel CRM that brings your whole guest relationship together',
+    fr: "Le CRM hôtelier qui s'adapte à votre hôtel. Pas l'inverse.",
+    en: 'The hotel CRM that fits your hotel, not the other way around.',
   },
   /** Mise en place en moins de 48 h et support 7j/7 (confirmés le 25/10/2026). */
   setupHours: 48,

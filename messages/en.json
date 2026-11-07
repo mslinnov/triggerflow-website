@@ -2938,5 +2938,312 @@
     "text": "Reception call: goodbye to in-room phones. Guests call the front desk from their own phone, for free.",
     "short": "Reception call: goodbye to in-room phones",
     "cta": "See a demo"
+  },
+  "ds": {
+    "trust": {
+      "france": "Hosted in France",
+      "gdpr": "GDPR",
+      "dpa": "Public DPA"
+    }
+  },
+  "visuals": {
+    "hero": {
+      "segment": "Segment",
+      "guests": "guests",
+      "where": "where",
+      "and": "and",
+      "chip1": "Travelling as a couple",
+      "chip2": "Arriving in 3 days",
+      "chip3": "No breakfast booked",
+      "flow": "Flow · Pre-stay offer",
+      "trigger": "Trigger",
+      "triggerTitle": "3 days before arrival",
+      "condition": "Condition",
+      "conditionTitle": "Segment: couples without breakfast",
+      "action": "Action",
+      "actionTitle": "Email: breakfast in your room",
+      "emailFrom": "Hôtel des Tilleuls (demo)",
+      "emailSubject": "Your stay is coming up, Camille",
+      "offer": "Breakfast in your room",
+      "offerPrice": "€18 / person / day",
+      "add": "Add",
+      "paid": "Breakfast added and paid",
+      "paidAmount": "+€72",
+      "synced": "Booking updated in the PMS"
+    },
+    "flowTree": {
+      "triggered": "Triggered",
+      "trigger": "Trigger",
+      "triggerTitle": "3 days before arrival",
+      "condition": "Condition",
+      "conditionTitle": "Guest with an OTA email",
+      "yes": "Yes",
+      "no": "No",
+      "action": "Action",
+      "yesAction": "Email: your booking is confirmed",
+      "noAction": "Form: get their real email"
+    },
+    "dedup": {
+      "form": "Form",
+      "formSource": "pre-check-in",
+      "detected": "3 duplicates detected",
+      "oneProfile": "One guest profile",
+      "email": "Email",
+      "phone": "Phone",
+      "stays": "4 stays",
+      "merged": "Profiles merged"
+    }
+  },
+  "nav": {
+    "product": "Product",
+    "solutions": "Solutions",
+    "clients": "Customers",
+    "integrations": "Integrations",
+    "pricing": "Pricing",
+    "resources": "Resources",
+    "login": "Log in",
+    "startFree": "Start for free",
+    "seeProduct": "See the product",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "seePlatform": "See the whole platform",
+    "columns": {
+      "before": "Before the stay",
+      "during": "During the stay",
+      "after": "After the stay",
+      "marketing": "Marketing",
+      "core": "Core"
+    },
+    "items": {
+      "upsell": "Upsell",
+      "pay": "Payments",
+      "forms": "Forms",
+      "inbox": "Unified inbox",
+      "whatsapp": "WhatsApp",
+      "sms": "SMS",
+      "reviews": "Reviews",
+      "loyalty": "Loyalty",
+      "campaigns": "Campaigns and newsletter",
+      "email": "Emails",
+      "flows": "Flows (automations)",
+      "crm": "CRM and guest profile",
+      "analytics": "Analytics",
+      "independent": "Independent hotels",
+      "groups": "Hotel groups",
+      "luxury": "Luxury hotels",
+      "residences": "Serviced residences",
+      "campsites": "Campsites",
+      "blog": "Blog",
+      "guides": "Guides",
+      "help": "Help center"
+    },
+    "descriptions": {
+      "upsell": "The right extra, before arrival",
+      "pay": "Deposits, holds, payment links",
+      "forms": "Custom forms that can sell",
+      "inbox": "Every message in one place",
+      "whatsapp": "Your guests' favourite channel",
+      "sms": "The messages that matter",
+      "reviews": "More positive reviews",
+      "loyalty": "Guests who book direct again",
+      "campaigns": "Campaigns targeted by segment",
+      "email": "Automated stay emails",
+      "flows": "Your scenarios, no code",
+      "crm": "One profile per guest, no duplicates",
+      "analytics": "Your numbers, no spreadsheet"
+    },
+    "footer": {
+      "tagline": "The hotel CRM that fits your hotel, not the other way around.",
+      "columns": {
+        "product": "Product",
+        "solutions": "Solutions",
+        "clients": "Customers",
+        "resources": "Resources",
+        "company": "Company",
+        "trust": "Trust",
+        "legal": "Legal"
+      },
+      "items": {
+        "platform": "The platform",
+        "flows": "Flows",
+        "inbox": "Inbox",
+        "upsell": "Upsell",
+        "pay": "Payments",
+        "reviews": "Reviews",
+        "crm": "CRM",
+        "pricing": "Pricing",
+        "independent": "Independent hotels",
+        "groups": "Hotel groups",
+        "luxury": "Luxury hotels",
+        "residences": "Residences",
+        "campsites": "Campsites",
+        "integrations": "Integrations",
+        "allCases": "All customer stories",
+        "edgar": "Edgar Hotel & Spa",
+        "causse": "Hôtel Causse Comtal",
+        "pressoir": "Le Vieux Pressoir",
+        "noemys": "Groupe Noemys",
+        "blog": "Blog",
+        "guides": "Guides",
+        "help": "Help center",
+        "about": "About",
+        "careers": "Careers",
+        "contact": "Contact",
+        "dpa": "Data processing agreement (DPA)",
+        "privacy": "Privacy",
+        "legalNotice": "Legal notice",
+        "terms": "Terms of sale",
+        "termsOfUse": "Terms of use",
+        "cookies": "Manage cookies"
+      },
+      "hosted": "Hosted in France · GDPR",
+      "company": "A Utelys product"
+    }
+  },
+  "home2": {
+    "meta": {
+      "title": "TriggerFlow | The hotel CRM that fits your hotel",
+      "description": "Flows, segments, messages, forms, offers: build the exact guest journey your property needs, synced with your PMS. Hosted in France, live in 48 hours."
+    },
+    "hero": {
+      "eyebrow": "Hotel CRM",
+      "title": "The hotel CRM that fits your hotel,",
+      "titleMuted": "not the other way around.",
+      "subtitle": "Flows, segments, messages, forms, offers: build the exact guest journey your property needs, synced with your PMS. No developer, live in 48 hours.",
+      "pms": "{count} connected PMS"
+    },
+    "proof": {
+      "title": "They chose TriggerFlow",
+      "pms": "Natively connected to {list} and {rest} other PMS."
+    },
+    "results": {
+      "eyebrow": "Customer results",
+      "title": "Three hotels, three results.",
+      "items": [
+        {
+          "client": "Hôtel Causse Comtal",
+          "tag": "Aveyron · Thaïs",
+          "title": "Chain-grade emails, in one week",
+          "text": "“In one week, we set up automated emails you'd normally only find at very large hotel chains.”",
+          "href": "/ressources/cas-clients/causse-comtal",
+          "cta": "Read the Causse Comtal story"
+        },
+        {
+          "client": "AMMI Hôtels",
+          "tag": "Nice · 6 properties",
+          "title": "One tool for the whole group",
+          "text": "A CRM and a WhatsApp tool replaced by TriggerFlow. Head office sees everything, each front desk sees what matters.",
+          "href": "/ressources/cas-clients",
+          "cta": "See customer stories"
+        },
+        {
+          "client": "Hôtel Arc en Ciel",
+          "tag": "Colmar · 43 rooms",
+          "title": "Payments tracked and chased automatically",
+          "text": "“Sending a payment request automatically, seeing whether the guest has paid, then triggering reminders: a huge time saver.”",
+          "href": "/ressources/cas-clients",
+          "cta": "See customer stories"
+        }
+      ]
+    },
+    "product": {
+      "eyebrow": "How it works",
+      "title": "Something happens.",
+      "titleMuted": "You decide what comes next.",
+      "subtitle": "A booking comes in, a guest checks in, a stay ends. You choose who gets what, when and on which channel. TriggerFlow runs it, every time.",
+      "steps": [
+        {
+          "title": "A trigger",
+          "text": "Booking, arrival, departure, birthday, form answer, delay."
+        },
+        {
+          "title": "Your conditions",
+          "text": "Segment, language, booking channel, room type, guest history."
+        },
+        {
+          "title": "Actions",
+          "text": "Email, SMS, WhatsApp, form, offer, task for the team. And the PMS is updated."
+        }
+      ],
+      "platformTitle": "Before, during and after the stay.",
+      "platformMuted": "And between stays.",
+      "seeAll": "See the whole platform",
+      "tailoredTitle": "Different hotels.",
+      "tailoredMuted": "Different journeys.",
+      "tailoredText": "Ready-made templates to get started, which you then adapt to your hotel. Three real examples:",
+      "tailored": [
+        {
+          "client": "Hôtel Causse Comtal",
+          "text": "Guests without breakfast are offered it. Guests with a spa treatment get a form to pick their slot."
+        },
+        {
+          "client": "Le Vieux Pressoir",
+          "text": "A different message depending on the booking platform, the room type and the arrival time."
+        },
+        {
+          "client": "Hôtel Estrimont",
+          "text": "Forms turned into training quizzes for the team, in Canada."
+        }
+      ]
+    },
+    "reliability": {
+      "eyebrow": "Reliability",
+      "title": "What you send arrives.",
+      "titleMuted": "What you sell gets paid.",
+      "source": "Last 12 months, all client properties",
+      "stats": {
+        "emailDelivered": "of emails delivered",
+        "smsDelivered": "of SMS delivered",
+        "paidWithin2h": "of payments settled within 2 hours of opening the link"
+      },
+      "syncTitle": "Two-way sync",
+      "syncText": "Bookings and guest profiles flow in from the PMS, useful information flows back. In real time, with no double entry.",
+      "dedupTitle": "Clean data",
+      "dedupText": "Duplicates from the PMS, OTAs and forms are detected and merged. One profile per guest, no message sent twice."
+    },
+    "testimonials": {
+      "eyebrow": "Testimonials",
+      "title": "What hoteliers say.",
+      "reviewLabel": "Google review · La Ferme de l'Oudon",
+      "review": "The team's support is extremely responsive. 100% trust and availability!"
+    },
+    "security": {
+      "eyebrow": "Trust",
+      "title": "Your data stays in France.",
+      "items": [
+        {
+          "title": "Hosted in France",
+          "text": "Your data and your guests' data are hosted in France."
+        },
+        {
+          "title": "GDPR and public DPA",
+          "text": "Published data processing agreement, recorded consents."
+        },
+        {
+          "title": "Listed subprocessors",
+          "text": "The full list is public and up to date."
+        },
+        {
+          "title": "Data deleted on time",
+          "text": "Event attendees and call recordings are deleted automatically."
+        }
+      ],
+      "sso": "SSO available for hotel groups.",
+      "link": "Read the data processing agreement"
+    },
+    "pricing": {
+      "eyebrow": "Pricing",
+      "title": "Public pricing,",
+      "titleMuted": "per property.",
+      "perMonth": "/month excl. VAT per property",
+      "then": "then €{price} from 1 January 2027",
+      "startFree": "Start for free",
+      "startTrial": "Start the trial",
+      "compare": "Compare plans and modules"
+    },
+    "cta": {
+      "title": "Build your hotel's guest journey.",
+      "text": "Guided setup, live in 48 hours."
+    }
   }
 }

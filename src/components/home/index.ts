@@ -1,0 +1,8 @@
+export { HomeHero } from './HomeHero';
+export { HomeProof } from './HomeProof';
+export { HomeResults } from './HomeResults';
+export { HomeProduct } from './HomeProduct';
+export { HomeReliability } from './HomeReliability';
+export { HomeTestimonials } from './HomeTestimonials';
+export { HomeSecurity } from './HomeSecurity';
+export { HomePricing } from './HomePricing';

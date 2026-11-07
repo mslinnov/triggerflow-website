@@ -1,6 +1,6 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
-import { Header, Footer, AnnouncementBar } from '@/components/layout';
+import { SiteHeader, SiteFooter, AnnouncementBar } from '@/components/layout';
 
 /** Régénère le HTML statique toutes les heures : la bascule des tarifs au 1er janvier se fait sans redéploiement. */
 export const revalidate = 3600;
@@ -23,9 +23,9 @@ export default async function BlogLayout({
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <Header banner={<AnnouncementBar />} />
-      <main className="pt-[100px] md:pt-[116px]">{children}</main>
-      <Footer />
+      <SiteHeader banner={<AnnouncementBar />} />
+      <main className="pt-[100px]">{children}</main>
+      <SiteFooter />
     </NextIntlClientProvider>
   );
 }

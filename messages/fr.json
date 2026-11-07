@@ -3223,5 +3223,312 @@
     "text": "Appel réception : la fin du téléphone en chambre. Vos clients appellent la réception depuis leur téléphone, gratuitement.",
     "short": "Appel réception : la fin du téléphone en chambre",
     "cta": "Voir une démo"
+  },
+  "ds": {
+    "trust": {
+      "france": "Hébergé en France",
+      "gdpr": "RGPD",
+      "dpa": "DPA public"
+    }
+  },
+  "visuals": {
+    "hero": {
+      "segment": "Segment",
+      "guests": "clients",
+      "where": "où",
+      "and": "et",
+      "chip1": "Voyage en couple",
+      "chip2": "Arrivée dans 3 jours",
+      "chip3": "Sans petit-déjeuner",
+      "flow": "Flow · Offre pré-séjour",
+      "trigger": "Déclencheur",
+      "triggerTitle": "3 jours avant l'arrivée",
+      "condition": "Condition",
+      "conditionTitle": "Segment : couples sans petit-déjeuner",
+      "action": "Action",
+      "actionTitle": "Email : petit-déjeuner en chambre",
+      "emailFrom": "Hôtel des Tilleuls (démo)",
+      "emailSubject": "Votre séjour approche, Camille",
+      "offer": "Petit-déjeuner en chambre",
+      "offerPrice": "18 € / pers. / jour",
+      "add": "Ajouter",
+      "paid": "Petit-déjeuner ajouté et payé",
+      "paidAmount": "+72 €",
+      "synced": "Réservation mise à jour dans le PMS"
+    },
+    "flowTree": {
+      "triggered": "Déclenché",
+      "trigger": "Déclencheur",
+      "triggerTitle": "3 jours avant l'arrivée",
+      "condition": "Condition",
+      "conditionTitle": "Client avec email OTA",
+      "yes": "Oui",
+      "no": "Non",
+      "action": "Action",
+      "yesAction": "Email : votre réservation est confirmée",
+      "noAction": "Formulaire : récupérer son vrai email"
+    },
+    "dedup": {
+      "form": "Formulaire",
+      "formSource": "pré-check-in",
+      "detected": "3 doublons détectés",
+      "oneProfile": "Une seule fiche client",
+      "email": "Email",
+      "phone": "Téléphone",
+      "stays": "4 séjours",
+      "merged": "Fiches fusionnées"
+    }
+  },
+  "nav": {
+    "product": "Produit",
+    "solutions": "Solutions",
+    "clients": "Clients",
+    "integrations": "Intégrations",
+    "pricing": "Tarifs",
+    "resources": "Ressources",
+    "login": "Connexion",
+    "startFree": "Démarrer gratuitement",
+    "seeProduct": "Voir le produit",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "seePlatform": "Voir toute la plateforme",
+    "columns": {
+      "before": "Avant le séjour",
+      "during": "Pendant le séjour",
+      "after": "Après le séjour",
+      "marketing": "Marketing",
+      "core": "Socle"
+    },
+    "items": {
+      "upsell": "Upsell",
+      "pay": "Paiements",
+      "forms": "Formulaires",
+      "inbox": "Messagerie unifiée",
+      "whatsapp": "WhatsApp",
+      "sms": "SMS",
+      "reviews": "Avis",
+      "loyalty": "Fidélité",
+      "campaigns": "Campagnes et newsletter",
+      "email": "Emails",
+      "flows": "Flows (automatisations)",
+      "crm": "CRM et fiche client",
+      "analytics": "Statistiques",
+      "independent": "Hôtels indépendants",
+      "groups": "Groupes hôteliers",
+      "luxury": "Hôtels de luxe",
+      "residences": "Résidences de tourisme",
+      "campsites": "Campings",
+      "blog": "Blog",
+      "guides": "Guides",
+      "help": "Centre d'aide"
+    },
+    "descriptions": {
+      "upsell": "Le bon extra, avant l'arrivée",
+      "pay": "Acomptes, cautions, liens de paiement",
+      "forms": "Formulaires libres qui peuvent vendre",
+      "inbox": "Tous les messages au même endroit",
+      "whatsapp": "Le canal préféré des clients",
+      "sms": "Les messages qui comptent",
+      "reviews": "Plus d'avis positifs",
+      "loyalty": "Ils reviennent en direct",
+      "campaigns": "Campagnes ciblées par segment",
+      "email": "Emails automatiques du séjour",
+      "flows": "Vos scénarios, sans code",
+      "crm": "Une fiche par client, sans doublons",
+      "analytics": "Vos chiffres, sans tableur"
+    },
+    "footer": {
+      "tagline": "Le CRM hôtelier qui s'adapte à votre hôtel. Pas l'inverse.",
+      "columns": {
+        "product": "Produit",
+        "solutions": "Solutions",
+        "clients": "Clients",
+        "resources": "Ressources",
+        "company": "Entreprise",
+        "trust": "Confiance",
+        "legal": "Légal"
+      },
+      "items": {
+        "platform": "La plateforme",
+        "flows": "Flows",
+        "inbox": "Messagerie",
+        "upsell": "Upsell",
+        "pay": "Paiements",
+        "reviews": "Avis",
+        "crm": "CRM",
+        "pricing": "Tarifs",
+        "independent": "Hôtels indépendants",
+        "groups": "Groupes hôteliers",
+        "luxury": "Hôtels de luxe",
+        "residences": "Résidences",
+        "campsites": "Campings",
+        "integrations": "Intégrations",
+        "allCases": "Tous les cas clients",
+        "edgar": "Edgar Hotel & Spa",
+        "causse": "Hôtel Causse Comtal",
+        "pressoir": "Le Vieux Pressoir",
+        "noemys": "Groupe Noemys",
+        "blog": "Blog",
+        "guides": "Guides",
+        "help": "Centre d'aide",
+        "about": "À propos",
+        "careers": "Carrières",
+        "contact": "Contact",
+        "dpa": "Accord de sous-traitance (DPA)",
+        "privacy": "Confidentialité",
+        "legalNotice": "Mentions légales",
+        "terms": "CGV",
+        "termsOfUse": "CGU",
+        "cookies": "Gérer mes cookies"
+      },
+      "hosted": "Hébergé en France · RGPD",
+      "company": "Une solution Utelys"
+    }
+  },
+  "home2": {
+    "meta": {
+      "title": "TriggerFlow | Le CRM hôtelier qui s'adapte à votre hôtel",
+      "description": "Flows, segments, messages, formulaires, offres : construisez le parcours client exact de votre hôtel, synchronisé avec votre PMS. Hébergé en France, opérationnel en 48 h."
+    },
+    "hero": {
+      "eyebrow": "CRM hôtelier",
+      "title": "Le CRM hôtelier qui s'adapte à votre hôtel.",
+      "titleMuted": "Pas l'inverse.",
+      "subtitle": "Flows, segments, messages, formulaires, offres : construisez le parcours client exact de votre établissement, synchronisé avec votre PMS. Sans développeur, opérationnel en 48 h.",
+      "pms": "{count} PMS connectés"
+    },
+    "proof": {
+      "title": "Ils ont choisi TriggerFlow",
+      "pms": "Connecté nativement à {list} et {rest} autres PMS."
+    },
+    "results": {
+      "eyebrow": "Résultats clients",
+      "title": "Trois hôtels, trois résultats.",
+      "items": [
+        {
+          "client": "Hôtel Causse Comtal",
+          "tag": "Aveyron · Thaïs",
+          "title": "Des emails dignes d'une grande chaîne, en une semaine",
+          "text": "« Nous avons pu, en une semaine, mettre en place une solution d'e-mails automatisés qu'on retrouve normalement dans les très grosses chaînes d'hôtellerie. »",
+          "href": "/ressources/cas-clients/causse-comtal",
+          "cta": "Lire le cas Causse Comtal"
+        },
+        {
+          "client": "AMMI Hôtels",
+          "tag": "Nice · 6 établissements",
+          "title": "Un seul outil pour tout le groupe",
+          "text": "Un CRM et un outil WhatsApp remplacés par TriggerFlow. Le siège voit tout, chaque réception voit l'essentiel.",
+          "href": "/ressources/cas-clients",
+          "cta": "Voir les cas clients"
+        },
+        {
+          "client": "Hôtel Arc en Ciel",
+          "tag": "Colmar · 43 chambres",
+          "title": "Des paiements suivis et relancés tout seuls",
+          "text": "« Envoyer automatiquement une demande de paiement, suivre si le client a payé, puis déclencher des relances : un énorme gain de temps et de sérénité. »",
+          "href": "/ressources/cas-clients",
+          "cta": "Voir les cas clients"
+        }
+      ]
+    },
+    "product": {
+      "eyebrow": "Comment ça marche",
+      "title": "Un événement se produit.",
+      "titleMuted": "Vous décidez de la suite.",
+      "subtitle": "Une réservation arrive, un client s'enregistre, un séjour se termine. Vous choisissez qui reçoit quoi, quand, sur quel canal. TriggerFlow l'exécute, à chaque fois.",
+      "steps": [
+        {
+          "title": "Un déclencheur",
+          "text": "Réservation, arrivée, départ, anniversaire, réponse à un formulaire, délai."
+        },
+        {
+          "title": "Vos conditions",
+          "text": "Segment, langue, canal de réservation, type de chambre, historique du client."
+        },
+        {
+          "title": "Des actions",
+          "text": "Email, SMS, WhatsApp, formulaire, offre, tâche pour l'équipe. Et le PMS est mis à jour."
+        }
+      ],
+      "platformTitle": "Avant, pendant, après le séjour.",
+      "platformMuted": "Et entre deux séjours.",
+      "seeAll": "Voir toute la plateforme",
+      "tailoredTitle": "Des hôtels différents.",
+      "tailoredMuted": "Des parcours différents.",
+      "tailoredText": "Des modèles prêts à l'emploi pour démarrer, que vous adaptez ensuite à votre hôtel. Trois exemples réels :",
+      "tailored": [
+        {
+          "client": "Hôtel Causse Comtal",
+          "text": "Le client sans petit-déjeuner se le voit proposer. Celui qui a un soin au spa reçoit un formulaire pour choisir son créneau."
+        },
+        {
+          "client": "Le Vieux Pressoir",
+          "text": "Un message différent selon la plateforme de réservation, le type de logement et l'heure d'arrivée."
+        },
+        {
+          "client": "Hôtel Estrimont",
+          "text": "Les formulaires détournés en quiz de formation pour l'équipe, au Canada."
+        }
+      ]
+    },
+    "reliability": {
+      "eyebrow": "Fiabilité",
+      "title": "Ce que vous envoyez arrive.",
+      "titleMuted": "Ce que vous vendez est payé.",
+      "source": "12 derniers mois, tous établissements clients",
+      "stats": {
+        "emailDelivered": "des e-mails délivrés",
+        "smsDelivered": "des SMS remis",
+        "paidWithin2h": "des paiements réglés dans les 2 h après ouverture du lien"
+      },
+      "syncTitle": "Synchronisation dans les deux sens",
+      "syncText": "Les réservations et profils remontent du PMS, les informations utiles y redescendent. En temps réel, sans double saisie.",
+      "dedupTitle": "Des données propres",
+      "dedupText": "Les doublons venus du PMS, des OTA et des formulaires sont détectés et fusionnés. Une fiche par client, aucun message envoyé deux fois."
+    },
+    "testimonials": {
+      "eyebrow": "Témoignages",
+      "title": "Ce qu'en disent les hôteliers.",
+      "reviewLabel": "Avis Google · La Ferme de l'Oudon",
+      "review": "Le support de l'équipe est extrêmement réactif. Confiance et disponibilité à 100 % !"
+    },
+    "security": {
+      "eyebrow": "Confiance",
+      "title": "Vos données restent en France.",
+      "items": [
+        {
+          "title": "Hébergé en France",
+          "text": "Vos données et celles de vos clients sont hébergées en France."
+        },
+        {
+          "title": "RGPD et DPA public",
+          "text": "Accord de sous-traitance publié, consentements tracés."
+        },
+        {
+          "title": "Sous-traitants listés",
+          "text": "La liste complète est publique, à jour."
+        },
+        {
+          "title": "Données supprimées à temps",
+          "text": "Participants d'événements et enregistrements d'appels supprimés automatiquement."
+        }
+      ],
+      "sso": "Connexion SSO disponible pour les groupes.",
+      "link": "Lire l'accord de sous-traitance"
+    },
+    "pricing": {
+      "eyebrow": "Tarifs",
+      "title": "Des tarifs publics,",
+      "titleMuted": "par établissement.",
+      "perMonth": "/mois HT par établissement",
+      "then": "puis {price} € à partir du 1er janvier 2027",
+      "startFree": "Démarrer gratuitement",
+      "startTrial": "Démarrer l'essai",
+      "compare": "Comparer les plans et les modules"
+    },
+    "cta": {
+      "title": "Construisez le parcours client de votre hôtel.",
+      "text": "Mise en place accompagnée, opérationnel en 48 h."
+    }
   }
 }

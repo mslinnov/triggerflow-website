@@ -2,7 +2,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { IBM_Plex_Sans, Geist_Mono, Fraunces } from 'next/font/google';
+import { IBM_Plex_Sans, IBM_Plex_Mono, Geist_Mono, Fraunces } from 'next/font/google';
 import { routing } from '@/i18n/routing';
 import { pageAlternates } from '@/lib/seo';
 import { CookieConsentBanner } from '@/components/cookies';
@@ -18,6 +18,13 @@ const ibmPlexSans = IBM_Plex_Sans({
   variable: '--font-ibm-plex-sans',
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
+  display: 'swap',
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  variable: '--font-plex-mono',
+  subsets: ['latin'],
+  weight: ['400', '500'],
   display: 'swap',
 });
 
@@ -151,7 +158,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     <html
       lang={locale}
       suppressHydrationWarning
-      className={`${ibmPlexSans.variable} ${geistMono.variable} ${fraunces.variable}`}
+      className={`${ibmPlexSans.variable} ${ibmPlexMono.variable} ${geistMono.variable} ${fraunces.variable}`}
     >
       <body className="antialiased">
         <NextIntlClientProvider locale={locale} messages={rootMessages}>
