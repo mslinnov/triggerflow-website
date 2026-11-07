@@ -1022,7 +1022,7 @@
         "emails": "Emails/month",
         "sms": "SMS (From €0.06/sms)",
         "stats": "Statistics and analytics",
-        "hub": "Message hub",
+        "hub": "Unified inbox",
         "whatsapp": "WhatsApp",
         "marketing": "Marketing & Newsletter",
         "forms": "Forms",
@@ -3179,7 +3179,7 @@
       "during": "During the stay",
       "after": "After the stay",
       "marketing": "Marketing",
-      "core": "Core"
+      "core": "Foundations"
     },
     "items": {
       "upsell": "Upsell",

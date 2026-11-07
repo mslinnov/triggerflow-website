@@ -1030,7 +1030,7 @@
         "emails": "E-mails/mois",
         "sms": "SMS (À partir de 0,06€/sms)",
         "stats": "Statistiques et analyses",
-        "hub": "Hub de messagerie",
+        "hub": "Messagerie unifiée",
         "whatsapp": "WhatsApp",
         "marketing": "Marketing & Newsletter",
         "forms": "Formulaires",
@@ -3464,7 +3464,7 @@
       "during": "Pendant le séjour",
       "after": "Après le séjour",
       "marketing": "Marketing",
-      "core": "Socle"
+      "core": "Les fondations"
     },
     "items": {
       "upsell": "Upsell",
