@@ -61,7 +61,7 @@ export const voice: ProductLanding = {
     extra: ['Igloohome', 'Sesame'],
   },
   related: [
-    { slug: 'inbox', href: '/produit/hub-messagerie', name: { fr: 'Messagerie', en: 'Inbox' }, text: { fr: 'Les demandes écrites au même endroit.', en: 'Written requests in one place.' } },
+    { slug: 'inbox', href: '/produit/inbox', name: { fr: 'Messagerie', en: 'Inbox' }, text: { fr: 'Les demandes écrites au même endroit.', en: 'Written requests in one place.' } },
     { slug: 'crm', href: '/produit/crm', name: { fr: 'CRM', en: 'CRM' }, text: { fr: 'La fiche client derrière chaque appel.', en: 'The guest profile behind every call.' } },
     { slug: 'flows', href: '/produit/flows', name: { fr: 'Flows', en: 'Flows' }, text: { fr: 'Envoyez le lien de l’espace client au bon moment.', en: 'Send the guest space link at the right time.' } },
   ],

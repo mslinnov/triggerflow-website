@@ -72,6 +72,12 @@ const nextConfig: NextConfig = {
       { source: '/:locale(fr|en)/produit/ventes-additionnelles', destination: '/:locale/produit/upsell', permanent: true },
       { source: '/:locale(fr|en)/produit/automatisations', destination: '/:locale/produit/flows', permanent: true },
       { source: '/:locale(fr|en)/produit/paiements', destination: '/:locale/produit/pay', permanent: true },
+      { source: '/:locale(fr|en)/produit/hub-messagerie', destination: '/:locale/produit/inbox', permanent: true },
+      { source: '/:locale(fr|en)/produit/avis', destination: '/:locale/produit/reviews', permanent: true },
+      { source: '/:locale(fr|en)/produit/formulaires', destination: '/:locale/produit/forms', permanent: true },
+      { source: '/:locale(fr|en)/produit/fidelite', destination: '/:locale/produit/loyalty', permanent: true },
+      { source: '/:locale(fr|en)/solutions/augmenter-avis', destination: '/:locale/produit/reviews', permanent: true },
+      { source: '/:locale(fr|en)/solutions/fideliser-clients', destination: '/:locale/produit/loyalty', permanent: true },
       { source: '/:locale(fr|en)/solutions/booster-upsell', destination: '/:locale/produit/upsell', permanent: true },
       { source: '/:locale(fr|en)/solutions/automatiser-communication', destination: '/:locale/produit/flows', permanent: true },
 

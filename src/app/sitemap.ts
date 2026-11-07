@@ -59,7 +59,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // ─── Product / Module pages ──────────────────────────────────
   // Les anciens slugs remplacés par une landing sont redirigés : on publie la nouvelle URL.
-  const legacySlugs = new Set(Object.values(productLandings).flatMap((p) => (p.legacySlug ? [p.legacySlug] : [])));
+  const legacySlugs = new Set([...Object.keys(productLandings), ...Object.values(productLandings).flatMap((p) => (p.legacySlug ? [p.legacySlug] : []))]);
   const productSlugs = [...moduleSlugs.filter((s) => !legacySlugs.has(s)), ...Object.keys(productLandings)];
   for (const slug of productSlugs) {
     const frUrl = `${baseUrl}/fr/produit/${slug}`;
@@ -84,7 +84,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   // ─── Solution pages ──────────────────────────────────────────
-  const redirectedSolutions = new Set(['booster-upsell', 'automatiser-communication']);
+  const redirectedSolutions = new Set(['booster-upsell', 'automatiser-communication', 'augmenter-avis', 'fideliser-clients']);
   for (const slug of solutionSlugs.filter((s) => !redirectedSolutions.has(s))) {
     const frUrl = `${baseUrl}/fr/solutions/${slug}`;
     const enUrl = `${baseUrl}/en/solutions/${slug}`;

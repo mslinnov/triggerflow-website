@@ -564,7 +564,7 @@ export const modules: Record<string, ModuleData> = {
     headline: 'Vos clients reviennent en direct, pas via Booking',
     description: 'Programme de fidélité clé en main pour récompenser vos meilleurs clients et les faire réserver directement. Moins de commissions OTA, plus de marge.',
     mockup: 'CRMMockup',
-    heroImage: '/images/produit/fidelite/fid-points.webp',
+    heroImage: '/images/produit/loyalty/fid-points.webp',
     painPoints: [
       'Vos clients satisfaits réservent quand même via Booking la fois suivante, vous repayez 15-25% de commission',
       'Mettre en place un programme fidélité semble complexe et chronophage, vous n\'avez pas de développeur',
@@ -595,7 +595,7 @@ export const modules: Record<string, ModuleData> = {
         icon: Star,
         bullets: ['Points auto par séjour et dépense', 'Paliers Bronze / Silver / Gold', 'Expiration configurable'],
         mockup: 'LoyaltyPointsMockup',
-        image: '/images/produit/fidelite/fid-portail.webp',
+        image: '/images/produit/loyalty/fid-portail.webp',
       },
       {
         title: 'Vos récompenses, vos règles',
@@ -603,14 +603,14 @@ export const modules: Record<string, ModuleData> = {
         icon: Gift,
         bullets: ['Récompenses personnalisables', 'Catalogue par palier', 'Récompenses surprise possibles'],
         mockup: 'LoyaltyRewardsMockup',
-        image: '/images/produit/fidelite/fid-recompenses.webp',
+        image: '/images/produit/loyalty/fid-recompenses.webp',
       },
       {
         title: 'Vos clients suivent leurs points en ligne',
         description: 'Espace client dédié où vos clients voient leur solde de points, leur statut et les récompenses disponibles. Un vrai programme professionnel.',
         icon: User,
         bullets: ['Espace client en ligne', 'Historique des points', 'Récompenses réclamables en 1 clic'],
-        image: '/images/produit/fidelite/fid-points.webp',
+        image: '/images/produit/loyalty/fid-points.webp',
         mockup: 'LoyaltyPortalMockup',
       }
     ],
@@ -886,7 +886,7 @@ export const modules: Record<string, ModuleData> = {
     headline: 'Créez le formulaire exact dont vous avez besoin',
     description: 'Formulaires de pré-check-in, enquêtes de satisfaction, demandes spéciales. Envoyés automatiquement, analysés en temps réel.',
     mockup: 'EmailMockup',
-    heroImage: '/images/produit/formulaires/hero-formulaires.webp',
+    heroImage: '/images/produit/forms/hero-formulaires.webp',
     painPoints: [
       'Le check-in prend 8 minutes par client, la file d\'attente s\'allonge aux heures de pointe',
       'Vous découvrez les préférences du client (allergie, berceau, étage) quand il est déjà à la réception',
@@ -917,7 +917,7 @@ export const modules: Record<string, ModuleData> = {
         icon: PenTool,
         bullets: ['20+ types de champs disponibles', 'Drag & drop visuel', 'Multi-langue automatique (FR, EN, DE, ES...)'],
         mockup: 'FormBuilderMockup',
-        image: '/images/produit/formulaires/form-widgets.webp',
+        image: '/images/produit/forms/form-widgets.webp',
       },
       {
         title: 'Chaque réponse synchronisable avec votre PMS',
@@ -925,7 +925,7 @@ export const modules: Record<string, ModuleData> = {
         icon: RefreshCw,
         bullets: ['Sync automatique des champs vers le PMS', 'Fiche de police pré-remplie', 'Mise à jour CRM en temps réel'],
         mockup: 'FormAutoSendMockup',
-        image: '/images/produit/formulaires/form-sync-pms.webp',
+        image: '/images/produit/forms/form-sync-pms.webp',
       },
       {
         title: 'Des stats avancées sur chaque formulaire',
@@ -933,7 +933,7 @@ export const modules: Record<string, ModuleData> = {
         icon: PieChart,
         bullets: ['NPS et scores calculés automatiquement', 'Taux de complétion par étape', 'Export CSV et rapports planifiés'],
         mockup: 'FormAnalysisMockup',
-        image: '/images/produit/formulaires/form-stats.webp',
+        image: '/images/produit/forms/form-stats.webp',
       },
       {
         title: 'Logique conditionnelle et alertes internes',
@@ -941,7 +941,7 @@ export const modules: Record<string, ModuleData> = {
         icon: GitBranch,
         bullets: ['Pages et champs affichés sous conditions', 'Alertes internes par email ou Slack', 'Message de confirmation personnalisable'],
         mockup: 'FormBuilderMockup',
-        image: '/images/produit/formulaires/form-conditions.webp',
+        image: '/images/produit/forms/form-conditions.webp',
       }
     ],
     useCases: [

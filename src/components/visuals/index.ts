@@ -4,3 +4,7 @@ export { DedupScenario } from './DedupScenario';
 export { UpsellScenario } from './UpsellScenario';
 export { PayScenario } from './PayScenario';
 export { VoiceScenario } from './VoiceScenario';
+export { InboxScenario } from './InboxScenario';
+export { ReviewsScenario } from './ReviewsScenario';
+export { FormsScenario } from './FormsScenario';
+export { LoyaltyScenario } from './LoyaltyScenario';

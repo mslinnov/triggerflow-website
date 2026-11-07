@@ -4,7 +4,7 @@ import {
   MessageSquare, Package, Receipt, RefreshCw, Repeat, Shield, Sparkles, Users, Workflow, Zap, ArrowRight, Phone, Mic, Globe, Moon, type LucideIcon,
 } from 'lucide-react';
 import { Container, CtaBand, DsButton, Eyebrow, FaqList, FeatureItem, ProductFrame, ProofStat, Section, SectionHeader, TrustStrip } from '@/components/ds';
-import { UpsellScenario, FlowTreeScenario, PayScenario, VoiceScenario } from '@/components/visuals';
+import { UpsellScenario, FlowTreeScenario, PayScenario, VoiceScenario, InboxScenario, ReviewsScenario, FormsScenario, LoyaltyScenario, DedupScenario } from '@/components/visuals';
 import { Link } from '@/i18n/navigation';
 import { brand } from '@/data/brand';
 import { stat } from '@/data/company-stats';
@@ -19,7 +19,7 @@ const ICONS: Record<IconKey, LucideIcon> = {
   calendar: Calendar, layers: Layers, lock: Lock, receipt: Receipt, phone: Phone, mic: Mic, globe: Globe, moon: Moon,
 };
 
-const VISUALS = { upsell: UpsellScenario, flows: FlowTreeScenario, pay: PayScenario, voice: VoiceScenario };
+const VISUALS = { upsell: UpsellScenario, flows: FlowTreeScenario, pay: PayScenario, voice: VoiceScenario, inbox: InboxScenario, reviews: ReviewsScenario, forms: FormsScenario, loyalty: LoyaltyScenario, crm: DedupScenario };
 
 /** Gabarit des landings produit (13 blocs, docs/wireframes.md). Contenu : src/content/products. */
 export async function ProductLandingPage({ product, locale }: { product: ProductLanding; locale: string }) {

@@ -3037,6 +3037,37 @@
       "fallback": "After hours: voicemail transcribed and translated",
       "original": "« Bonjour, pourrions-nous avoir deux serviettes de plus ? »",
       "translated": "Hello, could we get two extra towels please?"
+    },
+    "inbox": {
+      "m1": "Hello, can we arrive around 11 pm?",
+      "m2": "Is parking available on site?",
+      "m3": "Do you accept dogs?",
+      "room": "Room 204",
+      "suggested": "AI-suggested reply",
+      "reply": "Hello Camille, no problem: the front desk is open all night. Your key will be waiting.",
+      "validate": "Approve and send",
+      "sent": "Sent"
+    },
+    "reviews": {
+      "good": "Perfect stay, lovely team.",
+      "bad": "Noisy room on the street side.",
+      "invite": "Invited to post on Google",
+      "alert": "Alert sent to management"
+    },
+    "forms": {
+      "title": "Pre-stay · Hôtel des Tilleuls (demo)",
+      "arrival": "Arrival time",
+      "pillow": "Pillow",
+      "pillowValue": "Firm",
+      "offer": "Breakfast in your room",
+      "offerPrice": "€18 / person",
+      "profile": "Answers added to the profile"
+    },
+    "loyalty": {
+      "account": "Loyalty account",
+      "credited": "+360 pts credited after the stay",
+      "tier": "Gold tier reached",
+      "member": "Member"
     }
   },
   "nav": {

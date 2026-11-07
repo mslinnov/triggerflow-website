@@ -50,7 +50,7 @@ const modules = [
   {
     key: 'loyalty',
     icon: Gift,
-    href: '/produit/fidelite',
+    href: '/produit/loyalty',
     category: 'marketing',
   },
   {
@@ -68,13 +68,13 @@ const modules = [
   {
     key: 'forms',
     icon: FileText,
-    href: '/produit/formulaires',
+    href: '/produit/forms',
     category: 'tools',
   },
   {
     key: 'reviews',
     icon: Star,
-    href: '/produit/avis',
+    href: '/produit/reviews',
     category: 'tools',
   },
   {

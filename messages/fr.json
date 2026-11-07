@@ -3322,6 +3322,37 @@
       "fallback": "Hors horaires : message vocal transcrit et traduit",
       "original": "« Hello, could we get two extra towels please? »",
       "translated": "Bonjour, pourrions-nous avoir deux serviettes supplémentaires ?"
+    },
+    "inbox": {
+      "m1": "Bonjour, est-il possible d’arriver vers 23 h ?",
+      "m2": "Is parking available on site?",
+      "m3": "Vous acceptez les chiens ?",
+      "room": "Chambre 204",
+      "suggested": "Réponse suggérée par l’IA",
+      "reply": "Bonjour Camille, aucun souci : la réception est ouverte toute la nuit. Votre clé vous attendra.",
+      "validate": "Valider et envoyer",
+      "sent": "Envoyé"
+    },
+    "reviews": {
+      "good": "Séjour parfait, équipe adorable.",
+      "bad": "Chambre bruyante côté rue.",
+      "invite": "Invitation à publier sur Google",
+      "alert": "Alerte envoyée à la direction"
+    },
+    "forms": {
+      "title": "Pré-séjour · Hôtel des Tilleuls (démo)",
+      "arrival": "Heure d’arrivée",
+      "pillow": "Oreiller",
+      "pillowValue": "Ferme",
+      "offer": "Petit-déjeuner en chambre",
+      "offerPrice": "18 € / pers.",
+      "profile": "Réponses ajoutées à la fiche"
+    },
+    "loyalty": {
+      "account": "Compte fidélité",
+      "credited": "+360 pts crédités après le séjour",
+      "tier": "Palier Gold atteint",
+      "member": "Membre"
     }
   },
   "nav": {

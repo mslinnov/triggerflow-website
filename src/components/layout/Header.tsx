@@ -53,7 +53,7 @@ const menuItems = {
           { icon: Mail, label: 'Email', description: 'Campagnes email personnalisées', href: '/produit/email' },
           { icon: MessageSquare, label: 'SMS', description: 'Messages texte automatisés', href: '/produit/sms' },
           { icon: MessageCircle, label: 'WhatsApp', description: 'Conversations WhatsApp', href: '/produit/whatsapp' },
-          { icon: Inbox, label: 'Hub messagerie', description: 'Centralisez vos échanges', href: '/produit/hub-messagerie' },
+          { icon: Inbox, label: 'Hub messagerie', description: 'Centralisez vos échanges', href: '/produit/inbox' },
         ],
       },
       {
@@ -67,13 +67,13 @@ const menuItems = {
         title: 'Marketing',
         items: [
           { icon: Newspaper, label: 'Newsletter & Campagnes', description: 'Diffusez vos actualités', href: '/produit/newsletter' },
-          { icon: Heart, label: 'Programme fidélité', description: 'Récompensez vos clients', href: '/produit/fidelite' },
+          { icon: Heart, label: 'Programme fidélité', description: 'Récompensez vos clients', href: '/produit/loyalty' },
         ],
       },
       {
         title: 'Outils',
         items: [
-          { icon: FileText, label: 'Formulaires', description: 'Collectez des données', href: '/produit/formulaires' },
+          { icon: FileText, label: 'Formulaires', description: 'Collectez des données', href: '/produit/forms' },
           { icon: ShoppingBag, label: 'Ventes additionnelles', description: 'Boostez votre CA', href: '/produit/upsell' },
           { icon: CreditCard, label: 'Liens de paiement', description: 'Encaissez vos clients', href: '/produit/pay' },
           { icon: BarChart3, label: 'Analytics', description: 'Tableaux de bord', href: '/produit/analytics' },
@@ -82,7 +82,7 @@ const menuItems = {
       {
         title: 'Réputation',
         items: [
-          { icon: Star, label: 'Gestion des avis', description: 'Améliorez votre e-réputation', href: '/produit/avis' },
+          { icon: Star, label: 'Gestion des avis', description: 'Améliorez votre e-réputation', href: '/produit/reviews' },
         ],
       },
     ],
@@ -109,9 +109,9 @@ const menuItems = {
         title: 'Par objectif',
         items: [
           { icon: Zap, label: 'Automatiser communication', description: 'Gagnez du temps', href: '/produit/flows' },
-          { icon: ThumbsUp, label: 'Augmenter avis Google', description: 'Boostez votre réputation', href: '/solutions/augmenter-avis' },
+          { icon: ThumbsUp, label: 'Augmenter avis Google', description: 'Boostez votre réputation', href: '/produit/reviews' },
           { icon: TrendingUp, label: 'Booster upsell', description: 'Augmentez votre CA', href: '/produit/upsell' },
-          { icon: UserPlus, label: 'Fidéliser clients', description: 'Créez des ambassadeurs', href: '/solutions/fideliser-clients' },
+          { icon: UserPlus, label: 'Fidéliser clients', description: 'Créez des ambassadeurs', href: '/produit/loyalty' },
         ],
       },
     ],

@@ -19,14 +19,14 @@ export const productMenu: NavColumn[] = [
     items: [
       { key: 'upsell', href: '/produit/upsell' },
       { key: 'pay', href: '/produit/pay' },
-      { key: 'forms', href: '/produit/formulaires' },
+      { key: 'forms', href: '/produit/forms' },
     ],
   },
   {
     key: 'during',
     items: [
       { key: 'voice', href: '/produit/voice' },
-      { key: 'inbox', href: '/produit/hub-messagerie' },
+      { key: 'inbox', href: '/produit/inbox' },
       { key: 'whatsapp', href: '/produit/whatsapp' },
       { key: 'sms', href: '/produit/sms' },
     ],
@@ -34,8 +34,8 @@ export const productMenu: NavColumn[] = [
   {
     key: 'after',
     items: [
-      { key: 'reviews', href: '/produit/avis' },
-      { key: 'loyalty', href: '/produit/fidelite' },
+      { key: 'reviews', href: '/produit/reviews' },
+      { key: 'loyalty', href: '/produit/loyalty' },
     ],
   },
   {
@@ -82,10 +82,10 @@ export const footerColumns: NavColumn[] = [
     items: [
       { key: 'platform', href: '/produit' },
       { key: 'flows', href: '/produit/flows' },
-      { key: 'inbox', href: '/produit/hub-messagerie' },
+      { key: 'inbox', href: '/produit/inbox' },
       { key: 'upsell', href: '/produit/upsell' },
       { key: 'pay', href: '/produit/pay' },
-      { key: 'reviews', href: '/produit/avis' },
+      { key: 'reviews', href: '/produit/reviews' },
       { key: 'crm', href: '/produit/crm' },
       { key: 'pricing', href: '/tarifs' },
     ],

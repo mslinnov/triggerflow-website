@@ -16,7 +16,7 @@ export interface ProductLanding {
   legacySlug?: string;
   name: L;
   seo: { title: L; description: L };
-  hero: { title: L; subtitle: L; visual: 'upsell' | 'flows' | 'pay' | 'voice' };
+  hero: { title: L; subtitle: L; visual: 'upsell' | 'flows' | 'pay' | 'voice' | 'inbox' | 'reviews' | 'forms' | 'loyalty' | 'crm' };
   /** clients : uniquement ceux dont le témoignage confirme l'usage du module (docs/preuves.md). */
   proof: { stat?: StatId; statLabel?: L; clients: string[] };
   problem: { title: L; items: L[] };

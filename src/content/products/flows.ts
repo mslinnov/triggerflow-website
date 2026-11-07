@@ -78,7 +78,7 @@ export const flows: ProductLanding = {
   related: [
     { slug: 'upsell', href: '/produit/upsell', name: { fr: 'Upsell', en: 'Upsell' }, text: { fr: 'Des offres au bon moment du parcours.', en: 'Offers at the right moment of the journey.' } },
     { slug: 'crm', href: '/produit/crm', name: { fr: 'CRM', en: 'CRM' }, text: { fr: 'Une fiche par client, sans doublons.', en: 'One profile per guest, no duplicates.' } },
-    { slug: 'inbox', href: '/produit/hub-messagerie', name: { fr: 'Messagerie', en: 'Inbox' }, text: { fr: 'Les réponses des clients au même endroit.', en: 'Guest replies in one place.' } },
+    { slug: 'inbox', href: '/produit/inbox', name: { fr: 'Messagerie', en: 'Inbox' }, text: { fr: 'Les réponses des clients au même endroit.', en: 'Guest replies in one place.' } },
   ],
   pricing: { text: { fr: 'Inclus dans tous les plans, du plan Découverte gratuit (1 flow) au plan All Inclusive (flows illimités).', en: 'Included in every plan, from the free Discovery plan (1 flow) to All Inclusive (unlimited flows).' } },
   faq: [

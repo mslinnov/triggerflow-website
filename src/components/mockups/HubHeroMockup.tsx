@@ -6,7 +6,7 @@ export function HubHeroMockup() {
   return (
     <div className="relative w-full h-full min-h-[400px] overflow-visible">
       <Image
-        src="/images/produit/hub-messagerie/hero-hub-desktop.webp"
+        src="/images/produit/inbox/hero-hub-desktop.webp"
         alt="Hub messagerie unifiée TriggerFlow"
         width={1400}
         height={875}

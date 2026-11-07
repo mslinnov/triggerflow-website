@@ -77,7 +77,7 @@ export const upsell: ProductLanding = {
   reliability: { stat: 'paidWithin2h', label: { fr: 'des paiements par lien réglés dans les 2 h', en: 'of payment links settled within 2 hours' } },
   related: [
     { slug: 'pay', href: '/produit/pay', name: { fr: 'Pay', en: 'Pay' }, text: { fr: 'Acomptes, cautions et liens de paiement.', en: 'Deposits, holds and payment links.' } },
-    { slug: 'forms', href: '/produit/formulaires', name: { fr: 'Formulaires', en: 'Forms' }, text: { fr: 'Des formulaires libres qui peuvent vendre.', en: 'Custom forms that can sell.' } },
+    { slug: 'forms', href: '/produit/forms', name: { fr: 'Formulaires', en: 'Forms' }, text: { fr: 'Des formulaires libres qui peuvent vendre.', en: 'Custom forms that can sell.' } },
     { slug: 'flows', href: '/produit/flows', name: { fr: 'Flows', en: 'Flows' }, text: { fr: 'Le bon moment pour chaque offre.', en: 'The right moment for every offer.' } },
   ],
   pricing: { text: { fr: 'Inclus dans les plans Conversion et All Inclusive.', en: 'Included in the Conversion and All Inclusive plans.' } },

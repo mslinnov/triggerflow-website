@@ -258,7 +258,7 @@ export function FeaturesBento() {
                 iconBg="bg-brand-primary/8"
                 iconColor="text-brand-primary"
                 t={t}
-                href="/produit/hub-messagerie"
+                href="/produit/inbox"
                 highlightCount={2}
               />
               <ChannelIcons className="bottom-3.5 left-4 lg:bottom-4 lg:left-5" />
@@ -367,7 +367,7 @@ export function FeaturesBento() {
                 iconBg="bg-brand-primary/8"
                 iconColor="text-brand-primary"
                 t={t}
-                href="/produit/formulaires"
+                href="/produit/forms"
                 highlightCount={2}
               />
               <BigStat className="bottom-3 right-4 lg:bottom-4 lg:right-5" />
@@ -386,7 +386,7 @@ export function FeaturesBento() {
                 iconBg="bg-brand-accent/15"
                 iconColor="text-brand-accent"
                 t={t}
-                href="/produit/avis"
+                href="/produit/reviews"
                 highlightCount={2}
               />
               <StarRating className="bottom-3 right-4 lg:bottom-4 lg:right-5" />
