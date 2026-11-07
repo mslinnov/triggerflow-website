@@ -1,69 +1,51 @@
 'use client';
 
-import { useRef, useEffect, useState, useCallback } from 'react';
-import { useTranslations } from 'next-intl';
-import Image from 'next/image';
-import { motion, useReducedMotion, useInView } from 'framer-motion';
-import { Clock, UserCheck, TrendingUp, Star } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
+import { motion, useReducedMotion } from 'framer-motion';
+import { Mail, MessageSquare, MessageCircle, CreditCard } from 'lucide-react';
 import { Container } from '@/components/ui';
 import { fadeInUp, staggerContainer, staggerItem, defaultViewport } from '@/lib/animations';
+import { stat, type StatId } from '@/data/company-stats';
 
-function CountUp({ end, duration = 1.5 }: { end: number; duration?: number }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-50px' });
-  const prefersReducedMotion = useReducedMotion();
-  const [displayValue, setDisplayValue] = useState(0);
-
-  const animate = useCallback(() => {
-    if (prefersReducedMotion) {
-      setDisplayValue(end);
-      return;
-    }
-    const startTime = performance.now();
-    const durationMs = duration * 1000;
-
-    function tick(now: number) {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / durationMs, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setDisplayValue(Math.round(eased * end));
-      if (progress < 1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-  }, [end, duration, prefersReducedMotion]);
-
-  useEffect(() => {
-    if (isInView) animate();
-  }, [isInView, animate]);
-
-  return <span ref={ref}>{displayValue}</span>;
-}
-
-const logos = [
-  { name: 'Accor', src: '/images/logo-accor.webp' },
-  { name: 'Sofitel', src: '/images/logo-sofitel.webp' },
-  { name: 'Ibis', src: '/images/logo-ibis.webp' },
-  { name: 'Best Western', src: '/images/logo-bestwestern.webp' },
-  { name: 'Les Hôtels Très Particuliers', src: '/images/logo-hotels.webp' },
-  { name: 'Saint James', src: '/images/logo-saintjames.webp' },
+/**
+ * Vrais clients TriggerFlow et Utelys (docs/preuves.md, sélection validée le 07/11/2026).
+ * Affichés en lettrage en attendant les fichiers logo : aucun logo de chaîne ou d'enseigne.
+ */
+const clients = [
+  'Groupe Noemys',
+  'AMMI Hôtels',
+  'Edgar Hôtel & Spa',
+  'Hôtel Causse Comtal',
+  'Urban Bivouac',
+  'Hôtel Arc en Ciel',
+  'Le Vieux Pressoir',
+  'Sezz Saint-Tropez',
+  'Château de Courban',
+  'Odomo',
+  'BonjourSauvage',
+  'Cime Hotel',
+  'Pépites Lodges & Spas',
+  'Soko Hotels',
+  'Le Phébus & Spa',
+  'Château Autignac',
 ];
 
-const kpis = [
-  { key: 'timeSaved', icon: Clock },
-  { key: 'checkinRate', icon: UserCheck },
-  { key: 'upsellRevenue', icon: TrendingUp },
-  { key: 'reviewsBoost', icon: Star },
-] as const;
+/** Taux mesurés et sourcés de company-stats.ts (12 derniers mois). */
+const kpis: { id: StatId; icon: typeof Mail; labelKey: string }[] = [
+  { id: 'emailDelivered', icon: Mail, labelKey: 'emailDelivered' },
+  { id: 'smsDelivered', icon: MessageSquare, labelKey: 'smsDelivered' },
+  { id: 'whatsappRead', icon: MessageCircle, labelKey: 'whatsappRead' },
+  { id: 'paidWithin2h', icon: CreditCard, labelKey: 'paidWithin2h' },
+];
 
 export function LogoCloud() {
   const t = useTranslations('logoCloud');
-  const tMetrics = useTranslations('resultsMetrics');
+  const locale = useLocale();
   const prefersReducedMotion = useReducedMotion();
 
   return (
     <section className="border-y border-border-light bg-white py-10 md:py-14">
       <Container>
-        {/* Title */}
         <motion.p
           initial={prefersReducedMotion ? 'visible' : 'hidden'}
           whileInView="visible"
@@ -74,28 +56,16 @@ export function LogoCloud() {
           {t('title')}
         </motion.p>
 
-        {/* Logos */}
-        <motion.div
-          initial={prefersReducedMotion ? 'visible' : 'hidden'}
-          whileInView="visible"
-          variants={staggerContainer}
-          viewport={defaultViewport}
-          className="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-6 grayscale opacity-60"
-        >
-          {logos.map((logo) => (
-            <motion.div key={logo.name} variants={staggerItem} className="flex h-10 items-center">
-              <Image
-                src={logo.src}
-                alt={logo.name}
-                width={120}
-                height={40}
-                className="h-8 w-auto object-contain md:h-10"
-              />
-            </motion.div>
+        {/* Noms des clients */}
+        <ul className="mx-auto mt-6 flex max-w-5xl flex-wrap items-center justify-center gap-x-8 gap-y-3">
+          {clients.map((name) => (
+            <li key={name} className="whitespace-nowrap text-base font-semibold tracking-tight text-text-secondary/70 md:text-lg">
+              {name}
+            </li>
           ))}
-        </motion.div>
+        </ul>
 
-        {/* Animated KPI counters strip */}
+        {/* Taux mesurés */}
         <motion.div
           initial={prefersReducedMotion ? 'visible' : 'hidden'}
           whileInView="visible"
@@ -105,43 +75,22 @@ export function LogoCloud() {
         >
           {kpis.map((kpi, index) => {
             const Icon = kpi.icon;
-            const value = parseInt(tMetrics(`metrics.${kpi.key}.value`), 10);
-            const hasPrefix = kpi.key === 'upsellRevenue' || kpi.key === 'reviewsBoost';
-            const prefix = hasPrefix
-              ? tMetrics(`metrics.${kpi.key}.prefix`)
-              : undefined;
-            const suffix = tMetrics(`metrics.${kpi.key}.suffix`);
-            const label = tMetrics(`metrics.${kpi.key}.label`);
-
             return (
               <motion.div
-                key={kpi.key}
+                key={kpi.id}
                 variants={staggerItem}
-                className={`flex flex-col items-center text-center px-4 py-2${
+                className={`flex flex-col items-center px-4 py-2 text-center${
                   index < kpis.length - 1 ? ' sm:border-r sm:border-border-light' : ''
                 }`}
               >
                 <Icon className="mb-2 h-4 w-4 text-brand-primary/40" strokeWidth={1.5} />
-                <div className="flex items-baseline gap-0.5">
-                  {prefix && (
-                    <span className="text-lg font-bold text-brand-primary md:text-xl">
-                      {prefix}
-                    </span>
-                  )}
-                  <span className="text-2xl font-bold text-brand-primary md:text-3xl">
-                    <CountUp end={value} />
-                  </span>
-                  {suffix && (
-                    <span className="ml-0.5 text-sm font-semibold text-brand-primary md:text-base">
-                      {suffix}
-                    </span>
-                  )}
-                </div>
-                <p className="mt-1 text-xs text-text-muted">{label}</p>
+                <span className="text-2xl font-bold text-brand-primary md:text-3xl">{stat(kpi.id, locale)}</span>
+                <p className="mt-1 text-xs text-text-muted">{t(`rates.${kpi.labelKey}`)}</p>
               </motion.div>
             );
           })}
         </motion.div>
+        <p className="mt-4 text-center text-xs text-text-muted">{t('ratesSource')}</p>
       </Container>
     </section>
   );

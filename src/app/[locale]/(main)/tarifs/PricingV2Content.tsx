@@ -307,7 +307,7 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
                             : 'border-white/20 text-white hover:bg-white/10 hover:border-white/30'
                         )}
                       >
-                        {t('cta.demo')}
+                        {plan.price === '0' ? t('cta.startFree') : t('cta.demo')}
                       </ButtonLink>
                     </div>
                   </motion.div>
@@ -399,7 +399,7 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
                         : 'border-white/20 text-white hover:bg-white/10 hover:border-white/30'
                     )}
                   >
-                    {t('cta.demo')}
+                    {plan.price === '0' ? t('cta.startFree') : t('cta.demo')}
                   </ButtonLink>
                 </div>
               </motion.div>
@@ -594,7 +594,7 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
                               : 'border-zinc-200 hover:border-brand-primary'
                           )}
                         >
-                          {t('cta.demo')}
+                          {plan.price === '0' ? t('cta.startFree') : t('cta.demo')}
                         </ButtonLink>
                       </div>
                     ))}

@@ -56,7 +56,8 @@ export const brand = {
    * « coming soon », jamais comptés dans `pms` tant que le connecteur n'existe pas dans l'app.
    * Un PMS n'entre ici qu'avec son nom (décision du 25/10/2026 : pas de « + N » anonyme).
    */
-  pmsEnCours: ['Chloé', 'Infhotik', 'Protel', 'Galaxy Hotels'],
+  // Vidé le 07/11/2026 (décision de Soufiane) : Chloé, Infhotik, Protel et Galaxy retirés du site pour l'instant.
+  pmsEnCours: [] as string[],
   /**
    * Autres connexions, vérifiées dans l'app le 25/10/2026 (Models/Plug.php, Services/Locks,
    * Services/Payments, Services/Reviews, Models/FacilityMailbox.php).

@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { ArrowRight, Check, X, Star, Quote, Mail, TrendingUp, Shield, Zap, GitBranch, MessageSquare, Clock, Users, MailOpen, Send, Gift, FileText, ShoppingBag, BarChart3, Eye, Euro } from 'lucide-react';
 import { IntegrationsShowcase, FeaturesTabbed } from '@/components/sections';
@@ -559,7 +559,7 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
             <motion.div {...motionProps} variants={fadeInUp} className="flex flex-col text-center lg:text-left">
               <Badge variant="primary" className="mb-6 gap-2 self-center border-brand-primary/20 bg-brand-primary/8 text-xs font-semibold tracking-wide lg:self-start">
                 <Icon className="h-3.5 w-3.5 text-brand-primary" />
-                Automatisation email hôtelière
+                {module.title}
               </Badge>
 
               <h1 className="text-3xl font-bold leading-[1.15] tracking-tight text-brand-dark sm:text-4xl md:text-5xl lg:text-[3.25rem]">
@@ -2045,7 +2045,8 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
       {/* ===== 7. INTEGRATIONS — Homepage PMS showcase ===== */}
       <IntegrationsShowcase />
 
-      {/* ===== 8. TESTIMONIAL ===== */}
+      {/* ===== 8. TESTIMONIAL (vrai client uniquement, sinon masqué) ===== */}
+      {module.testimonial && (
       <section className="relative overflow-hidden py-20 md:py-28">
         <div className="absolute inset-0 bg-[linear-gradient(135deg,#F7FAFA_0%,#EFF5F5_50%,#F7FAFA_100%)]" />
         <div className="pointer-events-none absolute right-0 top-0 h-[500px] w-[500px] bg-[radial-gradient(ellipse,rgba(0,111,104,0.06),transparent_70%)]" />
@@ -2067,21 +2068,18 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
             </div>
 
             <blockquote className="font-serif text-xl font-medium leading-relaxed text-text-primary md:text-2xl lg:text-[1.75rem] lg:leading-relaxed">
-              &ldquo;{module.testimonial ? module.testimonial.quote : t('testimonial.quote')}&rdquo;
+              &ldquo;{module.testimonial.quote}&rdquo;
             </blockquote>
 
             <div className="mt-10 flex flex-col items-center gap-1">
               <div className="mb-4 h-px w-12 bg-border-default" />
               <p className="text-sm font-semibold text-text-primary">
-                {module.testimonial?.author || t('testimonial.author')}
+                {module.testimonial.author}
               </p>
               <p className="text-xs tracking-wide text-text-muted">
-                {module.testimonial
-                  ? `${module.testimonial.role}, ${module.testimonial.hotel}`
-                  : t('testimonial.role')
-                }
+                {`${module.testimonial.role}, ${module.testimonial.hotel}`}
               </p>
-              {module.testimonial?.metric && (
+              {module.testimonial.metric && (
                 <div className="mt-3 inline-flex items-center gap-2 rounded-full border border-brand-primary/15 bg-brand-primary/5 px-4 py-1.5">
                   <span className="text-xs font-semibold text-brand-primary">
                     {module.testimonial.metric}
@@ -2092,6 +2090,7 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
           </motion.div>
         </Container>
       </section>
+      )}
 
       {/* ===== 9. FAQ ===== */}
       {module.faq && module.faq.length > 0 && (

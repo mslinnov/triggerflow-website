@@ -1,6 +1,5 @@
 export { Hero } from './Hero';
 export { HeroDashboard } from './HeroDashboard';
-export { LogoCarousel } from './LogoCarousel';
 export { LogoCloud } from './LogoCloud';
 export { CommunicationFlow } from './CommunicationFlow';
 export { JourneyTimeline } from './JourneyTimeline';

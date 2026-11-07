@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { ArrowRight, ArrowDown, Check, Sparkles } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { Container, ButtonLink } from '@/components/ui';
 import { heroContainer, heroItem } from '@/lib/animations';
 

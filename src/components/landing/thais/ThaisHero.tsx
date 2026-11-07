@@ -167,7 +167,7 @@ export function ThaisHero() {
                   ))}
                 </div>
                 <span className="ml-2 text-sm font-medium text-zinc-700">
-                  {companyStats.hotels.fr} hôtels nous font confiance
+                  Ils nous font confiance
                 </span>
               </div>
             </motion.div>

@@ -26,10 +26,6 @@ const integrations: PmsIntegration[] = [
   { name: 'Medialog', slug: 'medialog', src: '/images/integrations/medialog.svg', color: '#0070B0' },
   { name: 'Lean PMS', slug: 'leanpms', src: '/images/integrations/leanpms.webp', color: '#2563EB' },
   { name: 'Vega', slug: 'vega', src: '/images/integrations/vega.png', color: '#1E40AF' },
-  { name: 'Chloé', slug: 'chloe', src: '/images/integrations/chloe.webp', color: '#6D28D9', comingSoon: true },
-  { name: 'Infhotik', slug: 'infhotik', src: '/images/integrations/infhotik.svg', color: '#0E3A5D', comingSoon: true },
-  { name: 'Protel', slug: 'protel', src: '/images/integrations/protel-planet.svg', color: '#000000', comingSoon: true },
-  { name: 'Galaxy Hotels', slug: 'galaxy', src: '/images/integrations/galaxy-hotels.png', color: '#1E5AA8', comingSoon: true },
 ];
 
 // --- Animations ---

@@ -1,8 +1,7 @@
 'use client';
 
-import { useRef, useEffect, useState, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
-import { motion, useReducedMotion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Container, Badge } from '@/components/ui';
 import { fadeInUp, defaultViewport } from '@/lib/animations';
 import { Clock, UserCheck, TrendingUp, Users } from 'lucide-react';
@@ -12,43 +11,9 @@ interface CountUpProps {
   duration?: number;
 }
 
-function CountUp({ end, duration = 1.5 }: CountUpProps) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: '-50px' });
-  const prefersReducedMotion = useReducedMotion();
-  const [displayValue, setDisplayValue] = useState(0);
-
-  const animate = useCallback(() => {
-    if (prefersReducedMotion) {
-      setDisplayValue(end);
-      return;
-    }
-
-    const startTime = performance.now();
-    const durationMs = duration * 1000;
-
-    function tick(now: number) {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / durationMs, 1);
-      // Ease out cubic for a satisfying deceleration
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setDisplayValue(Math.round(eased * end));
-
-      if (progress < 1) {
-        requestAnimationFrame(tick);
-      }
-    }
-
-    requestAnimationFrame(tick);
-  }, [end, duration, prefersReducedMotion]);
-
-  useEffect(() => {
-    if (isInView) {
-      animate();
-    }
-  }, [isInView, animate]);
-
-  return <span ref={ref}>{displayValue}</span>;
+function CountUp({ end }: CountUpProps) {
+  // Valeur finale rendue côté serveur : jamais de « 0 » au chargement.
+  return <span>{end}</span>;
 }
 
 const metrics = [

@@ -2,7 +2,7 @@
 
 import { useTranslations } from 'next-intl';
 import { motion, type Variants } from 'framer-motion';
-import { Rocket, Headphones, GraduationCap, UserCheck, Star } from 'lucide-react';
+import { Rocket, Headphones, GraduationCap, UserCheck } from 'lucide-react';
 import { Container, Badge } from '@/components/ui';
 import { fadeInUp, defaultViewport } from '@/lib/animations';
 
@@ -86,24 +86,6 @@ export function CustomerSuccess() {
           ))}
         </motion.div>
 
-        {/* Satisfaction badge */}
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={defaultViewport}
-          className="mt-10 flex justify-center md:mt-12"
-        >
-          <div className="inline-flex items-center gap-2.5 rounded-full border border-brand-accent/60 bg-brand-accent-light/60 px-5 py-2.5">
-            <Star className="h-4.5 w-4.5 fill-brand-accent text-brand-accent" />
-            <span className="text-sm font-semibold text-brand-dark">
-              {t('satisfaction.value')}
-            </span>
-            <span className="text-sm text-text-secondary">
-              {t('satisfaction.label')}
-            </span>
-          </div>
-        </motion.div>
       </Container>
     </section>
   );

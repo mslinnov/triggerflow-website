@@ -110,8 +110,7 @@ export function ThaisV3Hero() {
                   ))}
                 </div>
                 <span className="text-sm text-[var(--v3-text-secondary)]">
-                  <strong className="font-semibold text-[var(--v3-text-primary)]">{companyStats.hotels.fr}</strong>{' '}
-                  hôteliers nous font confiance
+                  Ils nous font confiance
                 </span>
               </div>
 

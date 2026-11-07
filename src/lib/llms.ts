@@ -56,8 +56,8 @@ function keyFacts(): string {
 - Category: hotel CRM and guest experience platform (CRM hôtelier), for independent hotels and hotel groups
 - Company: ${brand.name}, published by ${brand.legalName}, founded in ${brand.foundingDate} in ${brand.foundingCity}, France
 - Pricing: public and transparent, free plan, paid plans from €${entryPrice}/month, no setup fee, no minimum number of rooms (${baseUrl}/en/tarifs)
-- Adoption: ${companyStats.hotels.en} hotels, ${companyStats.messages.en} messages sent; Google rating ${companyStats.rating.en}
-- Native PMS integrations: ${brand.pms.join(', ')} (coming soon, not yet connected: ${brand.pmsEnCours.join(', ')})
+- Volume: ${companyStats.messages.en} messages sent through the platform
+- Native PMS integrations: ${brand.pms.join(', ')}${brand.pmsEnCours.length ? ` (coming soon, not yet connected: ${brand.pmsEnCours.join(', ')})` : ''}
 - Other connections: smart locks (${brand.connections.locks.join(', ')}), payments (${brand.connections.payments.join(', ')}), reviews (${brand.connections.reviews.join(', ')}), mailboxes (${brand.connections.mailboxes.join(', ')})
 - Thousands of other apps through ${brand.automation.join(' and ')}, fed by the webhook action of TriggerFlow workflows
 - Channels: email, SMS, WhatsApp, unified inbox

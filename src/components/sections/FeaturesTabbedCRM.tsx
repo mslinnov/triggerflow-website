@@ -1,6 +1,5 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Users, ShoppingBag, Star, BarChart3, Heart, Check, Loader2, CalendarCheck, Sparkles, TrendingUp } from 'lucide-react';
@@ -8,20 +7,9 @@ import { FeaturesTabbed, type TabConfig } from './FeaturesTabbed';
 
 /* ─── Helpers ─── */
 
-function AnimatedCounter({ target, prefix = '', suffix = '', duration = 2 }: { target: number; prefix?: string; suffix?: string; duration?: number }) {
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    let frame: number;
-    const start = performance.now();
-    const step = (now: number) => {
-      const progress = Math.min((now - start) / (duration * 1000), 1);
-      setCount(Math.floor(progress * target));
-      if (progress < 1) frame = requestAnimationFrame(step);
-    };
-    frame = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(frame);
-  }, [target, duration]);
-  return <>{prefix}{count.toLocaleString('fr-FR')}{suffix}</>;
+function AnimatedCounter({ target, prefix = '', suffix = '' }: { target: number; prefix?: string; suffix?: string; duration?: number }) {
+  // Valeur finale rendue côté serveur : jamais de « 0 » au chargement.
+  return <>{prefix}{target.toLocaleString('fr-FR')}{suffix}</>;
 }
 
 /* ─── CRM: Avatar + action + Carte préférences ─── */

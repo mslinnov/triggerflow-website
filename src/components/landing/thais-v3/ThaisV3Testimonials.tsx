@@ -4,27 +4,28 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
 import { Container } from '@/components/ui';
 
+// Vrais clients Thaïs (docs/preuves.md, témoignages publiés).
 const testimonials = [
   {
-    quote: "Avant TriggerFlow, je passais 2h par jour à envoyer des emails. Maintenant, tout est automatique et mes clients reçoivent le bon message au bon moment.",
-    author: 'Jean-Pierre Martin',
-    role: 'Directeur',
-    hotel: 'Hôtel des Voyageurs, Lyon',
-    metric: '+35% d\'avis positifs',
-  },
-  {
-    quote: "L'intégration avec Thaïs est parfaite. Je n'ai plus à jongler entre plusieurs outils. Tout est synchronisé automatiquement.",
-    author: 'Sophie Leclerc',
-    role: 'Gérante',
-    hotel: 'Le Petit Palace, Bordeaux',
-    metric: '4h gagnées/semaine',
-  },
-  {
-    quote: "Nos upsells ont explosé depuis qu'on propose automatiquement le spa et le restaurant avant l'arrivée des clients.",
-    author: 'Marc Dubois',
+    quote: "Avec TriggerFlow, on part du besoin, on dessine le scénario qu'on souhaite mettre en place… et ensuite, on le paramètre sur l'outil, sans se retrouver bloqué.",
+    author: 'Baptiste Legout',
     role: 'Propriétaire',
-    hotel: 'Château de la Loire, Tours',
-    metric: '+847€/mois en revenus additionnels',
+    hotel: 'Hôtel Causse Comtal, Aveyron',
+    metric: 'Client Thaïs',
+  },
+  {
+    quote: "On peut automatiser des messages très personnalisés, anticiper toutes les situations, pour que le bon client reçoive le message qu'on veut, au meilleur moment.",
+    author: 'Guillaume Broutin',
+    role: 'Propriétaire',
+    hotel: 'Le Vieux Pressoir, Alsace',
+    metric: 'Client Thaïs',
+  },
+  {
+    quote: "Pouvoir envoyer automatiquement une demande de paiement, suivre si le client a payé, puis déclencher des relances : c'est un énorme gain de temps et de sérénité.",
+    author: 'Carine Chausson',
+    role: 'Directrice',
+    hotel: 'Hôtel Arc en Ciel, Colmar',
+    metric: 'Thaïs connecté dans les deux sens',
   },
 ];
 

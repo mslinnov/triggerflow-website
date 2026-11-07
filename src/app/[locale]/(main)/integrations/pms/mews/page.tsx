@@ -8,7 +8,6 @@ import {
   BenefitsGrid,
   ScenariosSection,
   IntegrationHowItWorks,
-  IntegrationTestimonial,
   DataSyncTable,
   IntegrationFaq,
   IntegrationCta,
@@ -170,7 +169,7 @@ export default async function MewsIntegrationPage({ params }: PageProps) {
       <ScenariosSection />
       {/* 3. Desire: Easy setup + social proof */}
       <IntegrationHowItWorks />
-      <IntegrationTestimonial />
+      {/* Témoignage retiré le 07/11/2026 : non rattaché à un client vérifié (docs/preuves.md). */}
       {/* 4. Technical depth for evaluators */}
       <DataSyncTable />
       {/* 5. Objections + conversion */}

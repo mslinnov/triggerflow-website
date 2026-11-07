@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils';
+import { Link } from '@/i18n/navigation';
 
 type ButtonVariant = 'primary' | 'secondary' | 'accent' | 'ghost';
 type ButtonSize = 'sm' | 'md' | 'lg';
@@ -59,17 +60,24 @@ export function ButtonLink({
   children,
   ...props
 }: ButtonLinkProps) {
+  const classes = cn(
+    'inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2',
+    variant === 'primary' ? 'shadow-md shadow-brand-primary/20 hover:shadow-lg hover:shadow-brand-primary/25' : '',
+    variants[variant],
+    sizes[size],
+    className
+  );
+  const { href } = props;
+  // Lien interne sans préfixe de langue (« /tarifs ») : le Link de next-intl ajoute /fr ou /en.
+  if (typeof href === 'string' && href.startsWith('/') && !/^\/(fr|en)(\/|$)/.test(href)) {
+    return (
+      <Link {...props} href={href} className={classes}>
+        {children}
+      </Link>
+    );
+  }
   return (
-    <a
-      className={cn(
-        'inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2',
-        variant === 'primary' ? 'shadow-md shadow-brand-primary/20 hover:shadow-lg hover:shadow-brand-primary/25' : '',
-        variants[variant],
-        sizes[size],
-        className
-      )}
-      {...props}
-    >
+    <a className={classes} {...props}>
       {children}
     </a>
   );

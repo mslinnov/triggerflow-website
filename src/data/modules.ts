@@ -185,10 +185,10 @@ export const modules: Record<string, ModuleData> = {
       }
     ],
     testimonial: {
-      quote: 'On a mis en place les emails automatiques en une matinée, sans aucune compétence technique. Les clients arrivent mieux préparés et achètent plus de services avant même d\'arriver.',
-      author: 'Sophie Laurent',
-      role: 'Directrice Générale',
-      hotel: 'Hôtel & Spa du Lac ****',
+      quote: 'On peut automatiser des messages très personnalisés, anticiper toutes les situations, pour que le bon client reçoive le message qu\'on veut, au meilleur moment.',
+      author: 'Guillaume Broutin',
+      role: 'Propriétaire',
+      hotel: 'Le Vieux Pressoir',
     },
     integrations: ['Thaïs PMS', 'Misterbooking', 'Medialog', 'Opera Cloud', 'Mews', 'Asterio', 'Lean PMS', 'Apaleo'],
     faq: [
@@ -306,13 +306,6 @@ export const modules: Record<string, ModuleData> = {
         result: 'Les clients prévenus en temps réel'
       }
     ],
-    testimonial: {
-      quote: 'Le SMS a changé notre communication client. Nos clients ont toutes les infos avant même d\'arriver.',
-      author: 'Thomas Moreau',
-      role: 'Directeur des opérations',
-      hotel: 'Le Domaine des Pins ***',
-      metric: '98% de taux de lecture'
-    },
     integrations: ['Thaïs PMS', 'Misterbooking', 'Medialog', 'Opera Cloud', 'Mews', 'Asterio', 'Lean PMS', 'Apaleo'],
     faq: [
       {
@@ -416,11 +409,10 @@ export const modules: Record<string, ModuleData> = {
       }
     ],
     testimonial: {
-      quote: 'WhatsApp a remplacé 70% de nos appels téléphoniques. Nos clients préfèrent écrire, et notre équipe gère 3x plus de demandes en même temps.',
-      author: 'Claire Fontaine',
-      role: 'Responsable Accueil',
-      hotel: 'Hôtel Le Rivage ****',
-      metric: '-70% d\'appels téléphoniques'
+      quote: 'Nous étions surtout limités par le manque d\'autonomie sur nos précédents outils, notamment sur l\'outil pour les messages WhatsApp. Notre fournisseur nous imposait de passer par lui pour toute modification.',
+      author: 'Romain Coste-Chareyre',
+      role: 'Groupe',
+      hotel: 'AMMI Hôtels',
     },
     integrations: ['Thaïs PMS', 'Misterbooking', 'Medialog', 'Opera Cloud', 'Mews', 'Asterio', 'Lean PMS', 'Apaleo'],
     faq: [
@@ -535,11 +527,10 @@ export const modules: Record<string, ModuleData> = {
       }
     ],
     testimonial: {
-      quote: 'Nos newsletters génèrent maintenant 8% de nos réservations directes. C\'est du chiffre d\'affaires sans commission OTA - c\'est énorme pour notre marge.',
-      author: 'Jean-Marc Dufour',
-      role: 'Directeur Commercial',
-      hotel: 'Les Jardins de Provence ****',
-      metric: '8% de réservations directes via newsletter'
+      quote: 'Le principal point fort réside dans la personnalisation très poussée des campagnes, qui permet d\'avoir une communication plus ciblée et pertinente.',
+      author: 'Idir Mazari',
+      role: 'Directeur',
+      hotel: 'Urban Bivouac Hôtel',
     },
     integrations: ['Thaïs PMS', 'Misterbooking', 'Medialog', 'Opera Cloud', 'Mews', 'Asterio', 'Lean PMS', 'Apaleo'],
     faq: [
@@ -645,13 +636,6 @@ export const modules: Record<string, ModuleData> = {
         result: 'Les clients inactifs relancés au bon moment'
       }
     ],
-    testimonial: {
-      quote: 'Depuis le programme fidélité, 24% de nos réservations sont en direct. Sur un an, c\'est plus de 30 000€ de commissions OTA économisées.',
-      author: 'Isabelle Renard',
-      role: 'Directrice Générale',
-      hotel: 'Le Mas des Oliviers ****',
-      metric: '30 000€ de commissions économisées/an'
-    },
     integrations: ['Thaïs PMS', 'Misterbooking', 'Medialog', 'Opera Cloud', 'Mews', 'Asterio', 'Lean PMS', 'Apaleo'],
     faq: [
       {
@@ -754,11 +738,10 @@ export const modules: Record<string, ModuleData> = {
       }
     ],
     testimonial: {
-      quote: 'On a automatisé toute notre communication pré-séjour en une après-midi. Ça nous libère 15 heures par semaine pour nous concentrer sur l\'accueil.',
-      author: 'Marc Lefèvre',
-      role: 'Responsable Réception',
-      hotel: 'Grand Hôtel des Thermes ****',
-      metric: '15h/semaine économisées'
+      quote: 'Avec TriggerFlow, on part du besoin, on dessine le scénario qu\'on souhaite mettre en place… et ensuite, on le paramètre sur l\'outil, sans se retrouver bloqué.',
+      author: 'Baptiste Legout',
+      role: 'Propriétaire',
+      hotel: 'Hôtel Causse Comtal',
     },
     integrations: ['Thaïs PMS', 'Misterbooking', 'Medialog', 'Opera Cloud', 'Mews', 'Asterio', 'Lean PMS', 'Apaleo'],
     faq: [
@@ -866,11 +849,10 @@ export const modules: Record<string, ModuleData> = {
       }
     ],
     testimonial: {
-      quote: 'Avant TriggerFlow, on ne savait pas que M. Martin était venu 12 fois. Maintenant, chaque client fidèle est accueilli par son nom avec ses préférences prêtes.',
-      author: 'Anne-Marie Petit',
-      role: 'Responsable Réception',
-      hotel: 'Hôtel de la Plage ***',
-      metric: '+40% de satisfaction'
+      quote: 'Après avoir testé plusieurs solutions CRM, nous avons trouvé avec TriggerFlow l\'outil qui correspond vraiment à nos besoins.',
+      author: 'Maxime Jullien',
+      role: 'Directeur',
+      hotel: 'Edgar Hotel & Spa',
     },
     integrations: ['Thaïs PMS', 'Misterbooking', 'Medialog', 'Opera Cloud', 'Mews', 'Asterio', 'Lean PMS', 'Apaleo'],
     faq: [
@@ -985,11 +967,10 @@ export const modules: Record<string, ModuleData> = {
       }
     ],
     testimonial: {
-      quote: 'Le pré-check-in en ligne a tout changé. 75% des clients le remplissent, notre file d\'attente a disparu et les clients arrivent avec leurs préférences déjà enregistrées.',
-      author: 'François Martin',
-      role: 'Directeur des opérations',
-      hotel: 'L\'Hôtel du Parc ****',
-      metric: '75% de pré-check-in complétés'
+      quote: 'Si un soin au spa est compris dans leur séjour, un questionnaire leur est proposé pour indiquer leurs disponibilités et préférences.',
+      author: 'Baptiste Legout',
+      role: 'Propriétaire',
+      hotel: 'Hôtel Causse Comtal',
     },
     integrations: ['Thaïs PMS', 'Misterbooking', 'Medialog', 'Opera Cloud', 'Mews', 'Asterio', 'Lean PMS', 'Apaleo'],
     faq: [
@@ -1091,13 +1072,6 @@ export const modules: Record<string, ModuleData> = {
         result: 'L\'évolution de votre note suivie mois après mois'
       }
     ],
-    testimonial: {
-      quote: 'En 3 mois, notre note Google est passée de 4.1 à 4.6. Le secret ? Demander au bon moment, aux bons clients. Et répondre vite grâce à l\'IA.',
-      author: 'Nathalie Blanc',
-      role: 'Directrice Marketing',
-      hotel: 'Le Clos des Vignes ****',
-      metric: 'De 4.1 à 4.6 sur Google en 3 mois'
-    },
     integrations: ['Google', 'TripAdvisor', 'Booking.com', 'Airbnb', 'Thaïs PMS', 'Misterbooking', 'Opera Cloud', 'Mews'],
     faq: [
       {
@@ -1198,13 +1172,6 @@ export const modules: Record<string, ModuleData> = {
         result: 'Le rapport part seul, chaque mois'
       }
     ],
-    testimonial: {
-      quote: 'Avant, je passais un vendredi par mois à compiler des données. Maintenant, le rapport arrive tout seul le lundi matin. Et il est plus complet que ce que je faisais à la main.',
-      author: 'Pierre Garnier',
-      role: 'Revenue Manager',
-      hotel: 'Hôtel & Spa Bellevue ****',
-      metric: '4h/mois économisées'
-    },
     integrations: ['Thaïs PMS', 'Misterbooking', 'Opera Cloud', 'Mews', 'Asterio', 'Google', 'TripAdvisor', 'Booking.com'],
     faq: [
       {
@@ -1307,11 +1274,10 @@ export const modules: Record<string, ModuleData> = {
       }
     ],
     testimonial: {
-      quote: 'Avant le hub, on ratait 1 message sur 5. Aujourd\'hui, chaque demande est traitée en moins d\'une minute. Nos clients sentent la différence.',
-      author: 'Valérie Dubois',
-      role: 'Chef de Réception',
-      hotel: 'Le Royal Hôtel ****',
-      metric: 'Zéro message perdu'
+      quote: 'TriggerFlow permet d\'avoir une vue complète pour le siège et simplifiée pour les réceptionnistes : elles voient uniquement leur messagerie pour répondre aux questions et le tableau de bord pour suivre l\'upsell et les commandes.',
+      author: 'Romain Coste-Chareyre',
+      role: 'Groupe',
+      hotel: 'AMMI Hôtels',
     },
     integrations: ['Thaïs PMS', 'Misterbooking', 'Medialog', 'Opera Cloud', 'Mews', 'Asterio', 'Lean PMS', 'Apaleo'],
     faq: [
@@ -1416,11 +1382,10 @@ export const modules: Record<string, ModuleData> = {
       }
     ],
     testimonial: {
-      quote: 'Nos ventes additionnelles ont augmenté de 17% le premier mois. Le surclassement se vend tout seul à J-3 et notre spa est complet tous les week-ends.',
-      author: 'Philippe Roux',
-      role: 'Revenue Manager',
-      hotel: 'Domaine & Spa La Cascade ****',
-      metric: '+17% de panier moyen'
+      quote: 'Aujourd\'hui, mes clients reçoivent un e-mail personnalisé qui tient compte de leur réservation. Ils n\'ont pas de petit déjeuner ? On leur propose d\'en réserver un. Pas de repas ? Idem.',
+      author: 'Baptiste Legout',
+      role: 'Propriétaire',
+      hotel: 'Hôtel Causse Comtal',
     },
     integrations: ['Thaïs PMS', 'Misterbooking', 'Medialog', 'Opera Cloud', 'Mews', 'Asterio', 'Lean PMS', 'Apaleo'],
     faq: [
@@ -1568,11 +1533,10 @@ export const modules: Record<string, ModuleData> = {
       },
     ],
     testimonial: {
-      quote: 'On a divisé par 10 le temps passé sur les acomptes. Les clients paient avant d\'arriver, c\'est fluide pour tout le monde.',
-      author: 'Thomas Renard',
-      role: 'Directeur',
-      hotel: 'Hôtel & Spa Le Clos',
-      metric: '-90% de temps sur les acomptes'
+      quote: 'Pouvoir envoyer automatiquement une demande de paiement, suivre si le client a payé ou non, puis déclencher des relances automatiques, c\'est un énorme gain de temps et de sérénité.',
+      author: 'Carine Chausson',
+      role: 'Directrice',
+      hotel: 'Hôtel Arc en Ciel',
     },
     ctaTitle: 'Simplifiez vos encaissements dès cette semaine',
     ctaSubtitle: 'Paiements configurés avec vous. Acomptes et soldes encaissés sans relance manuelle.',

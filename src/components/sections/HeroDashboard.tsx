@@ -1,25 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { Check, Star, MessageSquare, TrendingUp, MessageCircle } from 'lucide-react';
 
-function AnimatedCounter({ target, duration = 2 }: { target: number; duration?: number }) {
-  const [count, setCount] = useState(0);
-  useEffect(() => {
-    let frame: number;
-    const start = performance.now();
-    const step = (now: number) => {
-      const progress = Math.min((now - start) / (duration * 1000), 1);
-      setCount(Math.floor(progress * target));
-      if (progress < 1) frame = requestAnimationFrame(step);
-    };
-    frame = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(frame);
-  }, [target, duration]);
-  return <>{count.toLocaleString('fr-FR')}</>;
+function AnimatedCounter({ target }: { target: number; duration?: number }) {
+  // Valeur finale rendue côté serveur : jamais de « 0 » au chargement.
+  return <>{target.toLocaleString('fr-FR')}</>;
 }
 
 export function HeroDashboard() {

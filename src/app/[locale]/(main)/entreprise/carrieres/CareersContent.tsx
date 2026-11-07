@@ -86,7 +86,7 @@ const openPositions = [
 function careerStats(locale: string) {
   return [
     { value: '100%', key: 'remote' },
-    { value: stat('hotels', locale), key: 'hotels' },
+    { value: String(brand.pms.length), key: 'hotels' }, // libellé « PMS connectés » : pas de nombre d'hôtels sur le site
     { value: brand.foundingDate, key: 'founded' },
   ] as const;
 }

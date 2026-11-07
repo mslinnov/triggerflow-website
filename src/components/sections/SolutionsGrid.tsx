@@ -24,7 +24,8 @@ const solutions = [
     href: '/solutions/residences',
   },
   {
-    key: 'guesthouse',
+    // La carte « Maisons d'hôtes » pointait vers /campings : la page dédiée n'existe pas encore.
+    key: 'camping',
     icon: Tent,
     href: '/solutions/campings',
   },

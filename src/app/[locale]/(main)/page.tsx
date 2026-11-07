@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { brand } from '@/data/brand';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import {
   Hero,
@@ -37,8 +38,8 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
   };
 
   const descriptions: Record<string, string> = {
-    fr: 'CRM hôtelier avec marketing automation et workflows : emails, SMS, WhatsApp automatisés, programme fidélité et avis Google. Connecté à 7+ PMS français.',
-    en: 'Hotel CRM with marketing automation and workflows: automated emails, SMS, WhatsApp, loyalty program and Google reviews. Connected to 7+ French PMS.',
+    fr: `CRM hôtelier avec marketing automation et workflows : emails, SMS, WhatsApp automatisés, programme fidélité et avis Google. Connecté nativement à ${brand.pms.length} PMS. Hébergé en France.`,
+    en: `Hotel CRM with marketing automation and workflows: automated emails, SMS, WhatsApp, loyalty program and Google reviews. Natively connected to ${brand.pms.length} PMS. Hosted in France.`,
   };
 
   return {

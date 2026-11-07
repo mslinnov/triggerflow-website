@@ -285,7 +285,7 @@ export function Header({ banner }: HeaderProps = {}) {
                 size="sm"
                 className="whitespace-nowrap"
               >
-                {t('demo')}
+                {t('startFree')}
               </ButtonLink>
             </div>
 
@@ -591,7 +591,7 @@ function MobileMenu({ t, withBanner, onClose }: MobileMenuProps) {
               size="lg"
               className="w-full justify-center"
             >
-              {t('demo')}
+              {t('startFree')}
             </ButtonLink>
           </div>
         </div>

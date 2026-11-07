@@ -148,13 +148,11 @@ test('modules et solutions : aucune promesse chiffrée non mesurée, dans aucun 
   assert.deepEqual(found, []);
 });
 
-test('pages À propos, Carrières, /v2 et étapes de l\'accueil : chiffres de marque lus dans brand.ts et company-stats.ts', () => {
+test('pages À propos, Carrières et étapes de l\'accueil : chiffres de marque lus dans brand.ts et company-stats.ts', () => {
   const read = (...p: string[]) => readFileSync(join(root, 'src', ...p), 'utf8');
   const pages = {
     careers: read('app', '[locale]', '(main)', 'entreprise', 'carrieres', 'CareersContent.tsx'),
     about: read('app', '[locale]', '(main)', 'entreprise', 'a-propos', 'AboutContent.tsx'),
-    heroV2: read('components', 'sections', 'v2', 'HeroV2.tsx'),
-    logoCloudV2: read('components', 'sections', 'v2', 'LogoCloudV2.tsx'),
     howItWorks: read('components', 'sections', 'HowItWorks.tsx'),
   };
   for (const [name, src] of Object.entries(pages)) {
@@ -164,8 +162,7 @@ test('pages À propos, Carrières, /v2 et étapes de l\'accueil : chiffres de ma
     assert.doesNotMatch(src, /'\d+'[^\n]*(collaborateurs|employés|employees|team members)|\d+ (collaborateurs|employés|employees|team members)/i, name);
   }
   assert.match(pages.careers, /brand\.foundingDate/);
-  // /v2 est servie en FR et en EN : valeur de la langue de la page, pas la version FR figée.
-  for (const name of ['heroV2', 'logoCloudV2'] as const) assert.doesNotMatch(pages[name], /companyStats\.\w+\.fr/, name);
+  // /v2 supprimée le 07/11/2026 (brouillon remplacé par la refonte).
   // « +N » après les logos de PMS : le reste de brand.pms, pas un nombre figé.
   assert.doesNotMatch(pages.howItWorks, /^\s*\+\d+\s*$/m);
   assert.match(pages.howItWorks, /brand\.pms\.length - pmsLogos\.length/);

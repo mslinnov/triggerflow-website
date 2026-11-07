@@ -148,8 +148,12 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   };
 
   return (
-    <html lang={locale} suppressHydrationWarning>
-      <body className={`${ibmPlexSans.variable} ${geistMono.variable} ${fraunces.variable} antialiased`}>
+    <html
+      lang={locale}
+      suppressHydrationWarning
+      className={`${ibmPlexSans.variable} ${geistMono.variable} ${fraunces.variable}`}
+    >
+      <body className="antialiased">
         <NextIntlClientProvider locale={locale} messages={rootMessages}>
           {children}
           <CookieConsentBanner />

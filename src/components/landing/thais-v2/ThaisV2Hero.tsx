@@ -209,8 +209,7 @@ export function ThaisV2Hero() {
                     ))}
                   </div>
                   <div className="text-sm">
-                    <span className="font-semibold text-white">{companyStats.hotels.fr}</span>
-                    <span className="text-zinc-400"> hôtels</span>
+                    <span className="text-zinc-400">Ils nous font confiance</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
@@ -286,7 +285,7 @@ export function ThaisV2Hero() {
                   {[
                     { value: companyStats.emailDelivered.fr, label: 'E-mails délivrés (12 mois)' },
                     { value: companyStats.smsDelivered.fr, label: 'SMS remis (12 mois)' },
-                    { value: companyStats.hotels.fr, label: 'Hôtels clients' },
+                    { value: companyStats.paidWithin2h.fr, label: 'Paiements réglés en 2 h' },
                   ].map((stat) => (
                     <div key={stat.label} className="text-center">
                       <p className="text-2xl font-bold text-white">{stat.value}</p>

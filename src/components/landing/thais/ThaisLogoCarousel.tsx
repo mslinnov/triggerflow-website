@@ -3,19 +3,17 @@
 import { motion } from 'framer-motion';
 import { Container } from '@/components/ui';
 import { Star, MapPin } from 'lucide-react';
-// LP Thaïs : page FR seulement (textes rédigés en français), d'où les chiffres en version FR.
-import { companyStats } from '@/data/company-stats';
 
-// Anonymized hotel logos represented as styled cards
+// Vrais clients (docs/preuves.md). Étoiles affichées uniquement quand le classement est connu.
 const hotels = [
-  { name: 'Hôtel & Spa', stars: 4, location: 'Annecy', initial: 'HS' },
-  { name: 'Le Relais', stars: 3, location: 'Lyon', initial: 'LR' },
-  { name: 'Domaine des Vignes', stars: 4, location: 'Bordeaux', initial: 'DV' },
-  { name: 'Maison d\'hôtes', stars: 4, location: 'Provence', initial: 'MH' },
-  { name: 'Hôtel de la Plage', stars: 3, location: 'Biarritz', initial: 'HP' },
-  { name: 'Le Provençal', stars: 4, location: 'Nice', initial: 'LP' },
-  { name: 'Château Hotel', stars: 5, location: 'Loire', initial: 'CH' },
-  { name: 'Boutique Hotel', stars: 4, location: 'Paris', initial: 'BH' },
+  { name: 'Hôtel Causse Comtal', stars: 0, location: 'Aveyron', initial: 'CC' },
+  { name: 'Le Vieux Pressoir', stars: 0, location: 'Alsace', initial: 'VP' },
+  { name: 'Hôtel Arc en Ciel', stars: 0, location: 'Colmar', initial: 'AC' },
+  { name: 'AMMI Hôtels', stars: 0, location: 'Nice', initial: 'AM' },
+  { name: 'Edgar Hôtel & Spa', stars: 4, location: 'Saint-Brieuc', initial: 'ED' },
+  { name: 'Urban Bivouac', stars: 0, location: 'Paris', initial: 'UB' },
+  { name: 'Le Phébus & Spa', stars: 5, location: 'Luberon', initial: 'PH' },
+  { name: 'Groupe Noemys', stars: 0, location: 'France', initial: 'NO' },
 ];
 
 // Duplicate for infinite scroll effect
@@ -31,7 +29,7 @@ export function ThaisLogoCarousel() {
           viewport={{ once: true }}
           className="text-center text-sm font-medium text-zinc-500 mb-8"
         >
-          Ils nous font confiance - <span className="text-[var(--thais-primary)] font-semibold">{companyStats.hotels.fr} hôtels</span>
+          Ils nous font confiance
         </motion.p>
       </Container>
 

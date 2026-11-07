@@ -111,15 +111,16 @@
         "helpCenter": "Help Center",
         "helpCenterDesc": "Documentation and tutorials"
       }
-    }
+    },
+    "startFree": "Start for free"
   },
   "hero": {
     "badge": "Hotel automation platform",
     "title": "The hotel CRM that centralizes your entire guest relationship",
     "subtitle": "Automate your emails, SMS, WhatsApp, reviews, upsells and payments, from check-in to check-out. Connected to your PMS, everything runs effortlessly.",
-    "cta": "Book a demo",
+    "cta": "Start for free",
     "ctaFree": "Free 14-day trial",
-    "ctaSecondary": "Discover modules",
+    "ctaSecondary": "See the product",
     "hotelsLabel": "hotels",
     "socialProof": {
       "hotels": "Over 300 hotels trust us"
@@ -168,7 +169,7 @@
     }
   },
   "logoCloud": {
-    "title": "They trust us",
+    "title": "They chose TriggerFlow",
     "metrics": {
       "hotels": "hotels equipped",
       "basket": "average basket",
@@ -176,7 +177,14 @@
       "messages": "messages sent",
       "pms": "PMS + Zapier and n8n"
     },
-    "cta": "Discover their testimonials"
+    "cta": "Discover their testimonials",
+    "rates": {
+      "emailDelivered": "of emails delivered",
+      "smsDelivered": "of SMS delivered",
+      "whatsappRead": "of WhatsApp messages read",
+      "paidWithin2h": "of payments settled within 2 hours"
+    },
+    "ratesSource": "Measured over the last 12 months, across all client properties."
   },
   "communicationFlow": {
     "title": "Trigger → Action → Result",
@@ -572,14 +580,14 @@
         "title": "Tourist Residences",
         "description": "Manage long stays and turnover"
       },
-      "guesthouse": {
-        "title": "Guesthouses",
-        "description": "Automation accessible to small properties"
+      "camping": {
+        "title": "Campsites",
+        "description": "Keep your campsite guests engaged all season, from booking to departure"
       }
     }
   },
   "testimonialFeatured": {
-    "quote": "After testing several CRM solutions, we found with TriggerFlow the tool that truly matches our needs. A real asset for our hotel: guest loyalty, concrete additional sales, and a perfect interface with our PMS.",
+    "quote": "After testing several CRM tools, we found in TriggerFlow the one that truly fits our needs.",
     "author": {
       "name": "Maxime Jullien",
       "title": "Director, Edgar Hotel & Spa ****",
@@ -710,53 +718,53 @@
     "title": "What our clients say",
     "items": [
       {
-        "quote": "TriggerFlow transformed how we communicate with guests. Satisfaction surveys helped us significantly improve our OTA ratings.",
-        "name": "Sandrine Surrel",
-        "title": "Director, Nature Cathare",
-        "initials": "SS",
+        "quote": "Unlike other CRM tools, you no longer have to start from what the software can do and adapt to it. With TriggerFlow, you start from the need, draw the scenario you want… and then set it up, without getting stuck.",
+        "name": "Baptiste Legout",
+        "title": "Owner, Hôtel Causse Comtal",
+        "initials": "BL",
         "metric": {
-          "value": "+45%",
-          "label": "Google reviews"
+          "value": "1 week",
+          "label": "to run emails worthy of a large chain"
         }
       },
       {
-        "quote": "In 3 months, we generated €25,000 in additional sales through automated upsell campaigns. The ROI is immediate.",
-        "name": "Marc Dubois",
-        "title": "Revenue Manager, Hôtel & Spa Le Pavillon",
-        "initials": "MD",
+        "quote": "Choosing TriggerFlow was about personalizing our workflows as far as we wanted, with full control. I was already using another CRM well established in Paris, but it no longer let me go further.",
+        "name": "Idir Mazari",
+        "title": "Manager, Urban Bivouac Hôtel Paris",
+        "initials": "IM",
         "metric": {
-          "value": "€25K",
-          "label": "additional revenue"
+          "value": "Medialog",
+          "label": "synced both ways"
         }
       },
       {
-        "quote": "The time savings are impressive. Our receptionists focus on welcoming guests instead of admin tasks. 10 hours saved per week.",
-        "name": "Alice Renaud",
-        "title": "Operations Director, Les Jardins d'Aliénor",
-        "initials": "AR",
+        "quote": "TriggerFlow gives head office a complete view and receptionists a simplified one: they only see their inbox to answer guests and the dashboard to follow upsells and orders.",
+        "name": "Romain Coste-Chareyre",
+        "title": "AMMI Hôtels, Nice",
+        "initials": "RC",
         "metric": {
-          "value": "10h",
-          "label": "saved / week"
+          "value": "6 properties",
+          "label": "on a single tool"
         }
       },
       {
-        "quote": "Online check-in changed everything. 73% of our guests use it and the reception queue has virtually disappeared.",
-        "name": "Jean-Philippe Moret",
-        "title": "General Manager, Grand Hôtel des Thermes",
-        "initials": "JM",
+        "quote": "Our biggest win is payment link tracking. Sending a payment request automatically, seeing whether the guest has paid, then triggering reminders: it saves a huge amount of time and worry.",
+        "name": "Carine Chausson",
+        "title": "Manager, Hôtel Arc en Ciel, Colmar",
+        "initials": "CC",
         "metric": {
-          "value": "73%",
-          "label": "online check-in"
+          "value": "Payments",
+          "label": "tracked and chased automatically"
         }
       },
       {
-        "quote": "Our Booking score went from 8.2 to 9.1 in 6 months thanks to pre-publication surveys. TriggerFlow tells us about unhappy guests before they post.",
-        "name": "Sophie Lefèvre",
-        "title": "Quality Manager, Groupe Hôtels Patrimoine",
-        "initials": "SL",
+        "quote": "There's some work at the start to set everything up. Now it runs on its own: I save a huge amount of time, and I know the relationship with my guests is taken care of.",
+        "name": "Guillaume Broutin",
+        "title": "Owner, Le Vieux Pressoir",
+        "initials": "GB",
         "metric": {
-          "value": "8.2 → 9.1",
-          "label": "Booking score"
+          "value": "One message",
+          "label": "per booking source"
         }
       }
     ]
@@ -821,12 +829,12 @@
         }
       }
     },
-    "socialProof": "Average client satisfaction",
+    "socialProof": "of emails delivered (last 12 months, all our hotels)",
     "cta": "Simplify your operations this week"
   },
   "ctaSection": {
     "title": "Ready to create your first automations?",
-    "subtitle": "Join 300+ hotels that have regained control of their customer relationship",
+    "subtitle": "Join the hoteliers who have taken back control of their guest relationship",
     "ctaPrimary": "Book a demo",
     "ctaSecondary": "Contact us"
   },
@@ -834,7 +842,7 @@
     "description": "The hotel CRM that centralizes your entire guest relationship.",
     "cta": {
       "title": "Ready to transform your customer relationship?",
-      "subtitle": "Join hundreds of hoteliers who trust TriggerFlow",
+      "subtitle": "Join the hoteliers who trust TriggerFlow",
       "button": "Book a demo"
     },
     "columns": {
@@ -930,7 +938,8 @@
       }
     },
     "cta": {
-      "demo": "Book a demo"
+      "demo": "Book a demo",
+      "startFree": "Start for free"
     },
     "addons": {
       "badge": "Add-on modules",
@@ -1145,7 +1154,7 @@
         },
         "today": {
           "title": "Today",
-          "description": "300+ hotels equipped"
+          "description": "Independent hotels and groups in France and abroad"
         }
       }
     },
@@ -1411,7 +1420,7 @@
     },
     "backToProduct": "Back to product",
     "problemSolution": {
-      "title": "What changes when your emails run themselves",
+      "title": "What changes with TriggerFlow",
       "subtitle": "",
       "before": "Without TriggerFlow",
       "beforeSubtitle": "The reality for many hotels today",
@@ -1420,15 +1429,15 @@
     },
     "features": {
       "title": "Build, personalize, analyze. No code needed",
-      "subtitle": "A drag & drop email builder, automatic PMS variables, and a real-time analytics dashboard. No technical skills required."
+      "subtitle": "A visual editor, your PMS data and clear statistics. No technical skills required."
     },
     "useCases": {
       "title": "4 scenarios that drive revenue",
       "subtitle": "Each scenario below works from day one, with zero intervention from your team."
     },
     "journey": {
-      "title": "An email at every key stage of the stay",
-      "subtitle": "From booking to post-stay, every email is sent automatically at the right moment, without your team lifting a finger"
+      "title": "There at every key stage of the stay",
+      "subtitle": "From booking to post-stay, every action runs automatically at the right moment, without your team lifting a finger"
     },
     "integrations": {
       "badge": "Integrations",
@@ -1439,11 +1448,6 @@
       "title": "Your questions, answered",
       "subtitle": "Everything you need to know before getting started"
     },
-    "testimonial": {
-      "quote": "This module has transformed how we work. The results were immediate and our guests are delighted.",
-      "author": "Marie Dupont",
-      "role": "Director, Hotel Le Grand"
-    },
     "related": {
       "title": "Even more powerful combined",
       "subtitle": "Add SMS or WhatsApp to reach guests on their phone"
@@ -1451,7 +1455,7 @@
     "cta": {
       "title": "Ready to discover this module?",
       "subtitle": "Book a personalized demo with our team",
-      "demo": "Book my free demo",
+      "demo": "Start for free",
       "pricing": "View pricing",
       "contact": "Ask a question"
     },
@@ -1758,7 +1762,7 @@
     "applyComingSoon": "Application system coming soon",
     "stats": {
       "remote": "Remote",
-      "hotels": "Client hotels",
+      "hotels": "Connected PMS",
       "founded": "Founded"
     }
   },
@@ -1980,12 +1984,6 @@
           "description": "Pre-configured scenarios or custom creation with the visual drag-and-drop flow builder. No code, no consultant."
         }
       ]
-    },
-    "testimonial": {
-      "stars": "5",
-      "quote": "We connected TriggerFlow to our Mews on a Monday morning. By evening, our pre-stay emails were going out on their own. In 3 months, we doubled our Google reviews and our upgrades practically sell themselves. What I love most: the team doesn't touch a thing anymore, it just runs.",
-      "author": "Claire M., General Manager",
-      "context": "Boutique hotel, 42 rooms, Paris 11th"
     },
     "faq": {
       "title": "FAQ: Hotel CRM for Mews",
@@ -2934,5 +2932,11 @@
     "lockBody": "Any paid subscription started before December 31, 2026 keeps the 2026 price list for life, upgrades included, as long as the subscription stays active.",
     "faqQuestion": "What happens on January 1, 2027?",
     "faqAnswer": "Our prices change on January 1, 2027. Any paid subscription started before December 31, 2026 keeps the 2026 price list for life, as long as it stays active, including if you later move to a higher plan. A free trial started before December 31 counts if it converts into a paid subscription; the Discovery plan does not count. Modules added after January 1, 2027 are billed at the new price. If you cancel, the guaranteed price is lost."
+  },
+  "announcement": {
+    "badge": "New",
+    "text": "Reception call: goodbye to in-room phones. Guests call the front desk from their own phone, for free.",
+    "short": "Reception call: goodbye to in-room phones",
+    "cta": "See a demo"
   }
 }

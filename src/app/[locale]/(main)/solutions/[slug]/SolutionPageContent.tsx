@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { ArrowRight, ArrowLeft, Check, X, Plug } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { solutions } from '@/data/solutions';
@@ -22,6 +22,13 @@ import { LoyaltyPointsMockup } from '@/components/mockups/LoyaltyPointsMockup';
 import { EmailMockup } from '@/components/mockups/EmailMockup';
 import { SmsSendMockup } from '@/components/mockups/SmsSendMockup';
 import { CRMMockup } from '@/components/mockups/CRMMockup';
+import { SmsHeroMockup } from '@/components/mockups/SmsHeroMockup';
+import { WhatsAppHeroMockup } from '@/components/mockups/WhatsAppHeroMockup';
+import { ReviewHeroMockup } from '@/components/mockups/ReviewHeroMockup';
+import { AnalyticsHeroMockup } from '@/components/mockups/AnalyticsHeroMockup';
+import { HubHeroMockup } from '@/components/mockups/HubHeroMockup';
+import { PaymentHeroMockup } from '@/components/mockups/PaymentHeroMockup';
+import { FormBuilderMockup } from '@/components/mockups/FormBuilderMockup';
 
 const mockupComponents: Record<string, React.ComponentType> = {
   // Hero mockups
@@ -37,6 +44,23 @@ const mockupComponents: Record<string, React.ComponentType> = {
   EmailMockup,
   PhoneMockup: SmsSendMockup,
   CRMMockup,
+};
+
+/** Visuel de chaque module mis en avant (par slug) : plus aucun emplacement vide. */
+const featureMockupBySlug: Record<string, React.ComponentType> = {
+  email: EmailMockup,
+  sms: SmsHeroMockup,
+  whatsapp: WhatsAppHeroMockup,
+  newsletter: CampaignMockup,
+  fidelite: LoyaltyPointsMockup,
+  automatisations: WorkflowBuilderMockup,
+  crm: CRMMockup,
+  formulaires: FormBuilderMockup,
+  avis: ReviewHeroMockup,
+  analytics: AnalyticsHeroMockup,
+  'hub-messagerie': HubHeroMockup,
+  'ventes-additionnelles': UpsellOfferMockup,
+  paiements: PaymentHeroMockup,
 };
 
 interface SolutionPageContentProps {
@@ -469,28 +493,16 @@ export default function SolutionPageContent({ solutionSlug }: SolutionPageConten
                     {...(isEven ? slideRight : slideLeft)}
                     className={cn('relative', !isEven && 'md:order-1')}
                   >
-                    {moduleData?.mockup && mockupComponents[moduleData.mockup] ? (
-                      (() => {
-                        const FeatureMockup = mockupComponents[moduleData.mockup];
-                        return (
-                          <div className="relative">
-                            <FeatureMockup />
-                            <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-brand-primary/5 rounded-full blur-2xl" />
-                          </div>
-                        );
-                      })()
-                    ) : (
-                      <div className="relative aspect-video bg-gradient-to-br from-gray-100 to-gray-50 rounded-2xl overflow-hidden border border-gray-200">
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="text-center p-8">
-                            {ModuleIcon && (
-                              <ModuleIcon className="w-16 h-16 text-brand-primary/30 mx-auto mb-4" />
-                            )}
-                            <span className="text-gray-400 text-sm">{feature.highlight}</span>
-                          </div>
+                    {(() => {
+                      const FeatureMockup = featureMockupBySlug[feature.slug];
+                      if (!FeatureMockup) return null;
+                      return (
+                        <div className="relative">
+                          <FeatureMockup />
+                          <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-brand-primary/5 rounded-full blur-2xl" />
                         </div>
-                      </div>
-                    )}
+                      );
+                    })()}
                   </motion.div>
                 </div>
               );
@@ -563,6 +575,7 @@ export default function SolutionPageContent({ solutionSlug }: SolutionPageConten
       </section>
 
       {/* ===== 9. TESTIMONIAL ===== */}
+      {solution.testimonial && (
       <section className="py-16 md:py-24 bg-gradient-to-br from-emerald-50 to-green-50/30">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div {...fadeIn} className="text-center">
@@ -598,6 +611,7 @@ export default function SolutionPageContent({ solutionSlug }: SolutionPageConten
           </motion.div>
         </div>
       </section>
+      )}
 
       {/* ===== 10. INTEGRATIONS ===== */}
       <section className="py-16 md:py-20 bg-white">

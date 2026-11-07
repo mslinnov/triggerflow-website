@@ -8,6 +8,7 @@ import { ArrowRight, Star } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Container } from '@/components/ui';
+import { stat } from '@/data/company-stats';
 import { fadeInUp, defaultViewport } from '@/lib/animations';
 
 interface CtaLink {
@@ -201,19 +202,9 @@ export function PersonasBento() {
 
                 {/* Social proof — col 1, row 2 */}
                 <div className="flex flex-col items-start justify-center rounded-[20px] bg-brand-dark p-5 md:rounded-[32px] md:p-6">
-                  <div className="mb-2 flex gap-0.5">
-                    {[1, 2, 3, 4, 5].map((i) => (
-                      <Star
-                        key={i}
-                        className="h-4 w-4 fill-brand-accent text-brand-accent"
-                      />
-                    ))}
-                  </div>
-                  <div className="text-3xl font-bold text-white md:text-5xl">
-                    9.4
-                    <span className="text-base font-normal text-white/30 md:text-lg">
-                      /10
-                    </span>
+                  {/* Chiffre mesuré de company-stats.ts (remplace une note non sourcée, retirée). */}
+                  <div className="font-mono text-3xl font-bold text-white md:text-5xl">
+                    {stat('emailDelivered', locale)}
                   </div>
                   <div className="mt-1 text-sm text-white/40">
                     {t('socialProof')}

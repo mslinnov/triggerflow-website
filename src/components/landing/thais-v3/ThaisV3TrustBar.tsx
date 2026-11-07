@@ -10,8 +10,8 @@ import { companyStats } from '@/data/company-stats';
 const stats = [
   {
     icon: Users,
-    value: companyStats.hotels.fr,
-    label: 'Hôtels connectés',
+    value: companyStats.paidWithin2h.fr,
+    label: 'Paiements réglés en 2 h',
   },
   {
     icon: Star,

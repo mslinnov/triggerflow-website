@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { motion, useReducedMotion, type Variants } from 'framer-motion';
 import {
@@ -57,6 +57,7 @@ const lineGrow: Variants = {
 
 export function HowItWorks() {
   const t = useTranslations('howItWorks');
+  const locale = useLocale();
   const prefersReducedMotion = useReducedMotion();
 
   return (
@@ -185,7 +186,7 @@ export function HowItWorks() {
           className="mt-10 text-center"
         >
           <motion.a
-            href="/integrations"
+            href={`/${locale}/integrations`}
             className="inline-flex items-center gap-2 text-sm font-medium text-brand-primary transition-colors hover:text-brand-dark"
             whileHover={{ x: 5 }}
           >

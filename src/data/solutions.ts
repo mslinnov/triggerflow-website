@@ -103,7 +103,8 @@ export interface SolutionData {
   stats: SolutionStat[];
   features: SolutionFeature[];
   useCases: SolutionUseCase[];
-  testimonial: SolutionTestimonial;
+  /** Uniquement un vrai témoignage client (docs/preuves.md) ; absent = bloc masqué. */
+  testimonial?: SolutionTestimonial;
   integrations: string[];
   faq?: SolutionFaq[];
   journey?: SolutionJourneyStep[];
@@ -114,11 +115,11 @@ export interface SolutionData {
 
 // ─── Solutions Data ─────────────────────────────────────────
 
-/** Nombre d'hôtels de company-stats.ts (version FR : solutions rédigées en français), découpé pour AnimatedStat (« N+ » → N puis « + »). */
+/** Pas de nombre d'hôtels clients sur le site (décision de Soufiane du 07/11/2026) : taux mesuré de company-stats.ts à la place. */
 const hotelsStat: SolutionStat = {
-  value: statNumber('hotels'),
-  suffix: companyStats.hotels.fr.slice(statNumber('hotels').length),
-  label: 'hôtels utilisent TriggerFlow',
+  value: statNumber('paidWithin2h'),
+  suffix: ' %',
+  label: 'des paiements par lien réglés dans les 2 h (12 derniers mois)',
 };
 
 export const solutions: Record<string, SolutionData> = {
@@ -244,12 +245,11 @@ export const solutions: Record<string, SolutionData> = {
     ],
 
     testimonial: {
-      quote: "Avant TriggerFlow, je passais 2h par jour sur les emails. Maintenant tout est automatique et mes avis Google ont doublé.",
-      author: 'Marie L.',
-      role: 'Directrice',
-      hotel: 'Hôtel Le Provençal',
-      location: 'Aix-en-Provence',
-      metric: '+120% d\'avis Google en 4 mois',
+      quote: 'On peut automatiser des messages très personnalisés, anticiper toutes les situations, pour que le bon client reçoive le message qu\'on veut, au meilleur moment.',
+      author: 'Guillaume Broutin',
+      role: 'Propriétaire',
+      hotel: 'Le Vieux Pressoir',
+      location: 'Alsace',
     },
 
     integrations: ['Mews', 'Thaïs PMS', 'Misterbooking', 'Opera Cloud'],
@@ -289,7 +289,7 @@ export const solutions: Record<string, SolutionData> = {
     relatedSolutions: ['automatiser-communication', 'augmenter-avis', 'fideliser-clients'],
 
     ctaTitle: "Prêt à automatiser votre hôtel indépendant ?",
-    ctaSubtitle: `Rejoignez les ${companyStats.hotels.fr} hôtels qui ont automatisé leur relation client avec TriggerFlow`,
+    ctaSubtitle: 'Rejoignez les hôteliers qui ont automatisé leur relation client avec TriggerFlow',
   },
 
   'groupes-hoteliers': {
@@ -413,12 +413,11 @@ export const solutions: Record<string, SolutionData> = {
     ],
 
     testimonial: {
-      quote: 'Nous avons déployé TriggerFlow sur nos 12 hôtels. Le reporting consolidé nous fait gagner un temps fou.',
-      author: 'Philippe D.',
-      role: 'Directeur Marketing',
-      hotel: 'Groupe Hôtelier du Sud',
-      location: 'France',
-      metric: '12 hôtels pilotés depuis 1 dashboard',
+      quote: 'TriggerFlow permet d\'avoir une vue complète pour le siège et simplifiée pour les réceptionnistes : elles voient uniquement leur messagerie pour répondre aux questions et le tableau de bord pour suivre l\'upsell et les commandes.',
+      author: 'Romain Coste-Chareyre',
+      role: 'Groupe',
+      hotel: 'AMMI Hôtels',
+      location: 'Nice',
     },
 
     integrations: ['Opera Cloud', 'Mews', 'Thaïs PMS', 'Misterbooking'],
@@ -576,14 +575,6 @@ export const solutions: Record<string, SolutionData> = {
       },
     ],
 
-    testimonial: {
-      quote: "Les arrivées autonomes étaient un cauchemar. Avec TriggerFlow, les clients ont toutes les infos et on n'a plus d'appels le dimanche soir.",
-      author: 'Sophie M.',
-      role: 'Responsable exploitation',
-      hotel: "Résidences Côte d'Azur",
-      location: 'Nice',
-      metric: '-80% d\'appels hors horaires',
-    },
 
     integrations: ['Medialog', 'Sesame', 'Igloohome'],
 
@@ -741,14 +732,6 @@ export const solutions: Record<string, SolutionData> = {
       },
     ],
 
-    testimonial: {
-      quote: 'Notre taux de re-réservation pour la saison suivante est passé de 15% à 35% grâce aux campagnes early booking automatiques.',
-      author: 'Laurent B.',
-      role: 'Directeur',
-      hotel: 'Camping Les Pins',
-      location: 'Vendée',
-      metric: '+35% de re-réservation saison suivante',
-    },
 
     integrations: ['Misterbooking', 'Thaïs PMS', 'Lean PMS', 'Apaleo'],
 
@@ -907,14 +890,6 @@ export const solutions: Record<string, SolutionData> = {
       },
     ],
 
-    testimonial: {
-      quote: "Nos clients habitués sont reconnus dès la réservation. L'équipe sait qu'ils préfèrent l'étage supérieur, le champagne Ruinart et un coussin ferme. C'est cette attention qui fidélise.",
-      author: 'Isabelle V.',
-      role: 'Directrice Guest Relations',
-      hotel: 'Le Grand Hôtel',
-      location: 'Paris',
-      metric: '40% de taux de retour client',
-    },
 
     integrations: ['Opera Cloud', 'Mews', 'Sesame', 'Igloohome'],
 
@@ -1067,12 +1042,11 @@ export const solutions: Record<string, SolutionData> = {
     ],
 
     testimonial: {
-      quote: "Je passais 2h par jour sur les emails de confirmation. Maintenant c'est 0. TriggerFlow m'a rendu mes matinées.",
-      author: 'Julie R.',
-      role: 'Responsable réservations',
-      hotel: 'Hôtel & Spa des Alpes',
-      location: 'Chamonix',
-      metric: '10h/semaine récupérées',
+      quote: 'Avec TriggerFlow, on part du besoin, on dessine le scénario qu\'on souhaite mettre en place… et ensuite, on le paramètre sur l\'outil, sans se retrouver bloqué.',
+      author: 'Baptiste Legout',
+      role: 'Propriétaire',
+      hotel: 'Hôtel Causse Comtal',
+      location: 'Aveyron',
     },
 
     integrations: ['Mews', 'Opera Cloud', 'Asterio', 'Misterbooking'],
@@ -1223,14 +1197,6 @@ export const solutions: Record<string, SolutionData> = {
       },
     ],
 
-    testimonial: {
-      quote: 'On est passé de 45 à 120 avis Google en 4 mois. Notre note est passée de 4.2 à 4.6. Game changer.',
-      author: 'Marc T.',
-      role: 'Directeur',
-      hotel: 'Le Boutique Hotel',
-      location: 'Bordeaux',
-      metric: 'De 45 à 120 avis Google en 4 mois',
-    },
 
     integrations: ['Google', 'TripAdvisor', 'Booking.com', 'Airbnb'],
 
@@ -1377,12 +1343,11 @@ export const solutions: Record<string, SolutionData> = {
     ],
 
     testimonial: {
-      quote: "Le surclassement automatique nous rapporte 3000€ de plus par mois. L'investissement TriggerFlow est rentabilisé en 2 semaines.",
-      author: 'Nathalie P.',
-      role: 'Revenue Manager',
-      hotel: 'Grand Hotel du Port',
-      location: 'La Rochelle',
-      metric: '+3 000€/mois de revenus upsell',
+      quote: 'Aujourd\'hui, mes clients reçoivent un e-mail personnalisé qui tient compte de leur réservation. Ils n\'ont pas de petit déjeuner ? On leur propose d\'en réserver un. Pas de repas ? Idem.',
+      author: 'Baptiste Legout',
+      role: 'Propriétaire',
+      hotel: 'Hôtel Causse Comtal',
+      location: 'Aveyron',
     },
 
     integrations: ['Mews', 'Opera Cloud', 'Stripe', 'Thaïs PMS'],
@@ -1530,12 +1495,11 @@ export const solutions: Record<string, SolutionData> = {
     ],
 
     testimonial: {
-      quote: "Notre taux de réservation directe est passé de 30% à 55%. On économise des milliers d'euros de commissions OTA.",
-      author: 'Pierre D.',
-      role: 'Propriétaire',
-      hotel: 'Hôtel & Restaurant du Château',
-      location: 'Loire',
-      metric: 'De 30% à 55% de réservations directes',
+      quote: 'Nous avons pu mettre en place plusieurs flows personnalisés en fonction de nos objectifs, notamment autour du parcours client, de la relance et de la fidélisation.',
+      author: 'Idir Mazari',
+      role: 'Directeur',
+      hotel: 'Urban Bivouac Hôtel',
+      location: 'Paris',
     },
 
     integrations: ['Mews', 'Stripe', 'Thaïs PMS', 'Misterbooking'],
@@ -1593,7 +1557,8 @@ export interface SolutionSerializable {
   challenges: { title: string; description: string }[];
   features: SolutionFeature[];
   useCases: SolutionUseCase[];
-  testimonial: SolutionTestimonial;
+  /** Uniquement un vrai témoignage client (docs/preuves.md) ; absent = bloc masqué. */
+  testimonial?: SolutionTestimonial;
   integrations: string[];
   stats: SolutionStat[];
 }

@@ -68,6 +68,9 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // ── Ancien brouillon de home /v2 supprimé (07/11/2026) ──
+      { source: '/:locale(fr|en)/v2', destination: '/:locale', permanent: true },
+
       // ── Landing Equip'Hotel 2026 : URL courte + page FR uniquement ──
       {
         source: '/equiphotel',

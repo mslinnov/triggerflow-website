@@ -4,36 +4,37 @@ import { motion } from 'framer-motion';
 import { Star, Quote, TrendingUp, Badge as BadgeIcon } from 'lucide-react';
 import { Container, Card } from '@/components/ui';
 
+// Vrais clients Thaïs (docs/preuves.md, témoignages publiés). Aucun chiffre non mesuré.
 const TESTIMONIALS = [
   {
     quote:
-      'Avant TriggerFlow, on passait 2 heures par jour à envoyer des emails manuellement. Aujourd\'hui tout est automatisé et personnalisé. Nos clients reçoivent le bon message selon leur profil, et nous on se concentre sur ce qui compte pour nous.',
-    author: 'Marie Dupois',
-    role: 'Directrice',
-    hotel: 'Hôtel & Spa Le Provençal',
-    stars: 4,
+      "À l'inverse des autres solutions CRM, il n'est plus nécessaire de raisonner à partir de ce que l'outil peut faire et de s'adapter à lui. Avec TriggerFlow, on part du besoin, on dessine le scénario… et ensuite, on le paramètre, sans se retrouver bloqué.",
+    author: 'Baptiste Legout',
+    role: 'Propriétaire',
+    hotel: 'Hôtel Causse Comtal',
+    stars: 5,
     badge: 'Client Thaïs',
     metric: null,
   },
   {
     quote:
-      'Le plus gros changement : nos clients soirée étape ne reçoivent plus le même email que nos séjours romantiques. Les retours sont excellents.',
-    author: 'Jean-Pierre Martin',
-    role: 'Responsable Réception',
-    hotel: 'Le Relais des Vignes',
-    stars: 3,
-    badge: null,
-    metric: '+30% taux d\'ouverture',
+      "Avec mon PMS, je n'avais pas une assez grande flexibilité pour personnaliser mes messages en fonction des canaux de réservation. Maintenant, ça tourne tout seul et je gagne énormément de temps.",
+    author: 'Guillaume Broutin',
+    role: 'Propriétaire',
+    hotel: 'Le Vieux Pressoir',
+    stars: 5,
+    badge: 'Client Thaïs',
+    metric: null,
   },
   {
     quote:
-      'On a doublé nos avis Google en 3 mois grâce aux demandes automatiques post-séjour.',
-    author: 'Sophie Renard',
-    role: 'Propriétaire',
-    hotel: 'Maison d\'hôtes Les Jardins',
-    stars: 4,
-    badge: null,
-    metric: '+89 avis en 3 mois',
+      "Les équipes réception n'ont plus besoin d'envoyer manuellement certains mails ou de gérer certaines relances : tout est automatisé de manière fluide et professionnelle.",
+    author: 'Carine Chausson',
+    role: 'Directrice',
+    hotel: 'Hôtel Arc en Ciel',
+    stars: 5,
+    badge: 'Client Thaïs',
+    metric: null,
   },
 ];
 

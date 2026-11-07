@@ -45,7 +45,7 @@ export function ThaisCTA() {
             Prêt à vous libérer l’esprit ?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-white/80">
-            Rejoignez les {companyStats.hotels.fr} hôtels qui utilisent TriggerFlow pour gagner du temps et améliorer
+            Rejoignez les hôteliers qui utilisent TriggerFlow pour gagner du temps et améliorer
             la satisfaction client
           </p>
 
