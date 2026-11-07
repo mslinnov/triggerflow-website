@@ -63,6 +63,7 @@ export const solutionsMenu: NavItem[] = [
   { key: 'luxury', href: '/solutions/hotels-luxe' },
   { key: 'residences', href: '/solutions/residences' },
   { key: 'campsites', href: '/solutions/campings' },
+  { key: 'guesthouses', href: '/solutions/maisons-hotes' },
 ];
 
 export const platformMenu: NavItem[] = [
@@ -100,6 +101,7 @@ export const footerColumns: NavColumn[] = [
       { key: 'luxury', href: '/solutions/hotels-luxe' },
       { key: 'residences', href: '/solutions/residences' },
       { key: 'campsites', href: '/solutions/campings' },
+      { key: 'guesthouses', href: '/solutions/maisons-hotes' },
       { key: 'integrations', href: '/integrations' },
     ],
   },

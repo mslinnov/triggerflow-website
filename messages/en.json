@@ -3196,7 +3196,8 @@
       "keys": "Digital keys",
       "events": "Events",
       "b2b": "B2B",
-      "bookingRequests": "Booking requests"
+      "bookingRequests": "Booking requests",
+      "guesthouses": "Guesthouses"
     },
     "descriptions": {
       "upsell": "The right extra, before arrival",
@@ -3266,7 +3267,8 @@
         "cookies": "Manage cookies",
         "security": "Security",
         "sync": "PMS sync",
-        "ai": "Built-in AI"
+        "ai": "Built-in AI",
+        "guesthouses": "Guesthouses"
       },
       "hosted": "Hosted in France · GDPR",
       "company": "A Utelys product"
@@ -3658,5 +3660,23 @@
       "p3": "Free Discovery plan to start"
     },
     "cta": "Connect {pms} to TriggerFlow this week."
+  },
+  "solutionLanding": {
+    "challenges": "Your challenges",
+    "challengesTitle": "What you deal with every day.",
+    "beforeAfter": "Before / after",
+    "beforeAfterTitle": "What changes with TriggerFlow.",
+    "without": "Without TriggerFlow",
+    "with": "With TriggerFlow",
+    "features": "Useful modules",
+    "featuresTitle": "The products built for you.",
+    "learnMore": "Learn more",
+    "useCases": "Use cases",
+    "useCasesTitle": "How it works in practice.",
+    "faqTitle": "Your questions, answered.",
+    "cta": "Build your property’s guest journey.",
+    "indexEyebrow": "Solutions",
+    "indexTitle": "A solution sized for your property.",
+    "indexSubtitle": "Independent hotel, group, luxury hotel, residence, campsite or guesthouse: TriggerFlow adapts to the way you host."
   }
 }

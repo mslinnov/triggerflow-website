@@ -3481,7 +3481,8 @@
       "keys": "Clés digitales",
       "events": "Événements",
       "b2b": "B2B",
-      "bookingRequests": "Demandes de réservation"
+      "bookingRequests": "Demandes de réservation",
+      "guesthouses": "Maisons d'hôtes"
     },
     "descriptions": {
       "upsell": "Le bon extra, avant l'arrivée",
@@ -3551,7 +3552,8 @@
         "cookies": "Gérer mes cookies",
         "security": "Sécurité",
         "sync": "Synchronisation PMS",
-        "ai": "IA intégrée"
+        "ai": "IA intégrée",
+        "guesthouses": "Maisons d'hôtes"
       },
       "hosted": "Hébergé en France · RGPD",
       "company": "Une solution Utelys"
@@ -3943,5 +3945,23 @@
       "p3": "Plan Découverte gratuit pour démarrer"
     },
     "cta": "Connectez {pms} à TriggerFlow cette semaine."
+  },
+  "solutionLanding": {
+    "challenges": "Vos défis",
+    "challengesTitle": "Ce que vous vivez au quotidien.",
+    "beforeAfter": "Avant / après",
+    "beforeAfterTitle": "Ce qui change avec TriggerFlow.",
+    "without": "Sans TriggerFlow",
+    "with": "Avec TriggerFlow",
+    "features": "Les modules utiles",
+    "featuresTitle": "Les produits faits pour vous.",
+    "learnMore": "Découvrir",
+    "useCases": "Cas d’usage",
+    "useCasesTitle": "Comment ça se passe, concrètement.",
+    "faqTitle": "Vos questions, nos réponses.",
+    "cta": "Construisez le parcours client de votre établissement.",
+    "indexEyebrow": "Solutions",
+    "indexTitle": "Une solution à la mesure de votre établissement.",
+    "indexSubtitle": "Hôtel indépendant, groupe, hôtel de luxe, résidence, camping ou maison d’hôtes : TriggerFlow s’adapte à votre façon de recevoir."
   }
 }

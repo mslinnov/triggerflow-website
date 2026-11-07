@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { solutionSlugs, getSolutionSerializable } from '@/data/solutions';
 import { BreadcrumbListJsonLd } from '@/components/seo';
-import SolutionPageContent from './SolutionPageContent';
+import { SolutionLanding } from '@/components/solutions/SolutionLanding';
 
 const baseUrl = 'https://www.trigger-flow.com';
 
@@ -19,7 +19,8 @@ export async function generateStaticParams() {
   const params = [];
 
   for (const locale of locales) {
-    for (const slug of solutionSlugs) {
+    // Les solutions « objectif » sont redirigées vers les landings produit (next.config.ts).
+    for (const slug of solutionSlugs.filter((x) => !['booster-upsell', 'automatiser-communication', 'augmenter-avis', 'fideliser-clients'].includes(x))) {
       params.push({ locale, slug });
     }
   }
@@ -75,11 +76,11 @@ export default async function SolutionPage({ params }: Props) {
       <BreadcrumbListJsonLd
         items={[
           { name: 'TriggerFlow', url: `${baseUrl}/${locale}` },
-          { name: 'Solutions', url: `${baseUrl}/${locale}` },
+          { name: 'Solutions', url: `${baseUrl}/${locale}/solutions` },
           { name: solutionData.title, url: `${baseUrl}/${locale}/solutions/${slug}` },
         ]}
       />
-      <SolutionPageContent solutionSlug={slug} />
+      <SolutionLanding slug={slug} locale={locale} />
     </>
   );
 }

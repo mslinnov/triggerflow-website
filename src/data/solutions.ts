@@ -1541,6 +1541,56 @@ export const solutions: Record<string, SolutionData> = {
     ctaTitle: "Récupérez vos clients et vos marges",
     ctaSubtitle: "Lancez votre programme fidélité et boostez les réservations directes",
   },
+
+  // Page créée le 07/11/2026 (la carte « Maisons d'hôtes » pointait vers /campings).
+  'maisons-hotes': {
+    slug: 'maisons-hotes',
+    slugEn: 'guesthouses',
+    icon: Home,
+    category: 'type',
+    title: "Chambres et maisons d'hôtes",
+    headline: "L'accueil d'une maison d'hôtes, sans y passer vos soirées",
+    description: "Vous faites tout vous-même : les réservations, l'accueil, le petit-déjeuner, les messages. TriggerFlow envoie les bons messages au bon moment, pour que vous gardiez du temps pour vos hôtes.",
+    challenges: [
+      { icon: Clock, title: 'Tout repose sur vous', description: "Accueil, ménage, petit-déjeuner, réservations : les messages passent après." },
+      { icon: Copy, title: 'Les mêmes réponses chaque jour', description: "Code d'accès, heure d'arrivée, parking : vous répétez les mêmes informations." },
+      { icon: Moon, title: 'Les arrivées tardives', description: "Attendre un client qui arrive à 23 h, ou lui envoyer les consignes au dernier moment." },
+      { icon: Star, title: 'Les avis comptent double', description: "Sur Booking ou Airbnb, chaque note pèse lourd pour une petite structure." },
+    ],
+    painPoints: [
+      "Les informations d'arrivée envoyées à la main, une par une",
+      "Des demandes qui arrivent par Booking, Airbnb, email et téléphone",
+      "Aucune demande d'avis systématique après le départ",
+    ],
+    benefits: [
+      "Un message d'arrivée personnalisé envoyé automatiquement",
+      "Tous les messages réunis dans une seule boîte",
+      "Une demande d'avis après chaque séjour, au bon moment",
+    ],
+    stats: [
+      { value: statNumber('emailDelivered'), suffix: ' %', label: 'des e-mails délivrés (12 derniers mois, tous nos hôtels)' },
+      { value: statNumber('smsDelivered'), suffix: ' %', label: 'des SMS remis (12 derniers mois, tous nos hôtels)' },
+      { value: String(brand.pms.length), suffix: '', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n' },
+    ],
+    features: [
+      { slug: 'automatisations', highlight: 'Les messages du séjour, tout seuls', whyForPersona: "Confirmation, informations d'arrivée, message de bienvenue et demande d'avis partent au bon moment.", bullets: ['Modèles prêts à adapter', 'Selon le canal de réservation', 'Email, SMS ou WhatsApp'] },
+      { slug: 'hub-messagerie', highlight: 'Une seule boîte pour tout', whyForPersona: "Booking, Airbnb, email, WhatsApp : toutes les questions au même endroit, avec l'historique du client.", bullets: ['Réponses suggérées par l’IA', 'Historique du client', 'Sur ordinateur et mobile'] },
+      { slug: 'avis', highlight: 'Plus d’avis positifs', whyForPersona: "Une enquête au départ, puis une invitation à publier quand le séjour s'est bien passé.", bullets: ['Demande automatique', 'Alerte en cas de note basse', 'Réponses aux avis avec l’IA'] },
+    ],
+    useCases: [
+      { title: "L'arrivée autonome", description: "Le client reçoit ses consignes et son code le jour de l'arrivée.", steps: ['Réservation reçue', "Message d'arrivée J-1 avec les consignes", 'Code ou clé envoyé le jour J'] },
+      { title: 'Le petit-déjeuner', description: "Les préférences collectées avant l'arrivée.", steps: ['Formulaire pré-séjour', 'Préférences et allergies', 'Ajoutées à la fiche du client'] },
+      { title: "L'avis après le départ", description: 'Une demande au bon moment.', steps: ['Départ', 'Enquête de satisfaction', 'Invitation à publier si tout va bien'] },
+    ],
+    integrations: ['Thaïs PMS', 'Beds24', 'Misterbooking', 'Reservit'],
+    faq: [
+      { question: "TriggerFlow est-il adapté à une petite structure ?", answer: "Oui : le plan Découverte est gratuit, et les modèles prêts à l'emploi permettent de démarrer sans compétence technique." },
+      { question: 'Puis-je gérer les messages Booking et Airbnb ?', answer: "Oui : Expedia passe par les emails relais, Airbnb par des formulaires envoyés automatiquement, et la connexion native Booking.com est en cours." },
+      { question: 'Faut-il un PMS ?', answer: 'TriggerFlow se connecte à votre PMS pour automatiser à partir de vos réservations ; parlons de votre outil pendant la démo.' },
+    ],
+    ctaTitle: "Gardez du temps pour vos hôtes",
+    ctaSubtitle: "Démarrez avec le plan Découverte gratuit",
+  },
 };
 
 export const solutionsList = Object.values(solutions);

@@ -31,6 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { frPath: '/fr/ressources/aide', enPath: '/en/ressources/aide', priority: 0.5, changeFrequency: 'monthly' as const },
     { frPath: '/fr/clients', enPath: '/en/clients', priority: 0.6, changeFrequency: 'monthly' as const },
     { frPath: '/fr/ressources/guides', enPath: '/en/ressources/guides', priority: 0.5, changeFrequency: 'monthly' as const },
+    { frPath: '/fr/solutions', enPath: '/en/solutions', priority: 0.7, changeFrequency: 'monthly' as const },
     ...Object.keys(platformPages).map((slug) => ({ frPath: `/fr/plateforme/${slug}`, enPath: `/en/plateforme/${slug}`, priority: 0.6, changeFrequency: 'monthly' as const })),
     ...Object.keys(pmsPages).map((slug) => ({ frPath: `/fr/integrations/pms/${slug}`, enPath: `/en/integrations/pms/${slug}`, priority: 0.6, changeFrequency: 'monthly' as const })),
   ];
