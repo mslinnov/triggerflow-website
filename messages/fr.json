@@ -910,15 +910,15 @@
     },
     "hero": {
       "badge": "Tarification",
-      "title": "Comparez nos plans en fonction de vos besoins",
-      "subtitle": "Utilisez TriggerFlow de façon millimétrée en fonction de vos besoins et décuplez vos capacités au fur et à mesure que vous vous développez"
+      "title": "Des tarifs publics, par établissement.",
+      "subtitle": "Choisissez le plan qui correspond à votre hôtel, ajoutez des modules quand vous en avez besoin. Prix hors taxes, par établissement et par mois."
     },
     "perMonth": "mois",
     "plans": {
       "discovery": {
         "name": "Découverte",
         "trial": "Aucune carte requise",
-        "description": "Découvrez TriggerFlow gratuitement et testez vos premiers scénarios clients."
+        "description": "Pour découvrir TriggerFlow et lancer vos premiers scénarios clients."
       },
       "communication": {
         "name": "Communication",
@@ -951,8 +951,8 @@
     },
     "addons": {
       "badge": "Modules complémentaires",
-      "title": "Personnalisez votre expérience",
-      "subtitle": "Ajoutez des modules à n'importe quel plan pour répondre à vos besoins spécifiques",
+      "title": "Des modules à ajouter à tout moment.",
+      "subtitle": "Chaque module s'ajoute à n'importe quel plan.",
       "cta": "En savoir plus",
       "items": {
         "reviews": {
@@ -1013,8 +1013,8 @@
       }
     },
     "comparison": {
-      "title": "Comparaison détaillée des plans",
-      "subtitle": "Trouvez le plan qui correspond à vos besoins",
+      "title": "Ce que comprend chaque plan.",
+      "subtitle": "Les volumes et fonctionnalités inclus, plan par plan.",
       "feature": "Fonctionnalités",
       "popular": "Le plus populaire",
       "categories": {
@@ -1053,7 +1053,14 @@
         "stats": "Tableaux de bord BI hôteliers : taux d'occupation, RevPAR, ADR, taux d'ouverture, conversions et revenus générés.",
         "groupPortal": "Interface dédiée pour gérer plusieurs établissements depuis un seul compte avec vue consolidée.",
         "addonsIncluded": "Le plan All Inclusive inclut tous les modules complémentaires (Avis, Agent IA, Paiements, Fidélité, Guest App) sans surcoût."
-      }
+      },
+      "eyebrow": "Comparatif",
+      "unlimited": "illimités",
+      "featureCol": "Fonctionnalité",
+      "included": "Inclus",
+      "notIncluded": "Non inclus",
+      "moreInfo": "Plus d'informations",
+      "note": "Prix hors taxes, par établissement et par mois."
     },
     "faq": {
       "title": "Questions fréquentes sur nos tarifs",
@@ -1086,7 +1093,9 @@
       "cta": "Demander un devis groupe"
     },
     "scrollLeft": "Faire défiler vers la gauche",
-    "scrollRight": "Faire défiler vers la droite"
+    "scrollRight": "Faire défiler vers la droite",
+    "perMonthFull": "HT / mois, par établissement",
+    "ctaBand": "Voyons ensemble le plan adapté à votre hôtel."
   },
   "contact": {
     "meta": {

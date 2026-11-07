@@ -910,15 +910,15 @@
     },
     "hero": {
       "badge": "Pricing",
-      "title": "Compare our plans based on your needs",
-      "subtitle": "Use TriggerFlow precisely based on your needs and scale your capabilities as you grow"
+      "title": "Public pricing, per property.",
+      "subtitle": "Choose the plan that fits your hotel and add modules when you need them. Prices exclude VAT, per property and per month."
     },
     "perMonth": "month",
     "plans": {
       "discovery": {
         "name": "Discovery",
         "trial": "No credit card required",
-        "description": "Discover TriggerFlow for free and test your first guest scenarios."
+        "description": "To discover TriggerFlow and launch your first guest scenarios."
       },
       "communication": {
         "name": "Communication",
@@ -943,8 +943,8 @@
     },
     "addons": {
       "badge": "Add-on modules",
-      "title": "Customize your experience",
-      "subtitle": "Add modules to any plan to meet your specific needs",
+      "title": "Modules you can add at any time.",
+      "subtitle": "Every module can be added to any plan.",
       "cta": "Learn more",
       "items": {
         "reviews": {
@@ -1005,8 +1005,8 @@
       }
     },
     "comparison": {
-      "title": "Detailed plan comparison",
-      "subtitle": "Find the plan that matches your needs",
+      "title": "What each plan includes.",
+      "subtitle": "Volumes and features included, plan by plan.",
       "feature": "Features",
       "popular": "Most popular",
       "categories": {
@@ -1045,7 +1045,14 @@
         "stats": "Hotel BI dashboards: occupancy rates, RevPAR, ADR, open rates, conversions and generated revenue.",
         "groupPortal": "Dedicated interface to manage multiple properties from a single account with consolidated view.",
         "addonsIncluded": "The All Inclusive plan includes all add-on modules (Reviews, AI Agent, Payments, Loyalty, Guest App) at no extra cost."
-      }
+      },
+      "eyebrow": "Comparison",
+      "unlimited": "unlimited",
+      "featureCol": "Feature",
+      "included": "Included",
+      "notIncluded": "Not included",
+      "moreInfo": "More information",
+      "note": "Prices exclude VAT, per property and per month."
     },
     "faq": {
       "title": "Frequently asked questions about pricing",
@@ -1078,7 +1085,9 @@
       "cta": "Request a group quote"
     },
     "scrollLeft": "Scroll left",
-    "scrollRight": "Scroll right"
+    "scrollRight": "Scroll right",
+    "perMonthFull": "excl. VAT / month, per property",
+    "ctaBand": "Let's find the right plan for your hotel together."
   },
   "contact": {
     "meta": {
