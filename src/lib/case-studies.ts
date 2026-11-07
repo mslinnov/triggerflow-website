@@ -71,7 +71,7 @@ export const caseStudies: CaseStudy[] = [
     type: 'Hôtel Restaurant & Spa - 100 chambres',
     location: 'Montrozier, près de Rodez',
     contactName: 'Baptiste Legout',
-    contactRole: "Directeur de l'hôtel",
+    contactRole: 'Propriétaire',
     initials: 'BL',
     pms: 'Thaïs PMS',
     quote: "Je suis vraiment scotché par l'outil. Les possibilités sont pratiquement infinies.",

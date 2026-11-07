@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { useLocale } from 'next-intl';
+import { normalizeInternalHref } from '@/lib/utils';
 import { ArrowRight } from 'lucide-react';
 
 interface InternalLinkProps {
@@ -7,9 +9,10 @@ interface InternalLinkProps {
 }
 
 export function InternalLink({ href, children }: InternalLinkProps) {
+  const locale = useLocale();
   return (
     <Link
-      href={href}
+      href={normalizeInternalHref(href, locale)}
       className="group my-4 flex items-center gap-2 rounded-lg border border-brand-light bg-brand-light/20 px-4 py-3 text-sm font-medium text-brand-primary transition-colors hover:bg-brand-light/40"
     >
       <span>{children}</span>

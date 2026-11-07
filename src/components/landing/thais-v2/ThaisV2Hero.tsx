@@ -283,8 +283,8 @@ export function ThaisV2Hero() {
               >
                 <div className="grid grid-cols-3 gap-6">
                   {[
-                    { value: companyStats.emailDelivered.fr, label: 'E-mails délivrés (12 mois)' },
-                    { value: companyStats.smsDelivered.fr, label: 'SMS remis (12 mois)' },
+                    { value: companyStats.messages.fr, label: 'Messages envoyés' },
+                    { value: companyStats.whatsappRead.fr, label: 'WhatsApp lus (12 mois)' },
                     { value: companyStats.paidWithin2h.fr, label: 'Paiements réglés en 2 h' },
                   ].map((stat) => (
                     <div key={stat.label} className="text-center">

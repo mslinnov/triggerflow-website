@@ -2034,7 +2034,7 @@
     "ctaFinal": {
       "title": "Using Mews?",
       "text": "Discover in 20 minutes how TriggerFlow automates your guest relations, using the data you already have in Mews.",
-      "cta": "Book a free demo",
+      "cta": "Book a demo",
       "href": "https://app.lemcal.com/@trigger-flow/demo",
       "alternative": "Prefer to chat directly?",
       "email": "contact@trigger-flow.com"
@@ -2064,13 +2064,13 @@
           "label": "Messaging",
           "title": "WhatsApp Business + TriggerFlow",
           "description": "Automated WhatsApp messages directly from Mews.",
-          "href": "/integrations/messagerie/whatsapp"
+          "href": "/integrations/canaux"
         },
         {
           "label": "IoT",
           "title": "Sesame Smart Locks + TriggerFlow",
           "description": "Lock code sent automatically before arrival.",
-          "href": "/integrations/serrures/sesame"
+          "href": "/integrations/serrures"
         },
         {
           "label": "Solution",
@@ -3329,7 +3329,8 @@
       "newLabel": "New",
       "newText": "Guests call reception from their own phone",
       "pricingLink": "See pricing"
-    }
+    },
+    "demoShort": "Demo"
   },
   "home2": {
     "meta": {
@@ -3419,12 +3420,12 @@
     },
     "reliability": {
       "eyebrow": "Reliability",
-      "title": "What you send arrives.",
+      "title": "Your messages get read.",
       "titleMuted": "What you sell gets paid.",
       "source": "Last 12 months, all client properties",
       "stats": {
-        "emailDelivered": "of emails delivered",
-        "smsDelivered": "of SMS delivered",
+        "messages": "messages sent by our client hotels",
+        "whatsappRead": "of WhatsApp messages read",
         "paidWithin2h": "of payments settled within 2 hours of opening the link"
       },
       "syncTitle": "Two-way sync",

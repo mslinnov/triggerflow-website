@@ -122,6 +122,15 @@ const hotelsStat: SolutionStat = {
   label: 'des paiements par lien réglés dans les 2 h (12 derniers mois)',
 };
 
+/** Volume total confirmé (company-stats.ts). Les taux de délivrabilité e-mail/SMS et le 5 % upsell sont retirés du site (décision de Soufiane du 07/11/2026). */
+const messagesStat: SolutionStat = { value: statNumber('messages'), suffix: 'M+', label: 'messages envoyés par nos hôtels clients' };
+
+const whatsappStat: SolutionStat = {
+  value: statNumber('whatsappRead'),
+  suffix: ' %',
+  label: 'des messages WhatsApp remis sont lus (12 derniers mois)',
+};
+
 export const solutions: Record<string, SolutionData> = {
   'hotels-independants': {
     slug: 'hotels-independants',
@@ -180,7 +189,7 @@ export const solutions: Record<string, SolutionData> = {
 
     stats: [
       hotelsStat,
-      { value: statNumber('emailDelivered'), suffix: ' %', label: 'des e-mails délivrés (12 derniers mois, tous nos hôtels)' },
+      messagesStat,
       { value: String(brand.pms.length), suffix: '', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n' },
     ],
 
@@ -510,7 +519,7 @@ export const solutions: Record<string, SolutionData> = {
     ],
 
     stats: [
-      { value: statNumber('smsDelivered'), suffix: ' %', label: 'des SMS remis (12 derniers mois, tous nos hôtels)' },
+      messagesStat,
       { value: statNumber('whatsappRead'), suffix: ' %', label: 'des messages WhatsApp remis sont lus (12 derniers mois)' },
       { value: String(brand.pms.length), suffix: '', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n' },
     ],
@@ -667,8 +676,8 @@ export const solutions: Record<string, SolutionData> = {
     ],
 
     stats: [
-      { value: statNumber('emailDelivered'), suffix: ' %', label: 'des e-mails délivrés (12 derniers mois, tous nos hôtels)' },
-      { value: statNumber('smsDelivered'), suffix: ' %', label: 'des SMS remis (12 derniers mois, tous nos hôtels)' },
+      messagesStat,
+      hotelsStat,
       { value: statNumber('whatsappRead'), suffix: ' %', label: 'des messages WhatsApp remis sont lus (12 derniers mois)' },
     ],
 
@@ -827,7 +836,7 @@ export const solutions: Record<string, SolutionData> = {
     stats: [
       { value: '1', suffix: '', label: 'profil client unique, tous séjours confondus' },
       { value: statNumber('emailOpened'), suffix: ' %', label: 'd\'ouverture des e-mails, hors relais OTA (12 derniers mois)' },
-      { value: statNumber('upsellAccepted'), suffix: ' %', label: 'des offres envoyées 3 à 7 jours avant l\'arrivée achetées (mesure sur l\'ensemble de nos hôtels)' },
+      messagesStat,
     ],
 
     features: [
@@ -988,8 +997,8 @@ export const solutions: Record<string, SolutionData> = {
     ],
 
     stats: [
-      { value: statNumber('emailDelivered'), suffix: ' %', label: 'des e-mails délivrés (12 derniers mois, tous nos hôtels)' },
-      { value: statNumber('smsDelivered'), suffix: ' %', label: 'des SMS remis (12 derniers mois, tous nos hôtels)' },
+      messagesStat,
+      whatsappStat,
       { value: String(brand.pms.length), suffix: '', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n' },
     ],
 
@@ -1289,7 +1298,7 @@ export const solutions: Record<string, SolutionData> = {
     ],
 
     stats: [
-      { value: statNumber('upsellAccepted'), suffix: ' %', label: 'des offres envoyées 3 à 7 jours avant l\'arrivée achetées (mesure sur l\'ensemble de nos hôtels)' },
+      messagesStat,
       { value: statNumber('paidWithin2h'), suffix: ' %', label: 'des paiements réglés dans les 2 h après ouverture du lien (12 derniers mois)' },
       { value: '0', suffix: '€', label: 'de commission TriggerFlow sur les ventes' },
     ],
@@ -1568,8 +1577,8 @@ export const solutions: Record<string, SolutionData> = {
       "Une demande d'avis après chaque séjour, au bon moment",
     ],
     stats: [
-      { value: statNumber('emailDelivered'), suffix: ' %', label: 'des e-mails délivrés (12 derniers mois, tous nos hôtels)' },
-      { value: statNumber('smsDelivered'), suffix: ' %', label: 'des SMS remis (12 derniers mois, tous nos hôtels)' },
+      messagesStat,
+      whatsappStat,
       { value: String(brand.pms.length), suffix: '', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n' },
     ],
     features: [

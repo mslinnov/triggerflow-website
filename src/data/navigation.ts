@@ -73,6 +73,9 @@ export const platformMenu: NavItem[] = [
   { key: 'integrationsHub', href: '/integrations' },
 ];
 
+/** Pages publiées en français uniquement : masquées des menus anglais. */
+export const frOnlyKeys = new Set(['calendar']);
+
 export const resourcesMenu: NavItem[] = [
   { key: 'blog', href: '/blog' },
   { key: 'guides', href: '/ressources/guides' },

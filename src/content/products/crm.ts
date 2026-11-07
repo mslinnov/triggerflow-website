@@ -53,7 +53,7 @@ export const crm: ProductLanding = {
     name: 'Maxime Jullien', role: { fr: 'Directeur', en: 'General manager' }, company: 'Edgar Hôtel & Spa', href: '/clients/edgar-hotel-spa',
   },
   integrations: { title: { fr: 'Alimenté par votre PMS, dans les deux sens.', en: 'Fed by your PMS, both ways.' }, text: { fr: 'Les fiches se mettent à jour depuis le PMS, et vos modifications y redescendent.', en: 'Profiles update from the PMS, and your edits flow back.' } },
-  reliability: { stat: 'emailDelivered', label: { fr: 'des e-mails délivrés', en: 'of emails delivered' } },
+  reliability: { stat: 'messages', label: { fr: 'messages envoyés par nos hôtels clients', en: 'messages sent by our client hotels' } },
   related: [
     { slug: 'flows', href: '/produit/flows', name: { fr: 'Flows', en: 'Flows' }, text: { fr: 'Les segments au service des scénarios.', en: 'Segments powering scenarios.' } },
     { slug: 'inbox', href: '/produit/inbox', name: { fr: 'Messagerie', en: 'Inbox' }, text: { fr: 'La fiche à côté de chaque conversation.', en: 'The profile next to every conversation.' } },

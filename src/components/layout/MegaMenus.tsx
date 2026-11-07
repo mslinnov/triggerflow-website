@@ -44,7 +44,7 @@ import {
 import { Link } from '@/i18n/navigation';
 import { brand } from '@/data/brand';
 import { clientLogos, homeTestimonials } from '@/data/clients';
-import { companyMenu, platformMenu, productMenu, resourcesMenu, solutionsMenu, type NavItem } from '@/data/navigation';
+import { companyMenu, frOnlyKeys, platformMenu, productMenu, resourcesMenu, solutionsMenu, type NavItem } from '@/data/navigation';
 import { pmsPages } from '@/content/pms';
 
 const icons: Record<string, LucideIcon> = {
@@ -226,13 +226,15 @@ export function SolutionsMenu({ onPick }: MenuProps) {
 
 export function ResourcesMenu({ onPick }: MenuProps) {
   const t = useTranslations('nav');
+  const locale = useLocale();
+  const learn = resourcesMenu.filter((i) => locale === 'fr' || !frOnlyKeys.has(i.key));
   return (
     <MenuShell
       main={
         <div className="grid grid-cols-[1.6fr_1fr] gap-8">
           <div>
             <ColumnTitle>{t('menuColumns.learn')}</ColumnTitle>
-            <RichList items={resourcesMenu} t={t} onPick={onPick} cols={2} />
+            <RichList items={learn} t={t} onPick={onPick} cols={2} />
           </div>
           <div className="border-l border-line pl-8">
             <ColumnTitle>{t('menuColumns.company')}</ColumnTitle>

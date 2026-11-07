@@ -4,7 +4,7 @@ import { Container, LogoMotif, ProofStat, SectionHeader } from '@/components/ds'
 import { DedupScenario } from '@/components/visuals';
 import { stat, type StatId } from '@/data/company-stats';
 
-const STATS: StatId[] = ['emailDelivered', 'smsDelivered', 'paidWithin2h'];
+const STATS: StatId[] = ['messages', 'whatsappRead', 'paidWithin2h'];
 
 export function HomeReliability() {
   const t = useTranslations('home2.reliability');
@@ -16,7 +16,7 @@ export function HomeReliability() {
         <SectionHeader eyebrow={t('eyebrow')} title={t('title')} titleMuted={t('titleMuted')} align="left" onDark />
         <div className="mt-14 grid gap-10 border-t border-white/10 pt-10 sm:grid-cols-3">
           {STATS.map((id) => (
-            <ProofStat key={id} value={stat(id, locale)} label={t(`stats.${id}`)} source={t('source')} onDark />
+            <ProofStat key={id} value={stat(id, locale)} label={t(`stats.${id}`)} source={id === 'messages' ? undefined : t('source')} onDark />
           ))}
         </div>
         <div className="mt-20 grid items-center gap-12 lg:grid-cols-2">

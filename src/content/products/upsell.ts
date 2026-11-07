@@ -20,8 +20,8 @@ export const upsell: ProductLanding = {
     visual: 'upsell',
   },
   proof: {
-    stat: 'upsellAccepted',
-    statLabel: { fr: 'des offres envoyées 3 à 7 jours avant l’arrivée sont achetées', en: 'of offers sent 3 to 7 days before arrival are bought' },
+    stat: 'paidWithin2h',
+    statLabel: { fr: 'des paiements par lien réglés dans les 2 h', en: 'of payment links settled within 2 hours' },
     clients: ['AMMI Hôtels', 'Hôtel Causse Comtal'],
   },
   problem: {

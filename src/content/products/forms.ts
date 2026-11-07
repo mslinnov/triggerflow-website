@@ -54,7 +54,7 @@ export const forms: ProductLanding = {
     name: 'Maxime Jullien', role: { fr: 'Directeur', en: 'General manager' }, company: 'Edgar Hôtel & Spa', href: '/clients/edgar-hotel-spa',
   },
   integrations: { title: { fr: 'Les réponses rejoignent la fiche et le PMS.', en: 'Answers reach the profile and the PMS.' }, text: { fr: 'Les formulaires utilisent les données de réservation pour se pré-remplir.', en: 'Forms use booking data to pre-fill.' } },
-  reliability: { stat: 'emailDelivered', label: { fr: 'des e-mails délivrés', en: 'of emails delivered' } },
+  reliability: { stat: 'messages', label: { fr: 'messages envoyés par nos hôtels clients', en: 'messages sent by our client hotels' } },
   related: [
     { slug: 'upsell', href: '/produit/upsell', name: { fr: 'Upsell', en: 'Upsell' }, text: { fr: 'Le catalogue d’offres.', en: 'The offer catalogue.' } },
     { slug: 'reviews', href: '/produit/reviews', name: { fr: 'Avis', en: 'Reviews' }, text: { fr: 'De l’enquête à l’avis Google.', en: 'From survey to Google review.' } },

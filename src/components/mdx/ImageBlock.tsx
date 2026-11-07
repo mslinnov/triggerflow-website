@@ -8,6 +8,8 @@ interface ImageBlockProps {
 }
 
 export function ImageBlock({ id, images, slug }: ImageBlockProps) {
+  // L'image « hero » est déjà affichée en tête par la page article : ne pas la répéter dans le corps.
+  if (id === 'hero') return null;
   const image = images.find((img) => img.id === id);
   if (!image) return null;
 

@@ -31,7 +31,7 @@ export default async function GuidesContent({ locale }: { locale: string }) {
       <Section tone="paper">
         <Container>
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {RESOURCES.map((r) => {
+            {RESOURCES.filter((r) => locale === 'fr' || r.key !== 'calendar').map((r) => {
               const Icon = r.icon;
               return (
                 <Link key={r.key} href={r.href} className="group flex flex-col rounded-xl border border-line bg-white p-7 transition-colors hover:border-accent">

@@ -165,7 +165,7 @@ export async function ProductLandingPage({ product, locale }: { product: Product
       <section className="bg-ink py-14 text-white md:py-16">
         <Container className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
           {product.reliability ? (
-            <ProofStat value={stat(product.reliability.stat, locale)} label={l(product.reliability.label)} source={t('source')} onDark />
+            <ProofStat value={stat(product.reliability.stat, locale)} label={l(product.reliability.label)} source={product.reliability.stat === 'messages' ? undefined : t('source')} onDark />
           ) : (
             <p className="max-w-md text-h3 font-medium">{t('trustLine')}</p>
           )}

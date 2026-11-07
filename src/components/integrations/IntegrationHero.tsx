@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { ArrowRight, ArrowDown, Check, Sparkles } from 'lucide-react';
 import Image from 'next/image';
@@ -10,6 +10,7 @@ import { heroContainer, heroItem } from '@/lib/animations';
 
 export function IntegrationHero() {
   const t = useTranslations('mewsIntegration.hero');
+  const locale = useLocale();
 
   return (
     <section className="relative overflow-hidden bg-ink pt-14 pb-0 md:pt-20">
@@ -152,12 +153,12 @@ export function IntegrationHero() {
               {t('ctaData')}
               <ArrowDown className="h-3.5 w-3.5" />
             </a>
-            <Link
-              href="/tarifs"
-              className="text-sm font-medium text-white/35 transition-colors hover:text-brand-primary"
+            <a
+              href={`/${locale}/tarifs`}
+              className="text-sm font-medium text-white/60 transition-colors hover:text-white"
             >
               {t('ctaPricing')} &rarr;
-            </Link>
+            </a>
           </motion.div>
 
           {/* Last updated */}

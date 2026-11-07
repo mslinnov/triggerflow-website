@@ -9,7 +9,7 @@
     "backHome": "Retour à l'accueil",
     "blog": "Lire le blog",
     "contact": "Nous contacter",
-    "demo": "Réserver une démo"
+    "demo": "Demander une démo"
   },
   "header": {
     "features": "Fonctionnalités",
@@ -18,7 +18,7 @@
     "pricing": "Tarifs",
     "faq": "FAQ",
     "login": "Connexion",
-    "demo": "Réserver une démo",
+    "demo": "Demander une démo",
     "product": "Produit",
     "solutions": "Solutions",
     "resources": "Ressources",
@@ -797,7 +797,7 @@
     }
   },
   "stickyMobileCta": {
-    "label": "Réserver une démo"
+    "label": "Demander une démo"
   },
   "personasBento": {
     "personas": {
@@ -843,7 +843,7 @@
     "cta": {
       "title": "Prêt à transformer votre relation client ?",
       "subtitle": "Rejoignez les hôteliers qui font confiance à TriggerFlow",
-      "button": "Réserver une démo"
+      "button": "Demander une démo"
     },
     "columns": {
       "product": "Produit",
@@ -1136,7 +1136,7 @@
     "demo": {
       "title": "Préférez-vous une démo ?",
       "description": "Réservez un créneau de 30 minutes avec notre équipe pour découvrir TriggerFlow en action.",
-      "cta": "Réserver une démo"
+      "cta": "Demander une démo"
     }
   },
   "about": {
@@ -1197,7 +1197,7 @@
     "cta": {
       "title": "Envie de rejoindre l'aventure ?",
       "description": "Nous recrutons des talents passionnés par l'hôtellerie et la tech.",
-      "demo": "Réserver une démo",
+      "demo": "Demander une démo",
       "contact": "Nous contacter"
     }
   },
@@ -1420,7 +1420,7 @@
     },
     "cta": {
       "title": "Prêt à connecter vos outils ?",
-      "demo": "Réserver une démo",
+      "demo": "Demander une démo",
       "pricing": "Voir les tarifs"
     },
     "pmsPage": "Page dédiée",
@@ -1472,7 +1472,7 @@
     },
     "cta": {
       "title": "Prêt à découvrir ce module ?",
-      "subtitle": "Réservez une démo personnalisée avec notre équipe",
+      "subtitle": "Demandez une démo personnalisée avec notre équipe",
       "demo": "Demander une démo",
       "pricing": "Voir les tarifs",
       "contact": "Poser une question"
@@ -1499,7 +1499,7 @@
       "title": "Une plateforme complète pour votre relation client",
       "subtitle": "Communication, automatisation, marketing, CRM... Tout ce dont vous avez besoin pour transformer l'expérience de vos clients.",
       "cta": {
-        "demo": "Réserver une démo",
+        "demo": "Demander une démo",
         "pricing": "Voir les tarifs"
       }
     },
@@ -1556,7 +1556,7 @@
     },
     "cta": {
       "title": "Prêt à transformer votre relation client ?",
-      "demo": "Réserver une démo",
+      "demo": "Demander une démo",
       "pricing": "Voir les tarifs"
     }
   },
@@ -1607,8 +1607,8 @@
     },
     "cta": {
       "title": "Prêt à transformer votre établissement ?",
-      "subtitle": "Réservez une démo personnalisée avec notre équipe",
-      "demo": "Réserver une démo",
+      "subtitle": "Demandez une démo personnalisée avec notre équipe",
+      "demo": "Demander une démo",
       "pricing": "Voir les tarifs",
       "contact": "Nous contacter"
     }
@@ -1637,7 +1637,7 @@
       "publishedOn": "Publié le",
       "updatedOn": "Mis à jour le",
       "ctaTitle": "Prêt à automatiser votre relation client ?",
-      "ctaButton": "Réserver une démo"
+      "ctaButton": "Demander une démo"
     },
     "listing": {
       "recentPosts": "Articles récents",
@@ -1679,7 +1679,7 @@
     "readMore": "Lire le témoignage",
     "cta": {
       "title": "Prêt à écrire votre success story ?",
-      "button": "Réserver une démo"
+      "button": "Demander une démo"
     }
   },
   "caseStudyDetail": {
@@ -1696,7 +1696,7 @@
     "cta": {
       "title": "Convaincu ? Discutons de votre projet",
       "subtitle": "Rejoignez nos clients et automatisez votre relation client",
-      "button": "Réserver une démo"
+      "button": "Demander une démo"
     }
   },
   "guides": {
@@ -1800,7 +1800,7 @@
       "title": "Le CRM hôtelier qui se connecte nativement à Mews",
       "subtitle": "Automatisez toute votre relation client depuis les données Mews. Conçu pour les hôtels indépendants et les groupes.",
       "details": "Synchronisation bidirectionnelle temps réel · Emails, SMS, WhatsApp · Enquêtes satisfaction · Programme de fidélité · Opérationnel en 48 h",
-      "ctaDemo": "Réserver une démo",
+      "ctaDemo": "Demander une démo",
       "ctaDemoMicro": "Gratuite, 20 min, sans engagement",
       "ctaData": "Données synchronisées",
       "ctaPricing": "Voir les tarifs",
@@ -2042,7 +2042,7 @@
     "ctaFinal": {
       "title": "Vous utilisez Mews ?",
       "text": "Découvrez en 20 minutes comment TriggerFlow automatise votre relation client, depuis les données que vous avez déjà dans Mews.",
-      "cta": "Réserver une démo gratuite",
+      "cta": "Demander une démo",
       "href": "https://app.lemcal.com/@trigger-flow/demo",
       "alternative": "Besoin d'échanger directement ?",
       "email": "contact@trigger-flow.com"
@@ -2072,13 +2072,13 @@
           "label": "Messagerie",
           "title": "WhatsApp Business + TriggerFlow",
           "description": "Messages WhatsApp automatisés directement depuis Mews.",
-          "href": "/integrations/messagerie/whatsapp"
+          "href": "/integrations/canaux"
         },
         {
           "label": "IoT",
           "title": "Serrures Sesame + TriggerFlow",
           "description": "Code de serrure envoyé automatiquement avant l'arrivée.",
-          "href": "/integrations/serrures/sesame"
+          "href": "/integrations/serrures"
         },
         {
           "label": "Solution",
@@ -2093,7 +2093,7 @@
     "badge": "Communication & Engagement",
     "title": "Chaque interaction, orchestrée",
     "subtitle": "Emails, SMS, WhatsApp, chatbot IA, formulaires : tous vos canaux dans un seul outil, avec des workflows qui se déclenchent au bon moment.",
-    "cta": "Réserver une démo",
+    "cta": "Demander une démo",
     "items": {
       "communication": {
         "title": "Communication multicanale",
@@ -2117,7 +2117,7 @@
     "badge": "CRM & Performance",
     "title": "Chaque client, connu et valorisé",
     "subtitle": "Fiche client 360°, ventes additionnelles ciblées, gestion des avis automatisée et rapports en temps réel.",
-    "cta": "Réserver une démo",
+    "cta": "Demander une démo",
     "items": {
       "crm": {
         "title": "CRM Hôtelier",
@@ -3181,7 +3181,7 @@
     "finalCta": {
       "title": "Envoyez ces e-mails sans y penser",
       "subtitle": "TriggerFlow cible les bons clients dans votre PMS, programme chaque envoi à votre charte et relance ceux qui n'ont pas cliqué.",
-      "demo": "Réserver une démo",
+      "demo": "Demander une démo",
       "login": "Déjà client : se connecter"
     },
     "activatePage": {
@@ -3204,7 +3204,7 @@
       "howReminderText": "Une relance part seule aux clients qui n'ont pas cliqué. Vous suivez les ouvertures et les clics de chaque envoi.",
       "prospectTitle": "Pas encore client ?",
       "prospectText": "Voyez ce modèle, et les autres, fonctionner sur votre hôtel pendant une démo, ou laissez-nous vos coordonnées pour être rappelé.",
-      "demoCta": "Réserver une démo",
+      "demoCta": "Demander une démo",
       "formTitle": "Être rappelé",
       "formHotel": "Nom de l'hôtel",
       "formCity": "Ville",
@@ -3614,7 +3614,8 @@
       "newLabel": "Nouveau",
       "newText": "Vos clients appellent la réception depuis leur téléphone",
       "pricingLink": "Voir les tarifs"
-    }
+    },
+    "demoShort": "Démo"
   },
   "home2": {
     "meta": {
@@ -3704,12 +3705,12 @@
     },
     "reliability": {
       "eyebrow": "Fiabilité",
-      "title": "Ce que vous envoyez arrive.",
+      "title": "Vos messages sont lus.",
       "titleMuted": "Ce que vous vendez est payé.",
       "source": "12 derniers mois, tous établissements clients",
       "stats": {
-        "emailDelivered": "des e-mails délivrés",
-        "smsDelivered": "des SMS remis",
+        "messages": "messages envoyés par nos hôtels clients",
+        "whatsappRead": "des messages WhatsApp lus",
         "paidWithin2h": "des paiements réglés dans les 2 h après ouverture du lien"
       },
       "syncTitle": "Synchronisation dans les deux sens",

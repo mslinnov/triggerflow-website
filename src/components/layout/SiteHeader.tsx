@@ -2,12 +2,12 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import { brand } from '@/data/brand';
-import { companyMenu, platformMenu, productMenu, resourcesMenu, solutionsMenu } from '@/data/navigation';
+import { companyMenu, frOnlyKeys, platformMenu, productMenu, resourcesMenu, solutionsMenu } from '@/data/navigation';
 import { PlatformMenu, ProductMenu, ResourcesMenu, SolutionsMenu } from './MegaMenus';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
@@ -20,6 +20,7 @@ interface SiteHeaderProps {
 /** Header de la charte : blanc, flou au défilement, méga-menu Produit rangé par moment du séjour. */
 export function SiteHeader({ banner }: SiteHeaderProps) {
   const t = useTranslations('nav');
+  const locale = useLocale();
   const [open, setOpen] = useState<MenuKey | null>(null);
   const [mobile, setMobile] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -89,9 +90,17 @@ export function SiteHeader({ banner }: SiteHeaderProps) {
             </a>
           </div>
 
+          <a
+            href={brand.demoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-auto inline-flex h-9 items-center rounded-lg bg-accent px-3 font-mono text-[12px] font-medium uppercase tracking-[0.04em] text-white lg:hidden"
+          >
+            {t('demoShort')}
+          </a>
           <button
             type="button"
-            className="ml-auto flex h-10 w-10 items-center justify-center rounded-lg text-ink lg:hidden"
+            className="flex h-10 w-10 items-center justify-center rounded-lg text-ink lg:hidden"
             onClick={() => setMobile(!mobile)}
             aria-label={mobile ? t('closeMenu') : t('openMenu')}
             aria-expanded={mobile}
@@ -135,7 +144,7 @@ export function SiteHeader({ banner }: SiteHeaderProps) {
             <MobileLink href="/clients" onPick={() => setMobile(false)} strong>{t('clients')}</MobileLink>
             <MobileLink href="/tarifs" onPick={() => setMobile(false)} strong>{t('pricing')}</MobileLink>
             <MobileGroup title={t('resources')}>
-              {[...resourcesMenu, ...companyMenu].map((item) => (
+              {[...resourcesMenu, ...companyMenu].filter((i) => locale === 'fr' || !frOnlyKeys.has(i.key)).map((item) => (
                 <MobileLink key={item.key} href={item.href} onPick={() => setMobile(false)}>{t(`items.${item.key}`)}</MobileLink>
               ))}
             </MobileGroup>

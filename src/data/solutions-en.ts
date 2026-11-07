@@ -18,8 +18,7 @@ export interface SolutionTextEn {
 }
 
 const paidWithin2hLabel = 'of payment-link payments settled within 2 hours (last 12 months)';
-const emailDeliveredLabel = 'of emails delivered (last 12 months, across all our hotels)';
-const smsDeliveredLabel = 'of SMS delivered (last 12 months, across all our hotels)';
+const messagesLabel = 'messages sent by our client hotels';
 const whatsappReadLabel = 'of delivered WhatsApp messages are read (last 12 months)';
 const pmsLabel = 'PMS connected, plus locks, payment, Zapier and n8n';
 
@@ -63,7 +62,7 @@ export const solutionsEn: Record<string, SolutionTextEn> = {
     ],
     statLabels: [
       paidWithin2hLabel,
-      emailDeliveredLabel,
+      messagesLabel,
       pmsLabel,
     ],
     features: [
@@ -304,7 +303,7 @@ export const solutionsEn: Record<string, SolutionTextEn> = {
       'Regular communication during long stays with local info',
     ],
     statLabels: [
-      smsDeliveredLabel,
+      messagesLabel,
       whatsappReadLabel,
       pmsLabel,
     ],
@@ -419,8 +418,8 @@ export const solutionsEn: Record<string, SolutionTextEn> = {
       'Analytics per service to optimize your offers and revenue',
     ],
     statLabels: [
-      emailDeliveredLabel,
-      smsDeliveredLabel,
+      messagesLabel,
+      paidWithin2hLabel,
       whatsappReadLabel,
     ],
     features: [
@@ -537,7 +536,7 @@ export const solutionsEn: Record<string, SolutionTextEn> = {
     statLabels: [
       'single guest profile, across all stays',
       'email open rate, excluding OTA relays (last 12 months)',
-      'of offers sent 3 to 7 days before arrival are purchased (measured across all our hotels)',
+      messagesLabel,
     ],
     features: [
       {
@@ -639,8 +638,8 @@ export const solutionsEn: Record<string, SolutionTextEn> = {
       'A review request after every stay, at the right moment',
     ],
     statLabels: [
-      emailDeliveredLabel,
-      smsDeliveredLabel,
+      messagesLabel,
+      whatsappReadLabel,
       pmsLabel,
     ],
     features: [

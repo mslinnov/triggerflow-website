@@ -20,8 +20,8 @@ export const flows: ProductLanding = {
     visual: 'flows',
   },
   proof: {
-    stat: 'emailDelivered',
-    statLabel: { fr: 'des e-mails délivrés sur les 12 derniers mois', en: 'of emails delivered over the last 12 months' },
+    stat: 'messages',
+    statLabel: { fr: 'messages envoyés par nos hôtels clients', en: 'messages sent by our client hotels' },
     clients: ['Hôtel Causse Comtal', 'Le Vieux Pressoir', 'Urban Bivouac', 'Hôtel Arc en Ciel'],
   },
   problem: {
@@ -74,7 +74,7 @@ export const flows: ProductLanding = {
     text: { fr: 'Les événements du PMS lancent vos flows ; les webhooks envoient les données vers Zapier, n8n ou vos outils.', en: 'PMS events start your flows; webhooks send data to Zapier, n8n or your own tools.' },
     extra: ['Zapier', 'n8n'],
   },
-  reliability: { stat: 'emailDelivered', label: { fr: 'des e-mails délivrés', en: 'of emails delivered' } },
+  reliability: { stat: 'messages', label: { fr: 'messages envoyés par nos hôtels clients', en: 'messages sent by our client hotels' } },
   related: [
     { slug: 'upsell', href: '/produit/upsell', name: { fr: 'Upsell', en: 'Upsell' }, text: { fr: 'Des offres au bon moment du parcours.', en: 'Offers at the right moment of the journey.' } },
     { slug: 'crm', href: '/produit/crm', name: { fr: 'CRM', en: 'CRM' }, text: { fr: 'Une fiche par client, sans doublons.', en: 'One profile per guest, no duplicates.' } },

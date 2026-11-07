@@ -11,7 +11,7 @@ export const campaigns: ProductLanding = {
   name: { fr: 'Campagnes', en: 'Campaigns' },
   seo: { title: { fr: 'Campagnes email et SMS pour hôtels : marketing ciblé | TriggerFlow', en: 'Email and SMS campaigns for hotels | TriggerFlow' }, description: { fr: 'Segments, éditeur d’emails assisté par l’IA, newsletter et statistiques : le marketing des grandes chaînes, à la taille de votre hôtel, sur des données PMS à jour.', en: 'Segments, AI-assisted email editor, newsletter and statistics: chain-grade marketing sized for your hotel, on up-to-date PMS data.' } },
   hero: { title: { fr: 'Vos anciens clients, votre meilleur canal de réservation directe.', en: 'Past guests, your best direct booking channel.' }, subtitle: { fr: 'Segments, campagnes email et SMS, newsletter : parlez à chaque client selon ce qu’il a vécu chez vous, avec des données synchronisées avec votre PMS.', en: 'Segments, email and SMS campaigns, newsletter: speak to each guest based on their stay with you, using data synced with your PMS.' }, visual: 'campaign' },
-  proof: { stat: 'emailDelivered', statLabel: { fr: 'des e-mails délivrés sur 12 mois', en: 'of emails delivered over 12 months' }, clients: ['Urban Bivouac', 'Hôtel Causse Comtal'] },
+  proof: { stat: 'messages', statLabel: { fr: 'messages envoyés par nos hôtels clients', en: 'messages sent by our client hotels' }, clients: ['Urban Bivouac', 'Hôtel Causse Comtal'] },
   problem: { title: { fr: 'Votre fichier clients dort, ou part en vrac.', en: 'Your guest list sleeps, or gets blasted.' }, items: [
     { fr: 'Réimporter la base dans un outil d’emailing à chaque envoi.', en: 'Re-importing the list into an email tool for every send.' },
     { fr: 'Le même message à tout le monde, faute de segmentation simple.', en: 'The same message for everyone, for lack of simple segmentation.' },
@@ -33,7 +33,7 @@ export const campaigns: ProductLanding = {
     { client: { fr: 'Clients OTA', en: 'OTA guests' }, text: { fr: 'Un segment « joignable hors OTA » pour ne cibler que les vraies adresses.', en: 'A “reachable outside OTAs” segment to target real addresses only.' } } ] },
   caseStudy: { quote: { fr: 'Le principal point fort réside dans la personnalisation très poussée des campagnes, qui permet d’avoir une communication plus ciblée et pertinente.', en: 'The main strength is the deep personalisation of campaigns, which makes communication more targeted and relevant.' }, name: 'Idir Mazari', role: { fr: 'Directeur', en: 'Manager' }, company: 'Urban Bivouac Paris' },
   integrations: { title: { fr: 'Des campagnes sur des données à jour.', en: 'Campaigns on up-to-date data.' }, text: { fr: 'Les segments s’appuient sur les séjours synchronisés avec votre PMS.', en: 'Segments rely on stays synced with your PMS.' } },
-  reliability: { stat: 'emailDelivered', label: { fr: 'des e-mails délivrés', en: 'of emails delivered' } },
+  reliability: { stat: 'messages', label: { fr: 'messages envoyés par nos hôtels clients', en: 'messages sent by our client hotels' } },
   related: [relCrm, { slug: 'loyalty', href: '/produit/loyalty', name: { fr: 'Fidélité', en: 'Loyalty' }, text: { fr: 'Des offres réservées aux membres.', en: 'Member-only offers.' } }, relFlows],
   pricing: { text: { fr: 'Inclus dans les plans Conversion et All Inclusive.', en: 'Included in the Conversion and All Inclusive plans.' } },
   faq: [

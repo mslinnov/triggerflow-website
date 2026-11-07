@@ -14,6 +14,7 @@ import { BlogPostingJsonLd, BreadcrumbListJsonLd, FaqJsonLd } from '@/components
 import { ImageBlock } from '@/components/mdx/ImageBlock';
 import { Callout } from '@/components/mdx/Callout';
 import { InternalLink } from '@/components/mdx/InternalLink';
+import { normalizeInternalHref } from '@/lib/utils';
 import { NewsletterInline } from '@/components/mdx/NewsletterInline';
 import { KeyFigure } from '@/components/mdx/KeyFigure';
 import { KeyFiguresGrid, KeyFigureCard } from '@/components/mdx/KeyFiguresGrid';
@@ -109,6 +110,7 @@ export default async function ArticlePage({ params }: PageProps) {
         <table {...props} />
       </div>
     ),
+    a: ({ href = '', ...props }: React.ComponentProps<'a'>) => <a href={normalizeInternalHref(href, locale)} {...props} />,
     ImageBlock: (props: { id: string }) => (
       <ImageBlock id={props.id} images={article.images} slug={article.slug} />
     ),
