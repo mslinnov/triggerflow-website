@@ -3301,7 +3301,13 @@
         "guesthouses": "Guesthouses"
       },
       "hosted": "Hosted in France · GDPR",
-      "company": "A Utelys product"
+      "company": "A Utelys product",
+      "newsletter": {
+        "title": "The TriggerFlow newsletter",
+        "text": "Scenario ideas, lessons from our hotels and product news, straight to your inbox.",
+        "placeholder": "Your email",
+        "cta": "Subscribe"
+      }
     },
     "platform": "Platform",
     "menuColumns": {

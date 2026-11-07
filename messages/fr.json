@@ -3586,7 +3586,13 @@
         "guesthouses": "Maisons d'hôtes"
       },
       "hosted": "Hébergé en France · RGPD",
-      "company": "Une solution Utelys"
+      "company": "Une solution Utelys",
+      "newsletter": {
+        "title": "La newsletter TriggerFlow",
+        "text": "Des idées de scénarios, des retours de nos hôtels et les nouveautés du produit, dans votre boîte mail.",
+        "placeholder": "Votre email",
+        "cta": "S'inscrire"
+      }
     },
     "platform": "Plateforme",
     "menuColumns": {
