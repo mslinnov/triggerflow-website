@@ -20,29 +20,28 @@ export const productMenu: NavColumn[] = [
       { key: 'upsell', href: '/produit/upsell' },
       { key: 'pay', href: '/produit/pay' },
       { key: 'forms', href: '/produit/forms' },
+      { key: 'checkin', href: '/produit/check-in' },
     ],
   },
   {
     key: 'during',
     items: [
+      { key: 'guestApp', href: '/produit/guest-app' },
       { key: 'voice', href: '/produit/voice' },
       { key: 'inbox', href: '/produit/inbox' },
-      { key: 'whatsapp', href: '/produit/whatsapp' },
-      { key: 'sms', href: '/produit/sms' },
+      { key: 'housekeeping', href: '/produit/housekeeping' },
+      { key: 'keys', href: '/produit/keys' },
     ],
   },
   {
     key: 'after',
-    items: [
-      { key: 'reviews', href: '/produit/reviews' },
-      { key: 'loyalty', href: '/produit/loyalty' },
-    ],
+    items: [{ key: 'reviews', href: '/produit/reviews' }],
   },
   {
     key: 'marketing',
     items: [
-      { key: 'campaigns', href: '/produit/newsletter' },
-      { key: 'email', href: '/produit/email' },
+      { key: 'campaigns', href: '/produit/campaigns' },
+      { key: 'loyalty', href: '/produit/loyalty' },
     ],
   },
   {
@@ -51,6 +50,8 @@ export const productMenu: NavColumn[] = [
       { key: 'flows', href: '/produit/flows' },
       { key: 'crm', href: '/produit/crm' },
       { key: 'analytics', href: '/produit/analytics' },
+      { key: 'events', href: '/produit/events' },
+      { key: 'b2b', href: '/produit/b2b' },
     ],
   },
 ];

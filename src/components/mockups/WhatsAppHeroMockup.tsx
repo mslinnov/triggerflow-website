@@ -6,7 +6,7 @@ export function WhatsAppHeroMockup() {
   return (
     <div className="relative w-full h-full min-h-[400px] overflow-visible">
       <Image
-        src="/images/produit/whatsapp/hero-whatsapp-desktop.webp"
+        src="/images/produit/inbox/hero-whatsapp-desktop.webp"
         alt="Dashboard WhatsApp Business TriggerFlow"
         width={1400}
         height={875}

@@ -14,7 +14,7 @@ import { cn } from '@/lib/utils';
 const productLinks = [
   { href: '/produit/inbox', labelKey: 'product.communication', isLink: true },
   { href: '/produit/flows', labelKey: 'product.automation', isLink: true },
-  { href: '/produit/newsletter', labelKey: 'product.marketing', isLink: true },
+  { href: '/produit/campaigns', labelKey: 'product.marketing', isLink: true },
   { href: '/produit/crm', labelKey: 'product.tools', isLink: true },
   { href: '/produit/reviews', labelKey: 'product.reputation', isLink: true },
   { href: '/produit/pay', labelKey: 'product.payments', isLink: true },

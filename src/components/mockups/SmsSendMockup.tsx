@@ -20,7 +20,7 @@ export function SmsSendMockup() {
             {/* Screen */}
             <div className="relative rounded-[1.6rem] overflow-hidden bg-white">
               <Image
-                src="/images/produit/sms/feature-sms-conversation.webp"
+                src="/images/produit/inbox/feature-sms-conversation.webp"
                 alt="Conversation SMS avec un client"
                 width={390}
                 height={844}

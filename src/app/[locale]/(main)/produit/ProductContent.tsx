@@ -26,25 +26,25 @@ const modules = [
   {
     key: 'email',
     icon: Mail,
-    href: '/produit/email',
+    href: '/produit/campaigns',
     category: 'communication',
   },
   {
     key: 'sms',
     icon: MessageSquare,
-    href: '/produit/sms',
+    href: '/produit/inbox',
     category: 'communication',
   },
   {
     key: 'whatsapp',
     icon: MessageCircle,
-    href: '/produit/whatsapp',
+    href: '/produit/inbox',
     category: 'communication',
   },
   {
     key: 'newsletter',
     icon: Newspaper,
-    href: '/produit/newsletter',
+    href: '/produit/campaigns',
     category: 'marketing',
   },
   {

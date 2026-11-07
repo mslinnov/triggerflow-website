@@ -51,7 +51,7 @@ export const loyalty: ProductLanding = {
   },
   integrations: { title: { fr: 'Les séjours du PMS créditent les points.', en: 'PMS stays credit the points.' }, text: { fr: 'Aucune saisie : les séjours et dépenses remontent du PMS.', en: 'No data entry: stays and spend come from the PMS.' }, extra: ['Apple Wallet'] },
   related: [
-    { slug: 'campaigns', href: '/produit/newsletter', name: { fr: 'Campagnes', en: 'Campaigns' }, text: { fr: 'Des offres réservées aux membres.', en: 'Member-only offers.' } },
+    { slug: 'campaigns', href: '/produit/campaigns', name: { fr: 'Campagnes', en: 'Campaigns' }, text: { fr: 'Des offres réservées aux membres.', en: 'Member-only offers.' } },
     { slug: 'crm', href: '/produit/crm', name: { fr: 'CRM', en: 'CRM' }, text: { fr: 'Chaque membre reconnu.', en: 'Every member recognised.' } },
     { slug: 'flows', href: '/produit/flows', name: { fr: 'Flows', en: 'Flows' }, text: { fr: 'Les messages de chaque palier.', en: 'Messages for every tier.' } },
   ],

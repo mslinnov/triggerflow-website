@@ -6,7 +6,7 @@ export function SmsHeroMockup() {
   return (
     <div className="relative w-full h-full min-h-[400px] overflow-visible">
       <Image
-        src="/images/produit/sms/hero-sms-desktop.webp"
+        src="/images/produit/inbox/hero-sms-desktop.webp"
         alt="Dashboard messagerie SMS TriggerFlow"
         width={1400}
         height={875}

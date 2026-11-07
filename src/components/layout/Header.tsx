@@ -50,9 +50,9 @@ const menuItems = {
       {
         title: 'Communication',
         items: [
-          { icon: Mail, label: 'Email', description: 'Campagnes email personnalisées', href: '/produit/email' },
-          { icon: MessageSquare, label: 'SMS', description: 'Messages texte automatisés', href: '/produit/sms' },
-          { icon: MessageCircle, label: 'WhatsApp', description: 'Conversations WhatsApp', href: '/produit/whatsapp' },
+          { icon: Mail, label: 'Email', description: 'Campagnes email personnalisées', href: '/produit/campaigns' },
+          { icon: MessageSquare, label: 'SMS', description: 'Messages texte automatisés', href: '/produit/inbox' },
+          { icon: MessageCircle, label: 'WhatsApp', description: 'Conversations WhatsApp', href: '/produit/inbox' },
           { icon: Inbox, label: 'Hub messagerie', description: 'Centralisez vos échanges', href: '/produit/inbox' },
         ],
       },
@@ -66,7 +66,7 @@ const menuItems = {
       {
         title: 'Marketing',
         items: [
-          { icon: Newspaper, label: 'Newsletter & Campagnes', description: 'Diffusez vos actualités', href: '/produit/newsletter' },
+          { icon: Newspaper, label: 'Newsletter & Campagnes', description: 'Diffusez vos actualités', href: '/produit/campaigns' },
           { icon: Heart, label: 'Programme fidélité', description: 'Récompensez vos clients', href: '/produit/loyalty' },
         ],
       },

@@ -110,7 +110,7 @@ export const modules: Record<string, ModuleData> = {
     headline: 'Vos emails transactionnels envoyés automatiquement, 100% personnalisables',
     description: 'Confirmation dès la réservation, rappel pré-séjour à J-3, demande d\'avis à J+1. Chaque email est personnalisé aux couleurs de votre établissement, avec les données de votre PMS. Aucune compétence technique requise.',
     mockup: 'EmailMockup',
-    heroImage: '/images/produit/email/hero-email.webp',
+    heroImage: '/images/produit/campaigns/hero-email.webp',
     painPoints: [
       '45 min/jour perdues à copier-coller des confirmations dans Outlook ou votre PMS',
       'Vos emails finissent dans les spams, vos clients ne reçoivent jamais les infos d\'arrivée',
@@ -143,7 +143,7 @@ export const modules: Record<string, ModuleData> = {
         icon: Layout,
         bullets: ['Charte graphique complète : logo, couleurs, polices', 'Templates hôteliers prêts à l\'emploi', 'Responsive mobile natif + preview avant envoi'],
         mockup: 'EmailEditorMockup',
-        image: '/images/produit/email/email-builder.webp',
+        image: '/images/produit/campaigns/email-builder.webp',
       },
       {
         title: 'Chaque email personnalisé avec les données de votre PMS',
@@ -151,7 +151,7 @@ export const modules: Record<string, ModuleData> = {
         icon: UserCheck,
         bullets: ['Variables dynamiques illimitées depuis votre PMS', 'Contenu conditionnel par segment client', 'Multi-langue automatique (FR, EN, DE, ES...)'],
         mockup: 'EmailPersonalizationMockup',
-        image: '/images/produit/email/email-personnalisation.webp',
+        image: '/images/produit/campaigns/email-personnalisation.webp',
       },
       {
         title: 'Mesurez chaque email, optimisez en continu',
@@ -159,7 +159,7 @@ export const modules: Record<string, ModuleData> = {
         icon: BarChart,
         bullets: ['Dashboard analytics en temps réel', 'Alertes automatiques sur les anomalies', 'Export CSV et rapports planifiés'],
         mockup: 'EmailAnalyticsMockup',
-        image: '/images/produit/email/email-analytics.webp',
+        image: '/images/produit/campaigns/email-analytics.webp',
       }
     ],
     useCases: [
@@ -274,7 +274,7 @@ export const modules: Record<string, ModuleData> = {
         description: 'Vos clients répondent par SMS et vous voyez tout dans votre dashboard. Historique, contexte, réservation, tout est là pour répondre sans chercher.',
         icon: MessageCircle,
         bullets: ['Réponses visibles dans le dashboard', 'Historique par client', 'Notification équipe en temps réel'],
-        image: '/images/produit/sms/feature-sms-inbox.webp',
+        image: '/images/produit/inbox/feature-sms-inbox.webp',
       },
       {
         title: 'RGPD intégré, zéro risque',
@@ -369,7 +369,7 @@ export const modules: Record<string, ModuleData> = {
         description: 'Le chatbot répond instantanément aux questions fréquentes : code WiFi, horaires piscine, restaurant à proximité. Votre équipe ne gère que les demandes complexes.',
         icon: Bot,
         bullets: ['Réponses instantanées 24h/24', 'Questions fréquentes automatisées', 'Escalade vers un humain si besoin'],
-        image: '/images/produit/whatsapp/feature-whatsapp-history.webp',
+        image: '/images/produit/inbox/feature-whatsapp-history.webp',
       },
       {
         title: 'Messages automatisés approuvés par WhatsApp',
@@ -383,7 +383,7 @@ export const modules: Record<string, ModuleData> = {
         description: 'Email, SMS, WhatsApp : chaque conversation client est regroupée. L\'équipe de nuit voit ce que l\'équipe de jour a échangé.',
         icon: Inbox,
         bullets: ['Historique unifié multi-canal', 'Handover entre équipes', 'Notes internes par conversation'],
-        image: '/images/produit/whatsapp/feature-whatsapp-history.webp',
+        image: '/images/produit/inbox/feature-whatsapp-history.webp',
       }
     ],
     useCases: [
@@ -446,7 +446,7 @@ export const modules: Record<string, ModuleData> = {
     headline: 'Vos anciens clients réservent à nouveau en direct',
     description: 'Newsletters et campagnes ciblées pour garder le contact avec vos anciens clients et générer des réservations directes. Moins de commissions OTA, plus de marge.',
     mockup: 'CampaignMockup',
-    heroImage: '/images/produit/newsletter/hero-newsletter.webp',
+    heroImage: '/images/produit/campaigns/hero-newsletter.webp',
     painPoints: [
       'Vos anciens clients réservent sur Booking au lieu de revenir en direct, vous payez 15-25% de commission',
       'Créer une newsletter vous prend une journée entière entre le contenu, le design et l\'envoi',
@@ -477,7 +477,7 @@ export const modules: Record<string, ModuleData> = {
         icon: Palette,
         bullets: ['Blocs spécialisés hôtellerie', 'Bibliothèque d\'images intégrée', 'Preview mobile avant envoi'],
         mockup: 'NewsletterEditorMockup',
-        image: '/images/produit/newsletter/nl-editor.webp',
+        image: '/images/produit/campaigns/nl-editor.webp',
       },
       {
         title: 'Envoyez le bon message au bon segment',
@@ -485,7 +485,7 @@ export const modules: Record<string, ModuleData> = {
         icon: Users,
         bullets: ['Segments dynamiques automatiques', 'Filtres combinables', 'Exclusion des clients récents'],
         mockup: 'NewsletterSegmentMockup',
-        image: '/images/produit/newsletter/nl-segment.webp',
+        image: '/images/produit/campaigns/nl-segment.webp',
       },
       {
         title: 'Programmez et oubliez',
@@ -493,7 +493,7 @@ export const modules: Record<string, ModuleData> = {
         icon: Calendar,
         bullets: ['Séquences automatiques', 'Calendrier éditorial intégré', 'A/B testing objet et contenu'],
         mockup: 'NewsletterScheduleMockup',
-        image: '/images/produit/newsletter/nl-schedule.webp',
+        image: '/images/produit/campaigns/nl-schedule.webp',
       },
       {
         title: 'Mesurez chaque campagne, optimisez en continu',
@@ -501,7 +501,7 @@ export const modules: Record<string, ModuleData> = {
         icon: BarChart,
         bullets: ['Dashboard analytics en temps réel', 'Revenus attribués par campagne', 'Comparaison entre campagnes'],
         mockup: 'EmailAnalyticsMockup',
-        image: '/images/produit/email/email-analytics.webp',
+        image: '/images/produit/campaigns/email-analytics.webp',
       }
     ],
     useCases: [

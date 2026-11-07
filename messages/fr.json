@@ -3353,6 +3353,70 @@
       "credited": "+360 pts crédités après le séjour",
       "tier": "Palier Gold atteint",
       "member": "Membre"
+    },
+    "campaign": {
+      "segment": "Segment · Clients venus en été, pas revenus",
+      "subject": "Revenez cet automne : votre chambre vous attend",
+      "book": "Réserver",
+      "sent": "Envoyée à 412 clients du segment",
+      "opens": "ouvertures",
+      "clicks": "clics",
+      "bookings": "réservations",
+      "demo": "Données de démonstration"
+    },
+    "guestApp": {
+      "welcome": "Bienvenue",
+      "t1": "Infos pratiques",
+      "t2": "Room service",
+      "t3": "Spa",
+      "t4": "Autour de l’hôtel",
+      "order": "Commander un petit-déjeuner",
+      "newRequest": "Nouvelle demande",
+      "request": "Petit-déjeuner en chambre · 8 h 30",
+      "room": "Chambre 204 · Camille Laurent"
+    },
+    "events": {
+      "event": "Mariage Claire et Thomas · 26 nov.",
+      "veg": "Végétarien",
+      "kosher": "Casher",
+      "confirmed": "Confirmé",
+      "invited": "Invité",
+      "count": "participants confirmés",
+      "rooming": "Rooming list envoyée aux participants"
+    },
+    "b2b": {
+      "detected": "Société détectée automatiquement",
+      "stays": "séjours",
+      "next": "Prochaine action : relancer pour le séminaire de mars"
+    },
+    "checkin": {
+      "scan": "Scanner la pièce d’identité",
+      "scanned": "Pièce lue",
+      "name": "Nom",
+      "birth": "Date de naissance",
+      "nationality": "Nationalité",
+      "nationalityValue": "Française",
+      "done": "Check-in terminé · envoyé au PMS"
+    },
+    "housekeeping": {
+      "clean": "Propre",
+      "progress": "En cours",
+      "dirty": "À faire",
+      "synced": "Statuts envoyés au PMS"
+    },
+    "keys": {
+      "arrivalDay": "Jour d’arrivée",
+      "message": "Bonjour Camille, votre chambre 204 est prête. Voici votre clé.",
+      "open": "Ouvrir la porte",
+      "room": "Chambre 204",
+      "unlocked": "Ouverte",
+      "locked": "Fermée"
+    },
+    "analytics": {
+      "chart": "Réservations directes après campagne",
+      "k1": "messages envoyés ce mois",
+      "k2": "ventes additionnelles",
+      "demo": "Données de démonstration"
     }
   },
   "nav": {
@@ -3384,7 +3448,7 @@
       "sms": "SMS",
       "reviews": "Avis",
       "loyalty": "Fidélité",
-      "campaigns": "Campagnes et newsletter",
+      "campaigns": "Campagnes",
       "email": "Emails",
       "flows": "Flows (automatisations)",
       "crm": "CRM et fiche client",
@@ -3401,7 +3465,13 @@
       "sync": "Synchronisation PMS",
       "ai": "IA intégrée",
       "integrationsHub": "Intégrations",
-      "voice": "Appel réception"
+      "voice": "Appel réception",
+      "checkin": "Check-in en ligne",
+      "guestApp": "Guest App",
+      "housekeeping": "Ménage",
+      "keys": "Clés digitales",
+      "events": "Événements",
+      "b2b": "B2B"
     },
     "descriptions": {
       "upsell": "Le bon extra, avant l'arrivée",
@@ -3412,12 +3482,18 @@
       "sms": "Les messages qui comptent",
       "reviews": "Plus d'avis positifs",
       "loyalty": "Ils reviennent en direct",
-      "campaigns": "Campagnes ciblées par segment",
+      "campaigns": "Email et SMS par segment",
       "email": "Emails automatiques du séjour",
       "flows": "Vos scénarios, sans code",
       "crm": "Une fiche par client, sans doublons",
       "analytics": "Vos chiffres, sans tableur",
-      "voice": "La fin du téléphone en chambre"
+      "voice": "La fin du téléphone en chambre",
+      "checkin": "Le client arrive enregistré",
+      "guestApp": "Le livret d’accueil digital",
+      "housekeeping": "Le ménage en temps réel",
+      "keys": "La clé par message",
+      "events": "Séminaires, mariages, groupes",
+      "b2b": "Vos comptes entreprises"
     },
     "footer": {
       "tagline": "Le CRM hôtelier qui s'adapte à votre hôtel. Pas l'inverse.",
