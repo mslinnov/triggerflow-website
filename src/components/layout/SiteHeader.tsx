@@ -7,7 +7,8 @@ import { ChevronDown, Menu, X } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import { brand } from '@/data/brand';
-import { platformMenu, productMenu, resourcesMenu, solutionsMenu, type NavItem } from '@/data/navigation';
+import { companyMenu, platformMenu, productMenu, resourcesMenu, solutionsMenu } from '@/data/navigation';
+import { PlatformMenu, ResourcesMenu, SolutionsMenu } from './MegaMenus';
 import { LanguageSwitcher } from './LanguageSwitcher';
 
 type MenuKey = 'product' | 'platform' | 'solutions' | 'resources';
@@ -129,9 +130,9 @@ export function SiteHeader({ banner }: SiteHeaderProps) {
                   </div>
                 </>
               )}
-              {open === 'platform' && <SimpleMenu items={platformMenu} t={t} onPick={() => setOpen(null)} />}
-              {open === 'solutions' && <SimpleMenu items={solutionsMenu} t={t} onPick={() => setOpen(null)} />}
-              {open === 'resources' && <SimpleMenu items={resourcesMenu} t={t} onPick={() => setOpen(null)} />}
+              {open === 'platform' && <PlatformMenu onPick={() => setOpen(null)} />}
+              {open === 'solutions' && <SolutionsMenu onPick={() => setOpen(null)} />}
+              {open === 'resources' && <ResourcesMenu onPick={() => setOpen(null)} />}
             </div>
           </div>
         )}
@@ -159,7 +160,7 @@ export function SiteHeader({ banner }: SiteHeaderProps) {
             <MobileLink href="/clients" onPick={() => setMobile(false)} strong>{t('clients')}</MobileLink>
             <MobileLink href="/tarifs" onPick={() => setMobile(false)} strong>{t('pricing')}</MobileLink>
             <MobileGroup title={t('resources')}>
-              {resourcesMenu.map((item) => (
+              {[...resourcesMenu, ...companyMenu].map((item) => (
                 <MobileLink key={item.key} href={item.href} onPick={() => setMobile(false)}>{t(`items.${item.key}`)}</MobileLink>
               ))}
             </MobileGroup>
@@ -201,20 +202,6 @@ function TopLink({ href, children, onEnter }: { href: string; children: React.Re
     <Link href={href} onMouseEnter={onEnter} className="rounded-md px-3 py-2 text-[14px] font-medium text-ink-2 transition-colors hover:text-ink">
       {children}
     </Link>
-  );
-}
-
-function SimpleMenu({ items, t, onPick }: { items: NavItem[]; t: ReturnType<typeof useTranslations>; onPick: () => void }) {
-  return (
-    <ul className="grid grid-cols-4 gap-x-8 gap-y-3">
-      {items.map((item) => (
-        <li key={item.key}>
-          <Link href={item.href} onClick={onPick} className="text-[14px] font-semibold text-ink hover:text-accent">
-            {t(`items.${item.key}`)}
-          </Link>
-        </li>
-      ))}
-    </ul>
   );
 }
 

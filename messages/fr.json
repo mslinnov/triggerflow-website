@@ -3491,7 +3491,11 @@
       "events": "Événements",
       "b2b": "B2B",
       "bookingRequests": "Demandes de réservation",
-      "guesthouses": "Maisons d'hôtes"
+      "guesthouses": "Maisons d'hôtes",
+      "calendar": "Calendrier marketing",
+      "about": "À propos",
+      "careers": "Carrières",
+      "contact": "Contact"
     },
     "descriptions": {
       "upsell": "Le bon extra, avant l'arrivée",
@@ -3514,7 +3518,24 @@
       "keys": "La clé par message",
       "events": "Séminaires, mariages, groupes",
       "b2b": "Vos comptes entreprises",
-      "bookingRequests": "Vos espaces réservables en ligne"
+      "bookingRequests": "Vos espaces réservables en ligne",
+      "sync": "Réservations et profils synchronisés dans les deux sens",
+      "ai": "Rédiger, répondre, résumer, traduire. Vous validez.",
+      "security": "Hébergé en France, RGPD, DPA public",
+      "integrationsHub": "PMS, paiement, serrures, avis et canaux",
+      "independent": "Toute la relation client, même avec une petite équipe",
+      "groups": "Plusieurs hôtels, une seule plateforme",
+      "luxury": "Un service sur mesure, à chaque étape du séjour",
+      "residences": "Arrivées autonomes et messages aux locataires",
+      "campsites": "Saisonnalité, services, retour d'une saison à l'autre",
+      "guesthouses": "Les bons messages, sans y passer vos soirées",
+      "blog": "Des articles écrits pour les hôteliers",
+      "guides": "Guides PDF gratuits, tirés de nos hôtels",
+      "calendar": "Les temps forts de l'année, avec un modèle d'email",
+      "help": "FAQ, support et contacts",
+      "about": "L'équipe derrière TriggerFlow",
+      "careers": "Rejoindre l'équipe",
+      "contact": "Parler à notre équipe"
     },
     "footer": {
       "tagline": "Le CRM hôtelier qui s'adapte à votre hôtel. Pas l'inverse.",
@@ -3567,7 +3588,24 @@
       "hosted": "Hébergé en France · RGPD",
       "company": "Une solution Utelys"
     },
-    "platform": "Plateforme"
+    "platform": "Plateforme",
+    "menuColumns": {
+      "platform": "Le socle technique",
+      "solutions": "Par type d’établissement",
+      "learn": "Apprendre",
+      "company": "Entreprise"
+    },
+    "featured": {
+      "pmsEyebrow": "Intégrations",
+      "pmsTitle": "Connecté nativement à {count} PMS",
+      "pmsCta": "Voir toutes les intégrations",
+      "quoteEyebrow": "Ils en parlent",
+      "quoteCta": "Voir les cas clients",
+      "guideEyebrow": "Guide PDF gratuit",
+      "guideTitle": "Les ventes additionnelles avant l’arrivée",
+      "guideText": "Ce qui se vend vraiment, quand l’envoyer et sur quel canal.",
+      "guideCta": "Recevoir le guide"
+    }
   },
   "home2": {
     "meta": {

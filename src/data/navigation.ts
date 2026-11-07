@@ -76,7 +76,15 @@ export const platformMenu: NavItem[] = [
 export const resourcesMenu: NavItem[] = [
   { key: 'blog', href: '/blog' },
   { key: 'guides', href: '/ressources/guides' },
+  { key: 'calendar', href: '/calendrier-marketing' },
   { key: 'help', href: '/ressources/aide' },
+];
+
+/** Liens « Entreprise » du footer, repris dans le menu Ressources. */
+export const companyMenu: NavItem[] = [
+  { key: 'about', href: '/a-propos' },
+  { key: 'careers', href: '/carrieres' },
+  { key: 'contact', href: '/contact' },
 ];
 
 export const footerColumns: NavColumn[] = [

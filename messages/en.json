@@ -3206,7 +3206,11 @@
       "events": "Events",
       "b2b": "B2B",
       "bookingRequests": "Booking requests",
-      "guesthouses": "Guesthouses"
+      "guesthouses": "Guesthouses",
+      "calendar": "Marketing calendar",
+      "about": "About",
+      "careers": "Careers",
+      "contact": "Contact"
     },
     "descriptions": {
       "upsell": "The right extra, before arrival",
@@ -3229,7 +3233,24 @@
       "keys": "The key by message",
       "events": "Seminars, weddings, groups",
       "b2b": "Your corporate accounts",
-      "bookingRequests": "Your bookable spaces online"
+      "bookingRequests": "Your bookable spaces online",
+      "sync": "Bookings and profiles synced both ways",
+      "ai": "Write, reply, summarise, translate. You approve.",
+      "security": "Hosted in France, GDPR, public DPA",
+      "integrationsHub": "PMS, payments, locks, reviews and channels",
+      "independent": "The whole guest relationship, even with a small team",
+      "groups": "Several hotels, one platform",
+      "luxury": "Tailored service at every step of the stay",
+      "residences": "Self check-in and messages to guests",
+      "campsites": "Seasonality, services, guests who come back next season",
+      "guesthouses": "The right messages, without losing your evenings",
+      "blog": "Articles written for hoteliers",
+      "guides": "Free PDF guides, built from our hotels",
+      "calendar": "Key dates of the year, with an email template",
+      "help": "FAQ, support and contacts",
+      "about": "The team behind TriggerFlow",
+      "careers": "Join the team",
+      "contact": "Talk to our team"
     },
     "footer": {
       "tagline": "The hotel CRM that fits your hotel, not the other way around.",
@@ -3282,7 +3303,24 @@
       "hosted": "Hosted in France · GDPR",
       "company": "A Utelys product"
     },
-    "platform": "Platform"
+    "platform": "Platform",
+    "menuColumns": {
+      "platform": "The technical foundation",
+      "solutions": "By type of property",
+      "learn": "Learn",
+      "company": "Company"
+    },
+    "featured": {
+      "pmsEyebrow": "Integrations",
+      "pmsTitle": "Natively connected to {count} PMS",
+      "pmsCta": "See all integrations",
+      "quoteEyebrow": "In their words",
+      "quoteCta": "See customer stories",
+      "guideEyebrow": "Free PDF guide",
+      "guideTitle": "Selling extras before arrival",
+      "guideText": "What actually sells, when to send it and on which channel.",
+      "guideCta": "Get the guide"
+    }
   },
   "home2": {
     "meta": {
