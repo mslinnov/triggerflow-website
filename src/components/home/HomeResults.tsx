@@ -52,7 +52,7 @@ export function HomeResults() {
                 )}
                 <div className="flex flex-1 flex-col p-7">
                   <span className="text-[15px] font-semibold text-ink">{item.client}</span>
-                  {result && (
+                  {result?.metric && (
                     <p className="mt-5 border-b border-line pb-5">
                       <span className="block text-[2.25rem] font-medium leading-none tracking-[-0.02em] text-accent">{result.metric.value[locale]}</span>
                       <span className="mt-2 block text-[14px] text-ink-2">{result.metric.label[locale]}</span>

@@ -9,7 +9,7 @@ export interface ClientResult {
   /** Doit correspondre à `home2.results.items[].client`. */
   client: string;
   photo: string;
-  metric: { value: { fr: string; en: string }; label: { fr: string; en: string }; example: boolean };
+  metric: { value: { fr: string; en: string }; label: { fr: string; en: string }; example: boolean } | null;
 }
 
 export const clientResults: ClientResult[] = [
@@ -28,7 +28,8 @@ export const clientResults: ClientResult[] = [
   {
     client: 'Hôtel Arc en Ciel',
     photo: '/images/hotels/arc-en-ciel.webp',
-    metric: { value: { fr: '3 h', en: '3 h' }, label: { fr: 'gagnées chaque semaine sur les relances de paiement', en: 'saved each week on payment reminders' }, example: true },
+    // Aucun chiffre mesuré (livres blancs vérifiés le 08/11/2026) : pas de chiffre affiché.
+    metric: null,
   },
 ];
 

@@ -3612,10 +3612,70 @@
     "guestView": {
       "eyebrow": "Guest side",
       "title": "What your guests see.",
-      "titleMuted": "In each hotel's colours.",
-      "subtitle": "The Guest App of four client hotels: one platform, four identities. It opens in the browser, no download needed.",
-      "alt": "{name} Guest App, on a phone",
-      "note": "Restaurants, spa, experiences, practical information, calling reception: the whole hotel on the guest's phone, connected to the CRM.",
+      "titleMuted": "On every channel, in your colours.",
+      "subtitle": "Email, WhatsApp, SMS, Guest App, loyalty: every touchpoint carries your brand. Real examples from the demo account and our clients' apps.",
+      "email": {
+        "label": "Email",
+        "caption": "The booking confirmation, with stay details and payment.",
+        "from": "From:",
+        "subject": "Your booking is confirmed",
+        "alt": "Booking confirmation email from Hôtel Le Jardin"
+      },
+      "whatsapp": {
+        "caption": "A real conversation during the stay, handled by the front desk.",
+        "messages": [
+          {
+            "from": "hotel",
+            "text": "Hello Camille, we hope you're enjoying your stay! Feel free to message us if you need anything.",
+            "time": "17:43"
+          },
+          {
+            "from": "guest",
+            "text": "Hello, the air conditioning in room 412 isn't working. Could you send someone quickly?",
+            "time": "17:58"
+          },
+          {
+            "from": "hotel",
+            "text": "We're sorry, Camille. A technician is on the way to your room.",
+            "time": "18:13"
+          }
+        ]
+      },
+      "sms": {
+        "caption": "The welcome message on arrival day.",
+        "when": "Today 09:00",
+        "text": "Welcome Elena! Your room is ready from 3pm. Need anything? Just reply to this SMS."
+      },
+      "app": {
+        "label": "Guest App",
+        "caption": "The whole hotel on their phone, no download.",
+        "alt": "Sofitel Marrakech Guest App"
+      },
+      "loyalty": {
+        "label": "Loyalty program",
+        "caption": "Your regulars recognised and rewarded, so they book direct.",
+        "points": [
+          {
+            "title": "Points every stay",
+            "text": "Collected automatically from the PMS."
+          },
+          {
+            "title": "Tiers and perks",
+            "text": "That you define: upgrade, late check-out, spa offer."
+          },
+          {
+            "title": "Dedicated messages",
+            "text": "Membership anniversary, new tier, come-back offer."
+          }
+        ],
+        "card": {
+          "name": "Camille Rousseau",
+          "pointsLabel": "Points",
+          "tier": "Gold",
+          "next": "550 points to go before a free night"
+        }
+      },
+      "note": "Every message goes out on its own, following the rules you set.",
       "more": "Discover the Guest App"
     },
     "ai": {

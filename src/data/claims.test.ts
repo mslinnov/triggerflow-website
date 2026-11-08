@@ -330,7 +330,7 @@ test('formation du stand : PMS_LIST = brand.pms, et module embarqué à jour', a
 
 test('résultats clients : aucune valeur d\'exemple avant la mise en production', async () => {
   const { clientResults } = await import('./client-results');
-  const examples = clientResults.filter((r) => r.metric.example).map((r) => r.client);
+  const examples = clientResults.filter((r) => r.metric?.example).map((r) => r.client);
   if (examples.length > 0) {
     // Rappel visible dans la sortie des tests, sans bloquer tant que le site n'est pas en ligne.
     console.warn(`[À REMPLACER] Valeurs d'exemple dans src/data/client-results.ts : ${examples.join(', ')}`);
