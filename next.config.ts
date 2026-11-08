@@ -69,6 +69,7 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       // ── Landings produit de la refonte : anciennes URL → nouvelles (docs/arborescence.md) ──
+      { source: '/:locale(fr|en)/produit/booking-requests', destination: '/:locale/produit', permanent: true },
       { source: '/:locale(fr|en)/produit/ventes-additionnelles', destination: '/:locale/produit/upsell', permanent: true },
       { source: '/:locale(fr|en)/produit/automatisations', destination: '/:locale/produit/flows', permanent: true },
       { source: '/:locale(fr|en)/produit/paiements', destination: '/:locale/produit/pay', permanent: true },

@@ -33,8 +33,8 @@ export const PLANS: Plan[] = [
     includedModules: 1,
     name: { fr: 'One Way', en: 'One Way' },
     description: {
-      fr: 'Le CRM, les segments et les automatisations, plus 1 module au choix.',
-      en: 'The CRM, segments and automations, plus 1 module of your choice.',
+      fr: 'Le CRM, les segments, les automatisations et la messagerie unifiée, plus 1 module au choix.',
+      en: 'The CRM, segments, automations and unified inbox, plus 1 module of your choice.',
     },
   },
   {
@@ -45,8 +45,8 @@ export const PLANS: Plan[] = [
     includedModules: 2,
     name: { fr: 'Two Way', en: 'Two Way' },
     description: {
-      fr: 'One Way, plus la messagerie, les formulaires et l’upsell, et 2 modules au choix.',
-      en: 'One Way, plus messaging, forms and upselling, and 2 modules of your choice.',
+      fr: 'One Way, plus les interactions clients, les formulaires et l’upsell, et 2 modules au choix.',
+      en: 'One Way, plus guest interactions, forms and upselling, and 2 modules of your choice.',
     },
   },
   {

@@ -922,6 +922,7 @@
           "CRM and guest profiles",
           "Segments",
           "Automations (flows)",
+          "Unified inbox (WhatsApp, SMS, OTAs)",
           "Analytics",
           "1 module of your choice"
         ]
@@ -932,7 +933,7 @@
         "description": "Your guests reply, book and buy.",
         "includes": [
           "Everything in One Way",
-          "Unified inbox (WhatsApp, SMS, OTAs)",
+          "Guest interactions (conditions on replies, clicks, purchases)",
           "Forms",
           "Upselling",
           "2 modules of your choice"
@@ -3236,7 +3237,7 @@
       "sms": "SMS",
       "reviews": "Reviews",
       "loyalty": "Loyalty",
-      "campaigns": "Campaigns",
+      "campaigns": "Marketing campaigns",
       "email": "Emails",
       "flows": "Flows (automations)",
       "crm": "CRM and guest profile",
@@ -3567,6 +3568,7 @@
         "Duplicate-free guest profiles",
         "Segments",
         "Automations (flows)",
+        "Unified inbox",
         "Analytics",
         "PMS sync"
       ],
@@ -3577,8 +3579,8 @@
       "reset": "Clear selection",
       "why": {
         "communication": "{count, plural, =0 {The full CRM, with 1 module of your choice to add whenever you like.} other {Your module is included in One Way.}}",
-        "conversion": "Messaging, forms and upselling included, plus {extras, plural, =0 {2 modules of your choice} one {your module and 1 more of your choice} other {your 2 modules of your choice}}.",
-        "allInclusive": "Beyond 2 modules on top of messaging, forms and upselling, All Inclusive gives you every module."
+        "conversion": "Forms and upselling included, plus {extras, plural, =0 {2 modules of your choice} one {your module and 1 more of your choice} other {your 2 modules of your choice}}.",
+        "allInclusive": "Beyond 2 modules on top of forms and upselling, All Inclusive gives you every module."
       },
       "aiAgent": {
         "name": "AI agent",

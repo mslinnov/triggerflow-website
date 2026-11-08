@@ -35,8 +35,8 @@ const featureGroups: { key: string; icon: typeof Check; features: { key: string;
     features: [
       { key: 'emails', values: ['5 000', '15 000', '50 000'] },
       { key: 'sms', values: [true, true, true] },
-      { key: 'whatsapp', values: [false, true, true] },
-      { key: 'hub', values: [false, true, true] },
+      { key: 'whatsapp', values: [true, true, true] },
+      { key: 'hub', values: [true, true, true] },
     ],
   },
   {

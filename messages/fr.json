@@ -922,6 +922,7 @@
           "CRM et fiches clients",
           "Segments",
           "Automatisations (flows)",
+          "Messagerie unifiée (WhatsApp, SMS, OTA)",
           "Statistiques",
           "1 module au choix"
         ]
@@ -932,7 +933,7 @@
         "description": "Vos clients vous répondent, réservent et achètent.",
         "includes": [
           "Tout One Way",
-          "Messagerie unifiée (WhatsApp, SMS, OTA)",
+          "Interactions clients (conditions sur les réponses, clics, achats)",
           "Formulaires",
           "Upsell",
           "2 modules au choix"
@@ -3513,7 +3514,7 @@
       "sms": "SMS",
       "reviews": "Avis",
       "loyalty": "Fidélité",
-      "campaigns": "Campagnes",
+      "campaigns": "Campagnes marketing",
       "email": "Emails",
       "flows": "Flows (automatisations)",
       "crm": "CRM et fiche client",
@@ -3844,6 +3845,7 @@
         "Fiches clients sans doublons",
         "Segments",
         "Automatisations (flows)",
+        "Messagerie unifiée",
         "Statistiques",
         "Synchronisation PMS"
       ],
@@ -3854,8 +3856,8 @@
       "reset": "Tout désélectionner",
       "why": {
         "communication": "{count, plural, =0 {Le CRM complet, avec 1 module au choix à ajouter quand vous voulez.} other {Votre module est inclus dans One Way.}}",
-        "conversion": "Messagerie, formulaires et upsell inclus, plus {extras, plural, =0 {2 modules au choix} one {votre module et 1 autre au choix} other {vos 2 modules au choix}}.",
-        "allInclusive": "Au-delà de 2 modules en plus de la messagerie, des formulaires et de l'upsell, All Inclusive vous donne tous les modules."
+        "conversion": "Formulaires et upsell inclus, plus {extras, plural, =0 {2 modules au choix} one {votre module et 1 autre au choix} other {vos 2 modules au choix}}.",
+        "allInclusive": "Au-delà de 2 modules en plus des formulaires et de l'upsell, All Inclusive vous donne tous les modules."
       },
       "aiAgent": {
         "name": "Agent IA",

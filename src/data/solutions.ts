@@ -31,7 +31,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { brand } from './brand';
-import { companyStats, statNumber } from './company-stats';
+import { statNumber } from './company-stats';
 
 // ─── Interfaces ─────────────────────────────────────────────
 

@@ -3,8 +3,7 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import {
-  BedDouble, Bot, Briefcase, CalendarCheck, CalendarDays, ClipboardList, CreditCard, Heart, KeyRound, Megaphone,
-  MessagesSquare, PhoneCall, ShoppingBag, Smartphone, Sparkles, Star, Check, UserCheck,
+  BedDouble, Bot, Briefcase, CalendarDays, ClipboardList, CreditCard, Heart, KeyRound, Megaphone, PhoneCall, ShoppingBag, Smartphone, Sparkles, Star, Check, UserCheck,
 } from 'lucide-react';
 import { DsButton } from '@/components/ds';
 import { brand } from '@/data/brand';
@@ -13,12 +12,10 @@ import type { DisplayPlan } from '@/data/pricing';
 import { cn } from '@/lib/utils';
 
 const ICONS: Record<BuilderModuleKey, typeof Star> = {
-  inbox: MessagesSquare,
   forms: ClipboardList,
   upsell: ShoppingBag,
   pay: CreditCard,
   checkin: UserCheck,
-  bookingRequests: CalendarCheck,
   guestApp: Smartphone,
   voice: PhoneCall,
   keys: KeyRound,
@@ -51,8 +48,12 @@ export function OfferBuilder({ plans }: { plans: DisplayPlan[] }) {
 
   const column = (keys: BuilderModuleKey[], side: 'left' | 'right') => (
     <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-1">
-      {keys.map((key) => {
+      {keys.map((key, i) => {
         const on = selected.includes(key);
+        // Rail vertical : le tronçon entre ce module et son voisin côté centre ne s'allume
+        // que si un module choisi se trouve sur ce chemin (jamais toute la colonne).
+        const mid = (keys.length - 1) / 2;
+        const railOn = i < mid ? keys.slice(0, i + 1).some((k) => selected.includes(k)) : keys.slice(i).some((k) => selected.includes(k));
         const Icon = ICONS[key];
         return (
           <li key={key} className="relative">
@@ -83,6 +84,17 @@ export function OfferBuilder({ plans }: { plans: DisplayPlan[] }) {
                 on ? 'bg-accent' : 'bg-line'
               )}
             />
+            {i !== mid && (
+              <span
+                aria-hidden
+                className={cn(
+                  'absolute hidden h-[calc(100%+0.5rem)] w-px transition-colors lg:block',
+                  side === 'left' ? '-right-12' : '-left-12',
+                  i < mid ? 'top-1/2' : 'bottom-1/2',
+                  railOn ? 'bg-accent' : 'bg-line'
+                )}
+              />
+            )}
           </li>
         );
       })}
@@ -96,9 +108,7 @@ export function OfferBuilder({ plans }: { plans: DisplayPlan[] }) {
 
         {/* La brique centrale */}
         <div className="relative order-1 flex items-center lg:order-2">
-          {/* Rails qui collectent les modules de chaque côté */}
-          <span aria-hidden className={cn('absolute bottom-7 left-0 top-7 hidden w-px transition-colors lg:block', leftOn ? 'bg-accent' : 'bg-line')} />
-          <span aria-hidden className={cn('absolute bottom-7 right-0 top-7 hidden w-px transition-colors lg:block', rightOn ? 'bg-accent' : 'bg-line')} />
+          {/* Liaisons des rails vers le CRM */}
           <span aria-hidden className={cn('absolute left-0 top-1/2 hidden h-px w-6 transition-colors lg:block', leftOn ? 'bg-accent' : 'bg-line')} />
           <span aria-hidden className={cn('absolute right-0 top-1/2 hidden h-px w-6 transition-colors lg:block', rightOn ? 'bg-accent' : 'bg-line')} />
           <div className="relative w-full rounded-2xl bg-ink lg:mx-6 p-7 text-white shadow-product">

@@ -21,7 +21,6 @@ export const productMenu: NavColumn[] = [
       { key: 'pay', href: '/produit/pay' },
       { key: 'forms', href: '/produit/forms' },
       { key: 'checkin', href: '/produit/check-in' },
-      { key: 'bookingRequests', href: '/produit/booking-requests' },
     ],
   },
   {
