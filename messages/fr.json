@@ -3646,7 +3646,15 @@
         "title": "La newsletter TriggerFlow",
         "text": "Des idées de scénarios, des retours de nos hôtels et les nouveautés du produit, dans votre boîte mail.",
         "placeholder": "Votre email",
-        "cta": "S'inscrire"
+        "cta": "S'inscrire",
+        "consentRequired": "Cochez la case pour confirmer votre inscription."
+      },
+      "location": "Toulouse, France",
+      "synapse": "Membre du label Synapse, solutions hôtelières interconnectées",
+      "badges": {
+        "france": "Hébergé en France",
+        "gdpr": "RGPD",
+        "dpa": "DPA public"
       }
     },
     "platform": "Plateforme",

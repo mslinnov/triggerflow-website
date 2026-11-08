@@ -3369,7 +3369,15 @@
         "title": "The TriggerFlow newsletter",
         "text": "Scenario ideas, lessons from our hotels and product news, straight to your inbox.",
         "placeholder": "Your email",
-        "cta": "Subscribe"
+        "cta": "Subscribe",
+        "consentRequired": "Tick the box to confirm your subscription."
+      },
+      "location": "Toulouse, France",
+      "synapse": "Member of the Synapse label for connected hotel software",
+      "badges": {
+        "france": "Hosted in France",
+        "gdpr": "GDPR",
+        "dpa": "Public DPA"
       }
     },
     "platform": "Platform",
