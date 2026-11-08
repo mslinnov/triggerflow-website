@@ -28,7 +28,7 @@ export function HomePricing({ plans }: { plans: DisplayPlan[] }) {
           </span>
           <p className="mx-auto mt-3 max-w-xl text-[15px] text-ink-2">{tb('plansText')}</p>
         </div>
-        <div className="mt-8 grid gap-4 md:grid-cols-3">
+        <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {plans.map((plan) => (
             <div key={plan.key} className={cn('flex flex-col rounded-xl border bg-white p-6', plan.popular ? 'border-accent shadow-[0_0_0_3px_rgba(0,111,104,0.10)]' : 'border-line')}>
               <div className="flex items-center justify-between">

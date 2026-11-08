@@ -60,7 +60,7 @@ export const inbox: ProductLanding = {
     { slug: 'crm', href: '/produit/crm', name: { fr: 'CRM', en: 'CRM' }, text: { fr: 'Une fiche par client, sans doublons.', en: 'One profile per guest, no duplicates.' } },
     { slug: 'flows', href: '/produit/flows', name: { fr: 'Flows', en: 'Flows' }, text: { fr: 'Les messages automatiques du séjour.', en: 'Automated stay messages.' } },
   ],
-  pricing: { text: { fr: 'Inclus dans toutes les formules, dès One Way.', en: 'Included in every plan, from One Way.' } },
+  pricing: { text: { fr: 'Inclus dès la formule One Way.', en: 'Included from the One Way plan.' } },
   faq: [
     { q: { fr: 'Quels canaux sont pris en charge ?', en: 'Which channels are supported?' }, a: { fr: 'Email, SMS, WhatsApp, Messenger, Instagram, chat du site, et les messageries OTA : Booking.com (connexion native en cours), Expedia par emails relais, Airbnb par formulaires automatiques.', en: 'Email, SMS, WhatsApp, Messenger, Instagram, website chat, and OTA messaging: Booking.com (native connection in progress), Expedia via relay emails, Airbnb via automated forms.' } },
     { q: { fr: 'L’IA répond-elle à ma place ?', en: 'Does AI reply for me?' }, a: { fr: 'Elle propose une réponse ; votre équipe la relit, la modifie si besoin et l’envoie.', en: 'It suggests a reply; your team reviews, edits if needed and sends it.' } },

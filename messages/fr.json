@@ -915,6 +915,17 @@
     },
     "perMonth": "mois",
     "plans": {
+      "discovery": {
+        "name": "Découverte",
+        "description": "Pour découvrir TriggerFlow et lancer vos premiers scénarios clients.",
+        "includes": [
+          "CRM et fiches clients",
+          "5 segments",
+          "1 automatisation (flow)",
+          "1 000 emails par mois",
+          "Statistiques"
+        ]
+      },
       "communication": {
         "name": "One Way",
         "description": "Le CRM au complet pour parler à vos clients au bon moment.",
@@ -956,7 +967,7 @@
     "addons": {
       "badge": "Modules",
       "title": "Tous les modules, à la carte.",
-      "subtitle": "Chaque formule inclut des modules au choix. Au-delà, un module s'ajoute à l'unité, à tout moment.",
+      "subtitle": "Les formules payantes incluent des modules au choix. Au-delà, un module s'ajoute à l'unité, à tout moment.",
       "cta": "En savoir plus",
       "items": {
         "reviews": {
@@ -3891,10 +3902,11 @@
         "description": "Répond à vos clients 24 h/24"
       },
       "plansTitle": "Ensuite, votre formule",
-      "plansText": "Le CRM est dans toutes les formules. Elles se distinguent par le nombre de modules au choix inclus.",
+      "plansText": "Le CRM est dans toutes les formules. De Découverte à All Inclusive, elles se distinguent par les modules inclus.",
       "included": {
+        "discovery": "Le CRM, sans module",
         "communication": "CRM + 1 module au choix",
-        "conversion": "CRM + formulaires, upsell + 2 modules",
+        "conversion": "CRM + upsell + 2 modules",
         "allInclusive": "CRM + tous les modules"
       }
     },

@@ -915,6 +915,17 @@
     },
     "perMonth": "month",
     "plans": {
+      "discovery": {
+        "name": "Discovery",
+        "description": "To discover TriggerFlow and launch your first guest scenarios.",
+        "includes": [
+          "CRM and guest profiles",
+          "5 segments",
+          "1 automation (flow)",
+          "1,000 emails per month",
+          "Analytics"
+        ]
+      },
       "communication": {
         "name": "One Way",
         "description": "The full CRM to reach your guests at the right moment.",
@@ -956,7 +967,7 @@
     "addons": {
       "badge": "Modules",
       "title": "Every module, à la carte.",
-      "subtitle": "Each plan includes modules of your choice. Beyond that, add a module one by one, any time.",
+      "subtitle": "Paid plans include modules of your choice. Beyond that, add a module one by one, any time.",
       "cta": "Learn more",
       "items": {
         "reviews": {
@@ -3614,10 +3625,11 @@
         "description": "Answers your guests 24/7"
       },
       "plansTitle": "Then, your plan",
-      "plansText": "The CRM is in every plan. They differ by how many modules of your choice are included.",
+      "plansText": "The CRM is in every plan. From Discovery to All Inclusive, they differ by the modules included.",
       "included": {
+        "discovery": "The CRM, no module",
         "communication": "CRM + 1 module of your choice",
-        "conversion": "CRM + forms, upselling + 2 modules",
+        "conversion": "CRM + upselling + 2 modules",
         "allInclusive": "CRM + every module"
       }
     },

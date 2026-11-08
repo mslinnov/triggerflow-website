@@ -8,7 +8,7 @@
  */
 
 export interface Plan {
-  key: 'communication' | 'conversion' | 'allInclusive';
+  key: 'discovery' | 'communication' | 'conversion' | 'allInclusive';
   price: string;
   /** Conservé pour le mécanisme d'annonce ; égal à `price` tant qu'aucune hausse n'est prévue. */
   nextPrice: string;
@@ -21,10 +21,23 @@ export interface Plan {
 }
 
 /**
- * Grille en vigueur depuis le 8 novembre 2026 (décision Soufiane) : plus de plan gratuit.
+ * Grille en vigueur depuis le 8 novembre 2026 (décision Soufiane) : Découverte 0 € (remise le 08/11/2026),
+ * One Way 99 €, Two Way 179 €, All Inclusive 249 €. Le gratuit n'est pas un argument : CTA « Demander une démo ».
  * Les clés internes restent `communication` / `conversion` pour ne pas casser les traductions.
  */
 export const PLANS: Plan[] = [
+  {
+    key: 'discovery',
+    price: '0',
+    nextPrice: '0',
+    popular: false,
+    includedModules: 0,
+    name: { fr: 'Découverte', en: 'Discovery' },
+    description: {
+      fr: 'Pour découvrir TriggerFlow et lancer vos premiers scénarios clients.',
+      en: 'To discover TriggerFlow and launch your first guest scenarios.',
+    },
+  },
   {
     key: 'communication',
     price: '99',
@@ -131,7 +144,7 @@ export function getDisplayAddons(phase: PricingPhase): DisplayAddon[] {
   }));
 }
 
-/** Plus petit prix, pour les accroches « dès 99 €/mois ». */
+/** Plus petit prix payant, pour les accroches « dès 99 €/mois ». */
 export function getEntryPrice(phase: PricingPhase): string {
   const paid = getDisplayPlans(phase)
     .map((plan) => Number(plan.price))

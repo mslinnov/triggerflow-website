@@ -21,42 +21,42 @@ type Cell = boolean | string;
 const U = 'unlimited';
 const ALL = 'all';
 
-/** Colonnes : One Way, Two Way, All Inclusive. Volumes repris des anciens plans Communication et Conversion. */
+/** Colonnes : Découverte, One Way, Two Way, All Inclusive. Volumes repris des anciens plans Communication et Conversion. */
 const featureGroups: { key: string; icon: typeof Check; features: { key: string; values: Cell[] }[] }[] = [
   {
     key: 'automation',
     icon: Workflow,
     features: [
-      { key: 'segments', values: ['10', '45', U] },
-      { key: 'flows', values: ['5', '10', U] },
-      { key: 'conditions', values: [false, true, true] },
-      { key: 'stats', values: [true, true, true] },
+      { key: 'segments', values: ['5', '10', '45', U] },
+      { key: 'flows', values: ['1', '5', '10', U] },
+      { key: 'conditions', values: [false, false, true, true] },
+      { key: 'stats', values: [true, true, true, true] },
     ],
   },
   {
     key: 'communication',
     icon: MessageSquare,
     features: [
-      { key: 'emails', values: ['5 000', '15 000', '50 000'] },
-      { key: 'sms', values: [true, true, true] },
-      { key: 'whatsapp', values: [true, true, true] },
-      { key: 'hub', values: [true, true, true] },
+      { key: 'emails', values: ['1 000', '5 000', '15 000', '50 000'] },
+      { key: 'sms', values: [true, true, true, true] },
+      { key: 'whatsapp', values: [false, true, true, true] },
+      { key: 'hub', values: [false, true, true, true] },
     ],
   },
   {
     key: 'marketing',
     icon: ShoppingBag,
     features: [
-      { key: 'forms', values: [false, '5', U] },
-      { key: 'upsell', values: [false, true, true] },
+      { key: 'forms', values: [false, false, '5', U] },
+      { key: 'upsell', values: [false, false, true, true] },
     ],
   },
   {
     key: 'tools',
     icon: BarChart3,
     features: [
-      { key: 'modulesIncluded', values: ['1', '2', ALL] },
-      { key: 'groupPortal', values: [false, true, true] },
+      { key: 'modulesIncluded', values: ['0', '1', '2', ALL] },
+      { key: 'groupPortal', values: [false, false, true, true] },
     ],
   },
 ];
@@ -110,7 +110,7 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
       {/* Plans */}
       <section className="bg-white pb-20 md:pb-28">
         <Container>
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {plans.map((plan) => (
               <div
                 key={plan.key}
@@ -156,12 +156,12 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
             <table className="w-full table-fixed border-separate md:table-auto border-spacing-0 overflow-hidden rounded-xl border border-line bg-white text-left">
               <thead>
                 <tr>
-                  <th scope="col" className="w-[40%] border-b border-line px-3 py-4 md:w-[34%] md:px-5">
+                  <th scope="col" className="w-[32%] border-b border-line px-2 py-4 md:w-[30%] md:px-5">
                     <span className="sr-only">{t('comparison.featureCol')}</span>
                   </th>
                   {plans.map((plan) => (
                     <th key={plan.key} scope="col" className={cn('border-b border-line px-1 py-4 text-center align-bottom md:px-4', plan.popular && 'bg-mint/40')}>
-                      <span className="block font-mono text-[10px] font-medium uppercase tracking-[0.04em] text-ink-2 md:text-[11.5px] md:tracking-[0.08em]">{t(`plans.${plan.key}.name`)}</span>
+                      <span className="block font-mono text-[8.5px] font-medium uppercase leading-tight tracking-normal text-ink-2 [overflow-wrap:anywhere] md:text-[11.5px] md:tracking-[0.08em]">{t(`plans.${plan.key}.name`)}</span>
                       <span className="mt-1 block text-[14px] font-medium tabular-nums text-ink md:text-[17px]">{plan.price} €</span>
                     </th>
                   ))}
@@ -182,8 +182,8 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
       <section className="bg-white py-20 md:py-28">
         <Container>
           <SectionHeader eyebrow={t('addons.badge')} title={t('addons.title')} subtitle={t('addons.subtitle')} align="left" />
-          <div className="mt-8 grid gap-3 rounded-xl border border-line bg-paper p-5 sm:grid-cols-3">
-            {(['communication', 'conversion', 'allInclusive'] as const).map((key) => (
+          <div className="mt-8 grid gap-3 rounded-xl border border-line bg-paper p-5 sm:grid-cols-2 lg:grid-cols-4">
+            {(['discovery', 'communication', 'conversion', 'allInclusive'] as const).map((key) => (
               <p key={key} className="text-[14px] text-ink-2">
                 <span className="block font-mono text-[11px] uppercase tracking-[0.08em] text-ink-3">{t(`plans.${key}.name`)}</span>
                 <span className="mt-1 block font-semibold text-ink">{tb(`included.${key}`)}</span>
@@ -302,7 +302,7 @@ function FeatureGroupRows({
 function FeatureTooltip({ text, label }: { text: string; label: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <span className="relative inline-flex shrink-0">
+    <span className="relative hidden shrink-0 md:inline-flex">
       <button
         type="button"
         onMouseEnter={() => setOpen(true)}
