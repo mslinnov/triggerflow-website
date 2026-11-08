@@ -5,12 +5,12 @@ export const inbox: ProductLanding = {
   legacySlug: 'hub-messagerie',
   name: { fr: 'Messagerie unifiée', en: 'Unified inbox' },
   seo: {
-    title: { fr: 'Messagerie hôtelière unifiée | TriggerFlow', en: 'Unified hotel inbox: email, SMS, WhatsApp, OTAs | TriggerFlow' },
-    description: { fr: 'Email, SMS, WhatsApp, Messenger, Instagram, chat et messageries OTA dans une seule boîte, avec l’historique du client et des réponses suggérées par l’IA.', en: 'Email, SMS, WhatsApp, Messenger, Instagram, chat and OTA messaging in one inbox, with the guest history and AI-suggested replies.' },
+    title: { fr: 'Messagerie hôtelière unifiée | TriggerFlow', en: 'Unified hotel inbox: email, SMS, WhatsApp | TriggerFlow' },
+    description: { fr: 'Email, SMS, WhatsApp, Messenger, Instagram et chat dans une seule boîte, avec l’historique du client et des réponses suggérées par l’IA.', en: 'Email, SMS, WhatsApp, Messenger, Instagram and chat in one inbox, with the guest history and AI-suggested replies.' },
   },
   hero: {
     title: { fr: 'Tous les messages de vos clients, au même endroit.', en: 'Every guest message, in one place.' },
-    subtitle: { fr: 'Email, SMS, WhatsApp, Messenger, Instagram, chat du site et messageries OTA arrivent dans une seule boîte, rattachés à la fiche du client. L’IA propose une réponse, l’équipe valide.', en: 'Email, SMS, WhatsApp, Messenger, Instagram, website chat and OTA messaging land in one inbox, linked to the guest profile. AI suggests a reply, the team approves.' },
+    subtitle: { fr: 'Email, SMS, WhatsApp, Messenger, Instagram et chat du site arrivent dans une seule boîte, rattachés à la fiche du client. L’IA propose une réponse, l’équipe valide.', en: 'Email, SMS, WhatsApp, Messenger, Instagram and website chat messaging land in one inbox, linked to the guest profile. AI suggests a reply, the team approves.' },
     visual: 'inbox',
   },
   proof: { stat: 'whatsappRead', statLabel: { fr: 'des messages WhatsApp lus sur les 12 derniers mois', en: 'of WhatsApp messages read over the last 12 months' }, clients: ['AMMI Hôtels'] },
@@ -25,7 +25,7 @@ export const inbox: ProductLanding = {
   how: {
     title: { fr: 'Une boîte, toute l’équipe, tout l’historique.', en: 'One inbox, the whole team, the full history.' },
     steps: [
-      { title: { fr: 'Connectez vos canaux', en: 'Connect your channels' }, text: { fr: 'Boîtes mail (Gmail, Microsoft 365), SMS, WhatsApp, Messenger, Instagram, chat du site, OTA.', en: 'Mailboxes (Gmail, Microsoft 365), SMS, WhatsApp, Messenger, Instagram, website chat, OTAs.' } },
+      { title: { fr: 'Connectez vos canaux', en: 'Connect your channels' }, text: { fr: 'Boîtes mail (Gmail, Microsoft 365), SMS, WhatsApp, Messenger, Instagram, chat du site.', en: 'Mailboxes (Gmail, Microsoft 365), SMS, WhatsApp, Messenger, Instagram, website chat, OTAs.' } },
       { title: { fr: 'Chaque message trouve son client', en: 'Every message finds its guest' }, text: { fr: 'Conversation rattachée à la fiche : séjour, préférences, échanges passés.', en: 'Conversation linked to the profile: stay, preferences, past exchanges.' } },
       { title: { fr: 'Répondez plus vite, ensemble', en: 'Reply faster, together' }, text: { fr: 'Attribution, statuts, dossiers, réponses suggérées par l’IA.', en: 'Assignment, statuses, folders, AI-suggested replies.' } },
     ],
@@ -33,7 +33,7 @@ export const inbox: ProductLanding = {
   features: {
     title: { fr: 'Pensée pour une réception, pas pour un centre d’appels.', en: 'Built for a front desk, not a call centre.' },
     items: [
-      { icon: 'messageSquare', title: { fr: 'Tous les canaux', en: 'Every channel' }, text: { fr: 'Email, SMS, WhatsApp, Messenger, Instagram, chat, OTA.', en: 'Email, SMS, WhatsApp, Messenger, Instagram, chat, OTAs.' } },
+      { icon: 'messageSquare', title: { fr: 'Tous les canaux', en: 'Every channel' }, text: { fr: 'Email, SMS, WhatsApp, Messenger, Instagram, chat.', en: 'Email, SMS, WhatsApp, Messenger, Instagram, chat.' } },
       { icon: 'users', title: { fr: 'Fiche client à côté', en: 'Guest profile alongside' }, text: { fr: 'L’historique complet sous les yeux pendant la réponse.', en: 'The full history in view while replying.' } },
       { icon: 'sparkles', title: { fr: 'Réponses suggérées', en: 'Suggested replies' }, text: { fr: 'L’IA rédige un brouillon, votre équipe relit et envoie.', en: 'AI drafts, your team reviews and sends.' } },
       { icon: 'filter', title: { fr: 'Attribution et statuts', en: 'Assignment and statuses' }, text: { fr: 'Non lus, en attente, assignés à moi, dossiers urgents.', en: 'Unread, pending, assigned to me, urgent folders.' } },

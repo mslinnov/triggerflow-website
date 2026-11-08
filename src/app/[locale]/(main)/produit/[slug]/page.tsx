@@ -10,11 +10,14 @@ import { UpsellLanding } from '@/components/product/upsell/UpsellLanding';
 import { upsellLanding } from '@/content/products/upsell-landing';
 import { FlowsLanding } from '@/components/product/flows/FlowsLanding';
 import { flowsLanding } from '@/content/products/flows-landing';
+import { InboxLanding } from '@/components/product/inbox/InboxLanding';
+import { inboxLanding } from '@/content/products/inbox-landing';
 
 /** Landings dédiées : composant, SEO et FAQ propres. */
 const DEDICATED = {
   upsell: { seo: upsellLanding.seo, faq: upsellLanding.faq, Component: UpsellLanding },
   flows: { seo: flowsLanding.seo, faq: flowsLanding.faq, Component: FlowsLanding },
+  inbox: { seo: inboxLanding.seo, faq: inboxLanding.faq, Component: InboxLanding },
 } as const;
 import ModulePageContent from './ModulePageContent';
 

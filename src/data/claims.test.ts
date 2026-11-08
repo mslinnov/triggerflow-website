@@ -335,6 +335,8 @@ test('résultats clients : aucune valeur d\'exemple avant la mise en production'
     // Rappel visible dans la sortie des tests, sans bloquer tant que le site n'est pas en ligne.
     console.warn(`[À REMPLACER] Valeurs d'exemple dans src/data/client-results.ts : ${examples.join(', ')}`);
   }
+  const { inboxAiFiguresAreExamples } = await import('../content/products/inbox-landing');
+  if (inboxAiFiguresAreExamples) console.warn("[À REMPLACER] Chiffres d'exemple de l'agent IA dans src/content/products/inbox-landing.ts (aiFigures)");
 });
 
 test('délai de mise en place : jamais affiché (retiré le 08/11/2026)', () => {
