@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { Check, ClipboardList, Clock, Filter, Mail, MessageCircle, UserRound, X } from 'lucide-react';
+import { ArrowRight, Check, ClipboardList, Clock, Filter, Mail, MessageCircle, UserRound, X } from 'lucide-react';
 import { useScenario } from '@/components/ds/useScenario';
 import { cn } from '@/lib/utils';
 import { FlowNode, Reveal } from './shared';
@@ -13,10 +13,10 @@ import { FlowNode, Reveal } from './shared';
 const DURATIONS = [700, 1100, 900, 1000, 700, 700, 900, 1000, 900, 1];
 
 const SOURCES = [
-  { key: 'pms', logo: '/images/integrations/mews.svg', w: 80, h: 10, size: 'h-2.5' },
+  { key: 'pms', logo: '/images/integrations/thais.svg', w: 53, h: 16, size: 'h-4' },
   { key: 'ota', logo: '/images/integrations/booking.svg', w: 16, h: 16, size: 'h-4' },
   { key: 'pay', logo: '/images/integrations/stripe.svg', w: 38, h: 16, size: 'h-4' },
-  { key: 'lock', logo: '/images/integrations/igloohome.svg', w: 58, h: 16, size: 'h-3.5' },
+  { key: 'lock', logo: '/images/integrations/salto.svg', w: 35, h: 16, size: 'h-4' },
   { key: 'form', logo: null, w: 0, h: 0, size: '' },
 ] as const;
 
@@ -53,39 +53,34 @@ export function DataFlowScenario() {
         ))}
       </ul>
 
-      <svg viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden className="block h-9 w-full">
-        {PATHS.map((d) => (
-          <g key={d}>
-            <path d={d} fill="none" stroke="#E4E8E7" strokeWidth="1" vectorEffect="non-scaling-stroke" />
-            <path
-              d={d}
-              fill="none"
-              stroke="#006F68"
-              strokeWidth="1.5"
-              vectorEffect="non-scaling-stroke"
-              pathLength={1}
-              strokeDasharray="1"
-              className={cn('transition-[stroke-dashoffset] duration-700 ease-out', step >= 1 ? '[stroke-dashoffset:0]' : '[stroke-dashoffset:1]')}
-            />
-          </g>
-        ))}
-      </svg>
-
-      {/* 2. Filtre et dédoublonnage, puis cardex à jour */}
-      <div className="grid grid-cols-[1fr_auto_1.15fr] items-center gap-2">
-        <FlowNode kind="trigger" label={t('filterLabel')} title={t('filterTitle')} active={step >= 2} icon={<Filter className="h-3.5 w-3.5" />} />
-        <div className="relative h-px w-5 bg-line sm:w-7">
-          <div className={cn('absolute inset-y-0 left-0 bg-accent transition-all duration-500', step >= 3 ? 'w-full' : 'w-0')} />
+      <div className="relative h-9">
+        <DataLines className="absolute inset-x-0 top-0 h-9" stroke="#E4E8E7" />
+        <div className={cn('absolute inset-x-0 top-0 overflow-hidden transition-[height] duration-700 ease-out', step >= 1 ? 'h-full' : 'h-0')}>
+          <DataLines className="h-9" stroke="#006F68" />
         </div>
-        <div
-          className={cn(
-            'rounded-xl border bg-white px-3 py-2.5 transition-all duration-500',
-            step >= 3 ? 'border-accent shadow-[0_0_0_3px_rgba(0,111,104,0.12)]' : 'border-line'
-          )}
-        >
-          <div className="flex items-center justify-between gap-2">
+      </div>
+
+      {/* 2. Une seule carte centrée : le filtre fusionne les doublons, puis le cardex est mis à jour */}
+      <div
+        className={cn(
+          'mx-auto grid max-w-[420px] grid-cols-[auto_auto_1fr] items-center gap-3 rounded-xl border bg-white px-3.5 py-3 transition-all duration-500',
+          step >= 2 ? 'border-accent shadow-[0_0_0_3px_rgba(0,111,104,0.12)]' : 'border-line'
+        )}
+      >
+        <div>
+          <span className="inline-flex rounded-full bg-mint/60 px-2 py-0.5 font-mono text-[10px] font-medium uppercase tracking-[0.06em] text-accent-hover">{t('filterLabel')}</span>
+          <p className="mt-2 flex items-center gap-1.5 text-[12.5px] font-semibold text-ink">
+            <span className={cn('flex h-6 w-6 shrink-0 items-center justify-center rounded-md transition-colors', step >= 2 ? 'bg-accent text-white' : 'bg-paper text-ink-3')}>
+              <Filter aria-hidden className="h-3.5 w-3.5" />
+            </span>
+            <span className="leading-tight">{t('filterTitle')}</span>
+          </p>
+        </div>
+        <ArrowRight aria-hidden className={cn('h-4 w-4 transition-colors duration-500', step >= 3 ? 'text-accent' : 'text-line')} />
+        <div className="min-w-0 border-l border-line pl-3">
+          <div className="flex flex-wrap items-center gap-1.5">
             <span className="flex items-center gap-1.5 text-[12.5px] font-semibold text-ink">
-              <span className={cn('flex h-6 w-6 items-center justify-center rounded-full', step >= 3 ? 'bg-accent text-white' : 'bg-paper text-ink-3')}>
+              <span className={cn('flex h-6 w-6 items-center justify-center rounded-full transition-colors', step >= 3 ? 'bg-accent text-white' : 'bg-paper text-ink-3')}>
                 <UserRound aria-hidden className="h-3.5 w-3.5" />
               </span>
               Jean Dupont
@@ -126,13 +121,17 @@ export function DataFlowScenario() {
         </ul>
       </div>
 
-      {/* Branches OUI / NON */}
-      <div className="relative mx-auto h-7 max-w-[420px]">
-        <div className="absolute left-1/2 top-0 h-2.5 w-px bg-line" />
-        <div className="absolute left-[25%] right-[25%] top-2.5 h-px bg-line" />
-        <div className={cn('absolute right-1/2 top-2.5 h-px bg-accent transition-all duration-500', step >= 7 ? 'w-1/4' : 'w-0')} />
-        <div className="absolute left-[25%] top-2.5 h-4.5 w-px bg-line" />
-        <div className="absolute right-[25%] top-2.5 h-4.5 w-px bg-line" />
+      {/* Branches OUI / NON, alignées sur le centre des deux colonnes */}
+      <div className="relative h-7">
+        <div className="absolute left-1/2 top-0 h-2.5 w-px bg-line">
+          <div className={cn('absolute inset-x-0 top-0 bg-accent transition-all duration-300', step >= 7 ? 'h-full' : 'h-0')} />
+        </div>
+        <div className="absolute left-1/4 right-1/4 top-2.5 h-px bg-line" />
+        <div className={cn('absolute right-1/2 top-2.5 h-px bg-accent transition-all delay-200 duration-300', step >= 7 ? 'w-1/4' : 'w-0')} />
+        <div className="absolute left-1/4 top-2.5 h-4.5 w-px bg-line">
+          <div className={cn('absolute inset-x-0 top-0 bg-accent transition-all delay-500 duration-300', step >= 7 ? 'h-full' : 'h-0')} />
+        </div>
+        <div className="absolute right-1/4 top-2.5 h-4.5 w-px bg-line" />
       </div>
 
       <div className="grid grid-cols-2 gap-3">
@@ -171,5 +170,16 @@ export function DataFlowScenario() {
         </div>
       </div>
     </div>
+  );
+}
+
+/** Les 5 trajets, en pixels réels de largeur (trait net à toute taille). */
+function DataLines({ className, stroke }: { className?: string; stroke: string }) {
+  return (
+    <svg viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden className={cn('block w-full', className)}>
+      {PATHS.map((d) => (
+        <path key={d} d={d} fill="none" stroke={stroke} strokeWidth="1.5" vectorEffect="non-scaling-stroke" />
+      ))}
+    </svg>
   );
 }
