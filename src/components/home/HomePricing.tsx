@@ -17,10 +17,10 @@ export function HomePricing({ plans }: { plans: DisplayPlan[] }) {
       <Container>
         <SectionHeader eyebrow={tb('eyebrow')} title={tb('title')} titleMuted={tb('titleMuted')} subtitle={tb('subtitle')} align="left" />
         <div className="mt-12">
-          <OfferBuilder plans={plans} />
+          <OfferBuilder />
         </div>
 
-        <p className="mt-20 font-mono text-[12px] font-medium uppercase tracking-[0.08em] text-ink-3">{tb('plansTitle')}</p>
+        <p className="mt-14 font-mono text-[12px] font-medium uppercase tracking-[0.08em] text-ink-3">{tb('plansTitle')}</p>
         <div className="mt-6 grid gap-4 md:grid-cols-3">
           {plans.map((plan) => (
             <div key={plan.key} className={cn('flex flex-col rounded-xl border bg-white p-6', plan.popular ? 'border-accent shadow-[0_0_0_3px_rgba(0,111,104,0.10)]' : 'border-line')}>

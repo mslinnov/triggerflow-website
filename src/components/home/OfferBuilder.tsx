@@ -5,10 +5,7 @@ import { useTranslations } from 'next-intl';
 import {
   BedDouble, Bot, Briefcase, CalendarDays, ClipboardList, CreditCard, Heart, KeyRound, Megaphone, PhoneCall, ShoppingBag, Smartphone, Sparkles, Star, Check, UserCheck,
 } from 'lucide-react';
-import { DsButton } from '@/components/ds';
-import { brand } from '@/data/brand';
-import { BUILDER_COLUMNS, recommendPlan, TWO_WAY_BUNDLE, type BuilderModuleKey } from '@/data/offer-builder';
-import type { DisplayPlan } from '@/data/pricing';
+import { BUILDER_COLUMNS, type BuilderModuleKey } from '@/data/offer-builder';
 import { cn } from '@/lib/utils';
 
 const ICONS: Record<BuilderModuleKey, typeof Star> = {
@@ -28,23 +25,19 @@ const ICONS: Record<BuilderModuleKey, typeof Star> = {
   b2b: Briefcase,
 };
 
-/** Configurateur : le CRM au centre, les modules autour, la formule conseillée en direct. */
-export function OfferBuilder({ plans }: { plans: DisplayPlan[] }) {
+/** Configurateur : le CRM au centre, les modules autour ; les formules sont juste en dessous. */
+export function OfferBuilder() {
   const t = useTranslations('home2.builder');
   const nav = useTranslations('nav');
-  const tp = useTranslations('pricing.plans');
   const [selected, setSelected] = useState<BuilderModuleKey[]>(['upsell']);
 
   const toggle = (key: BuilderModuleKey) =>
     setSelected((prev) => (prev.includes(key) ? prev.filter((k) => k !== key) : [...prev, key]));
 
-  const choice = recommendPlan(selected);
-  const plan = plans.find((p) => p.key === choice);
   const name = (key: BuilderModuleKey) => (key === 'aiAgent' ? t('aiAgent.name') : nav(`items.${key}`));
   const description = (key: BuilderModuleKey) => (key === 'aiAgent' ? t('aiAgent.description') : nav(`descriptions.${key}`));
   const leftOn = BUILDER_COLUMNS[0].some((k) => selected.includes(k));
   const rightOn = BUILDER_COLUMNS[1].some((k) => selected.includes(k));
-  const extras = selected.filter((key) => !TWO_WAY_BUNDLE.includes(key)).length;
 
   const column = (keys: BuilderModuleKey[], side: 'left' | 'right') => (
     <ul className="grid gap-2 sm:grid-cols-2 lg:grid-cols-1">
@@ -134,31 +127,6 @@ export function OfferBuilder({ plans }: { plans: DisplayPlan[] }) {
         <div className="order-3">{column(BUILDER_COLUMNS[1], 'right')}</div>
       </div>
 
-      {/* La formule conseillée */}
-      <div aria-live="polite" className="mt-10 flex flex-col gap-6 rounded-2xl border border-accent bg-white p-6 shadow-[0_0_0_4px_rgba(0,111,104,0.08)] md:flex-row md:items-center md:justify-between md:p-8">
-        <div>
-          <p className="font-mono text-[11px] uppercase tracking-[0.08em] text-accent">{t('resultLabel')}</p>
-          <p className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <span className="text-[28px] font-medium tracking-[-0.02em] text-ink">{tp(`${choice}.name`)}</span>
-            {plan && (
-              <span className="text-[20px] font-medium tabular-nums text-ink">
-                {plan.price} € <span className="text-[13px] font-normal text-ink-3">{t('perMonth')}</span>
-              </span>
-            )}
-          </p>
-          <p className="mt-2 max-w-xl text-[14.5px] leading-relaxed text-ink-2">{t(`why.${choice}`, { count: selected.length, extras })}</p>
-        </div>
-        <div className="flex shrink-0 flex-col gap-2 sm:flex-row md:flex-col lg:flex-row">
-          <DsButton href={brand.demoPage} variant="primary">
-            {t('cta')}
-          </DsButton>
-          {selected.length > 0 && (
-            <button type="button" onClick={() => setSelected([])} className="px-3 py-2 text-[13px] text-ink-3 underline-offset-2 hover:text-ink hover:underline">
-              {t('reset')}
-            </button>
-          )}
-        </div>
-      </div>
     </div>
   );
 }

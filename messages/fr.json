@@ -3838,7 +3838,7 @@
       "eyebrow": "Votre offre",
       "title": "Construisez l'offre qu'il vous faut.",
       "titleMuted": "Le CRM est toujours inclus.",
-      "subtitle": "Choisissez les modules dont votre hôtel a besoin : nous vous indiquons la formule adaptée, avec son prix.",
+      "subtitle": "Choisissez les modules dont votre hôtel a besoin, puis la formule qui les inclut.",
       "hubLabel": "Toujours inclus",
       "hubTitle": "CRM hôtelier",
       "hubItems": [
@@ -3850,20 +3850,12 @@
         "Synchronisation PMS"
       ],
       "selectedCount": "{count, plural, =0 {Aucun module choisi} one {# module choisi} other {# modules choisis}}",
-      "resultLabel": "Formule conseillée",
-      "perMonth": "HT / mois, par établissement",
-      "cta": "Demander une démo",
       "reset": "Tout désélectionner",
-      "why": {
-        "communication": "{count, plural, =0 {Le CRM complet, avec 1 module au choix à ajouter quand vous voulez.} other {Votre module est inclus dans One Way.}}",
-        "conversion": "Formulaires et upsell inclus, plus {extras, plural, =0 {2 modules au choix} one {votre module et 1 autre au choix} other {vos 2 modules au choix}}.",
-        "allInclusive": "Au-delà de 2 modules en plus des formulaires et de l'upsell, All Inclusive vous donne tous les modules."
-      },
       "aiAgent": {
         "name": "Agent IA",
         "description": "Répond à vos clients 24 h/24"
       },
-      "plansTitle": "Ou comparez les trois formules"
+      "plansTitle": "Les formules"
     }
   },
   "productPage": {

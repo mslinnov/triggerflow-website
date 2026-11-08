@@ -3561,7 +3561,7 @@
       "eyebrow": "Your plan",
       "title": "Build the plan you need.",
       "titleMuted": "The CRM is always included.",
-      "subtitle": "Pick the modules your hotel needs: we show you the right plan, with its price.",
+      "subtitle": "Pick the modules your hotel needs, then the plan that includes them.",
       "hubLabel": "Always included",
       "hubTitle": "Hotel CRM",
       "hubItems": [
@@ -3573,20 +3573,12 @@
         "PMS sync"
       ],
       "selectedCount": "{count, plural, =0 {No module selected} one {# module selected} other {# modules selected}}",
-      "resultLabel": "Recommended plan",
-      "perMonth": "excl. VAT / month, per property",
-      "cta": "Book a demo",
       "reset": "Clear selection",
-      "why": {
-        "communication": "{count, plural, =0 {The full CRM, with 1 module of your choice to add whenever you like.} other {Your module is included in One Way.}}",
-        "conversion": "Forms and upselling included, plus {extras, plural, =0 {2 modules of your choice} one {your module and 1 more of your choice} other {your 2 modules of your choice}}.",
-        "allInclusive": "Beyond 2 modules on top of forms and upselling, All Inclusive gives you every module."
-      },
       "aiAgent": {
         "name": "AI agent",
         "description": "Answers your guests 24/7"
       },
-      "plansTitle": "Or compare the three plans"
+      "plansTitle": "The plans"
     }
   },
   "productPage": {
