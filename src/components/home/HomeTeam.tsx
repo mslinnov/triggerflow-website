@@ -13,7 +13,7 @@ export function HomeTeam() {
   return (
     <Section tone="white">
       <Container>
-        <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
           <figure>
             <div className="overflow-hidden rounded-2xl">
               <Image

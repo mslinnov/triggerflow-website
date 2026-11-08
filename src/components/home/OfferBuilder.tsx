@@ -96,7 +96,7 @@ export function OfferBuilder() {
 
   return (
     <div>
-      <div className="grid gap-8 lg:grid-cols-[1fr_300px_1fr] lg:gap-12">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_300px_1fr] lg:gap-12">
         <div className="order-2 lg:order-1">{column(BUILDER_COLUMNS[0], 'left')}</div>
 
         {/* La brique centrale */}

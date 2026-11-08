@@ -26,7 +26,7 @@ export function HomeProduct() {
     <Section tone="white" id="produit">
       <Container>
         {/* 5a. Le principe */}
-        <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <SectionHeader eyebrow={t('eyebrow')} title={t('title')} titleMuted={t('titleMuted')} subtitle={t('subtitle')} align="left" />
             <ol className="mt-10 space-y-6">

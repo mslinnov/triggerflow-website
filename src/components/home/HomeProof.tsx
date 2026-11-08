@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { cn } from '@/lib/utils';
 import { useTranslations } from 'next-intl';
 import { Container, LogoWall } from '@/components/ds';
 import { clientLogos, homeClients } from '@/data/clients';
@@ -23,7 +24,7 @@ export function HomeProof() {
                   width={1200}
                   height={900}
                   sizes="(min-width: 768px) 20vw, 50vw"
-                  className="aspect-[4/5] h-auto w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  className={cn('h-auto w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]', i === 4 ? 'aspect-[16/9] md:aspect-[4/5]' : 'aspect-[4/5]')}
                 />
                 <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 to-transparent px-4 pb-3.5 pt-10 text-white">
                   <span className="block text-[14px] font-semibold leading-tight">{h.name}</span>

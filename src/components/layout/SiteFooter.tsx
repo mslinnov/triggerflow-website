@@ -20,7 +20,7 @@ export function SiteFooter() {
     <footer className="bg-ink text-white">
       <div className="mx-auto max-w-[1200px] px-4 py-16 sm:px-6 md:py-20 lg:px-8">
         {/* 1. Marque, contact et newsletter */}
-        <div className="grid gap-10 border-b border-white/10 pb-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
+        <div className="grid grid-cols-1 gap-10 border-b border-white/10 pb-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
           <div>
             <Image src="/images/logo-white.webp" alt="TriggerFlow" width={140} height={35} className="h-7 w-auto" />
             <p className="mt-5 max-w-sm text-[17px] leading-relaxed text-white/80">{t('tagline')}</p>
