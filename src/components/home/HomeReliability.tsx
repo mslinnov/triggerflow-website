@@ -3,6 +3,7 @@ import { RefreshCw, Users } from 'lucide-react';
 import { Container, LogoMotif, ProofStat, SectionHeader } from '@/components/ds';
 import { ReliabilityScenario } from '@/components/visuals';
 import { stat, type StatId } from '@/data/company-stats';
+import { HomeIntegrations } from './HomeIntegrations';
 
 const STATS: StatId[] = ['messages', 'whatsappRead', 'paidWithin2h'];
 
@@ -38,6 +39,7 @@ export function HomeReliability() {
           </div>
           <ReliabilityScenario />
         </div>
+        <HomeIntegrations />
       </Container>
     </section>
   );

@@ -1,6 +1,7 @@
 import { useTranslations } from 'next-intl';
 import { Container, DsButton, Eyebrow, ProductFrame, TrustStrip } from '@/components/ds';
 import { HeroScenario } from '@/components/visuals';
+import { HeroFloatingCards } from './HeroFloatingCards';
 import { brand } from '@/data/brand';
 
 export function HomeHero() {
@@ -27,9 +28,12 @@ export function HomeHero() {
           </div>
           <TrustStrip className="mt-7" />
         </div>
-        <ProductFrame className="mx-auto mt-14 max-w-[1080px] md:mt-16">
-          <HeroScenario />
-        </ProductFrame>
+        <div className="relative mx-auto mt-14 max-w-[1080px] md:mt-16">
+          <ProductFrame>
+            <HeroScenario />
+          </ProductFrame>
+          <HeroFloatingCards />
+        </div>
       </Container>
     </section>
   );

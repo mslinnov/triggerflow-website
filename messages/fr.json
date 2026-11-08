@@ -3681,7 +3681,21 @@
       "title": "Le CRM hôtelier qui s'adapte à votre hôtel.",
       "titleMuted": "Pas l'inverse.",
       "subtitle": "Flows, segments, messages, formulaires, offres : construisez le parcours client exact de votre établissement, synchronisé avec votre PMS. Sans développeur, opérationnel en 48 h.",
-      "pms": "{count} PMS connectés"
+      "pms": "{count} PMS connectés",
+      "floating": {
+        "profileLabel": "Fiche client",
+        "profileMeta": "3e séjour · via Booking.com",
+        "profileTags": [
+          "Végétarienne",
+          "Chambre calme",
+          "Anniversaire le 12"
+        ],
+        "whatsapp": "Avec plaisir, votre table est réservée à 20 h 30.",
+        "upsellLabel": "Upsell encaissé",
+        "upsellItem": "Late check-out + bouquet",
+        "reviewLabel": "Avis Google",
+        "review": "Un accueil aux petits soins, avant même d'arriver."
+      }
     },
     "proof": {
       "title": "Ils ont choisi TriggerFlow",
@@ -3862,6 +3876,132 @@
         "description": "Répond à vos clients 24 h/24"
       },
       "plansTitle": "Les formules"
+    },
+    "guestView": {
+      "eyebrow": "Côté client",
+      "title": "Ce que vos clients reçoivent.",
+      "titleMuted": "Aux couleurs de votre hôtel.",
+      "subtitle": "Chaque message, formulaire et écran porte votre marque, pas la nôtre. Exemple d'un séjour à l'Hôtel des Tilleuls, hôtel de démonstration.",
+      "steps": [
+        {
+          "when": "J-7 · Email",
+          "title": "Le séjour se prépare"
+        },
+        {
+          "when": "J-3 · WhatsApp",
+          "title": "Une vraie conversation"
+        },
+        {
+          "when": "J-2 · Formulaire",
+          "title": "Les extras, payés en ligne"
+        },
+        {
+          "when": "Pendant le séjour",
+          "title": "Tout l'hôtel dans la poche"
+        }
+      ],
+      "email": {
+        "hello": "Bonjour Camille,",
+        "body": "Votre séjour approche : 3 nuits à partir du vendredi 12. Quelques infos pour bien préparer votre arrivée.",
+        "list": [
+          "Arrivée dès 15 h",
+          "Parking réservé",
+          "Check-in en ligne en 2 minutes"
+        ],
+        "cta": "Préparer mon séjour",
+        "footer": "Hôtel des Tilleuls · 12 rue des Lilas"
+      },
+      "whatsapp": {
+        "hotel1": "Bonjour Camille ! Votre chambre sera prête dès 15 h. Souhaitez-vous ajouter le petit-déjeuner ?",
+        "guest": "Oui, pour deux personnes s'il vous plaît",
+        "hotel2": "C'est noté ! Vous pouvez le régler ici :",
+        "item": "2 petits-déjeuners"
+      },
+      "form": {
+        "label": "Vos envies",
+        "title": "Personnalisez votre séjour",
+        "options": [
+          {
+            "name": "Late check-out 14 h",
+            "price": "30 €"
+          },
+          {
+            "name": "Bouquet en chambre",
+            "price": "42 €"
+          },
+          {
+            "name": "Dîner au restaurant",
+            "price": "68 €"
+          }
+        ],
+        "pay": "Payer 72 €",
+        "paid": "Payé · ajouté à la réservation",
+        "note": "Paiement sécurisé · inscrit dans le PMS"
+      },
+      "app": {
+        "room": "Chambre 214",
+        "hello": "Bienvenue Camille",
+        "key": "Ma clé",
+        "call": "Appeler la réception",
+        "wifi": "Wi-Fi",
+        "restaurant": "Restaurant",
+        "offer": "Spa : un créneau libre ce soir pour vous"
+      },
+      "note": "Tout se déclenche seul, selon les règles que vous avez fixées : rien n'est envoyé à la main."
+    },
+    "ai": {
+      "eyebrow": "IA intégrée",
+      "title": "L'IA fait gagner du temps.",
+      "titleMuted": "Votre équipe garde la main.",
+      "subtitle": "Pas une application d'IA de plus : une aide dans chaque module, pour répondre, rédiger, résumer et traduire.",
+      "agent": {
+        "label": "Agent IA",
+        "tag": "Répond seul",
+        "title": "Il est 2 h du matin. Votre client écrit en allemand.",
+        "time": "Aujourd'hui · 02:14",
+        "question": "Gibt es morgen schon ab 6 Uhr Frühstück?",
+        "answer": "Guten Morgen! Das Frühstück wird ab 6:30 Uhr serviert. Möchten Sie es aufs Zimmer bestellen?",
+        "meta": "Répondu en allemand · d'après vos infos",
+        "text": "L'agent répond sur ce que vous lui avez appris, dans la langue du client, et passe la main à l'équipe quand il ne sait pas."
+      },
+      "validate": "Vous validez",
+      "draft": "Brouillon IA",
+      "reviews": {
+        "label": "Avis",
+        "review": "Très bel hôtel, petit-déjeuner un peu long à servir.",
+        "draft": "Merci Paul pour ce retour ! Nous avons ajouté un service dès 6 h 30 pour fluidifier le petit-déjeuner. Au plaisir de vous revoir."
+      },
+      "crm": {
+        "label": "Résumé de fiche",
+        "lines": [
+          "3e séjour, vient en couple",
+          "Préfère les chambres calmes",
+          "A réservé le spa 2 fois"
+        ]
+      },
+      "voice": {
+        "label": "Message vocal",
+        "text": "Bonjour, nous arriverons vers 23 h, est-ce possible ?",
+        "meta": "Transcrit et traduit de l'espagnol"
+      },
+      "principles": [
+        "Activée à la demande",
+        "Vos données n'entraînent pas les modèles",
+        "Aucune décision automatisée au sens du RGPD"
+      ],
+      "more": "L'IA dans TriggerFlow"
+    },
+    "integrations": {
+      "eyebrow": "Intégrations natives",
+      "title": "Connecté à vos outils, dès le premier jour.",
+      "more": "Toutes les intégrations",
+      "groups": {
+        "pms": "PMS",
+        "locks": "Serrures",
+        "payments": "Paiement",
+        "channels": "Canaux",
+        "automation": "Automatisation"
+      }
     }
   },
   "productPage": {

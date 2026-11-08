@@ -3404,7 +3404,21 @@
       "title": "The hotel CRM that fits your hotel,",
       "titleMuted": "not the other way around.",
       "subtitle": "Flows, segments, messages, forms, offers: build the exact guest journey your property needs, synced with your PMS. No developer, live in 48 hours.",
-      "pms": "{count} connected PMS"
+      "pms": "{count} connected PMS",
+      "floating": {
+        "profileLabel": "Guest profile",
+        "profileMeta": "3rd stay · via Booking.com",
+        "profileTags": [
+          "Vegetarian",
+          "Quiet room",
+          "Birthday on the 12th"
+        ],
+        "whatsapp": "With pleasure, your table is booked for 8:30 pm.",
+        "upsellLabel": "Upsell paid",
+        "upsellItem": "Late check-out + flowers",
+        "reviewLabel": "Google review",
+        "review": "Thoughtful care, even before we arrived."
+      }
     },
     "proof": {
       "title": "They chose TriggerFlow",
@@ -3585,6 +3599,132 @@
         "description": "Answers your guests 24/7"
       },
       "plansTitle": "The plans"
+    },
+    "guestView": {
+      "eyebrow": "Guest side",
+      "title": "What your guests receive.",
+      "titleMuted": "In your hotel's colours.",
+      "subtitle": "Every message, form and screen carries your brand, not ours. Example of a stay at Hôtel des Tilleuls, a demo hotel.",
+      "steps": [
+        {
+          "when": "D-7 · Email",
+          "title": "The stay takes shape"
+        },
+        {
+          "when": "D-3 · WhatsApp",
+          "title": "A real conversation"
+        },
+        {
+          "when": "D-2 · Form",
+          "title": "Extras, paid online"
+        },
+        {
+          "when": "During the stay",
+          "title": "The whole hotel in their pocket"
+        }
+      ],
+      "email": {
+        "hello": "Hello Camille,",
+        "body": "Your stay is coming up: 3 nights from Friday 12th. A few details to prepare your arrival.",
+        "list": [
+          "Check-in from 3 pm",
+          "Parking reserved",
+          "Online check-in in 2 minutes"
+        ],
+        "cta": "Prepare my stay",
+        "footer": "Hôtel des Tilleuls · 12 rue des Lilas"
+      },
+      "whatsapp": {
+        "hotel1": "Hello Camille! Your room will be ready from 3 pm. Would you like to add breakfast?",
+        "guest": "Yes please, for two",
+        "hotel2": "Noted! You can pay for it here:",
+        "item": "2 breakfasts"
+      },
+      "form": {
+        "label": "Your wishes",
+        "title": "Personalise your stay",
+        "options": [
+          {
+            "name": "Late check-out 2 pm",
+            "price": "€30"
+          },
+          {
+            "name": "Flowers in the room",
+            "price": "€42"
+          },
+          {
+            "name": "Dinner at the restaurant",
+            "price": "€68"
+          }
+        ],
+        "pay": "Pay €72",
+        "paid": "Paid · added to the booking",
+        "note": "Secure payment · written to the PMS"
+      },
+      "app": {
+        "room": "Room 214",
+        "hello": "Welcome Camille",
+        "key": "My key",
+        "call": "Call reception",
+        "wifi": "Wi-Fi",
+        "restaurant": "Restaurant",
+        "offer": "Spa: a free slot tonight, just for you"
+      },
+      "note": "Everything triggers on its own, following the rules you set: nothing is sent by hand."
+    },
+    "ai": {
+      "eyebrow": "Built-in AI",
+      "title": "AI saves time.",
+      "titleMuted": "Your team stays in control.",
+      "subtitle": "Not another AI app: help inside every module to reply, write, summarise and translate.",
+      "agent": {
+        "label": "AI agent",
+        "tag": "Answers alone",
+        "title": "It's 2 am. Your guest writes in German.",
+        "time": "Today · 02:14",
+        "question": "Gibt es morgen schon ab 6 Uhr Frühstück?",
+        "answer": "Guten Morgen! Das Frühstück wird ab 6:30 Uhr serviert. Möchten Sie es aufs Zimmer bestellen?",
+        "meta": "Answered in German · from your info",
+        "text": "The agent answers based on what you taught it, in the guest's language, and hands over to the team when it doesn't know."
+      },
+      "validate": "You approve",
+      "draft": "AI draft",
+      "reviews": {
+        "label": "Reviews",
+        "review": "Lovely hotel, breakfast was a little slow.",
+        "draft": "Thank you Paul! We have added a service from 6:30 am to make breakfast smoother. We hope to see you again."
+      },
+      "crm": {
+        "label": "Profile summary",
+        "lines": [
+          "3rd stay, travels as a couple",
+          "Prefers quiet rooms",
+          "Booked the spa twice"
+        ]
+      },
+      "voice": {
+        "label": "Voicemail",
+        "text": "Hello, we'll arrive around 11 pm, is that OK?",
+        "meta": "Transcribed and translated from Spanish"
+      },
+      "principles": [
+        "Activated on demand",
+        "Your data doesn't train the models",
+        "No automated decisions under GDPR"
+      ],
+      "more": "AI in TriggerFlow"
+    },
+    "integrations": {
+      "eyebrow": "Native integrations",
+      "title": "Connected to your tools from day one.",
+      "more": "All integrations",
+      "groups": {
+        "pms": "PMS",
+        "locks": "Door locks",
+        "payments": "Payments",
+        "channels": "Channels",
+        "automation": "Automation"
+      }
     }
   },
   "productPage": {
