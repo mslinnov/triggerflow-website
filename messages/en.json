@@ -3613,13 +3613,13 @@
       "eyebrow": "Guest side",
       "title": "What your guests see.",
       "titleMuted": "On every channel, in your colours.",
-      "subtitle": "Email, WhatsApp, SMS, Guest App, loyalty: every touchpoint carries your brand. Real examples from the demo account and our clients' apps.",
+      "subtitle": "Email, WhatsApp, SMS, Guest App, loyalty: every touchpoint carries your brand. Real examples from our client hotels and the demo account.",
       "email": {
         "label": "Email",
-        "caption": "The booking confirmation, with stay details and payment.",
+        "caption": "The pre-stay email of Hôtel Beaucour in Strasbourg, in its own branding.",
         "from": "From:",
-        "subject": "Your booking is confirmed",
-        "alt": "Booking confirmation email from Hôtel Le Jardin"
+        "subject": "Your stay is coming up",
+        "alt": "Pre-stay email from Hôtel Beaucour"
       },
       "whatsapp": {
         "caption": "A real conversation during the stay, handled by the front desk.",

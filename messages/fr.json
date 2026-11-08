@@ -3890,13 +3890,13 @@
       "eyebrow": "Côté client",
       "title": "Ce que voient vos clients.",
       "titleMuted": "Sur chaque canal, à vos couleurs.",
-      "subtitle": "Email, WhatsApp, SMS, Guest App, fidélité : chaque point de contact porte votre marque. Exemples réels du compte de démo et des apps de nos clients.",
+      "subtitle": "Email, WhatsApp, SMS, Guest App, fidélité : chaque point de contact porte votre marque. Exemples réels de nos hôtels clients et du compte de démo.",
       "email": {
         "label": "Email",
-        "caption": "La confirmation de réservation, avec les détails du séjour et le paiement.",
+        "caption": "L'email de pré-séjour de l'Hôtel Beaucour, à Strasbourg, à sa charte.",
         "from": "De :",
-        "subject": "Votre réservation est confirmée",
-        "alt": "Email de confirmation de réservation de l'Hôtel Le Jardin"
+        "subject": "Votre séjour approche",
+        "alt": "Email de pré-séjour de l'Hôtel Beaucour"
       },
       "whatsapp": {
         "caption": "Une vraie conversation pendant le séjour, traitée par la réception.",
