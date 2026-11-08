@@ -3,6 +3,7 @@ import { Container, DsButton, ProductFrame, Section, SectionHeader } from '@/com
 import { DataFlowScenario } from '@/components/visuals';
 import { Link } from '@/i18n/navigation';
 import { productMenu } from '@/data/navigation';
+import { navIcons } from '@/data/nav-icons';
 import { BedDouble, CalendarClock, Crown, Mail, Repeat, Star } from 'lucide-react';
 
 /** Les étapes de la frise, dans l'ordre du parcours client. */
@@ -68,14 +69,24 @@ export function HomeProduct() {
                   {/* Panneau de hauteur égale pour les 4 étapes */}
                   <div className="mt-5 flex flex-1 flex-col rounded-2xl border border-line bg-paper/60 p-2">
                     <ul className="divide-y divide-line overflow-hidden rounded-xl bg-white">
-                      {items.map((item) => (
-                        <li key={item.key}>
-                          <Link href={item.href} className="group block px-4 py-3 transition-colors hover:bg-mint/30">
-                            <span className="block text-[15px] font-semibold text-ink group-hover:text-accent">{nav(`items.${item.key}`)}</span>
-                            <span className="mt-0.5 block text-[13px] text-ink-3">{nav(`descriptions.${item.key}`)}</span>
-                          </Link>
-                        </li>
-                      ))}
+                      {items.map((item) => {
+                        const ItemIcon = navIcons[item.key];
+                        return (
+                          <li key={item.key}>
+                            <Link href={item.href} className="group flex gap-3 px-4 py-3 transition-colors hover:bg-mint/30">
+                              {ItemIcon && (
+                                <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-mint/50 text-accent transition-colors group-hover:bg-accent group-hover:text-white">
+                                  <ItemIcon aria-hidden className="h-4 w-4" strokeWidth={1.75} />
+                                </span>
+                              )}
+                              <span>
+                                <span className="block text-[15px] font-semibold text-ink group-hover:text-accent">{nav(`items.${item.key}`)}</span>
+                                <span className="mt-0.5 block text-[13px] text-ink-3">{nav(`descriptions.${item.key}`)}</span>
+                              </span>
+                            </Link>
+                          </li>
+                        );
+                      })}
                     </ul>
                     {key === 'after' && <AfterVisual review={t('timeline.visual.review')} label={t('timeline.visual.reviewLabel')} />}
                     {key === 'marketing' && (
@@ -94,14 +105,24 @@ export function HomeProduct() {
               <p className="text-[14px] text-white/70">{t('timeline.core.label')}</p>
             </div>
             <ul className="mt-6 grid gap-px overflow-hidden rounded-xl bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
-              {foundations.map((item) => (
-                <li key={item.key} className="bg-ink">
-                  <Link href={item.href} className="group block h-full p-4 transition-colors hover:bg-white/[0.04]">
-                    <span className="block text-[15px] font-semibold text-white group-hover:text-mint">{nav(`items.${item.key}`)}</span>
-                    <span className="mt-0.5 block text-[13px] text-white/65">{nav(`descriptions.${item.key}`)}</span>
-                  </Link>
-                </li>
-              ))}
+              {foundations.map((item) => {
+                const ItemIcon = navIcons[item.key];
+                return (
+                  <li key={item.key} className="bg-ink">
+                    <Link href={item.href} className="group flex h-full gap-3 p-4 transition-colors hover:bg-white/[0.04]">
+                      {ItemIcon && (
+                        <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/10 text-mint">
+                          <ItemIcon aria-hidden className="h-4 w-4" strokeWidth={1.75} />
+                        </span>
+                      )}
+                      <span>
+                        <span className="block text-[15px] font-semibold text-white group-hover:text-mint">{nav(`items.${item.key}`)}</span>
+                        <span className="mt-0.5 block text-[13px] text-white/65">{nav(`descriptions.${item.key}`)}</span>
+                      </span>
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 

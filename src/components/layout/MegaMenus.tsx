@@ -4,86 +4,16 @@ import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import {
   ArrowRight,
-  BedDouble,
-  BookOpen,
-  CalendarCheck,
-  ChartColumn,
-  ClipboardList,
-  CreditCard,
-  Heart,
-  IdCard,
-  KeyRound,
-  Megaphone,
-  MessagesSquare,
-  PartyPopper,
-  Phone,
-  ShoppingBag,
-  Smartphone,
-  SprayCan,
-  Star,
-  UserRound,
-  Workflow,
-  Briefcase,
-  Building,
-  Building2,
-  CalendarDays,
   FileText,
-  Gem,
-  Hotel,
-  LifeBuoy,
-  Mail,
-  Newspaper,
-  Plug,
-  RefreshCw,
-  ShieldCheck,
-  Sparkles,
-  Tent,
-  Users,
-  type LucideIcon,
 } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { brand } from '@/data/brand';
 import { clientLogos, homeTestimonials } from '@/data/clients';
 import { companyMenu, frOnlyKeys, platformMenu, productMenu, resourcesMenu, solutionsMenu, type NavItem } from '@/data/navigation';
 import { pmsPages } from '@/content/pms';
+import { navIcons } from '@/data/nav-icons';
 
-const icons: Record<string, LucideIcon> = {
-  upsell: ShoppingBag,
-  pay: CreditCard,
-  forms: ClipboardList,
-  checkin: IdCard,
-  bookingRequests: CalendarCheck,
-  guestApp: Smartphone,
-  voice: Phone,
-  inbox: MessagesSquare,
-  housekeeping: SprayCan,
-  keys: KeyRound,
-  reviews: Star,
-  campaigns: Megaphone,
-  loyalty: Heart,
-  flows: Workflow,
-  crm: UserRound,
-  analytics: ChartColumn,
-  events: PartyPopper,
-  b2b: Briefcase,
-  sync: RefreshCw,
-  ai: Sparkles,
-  security: ShieldCheck,
-  integrationsHub: Plug,
-  independent: Hotel,
-  groups: Building2,
-  luxury: Gem,
-  residences: Building,
-  campsites: Tent,
-  guesthouses: BedDouble,
-  blog: Newspaper,
-  guides: BookOpen,
-  calendar: CalendarDays,
-  help: LifeBuoy,
-  about: Users,
-  careers: Briefcase,
-  contact: Mail,
-};
+const icons = navIcons;
 
 /** Logos PMS affichés dans l'encadré Plateforme (connecteurs existants uniquement, cf. brand.pms). */
 const pmsLogos = [
