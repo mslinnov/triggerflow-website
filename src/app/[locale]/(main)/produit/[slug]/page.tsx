@@ -6,6 +6,8 @@ import { moduleSlugs, getModuleSerializable } from '@/data/modules';
 import { BreadcrumbListJsonLd, FaqJsonLd } from '@/components/seo';
 import { productLandings, redirectedProductSlugs } from '@/content/products';
 import { ProductLandingPage } from '@/components/product/ProductLandingPage';
+import { UpsellLanding } from '@/components/product/upsell/UpsellLanding';
+import { upsellLanding } from '@/content/products/upsell-landing';
 import ModulePageContent from './ModulePageContent';
 
 const baseUrl = 'https://www.trigger-flow.com';
@@ -44,10 +46,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const landing = productLandings[slug];
   if (landing) {
     const lang = locale === 'en' ? 'en' : 'fr';
+    // Landings dédiées : leur propre SEO.
+    const seo = slug === 'upsell' ? upsellLanding.seo : landing.seo;
     return {
-      title: { absolute: landing.seo.title[lang] },
-      description: clampDescription(landing.seo.description[lang]),
-      openGraph: { title: landing.seo.title[lang], description: clampDescription(landing.seo.description[lang]), type: 'website' },
+      title: { absolute: seo.title[lang] },
+      description: clampDescription(seo.description[lang]),
+      openGraph: { title: seo.title[lang], description: clampDescription(seo.description[lang]), type: 'website' },
       alternates: {
         canonical: `${baseUrl}/${locale}/produit/${slug}`,
         languages: { fr: `${baseUrl}/fr/produit/${slug}`, en: `${baseUrl}/en/produit/${slug}`, 'x-default': `${baseUrl}/fr/produit/${slug}` },
@@ -100,8 +104,17 @@ export default async function ModulePage({ params }: Props) {
             { name: landing.name[lang], url: `${baseUrl}/${locale}/produit/${slug}` },
           ]}
         />
-        <FaqJsonLd items={landing.faq.map((f) => ({ question: f.q[lang], answer: f.a[lang] }))} />
-        <ProductLandingPage product={landing} locale={locale} />
+        {slug === 'upsell' ? (
+          <>
+            <FaqJsonLd items={upsellLanding.faq.map((f) => ({ question: f.q[lang], answer: f.a[lang] }))} />
+            <UpsellLanding locale={locale} />
+          </>
+        ) : (
+          <>
+            <FaqJsonLd items={landing.faq.map((f) => ({ question: f.q[lang], answer: f.a[lang] }))} />
+            <ProductLandingPage product={landing} locale={locale} />
+          </>
+        )}
       </>
     );
   }
