@@ -10,3 +10,4 @@ export { FormsScenario } from './FormsScenario';
 export { LoyaltyScenario } from './LoyaltyScenario';
 export { CampaignScenario, GuestAppScenario, EventsScenario, B2bScenario, CheckinScenario, HousekeepingScenario, KeysScenario, AnalyticsScenario, BookingScenario } from './MoreScenarios';
 export { DataFlowScenario } from './DataFlowScenario';
+export { ReliabilityScenario } from './ReliabilityScenario';

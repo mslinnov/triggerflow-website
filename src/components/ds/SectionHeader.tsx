@@ -40,7 +40,7 @@ export function SectionHeader({
         {titleMuted && (
           <>
             {' '}
-            <span className={onDark ? 'text-white/55' : 'text-ink-3'}>{titleMuted}</span>
+            <span className={onDark ? 'text-mint/75' : 'text-ink-3'}>{titleMuted}</span>
           </>
         )}
       </Tag>

@@ -3206,6 +3206,12 @@
       "whatsapp": "WhatsApp: form reminder",
       "otherLabel": "Other scenario",
       "other": "The guest gets the journey set for their profile."
+    },
+    "reliability": {
+      "syncLabel": "Two-way PMS sync",
+      "inbound": "Booking · 2 rooms, Dec 23-27",
+      "outbound": "Breakfast paid, added to the folio",
+      "dedupLabel": "One profile per guest"
     }
   },
   "nav": {

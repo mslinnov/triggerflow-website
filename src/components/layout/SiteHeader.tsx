@@ -57,7 +57,7 @@ export function SiteHeader({ banner }: SiteHeaderProps) {
       <div
         className={cn(
           'border-b transition-colors duration-200',
-          scrolled || open ? 'border-line bg-white/85 backdrop-blur-md' : 'border-transparent bg-white'
+          scrolled || open ? 'border-line bg-white/[0.97] backdrop-blur-md' : 'border-transparent bg-white'
         )}
         onMouseLeave={leave}
       >
