@@ -12,12 +12,15 @@ import { FlowsLanding } from '@/components/product/flows/FlowsLanding';
 import { flowsLanding } from '@/content/products/flows-landing';
 import { InboxLanding } from '@/components/product/inbox/InboxLanding';
 import { inboxLanding } from '@/content/products/inbox-landing';
+import { GuestAppLanding } from '@/components/product/guest-app/GuestAppLanding';
+import { guestAppLanding } from '@/content/products/guest-app-landing';
 
 /** Landings dédiées : composant, SEO et FAQ propres. */
 const DEDICATED = {
   upsell: { seo: upsellLanding.seo, faq: upsellLanding.faq, Component: UpsellLanding },
   flows: { seo: flowsLanding.seo, faq: flowsLanding.faq, Component: FlowsLanding },
   inbox: { seo: inboxLanding.seo, faq: inboxLanding.faq, Component: InboxLanding },
+  'guest-app': { seo: guestAppLanding.seo, faq: guestAppLanding.faq, Component: GuestAppLanding },
 } as const;
 import ModulePageContent from './ModulePageContent';
 
