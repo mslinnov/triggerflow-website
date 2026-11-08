@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import Image from 'next/image';
+import { useLocale, useTranslations } from 'next-intl';
 import {
   BarChart3, Bot, Plug, Check, HelpCircle, Minus, MessageSquare, ShoppingBag, Workflow,
   type LucideIcon,
@@ -9,6 +10,7 @@ import {
 import { Container, CtaBand, DsButton, Eyebrow, FaqList, SectionHeader } from '@/components/ds';
 import { cn } from '@/lib/utils';
 import { brand } from '@/data/brand';
+import { clientLogos, homeTestimonials } from '@/data/clients';
 import type { AddonKey, DisplayAddon, DisplayPlan } from '@/data/pricing';
 import { UpcomingPrice } from '@/components/pricing/UpcomingPrice';
 import { FromPriceStar } from '@/components/pricing/FromPriceStar';
@@ -91,6 +93,9 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
   const tChange = useTranslations('priceChange');
   const tNav = useTranslations('nav');
   const tb = useTranslations('home2.builder');
+  const locale = useLocale() as 'fr' | 'en';
+  // Témoignage sur la valeur : Causse Comtal (citation publiée, docs/preuves.md).
+  const quote = homeTestimonials.find((q) => q.company === 'Hôtel Causse Comtal') ?? homeTestimonials[0];
   const cell = (v: Cell) => (v === U ? t('comparison.unlimited') : v === ALL ? t('comparison.allModules') : v);
 
   const faq = [
@@ -156,41 +161,31 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
             ))}
           </div>
           <PricingReassurance className="mt-6" />
-        </Container>
-      </section>
-
-      {/* Comparatif */}
-      <section className="border-t border-line bg-paper py-20 md:py-28">
-        <Container>
-          <SectionHeader eyebrow={t('comparison.eyebrow')} title={t('comparison.title')} subtitle={t('comparison.subtitle')} align="left" />
-          <div className="mt-12 -mx-4 overflow-x-auto px-4 md:mx-0 md:px-0">
-            <table className="w-full table-fixed border-separate md:table-auto border-spacing-0 overflow-hidden rounded-xl border border-line bg-white text-left">
-              <thead>
-                <tr>
-                  <th scope="col" className="w-[32%] border-b border-line px-2 py-4 md:w-[30%] md:px-5">
-                    <span className="sr-only">{t('comparison.featureCol')}</span>
-                  </th>
-                  {plans.map((plan) => (
-                    <th key={plan.key} scope="col" className={cn('border-b border-line px-1 py-4 text-center align-bottom md:px-4', plan.popular && 'bg-mint/40')}>
-                      <span className="block font-mono text-[8.5px] font-medium uppercase leading-tight tracking-normal text-ink-2 [overflow-wrap:anywhere] md:text-[11.5px] md:tracking-[0.08em]">{t(`plans.${plan.key}.name`)}</span>
-                      <span className="mt-1 block text-[14px] font-medium tabular-nums text-ink md:text-[17px]">{plan.price} €</span>
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {featureGroups.map((group) => (
-                  <FeatureGroupRows key={group.key} group={group} plans={plans} t={t} cell={cell} />
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="mt-4 text-[13px] text-ink-3">{t('comparison.note')}</p>
+          <figure className="mt-6 flex flex-col gap-5 rounded-2xl bg-ink p-6 text-white md:flex-row md:items-center md:p-8">
+            <blockquote className="flex-1 text-[18px] leading-relaxed md:text-[20px]">« {quote.quote[locale]} »</blockquote>
+            <figcaption className="flex shrink-0 items-center gap-3">
+              {clientLogos[quote.company as keyof typeof clientLogos] && (
+                <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-white p-1.5">
+                  <Image
+                    src={clientLogos[quote.company as keyof typeof clientLogos]!.src}
+                    alt={quote.company}
+                    width={clientLogos[quote.company as keyof typeof clientLogos]!.width}
+                    height={clientLogos[quote.company as keyof typeof clientLogos]!.height}
+                    className="h-auto max-h-9 w-auto max-w-full object-contain"
+                  />
+                </span>
+              )}
+              <span>
+                <span className="block text-[15px] font-semibold">{quote.name}</span>
+                <span className="block text-[13px] text-white/75">{quote.role[locale]}, {quote.company}</span>
+              </span>
+            </figcaption>
+          </figure>
         </Container>
       </section>
 
       {/* Modules payants (grille du 08/11/2026), puis les connexions incluses */}
-      <section className="bg-white py-20 md:py-28">
+      <section className="border-t border-line bg-paper py-20 md:py-28">
         <Container>
           <SectionHeader eyebrow={t('addons.badge')} title={t('addons.title')} subtitle={t('addons.subtitle')} align="left" />
           <div className="mt-8 grid gap-3 rounded-xl border border-line bg-paper p-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -242,6 +237,36 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
               {t('connect.more')}
             </DsButton>
           </div>
+        </Container>
+      </section>
+
+      {/* Comparatif (détail, en dernier) */}
+      <section className="bg-white py-20 md:py-28">
+        <Container>
+          <SectionHeader eyebrow={t('comparison.eyebrow')} title={t('comparison.title')} subtitle={t('comparison.subtitle')} align="left" />
+          <div className="mt-12 -mx-4 overflow-x-auto px-4 md:mx-0 md:px-0">
+            <table className="w-full table-fixed border-separate md:table-auto border-spacing-0 overflow-hidden rounded-xl border border-line bg-white text-left">
+              <thead>
+                <tr>
+                  <th scope="col" className="w-[32%] border-b border-line px-2 py-4 md:w-[30%] md:px-5">
+                    <span className="sr-only">{t('comparison.featureCol')}</span>
+                  </th>
+                  {plans.map((plan) => (
+                    <th key={plan.key} scope="col" className={cn('border-b border-line px-1 py-4 text-center align-bottom md:px-4', plan.popular && 'bg-mint/40')}>
+                      <span className="block font-mono text-[8.5px] font-medium uppercase leading-tight tracking-normal text-ink-2 [overflow-wrap:anywhere] md:text-[11.5px] md:tracking-[0.08em]">{t(`plans.${plan.key}.name`)}</span>
+                      <span className="mt-1 block text-[14px] font-medium tabular-nums text-ink md:text-[17px]">{plan.price} €</span>
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {featureGroups.map((group) => (
+                  <FeatureGroupRows key={group.key} group={group} plans={plans} t={t} cell={cell} />
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-4 text-[13px] text-ink-3">{t('comparison.note')}</p>
         </Container>
       </section>
 

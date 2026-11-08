@@ -955,7 +955,9 @@
         "description": "Toute la plateforme, sans choisir.",
         "includes": [
           "Tout Two Way",
-          "Tous les modules",
+          "Tous les modules inclus",
+          "Avis, Guest App, Fidélité, Paiements, Agent IA",
+          "Téléphonie, Ménage et B2B",
           "Account manager dédié"
         ]
       }

@@ -955,7 +955,9 @@
         "description": "The whole platform, no choosing.",
         "includes": [
           "Everything in Two Way",
-          "Every module",
+          "Every module included",
+          "Reviews, Guest App, Loyalty, Payments, AI agent",
+          "Telephony, Housekeeping and B2B",
           "Dedicated account manager"
         ]
       }
