@@ -8,6 +8,14 @@ import { productLandings, redirectedProductSlugs } from '@/content/products';
 import { ProductLandingPage } from '@/components/product/ProductLandingPage';
 import { UpsellLanding } from '@/components/product/upsell/UpsellLanding';
 import { upsellLanding } from '@/content/products/upsell-landing';
+import { FlowsLanding } from '@/components/product/flows/FlowsLanding';
+import { flowsLanding } from '@/content/products/flows-landing';
+
+/** Landings dédiées : composant, SEO et FAQ propres. */
+const DEDICATED = {
+  upsell: { seo: upsellLanding.seo, faq: upsellLanding.faq, Component: UpsellLanding },
+  flows: { seo: flowsLanding.seo, faq: flowsLanding.faq, Component: FlowsLanding },
+} as const;
 import ModulePageContent from './ModulePageContent';
 
 const baseUrl = 'https://www.trigger-flow.com';
@@ -47,7 +55,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (landing) {
     const lang = locale === 'en' ? 'en' : 'fr';
     // Landings dédiées : leur propre SEO.
-    const seo = slug === 'upsell' ? upsellLanding.seo : landing.seo;
+    const seo = DEDICATED[slug as keyof typeof DEDICATED]?.seo ?? landing.seo;
     return {
       title: { absolute: seo.title[lang] },
       description: clampDescription(seo.description[lang]),
@@ -104,17 +112,24 @@ export default async function ModulePage({ params }: Props) {
             { name: landing.name[lang], url: `${baseUrl}/${locale}/produit/${slug}` },
           ]}
         />
-        {slug === 'upsell' ? (
-          <>
-            <FaqJsonLd items={upsellLanding.faq.map((f) => ({ question: f.q[lang], answer: f.a[lang] }))} />
-            <UpsellLanding locale={locale} />
-          </>
-        ) : (
-          <>
-            <FaqJsonLd items={landing.faq.map((f) => ({ question: f.q[lang], answer: f.a[lang] }))} />
-            <ProductLandingPage product={landing} locale={locale} />
-          </>
-        )}
+        {(() => {
+          const dedicated = DEDICATED[slug as keyof typeof DEDICATED];
+          if (dedicated) {
+            const { Component } = dedicated;
+            return (
+              <>
+                <FaqJsonLd items={dedicated.faq.map((f) => ({ question: f.q[lang], answer: f.a[lang] }))} />
+                <Component locale={locale} />
+              </>
+            );
+          }
+          return (
+            <>
+              <FaqJsonLd items={landing.faq.map((f) => ({ question: f.q[lang], answer: f.a[lang] }))} />
+              <ProductLandingPage product={landing} locale={locale} />
+            </>
+          );
+        })()}
       </>
     );
   }
