@@ -136,7 +136,7 @@ export const solutionsEn: Record<string, SolutionTextEn> = {
       },
       {
         question: 'How much does it cost for an independent hotel?',
-        answer: 'Our pricing is public, with a free plan to get started. For an independent hotel, the Communication or Conversion plan covers most needs: the details are on our pricing page. Since the pricing is public, you can compare the subscription cost with the OTA commissions you pay today.',
+        answer: 'Our pricing is public. For an independent hotel, the One Way or Two Way plan covers most needs: the details are on our pricing page. Since the pricing is public, you can compare the subscription cost with the OTA commissions you pay today.',
       },
       {
         question: 'Is TriggerFlow GDPR compliant?',
@@ -665,12 +665,12 @@ export const solutionsEn: Record<string, SolutionTextEn> = {
       { title: 'The review after departure', description: 'One request at the right moment.', steps: ['Departure', 'Satisfaction survey', 'Invitation to post if all went well'] },
     ],
     faq: [
-      { question: 'Is TriggerFlow suited to a small property?', answer: 'Yes: the Discovery plan is free, and ready-to-use templates let you get started without any technical skills.' },
+      { question: 'Is TriggerFlow suited to a small property?', answer: 'Yes: the One Way plan covers the essentials, and ready-to-use templates let you get started without any technical skills.' },
       { question: 'Can I manage my Booking.com and Airbnb messages?', answer: 'Yes: Expedia goes through relay emails, Airbnb through forms sent automatically, and the native Booking.com connection is in progress.' },
       { question: 'Do I need a PMS?', answer: 'TriggerFlow connects to your PMS to automate from your bookings; let us talk about your tool during the demo.' },
     ],
     ctaTitle: 'Keep time for your guests',
-    ctaSubtitle: 'Get started with the free Discovery plan',
+    ctaSubtitle: 'A 45-minute demo, built around your hotel',
   },
 };
 

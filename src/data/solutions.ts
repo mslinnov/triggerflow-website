@@ -278,7 +278,7 @@ export const solutions: Record<string, SolutionData> = {
       },
       {
         question: 'Quel est le coût pour un hôtel indépendant ?',
-        answer: 'Nos tarifs sont publics, avec un plan gratuit pour démarrer. Pour un hôtel indépendant, le plan Communication ou Conversion couvre la majorité des besoins : le détail est sur notre page tarifs. Comme les tarifs sont publics, vous pouvez comparer le coût de l\'abonnement aux commissions OTA que vous payez aujourd\'hui.',
+        answer: 'Nos tarifs sont publics. Pour un hôtel indépendant, la formule One Way ou Two Way couvre la majorité des besoins : le détail est sur notre page tarifs. Comme les tarifs sont publics, vous pouvez comparer le coût de l\'abonnement aux commissions OTA que vous payez aujourd\'hui.',
       },
       {
         question: 'Est-ce que TriggerFlow respecte le RGPD ?',
@@ -1593,12 +1593,12 @@ export const solutions: Record<string, SolutionData> = {
     ],
     integrations: ['Thaïs PMS', 'Beds24', 'Misterbooking', 'Reservit'],
     faq: [
-      { question: "TriggerFlow est-il adapté à une petite structure ?", answer: "Oui : le plan Découverte est gratuit, et les modèles prêts à l'emploi permettent de démarrer sans compétence technique." },
+      { question: "TriggerFlow est-il adapté à une petite structure ?", answer: "Oui : la formule One Way couvre l'essentiel, et les modèles prêts à l'emploi permettent de démarrer sans compétence technique." },
       { question: 'Puis-je gérer les messages Booking et Airbnb ?', answer: "Oui : Expedia passe par les emails relais, Airbnb par des formulaires envoyés automatiquement, et la connexion native Booking.com est en cours." },
       { question: 'Faut-il un PMS ?', answer: 'TriggerFlow se connecte à votre PMS pour automatiser à partir de vos réservations ; parlons de votre outil pendant la démo.' },
     ],
     ctaTitle: "Gardez du temps pour vos hôtes",
-    ctaSubtitle: "Démarrez avec le plan Découverte gratuit",
+    ctaSubtitle: "Une démo de 45 minutes, à partir de votre hôtel",
   },
 };
 

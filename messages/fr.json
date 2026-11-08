@@ -666,8 +666,8 @@
         "answer": "TriggerFlow permet d'automatiser de nombreuses actions : SMS/emails de bienvenue, enquêtes satisfaction, offres de services additionnels, programmes de fidélité, relances post-séjour et bien plus encore."
       },
       "trial": {
-        "question": "Proposez-vous un essai gratuit ?",
-        "answer": "Oui, le plan Découverte est gratuit et vous permet de tester vos premiers scénarios. Pour les plans payants, nous proposons 14 jours d'essai sans engagement."
+        "question": "Peut-on voir TriggerFlow avant de s'engager ?",
+        "answer": "Oui. La démo part de votre hôtel : votre PMS, vos canaux de réservation, vos parcours clients. Vous voyez concrètement ce que TriggerFlow ferait chez vous avant de vous engager."
       },
       "support": {
         "question": "Comment se passe l'accompagnement ?",
@@ -915,32 +915,35 @@
     },
     "perMonth": "mois",
     "plans": {
-      "discovery": {
-        "name": "Découverte",
-        "trial": "Aucune carte requise",
-        "description": "Pour découvrir TriggerFlow et lancer vos premiers scénarios clients."
-      },
       "communication": {
-        "name": "Communication",
-        "trial": "Essai gratuit 14 jours",
-        "description": "Créez vos segments et automatisez vos messages avant, pendant et après séjour."
+        "name": "One Way",
+        "description": "Le CRM au complet pour parler à vos clients au bon moment.",
+        "includes": [
+          "CRM et fiches clients",
+          "Segments",
+          "Automatisations (flows)",
+          "Statistiques",
+          "1 module au choix"
+        ]
       },
       "conversion": {
-        "name": "Conversion",
+        "name": "Two Way",
         "badge": "Le plus populaire",
-        "trial": "Essai gratuit 14 jours",
-        "description": "Avec plus d'interaction, renforcez vos ventes annexes et collectez les retours clients."
+        "description": "Vos clients vous répondent, réservent et achètent.",
+        "includes": [
+          "Tout One Way",
+          "Messagerie unifiée (WhatsApp, SMS, OTA)",
+          "Formulaires",
+          "Upsell",
+          "2 modules au choix"
+        ]
       },
       "allInclusive": {
         "name": "All Inclusive",
-        "trial": "Essai gratuit 14 jours",
-        "description": "Tous les modules inclus, sans limites",
-        "features": [
-          "Workflows illimités",
-          "Emails illimités",
-          "1 000 SMS inclus",
-          "Newsletter & Campagnes",
-          "Tous les modules complémentaires inclus",
+        "description": "Toute la plateforme, sans choisir.",
+        "includes": [
+          "Tout Two Way",
+          "Tous les modules",
           "Account manager dédié"
         ]
       }
@@ -951,8 +954,8 @@
     },
     "addons": {
       "badge": "Modules complémentaires",
-      "title": "Des modules à ajouter à tout moment.",
-      "subtitle": "Chaque module s'ajoute à n'importe quel plan.",
+      "title": "Des modules en plus, à tout moment.",
+      "subtitle": "Chaque plan inclut des modules au choix. Au-delà, ajoutez-en à l'unité.",
       "cta": "En savoir plus",
       "items": {
         "reviews": {
@@ -1037,7 +1040,9 @@
         "salesCatalog": "Module vente et catalogue",
         "groupPortal": "Portail groupe hôtelier",
         "conditions": "Conditions sur les interactions clients",
-        "addonsIncluded": "Modules complémentaires inclus"
+        "addonsIncluded": "Modules complémentaires inclus",
+        "modulesIncluded": "Modules au choix inclus",
+        "upsell": "Upsell"
       },
       "tooltips": {
         "emails": "Nombre d'emails inclus par mois dans votre forfait. Au-delà, des packs d'emails supplémentaires sont disponibles.",
@@ -1052,7 +1057,9 @@
         "salesCatalog": "Proposez des services et produits additionnels à vos clients (spa, restaurant, surclassement...).",
         "stats": "Tableaux de bord BI hôteliers : taux d'occupation, RevPAR, ADR, taux d'ouverture, conversions et revenus générés.",
         "groupPortal": "Interface dédiée pour gérer plusieurs établissements depuis un seul compte avec vue consolidée.",
-        "addonsIncluded": "Le plan All Inclusive inclut tous les modules complémentaires (Avis, Agent IA, Paiements, Fidélité, Guest App) sans surcoût."
+        "addonsIncluded": "Le plan All Inclusive inclut tous les modules complémentaires (Avis, Agent IA, Paiements, Fidélité, Guest App) sans surcoût.",
+        "modulesIncluded": "Choisissez vos modules parmi le catalogue (Avis, Paiements, Fidélité, Guest App, Appel réception…). All Inclusive les inclut tous.",
+        "upsell": "Proposez des extras avant et pendant le séjour (petit-déjeuner, surclassement, spa…), payés en ligne et inscrits dans le PMS."
       },
       "eyebrow": "Comparatif",
       "unlimited": "illimités",
@@ -1060,7 +1067,8 @@
       "included": "Inclus",
       "notIncluded": "Non inclus",
       "moreInfo": "Plus d'informations",
-      "note": "Prix hors taxes, par établissement et par mois."
+      "note": "Prix hors taxes, par établissement et par mois.",
+      "allModules": "Tous"
     },
     "faq": {
       "title": "Questions fréquentes sur nos tarifs",
@@ -1095,7 +1103,8 @@
     "scrollLeft": "Faire défiler vers la gauche",
     "scrollRight": "Faire défiler vers la droite",
     "perMonthFull": "HT / mois, par établissement",
-    "ctaBand": "Voyons ensemble le plan adapté à votre hôtel."
+    "ctaBand": "Voyons ensemble le plan adapté à votre hôtel.",
+    "includesTitle": "Inclus"
   },
   "contact": {
     "meta": {
@@ -3817,14 +3826,42 @@
       "title": "Des tarifs publics,",
       "titleMuted": "par établissement.",
       "perMonth": "/mois HT par établissement",
-      "then": "puis {price} € à partir du 1er janvier 2027",
       "startFree": "Demander une démo",
-      "startTrial": "Démarrer l'essai",
       "compare": "Comparer les plans et les modules"
     },
     "cta": {
       "title": "Construisez le parcours client de votre hôtel.",
       "text": "Mise en place accompagnée, opérationnel en 48 h."
+    },
+    "builder": {
+      "eyebrow": "Votre offre",
+      "title": "Construisez l'offre qu'il vous faut.",
+      "titleMuted": "Le CRM est toujours inclus.",
+      "subtitle": "Choisissez les modules dont votre hôtel a besoin : nous vous indiquons la formule adaptée, avec son prix.",
+      "hubLabel": "Toujours inclus",
+      "hubTitle": "CRM hôtelier",
+      "hubItems": [
+        "Fiches clients sans doublons",
+        "Segments",
+        "Automatisations (flows)",
+        "Statistiques",
+        "Synchronisation PMS"
+      ],
+      "selectedCount": "{count, plural, =0 {Aucun module choisi} one {# module choisi} other {# modules choisis}}",
+      "resultLabel": "Formule conseillée",
+      "perMonth": "HT / mois, par établissement",
+      "cta": "Demander une démo",
+      "reset": "Tout désélectionner",
+      "why": {
+        "communication": "{count, plural, =0 {Le CRM complet, avec 1 module au choix à ajouter quand vous voulez.} other {Votre module est inclus dans One Way.}}",
+        "conversion": "Messagerie, formulaires et upsell inclus, plus {extras, plural, =0 {2 modules au choix} one {votre module et 1 autre au choix} other {vos 2 modules au choix}}.",
+        "allInclusive": "Au-delà de 2 modules en plus de la messagerie, des formulaires et de l'upsell, All Inclusive vous donne tous les modules."
+      },
+      "aiAgent": {
+        "name": "Agent IA",
+        "description": "Répond à vos clients 24 h/24"
+      },
+      "plansTitle": "Ou comparez les trois formules"
     }
   },
   "productPage": {

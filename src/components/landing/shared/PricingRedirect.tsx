@@ -17,7 +17,7 @@ export function PricingRedirect({ id }: PricingRedirectProps) {
           Des tarifs publics, sans surprise
         </h2>
         <p className="mx-auto mt-4 max-w-xl text-lg text-text-secondary">
-          Un plan gratuit pour démarrer, des plans mensuels sans engagement. Tous les détails sont sur notre page tarifs.
+          Trois formules publiques, de One Way à All Inclusive. Tous les détails sont sur notre page tarifs.
         </p>
         <ButtonLink href="/fr/tarifs" variant="primary" size="lg" className="mt-8 gap-2">
           Voir les tarifs

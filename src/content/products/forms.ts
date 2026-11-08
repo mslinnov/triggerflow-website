@@ -60,7 +60,7 @@ export const forms: ProductLanding = {
     { slug: 'reviews', href: '/produit/reviews', name: { fr: 'Avis', en: 'Reviews' }, text: { fr: 'De l’enquête à l’avis Google.', en: 'From survey to Google review.' } },
     { slug: 'flows', href: '/produit/flows', name: { fr: 'Flows', en: 'Flows' }, text: { fr: 'Le bon moment pour chaque formulaire.', en: 'The right moment for every form.' } },
   ],
-  pricing: { text: { fr: 'Inclus dans les plans Conversion (5 formulaires) et All Inclusive (illimités).', en: 'Included in the Conversion (5 forms) and All Inclusive (unlimited) plans.' } },
+  pricing: { text: { fr: 'Inclus dans Two Way (5 formulaires) et All Inclusive (illimités), ou comme module au choix avec One Way.', en: 'Included in Two Way (5 forms) and All Inclusive (unlimited), or as your module of choice with One Way.' } },
   faq: [
     { q: { fr: 'Peut-on vendre dans un formulaire ?', en: 'Can a form sell?' }, a: { fr: 'Oui : un bloc d’offre (petit-déjeuner, surclassement, spa…) s’insère dans n’importe quel formulaire, avec paiement en ligne.', en: 'Yes: an offer block (breakfast, upgrade, spa…) fits into any form, with online payment.' } },
     { q: { fr: 'Les questions peuvent-elles changer selon les réponses ?', en: 'Can questions change based on answers?' }, a: { fr: 'Oui, la logique conditionnelle ouvre ou masque des questions.', en: 'Yes, conditional logic shows or hides questions.' } },

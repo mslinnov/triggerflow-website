@@ -666,8 +666,8 @@
         "answer": "TriggerFlow allows you to automate many actions: welcome SMS/emails, satisfaction surveys, additional services offers, loyalty programs, post-stay follow-ups and much more."
       },
       "trial": {
-        "question": "Do you offer a free trial?",
-        "answer": "Yes, the Discovery plan is free and allows you to test your first scenarios. For paid plans, we offer a 14-day no-commitment trial."
+        "question": "Can I see TriggerFlow before committing?",
+        "answer": "Yes. The demo starts from your hotel: your PMS, your booking channels, your guest journeys. You see exactly what TriggerFlow would do for you before you commit."
       },
       "support": {
         "question": "How does support work?",
@@ -915,26 +915,37 @@
     },
     "perMonth": "month",
     "plans": {
-      "discovery": {
-        "name": "Discovery",
-        "trial": "No credit card required",
-        "description": "To discover TriggerFlow and launch your first guest scenarios."
-      },
       "communication": {
-        "name": "Communication",
-        "trial": "14-day free trial",
-        "description": "Create your segments and automate your messages before, during and after stay."
+        "name": "One Way",
+        "description": "The full CRM to reach your guests at the right moment.",
+        "includes": [
+          "CRM and guest profiles",
+          "Segments",
+          "Automations (flows)",
+          "Analytics",
+          "1 module of your choice"
+        ]
       },
       "conversion": {
-        "name": "Conversion",
+        "name": "Two Way",
         "badge": "Most popular",
-        "trial": "14-day free trial",
-        "description": "With more interaction, boost your ancillary sales and collect guest feedback."
+        "description": "Your guests reply, book and buy.",
+        "includes": [
+          "Everything in One Way",
+          "Unified inbox (WhatsApp, SMS, OTAs)",
+          "Forms",
+          "Upselling",
+          "2 modules of your choice"
+        ]
       },
       "allInclusive": {
         "name": "All Inclusive",
-        "trial": "14-day free trial",
-        "description": "All add-on modules included, no limits"
+        "description": "The whole platform, no choosing.",
+        "includes": [
+          "Everything in Two Way",
+          "Every module",
+          "Dedicated account manager"
+        ]
       }
     },
     "cta": {
@@ -943,8 +954,8 @@
     },
     "addons": {
       "badge": "Add-on modules",
-      "title": "Modules you can add at any time.",
-      "subtitle": "Every module can be added to any plan.",
+      "title": "Extra modules, any time.",
+      "subtitle": "Every plan includes modules of your choice. Beyond that, add them one by one.",
       "cta": "Learn more",
       "items": {
         "reviews": {
@@ -1029,7 +1040,9 @@
         "salesCatalog": "Sales and catalog module",
         "groupPortal": "Hotel group portal",
         "conditions": "Conditions on client interactions",
-        "addonsIncluded": "Add-on modules included"
+        "addonsIncluded": "Add-on modules included",
+        "modulesIncluded": "Modules of your choice included",
+        "upsell": "Upselling"
       },
       "tooltips": {
         "emails": "Number of emails included per month in your plan. Beyond that, additional email packs are available.",
@@ -1044,7 +1057,9 @@
         "salesCatalog": "Offer additional services and products to your guests (spa, restaurant, upgrades...).",
         "stats": "Hotel BI dashboards: occupancy rates, RevPAR, ADR, open rates, conversions and generated revenue.",
         "groupPortal": "Dedicated interface to manage multiple properties from a single account with consolidated view.",
-        "addonsIncluded": "The All Inclusive plan includes all add-on modules (Reviews, AI Agent, Payments, Loyalty, Guest App) at no extra cost."
+        "addonsIncluded": "The All Inclusive plan includes all add-on modules (Reviews, AI Agent, Payments, Loyalty, Guest App) at no extra cost.",
+        "modulesIncluded": "Pick your modules from the catalogue (Reviews, Payments, Loyalty, Guest App, Front desk call…). All Inclusive includes them all.",
+        "upsell": "Offer extras before and during the stay (breakfast, upgrades, spa…), paid online and written to the PMS."
       },
       "eyebrow": "Comparison",
       "unlimited": "unlimited",
@@ -1052,7 +1067,8 @@
       "included": "Included",
       "notIncluded": "Not included",
       "moreInfo": "More information",
-      "note": "Prices exclude VAT, per property and per month."
+      "note": "Prices exclude VAT, per property and per month.",
+      "allModules": "All"
     },
     "faq": {
       "title": "Frequently asked questions about pricing",
@@ -1087,7 +1103,8 @@
     "scrollLeft": "Scroll left",
     "scrollRight": "Scroll right",
     "perMonthFull": "excl. VAT / month, per property",
-    "ctaBand": "Let's find the right plan for your hotel together."
+    "ctaBand": "Let's find the right plan for your hotel together.",
+    "includesTitle": "Included"
   },
   "contact": {
     "meta": {
@@ -3532,14 +3549,42 @@
       "title": "Public pricing,",
       "titleMuted": "per property.",
       "perMonth": "/month excl. VAT per property",
-      "then": "then €{price} from 1 January 2027",
       "startFree": "Book a demo",
-      "startTrial": "Start the trial",
       "compare": "Compare plans and modules"
     },
     "cta": {
       "title": "Build your hotel's guest journey.",
       "text": "Guided setup, live in 48 hours."
+    },
+    "builder": {
+      "eyebrow": "Your plan",
+      "title": "Build the plan you need.",
+      "titleMuted": "The CRM is always included.",
+      "subtitle": "Pick the modules your hotel needs: we show you the right plan, with its price.",
+      "hubLabel": "Always included",
+      "hubTitle": "Hotel CRM",
+      "hubItems": [
+        "Duplicate-free guest profiles",
+        "Segments",
+        "Automations (flows)",
+        "Analytics",
+        "PMS sync"
+      ],
+      "selectedCount": "{count, plural, =0 {No module selected} one {# module selected} other {# modules selected}}",
+      "resultLabel": "Recommended plan",
+      "perMonth": "excl. VAT / month, per property",
+      "cta": "Book a demo",
+      "reset": "Clear selection",
+      "why": {
+        "communication": "{count, plural, =0 {The full CRM, with 1 module of your choice to add whenever you like.} other {Your module is included in One Way.}}",
+        "conversion": "Messaging, forms and upselling included, plus {extras, plural, =0 {2 modules of your choice} one {your module and 1 more of your choice} other {your 2 modules of your choice}}.",
+        "allInclusive": "Beyond 2 modules on top of messaging, forms and upselling, All Inclusive gives you every module."
+      },
+      "aiAgent": {
+        "name": "AI agent",
+        "description": "Answers your guests 24/7"
+      },
+      "plansTitle": "Or compare the three plans"
     }
   },
   "productPage": {

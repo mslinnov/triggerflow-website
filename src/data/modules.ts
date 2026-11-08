@@ -222,7 +222,7 @@ export const modules: Record<string, ModuleData> = {
       },
       {
         question: 'Combien ça coûte ?',
-        answer: 'Les tarifs sont publics : un plan gratuit pour démarrer, puis des plans payants mensuels avec l\'email builder, les automatisations et le support inclus. Consultez notre page tarifs pour le détail par plan, ou demandez une démo pour un devis personnalisé.'
+        answer: 'Les tarifs sont publics : trois formules mensuelles, de One Way à All Inclusive, avec l\'email builder, les automatisations et le support inclus. Consultez notre page tarifs pour le détail par plan, ou demandez une démo pour un devis personnalisé.'
       },
     ],
     ctaTitle: 'Envoyez votre premier email automatisé dès aujourd\'hui',

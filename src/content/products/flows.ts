@@ -80,7 +80,7 @@ export const flows: ProductLanding = {
     { slug: 'crm', href: '/produit/crm', name: { fr: 'CRM', en: 'CRM' }, text: { fr: 'Une fiche par client, sans doublons.', en: 'One profile per guest, no duplicates.' } },
     { slug: 'inbox', href: '/produit/inbox', name: { fr: 'Messagerie', en: 'Inbox' }, text: { fr: 'Les réponses des clients au même endroit.', en: 'Guest replies in one place.' } },
   ],
-  pricing: { text: { fr: 'Inclus dans tous les plans, du plan Découverte gratuit (1 flow) au plan All Inclusive (flows illimités).', en: 'Included in every plan, from the free Discovery plan (1 flow) to All Inclusive (unlimited flows).' } },
+  pricing: { text: { fr: 'Inclus dans toutes les formules : 5 flows avec One Way, 10 avec Two Way, illimités avec All Inclusive.', en: 'Included in every plan: 5 flows with One Way, 10 with Two Way, unlimited with All Inclusive.' } },
   faq: [
     { q: { fr: 'Faut-il des compétences techniques ?', en: 'Do I need technical skills?' }, a: { fr: 'Non. L’éditeur est visuel et des modèles prêts couvrent les scénarios les plus courants. L’équipe vous accompagne pour les premiers.', en: 'No. The editor is visual and ready-made templates cover the most common scenarios. The team helps you set up the first ones.' } },
     { q: { fr: 'Quels événements peuvent déclencher un flow ?', en: 'Which events can trigger a flow?' }, a: { fr: 'Les événements de réservation venus du PMS (création, arrivée, départ, délais), les anniversaires, les réponses aux formulaires et les paiements, entre autres.', en: 'Booking events from the PMS (creation, arrival, departure, delays), birthdays, form answers and payments, among others.' } },

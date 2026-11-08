@@ -15,43 +15,44 @@ import { UpcomingPrice } from '@/components/pricing/UpcomingPrice';
 
 type Cell = boolean | string;
 const U = 'unlimited';
+const ALL = 'all';
 
+/** Colonnes : One Way, Two Way, All Inclusive. Volumes repris des anciens plans Communication et Conversion. */
 const featureGroups: { key: string; icon: typeof Check; features: { key: string; values: Cell[] }[] }[] = [
-  {
-    key: 'communication',
-    icon: MessageSquare,
-    features: [
-      { key: 'emails', values: ['1 000', '5 000', '15 000', '50 000'] },
-      { key: 'sms', values: [true, true, true, true] },
-      { key: 'whatsapp', values: [false, true, true, true] },
-      { key: 'hub', values: [false, true, true, true] },
-    ],
-  },
   {
     key: 'automation',
     icon: Workflow,
     features: [
-      { key: 'segments', values: ['5', '10', '45', U] },
-      { key: 'flows', values: ['1', '5', '10', U] },
-      { key: 'conditions', values: [false, false, true, true] },
+      { key: 'segments', values: ['10', '45', U] },
+      { key: 'flows', values: ['5', '10', U] },
+      { key: 'conditions', values: [false, true, true] },
+      { key: 'stats', values: [true, true, true] },
+    ],
+  },
+  {
+    key: 'communication',
+    icon: MessageSquare,
+    features: [
+      { key: 'emails', values: ['5 000', '15 000', '50 000'] },
+      { key: 'sms', values: [true, true, true] },
+      { key: 'whatsapp', values: [false, true, true] },
+      { key: 'hub', values: [false, true, true] },
     ],
   },
   {
     key: 'marketing',
     icon: ShoppingBag,
     features: [
-      { key: 'marketing', values: [false, false, true, true] },
-      { key: 'forms', values: [false, false, '5', U] },
-      { key: 'salesCatalog', values: [false, false, true, true] },
+      { key: 'forms', values: [false, '5', U] },
+      { key: 'upsell', values: [false, true, true] },
     ],
   },
   {
     key: 'tools',
     icon: BarChart3,
     features: [
-      { key: 'stats', values: [true, true, true, true] },
-      { key: 'groupPortal', values: [false, false, true, true] },
-      { key: 'addonsIncluded', values: [false, false, false, true] },
+      { key: 'modulesIncluded', values: ['1', '2', ALL] },
+      { key: 'groupPortal', values: [false, true, true] },
     ],
   },
 ];
@@ -79,7 +80,7 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
   const t = useTranslations('pricing');
   const tChange = useTranslations('priceChange');
   const tNav = useTranslations('nav');
-  const cell = (v: Cell) => (v === U ? t('comparison.unlimited') : v);
+  const cell = (v: Cell) => (v === U ? t('comparison.unlimited') : v === ALL ? t('comparison.allModules') : v);
 
   const faq = [
     ...(announcing ? [{ question: tChange('faqQuestion'), answer: tChange('faqAnswer') }] : []),
@@ -108,7 +109,7 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
       {/* Plans */}
       <section className="bg-white pb-20 md:pb-28">
         <Container>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 md:grid-cols-3">
             {plans.map((plan) => (
               <div
                 key={plan.key}
@@ -124,7 +125,16 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
                 <p className="mt-5 text-[2.5rem] font-medium leading-none tracking-[-0.03em] tabular-nums text-ink">{plan.price} €</p>
                 <p className="mt-2 text-[12.5px] text-ink-3">{t('perMonthFull')}</p>
                 <UpcomingPrice price={plan.upcomingPrice} className="font-normal text-ink-3" />
-                <p className="mt-5 flex-1 text-[14.5px] leading-relaxed text-ink-2">{t(`plans.${plan.key}.description`)}</p>
+                <p className="mt-5 text-[14.5px] leading-relaxed text-ink-2">{t(`plans.${plan.key}.description`)}</p>
+                <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.08em] text-ink-3">{t('includesTitle')}</p>
+                <ul className="mt-3 flex-1 space-y-2">
+                  {(t.raw(`plans.${plan.key}.includes`) as string[]).map((item) => (
+                    <li key={item} className="flex gap-2 text-[14px] text-ink">
+                      <Check aria-hidden className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
                 <DsButton href={brand.demoPage} variant={plan.popular ? 'primary' : 'secondary'} size="sm" className="mt-6 w-full">
                   {t('cta.demo')}
                 </DsButton>

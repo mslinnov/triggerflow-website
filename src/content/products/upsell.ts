@@ -80,7 +80,7 @@ export const upsell: ProductLanding = {
     { slug: 'forms', href: '/produit/forms', name: { fr: 'Formulaires', en: 'Forms' }, text: { fr: 'Des formulaires libres qui peuvent vendre.', en: 'Custom forms that can sell.' } },
     { slug: 'flows', href: '/produit/flows', name: { fr: 'Flows', en: 'Flows' }, text: { fr: 'Le bon moment pour chaque offre.', en: 'The right moment for every offer.' } },
   ],
-  pricing: { text: { fr: 'Inclus dans les plans Conversion et All Inclusive.', en: 'Included in the Conversion and All Inclusive plans.' } },
+  pricing: { text: { fr: 'Inclus dans Two Way et All Inclusive, ou comme module au choix avec One Way.', en: 'Included in Two Way and All Inclusive, or as your module of choice with One Way.' } },
   faq: [
     { q: { fr: 'Comment TriggerFlow sait quelle offre proposer à qui ?', en: 'How does TriggerFlow know which offer to show to whom?' }, a: { fr: 'Vous définissez des segments à partir des données de la réservation et du client (nombre d’adultes et d’enfants, type de chambre, canal de réservation, historique). Chaque offre est liée à un ou plusieurs segments.', en: 'You define segments from booking and guest data (adults and children, room type, booking channel, history). Each offer is linked to one or more segments.' } },
     { q: { fr: 'Le client doit-il passer à la réception pour réserver ?', en: 'Does the guest have to go to the front desk?' }, a: { fr: 'Non. Il réserve et paie en ligne depuis l’email, le SMS, WhatsApp ou un formulaire. La commande arrive directement dans TriggerFlow.', en: 'No. They book and pay online from the email, SMS, WhatsApp or a form. The order lands directly in TriggerFlow.' } },

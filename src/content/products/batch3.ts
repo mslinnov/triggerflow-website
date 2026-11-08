@@ -35,7 +35,7 @@ export const campaigns: ProductLanding = {
   integrations: { title: { fr: 'Des campagnes sur des données à jour.', en: 'Campaigns on up-to-date data.' }, text: { fr: 'Les segments s’appuient sur les séjours synchronisés avec votre PMS.', en: 'Segments rely on stays synced with your PMS.' } },
   reliability: { stat: 'messages', label: { fr: 'messages envoyés par nos hôtels clients', en: 'messages sent by our client hotels' } },
   related: [relCrm, { slug: 'loyalty', href: '/produit/loyalty', name: { fr: 'Fidélité', en: 'Loyalty' }, text: { fr: 'Des offres réservées aux membres.', en: 'Member-only offers.' } }, relFlows],
-  pricing: { text: { fr: 'Inclus dans les plans Conversion et All Inclusive.', en: 'Included in the Conversion and All Inclusive plans.' } },
+  pricing: { text: { fr: 'Module au choix dans One Way et Two Way, inclus dans All Inclusive.', en: 'A module of your choice in One Way and Two Way, included in All Inclusive.' } },
   faq: [
     { q: { fr: 'Puis-je envoyer des SMS marketing ?', en: 'Can I send marketing SMS?' }, a: { fr: 'Oui, en plus des emails, en respectant les consentements de vos clients.', en: 'Yes, alongside emails, respecting your guests’ consent.' } },
     { q: { fr: 'Comment éviter les adresses relais des OTA ?', en: 'How do I avoid OTA relay addresses?' }, a: { fr: 'Un critère de segment cible uniquement les clients joignables hors OTA.', en: 'A segment criterion targets only guests reachable outside OTAs.' } },

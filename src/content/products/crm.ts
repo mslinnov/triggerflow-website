@@ -59,7 +59,7 @@ export const crm: ProductLanding = {
     { slug: 'inbox', href: '/produit/inbox', name: { fr: 'Messagerie', en: 'Inbox' }, text: { fr: 'La fiche à côté de chaque conversation.', en: 'The profile next to every conversation.' } },
     { slug: 'loyalty', href: '/produit/loyalty', name: { fr: 'Fidélité', en: 'Loyalty' }, text: { fr: 'Récompensez vos meilleurs clients.', en: 'Reward your best guests.' } },
   ],
-  pricing: { text: { fr: 'Inclus dans tous les plans, y compris le plan Découverte gratuit.', en: 'Included in every plan, including the free Discovery plan.' } },
+  pricing: { text: { fr: 'Le socle de toutes les formules, dès One Way.', en: 'The foundation of every plan, from One Way.' } },
   faq: [
     { q: { fr: 'D’où viennent les données ?', en: 'Where does the data come from?' }, a: { fr: 'De votre PMS, des formulaires, des conversations et des avis, réunis sur une fiche.', en: 'From your PMS, forms, conversations and reviews, brought together on one profile.' } },
     { q: { fr: 'Comment les doublons sont-ils gérés ?', en: 'How are duplicates handled?' }, a: { fr: 'TriggerFlow détecte les profils en double et propose de les fusionner.', en: 'TriggerFlow detects duplicate profiles and suggests merging them.' } },
