@@ -8,8 +8,8 @@ export const homeClients = [
   'Edgar Hôtel & Spa',
   'Hôtel Causse Comtal',
   'Urban Bivouac',
-  'Hôtel Arc en Ciel',
-  'Le Vieux Pressoir',
+  'Sofitel Marrakech',
+  'Maisons du Monde Hôtel & Suites',
   'Sezz Saint-Tropez',
   'Château de Courban',
   'Odomo',
@@ -25,7 +25,7 @@ export const homeClients = [
  * Logos officiels récupérés sur le site de chaque client le 07/11/2026, passés en monochrome encre
  * (public/images/clients, 96 px de haut). Un client absent de cette table s'affiche en lettrage.
  */
-export const clientLogos: Partial<Record<(typeof homeClients)[number], { src: string; width: number; height: number }>> = {
+export const clientLogos: Partial<Record<string, { src: string; width: number; height: number }>> = {
   'Groupe Noemys': { src: '/images/clients/groupe-noemys.webp', width: 389, height: 96 },
   'AMMI Hôtels': { src: '/images/clients/ammi-hotels.webp', width: 289, height: 96 },
   'Edgar Hôtel & Spa': { src: '/images/clients/edgar-hotel-spa.webp', width: 218, height: 96 },
@@ -33,6 +33,8 @@ export const clientLogos: Partial<Record<(typeof homeClients)[number], { src: st
   'Urban Bivouac': { src: '/images/clients/urban-bivouac.webp', width: 401, height: 96 },
   'Hôtel Arc en Ciel': { src: '/images/clients/arc-en-ciel.webp', width: 125, height: 96 },
   'Le Vieux Pressoir': { src: '/images/clients/vieux-pressoir.webp', width: 83, height: 96 },
+  'Sofitel Marrakech': { src: '/images/clients/sofitel-marrakech.webp', width: 276, height: 96 },
+  'Maisons du Monde Hôtel & Suites': { src: '/images/clients/maisons-du-monde-hotel.webp', width: 133, height: 96 },
   'Sezz Saint-Tropez': { src: '/images/clients/sezz-saint-tropez.webp', width: 181, height: 96 },
   'Château de Courban': { src: '/images/clients/chateau-de-courban.webp', width: 474, height: 96 },
   'Odomo': { src: '/images/clients/odomo.webp', width: 420, height: 96 },
