@@ -1206,7 +1206,7 @@
     },
     "demo": {
       "title": "Préférez-vous une démo ?",
-      "description": "Réservez un créneau de 30 minutes avec notre équipe pour découvrir TriggerFlow en action.",
+      "description": "Réservez un créneau de 45 minutes avec notre équipe pour découvrir TriggerFlow en action, à partir de votre hôtel.",
       "cta": "Demander une démo"
     }
   },
@@ -4287,6 +4287,13 @@
         }
       ],
       "credit": "Identité visuelle dessinée par l’agence La rampe."
+    },
+    "team": {
+      "eyebrow": "L'équipe",
+      "title": "Une équipe à Toulouse,",
+      "titleMuted": "qui connaît l'hôtellerie.",
+      "text": "Développement, accompagnement, support : les personnes qui construisent TriggerFlow sont celles qui vous répondent.",
+      "alt": "L'équipe TriggerFlow réunie dans ses bureaux à Toulouse"
     }
   },
   "careersPage": {

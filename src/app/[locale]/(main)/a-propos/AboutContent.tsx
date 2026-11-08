@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { getLocale, getTranslations } from 'next-intl/server';
 import { BrandMark, Container, CtaBand, Eyebrow, ProofStat, Section, SectionHeader, TrustStrip } from '@/components/ds';
 import { brand } from '@/data/brand';
@@ -30,6 +31,17 @@ export async function AboutContent() {
           <ProofStat value={stat('messages', locale)} label={t('facts.messages')} />
         </Container>
       </section>
+
+      <Section tone="white">
+        <Container>
+          <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
+            <SectionHeader eyebrow={t('team.eyebrow')} title={t('team.title')} titleMuted={t('team.titleMuted')} subtitle={t('team.text')} align="left" />
+            <div className="overflow-hidden rounded-2xl">
+              <Image src="/images/team/equipe-triggerflow.webp" alt={t('team.alt')} width={1600} height={1067} sizes="(min-width: 1024px) 60vw, 100vw" className="h-auto w-full" />
+            </div>
+          </div>
+        </Container>
+      </Section>
 
       <Section tone="paper">
         <Container>
