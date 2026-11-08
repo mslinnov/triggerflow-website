@@ -11,6 +11,7 @@ import { cn } from '@/lib/utils';
 import { brand } from '@/data/brand';
 import type { AddonKey, DisplayAddon, DisplayPlan } from '@/data/pricing';
 import { UpcomingPrice } from '@/components/pricing/UpcomingPrice';
+import { FromPriceStar } from '@/components/pricing/FromPriceStar';
 import { Link } from '@/i18n/navigation';
 import { navIcons } from '@/data/nav-icons';
 
@@ -213,8 +214,9 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
                     <span className="mt-4 text-[15px] font-semibold text-ink group-hover:text-accent">{name}</span>
                     <span className="mt-0.5 flex-1 text-[13px] text-ink-3">{desc}</span>
                     <span className="mt-4 flex flex-wrap items-baseline gap-x-1.5 border-t border-line pt-3">
-                      {addon.from && <span className="text-[12.5px] text-ink-3">{t('addons.from')}</span>}
-                      <span className="text-[20px] font-medium tabular-nums text-ink">{addon.price} €</span>
+                      <span className="text-[20px] font-medium tabular-nums text-ink">
+                        {addon.price} €{addon.from && <FromPriceStar label={t('addons.fromTooltip')} />}
+                      </span>
                       <span className="text-[12px] text-ink-3">{t('perMonthFull')}</span>
                     </span>
                   </Link>

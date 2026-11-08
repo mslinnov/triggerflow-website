@@ -1027,13 +1027,13 @@
         }
       },
       "inDemo": "Prix en démo",
-      "note": "Prix HT, par mois et par établissement. Agent IA et téléphonie : prix du premier palier.",
-      "from": "à partir de",
+      "note": "Prix HT, par mois et par établissement. * Prix à partir de, selon le volume.",
       "names": {
         "voice": "Téléphonie (Appel réception)",
         "b2b": "B2B : événements et entreprises",
         "housekeeping": "Ménage"
-      }
+      },
+      "fromTooltip": "Prix à partir de, selon le volume."
     },
     "comparison": {
       "title": "Ce que comprend chaque plan.",
@@ -4102,7 +4102,8 @@
     "ctaText": "Mise en place accompagnée, opérationnel en 48 h.",
     "trustLine": "Hébergé en France, sous-traitants publics, DPA signé avec chaque client.",
     "realScreenshot": "Capture de l'application, compte de démonstration",
-    "addonFrom": "À partir de {price} € par mois et par établissement, HT"
+    "addonFromTooltip": "Prix à partir de, selon le volume.",
+    "addonUnit": "par mois et par établissement, HT"
   },
   "clientsPage": {
     "eyebrow": "Clients",
