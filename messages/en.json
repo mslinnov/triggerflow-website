@@ -3526,6 +3526,13 @@
         "core": {
           "when": "Throughout the journey",
           "label": "The foundation shared by every module"
+        },
+        "visual": {
+          "review": "Such thoughtful care, we'll be back!",
+          "reviewLabel": "Google review · requested after check-out",
+          "offerLabel": "Campaign · loyal guests",
+          "offer": "Your next getaway is waiting",
+          "tier": "Gold member"
         }
       }
     },

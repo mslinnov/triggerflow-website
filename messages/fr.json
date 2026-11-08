@@ -3803,6 +3803,13 @@
         "core": {
           "when": "Tout au long du parcours",
           "label": "Le socle commun à tous les modules"
+        },
+        "visual": {
+          "review": "Accueil aux petits soins, on reviendra !",
+          "reviewLabel": "Avis Google · demandé après le départ",
+          "offerLabel": "Campagne · clients fidèles",
+          "offer": "Votre prochaine escapade vous attend",
+          "tier": "Membre Gold"
         }
       }
     },

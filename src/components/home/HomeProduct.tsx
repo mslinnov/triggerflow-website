@@ -3,7 +3,7 @@ import { Container, DsButton, ProductFrame, Section, SectionHeader } from '@/com
 import { DataFlowScenario } from '@/components/visuals';
 import { Link } from '@/i18n/navigation';
 import { productMenu } from '@/data/navigation';
-import { BedDouble, CalendarClock, Repeat, Star } from 'lucide-react';
+import { BedDouble, CalendarClock, Crown, Mail, Repeat, Star } from 'lucide-react';
 
 /** Les étapes de la frise, dans l'ordre du parcours client. */
 const phases = [
@@ -17,7 +17,9 @@ export function HomeProduct() {
   const t = useTranslations('home2.product');
   const nav = useTranslations('nav');
   const steps = t.raw('steps') as { title: string; text: string }[];
-  const foundations = productMenu.find((c) => c.key === 'core')?.items ?? [];
+  // Le socle : les fondations, plus la messagerie unifiée (incluse dans toutes les formules).
+  const inbox = productMenu.find((c) => c.key === 'during')?.items.find((i) => i.key === 'inbox');
+  const foundations = [...(inbox ? [inbox] : []), ...(productMenu.find((c) => c.key === 'core')?.items ?? [])];
   const tailored = t.raw('tailored') as { client: string; text: string }[];
   return (
     <Section tone="white" id="produit">
@@ -54,23 +56,32 @@ export function HomeProduct() {
             {phases.map(({ key, Icon }) => {
               const col = productMenu.find((c) => c.key === key);
               if (!col) return null;
+              // La messagerie unifiée est incluse partout : elle rejoint le socle, pas une étape.
+              const items = col.items.filter((item) => item.key !== 'inbox');
               return (
-                <li key={key} className="relative border-l border-line pl-6 md:border-l-0 md:pl-0">
+                <li key={key} className="relative flex flex-col border-l border-line pl-6 md:border-l-0 md:pl-0">
                   <span className="absolute -left-[16px] top-0 flex h-8 w-8 items-center justify-center rounded-full border border-accent bg-white text-accent md:static">
                     <Icon aria-hidden className="h-4 w-4" />
                   </span>
                   <p className="mt-0 font-mono text-[11px] uppercase tracking-[0.06em] text-ink-3 md:mt-5">{t(`timeline.${key}.when`)}</p>
                   <p className="mt-1 text-[18px] font-semibold text-ink">{t(`timeline.${key}.label`)}</p>
-                  <ul className="mt-5 space-y-2">
-                    {col.items.map((item) => (
-                      <li key={item.key}>
-                        <Link href={item.href} className="group block rounded-lg border border-line bg-white px-4 py-3 transition-colors hover:border-accent">
-                          <span className="block text-[15px] font-semibold text-ink group-hover:text-accent">{nav(`items.${item.key}`)}</span>
-                          <span className="mt-0.5 block text-[13px] text-ink-3">{nav(`descriptions.${item.key}`)}</span>
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+                  {/* Panneau de hauteur égale pour les 4 étapes */}
+                  <div className="mt-5 flex flex-1 flex-col rounded-2xl border border-line bg-paper/60 p-2">
+                    <ul className="divide-y divide-line overflow-hidden rounded-xl bg-white">
+                      {items.map((item) => (
+                        <li key={item.key}>
+                          <Link href={item.href} className="group block px-4 py-3 transition-colors hover:bg-mint/30">
+                            <span className="block text-[15px] font-semibold text-ink group-hover:text-accent">{nav(`items.${item.key}`)}</span>
+                            <span className="mt-0.5 block text-[13px] text-ink-3">{nav(`descriptions.${item.key}`)}</span>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                    {key === 'after' && <AfterVisual review={t('timeline.visual.review')} label={t('timeline.visual.reviewLabel')} />}
+                    {key === 'marketing' && (
+                      <MarketingVisual offer={t('timeline.visual.offer')} offerLabel={t('timeline.visual.offerLabel')} tier={t('timeline.visual.tier')} />
+                    )}
+                  </div>
                 </li>
               );
             })}
@@ -82,7 +93,7 @@ export function HomeProduct() {
               <p className="font-mono text-[11px] uppercase tracking-[0.08em] text-mint">{t('timeline.core.when')}</p>
               <p className="text-[14px] text-white/70">{t('timeline.core.label')}</p>
             </div>
-            <ul className="mt-6 grid gap-px overflow-hidden rounded-xl bg-white/10 sm:grid-cols-2 lg:grid-cols-5">
+            <ul className="mt-6 grid gap-px overflow-hidden rounded-xl bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
               {foundations.map((item) => (
                 <li key={item.key} className="bg-ink">
                   <Link href={item.href} className="group block h-full p-4 transition-colors hover:bg-white/[0.04]">
@@ -113,5 +124,46 @@ export function HomeProduct() {
         </div>
       </Container>
     </Section>
+  );
+}
+
+/** Petit visuel de l'étape « Après le séjour » : un avis publié. */
+function AfterVisual({ review, label }: { review: string; label: string }) {
+  return (
+    <div className="mt-auto pt-2">
+      <div className="rounded-xl bg-white p-4">
+        <p className="flex gap-0.5 text-peach" aria-hidden>
+          {[0, 1, 2, 3, 4].map((i) => (
+            <Star key={i} className="h-4 w-4 fill-current" />
+          ))}
+        </p>
+        <p className="mt-2 text-[13.5px] leading-snug text-ink">« {review} »</p>
+        <p className="mt-2 font-mono text-[10.5px] uppercase tracking-[0.06em] text-ink-3">{label}</p>
+      </div>
+    </div>
+  );
+}
+
+/** Petit visuel de l'étape « Entre deux séjours » : une offre de retour et une carte de fidélité. */
+function MarketingVisual({ offer, offerLabel, tier }: { offer: string; offerLabel: string; tier: string }) {
+  return (
+    <div className="mt-auto space-y-2 pt-2">
+      <div className="flex items-center gap-3 rounded-xl bg-white p-4">
+        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-mint/60 text-accent">
+          <Mail aria-hidden className="h-4 w-4" />
+        </span>
+        <div>
+          <p className="font-mono text-[10.5px] uppercase tracking-[0.06em] text-ink-3">{offerLabel}</p>
+          <p className="text-[13.5px] font-semibold text-ink">{offer}</p>
+        </div>
+      </div>
+      <div className="flex items-center justify-between rounded-xl bg-ink p-4 text-white">
+        <span className="flex items-center gap-2 text-[13px] font-semibold">
+          <Crown aria-hidden className="h-4 w-4 text-peach" />
+          {tier}
+        </span>
+        <span className="text-[13px] tabular-nums text-white/80">2 450 pts</span>
+      </div>
+    </div>
   );
 }
