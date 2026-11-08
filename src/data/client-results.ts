@@ -16,20 +16,20 @@ export const clientResults: ClientResult[] = [
   {
     client: 'Hôtel Causse Comtal',
     photo: '/images/hotels/causse-comtal.webp',
-    // Tiré de la citation de Baptiste Legout : « en une semaine ».
-    metric: { value: { fr: '1 semaine', en: '1 week' }, label: { fr: 'pour lancer ses emails automatisés', en: 'to launch automated emails' }, example: false },
+    // VALEUR D'EXEMPLE (demande de Soufiane, 08/11/2026) : à remplacer par le vrai chiffre du client.
+    metric: { value: { fr: '+1 800 €', en: '+€1,800' }, label: { fr: 'de ventes additionnelles par mois, avant l\'arrivée', en: 'in pre-arrival upsells per month' }, example: true },
   },
   {
     client: 'AMMI Hôtels',
     photo: '/images/hotels/ammi-hotels.webp',
-    // Fait connu : un CRM et un outil WhatsApp remplacés.
-    metric: { value: { fr: '2 outils', en: '2 tools' }, label: { fr: 'remplacés par TriggerFlow', en: 'replaced by TriggerFlow' }, example: false },
+    // Fait connu : 6 établissements, un CRM et un outil WhatsApp remplacés.
+    metric: { value: { fr: '6 hôtels', en: '6 hotels' }, label: { fr: 'pilotés depuis un seul outil', en: 'run from a single tool' }, example: false },
   },
   {
     client: 'Hôtel Arc en Ciel',
     photo: '/images/hotels/arc-en-ciel.webp',
-    // Aucun chiffre mesuré (livres blancs vérifiés le 08/11/2026) : pas de chiffre affiché.
-    metric: null,
+    // VALEUR D'EXEMPLE (demande de Soufiane, 08/11/2026) : à remplacer par le vrai chiffre du client.
+    metric: { value: { fr: '−80 %', en: '−80%' }, label: { fr: 'de relances de paiement faites à la main', en: 'manual payment reminders' }, example: true },
   },
 ];
 
