@@ -3602,75 +3602,12 @@
     },
     "guestView": {
       "eyebrow": "Guest side",
-      "title": "What your guests receive.",
-      "titleMuted": "In your hotel's colours.",
-      "subtitle": "Every message, form and screen carries your brand, not ours. Example of a stay at Hôtel des Tilleuls, a demo hotel.",
-      "steps": [
-        {
-          "when": "D-7 · Email",
-          "title": "The stay takes shape"
-        },
-        {
-          "when": "D-3 · WhatsApp",
-          "title": "A real conversation"
-        },
-        {
-          "when": "D-2 · Form",
-          "title": "Extras, paid online"
-        },
-        {
-          "when": "During the stay",
-          "title": "The whole hotel in their pocket"
-        }
-      ],
-      "email": {
-        "hello": "Hello Camille,",
-        "body": "Your stay is coming up: 3 nights from Friday 12th. A few details to prepare your arrival.",
-        "list": [
-          "Check-in from 3 pm",
-          "Parking reserved",
-          "Online check-in in 2 minutes"
-        ],
-        "cta": "Prepare my stay",
-        "footer": "Hôtel des Tilleuls · 12 rue des Lilas"
-      },
-      "whatsapp": {
-        "hotel1": "Hello Camille! Your room will be ready from 3 pm. Would you like to add breakfast?",
-        "guest": "Yes please, for two",
-        "hotel2": "Noted! You can pay for it here:",
-        "item": "2 breakfasts"
-      },
-      "form": {
-        "label": "Your wishes",
-        "title": "Personalise your stay",
-        "options": [
-          {
-            "name": "Late check-out 2 pm",
-            "price": "€30"
-          },
-          {
-            "name": "Flowers in the room",
-            "price": "€42"
-          },
-          {
-            "name": "Dinner at the restaurant",
-            "price": "€68"
-          }
-        ],
-        "pay": "Pay €72",
-        "paid": "Paid · added to the booking",
-        "note": "Secure payment · written to the PMS"
-      },
-      "app": {
-        "room": "Room 214",
-        "hello": "Welcome Camille",
-        "key": "My key",
-        "call": "Call reception",
-        "wifi": "Wi-Fi",
-        "restaurant": "Restaurant",
-        "offer": "Spa: a free slot tonight, just for you"
-      },
-      "note": "Everything triggers on its own, following the rules you set: nothing is sent by hand."
+      "title": "What your guests see.",
+      "titleMuted": "In each hotel's colours.",
+      "subtitle": "The Guest App of four client hotels: one platform, four identities. It opens in the browser, no download needed.",
+      "alt": "{name} Guest App, on a phone",
+      "note": "Restaurants, spa, experiences, practical information, calling reception: the whole hotel on the guest's phone, connected to the CRM.",
+      "more": "Discover the Guest App"
     },
     "ai": {
       "eyebrow": "Built-in AI",

@@ -3879,75 +3879,12 @@
     },
     "guestView": {
       "eyebrow": "Côté client",
-      "title": "Ce que vos clients reçoivent.",
-      "titleMuted": "Aux couleurs de votre hôtel.",
-      "subtitle": "Chaque message, formulaire et écran porte votre marque, pas la nôtre. Exemple d'un séjour à l'Hôtel des Tilleuls, hôtel de démonstration.",
-      "steps": [
-        {
-          "when": "J-7 · Email",
-          "title": "Le séjour se prépare"
-        },
-        {
-          "when": "J-3 · WhatsApp",
-          "title": "Une vraie conversation"
-        },
-        {
-          "when": "J-2 · Formulaire",
-          "title": "Les extras, payés en ligne"
-        },
-        {
-          "when": "Pendant le séjour",
-          "title": "Tout l'hôtel dans la poche"
-        }
-      ],
-      "email": {
-        "hello": "Bonjour Camille,",
-        "body": "Votre séjour approche : 3 nuits à partir du vendredi 12. Quelques infos pour bien préparer votre arrivée.",
-        "list": [
-          "Arrivée dès 15 h",
-          "Parking réservé",
-          "Check-in en ligne en 2 minutes"
-        ],
-        "cta": "Préparer mon séjour",
-        "footer": "Hôtel des Tilleuls · 12 rue des Lilas"
-      },
-      "whatsapp": {
-        "hotel1": "Bonjour Camille ! Votre chambre sera prête dès 15 h. Souhaitez-vous ajouter le petit-déjeuner ?",
-        "guest": "Oui, pour deux personnes s'il vous plaît",
-        "hotel2": "C'est noté ! Vous pouvez le régler ici :",
-        "item": "2 petits-déjeuners"
-      },
-      "form": {
-        "label": "Vos envies",
-        "title": "Personnalisez votre séjour",
-        "options": [
-          {
-            "name": "Late check-out 14 h",
-            "price": "30 €"
-          },
-          {
-            "name": "Bouquet en chambre",
-            "price": "42 €"
-          },
-          {
-            "name": "Dîner au restaurant",
-            "price": "68 €"
-          }
-        ],
-        "pay": "Payer 72 €",
-        "paid": "Payé · ajouté à la réservation",
-        "note": "Paiement sécurisé · inscrit dans le PMS"
-      },
-      "app": {
-        "room": "Chambre 214",
-        "hello": "Bienvenue Camille",
-        "key": "Ma clé",
-        "call": "Appeler la réception",
-        "wifi": "Wi-Fi",
-        "restaurant": "Restaurant",
-        "offer": "Spa : un créneau libre ce soir pour vous"
-      },
-      "note": "Tout se déclenche seul, selon les règles que vous avez fixées : rien n'est envoyé à la main."
+      "title": "Ce que voient vos clients.",
+      "titleMuted": "Aux couleurs de chaque hôtel.",
+      "subtitle": "La Guest App de quatre hôtels clients : une même plateforme, quatre identités. Elle s'ouvre dans le navigateur, sans téléchargement.",
+      "alt": "Guest App de {name}, vue sur téléphone",
+      "note": "Restaurants, spa, expériences, informations pratiques, appel de la réception : tout l'hôtel dans le téléphone du client, relié au CRM.",
+      "more": "Découvrir la Guest App"
     },
     "ai": {
       "eyebrow": "IA intégrée",
