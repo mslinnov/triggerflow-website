@@ -12,7 +12,7 @@ const faqs = [
   },
   {
     question: 'Combien de temps ça prend à mettre en place ?',
-    answer: 'Comptez 48 h pour être opérationnel : notre équipe configure avec vous vos premiers emails automatiques, ensuite tout fonctionne tout seul.',
+    answer: 'Notre équipe configure avec vous vos premiers emails automatiques, puis tout fonctionne tout seul. Le délai dépend de vos parcours, nous le fixons ensemble.',
   },
   {
     question: 'Est-ce que mes données Thaïs sont en sécurité ?',

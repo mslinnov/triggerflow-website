@@ -137,8 +137,8 @@ test('chiffre externe dans les stats : source publique nommée, avec sa date', (
  */
 const PROMISE = /\bx\s?\d+\b|\b\d+\s?x\b|(?:divisée?s?|multipliée?s?) par \d|\bdoubl(?:ez|er|ée?s?|ent)\b|\btripl\w*|[+-]\s?\d+(?:[.,]\d+)?\s?(?:points?|étoiles?)\b|passée? de \d+(?:[.,]\d+)? à \d|de \d[.,]\d à \d[.,]\d|\ben (?:moins de |seulement )?\d+\s?(?:min(?:utes?)?|h|heures?|jours?|semaines?|mois)\b|réduit à \d|rentabilisé en/i;
 
-/** Exceptions explicites : un exemple d'interface annoncé comme tel, le délai de mise en place confirmé. */
-const PROMISE_ALLOWED = [/^Exemple : /, new RegExp(`\\b${brand.setupHours} ?h\\b`)];
+/** Exception explicite : un exemple d'interface annoncé comme tel (le délai de mise en place n'est plus affiché). */
+const PROMISE_ALLOWED = [/^Exemple : /];
 
 test('modules et solutions : aucune promesse chiffrée non mesurée, dans aucun texte', () => {
   const skip = new Set(['testimonial', 'icon', 'mockup', 'image', 'heroImage']);
@@ -335,4 +335,14 @@ test('résultats clients : aucune valeur d\'exemple avant la mise en production'
     // Rappel visible dans la sortie des tests, sans bloquer tant que le site n'est pas en ligne.
     console.warn(`[À REMPLACER] Valeurs d'exemple dans src/data/client-results.ts : ${examples.join(', ')}`);
   }
+});
+
+test('délai de mise en place : jamais affiché (retiré le 08/11/2026)', () => {
+  const setup = /(opérationnel|operational|live|up and running|configuration)[^.]{0,20}\b48 ?(h|heures|hours)\b|\b48 ?(h|heures|hours)\b[^.]{0,20}(opérationnel|operational|pour être|to be up)/i;
+  const hits: string[] = [];
+  for (const locale of ['fr', 'en']) {
+    const text = readFileSync(join(__dirname, '..', '..', 'messages', `${locale}.json`), 'utf8');
+    if (setup.test(text)) hits.push(`messages/${locale}.json`);
+  }
+  assert.deepEqual(hits, []);
 });

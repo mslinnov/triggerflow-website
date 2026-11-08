@@ -124,7 +124,7 @@ export const solutionsEn: Record<string, SolutionTextEn> = {
     faq: [
       {
         question: 'How long does setup take for an independent hotel?',
-        answer: `Allow ${brand.setupHours} hours. We connect your PMS, set up your first sequences and train your team.`,
+        answer: 'We connect your PMS, set up your first sequences and train your team. Timing depends on your property: we agree on it together during the demo.',
       },
       {
         question: 'Do I need technical skills?',

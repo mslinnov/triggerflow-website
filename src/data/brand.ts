@@ -6,8 +6,8 @@
  * moins citable. JsonLd.tsx et llms.txt lisent tous ces valeurs ici.
  *
  * Faits confirmés par Mounir le 25/10/2026 : création en 2019 à Toulouse, aucune levée
- * de fonds, pas de nombre de collaborateurs ni de pays affiché, support 7j/7, mise en
- * place en moins de 48 h, sameAs = LinkedIn seul.
+ * de fonds, pas de nombre de collaborateurs ni de pays affiché, support 7j/7, sameAs = LinkedIn seul.
+ * Le délai de mise en place (48 h) est faux : retiré le 08/11/2026 (Soufiane), ne pas le réafficher.
  */
 export const brand = {
   name: 'TriggerFlow',
@@ -28,8 +28,7 @@ export const brand = {
     fr: "Le CRM hôtelier qui s'adapte à votre hôtel. Pas l'inverse.",
     en: 'The hotel CRM that fits your hotel, not the other way around.',
   },
-  /** Mise en place en moins de 48 h et support 7j/7 (confirmés le 25/10/2026). */
-  setupHours: 48,
+  /** Support 7j/7 (confirmé le 25/10/2026). Délai de mise en place retiré le 08/11/2026 : ne jamais l'afficher. */
   supportDays: 7,
   /** Une phrase qui définit l'entité : le nom de marque seul est ambigu (Power Automate, n8n…). */
   definition: {

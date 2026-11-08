@@ -534,7 +534,7 @@
   },
   "howItWorks": {
     "badge": "How it works",
-    "title": "Operational in 48h",
+    "title": "Guided setup",
     "subtitle": "Three steps are all it takes to automate the tasks you choose",
     "pmsIntegrations": "PMS Integrations",
     "cta": "View all integrations",
@@ -651,7 +651,7 @@
     "items": {
       "setup": {
         "question": "How long does the setup take?",
-        "answer": "Setup is quick and simple. On average, our customers are operational in less than 48 hours. Our team supports you every step of the way to configure your first automations."
+        "answer": "Our team connects your PMS, sets up your first automations with you and trains your staff. Timing depends on your property and journeys: we agree on it together during the demo."
       },
       "pms": {
         "question": "Is TriggerFlow compatible with my PMS?",
@@ -775,7 +775,7 @@
     "subtitle": "Human support at every step of your journey",
     "items": {
       "onboarding": {
-        "title": "Operational in 48h",
+        "title": "Delivered turnkey",
         "description": "Guided setup, data import, first workflows active in less than 2 days."
       },
       "support": {
@@ -1137,6 +1137,24 @@
       "title": "Every connection is included, at no extra cost.",
       "text": "PMS, door locks, payments, booking channels, Zapier, n8n: we connect everything that can be connected, with no extra fees on our side.",
       "more": "See integrations"
+    },
+    "reassurance": {
+      "commitment": {
+        "title": "No commitment",
+        "text": "Cancel any time, with 30 days' notice."
+      },
+      "gdpr": {
+        "title": "GDPR compliant",
+        "text": "Public data processing agreement, consent tracked."
+      },
+      "france": {
+        "title": "Data hosted in France",
+        "text": "With Scaleway, sub-processors listed publicly."
+      },
+      "turnkey": {
+        "title": "Delivered turnkey",
+        "text": "PMS connected and first scenarios set up with you."
+      }
     }
   },
   "contact": {
@@ -1838,7 +1856,7 @@
   "mewsIntegration": {
     "meta": {
       "title": "Hotel CRM for Mews: Automate Your Guest Relations",
-      "description": "Connect Mews to a CRM built for hospitality. Real-time bidirectional sync, pre-stay emails, automated upselling, loyalty. Up and running in 48 h."
+      "description": "Connect Mews to a CRM built for hospitality. Real-time bidirectional sync, pre-stay emails, automated upselling, loyalty. Guided setup."
     },
     "breadcrumb": {
       "integrations": "Integrations",
@@ -1850,7 +1868,7 @@
       "badgeMarketplace": "Mews Marketplace",
       "title": "The hotel CRM that connects natively to Mews",
       "subtitle": "Automate your entire guest journey from Mews data. Built for independent hotels and groups.",
-      "details": "Real-time bidirectional sync · Emails, SMS, WhatsApp · Satisfaction surveys · Loyalty program · Up and running in 48 h",
+      "details": "Real-time bidirectional sync · Emails, SMS, WhatsApp · Satisfaction surveys · Loyalty program · Delivered turnkey",
       "ctaDemo": "Book a demo",
       "ctaDemoMicro": "45 min, no commitment",
       "ctaData": "Synced data",
@@ -1860,8 +1878,8 @@
     "trustBar": {
       "stats": {
         "setup": {
-          "value": "48 h",
-          "label": "to be up and running"
+          "value": "Turnkey",
+          "label": "guided setup"
         },
         "sync": {
           "value": "Real-time",
@@ -2067,7 +2085,7 @@
         },
         {
           "question": "How long to get up and running?",
-          "answer": "The technical connection is done from the Mews Marketplace, no developer needed. Initial sync depends on how much history you have. Including the first workflows (pre-stay email, post-stay survey), a hotel is up and running in 48 h."
+          "answer": "The technical connection is done from the Mews Marketplace, no developer needed. Initial sync depends on how much history you have. Our team then activates the first workflows with you (pre-stay email, post-stay survey)."
         },
         {
           "question": "What data is synced between Mews and TriggerFlow?",
@@ -2233,7 +2251,7 @@
         "margin": "margin on early check-in, late check-out and room upgrades"
       },
       "title": "Over 400 properties equipped, connected to the PMS independent hotels use",
-      "turnkey": "Ships preconfigured, live within 48 hours",
+      "turnkey": "Ships preconfigured, turnkey",
       "pms": "Sales written back to your PMS, no re-entry",
       "gdpr": "GDPR compliant, DPA available",
       "support": "Team and support in French and English"
@@ -3439,13 +3457,13 @@
   "home2": {
     "meta": {
       "title": "TriggerFlow | The hotel CRM that fits your hotel",
-      "description": "Flows, segments, messages, forms, offers: build the exact guest journey your property needs, synced with your PMS. Hosted in France, live in 48 hours."
+      "description": "Flows, segments, messages, forms, offers: build the exact guest journey your property needs, synced with your PMS. Hosted in France, delivered turnkey."
     },
     "hero": {
       "eyebrow": "Hotel CRM",
       "title": "The hotel CRM that fits your hotel,",
       "titleMuted": "not the other way around.",
-      "subtitle": "Flows, segments, messages, forms, offers: build the exact guest journey your property needs, synced with your PMS. No developer, live in 48 hours.",
+      "subtitle": "Flows, segments, messages, forms, offers: build the exact guest journey your property needs, synced with your PMS. No developer, delivered turnkey.",
       "pms": "{count} connected PMS",
       "floating": {
         "profileLabel": "Guest profile",
@@ -3616,7 +3634,7 @@
     },
     "cta": {
       "title": "Build your hotel's guest journey.",
-      "text": "Guided setup, live in 48 hours."
+      "text": "Guided setup, delivered turnkey."
     },
     "builder": {
       "eyebrow": "Your plan",
@@ -3790,7 +3808,7 @@
         },
         {
           "title": "Guided set-up",
-          "text": "PMS connection and first scenarios configured with you. Up and running in 48 h."
+          "text": "PMS connection and first scenarios configured with you. Delivered turnkey."
         },
         {
           "title": "Ready-to-use templates",
@@ -3822,7 +3840,7 @@
     "addonThen": "€{price} from 1 January 2027",
     "seePricing": "See pricing",
     "faqTitle": "Your questions, answered.",
-    "ctaText": "Guided setup, live in 48 hours.",
+    "ctaText": "Guided setup, delivered turnkey.",
     "trustLine": "Hosted in France, public subprocessors, a DPA with every customer.",
     "realScreenshot": "Screenshot of the app, demo account",
     "addonFromTooltip": "Starting price, depending on volume.",
@@ -4057,12 +4075,12 @@
       "a2": "Bookings and guest profiles (dates, room, number of guests, booking channel), to trigger your scenarios and build profiles.",
       "a2TwoWay": "Bookings and guest profiles flow in from {pms}, and information updated in TriggerFlow flows back.",
       "q3": "How long to get started with {pms}?",
-      "a3": "Usually 48 hours for your first scenarios, from templates adapted to your property."
+      "a3": "It depends on your journeys: we set up your first scenarios with you, from templates adapted to your property."
     },
     "points": {
       "p1": "Hosted in France, GDPR, public DPA",
       "p2": "Guided setup",
-      "p3": "Up and running in 48 hours"
+      "p3": "Delivered turnkey"
     },
     "cta": "Connect {pms} to TriggerFlow this week."
   },

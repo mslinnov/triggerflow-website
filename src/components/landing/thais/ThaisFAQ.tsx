@@ -29,7 +29,7 @@ const faqs = [
   {
     question: 'Combien de temps pour être opérationnel ?',
     answer:
-      "En moyenne, nos clients sont opérationnels en 48 heures. La connexion à Thaïs se fait sans développeur, puis notre équipe vous accompagne pour configurer vos 3 premières automatisations. Vous pouvez ensuite créer les vôtres en autonomie.",
+      "La connexion à Thaïs se fait sans développeur, puis notre équipe vous accompagne pour configurer vos 3 premières automatisations. Vous pouvez ensuite créer les vôtres en autonomie.",
   },
 ];
 

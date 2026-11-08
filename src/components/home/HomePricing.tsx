@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { brand } from '@/data/brand';
 import type { DisplayPlan } from '@/data/pricing';
 import { OfferBuilder } from './OfferBuilder';
+import { PricingReassurance } from '@/components/pricing/PricingReassurance';
 
 /** Le configurateur d'offre (CRM au centre, modules autour), puis les trois formules. */
 export function HomePricing({ plans }: { plans: DisplayPlan[] }) {
@@ -55,6 +56,7 @@ export function HomePricing({ plans }: { plans: DisplayPlan[] }) {
             </div>
           ))}
         </div>
+        <PricingReassurance className="mt-6" />
         <p className="mt-4 text-[13px] text-ink-3">{tpr('addons.subtitle')}</p>
         <DsButton href="/tarifs" variant="link" arrow className="mt-6">
           {t('compare')}

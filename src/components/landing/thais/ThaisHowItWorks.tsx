@@ -44,7 +44,7 @@ export function ThaisHowItWorks() {
             3 étapes pour démarrer
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-white/80">
-            Opérationnel en moins de 48 heures
+            Livré clé en main
           </p>
         </motion.div>
 

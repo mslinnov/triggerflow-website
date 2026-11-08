@@ -534,7 +534,7 @@
   },
   "howItWorks": {
     "badge": "Comment ça marche",
-    "title": "Opérationnel en 48 heures",
+    "title": "Une mise en place accompagnée",
     "subtitle": "Trois étapes pour déployer vos premières automatisations",
     "pmsIntegrations": "Intégrations PMS",
     "cta": "Voir toutes les intégrations",
@@ -651,7 +651,7 @@
     "items": {
       "setup": {
         "question": "Combien de temps prend la mise en place ?",
-        "answer": "La mise en place est rapide et simple. En moyenne, nos clients sont opérationnels en moins de 48h. Notre équipe vous accompagne à chaque étape pour configurer vos premières automatisations."
+        "answer": "Notre équipe connecte votre PMS, configure avec vous vos premières automatisations et forme votre équipe. Le délai dépend de votre établissement et de vos parcours : nous le fixons ensemble pendant la démo."
       },
       "pms": {
         "question": "TriggerFlow est-il compatible avec mon PMS ?",
@@ -775,7 +775,7 @@
     "subtitle": "Notre équipe vous guide à chaque étape pour maximiser votre retour sur investissement",
     "items": {
       "onboarding": {
-        "title": "Opérationnel en 48h",
+        "title": "Livré clé en main",
         "description": "Configuration guidée, import de vos données, premiers workflows actifs en moins de 2 jours."
       },
       "support": {
@@ -1137,6 +1137,24 @@
       "title": "Toutes les connexions sont incluses, sans surcoût.",
       "text": "PMS, serrures, paiement, canaux de réservation, Zapier, n8n : nous connectons tout ce qui est connectable, sans frais supplémentaires de notre côté.",
       "more": "Voir les intégrations"
+    },
+    "reassurance": {
+      "commitment": {
+        "title": "Sans engagement",
+        "text": "Résiliable à tout moment, avec un préavis de 30 jours."
+      },
+      "gdpr": {
+        "title": "Conforme RGPD",
+        "text": "Accord de sous-traitance public, consentements tracés."
+      },
+      "france": {
+        "title": "Données hébergées en France",
+        "text": "Chez Scaleway, sous-traitants listés publiquement."
+      },
+      "turnkey": {
+        "title": "Livré clé en main",
+        "text": "PMS connecté et premiers scénarios configurés avec vous."
+      }
     }
   },
   "contact": {
@@ -1838,7 +1856,7 @@
   "mewsIntegration": {
     "meta": {
       "title": "CRM hôtelier pour Mews - Automatisez votre relation client",
-      "description": "Connectez Mews à un CRM conçu pour l'hôtellerie. Synchronisation bidirectionnelle temps réel, emails pré-séjour, upselling automatisé, fidélité. Opérationnel en 48 h."
+      "description": "Connectez Mews à un CRM conçu pour l'hôtellerie. Synchronisation bidirectionnelle temps réel, emails pré-séjour, upselling automatisé, fidélité. Mise en place accompagnée."
     },
     "breadcrumb": {
       "integrations": "Intégrations",
@@ -1850,7 +1868,7 @@
       "badgeMarketplace": "Mews Marketplace",
       "title": "Le CRM hôtelier qui se connecte nativement à Mews",
       "subtitle": "Automatisez toute votre relation client depuis les données Mews. Conçu pour les hôtels indépendants et les groupes.",
-      "details": "Synchronisation bidirectionnelle temps réel · Emails, SMS, WhatsApp · Enquêtes satisfaction · Programme de fidélité · Opérationnel en 48 h",
+      "details": "Synchronisation bidirectionnelle temps réel · Emails, SMS, WhatsApp · Enquêtes satisfaction · Programme de fidélité · Livré clé en main",
       "ctaDemo": "Demander une démo",
       "ctaDemoMicro": "45 min, sans engagement",
       "ctaData": "Données synchronisées",
@@ -1860,8 +1878,8 @@
     "trustBar": {
       "stats": {
         "setup": {
-          "value": "48 h",
-          "label": "pour être opérationnel"
+          "value": "Clé en main",
+          "label": "mise en place accompagnée"
         },
         "sync": {
           "value": "Temps réel",
@@ -2067,7 +2085,7 @@
         },
         {
           "question": "Combien de temps pour être opérationnel ?",
-          "answer": "La connexion technique se fait depuis la Marketplace Mews, sans développeur. La synchronisation initiale dépend du volume d'historique. Avec l'activation des premiers workflows (email pré-séjour, enquête post-séjour), un hôtel est opérationnel en 48 h."
+          "answer": "La connexion technique se fait depuis la Marketplace Mews, sans développeur. La synchronisation initiale dépend du volume d'historique. Notre équipe active ensuite avec vous les premiers workflows (email pré-séjour, enquête post-séjour)."
         },
         {
           "question": "Quelles données sont synchronisées entre Mews et TriggerFlow ?",
@@ -2233,7 +2251,7 @@
         "margin": "de marge sur l'early check-in, le late check-out et le surclassement"
       },
       "title": "Plus de 400 établissements équipés, connectés aux PMS des hôtels indépendants",
-      "turnkey": "Livré préréglé, opérationnel en 48 h",
+      "turnkey": "Livré préréglé, clé en main",
       "pms": "Ventes remontées dans votre PMS, sans resaisie",
       "gdpr": "Conforme RGPD, DPA signable",
       "support": "Équipe et support en français"
@@ -3127,7 +3145,7 @@
       },
       "pms": "Connecté à votre PMS · 12 PMS, serrures, paiement, Zapier et n8n",
       "badges": {
-        "setup": "Opérationnel en 48 heures",
+        "setup": "Livré clé en main",
         "support": "Support 7j/7",
         "rgpd": "Conforme RGPD"
       },
@@ -3716,13 +3734,13 @@
   "home2": {
     "meta": {
       "title": "TriggerFlow | Le CRM hôtelier qui s'adapte à votre hôtel",
-      "description": "Flows, segments, messages, formulaires, offres : construisez le parcours client exact de votre hôtel, synchronisé avec votre PMS. Hébergé en France, opérationnel en 48 h."
+      "description": "Flows, segments, messages, formulaires, offres : construisez le parcours client exact de votre hôtel, synchronisé avec votre PMS. Hébergé en France, livré clé en main."
     },
     "hero": {
       "eyebrow": "CRM hôtelier",
       "title": "Le CRM hôtelier qui s'adapte à votre hôtel.",
       "titleMuted": "Pas l'inverse.",
-      "subtitle": "Flows, segments, messages, formulaires, offres : construisez le parcours client exact de votre établissement, synchronisé avec votre PMS. Sans développeur, opérationnel en 48 h.",
+      "subtitle": "Flows, segments, messages, formulaires, offres : construisez le parcours client exact de votre établissement, synchronisé avec votre PMS. Sans développeur, livré clé en main.",
       "pms": "{count} PMS connectés",
       "floating": {
         "profileLabel": "Fiche client",
@@ -3893,7 +3911,7 @@
     },
     "cta": {
       "title": "Construisez le parcours client de votre hôtel.",
-      "text": "Mise en place accompagnée, opérationnel en 48 h."
+      "text": "Mise en place accompagnée, livrée clé en main."
     },
     "builder": {
       "eyebrow": "Votre offre",
@@ -4067,7 +4085,7 @@
         },
         {
           "title": "Mise en place accompagnée",
-          "text": "Connexion du PMS et premiers scénarios configurés avec vous. Opérationnel en 48 h."
+          "text": "Connexion du PMS et premiers scénarios configurés avec vous. Livré clé en main."
         },
         {
           "title": "Des modèles prêts à l'emploi",
@@ -4099,7 +4117,7 @@
     "addonThen": "{price} € à partir du 1er janvier 2027",
     "seePricing": "Voir les tarifs",
     "faqTitle": "Vos questions, nos réponses.",
-    "ctaText": "Mise en place accompagnée, opérationnel en 48 h.",
+    "ctaText": "Mise en place accompagnée, livrée clé en main.",
     "trustLine": "Hébergé en France, sous-traitants publics, DPA signé avec chaque client.",
     "realScreenshot": "Capture de l'application, compte de démonstration",
     "addonFromTooltip": "Prix à partir de, selon le volume.",
@@ -4334,12 +4352,12 @@
       "a2": "Les réservations et les profils clients (dates, chambre, nombre de personnes, canal de réservation), pour déclencher vos scénarios et construire vos fiches.",
       "a2TwoWay": "Les réservations et les profils clients remontent de {pms}, et les informations mises à jour dans TriggerFlow y redescendent.",
       "q3": "Combien de temps pour démarrer avec {pms} ?",
-      "a3": "En général 48 h pour vos premiers scénarios, à partir de modèles adaptés à votre établissement."
+      "a3": "Le délai dépend de vos parcours : nous configurons avec vous vos premiers scénarios, à partir de modèles adaptés à votre établissement."
     },
     "points": {
       "p1": "Hébergé en France, RGPD, DPA public",
       "p2": "Mise en place accompagnée",
-      "p3": "Opérationnel en 48 h"
+      "p3": "Livré clé en main"
     },
     "cta": "Connectez {pms} à TriggerFlow cette semaine."
   },

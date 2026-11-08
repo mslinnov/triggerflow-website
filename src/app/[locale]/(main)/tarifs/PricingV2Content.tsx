@@ -12,6 +12,7 @@ import { brand } from '@/data/brand';
 import type { AddonKey, DisplayAddon, DisplayPlan } from '@/data/pricing';
 import { UpcomingPrice } from '@/components/pricing/UpcomingPrice';
 import { FromPriceStar } from '@/components/pricing/FromPriceStar';
+import { PricingReassurance } from '@/components/pricing/PricingReassurance';
 import { Link } from '@/i18n/navigation';
 import { navIcons } from '@/data/nav-icons';
 
@@ -154,6 +155,7 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
               </div>
             ))}
           </div>
+          <PricingReassurance className="mt-6" />
         </Container>
       </section>
 

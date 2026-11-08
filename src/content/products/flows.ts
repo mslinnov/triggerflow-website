@@ -14,8 +14,8 @@ export const flows: ProductLanding = {
   hero: {
     title: { fr: 'Vos scénarios, exactement comme votre hôtel fonctionne.', en: 'Your scenarios, exactly the way your hotel works.' },
     subtitle: {
-      fr: 'Un déclencheur, vos conditions, des actions : dessinez le parcours client de votre établissement en glisser-déposer. Des modèles prêts pour démarrer, opérationnel en 48 h.',
-      en: 'A trigger, your conditions, actions: draw your property’s guest journey with drag and drop. Ready-made templates to start, live in 48 hours.',
+      fr: 'Un déclencheur, vos conditions, des actions : dessinez le parcours client de votre établissement en glisser-déposer. Des modèles prêts pour démarrer, livré clé en main.',
+      en: 'A trigger, your conditions, actions: draw your property’s guest journey with drag and drop. Ready-made templates to start, delivered turnkey.',
     },
     visual: 'flows',
   },
@@ -85,7 +85,7 @@ export const flows: ProductLanding = {
     { q: { fr: 'Faut-il des compétences techniques ?', en: 'Do I need technical skills?' }, a: { fr: 'Non. L’éditeur est visuel et des modèles prêts couvrent les scénarios les plus courants. L’équipe vous accompagne pour les premiers.', en: 'No. The editor is visual and ready-made templates cover the most common scenarios. The team helps you set up the first ones.' } },
     { q: { fr: 'Quels événements peuvent déclencher un flow ?', en: 'Which events can trigger a flow?' }, a: { fr: 'Les événements de réservation venus du PMS (création, arrivée, départ, délais), les anniversaires, les réponses aux formulaires et les paiements, entre autres.', en: 'Booking events from the PMS (creation, arrival, departure, delays), birthdays, form answers and payments, among others.' } },
     { q: { fr: 'Puis-je envoyer sur plusieurs canaux dans le même scénario ?', en: 'Can I use several channels in one scenario?' }, a: { fr: 'Oui : email, SMS, WhatsApp et formulaires peuvent se suivre dans le même flow, avec des conditions entre chaque étape.', en: 'Yes: email, SMS, WhatsApp and forms can follow one another in the same flow, with conditions between steps.' } },
-    { q: { fr: 'Combien de temps pour les premiers scénarios ?', en: 'How long until the first scenarios run?' }, a: { fr: 'En général 48 h, à partir de modèles adaptés à votre établissement.', en: 'Usually 48 hours, starting from templates adapted to your property.' } },
+    { q: { fr: 'Combien de temps pour les premiers scénarios ?', en: 'How long until the first scenarios run?' }, a: { fr: 'Cela dépend de vos parcours : notre équipe configure avec vous les premiers scénarios, à partir de modèles adaptés à votre établissement.', en: 'It depends on your journeys: our team sets up the first scenarios with you, from templates adapted to your property.' } },
     { q: { fr: 'Un flow peut-il en lancer un autre ?', en: 'Can a flow start another flow?' }, a: { fr: 'Oui, une action dédiée permet de basculer vers un autre flow, pour garder des scénarios simples à lire.', en: 'Yes, a dedicated action switches to another flow, to keep scenarios easy to read.' } },
   ],
   cta: { title: { fr: 'Dessinez votre premier scénario cette semaine.', en: 'Draw your first scenario this week.' } },

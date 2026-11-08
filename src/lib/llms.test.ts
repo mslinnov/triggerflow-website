@@ -18,7 +18,8 @@ test('llms.txt liste chaque article publié, en FR et en EN', () => {
 test('llms.txt et llms-full.txt : faits de marque sans claim retiré ni tiret cadratin', () => {
   for (const txt of [buildLlmsTxt(articles), buildLlmsFullTxt(articles)]) {
     assert.match(txt, /founded in 2019 in Toulouse/);
-    assert.match(txt, /operational in less than 48 hours, support 7 days a week/);
+    assert.match(txt, /delivered turnkey, support 7 days a week/);
+    assert.doesNotMatch(txt, /operational in less than 48 hours/);
     assert.doesNotMatch(txt, /Clock|leader|—/);
   }
 });

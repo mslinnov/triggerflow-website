@@ -214,7 +214,7 @@ export const modules: Record<string, ModuleData> = {
       },
       {
         question: 'Combien de temps pour être opérationnel ?',
-        answer: `Comptez ${brand.setupHours} h pour être opérationnel : connexion de votre PMS, import de votre charte graphique et activation de vos premiers emails automatiques, avec notre équipe.`
+        answer: 'Notre équipe s’occupe de la mise en place avec vous : connexion de votre PMS, import de votre charte graphique et activation de vos premiers emails automatiques. Le délai dépend de votre établissement.'
       },
       {
         question: 'Y a-t-il un engagement ou une durée minimum ?',

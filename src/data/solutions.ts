@@ -266,7 +266,7 @@ export const solutions: Record<string, SolutionData> = {
     faq: [
       {
         question: 'Combien de temps prend la mise en place pour un hôtel indépendant ?',
-        answer: `Comptez ${brand.setupHours} h. Nous connectons votre PMS, configurons vos premières séquences et formons votre équipe.`,
+        answer: 'Nous connectons votre PMS, configurons vos premières séquences et formons votre équipe. Le délai dépend de votre établissement : nous le fixons ensemble pendant la démo.',
       },
       {
         question: 'Faut-il des compétences techniques ?',
