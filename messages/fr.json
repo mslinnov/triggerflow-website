@@ -3743,7 +3743,29 @@
           "client": "Hôtel Estrimont",
           "text": "Les formulaires détournés en quiz de formation pour l'équipe, au Canada."
         }
-      ]
+      ],
+      "timeline": {
+        "before": {
+          "when": "Dès la réservation",
+          "label": "Avant le séjour"
+        },
+        "during": {
+          "when": "De l'arrivée au départ",
+          "label": "Pendant le séjour"
+        },
+        "after": {
+          "when": "Après le départ",
+          "label": "Après le séjour"
+        },
+        "marketing": {
+          "when": "Toute l'année",
+          "label": "Entre deux séjours"
+        },
+        "core": {
+          "when": "Tout au long du parcours",
+          "label": "Le socle commun à tous les modules"
+        }
+      }
     },
     "reliability": {
       "eyebrow": "Fiabilité",

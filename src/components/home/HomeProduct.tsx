@@ -3,11 +3,21 @@ import { Container, DsButton, ProductFrame, Section, SectionHeader } from '@/com
 import { DataFlowScenario } from '@/components/visuals';
 import { Link } from '@/i18n/navigation';
 import { productMenu } from '@/data/navigation';
+import { BedDouble, CalendarClock, Repeat, Star } from 'lucide-react';
+
+/** Les étapes de la frise, dans l'ordre du parcours client. */
+const phases = [
+  { key: 'before', Icon: CalendarClock },
+  { key: 'during', Icon: BedDouble },
+  { key: 'after', Icon: Star },
+  { key: 'marketing', Icon: Repeat },
+] as const;
 
 export function HomeProduct() {
   const t = useTranslations('home2.product');
   const nav = useTranslations('nav');
   const steps = t.raw('steps') as { title: string; text: string }[];
+  const foundations = productMenu.find((c) => c.key === 'core')?.items ?? [];
   const tailored = t.raw('tailored') as { client: string; text: string }[];
   return (
     <Section tone="white" id="produit">
@@ -35,26 +45,55 @@ export function HomeProduct() {
           </ProductFrame>
         </div>
 
-        {/* 5b. Toute la plateforme */}
+        {/* 5b. Toute la plateforme : la frise du séjour, puis le socle commun */}
         <div className="mt-28 md:mt-36">
           <SectionHeader title={t('platformTitle')} titleMuted={t('platformMuted')} align="left" />
-          <div className="mt-10 grid gap-px overflow-hidden rounded-xl border border-line bg-line sm:grid-cols-2 lg:grid-cols-5">
-            {productMenu.map((col) => (
-              <div key={col.key} className="bg-white p-6">
-                <p className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-ink-3">{nav(`columns.${col.key}`)}</p>
-                <ul className="mt-5 space-y-4">
-                  {col.items.map((item) => (
-                    <li key={item.key}>
-                      <Link href={item.href} className="group block">
-                        <span className="block text-[15px] font-semibold text-ink group-hover:text-accent">{nav(`items.${item.key}`)}</span>
-                        <span className="mt-0.5 block text-[13px] text-ink-3">{nav(`descriptions.${item.key}`)}</span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          <ol className="relative ml-4 mt-12 grid gap-10 md:ml-0 md:grid-cols-4 md:gap-6">
+            {/* La ligne du temps, de l'avant-séjour au retour du client */}
+            <div aria-hidden className="absolute left-0 right-0 top-[15px] hidden h-px bg-gradient-to-r from-accent via-accent/60 to-accent/20 md:block" />
+            {phases.map(({ key, Icon }) => {
+              const col = productMenu.find((c) => c.key === key);
+              if (!col) return null;
+              return (
+                <li key={key} className="relative border-l border-line pl-6 md:border-l-0 md:pl-0">
+                  <span className="absolute -left-[16px] top-0 flex h-8 w-8 items-center justify-center rounded-full border border-accent bg-white text-accent md:static">
+                    <Icon aria-hidden className="h-4 w-4" />
+                  </span>
+                  <p className="mt-0 font-mono text-[11px] uppercase tracking-[0.06em] text-ink-3 md:mt-5">{t(`timeline.${key}.when`)}</p>
+                  <p className="mt-1 text-[18px] font-semibold text-ink">{t(`timeline.${key}.label`)}</p>
+                  <ul className="mt-5 space-y-2">
+                    {col.items.map((item) => (
+                      <li key={item.key}>
+                        <Link href={item.href} className="group block rounded-lg border border-line bg-white px-4 py-3 transition-colors hover:border-accent">
+                          <span className="block text-[15px] font-semibold text-ink group-hover:text-accent">{nav(`items.${item.key}`)}</span>
+                          <span className="mt-0.5 block text-[13px] text-ink-3">{nav(`descriptions.${item.key}`)}</span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              );
+            })}
+          </ol>
+
+          {/* Le socle : présent tout au long du parcours */}
+          <div className="mt-10 rounded-2xl bg-ink p-6 text-white md:p-8">
+            <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between">
+              <p className="font-mono text-[11px] uppercase tracking-[0.08em] text-mint">{t('timeline.core.when')}</p>
+              <p className="text-[14px] text-white/70">{t('timeline.core.label')}</p>
+            </div>
+            <ul className="mt-6 grid gap-px overflow-hidden rounded-xl bg-white/10 sm:grid-cols-2 lg:grid-cols-5">
+              {foundations.map((item) => (
+                <li key={item.key} className="bg-ink">
+                  <Link href={item.href} className="group block h-full p-4 transition-colors hover:bg-white/[0.04]">
+                    <span className="block text-[15px] font-semibold text-white group-hover:text-mint">{nav(`items.${item.key}`)}</span>
+                    <span className="mt-0.5 block text-[13px] text-white/65">{nav(`descriptions.${item.key}`)}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
+
           <DsButton href="/produit" variant="link" arrow className="mt-6">
             {t('seeAll')}
           </DsButton>

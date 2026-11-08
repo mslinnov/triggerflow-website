@@ -3458,7 +3458,29 @@
           "client": "Hôtel Estrimont",
           "text": "Forms turned into training quizzes for the team, in Canada."
         }
-      ]
+      ],
+      "timeline": {
+        "before": {
+          "when": "From booking",
+          "label": "Before the stay"
+        },
+        "during": {
+          "when": "Check-in to check-out",
+          "label": "During the stay"
+        },
+        "after": {
+          "when": "After check-out",
+          "label": "After the stay"
+        },
+        "marketing": {
+          "when": "All year round",
+          "label": "Between stays"
+        },
+        "core": {
+          "when": "Throughout the journey",
+          "label": "The foundation shared by every module"
+        }
+      }
     },
     "reliability": {
       "eyebrow": "Reliability",
