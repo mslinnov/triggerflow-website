@@ -21,7 +21,7 @@ export function TrustStrip({ onDark, align = 'center', className }: TrustStripPr
       className={cn(
         'flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[12px] uppercase tracking-[0.06em]',
         align === 'center' ? 'justify-center' : 'justify-start',
-        onDark ? 'text-white/60' : 'text-ink-3',
+        onDark ? 'text-white/80' : 'text-ink-3',
         className
       )}
     >
