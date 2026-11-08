@@ -4,14 +4,14 @@ import { DataFlowScenario } from '@/components/visuals';
 import { Link } from '@/i18n/navigation';
 import { productMenu } from '@/data/navigation';
 import { navIcons } from '@/data/nav-icons';
-import { BedDouble, CalendarClock, Crown, Mail, Repeat, Star } from 'lucide-react';
+import { BedDouble, CalendarClock, Crown, Repeat } from 'lucide-react';
 
 /** Les étapes de la frise, dans l'ordre du parcours client. */
+/** « Après » regroupe les avis et le marketing : tout ce qui fait revenir le client. */
 const phases = [
-  { key: 'before', Icon: CalendarClock },
-  { key: 'during', Icon: BedDouble },
-  { key: 'after', Icon: Star },
-  { key: 'marketing', Icon: Repeat },
+  { key: 'before', Icon: CalendarClock, menus: ['before'] },
+  { key: 'during', Icon: BedDouble, menus: ['during'] },
+  { key: 'after', Icon: Repeat, menus: ['after', 'marketing'] },
 ] as const;
 
 export function HomeProduct() {
@@ -51,14 +51,15 @@ export function HomeProduct() {
         {/* 5b. Toute la plateforme : la frise du séjour, puis le socle commun */}
         <div className="mt-28 md:mt-36">
           <SectionHeader title={t('platformTitle')} titleMuted={t('platformMuted')} align="left" />
-          <ol className="relative ml-4 mt-12 grid gap-10 md:ml-0 md:grid-cols-4 md:gap-6">
+          <ol className="relative ml-4 mt-12 grid gap-10 md:ml-0 md:grid-cols-3 md:gap-6">
             {/* La ligne du temps, de l'avant-séjour au retour du client */}
             <div aria-hidden className="absolute left-0 right-0 top-[15px] hidden h-px bg-gradient-to-r from-accent via-accent/60 to-accent/20 md:block" />
-            {phases.map(({ key, Icon }) => {
-              const col = productMenu.find((c) => c.key === key);
-              if (!col) return null;
+            {phases.map(({ key, Icon, menus }) => {
               // La messagerie unifiée est incluse partout : elle rejoint le socle, pas une étape.
-              const items = col.items.filter((item) => item.key !== 'inbox');
+              const items = productMenu
+                .filter((c) => (menus as readonly string[]).includes(c.key))
+                .flatMap((c) => c.items)
+                .filter((item) => item.key !== 'inbox');
               return (
                 <li key={key} className="relative flex flex-col border-l border-line pl-6 md:border-l-0 md:pl-0">
                   <span className="absolute -left-[16px] top-0 flex h-8 w-8 items-center justify-center rounded-full border border-accent bg-white text-accent md:static">
@@ -88,10 +89,7 @@ export function HomeProduct() {
                         );
                       })}
                     </ul>
-                    {key === 'after' && <AfterVisual review={t('timeline.visual.review')} label={t('timeline.visual.reviewLabel')} />}
-                    {key === 'marketing' && (
-                      <MarketingVisual offer={t('timeline.visual.offer')} offerLabel={t('timeline.visual.offerLabel')} tier={t('timeline.visual.tier')} />
-                    )}
+                    {key === 'after' && <LoyaltyVisual tier={t('timeline.visual.tier')} />}
                   </div>
                 </li>
               );
@@ -148,36 +146,10 @@ export function HomeProduct() {
   );
 }
 
-/** Petit visuel de l'étape « Après le séjour » : un avis publié. */
-function AfterVisual({ review, label }: { review: string; label: string }) {
+/** Petit visuel de l'étape « Après » : la carte de fidélité du client. */
+function LoyaltyVisual({ tier }: { tier: string }) {
   return (
     <div className="mt-auto pt-2">
-      <div className="rounded-xl bg-white p-4">
-        <p className="flex gap-0.5 text-peach" aria-hidden>
-          {[0, 1, 2, 3, 4].map((i) => (
-            <Star key={i} className="h-4 w-4 fill-current" />
-          ))}
-        </p>
-        <p className="mt-2 text-[13.5px] leading-snug text-ink">« {review} »</p>
-        <p className="mt-2 font-mono text-[10.5px] uppercase tracking-[0.06em] text-ink-3">{label}</p>
-      </div>
-    </div>
-  );
-}
-
-/** Petit visuel de l'étape « Entre deux séjours » : une offre de retour et une carte de fidélité. */
-function MarketingVisual({ offer, offerLabel, tier }: { offer: string; offerLabel: string; tier: string }) {
-  return (
-    <div className="mt-auto space-y-2 pt-2">
-      <div className="flex items-center gap-3 rounded-xl bg-white p-4">
-        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-mint/60 text-accent">
-          <Mail aria-hidden className="h-4 w-4" />
-        </span>
-        <div>
-          <p className="font-mono text-[10.5px] uppercase tracking-[0.06em] text-ink-3">{offerLabel}</p>
-          <p className="text-[13.5px] font-semibold text-ink">{offer}</p>
-        </div>
-      </div>
       <div className="flex items-center justify-between rounded-xl bg-ink p-4 text-white">
         <span className="flex items-center gap-2 text-[13px] font-semibold">
           <Crown aria-hidden className="h-4 w-4 text-peach" />

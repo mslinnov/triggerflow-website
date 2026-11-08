@@ -3764,7 +3764,7 @@
         }
       ],
       "platformTitle": "Avant, pendant, après le séjour.",
-      "platformMuted": "Et entre deux séjours.",
+      "platformMuted": "Et jusqu'au prochain.",
       "seeAll": "Voir toute la plateforme",
       "tailoredTitle": "Des hôtels différents.",
       "tailoredMuted": "Des parcours différents.",
@@ -3793,22 +3793,14 @@
           "label": "Pendant le séjour"
         },
         "after": {
-          "when": "Après le départ",
-          "label": "Après le séjour"
-        },
-        "marketing": {
-          "when": "Toute l'année",
-          "label": "Entre deux séjours"
+          "when": "Après le départ, toute l'année",
+          "label": "Fidéliser et faire revenir"
         },
         "core": {
           "when": "Tout au long du parcours",
           "label": "Le socle commun à tous les modules"
         },
         "visual": {
-          "review": "Accueil aux petits soins, on reviendra !",
-          "reviewLabel": "Avis Google · demandé après le départ",
-          "offerLabel": "Campagne · clients fidèles",
-          "offer": "Votre prochaine escapade vous attend",
           "tier": "Membre Gold"
         }
       }

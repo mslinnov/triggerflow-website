@@ -3486,8 +3486,8 @@
           "text": "An email, then a WhatsApp follow-up if the guest doesn't reply. At the right time, on the right channel."
         }
       ],
-      "platformTitle": "Before, during and after the stay.",
-      "platformMuted": "And between stays.",
+      "platformTitle": "Before, during, after the stay.",
+      "platformMuted": "And until the next one.",
       "seeAll": "See the whole platform",
       "tailoredTitle": "Different hotels.",
       "tailoredMuted": "Different journeys.",
@@ -3516,22 +3516,14 @@
           "label": "During the stay"
         },
         "after": {
-          "when": "After check-out",
-          "label": "After the stay"
-        },
-        "marketing": {
-          "when": "All year round",
-          "label": "Between stays"
+          "when": "After check-out, all year",
+          "label": "Win them back"
         },
         "core": {
           "when": "Throughout the journey",
           "label": "The foundation shared by every module"
         },
         "visual": {
-          "review": "Such thoughtful care, we'll be back!",
-          "reviewLabel": "Google review · requested after check-out",
-          "offerLabel": "Campaign · loyal guests",
-          "offer": "Your next getaway is waiting",
           "tier": "Gold member"
         }
       }
