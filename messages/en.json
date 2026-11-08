@@ -1029,8 +1029,6 @@
       "inDemo": "Price in demo",
       "note": "Prices excl. VAT, per month and per property. AI agent and telephony: entry-tier price.",
       "from": "from",
-      "was": "instead of",
-      "then": "€{price} from January 1, 2027",
       "names": {
         "voice": "Telephony (Reception call)",
         "b2b": "B2B: events and companies",

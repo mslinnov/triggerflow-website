@@ -79,7 +79,7 @@ const faqItems = ['modules', 'connections', 'changePlan', 'commitment', 'groupRa
 interface PricingV2ContentProps {
   plans: DisplayPlan[];
   addons: DisplayAddon[];
-  /** Période d'annonce de la hausse du 1er janvier 2027. */
+  /** Période d'annonce d'un changement de prix (aucune aujourd'hui). */
   announcing: boolean;
 }
 
@@ -215,10 +215,8 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
                     <span className="mt-4 flex flex-wrap items-baseline gap-x-1.5 border-t border-line pt-3">
                       {addon.from && <span className="text-[12.5px] text-ink-3">{t('addons.from')}</span>}
                       <span className="text-[20px] font-medium tabular-nums text-ink">{addon.price} €</span>
-                      {addon.was && <span className="text-[13px] text-ink-3 line-through">{addon.was} €</span>}
                       <span className="text-[12px] text-ink-3">{t('perMonthFull')}</span>
                     </span>
-                    {addon.upcomingPrice && <span className="mt-1 text-[12px] text-ink-3">{t('addons.then', { price: addon.upcomingPrice })}</span>}
                   </Link>
                 </li>
               );

@@ -1029,8 +1029,6 @@
       "inDemo": "Prix en démo",
       "note": "Prix HT, par mois et par établissement. Agent IA et téléphonie : prix du premier palier.",
       "from": "à partir de",
-      "was": "au lieu de",
-      "then": "{price} € au 1er janvier 2027",
       "names": {
         "voice": "Téléphonie (Appel réception)",
         "b2b": "B2B : événements et entreprises",

@@ -211,7 +211,6 @@ export async function ProductLandingPage({ product, locale }: { product: Product
             {addon && (
               <p className="mt-2 text-[15px] text-ink-2">
                 {addon.from ? t('addonFrom', { price: addon.price }) : t('addonPrice', { price: addon.price })}
-                {addon.upcomingPrice && ` · ${t('addonThen', { price: addon.upcomingPrice })}`}
               </p>
             )}
           </div>

@@ -82,12 +82,10 @@ export interface Addon {
   key: AddonKey;
   /** Prix d'aujourd'hui (HT, par mois et par établissement). */
   price: string;
-  /** Prix au 1er janvier 2027 (`ADDON_PRICE_CHANGE_AT`). */
+  /** Égal à `price` : aucune évolution de prix n'est annoncée sur le site. */
   nextPrice: string;
   /** Prix d'appel d'une offre à paliers : affiché « à partir de ». */
   from?: boolean;
-  /** Ancien prix barré (prix de lancement). */
-  was?: string;
 }
 
 /**
@@ -95,17 +93,17 @@ export interface Addon {
  * (palier 2 à 49 €). Téléphonie (Appel réception) : à partir de 39 €. B2B : Événements + comptes entreprises.
  */
 export const ADDONS: Addon[] = [
-  { key: 'reviews', price: '19', nextPrice: '29' },
-  { key: 'aiAgent', price: '19', nextPrice: '29', from: true },
+  { key: 'reviews', price: '19', nextPrice: '19' },
+  { key: 'aiAgent', price: '19', nextPrice: '19', from: true },
   { key: 'housekeeping', price: '29', nextPrice: '29' },
   { key: 'payments', price: '29', nextPrice: '29' },
   { key: 'loyalty', price: '39', nextPrice: '39' },
-  { key: 'guestApp', price: '39', nextPrice: '39', was: '49' },
+  { key: 'guestApp', price: '39', nextPrice: '39' },
   { key: 'voice', price: '39', nextPrice: '39', from: true },
   { key: 'b2b', price: '29', nextPrice: '29' },
 ];
 
-/** Évolution des prix des modules (Avis, Agent IA), minuit heure de Paris. */
+/** Mécanisme d'annonce conservé pour un éventuel changement de prix futur (aucun annoncé aujourd'hui). */
 export const ADDON_PRICE_CHANGE_AT = new Date('2027-01-01T00:00:00+01:00');
 
 export function getAddonPricingPhase(now: Date = getPricingNow()): PricingPhase {
@@ -137,7 +135,7 @@ export function getPricingPhase(now: Date = getPricingNow()): PricingPhase {
 
 export interface DisplayPrice {
   price: string;
-  /** Prix au 1er janvier 2027, seulement pendant l'annonce et s'il change. */
+  /** Prochain prix, seulement pendant une période d'annonce et s'il change (aucun aujourd'hui). */
   upcomingPrice: string | null;
 }
 

@@ -23,11 +23,11 @@ test('modules au choix inclus : 0, 1, 2, puis tous', () => {
   assert.deepEqual(PLANS.map((p) => p.includedModules), [0, 1, 2, 'all']);
 });
 
-test('modules : prix d’aujourd’hui, puis Avis et Agent IA à 29 € au 1er janvier 2027', () => {
+test('modules : prix publics, sans évolution annoncée', () => {
   const now = getDisplayAddons('announce').map((a) => [a.key, a.price, a.upcomingPrice]);
   assert.deepEqual(now, [
-    ['reviews', '19', '29'],
-    ['aiAgent', '19', '29'],
+    ['reviews', '19', null],
+    ['aiAgent', '19', null],
     ['housekeeping', '29', null],
     ['payments', '29', null],
     ['loyalty', '39', null],
