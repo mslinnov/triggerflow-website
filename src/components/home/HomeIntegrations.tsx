@@ -3,32 +3,8 @@ import { useTranslations } from 'next-intl';
 import { BadgeCheck } from 'lucide-react';
 import { DsButton } from '@/components/ds';
 import { cn } from '@/lib/utils';
+import { integrationLogos } from '@/data/integration-logos';
 
-/** Fichiers logo par nom (public/images/integrations). Un nom sans fichier n'est pas affiché. */
-const LOGOS: Record<string, { src: string; w: number; h: number }> = {
-  Mews: { src: 'mews.svg', w: 901, h: 114 },
-  'Thaïs': { src: 'thais.svg', w: 210, h: 64 },
-  'Opera Cloud': { src: 'opera.png', w: 1080, h: 500 },
-  Medialog: { src: 'medialog.svg', w: 152, h: 36 },
-  Misterbooking: { src: 'misterbooking.png', w: 498, h: 100 },
-  Asterio: { src: 'asterio.png', w: 300, h: 157 },
-  Apaleo: { src: 'apaleo.png', w: 829, h: 210 },
-  Vega: { src: 'vega.png', w: 512, h: 512 },
-  Beds24: { src: 'beds24.svg', w: 130, h: 70 },
-  Zeswitch: { src: 'zeswitch.png', w: 569, h: 125 },
-  Reservit: { src: 'reservit.webp', w: 300, h: 173 },
-  'Lean PMS': { src: 'leanpms.webp', w: 336, h: 92 },
-  Sesame: { src: 'sesame.png', w: 1249, h: 600 },
-  Igloohome: { src: 'igloohome.svg', w: 87, h: 24 },
-  Stripe: { src: 'stripe.svg', w: 512, h: 214 },
-  PayZen: { src: 'payzen.png', w: 199, h: 84 },
-  SystemPay: { src: 'systempay.png', w: 174, h: 50 },
-  'Booking.com': { src: 'booking.svg', w: 100, h: 100 },
-  Airbnb: { src: 'airbnb.svg', w: 2500, h: 780 },
-  WhatsApp: { src: 'whatsapp.svg', w: 175, h: 176 },
-  Zapier: { src: 'zapier.svg', w: 2500, h: 2500 },
-  n8n: { src: 'n8n.svg', w: 256, h: 256 },
-};
 
 /** Échantillon affiché sur l'accueil (12 logos, toutes familles confondues) : un aperçu, pas la liste complète. */
 /** Logos dont le dessin est petit dans le fichier : affichés plus grands pour un poids visuel égal. */
@@ -62,7 +38,7 @@ export function HomeIntegrations() {
       </div>
       <ul className="grid auto-rows-fr grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
         {FEATURED.map((name) => {
-          const logo = LOGOS[name];
+          const logo = integrationLogos[name];
           if (!logo) return null;
           const square = logo.w / logo.h < 1.6;
           return (

@@ -4123,7 +4123,8 @@
     "trustLine": "Hébergé en France, sous-traitants publics, DPA signé avec chaque client.",
     "realScreenshot": "Capture de l'application, compte de démonstration",
     "addonFromTooltip": "Prix à partir de, selon le volume.",
-    "addonUnit": "par mois et par établissement, HT"
+    "addonUnit": "par mois et par établissement, HT",
+    "chosenBy": "Ils ont choisi TriggerFlow"
   },
   "clientsPage": {
     "eyebrow": "Clients",

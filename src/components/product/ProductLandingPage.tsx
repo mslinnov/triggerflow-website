@@ -1,9 +1,12 @@
+import { clientLogos } from '@/data/clients';
+import { integrationLogos } from '@/data/integration-logos';
+import { PricingReassurance } from '@/components/pricing/PricingReassurance';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { productScreenshots } from '@/content/products/screenshots';
 import {
   BarChart3, BedDouble, Bell, Calendar, ClipboardList, Clock, CreditCard, Filter, Layers, Link2, Lock, Mail,
-  MessageSquare, Package, Receipt, RefreshCw, Repeat, Shield, Sparkles, Users, Workflow, Zap, ArrowRight, Phone, Mic, Globe, Moon, type LucideIcon,
+  MessageSquare, Package, Receipt, RefreshCw, Repeat, Shield, Sparkles, Users, Workflow, Zap, ArrowRight, Phone, Mic, Globe, Moon, BadgeCheck, type LucideIcon,
 } from 'lucide-react';
 import { Container, CtaBand, DsButton, Eyebrow, FaqList, FeatureItem, ProductFrame, ProofStat, Section, SectionHeader, TrustStrip } from '@/components/ds';
 import { UpsellScenario, FlowTreeScenario, PayScenario, VoiceScenario, InboxScenario, ReviewsScenario, FormsScenario, LoyaltyScenario, DedupScenario, CampaignScenario, GuestAppScenario, EventsScenario, B2bScenario, CheckinScenario, HousekeepingScenario, KeysScenario, AnalyticsScenario, BookingScenario } from '@/components/visuals';
@@ -13,6 +16,9 @@ import { stat } from '@/data/company-stats';
 import { getAddonPricingPhase, getDisplayAddons } from '@/data/pricing';
 import { FromPriceStar } from '@/components/pricing/FromPriceStar';
 import type { IconKey } from '@/content/products/types';
+
+/** Clients TriggerFlow affichés quand le module n'a pas encore de client cité (libellé « Ils ont choisi TriggerFlow »). */
+const FALLBACK_CLIENTS = ['Saint James Paris', 'Groupe Noemys', 'AMMI Hôtels', 'Edgar Hôtel & Spa', 'Sezz Saint-Tropez'];
 import type { ProductLanding, L } from '@/content/products';
 
 const ICONS: Record<IconKey, LucideIcon> = {
@@ -29,6 +35,7 @@ export async function ProductLandingPage({ product, locale }: { product: Product
   const lang = (locale === 'en' ? 'en' : 'fr') as 'fr' | 'en';
   const l = (v: L | string) => (typeof v === 'string' ? v : v[lang]);
   const t = await getTranslations({ locale, namespace: 'productPage' });
+  const th = await getTranslations({ locale, namespace: 'home2' });
   const nav = await getTranslations({ locale, namespace: 'nav' });
   const shot = productScreenshots[product.slug];
   const Visual = VISUALS[product.hero.visual];
@@ -57,25 +64,36 @@ export async function ProductLandingPage({ product, locale }: { product: Product
         </Container>
       </section>
 
-      {/* 2. Preuves (masquées tant qu'aucun client ni chiffre mesuré n'est disponible) */}
-      {(product.proof.clients.length > 0 || product.proof.stat) && (
+      {/* 2. Preuves : clients du module (logos), sinon une sélection de clients TriggerFlow ; chiffre mesuré si disponible */}
       <section className="border-y border-line bg-white py-10 md:py-12">
-        <Container className="flex flex-col items-center gap-8 md:flex-row md:justify-between">
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 md:justify-start">
-            {product.proof.clients.length > 0 && <span className="font-mono text-eyebrow uppercase text-ink-3">{t('usedBy')}</span>}
-            {product.proof.clients.map((c) => (
-              <span key={c} className="text-[15px] font-semibold tracking-[-0.01em] text-ink/70">{c}</span>
-            ))}
+        <Container className="flex flex-col items-center gap-8 lg:flex-row lg:justify-between">
+          <div className="flex flex-col items-center gap-4 lg:flex-row lg:gap-8">
+            <span className="shrink-0 font-mono text-eyebrow uppercase text-ink-3">
+              {product.proof.clients.length > 0 ? t('usedBy') : t('chosenBy')}
+            </span>
+            <ul className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4 lg:justify-start">
+              {(product.proof.clients.length > 0 ? product.proof.clients : FALLBACK_CLIENTS).map((c) => {
+                const logo = clientLogos[c as keyof typeof clientLogos];
+                return (
+                  <li key={c} className="flex h-10 items-center">
+                    {logo ? (
+                      <Image src={logo.src} alt={c} width={logo.width} height={logo.height} className="h-8 w-auto max-w-[130px] object-contain opacity-80" />
+                    ) : (
+                      <span className="text-[15px] font-semibold tracking-[-0.01em] text-ink/70">{c}</span>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
           </div>
           {product.proof.stat && product.proof.statLabel && (
-            <p className="flex items-baseline gap-3 text-center md:text-right">
+            <p className="flex items-baseline gap-3 text-center lg:text-right">
               <span className="text-[2rem] font-medium tabular-nums tracking-[-0.03em] text-ink">{stat(product.proof.stat, locale)}</span>
               <span className="max-w-[260px] text-[14px] text-ink-2">{l(product.proof.statLabel)}</span>
             </p>
           )}
         </Container>
       </section>
-      )}
 
       {/* 3. Problème */}
       <Section tone="paper">
@@ -164,12 +182,28 @@ export async function ProductLandingPage({ product, locale }: { product: Product
       <Section tone="white">
         <Container>
           <SectionHeader eyebrow={t('integrations')} title={l(product.integrations.title)} subtitle={l(product.integrations.text)} align="left" />
-          <ul className="mt-10 flex flex-wrap gap-2">
-            {[...brand.pms, ...(product.integrations.extra ?? [])].map((name) => (
-              <li key={name} className="rounded-lg border border-line px-3 py-2 text-[14px] font-medium text-ink-2">{name}</li>
-            ))}
+          <ul className="mt-10 grid grid-cols-2 border-l border-t border-line sm:grid-cols-4 lg:grid-cols-6">
+            {[...brand.pms, ...(product.integrations.extra ?? [])].map((name) => {
+              const logo = integrationLogos[name];
+              return (
+                <li key={name} className="flex h-20 items-center justify-center border-b border-r border-line px-4">
+                  {logo && logo.w / logo.h >= 1.6 ? (
+                    <Image src={`/images/integrations/${logo.src}`} alt={name} width={logo.w} height={logo.h} className="h-6 w-auto max-w-[110px] object-contain opacity-80 grayscale" />
+                  ) : (
+                    <span className="flex items-center gap-2 text-[14px] font-semibold text-ink-2">
+                      {logo && <Image src={`/images/integrations/${logo.src}`} alt="" width={logo.w} height={logo.h} className="h-6 w-6 object-contain grayscale" />}
+                      {name}
+                    </span>
+                  )}
+                </li>
+              );
+            })}
           </ul>
-          <DsButton href="/integrations" variant="link" arrow className="mt-6">{t('allIntegrations')}</DsButton>
+          <p className="mt-6 inline-flex items-center gap-2 rounded-lg bg-mint/60 px-3 py-2 text-[13.5px] font-medium text-accent-hover">
+            <BadgeCheck aria-hidden className="h-4 w-4 shrink-0" />
+            {th('integrations.free')}
+          </p>
+          <DsButton href="/integrations" variant="link" arrow className="mt-4 flex">{t('allIntegrations')}</DsButton>
         </Container>
       </Section>
 
@@ -222,6 +256,9 @@ export async function ProductLandingPage({ product, locale }: { product: Product
             )}
           </div>
           <DsButton href="/tarifs" variant="secondary">{t('seePricing')}</DsButton>
+        </Container>
+        <Container>
+          <PricingReassurance className="mt-8" />
         </Container>
       </Section>
 

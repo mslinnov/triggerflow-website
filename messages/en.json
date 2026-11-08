@@ -3846,7 +3846,8 @@
     "trustLine": "Hosted in France, public subprocessors, a DPA with every customer.",
     "realScreenshot": "Screenshot of the app, demo account",
     "addonFromTooltip": "Starting price, depending on volume.",
-    "addonUnit": "per month per property, excl. VAT"
+    "addonUnit": "per month per property, excl. VAT",
+    "chosenBy": "They chose TriggerFlow"
   },
   "clientsPage": {
     "eyebrow": "Customers",
