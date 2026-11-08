@@ -3444,6 +3444,35 @@
       "request": "Nouvelle demande de réservation",
       "detail": "Soin 60 min · samedi 14:00",
       "linked": "rattachée au séjour"
+    },
+    "dataFlow": {
+      "sources": {
+        "pms": "PMS",
+        "ota": "OTA",
+        "pay": "Paiement",
+        "lock": "Serrure",
+        "form": "Formulaire"
+      },
+      "filterLabel": "Filtre",
+      "filterTitle": "Doublons fusionnés",
+      "updated": "Cardex à jour",
+      "cardex": "Booking.com · 2 chambres · 23-27 déc.",
+      "conditionLabel": "Conditions",
+      "conditions": {
+        "ota": "Réservation via une OTA",
+        "christmas": "Séjour pendant Noël",
+        "rooms": "Plus d'une chambre"
+      },
+      "yes": "Oui",
+      "yesBranch": "Oui",
+      "noBranch": "Non",
+      "action": "Action",
+      "email": "Email : formulaire du réveillon",
+      "wait": "Sans réponse sous 48 h",
+      "followUp": "Relance",
+      "whatsapp": "WhatsApp : rappel du formulaire",
+      "otherLabel": "Autre scénario",
+      "other": "Le client reçoit le parcours prévu pour son profil."
     }
   },
   "nav": {
@@ -3640,11 +3669,11 @@
     },
     "proof": {
       "title": "Ils ont choisi TriggerFlow",
-      "pms": "Connecté nativement à {list} et {rest} autres PMS."
+      "pms": "Et bien d'autres hôtels indépendants, connectés nativement à leur PMS, leurs serrures, leurs liens de paiement et tous leurs outils."
     },
     "results": {
       "eyebrow": "Résultats clients",
-      "title": "Trois hôtels, trois résultats.",
+      "title": "Ce que TriggerFlow a changé chez eux.",
       "items": [
         {
           "client": "Hôtel Causse Comtal",
@@ -3679,16 +3708,20 @@
       "subtitle": "Une réservation arrive, un client s'enregistre, un séjour se termine. Vous choisissez qui reçoit quoi, quand, sur quel canal. TriggerFlow l'exécute, à chaque fois.",
       "steps": [
         {
-          "title": "Un déclencheur",
-          "text": "Réservation, arrivée, départ, anniversaire, réponse à un formulaire, délai."
+          "title": "Vos données arrivent",
+          "text": "PMS, OTA, paiements, serrures, formulaires : tout est synchronisé en temps réel."
         },
         {
-          "title": "Vos conditions",
-          "text": "Segment, langue, canal de réservation, type de chambre, historique du client."
+          "title": "Une seule fiche client",
+          "text": "Les doublons sont fusionnés et le cardex est mis à jour, dans TriggerFlow comme dans votre PMS."
         },
         {
-          "title": "Des actions",
-          "text": "Email, SMS, WhatsApp, formulaire, offre, tâche pour l'équipe. Et le PMS est mis à jour."
+          "title": "Vos règles",
+          "text": "Canal de réservation, période, nombre de chambres, langue, historique : vous décidez."
+        },
+        {
+          "title": "Les bons messages",
+          "text": "Un email, puis une relance WhatsApp si le client ne répond pas. Au bon moment, sur le bon canal."
         }
       ],
       "platformTitle": "Avant, pendant, après le séjour.",

@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { Container, DsButton, ProductFrame, Section, SectionHeader } from '@/components/ds';
-import { FlowTreeScenario } from '@/components/visuals';
+import { DataFlowScenario } from '@/components/visuals';
 import { Link } from '@/i18n/navigation';
 import { productMenu } from '@/data/navigation';
 
@@ -13,7 +13,7 @@ export function HomeProduct() {
     <Section tone="white" id="produit">
       <Container>
         {/* 5a. Le principe */}
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
           <div>
             <SectionHeader eyebrow={t('eyebrow')} title={t('title')} titleMuted={t('titleMuted')} subtitle={t('subtitle')} align="left" />
             <ol className="mt-10 space-y-6">
@@ -28,9 +28,9 @@ export function HomeProduct() {
               ))}
             </ol>
           </div>
-          <ProductFrame label="app.trigger-flow.com/flows">
+          <ProductFrame label="app.trigger-flow.com/flows" className="lg:sticky lg:top-28">
             <div className="bg-[radial-gradient(#E4E8E7_1px,transparent_1px)] [background-size:16px_16px]">
-              <FlowTreeScenario />
+              <DataFlowScenario />
             </div>
           </ProductFrame>
         </div>

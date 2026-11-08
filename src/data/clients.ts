@@ -14,7 +14,7 @@ export const homeClients = [
   'Château de Courban',
   'Odomo',
   'BonjourSauvage',
-  'Cime Hotel',
+  'Saint James Paris',
   'Pépites Lodges & Spas',
   'Soko Hotels',
   'Le Phébus & Spa',
@@ -40,6 +40,7 @@ export const clientLogos: Partial<Record<(typeof homeClients)[number], { src: st
   'Pépites Lodges & Spas': { src: '/images/clients/pepites-lodges.webp', width: 127, height: 96 },
   'Soko Hotels': { src: '/images/clients/soko-hotels.webp', width: 207, height: 96 },
   'Le Phébus & Spa': { src: '/images/clients/le-phebus.webp', width: 111, height: 96 },
+  'Saint James Paris': { src: '/images/clients/saint-james-paris.webp', width: 228, height: 96 },
   'Château Autignac': { src: '/images/clients/chateau-autignac.webp', width: 147, height: 96 },
 };
 
