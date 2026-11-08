@@ -3623,10 +3623,10 @@
       "subtitle": "Email, WhatsApp, SMS, Guest App, loyalty: every touchpoint carries your brand. Real examples from our client hotels and the demo account.",
       "email": {
         "label": "Email",
-        "caption": "The pre-stay email of Hôtel Beaucour in Strasbourg, in its own branding.",
+        "caption": "The pre-stay email of Domaine Le Coq Enchanté, with its offers: dinner, massage, e-bikes.",
         "from": "From:",
-        "subject": "Your stay is coming up",
-        "alt": "Pre-stay email from Hôtel Beaucour"
+        "subject": "30 days before your stay at the Domaine",
+        "alt": "Pre-stay email from Domaine Le Coq Enchanté"
       },
       "whatsapp": {
         "caption": "A real conversation during the stay, handled by the front desk.",

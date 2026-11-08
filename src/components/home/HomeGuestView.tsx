@@ -6,7 +6,8 @@ import { cn } from '@/lib/utils';
 
 /**
  * Ce que voient les clients, canal par canal.
- * Email : modèle réel de l'Hôtel Beaucour (Strasbourg), variables remplies avec un nom fictif.
+ * Email : modèle réel du Domaine Le Coq Enchanté (Normandie), variables remplies avec des données fictives,
+ *   image dynamique de la chambre remplacée par une photo du site du Domaine.
  * WhatsApp et SMS : contenus réels du compte de démo « Hôtel Le Jardin » (relevés le 08/11/2026).
  * Guest App : vraie app d'un client. Fidélité : carte d'exemple aux couleurs de l'hôtel de démo.
  */
@@ -24,12 +25,12 @@ export function HomeGuestView() {
             <div className="overflow-hidden rounded-xl border border-line bg-white">
               <div className="border-b border-line px-4 py-3 text-[12.5px]">
                 <p className="text-ink-3">
-                  {t('email.from')} <span className="font-semibold text-ink">Hôtel Beaucour</span>
+                  {t('email.from')} <span className="font-semibold text-ink">Domaine Le Coq Enchanté</span>
                 </p>
                 <p className="mt-0.5 font-semibold text-ink">{t('email.subject')}</p>
               </div>
               <div className="relative max-h-[520px] overflow-hidden">
-                <Image src="/images/guest-apps/email-beaucour.webp" alt={t('email.alt')} width={640} height={1260} sizes="(min-width: 1024px) 40vw, 100vw" className="h-auto w-full" />
+                <Image src="/images/guest-apps/email-coq-enchante.webp" alt={t('email.alt')} width={640} height={2232} sizes="(min-width: 1024px) 40vw, 100vw" className="h-auto w-full" />
                 <div aria-hidden className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white to-transparent" />
               </div>
             </div>

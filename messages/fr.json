@@ -3900,10 +3900,10 @@
       "subtitle": "Email, WhatsApp, SMS, Guest App, fidélité : chaque point de contact porte votre marque. Exemples réels de nos hôtels clients et du compte de démo.",
       "email": {
         "label": "Email",
-        "caption": "L'email de pré-séjour de l'Hôtel Beaucour, à Strasbourg, à sa charte.",
+        "caption": "L'email d'avant-séjour du Domaine Le Coq Enchanté, avec ses offres : dîner, massage, vélos.",
         "from": "De :",
-        "subject": "Votre séjour approche",
-        "alt": "Email de pré-séjour de l'Hôtel Beaucour"
+        "subject": "J-30 avant votre séjour au Domaine",
+        "alt": "Email d'avant-séjour du Domaine Le Coq Enchanté"
       },
       "whatsapp": {
         "caption": "Une vraie conversation pendant le séjour, traitée par la réception.",
