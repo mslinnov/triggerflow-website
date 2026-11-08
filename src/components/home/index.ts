@@ -8,3 +8,4 @@ export { HomeSecurity } from './HomeSecurity';
 export { HomePricing } from './HomePricing';
 export { HomeGuestView } from './HomeGuestView';
 export { HomeAI } from './HomeAI';
+export { HomeTeam } from './HomeTeam';

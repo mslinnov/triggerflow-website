@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { brand } from '@/data/brand';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { HomeHero, HomeProof, HomeResults, HomeProduct, HomeReliability, HomeSecurity, HomePricing, HomeGuestView, HomeAI } from '@/components/home';
+import { HomeHero, HomeProof, HomeResults, HomeProduct, HomeReliability, HomeSecurity, HomePricing, HomeGuestView, HomeAI, HomeTeam } from '@/components/home';
 import { Container, CtaBand, FaqList, Section, SectionHeader } from '@/components/ds';
 import { HOME_FAQ_KEYS } from '@/data/home-faq';
 import { HomePageJsonLd } from '@/components/seo';
@@ -63,6 +63,7 @@ export default async function HomePage({ params }: HomePageProps) {
       <HomeReliability />
       <HomeAI />
       <HomeResults />
+      <HomeTeam />
       <HomeSecurity />
       <HomePricing plans={getDisplayPlans(getPricingPhase())} />
       <Section tone="white">

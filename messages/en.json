@@ -2980,7 +2980,8 @@
     "trust": {
       "france": "Hosted in France",
       "gdpr": "GDPR",
-      "dpa": "Public DPA"
+      "dpa": "Public DPA",
+      "synapse": "Synapse label"
     }
   },
   "visuals": {
@@ -3662,6 +3663,31 @@
         "channels": "Channels",
         "automation": "Automation"
       }
+    },
+    "team": {
+      "eyebrow": "Support",
+      "title": "A team by your side,",
+      "titleMuted": "from the first call to go-live.",
+      "photoAlt": "The TriggerFlow team in its offices",
+      "caption": "The TriggerFlow team",
+      "points": [
+        {
+          "title": "We start from your hotel",
+          "text": "Your guest journeys, your PMS, your booking channels: the demo and the scoping start from your reality."
+        },
+        {
+          "title": "Guided set-up",
+          "text": "PMS connection and first scenarios configured with you. Up and running in 48 h."
+        },
+        {
+          "title": "Ready-to-use templates",
+          "text": "To get started quickly, then adapt them to your property."
+        },
+        {
+          "title": "Support that answers",
+          "text": "A real, reachable team that knows hospitality."
+        }
+      ]
     }
   },
   "productPage": {

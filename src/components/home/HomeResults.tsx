@@ -1,7 +1,9 @@
+import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
-import { ArrowRight, Star } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Container, Section, SectionHeader, TestimonialCard } from '@/components/ds';
 import { homeTestimonials } from '@/data/clients';
+import { clientResults } from '@/data/client-results';
 import { Link } from '@/i18n/navigation';
 
 interface ResultItem {
@@ -13,9 +15,9 @@ interface ResultItem {
   cta: string;
 }
 
+/** Résultats clients : photo de l'hôtel, chiffre clé, citation ; puis les autres témoignages. */
 export function HomeResults() {
   const t = useTranslations('home2.results');
-  const tq = useTranslations('home2.testimonials');
   const locale = useLocale() as 'fr' | 'en';
   const items = t.raw('items') as ResultItem[];
   // Les clients déjà présents dans les cartes de résultats ne sont pas cités deux fois.
@@ -25,40 +27,54 @@ export function HomeResults() {
       <Container>
         <SectionHeader eyebrow={t('eyebrow')} title={t('title')} align="left" />
         <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {items.map((item) => (
-            <Link
-              key={item.client}
-              href={item.href}
-              className="group flex flex-col rounded-xl border border-line bg-white p-7 transition-colors hover:border-accent"
-            >
-              <div className="flex items-center justify-between gap-3">
-                <span className="text-[15px] font-semibold text-ink">{item.client}</span>
-                <span className="font-mono text-[11px] uppercase tracking-[0.06em] text-ink-3">{item.tag}</span>
-              </div>
-              <h3 className="mt-8 text-h3 font-medium text-ink">{item.title}</h3>
-              <p className="mt-4 flex-1 text-[15px] leading-relaxed text-ink-2">{item.text}</p>
-              <span className="mt-8 inline-flex items-center gap-1.5 text-[14px] font-medium text-accent">
-                {item.cta}
-                <ArrowRight aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-              </span>
-            </Link>
-          ))}
+          {items.map((item) => {
+            const result = clientResults.find((r) => r.client === item.client);
+            return (
+              <Link
+                key={item.client}
+                href={item.href}
+                className="group flex flex-col overflow-hidden rounded-xl border border-line bg-white transition-colors hover:border-accent"
+              >
+                {result && (
+                  <div className="relative aspect-[3/2] overflow-hidden">
+                    <Image
+                      src={result.photo}
+                      alt={item.client}
+                      width={1200}
+                      height={800}
+                      sizes="(min-width: 768px) 33vw, 100vw"
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
+                    <span className="absolute bottom-3 left-3 rounded-full bg-white/95 px-2.5 py-1 font-mono text-[10.5px] uppercase tracking-[0.06em] text-ink">
+                      {item.tag}
+                    </span>
+                  </div>
+                )}
+                <div className="flex flex-1 flex-col p-7">
+                  <span className="text-[15px] font-semibold text-ink">{item.client}</span>
+                  {result && (
+                    <p className="mt-5 border-b border-line pb-5">
+                      <span className="block text-[2.25rem] font-medium leading-none tracking-[-0.02em] text-accent">{result.metric.value[locale]}</span>
+                      <span className="mt-2 block text-[14px] text-ink-2">{result.metric.label[locale]}</span>
+                    </p>
+                  )}
+                  <h3 className="mt-5 text-[19px] font-medium leading-snug text-ink">{item.title}</h3>
+                  <p className="mt-3 flex-1 text-[15px] leading-relaxed text-ink-2">{item.text}</p>
+                  <span className="mt-6 inline-flex items-center gap-1.5 text-[14px] font-medium text-accent">
+                    {item.cta}
+                    <ArrowRight aria-hidden className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
 
-        {/* Les autres témoignages et l'avis Google, dans la même section */}
+        {/* Les autres témoignages */}
         <div className="mt-5 grid gap-5 md:grid-cols-2">
           {quotes.map((q) => (
             <TestimonialCard key={q.name} quote={q.quote[locale]} name={q.name} role={q.role[locale]} company={q.company} />
           ))}
-        </div>
-        <div className="mt-5 flex flex-col gap-2 rounded-xl border border-line bg-white px-6 py-5 sm:flex-row sm:items-center sm:gap-5">
-          <span className="flex gap-0.5" role="img" aria-label="5/5">
-            {[0, 1, 2, 3, 4].map((i) => (
-              <Star key={i} aria-hidden className="h-4 w-4 fill-peach text-peach" />
-            ))}
-          </span>
-          <p className="text-[15px] text-ink">« {tq('review')} »</p>
-          <span className="font-mono text-[11px] uppercase tracking-[0.06em] text-ink-3 sm:ml-auto">{tq('reviewLabel')}</span>
         </div>
       </Container>
     </Section>

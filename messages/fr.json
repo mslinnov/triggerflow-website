@@ -3257,7 +3257,8 @@
     "trust": {
       "france": "Hébergé en France",
       "gdpr": "RGPD",
-      "dpa": "DPA public"
+      "dpa": "DPA public",
+      "synapse": "Label Synapse"
     }
   },
   "visuals": {
@@ -3939,6 +3940,31 @@
         "channels": "Canaux",
         "automation": "Automatisation"
       }
+    },
+    "team": {
+      "eyebrow": "Accompagnement",
+      "title": "Une équipe à vos côtés,",
+      "titleMuted": "du premier appel à la mise en ligne.",
+      "photoAlt": "L'équipe TriggerFlow réunie dans ses bureaux",
+      "caption": "L'équipe TriggerFlow",
+      "points": [
+        {
+          "title": "On part de votre hôtel",
+          "text": "Vos parcours clients, votre PMS, vos canaux de réservation : la démo et le cadrage partent de votre réalité."
+        },
+        {
+          "title": "Mise en place accompagnée",
+          "text": "Connexion du PMS et premiers scénarios configurés avec vous. Opérationnel en 48 h."
+        },
+        {
+          "title": "Des modèles prêts à l'emploi",
+          "text": "Pour démarrer vite, puis les adapter à votre établissement."
+        },
+        {
+          "title": "Un support qui répond",
+          "text": "Une vraie équipe, joignable, qui connaît l'hôtellerie."
+        }
+      ]
     }
   },
   "productPage": {
