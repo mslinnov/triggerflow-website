@@ -3662,15 +3662,20 @@
     },
     "integrations": {
       "eyebrow": "Native integrations",
-      "title": "Connected to your tools from day one.",
+      "title": "Connected to your whole ecosystem.",
       "more": "All integrations",
-      "groups": {
-        "pms": "PMS",
-        "locks": "Door locks",
-        "payments": "Payments",
-        "channels": "Channels",
-        "automation": "Automation"
-      }
+      "text": "PMS, door locks, payments, booking channels, automation tools: TriggerFlow plugs into what you already use, with no development.",
+      "keywords": [
+        "PMS",
+        "Two-way sync",
+        "Smart locks",
+        "Online payments",
+        "Booking.com",
+        "Airbnb",
+        "WhatsApp",
+        "Zapier & n8n",
+        "API & webhooks"
+      ]
     },
     "team": {
       "eyebrow": "Support",

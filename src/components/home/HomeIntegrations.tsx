@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { DsButton } from '@/components/ds';
-import { brand } from '@/data/brand';
+import { cn } from '@/lib/utils';
 
 /** Fichiers logo par nom (public/images/integrations). Un nom sans fichier n'est pas affiché. */
 const LOGOS: Record<string, { src: string; w: number; h: number }> = {
@@ -29,54 +29,53 @@ const LOGOS: Record<string, { src: string; w: number; h: number }> = {
   n8n: { src: 'n8n.svg', w: 256, h: 256 },
 };
 
-/** Les connexions réelles (brand.ts), par famille, avec leurs logos. */
+/** Échantillon affiché sur l'accueil (12 logos, toutes familles confondues) : un aperçu, pas la liste complète. */
+/** Logos dont le dessin est petit dans le fichier : affichés plus grands pour un poids visuel égal. */
+const BIGGER = new Set(['Opera Cloud', 'Sesame', 'Misterbooking']);
+
+const FEATURED = ['Mews', 'Thaïs', 'Opera Cloud', 'Apaleo', 'Medialog', 'Misterbooking', 'Stripe', 'Igloohome', 'Sesame', 'Booking.com', 'Airbnb', 'Zapier'];
+
+/** Intégrations : texte à gauche, grille de logos en niveaux de gris à droite, lien vers la liste complète. */
 export function HomeIntegrations() {
   const t = useTranslations('home2.integrations');
-  const groups: { key: string; names: readonly string[] }[] = [
-    { key: 'pms', names: brand.pms },
-    { key: 'locks', names: brand.connections.locks },
-    { key: 'payments', names: brand.connections.payments.filter((n) => n !== 'Thaïs') },
-    { key: 'channels', names: ['WhatsApp', 'Booking.com', 'Airbnb'] },
-    { key: 'automation', names: brand.automation },
-  ];
   return (
-    <div className="mt-20 rounded-2xl border border-white/10 bg-white p-6 text-ink md:p-8">
-      <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
-        <div>
-          <p className="font-mono text-[11px] uppercase tracking-[0.08em] text-accent">{t('eyebrow')}</p>
-          <p className="mt-2 text-[22px] font-medium tracking-[-0.01em]">{t('title')}</p>
-        </div>
-        <DsButton href="/integrations" variant="link" arrow>
+    <div className="mt-20 grid overflow-hidden rounded-2xl bg-white text-ink lg:grid-cols-[0.9fr_1.6fr]">
+      <div className="flex flex-col justify-center bg-paper p-8 md:p-10">
+        <p className="font-mono text-[11px] uppercase tracking-[0.08em] text-accent">{t('eyebrow')}</p>
+        <p className="mt-3 text-[26px] font-medium leading-tight tracking-[-0.015em]">{t('title')}</p>
+        <p className="mt-4 text-[15px] leading-relaxed text-ink-2">{t('text')}</p>
+        <ul className="mt-6 flex flex-wrap gap-2">
+          {(t.raw('keywords') as string[]).map((k) => (
+            <li key={k} className="rounded-full border border-line bg-white px-3 py-1 text-[13px] text-ink">
+              {k}
+            </li>
+          ))}
+        </ul>
+        <DsButton href="/integrations" variant="link" arrow className="mt-6 self-start">
           {t('more')}
         </DsButton>
       </div>
-      <div className="mt-6 space-y-5">
-        {groups.map((g) => (
-          <div key={g.key} className="grid gap-3 border-t border-line pt-5 md:grid-cols-[160px_1fr] md:items-center">
-            <p className="font-mono text-[11px] uppercase tracking-[0.06em] text-ink-2">{t(`groups.${g.key}`)}</p>
-            <ul className="flex flex-wrap items-center gap-x-7 gap-y-4">
-              {g.names.map((name) => {
-                const logo = LOGOS[name];
-                return (
-                  <li key={name} className="flex h-7 items-center">
-                    {logo && logo.w / logo.h < 1.6 ? (
-                      // Logo carré (icône seule) : on ajoute le nom pour qu'il reste lisible.
-                      <span className="flex items-center gap-2 text-[14px] font-semibold text-ink">
-                        <Image src={`/images/integrations/${logo.src}`} alt="" width={logo.w} height={logo.h} className="h-6 w-6 object-contain" />
-                        {name}
-                      </span>
-                    ) : logo ? (
-                      <Image src={`/images/integrations/${logo.src}`} alt={name} width={logo.w} height={logo.h} className="h-6 w-auto max-w-[110px] object-contain" />
-                    ) : (
-                      <span className="text-[14px] font-semibold text-ink-2">{name}</span>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        ))}
-      </div>
+      <ul className="grid auto-rows-fr grid-cols-2 sm:grid-cols-3 md:grid-cols-4">
+        {FEATURED.map((name) => {
+          const logo = LOGOS[name];
+          if (!logo) return null;
+          const square = logo.w / logo.h < 1.6;
+          return (
+            <li key={name} className="group flex min-h-24 items-center justify-center border-b border-l border-line px-6 py-6">
+              <span className="flex items-center gap-2 opacity-60 grayscale transition duration-300 group-hover:opacity-100 group-hover:grayscale-0">
+                <Image
+                  src={`/images/integrations/${logo.src}`}
+                  alt={square ? '' : name}
+                  width={logo.w}
+                  height={logo.h}
+                  className={square ? 'h-7 w-7 object-contain' : cn(BIGGER.has(name) ? 'h-10' : 'h-7', 'w-auto max-w-[130px] object-contain')}
+                />
+                {square && <span className="text-[15px] font-semibold text-ink">{name}</span>}
+              </span>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }

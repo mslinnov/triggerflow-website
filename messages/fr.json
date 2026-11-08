@@ -3939,15 +3939,20 @@
     },
     "integrations": {
       "eyebrow": "Intégrations natives",
-      "title": "Connecté à vos outils, dès le premier jour.",
+      "title": "Connecté à tout votre écosystème.",
       "more": "Toutes les intégrations",
-      "groups": {
-        "pms": "PMS",
-        "locks": "Serrures",
-        "payments": "Paiement",
-        "channels": "Canaux",
-        "automation": "Automatisation"
-      }
+      "text": "PMS, serrures, paiement, canaux de réservation, outils d'automatisation : TriggerFlow se branche sur ce que vous utilisez déjà, sans développement.",
+      "keywords": [
+        "PMS",
+        "Synchro bidirectionnelle",
+        "Serrures connectées",
+        "Paiement en ligne",
+        "Booking.com",
+        "Airbnb",
+        "WhatsApp",
+        "Zapier & n8n",
+        "API & webhooks"
+      ]
     },
     "team": {
       "eyebrow": "Accompagnement",
