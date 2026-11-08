@@ -911,7 +911,7 @@
     "hero": {
       "badge": "Tarification",
       "title": "Des tarifs publics, par établissement.",
-      "subtitle": "Choisissez le plan qui correspond à votre hôtel, ajoutez des modules quand vous en avez besoin. Prix hors taxes, par établissement et par mois."
+      "subtitle": "Choisissez votre formule, puis vos modules. Prix hors taxes, par établissement et par mois."
     },
     "perMonth": "mois",
     "plans": {
@@ -954,9 +954,9 @@
       "startFree": "Demander une démo"
     },
     "addons": {
-      "badge": "Modules complémentaires",
-      "title": "Des modules en plus, à tout moment.",
-      "subtitle": "Chaque plan inclut des modules au choix. Au-delà, ajoutez-en à l'unité.",
+      "badge": "Modules",
+      "title": "Tous les modules, à la carte.",
+      "subtitle": "Chaque formule inclut des modules au choix. Au-delà, un module s'ajoute à l'unité, à tout moment.",
       "cta": "En savoir plus",
       "items": {
         "reviews": {
@@ -1014,7 +1014,9 @@
             "Multi-prestataires (Stripe, PayZen, SystemPay, Thaïs)"
           ]
         }
-      }
+      },
+      "inDemo": "Prix en démo",
+      "note": "Prix HT, par mois et par établissement. Les modules sans prix affiché sont présentés pendant la démo."
     },
     "comparison": {
       "title": "Ce que comprend chaque plan.",
@@ -1093,6 +1095,10 @@
         "smsIncluded": {
           "question": "Les SMS sont-ils inclus dans les forfaits ?",
           "answer": "Les SMS sont disponibles sur tous les plans à partir de 0,06€/SMS. Aucun SMS n'est inclus dans les forfaits, ils sont facturés à l'usage."
+        },
+        "modules": {
+          "question": "Comment fonctionnent les modules au choix ?",
+          "answer": "One Way inclut 1 module au choix, Two Way inclut les formulaires, l'upsell et 2 modules au choix, All Inclusive inclut tous les modules. Vous pouvez changer de module ou en ajouter à tout moment."
         }
       }
     },

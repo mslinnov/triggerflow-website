@@ -911,7 +911,7 @@
     "hero": {
       "badge": "Pricing",
       "title": "Public pricing, per property.",
-      "subtitle": "Choose the plan that fits your hotel and add modules when you need them. Prices exclude VAT, per property and per month."
+      "subtitle": "Pick your plan, then your modules. Prices excl. VAT, per property and per month."
     },
     "perMonth": "month",
     "plans": {
@@ -954,9 +954,9 @@
       "startFree": "Book a demo"
     },
     "addons": {
-      "badge": "Add-on modules",
-      "title": "Extra modules, any time.",
-      "subtitle": "Every plan includes modules of your choice. Beyond that, add them one by one.",
+      "badge": "Modules",
+      "title": "Every module, à la carte.",
+      "subtitle": "Each plan includes modules of your choice. Beyond that, add a module one by one, any time.",
       "cta": "Learn more",
       "items": {
         "reviews": {
@@ -1014,7 +1014,9 @@
             "Multi-provider (Stripe, PayZen, SystemPay, Thaïs)"
           ]
         }
-      }
+      },
+      "inDemo": "Price in demo",
+      "note": "Prices excl. VAT, per month and per property. Modules without a listed price are presented during the demo."
     },
     "comparison": {
       "title": "What each plan includes.",
@@ -1093,6 +1095,10 @@
         "smsIncluded": {
           "question": "Are SMS included in the plans?",
           "answer": "SMS are available on all plans from €0.06/SMS. No SMS are included in the plans, they are billed on usage."
+        },
+        "modules": {
+          "question": "How do the modules of your choice work?",
+          "answer": "One Way includes 1 module of your choice, Two Way includes forms, upselling and 2 modules of your choice, All Inclusive includes every module. You can switch or add modules at any time."
         }
       }
     },

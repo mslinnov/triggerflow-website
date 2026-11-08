@@ -3,13 +3,17 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import {
-  BarChart3, Bot, Check, CreditCard, Heart, HelpCircle, Minus, MessageSquare, ShoppingBag, Smartphone, Star, Workflow,
+  BarChart3, Bot, Check, HelpCircle, Minus, MessageSquare, ShoppingBag, Star, Workflow,
 } from 'lucide-react';
 import { Container, CtaBand, DsButton, Eyebrow, FaqList, SectionHeader } from '@/components/ds';
 import { cn } from '@/lib/utils';
 import { brand } from '@/data/brand';
 import type { AddonKey, DisplayAddon, DisplayPlan } from '@/data/pricing';
 import { UpcomingPrice } from '@/components/pricing/UpcomingPrice';
+import { Link } from '@/i18n/navigation';
+import { BUILDER_COLUMNS } from '@/data/offer-builder';
+import { navIcons } from '@/data/nav-icons';
+import { productMenu } from '@/data/navigation';
 
 /* ─── Données du tableau comparatif ─────────────────────────────── */
 
@@ -58,15 +62,11 @@ const featureGroups: { key: string; icon: typeof Check; features: { key: string;
 ];
 
 /** Prix dans `@/data/pricing` ; ici, seulement l'icône de chaque module. */
-const addonIcons: Record<AddonKey, typeof Star> = {
-  reviews: Star,
-  aiAgent: Bot,
-  payments: CreditCard,
-  loyalty: Heart,
-  guestApp: Smartphone,
-};
+/** Module du configurateur → module payant à l'unité (prix dans @/data/pricing). */
+const ADDON_KEYS: Partial<Record<string, AddonKey>> = { reviews: 'reviews', aiAgent: 'aiAgent', pay: 'payments', loyalty: 'loyalty', guestApp: 'guestApp' };
 
-const faqItems = ['changePlan', 'commitment', 'groupRates', 'smsIncluded'];
+
+const faqItems = ['modules', 'changePlan', 'commitment', 'groupRates', 'smsIncluded'];
 
 interface PricingV2ContentProps {
   plans: DisplayPlan[];
@@ -80,6 +80,7 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
   const t = useTranslations('pricing');
   const tChange = useTranslations('priceChange');
   const tNav = useTranslations('nav');
+  const tb = useTranslations('home2.builder');
   const cell = (v: Cell) => (v === U ? t('comparison.unlimited') : v === ALL ? t('comparison.allModules') : v);
 
   const faq = [
@@ -122,7 +123,10 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
                   <h2 className="font-mono text-[12px] font-medium uppercase tracking-[0.08em] text-ink-2">{t(`plans.${plan.key}.name`)}</h2>
                   {plan.popular && <span className="rounded-full bg-mint px-2 py-0.5 text-[11px] font-medium text-ink">{t(`plans.${plan.key}.badge`)}</span>}
                 </div>
-                <p className="mt-5 text-[2.5rem] font-medium leading-none tracking-[-0.03em] tabular-nums text-ink">{plan.price} €</p>
+                <p className="mt-4 inline-flex w-fit items-center rounded-md bg-mint/50 px-2.5 py-1 text-[12.5px] font-medium text-accent-hover">
+                  {tb(`included.${plan.key}`)}
+                </p>
+                <p className="mt-4 text-[2.5rem] font-medium leading-none tracking-[-0.03em] tabular-nums text-ink">{plan.price} €</p>
                 <p className="mt-2 text-[12.5px] text-ink-3">{t('perMonthFull')}</p>
                 <UpcomingPrice price={plan.upcomingPrice} className="font-normal text-ink-3" />
                 <p className="mt-5 text-[14.5px] leading-relaxed text-ink-2">{t(`plans.${plan.key}.description`)}</p>
@@ -149,16 +153,16 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
         <Container>
           <SectionHeader eyebrow={t('comparison.eyebrow')} title={t('comparison.title')} subtitle={t('comparison.subtitle')} align="left" />
           <div className="mt-12 -mx-4 overflow-x-auto px-4 md:mx-0 md:px-0">
-            <table className="w-full min-w-[720px] border-separate border-spacing-0 overflow-hidden rounded-xl border border-line bg-white text-left">
+            <table className="w-full table-fixed border-separate md:table-auto border-spacing-0 overflow-hidden rounded-xl border border-line bg-white text-left">
               <thead>
                 <tr>
-                  <th scope="col" className="w-[34%] border-b border-line px-5 py-4">
+                  <th scope="col" className="w-[40%] border-b border-line px-3 py-4 md:w-[34%] md:px-5">
                     <span className="sr-only">{t('comparison.featureCol')}</span>
                   </th>
                   {plans.map((plan) => (
-                    <th key={plan.key} scope="col" className={cn('border-b border-line px-4 py-4 text-center align-bottom', plan.popular && 'bg-mint/40')}>
-                      <span className="block font-mono text-[11.5px] font-medium uppercase tracking-[0.08em] text-ink-2">{t(`plans.${plan.key}.name`)}</span>
-                      <span className="mt-1 block text-[17px] font-medium tabular-nums text-ink">{plan.price} €</span>
+                    <th key={plan.key} scope="col" className={cn('border-b border-line px-1 py-4 text-center align-bottom md:px-4', plan.popular && 'bg-mint/40')}>
+                      <span className="block font-mono text-[10px] font-medium uppercase tracking-[0.04em] text-ink-2 md:text-[11.5px] md:tracking-[0.08em]">{t(`plans.${plan.key}.name`)}</span>
+                      <span className="mt-1 block text-[14px] font-medium tabular-nums text-ink md:text-[17px]">{plan.price} €</span>
                     </th>
                   ))}
                 </tr>
@@ -174,40 +178,44 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
         </Container>
       </section>
 
-      {/* Modules */}
+      {/* Modules : les 14 modules du configurateur, prix à l'unité quand il est public */}
       <section className="bg-white py-20 md:py-28">
         <Container>
           <SectionHeader eyebrow={t('addons.badge')} title={t('addons.title')} subtitle={t('addons.subtitle')} align="left" />
-          <ul className="mt-12 grid gap-4 md:grid-cols-2">
-            {addons.map((addon) => {
-              const Icon = addonIcons[addon.key];
+          <div className="mt-8 grid gap-3 rounded-xl border border-line bg-paper p-5 sm:grid-cols-3">
+            {(['communication', 'conversion', 'allInclusive'] as const).map((key) => (
+              <p key={key} className="text-[14px] text-ink-2">
+                <span className="block font-mono text-[11px] uppercase tracking-[0.08em] text-ink-3">{t(`plans.${key}.name`)}</span>
+                <span className="mt-1 block font-semibold text-ink">{tb(`included.${key}`)}</span>
+              </p>
+            ))}
+          </div>
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {BUILDER_COLUMNS.flat().map((key) => {
+              const Icon = navIcons[key] ?? (key === 'aiAgent' ? Bot : Star);
+              const addon = addons.find((a) => a.key === ADDON_KEYS[key]);
+              const name = key === 'aiAgent' ? tb('aiAgent.name') : tNav(`items.${key}`);
+              const desc = key === 'aiAgent' ? tb('aiAgent.description') : tNav(`descriptions.${key}`);
+              const href = key === 'aiAgent' ? '/plateforme/ia' : productMenu.flatMap((c) => c.items).find((i) => i.key === key)?.href ?? '/produit';
               return (
-                <li key={addon.key} className="flex flex-col rounded-xl border border-line bg-white p-6">
-                  <div className="flex items-start gap-4">
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-line bg-mint/50 text-accent">
-                      <Icon aria-hidden className="h-5 w-5" strokeWidth={1.75} />
+                <li key={key}>
+                  <Link href={href} className="group flex h-full items-start gap-3 rounded-xl border border-line bg-white p-4 transition-colors hover:border-accent">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-mint/50 text-accent">
+                      <Icon aria-hidden className="h-4 w-4" strokeWidth={1.75} />
                     </span>
-                    <div className="min-w-0 flex-1">
-                      <h3 className="text-[17px] font-semibold text-ink">{t(`addons.items.${addon.key}.name`)}</h3>
-                      <p className="mt-0.5 text-[14px] text-ink-2">
-                        <span className="font-medium tabular-nums text-ink">+{addon.price} €</span> {t('perMonthFull')}
-                      </p>
-                      <UpcomingPrice price={addon.upcomingPrice} variant="addon" className="font-normal text-ink-3" />
-                    </div>
-                  </div>
-                  <p className="mt-4 text-[14.5px] leading-relaxed text-ink-2">{t(`addons.items.${addon.key}.description`)}</p>
-                  <ul className="mt-4 grid gap-1.5 sm:grid-cols-2">
-                    {(t.raw(`addons.items.${addon.key}.features`) as string[]).map((f) => (
-                      <li key={f} className="flex items-start gap-2 text-[13.5px] text-ink-2">
-                        <Check aria-hidden className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent" />
-                        {f}
-                      </li>
-                    ))}
-                  </ul>
+                    <span className="min-w-0 flex-1">
+                      <span className="flex items-baseline justify-between gap-2">
+                        <span className="text-[15px] font-semibold text-ink group-hover:text-accent">{name}</span>
+                        {addon && <span className="shrink-0 rounded-md bg-paper px-2 py-0.5 text-[12.5px] font-medium tabular-nums text-ink">+{addon.price} €</span>}
+                      </span>
+                      <span className="mt-0.5 block text-[13px] text-ink-3">{desc}</span>
+                    </span>
+                  </Link>
                 </li>
               );
             })}
           </ul>
+          <p className="mt-4 text-[13px] text-ink-3">{t('addons.note')}</p>
         </Container>
       </section>
 
@@ -254,7 +262,7 @@ function FeatureGroupRows({
   return (
     <>
       <tr>
-        <th scope="colgroup" colSpan={plans.length + 1} className="border-b border-line bg-paper/70 px-5 py-3">
+        <th scope="colgroup" colSpan={plans.length + 1} className="border-b border-line bg-paper/70 px-3 py-3 md:px-5">
           <span className="flex items-center gap-2 font-mono text-[11.5px] font-medium uppercase tracking-[0.08em] text-ink-2">
             <Icon aria-hidden className="h-4 w-4 text-accent" strokeWidth={1.75} />
             {t(`comparison.categories.${group.key}`)}
@@ -263,7 +271,7 @@ function FeatureGroupRows({
       </tr>
       {group.features.map((feature) => (
         <tr key={feature.key}>
-          <th scope="row" className="border-b border-line px-5 py-3.5 text-[14px] font-normal text-ink-2">
+          <th scope="row" className="border-b border-line px-3 py-3 text-[13px] font-normal text-ink-2 md:px-5 md:py-3.5 md:text-[14px]">
             <span className="flex items-center justify-between gap-3">
               {t(`comparison.features.${feature.key}`)}
               <FeatureTooltip text={t(`comparison.tooltips.${feature.key}`)} label={t('comparison.moreInfo')} />
@@ -272,7 +280,7 @@ function FeatureGroupRows({
           {feature.values.map((value, i) => {
             const v = cell(value);
             return (
-              <td key={i} className={cn('border-b border-line px-4 py-3.5 text-center', plans[i]?.popular && 'bg-mint/25')}>
+              <td key={i} className={cn('border-b border-line px-1 py-3 text-center md:px-4 md:py-3.5', plans[i]?.popular && 'bg-mint/25')}>
                 {typeof v === 'boolean' ? (
                   v ? (
                     <Check aria-label={t('comparison.included')} className="mx-auto h-4 w-4 text-accent" strokeWidth={2} />
@@ -280,7 +288,7 @@ function FeatureGroupRows({
                     <Minus aria-label={t('comparison.notIncluded')} className="mx-auto h-4 w-4 text-ink-3/60" />
                   )
                 ) : (
-                  <span className="text-[14px] font-medium tabular-nums text-ink">{v}</span>
+                  <span className="text-[12.5px] font-medium tabular-nums text-ink md:text-[14px]">{v}</span>
                 )}
               </td>
             );
