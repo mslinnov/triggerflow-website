@@ -1027,7 +1027,15 @@
         }
       },
       "inDemo": "Prix en démo",
-      "note": "Prix HT, par mois et par établissement. Les modules sans prix affiché sont présentés pendant la démo."
+      "note": "Prix HT, par mois et par établissement. Agent IA et téléphonie : prix du premier palier.",
+      "from": "à partir de",
+      "was": "au lieu de",
+      "then": "{price} € au 1er janvier 2027",
+      "names": {
+        "voice": "Téléphonie (Appel réception)",
+        "b2b": "B2B : événements et entreprises",
+        "housekeeping": "Ménage"
+      }
     },
     "comparison": {
       "title": "Ce que comprend chaque plan.",
@@ -1110,6 +1118,10 @@
         "modules": {
           "question": "Comment fonctionnent les modules au choix ?",
           "answer": "One Way inclut 1 module au choix, Two Way inclut les formulaires, l'upsell et 2 modules au choix, All Inclusive inclut tous les modules. Vous pouvez changer de module ou en ajouter à tout moment."
+        },
+        "connections": {
+          "question": "Les connexions à mes outils sont-elles payantes ?",
+          "answer": "Non. Toutes les connexions sont incluses, sans surcoût de notre côté : PMS, serrures, paiement, canaux de réservation, Zapier, n8n. Nous connectons tout ce qui est connectable."
         }
       }
     },
@@ -1122,7 +1134,12 @@
     "scrollRight": "Faire défiler vers la droite",
     "perMonthFull": "HT / mois, par établissement",
     "ctaBand": "Voyons ensemble le plan adapté à votre hôtel.",
-    "includesTitle": "Inclus"
+    "includesTitle": "Inclus",
+    "connect": {
+      "title": "Toutes les connexions sont incluses, sans surcoût.",
+      "text": "PMS, serrures, paiement, canaux de réservation, Zapier, n8n : nous connectons tout ce qui est connectable, sans frais supplémentaires de notre côté.",
+      "more": "Voir les intégrations"
+    }
   },
   "contact": {
     "meta": {
@@ -4036,7 +4053,8 @@
         "WhatsApp",
         "Zapier & n8n",
         "API & webhooks"
-      ]
+      ],
+      "free": "Toutes les connexions sont incluses, sans surcoût."
     },
     "team": {
       "eyebrow": "Accompagnement",
@@ -4085,7 +4103,8 @@
     "faqTitle": "Vos questions, nos réponses.",
     "ctaText": "Mise en place accompagnée, opérationnel en 48 h.",
     "trustLine": "Hébergé en France, sous-traitants publics, DPA signé avec chaque client.",
-    "realScreenshot": "Capture de l'application, compte de démonstration"
+    "realScreenshot": "Capture de l'application, compte de démonstration",
+    "addonFrom": "À partir de {price} € par mois et par établissement, HT"
   },
   "clientsPage": {
     "eyebrow": "Clients",

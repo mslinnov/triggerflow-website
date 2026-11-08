@@ -55,7 +55,7 @@ export const loyalty: ProductLanding = {
     { slug: 'crm', href: '/produit/crm', name: { fr: 'CRM', en: 'CRM' }, text: { fr: 'Chaque membre reconnu.', en: 'Every member recognised.' } },
     { slug: 'flows', href: '/produit/flows', name: { fr: 'Flows', en: 'Flows' }, text: { fr: 'Les messages de chaque palier.', en: 'Messages for every tier.' } },
   ],
-  pricing: { text: { fr: 'Module complémentaire, à ajouter à n’importe quel plan payant.', en: 'Add-on module, available with any paid plan.' }, addon: 'loyalty' },
+  pricing: { text: { fr: 'Module complémentaire, à ajouter à votre formule.', en: 'Add-on module, added to your plan.' }, addon: 'loyalty' },
   faq: [
     { q: { fr: 'Le client doit-il télécharger une application ?', en: 'Does the guest need an app?' }, a: { fr: 'Non : la carte s’ajoute à Apple Wallet en un clic.', en: 'No: the card is added to Apple Wallet in one tap.' } },
     { q: { fr: 'Comment les points sont-ils crédités ?', en: 'How are points credited?' }, a: { fr: 'Automatiquement, à partir des séjours et dépenses remontés du PMS, selon vos règles.', en: 'Automatically, from stays and spend synced from the PMS, according to your rules.' } },

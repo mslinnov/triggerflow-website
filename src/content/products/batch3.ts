@@ -106,7 +106,7 @@ export const events: ProductLanding = {
     { client: { fr: 'Groupe', en: 'Group' }, text: { fr: 'Les réservations PMS du groupe reliées à chaque participant.', en: 'The group’s PMS bookings linked to each attendee.' } } ] },
   integrations: { title: { fr: 'Relié aux réservations de votre PMS.', en: 'Linked to your PMS bookings.' }, text: { fr: 'Les chambres du groupe remontent du PMS et se rattachent aux participants.', en: 'Group rooms come from the PMS and link to attendees.' } },
   related: [{ slug: 'b2b', href: '/produit/b2b', name: { fr: 'B2B', en: 'B2B' }, text: { fr: 'Les entreprises qui organisent vos séminaires.', en: 'The companies behind your seminars.' } }, { slug: 'forms', href: '/produit/forms', name: { fr: 'Formulaires', en: 'Forms' }, text: { fr: 'La rooming list collectée par formulaire.', en: 'The rooming list collected by form.' } }, { slug: 'pay', href: '/produit/pay', name: { fr: 'Pay', en: 'Pay' }, text: { fr: 'Des acomptes pour chaque participant.', en: 'Deposits for each attendee.' } }],
-  pricing: { text: { fr: 'Module inclus gratuitement.', en: 'Module included for free.' } },
+  pricing: { text: { fr: 'Module B2B : événements et comptes entreprises, à ajouter à votre formule.', en: 'B2B module: events and corporate accounts, added to your plan.' }, addon: 'b2b' },
   faq: [
     { q: { fr: 'Puis-je importer une liste de participants ?', en: 'Can I import an attendee list?' }, a: { fr: 'Oui, par fichier CSV, et l’exporter aussi.', en: 'Yes, via CSV, and export it too.' } },
     { q: { fr: 'Comment collecter la rooming list ?', en: 'How do I collect the rooming list?' }, a: { fr: 'Par un formulaire associé à l’événement, envoyé aux participants.', en: 'Through a form linked to the event, sent to attendees.' } },
@@ -141,7 +141,7 @@ export const b2b: ProductLanding = {
     { client: { fr: 'Séminaires', en: 'Seminars' }, text: { fr: 'L’entreprise, ses événements et ses collaborateurs reliés.', en: 'The company, its events and its staff connected.' } } ] },
   integrations: { title: { fr: 'Construit à partir de vos réservations.', en: 'Built from your bookings.' }, text: { fr: 'Les sociétés sont détectées dans les réservations synchronisées avec le PMS.', en: 'Companies are detected in bookings synced with the PMS.' } },
   related: [relCrm, { slug: 'events', href: '/produit/events', name: { fr: 'Événements', en: 'Events' }, text: { fr: 'Séminaires et groupes.', en: 'Seminars and groups.' } }, { slug: 'campaigns', href: '/produit/campaigns', name: { fr: 'Campagnes', en: 'Campaigns' }, text: { fr: 'Des campagnes pour vos comptes.', en: 'Campaigns for your accounts.' } }],
-  pricing: { text: { fr: 'Module inclus gratuitement.', en: 'Module included for free.' } },
+  pricing: { text: { fr: 'Module B2B : événements et comptes entreprises, à ajouter à votre formule.', en: 'B2B module: events and corporate accounts, added to your plan.' }, addon: 'b2b' },
   faq: [
     { q: { fr: 'Comment les sociétés sont-elles détectées ?', en: 'How are companies detected?' }, a: { fr: 'À partir des informations des réservations ; vous validez ou corrigez.', en: 'From booking information; you confirm or correct.' } },
     { q: { fr: 'Puis-je suivre des agences ?', en: 'Can I track agencies?' }, a: { fr: 'Oui, agences et apporteurs d’affaires ont aussi leur fiche.', en: 'Yes, agencies and referrers have their own profile too.' } },
@@ -211,7 +211,7 @@ export const housekeeping: ProductLanding = {
     { client: { fr: 'Arrivées anticipées', en: 'Early arrivals' }, text: { fr: 'La réception voit tout de suite quand la chambre se libère.', en: 'The front desk sees immediately when the room is free.' } } ] },
   integrations: { title: { fr: 'Statuts synchronisés avec le PMS.', en: 'Statuses synced with the PMS.' }, text: { fr: 'Les statuts de ménage repartent dans le PMS connecté.', en: 'Housekeeping statuses flow back to the connected PMS.' } },
   related: [relInbox, { slug: 'check-in', href: '/produit/check-in', name: { fr: 'Check-in en ligne', en: 'Online check-in' }, text: { fr: 'Le client arrive enregistré.', en: 'Guests arrive checked in.' } }, relCrm],
-  pricing: { text: { fr: 'Module complémentaire : 29 € par mois et par établissement, HT.', en: 'Add-on module: €29 per month per property, excl. VAT.' } },
+  pricing: { text: { fr: 'Module complémentaire, à ajouter à votre formule.', en: 'Add-on module, added to your plan.' }, addon: 'housekeeping' },
   faq: [
     { q: { fr: 'Faut-il un appareil particulier ?', en: 'Is special hardware needed?' }, a: { fr: 'Non, l’application fonctionne sur le téléphone des équipes.', en: 'No, the app runs on the team’s phones.' } },
     { q: { fr: 'Les statuts vont-ils dans le PMS ?', en: 'Do statuses go to the PMS?' }, a: { fr: 'Oui, avec les PMS connectés.', en: 'Yes, with connected PMS.' } },

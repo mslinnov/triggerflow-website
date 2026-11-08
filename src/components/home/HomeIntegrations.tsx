@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { BadgeCheck } from 'lucide-react';
 import { DsButton } from '@/components/ds';
 import { cn } from '@/lib/utils';
 
@@ -51,7 +52,11 @@ export function HomeIntegrations() {
             </li>
           ))}
         </ul>
-        <DsButton href="/integrations" variant="link" arrow className="mt-6 self-start">
+        <p className="mt-6 flex items-center gap-2 rounded-lg bg-mint/60 px-3 py-2 text-[13.5px] font-medium text-accent-hover">
+          <BadgeCheck aria-hidden className="h-4 w-4 shrink-0" />
+          {t('free')}
+        </p>
+        <DsButton href="/integrations" variant="link" arrow className="mt-4 self-start">
           {t('more')}
         </DsButton>
       </div>

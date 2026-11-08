@@ -10,7 +10,7 @@ import { UpsellScenario, FlowTreeScenario, PayScenario, VoiceScenario, InboxScen
 import { Link } from '@/i18n/navigation';
 import { brand } from '@/data/brand';
 import { stat } from '@/data/company-stats';
-import { getDisplayAddons, getPricingPhase } from '@/data/pricing';
+import { getAddonPricingPhase, getDisplayAddons } from '@/data/pricing';
 import type { IconKey } from '@/content/products/types';
 import type { ProductLanding, L } from '@/content/products';
 
@@ -31,7 +31,7 @@ export async function ProductLandingPage({ product, locale }: { product: Product
   const nav = await getTranslations({ locale, namespace: 'nav' });
   const shot = productScreenshots[product.slug];
   const Visual = VISUALS[product.hero.visual];
-  const addon = product.pricing.addon ? getDisplayAddons(getPricingPhase()).find((a) => a.key === product.pricing.addon) : undefined;
+  const addon = product.pricing.addon ? getDisplayAddons(getAddonPricingPhase()).find((a) => a.key === product.pricing.addon) : undefined;
 
   return (
     <>
@@ -210,7 +210,7 @@ export async function ProductLandingPage({ product, locale }: { product: Product
             <p className="mt-3 text-h3 font-medium text-ink">{l(product.pricing.text)}</p>
             {addon && (
               <p className="mt-2 text-[15px] text-ink-2">
-                {t('addonPrice', { price: addon.price })}
+                {addon.from ? t('addonFrom', { price: addon.price }) : t('addonPrice', { price: addon.price })}
                 {addon.upcomingPrice && ` · ${t('addonThen', { price: addon.upcomingPrice })}`}
               </p>
             )}

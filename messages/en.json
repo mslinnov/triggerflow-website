@@ -1027,7 +1027,15 @@
         }
       },
       "inDemo": "Price in demo",
-      "note": "Prices excl. VAT, per month and per property. Modules without a listed price are presented during the demo."
+      "note": "Prices excl. VAT, per month and per property. AI agent and telephony: entry-tier price.",
+      "from": "from",
+      "was": "instead of",
+      "then": "€{price} from January 1, 2027",
+      "names": {
+        "voice": "Telephony (Reception call)",
+        "b2b": "B2B: events and companies",
+        "housekeeping": "Housekeeping"
+      }
     },
     "comparison": {
       "title": "What each plan includes.",
@@ -1110,6 +1118,10 @@
         "modules": {
           "question": "How do the modules of your choice work?",
           "answer": "One Way includes 1 module of your choice, Two Way includes forms, upselling and 2 modules of your choice, All Inclusive includes every module. You can switch or add modules at any time."
+        },
+        "connections": {
+          "question": "Do connections to my tools cost extra?",
+          "answer": "No. Every connection is included at no extra cost on our side: PMS, door locks, payments, booking channels, Zapier, n8n. We connect everything that can be connected."
         }
       }
     },
@@ -1122,7 +1134,12 @@
     "scrollRight": "Scroll right",
     "perMonthFull": "excl. VAT / month, per property",
     "ctaBand": "Let's find the right plan for your hotel together.",
-    "includesTitle": "Included"
+    "includesTitle": "Included",
+    "connect": {
+      "title": "Every connection is included, at no extra cost.",
+      "text": "PMS, door locks, payments, booking channels, Zapier, n8n: we connect everything that can be connected, with no extra fees on our side.",
+      "more": "See integrations"
+    }
   },
   "contact": {
     "meta": {
@@ -3759,7 +3776,8 @@
         "WhatsApp",
         "Zapier & n8n",
         "API & webhooks"
-      ]
+      ],
+      "free": "Every connection is included, at no extra cost."
     },
     "team": {
       "eyebrow": "Support",
@@ -3808,7 +3826,8 @@
     "faqTitle": "Your questions, answered.",
     "ctaText": "Guided setup, live in 48 hours.",
     "trustLine": "Hosted in France, public subprocessors, a DPA with every customer.",
-    "realScreenshot": "Screenshot of the app, demo account"
+    "realScreenshot": "Screenshot of the app, demo account",
+    "addonFrom": "From €{price} per month per property, excl. VAT"
   },
   "clientsPage": {
     "eyebrow": "Customers",

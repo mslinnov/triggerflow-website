@@ -59,7 +59,7 @@ export const reviews: ProductLanding = {
     { slug: 'flows', href: '/produit/flows', name: { fr: 'Flows', en: 'Flows' }, text: { fr: 'Le bon moment pour demander l’avis.', en: 'The right moment to ask.' } },
     { slug: 'inbox', href: '/produit/inbox', name: { fr: 'Messagerie', en: 'Inbox' }, text: { fr: 'Recontactez le client insatisfait.', en: 'Follow up with the unhappy guest.' } },
   ],
-  pricing: { text: { fr: 'Module complémentaire, à ajouter à n’importe quel plan payant.', en: 'Add-on module, available with any paid plan.' }, addon: 'reviews' },
+  pricing: { text: { fr: 'Module complémentaire, à ajouter à votre formule.', en: 'Add-on module, added to your plan.' }, addon: 'reviews' },
   faq: [
     { q: { fr: 'Filtrez-vous les avis négatifs ?', en: 'Do you filter out negative reviews?' }, a: { fr: 'Non. Une note basse déclenche une alerte pour que vous puissiez réagir ; vous restez libre d’inviter chaque client à publier.', en: 'No. A low score triggers an alert so you can react; you remain free to invite every guest to post.' } },
     { q: { fr: 'Quelles plateformes sont centralisées ?', en: 'Which platforms are centralised?' }, a: { fr: 'Google et Expedia notamment, ainsi que TripAdvisor, Booking.com et Airbnb.', en: 'Google and Expedia in particular, as well as TripAdvisor, Booking.com and Airbnb.' } },

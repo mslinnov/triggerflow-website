@@ -76,22 +76,41 @@ export const PLANS: Plan[] = [
   },
 ];
 
-export type AddonKey = 'reviews' | 'aiAgent' | 'payments' | 'loyalty' | 'guestApp';
+export type AddonKey = 'reviews' | 'aiAgent' | 'housekeeping' | 'payments' | 'loyalty' | 'guestApp' | 'voice' | 'b2b';
 
 export interface Addon {
   key: AddonKey;
+  /** Prix d'aujourd'hui (HT, par mois et par établissement). */
   price: string;
+  /** Prix au 1er janvier 2027 (`ADDON_PRICE_CHANGE_AT`). */
   nextPrice: string;
+  /** Prix d'appel d'une offre à paliers : affiché « à partir de ». */
+  from?: boolean;
+  /** Ancien prix barré (prix de lancement). */
+  was?: string;
 }
 
-/** Prix d'un module ajouté au-delà des modules inclus dans le plan. Libellés et icônes dans la page tarifs. */
+/**
+ * Modules payants, grille transmise par Soufiane le 08/11/2026. Agent IA : palier 1 affiché « à partir de »
+ * (palier 2 à 49 €). Téléphonie (Appel réception) : à partir de 39 €. B2B : Événements + comptes entreprises.
+ */
 export const ADDONS: Addon[] = [
-  { key: 'reviews', price: '29', nextPrice: '29' },
-  { key: 'aiAgent', price: '29', nextPrice: '29' },
-  { key: 'payments', price: '39', nextPrice: '39' },
-  { key: 'loyalty', price: '49', nextPrice: '49' },
-  { key: 'guestApp', price: '49', nextPrice: '49' },
+  { key: 'reviews', price: '19', nextPrice: '29' },
+  { key: 'aiAgent', price: '19', nextPrice: '29', from: true },
+  { key: 'housekeeping', price: '29', nextPrice: '29' },
+  { key: 'payments', price: '29', nextPrice: '29' },
+  { key: 'loyalty', price: '39', nextPrice: '39' },
+  { key: 'guestApp', price: '39', nextPrice: '39', was: '49' },
+  { key: 'voice', price: '39', nextPrice: '39', from: true },
+  { key: 'b2b', price: '29', nextPrice: '29' },
 ];
+
+/** Évolution des prix des modules (Avis, Agent IA), minuit heure de Paris. */
+export const ADDON_PRICE_CHANGE_AT = new Date('2027-01-01T00:00:00+01:00');
+
+export function getAddonPricingPhase(now: Date = getPricingNow()): PricingPhase {
+  return now.getTime() < ADDON_PRICE_CHANGE_AT.getTime() ? 'announce' : 'new';
+}
 
 /**
  * Entrée en vigueur de la grille actuelle (One Way / Two Way / All Inclusive), minuit heure de Paris.

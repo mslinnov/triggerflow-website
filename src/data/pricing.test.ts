@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { PLANS, getPricingPhase, getDisplayPlans, getDisplayAddons, getEntryPrice } from './pricing';
+import { PLANS, getPricingPhase, getDisplayPlans, getDisplayAddons, getEntryPrice, getAddonPricingPhase } from './pricing';
 
 test('la grille One Way / Two Way / All Inclusive est en vigueur depuis le 8 novembre 2026', () => {
   assert.equal(getPricingPhase(new Date('2026-11-07T23:59:59+01:00')), 'announce');
@@ -23,15 +23,20 @@ test('modules au choix inclus : 0, 1, 2, puis tous', () => {
   assert.deepEqual(PLANS.map((p) => p.includedModules), [0, 1, 2, 'all']);
 });
 
-test('modules ajoutés à l’unité, sans hausse annoncée', () => {
-  const addons = getDisplayAddons('new').map((a) => [a.key, a.price, a.upcomingPrice]);
-  assert.deepEqual(addons, [
-    ['reviews', '29', null],
-    ['aiAgent', '29', null],
-    ['payments', '39', null],
-    ['loyalty', '49', null],
-    ['guestApp', '49', null],
+test('modules : prix d’aujourd’hui, puis Avis et Agent IA à 29 € au 1er janvier 2027', () => {
+  const now = getDisplayAddons('announce').map((a) => [a.key, a.price, a.upcomingPrice]);
+  assert.deepEqual(now, [
+    ['reviews', '19', '29'],
+    ['aiAgent', '19', '29'],
+    ['housekeeping', '29', null],
+    ['payments', '29', null],
+    ['loyalty', '39', null],
+    ['guestApp', '39', null],
+    ['voice', '39', null],
+    ['b2b', '29', null],
   ]);
+  assert.equal(getAddonPricingPhase(new Date('2026-12-31T23:59:59+01:00')), 'announce');
+  assert.equal(getAddonPricingPhase(new Date('2027-01-01T00:00:00+01:00')), 'new');
 });
 
 test('prix d’entrée payant', () => {

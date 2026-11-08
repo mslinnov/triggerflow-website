@@ -1,3 +1,4 @@
+import type { AddonKey } from '@/data/pricing';
 import type { StatId } from '@/data/company-stats';
 
 /** Textes localisés d'une landing produit (gabarit en 13 blocs, docs/wireframes.md). */
@@ -27,7 +28,7 @@ export interface ProductLanding {
   integrations: { title: L; text: L; extra?: string[] };
   reliability?: { stat: StatId; label: L };
   related: { slug: string; href: string; name: L; text: L }[];
-  pricing: { text: L; addon?: 'payments' | 'reviews' | 'loyalty' | 'aiAgent' | 'guestApp' };
+  pricing: { text: L; addon?: AddonKey };
   faq: { q: L; a: L }[];
   cta: { title: L };
 }

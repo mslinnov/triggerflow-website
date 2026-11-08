@@ -2,7 +2,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
 import { PricingV2Content } from './PricingV2Content';
 import { BreadcrumbListJsonLd, PricingJsonLd } from '@/components/seo';
-import { getPricingPhase, getDisplayPlans, getDisplayAddons, getEntryPrice } from '@/data/pricing';
+import { getPricingPhase, getDisplayPlans, getDisplayAddons, getEntryPrice, getAddonPricingPhase } from '@/data/pricing';
 
 const baseUrl = 'https://www.trigger-flow.com';
 
@@ -45,7 +45,7 @@ export default async function PricingPage({ params }: PageProps) {
       <PricingJsonLd locale={locale} phase={phase} />
       <PricingV2Content
         plans={getDisplayPlans(phase)}
-        addons={getDisplayAddons(phase)}
+        addons={getDisplayAddons(getAddonPricingPhase())}
         announcing={phase === 'announce'}
       />
     </>

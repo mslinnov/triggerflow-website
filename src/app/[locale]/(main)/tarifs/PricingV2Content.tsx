@@ -3,7 +3,8 @@
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import {
-  BarChart3, Bot, Check, HelpCircle, Minus, MessageSquare, ShoppingBag, Star, Workflow,
+  BarChart3, Bot, Plug, Check, HelpCircle, Minus, MessageSquare, ShoppingBag, Workflow,
+  type LucideIcon,
 } from 'lucide-react';
 import { Container, CtaBand, DsButton, Eyebrow, FaqList, SectionHeader } from '@/components/ds';
 import { cn } from '@/lib/utils';
@@ -11,9 +12,7 @@ import { brand } from '@/data/brand';
 import type { AddonKey, DisplayAddon, DisplayPlan } from '@/data/pricing';
 import { UpcomingPrice } from '@/components/pricing/UpcomingPrice';
 import { Link } from '@/i18n/navigation';
-import { BUILDER_COLUMNS } from '@/data/offer-builder';
 import { navIcons } from '@/data/nav-icons';
-import { productMenu } from '@/data/navigation';
 
 /* ─── Données du tableau comparatif ─────────────────────────────── */
 
@@ -62,11 +61,20 @@ const featureGroups: { key: string; icon: typeof Check; features: { key: string;
 ];
 
 /** Prix dans `@/data/pricing` ; ici, seulement l'icône de chaque module. */
-/** Module du configurateur → module payant à l'unité (prix dans @/data/pricing). */
-const ADDON_KEYS: Partial<Record<string, AddonKey>> = { reviews: 'reviews', aiAgent: 'aiAgent', pay: 'payments', loyalty: 'loyalty', guestApp: 'guestApp' };
+/** Affichage des modules payants : icône, libellé (clé de navigation), page produit. */
+const ADDON_META: Record<AddonKey, { icon: LucideIcon; name: string; desc: string; href: string }> = {
+  reviews: { icon: navIcons.reviews, name: 'reviews', desc: 'reviews', href: '/produit/reviews' },
+  aiAgent: { icon: Bot, name: 'ai', desc: '', href: '/plateforme/ia' },
+  housekeeping: { icon: navIcons.housekeeping, name: 'custom', desc: 'housekeeping', href: '/produit/housekeeping' },
+  payments: { icon: navIcons.pay, name: 'pay', desc: 'pay', href: '/produit/pay' },
+  loyalty: { icon: navIcons.loyalty, name: 'loyalty', desc: 'loyalty', href: '/produit/loyalty' },
+  guestApp: { icon: navIcons.guestApp, name: 'guestApp', desc: 'guestApp', href: '/produit/guest-app' },
+  voice: { icon: navIcons.voice, name: 'custom', desc: 'voice', href: '/produit/voice' },
+  b2b: { icon: navIcons.b2b, name: 'custom', desc: 'events', href: '/produit/b2b' },
+};
 
 
-const faqItems = ['modules', 'changePlan', 'commitment', 'groupRates', 'smsIncluded'];
+const faqItems = ['modules', 'connections', 'changePlan', 'commitment', 'groupRates', 'smsIncluded'];
 
 interface PricingV2ContentProps {
   plans: DisplayPlan[];
@@ -178,7 +186,7 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
         </Container>
       </section>
 
-      {/* Modules : les 14 modules du configurateur, prix à l'unité quand il est public */}
+      {/* Modules payants (grille du 08/11/2026), puis les connexions incluses */}
       <section className="bg-white py-20 md:py-28">
         <Container>
           <SectionHeader eyebrow={t('addons.badge')} title={t('addons.title')} subtitle={t('addons.subtitle')} align="left" />
@@ -190,32 +198,48 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
               </p>
             ))}
           </div>
-          <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {BUILDER_COLUMNS.flat().map((key) => {
-              const Icon = navIcons[key] ?? (key === 'aiAgent' ? Bot : Star);
-              const addon = addons.find((a) => a.key === ADDON_KEYS[key]);
-              const name = key === 'aiAgent' ? tb('aiAgent.name') : tNav(`items.${key}`);
-              const desc = key === 'aiAgent' ? tb('aiAgent.description') : tNav(`descriptions.${key}`);
-              const href = key === 'aiAgent' ? '/plateforme/ia' : productMenu.flatMap((c) => c.items).find((i) => i.key === key)?.href ?? '/produit';
+          <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {addons.map((addon) => {
+              const meta = ADDON_META[addon.key];
+              const Icon = meta.icon;
+              const name = meta.name === 'ai' ? tb('aiAgent.name') : meta.name === 'custom' ? t(`addons.names.${addon.key}`) : tNav(`items.${meta.name}`);
+              const desc = meta.name === 'ai' ? tb('aiAgent.description') : tNav(`descriptions.${meta.desc}`);
               return (
-                <li key={key}>
-                  <Link href={href} className="group flex h-full items-start gap-3 rounded-xl border border-line bg-white p-4 transition-colors hover:border-accent">
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-mint/50 text-accent">
+                <li key={addon.key}>
+                  <Link href={meta.href} className="group flex h-full flex-col rounded-xl border border-line bg-white p-5 transition-colors hover:border-accent">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-mint/50 text-accent">
                       <Icon aria-hidden className="h-4 w-4" strokeWidth={1.75} />
                     </span>
-                    <span className="min-w-0 flex-1">
-                      <span className="flex items-baseline justify-between gap-2">
-                        <span className="text-[15px] font-semibold text-ink group-hover:text-accent">{name}</span>
-                        {addon && <span className="shrink-0 rounded-md bg-paper px-2 py-0.5 text-[12.5px] font-medium tabular-nums text-ink">+{addon.price} €</span>}
-                      </span>
-                      <span className="mt-0.5 block text-[13px] text-ink-3">{desc}</span>
+                    <span className="mt-4 text-[15px] font-semibold text-ink group-hover:text-accent">{name}</span>
+                    <span className="mt-0.5 flex-1 text-[13px] text-ink-3">{desc}</span>
+                    <span className="mt-4 flex flex-wrap items-baseline gap-x-1.5 border-t border-line pt-3">
+                      {addon.from && <span className="text-[12.5px] text-ink-3">{t('addons.from')}</span>}
+                      <span className="text-[20px] font-medium tabular-nums text-ink">{addon.price} €</span>
+                      {addon.was && <span className="text-[13px] text-ink-3 line-through">{addon.was} €</span>}
+                      <span className="text-[12px] text-ink-3">{t('perMonthFull')}</span>
                     </span>
+                    {addon.upcomingPrice && <span className="mt-1 text-[12px] text-ink-3">{t('addons.then', { price: addon.upcomingPrice })}</span>}
                   </Link>
                 </li>
               );
             })}
           </ul>
           <p className="mt-4 text-[13px] text-ink-3">{t('addons.note')}</p>
+
+          <div className="mt-10 flex flex-col gap-4 rounded-2xl bg-ink p-6 text-white md:flex-row md:items-center md:justify-between md:p-8">
+            <div className="flex items-start gap-4">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white/10 text-mint">
+                <Plug aria-hidden className="h-5 w-5" strokeWidth={1.75} />
+              </span>
+              <div>
+                <p className="text-[18px] font-semibold">{t('connect.title')}</p>
+                <p className="mt-1 max-w-2xl text-[14.5px] leading-relaxed text-white/80">{t('connect.text')}</p>
+              </div>
+            </div>
+            <DsButton href="/integrations" variant="secondaryOnDark" className="shrink-0">
+              {t('connect.more')}
+            </DsButton>
+          </div>
         </Container>
       </section>
 

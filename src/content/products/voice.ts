@@ -65,7 +65,7 @@ export const voice: ProductLanding = {
     { slug: 'crm', href: '/produit/crm', name: { fr: 'CRM', en: 'CRM' }, text: { fr: 'La fiche client derrière chaque appel.', en: 'The guest profile behind every call.' } },
     { slug: 'flows', href: '/produit/flows', name: { fr: 'Flows', en: 'Flows' }, text: { fr: 'Envoyez le lien de l’espace client au bon moment.', en: 'Send the guest space link at the right time.' } },
   ],
-  pricing: { text: { fr: 'Disponible en complément de votre plan. Le tarif vous est présenté pendant la démo.', en: 'Available on top of your plan. Pricing is shown during the demo.' } },
+  pricing: { text: { fr: 'Module complémentaire, à ajouter à votre formule.', en: 'Add-on module, added to your plan.' }, addon: 'voice' },
   faq: [
     { q: { fr: 'L’appel est-il gratuit pour un client étranger ?', en: 'Is the call free for an international guest?' }, a: { fr: 'Oui : l’appel passe par internet depuis le navigateur du client, sans frais d’appel.', en: 'Yes: the call goes over the internet from the guest’s browser, with no call charges.' } },
     { q: { fr: 'Faut-il installer quelque chose ?', en: 'Is there anything to install?' }, a: { fr: 'Non. Pas de standard, pas de câblage, pas d’application à télécharger pour le client.', en: 'No. No switchboard, no cabling, no app for the guest to download.' } },
