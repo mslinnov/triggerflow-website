@@ -3891,7 +3891,13 @@
         "name": "Agent IA",
         "description": "Répond à vos clients 24 h/24"
       },
-      "plansTitle": "Les formules"
+      "plansTitle": "Ensuite, votre formule",
+      "plansText": "Le CRM est dans toutes les formules. Elles se distinguent par le nombre de modules au choix inclus.",
+      "included": {
+        "communication": "CRM + 1 module au choix",
+        "conversion": "CRM + formulaires, upsell + 2 modules",
+        "allInclusive": "CRM + tous les modules"
+      }
     },
     "guestView": {
       "eyebrow": "Côté client",

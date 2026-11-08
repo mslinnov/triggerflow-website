@@ -3614,7 +3614,13 @@
         "name": "AI agent",
         "description": "Answers your guests 24/7"
       },
-      "plansTitle": "The plans"
+      "plansTitle": "Then, your plan",
+      "plansText": "The CRM is in every plan. They differ by how many modules of your choice are included.",
+      "included": {
+        "communication": "CRM + 1 module of your choice",
+        "conversion": "CRM + forms, upselling + 2 modules",
+        "allInclusive": "CRM + every module"
+      }
     },
     "guestView": {
       "eyebrow": "Guest side",
