@@ -10,6 +10,14 @@ import { Reveal } from './shared';
 /** Étapes : 0 repos · 1 PMS → TF · 2 TF → PMS · 3 doublons détectés · 4 fusion · 5 fiche unique. */
 const DURATIONS = [600, 1500, 1500, 1300, 900, 1];
 
+/** Quelques connecteurs PMS existants (brand.pms), affichés ensemble. */
+const PMS_LOGOS = [
+  { src: '/images/integrations/mews.svg', alt: 'Mews', w: 901, h: 114 },
+  { src: '/images/integrations/thais.svg', alt: 'Thaïs', w: 210, h: 64 },
+  { src: '/images/integrations/opera.png', alt: 'Oracle Opera Cloud', w: 1080, h: 500 },
+  { src: '/images/integrations/apaleo.png', alt: 'Apaleo', w: 829, h: 210 },
+];
+
 const SOURCES = [
   { name: 'J. Dupont', detail: 'jdupont@gmail.com', source: 'PMS', pos: 'top-0 -rotate-[1.5deg]' },
   { name: 'Jean Dupont', detail: '+33 6 12 34 56 78', source: 'Booking.com', pos: 'top-[60px] rotate-0' },
@@ -29,10 +37,16 @@ export function ReliabilityScenario() {
       <div className="rounded-xl border border-white/15 bg-white/[0.06] p-5">
         <p className="font-mono text-[11px] uppercase tracking-[0.08em] text-mint">{t('syncLabel')}</p>
         <div className="mt-4 grid grid-cols-[auto_1fr_auto] items-center gap-3">
-          <span className="flex h-11 items-center rounded-lg bg-white px-3">
-            <Image src="/images/integrations/thais.svg" alt="Thaïs" width={53} height={16} className="h-4 w-auto" />
+          {/* « Votre PMS » : plusieurs connecteurs, pas un seul partenaire */}
+          <span className="flex flex-col items-center gap-1.5 rounded-lg bg-white px-3 py-2">
+            <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.06em] text-ink">{t('pms')}</span>
+            <span className="grid grid-cols-2 items-center gap-x-2 gap-y-1">
+              {PMS_LOGOS.map((l) => (
+                <Image key={l.alt} src={l.src} alt={l.alt} width={l.w} height={l.h} className="h-3 w-auto max-w-[44px] object-contain" />
+              ))}
+            </span>
           </span>
-          <div className="relative h-11">
+          <div className="relative h-11 min-w-12">
             {/* Deux voies : réservation vers TriggerFlow, informations vers le PMS */}
             <span className="absolute inset-x-0 top-3 h-px bg-white/20" />
             <span className="absolute inset-x-0 bottom-3 h-px bg-white/20" />

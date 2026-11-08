@@ -3489,7 +3489,8 @@
       "syncLabel": "Synchronisation PMS, dans les deux sens",
       "inbound": "Réservation · 2 chambres, 23-27 déc.",
       "outbound": "Petit-déjeuner payé, ajouté au folio",
-      "dedupLabel": "Une seule fiche par client"
+      "dedupLabel": "Une seule fiche par client",
+      "pms": "Votre PMS"
     }
   },
   "nav": {

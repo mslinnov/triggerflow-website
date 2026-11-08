@@ -3212,7 +3212,8 @@
       "syncLabel": "Two-way PMS sync",
       "inbound": "Booking · 2 rooms, Dec 23-27",
       "outbound": "Breakfast paid, added to the folio",
-      "dedupLabel": "One profile per guest"
+      "dedupLabel": "One profile per guest",
+      "pms": "Your PMS"
     }
   },
   "nav": {
