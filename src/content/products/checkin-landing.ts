@@ -31,7 +31,7 @@ export const checkinLanding: DedicatedLandingContent & { seo: { title: { fr: str
     image: { src: '/images/app/checkin.webp', width: 1400, height: 866, label: 'app.trigger-flow.com/checkin', alt: { fr: 'Écran Check-in TriggerFlow : arrivées du jour, check-in faits, en cours et en attente', en: 'TriggerFlow check-in screen: today’s arrivals, check-ins done, in progress and pending' }, caption: { fr: 'Capture de l’application, compte de démonstration', en: 'App screenshot, demo account' } },
   },
   proof: {
-    label: { fr: 'Ils accueillent avec TriggerFlow', en: 'They welcome guests with TriggerFlow' },
+    label: { fr: 'Ils font confiance à TriggerFlow', en: 'They trust TriggerFlow' },
     clients: ['Edgar Hôtel & Spa', 'Hôtel Causse Comtal', 'AMMI Hôtels'],
   },
   sections: [

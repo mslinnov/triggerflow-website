@@ -21,6 +21,8 @@ import { reviewsLanding } from '@/content/products/reviews-landing';
 import { DedicatedLanding, type DedicatedLandingContent } from '@/components/product/DedicatedLanding';
 import { formsLanding } from '@/content/products/forms-landing';
 import { checkinLanding } from '@/content/products/checkin-landing';
+import { b2bLanding, eventsLanding } from '@/content/products/b2b-events-landing';
+import { crmLanding, campaignsLanding, loyaltyLanding, voiceLanding, housekeepingLanding, keysLanding } from '@/content/products/more-landings';
 
 /** Landings construites sur le gabarit commun DedicatedLanding. */
 const fromTemplate = (content: DedicatedLandingContent) =>
@@ -38,6 +40,14 @@ const DEDICATED = {
   reviews: { seo: reviewsLanding.seo, faq: reviewsLanding.faq, Component: ReviewsLanding },
   forms: { seo: formsLanding.seo, faq: formsLanding.faq, Component: fromTemplate(formsLanding) },
   'check-in': { seo: checkinLanding.seo, faq: checkinLanding.faq, Component: fromTemplate(checkinLanding) },
+  b2b: { seo: b2bLanding.seo, faq: b2bLanding.faq, Component: fromTemplate(b2bLanding) },
+  events: { seo: eventsLanding.seo, faq: eventsLanding.faq, Component: fromTemplate(eventsLanding) },
+  crm: { seo: crmLanding.seo, faq: crmLanding.faq, Component: fromTemplate(crmLanding) },
+  campaigns: { seo: campaignsLanding.seo, faq: campaignsLanding.faq, Component: fromTemplate(campaignsLanding) },
+  loyalty: { seo: loyaltyLanding.seo, faq: loyaltyLanding.faq, Component: fromTemplate(loyaltyLanding) },
+  voice: { seo: voiceLanding.seo, faq: voiceLanding.faq, Component: fromTemplate(voiceLanding) },
+  housekeeping: { seo: housekeepingLanding.seo, faq: housekeepingLanding.faq, Component: fromTemplate(housekeepingLanding) },
+  keys: { seo: keysLanding.seo, faq: keysLanding.faq, Component: fromTemplate(keysLanding) },
 } as const;
 import ModulePageContent from './ModulePageContent';
 

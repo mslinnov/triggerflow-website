@@ -29,7 +29,7 @@ export const formsLanding: DedicatedLandingContent & { seo: { title: { fr: strin
     image: { src: '/images/app/form-editor.webp', width: 1400, height: 866, label: 'app.trigger-flow.com/formulaires', alt: { fr: 'Éditeur de formulaire TriggerFlow : pages, éléments, traduction', en: 'TriggerFlow form editor: pages, elements, translation' }, caption: { fr: 'Capture de l’application, compte de démonstration', en: 'App screenshot, demo account' } },
   },
   proof: {
-    label: { fr: 'Ils collectent avec TriggerFlow', en: 'They collect with TriggerFlow' },
+    label: { fr: 'Ils font confiance à TriggerFlow', en: 'They trust TriggerFlow' },
     clients: ['Edgar Hôtel & Spa', 'Hôtel Causse Comtal', 'Groupe Noemys'],
   },
   sections: [

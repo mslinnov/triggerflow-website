@@ -37,7 +37,7 @@ export type LandingSection =
   | { type: 'image'; tone?: Tone; eyebrow: L; title: L; subtitle?: L; image: Img };
 
 export interface DedicatedLandingContent {
-  hero: { eyebrow: L; title: L; subtitle: L; bullets: L[]; image: Img; centered?: boolean };
+  hero: { eyebrow: L; title: L; subtitle: L; bullets: L[]; image?: Img; centered?: boolean };
   proof: { label: L; clients: string[]; stat?: { key: StatId; label: L } };
   sections: LandingSection[];
   quote?: { text: L; name: string; role: L; company: string };
@@ -99,7 +99,7 @@ export function DedicatedLanding({ content: c, locale }: { content: DedicatedLan
               <DsButton href="/tarifs" variant="secondary">{l(pricing)}</DsButton>
             </div>
           </div>
-          <Frame lang={lang} img={c.hero.image} priority className="mx-auto mt-14 max-w-[1100px]" />
+          {c.hero.image && <Frame lang={lang} img={c.hero.image} priority className="mx-auto mt-14 max-w-[1100px]" />}
         </Container>
       </section>
 
