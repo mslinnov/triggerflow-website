@@ -18,6 +18,15 @@ import { PayLanding } from '@/components/product/pay/PayLanding';
 import { payLanding } from '@/content/products/pay-landing';
 import { ReviewsLanding } from '@/components/product/reviews/ReviewsLanding';
 import { reviewsLanding } from '@/content/products/reviews-landing';
+import { DedicatedLanding, type DedicatedLandingContent } from '@/components/product/DedicatedLanding';
+import { formsLanding } from '@/content/products/forms-landing';
+import { checkinLanding } from '@/content/products/checkin-landing';
+
+/** Landings construites sur le gabarit commun DedicatedLanding. */
+const fromTemplate = (content: DedicatedLandingContent) =>
+  function TemplateLanding({ locale }: { locale: string }) {
+    return <DedicatedLanding content={content} locale={locale} />;
+  };
 
 /** Landings dédiées : composant, SEO et FAQ propres. */
 const DEDICATED = {
@@ -27,6 +36,8 @@ const DEDICATED = {
   'guest-app': { seo: guestAppLanding.seo, faq: guestAppLanding.faq, Component: GuestAppLanding },
   pay: { seo: payLanding.seo, faq: payLanding.faq, Component: PayLanding },
   reviews: { seo: reviewsLanding.seo, faq: reviewsLanding.faq, Component: ReviewsLanding },
+  forms: { seo: formsLanding.seo, faq: formsLanding.faq, Component: fromTemplate(formsLanding) },
+  'check-in': { seo: checkinLanding.seo, faq: checkinLanding.faq, Component: fromTemplate(checkinLanding) },
 } as const;
 import ModulePageContent from './ModulePageContent';
 
