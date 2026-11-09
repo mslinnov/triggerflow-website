@@ -16,6 +16,8 @@ import { GuestAppLanding } from '@/components/product/guest-app/GuestAppLanding'
 import { guestAppLanding } from '@/content/products/guest-app-landing';
 import { PayLanding } from '@/components/product/pay/PayLanding';
 import { payLanding } from '@/content/products/pay-landing';
+import { ReviewsLanding } from '@/components/product/reviews/ReviewsLanding';
+import { reviewsLanding } from '@/content/products/reviews-landing';
 
 /** Landings dédiées : composant, SEO et FAQ propres. */
 const DEDICATED = {
@@ -24,6 +26,7 @@ const DEDICATED = {
   inbox: { seo: inboxLanding.seo, faq: inboxLanding.faq, Component: InboxLanding },
   'guest-app': { seo: guestAppLanding.seo, faq: guestAppLanding.faq, Component: GuestAppLanding },
   pay: { seo: payLanding.seo, faq: payLanding.faq, Component: PayLanding },
+  reviews: { seo: reviewsLanding.seo, faq: reviewsLanding.faq, Component: ReviewsLanding },
 } as const;
 import ModulePageContent from './ModulePageContent';
 
