@@ -5,7 +5,8 @@ import { join } from 'node:path';
 import { test } from 'node:test';
 import { parseDocumentPath } from './document-views';
 import { HEAD } from '../app/api/doc/[document]/[slug]/route';
-import { failurePage, RelayGate, relaySharedPdf, type RelayConfig } from './shared-pdf';
+import { failurePage, RelayGate, relayConfigFromEnv, relaySharedPdf, type RelayConfig } from './shared-pdf';
+import { visitorKey } from './visitor-ip';
 
 test('adresse d’un document : le Parcours reste une page du site, une autre clé bien formée est un PDF du CRM', () => {
   assert.deepEqual(parseDocumentPath('/doc/parcours/k7m2'), { kind: 'page', document: 'parcours', slug: 'k7m2' });
@@ -300,16 +301,94 @@ test('relais d’un PDF : disque indisponible, « réessayez » et la place est 
   assert.equal(gate.size, 0);
 });
 
-test('relais d’un PDF : un téléchargement qui ne finit jamais rend sa place au bout du délai', async () => {
+const pause = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+/** Un PDF de `blocks` blocs de 64 Ko, servi par le faux backend. */
+const pdfOfBlocks = (blocks: number) => {
+  const bytes = new Uint8Array(blocks * 64 * 1024).map((_, i) => i % 251);
+  return { bytes, answer: () => new Response(bytes, { status: 200, headers: { 'Content-Type': 'application/pdf' } }) };
+};
+
+test('relais d’un PDF : un lecteur qui ne demande plus rien rend sa place au bout du délai d’inactivité', async () => {
   const gate = new RelayGate(1);
   const { config } = backend(() => pdfResponse());
 
-  const response = await relaySharedPdf('presentation', 'k7m2', reader(), { ...config, gate, maxRelayMs: 30 });
+  const response = await relaySharedPdf('presentation', 'k7m2', reader(), { ...config, gate, idleMs: 30 });
   assert.equal(gate.size, 1);
-  await new Promise((resolve) => setTimeout(resolve, 80));
+  await pause(80);
 
   assert.equal(gate.size, 0);
   await assert.rejects(response.arrayBuffer());
+});
+
+test('relais d’un PDF : un lecteur lent mais actif n’est pas coupé, le délai repart à chaque bloc', async () => {
+  const gate = new RelayGate(1);
+  const { bytes, answer } = pdfOfBlocks(5);
+  const { config } = backend(answer);
+
+  const response = await relaySharedPdf('presentation', 'k7m2', reader(), { ...config, gate, idleMs: 60 });
+  const lecture = response.body!.getReader();
+  const blocs: Uint8Array[] = [];
+  // Un bloc toutes les 35 ms : plus de 150 ms en tout, jamais 60 ms sans rien demander.
+  for (let r = await lecture.read(); !r.done; r = await lecture.read()) {
+    blocs.push(r.value);
+    await pause(35);
+  }
+
+  assert.deepEqual(Buffer.concat(blocs), Buffer.from(bytes));
+  assert.equal(gate.size, 0);
+});
+
+test('relais d’un PDF : même actif, un téléchargement rend sa place passé le plafond total', async () => {
+  const gate = new RelayGate(1);
+  const { answer } = pdfOfBlocks(16);
+  const { config } = backend(answer);
+
+  const response = await relaySharedPdf('presentation', 'k7m2', reader(), { ...config, gate, idleMs: 1_000, maxRelayMs: 60 });
+  const lecture = response.body!.getReader();
+  await assert.rejects(async () => {
+    for (let r = await lecture.read(); !r.done; r = await lecture.read()) await pause(20);
+  });
+
+  assert.equal(gate.size, 0);
+});
+
+test('relais d’un PDF : les adresses d’un même /64 IPv6 sont un seul visiteur', async () => {
+  const gate = new RelayGate(10, 2);
+  const { config } = backend(() => pdfResponse());
+  const relay = (ip: string) => relaySharedPdf('presentation', 'k7m2', reader({ 'x-forwarded-for': ip }), { ...config, gate });
+
+  assert.equal((await relay('2001:db8:1:2::a')).status, 200);
+  assert.equal((await relay('2001:db8:1:2:ffff::b')).status, 200);
+  // Une troisième adresse du même abonné : sa part est prise.
+  assert.equal((await relay('2001:0db8:0001:0002:0:0:0:c')).status, 503);
+  // Le /64 voisin est un autre abonné.
+  assert.equal((await relay('2001:db8:1:3::a')).status, 200);
+});
+
+test('clé d’un visiteur : IPv4 telle quelle, IPv6 réduite à son /64, illisible regroupée', () => {
+  assert.equal(visitorKey('203.0.113.9'), '203.0.113.9');
+  assert.equal(visitorKey('2001:db8:1:2::a'), '2001:db8:1:2::/64');
+  assert.equal(visitorKey('2001:0DB8:0001:0002:aaaa:bbbb:cccc:dddd'), '2001:db8:1:2::/64');
+  assert.equal(visitorKey('2001:db8::1'), '2001:db8:0:0::/64');
+  assert.equal(visitorKey('::1'), '0:0:0:0::/64');
+  assert.equal(visitorKey('::ffff:203.0.113.9'), '203.0.113.9');
+  assert.equal(visitorKey('1:2:3:4:5:6:7:8:9'), 'ip-inconnue');
+  assert.equal(visitorKey('1::2::3'), 'ip-inconnue');
+  assert.equal(visitorKey(null), 'ip-inconnue');
+});
+
+test('relais d’un PDF : le dossier temporaire se règle par SHARED_PDF_TMP_DIR, celui du système sinon', () => {
+  const before = process.env.SHARED_PDF_TMP_DIR;
+  try {
+    process.env.SHARED_PDF_TMP_DIR = ' /var/tmp/tf-doc ';
+    assert.equal(relayConfigFromEnv().tmpDir, '/var/tmp/tf-doc');
+    process.env.SHARED_PDF_TMP_DIR = '';
+    assert.equal(relayConfigFromEnv().tmpDir, undefined);
+  } finally {
+    if (before === undefined) delete process.env.SHARED_PDF_TMP_DIR;
+    else process.env.SHARED_PDF_TMP_DIR = before;
+  }
 });
 
 test('relais d’un PDF : sur un refus, le corps du backend est annulé, pas laissé ouvert', async () => {

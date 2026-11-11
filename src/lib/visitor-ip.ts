@@ -64,3 +64,32 @@ export function readVisitorIp(
   const last = chain[chain.length - 1]?.trim();
   return last && isIpAddress(last) ? last : null;
 }
+
+/**
+ * Clé d'un visiteur pour une limite qui compte par visiteur : l'IPv4 telle quelle, une IPv6
+ * réduite à son /64, comme normalizeIpForRateLimit du backend. Un abonné reçoit un /64 entier :
+ * une clé par adresse se contournerait en changeant d'adresse à chaque requête. Une IPv4 écrite
+ * en IPv6 (::ffff:203.0.113.9) reste cette IPv4. Les adresses illisibles partagent une seule clé.
+ */
+export function visitorKey(ip: string | null): string {
+  if (!ip) return 'ip-inconnue';
+  if (!ip.includes(':')) return ip;
+
+  const ipv4Tail = ip.match(/(\d{1,3}(?:\.\d{1,3}){3})$/);
+  if (ipv4Tail) return ipv4Tail[1];
+
+  const halves = ip.toLowerCase().split('::');
+  if (halves.length > 2) return 'ip-inconnue';
+  const head = halves[0] ? halves[0].split(':') : [];
+  const tail = halves.length === 2 && halves[1] ? halves[1].split(':') : [];
+  const missing = 8 - head.length - tail.length;
+  if (halves.length === 1 ? missing !== 0 : missing < 1) return 'ip-inconnue';
+
+  const groups = [...head, ...Array<string>(halves.length === 2 ? missing : 0).fill('0'), ...tail];
+  if (groups.some((group) => !/^[0-9a-f]{1,4}$/.test(group))) return 'ip-inconnue';
+
+  return `${groups
+    .slice(0, 4)
+    .map((group) => parseInt(group, 16).toString(16))
+    .join(':')}::/64`;
+}

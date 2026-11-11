@@ -24,7 +24,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ docu
 /**
  * Sans cette réponse, Next servirait un HEAD en appelant GET puis en jetant le corps : chaque
  * sonde (aperçu de lien, antivirus d'une messagerie) compterait une ouverture et garderait une
- * place de relais jusqu'au garde-temps.
+ * place de relais jusqu'à ce que le délai d'inactivité la rende.
  */
 export function HEAD(): Response {
   return new Response(null, { status: 405, headers: { Allow: 'GET', 'Cache-Control': 'no-store' } });

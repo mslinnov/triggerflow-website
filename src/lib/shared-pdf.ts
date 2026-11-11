@@ -25,7 +25,7 @@ import { randomUUID } from 'node:crypto';
 import { open, unlink, type FileHandle } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { readVisitorIp } from './visitor-ip';
+import { readVisitorIp, visitorKey } from './visitor-ip';
 
 export type RelayConfig = {
   apiUrl: string | undefined;
@@ -39,9 +39,11 @@ export type RelayConfig = {
   maxBytes?: number;
   /** Relais simultanés ; par défaut, celui du serveur. */
   gate?: RelayGate;
-  /** Dossier du fichier temporaire. */
+  /** Dossier du fichier temporaire ; par défaut, celui du système. */
   tmpDir?: string;
-  /** Au-delà, un téléchargement jamais terminé ni abandonné rend sa place. */
+  /** Un lecteur qui ne demande plus rien pendant ce délai rend sa place. */
+  idleMs?: number;
+  /** Au-delà, même un lecteur actif rend sa place. */
   maxRelayMs?: number;
 };
 
@@ -61,9 +63,11 @@ const CHUNK_BYTES = 64 * 1024;
  * Au pire, 50 × 26 Mo = 1,3 Go de disque temporaire, rendu à la fin de chaque téléchargement, et
  * 50 × 64 Ko de mémoire. Une rafale au-delà reçoit « réessayez », au lieu d'emporter le serveur.
  *
- * 10 par visiteur : sans cela, un seul client qui ouvre 50 téléchargements sans les lire
- * bloquerait les PDF de tout le monde jusqu'au garde-temps. Une salle derrière un même wifi tient
- * dans 10 : chaque PDF y arrive en quelques secondes, ils se suivent plus qu'ils ne s'empilent.
+ * 25 par visiteur, la moitié du total : un seul client ne prend jamais toutes les places, et
+ * une salle derrière un même Wi-Fi passe. Trente personnes qui scannent le QR code d'un stand
+ * le font en quelques secondes, pas dans le même dixième de seconde, et un PDF de 15 Mo arrive
+ * en quelques secondes sur un Wi-Fi de salon : elles se chevauchent par dizaines, pas par trente.
+ * Le visiteur est l'IPv4, ou le /64 d'une IPv6 (un abonné en reçoit 2^64).
  */
 export class RelayGate {
   private active = 0;
@@ -97,7 +101,7 @@ export class RelayGate {
   }
 }
 
-const serverGate = new RelayGate(50, 10);
+const serverGate = new RelayGate(50, 25);
 
 // Mêmes précautions que le comptage du Parcours : barre finale retirée, secret
 // sans retour à la ligne. Le secret ne sort jamais du serveur du site.
@@ -105,6 +109,7 @@ export function relayConfigFromEnv(): RelayConfig {
   return {
     apiUrl: process.env.TRIGGERFLOW_API_URL?.trim().replace(/\/+$/, ''),
     secret: process.env.DOCUMENT_VIEW_SECRET?.trim(),
+    tmpDir: process.env.SHARED_PDF_TMP_DIR?.trim() || undefined,
   };
 }
 
@@ -124,7 +129,7 @@ export async function relaySharedPdf(
   const ip = readVisitorIp(request);
   // La place est prise AVANT d'appeler le backend : un lecteur refusé n'est pas compté. Les
   // adresses illisibles partagent une seule part.
-  const release = (config.gate ?? serverGate).tryAcquire(ip ?? 'ip-inconnue');
+  const release = (config.gate ?? serverGate).tryAcquire(visitorKey(ip));
   if (!release) {
     console.error('[doc] trop de PDF partagés en cours de relais');
     return failurePage(503);
@@ -148,7 +153,8 @@ export async function relaySharedPdf(
     });
 
     handedOff = true;
-    return new Response(streamFromDisk(spooled.file, release, config.maxRelayMs ?? 15 * 60_000), { status: 200, headers });
+    const limits = { idleMs: config.idleMs ?? 60_000, maxMs: config.maxRelayMs ?? 30 * 60_000 };
+    return new Response(streamFromDisk(spooled.file, release, limits), { status: 200, headers });
   } finally {
     if (!handedOff) release();
   }
@@ -282,35 +288,55 @@ async function spoolCapped(
 
 /**
  * Le fichier relu par blocs, à la demande du lecteur : un lecteur lent ne retient qu'un bloc.
- * La place et le descripteur sont rendus à la fin, à l'abandon, sur erreur, ou passé `maxMs`.
+ * La place et le descripteur sont rendus à la fin, à l'abandon, sur erreur, quand le lecteur ne
+ * demande plus rien pendant `idleMs` (délai réarmé à chaque bloc), ou passé `maxMs` en tout.
+ *
+ * 60 s sans demander de bloc : le lecteur est parti sans fermer, ou ne lit plus. 30 min en tout :
+ * 26 Mo à 120 kbit/s, sous un mauvais réseau mobile ; un lecteur plus lent encore garderait
+ * sinon sa place des heures en lisant un bloc par minute.
  */
-function streamFromDisk(file: FileHandle, release: () => void, maxMs: number): ReadableStream<Uint8Array> {
+function streamFromDisk(
+  file: FileHandle,
+  release: () => void,
+  { idleMs, maxMs }: { idleMs: number; maxMs: number }
+): ReadableStream<Uint8Array> {
   let position = 0;
   let finished = false;
-  let guard: ReturnType<typeof setTimeout> | undefined;
+  let idle: ReturnType<typeof setTimeout> | undefined;
+  let total: ReturnType<typeof setTimeout> | undefined;
 
   const finish = async () => {
     if (finished) return;
     finished = true;
-    clearTimeout(guard);
+    clearTimeout(idle);
+    clearTimeout(total);
     release();
     await file.close().catch(() => undefined);
   };
 
+  const stop = (controller: ReadableStreamDefaultController<Uint8Array>, reason: string) => {
+    void finish();
+    try {
+      controller.error(new Error(reason));
+    } catch {
+      // Déjà fermé.
+    }
+  };
+
+  // Les gardes seuls ne retiennent pas le processus (arrêt du site, fin des tests).
+  const arm = (ms: number, onTimeout: () => void) => {
+    const timer = setTimeout(onTimeout, ms);
+    timer.unref?.();
+    return timer;
+  };
+
   return new ReadableStream<Uint8Array>({
     start(controller) {
-      guard = setTimeout(() => {
-        void finish();
-        try {
-          controller.error(new Error('téléchargement trop long'));
-        } catch {
-          // Déjà fermé.
-        }
-      }, maxMs);
-      // Le garde-temps seul ne retient pas le processus (arrêt du site, fin des tests).
-      guard.unref?.();
+      total = arm(maxMs, () => stop(controller, 'téléchargement trop long'));
+      idle = arm(idleMs, () => stop(controller, 'lecteur inactif'));
     },
     async pull(controller) {
+      clearTimeout(idle);
       try {
         const buffer = new Uint8Array(CHUNK_BYTES);
         const { bytesRead } = await file.read(buffer, 0, CHUNK_BYTES, position);
@@ -321,6 +347,8 @@ function streamFromDisk(file: FileHandle, release: () => void, maxMs: number): R
         }
         position += bytesRead;
         controller.enqueue(buffer.subarray(0, bytesRead));
+        // Réarmé une fois le bloc remis : le délai court jusqu'à la demande suivante.
+        if (!finished) idle = arm(idleMs, () => stop(controller, 'lecteur inactif'));
       } catch (error) {
         await finish();
         controller.error(error);
