@@ -22,7 +22,7 @@ import { DedicatedLanding, type DedicatedLandingContent } from '@/components/pro
 import { formsLanding } from '@/content/products/forms-landing';
 import { checkinLanding } from '@/content/products/checkin-landing';
 import { b2bLanding, eventsLanding } from '@/content/products/b2b-events-landing';
-import { crmLanding, campaignsLanding, loyaltyLanding, voiceLanding, housekeepingLanding, keysLanding } from '@/content/products/more-landings';
+import { crmLanding, campaignsLanding, loyaltyLanding, voiceLanding, housekeepingLanding, keysLanding, analyticsLanding } from '@/content/products/more-landings';
 
 /** Landings construites sur le gabarit commun DedicatedLanding. */
 const fromTemplate = (content: DedicatedLandingContent) =>
@@ -48,6 +48,7 @@ const DEDICATED = {
   voice: { seo: voiceLanding.seo, faq: voiceLanding.faq, Component: fromTemplate(voiceLanding) },
   housekeeping: { seo: housekeepingLanding.seo, faq: housekeepingLanding.faq, Component: fromTemplate(housekeepingLanding) },
   keys: { seo: keysLanding.seo, faq: keysLanding.faq, Component: fromTemplate(keysLanding) },
+  analytics: { seo: analyticsLanding.seo, faq: analyticsLanding.faq, Component: fromTemplate(analyticsLanding) },
 } as const;
 import ModulePageContent from './ModulePageContent';
 

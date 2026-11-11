@@ -497,3 +497,97 @@ export const keysLanding: Landing = {
   ],
   cta: { title: { fr: 'Accueillez vos clients à toute heure.', en: 'Welcome guests at any hour.' }, text: { fr: 'Une démo de 45 minutes, avec vos serrures.', en: 'A 45-minute demo, with your locks.' } },
 };
+
+/**
+ * Landing Statistiques (audit origin/main du 11/11/2026) : 6 onglets BI, KPI hôteliers, comparaison de périodes,
+ * filtre par segment, calendrier OTB 90 jours, tableau de bord à 48 modules, classement des hôtels d'un groupe, export CSV.
+ * Ne PAS affirmer : fenêtre de réservation, pickup / prévisions / budget, export PDF, rapports envoyés par email,
+ * commentaires IA sur les chiffres.
+ */
+export const analyticsLanding: Landing = {
+  seo: {
+    title: { fr: 'Statistiques hôtel : RevPAR, part directe, clients | TriggerFlow', en: 'Hotel analytics: RevPAR, direct share, guests | TriggerFlow' },
+    description: { fr: 'Occupation, ADR, RevPAR, part des réservations directes, clients fidèles, communication et e-réputation : les chiffres de votre hôtel, calculés depuis votre PMS.', en: 'Occupancy, ADR, RevPAR, direct booking share, repeat guests, communication and reputation: your hotel’s numbers, calculated from your PMS.' },
+  },
+  hero: {
+    eyebrow: { fr: 'Statistiques', en: 'Analytics' },
+    title: { fr: 'Les chiffres de votre hôtel, sans tableur.', en: 'Your hotel’s numbers, without a spreadsheet.' },
+    subtitle: { fr: 'Occupation, RevPAR, part des réservations directes, clients fidèles, résultats de vos messages et de vos avis : tout est calculé chaque nuit depuis votre PMS, comparable d’une période à l’autre et filtrable par segment.', en: 'Occupancy, RevPAR, direct booking share, repeat guests, results of your messages and reviews: all calculated nightly from your PMS, comparable across periods and filterable by segment.' },
+    bullets: [
+      { fr: 'Les indicateurs hôteliers, calculés depuis votre PMS', en: 'Hotel KPIs, calculated from your PMS' },
+      { fr: 'Chaque chiffre comparé à la période précédente', en: 'Every figure compared with the previous period' },
+      { fr: 'Pour un hôtel ou tout un groupe', en: 'For one hotel or a whole group' },
+    ],
+    image: { src: '/images/app/analytics.webp', width: 1400, height: 866, label: 'app.trigger-flow.com/bi', alt: { fr: 'Statistiques TriggerFlow : occupation, ADR, RevPAR, TRevPAR, annulations et durée moyenne de séjour', en: 'TriggerFlow analytics: occupancy, ADR, RevPAR, TRevPAR, cancellations and average length of stay' }, caption: demoCaption },
+  },
+  proof: { label: { fr: 'Ils font confiance à TriggerFlow', en: 'They trust TriggerFlow' }, clients: ['Groupe Noemys', 'AMMI Hôtels', 'Edgar Hôtel & Spa'] },
+  sections: [
+    {
+      type: 'cards', tone: 'white', cols: 3,
+      eyebrow: { fr: 'Six tableaux prêts', en: 'Six ready-made views' },
+      title: { fr: 'Tout ce qu’un directeur regarde,', en: 'Everything a GM looks at,' }, titleMuted: { fr: 'au même endroit.', en: 'in one place.' },
+      items: [
+        { icon: 'list', title: { fr: 'Vue d’ensemble', en: 'Overview' }, text: { fr: 'Occupation, ADR, RevPAR, TRevPAR, annulations, durée moyenne de séjour, et le calendrier des 90 prochains jours.', en: 'Occupancy, ADR, RevPAR, TRevPAR, cancellations, average stay, and the next 90 days on the books.' } },
+        { icon: 'card', title: { fr: 'Revenus', en: 'Revenue' }, text: { fr: 'Hébergement et extras, par type de chambre, top des extras, ADR par jour de la semaine.', en: 'Rooms and extras, by room type, top extras, ADR by day of the week.' } },
+        { icon: 'users', title: { fr: 'Clients', en: 'Guests' }, text: { fr: 'Nouveaux et fidèles, valeur client, nationalités, base joignable, adresses OTA masquées.', en: 'New and returning, lifetime value, nationalities, reachable base, masked OTA addresses.' } },
+        { icon: 'mail', title: { fr: 'Communication', en: 'Communication' }, text: { fr: 'Emails, SMS et WhatsApp envoyés, ouvertures, clics, rebonds, flows les plus actifs.', en: 'Emails, SMS and WhatsApp sent, opens, clicks, bounces, most active flows.' } },
+        { icon: 'star', title: { fr: 'E-réputation', en: 'Reputation' }, text: { fr: 'Note par plateforme, taux et délai de réponse, avis générés par séjour.', en: 'Rating per platform, reply rate and time, reviews generated per stay.' } },
+        { icon: 'globe', title: { fr: 'Distribution', en: 'Distribution' }, text: { fr: 'Part des réservations directes, panier direct contre OTA, commissions estimées, mix des canaux.', en: 'Direct booking share, direct vs OTA basket, estimated commissions, channel mix.' } },
+      ],
+    },
+    {
+      type: 'split', tone: 'paper',
+      eyebrow: { fr: 'Comparer', en: 'Compare' },
+      title: { fr: 'Ce qui change, et pour quels clients.', en: 'What changes, and for which guests.' },
+      bullets: [
+        { fr: 'Chaque indicateur avec sa valeur précédente et son évolution', en: 'Every KPI with its previous value and change' },
+        { fr: 'Comparaison de deux périodes au choix', en: 'Comparison of any two periods' },
+        { fr: 'Filtre par segment : vos clients fidèles, vos clients OTA, vos entreprises…', en: 'Filter by segment: repeat guests, OTA guests, companies…' },
+        { fr: 'Vos sources de réservation rangées par canal, avec leur commission', en: 'Your booking sources grouped by channel, with their commission' },
+        { fr: 'Export CSV de chaque tableau', en: 'CSV export of every view' },
+      ],
+      figure: { value: '90 j', label: { fr: 'de réservations à venir, jour par jour : chambres vendues, occupation, revenu, arrivées et départs', en: 'of upcoming bookings, day by day: rooms sold, occupancy, revenue, arrivals and departures' } },
+    },
+    {
+      type: 'band',
+      eyebrow: { fr: 'Votre tableau de bord', en: 'Your dashboard' },
+      title: { fr: 'Un écran d’accueil fait pour chaque poste.', en: 'A home screen built for every role.' },
+      items: [
+        { icon: 'bed', title: { fr: 'Réception', en: 'Front desk' }, text: { fr: 'Arrivées, présents, départs et commandes du jour.', en: 'Today’s arrivals, in-house guests, departures and orders.' } },
+        { icon: 'card', title: { fr: 'Direction', en: 'Management' }, text: { fr: 'Revenus, paiements, résultats des campagnes.', en: 'Revenue, payments, campaign results.' } },
+        { icon: 'clipboard', title: { fr: 'Gouvernante', en: 'Housekeeping' }, text: { fr: 'Chambres, équipes, maintenance, objets trouvés.', en: 'Rooms, staff, maintenance, lost & found.' } },
+        { icon: 'list', title: { fr: '48 modules', en: '48 modules' }, text: { fr: 'À ajouter, déplacer et redimensionner selon vos besoins.', en: 'To add, move and resize as you need.' } },
+      ],
+    },
+    {
+      type: 'cards', tone: 'white', cols: 3,
+      eyebrow: { fr: 'Pour les groupes', en: 'For groups' },
+      title: { fr: 'Comparez vos hôtels sur ce qui compte.', en: 'Compare your hotels on what matters.' },
+      items: [
+        { icon: 'building', title: { fr: 'Classement des hôtels', en: 'Hotel ranking' }, text: { fr: 'Note des avis, NPS, revenu des campagnes et des ventes additionnelles par arrivée, taux d’emails récupérés.', en: 'Review rating, NPS, campaign and upsell revenue per arrival, email capture rate.' } },
+        { icon: 'users', title: { fr: 'Mon hôtel dans le groupe', en: 'My hotel in the group' }, text: { fr: 'Chaque directeur voit son rang et la moyenne du groupe.', en: 'Each GM sees their rank and the group average.' } },
+        { icon: 'globe', title: { fr: 'Tous les hôtels ensemble', en: 'All hotels together' }, text: { fr: 'Les statistiques consolidées de tout le groupe, en un clic.', en: 'Consolidated statistics for the whole group, in one click.' } },
+      ],
+    },
+  ],
+  compare: {
+    eyebrow: { fr: 'Pourquoi pas les rapports du PMS ?', en: 'Why not the PMS reports?' },
+    title: { fr: 'Le PMS sait ce qui est vendu. Pas ce qui a marché.', en: 'The PMS knows what was sold. Not what worked.' },
+    other: { fr: 'Rapports du PMS et tableur', en: 'PMS reports and spreadsheet' },
+    rows: [
+      { label: { fr: 'Préparation', en: 'Preparation' }, other: { fr: 'Exports à retraiter chaque mois', en: 'Exports to rework every month' }, us: { fr: 'Calculé chaque nuit', en: 'Calculated nightly' } },
+      { label: { fr: 'Clients', en: 'Guests' }, other: { fr: 'Des réservations, pas des clients', en: 'Bookings, not guests' }, us: { fr: 'Nouveaux, fidèles, valeur client', en: 'New, returning, lifetime value' } },
+      { label: { fr: 'Relation client', en: 'Guest relations' }, other: { fr: 'Absente', en: 'Missing' }, us: { fr: 'Messages, avis et ventes additionnelles', en: 'Messages, reviews and upsells' } },
+      { label: { fr: 'Groupe', en: 'Group' }, other: { fr: 'Un fichier par hôtel', en: 'One file per hotel' }, us: { fr: 'Classement et vue consolidée', en: 'Ranking and consolidated view' } },
+    ],
+  },
+  pricing: { fr: 'Les statistiques sont incluses dans toutes les formules.', en: 'Analytics is included in every plan.' },
+  faqTitle: { fr: 'Vos questions sur les statistiques.', en: 'Your questions about analytics.' },
+  faq: [
+    { q: { fr: 'D’où viennent les chiffres ?', en: 'Where do the numbers come from?' }, a: { fr: 'De votre PMS, synchronisé avec TriggerFlow, et de tout ce qui se passe dans TriggerFlow : messages, ventes, avis. Les statistiques sont recalculées chaque nuit.', en: 'From your PMS, synced with TriggerFlow, and from everything in TriggerFlow: messages, sales, reviews. Statistics are recalculated nightly.' } },
+    { q: { fr: 'Comment est calculée la commission des OTA ?', en: 'How is OTA commission calculated?' }, a: { fr: 'C’est une estimation : vous rangez chaque source de réservation dans un canal et indiquez son taux de commission.', en: 'It is an estimate: you assign each booking source to a channel and set its commission rate.' } },
+    { q: { fr: 'Peut-on exporter les données ?', en: 'Can I export the data?' }, a: { fr: 'Oui, chaque tableau s’exporte en CSV, ainsi que le classement des hôtels d’un groupe.', en: 'Yes, every view exports to CSV, as does the group hotel ranking.' } },
+    { q: { fr: 'Faites-vous des prévisions ?', en: 'Do you forecast?' }, a: { fr: 'Pas de prévision ni de budget aujourd’hui. Le calendrier des 90 prochains jours montre ce qui est déjà réservé.', en: 'No forecasting or budget today. The next-90-days calendar shows what is already booked.' } },
+  ],
+  cta: { title: { fr: 'Pilotez votre hôtel avec les bons chiffres.', en: 'Run your hotel with the right numbers.' }, text: { fr: 'Une démo de 45 minutes, avec les données de votre PMS.', en: 'A 45-minute demo, with your PMS data.' } },
+};
