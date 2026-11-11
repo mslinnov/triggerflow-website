@@ -24,12 +24,14 @@ export default function middleware(request: NextRequest, event: NextFetchEvent) 
     return NextResponse.next();
   }
 
-  // Documents commerciaux partagés (/doc/<document>/<suffixe>).
+  // Documents commerciaux partagés (/doc/<document>/<suffixe>), de deux sortes.
   //
-  // Traités ICI et pas dans une page : le document est un fichier HTML complet,
-  // servi tel qu'il est relu et validé, et non une arborescence de composants.
-  // Le middleware compte l'ouverture puis réécrit vers ce fichier, ce qui laisse
-  // au lecteur son URL nominative dans la barre d'adresse.
+  // Le Parcours est traité ICI et pas dans une page : c'est un fichier HTML
+  // complet, servi tel qu'il est relu et validé, et non une arborescence de
+  // composants. Le middleware compte l'ouverture puis réécrit vers ce fichier.
+  // Un PDF déposé dans le CRM est réécrit vers la route du relais, qui le
+  // demande au backend et le fait compter dans le même appel. Dans les deux
+  // cas, le lecteur garde son URL nominative dans la barre d'adresse.
   //
   // Le garde ci-dessus laisse déjà passer les fichiers du dossier
   // (/doc/parcours/captures/x.jpg) : ils portent un point, ils sont servis
@@ -39,8 +41,9 @@ export default function middleware(request: NextRequest, event: NextFetchEvent) 
 
     // Une URL mal formée repart dans le flot normal et finit sur la page 404 du
     // site, sans rien demander au backend. Une adresse bien formée, elle, part au
-    // backend : clé inconnue ou suffixe jamais émis reçoivent alors la page
-    // « Document introuvable » du relais des PDF.
+    // backend. Pour un PDF, clé inconnue ou suffixe jamais émis reçoivent la page
+    // « Document introuvable » du relais. Le Parcours, lui, est servi quel que
+    // soit le suffixe : le backend décide seul de compter l'ouverture ou non.
     if (!target) return intlMiddleware(request);
 
     // Un PDF déposé dans le CRM : la route du site le demande au backend, qui

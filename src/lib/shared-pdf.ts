@@ -19,7 +19,8 @@
  * lecteur, il ne coûte que quelques dizaines de Ko de mémoire par
  * téléchargement, quelle que soit la lenteur du client (le serveur du site, 4 Go,
  * est partagé). Le nombre de relais simultanés est borné, et avec lui le disque
- * occupé ; au-delà, « réessayez dans quelques minutes ».
+ * occupé, comme le nombre de PDF demandés par visiteur et par minute ; au-delà,
+ * « réessayez dans quelques minutes ».
  */
 import { randomUUID } from 'node:crypto';
 import { open, unlink, type FileHandle } from 'node:fs/promises';
@@ -61,20 +62,27 @@ const MAX_PDF_BYTES = 26 * 1024 * 1024;
 const CHUNK_BYTES = 64 * 1024;
 
 /**
- * Plafond de relais simultanés, du fichier écrit au dernier octet reçu par le lecteur : en tout,
- * et par visiteur.
+ * Relais simultanés en tout, du fichier écrit au dernier octet reçu par le lecteur.
  *
- * 50 en tout : une salle de salon qui scanne un QR code télécharge à quelques dizaines à la fois.
- * Au pire, 50 × 26 Mo = 1,3 Go de disque temporaire, rendu à la fin de chaque téléchargement, et
- * 50 × 64 Ko de mémoire. Une rafale au-delà reçoit « réessayez », au lieu d'emporter le serveur.
- *
- * 25 par visiteur, la moitié du total : un seul client ne prend jamais toutes les places, et
- * une salle derrière un même Wi-Fi passe. Trente personnes qui scannent le QR code d'un stand
- * le font en quelques secondes, pas dans le même dixième de seconde, et un PDF de 15 Mo arrive
- * en quelques secondes sur un Wi-Fi de salon : elles se chevauchent par dizaines, pas par trente.
- * Le visiteur est l'IPv4, ou le /64 d'une IPv6 (un abonné en reçoit 2^64). La limite par minute
- * (PDF_PER_VISITOR_PER_MINUTE, plus bas) compte, elle, les PDF demandés, terminés ou non.
+ * Une salle de salon qui scanne un QR code télécharge à quelques dizaines à la fois. Au pire,
+ * MAX_RELAYS × MAX_PDF_BYTES = 1,3 Go de disque temporaire, rendu à la fin de chaque
+ * téléchargement, et MAX_RELAYS × CHUNK_BYTES = 3 Mo de mémoire. Une rafale au-delà reçoit
+ * « réessayez », au lieu d'emporter le serveur.
  */
+const MAX_RELAYS = 50;
+
+/**
+ * Relais simultanés d'un même visiteur, la moitié du total : un seul client ne prend jamais
+ * toutes les places, et une salle derrière un même Wi-Fi passe. Trente personnes qui scannent le
+ * QR code d'un stand le font en quelques secondes, pas dans le même dixième de seconde, et un PDF
+ * de 15 Mo arrive en quelques secondes sur un Wi-Fi de salon : elles se chevauchent par
+ * dizaines, pas par trente. Le visiteur est l'IPv4, ou le /64 d'une IPv6 (un abonné en reçoit
+ * 2^64). La limite par minute (PDF_PER_VISITOR_PER_MINUTE, plus bas) compte, elle, les PDF
+ * demandés, terminés ou non.
+ */
+const MAX_RELAYS_PER_VISITOR = 25;
+
+/** Plafond de relais simultanés, en tout et par visiteur. */
 export class RelayGate {
   private active = 0;
   // Au plus une entrée par relais en cours : bornée par `max`.
@@ -107,7 +115,7 @@ export class RelayGate {
   }
 }
 
-const serverGate = new RelayGate(50, 25);
+const serverGate = new RelayGate(MAX_RELAYS, MAX_RELAYS_PER_VISITOR);
 
 /**
  * PDF demandés par visiteur et par minute (décision du 11/11/2026) ; au-delà, « réessayez ».

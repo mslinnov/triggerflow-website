@@ -1,7 +1,8 @@
 /**
  * IP réelle du visiteur derrière le relais Apache du site, pour toute limitation
- * de débit qui doit porter sur lui et non sur notre serveur. Extrait tel quel de
- * src/app/api/leads/route.ts, partagé avec /api/calendrier/rappel.
+ * de débit qui doit porter sur lui et non sur notre serveur. Née dans
+ * src/app/api/leads/route.ts ; sert aussi aux limites du calendrier (rappel,
+ * statistiques), au comptage du Parcours et au relais des PDF partagés.
  */
 import type { NextRequest } from 'next/server';
 
@@ -22,7 +23,8 @@ function isIpAddress(value: string): boolean {
  * IP réelle du visiteur, pour que la limitation de débit du backend porte sur
  * lui et non sur nous.
  *
- * La cible réelle est un VPS DigitalOcean derrière Apache, pas Cloudflare :
+ * La production est `next start`, sous systemd (service tf-website, port 3002),
+ * sur un serveur Scaleway derrière Apache, pas Cloudflare :
  * `.github/workflows/deploy.yml` déploie par SSH, et Apache relaie vers
  * `http://127.0.0.1:3002/` avec `ProxyAddHeaders` laissé à sa valeur par
  * défaut. Les commandes OpenNext du `package.json` existent mais ne sont pas
