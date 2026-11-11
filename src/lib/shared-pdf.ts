@@ -364,9 +364,40 @@ async function writeAll(file: FileHandle, chunk: Uint8Array, position: number): 
 }
 
 /**
+ * Relais en cours de lecture par un lecteur, coupés à l'arrêt du site.
+ *
+ * Au redémarrage (systemctl restart du déploiement), Next ferme le serveur et attend la fin des
+ * réponses en cours avant de quitter : un téléchargement lent le retiendrait jusqu'à 30 minutes,
+ * et systemd finirait par tuer le processus. Les relais sont donc coupés dès SIGTERM : le lecteur
+ * voit un téléchargement interrompu et rouvre le lien. Le site ne quitte pas lui-même (jamais de
+ * process.exit) : Next sort, une fois ses réponses closes.
+ */
+const activeRelays = new Set<(reason: string) => void>();
+
+/** Coupe tous les relais en cours : places et descripteurs rendus, lectures rejetées. */
+export function stopActiveRelays(): void {
+  for (const stop of [...activeRelays]) stop('arrêt du site');
+}
+
+let stopsWithServer = false;
+
+/** Posé une fois, au premier relais servi : rien n'écoute SIGTERM tant qu'aucun PDF n'est relayé. */
+function stopRelaysOnSigterm(): void {
+  if (stopsWithServer) return;
+  stopsWithServer = true;
+  process.once('SIGTERM', () => {
+    stopActiveRelays();
+    // Sous next start, Next écoute aussi SIGTERM et quitte. Si personne d'autre n'écoute, le
+    // signal est renvoyé pour garder l'arrêt par défaut, qu'un écouteur seul annulerait.
+    if (process.listenerCount('SIGTERM') === 0) process.kill(process.pid, 'SIGTERM');
+  });
+}
+
+/**
  * Le fichier relu par blocs, à la demande du lecteur : un lecteur lent ne retient qu'un bloc.
  * La place et le descripteur sont rendus à la fin, à l'abandon, sur erreur, quand le lecteur ne
- * demande plus rien pendant `idleMs` (délai réarmé à chaque bloc), ou passé `maxMs` en tout.
+ * demande plus rien pendant `idleMs` (délai réarmé à chaque bloc), passé `maxMs` en tout, ou à
+ * l'arrêt du site.
  *
  * 60 s sans demander de bloc : le lecteur est parti sans fermer, ou ne lit plus. 30 min en tout :
  * 26 Mo à 120 kbit/s, sous un mauvais réseau mobile ; un lecteur plus lent encore garderait
@@ -381,10 +412,12 @@ function streamFromDisk(
   let finished = false;
   let idle: ReturnType<typeof setTimeout> | undefined;
   let total: ReturnType<typeof setTimeout> | undefined;
+  let stopRelay: ((reason: string) => void) | undefined;
 
   const finish = async () => {
     if (finished) return;
     finished = true;
+    if (stopRelay) activeRelays.delete(stopRelay);
     clearTimeout(idle);
     clearTimeout(total);
     release();
@@ -411,6 +444,9 @@ function streamFromDisk(
     start(controller) {
       total = arm(maxMs, () => stop(controller, 'téléchargement trop long'));
       idle = arm(idleMs, () => stop(controller, 'lecteur inactif'));
+      stopRelay = (reason) => stop(controller, reason);
+      activeRelays.add(stopRelay);
+      stopRelaysOnSigterm();
     },
     async pull(controller) {
       clearTimeout(idle);

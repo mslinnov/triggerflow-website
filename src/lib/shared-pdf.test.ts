@@ -8,7 +8,7 @@ import { runInNewContext } from 'node:vm';
 import { HEAD } from '../app/api/doc/[document]/[slug]/route';
 import { localServer } from './__fixtures__/local-server';
 import { SlidingWindowLimiter } from './calendrier-rappel';
-import { failurePage, RelayGate, relayConfigFromEnv, relaySharedPdf, type RelayConfig } from './shared-pdf';
+import { failurePage, RelayGate, relayConfigFromEnv, relaySharedPdf, stopActiveRelays, type RelayConfig } from './shared-pdf';
 
 type Call = { url: string; init: RequestInit };
 
@@ -430,6 +430,37 @@ test('relais d’un PDF : même actif, un téléchargement rend sa place passé 
   });
 
   assert.equal(gate.size, 0);
+});
+
+test('relais d’un PDF : à l’arrêt du site, les relais en cours sont coupés et rendent leur place', async () => {
+  const gate = new RelayGate(2);
+  const { config } = backend(() => pdfResponse());
+  const ouverts = [await relaySharedPdf('presentation', 'k7m2', reader(), { ...config, gate }), await relaySharedPdf('presentation', 'k7m2', reader(), { ...config, gate })];
+  assert.equal(gate.size, 2);
+
+  stopActiveRelays();
+
+  assert.equal(gate.size, 0);
+  for (const response of ouverts) await assert.rejects(response.arrayBuffer());
+});
+
+test('relais d’un PDF : SIGTERM coupe les relais en cours, sans quitter à la place de Next', async () => {
+  // Next écoute SIGTERM sous next start et quitte une fois ses réponses closes : un écouteur le remplace ici.
+  const next = () => undefined;
+  process.on('SIGTERM', next);
+  try {
+    const gate = new RelayGate(1);
+    const { config } = backend(() => pdfResponse());
+    const ouvert = await relaySharedPdf('presentation', 'k7m2', reader(), { ...config, gate });
+    assert.equal(gate.size, 1);
+
+    process.emit('SIGTERM');
+
+    assert.equal(gate.size, 0);
+    await assert.rejects(ouvert.arrayBuffer());
+  } finally {
+    process.off('SIGTERM', next);
+  }
 });
 
 test('relais d’un PDF : les adresses d’un même /64 IPv6 sont un seul visiteur', async () => {
