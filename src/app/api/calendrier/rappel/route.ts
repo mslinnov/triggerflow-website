@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { parseRappelBody, RAPPEL_LIMIT, relayOutcome, salonLeadUrl, SlidingWindowLimiter, toSalonPayload } from '@/lib/calendrier-rappel';
-import { readVisitorIp } from '@/lib/visitor-ip';
+import { readVisitorIp, visitorKey } from '@/lib/visitor-ip';
 
 /**
  * Formulaire « Être rappelé » du calendrier marketing : relaie la demande à l'API
@@ -15,7 +15,8 @@ import { readVisitorIp } from '@/lib/visitor-ip';
 // Le visiteur attend cette réponse : trois secondes, comme le relais des livres blancs.
 const RELAY_TIMEOUT_MS = 3000;
 
-// Par IP visiteur : voir SlidingWindowLimiter (l'app ne voit que l'IP du site).
+// Par visiteur (IPv4, ou /64 d'une IPv6 : voir visitorKey) : voir SlidingWindowLimiter (l'app ne
+// voit que l'IP du site).
 const limiter = new SlidingWindowLimiter(RAPPEL_LIMIT.limit, RAPPEL_LIMIT.windowMs);
 
 export async function POST(request: NextRequest) {
@@ -35,7 +36,7 @@ export async function POST(request: NextRequest) {
   }
 
   // Compté après validation : une faute de frappe ne consomme pas le quota d'un humain.
-  if (!limiter.allow(readVisitorIp(request) ?? 'ip-inconnue')) {
+  if (!limiter.allow(visitorKey(readVisitorIp(request)))) {
     return NextResponse.json({ success: false, error: 'busy' }, { status: 429 });
   }
 
