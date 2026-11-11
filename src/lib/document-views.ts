@@ -118,14 +118,15 @@ export async function recordDocumentView(
   document: DocumentName,
   slug: string,
   request: Request,
-  langue: Langue
+  langue: Langue,
+  { apiUrl, secret }: { apiUrl: string | undefined; secret: string | undefined } = { apiUrl: API_URL, secret: SECRET }
 ): Promise<void> {
-  if (!API_URL || !SECRET) return;
+  if (!apiUrl || !secret) return;
 
   // Le secret ne part que sur un canal chiffré. Une base saisie en http:// par
   // inadvertance dans les secrets du dépôt le mettrait en clair sur le réseau,
   // et rien dans la réponse ne le signalerait.
-  if (!API_URL.startsWith('https://') && !API_URL.startsWith('http://localhost')) return;
+  if (!apiUrl.startsWith('https://') && !apiUrl.startsWith('http://localhost')) return;
 
   // Même lecture que /api/leads et le relais des PDF : cf-connecting-ip seulement derrière Cloudflare.
   const ip = readVisitorIp(request);
@@ -134,13 +135,16 @@ export async function recordDocumentView(
   const timeout = setTimeout(() => controller.abort(), 2000);
 
   try {
-    await fetch(`${API_URL}/api/public-document-view`, {
+    await fetch(`${apiUrl}/api/public-document-view`, {
       method: 'POST',
       signal: controller.signal,
+      // Une redirection renverrait le secret, tel quel, à l'adresse qu'elle désigne : le
+      // backend n'en fait jamais, une réponse 3xx est une erreur (muette, comme les autres).
+      redirect: 'error',
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        'X-TF-Doc-Secret': SECRET,
+        'X-TF-Doc-Secret': secret,
         // Omis quand l'adresse est inconnue : posé vide, il ferait retomber
         // le backend sur l'adresse de notre serveur, et le regroupement des
         // rechargements fusionnerait alors tous les lecteurs entre eux.

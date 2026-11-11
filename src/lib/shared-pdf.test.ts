@@ -6,6 +6,8 @@ import { test } from 'node:test';
 import { setFlagsFromString } from 'node:v8';
 import { runInNewContext } from 'node:vm';
 import { HEAD } from '../app/api/doc/[document]/[slug]/route';
+import { localServer } from './__fixtures__/local-server';
+import { SlidingWindowLimiter } from './calendrier-rappel';
 import { failurePage, RelayGate, relayConfigFromEnv, relaySharedPdf, type RelayConfig } from './shared-pdf';
 
 type Call = { url: string; init: RequestInit };
@@ -18,13 +20,23 @@ function backend(answer: (call: Call) => Promise<Response> | Response) {
     return answer(call);
   }) as unknown as typeof globalThis.fetch;
 
-  // Une porte par test : les corps laissés non lus d'un test ne prennent pas les places des autres.
-  return { calls, config: { apiUrl: 'https://api.trigger-flow.test', secret: 's3cret', fetch, gate: new RelayGate(10) } satisfies RelayConfig };
+  // Une porte et une limite par test : les corps laissés non lus d'un test ne prennent pas les
+  // places des autres, et les dizaines de relais d'un même lecteur ne vident pas sa limite par minute.
+  return {
+    calls,
+    config: {
+      apiUrl: 'https://api.trigger-flow.test',
+      secret: 's3cret',
+      fetch,
+      gate: new RelayGate(10),
+      limiter: new SlidingWindowLimiter(1_000, 60_000),
+    } satisfies RelayConfig,
+  };
 }
 
 const PDF_BYTES = new Uint8Array([0x25, 0x50, 0x44, 0x46, 0x2d, 0x31, 0x2e, 0x34]); // %PDF-1.4
 
-const reader = (headers: Record<string, string> = {}) =>
+const reader = (headers: Record<string, string> = {}, signal?: AbortSignal) =>
   new Request('https://www.trigger-flow.com/api/doc/presentation/k7m2', {
     headers: {
       'user-agent': 'Mozilla/5.0 (Macintosh)',
@@ -32,6 +44,7 @@ const reader = (headers: Record<string, string> = {}) =>
       'x-forwarded-for': '6.6.6.6, 203.0.113.9',
       ...headers,
     },
+    signal,
   });
 
 const pdfResponse = (headers: Record<string, string> = {}) =>
@@ -309,9 +322,15 @@ test('relais d’un PDF : une écriture sur le disque qui ne prend qu’une part
   assert.deepEqual(new Uint8Array(await response.arrayBuffer()), PDF_BYTES);
 });
 
-test('relais d’un PDF : un disque qui n’écrit plus rien, « réessayez » plutôt qu’une boucle sans fin', { timeout: 5_000 }, async (t) => {
+test('relais d’un PDF : un disque qui n’écrit plus rien, « réessayez » plutôt qu’une boucle sans fin', async (t) => {
   const proto = await fileHandlePrototype();
-  t.mock.method(proto, 'write', async () => ({ bytesWritten: 0 }));
+  let ecritures = 0;
+  t.mock.method(proto, 'write', async () => {
+    ecritures += 1;
+    // Garde-fou du test seulement : sans la garde du relais, la boucle ne s'arrêterait jamais.
+    if (ecritures > 100) throw new Error('boucle sans fin');
+    return { bytesWritten: 0 };
+  });
   const gate = new RelayGate(1);
   const { config } = backend(() => pdfResponse());
 
@@ -319,25 +338,31 @@ test('relais d’un PDF : un disque qui n’écrit plus rien, « réessayez » p
 
   assert.equal(response.status, 503);
   assert.equal(gate.size, 0);
+  // Abandon à la première écriture vide, sans insister.
+  assert.equal(ecritures, 1);
 });
 
 test('relais d’un PDF : un bloc écrit sur le disque quitte la mémoire, le fichier n’y est jamais en entier', async () => {
   setFlagsFromString('--expose-gc');
   const gc = runInNewContext('gc') as () => void;
+  // V8 rend la mémoire des tableaux d'octets en tâche de fond après un ramassage : un second
+  // ramassage, un tour de boucle plus tard, attend la fin du premier avant de mesurer.
+  const memoire = async () => {
+    gc();
+    await new Promise((resolve) => setImmediate(resolve));
+    gc();
+    return process.memoryUsage().arrayBuffers;
+  };
   const BLOC = 1024 * 1024;
   const BLOCS = 16;
   let envoyes = 0;
   let auDernierBloc = Number.POSITIVE_INFINITY;
 
-  gc();
-  const avant = process.memoryUsage().arrayBuffers;
+  const avant = await memoire();
   // Chaque bloc naît à la demande : seuls ceux que le relais retient restent en mémoire.
   const corps = new ReadableStream<Uint8Array>({
-    pull(controller) {
-      if (envoyes === BLOCS - 1) {
-        gc();
-        auDernierBloc = process.memoryUsage().arrayBuffers - avant;
-      }
+    async pull(controller) {
+      if (envoyes === BLOCS - 1) auDernierBloc = (await memoire()) - avant;
       if (envoyes === BLOCS) return controller.close();
       controller.enqueue(new Uint8Array(BLOC).fill(envoyes));
       envoyes += 1;
@@ -495,6 +520,87 @@ test('relais d’un PDF : un backend qui ne répond pas est abandonné au bout d
 
   assert.equal(response.status, 503);
   assert.ok(Date.now() - started < 2000);
+});
+
+test('relais d’un PDF : une redirection du backend n’est pas suivie, le secret ne part jamais ailleurs', async () => {
+  const ailleurs = await localServer((_, res) => {
+    res.writeHead(200, { 'Content-Type': 'application/pdf' });
+    res.end(Buffer.from(PDF_BYTES));
+  });
+  const backendRedirige = await localServer((_, res) => {
+    res.writeHead(307, { Location: `${ailleurs.url}/api/public-shared-document` });
+    res.end();
+  });
+  try {
+    // Le vrai fetch, vers deux serveurs de la machine : la base http://localhost est acceptée.
+    const config: RelayConfig = { apiUrl: backendRedirige.url, secret: 's3cret', gate: new RelayGate(1), limiter: new SlidingWindowLimiter(10, 60_000) };
+
+    const response = await relaySharedPdf('presentation', 'k7m2', reader(), config);
+
+    assert.equal(response.status, 503);
+    assert.equal(backendRedirige.hits.length, 1);
+    assert.equal(ailleurs.hits.length, 0);
+  } finally {
+    await Promise.all([ailleurs.close(), backendRedirige.close()]);
+  }
+});
+
+test('relais d’un PDF : au-delà de la limite par minute d’un visiteur, « réessayez » sans rien demander au backend', async () => {
+  const limiter = new SlidingWindowLimiter(2, 60_000);
+  const { calls, config } = backend(() => pdfResponse());
+  const relay = (ip: string) => relaySharedPdf('presentation', 'k7m2', reader({ 'x-forwarded-for': ip }), { ...config, limiter });
+
+  // Lus jusqu'au bout : les places sont rendues, seule la limite par minute joue. Deux adresses
+  // d'un même /64 IPv6 : un seul visiteur.
+  for (const ip of ['2001:db8:1:2::a', '2001:db8:1:2::b']) {
+    const response = await relay(ip);
+    assert.equal(response.status, 200, ip);
+    await response.arrayBuffer();
+  }
+
+  const refuse = await relay('2001:db8:1:2::c');
+  assert.equal(refuse.status, 503);
+  assert.equal(refuse.headers.get('retry-after'), '120');
+  assert.equal(calls.length, 2);
+
+  // Un autre visiteur n'est pas puni pour lui.
+  assert.equal((await relay('198.51.100.7')).status, 200);
+});
+
+test('relais d’un PDF : un lecteur parti pendant l’appel au backend libère sa place tout de suite', async () => {
+  const gate = new RelayGate(1);
+  const { config } = backend(
+    ({ init }) =>
+      new Promise<Response>((_, reject) => {
+        init.signal?.addEventListener('abort', () => reject(new DOMException('aborted', 'AbortError')));
+      })
+  );
+  const depart = new AbortController();
+  setTimeout(() => depart.abort(), 20);
+
+  const started = Date.now();
+  // Délai du backend à 5 s : seul le départ du lecteur peut rendre la réponse en moins d'une seconde.
+  const response = await relaySharedPdf('presentation', 'k7m2', reader({}, depart.signal), { ...config, gate, timeoutMs: 5_000 });
+
+  assert.equal(response.status, 503);
+  assert.ok(Date.now() - started < 1_000);
+  assert.equal(gate.size, 0);
+});
+
+test('relais d’un PDF : un lecteur parti pendant la lecture du fichier coupe le backend et libère sa place', async () => {
+  const gate = new RelayGate(1);
+  const { stream, state } = trackedBody([PDF_BYTES.slice(0, 3)], { end: false });
+  const { config } = backend(() => new Response(stream, { status: 200, headers: { 'Content-Type': 'application/pdf' } }));
+  const depart = new AbortController();
+  setTimeout(() => depart.abort(), 20);
+
+  const started = Date.now();
+  const response = await relaySharedPdf('presentation', 'k7m2', reader({}, depart.signal), { ...config, gate, bodyTimeoutMs: 5_000 });
+
+  assert.equal(response.status, 503);
+  assert.ok(Date.now() - started < 1_000);
+  assert.equal(state.cancelled, true);
+  assert.equal(gate.size, 0);
 });
 
 test('relais d’un PDF : sans secret, ou vers une base en clair, rien ne part', async () => {

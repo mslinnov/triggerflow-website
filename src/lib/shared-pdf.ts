@@ -25,6 +25,7 @@ import { randomUUID } from 'node:crypto';
 import { open, unlink, type FileHandle } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { SlidingWindowLimiter } from './calendrier-rappel';
 import { readVisitorIp, visitorKey } from './visitor-ip';
 
 export type RelayConfig = {
@@ -39,6 +40,8 @@ export type RelayConfig = {
   maxBytes?: number;
   /** Relais simultanés ; par défaut, celui du serveur. */
   gate?: RelayGate;
+  /** PDF demandés par visiteur et par minute ; par défaut, celui du serveur. */
+  limiter?: SlidingWindowLimiter;
   /** Dossier du fichier temporaire ; par défaut, celui du système. */
   tmpDir?: string;
   /** Un lecteur qui ne demande plus rien pendant ce délai rend sa place. */
@@ -67,7 +70,8 @@ const CHUNK_BYTES = 64 * 1024;
  * une salle derrière un même Wi-Fi passe. Trente personnes qui scannent le QR code d'un stand
  * le font en quelques secondes, pas dans le même dixième de seconde, et un PDF de 15 Mo arrive
  * en quelques secondes sur un Wi-Fi de salon : elles se chevauchent par dizaines, pas par trente.
- * Le visiteur est l'IPv4, ou le /64 d'une IPv6 (un abonné en reçoit 2^64).
+ * Le visiteur est l'IPv4, ou le /64 d'une IPv6 (un abonné en reçoit 2^64). La limite par minute
+ * (PDF_PER_VISITOR_PER_MINUTE, plus bas) compte, elle, les PDF demandés, terminés ou non.
  */
 export class RelayGate {
   private active = 0;
@@ -103,6 +107,20 @@ export class RelayGate {
 
 const serverGate = new RelayGate(50, 25);
 
+/**
+ * PDF demandés par visiteur et par minute (décision du 11/11/2026) ; au-delà, « réessayez ».
+ * Compté avant de prendre une place, donc avant tout appel au backend : un même client ne fait
+ * pas lire au backend plus de 30 PDF par minute, même un par un, quand le plafond de relais
+ * simultanés ne borne que ceux qui se chevauchent.
+ *
+ * Limite connue, acceptée : une salle de salon entière derrière une seule adresse (le Wi-Fi du
+ * stand) partage ces 30 PDF. Si elle scanne le QR code dans la même minute, la 31e personne
+ * reçoit « réessayez » et passe la minute suivante.
+ */
+const PDF_PER_VISITOR_PER_MINUTE = 30;
+
+const serverLimiter = new SlidingWindowLimiter(PDF_PER_VISITOR_PER_MINUTE, 60_000);
+
 // Mêmes précautions que le comptage du Parcours : barre finale retirée, secret
 // sans retour à la ligne. Le secret ne sort jamais du serveur du site.
 export function relayConfigFromEnv(): RelayConfig {
@@ -127,9 +145,14 @@ export async function relaySharedPdf(
   }
 
   const ip = readVisitorIp(request);
-  // La place est prise AVANT d'appeler le backend : un lecteur refusé n'est pas compté. Les
+  // Limite et place passent AVANT d'appeler le backend : un lecteur refusé n'est pas compté. Les
   // adresses illisibles partagent une seule part.
-  const release = (config.gate ?? serverGate).tryAcquire(visitorKey(ip));
+  const visitor = visitorKey(ip);
+  if (!(config.limiter ?? serverLimiter).allow(visitor)) {
+    console.error('[doc] trop de PDF partagés demandés par un même visiteur');
+    return failurePage(503);
+  }
+  const release = (config.gate ?? serverGate).tryAcquire(visitor);
   if (!release) {
     console.error('[doc] trop de PDF partagés en cours de relais');
     return failurePage(503);
@@ -188,9 +211,15 @@ async function fetchToDisk({ document, slug, request, ip, config, apiUrl, secret
     return failurePage(503);
   }
 
+  // Un lecteur parti (onglet fermé, réseau coupé) n'attend plus rien : l'appel au backend et la
+  // lecture du fichier s'arrêtent avec lui, et sa place est rendue tout de suite.
+  const controller = new AbortController();
+  const leave = () => controller.abort();
+  if (request.signal.aborted) leave();
+  request.signal.addEventListener('abort', leave, { once: true });
+
   let handedOff = false;
   try {
-    const controller = new AbortController();
     let timeout = setTimeout(() => controller.abort(), config.timeoutMs ?? 10_000);
 
     let upstream: Response;
@@ -198,6 +227,9 @@ async function fetchToDisk({ document, slug, request, ip, config, apiUrl, secret
       upstream = await (config.fetch ?? fetch)(`${apiUrl}/api/public-shared-document`, {
         method: 'POST',
         signal: controller.signal,
+        // Une redirection renverrait le secret, tel quel, à l'adresse qu'elle désigne : le backend
+        // n'en fait jamais, une réponse 3xx est une erreur.
+        redirect: 'error',
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/pdf, application/json',
@@ -252,6 +284,7 @@ async function fetchToDisk({ document, slug, request, ip, config, apiUrl, secret
       clearTimeout(timeout);
     }
   } finally {
+    request.signal.removeEventListener('abort', leave);
     if (!handedOff) await file.close().catch(() => undefined);
   }
 }
