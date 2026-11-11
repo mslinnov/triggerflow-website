@@ -2934,5 +2934,15 @@
     "lockBody": "Any paid subscription started before December 31, 2026 keeps the 2026 price list for life, upgrades included, as long as the subscription stays active.",
     "faqQuestion": "What happens on January 1, 2027?",
     "faqAnswer": "Our prices change on January 1, 2027. Any paid subscription started before December 31, 2026 keeps the 2026 price list for life, as long as it stays active, including if you later move to a higher plan. A free trial started before December 31 counts if it converts into a paid subscription; the Discovery plan does not count. Modules added after January 1, 2027 are billed at the new price. If you cancel, the guaranteed price is lost."
+  },
+  "sharedDocument": {
+    "notFound": {
+      "title": "Document not found",
+      "text": "This link does not lead to a document, or the document is no longer shared. If you received it by email, reply to the sender to get a new one."
+    },
+    "unavailable": {
+      "title": "Document temporarily unavailable",
+      "text": "Please try again in a few minutes."
+    }
   }
 }

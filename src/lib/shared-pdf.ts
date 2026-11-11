@@ -25,6 +25,8 @@ import { randomUUID } from 'node:crypto';
 import { open, unlink, type FileHandle } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import en from '../../messages/en.json';
+import fr from '../../messages/fr.json';
 import { SlidingWindowLimiter } from './calendrier-rappel';
 import { readVisitorIp, visitorKey } from './visitor-ip';
 
@@ -496,43 +498,57 @@ function encodeExtValue(value: string): string {
   return encodeURIComponent(value).replace(/['()*]/g, (c) => `%${c.charCodeAt(0).toString(16).toUpperCase()}`);
 }
 
-const PAGES = {
-  404: {
-    fr: ['Document introuvable', "Ce lien ne mène à aucun document, ou le document n'est plus partagé. Si vous l'avez reçu par e-mail, répondez à son expéditeur pour en obtenir un nouveau."],
-    en: ['Document not found', 'This link does not lead to a document, or the document is no longer shared. If you received it by email, reply to the sender to get a new one.'],
-  },
-  503: {
-    fr: ['Document momentanément indisponible', 'Réessayez dans quelques minutes.'],
-    en: ['Document temporarily unavailable', 'Please try again in a few minutes.'],
-  },
+/** Textes de la page d'échec : messages/{fr,en}.json, espace « sharedDocument ». */
+const PAGES = { 404: 'notFound', 503: 'unavailable' } as const;
+
+/**
+ * Jetons de couleur de src/app/globals.css, recopiés tels quels : la page est autonome, elle ne
+ * charge pas la feuille du site. Un test vérifie qu'ils n'en divergent pas.
+ */
+const COLORS = {
+  '--surface-tertiary': '#EFF5F5',
+  '--surface-primary': '#FFFFFF',
+  '--text-primary': '#002B28',
+  '--brand-primary': '#006F68',
+  '--border-light': '#E5EEED',
+  '--shadow-sm': '0 2px 8px rgba(0, 43, 40, 0.04)',
 } as const;
+
+const escapeHtml = (text: string) => text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 /** Page sobre, en français puis en anglais : le lecteur peut être l'un ou l'autre. */
 export function failurePage(status: 404 | 503): Response {
-  const { fr, en } = PAGES[status];
+  const [frPage, enPage] = [fr, en].map(({ sharedDocument }) => {
+    const { title, text } = sharedDocument[PAGES[status]];
+    return { title: escapeHtml(title), text: escapeHtml(text) };
+  });
+  const tokens = Object.entries(COLORS)
+    .map(([name, value]) => `${name}: ${value};`)
+    .join(' ');
   const html = `<!doctype html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>${fr[0]}</title>
+<title>${frPage.title}</title>
 <style>
-  body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #f4f8f8; color: #1f2937; font-family: system-ui, -apple-system, sans-serif; }
-  main { max-width: 32rem; margin: 1.5rem; padding: 2rem; background: #fff; border-radius: 1rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08); }
-  h1 { margin: 0 0 0.5rem; font-size: 1.25rem; color: #006f68; }
+  :root { ${tokens} }
+  body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; background: var(--surface-tertiary); color: var(--text-primary); font-family: system-ui, -apple-system, sans-serif; }
+  main { max-width: 32rem; margin: 1.5rem; padding: 2rem; background: var(--surface-primary); border-radius: 1rem; box-shadow: var(--shadow-sm); }
+  h1 { margin: 0 0 0.5rem; font-size: 1.25rem; color: var(--brand-primary); }
   p { margin: 0 0 1rem; line-height: 1.5; }
-  hr { border: 0; border-top: 1px solid #e5e7eb; margin: 1.5rem 0; }
-  a { color: #006f68; }
+  hr { border: 0; border-top: 1px solid var(--border-light); margin: 1.5rem 0; }
+  a { color: var(--brand-primary); }
 </style>
 </head>
 <body>
 <main>
-  <h1>${fr[0]}</h1>
-  <p>${fr[1]}</p>
+  <h1>${frPage.title}</h1>
+  <p>${frPage.text}</p>
   <hr>
-  <h1 lang="en">${en[0]}</h1>
-  <p lang="en">${en[1]}</p>
+  <h1 lang="en">${enPage.title}</h1>
+  <p lang="en">${enPage.text}</p>
   <p><a href="https://www.trigger-flow.com/">trigger-flow.com</a></p>
 </main>
 </body>

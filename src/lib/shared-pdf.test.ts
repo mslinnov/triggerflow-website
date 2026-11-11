@@ -1,10 +1,13 @@
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { mkdtemp, open, readdir, rm, type FileHandle } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { test } from 'node:test';
 import { setFlagsFromString } from 'node:v8';
 import { runInNewContext } from 'node:vm';
+import en from '../../messages/en.json';
+import fr from '../../messages/fr.json';
 import { HEAD } from '../app/api/doc/[document]/[slug]/route';
 import { localServer } from './__fixtures__/local-server';
 import { SlidingWindowLimiter } from './calendrier-rappel';
@@ -657,5 +660,38 @@ test('page d’échec : sobre, sans tiret cadratin, et jamais indexée', async (
     const html = await failurePage(status).text();
     assert.doesNotMatch(html, /—/);
     assert.match(html, /<meta name="robots" content="noindex, nofollow">/);
+  }
+});
+
+test('page d’échec : les textes viennent de messages/{fr,en}.json, pas du code', async () => {
+  const source = readFileSync(join(__dirname, 'shared-pdf.ts'), 'utf8');
+  for (const [status, key] of [[404, 'notFound'], [503, 'unavailable']] as const) {
+    const html = await failurePage(status).text();
+    for (const { sharedDocument } of [fr, en]) {
+      const { title, text } = sharedDocument[key];
+      assert.ok(html.includes(title), title);
+      assert.ok(html.includes(text), text);
+      assert.ok(!source.includes(title) && !source.includes(text), `texte écrit dans shared-pdf.ts : ${title}`);
+    }
+  }
+});
+
+test('page d’échec : les couleurs sont les jetons de globals.css, jamais la palette par défaut', async () => {
+  // Les jetons de :root dans globals.css, nom → valeur.
+  const css = readFileSync(join(__dirname, '..', 'app', 'globals.css'), 'utf8');
+  const site = new Map([...css.matchAll(/(--[a-z0-9-]+):\s*([^;]+);/g)].map(([, name, value]) => [name, value.trim()]));
+
+  for (const status of [404, 503] as const) {
+    const html = await failurePage(status).text();
+    const root = /:root \{([^}]*)\}/.exec(html)?.[1] ?? '';
+    const tokens = [...root.matchAll(/(--[a-z0-9-]+):\s*([^;]+);/g)];
+    assert.ok(tokens.length > 0);
+    for (const [, name, value] of tokens) assert.equal(value.trim(), site.get(name), name);
+
+    // Hors des jetons, aucune couleur écrite en dur : les règles passent par var(--…).
+    const rules = html.slice(html.indexOf(':root {')).replace(/:root \{[^}]*\}/, '');
+    assert.doesNotMatch(rules, /#[0-9a-f]{3,8}\b|rgba?\(/i);
+    // Gris de la palette Tailwind par défaut, ceux de la première version.
+    assert.doesNotMatch(html, /#1f2937|#e5e7eb/i);
   }
 });
