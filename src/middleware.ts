@@ -41,6 +41,13 @@ export default function middleware(request: NextRequest, event: NextFetchEvent) 
     // dans le flot normal et finira sur la page 404 du site.
     if (!target) return intlMiddleware(request);
 
+    // Un PDF déposé dans le CRM : la route du site le demande au backend, qui
+    // le compte et le sert dans le même appel. Réécrit et non redirigé : le
+    // lecteur garde son adresse, et celle du backend n'apparaît nulle part.
+    if (target.kind === 'pdf') {
+      return NextResponse.rewrite(new URL(`/api/doc/${target.document}/${target.slug}`, request.url));
+    }
+
     // La langue vit dans l'URL (?lang=en) : elle survit au rechargement, au
     // partage du lien et aux ancres internes, et le compteur ne bouge pas
     // puisque le chemin, lui, reste le même.

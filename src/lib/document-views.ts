@@ -62,20 +62,39 @@ export function isValidSlug(value: string): boolean {
 }
 
 /**
+ * Clé d'un PDF déposé dans le CRM. Même règle que le backend
+ * (CrmSharedDocument::KEY_PATTERN) : une clé que le site relaie mais que le
+ * backend refuse ferait une page introuvable sans raison visible.
+ */
+const PDF_KEY_PATTERN = /^[a-z0-9][a-z0-9-]{1,49}$/;
+
+/**
+ * Ce que sert /doc/<document>/<suffixe> : une page du site (le Parcours, fichier
+ * statique déclaré dans DOCUMENTS), ou un PDF déposé dans le CRM, que le
+ * backend sert seulement à un suffixe qu'il a émis.
+ */
+export type DocumentTarget =
+  | { kind: 'page'; document: DocumentName; slug: string }
+  | { kind: 'pdf'; document: string; slug: string };
+
+/**
  * Découpe /doc/<document>/<suffixe>. Renvoie null pour tout le reste, y
  * compris les fichiers statiques du dossier (/doc/parcours/captures/x.jpg),
  * qui portent un point et sont servis sans passer par ici.
+ *
+ * Une clé hors DOCUMENTS mais bien formée est un PDF : la liste des PDF vit
+ * dans le CRM, le site ne la connaît pas, et le backend répond « introuvable »
+ * à une clé inconnue sans rien compter.
  */
-export function parseDocumentPath(
-  pathname: string
-): { document: DocumentName; slug: string } | null {
+export function parseDocumentPath(pathname: string): DocumentTarget | null {
   const segments = pathname.split('/').filter(Boolean);
   if (segments.length !== 3 || segments[0] !== 'doc') return null;
 
   const [, document, slug] = segments;
-  if (!isDocumentName(document) || !isValidSlug(slug)) return null;
+  if (!isValidSlug(slug)) return null;
+  if (isDocumentName(document)) return { kind: 'page', document, slug };
 
-  return { document, slug };
+  return PDF_KEY_PATTERN.test(document) ? { kind: 'pdf', document, slug } : null;
 }
 
 // Mêmes précautions que la route des livres blancs : une base copiée avec sa
