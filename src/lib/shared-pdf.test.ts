@@ -1,8 +1,10 @@
 import assert from 'node:assert/strict';
-import { mkdtemp, readdir, rm } from 'node:fs/promises';
+import { mkdtemp, open, readdir, rm, type FileHandle } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { test } from 'node:test';
+import { setFlagsFromString } from 'node:v8';
+import { runInNewContext } from 'node:vm';
 import { HEAD } from '../app/api/doc/[document]/[slug]/route';
 import { failurePage, RelayGate, relayConfigFromEnv, relaySharedPdf, type RelayConfig } from './shared-pdf';
 
@@ -266,14 +268,89 @@ test('relais d’un PDF : le fichier temporaire ne reste jamais sur le disque, n
   }
 });
 
-test('relais d’un PDF : disque indisponible, « réessayez » et la place est rendue', async () => {
+test('relais d’un PDF : disque indisponible, « réessayez » sans rien demander au backend, et la place est rendue', async () => {
   const gate = new RelayGate(1);
-  const { config } = backend(() => pdfResponse());
+  const { calls, config } = backend(() => pdfResponse());
 
   const response = await relaySharedPdf('presentation', 'k7m2', reader(), { ...config, gate, tmpDir: join(tmpdir(), 'tf-doc-absent', 'introuvable') });
 
   assert.equal(response.status, 503);
   assert.equal(gate.size, 0);
+  // Le fichier temporaire est créé avant l'appel : le backend ne compte pas une ouverture jamais servie.
+  assert.equal(calls.length, 0);
+});
+
+type Write = (buffer: Uint8Array, offset?: number, length?: number, position?: number | null) => Promise<{ bytesWritten: number }>;
+
+/** Le prototype des descripteurs de node:fs/promises : de quoi simuler un disque qui écrit peu à peu. */
+async function fileHandlePrototype(): Promise<{ write: Write }> {
+  const dossier = await mkdtemp(join(tmpdir(), 'tf-doc-proto-'));
+  try {
+    const file: FileHandle = await open(join(dossier, 'x'), 'w');
+    await file.close();
+    return Object.getPrototypeOf(file);
+  } finally {
+    await rm(dossier, { recursive: true, force: true });
+  }
+}
+
+test('relais d’un PDF : une écriture sur le disque qui ne prend qu’une partie du bloc est reprise, rien ne manque', async (t) => {
+  const proto = await fileHandlePrototype();
+  const write = proto.write;
+  // Trois octets au plus par écriture : chaque bloc demande plusieurs passes.
+  t.mock.method(proto, 'write', function (this: FileHandle, buffer: Uint8Array, offset = 0, length = buffer.byteLength - offset, position?: number | null) {
+    return write.call(this, buffer, offset, Math.min(length, 3), position);
+  });
+  const { config } = backend(() => pdfResponse());
+
+  const response = await relaySharedPdf('presentation', 'k7m2', reader(), config);
+
+  assert.equal(response.status, 200);
+  assert.deepEqual(new Uint8Array(await response.arrayBuffer()), PDF_BYTES);
+});
+
+test('relais d’un PDF : un disque qui n’écrit plus rien, « réessayez » plutôt qu’une boucle sans fin', { timeout: 5_000 }, async (t) => {
+  const proto = await fileHandlePrototype();
+  t.mock.method(proto, 'write', async () => ({ bytesWritten: 0 }));
+  const gate = new RelayGate(1);
+  const { config } = backend(() => pdfResponse());
+
+  const response = await relaySharedPdf('presentation', 'k7m2', reader(), { ...config, gate });
+
+  assert.equal(response.status, 503);
+  assert.equal(gate.size, 0);
+});
+
+test('relais d’un PDF : un bloc écrit sur le disque quitte la mémoire, le fichier n’y est jamais en entier', async () => {
+  setFlagsFromString('--expose-gc');
+  const gc = runInNewContext('gc') as () => void;
+  const BLOC = 1024 * 1024;
+  const BLOCS = 16;
+  let envoyes = 0;
+  let auDernierBloc = Number.POSITIVE_INFINITY;
+
+  gc();
+  const avant = process.memoryUsage().arrayBuffers;
+  // Chaque bloc naît à la demande : seuls ceux que le relais retient restent en mémoire.
+  const corps = new ReadableStream<Uint8Array>({
+    pull(controller) {
+      if (envoyes === BLOCS - 1) {
+        gc();
+        auDernierBloc = process.memoryUsage().arrayBuffers - avant;
+      }
+      if (envoyes === BLOCS) return controller.close();
+      controller.enqueue(new Uint8Array(BLOC).fill(envoyes));
+      envoyes += 1;
+    },
+  });
+  const { config } = backend(() => new Response(corps, { status: 200, headers: { 'Content-Type': 'application/pdf' } }));
+
+  const response = await relaySharedPdf('presentation', 'k7m2', reader(), config);
+  await response.body?.cancel();
+
+  assert.equal(envoyes, BLOCS);
+  // Sans rien retenir, un ou deux blocs en vol ; en retenant chaque bloc lu, les 15 premiers.
+  assert.ok(auDernierBloc < 4 * BLOC, `${(auDernierBloc / BLOC).toFixed(1)} Mo encore en mémoire au dernier bloc`);
 });
 
 const pause = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));

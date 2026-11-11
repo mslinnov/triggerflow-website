@@ -137,7 +137,7 @@ export async function relaySharedPdf(
 
   let handedOff = false;
   try {
-    const spooled = await fetchToDisk(document, slug, request, ip, config, apiUrl, secret);
+    const spooled = await fetchToDisk({ document, slug, request, ip, config, apiUrl, secret });
     if (spooled instanceof Response) return spooled;
 
     // Liste fermée des en-têtes relayés : rien du backend (cookies, serveur) ne fuit vers le lecteur.
@@ -162,75 +162,97 @@ export async function relaySharedPdf(
 
 type Spooled = { file: FileHandle; size: number; disposition: string | null };
 
-/** Demande le PDF au backend et l'écrit en entier sur le disque ; une page d'échec sinon. */
-async function fetchToDisk(
-  document: string,
-  slug: string,
-  request: Request,
-  ip: string | null,
-  config: RelayConfig,
-  apiUrl: string,
-  secret: string
-): Promise<Spooled | Response> {
-  const controller = new AbortController();
-  let timeout = setTimeout(() => controller.abort(), config.timeoutMs ?? 10_000);
+type BackendCall = {
+  document: string;
+  slug: string;
+  request: Request;
+  ip: string | null;
+  config: RelayConfig;
+  apiUrl: string;
+  secret: string;
+};
 
-  let upstream: Response;
+/**
+ * Demande le PDF au backend et l'écrit en entier sur le disque ; une page d'échec sinon.
+ *
+ * Le fichier temporaire est créé AVANT l'appel : un dossier absent, plein ou sans droit
+ * d'écriture refuse le lecteur sans rien demander au backend, qui compterait sinon une
+ * ouverture jamais servie. Il est fermé ici sur tout échec, et confié au lecteur sinon.
+ */
+async function fetchToDisk({ document, slug, request, ip, config, apiUrl, secret }: BackendCall): Promise<Spooled | Response> {
+  let file: FileHandle;
   try {
-    upstream = await (config.fetch ?? fetch)(`${apiUrl}/api/public-shared-document`, {
-      method: 'POST',
-      signal: controller.signal,
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/pdf, application/json',
-        'X-TF-Doc-Secret': secret,
-        // Omis quand l'adresse est inconnue : posé vide, il ferait retomber le
-        // backend sur l'adresse de notre serveur, et tous les lecteurs seraient
-        // regroupés en un seul.
-        ...(ip ? { 'X-TF-Visitor-Ip': ip } : {}),
-      },
-      body: JSON.stringify({
-        document,
-        slug,
-        referer: request.headers.get('referer')?.slice(0, 512) ?? null,
-        user_agent: request.headers.get('user-agent')?.slice(0, 1000) ?? null,
-      }),
-    });
+    file = await openTempFile(config.tmpDir ?? tmpdir());
   } catch {
-    clearTimeout(timeout);
-    console.error('[doc] backend injoignable pour un PDF partagé');
-    return failurePage(503);
-  }
-  clearTimeout(timeout);
-
-  if (upstream.status === 404) {
-    await discard(upstream);
-    return failurePage(404);
-  }
-
-  // Jamais autre chose qu'un PDF sous cette adresse, même si le backend se trompe.
-  const maxBytes = config.maxBytes ?? MAX_PDF_BYTES;
-  const isPdf = upstream.headers.get('content-type')?.toLowerCase().startsWith('application/pdf');
-  const announced = Number(upstream.headers.get('content-length') ?? 0);
-  if (!upstream.ok || !isPdf || !upstream.body || announced > maxBytes) {
-    await discard(upstream);
-    console.error(`[doc] réponse inattendue du backend pour un PDF partagé : ${upstream.status}`);
+    console.error('[doc] PDF partagé interrompu avant son relais (fichier temporaire impossible à créer)');
     return failurePage(503);
   }
 
-  timeout = setTimeout(() => controller.abort(), config.bodyTimeoutMs ?? 30_000);
+  let handedOff = false;
   try {
-    const spooled = await spoolCapped(upstream.body, maxBytes, controller.signal, config.tmpDir ?? tmpdir());
-    if (!spooled) {
-      console.error("[doc] PDF partagé plus lourd que la limite d'envoi");
+    const controller = new AbortController();
+    let timeout = setTimeout(() => controller.abort(), config.timeoutMs ?? 10_000);
+
+    let upstream: Response;
+    try {
+      upstream = await (config.fetch ?? fetch)(`${apiUrl}/api/public-shared-document`, {
+        method: 'POST',
+        signal: controller.signal,
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/pdf, application/json',
+          'X-TF-Doc-Secret': secret,
+          // Omis quand l'adresse est inconnue : posé vide, il ferait retomber le
+          // backend sur l'adresse de notre serveur, et tous les lecteurs seraient
+          // regroupés en un seul.
+          ...(ip ? { 'X-TF-Visitor-Ip': ip } : {}),
+        },
+        body: JSON.stringify({
+          document,
+          slug,
+          referer: request.headers.get('referer')?.slice(0, 512) ?? null,
+          user_agent: request.headers.get('user-agent')?.slice(0, 1000) ?? null,
+        }),
+      });
+    } catch {
+      console.error('[doc] backend injoignable pour un PDF partagé');
+      return failurePage(503);
+    } finally {
+      clearTimeout(timeout);
+    }
+
+    if (upstream.status === 404) {
+      await discard(upstream);
+      return failurePage(404);
+    }
+
+    // Jamais autre chose qu'un PDF sous cette adresse, même si le backend se trompe.
+    const maxBytes = config.maxBytes ?? MAX_PDF_BYTES;
+    const isPdf = upstream.headers.get('content-type')?.toLowerCase().startsWith('application/pdf');
+    const announced = Number(upstream.headers.get('content-length') ?? 0);
+    if (!upstream.ok || !isPdf || !upstream.body || announced > maxBytes) {
+      await discard(upstream);
+      console.error(`[doc] réponse inattendue du backend pour un PDF partagé : ${upstream.status}`);
       return failurePage(503);
     }
-    return { ...spooled, disposition: upstream.headers.get('content-disposition') };
-  } catch {
-    console.error('[doc] PDF partagé interrompu avant son relais (lecture du backend ou écriture du disque)');
-    return failurePage(503);
+
+    timeout = setTimeout(() => controller.abort(), config.bodyTimeoutMs ?? 30_000);
+    try {
+      const size = await spoolCapped(upstream.body, file, maxBytes, controller.signal);
+      if (size === null) {
+        console.error("[doc] PDF partagé plus lourd que la limite d'envoi");
+        return failurePage(503);
+      }
+      handedOff = true;
+      return { file, size, disposition: upstream.headers.get('content-disposition') };
+    } catch {
+      console.error('[doc] PDF partagé interrompu avant son relais (lecture du backend ou écriture du disque)');
+      return failurePage(503);
+    } finally {
+      clearTimeout(timeout);
+    }
   } finally {
-    clearTimeout(timeout);
+    if (!handedOff) await file.close().catch(() => undefined);
   }
 }
 
@@ -240,49 +262,71 @@ async function discard(response: Response): Promise<void> {
 }
 
 /**
- * Le fichier en entier, écrit sur le disque ; null s'il dépasse `max` (la lecture s'arrête
- * alors, sans tout écrire). Rejette quand `signal` est annulé (délai dépassé), quelle que soit
- * l'implémentation de fetch.
+ * Un fichier temporaire, retiré de son dossier dès sa création : il ne vit que par son
+ * descripteur et disparaît du disque à sa fermeture, quoi qu'il arrive (fin, abandon, erreur,
+ * arrêt du site).
+ */
+async function openTempFile(dir: string): Promise<FileHandle> {
+  const path = join(dir, `tf-doc-${randomUUID()}.pdf`);
+  const file = await open(path, 'wx+', 0o600);
+  try {
+    await unlink(path);
+  } catch (error) {
+    await file.close().catch(() => undefined);
+    throw error;
+  }
+  return file;
+}
+
+/**
+ * Le corps du backend, écrit en entier dans `file` : sa taille, ou null s'il dépasse `max` (la
+ * lecture s'arrête alors, sans tout écrire). Rejette quand `signal` est annulé (délai dépassé),
+ * quelle que soit l'implémentation de fetch : l'annulation coupe la lecture en cours.
  *
- * Le fichier est retiré de son dossier dès sa création : il ne vit que par son descripteur et
- * disparaît du disque à sa fermeture, quoi qu'il arrive (fin, abandon, erreur, arrêt du site).
+ * Un seul écouteur pour tout le fichier, pas de course de promesses à chaque bloc : une
+ * `Promise.race` contre une promesse d'annulation qui ne se règle jamais garde chaque bloc lu
+ * en mémoire jusqu'au dernier, soit le fichier entier (26 Mo au pire par relais).
  */
 async function spoolCapped(
   body: ReadableStream<Uint8Array>,
+  file: FileHandle,
   max: number,
-  signal: AbortSignal,
-  dir: string
-): Promise<{ file: FileHandle; size: number } | null> {
+  signal: AbortSignal
+): Promise<number | null> {
   const reader = body.getReader();
-  const aborted = new Promise<never>((_, reject) => {
-    signal.addEventListener('abort', () => reject(new Error('délai dépassé')), { once: true });
-  });
-  aborted.catch(() => undefined);
-
-  const path = join(dir, `tf-doc-${randomUUID()}.pdf`);
-  let file: FileHandle | null = null;
+  const cancel = () => reader.cancel().catch(() => undefined);
+  signal.addEventListener('abort', cancel, { once: true });
   let size = 0;
 
   try {
-    file = await open(path, 'wx+', 0o600);
-    await unlink(path);
-
     for (;;) {
-      const { done, value } = await Promise.race([reader.read(), aborted]);
-      if (done) return { file, size };
-      size += value.byteLength;
-      if (size > max) {
-        await reader.cancel().catch(() => undefined);
-        await file.close();
+      if (signal.aborted) throw new Error('délai dépassé');
+      const { done, value } = await reader.read();
+      // Une lecture coupée par l'annulation se termine comme un fichier fini : elle ne compte pas.
+      if (signal.aborted) throw new Error('délai dépassé');
+      if (done) return size;
+      if (size + value.byteLength > max) {
+        await cancel();
         return null;
       }
-      await file.write(value);
+      await writeAll(file, value, size);
+      size += value.byteLength;
     }
   } catch (error) {
-    await reader.cancel().catch(() => undefined);
-    await file?.close().catch(() => undefined);
-    await unlink(path).catch(() => undefined);
+    await cancel();
     throw error;
+  } finally {
+    signal.removeEventListener('abort', cancel);
+  }
+}
+
+/** Tout le bloc, à sa place : une écriture peut n'en prendre qu'une partie. */
+async function writeAll(file: FileHandle, chunk: Uint8Array, position: number): Promise<void> {
+  for (let offset = 0; offset < chunk.byteLength; ) {
+    const { bytesWritten } = await file.write(chunk, offset, chunk.byteLength - offset, position + offset);
+    // Rien d'écrit : le disque ne prend plus rien, inutile d'insister.
+    if (bytesWritten <= 0) throw new Error('écriture impossible sur le disque');
+    offset += bytesWritten;
   }
 }
 
