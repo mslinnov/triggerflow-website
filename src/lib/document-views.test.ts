@@ -101,7 +101,7 @@ test('relais d’un PDF : le fichier passe tel quel, ouvert dans le navigateur, 
   assert.equal(response.status, 200);
   assert.deepEqual(new Uint8Array(await response.arrayBuffer()), PDF_BYTES);
   assert.equal(response.headers.get('content-type'), 'application/pdf');
-  assert.equal(response.headers.get('content-disposition'), 'inline; filename=presentation.pdf; filename*=utf-8\'\'Pr%C3%A9sentation.pdf');
+  assert.equal(response.headers.get('content-disposition'), "inline; filename*=utf-8''Pr%C3%A9sentation.pdf");
   assert.equal(response.headers.get('content-length'), String(PDF_BYTES.length));
   assert.equal(response.headers.get('cache-control'), 'private, no-store');
   assert.equal(response.headers.get('x-content-type-options'), 'nosniff');
@@ -115,7 +115,97 @@ test('relais d’un PDF : une demande de téléchargement du backend devient une
 
   const response = await relaySharedPdf('tarifs', 'k7m2', reader(), config);
 
-  assert.equal(response.headers.get('content-disposition'), 'inline; filename=tarifs.pdf');
+  assert.equal(response.headers.get('content-disposition'), "inline; filename*=UTF-8''tarifs.pdf");
+});
+
+test('relais d’un PDF : un « ; » ou des guillemets dans le libellé ne cassent pas le nom du fichier', async () => {
+  for (const [upstream, expected] of [
+    // Laravel : nom simple entre guillemets, puis nom encodé. Seul l'encodé passe.
+    [`inline; filename="Offre ; groupes 2027.pdf"; filename*=utf-8''Offre%20%3B%20groupes%202027.pdf`, "inline; filename*=utf-8''Offre%20%3B%20groupes%202027.pdf"],
+    // Nom simple seul : réencodé.
+    ['attachment; filename="Offre ; \\"VIP\\" (2027).pdf"', "inline; filename*=UTF-8''Offre%20%3B%20%22VIP%22%20%282027%29.pdf"],
+    // Nom encodé mal formé : ignoré, le nom simple prend le relais.
+    [`inline; filename="tarifs.pdf"; filename*=utf-8''bad"value`, "inline; filename*=UTF-8''tarifs.pdf"],
+  ]) {
+    const { config } = backend(() => pdfResponse({ 'Content-Disposition': upstream }));
+    const response = await relaySharedPdf('tarifs', 'k7m2', reader(), config);
+
+    assert.equal(response.headers.get('content-disposition'), expected, upstream);
+  }
+});
+
+/** Un corps de backend instrumenté : lu jusqu'au bout ? annulé ? */
+function trackedBody(chunks: Uint8Array[], { end = true } = {}) {
+  const state = { fullyRead: false, cancelled: false };
+  let index = 0;
+  const stream = new ReadableStream<Uint8Array>({
+    pull(controller) {
+      if (index < chunks.length) {
+        controller.enqueue(chunks[index]);
+        index += 1;
+        return;
+      }
+      if (!end) return new Promise<void>(() => {});
+      state.fullyRead = true;
+      controller.close();
+    },
+    cancel() {
+      state.cancelled = true;
+    },
+  });
+  return { stream, state };
+}
+
+test('relais d’un PDF : le fichier est lu en entier avant de répondre, le backend est libéré tout de suite', async () => {
+  const { stream, state } = trackedBody([PDF_BYTES.slice(0, 3), PDF_BYTES.slice(3)]);
+  const { config } = backend(() => new Response(stream, { status: 200, headers: { 'Content-Type': 'application/pdf' } }));
+
+  const response = await relaySharedPdf('presentation', 'k7m2', reader(), config);
+
+  // Déjà lu au retour : le lecteur, lent ou pas, ne tient plus rien côté PHP.
+  assert.equal(state.fullyRead, true);
+  assert.deepEqual(new Uint8Array(await response.arrayBuffer()), PDF_BYTES);
+  assert.equal(response.headers.get('content-length'), String(PDF_BYTES.length));
+});
+
+test('relais d’un PDF : plus lourd que la limite d’envoi, rien n’est relayé et le backend est coupé', async () => {
+  // Annoncé trop lourd : refusé sans rien lire.
+  const annonce = trackedBody([PDF_BYTES]);
+  const { config: avecTaille } = backend(
+    () => new Response(annonce.stream, { status: 200, headers: { 'Content-Type': 'application/pdf', 'Content-Length': '8' } })
+  );
+  assert.equal((await relaySharedPdf('presentation', 'k7m2', reader(), { ...avecTaille, maxBytes: 4 })).status, 503);
+  assert.equal(annonce.state.cancelled, true);
+
+  // Taille non annoncée, flux sans fin : la lecture s'arrête au dépassement.
+  const flux = trackedBody([PDF_BYTES.slice(0, 3), PDF_BYTES.slice(3)], { end: false });
+  const { config: sansTaille } = backend(() => new Response(flux.stream, { status: 200, headers: { 'Content-Type': 'application/pdf' } }));
+  assert.equal((await relaySharedPdf('presentation', 'k7m2', reader(), { ...sansTaille, maxBytes: 4 })).status, 503);
+  assert.equal(flux.state.cancelled, true);
+  assert.equal(flux.state.fullyRead, false);
+});
+
+test('relais d’un PDF : un fichier qui n’arrive pas au bout est abandonné au bout du délai', async () => {
+  const { stream, state } = trackedBody([PDF_BYTES.slice(0, 3)], { end: false });
+  const { config } = backend(() => new Response(stream, { status: 200, headers: { 'Content-Type': 'application/pdf' } }));
+
+  const started = Date.now();
+  const response = await relaySharedPdf('presentation', 'k7m2', reader(), { ...config, bodyTimeoutMs: 30 });
+
+  assert.equal(response.status, 503);
+  assert.equal(state.cancelled, true);
+  assert.ok(Date.now() - started < 2000);
+});
+
+test('relais d’un PDF : sur un refus, le corps du backend est annulé, pas laissé ouvert', async () => {
+  for (const status of [404, 500]) {
+    const { stream, state } = trackedBody([new TextEncoder().encode('{"message":"Document introuvable."}')]);
+    const { config } = backend(() => new Response(stream, { status, headers: { 'Content-Type': 'application/json' } }));
+
+    await relaySharedPdf('presentation', 'k7m2', reader(), config);
+
+    assert.equal(state.cancelled, true, String(status));
+  }
 });
 
 test('relais d’un PDF : document introuvable pour le backend, page introuvable pour le lecteur', async () => {

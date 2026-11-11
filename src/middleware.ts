@@ -37,8 +37,10 @@ export default function middleware(request: NextRequest, event: NextFetchEvent) 
   if (pathname.startsWith('/doc/')) {
     const target = parseDocumentPath(pathname);
 
-    // Une URL mal formée ne doit pas révéler que /doc existe : elle repart
-    // dans le flot normal et finira sur la page 404 du site.
+    // Une URL mal formée repart dans le flot normal et finit sur la page 404 du
+    // site, sans rien demander au backend. Une adresse bien formée, elle, part au
+    // backend : clé inconnue ou suffixe jamais émis reçoivent alors la page
+    // « Document introuvable » du relais des PDF.
     if (!target) return intlMiddleware(request);
 
     // Un PDF déposé dans le CRM : la route du site le demande au backend, qui

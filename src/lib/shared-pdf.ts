@@ -9,6 +9,11 @@
  * Contrairement au Parcours (compté en tâche de fond, page servie quoi qu'il
  * arrive), le PDF dépend du backend : sans lui, le lecteur obtient une page
  * « momentanément indisponible », jamais une page blanche.
+ *
+ * Le fichier est lu en entier avant de répondre : relayé en flux, il avancerait
+ * au rythme du lecteur, et un lecteur lent tiendrait un processus PHP du backend
+ * pendant tout son téléchargement. Lu d'un coup entre les deux serveurs, il
+ * libère PHP en une fraction de seconde ; le site, lui, sait attendre.
  */
 import { readVisitorIp } from './visitor-ip';
 
@@ -16,11 +21,18 @@ export type RelayConfig = {
   apiUrl: string | undefined;
   secret: string | undefined;
   fetch?: typeof fetch;
-  /** Délai pour recevoir la réponse du backend ; le transfert du fichier, lui, n'est pas borné. */
+  /** Délai pour recevoir les en-têtes du backend. */
   timeoutMs?: number;
+  /** Délai pour recevoir le fichier ensuite, entre deux serveurs : large. */
+  bodyTimeoutMs?: number;
+  /** Au-delà, le fichier n'est pas relayé. */
+  maxBytes?: number;
 };
 
 const NO_INDEX = 'noindex, nofollow, noarchive, nosnippet';
+
+// Limite d'envoi du CRM (25 Mo, ReplaceSharedDocumentFileRequest::MAX_KB), plus une marge.
+const MAX_PDF_BYTES = 26 * 1024 * 1024;
 
 // Mêmes précautions que le comptage du Parcours : barre finale retirée, secret
 // sans retour à la ligne. Le secret ne sort jamais du serveur du site.
@@ -46,7 +58,7 @@ export async function relaySharedPdf(
 
   const ip = readVisitorIp(request);
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), config.timeoutMs ?? 10_000);
+  let timeout = setTimeout(() => controller.abort(), config.timeoutMs ?? 10_000);
 
   let upstream: Response;
   try {
@@ -70,18 +82,39 @@ export async function relaySharedPdf(
       }),
     });
   } catch {
+    clearTimeout(timeout);
     console.error('[doc] backend injoignable pour un PDF partagé');
+    return failurePage(503);
+  }
+  clearTimeout(timeout);
+
+  if (upstream.status === 404) {
+    await discard(upstream);
+    return failurePage(404);
+  }
+
+  // Jamais autre chose qu'un PDF sous cette adresse, même si le backend se trompe.
+  const maxBytes = config.maxBytes ?? MAX_PDF_BYTES;
+  const isPdf = upstream.headers.get('content-type')?.toLowerCase().startsWith('application/pdf');
+  const announced = Number(upstream.headers.get('content-length') ?? 0);
+  if (!upstream.ok || !isPdf || !upstream.body || announced > maxBytes) {
+    await discard(upstream);
+    console.error(`[doc] réponse inattendue du backend pour un PDF partagé : ${upstream.status}`);
+    return failurePage(503);
+  }
+
+  timeout = setTimeout(() => controller.abort(), config.bodyTimeoutMs ?? 30_000);
+  let file: Uint8Array<ArrayBuffer> | null;
+  try {
+    file = await readCapped(upstream.body, maxBytes, controller.signal);
+  } catch {
+    console.error('[doc] PDF partagé interrompu pendant sa lecture');
     return failurePage(503);
   } finally {
     clearTimeout(timeout);
   }
-
-  if (upstream.status === 404) return failurePage(404);
-
-  // Jamais autre chose qu'un PDF sous cette adresse, même si le backend se trompe.
-  const isPdf = upstream.headers.get('content-type')?.toLowerCase().startsWith('application/pdf');
-  if (!upstream.ok || !isPdf || !upstream.body) {
-    console.error(`[doc] réponse inattendue du backend pour un PDF partagé : ${upstream.status}`);
+  if (!file) {
+    console.error('[doc] PDF partagé plus lourd que la limite d\'envoi');
     return failurePage(503);
   }
 
@@ -94,23 +127,76 @@ export async function relaySharedPdf(
     'X-Content-Type-Options': 'nosniff',
     'X-Robots-Tag': NO_INDEX,
     'Referrer-Policy': 'no-referrer',
+    'Content-Length': String(file.byteLength),
   });
-  const length = upstream.headers.get('content-length');
-  if (length && /^\d+$/.test(length)) headers.set('Content-Length', length);
 
-  return new Response(upstream.body, { status: 200, headers });
+  return new Response(file, { status: 200, headers });
 }
 
-/** `inline` toujours : le PDF s'ouvre dans le navigateur, qui propose de le télécharger. Le nom du fichier suit. */
+/** Le corps d'une réponse écartée est annulé : sans cela, la connexion au backend reste tenue jusqu'au ramasse-miettes. */
+async function discard(response: Response): Promise<void> {
+  await response.body?.cancel().catch(() => undefined);
+}
+
+/**
+ * Le fichier en entier, ou null s'il dépasse `max` (la lecture s'arrête alors, sans tout charger).
+ * Rejette quand `signal` est annulé (délai dépassé), quelle que soit l'implémentation de fetch.
+ */
+async function readCapped(body: ReadableStream<Uint8Array>, max: number, signal: AbortSignal): Promise<Uint8Array<ArrayBuffer> | null> {
+  const reader = body.getReader();
+  const aborted = new Promise<never>((_, reject) => {
+    signal.addEventListener('abort', () => reject(new Error('délai dépassé')), { once: true });
+  });
+  aborted.catch(() => undefined);
+  const chunks: Uint8Array[] = [];
+  let size = 0;
+
+  try {
+    for (;;) {
+      const { done, value } = await Promise.race([reader.read(), aborted]);
+      if (done) break;
+      size += value.byteLength;
+      if (size > max) {
+        await reader.cancel().catch(() => undefined);
+        return null;
+      }
+      chunks.push(value);
+    }
+  } catch (error) {
+    await reader.cancel().catch(() => undefined);
+    throw error;
+  }
+
+  const file = new Uint8Array(size);
+  let offset = 0;
+  for (const chunk of chunks) {
+    file.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+  return file;
+}
+
+// RFC 8187 : charset'langue'valeur, la valeur ne portant que des caractères sûrs ou %XX.
+const EXT_VALUE = /^[A-Za-z0-9!#$&+^_`{}~-]+'[A-Za-z0-9-]*'(?:[A-Za-z0-9!#$&+.^_`|~-]|%[0-9A-Fa-f]{2})+$/;
+
+/**
+ * `inline` toujours : le PDF s'ouvre dans le navigateur, qui propose de le télécharger.
+ * Seul le nom encodé (filename*) suit : il ne contient ni « ; » ni guillemet, qu'un libellé
+ * comme « Offre ; groupes » glisserait dans le nom simple et qui casseraient l'en-tête.
+ */
 function inlineDisposition(upstream: string | null): string {
   if (!upstream || /[\r\n]/.test(upstream)) return 'inline';
-  const filenames = upstream
-    .split(';')
-    .slice(1)
-    .map((part) => part.trim())
-    .filter((part) => /^filename\*?=/i.test(part));
 
-  return ['inline', ...filenames].join('; ');
+  const encoded = /filename\*\s*=\s*([^;\s]+)/i.exec(upstream)?.[1];
+  if (encoded && EXT_VALUE.test(encoded)) return `inline; filename*=${encoded}`;
+
+  const plain = /filename\s*=\s*(?:"((?:[^"\\]|\\.)*)"|([^;\s]+))/i.exec(upstream);
+  const name = plain ? (plain[1] ?? plain[2]).replace(/\\(.)/g, '$1') : '';
+  return name ? `inline; filename*=UTF-8''${encodeExtValue(name)}` : 'inline';
+}
+
+function encodeExtValue(value: string): string {
+  return encodeURIComponent(value).replace(/['()*]/g, (c) => `%${c.charCodeAt(0).toString(16).toUpperCase()}`);
 }
 
 const PAGES = {
