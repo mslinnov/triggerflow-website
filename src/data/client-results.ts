@@ -2,8 +2,8 @@
  * Photos et chiffres clés des cartes « résultats clients » de l'accueil.
  * Photos : sites officiels des hôtels, récupérées le 08/11/2026 (accord de Soufiane).
  *
- * ⚠️ `example: true` = VALEUR D'EXEMPLE demandée par Soufiane le 08/11/2026, en attendant les vrais
- * chiffres des clients. À remplacer AVANT la mise en production (voir le test todo de claims.test.ts).
+ * ⚠️ `example: true` = valeur d'exemple, interdite en production (voir claims.test.ts). Sans vrai chiffre
+ * du client, mettre `metric: null`.
  */
 export interface ClientResult {
   /** Doit correspondre à `home2.results.items[].client`. */
@@ -16,20 +16,20 @@ export const clientResults: ClientResult[] = [
   {
     client: 'Hôtel Causse Comtal',
     photo: '/images/hotels/causse-comtal.webp',
-    // VALEUR D'EXEMPLE (demande de Soufiane, 08/11/2026) : à remplacer par le vrai chiffre du client.
-    metric: { value: { fr: '+1 800 €', en: '+€1,800' }, label: { fr: 'de ventes additionnelles par mois, avant l\'arrivée', en: 'in pre-arrival upsells per month' }, example: true },
+    // Chiffre d'exemple retiré le 11/11/2026 (décision de Soufiane) : pas de stat sans vrai chiffre du client.
+    metric: null,
   },
   {
     client: 'AMMI Hôtels',
     photo: '/images/hotels/ammi-hotels.webp',
-    // Fait connu : 6 établissements, un CRM et un outil WhatsApp remplacés.
-    metric: { value: { fr: '6 hôtels', en: '6 hotels' }, label: { fr: 'pilotés depuis un seul outil', en: 'run from a single tool' }, example: false },
+    // Pas de grand chiffre : les trois cartes restent homogènes (« 6 établissements » est déjà dans l'étiquette).
+    metric: null,
   },
   {
     client: 'Hôtel Arc en Ciel',
     photo: '/images/hotels/arc-en-ciel.webp',
-    // VALEUR D'EXEMPLE (demande de Soufiane, 08/11/2026) : à remplacer par le vrai chiffre du client.
-    metric: { value: { fr: '−80 %', en: '−80%' }, label: { fr: 'de relances de paiement faites à la main', en: 'manual payment reminders' }, example: true },
+    // Chiffre d'exemple retiré le 11/11/2026 (décision de Soufiane) : pas de stat sans vrai chiffre du client.
+    metric: null,
   },
 ];
 
