@@ -4,12 +4,12 @@
  * OTA (Soufiane, 08/11) : on pousse des messages aux clients OTA, mais on ne reçoit pas leurs réponses ;
  * réception Booking.com en cours. Messenger et Instagram : bêta. Transcription des messages vocaux confirmée.
  *
- * ⚠️ `aiFigures` : VALEURS D'EXEMPLE reprises du marché à la demande de Soufiane (08/11/2026), en attendant
- * les mesures de l'agent IA TriggerFlow. À remplacer avant la mise en ligne (rappel dans claims.test.ts).
+ * `aiFigures` : chiffres repris du marché (HiJiffy, Duve), demandés par Soufiane le 08/11/2026 et conservés
+ * pour la mise en ligne (décision du 11/11/2026). À remplacer par les mesures TriggerFlow quand elles existeront.
  */
 type L = { fr: string; en: string };
 
-export const inboxAiFiguresAreExamples = true;
+export const inboxAiFiguresAreExamples = false;
 
 export const inboxLanding = {
   seo: {
