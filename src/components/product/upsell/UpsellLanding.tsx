@@ -235,7 +235,7 @@ export function UpsellLanding({ locale }: { locale: string }) {
             {clientLogos[c.quote.company] && (
               <Image src={clientLogos[c.quote.company]!.src} alt={c.quote.company} width={clientLogos[c.quote.company]!.width} height={clientLogos[c.quote.company]!.height} className="mx-auto h-12 w-auto opacity-80" />
             )}
-            <blockquote className="mt-8 text-balance text-[1.5rem] font-medium leading-snug tracking-[-0.01em] text-ink md:text-[1.875rem]">« {l(c.quote.text)} »</blockquote>
+            <blockquote className="mt-8 text-balance text-[1.5rem] font-medium leading-snug tracking-[-0.01em] text-ink md:text-[1.875rem]"><q>{l(c.quote.text)}</q></blockquote>
             <figcaption className="mt-6 text-[15px] text-ink-2">
               <span className="font-semibold text-ink">{c.quote.name}</span>, {l(c.quote.role)}, {c.quote.company}
             </figcaption>

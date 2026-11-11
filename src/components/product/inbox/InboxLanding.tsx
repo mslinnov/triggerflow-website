@@ -201,7 +201,7 @@ export function InboxLanding({ locale }: { locale: string }) {
           </ul>
           <figure className="mt-10 flex flex-col gap-2 rounded-2xl border border-line bg-paper px-6 py-5 sm:flex-row sm:items-center sm:gap-5">
             <span className="flex gap-0.5 text-peach" role="img" aria-label="5/5">{[0, 1, 2, 3, 4].map((i) => <Star key={i} aria-hidden className="h-4 w-4 fill-current" />)}</span>
-            <blockquote className="text-[15px] text-ink">« {l(c.quote.text)} »</blockquote>
+            <blockquote className="text-[15px] text-ink"><q>{l(c.quote.text)}</q></blockquote>
             <figcaption className="font-mono text-[11px] uppercase tracking-[0.06em] text-ink-3 sm:ml-auto">{l(c.quote.source)}</figcaption>
           </figure>
         </Container>

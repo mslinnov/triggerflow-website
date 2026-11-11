@@ -32,7 +32,7 @@ export function TestimonialCard({ quote, name, role, company, onDark, className 
       )}
     >
       <blockquote className={cn('text-lg leading-relaxed md:text-[1.1875rem]', onDark ? 'text-white' : 'text-ink')}>
-        « {quote} »
+        <q>{quote}</q>
       </blockquote>
       <figcaption className="mt-8 flex items-center gap-3">
         <span

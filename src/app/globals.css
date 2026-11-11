@@ -233,3 +233,7 @@ body {
   background-color: var(--brand-light);
   color: var(--brand-dark);
 }
+
+/* Guillemets selon la langue (<q>) : « » en français, “ ” en anglais. */
+:lang(fr) q { quotes: "\00AB\00A0" "\00A0\00BB" "\201C" "\201D"; }
+:lang(en) q { quotes: "\201C" "\201D" "\2018" "\2019"; }

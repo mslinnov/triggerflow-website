@@ -239,7 +239,7 @@ export function FlowsLanding({ locale }: { locale: string }) {
               const logo = clientLogos[q.company];
               return (
                 <figure key={q.name} className="flex flex-col rounded-2xl border border-line bg-white p-7">
-                  <blockquote className="flex-1 text-[18px] leading-relaxed text-ink">« {l(q.text)} »</blockquote>
+                  <blockquote className="flex-1 text-[18px] leading-relaxed text-ink"><q>{l(q.text)}</q></blockquote>
                   <figcaption className="mt-6 flex items-center gap-3">
                     {logo && <Image src={logo.src} alt={q.company} width={logo.width} height={logo.height} className="h-10 w-auto max-w-[90px] object-contain opacity-80" />}
                     <span className="text-[14px] text-ink-2"><span className="font-semibold text-ink">{q.name}</span>, {l(q.role)}, {q.company}</span>

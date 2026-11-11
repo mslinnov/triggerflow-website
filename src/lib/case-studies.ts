@@ -1,3 +1,5 @@
+import { caseStudiesEn } from './case-studies.en';
+
 export interface CaseStudyResult {
   metric: string;
   label: string;
@@ -206,4 +208,11 @@ export function getAdjacentCaseStudies(slug: string): { prev: CaseStudy | null; 
     prev: index > 0 ? caseStudies[index - 1] : null,
     next: index < caseStudies.length - 1 ? caseStudies[index + 1] : null,
   };
+}
+
+/** Témoignage dans la langue demandée (les propos sont recueillis en français, l'anglais est une traduction). */
+export function localizeCaseStudy(cs: CaseStudy, locale: string): CaseStudy {
+  if (locale !== 'en') return cs;
+  const en = caseStudiesEn[cs.slug];
+  return en ? { ...cs, ...en } : cs;
 }

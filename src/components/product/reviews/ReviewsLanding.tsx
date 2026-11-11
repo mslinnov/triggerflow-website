@@ -180,7 +180,7 @@ export function ReviewsLanding({ locale }: { locale: string }) {
       <Section tone="paper">
         <Container narrow>
           <figure className="text-center">
-            <blockquote className="text-balance text-[1.5rem] font-medium leading-snug tracking-[-0.015em] text-ink md:text-[1.75rem]">« {l(c.quote.text)} »</blockquote>
+            <blockquote className="text-balance text-[1.5rem] font-medium leading-snug tracking-[-0.015em] text-ink md:text-[1.75rem]"><q>{l(c.quote.text)}</q></blockquote>
             <figcaption className="mt-6 flex items-center justify-center gap-3">
               {clientLogos[c.quote.company] && (
                 <Image src={clientLogos[c.quote.company]!.src} alt={c.quote.company} width={clientLogos[c.quote.company]!.width} height={clientLogos[c.quote.company]!.height} className="h-9 w-auto max-w-[110px] object-contain opacity-80" />

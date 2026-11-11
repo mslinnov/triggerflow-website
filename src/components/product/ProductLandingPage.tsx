@@ -167,7 +167,7 @@ export async function ProductLandingPage({ product, locale }: { product: Product
           <Container narrow className="text-center">
             <Eyebrow>{t('caseStudy')}</Eyebrow>
             <blockquote className="mt-8 text-balance text-[1.5rem] font-medium leading-[1.35] tracking-[-0.015em] text-ink md:text-[2rem]">
-              « {l(product.caseStudy.quote)} »
+              <q>{l(product.caseStudy.quote)}</q>
             </blockquote>
             <p className="mt-8 text-[15px] font-semibold text-ink">{product.caseStudy.name}</p>
             <p className="text-[14px] text-ink-3">{l(product.caseStudy.role)}, {product.caseStudy.company}</p>

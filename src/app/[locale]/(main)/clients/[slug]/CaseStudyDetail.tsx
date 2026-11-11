@@ -4,11 +4,12 @@ import { ArrowLeft, ArrowRight, Check, MapPin, Server } from 'lucide-react';
 import { Container, CtaBand, Eyebrow, Section } from '@/components/ds';
 import { Link } from '@/i18n/navigation';
 import { brand } from '@/data/brand';
-import { getAdjacentCaseStudies, getCaseStudyBySlug } from '@/lib/case-studies';
+import { getAdjacentCaseStudies, getCaseStudyBySlug, localizeCaseStudy } from '@/lib/case-studies';
 
 /** Fiche cas client (charte) : récit en questions-réponses, citation, points clés. Rédigée en français. */
 export default async function CaseStudyDetail({ slug, locale }: { slug: string; locale: string }) {
-  const cs = getCaseStudyBySlug(slug);
+  const raw = getCaseStudyBySlug(slug);
+  const cs = raw && localizeCaseStudy(raw, locale);
   if (!cs) return null;
   const { prev, next } = getAdjacentCaseStudies(slug);
   const t = await getTranslations({ locale, namespace: 'caseDetail' });
@@ -40,7 +41,7 @@ export default async function CaseStudyDetail({ slug, locale }: { slug: string; 
 
       <Section tone="paper" compact>
         <Container narrow className="text-center">
-          <blockquote className="text-balance text-[1.5rem] font-medium leading-[1.35] tracking-[-0.015em] text-ink md:text-[2rem]">« {cs.quote} »</blockquote>
+          <blockquote className="text-balance text-[1.5rem] font-medium leading-[1.35] tracking-[-0.015em] text-ink md:text-[2rem]"><q>{cs.quote}</q></blockquote>
           <p className="mt-6 text-[15px] font-semibold text-ink">{cs.contactName}</p>
           <p className="text-[14px] text-ink-3">{cs.contactRole}, {cs.name}</p>
         </Container>

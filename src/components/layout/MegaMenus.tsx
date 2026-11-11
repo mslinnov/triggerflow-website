@@ -135,7 +135,7 @@ export function SolutionsMenu({ onPick }: MenuProps) {
       aside={
         <figure className="flex h-full flex-col rounded-2xl bg-ink p-5 text-white">
           <ColumnTitle dark>{t('featured.quoteEyebrow')}</ColumnTitle>
-          <blockquote className="mt-3 text-[15px] leading-relaxed text-white/90">«{'\u00a0'}{quote.quote[locale]}{'\u00a0'}»</blockquote>
+          <blockquote className="mt-3 text-[15px] leading-relaxed text-white/90"><q>{quote.quote[locale]}</q></blockquote>
           <figcaption className="mt-4 flex items-center gap-3">
             {logo && (
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white p-1.5">

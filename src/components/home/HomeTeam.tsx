@@ -51,7 +51,7 @@ export function HomeTeam() {
                   <Star key={i} aria-hidden className="h-4 w-4 fill-peach text-peach" />
                 ))}
               </span>
-              <p className="mt-2 text-[15px] text-ink">« {tq('review')} »</p>
+              <p className="mt-2 text-[15px] text-ink"><q>{tq('review')}</q></p>
               <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.06em] text-ink-2">{tq('reviewLabel')}</p>
             </div>
           </div>

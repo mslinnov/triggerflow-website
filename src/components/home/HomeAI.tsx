@@ -52,7 +52,7 @@ export function HomeAI() {
               <p className="mt-3 flex items-center gap-1 text-peach">
                 {[0, 1, 2, 3].map((i) => <Star key={i} aria-hidden className="h-3.5 w-3.5 fill-current" />)}
                 <Star aria-hidden className="h-3.5 w-3.5 text-line" />
-                <span className="ml-2 text-[13px] text-ink-2">« {t('reviews.review')} »</span>
+                <span className="ml-2 text-[13px] text-ink-2"><q>{t('reviews.review')}</q></span>
               </p>
               <Line show={step >= 3} className="mt-3 rounded-lg bg-paper px-3.5 py-2.5 text-[13.5px] text-ink">
                 <span className="mb-1 flex items-center gap-1 font-mono text-[10px] uppercase tracking-[0.06em] text-accent">
@@ -81,7 +81,7 @@ export function HomeAI() {
                   ))}
                 </p>
                 <Line show={step >= 5} className="mt-3 text-[13px] text-ink">
-                  « {t('voice.text')} »
+                  <q>{t('voice.text')}</q>
                   <span className="mt-1 block font-mono text-[10px] uppercase tracking-[0.06em] text-ink-3">{t('voice.meta')}</span>
                 </Line>
               </article>

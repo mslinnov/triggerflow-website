@@ -162,7 +162,7 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
           </div>
           <PricingReassurance className="mt-6" />
           <figure className="mt-6 flex flex-col gap-5 rounded-2xl bg-ink p-6 text-white md:flex-row md:items-center md:p-8">
-            <blockquote className="flex-1 text-[18px] leading-relaxed md:text-[20px]">« {quote.quote[locale]} »</blockquote>
+            <blockquote className="flex-1 text-[18px] leading-relaxed md:text-[20px]"><q>{quote.quote[locale]}</q></blockquote>
             <figcaption className="flex shrink-0 items-center gap-3">
               {clientLogos[quote.company as keyof typeof clientLogos] && (
                 <span className="flex h-12 w-12 items-center justify-center rounded-lg bg-white p-1.5">

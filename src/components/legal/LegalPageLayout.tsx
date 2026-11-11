@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { useFormatter } from 'next-intl';
+import { useFormatter, useLocale } from 'next-intl';
 import { Container } from '@/components/ui';
 
 interface LegalPageLayoutProps {
@@ -18,6 +18,7 @@ export function LegalPageLayout({
   children,
 }: LegalPageLayoutProps) {
   const format = useFormatter();
+  const en = useLocale() === 'en';
 
   const formatDate = (iso: string) =>
     format.dateTime(new Date(iso), {
@@ -41,12 +42,17 @@ export function LegalPageLayout({
               <div className="mt-3 space-y-0.5 text-sm text-zinc-500">
                 {version && <p>Version {version}</p>}
                 {effectiveDate && (
-                  <p>En vigueur depuis le {formatDate(effectiveDate)}</p>
+                  <p>{en ? 'Effective from' : 'En vigueur depuis le'} {formatDate(effectiveDate)}</p>
                 )}
                 {showLastUpdated && lastUpdated && (
-                  <p>Dernière modification le {formatDate(lastUpdated)}</p>
+                  <p>{en ? 'Last updated on' : 'Dernière modification le'} {formatDate(lastUpdated)}</p>
                 )}
               </div>
+            )}
+            {en && (
+              <p lang="en" className="mt-4 rounded-md bg-zinc-100 px-3 py-2 text-sm text-zinc-600">
+                This document is available in French only. The French version is the legally binding one.
+              </p>
             )}
           </header>
           {children}

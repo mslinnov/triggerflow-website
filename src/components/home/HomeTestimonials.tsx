@@ -21,7 +21,7 @@ export function HomeTestimonials() {
               <Star key={i} aria-hidden className="h-4 w-4 fill-peach text-peach" />
             ))}
           </span>
-          <p className="text-[15px] text-ink">« {t('review')} »</p>
+          <p className="text-[15px] text-ink"><q>{t('review')}</q></p>
           <span className="font-mono text-[11px] uppercase tracking-[0.06em] text-ink-3 sm:ml-auto">{t('reviewLabel')}</span>
         </div>
       </Container>
