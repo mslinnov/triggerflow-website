@@ -30,8 +30,12 @@ function isIpAddress(value: string): boolean {
  *
  * D'où l'ordre de lecture :
  *
- * 1. `cf-connecting-ip`, qu'aucun relais ne pose aujourd'hui. Il ne coûte rien
- *    et servira tel quel si un jour un proxy Cloudflare passe devant.
+ * 1. `cf-connecting-ip`, SEULEMENT si `TRUST_CF_CONNECTING_IP=1`. Le site n'est
+ *    pas derrière Cloudflare, et Apache relaie cet en-tête tel que le client
+ *    l'envoie : lu sans condition, il laisserait chacun se donner une IP au
+ *    hasard à chaque requête et échapper à toute limite par visiteur (leads,
+ *    rappels du calendrier, documents partagés). La variable ne s'allume que
+ *    le jour où un proxy Cloudflare passe vraiment devant.
  * 2. le DERNIER membre de `x-forwarded-for`, et surtout pas le premier :
  *    Apache AJOUTE l'adresse du client qu'il voit à la fin de l'en-tête reçu.
  *    Un robot qui fabrique `x-forwarded-for: 1.2.3.4` obtient donc
@@ -44,9 +48,14 @@ function isIpAddress(value: string): boolean {
  * serveur, et son quota par IP deviendrait un quota unique pour tout Internet,
  * dix envois par minute pour la Terre entière.
  */
-export function readVisitorIp(request: Pick<NextRequest, 'headers'>): string | null {
-  const direct = request.headers.get('cf-connecting-ip')?.trim();
-  if (direct && isIpAddress(direct)) return direct;
+export function readVisitorIp(
+  request: Pick<NextRequest, 'headers'>,
+  trustCloudflare = process.env.TRUST_CF_CONNECTING_IP === '1'
+): string | null {
+  if (trustCloudflare) {
+    const direct = request.headers.get('cf-connecting-ip')?.trim();
+    if (direct && isIpAddress(direct)) return direct;
+  }
 
   const forwarded = request.headers.get('x-forwarded-for');
   if (!forwarded) return null;
@@ -54,4 +63,33 @@ export function readVisitorIp(request: Pick<NextRequest, 'headers'>): string | n
   const chain = forwarded.split(',');
   const last = chain[chain.length - 1]?.trim();
   return last && isIpAddress(last) ? last : null;
+}
+
+/**
+ * Clé d'un visiteur pour une limite qui compte par visiteur : l'IPv4 telle quelle, une IPv6
+ * réduite à son /64, comme normalizeIpForRateLimit du backend. Un abonné reçoit un /64 entier :
+ * une clé par adresse se contournerait en changeant d'adresse à chaque requête. Une IPv4 écrite
+ * en IPv6 (::ffff:203.0.113.9) reste cette IPv4. Les adresses illisibles partagent une seule clé.
+ */
+export function visitorKey(ip: string | null): string {
+  if (!ip) return 'ip-inconnue';
+  if (!ip.includes(':')) return ip;
+
+  const ipv4Tail = ip.match(/(\d{1,3}(?:\.\d{1,3}){3})$/);
+  if (ipv4Tail) return ipv4Tail[1];
+
+  const halves = ip.toLowerCase().split('::');
+  if (halves.length > 2) return 'ip-inconnue';
+  const head = halves[0] ? halves[0].split(':') : [];
+  const tail = halves.length === 2 && halves[1] ? halves[1].split(':') : [];
+  const missing = 8 - head.length - tail.length;
+  if (halves.length === 1 ? missing !== 0 : missing < 1) return 'ip-inconnue';
+
+  const groups = [...head, ...Array<string>(halves.length === 2 ? missing : 0).fill('0'), ...tail];
+  if (groups.some((group) => !/^[0-9a-f]{1,4}$/.test(group))) return 'ip-inconnue';
+
+  return `${groups
+    .slice(0, 4)
+    .map((group) => parseInt(group, 16).toString(16))
+    .join(':')}::/64`;
 }
