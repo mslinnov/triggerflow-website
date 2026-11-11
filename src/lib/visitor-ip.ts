@@ -30,8 +30,12 @@ function isIpAddress(value: string): boolean {
  *
  * D'où l'ordre de lecture :
  *
- * 1. `cf-connecting-ip`, qu'aucun relais ne pose aujourd'hui. Il ne coûte rien
- *    et servira tel quel si un jour un proxy Cloudflare passe devant.
+ * 1. `cf-connecting-ip`, SEULEMENT si `TRUST_CF_CONNECTING_IP=1`. Le site n'est
+ *    pas derrière Cloudflare, et Apache relaie cet en-tête tel que le client
+ *    l'envoie : lu sans condition, il laisserait chacun se donner une IP au
+ *    hasard à chaque requête et échapper à toute limite par visiteur (leads,
+ *    rappels du calendrier, documents partagés). La variable ne s'allume que
+ *    le jour où un proxy Cloudflare passe vraiment devant.
  * 2. le DERNIER membre de `x-forwarded-for`, et surtout pas le premier :
  *    Apache AJOUTE l'adresse du client qu'il voit à la fin de l'en-tête reçu.
  *    Un robot qui fabrique `x-forwarded-for: 1.2.3.4` obtient donc
@@ -44,9 +48,14 @@ function isIpAddress(value: string): boolean {
  * serveur, et son quota par IP deviendrait un quota unique pour tout Internet,
  * dix envois par minute pour la Terre entière.
  */
-export function readVisitorIp(request: Pick<NextRequest, 'headers'>): string | null {
-  const direct = request.headers.get('cf-connecting-ip')?.trim();
-  if (direct && isIpAddress(direct)) return direct;
+export function readVisitorIp(
+  request: Pick<NextRequest, 'headers'>,
+  trustCloudflare = process.env.TRUST_CF_CONNECTING_IP === '1'
+): string | null {
+  if (trustCloudflare) {
+    const direct = request.headers.get('cf-connecting-ip')?.trim();
+    if (direct && isIpAddress(direct)) return direct;
+  }
 
   const forwarded = request.headers.get('x-forwarded-for');
   if (!forwarded) return null;

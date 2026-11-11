@@ -1,7 +1,11 @@
 import assert from 'node:assert/strict';
+import { mkdtemp, readdir, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { test } from 'node:test';
 import { parseDocumentPath } from './document-views';
-import { failurePage, relaySharedPdf, type RelayConfig } from './shared-pdf';
+import { HEAD } from '../app/api/doc/[document]/[slug]/route';
+import { failurePage, RelayGate, relaySharedPdf, type RelayConfig } from './shared-pdf';
 
 test('adresse d’un document : le Parcours reste une page du site, une autre clé bien formée est un PDF du CRM', () => {
   assert.deepEqual(parseDocumentPath('/doc/parcours/k7m2'), { kind: 'page', document: 'parcours', slug: 'k7m2' });
@@ -36,7 +40,8 @@ function backend(answer: (call: Call) => Promise<Response> | Response) {
     return answer(call);
   }) as unknown as typeof globalThis.fetch;
 
-  return { calls, config: { apiUrl: 'https://api.trigger-flow.test', secret: 's3cret', fetch } satisfies RelayConfig };
+  // Une porte par test : les corps laissés non lus d'un test ne prennent pas les places des autres.
+  return { calls, config: { apiUrl: 'https://api.trigger-flow.test', secret: 's3cret', fetch, gate: new RelayGate(10) } satisfies RelayConfig };
 }
 
 const PDF_BYTES = new Uint8Array([0x25, 0x50, 0x44, 0x46, 0x2d, 0x31, 0x2e, 0x34]); // %PDF-1.4
@@ -197,6 +202,116 @@ test('relais d’un PDF : un fichier qui n’arrive pas au bout est abandonné a
   assert.ok(Date.now() - started < 2000);
 });
 
+test('relais d’un PDF : au-delà du plafond de relais simultanés, « réessayez » sans rien demander au backend', async () => {
+  const gate = new RelayGate(2);
+  const { calls, config } = backend(() => pdfResponse());
+  const relay = () => relaySharedPdf('presentation', 'k7m2', reader(), { ...config, gate });
+
+  const premier = await relay();
+  const second = await relay();
+  assert.equal(gate.size, 2);
+
+  const refuse = await relay();
+  assert.equal(refuse.status, 503);
+  assert.equal(refuse.headers.get('retry-after'), '120');
+  // Le lecteur refusé n'a pas été compté : le backend n'a rien reçu.
+  assert.equal(calls.length, 2);
+
+  // Un téléchargement terminé rend sa place.
+  await premier.arrayBuffer();
+  assert.equal(gate.size, 1);
+  const suivant = await relay();
+  assert.equal(suivant.status, 200);
+  assert.equal(calls.length, 3);
+
+  // Un téléchargement abandonné aussi.
+  await second.body?.cancel();
+  await suivant.arrayBuffer();
+  assert.equal(gate.size, 0);
+});
+
+test('relais d’un PDF : un même visiteur ne prend pas toutes les places, les autres lecteurs passent', async () => {
+  const gate = new RelayGate(10, 2);
+  const { calls, config } = backend(() => pdfResponse());
+  const relay = (ip: string) => relaySharedPdf('presentation', 'k7m2', reader({ 'x-forwarded-for': ip }), { ...config, gate });
+
+  const ouverts = [await relay('203.0.113.9'), await relay('203.0.113.9')];
+  const refuse = await relay('203.0.113.9');
+  assert.equal(refuse.status, 503);
+  assert.equal(calls.length, 2);
+
+  // Un autre lecteur n'est pas puni pour lui.
+  const autre = await relay('198.51.100.7');
+  assert.equal(autre.status, 200);
+
+  // Une place rendue lui revient.
+  await ouverts[0].arrayBuffer();
+  assert.equal((await relay('203.0.113.9')).status, 200);
+});
+
+test('relais d’un PDF : un refus du backend rend sa place tout de suite', async () => {
+  const gate = new RelayGate(1);
+  const { config } = backend(() => new Response('{}', { status: 404, headers: { 'Content-Type': 'application/json' } }));
+
+  assert.equal((await relaySharedPdf('presentation', 'k7m2', reader(), { ...config, gate })).status, 404);
+  assert.equal(gate.size, 0);
+});
+
+test('relais d’un PDF : le fichier attend sur le disque, relu par blocs, quelle que soit la lenteur du lecteur', async () => {
+  const lourd = new Uint8Array(1024 * 1024).map((_, i) => i % 251);
+  const { config } = backend(() => new Response(lourd, { status: 200, headers: { 'Content-Type': 'application/pdf' } }));
+
+  const response = await relaySharedPdf('presentation', 'k7m2', reader(), config);
+  const blocs: Uint8Array[] = [];
+  const lecture = response.body!.getReader();
+  for (let r = await lecture.read(); !r.done; r = await lecture.read()) blocs.push(r.value);
+
+  // Jamais le fichier entier d'un coup : un lecteur lent ne retient qu'un bloc en mémoire.
+  assert.ok(Math.max(...blocs.map((b) => b.byteLength)) <= 64 * 1024);
+  assert.deepEqual(Buffer.concat(blocs), Buffer.from(lourd));
+  assert.equal(response.headers.get('content-length'), String(lourd.length));
+});
+
+test('relais d’un PDF : le fichier temporaire ne reste jamais sur le disque, ni pendant, ni après, ni sur un refus', async () => {
+  const dossier = await mkdtemp(join(tmpdir(), 'tf-doc-test-'));
+  try {
+    const { config } = backend(() => pdfResponse());
+    const response = await relaySharedPdf('presentation', 'k7m2', reader(), { ...config, tmpDir: dossier });
+    assert.deepEqual(await readdir(dossier), []);
+    await response.arrayBuffer();
+    assert.deepEqual(await readdir(dossier), []);
+
+    const flux = trackedBody([PDF_BYTES.slice(0, 3), PDF_BYTES.slice(3)], { end: false });
+    const { config: tropLourd } = backend(() => new Response(flux.stream, { status: 200, headers: { 'Content-Type': 'application/pdf' } }));
+    assert.equal((await relaySharedPdf('presentation', 'k7m2', reader(), { ...tropLourd, maxBytes: 4, tmpDir: dossier })).status, 503);
+    assert.deepEqual(await readdir(dossier), []);
+  } finally {
+    await rm(dossier, { recursive: true, force: true });
+  }
+});
+
+test('relais d’un PDF : disque indisponible, « réessayez » et la place est rendue', async () => {
+  const gate = new RelayGate(1);
+  const { config } = backend(() => pdfResponse());
+
+  const response = await relaySharedPdf('presentation', 'k7m2', reader(), { ...config, gate, tmpDir: join(tmpdir(), 'tf-doc-absent', 'introuvable') });
+
+  assert.equal(response.status, 503);
+  assert.equal(gate.size, 0);
+});
+
+test('relais d’un PDF : un téléchargement qui ne finit jamais rend sa place au bout du délai', async () => {
+  const gate = new RelayGate(1);
+  const { config } = backend(() => pdfResponse());
+
+  const response = await relaySharedPdf('presentation', 'k7m2', reader(), { ...config, gate, maxRelayMs: 30 });
+  assert.equal(gate.size, 1);
+  await new Promise((resolve) => setTimeout(resolve, 80));
+
+  assert.equal(gate.size, 0);
+  await assert.rejects(response.arrayBuffer());
+});
+
 test('relais d’un PDF : sur un refus, le corps du backend est annulé, pas laissé ouvert', async () => {
   for (const status of [404, 500]) {
     const { stream, state } = trackedBody([new TextEncoder().encode('{"message":"Document introuvable."}')]);
@@ -269,6 +384,14 @@ test('relais d’un PDF : sans secret, ou vers une base en clair, rien ne part',
     assert.equal(response.status, 503);
     assert.equal(calls.length, 0);
   }
+});
+
+test('route des PDF : un HEAD est refusé sans rien demander au backend ni prendre de place', async () => {
+  const response = HEAD();
+
+  assert.equal(response.status, 405);
+  assert.equal(response.headers.get('allow'), 'GET');
+  assert.equal(await response.text(), '');
 });
 
 test('page d’échec : sobre, sans tiret cadratin, et jamais indexée', async () => {

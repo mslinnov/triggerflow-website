@@ -13,8 +13,18 @@
  * Le fichier est lu en entier avant de répondre : relayé en flux, il avancerait
  * au rythme du lecteur, et un lecteur lent tiendrait un processus PHP du backend
  * pendant tout son téléchargement. Lu d'un coup entre les deux serveurs, il
- * libère PHP en une fraction de seconde ; le site, lui, sait attendre.
+ * libère PHP en une fraction de seconde.
+ *
+ * Il attend ensuite sur le DISQUE, pas en mémoire : relu par blocs au rythme du
+ * lecteur, il ne coûte que quelques dizaines de Ko de mémoire par
+ * téléchargement, quelle que soit la lenteur du client (le serveur du site, 4 Go,
+ * est partagé). Le nombre de relais simultanés est borné, et avec lui le disque
+ * occupé ; au-delà, « réessayez dans quelques minutes ».
  */
+import { randomUUID } from 'node:crypto';
+import { open, unlink, type FileHandle } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { readVisitorIp } from './visitor-ip';
 
 export type RelayConfig = {
@@ -27,12 +37,67 @@ export type RelayConfig = {
   bodyTimeoutMs?: number;
   /** Au-delà, le fichier n'est pas relayé. */
   maxBytes?: number;
+  /** Relais simultanés ; par défaut, celui du serveur. */
+  gate?: RelayGate;
+  /** Dossier du fichier temporaire. */
+  tmpDir?: string;
+  /** Au-delà, un téléchargement jamais terminé ni abandonné rend sa place. */
+  maxRelayMs?: number;
 };
 
 const NO_INDEX = 'noindex, nofollow, noarchive, nosnippet';
 
 // Limite d'envoi du CRM (25 Mo, ReplaceSharedDocumentFileRequest::MAX_KB), plus une marge.
 const MAX_PDF_BYTES = 26 * 1024 * 1024;
+
+// Bloc relu du disque à chaque demande du lecteur : c'est toute la mémoire d'un téléchargement.
+const CHUNK_BYTES = 64 * 1024;
+
+/**
+ * Plafond de relais simultanés, du fichier écrit au dernier octet reçu par le lecteur : en tout,
+ * et par visiteur.
+ *
+ * 50 en tout : une salle de salon qui scanne un QR code télécharge à quelques dizaines à la fois.
+ * Au pire, 50 × 26 Mo = 1,3 Go de disque temporaire, rendu à la fin de chaque téléchargement, et
+ * 50 × 64 Ko de mémoire. Une rafale au-delà reçoit « réessayez », au lieu d'emporter le serveur.
+ *
+ * 10 par visiteur : sans cela, un seul client qui ouvre 50 téléchargements sans les lire
+ * bloquerait les PDF de tout le monde jusqu'au garde-temps. Une salle derrière un même wifi tient
+ * dans 10 : chaque PDF y arrive en quelques secondes, ils se suivent plus qu'ils ne s'empilent.
+ */
+export class RelayGate {
+  private active = 0;
+  // Au plus une entrée par relais en cours : bornée par `max`.
+  private readonly perVisitor = new Map<string, number>();
+
+  constructor(
+    private readonly max: number,
+    private readonly maxPerVisitor = max
+  ) {}
+
+  /** Une place, et la fonction qui la rend (une seule fois) ; null si tout est pris. */
+  tryAcquire(visitor: string): (() => void) | null {
+    const mine = this.perVisitor.get(visitor) ?? 0;
+    if (this.active >= this.max || mine >= this.maxPerVisitor) return null;
+    this.active += 1;
+    this.perVisitor.set(visitor, mine + 1);
+    let released = false;
+    return () => {
+      if (released) return;
+      released = true;
+      this.active -= 1;
+      const left = (this.perVisitor.get(visitor) ?? 1) - 1;
+      if (left > 0) this.perVisitor.set(visitor, left);
+      else this.perVisitor.delete(visitor);
+    };
+  }
+
+  get size(): number {
+    return this.active;
+  }
+}
+
+const serverGate = new RelayGate(50, 10);
 
 // Mêmes précautions que le comptage du Parcours : barre finale retirée, secret
 // sans retour à la ligne. Le secret ne sort jamais du serveur du site.
@@ -57,6 +122,50 @@ export async function relaySharedPdf(
   }
 
   const ip = readVisitorIp(request);
+  // La place est prise AVANT d'appeler le backend : un lecteur refusé n'est pas compté. Les
+  // adresses illisibles partagent une seule part.
+  const release = (config.gate ?? serverGate).tryAcquire(ip ?? 'ip-inconnue');
+  if (!release) {
+    console.error('[doc] trop de PDF partagés en cours de relais');
+    return failurePage(503);
+  }
+
+  let handedOff = false;
+  try {
+    const spooled = await fetchToDisk(document, slug, request, ip, config, apiUrl, secret);
+    if (spooled instanceof Response) return spooled;
+
+    // Liste fermée des en-têtes relayés : rien du backend (cookies, serveur) ne fuit vers le lecteur.
+    const headers = new Headers({
+      'Content-Type': 'application/pdf',
+      'Content-Disposition': inlineDisposition(spooled.disposition),
+      // Chaque ouverture repasse par le backend, donc compte ; aucun cache partagé ne garde le fichier.
+      'Cache-Control': 'private, no-store',
+      'X-Content-Type-Options': 'nosniff',
+      'X-Robots-Tag': NO_INDEX,
+      'Referrer-Policy': 'no-referrer',
+      'Content-Length': String(spooled.size),
+    });
+
+    handedOff = true;
+    return new Response(streamFromDisk(spooled.file, release, config.maxRelayMs ?? 15 * 60_000), { status: 200, headers });
+  } finally {
+    if (!handedOff) release();
+  }
+}
+
+type Spooled = { file: FileHandle; size: number; disposition: string | null };
+
+/** Demande le PDF au backend et l'écrit en entier sur le disque ; une page d'échec sinon. */
+async function fetchToDisk(
+  document: string,
+  slug: string,
+  request: Request,
+  ip: string | null,
+  config: RelayConfig,
+  apiUrl: string,
+  secret: string
+): Promise<Spooled | Response> {
   const controller = new AbortController();
   let timeout = setTimeout(() => controller.abort(), config.timeoutMs ?? 10_000);
 
@@ -104,33 +213,19 @@ export async function relaySharedPdf(
   }
 
   timeout = setTimeout(() => controller.abort(), config.bodyTimeoutMs ?? 30_000);
-  let file: Uint8Array<ArrayBuffer> | null;
   try {
-    file = await readCapped(upstream.body, maxBytes, controller.signal);
+    const spooled = await spoolCapped(upstream.body, maxBytes, controller.signal, config.tmpDir ?? tmpdir());
+    if (!spooled) {
+      console.error("[doc] PDF partagé plus lourd que la limite d'envoi");
+      return failurePage(503);
+    }
+    return { ...spooled, disposition: upstream.headers.get('content-disposition') };
   } catch {
-    console.error('[doc] PDF partagé interrompu pendant sa lecture');
+    console.error('[doc] PDF partagé interrompu avant son relais (lecture du backend ou écriture du disque)');
     return failurePage(503);
   } finally {
     clearTimeout(timeout);
   }
-  if (!file) {
-    console.error('[doc] PDF partagé plus lourd que la limite d\'envoi');
-    return failurePage(503);
-  }
-
-  // Liste fermée des en-têtes relayés : rien du backend (cookies, serveur) ne fuit vers le lecteur.
-  const headers = new Headers({
-    'Content-Type': 'application/pdf',
-    'Content-Disposition': inlineDisposition(upstream.headers.get('content-disposition')),
-    // Chaque ouverture repasse par le backend, donc compte ; aucun cache partagé ne garde le fichier.
-    'Cache-Control': 'private, no-store',
-    'X-Content-Type-Options': 'nosniff',
-    'X-Robots-Tag': NO_INDEX,
-    'Referrer-Policy': 'no-referrer',
-    'Content-Length': String(file.byteLength),
-  });
-
-  return new Response(file, { status: 200, headers });
 }
 
 /** Le corps d'une réponse écartée est annulé : sans cela, la connexion au backend reste tenue jusqu'au ramasse-miettes. */
@@ -139,41 +234,102 @@ async function discard(response: Response): Promise<void> {
 }
 
 /**
- * Le fichier en entier, ou null s'il dépasse `max` (la lecture s'arrête alors, sans tout charger).
- * Rejette quand `signal` est annulé (délai dépassé), quelle que soit l'implémentation de fetch.
+ * Le fichier en entier, écrit sur le disque ; null s'il dépasse `max` (la lecture s'arrête
+ * alors, sans tout écrire). Rejette quand `signal` est annulé (délai dépassé), quelle que soit
+ * l'implémentation de fetch.
+ *
+ * Le fichier est retiré de son dossier dès sa création : il ne vit que par son descripteur et
+ * disparaît du disque à sa fermeture, quoi qu'il arrive (fin, abandon, erreur, arrêt du site).
  */
-async function readCapped(body: ReadableStream<Uint8Array>, max: number, signal: AbortSignal): Promise<Uint8Array<ArrayBuffer> | null> {
+async function spoolCapped(
+  body: ReadableStream<Uint8Array>,
+  max: number,
+  signal: AbortSignal,
+  dir: string
+): Promise<{ file: FileHandle; size: number } | null> {
   const reader = body.getReader();
   const aborted = new Promise<never>((_, reject) => {
     signal.addEventListener('abort', () => reject(new Error('délai dépassé')), { once: true });
   });
   aborted.catch(() => undefined);
-  const chunks: Uint8Array[] = [];
+
+  const path = join(dir, `tf-doc-${randomUUID()}.pdf`);
+  let file: FileHandle | null = null;
   let size = 0;
 
   try {
+    file = await open(path, 'wx+', 0o600);
+    await unlink(path);
+
     for (;;) {
       const { done, value } = await Promise.race([reader.read(), aborted]);
-      if (done) break;
+      if (done) return { file, size };
       size += value.byteLength;
       if (size > max) {
         await reader.cancel().catch(() => undefined);
+        await file.close();
         return null;
       }
-      chunks.push(value);
+      await file.write(value);
     }
   } catch (error) {
     await reader.cancel().catch(() => undefined);
+    await file?.close().catch(() => undefined);
+    await unlink(path).catch(() => undefined);
     throw error;
   }
+}
 
-  const file = new Uint8Array(size);
-  let offset = 0;
-  for (const chunk of chunks) {
-    file.set(chunk, offset);
-    offset += chunk.byteLength;
-  }
-  return file;
+/**
+ * Le fichier relu par blocs, à la demande du lecteur : un lecteur lent ne retient qu'un bloc.
+ * La place et le descripteur sont rendus à la fin, à l'abandon, sur erreur, ou passé `maxMs`.
+ */
+function streamFromDisk(file: FileHandle, release: () => void, maxMs: number): ReadableStream<Uint8Array> {
+  let position = 0;
+  let finished = false;
+  let guard: ReturnType<typeof setTimeout> | undefined;
+
+  const finish = async () => {
+    if (finished) return;
+    finished = true;
+    clearTimeout(guard);
+    release();
+    await file.close().catch(() => undefined);
+  };
+
+  return new ReadableStream<Uint8Array>({
+    start(controller) {
+      guard = setTimeout(() => {
+        void finish();
+        try {
+          controller.error(new Error('téléchargement trop long'));
+        } catch {
+          // Déjà fermé.
+        }
+      }, maxMs);
+      // Le garde-temps seul ne retient pas le processus (arrêt du site, fin des tests).
+      guard.unref?.();
+    },
+    async pull(controller) {
+      try {
+        const buffer = new Uint8Array(CHUNK_BYTES);
+        const { bytesRead } = await file.read(buffer, 0, CHUNK_BYTES, position);
+        if (bytesRead === 0) {
+          await finish();
+          controller.close();
+          return;
+        }
+        position += bytesRead;
+        controller.enqueue(buffer.subarray(0, bytesRead));
+      } catch (error) {
+        await finish();
+        controller.error(error);
+      }
+    },
+    async cancel() {
+      await finish();
+    },
+  });
 }
 
 // RFC 8187 : charset'langue'valeur, la valeur ne portant que des caractères sûrs ou %XX.

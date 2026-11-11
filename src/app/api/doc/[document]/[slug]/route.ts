@@ -20,3 +20,12 @@ export async function GET(request: Request, { params }: { params: Promise<{ docu
 
   return relaySharedPdf(target.document, target.slug, request);
 }
+
+/**
+ * Sans cette réponse, Next servirait un HEAD en appelant GET puis en jetant le corps : chaque
+ * sonde (aperçu de lien, antivirus d'une messagerie) compterait une ouverture et garderait une
+ * place de relais jusqu'au garde-temps.
+ */
+export function HEAD(): Response {
+  return new Response(null, { status: 405, headers: { Allow: 'GET', 'Cache-Control': 'no-store' } });
+}

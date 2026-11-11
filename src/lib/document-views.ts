@@ -11,6 +11,7 @@
  * modélise le trafic. Pour répondre à « combien de fois ce prospect a-t-il
  * ouvert son document », il faut compter au serveur, sans cookie ni JavaScript.
  */
+import { readVisitorIp } from './visitor-ip';
 
 /**
  * Documents publiables, et le fichier statique qui porte chacun, par langue.
@@ -126,7 +127,8 @@ export async function recordDocumentView(
   // et rien dans la réponse ne le signalerait.
   if (!API_URL.startsWith('https://') && !API_URL.startsWith('http://localhost')) return;
 
-  const ip = readerIp(request);
+  // Même lecture que /api/leads et le relais des PDF : cf-connecting-ip seulement derrière Cloudflare.
+  const ip = readVisitorIp(request);
 
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 2000);
@@ -163,40 +165,3 @@ export async function recordDocumentView(
   }
 }
 
-/**
- * IP du lecteur, lue comme le fait déjà `src/app/api/leads/route.ts`.
- *
- * La production n'est PAS Cloudflare malgré la configuration wrangler du
- * dépôt : le site tourne derrière Apache sur un VPS, et c'est Apache qui
- * complète `x-forwarded-for`.
- *
- * D'où l'ordre, et surtout le DERNIER membre de la chaîne plutôt que le
- * premier : Apache AJOUTE à la fin l'adresse du client qu'il constate. Un
- * robot qui fabrique `x-forwarded-for: 1.2.3.4` obtient donc
- * « 1.2.3.4, son adresse réelle ». Prendre le premier laisserait n'importe qui
- * choisir son identité, et donc échapper au regroupement des rechargements en
- * changeant d'adresse à chaque appel.
- *
- * Retourne null dès qu'on ne sait pas, et l'en-tête est alors OMIS : le
- * transmettre vide ferait retomber le backend sur l'adresse de notre serveur,
- * ce qui fusionnerait tous les lecteurs sous une seule IP.
- */
-function readerIp(request: Request): string | null {
-  const direct = request.headers.get('cf-connecting-ip')?.trim();
-  if (direct && isIpAddress(direct)) return direct;
-
-  const forwarded = request.headers.get('x-forwarded-for');
-  if (!forwarded) return null;
-
-  const chain = forwarded.split(',');
-  const last = chain[chain.length - 1]?.trim();
-  return last && isIpAddress(last) ? last : null;
-}
-
-function isIpAddress(value: string): boolean {
-  // IPv4 en quatre octets, ou IPv6 sous sa forme hexadécimale abrégée.
-  return (
-    /^(\d{1,3}\.){3}\d{1,3}$/.test(value) ||
-    (value.includes(':') && /^[0-9a-fA-F:.]+$/.test(value))
-  );
-}

@@ -82,7 +82,12 @@ test('limiteur : mémoire bornée, les IP expirées sont purgées', () => {
 test('IP visiteur : le dernier membre de x-forwarded-for (ajouté par Apache), jamais le premier', () => {
   const req = (headers: Record<string, string>) => ({ headers: new Headers(headers) });
   assert.equal(readVisitorIp(req({ 'x-forwarded-for': '6.6.6.6, 203.0.113.9' })), '203.0.113.9');
-  assert.equal(readVisitorIp(req({ 'cf-connecting-ip': '198.51.100.1', 'x-forwarded-for': '1.1.1.1' })), '198.51.100.1');
+  // Pas derrière Cloudflare : cf-connecting-ip vient du client tel quel, il est ignoré...
+  assert.equal(readVisitorIp(req({ 'cf-connecting-ip': '198.51.100.1', 'x-forwarded-for': '1.1.1.1' }), false), '1.1.1.1');
+  // ...par défaut (TRUST_CF_CONNECTING_IP absente)...
+  assert.equal(readVisitorIp(req({ 'cf-connecting-ip': '198.51.100.1', 'x-forwarded-for': '1.1.1.1' })), '1.1.1.1');
+  // ...et lu seulement quand un proxy Cloudflare est déclaré devant.
+  assert.equal(readVisitorIp(req({ 'cf-connecting-ip': '198.51.100.1', 'x-forwarded-for': '1.1.1.1' }), true), '198.51.100.1');
   assert.equal(readVisitorIp(req({ 'x-forwarded-for': 'pas-une-ip' })), null);
   assert.equal(readVisitorIp(req({})), null);
 });
