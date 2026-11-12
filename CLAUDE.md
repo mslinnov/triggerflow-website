@@ -10,7 +10,7 @@ Site vitrine marketing pour TriggerFlow, un SaaS CRM et automatisation de commun
 
 ## Tech Stack
 
-- **Framework:** Next.js 15 (App Router, RSC)
+- **Framework:** Next.js 16 (App Router, RSC)
 - **Language:** TypeScript (strict mode)
 - **Styling:** Tailwind CSS
 - **Animations:** Framer Motion
@@ -231,14 +231,13 @@ export const metadata: Metadata = {
 - **Variables :** secrets GitHub du dépôt. Une variable d'exécution s'ajoute dans `deploy.yml` (env de l'étape SSH, liste `envs:`, filtre `grep -v`, ligne `printf`, boucle de diagnostic). Les `NEXT_PUBLIC_*` sont figées au build.
 - **IP des visiteurs :** dernier membre de `x-forwarded-for`, ajouté par Apache (`src/lib/visitor-ip.ts`) ; `cf-connecting-ip` n'est lu qu'avec `TRUST_CF_CONNECTING_IP=1`.
 - **Limites en mémoire :** les limites par visiteur (calendrier, PDF partagés) vivent dans le processus ; un redémarrage les remet à zéro.
-- **Arrêt :** au redémarrage, les PDF partagés en cours de téléchargement sont coupés sur SIGTERM, puis Next sort de lui-même.
+- **Arrêt :** au redémarrage, les PDF partagés en cours de téléchargement sont coupés sur SIGTERM, ceux encore demandés au backend ne commencent pas, puis Next sort de lui-même.
+- **Écriture sur le disque à l'exécution :** une seule, le fichier temporaire des PDF partagés (`src/lib/shared-pdf.ts`, dossier `SHARED_PDF_TMP_DIR`, voir le README). Ailleurs, `fs` ne sert qu'au build (`lib/blog.ts`, `lib/landing-pages.ts`).
+- **No Server Actions :** non utilisées.
 
 ### OpenNext / Cloudflare (hors production)
 
 `wrangler.jsonc`, `open-next.config.ts` et les scripts `preview` / `deploy` viennent d'un ancien hébergement sur Cloudflare Pages. Ils ne servent plus la production : un secret posé avec `wrangler secret put` n'y arrive jamais.
-
-- **Écriture sur le disque à l'exécution :** une seule, le fichier temporaire des PDF partagés (`src/lib/shared-pdf.ts`, dossier `SHARED_PDF_TMP_DIR`, voir le README). Ailleurs, `fs` ne sert qu'au build (`lib/blog.ts`, `lib/landing-pages.ts`).
-- **No Server Actions :** non utilisées.
 
 ## External Links
 

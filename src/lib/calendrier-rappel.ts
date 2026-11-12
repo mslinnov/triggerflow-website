@@ -129,12 +129,16 @@ export function relayOutcome(status: number): RelayOutcome {
  * plus permissif.
  */
 export class SlidingWindowLimiter {
+  /** De l'IP vue le moins récemment à la plus récente. */
   private readonly hits = new Map<string, number[]>();
+
+  /** Dernière purge des entrées expirées : au plus une par fenêtre. */
+  private prunedAt = -Infinity;
 
   constructor(
     private readonly limit: number,
     private readonly windowMs: number,
-    /** Au-delà, les entrées expirées sont purgées pour borner la mémoire. */
+    /** Au-delà, les entrées expirées sont purgées, puis les moins récentes, pour borner la mémoire. */
     private readonly maxKeys = 10_000,
   ) {}
 
@@ -142,14 +146,13 @@ export class SlidingWindowLimiter {
   allow(key: string, now: number = Date.now()): boolean {
     const since = now - this.windowMs;
     const recent = (this.hits.get(key) ?? []).filter((t) => t > since);
-    if (recent.length >= this.limit) {
-      this.hits.set(key, recent);
-      return false;
-    }
-    recent.push(now);
+    const allowed = recent.length < this.limit;
+    if (allowed) recent.push(now);
+    // Retirée puis remise : l'IP passe en fin de Map, la plus récemment vue.
+    this.hits.delete(key);
     this.hits.set(key, recent);
-    if (this.hits.size > this.maxKeys) this.prune(since);
-    return true;
+    if (this.hits.size > this.maxKeys) this.trim(now, since);
+    return allowed;
   }
 
   /** Nombre d'IP suivies (pour les tests de la purge). */
@@ -157,9 +160,22 @@ export class SlidingWindowLimiter {
     return this.hits.size;
   }
 
-  private prune(since: number): void {
-    for (const [key, times] of this.hits) {
-      if (!times.some((t) => t > since)) this.hits.delete(key);
+  /**
+   * La purge des entrées expirées parcourt toute la Map : au plus une fois par fenêtre. Relancée
+   * à chaque nouvelle IP au-delà du plafond, elle rendait le coût quadratique sur une route
+   * publique (65 536 /64 d'IPv6 : 13 s de boucle bloquée). Si elle ne suffit pas, les IP vues le
+   * moins récemment sortent, en début de Map, quitte à oublier leur compte.
+   */
+  private trim(now: number, since: number): void {
+    if (now - this.prunedAt >= this.windowMs) {
+      this.prunedAt = now;
+      for (const [key, times] of this.hits) {
+        if (!times.some((t) => t > since)) this.hits.delete(key);
+      }
+    }
+    for (const key of this.hits.keys()) {
+      if (this.hits.size <= this.maxKeys) break;
+      this.hits.delete(key);
     }
   }
 }
