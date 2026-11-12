@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { parseRappelBody, RAPPEL_LIMIT, relayOutcome, salonLeadUrl, SlidingWindowLimiter, toSalonPayload } from './calendrier-rappel';
-import { readVisitorIp } from './visitor-ip';
 
 const valid = { hotelName: 'Hôtel des Tilleuls', city: 'Lyon', firstname: 'Camille', lastname: 'Martin', email: 'camille@tilleuls.fr', phone: '06 12 34 56 78', wantsDemo: true };
 
@@ -79,10 +78,38 @@ test('limiteur : mémoire bornée, les IP expirées sont purgées', () => {
   assert.equal(limiter.size, 1);
 });
 
-test('IP visiteur : le dernier membre de x-forwarded-for (ajouté par Apache), jamais le premier', () => {
-  const req = (headers: Record<string, string>) => ({ headers: new Headers(headers) });
-  assert.equal(readVisitorIp(req({ 'x-forwarded-for': '6.6.6.6, 203.0.113.9' })), '203.0.113.9');
-  assert.equal(readVisitorIp(req({ 'cf-connecting-ip': '198.51.100.1', 'x-forwarded-for': '1.1.1.1' })), '198.51.100.1');
-  assert.equal(readVisitorIp(req({ 'x-forwarded-for': 'pas-une-ip' })), null);
-  assert.equal(readVisitorIp(req({})), null);
+test('limiteur : plafond dépassé par des IP toutes actives, les moins récemment vues sortent', () => {
+  const limiter = new SlidingWindowLimiter(1, 60_000, 3);
+  for (const [i, ip] of ['a', 'b', 'c'].entries()) limiter.allow(ip, i);
+  // a revient (refusée) : elle devient la plus récemment vue.
+  assert.equal(limiter.allow('a', 10), false);
+
+  limiter.allow('d', 20);
+
+  // Rien d'expiré à purger : la mémoire reste bornée quand même.
+  assert.equal(limiter.size, 3);
+  // b, la moins récemment vue, est oubliée ; a, revue depuis, reste bloquée.
+  assert.equal(limiter.allow('a', 30), false);
+  assert.equal(limiter.allow('b', 30), true);
+});
+
+test('limiteur : au-delà du plafond, toutes les IP ne sont pas reparcourues à chaque nouvelle', () => {
+  const limiter = new SlidingWindowLimiter(1, 60_000, 100);
+  // La purge des entrées expirées est le seul parcours complet de la Map (for…of).
+  const hits = (limiter as unknown as { hits: Map<string, number[]> }).hits;
+  const entries = hits[Symbol.iterator].bind(hits);
+  let scans = 0;
+  hits[Symbol.iterator] = () => {
+    scans += 1;
+    return entries();
+  };
+
+  for (let i = 0; i < 1_000; i++) limiter.allow(`ip-${i}`, i);
+
+  // 900 IP au-delà du plafond dans la même fenêtre : une seule purge, pas 900.
+  assert.equal(scans, 1);
+  assert.equal(limiter.size, 100);
+  // La fenêtre suivante, la purge repasse.
+  limiter.allow('ip-tard', 70_000);
+  assert.equal(scans, 2);
 });

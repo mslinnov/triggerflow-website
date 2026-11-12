@@ -11,6 +11,7 @@
  * modélise le trafic. Pour répondre à « combien de fois ce prospect a-t-il
  * ouvert son document », il faut compter au serveur, sans cookie ni JavaScript.
  */
+import { readVisitorIp } from './visitor-ip';
 
 /**
  * Documents publiables, et le fichier statique qui porte chacun, par langue.
@@ -62,20 +63,39 @@ export function isValidSlug(value: string): boolean {
 }
 
 /**
+ * Clé d'un PDF déposé dans le CRM. Même règle que le backend
+ * (CrmSharedDocument::KEY_PATTERN) : une clé que le site relaie mais que le
+ * backend refuse ferait une page introuvable sans raison visible.
+ */
+const PDF_KEY_PATTERN = /^[a-z0-9][a-z0-9-]{1,49}$/;
+
+/**
+ * Ce que sert /doc/<document>/<suffixe> : une page du site (le Parcours, fichier
+ * statique déclaré dans DOCUMENTS), ou un PDF déposé dans le CRM, que le
+ * backend sert seulement à un suffixe qu'il a émis.
+ */
+export type DocumentTarget =
+  | { kind: 'page'; document: DocumentName; slug: string }
+  | { kind: 'pdf'; document: string; slug: string };
+
+/**
  * Découpe /doc/<document>/<suffixe>. Renvoie null pour tout le reste, y
  * compris les fichiers statiques du dossier (/doc/parcours/captures/x.jpg),
  * qui portent un point et sont servis sans passer par ici.
+ *
+ * Une clé hors DOCUMENTS mais bien formée est un PDF : la liste des PDF vit
+ * dans le CRM, le site ne la connaît pas, et le backend répond « introuvable »
+ * à une clé inconnue sans rien compter.
  */
-export function parseDocumentPath(
-  pathname: string
-): { document: DocumentName; slug: string } | null {
+export function parseDocumentPath(pathname: string): DocumentTarget | null {
   const segments = pathname.split('/').filter(Boolean);
   if (segments.length !== 3 || segments[0] !== 'doc') return null;
 
   const [, document, slug] = segments;
-  if (!isDocumentName(document) || !isValidSlug(slug)) return null;
+  if (!isValidSlug(slug)) return null;
+  if (isDocumentName(document)) return { kind: 'page', document, slug };
 
-  return { document, slug };
+  return PDF_KEY_PATTERN.test(document) ? { kind: 'pdf', document, slug } : null;
 }
 
 // Mêmes précautions que la route des livres blancs : une base copiée avec sa
@@ -98,28 +118,33 @@ export async function recordDocumentView(
   document: DocumentName,
   slug: string,
   request: Request,
-  langue: Langue
+  langue: Langue,
+  { apiUrl, secret }: { apiUrl: string | undefined; secret: string | undefined } = { apiUrl: API_URL, secret: SECRET }
 ): Promise<void> {
-  if (!API_URL || !SECRET) return;
+  if (!apiUrl || !secret) return;
 
   // Le secret ne part que sur un canal chiffré. Une base saisie en http:// par
   // inadvertance dans les secrets du dépôt le mettrait en clair sur le réseau,
   // et rien dans la réponse ne le signalerait.
-  if (!API_URL.startsWith('https://') && !API_URL.startsWith('http://localhost')) return;
+  if (!apiUrl.startsWith('https://') && !apiUrl.startsWith('http://localhost')) return;
 
-  const ip = readerIp(request);
+  // Même lecture que /api/leads et le relais des PDF : cf-connecting-ip seulement derrière Cloudflare.
+  const ip = readVisitorIp(request);
 
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 2000);
 
   try {
-    await fetch(`${API_URL}/api/public-document-view`, {
+    await fetch(`${apiUrl}/api/public-document-view`, {
       method: 'POST',
       signal: controller.signal,
+      // Une redirection renverrait le secret, tel quel, à l'adresse qu'elle désigne : le
+      // backend n'en fait jamais, une réponse 3xx est une erreur (muette, comme les autres).
+      redirect: 'error',
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        'X-TF-Doc-Secret': SECRET,
+        'X-TF-Doc-Secret': secret,
         // Omis quand l'adresse est inconnue : posé vide, il ferait retomber
         // le backend sur l'adresse de notre serveur, et le regroupement des
         // rechargements fusionnerait alors tous les lecteurs entre eux.
@@ -144,40 +169,3 @@ export async function recordDocumentView(
   }
 }
 
-/**
- * IP du lecteur, lue comme le fait déjà `src/app/api/leads/route.ts`.
- *
- * La production n'est PAS Cloudflare malgré la configuration wrangler du
- * dépôt : le site tourne derrière Apache sur un VPS, et c'est Apache qui
- * complète `x-forwarded-for`.
- *
- * D'où l'ordre, et surtout le DERNIER membre de la chaîne plutôt que le
- * premier : Apache AJOUTE à la fin l'adresse du client qu'il constate. Un
- * robot qui fabrique `x-forwarded-for: 1.2.3.4` obtient donc
- * « 1.2.3.4, son adresse réelle ». Prendre le premier laisserait n'importe qui
- * choisir son identité, et donc échapper au regroupement des rechargements en
- * changeant d'adresse à chaque appel.
- *
- * Retourne null dès qu'on ne sait pas, et l'en-tête est alors OMIS : le
- * transmettre vide ferait retomber le backend sur l'adresse de notre serveur,
- * ce qui fusionnerait tous les lecteurs sous une seule IP.
- */
-function readerIp(request: Request): string | null {
-  const direct = request.headers.get('cf-connecting-ip')?.trim();
-  if (direct && isIpAddress(direct)) return direct;
-
-  const forwarded = request.headers.get('x-forwarded-for');
-  if (!forwarded) return null;
-
-  const chain = forwarded.split(',');
-  const last = chain[chain.length - 1]?.trim();
-  return last && isIpAddress(last) ? last : null;
-}
-
-function isIpAddress(value: string): boolean {
-  // IPv4 en quatre octets, ou IPv6 sous sa forme hexadécimale abrégée.
-  return (
-    /^(\d{1,3}\.){3}\d{1,3}$/.test(value) ||
-    (value.includes(':') && /^[0-9a-fA-F:.]+$/.test(value))
-  );
-}
