@@ -187,7 +187,8 @@ export async function relaySharedPdf(
     const spooled = await fetchToDisk({ document, slug, request, ip, config, apiUrl, secret });
     if (spooled instanceof Response) return spooled;
     // SIGTERM arrivé pendant l'appel au backend ou l'écriture du fichier : coupés (backendCalls),
-    // ils ont rendu une page d'échec. Fichier fini juste avant le signal : le relais ne commence pas.
+    // ils ont rendu une page d'échec. Arrivé pendant la création du fichier temporaire, avant que
+    // l'appel soit dans backendCalls : l'appel est allé au bout, mais le relais ne commence pas.
     if (stopping) {
       await spooled.file.close().catch(() => undefined);
       return failurePage(503);
@@ -420,8 +421,9 @@ export function stopActiveRelays(): void {
 let stopsWithServer = false;
 
 /**
- * Posé par SIGTERM : un relais encore en appel au backend ou en écriture du fichier n'est pas
- * dans `activeRelays`, il ne commence pas ; un nouveau lecteur reçoit « réessayez ».
+ * Posé par SIGTERM : un nouveau lecteur reçoit « réessayez ». Les appels au backend et les
+ * écritures du fichier en cours sont coupés (`backendCalls`) ; un relais dont l'appel n'y était
+ * pas encore inscrit va au bout de son fichier, puis ne commence pas.
  */
 let stopping = false;
 
