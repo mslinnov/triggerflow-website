@@ -186,8 +186,8 @@ export async function relaySharedPdf(
   try {
     const spooled = await fetchToDisk({ document, slug, request, ip, config, apiUrl, secret });
     if (spooled instanceof Response) return spooled;
-    // SIGTERM arrivé pendant l'appel au backend ou l'écriture du fichier : ce relais n'était pas
-    // encore de ceux que l'arrêt coupe, il ne commence pas.
+    // SIGTERM arrivé pendant l'appel au backend ou l'écriture du fichier : coupés (backendCalls),
+    // ils ont rendu une page d'échec. Fichier fini juste avant le signal : le relais ne commence pas.
     if (stopping) {
       await spooled.file.close().catch(() => undefined);
       return failurePage(503);
@@ -247,11 +247,13 @@ async function fetchToDisk({ document, slug, request, ip, config, apiUrl, secret
   }
 
   // Un lecteur parti (onglet fermé, réseau coupé) n'attend plus rien : l'appel au backend et la
-  // lecture du fichier s'arrêtent avec lui, et sa place est rendue tout de suite.
+  // lecture du fichier s'arrêtent avec lui, et sa place est rendue tout de suite. L'arrêt du site
+  // les coupe aussi (backendCalls).
   const controller = new AbortController();
   const leave = () => controller.abort();
   if (request.signal.aborted) leave();
   request.signal.addEventListener('abort', leave, { once: true });
+  backendCalls.add(controller);
 
   let handedOff = false;
   try {
@@ -282,7 +284,7 @@ async function fetchToDisk({ document, slug, request, ip, config, apiUrl, secret
         }),
       });
     } catch {
-      if (!request.signal.aborted) console.error('[doc] backend injoignable pour un PDF partagé');
+      if (!request.signal.aborted && !stopping) console.error('[doc] backend injoignable pour un PDF partagé');
       return failurePage(503);
     } finally {
       clearTimeout(timeout);
@@ -313,13 +315,14 @@ async function fetchToDisk({ document, slug, request, ip, config, apiUrl, secret
       handedOff = true;
       return { file, size, disposition: upstream.headers.get('content-disposition') };
     } catch {
-      if (!request.signal.aborted) console.error('[doc] PDF partagé interrompu avant son relais (lecture du backend ou écriture du disque)');
+      if (!request.signal.aborted && !stopping) console.error('[doc] PDF partagé interrompu avant son relais (lecture du backend ou écriture du disque)');
       return failurePage(503);
     } finally {
       clearTimeout(timeout);
     }
   } finally {
     request.signal.removeEventListener('abort', leave);
+    backendCalls.delete(controller);
     if (!handedOff) await file.close().catch(() => undefined);
   }
 }
@@ -422,12 +425,20 @@ let stopsWithServer = false;
  */
 let stopping = false;
 
+/**
+ * Appels au backend et écritures du fichier en cours, coupés aussi à SIGTERM : sinon l'arrêt
+ * attendrait leur fin, jusqu'à 10 s d'appel puis 30 s de lecture. Le backend a pu compter
+ * l'ouverture d'un appel coupé (voir le README).
+ */
+const backendCalls = new Set<AbortController>();
+
 /** Posé une fois, au premier relais demandé : rien n'écoute SIGTERM tant qu'aucun PDF n'est demandé. */
 function stopRelaysOnSigterm(): void {
   if (stopsWithServer) return;
   stopsWithServer = true;
   process.once('SIGTERM', () => {
     stopping = true;
+    for (const call of [...backendCalls]) call.abort();
     stopActiveRelays();
     // Sous next start, Next écoute aussi SIGTERM et quitte. Si personne d'autre n'écoute, le
     // signal est renvoyé pour garder l'arrêt par défaut, qu'un écouteur seul annulerait.

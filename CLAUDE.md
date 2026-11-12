@@ -231,7 +231,7 @@ export const metadata: Metadata = {
 - **Variables :** secrets GitHub du dépôt. Une variable d'exécution s'ajoute dans `deploy.yml` (env de l'étape SSH, liste `envs:`, filtre `grep -v`, ligne `printf`, boucle de diagnostic). Les `NEXT_PUBLIC_*` sont figées au build.
 - **IP des visiteurs :** dernier membre de `x-forwarded-for`, ajouté par Apache (`src/lib/visitor-ip.ts`) ; `cf-connecting-ip` n'est lu qu'avec `TRUST_CF_CONNECTING_IP=1`.
 - **Limites en mémoire :** les limites par visiteur (calendrier, PDF partagés) vivent dans le processus ; un redémarrage les remet à zéro.
-- **Arrêt :** au redémarrage, les PDF partagés en cours de téléchargement sont coupés sur SIGTERM, ceux encore demandés au backend ne commencent pas, puis Next sort de lui-même.
+- **Arrêt :** au redémarrage, les PDF partagés en cours de téléchargement sont coupés sur SIGTERM, ainsi que les appels au backend et les écritures du fichier en cours (le lecteur reçoit « réessayez »), puis Next sort de lui-même.
 - **Écriture sur le disque à l'exécution :** une seule, le fichier temporaire des PDF partagés (`src/lib/shared-pdf.ts`, dossier `SHARED_PDF_TMP_DIR`, voir le README). Ailleurs, `fs` ne fait que lire des fichiers du dépôt, et pas seulement au build : `/api/calendrier/modele` lit les modèles MJML du calendrier au premier appel (`lib/calendrier-mjml.ts`, `src/data/calendrier-mjml/`, gardés ensuite en mémoire du processus) ; le blog, les pages d'atterrissage et les pages légales (`lib/blog.ts`, `lib/landing-pages.ts`, `lib/legal.ts`) sont lus au build, puis à l'exécution quand une page est régénérée (`llms.txt` toutes les heures, page absente de `generateStaticParams`). Le déploiement copie tout le dépôt, ces dossiers compris.
 - **No Server Actions :** non utilisées.
 

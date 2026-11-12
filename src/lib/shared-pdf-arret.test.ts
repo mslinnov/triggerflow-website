@@ -20,26 +20,37 @@ async function waitFor(condition: () => boolean): Promise<void> {
   assert.ok(condition(), 'attente dépassée');
 }
 
-test('relais d’un PDF : SIGTERM coupe les relais en cours, ceux encore en appel au backend ou en écriture ne commencent pas, sans quitter à la place de Next', async () => {
+/** La promesse, ou un échec si elle ne se règle pas dans le délai. */
+async function within<T>(promise: Promise<T>, ms: number): Promise<T> {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  try {
+    return await Promise.race([promise, new Promise<never>((_, reject) => (timer = setTimeout(() => reject(new Error(`pas réglée en ${ms} ms`)), ms)))]);
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+test('relais d’un PDF : SIGTERM coupe les relais en cours, les appels au backend et les écritures du fichier, sans quitter à la place de Next', async () => {
   // Next écoute SIGTERM sous next start et quitte une fois ses réponses closes : un écouteur le remplace ici.
   const next = () => undefined;
   process.on('SIGTERM', next);
+  const errors: string[] = [];
+  const consoleError = console.error;
+  console.error = (...args: unknown[]) => void errors.push(args.map(String).join(' '));
   try {
-    let answerBackend: ((response: Response) => void) | undefined;
-    let endFile: (() => void) | undefined;
-    const answers: Array<() => Promise<Response> | Response> = [
-      // Encore en appel au backend.
-      () => new Promise<Response>((resolve) => (answerBackend = resolve)),
-      // Fichier en cours d'écriture : le backend n'a envoyé que le début.
+    const signals: AbortSignal[] = [];
+    let fileStarted = false;
+    const answers: Array<(signal: AbortSignal) => Promise<Response> | Response> = [
+      // Encore en appel au backend : comme fetch, l'appel ne finit qu'annulé.
+      (signal) =>
+        new Promise<Response>((_, reject) => signal.addEventListener('abort', () => reject(new DOMException('annulé', 'AbortError')), { once: true })),
+      // Fichier en cours d'écriture : le backend n'a envoyé que le début, et n'enverra rien d'autre.
       () =>
         pdf(
           new ReadableStream<Uint8Array>({
             start(controller) {
               controller.enqueue(PDF_BYTES.slice(0, 3));
-              endFile = () => {
-                controller.enqueue(PDF_BYTES.slice(3));
-                controller.close();
-              };
+              fileStarted = true;
             },
           })
         ),
@@ -47,35 +58,48 @@ test('relais d’un PDF : SIGTERM coupe les relais en cours, ceux encore en appe
       () => pdf(),
     ];
     let calls = 0;
-    const fetch = (async () => answers[calls++]()) as unknown as typeof globalThis.fetch;
+    const fetch = (async (_url: string, init: RequestInit) => {
+      signals.push(init.signal!);
+      return answers[calls++](init.signal!);
+    }) as unknown as typeof globalThis.fetch;
     const gate = new RelayGate(10);
-    const config: RelayConfig = { apiUrl: 'https://api.trigger-flow.test', secret: 's3cret', fetch, gate, limiter: new SlidingWindowLimiter(1_000, 60_000) };
+    // Délais de 5 s : passé 1 s, seul l'arrêt a pu finir l'appel et l'écriture.
+    const config: RelayConfig = {
+      apiUrl: 'https://api.trigger-flow.test',
+      secret: 's3cret',
+      fetch,
+      gate,
+      limiter: new SlidingWindowLimiter(1_000, 60_000),
+      timeoutMs: 5_000,
+      bodyTimeoutMs: 5_000,
+    };
     const listeners = process.listenerCount('SIGTERM');
 
     const enAppel = relaySharedPdf('presentation', 'k7m2', reader(), config);
-    await waitFor(() => answerBackend !== undefined);
+    await waitFor(() => calls === 1);
     // Premier relais du processus, pas encore servi : l'arrêt est déjà écouté.
     assert.equal(process.listenerCount('SIGTERM'), listeners + 1);
     const enEcriture = relaySharedPdf('presentation', 'k7m2', reader(), config);
-    await waitFor(() => endFile !== undefined);
+    await waitFor(() => fileStarted);
     const enLecture = await relaySharedPdf('presentation', 'k7m2', reader(), config);
     assert.equal(gate.size, 3);
 
     process.emit('SIGTERM');
 
     await assert.rejects(enLecture.arrayBuffer());
-    // Les deux autres finissent leur appel, puis rendent leur place sans commencer : un relais
-    // commencé après SIGTERM tiendrait le redémarrage jusqu'à ce que systemd tue le site.
-    answerBackend!(pdf());
-    endFile!();
-    assert.equal((await enAppel).status, 503);
-    assert.equal((await enEcriture).status, 503);
+    // L'appel et l'écriture sont coupés aussitôt : l'arrêt n'attend ni le backend ni la fin du fichier.
+    assert.equal((await within(enAppel, 1_000)).status, 503);
+    assert.equal((await within(enEcriture, 1_000)).status, 503);
+    assert.ok(signals[0].aborted && signals[1].aborted);
     assert.equal(gate.size, 0);
+    // Coupés par l'arrêt, pas par une panne : rien dans les journaux.
+    assert.deepEqual(errors, []);
 
     // Un nouveau lecteur : « réessayez », sans rien demander au backend.
     assert.equal((await relaySharedPdf('presentation', 'k7m2', reader(), config)).status, 503);
     assert.equal(calls, 3);
   } finally {
+    console.error = consoleError;
     process.off('SIGTERM', next);
   }
 });

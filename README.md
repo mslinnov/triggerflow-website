@@ -52,6 +52,9 @@ sur le disque à l'exécution.
   son relais` part dans les journaux.
 - **Disque plein :** même page pour le lecteur, mais l'ouverture est déjà comptée : le manque de
   place ne se voit qu'à l'écriture, une fois le PDF demandé au backend.
+- **Arrêt du site :** à SIGTERM (redémarrage du déploiement), les appels au backend et les écritures
+  du fichier en cours sont coupés aussitôt, et le lecteur reçoit « réessayez ». Le backend a pu
+  compter l'ouverture d'un appel coupé : une ouverture peut donc être comptée sans être servie.
 - **Limites :** 25 relais simultanés par visiteur (`MAX_RELAYS_PER_VISITOR`) et 30 PDF par minute
   (`PDF_PER_VISITOR_PER_MINUTE`). Une salle de salon derrière une seule adresse partage ces 30 PDF :
   la 31e personne de la minute reçoit « réessayez ».
