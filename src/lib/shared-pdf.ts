@@ -131,6 +131,16 @@ const PDF_PER_VISITOR_PER_MINUTE = 30;
 
 const serverLimiter = new SlidingWindowLimiter(PDF_PER_VISITOR_PER_MINUTE, 60_000);
 
+// Un client qui boucle au-delà de sa limite ne remplit pas le journal : une ligne par minute et par motif.
+const REFUSAL_LOG_EVERY_MS = 60_000;
+const lastRefusalLog = new Map<string, number>();
+function logRefusal(message: string): void {
+  const now = Date.now();
+  if (now - (lastRefusalLog.get(message) ?? -Infinity) < REFUSAL_LOG_EVERY_MS) return;
+  lastRefusalLog.set(message, now);
+  console.error(message);
+}
+
 // Mêmes précautions que le comptage du Parcours : barre finale retirée, secret
 // sans retour à la ligne. Le secret ne sort jamais du serveur du site.
 export function relayConfigFromEnv(): RelayConfig {
@@ -159,12 +169,12 @@ export async function relaySharedPdf(
   // adresses illisibles partagent une seule part.
   const visitor = visitorKey(ip);
   if (!(config.limiter ?? serverLimiter).allow(visitor)) {
-    console.error('[doc] trop de PDF partagés demandés par un même visiteur');
+    logRefusal('[doc] trop de PDF partagés demandés par un même visiteur');
     return failurePage(503);
   }
   const release = (config.gate ?? serverGate).tryAcquire(visitor);
   if (!release) {
-    console.error('[doc] trop de PDF partagés en cours de relais');
+    logRefusal('[doc] trop de PDF partagés en cours de relais');
     return failurePage(503);
   }
 
@@ -524,8 +534,29 @@ const COLORS = {
 
 const escapeHtml = (text: string) => text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
+/** Une page par statut, rendue au premier refus : ces pages ne dépendent de rien d'autre. */
+const failureHtml = new Map<404 | 503, string>();
+
 /** Page sobre, en français puis en anglais : le lecteur peut être l'un ou l'autre. */
 export function failurePage(status: 404 | 503): Response {
+  let html = failureHtml.get(status);
+  if (html === undefined) {
+    html = renderFailurePage(status);
+    failureHtml.set(status, html);
+  }
+
+  return new Response(html, {
+    status,
+    headers: {
+      'Content-Type': 'text/html; charset=utf-8',
+      'Cache-Control': 'no-store',
+      'X-Robots-Tag': NO_INDEX,
+      ...(status === 503 ? { 'Retry-After': '120' } : {}),
+    },
+  });
+}
+
+function renderFailurePage(status: 404 | 503): string {
   const [frPage, enPage] = [fr, en].map(({ sharedDocument }) => {
     const { title, text } = sharedDocument[PAGES[status]];
     return { title: escapeHtml(title), text: escapeHtml(text) };
@@ -533,7 +564,7 @@ export function failurePage(status: 404 | 503): Response {
   const tokens = Object.entries(COLORS)
     .map(([name, value]) => `${name}: ${value};`)
     .join(' ');
-  const html = `<!doctype html>
+  return `<!doctype html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
@@ -561,14 +592,4 @@ export function failurePage(status: 404 | 503): Response {
 </main>
 </body>
 </html>`;
-
-  return new Response(html, {
-    status,
-    headers: {
-      'Content-Type': 'text/html; charset=utf-8',
-      'Cache-Control': 'no-store',
-      'X-Robots-Tag': NO_INDEX,
-      ...(status === 503 ? { 'Retry-After': '120' } : {}),
-    },
-  });
 }
