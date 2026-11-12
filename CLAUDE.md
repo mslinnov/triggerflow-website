@@ -232,7 +232,7 @@ export const metadata: Metadata = {
 - **IP des visiteurs :** dernier membre de `x-forwarded-for`, ajouté par Apache (`src/lib/visitor-ip.ts`) ; `cf-connecting-ip` n'est lu qu'avec `TRUST_CF_CONNECTING_IP=1`.
 - **Limites en mémoire :** les limites par visiteur (calendrier, PDF partagés) vivent dans le processus ; un redémarrage les remet à zéro.
 - **Arrêt :** au redémarrage, les PDF partagés en cours de téléchargement sont coupés sur SIGTERM, ceux encore demandés au backend ne commencent pas, puis Next sort de lui-même.
-- **Écriture sur le disque à l'exécution :** une seule, le fichier temporaire des PDF partagés (`src/lib/shared-pdf.ts`, dossier `SHARED_PDF_TMP_DIR`, voir le README). Ailleurs, `fs` ne sert qu'au build (`lib/blog.ts`, `lib/landing-pages.ts`).
+- **Écriture sur le disque à l'exécution :** une seule, le fichier temporaire des PDF partagés (`src/lib/shared-pdf.ts`, dossier `SHARED_PDF_TMP_DIR`, voir le README). Ailleurs, `fs` ne fait que lire des fichiers du dépôt, et pas seulement au build : `/api/calendrier/modele` lit les modèles MJML du calendrier au premier appel (`lib/calendrier-mjml.ts`, `src/data/calendrier-mjml/`, gardés ensuite en mémoire du processus) ; le blog, les pages d'atterrissage et les pages légales (`lib/blog.ts`, `lib/landing-pages.ts`, `lib/legal.ts`) sont lus au build, puis à l'exécution quand une page est régénérée (`llms.txt` toutes les heures, page absente de `generateStaticParams`). Le déploiement copie tout le dépôt, ces dossiers compris.
 - **No Server Actions :** non utilisées.
 
 ### OpenNext / Cloudflare (hors production)
