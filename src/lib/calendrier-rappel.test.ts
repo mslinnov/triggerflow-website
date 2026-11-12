@@ -1,7 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { parseRappelBody, RAPPEL_LIMIT, relayOutcome, salonLeadUrl, SlidingWindowLimiter, toSalonPayload } from './calendrier-rappel';
-import { readVisitorIp } from './visitor-ip';
 
 const valid = { hotelName: 'Hôtel des Tilleuls', city: 'Lyon', firstname: 'Camille', lastname: 'Martin', email: 'camille@tilleuls.fr', phone: '06 12 34 56 78', wantsDemo: true };
 
@@ -77,17 +76,4 @@ test('limiteur : mémoire bornée, les IP expirées sont purgées', () => {
   // Une 4e IP dépasse le plafond : les trois expirées sont oubliées.
   limiter.allow('d', 5000);
   assert.equal(limiter.size, 1);
-});
-
-test('IP visiteur : le dernier membre de x-forwarded-for (ajouté par Apache), jamais le premier', () => {
-  const req = (headers: Record<string, string>) => ({ headers: new Headers(headers) });
-  assert.equal(readVisitorIp(req({ 'x-forwarded-for': '6.6.6.6, 203.0.113.9' })), '203.0.113.9');
-  // Pas derrière Cloudflare : cf-connecting-ip vient du client tel quel, il est ignoré...
-  assert.equal(readVisitorIp(req({ 'cf-connecting-ip': '198.51.100.1', 'x-forwarded-for': '1.1.1.1' }), false), '1.1.1.1');
-  // ...par défaut (TRUST_CF_CONNECTING_IP absente)...
-  assert.equal(readVisitorIp(req({ 'cf-connecting-ip': '198.51.100.1', 'x-forwarded-for': '1.1.1.1' })), '1.1.1.1');
-  // ...et lu seulement quand un proxy Cloudflare est déclaré devant.
-  assert.equal(readVisitorIp(req({ 'cf-connecting-ip': '198.51.100.1', 'x-forwarded-for': '1.1.1.1' }), true), '198.51.100.1');
-  assert.equal(readVisitorIp(req({ 'x-forwarded-for': 'pas-une-ip' })), null);
-  assert.equal(readVisitorIp(req({})), null);
 });

@@ -8,7 +8,7 @@ import {
   readBoundedText,
 } from '@/lib/calendrier-evenements';
 import { SlidingWindowLimiter } from '@/lib/calendrier-rappel';
-import { readVisitorIp } from '@/lib/visitor-ip';
+import { readVisitorIp, visitorKey } from '@/lib/visitor-ip';
 
 /**
  * Statistiques du calendrier marketing : relaie à l'app les lots d'événements du
@@ -24,7 +24,8 @@ import { readVisitorIp } from '@/lib/visitor-ip';
 
 const RELAY_TIMEOUT_MS = 3000;
 
-// Par IP visiteur : l'app ne voit que l'IP du site (voir SlidingWindowLimiter).
+// Par visiteur (IPv4, ou /64 d'une IPv6 : voir visitorKey) : l'app ne voit que l'IP du site
+// (voir SlidingWindowLimiter).
 const limiter = new SlidingWindowLimiter(EVENTS_LIMIT.limit, EVENTS_LIMIT.windowMs);
 
 // Un même incident (jeton fermé, relais absent) ne remplit pas le journal : une ligne par heure.
@@ -48,7 +49,7 @@ export async function POST(request: NextRequest) {
     return accepted();
   }
 
-  if (!limiter.allow(readVisitorIp(request) ?? 'ip-inconnue')) return accepted();
+  if (!limiter.allow(visitorKey(readVisitorIp(request)))) return accepted();
 
   // sendBeacon envoie le JSON en text/plain : lu tel quel, quel que soit le Content-Type.
   const text = await readBoundedText(request, MAX_BODY_BYTES).catch(() => '');
