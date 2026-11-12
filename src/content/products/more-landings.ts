@@ -36,6 +36,7 @@ export const crmLanding: Landing = {
   sections: [
     {
       type: 'cards', tone: 'white', cols: 4,
+      image: { src: '/images/homepage/crm-client-card.webp', width: 1600, height: 913, label: 'app.trigger-flow.com/cardex', alt: { fr: 'Fiche client : résumé IA, préférences et historique des échanges', en: 'Guest profile: AI summary, preferences and message history' } },
       eyebrow: { fr: 'La fiche client', en: 'The guest profile' },
       title: { fr: 'Tout le client,', en: 'The whole guest,' }, titleMuted: { fr: 'sur un seul écran.', en: 'on one screen.' },
       items: [
@@ -63,6 +64,7 @@ export const crmLanding: Landing = {
     },
     {
       type: 'band',
+      image: { src: '/images/app/segments.webp', width: 1600, height: 921, label: 'app.trigger-flow.com/segments', alt: { fr: 'Choix des filtres d’un segment : coordonnées, historique, dépenses, réservations', en: 'Segment filter picker: contact details, history, spend, bookings' } },
       eyebrow: { fr: 'Segments', en: 'Segments' },
       title: { fr: 'Plus de 50 filtres, combinables à l’infini.', en: '50+ filters, endlessly combinable.' },
       items: [
@@ -120,7 +122,7 @@ export const campaignsLanding: Landing = {
       { fr: 'Un éditeur d’emails par glisser-déposer, avec l’IA', en: 'A drag-and-drop email editor, with AI' },
       { fr: 'Le chiffre d’affaires attribué à chaque envoi', en: 'Revenue attributed to every send' },
     ],
-    image: { src: '/images/app/flow-stats.webp', width: 1448, height: 820, label: 'app.trigger-flow.com/flows/statistiques', alt: { fr: 'Statistiques d’une campagne TriggerFlow : envoyés, ouverts, cliqués', en: 'TriggerFlow campaign statistics: sent, opened, clicked' }, caption: demoCaption },
+    image: { src: '/images/assets/campaigns.webp', width: 1430, height: 864, label: 'app.trigger-flow.com/campagnes', alt: { fr: 'Éditeur d’email d’une campagne TriggerFlow, par glisser-déposer', en: 'TriggerFlow campaign email editor, drag and drop' } },
   },
   proof: { label: { fr: 'Ils font confiance à TriggerFlow', en: 'They trust TriggerFlow' }, clients: ['Urban Bivouac', 'Hôtel Causse Comtal', 'Groupe Noemys'], stat: { key: 'messages', label: { fr: 'messages envoyés par nos hôtels clients', en: 'messages sent by our client hotels' } } },
   sections: [
@@ -155,6 +157,7 @@ export const campaignsLanding: Landing = {
     },
     {
       type: 'band',
+      image: { pending: { fr: 'Capture à venir · statistiques d’une campagne', en: 'Screenshot coming · campaign statistics' } },
       eyebrow: { fr: 'Mesurer', en: 'Measure' },
       title: { fr: 'Ce que vos campagnes rapportent vraiment.', en: 'What your campaigns really bring in.' },
       items: [
@@ -202,6 +205,7 @@ export const loyaltyLanding: Landing = {
     description: { fr: 'Un programme de fidélité à vos couleurs : points calculés depuis le PMS, niveaux, récompenses et espace membre. Pour un hôtel ou tout un groupe.', en: 'A loyalty program in your brand: points calculated from the PMS, tiers, rewards and member area. For one hotel or a whole group.' },
   },
   hero: {
+    image: { pending: { fr: 'Capture à venir · programme de fidélité', en: 'Screenshot coming · loyalty programme' } },
     eyebrow: { fr: 'Fidélité', en: 'Loyalty' },
     title: { fr: 'Votre programme de fidélité, comme les grandes chaînes. À votre image.', en: 'Your own loyalty program, like the big chains. In your brand.' },
     subtitle: { fr: 'Les points sont calculés depuis votre PMS, les niveaux débloquent des avantages, et vos membres retrouvent tout dans leur espace : points, séjours, récompenses.', en: 'Points are calculated from your PMS, tiers unlock benefits, and members find everything in their area: points, stays, rewards.' },
@@ -322,6 +326,7 @@ export const voiceLanding: Landing = {
     },
     {
       type: 'band',
+      image: { pending: { fr: 'Capture à venir · QR code d’appel en chambre', en: 'Screenshot coming · in-room call QR code' }, shape: 'phone' },
       eyebrow: { fr: 'Liens publics', en: 'Public links' },
       title: { fr: 'Un QR code pour vous appeler, partout.', en: 'A QR code to call you, anywhere.' },
       items: [
@@ -402,6 +407,7 @@ export const housekeepingLanding: Landing = {
     },
     {
       type: 'band',
+      image: { pending: { fr: 'Capture à venir · application de l’équipe ménage', en: 'Screenshot coming · housekeeping team app' }, shape: 'phone' },
       eyebrow: { fr: 'Maintenance et objets trouvés', en: 'Maintenance and lost & found' },
       title: { fr: 'Plus rien ne se perd entre deux équipes.', en: 'Nothing gets lost between shifts.' },
       items: [
@@ -439,6 +445,7 @@ export const keysLanding: Landing = {
     description: { fr: 'Vos clients récupèrent leur code de porte sur leur téléphone avant d’arriver, valable pendant leur séjour. Idéal pour les arrivées tardives et sans réception.', en: 'Guests get their door code on their phone before arriving, valid for their stay. Ideal for late arrivals and unstaffed properties.' },
   },
   hero: {
+    image: { pending: { fr: 'Capture à venir · clé digitale dans le parcours client', en: 'Screenshot coming · digital key in the guest journey' } },
     eyebrow: { fr: 'Clés', en: 'Keys' },
     title: { fr: 'La clé de la chambre, sur le téléphone du client.', en: 'The room key, on the guest’s phone.' },
     subtitle: { fr: 'Avant l’arrivée, le client ouvre un lien et récupère son code de porte, valable du check-in au check-out. Arrivées tardives, réception fermée, maisons d’hôtes : il entre sans attendre.', en: 'Before arrival, the guest opens a link and gets their door code, valid from check-in to check-out. Late arrivals, closed desk, guesthouses: they get in without waiting.' },
@@ -524,6 +531,7 @@ export const analyticsLanding: Landing = {
   sections: [
     {
       type: 'cards', tone: 'white', cols: 3,
+      image: { src: '/images/homepage/analytics-dashboard.webp', width: 1600, height: 999, label: 'app.trigger-flow.com/bi', alt: { fr: 'Statistiques : occupation, prix moyen, RevPAR et calendrier des 90 prochains jours', en: 'Analytics: occupancy, ADR, RevPAR and the next 90 days calendar' } },
       eyebrow: { fr: 'Six tableaux prêts', en: 'Six ready-made views' },
       title: { fr: 'Tout ce qu’un directeur regarde,', en: 'Everything a GM looks at,' }, titleMuted: { fr: 'au même endroit.', en: 'in one place.' },
       items: [
@@ -550,6 +558,7 @@ export const analyticsLanding: Landing = {
     },
     {
       type: 'band',
+      image: { src: '/images/homepage/personas-dashboard.webp', width: 1600, height: 999, label: 'app.trigger-flow.com', alt: { fr: 'Tableau de bord : arrivées du jour, clients sur place, formulaires et réservations', en: 'Dashboard: today’s arrivals, in-house guests, forms and bookings' } },
       eyebrow: { fr: 'Votre tableau de bord', en: 'Your dashboard' },
       title: { fr: 'Un écran d’accueil fait pour chaque poste.', en: 'A home screen built for every role.' },
       items: [

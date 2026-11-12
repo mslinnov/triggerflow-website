@@ -14,3 +14,4 @@ export { LogoWall } from './LogoWall';
 export { CtaBand, LogoMotif } from './CtaBand';
 export { useScenario } from './useScenario';
 export { BrandMark } from './BrandMark';
+export { PendingShot } from './PendingShot';

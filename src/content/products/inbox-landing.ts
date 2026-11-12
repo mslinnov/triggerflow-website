@@ -65,6 +65,32 @@ export const inboxLanding = {
       { fr: 'Messages automatiques envoyés', en: 'Automated messages sent' },
       { fr: 'Statut de chaque envoi : délivré, ouvert, cliqué', en: 'Status of every send: delivered, opened, clicked' },
     ] as L[],
+    alt: { fr: 'Fil d’une conversation : arrivée du client, check-in, enquête de satisfaction et avis, avec les messages automatiques', en: 'A conversation thread: guest arrival, check-in, satisfaction survey and review, with the automated messages' } as L,
+  },
+  // Fonctions vérifiées dans frontend/src/pages/messaging (origin/main, 12/11/2026) : AddToPipelineAction,
+  // CreateCustomerFromEmailModal, MoveWhatsappMessagesModal, ForwardEmailModal, sendErrors/*, emailAi/*.
+  actions: {
+    eyebrow: { fr: 'Agir depuis la conversation', en: 'Act from the conversation' } as L,
+    title: { fr: 'Chaque message trouve sa suite.', en: 'Every message gets its follow-up.' } as L,
+    subtitle: { fr: 'Votre équipe ne recopie rien d’un outil à l’autre : la suite se fait depuis le fil.', en: 'Your team copies nothing from one tool to another: the follow-up happens from the thread.' } as L,
+    items: [
+      { key: 'emailAi', title: { fr: 'Demande de réservation par email', en: 'Booking request by email' }, text: { fr: 'L’IA résume la demande (dates, adultes, âges des enfants), estime pour l’équipe les chambres libres et prépare un brouillon. Vous vérifiez, vous envoyez.', en: 'AI summarises the request (dates, adults, children’s ages), estimates free rooms for the team and drafts a reply. You check, you send.' }, tag: { fr: 'Agent IA', en: 'AI agent' } },
+      { key: 'pipeline', title: { fr: 'Demande de groupe ou d’entreprise', en: 'Group or corporate request' }, text: { fr: 'Ajoutée au pipeline commercial en un clic, avec le message d’origine.', en: 'Added to the sales pipeline in one click, with the original message.' }, tag: { fr: 'Module B2B', en: 'B2B module' } },
+      { key: 'newGuest', title: { fr: 'Email d’un inconnu', en: 'Email from an unknown sender' }, text: { fr: 'La fiche client se crée depuis le message, et la conversation s’y rattache.', en: 'The guest profile is created from the message, and the conversation is attached to it.' } },
+      { key: 'move', title: { fr: 'Message sur la mauvaise fiche', en: 'Message on the wrong profile' }, text: { fr: 'Les messages WhatsApp se déplacent vers le bon client.', en: 'WhatsApp messages move to the right guest.' } },
+      { key: 'forward', title: { fr: 'Email à transmettre', en: 'Email to pass on' }, text: { fr: 'Transféré à un collègue ou à un prestataire, sans quitter la messagerie.', en: 'Forwarded to a colleague or a supplier, without leaving the inbox.' } },
+      { key: 'errors', title: { fr: 'Envoi en échec', en: 'Failed send' }, text: { fr: 'Listé avec sa raison (adresse inexistante, boîte pleine, numéro invalide…), puis renvoyé.', en: 'Listed with its reason (address not found, mailbox full, invalid number…), then resent.' } },
+    ],
+  },
+  day: {
+    eyebrow: { fr: 'Une journée à la réception', en: 'A day at the front desk' } as L,
+    title: { fr: 'Quatre messages, une seule boîte.', en: 'Four messages, one inbox.' } as L,
+    items: [
+      { time: '08:12', channel: 'Email', title: { fr: 'Une entreprise demande 12 chambres pour un séminaire.', en: 'A company asks for 12 rooms for a seminar.' }, text: { fr: 'Elle rejoint le pipeline commercial en un clic, avec le message d’origine.', en: 'It joins the sales pipeline in one click, with the original message.' } },
+      { time: '11:40', channel: 'WhatsApp', title: { fr: 'Un client écrit en allemand pour un lit bébé.', en: 'A guest writes in German about a baby cot.' }, text: { fr: 'Le message est traduit, la réponse rapide part en allemand. La réservation est déjà à l’écran.', en: 'The message is translated, the quick reply goes out in German. The booking is already on screen.' } },
+      { time: '15:05', channel: 'WhatsApp', title: { fr: '« La climatisation de la 412 ne marche pas. »', en: '“The air conditioning in 412 isn’t working.”' }, text: { fr: 'Rangée dans le dossier Réclamation, assignée, avec une note interne pour l’équipe du soir.', en: 'Filed under Complaint, assigned, with an internal note for the evening team.' } },
+      { time: '02:14', channel: { fr: 'Chat du site', en: 'Website chat' }, title: { fr: 'Le petit-déjeuner commence à quelle heure ?', en: 'What time does breakfast start?' }, text: { fr: 'L’agent IA répond à partir des informations de l’hôtel. Personne n’est réveillé.', en: 'The AI agent answers from the hotel’s information. Nobody is woken up.' } },
+    ],
   },
   team: {
     eyebrow: { fr: 'Une équipe organisée', en: 'An organised team' } as L,
@@ -103,6 +129,7 @@ export const inboxLanding = {
     question: 'Gibt es morgen schon ab 6 Uhr Frühstück?',
     answer: 'Guten Morgen! Das Frühstück wird ab 6:30 Uhr serviert. Möchten Sie es aufs Zimmer bestellen?',
     meta: { fr: 'Répondu en allemand · 02:14', en: 'Answered in German · 02:14' } as L,
+    alt: { fr: 'Conversation où l’agent IA répond au client, avec une suggestion de réponse pour l’équipe', en: 'Conversation where the AI agent answers the guest, with a reply suggestion for the team' } as L,
   },
   aiFigures: [
     { value: '90 %', label: { fr: 'des conversations courantes traitées sans l’équipe, au mieux', en: 'of routine conversations handled without the team, at best' } as L },
@@ -116,6 +143,7 @@ export const inboxLanding = {
       { title: { fr: 'Notifications', en: 'Notifications' }, text: { fr: 'Par canal, pour tout le monde ou seulement pour ce qui vous est assigné.', en: 'Per channel, for everyone or only for what is assigned to you.' } },
       { title: { fr: 'Dans Thaïs', en: 'Inside Thaïs' }, text: { fr: 'La messagerie s’ouvre directement dans le PMS Thaïs.', en: 'The inbox opens right inside the Thaïs PMS.' } },
     ],
+    pending: { fr: 'Capture à venir · application mobile', en: 'Screenshot coming · mobile app' } as L,
   },
   quote: {
     text: { fr: 'Le support de l’équipe est extrêmement réactif. Confiance et disponibilité à 100 % !', en: 'The team’s support is extremely responsive. Trust and availability, 100%!' } as L,

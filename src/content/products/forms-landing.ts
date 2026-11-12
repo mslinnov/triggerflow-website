@@ -92,6 +92,7 @@ export const formsLanding: DedicatedLandingContent & { seo: { title: { fr: strin
     },
     {
       type: 'cards', tone: 'white', cols: 3,
+      image: { src: '/images/app/form-conditions.webp', width: 1600, height: 864, label: 'app.trigger-flow.com/formulaires', alt: { fr: 'Éditeur de formulaire : questions, conditions et aperçu aux couleurs de l’hôtel', en: 'Form editor: questions, conditions and a preview in the hotel’s colours' } },
       eyebrow: { fr: 'À votre image', en: 'Your brand' },
       title: { fr: 'Dans la langue du client, à vos couleurs.', en: 'In the guest’s language, in your colours.' },
       items: [

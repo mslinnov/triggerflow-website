@@ -5,7 +5,7 @@ import {
   QrCode, Repeat2, ScanLine, Send, ShieldCheck, ShoppingBag, Smartphone, Sparkles, Star, Tablet, Tag, Upload, UserRound, Users, Wand2, X, Zap,
   type LucideIcon,
 } from 'lucide-react';
-import { Container, CtaBand, DsButton, Eyebrow, FaqList, ProductFrame, Section, SectionHeader } from '@/components/ds';
+import { Container, CtaBand, DsButton, Eyebrow, FaqList, PendingShot, ProductFrame, Section, SectionHeader } from '@/components/ds';
 import { PricingReassurance } from '@/components/pricing/PricingReassurance';
 import { Link } from '@/i18n/navigation';
 import { brand } from '@/data/brand';
@@ -25,14 +25,17 @@ const ICONS = {
 } satisfies Record<string, LucideIcon>;
 export type IconName = keyof typeof ICONS;
 
-type Img = { src: string; width: number; height: number; alt: L; label?: string; caption?: L };
+type Shot = { src: string; width: number; height: number; alt: L; label?: string; caption?: L };
+/** Capture pas encore disponible : encart gris qui dit ce qu'elle montrera. */
+type Pending = { pending: L; shape?: 'screen' | 'phone'; caption?: L };
+type Img = Shot | Pending;
 type Item = { icon?: IconName; title: L; text: L; tag?: L; href?: string };
 type Tone = 'white' | 'paper' | 'dark';
 
 export type LandingSection =
-  | { type: 'cards'; tone?: Tone; eyebrow: L; title: L; titleMuted?: L; subtitle?: L; cols?: 2 | 3 | 4; items: Item[]; footnote?: L }
+  | { type: 'cards'; tone?: Tone; eyebrow: L; title: L; titleMuted?: L; subtitle?: L; cols?: 2 | 3 | 4; items: Item[]; footnote?: L; image?: Img }
   | { type: 'split'; tone?: Tone; eyebrow: L; title: L; subtitle?: L; bullets?: L[]; steps?: { title: L; text?: L }[]; image?: Img; figure?: { value: string; label: L; source?: L }; panel?: { title: L; items: L[] }; reverse?: boolean }
-  | { type: 'band'; eyebrow: L; title: L; items: Item[] }
+  | { type: 'band'; eyebrow: L; title: L; items: Item[]; image?: Img }
   | { type: 'table'; tone?: Tone; eyebrow: L; title: L; subtitle?: L; head: L[]; rows: { label: string | L; cells: (boolean | string | L)[] }[] }
   | { type: 'image'; tone?: Tone; eyebrow: L; title: L; subtitle?: L; image: Img };
 
@@ -62,9 +65,13 @@ function IconBox({ name, dark }: { name?: IconName; dark?: boolean }) {
 function Frame({ img, lang, priority, className }: { img: Img; lang: 'fr' | 'en'; priority?: boolean; className?: string }) {
   return (
     <div className={className}>
-      <ProductFrame label={img.label ?? 'app.trigger-flow.com'}>
-        <Image src={img.src} alt={img.alt[lang]} width={img.width} height={img.height} priority={priority} sizes="(min-width: 1100px) 1100px, 100vw" className="h-auto w-full" />
-      </ProductFrame>
+      {'pending' in img ? (
+        <PendingShot label={img.pending[lang]} shape={img.shape} />
+      ) : (
+        <ProductFrame label={img.label ?? 'app.trigger-flow.com'}>
+          <Image src={img.src} alt={img.alt[lang]} width={img.width} height={img.height} priority={priority} sizes="(min-width: 1100px) 1100px, 100vw" className="h-auto w-full" />
+        </ProductFrame>
+      )}
       {img.caption && <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.06em] text-ink-3">{img.caption[lang]}</p>}
     </div>
   );
@@ -151,6 +158,7 @@ export function DedicatedLanding({ content: c, locale }: { content: DedicatedLan
                   ))}
                 </ul>
                 {s.footnote && <p className={cn('mt-5 text-[14px]', dark ? 'text-white/70' : 'text-ink-2')}>{l(s.footnote)}</p>}
+                {s.image && <Frame lang={lang} img={s.image} className="mx-auto mt-12 max-w-[1000px]" />}
               </Container>
             </Section>
           );
@@ -172,6 +180,7 @@ export function DedicatedLanding({ content: c, locale }: { content: DedicatedLan
                     );
                   })}
                 </div>
+              {s.image && <Frame lang={lang} img={s.image} className="mx-auto mt-12 max-w-[1000px]" />}
               </Container>
             </Section>
           );

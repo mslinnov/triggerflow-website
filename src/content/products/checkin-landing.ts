@@ -49,6 +49,7 @@ export const checkinLanding: DedicatedLandingContent & { seo: { title: { fr: str
     },
     {
       type: 'cards', tone: 'paper', cols: 3,
+      image: { pending: { fr: 'Capture à venir · le check-in sur le téléphone du client', en: 'Screenshot coming · online check-in on the guest’s phone' }, shape: 'phone' },
       eyebrow: { fr: 'Ce que couvre le check-in', en: 'What check-in covers' },
       title: { fr: 'Tout ce que la fiche de police demande,', en: 'Everything the registration card needs,' }, titleMuted: { fr: 'et plus.', en: 'and more.' },
       items: [
