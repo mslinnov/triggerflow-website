@@ -164,6 +164,10 @@ export async function relaySharedPdf(
     return failurePage(503);
   }
 
+  // Site en cours d'arrêt : un nouveau relais retiendrait le redémarrage, le lecteur rouvrira le lien.
+  stopRelaysOnSigterm();
+  if (stopping) return failurePage(503);
+
   const ip = readVisitorIp(request);
   // Limite et place passent AVANT d'appeler le backend : un lecteur refusé n'est pas compté. Les
   // adresses illisibles partagent une seule part.
@@ -182,6 +186,12 @@ export async function relaySharedPdf(
   try {
     const spooled = await fetchToDisk({ document, slug, request, ip, config, apiUrl, secret });
     if (spooled instanceof Response) return spooled;
+    // SIGTERM arrivé pendant l'appel au backend ou l'écriture du fichier : ce relais n'était pas
+    // encore de ceux que l'arrêt coupe, il ne commence pas.
+    if (stopping) {
+      await spooled.file.close().catch(() => undefined);
+      return failurePage(503);
+    }
 
     // Liste fermée des en-têtes relayés : rien du backend (cookies, serveur) ne fuit vers le lecteur.
     const headers = new Headers({
@@ -218,9 +228,14 @@ type BackendCall = {
 /**
  * Demande le PDF au backend et l'écrit en entier sur le disque ; une page d'échec sinon.
  *
- * Le fichier temporaire est créé AVANT l'appel : un dossier absent, plein ou sans droit
- * d'écriture refuse le lecteur sans rien demander au backend, qui compterait sinon une
- * ouverture jamais servie. Il est fermé ici sur tout échec, et confié au lecteur sinon.
+ * Le fichier temporaire est créé AVANT l'appel : un dossier absent ou sans droit d'écriture
+ * refuse le lecteur sans rien demander au backend, qui compterait sinon une ouverture jamais
+ * servie. Un disque plein ne se voit qu'à l'écriture, après l'appel : le lecteur reçoit
+ * « réessayez », mais l'ouverture est comptée. Le fichier est fermé ici sur tout échec, et
+ * confié au lecteur sinon.
+ *
+ * Un lecteur parti n'est pas journalisé : rien d'anormal, et un client qui boucle remplirait le
+ * journal. Un délai dépassé, si.
  */
 async function fetchToDisk({ document, slug, request, ip, config, apiUrl, secret }: BackendCall): Promise<Spooled | Response> {
   let file: FileHandle;
@@ -267,7 +282,7 @@ async function fetchToDisk({ document, slug, request, ip, config, apiUrl, secret
         }),
       });
     } catch {
-      console.error('[doc] backend injoignable pour un PDF partagé');
+      if (!request.signal.aborted) console.error('[doc] backend injoignable pour un PDF partagé');
       return failurePage(503);
     } finally {
       clearTimeout(timeout);
@@ -298,7 +313,7 @@ async function fetchToDisk({ document, slug, request, ip, config, apiUrl, secret
       handedOff = true;
       return { file, size, disposition: upstream.headers.get('content-disposition') };
     } catch {
-      console.error('[doc] PDF partagé interrompu avant son relais (lecture du backend ou écriture du disque)');
+      if (!request.signal.aborted) console.error('[doc] PDF partagé interrompu avant son relais (lecture du backend ou écriture du disque)');
       return failurePage(503);
     } finally {
       clearTimeout(timeout);
@@ -401,11 +416,18 @@ export function stopActiveRelays(): void {
 
 let stopsWithServer = false;
 
-/** Posé une fois, au premier relais servi : rien n'écoute SIGTERM tant qu'aucun PDF n'est relayé. */
+/**
+ * Posé par SIGTERM : un relais encore en appel au backend ou en écriture du fichier n'est pas
+ * dans `activeRelays`, il ne commence pas ; un nouveau lecteur reçoit « réessayez ».
+ */
+let stopping = false;
+
+/** Posé une fois, au premier relais demandé : rien n'écoute SIGTERM tant qu'aucun PDF n'est demandé. */
 function stopRelaysOnSigterm(): void {
   if (stopsWithServer) return;
   stopsWithServer = true;
   process.once('SIGTERM', () => {
+    stopping = true;
     stopActiveRelays();
     // Sous next start, Next écoute aussi SIGTERM et quitte. Si personne d'autre n'écoute, le
     // signal est renvoyé pour garder l'arrêt par défaut, qu'un écouteur seul annulerait.
@@ -466,7 +488,6 @@ function streamFromDisk(
       idle = arm(idleMs, () => stop(controller, 'lecteur inactif'));
       stopRelay = (reason) => stop(controller, reason);
       activeRelays.add(stopRelay);
-      stopRelaysOnSigterm();
     },
     async pull(controller) {
       clearTimeout(idle);

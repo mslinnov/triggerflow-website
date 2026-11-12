@@ -47,9 +47,11 @@ sur le disque à l'exécution.
 - **Place :** au plus 1,3 Go (`MAX_RELAYS`, 50 relais simultanés, × 26 Mo), rendue à la fin de
   chaque téléchargement. Chaque fichier est retiré du dossier dès sa création : il n'y apparaît
   jamais, même si le site s'arrête en plein relais.
-- **Sans place ou sans droit d'écriture :** le lecteur voit « Document momentanément
+- **Dossier absent ou sans droit d'écriture :** le lecteur voit « Document momentanément
   indisponible », sans que le backend compte d'ouverture, et `[doc] PDF partagé interrompu avant
   son relais` part dans les journaux.
+- **Disque plein :** même page pour le lecteur, mais l'ouverture est déjà comptée : le manque de
+  place ne se voit qu'à l'écriture, une fois le PDF demandé au backend.
 - **Limites :** 25 relais simultanés par visiteur (`MAX_RELAYS_PER_VISITOR`) et 30 PDF par minute
   (`PDF_PER_VISITOR_PER_MINUTE`). Une salle de salon derrière une seule adresse partage ces 30 PDF :
   la 31e personne de la minute reçoit « réessayez ».

@@ -284,7 +284,7 @@ test('relais d’un PDF : le fichier temporaire ne reste jamais sur le disque, n
   }
 });
 
-test('relais d’un PDF : disque indisponible, « réessayez » sans rien demander au backend, et la place est rendue', async () => {
+test('relais d’un PDF : dossier temporaire introuvable, « réessayez » sans rien demander au backend, et la place est rendue', async () => {
   const gate = new RelayGate(1);
   const { calls, config } = backend(() => pdfResponse());
 
@@ -447,24 +447,7 @@ test('relais d’un PDF : à l’arrêt du site, les relais en cours sont coupé
   for (const response of ouverts) await assert.rejects(response.arrayBuffer());
 });
 
-test('relais d’un PDF : SIGTERM coupe les relais en cours, sans quitter à la place de Next', async () => {
-  // Next écoute SIGTERM sous next start et quitte une fois ses réponses closes : un écouteur le remplace ici.
-  const next = () => undefined;
-  process.on('SIGTERM', next);
-  try {
-    const gate = new RelayGate(1);
-    const { config } = backend(() => pdfResponse());
-    const ouvert = await relaySharedPdf('presentation', 'k7m2', reader(), { ...config, gate });
-    assert.equal(gate.size, 1);
-
-    process.emit('SIGTERM');
-
-    assert.equal(gate.size, 0);
-    await assert.rejects(ouvert.arrayBuffer());
-  } finally {
-    process.off('SIGTERM', next);
-  }
-});
+// SIGTERM : shared-pdf-arret.test.ts, dans son propre processus (le drapeau d'arrêt y reste posé).
 
 test('relais d’un PDF : les adresses d’un même /64 IPv6 sont un seul visiteur', async () => {
   const gate = new RelayGate(10, 2);
@@ -541,7 +524,8 @@ test('relais d’un PDF : backend en erreur, secret refusé ou injoignable, page
   }
 });
 
-test('relais d’un PDF : un backend qui ne répond pas est abandonné au bout du délai', async () => {
+test('relais d’un PDF : un backend qui ne répond pas est abandonné au bout du délai', async (t) => {
+  const errors = t.mock.method(console, 'error', () => undefined);
   const { config } = backend(
     ({ init }) =>
       new Promise<Response>((_, reject) => {
@@ -554,6 +538,8 @@ test('relais d’un PDF : un backend qui ne répond pas est abandonné au bout d
 
   assert.equal(response.status, 503);
   assert.ok(Date.now() - started < 2000);
+  // Le lecteur attendait encore : le délai dépassé est journalisé.
+  assert.deepEqual(errors.mock.calls.map((call) => call.arguments[0]), ['[doc] backend injoignable pour un PDF partagé']);
 });
 
 test('relais d’un PDF : une redirection du backend n’est pas suivie, le secret ne part jamais ailleurs', async () => {
@@ -601,7 +587,8 @@ test('relais d’un PDF : au-delà de la limite par minute d’un visiteur, « r
   assert.equal((await relay('198.51.100.7')).status, 200);
 });
 
-test('relais d’un PDF : un lecteur parti pendant l’appel au backend libère sa place tout de suite', async () => {
+test('relais d’un PDF : un lecteur parti pendant l’appel au backend libère sa place tout de suite, sans rien journaliser', async (t) => {
+  const errors = t.mock.method(console, 'error', () => undefined);
   const gate = new RelayGate(1);
   const { config } = backend(
     ({ init }) =>
@@ -619,9 +606,12 @@ test('relais d’un PDF : un lecteur parti pendant l’appel au backend libère 
   assert.equal(response.status, 503);
   assert.ok(Date.now() - started < 1_000);
   assert.equal(gate.size, 0);
+  // Rien d'anormal : pas de « backend injoignable » à chaque onglet fermé.
+  assert.equal(errors.mock.callCount(), 0);
 });
 
-test('relais d’un PDF : un lecteur parti pendant la lecture du fichier coupe le backend et libère sa place', async () => {
+test('relais d’un PDF : un lecteur parti pendant la lecture du fichier coupe le backend et libère sa place, sans rien journaliser', async (t) => {
+  const errors = t.mock.method(console, 'error', () => undefined);
   const gate = new RelayGate(1);
   const { stream, state } = trackedBody([PDF_BYTES.slice(0, 3)], { end: false });
   const { config } = backend(() => new Response(stream, { status: 200, headers: { 'Content-Type': 'application/pdf' } }));
@@ -635,6 +625,7 @@ test('relais d’un PDF : un lecteur parti pendant la lecture du fichier coupe l
   assert.ok(Date.now() - started < 1_000);
   assert.equal(state.cancelled, true);
   assert.equal(gate.size, 0);
+  assert.equal(errors.mock.callCount(), 0);
 });
 
 test('relais d’un PDF : sans secret, ou vers une base en clair, rien ne part', async () => {
