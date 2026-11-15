@@ -6,6 +6,7 @@ import { brand } from '../data/brand';
 import { companyStats, stat } from '../data/company-stats';
 import { getEntryPrice, getPricingPhase, PRICE_CHANGE_AT } from '../data/pricing';
 import { getCaseStudyBySlug } from './case-studies';
+import { clientLogos, homeClients } from '../data/clients';
 import { getAllLandingPages, landingPageValues, resolveLandingPage } from './landing-pages';
 import type { LandingPageConfig } from '../types/landing-page';
 
@@ -118,4 +119,20 @@ test('crm-hotelier : la promesse de la pub dès le premier écran, liens de dém
   const secondary = (hero.props as { secondaryCtaHref?: string }).secondaryCtaHref;
   assert.equal(secondary, '#rappel');
   assert.ok(page.sections.some((section) => (section.props as { id?: string }).id === 'rappel' && 'callback' in section.props));
+});
+
+test('crm-hotelier : vrais clients seulement, jamais de nombre de clients ni de logo de chaîne', () => {
+  const page = pages.find((lp) => lp.slug === 'crm-hotelier' && lp.locale === 'fr');
+  assert.ok(page);
+  const ids: string[] = [];
+  walk(page, (node) => {
+    if (node && typeof node === 'object' && 'statId' in node) ids.push(String((node as { statId: unknown }).statId));
+  });
+  assert.ok(!ids.includes('hotels') && !ids.includes('messages'), `chiffres interdits : ${ids.join(', ')}`);
+  assert.ok(page.sections.some((section) => (section.props as { logos?: unknown }).logos === 'clients'));
+  for (const name of homeClients) {
+    assert.doesNotMatch(name, /^(Accor|Ibis|Best Western|The Originals|Logis)\b/, `logo de chaîne : ${name}`);
+    const logo = clientLogos[name];
+    if (logo) assert.ok(existsSync(join(ROOT, 'public', logo.src)), `logo absent ${logo.src}`);
+  }
 });

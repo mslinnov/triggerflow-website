@@ -50,11 +50,7 @@
     {
       "type": "LPSocialProof",
       "props": {
-        "title": "Adopté par des hôteliers en France et en Europe",
-        "stats": [
-          { "statId": "hotels", "label": "hôtels utilisent TriggerFlow" },
-          { "statId": "messages", "label": "messages envoyés aux clients" }
-        ],
+        "title": "Ils ont choisi TriggerFlow",
         "logos": "clients"
       }
     },

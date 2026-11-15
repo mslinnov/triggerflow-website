@@ -1,8 +1,8 @@
 import Image from 'next/image';
-import { getTranslations } from 'next-intl/server';
 import { cn } from '@/lib/utils';
 import { Container } from '@/components/ui';
 import { getCaseStudyBySlug } from '@/lib/case-studies';
+import { homeTestimonials as clientQuotes } from '@/data/clients';
 
 export interface LPTestimonialsCaseStudy {
   /** Slug d'un cas client publié (lib/case-studies.ts) : citation, nom et fonction viennent de là. */
@@ -15,26 +15,21 @@ export interface LPTestimonialsProps {
   eyebrow?: string;
   sectionTitle: string;
   caseStudies?: LPTestimonialsCaseStudy[];
-  /** Ajoute les témoignages du carrousel de l'accueil (messages `testimonialsCarousel`), sans recopie. */
+  /**
+   * Ajoute les témoignages publiés de data/clients.ts (citations exactes, repris de la refonte du site),
+   * sans recopie.
+   */
   homeTestimonials?: boolean;
   /** Posée par la page (`[slug]/page.tsx`) depuis la config. */
   locale?: string;
   className?: string;
 }
 
-interface HomeTestimonial {
-  quote: string;
-  name: string;
-  title: string;
-  initials: string;
-  metric?: { value: string; label: string };
-}
-
 /**
- * Témoignages : les cas clients publiés, avec photo, puis ceux de l'accueil dans une rangée qui défile
- * au doigt (défilement natif à crans, sans JavaScript).
+ * Témoignages : les cas clients publiés, avec photo, puis les citations de data/clients.ts dans une rangée
+ * qui défile au doigt (défilement natif à crans, sans JavaScript).
  */
-export async function LPTestimonials({
+export function LPTestimonials({
   eyebrow,
   sectionTitle,
   caseStudies = [],
@@ -46,9 +41,8 @@ export async function LPTestimonials({
     const study = getCaseStudyBySlug(entry.slug);
     return study ? [{ ...study, image: entry.image ?? study.image }] : [];
   });
-  const home = homeTestimonials
-    ? ((await getTranslations({ locale, namespace: 'testimonialsCarousel' })).raw('items') as HomeTestimonial[])
-    : [];
+  const lang = locale === 'fr' ? 'fr' : 'en';
+  const home = homeTestimonials ? clientQuotes : [];
 
   return (
     <section className={cn('bg-white py-14 md:py-24', className)}>
@@ -92,25 +86,22 @@ export async function LPTestimonials({
                 key={item.name}
                 className="flex w-[85%] shrink-0 snap-start flex-col justify-between gap-4 rounded-2xl bg-surface-secondary p-5 sm:w-[46%] lg:w-[31.5%]"
               >
-                <div className="grid gap-3">
-                  {item.metric && (
-                    <p className="flex items-baseline gap-2">
-                      <span className="text-2xl font-bold text-brand-primary">{item.metric.value}</span>
-                      <span className="text-sm text-text-secondary">{item.metric.label}</span>
-                    </p>
-                  )}
-                  <blockquote className="leading-relaxed text-brand-dark">« {item.quote} »</blockquote>
-                </div>
+                <blockquote className="leading-relaxed text-brand-dark">« {item.quote[lang]} »</blockquote>
                 <div className="flex items-center gap-3 text-sm">
                   <span
                     className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-brand-primary text-xs font-semibold text-white"
                     aria-hidden="true"
                   >
-                    {item.initials}
+                    {item.name
+                      .split(' ')
+                      .map((word) => word[0])
+                      .join('')}
                   </span>
                   <span>
                     <span className="block font-semibold text-brand-dark">{item.name}</span>
-                    <span className="text-text-muted">{item.title}</span>
+                    <span className="text-text-muted">
+                      {item.role[lang]}, {item.company}
+                    </span>
                   </span>
                 </div>
               </li>
