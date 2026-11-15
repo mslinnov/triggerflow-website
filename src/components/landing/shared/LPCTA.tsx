@@ -59,7 +59,7 @@ export function LPCTA({
             callback ? 'grid items-center gap-10 lg:grid-cols-[1.1fr_1fr] lg:gap-16' : 'mx-auto max-w-3xl text-center'
           )}
         >
-          <div className={cn(callback ? 'text-center lg:text-left' : '')}>
+          <div className={cn(callback && 'text-center lg:text-left')}>
             <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">{title}</h2>
 
             {subtitle && <p className="mt-4 text-lg text-white/70">{subtitle}</p>}
