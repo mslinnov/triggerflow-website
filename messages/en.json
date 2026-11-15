@@ -2945,5 +2945,101 @@
       "title": "Document temporarily unavailable",
       "text": "Please try again in a few minutes."
     }
+  },
+  "howItWorksPage": {
+    "meta": {
+      "title": "How it works",
+      "description": "One guest's journey, from booking to a direct return: TriggerFlow connects your tools, cleans up your guest records and sends the right message at the right time."
+    },
+    "hero": {
+      "eyebrow": "How it works",
+      "title": "From booking to return: how TriggerFlow follows every guest.",
+      "subtitle": "Scroll to follow Camille, one guest among thousands.",
+      "skip": "Skip the animation"
+    },
+    "chapters": {
+      "0": {
+        "title": "Meet Camille.",
+        "text": "She has just booked two nights with you. To your tools, she is one record among thousands."
+      },
+      "1": {
+        "title": "Every dot is a record like hers.",
+        "text": "And those records are scattered: PMS, payments, door locks, reviews, messaging."
+      },
+      "2": {
+        "title": "One guest, one record.",
+        "text": "TriggerFlow connects to all your tools and merges duplicates. Then each guest joins a group: couples, business, families."
+      },
+      "3": {
+        "title": "You choose who to talk to.",
+        "text": "Camille. Travelling as a couple, arriving in three days, no breakfast booked."
+      },
+      "4": {
+        "title": "The right message, three days ahead.",
+        "text": "An email offers her breakfast in the room. Guests who already booked it receive nothing."
+      },
+      "5": {
+        "title": "She says yes. It's paid.",
+        "text": "€72 more on the stay. Sale or upgrade, everything is written back to your PMS."
+      },
+      "6": {
+        "title": "On arrival day, her room is waiting.",
+        "text": "A WhatsApp message tells her the room is ready and sends her digital key."
+      },
+      "7": {
+        "title": "The next day, she leaves a review.",
+        "text": "She gives 5 out of 5. TriggerFlow invites her to post it on Google."
+      },
+      "8": {
+        "title": "A month later, a campaign.",
+        "text": "A targeted message goes to guests who enjoyed their stay. Camille is one of them."
+      },
+      "9": {
+        "title": "She books again, direct.",
+        "text": "No platform, no commission. And her journey starts over."
+      }
+    },
+    "labels": {
+      "tools": {
+        "pms": "PMS",
+        "payment": "Payment",
+        "locks": "Locks",
+        "reviews": "Reviews",
+        "messaging": "Messaging"
+      },
+      "groups": {
+        "couples": "Couples",
+        "business": "Business",
+        "families": "Families"
+      },
+      "duplicates": "Duplicates merged",
+      "beats": {
+        "d3": "D-3",
+        "day": "Arrival",
+        "d1": "D+1",
+        "d30": "D+30",
+        "back": "Return"
+      },
+      "results": {
+        "sale": "+€72",
+        "review": "Review 5/5",
+        "direct": "Direct booking"
+      },
+      "card": {
+        "kind": "Booking",
+        "camilleStay": "2 nights · couple",
+        "stays": {
+          "0": "1 night · business",
+          "1": "3 nights · family",
+          "2": "2 nights · couple",
+          "3": "4 nights · family",
+          "4": "1 night · solo",
+          "5": "2 nights · business"
+        }
+      }
+    },
+    "cta": {
+      "title": "See it on your own data."
+    }
   }
 }

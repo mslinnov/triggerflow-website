@@ -1,6 +1,7 @@
 import { cn } from '@/lib/utils';
 import { Container } from '@/components/ui';
 import { getLPIcon } from './lp-icons';
+import { LPStory } from './LPStory';
 
 export interface LPJourneyStep {
   icon: string;
@@ -14,17 +15,23 @@ export interface LPJourneyProps {
   sectionSubtitle?: string;
   steps: LPJourneyStep[];
   note?: string;
+  /** Scène animée au défilement (page « Comment ça marche » du nouveau site), sous le titre, sur fond blanc. */
+  story?: boolean;
   className?: string;
 }
 
 /** Étapes du séjour, numérotées : une liste sur mobile, une frise sur ordinateur. */
-export function LPJourney({ eyebrow, sectionTitle, sectionSubtitle, steps, note, className }: LPJourneyProps) {
+export function LPJourney({ eyebrow, sectionTitle, sectionSubtitle, steps, note, story, className }: LPJourneyProps) {
   return (
-    <section className={cn('bg-surface-secondary py-14 md:py-24', className)}>
+    <section className={cn(story ? 'bg-white' : 'bg-surface-secondary', 'py-14 md:py-24', className)}>
       <Container>
         {eyebrow && <p className="text-xs font-semibold uppercase tracking-wider text-brand-primary">{eyebrow}</p>}
         <h2 className="mt-2 max-w-3xl text-[1.65rem] font-bold leading-tight text-brand-dark sm:text-4xl">{sectionTitle}</h2>
         {sectionSubtitle && <p className="mt-3 max-w-2xl text-text-secondary">{sectionSubtitle}</p>}
+      </Container>
+      {/* Hors du conteneur : la scène prend toute la largeur, comme sur la page d'origine. */}
+      {story && <LPStory className="mt-8" />}
+      <Container>
         <ol className="mt-8 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-6">
           {steps.map((step, index) => {
             const Icon = getLPIcon(step.icon);

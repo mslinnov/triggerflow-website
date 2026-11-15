@@ -143,6 +143,7 @@
       "props": {
         "eyebrow": "Parcours du séjour",
         "sectionTitle": "Six étapes du séjour, aucun message envoyé à la main",
+        "story": true,
         "steps": [
           { "icon": "CalendarCheck", "title": "Réservation", "description": "Confirmation enrichie\u00a0: accès, services, options" },
           { "icon": "Mail", "title": "Pré-séjour", "description": "Infos pratiques et offres avant l'arrivée" },
