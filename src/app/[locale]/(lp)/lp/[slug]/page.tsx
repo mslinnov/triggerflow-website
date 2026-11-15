@@ -13,9 +13,22 @@ import {
   LPTestimonial,
   LPCTA,
   LPPricing,
+  LPIntegrations,
+  LPFeatureRows,
+  LPJourney,
+  LPTestimonials,
+  LPPlans,
+  LPFAQ,
+  LPFooter,
 } from '@/components/landing/shared';
 
 const BASE_URL = 'https://www.trigger-flow.com';
+
+/**
+ * Régénération horaire : les tarifs (LPPlans) suivent la phase de prix calculée au rendu, qui bascule le
+ * 1er janvier 2027 ; sans régénération, la page garderait la grille du jour du déploiement.
+ */
+export const revalidate = 3600;
 
 // ── Component map ────────────────────────────────────────────────────
 
@@ -27,13 +40,20 @@ const componentMap = {
   LPTestimonial,
   LPCTA,
   LPPricing,
+  LPIntegrations,
+  LPFeatureRows,
+  LPJourney,
+  LPTestimonials,
+  LPPlans,
+  LPFAQ,
+  LPFooter,
 } as const;
 
-function renderSection(section: LPSection, index: number) {
+function renderSection(section: LPSection, index: number, locale: string) {
   const Component = componentMap[section.type];
   if (!Component) return null;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return <Component key={`${section.type}-${index}`} {...(section.props as any)} />;
+  return <Component key={`${section.type}-${index}`} {...(section.props as any)} locale={locale} />;
 }
 
 // ── Static params ────────────────────────────────────────────────────
@@ -99,7 +119,7 @@ export default async function DynamicLandingPage({ params }: PageProps) {
         logoSrc={config.header.logoSrc}
       />
       <main>
-        {config.sections.map((section, index) => renderSection(section, index))}
+        {config.sections.map((section, index) => renderSection(section, index, config.locale))}
       </main>
     </>
   );

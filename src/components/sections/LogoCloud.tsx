@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { motion, useReducedMotion, useInView } from 'framer-motion';
 import { Clock, UserCheck, TrendingUp, Star } from 'lucide-react';
 import { Container } from '@/components/ui';
+import { clientLogos } from '@/data/client-logos';
 import { fadeInUp, staggerContainer, staggerItem, defaultViewport } from '@/lib/animations';
 
 function CountUp({ end, duration = 1.5 }: { end: number; duration?: number }) {
@@ -39,14 +40,7 @@ function CountUp({ end, duration = 1.5 }: { end: number; duration?: number }) {
   return <span ref={ref}>{displayValue}</span>;
 }
 
-const logos = [
-  { name: 'Accor', src: '/images/logo-accor.webp' },
-  { name: 'Sofitel', src: '/images/logo-sofitel.webp' },
-  { name: 'Ibis', src: '/images/logo-ibis.webp' },
-  { name: 'Best Western', src: '/images/logo-bestwestern.webp' },
-  { name: 'Les Hôtels Très Particuliers', src: '/images/logo-hotels.webp' },
-  { name: 'Saint James', src: '/images/logo-saintjames.webp' },
-];
+const logos = clientLogos;
 
 const kpis = [
   { key: 'timeSaved', icon: Clock },

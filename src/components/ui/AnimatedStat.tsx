@@ -5,6 +5,8 @@ import { useInView } from 'framer-motion';
 
 interface AnimatedStatProps {
   value: string;
+  /** Signe affiché devant le nombre animé (« + » de « +20 PMS »). */
+  prefix?: string;
   suffix?: string;
 }
 
@@ -14,7 +16,7 @@ interface AnimatedStatProps {
  * Le comptage depuis 0 ne se prépare côté client que pour un chiffre encore hors écran,
  * et jamais si l'utilisateur limite les animations.
  */
-export function AnimatedStat({ value, suffix }: AnimatedStatProps) {
+export function AnimatedStat({ value, prefix, suffix }: AnimatedStatProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true });
   const targetValue = parseInt(value);
@@ -50,7 +52,7 @@ export function AnimatedStat({ value, suffix }: AnimatedStatProps) {
 
   return (
     <span ref={ref}>
-      {displayValue}{suffix}
+      {prefix}{displayValue}{suffix}
     </span>
   );
 }

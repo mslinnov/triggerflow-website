@@ -166,9 +166,9 @@ test('pages À propos, Carrières, /v2 et étapes de l\'accueil : chiffres de ma
   assert.match(pages.careers, /brand\.foundingDate/);
   // /v2 est servie en FR et en EN : valeur de la langue de la page, pas la version FR figée.
   for (const name of ['heroV2', 'logoCloudV2'] as const) assert.doesNotMatch(pages[name], /companyStats\.\w+\.fr/, name);
-  // « +N » après les logos de PMS : le reste de brand.pms, pas un nombre figé.
+  // « +N » après les logos de PMS : le reste du nombre affiché (brand.pmsCompatibles), pas un nombre figé.
   assert.doesNotMatch(pages.howItWorks, /^\s*\+\d+\s*$/m);
-  assert.match(pages.howItWorks, /brand\.pms\.length - pmsLogos\.length/);
+  assert.match(pages.howItWorks, /brand\.pmsCompatibles\.count - pmsLogos\.length/);
 });
 
 test('messages FR/EN : aucun chiffre de résultat non mesuré hors témoignages et études publiées', () => {
@@ -258,24 +258,37 @@ test('affirmations retirées absentes du code, du blog et des LP', () => {
   assert.deepEqual(found, []);
 });
 
-test('connexions : nombre de PMS tiré de brand.ts, toujours présenté avec Zapier et n8n', () => {
-  // Une mention « N PMS » (ou « et N autres PMS » après 4 noms) se lit avec le reste des
-  // connexions : chaque chaîne qui la porte cite aussi Zapier et n8n.
+test('connexions : nombre de PMS affiché lu dans brand.pmsCompatibles, jamais recopié', () => {
+  // Décision de Mounir du 15/11/2026 : « +20 PMS » partout (PMS connectés et en cours d'intégration), avec une
+  // seule source. Les messages écrivent `{pmsCompatibles}` (remplacé au chargement), le MDX
+  // `<Stat id="pmsCompatibles" />`, le code lit la constante : aucun nombre de PMS écrit à la main.
+  // Hors périmètre : l'antisèche interne du stand (formation-salon), qui cite le flyer imprimé.
+  const PMS_COUNT = /(?:\+\s?)?\b\d+\+?\s(?:autres |more |other )?PMS\b/;
   const messageTexts = ['fr', 'en'].flatMap((locale) =>
-    strings(JSON.parse(readFileSync(join(root, 'messages', `${locale}.json`), 'utf8')), new Set(), locale).map(([, t]) => t),
+    strings(JSON.parse(readFileSync(join(root, 'messages', `${locale}.json`), 'utf8')), new Set(), locale),
   );
-  const codeTexts = files(join(root, 'src'), /\.(ts|tsx)$/)
-    .filter((f) => !/\.test\.ts$/.test(f))
-    .flatMap((f) => [...readFileSync(f, 'utf8').matchAll(/value: '(\d+)',\s*(?:suffix: '', )?label: '([^']*PMS[^']*)'/g)].map((m) => `${m[1]} ${m[2]}`));
-  const found: string[] = [];
-  for (const text of [...messageTexts, ...codeTexts]) {
-    for (const m of text.matchAll(/\b(\d+) (autres |more )?PMS\b/g)) {
-      const shown = Number(m[1]) + (m[2] ? 4 : 0);
-      if (shown !== brand.pms.length || !/Zapier/.test(text) || !/n8n/.test(text)) found.push(text.slice(0, 120));
-    }
-  }
-  assert.ok(messageTexts.join('\n').match(/\b\d+ PMS\b/g)!.length > 5, 'nombre de PMS introuvable');
+  const sources = [
+    ...files(join(root, 'src'), /\.(ts|tsx|json)$/).filter((f) => !/\.test\.ts$|formation-salon/.test(f)),
+    ...files(join(root, 'content', 'blog'), /\.mdx$/),
+  ];
+  const found = [
+    ...messageTexts.filter(([, t]) => PMS_COUNT.test(t)).map(([path, t]) => `${path}: ${t.slice(0, 90)}`),
+    ...sources.flatMap((f) =>
+      readFileSync(f, 'utf8')
+        .split('\n')
+        .flatMap((line, i) =>
+          // Les commentaires citent l'exemple « +20 PMS » pour documenter la règle.
+          !/^\s*(\/\/|\*|\/\*|\{\/\*)/.test(line) &&
+          (PMS_COUNT.test(line) || /value: '\d+',\s*(?:suffix: '', )?label: '[^']*PMS/.test(line) || /brand\.pms\.length/.test(line))
+            ? [`${f.slice(root.length + 1)}:${i + 1}`]
+            : [],
+        ),
+    ),
+  ];
   assert.deepEqual(found, []);
+  assert.ok(messageTexts.filter(([, t]) => t.includes('{pmsCompatibles} PMS')).length > 5, 'nombre de PMS introuvable');
+  assert.equal(brand.pmsCompatibles.fr, `+${brand.pmsCompatibles.count}`);
+  assert.equal(brand.pmsCompatibles.en, `${brand.pmsCompatibles.count}+`);
 });
 
 test('connexions sans connecteur dans l\'app : absentes ; PMS en cours seulement depuis brand.ts', () => {
