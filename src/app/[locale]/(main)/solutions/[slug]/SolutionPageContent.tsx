@@ -192,7 +192,7 @@ export default function SolutionPageContent({ solutionSlug }: SolutionPageConten
                   className="text-center"
                 >
                   <div className="text-4xl md:text-5xl font-bold text-brand-primary mb-1">
-                    <AnimatedStat value={stat.value} suffix={stat.suffix} />
+                    <AnimatedStat value={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
                   </div>
                   <p className="text-sm text-gray-600">{stat.label}</p>
                 </motion.div>

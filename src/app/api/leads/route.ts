@@ -88,8 +88,13 @@ interface LeadBody {
   estimatedRevenue?: number;
   /** Identifiant de la landing page source (ex. « fb-upsell »). */
   source?: string;
-  /** Offre de conversion testée : « demo » ou « whitepaper ». */
+  /**
+   * Offre de conversion : « demo », « whitepaper », « contact » ou « rappel » (demande d'appel, téléphone
+   * obligatoire).
+   */
   goal?: string;
+  /** Créneau d'appel souhaité (« Le matin »), pour l'offre « rappel ». Part dans la notification seulement. */
+  slot?: string;
   /** Slug du livre blanc demandé, quand la page en propose un. */
   magnet?: string;
   locale?: string;
@@ -306,7 +311,9 @@ async function notifyTeam(lead: Record<string, string>): Promise<void> {
             ? `Livre blanc à envoyer : ${lead.ETABLISSEMENT || lead.email}`
             : lead.OFFRE === 'contact'
               ? `Message du site : ${lead.ETABLISSEMENT || lead.email}`
-              : `Demande de démo : ${lead.ETABLISSEMENT || lead.email}`,
+              : lead.OFFRE === 'rappel'
+                ? `Demande de rappel : ${lead.ETABLISSEMENT || lead.email}`
+                : `Demande de démo : ${lead.ETABLISSEMENT || lead.email}`,
         htmlContent: `<h2>Nouveau lead landing page</h2><table>${rows}</table>`,
       }),
     });
@@ -350,6 +357,12 @@ export async function POST(request: NextRequest) {
     const estimatedRevenue = sanitizeNumber(body.estimatedRevenue);
     const goal = sanitize(body.goal);
     const magnet = readMagnetSlug(body.magnet);
+
+    // Une demande de rappel sans numéro exploitable ne sert à rien : refusée avant tout appel à Brevo,
+    // pour que le visiteur corrige son numéro au lieu de croire la demande partie.
+    if (goal === 'rappel' && !phone) {
+      return NextResponse.json({ success: false, error: 'invalid_phone' }, { status: 400 });
+    }
 
     if (firstName) attributes.PRENOM = firstName;
     // ETABLISSEMENT existe déjà côté Brevo, on réutilise plutôt que de créer
@@ -442,10 +455,12 @@ export async function POST(request: NextRequest) {
 
     const message = typeof body.message === 'string' ? body.message.trim().slice(0, MAX_MESSAGE_LENGTH) : '';
     const roomsRange = sanitize(body.roomsRange);
+    const slot = sanitize(body.slot);
     await notifyTeam({
       email,
       ...Object.fromEntries(Object.entries(attributes).map(([key, value]) => [key, String(value)])),
       ...(roomsRange ? { CHAMBRES_TRANCHE: roomsRange } : {}),
+      ...(slot ? { CRENEAU: slot } : {}),
       ...(message ? { MESSAGE: message } : {}),
       ...readAttribution(body.attribution),
     });

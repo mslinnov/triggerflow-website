@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 import { Container, SectionWrapper } from '@/components/ui';
+import { clientLogos } from '@/data/client-logos';
+import type { StatId } from '@/data/company-stats';
 
 export interface LPSocialProofLogo {
   src: string;
@@ -9,7 +11,9 @@ export interface LPSocialProofLogo {
 }
 
 export interface LPSocialProofStat {
-  value: string;
+  /** Chiffre officiel de company-stats.ts ; la valeur est alors posée au chargement (lib/landing-pages.ts). */
+  statId?: StatId;
+  value?: string;
   label: string;
 }
 
@@ -21,7 +25,8 @@ export interface LPSocialProofTestimonial {
 
 export interface LPSocialProofProps {
   title?: string;
-  logos?: LPSocialProofLogo[];
+  /** `"clients"` : les logos de l'accueil (data/client-logos.ts), sans recopie. */
+  logos?: LPSocialProofLogo[] | 'clients';
   stats?: LPSocialProofStat[];
   testimonial?: LPSocialProofTestimonial;
   className?: string;
@@ -29,11 +34,13 @@ export interface LPSocialProofProps {
 
 export function LPSocialProof({
   title,
-  logos,
+  logos: logosProp,
   stats,
   testimonial,
   className,
 }: LPSocialProofProps) {
+  const logos: LPSocialProofLogo[] | undefined =
+    logosProp === 'clients' ? clientLogos.map((logo) => ({ src: logo.src, alt: logo.name })) : logosProp;
   return (
     <SectionWrapper background="white" className={cn('py-12 md:py-16', className)}>
       <Container>

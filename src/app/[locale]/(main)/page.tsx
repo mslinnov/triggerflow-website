@@ -21,6 +21,7 @@ import {
 import { HomePageJsonLd } from '@/components/seo';
 import { getDisplayPlans, getPricingPhase } from '@/data/pricing';
 import { StickyMobileCTA } from '@/components/layout/StickyMobileCTA';
+import { brand } from '@/data/brand';
 
 interface HomePageProps {
   params: Promise<{ locale: string }>;
@@ -37,8 +38,8 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
   };
 
   const descriptions: Record<string, string> = {
-    fr: 'CRM hôtelier avec marketing automation et workflows : emails, SMS, WhatsApp automatisés, programme fidélité et avis Google. Connecté à 7+ PMS français.',
-    en: 'Hotel CRM with marketing automation and workflows: automated emails, SMS, WhatsApp, loyalty program and Google reviews. Connected to 7+ French PMS.',
+    fr: `CRM hôtelier avec marketing automation et workflows : emails, SMS, WhatsApp automatisés, programme fidélité et avis Google. Compatible avec ${brand.pmsCompatibles.fr} PMS.`,
+    en: `Hotel CRM with marketing automation and workflows: automated emails, SMS, WhatsApp, loyalty program and Google reviews. Compatible with ${brand.pmsCompatibles.en} PMS.`,
   };
 
   return {

@@ -1,17 +1,7 @@
-import {
-  Mail, Clock, Zap, Shield, BarChart3, Users, MessageSquare,
-  Star, Globe, Settings, TrendingUp, Send, Bell, Smartphone,
-  FileText, CreditCard, Award, Headphones, Lock, Layers,
-} from 'lucide-react';
-import type { LucideIcon } from 'lucide-react';
+import { Zap } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Container, SectionWrapper, SectionHeader } from '@/components/ui';
-
-const iconMap: Record<string, LucideIcon> = {
-  Mail, Clock, Zap, Shield, BarChart3, Users, MessageSquare,
-  Star, Globe, Settings, TrendingUp, Send, Bell, Smartphone,
-  FileText, CreditCard, Award, Headphones, Lock, Layers,
-};
+import { getLPIcon } from './lp-icons';
 
 export interface LPFeatureItem {
   icon: string;
@@ -49,7 +39,7 @@ export function LPFeatures({
           )}
         >
           {features.map((feature) => {
-            const Icon = iconMap[feature.icon] ?? Zap;
+            const Icon = getLPIcon(feature.icon) ?? Zap;
             return (
               <div key={feature.title} className="rounded-xl border border-brand-light/60 bg-white p-6">
                 <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-lg bg-brand-primary/10">

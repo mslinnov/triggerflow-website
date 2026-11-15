@@ -6,13 +6,21 @@ import type {
   LPTestimonialProps,
   LPCTAProps,
   LPPricingProps,
+  LPIntegrationsProps,
+  LPFeatureRowsProps,
+  LPJourneyProps,
+  LPTestimonialsProps,
+  LPPlansProps,
+  LPFAQProps,
+  LPFooterProps,
 } from '@/components/landing/shared';
 
 // ── Section discriminated union ──────────────────────────────────────
 
 interface LPSectionBase<T extends string, P> {
   type: T;
-  props: Omit<P, 'className'>;
+  /** `locale` est posée par la page depuis la config, jamais écrite dans le JSON. */
+  props: Omit<P, 'className' | 'locale'>;
 }
 
 export type LPSection =
@@ -22,7 +30,14 @@ export type LPSection =
   | LPSectionBase<'LPBenefits', LPBenefitsProps>
   | LPSectionBase<'LPTestimonial', LPTestimonialProps>
   | LPSectionBase<'LPCTA', LPCTAProps>
-  | LPSectionBase<'LPPricing', LPPricingProps>;
+  | LPSectionBase<'LPPricing', LPPricingProps>
+  | LPSectionBase<'LPIntegrations', LPIntegrationsProps>
+  | LPSectionBase<'LPFeatureRows', LPFeatureRowsProps>
+  | LPSectionBase<'LPJourney', LPJourneyProps>
+  | LPSectionBase<'LPTestimonials', LPTestimonialsProps>
+  | LPSectionBase<'LPPlans', LPPlansProps>
+  | LPSectionBase<'LPFAQ', LPFAQProps>
+  | LPSectionBase<'LPFooter', LPFooterProps>;
 
 // ── Landing page config ──────────────────────────────────────────────
 
