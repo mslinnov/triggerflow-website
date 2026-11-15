@@ -10,12 +10,12 @@ Site vitrine marketing pour TriggerFlow, un SaaS CRM et automatisation de commun
 
 ## Tech Stack
 
-- **Framework:** Next.js 15 (App Router, RSC)
+- **Framework:** Next.js 16 (App Router, RSC)
 - **Language:** TypeScript (strict mode)
 - **Styling:** Tailwind CSS
 - **Animations:** Framer Motion
 - **i18n:** next-intl (FR/EN)
-- **Hosting:** Cloudflare Pages (via @opennextjs/cloudflare)
+- **Hosting:** `next start` sous systemd (service `tf-website`, port 3002) derrière Apache, sur un serveur Scaleway, déployé par GitHub Actions (`.github/workflows/deploy.yml`). Voir « Hosting & Deployment » : les commandes Cloudflare ne sont pas le chemin de production.
 - **Icons:** Lucide React
 
 ## Project Structure
@@ -53,8 +53,8 @@ npm run dev          # Start dev server (Turbopack)
 npm run build        # Production build
 npm run lint         # ESLint check
 npm run type-check   # TypeScript check (add to package.json: "type-check": "tsc --noEmit")
-npm run preview      # Build & preview via Cloudflare (opennextjs-cloudflare)
-npm run deploy       # Build & deploy to Cloudflare Pages
+npm run preview      # Build & preview via Cloudflare (opennextjs-cloudflare), hors production
+npm run deploy       # Build & deploy to Cloudflare Pages, hors production (la prod passe par deploy.yml)
 ```
 
 ## Code Conventions
@@ -122,12 +122,11 @@ export function Hero() {
 
 ### Images
 
-- **Use next/image** - For consistent API, but note that Cloudflare Pages does not support Next.js image optimization API (`/_next/image`). Images are served as-is.
-- **Pre-optimize images** - Since there's no server-side optimization, all images MUST be pre-optimized (WebP format, correct dimensions, compressed)
+- **Use next/image** - En production, `next start` sert l'optimisation (`/_next/image`), mise en cache un jour (`images.minimumCacheTTL` dans next.config.ts).
+- **Pre-optimize images** - All images MUST still be pre-optimized (WebP format, correct dimensions, compressed): the server is small and shared
 - **WebP format** - Convert all images before committing
 - **Explicit dimensions** - Always set width/height to avoid CLS
 - **Priority for LCP** - Add `priority` to above-fold images
-- **Consider `unoptimized` prop** - If next/image causes issues on Cloudflare, use `unoptimized` globally in next.config.ts
 
 ```tsx
 import Image from 'next/image';
@@ -227,22 +226,18 @@ export const metadata: Metadata = {
 
 ## Hosting & Deployment
 
-- **Platform:** Cloudflare Pages via `@opennextjs/cloudflare` adapter
-- **Worker config:** `wrangler.jsonc` (entry: `.open-next/worker.js`, assets: `.open-next/assets`)
-- **Compatibility flags:** `nodejs_compat`, `global_fetch_strictly_public`
-- **DNS:** Cloudflare DNS (trigger-flow.com → Cloudflare Pages, app.trigger-flow.com → DigitalOcean)
-- **Environment variables:** Set in Cloudflare Pages dashboard (Settings > Environment variables)
-- **Preview:** `npm run preview` for local Cloudflare preview
-- **Deploy:** `npm run deploy` or automatic via Cloudflare Pages Git integration
+- **Production :** `next start`, un seul processus, sous systemd (service `tf-website`, port 3002), derrière Apache, sur le serveur Scaleway stayrival-01 (4 Go, partagé). Site dans `/srv/triggerflow-website`, utilisateur `tfsite`.
+- **Déploiement :** `.github/workflows/deploy.yml`, à chaque push sur `main` : build dans GitHub Actions (le serveur ne le supporte pas), copie des fichiers par SSH, écriture des variables d'exécution dans `.env.production.local`, redémarrage du service, contrôle de `/fr`.
+- **Variables :** secrets GitHub du dépôt. Une variable d'exécution s'ajoute dans `deploy.yml` (env de l'étape SSH, liste `envs:`, filtre `grep -v`, ligne `printf`, boucle de diagnostic). Les `NEXT_PUBLIC_*` sont figées au build.
+- **IP des visiteurs :** dernier membre de `x-forwarded-for`, ajouté par Apache (`src/lib/visitor-ip.ts`) ; `cf-connecting-ip` n'est lu qu'avec `TRUST_CF_CONNECTING_IP=1`.
+- **Limites en mémoire :** les limites par visiteur (calendrier, PDF partagés) vivent dans le processus ; un redémarrage les remet à zéro.
+- **Arrêt :** au redémarrage, les PDF partagés en cours de téléchargement sont coupés sur SIGTERM, ainsi que les appels au backend et les écritures du fichier en cours (le lecteur reçoit « réessayez »), puis Next sort de lui-même.
+- **Écriture sur le disque à l'exécution :** une seule, le fichier temporaire des PDF partagés (`src/lib/shared-pdf.ts`, dossier `SHARED_PDF_TMP_DIR`, voir le README). Ailleurs, `fs` ne fait que lire des fichiers du dépôt, et pas seulement au build : `/api/calendrier/modele` lit les modèles MJML du calendrier au premier appel (`lib/calendrier-mjml.ts`, `src/data/calendrier-mjml/`, gardés ensuite en mémoire du processus) ; le blog, les pages d'atterrissage et les pages légales (`lib/blog.ts`, `lib/landing-pages.ts`, `lib/legal.ts`) sont lus au build, puis à l'exécution quand une page est régénérée : toutes les heures pour les articles du blog et les pages légales (layouts `(blog)` et `(main)`, `revalidate = 3600`) comme pour `llms.txt`, et à la première visite d'une page absente de `generateStaticParams`. Les pages temps fort du calendrier, sous `(main)`, sont aussi régénérées toutes les heures ; leurs modèles MJML viennent alors de la mémoire du processus. Le déploiement copie tout le dépôt, ces dossiers compris.
+- **No Server Actions :** non utilisées.
 
-### Cloudflare Compatibility Notes
+### OpenNext / Cloudflare (hors production)
 
-- **No ISR** — All pages are statically generated (SSG) at build time
-- **No Server Actions** — Not used in this project
-- **Middleware** — Compatible (uses standard Next.js middleware API for i18n)
-- **fs/path usage** — Only at build time in `lib/blog.ts` and `lib/landing-pages.ts` (acceptable)
-- **API routes** — `/api/newsletter` uses standard fetch API (compatible with Cloudflare Workers)
-- **Image optimization** — Not available on Cloudflare Pages; images must be pre-optimized
+`wrangler.jsonc`, `open-next.config.ts` et les scripts `preview` / `deploy` viennent d'un ancien hébergement sur Cloudflare Pages. Ils ne servent plus la production : un secret posé avec `wrangler secret put` n'y arrive jamais.
 
 ## External Links
 

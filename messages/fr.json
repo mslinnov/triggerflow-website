@@ -4467,5 +4467,15 @@
     "calendarTitle": "Calendrier de prise de rendez-vous TriggerFlow",
     "openCalendar": "Ouvrir le calendrier dans un nouvel onglet",
     "logosTitle": "Ils ont choisi TriggerFlow"
+  },
+  "sharedDocument": {
+    "notFound": {
+      "title": "Document introuvable",
+      "text": "Ce lien ne mène à aucun document, ou le document n'est plus partagé. Si vous l'avez reçu par e-mail, répondez à son expéditeur pour en obtenir un nouveau."
+    },
+    "unavailable": {
+      "title": "Document momentanément indisponible",
+      "text": "Réessayez dans quelques minutes."
+    }
   }
 }

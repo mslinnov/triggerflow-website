@@ -224,7 +224,7 @@ async function relayLeadMagnet(
     // Omettre l'en-tête est le bon choix, mais ce n'est pas anodin : le backend
     // retombe alors sur l'IP de notre serveur et son quota par IP devient un
     // quota unique pour tous nos visiteurs. Si cette ligne se met à sortir en
-    // rafale, c'est que `cf-connecting-ip` ne nous parvient plus.
+    // rafale, c'est que `x-forwarded-for` (complété par Apache) ne nous parvient plus.
     console.error('[leads] IP visiteur illisible, en-tête omis, slug:', slug);
   }
 

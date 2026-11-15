@@ -88,9 +88,10 @@ jobs:
           # mais aucun guide n'est envoye et aucune sequence ne demarre.
           TRIGGERFLOW_API_URL: ${{ secrets.TRIGGERFLOW_API_URL || vars.TRIGGERFLOW_API_URL }}
           LEAD_MAGNET_SECRET: ${{ secrets.LEAD_MAGNET_SECRET }}
-          # Comptage des ouvertures des documents commerciaux partages
-          # (/doc/<document>/<suffixe>). Sans ce secret, la page est servie
-          # normalement mais AUCUNE ouverture n'est comptee, en silence.
+          # Documents commerciaux partages (/doc/<document>/<suffixe>). Sans ce
+          # secret, le Parcours est servi mais AUCUNE ouverture n'est comptee, en
+          # silence ; les PDF deposes dans le CRM, eux, ne sont plus servis du
+          # tout (page « momentanement indisponible ») : seul le backend les a.
           DOCUMENT_VIEW_SECRET: ${{ secrets.DOCUMENT_VIEW_SECRET }}
           # Mot de passe de la formation du stand (/formation-salon). Sans lui,
           # la route reste fermee (503) : jamais la formation sans mot de passe.
@@ -118,7 +119,7 @@ jobs:
             ENV_FILE=.env.production.local
             touch "$ENV_FILE"
             chmod 600 "$ENV_FILE"
-            grep -v -E '^(BREVO_API_KEY|BREVO_LIST_ID|BREVO_LEADS_LIST_ID|LEADS_NOTIFICATION_EMAIL|TRIGGERFLOW_API_URL|LEAD_MAGNET_SECRET|DOCUMENT_VIEW_SECRET|FORMATION_SALON_PASSWORD|CALENDRIER_SALON_FLYER_TOKEN)=' "$ENV_FILE" > "$ENV_FILE.tmp" || true
+            grep -v -E '^(BREVO_API_KEY|BREVO_LIST_ID|BREVO_LEADS_LIST_ID|LEADS_NOTIFICATION_EMAIL|TRIGGERFLOW_API_URL|LEAD_MAGNET_SECRET|DOCUMENT_VIEW_SECRET|FORMATION_SALON_PASSWORD|CALENDRIER_SALON_FLYER_TOKEN|SHARED_PDF_TMP_DIR)=' "$ENV_FILE" > "$ENV_FILE.tmp" || true
             mv "$ENV_FILE.tmp" "$ENV_FILE"
             # Une variable non fournie n'est pas ecrite, pour ne pas ecraser une
             # valeur deja presente ailleurs par une chaine vide.
@@ -131,11 +132,15 @@ jobs:
             [ -n "${DOCUMENT_VIEW_SECRET:-}" ] && printf 'DOCUMENT_VIEW_SECRET=%s\n' "$DOCUMENT_VIEW_SECRET" >> "$ENV_FILE"
             [ -n "${FORMATION_SALON_PASSWORD:-}" ] && printf 'FORMATION_SALON_PASSWORD=%s\n' "$FORMATION_SALON_PASSWORD" >> "$ENV_FILE"
             [ -n "${CALENDRIER_SALON_FLYER_TOKEN:-}" ] && printf 'CALENDRIER_SALON_FLYER_TOKEN=%s\n' "$CALENDRIER_SALON_FLYER_TOKEN" >> "$ENV_FILE"
+            # Fichiers temporaires des PDF partages (jusqu'a 1,3 Go, voir le
+            # README) : /var/tmp, sur le disque. Un /tmp peut etre un tmpfs, donc
+            # en memoire, sur un serveur de 4 Go. Valeur fixe, pas un secret.
+            printf 'SHARED_PDF_TMP_DIR=%s\n' /var/tmp >> "$ENV_FILE"
             true
             chmod 600 "$ENV_FILE"
 
             # Diagnostic : presence uniquement, jamais les valeurs.
-            for key in BREVO_API_KEY BREVO_LEADS_LIST_ID LEADS_NOTIFICATION_EMAIL TRIGGERFLOW_API_URL LEAD_MAGNET_SECRET DOCUMENT_VIEW_SECRET FORMATION_SALON_PASSWORD CALENDRIER_SALON_FLYER_TOKEN; do
+            for key in BREVO_API_KEY BREVO_LEADS_LIST_ID LEADS_NOTIFICATION_EMAIL TRIGGERFLOW_API_URL LEAD_MAGNET_SECRET DOCUMENT_VIEW_SECRET FORMATION_SALON_PASSWORD CALENDRIER_SALON_FLYER_TOKEN SHARED_PDF_TMP_DIR; do
               if grep -qE "^${key}=." .env* 2>/dev/null; then
                 echo "  ${key}: present dans un fichier .env"
               else
@@ -152,7 +157,7 @@ jobs:
               echo "::warning::CALENDRIER_SALON_FLYER_TOKEN is empty: the call-back form of /fr/calendrier-marketing answers 'unavailable' and no CRM prospect is created. Set the GitHub secret to the flyer_token of the EquipHotel event."
             fi
             if [ -z "${DOCUMENT_VIEW_SECRET:-}" ]; then
-              echo "::warning::DOCUMENT_VIEW_SECRET is empty: shared documents under /doc/ will still be served, but NO opening will be counted. Set the GitHub secret, and the same value on the TriggerFlow backend."
+              echo "::warning::DOCUMENT_VIEW_SECRET is empty: the Parcours under /doc/ will still be served with NO opening counted, and CRM PDFs under /doc/ will NOT be served at all (temporarily unavailable page). Set the GitHub secret, and the same value on the TriggerFlow backend."
             fi
             echo "::endgroup::"
 
