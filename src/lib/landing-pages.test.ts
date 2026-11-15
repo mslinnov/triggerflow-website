@@ -63,8 +63,8 @@ test('pages d’atterrissage : chaque {valeur} posée, chiffres et cas clients p
   assert.ok(pages.length >= 2);
   for (const page of pages) {
     const where = `${page.slug}.${page.locale}`;
-    const resolved = resolveLandingPage(page);
-    for (const text of strings(resolved)) {
+    // getAllLandingPages rend des pages déjà résolues : metadata et sections, sans {valeur} en clair.
+    for (const text of strings(page)) {
       assert.doesNotMatch(text, /\{\w+\}/, `${where} : valeur non posée dans « ${text} »`);
       assert.ok(!text.includes('\u2014'), `${where} : tiret cadratin dans « ${text} »`);
     }

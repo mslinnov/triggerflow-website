@@ -61,7 +61,7 @@ export function getAllLandingPages(): LandingPageConfig[] {
     const config = JSON.parse(raw) as LandingPageConfig;
 
     if (config.slug && config.locale && config.metadata && config.sections) {
-      configs.push(config);
+      configs.push(resolveLandingPage(config));
     }
   }
 

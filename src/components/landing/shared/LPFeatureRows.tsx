@@ -54,6 +54,9 @@ const pillTones: Record<NonNullable<LPFeatureRowVisualItem['tone']>, string> = {
   alert: 'bg-brand-accent text-brand-dark',
 };
 
+/** Pastille d'icône : seule l'alerte change de couleur, le ton « gold » garde le vert. */
+const iconTones: typeof pillTones = { default: pillTones.default, gold: pillTones.default, alert: pillTones.alert };
+
 function Visual({ visual }: { visual: LPFeatureRowVisual }) {
   return (
     <div className="relative grid gap-2.5 rounded-3xl bg-gradient-to-br from-surface-tertiary to-surface-secondary px-4 pb-5 pt-9 sm:p-9 sm:pt-11">
@@ -74,7 +77,7 @@ function Visual({ visual }: { visual: LPFeatureRowVisual }) {
               <span
                 className={cn(
                   'flex h-9 w-9 items-center justify-center rounded-lg text-xs font-bold',
-                  tone === 'alert' ? 'bg-brand-accent text-brand-dark' : 'bg-brand-primary/10 text-brand-primary'
+                  iconTones[tone]
                 )}
               >
                 {Icon ? <Icon className="h-[18px] w-[18px]" aria-hidden="true" /> : item.tag}

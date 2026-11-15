@@ -283,6 +283,17 @@ function successResponse(downloadUrl: string | null): NextResponse {
 }
 
 /**
+ * Objet de la notification selon l'offre demandée : le livre blanc est envoyé à la main au démarrage, il
+ * faut pouvoir trier la boîte sans ouvrir. Toute autre offre est une demande de démo. Une Map, pas un
+ * objet : `OFFRE` vient du navigateur et ne doit pas pouvoir lire le prototype (`constructor`…).
+ */
+const SUBJECT_BY_OFFER = new Map([
+  ['whitepaper', 'Livre blanc à envoyer'],
+  ['contact', 'Message du site'],
+  ['rappel', 'Demande de rappel'],
+]);
+
+/**
  * Notifie l'équipe. Best-effort : un échec d'envoi ne doit jamais faire perdre
  * le lead, qui est déjà enregistré dans Brevo à ce stade.
  */
@@ -304,16 +315,7 @@ async function notifyTeam(lead: Record<string, string>): Promise<void> {
       body: JSON.stringify({
         sender: NOTIFICATION_SENDER,
         to: [{ email: LEADS_NOTIFICATION_EMAIL }],
-        // L'offre demandée figure dans l'objet : le livre blanc est envoyé à
-        // la main au démarrage, il faut pouvoir trier la boîte sans ouvrir.
-        subject:
-          lead.OFFRE === 'whitepaper'
-            ? `Livre blanc à envoyer : ${lead.ETABLISSEMENT || lead.email}`
-            : lead.OFFRE === 'contact'
-              ? `Message du site : ${lead.ETABLISSEMENT || lead.email}`
-              : lead.OFFRE === 'rappel'
-                ? `Demande de rappel : ${lead.ETABLISSEMENT || lead.email}`
-                : `Demande de démo : ${lead.ETABLISSEMENT || lead.email}`,
+        subject: `${SUBJECT_BY_OFFER.get(lead.OFFRE) ?? 'Demande de démo'} : ${lead.ETABLISSEMENT || lead.email}`,
         htmlContent: `<h2>Nouveau lead landing page</h2><table>${rows}</table>`,
       }),
     });
@@ -358,9 +360,13 @@ export async function POST(request: NextRequest) {
     const goal = sanitize(body.goal);
     const magnet = readMagnetSlug(body.magnet);
 
-    // Une demande de rappel sans numéro exploitable ne sert à rien : refusée avant tout appel à Brevo,
-    // pour que le visiteur corrige son numéro au lieu de croire la demande partie.
-    if (goal === 'rappel' && !phone) {
+    // Une demande de rappel sans numéro ne sert à rien : refusée avant tout appel à Brevo, pour que le
+    // visiteur corrige son numéro au lieu de croire la demande partie. Seul critère, 8 chiffres au moins :
+    // `normalizePhone` ne connaît que la France et le format +…, un numéro étranger écrit sans + doit
+    // quand même passer. L'équipe le lit tel que saisi dans la notification (TELEPHONE_SAISI) ; l'attribut
+    // SMS de Brevo reste réservé aux numéros normalisés.
+    const phoneInput = goal === 'rappel' ? sanitize(body.phone) : '';
+    if (goal === 'rappel' && phoneInput.replace(/\D/g, '').length < 8) {
       return NextResponse.json({ success: false, error: 'invalid_phone' }, { status: 400 });
     }
 
@@ -461,6 +467,7 @@ export async function POST(request: NextRequest) {
       ...Object.fromEntries(Object.entries(attributes).map(([key, value]) => [key, String(value)])),
       ...(roomsRange ? { CHAMBRES_TRANCHE: roomsRange } : {}),
       ...(slot ? { CRENEAU: slot } : {}),
+      ...(phoneInput ? { TELEPHONE_SAISI: phoneInput } : {}),
       ...(message ? { MESSAGE: message } : {}),
       ...readAttribution(body.attribution),
     });
