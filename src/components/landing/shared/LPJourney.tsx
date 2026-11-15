@@ -13,14 +13,15 @@ export interface LPJourneyProps {
   eyebrow?: string;
   sectionTitle: string;
   sectionSubtitle?: string;
-  steps: LPJourneyStep[];
+  /** Étapes numérotées, sous la scène s'il y en a une (facultatives : la scène peut les remplacer). */
+  steps?: LPJourneyStep[];
   note?: string;
   /** Scène animée au défilement (page « Comment ça marche » du nouveau site), sous le titre, sur fond blanc. */
   story?: boolean;
   className?: string;
 }
 
-/** Étapes du séjour, numérotées : une liste sur mobile, une frise sur ordinateur. */
+/** Parcours du séjour : la scène animée, les étapes numérotées (une liste sur mobile, une frise sur ordinateur), ou les deux. */
 export function LPJourney({ eyebrow, sectionTitle, sectionSubtitle, steps, note, story, className }: LPJourneyProps) {
   return (
     <section className={cn(story ? 'bg-white' : 'bg-surface-secondary', 'py-14 md:py-24', className)}>
@@ -32,30 +33,32 @@ export function LPJourney({ eyebrow, sectionTitle, sectionSubtitle, steps, note,
       {/* Hors du conteneur : la scène prend toute la largeur, comme sur la page d'origine. */}
       {story && <LPStory className="mt-8" />}
       <Container>
-        <ol className="mt-8 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-6">
-          {steps.map((step, index) => {
-            const Icon = getLPIcon(step.icon);
-            return (
-              <li
-                key={step.title}
-                className="flex items-center gap-3 rounded-2xl border border-border-light bg-white p-3.5 lg:flex-col lg:items-start lg:p-4"
-              >
-                {Icon && (
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-primary/10 text-brand-primary">
-                    <Icon className="h-5 w-5" aria-hidden="true" />
+        {steps && steps.length > 0 && (
+          <ol className="mt-8 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-6">
+            {steps.map((step, index) => {
+              const Icon = getLPIcon(step.icon);
+              return (
+                <li
+                  key={step.title}
+                  className="flex items-center gap-3 rounded-2xl border border-border-light bg-white p-3.5 lg:flex-col lg:items-start lg:p-4"
+                >
+                  {Icon && (
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-primary/10 text-brand-primary">
+                      <Icon className="h-5 w-5" aria-hidden="true" />
+                    </span>
+                  )}
+                  <span>
+                    <span className="block text-[0.95rem] font-semibold text-brand-dark">
+                      <span className="text-brand-primary">{index + 1}. </span>
+                      {step.title}
+                    </span>
+                    <span className="block text-sm text-text-muted">{step.description}</span>
                   </span>
-                )}
-                <span>
-                  <span className="block text-[0.95rem] font-semibold text-brand-dark">
-                    <span className="text-brand-primary">{index + 1}. </span>
-                    {step.title}
-                  </span>
-                  <span className="block text-sm text-text-muted">{step.description}</span>
-                </span>
-              </li>
-            );
-          })}
-        </ol>
+                </li>
+              );
+            })}
+          </ol>
+        )}
         {note && <p className="mt-5 text-sm text-text-secondary">{note}</p>}
       </Container>
     </section>

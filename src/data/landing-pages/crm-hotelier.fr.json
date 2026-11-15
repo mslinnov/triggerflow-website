@@ -142,16 +142,8 @@
       "type": "LPJourney",
       "props": {
         "eyebrow": "Parcours du séjour",
-        "sectionTitle": "Six étapes du séjour, aucun message envoyé à la main",
+        "sectionTitle": "Une cliente, du premier clic au retour en direct",
         "story": true,
-        "steps": [
-          { "icon": "CalendarCheck", "title": "Réservation", "description": "Confirmation enrichie\u00a0: accès, services, options" },
-          { "icon": "Mail", "title": "Pré-séjour", "description": "Infos pratiques et offres avant l'arrivée" },
-          { "icon": "LogIn", "title": "Arrivée", "description": "Bienvenue et enregistrement en ligne" },
-          { "icon": "MessageCircle", "title": "Séjour", "description": "Questions sur WhatsApp, réponses de l'équipe" },
-          { "icon": "LogOut", "title": "Départ", "description": "Remerciement personnalisé" },
-          { "icon": "Star", "title": "Après-séjour", "description": "Enquête, avis, offre de retour" }
-        ],
         "note": "Textes, délais et conditions se modifient sans développeur."
       }
     },

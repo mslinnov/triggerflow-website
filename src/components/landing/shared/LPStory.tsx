@@ -4,6 +4,9 @@ import { LpMessagesProvider } from '@/components/landing/LpMessagesProvider';
 import { cn } from '@/lib/utils';
 import { LPStoryLoader } from './LPStoryLoader';
 
+/** Hauteur de LPHeader (collé en haut), mesurée à 390 et à 1 440 px : la scène se colle juste dessous. */
+const LP_HEADER = 61;
+
 /**
  * Police des libellés de la scène (`font-mono`), celle de new-version. `preload: false` : le fichier n'est
  * téléchargé que lorsque la scène affiche ses libellés, jamais avec le premier écran.
@@ -28,7 +31,7 @@ export async function LPStory({ className }: { className?: string }) {
   return (
     <LpMessagesProvider locale={locale} namespace="howItWorksPage">
       <div className={cn(plexMono.variable, 'font-sans [--font-geist-mono:var(--font-plex-mono)]', className)}>
-        <LPStoryLoader />
+        <LPStoryLoader header={LP_HEADER} />
       </div>
     </LpMessagesProvider>
   );
