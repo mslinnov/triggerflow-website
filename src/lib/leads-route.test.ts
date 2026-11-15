@@ -66,6 +66,25 @@ test('rappel : numéro valide, contact dans la liste des leads et notification �
   assert.ok(notification, 'équipe notifiée');
   assert.equal(notification.body.subject, 'Demande de rappel : Hôtel des Tests');
   assert.match(String(notification.body.htmlContent), /CRENEAU<\/strong><\/td><td[^>]*>Le matin</);
+  assert.match(String(notification.body.htmlContent), /TELEPHONE_SAISI<\/strong><\/td><td[^>]*>06 12 34 56 78</);
+});
+
+test('rappel : numéro étranger écrit sans +, accepté et transmis tel que saisi, sans attribut SMS', async () => {
+  const { status, payload } = await post({ ...rappel, phone: '32 475 12 34 56' });
+  assert.equal(status, 200);
+  assert.equal(payload.success, true);
+  // Brevo refuse un SMS hors E.164 : le numéro non normalisé ne va pas dans le contact...
+  const attributes = contactCall()?.body.attributes as Record<string, unknown>;
+  assert.equal(attributes.SMS, undefined);
+  // ...mais l'équipe le reçoit pour rappeler.
+  assert.match(String(notificationCall()?.body.htmlContent), /TELEPHONE_SAISI<\/strong><\/td><td[^>]*>32 475 12 34 56</);
+});
+
+test('rappel : numéro trop court (moins de 8 chiffres) refusé avant tout appel à Brevo', async () => {
+  const { status, payload } = await post({ ...rappel, phone: '+33 12 34 5' });
+  assert.equal(status, 400);
+  assert.equal(payload.error, 'invalid_phone');
+  assert.equal(calls.length, 0);
 });
 
 test('rappel : numéro invalide refusé avant tout appel à Brevo', async () => {
@@ -97,5 +116,6 @@ test('autres offres inchangées : téléphone facultatif, objet de la notificati
     assert.equal(attributes.OFFRE, goal);
     assert.equal(attributes.SMS, undefined);
     assert.equal(notificationCall()?.body.subject, subject);
+    assert.doesNotMatch(String(notificationCall()?.body.htmlContent), /TELEPHONE_SAISI/);
   }
 });

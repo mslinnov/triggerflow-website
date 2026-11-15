@@ -27,10 +27,15 @@ export function applyBrandValues<T>(value: T, values: Record<string, string>): T
   return value;
 }
 
-/** Messages d'une langue, une fois les faits de marque injectés, calculés une seule fois par processus. */
+/**
+ * Messages d'une langue, une fois les faits de marque injectés. En production, calculés une seule fois
+ * par processus ; en `next dev`, recalculés à chaque requête pour qu'une modification de messages/*.json
+ * apparaisse sans redémarrer.
+ */
 const cache = new Map<string, Record<string, unknown>>();
 
 export function withBrandValues(locale: string, messages: Record<string, unknown>): Record<string, unknown> {
+  if (process.env.NODE_ENV !== 'production') return applyBrandValues(messages, brandValues(locale));
   const cached = cache.get(locale);
   if (cached) return cached;
   const resolved = applyBrandValues(messages, brandValues(locale));
