@@ -42,7 +42,10 @@ export function LPTestimonials({
     return study ? [{ ...study, image: entry.image ?? study.image }] : [];
   });
   const lang = locale === 'fr' ? 'fr' : 'en';
-  const home = homeTestimonials ? clientQuotes : [];
+  // Une personne déjà montrée dans un cas client n'a pas de seconde citation (décision de Mounir du
+  // 15/11/2026 pour Baptiste Legout) : data/clients.ts reste identique à la refonte, le tri se fait ici.
+  const shown = new Set(studies.map((study) => study.contactName));
+  const home = homeTestimonials ? clientQuotes.filter((quote) => !shown.has(quote.name)) : [];
 
   return (
     <section className={cn('bg-white py-14 md:py-24', className)}>
