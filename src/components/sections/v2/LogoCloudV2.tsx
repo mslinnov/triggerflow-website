@@ -22,7 +22,7 @@ function metricsFor(locale: string) {
   return [
     { key: 'hotels', icon: Building2, value: stat('hotels', locale), accent: 'from-brand-primary to-emerald-500' },
     { key: 'messages', icon: Send, value: stat('messages', locale), accent: 'from-blue-500 to-cyan-500' },
-    { key: 'pms', icon: Plug, value: String(brand.pms.length), accent: 'from-rose-500 to-orange-500' },
+    { key: 'pms', icon: Plug, value: locale === 'fr' ? brand.pmsCompatibles.fr : brand.pmsCompatibles.en, accent: 'from-rose-500 to-orange-500' },
   ] as const;
 }
 

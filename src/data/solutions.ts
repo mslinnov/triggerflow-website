@@ -43,6 +43,8 @@ export interface SolutionChallenge {
 
 export interface SolutionStat {
   value: string;
+  /** Signe devant le nombre (« + » de « +20 PMS »). */
+  prefix?: string;
   suffix?: string;
   label: string;
 }
@@ -180,7 +182,7 @@ export const solutions: Record<string, SolutionData> = {
     stats: [
       hotelsStat,
       { value: statNumber('emailDelivered'), suffix: ' %', label: 'des e-mails délivrés (12 derniers mois, tous nos hôtels)' },
-      { value: String(brand.pms.length), suffix: '', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n' },
+      { prefix: '+', value: String(brand.pmsCompatibles.count), suffix: '', label: 'PMS compatibles, plus serrures, paiement, Zapier et n8n' },
     ],
 
     features: [
@@ -348,7 +350,7 @@ export const solutions: Record<string, SolutionData> = {
 
     stats: [
       { value: '1', suffix: '', label: 'tableau de bord pour tous vos établissements' },
-      { value: String(brand.pms.length), suffix: '', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n' },
+      { prefix: '+', value: String(brand.pmsCompatibles.count), suffix: '', label: 'PMS compatibles, plus serrures, paiement, Zapier et n8n' },
       hotelsStat,
     ],
 
@@ -513,7 +515,7 @@ export const solutions: Record<string, SolutionData> = {
     stats: [
       { value: statNumber('smsDelivered'), suffix: ' %', label: 'des SMS remis (12 derniers mois, tous nos hôtels)' },
       { value: statNumber('whatsappRead'), suffix: ' %', label: 'des messages WhatsApp remis sont lus (12 derniers mois)' },
-      { value: String(brand.pms.length), suffix: '', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n' },
+      { prefix: '+', value: String(brand.pmsCompatibles.count), suffix: '', label: 'PMS compatibles, plus serrures, paiement, Zapier et n8n' },
     ],
 
     features: [
@@ -1015,7 +1017,7 @@ export const solutions: Record<string, SolutionData> = {
     stats: [
       { value: statNumber('emailDelivered'), suffix: ' %', label: 'des e-mails délivrés (12 derniers mois, tous nos hôtels)' },
       { value: statNumber('smsDelivered'), suffix: ' %', label: 'des SMS remis (12 derniers mois, tous nos hôtels)' },
-      { value: String(brand.pms.length), suffix: '', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n' },
+      { prefix: '+', value: String(brand.pmsCompatibles.count), suffix: '', label: 'PMS compatibles, plus serrures, paiement, Zapier et n8n' },
     ],
 
     features: [
