@@ -127,7 +127,7 @@
     },
     "trustBadges": {
       "rgpd": "Conforme RGPD",
-      "pms": "12 PMS + Zapier et n8n",
+      "pms": "{pmsCompatibles} PMS + Zapier et n8n",
       "support": "Support 7j/7"
     }
   },
@@ -541,7 +541,7 @@
     "steps": {
       "connect": {
         "title": "Connectez votre PMS",
-        "description": "Intégration native avec 12 PMS, dont Mews, Opera Cloud, Thaïs et Medialog, plus les serrures connectées, le paiement en ligne et des milliers d'applications via Zapier et n8n. Vos données clients se synchronisent en temps réel."
+        "description": "{pmsCompatibles} PMS compatibles, dont Mews, Opera Cloud, Thaïs et Medialog, plus les serrures connectées, le paiement en ligne et des milliers d'applications via Zapier et n8n. Vos données clients se synchronisent en temps réel."
       },
       "create": {
         "title": "Configurez vos workflows",
@@ -707,8 +707,8 @@
   "integrationsShowcase": {
     "badge": "Intégrations",
     "title": "Connecté à votre écosystème",
-    "subtitle": "12 PMS, serrures connectées, paiement en ligne et des milliers d'applications via Zapier et n8n",
-    "count": "12 PMS + Zapier et n8n",
+    "subtitle": "{pmsCompatibles} PMS, serrures connectées, paiement en ligne et des milliers d'applications via Zapier et n8n",
+    "count": "{pmsCompatibles} PMS + Zapier et n8n",
     "cta": "Voir toutes les intégrations",
     "comingSoon": "Bientôt disponible",
     "native": "Natif"
@@ -1281,7 +1281,7 @@
       "title": "Connectez TriggerFlow à vos outils",
       "subtitle": "Intégrations natives avec les principaux PMS hôteliers, serrures connectées, moyens de paiement et plateformes d'avis. Aucun développement nécessaire.",
       "cta": "Vous ne trouvez pas votre outil ?",
-      "count": "12 PMS + des milliers d'apps via Zapier et n8n"
+      "count": "{pmsCompatibles} PMS + des milliers d'apps via Zapier et n8n"
     },
     "badges": {
       "native": "Natif",
@@ -1550,7 +1550,7 @@
     },
     "trustBadges": {
       "rgpd": "Conforme RGPD",
-      "pms": "12 PMS + Zapier et n8n",
+      "pms": "{pmsCompatibles} PMS + Zapier et n8n",
       "support": "Support 7j/7"
     },
     "badges": {
@@ -2124,7 +2124,7 @@
         {
           "label": "Catégorie",
           "title": "Toutes les intégrations PMS",
-          "description": "Mews, Opera Cloud, Thaïs, Medialog et 8 autres PMS connectés nativement, plus des milliers d'applications via Zapier et n8n.",
+          "description": "Mews, Opera Cloud, Thaïs, Medialog : {pmsCompatibles} PMS compatibles, plus des milliers d'applications via Zapier et n8n.",
           "href": "/integrations"
         },
         {
@@ -2212,6 +2212,7 @@
     "banner": {
       "ariaLabel": "Bandeau de gestion des cookies",
       "message": "Nous utilisons des cookies pour mesurer l'audience du site et, si vous l'acceptez, mesurer l'efficacité de nos publicités. Vous pouvez accepter, refuser ou personnaliser votre choix à tout moment.",
+      "messageShort": "Cookies de mesure d'audience et, si vous l'acceptez, de nos publicités.",
       "accept": "Accepter",
       "reject": "Refuser",
       "customize": "Personnaliser",
@@ -3145,7 +3146,7 @@
           "text": "Liens de paiement · Acomptes · Statistiques · Rapports"
         }
       },
-      "pms": "Connecté à votre PMS · 12 PMS, serrures, paiement, Zapier et n8n",
+      "pms": "Connecté à votre PMS · {pmsCompatibles} PMS, serrures, paiement, Zapier et n8n",
       "badges": {
         "setup": "Livré clé en main",
         "support": "Support 7j/7",
@@ -3719,7 +3720,7 @@
     },
     "featured": {
       "pmsEyebrow": "Intégrations",
-      "pmsTitle": "Connecté nativement à {count} PMS",
+      "pmsTitle": "Compatible avec {pmsCompatibles} PMS",
       "pmsCta": "Voir toutes les intégrations",
       "quoteEyebrow": "Ils en parlent",
       "quoteCta": "Voir les cas clients",
@@ -4221,7 +4222,7 @@
     "facts": {
       "founded": "Création",
       "city": "Siège",
-      "pms": "PMS connectés nativement",
+      "pms": "PMS compatibles",
       "messages": "messages envoyés"
     },
     "storyEyebrow": "Notre histoire",

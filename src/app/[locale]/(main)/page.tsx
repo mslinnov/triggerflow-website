@@ -22,8 +22,8 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
   };
 
   const descriptions: Record<string, string> = {
-    fr: `CRM hôtelier avec marketing automation et workflows : emails, SMS, WhatsApp automatisés, programme fidélité et avis Google. Connecté nativement à ${brand.pms.length} PMS. Hébergé en France.`,
-    en: `Hotel CRM with marketing automation and workflows: automated emails, SMS, WhatsApp, loyalty program and Google reviews. Natively connected to ${brand.pms.length} PMS. Hosted in France.`,
+    fr: `CRM hôtelier avec marketing automation et workflows : emails, SMS, WhatsApp automatisés, programme fidélité et avis Google. Compatible avec ${brand.pmsCompatibles.fr} PMS. Hébergé en France.`,
+    en: `Hotel CRM with marketing automation and workflows: automated emails, SMS, WhatsApp, loyalty program and Google reviews. Compatible with ${brand.pmsCompatibles.en} PMS. Hosted in France.`,
   };
 
   return {

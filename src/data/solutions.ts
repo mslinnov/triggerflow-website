@@ -43,6 +43,8 @@ export interface SolutionChallenge {
 
 export interface SolutionStat {
   value: string;
+  /** Signe devant le nombre (« + » de « +20 PMS »). */
+  prefix?: string;
   suffix?: string;
   label: string;
 }
@@ -190,7 +192,7 @@ export const solutions: Record<string, SolutionData> = {
     stats: [
       hotelsStat,
       messagesStat,
-      { value: String(brand.pms.length), suffix: '', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n' },
+      { prefix: '+', value: String(brand.pmsCompatibles.count), suffix: '', label: 'PMS compatibles, plus serrures, paiement, Zapier et n8n' },
     ],
 
     features: [
@@ -357,7 +359,7 @@ export const solutions: Record<string, SolutionData> = {
 
     stats: [
       { value: '1', suffix: '', label: 'tableau de bord pour tous vos établissements' },
-      { value: String(brand.pms.length), suffix: '', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n' },
+      { prefix: '+', value: String(brand.pmsCompatibles.count), suffix: '', label: 'PMS compatibles, plus serrures, paiement, Zapier et n8n' },
       hotelsStat,
     ],
 
@@ -521,7 +523,7 @@ export const solutions: Record<string, SolutionData> = {
     stats: [
       messagesStat,
       { value: statNumber('whatsappRead'), suffix: ' %', label: 'des messages WhatsApp remis sont lus (12 derniers mois)' },
-      { value: String(brand.pms.length), suffix: '', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n' },
+      { prefix: '+', value: String(brand.pmsCompatibles.count), suffix: '', label: 'PMS compatibles, plus serrures, paiement, Zapier et n8n' },
     ],
 
     features: [
@@ -999,7 +1001,7 @@ export const solutions: Record<string, SolutionData> = {
     stats: [
       messagesStat,
       whatsappStat,
-      { value: String(brand.pms.length), suffix: '', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n' },
+      { prefix: '+', value: String(brand.pmsCompatibles.count), suffix: '', label: 'PMS compatibles, plus serrures, paiement, Zapier et n8n' },
     ],
 
     features: [
@@ -1579,7 +1581,7 @@ export const solutions: Record<string, SolutionData> = {
     stats: [
       messagesStat,
       whatsappStat,
-      { value: String(brand.pms.length), suffix: '', label: 'PMS connectés, plus serrures, paiement, Zapier et n8n' },
+      { prefix: '+', value: String(brand.pmsCompatibles.count), suffix: '', label: 'PMS compatibles, plus serrures, paiement, Zapier et n8n' },
     ],
     features: [
       { slug: 'automatisations', highlight: 'Les messages du séjour, tout seuls', whyForPersona: "Confirmation, informations d'arrivée, message de bienvenue et demande d'avis partent au bon moment.", bullets: ['Modèles prêts à adapter', 'Selon le canal de réservation', 'Email, SMS ou WhatsApp'] },

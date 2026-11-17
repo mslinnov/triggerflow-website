@@ -61,6 +61,14 @@ export const brand = {
   // Vidé le 07/11/2026 (décision de Soufiane) : Chloé, Infhotik, Protel et Galaxy retirés du site pour l'instant.
   pmsEnCours: [] as string[],
   /**
+   * Nombre de PMS affiché partout (« +20 PMS compatibles ») : les PMS connectés (`pms`) et ceux en cours
+   * d'intégration. Décision de Mounir du 15/11/2026, pour la pub ChatGPT « +20 PMS compatibles ».
+   * SEULE source de ce chiffre : les messages l'écrivent `{pmsCompatibles}` (remplacé au chargement,
+   * src/i18n/brand-values.ts), le MDX `<Stat id="pmsCompatibles" />`, le code lit cette constante
+   * (test src/data/claims.test.ts). Les grilles de logos montrent, elles, les seuls PMS de `pms`.
+   */
+  pmsCompatibles: { count: 20, fr: '+20', en: '20+' },
+  /**
    * Autres connexions, vérifiées dans l'app le 25/10/2026 (Models/Plug.php, Services/Locks,
    * Services/Payments, Services/Reviews, Models/FacilityMailbox.php).
    */

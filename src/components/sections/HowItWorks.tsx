@@ -167,7 +167,7 @@ export function HowItWorks() {
                         <PMSLogo key={pms.name} name={pms.name} src={pms.src} />
                       ))}
                       <span className="flex h-8 items-center justify-center rounded-md bg-brand-primary/5 px-2 text-[10px] font-semibold text-brand-primary">
-                        +{brand.pms.length - pmsLogos.length}
+                        +{brand.pmsCompatibles.count - pmsLogos.length}
                       </span>
                     </div>
                   </div>

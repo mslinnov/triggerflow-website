@@ -8,110 +8,122 @@
   },
   "metadata": {
     "title": "CRM hôtelier connecté à votre PMS",
-    "description": "Un CRM pensé pour l'hôtellerie : fiches clients alimentées par votre PMS, e-mails, SMS et WhatsApp automatiques à chaque étape du séjour. Plan gratuit pour démarrer."
+    "description": "Le CRM hôtelier connecté à votre PMS\u00a0: plus de réservations en direct, plus de ventes par séjour et plus d'avis positifs, sans ressaisie. Plan gratuit pour démarrer."
   },
   "sections": [
     {
       "type": "LPHero",
       "props": {
-        "badge": "CRM hôtelier",
-        "title": "Le CRM hôtelier qui travaille avec votre PMS, pas à côté",
-        "subtitle": "Chaque réservation enregistrée dans votre PMS crée ou complète la fiche du client. TriggerFlow envoie ensuite le bon message au bon moment du séjour, par e-mail, SMS ou WhatsApp, sans ressaisie.",
+        "variant": "dark",
+        "badge": "Pour hôtels indépendants et groupes",
+        "title": "Le CRM hôtelier",
+        "titleAccent": "connecté à votre PMS.",
+        "subtitle": "Plus de réservations en direct et plus de ventes, sans ressaisie. Chaque réservation de votre PMS complète la fiche du client, et TriggerFlow lui envoie le bon message au bon moment.",
         "ctaLabel": "Réserver une démo",
         "ctaHref": "https://app.lemcal.com/@trigger-flow/demo?utm_source=site&utm_medium=landing&utm_campaign=lp-crm-hotelier&utm_content=hero",
-        "secondaryCtaLabel": "Voir les tarifs",
-        "secondaryCtaHref": "/fr/tarifs",
-        "trustIndicators": [
-          "Plan gratuit pour démarrer",
-          "Sans frais d'installation",
-          "Entreprise française depuis 2019"
+        "secondaryCtaLabel": "Être rappelé",
+        "secondaryCtaHref": "#rappel",
+        "badges": [
+          { "label": "Plan gratuit pour démarrer", "icon": "Check", "solid": true },
+          { "label": "{pmsCompatibles} PMS compatibles", "icon": "Plug" },
+          { "label": "Livré clé en main", "icon": "Clock" }
+        ],
+        "benefitCards": [
+          {
+            "icon": "CalendarCheck",
+            "title": "Plus de réservations en direct",
+            "description": "Vos anciens clients reviennent, sans commission OTA"
+          },
+          {
+            "icon": "ShoppingBag",
+            "title": "Plus de ventes par séjour",
+            "description": "Surclassements et options proposés avant l'arrivée"
+          },
+          {
+            "icon": "Star",
+            "title": "Plus d'avis positifs",
+            "description": "Enquête envoyée automatiquement après le séjour"
+          }
         ]
       }
     },
     {
       "type": "LPSocialProof",
       "props": {
-        "title": "Ils ont choisi TriggerFlow pour leur relation client",
-        "stats": [
-          {
-            "value": "300+",
-            "label": "hôtels utilisateurs"
-          },
-          {
-            "value": "5/5",
-            "label": "note Google (3 avis)"
-          },
-          {
-            "value": "2M+",
-            "label": "messages envoyés"
-          }
-        ],
-        "testimonial": {
-          "quote": "Après avoir testé plusieurs solutions CRM, nous avons trouvé avec TriggerFlow l'outil qui correspond vraiment à nos besoins.",
-          "author": "Maxime Jullien",
-          "role": "Directeur, Edgar Hotel & Spa, Saint-Brieuc"
-        }
+        "title": "Ils ont choisi TriggerFlow",
+        "logos": "clients"
       }
     },
     {
-      "type": "LPFeatures",
+      "type": "LPIntegrations",
       "props": {
-        "sectionTitle": "Tout le parcours client au même endroit",
-        "sectionSubtitle": "De la réservation au retour du client, TriggerFlow part des données de votre PMS.",
-        "features": [
-          {
-            "icon": "Users",
-            "title": "Une fiche par client",
-            "description": "Séjours, préférences, dépenses et échanges réunis sur une seule fiche, mise à jour à chaque réservation."
-          },
-          {
-            "icon": "Zap",
-            "title": "Des scénarios automatiques",
-            "description": "Confirmation enrichie, pré-séjour, message d'accueil, départ : chaque étape part seule, selon vos règles."
-          },
-          {
-            "icon": "MessageSquare",
-            "title": "E-mail, SMS et WhatsApp",
-            "description": "Chaque message part sur le canal adapté au client, et ses réponses arrivent dans une seule boîte de réception."
-          },
-          {
-            "icon": "TrendingUp",
-            "title": "Ventes additionnelles",
-            "description": "Surclassement, petit-déjeuner, spa ou late check-out proposés avant l'arrivée, avec paiement en ligne."
-          },
-          {
-            "icon": "Star",
-            "title": "Satisfaction et avis",
-            "description": "Questionnaire après le séjour, alerte du responsable sur une note basse, invitation à laisser un avis envoyée à tous."
-          },
-          {
-            "icon": "BarChart3",
-            "title": "Résultats mesurés",
-            "description": "Ouvertures, réponses et revenus générés, suivis par scénario et par établissement."
-          }
-        ]
+        "eyebrow": "Connecté à votre PMS",
+        "title": "Branché sur votre PMS, pas à côté",
+        "description": "Clients, réservations, dates de séjour, montants\u00a0: tout remonte seul de votre PMS. Pas d'export, pas de fichier, pas de ressaisie à la réception. Vous gardez votre PMS, TriggerFlow s'y connecte.",
+        "gridLabel": "{pmsCompatibles} PMS compatibles, dont",
+        "footnote": "Et d'autres en cours d'intégration. Pour vos autres outils\u00a0: Zapier et n8n. Votre PMS n'est pas dans la liste\u00a0? Dites-le-nous pendant la démo."
       }
     },
     {
-      "type": "LPBenefits",
+      "type": "LPFeatureRows",
       "props": {
-        "sectionTitle": "Pourquoi un CRM conçu pour l'hôtellerie",
-        "layout": "list",
-        "benefits": [
+        "rows": [
           {
-            "title": "Vos données arrivent seules",
-            "description": "TriggerFlow se connecte aux PMS du marché français. Les clients et les séjours remontent sans export ni fichier.",
-            "highlight": "Sans ressaisie"
+            "eyebrow": "Réservations en direct",
+            "title": "Vos anciens clients reviennent réserver chez vous, pas sur Booking",
+            "description": "TriggerFlow repère les clients à relancer à partir de leurs séjours passés, puis leur écrit avec un lien vers votre moteur de réservation. Une réservation directe, c'est une commission OTA en moins.",
+            "bullets": [
+              "Segments selon l'historique\u00a0: clients dormants, clients venus par une OTA, habitués",
+              "Campagnes par e-mail, SMS et WhatsApp, envoyées au bon moment",
+              "Lien vers votre moteur de réservation dans chaque message"
+            ],
+            "stat": { "statId": "whatsappRead", "label": "des messages WhatsApp envoyés par TriggerFlow sont lus" },
+            "visual": {
+              "caption": "Exemple",
+              "arrows": true,
+              "items": [
+                { "icon": "Clock", "title": "Dernier séjour il y a 14 mois", "subtitle": "Venu par Booking.com, 2 nuits" },
+                { "icon": "Filter", "title": "Client dormant détecté", "subtitle": "Aucun séjour depuis plus d'un an", "pill": "Segment" },
+                { "icon": "Send", "title": "Offre de retour envoyée", "subtitle": "E-mail avec lien vers votre moteur", "tone": "gold" }
+              ]
+            }
           },
           {
-            "title": "Votre équipe garde la main",
-            "description": "Les scénarios se modifient sans développeur : textes, délais, conditions par type de chambre, de tarif ou de client.",
-            "highlight": "Sans code"
+            "eyebrow": "Ventes par séjour",
+            "title": "Entre la réservation et l'arrivée, votre hôtel vend sans vous",
+            "description": "Quelques jours avant l'arrivée, le client reçoit les options de votre hôtel et les paie en ligne. La réception retrouve chaque commande dans TriggerFlow.",
+            "bullets": [
+              "Surclassement, petit-déjeuner, spa, parking, départ tardif",
+              "Paiement en ligne dans le message",
+              "Offres envoyées automatiquement selon la date d'arrivée"
+            ],
+            "stat": { "statId": "upsellAccepted", "label": "des offres envoyées 3 à 7 jours avant l'arrivée sont achetées (36 708 offres étudiées)" },
+            "visual": {
+              "caption": "Exemple",
+              "items": [
+                { "tag": "J-7", "title": "E-mail\u00a0: votre séjour se prépare", "subtitle": "Petit-déjeuner, parking, spa" },
+                { "tag": "J-3", "title": "SMS\u00a0: surclassement proposé", "subtitle": "Chambre supérieure, payée en ligne", "pill": "Payé", "tone": "gold" },
+                { "tag": "J-1", "title": "WhatsApp\u00a0: départ tardif", "subtitle": "Réponse du client en un clic" }
+              ]
+            }
           },
           {
-            "title": "Vous démarrez sans engagement",
-            "description": "Trois formules publiques, de One Way à All Inclusive. Les modules s'ajoutent quand vous en avez besoin.",
-            "highlight": "Plan gratuit"
+            "eyebrow": "Avis",
+            "title": "Plus d'avis positifs, moins de mauvaises surprises",
+            "description": "Après le départ, chaque client reçoit une courte enquête. Tous sont invités à laisser un avis sur Google, TripAdvisor ou Booking.com, et le responsable est alerté dès qu'une note est basse\u00a0: vous entendez les insatisfaits avant qu'ils ne publient.",
+            "bullets": [
+              "Enquête envoyée automatiquement après le séjour",
+              "Invitation à laisser un avis envoyée à tous les clients",
+              "Alerte sur une note basse, réponses aux avis préparées par l'IA (module Avis)"
+            ],
+            "visual": {
+              "caption": "Exemple",
+              "items": [
+                { "icon": "Star", "title": "Comment s'est passé votre séjour\u00a0?", "subtitle": "Enquête envoyée le lendemain du départ" },
+                { "icon": "MessageCircle", "title": "Laissez-nous un avis", "subtitle": "Google, TripAdvisor, Booking.com", "tone": "gold" },
+                { "icon": "AlertTriangle", "title": "Note de 2/5 reçue", "subtitle": "Le responsable est prévenu", "pill": "Alerte", "tone": "alert" }
+              ]
+            }
           }
         ]
       }
@@ -119,16 +131,144 @@
     {
       "type": "LPCTA",
       "props": {
+        "variant": "light",
+        "title": "Voyez ces scénarios sur les données de votre hôtel",
+        "subtitle": "Une démo de 30 minutes, à partir de votre PMS.",
+        "ctaLabel": "Réserver une démo",
+        "ctaHref": "https://app.lemcal.com/@trigger-flow/demo?utm_source=site&utm_medium=landing&utm_campaign=lp-crm-hotelier&utm_content=milieu"
+      }
+    },
+    {
+      "type": "LPJourney",
+      "props": {
+        "eyebrow": "Parcours du séjour",
+        "sectionTitle": "Six étapes du séjour, aucun message envoyé à la main",
+        "steps": [
+          { "icon": "CalendarCheck", "title": "Réservation", "description": "Confirmation enrichie\u00a0: accès, services, options" },
+          { "icon": "Mail", "title": "Pré-séjour", "description": "Infos pratiques et offres avant l'arrivée" },
+          { "icon": "LogIn", "title": "Arrivée", "description": "Bienvenue et enregistrement en ligne" },
+          { "icon": "MessageCircle", "title": "Séjour", "description": "Questions sur WhatsApp, réponses de l'équipe" },
+          { "icon": "LogOut", "title": "Départ", "description": "Remerciement personnalisé" },
+          { "icon": "Star", "title": "Après-séjour", "description": "Enquête, avis, offre de retour" }
+        ],
+        "note": "Textes, délais et conditions se modifient sans développeur."
+      }
+    },
+    {
+      "type": "LPTestimonials",
+      "props": {
+        "eyebrow": "Ils utilisent TriggerFlow",
+        "sectionTitle": "Des hôtels indépendants aux groupes",
+        "caseStudies": [
+          { "slug": "edgar-hotel-spa", "image": "/images/lp/crm-hotelier/cas-edgar.webp" },
+          { "slug": "causse-comtal", "image": "/images/lp/crm-hotelier/cas-causse-comtal.webp" },
+          { "slug": "groupe-noemys", "image": "/images/lp/crm-hotelier/cas-noemys.webp" }
+        ],
+        "homeTestimonials": true
+      }
+    },
+    {
+      "type": "LPPlans",
+      "props": {
+        "id": "tarifs",
+        "eyebrow": "Tarifs",
+        "sectionTitle": "Commencez gratuitement, passez à la suite quand vous êtes prêt",
+        "popularLabel": "Le plus choisi",
+        "perMonthLabel": "mois",
+        "notes": [
+          "Sans engagement, préavis de 30 jours.",
+          "14 jours d'essai sur les plans payants."
+        ],
+        "ctaLabel": "Réserver une démo",
+        "ctaHref": "https://app.lemcal.com/@trigger-flow/demo?utm_source=site&utm_medium=landing&utm_campaign=lp-crm-hotelier&utm_content=tarifs"
+      }
+    },
+    {
+      "type": "LPFAQ",
+      "props": {
+        "id": "questions",
+        "eyebrow": "Questions",
+        "sectionTitle": "Les questions des hôteliers avant de démarrer",
+        "items": [
+          {
+            "question": "J'ai déjà un PMS, pourquoi un CRM\u00a0?",
+            "answer": "Votre PMS gère les réservations, les chambres et la facturation. TriggerFlow se sert de ces données pour parler à vos clients\u00a0: messages avant, pendant et après le séjour, offres, enquêtes, campagnes de retour. Vous gardez votre PMS, TriggerFlow s'y connecte."
+          },
+          {
+            "question": "Mon PMS est-il compatible\u00a0?",
+            "answer": "TriggerFlow est compatible avec {pmsCompatibles} PMS, dont {pmsList}, et d'autres sont en cours d'intégration. Si le vôtre n'y figure pas, dites-le-nous pendant la démo."
+          },
+          {
+            "question": "Combien de temps pour démarrer\u00a0?",
+            "answer": "TriggerFlow vous est livré clé en main : notre équipe branche votre PMS et configure avec vous vos premiers scénarios."
+          },
+          {
+            "question": "Combien ça coûte\u00a0?",
+            "answer": "Le plan Découverte est gratuit. Les plans payants commencent à {entryPrice} € par mois, sans engagement, avec 14 jours d'essai."
+          },
+          {
+            "question": "Faut-il des compétences techniques\u00a0?",
+            "answer": "Non. Les scénarios se créent et se modifient depuis l'interface, sans code. Textes, délais et conditions se changent en quelques clics."
+          },
+          {
+            "question": "Et le RGPD\u00a0?",
+            "answer": "TriggerFlow est conforme au RGPD. Chaque message marketing porte un lien de désinscription, pris en compte automatiquement pour les envois suivants."
+          },
+          {
+            "question": "J'ai plusieurs hôtels, est-ce adapté\u00a0?",
+            "answer": "Oui. Un groupe gère tous ses établissements depuis un seul compte, avec une vue consolidée. Le groupe Noemys utilise TriggerFlow sur ses 15 établissements."
+          },
+          {
+            "question": "Qui m'accompagne\u00a0?",
+            "answer": "Notre équipe, basée à Toulouse, vous accompagne à la mise en place puis au quotidien. Le support répond 7j/7."
+          }
+        ]
+      }
+    },
+    {
+      "type": "LPCTA",
+      "props": {
+        "id": "rappel",
         "title": "Voyez ce que TriggerFlow ferait pour votre hôtel",
-        "subtitle": "Une démo à partir de votre situation : vos séjours, vos canaux, vos priorités.",
+        "subtitle": "Une démo à partir de votre situation\u00a0: votre PMS, vos séjours, vos priorités. Vous préférez qu'on vous appelle\u00a0? Laissez votre numéro.",
         "ctaLabel": "Réserver une démo",
         "ctaHref": "https://app.lemcal.com/@trigger-flow/demo?utm_source=site&utm_medium=landing&utm_campaign=lp-crm-hotelier&utm_content=cta-bas",
-        "secondaryCtaLabel": "Voir les tarifs",
-        "secondaryCtaHref": "/fr/tarifs",
         "benefits": [
           "Plan gratuit pour démarrer",
-          "Sans frais d'installation",
-          "Équipe basée en France"
+          "Livré clé en main",
+          "Support 7j/7",
+          "Équipe basée à Toulouse"
+        ],
+        "callback": {
+          "title": "Être rappelé",
+          "subtitle": "Un conseiller vous appelle au moment qui vous arrange.",
+          "source": "lp-crm-hotelier",
+          "slots": ["Dès que possible", "Le matin", "L'après-midi"],
+          "labels": {
+            "firstName": "Prénom",
+            "hotelName": "Hôtel",
+            "phone": "Téléphone",
+            "email": "E-mail",
+            "slot": "Quand vous appeler\u00a0?",
+            "submit": "Être rappelé",
+            "successTitle": "C'est noté.",
+            "successBody": "Nous vous appelons au créneau choisi.",
+            "error": "L'envoi a échoué. Réessayez, ou réservez directement une démo.",
+            "invalidPhone": "Ce numéro ne semble pas valide. Vérifiez-le, avec l'indicatif s'il n'est pas français.",
+            "privacy": "Vos coordonnées servent à vous rappeler au sujet de TriggerFlow. Aucune revente à des tiers.",
+            "privacyLink": "Politique de confidentialité",
+            "privacyHref": "/fr/politique-confidentialite"
+          }
+        }
+      }
+    },
+    {
+      "type": "LPFooter",
+      "props": {
+        "links": [
+          { "label": "Mentions légales", "href": "/fr/mentions-legales" },
+          { "label": "Politique de confidentialité", "href": "/fr/politique-confidentialite" },
+          { "label": "CGV", "href": "/fr/cgv" }
         ]
       }
     }

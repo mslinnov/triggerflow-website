@@ -49,9 +49,12 @@ export function CookieConsentBanner() {
           role="region"
           aria-label={t('ariaLabel')}
         >
-          <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-5 sm:px-6 lg:flex-row lg:items-center lg:gap-6 lg:px-8 lg:py-6">
-            <p className="flex-1 text-sm leading-relaxed text-zinc-700">
-              {t('message')}{' '}
+          {/* Compact sur mobile (texte court, une rangée de boutons) : le bandeau ne doit pas masquer le premier écran.
+              Refuser et Accepter ont le même poids visuel, comme le demande la CNIL ; Personnaliser est un lien. */}
+          <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-3 sm:gap-4 sm:px-6 sm:py-5 lg:flex-row lg:items-center lg:gap-6 lg:px-8 lg:py-6">
+            <p className="flex-1 text-[13px] leading-snug text-zinc-700 sm:text-sm sm:leading-relaxed">
+              <span className="sm:hidden">{t('messageShort')}</span>
+              <span className="hidden sm:inline">{t('message')}</span>{' '}
               <a
                 href={`/${locale}/politique-confidentialite`}
                 className="font-medium text-brand-primary underline-offset-2 hover:underline"
@@ -61,25 +64,25 @@ export function CookieConsentBanner() {
               .
             </p>
 
-            <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap lg:flex-nowrap">
-              <button
-                type="button"
-                onClick={handleReject}
-                className="rounded-lg border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-50"
-              >
-                {t('reject')}
-              </button>
+            <div className="flex items-center gap-2">
               <button
                 type="button"
                 onClick={handleCustomize}
-                className="rounded-lg border border-zinc-200 px-4 py-2 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-50"
+                className="min-h-10 shrink-0 px-2 text-sm font-medium text-zinc-700 underline underline-offset-2 hover:text-brand-dark"
               >
                 {t('customize')}
               </button>
               <button
                 type="button"
+                onClick={handleReject}
+                className="min-h-10 flex-1 rounded-lg bg-brand-primary px-4 text-sm font-medium text-white transition-colors hover:bg-brand-primary/90 sm:flex-none"
+              >
+                {t('reject')}
+              </button>
+              <button
+                type="button"
                 onClick={handleAccept}
-                className="rounded-lg bg-brand-primary px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-brand-primary/90"
+                className="min-h-10 flex-1 rounded-lg bg-brand-primary px-4 text-sm font-medium text-white transition-colors hover:bg-brand-primary/90 sm:flex-none"
               >
                 {t('accept')}
               </button>

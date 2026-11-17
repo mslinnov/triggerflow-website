@@ -55,6 +55,8 @@ export interface ModuleUseCase {
 
 export interface ModuleStat {
   value: string;
+  /** Signe devant le nombre (« + » de « +20 PMS »). */
+  prefix?: string;
   label: string;
   suffix?: string;
 }
@@ -680,7 +682,7 @@ export const modules: Record<string, ModuleData> = {
       'TriggerFlow exécute vos workflows 24h/24, week-ends et jours fériés inclus, jamais de tâche oubliée'
     ],
     stats: [
-      { value: String(brand.pms.length), label: 'PMS connectés, plus serrures, paiement, Zapier et n8n', suffix: '' },
+      { prefix: '+', value: String(brand.pmsCompatibles.count), label: 'PMS compatibles, plus serrures, paiement, Zapier et n8n', suffix: '' },
       { value: '0', label: 'compétence technique requise', suffix: '' },
       { value: '24', label: 'heures sur 24 de fonctionnement', suffix: '/7' },
     ],
@@ -789,7 +791,7 @@ export const modules: Record<string, ModuleData> = {
     stats: [
       { value: '360', label: 'vue complète de chaque client', suffix: '°' },
       { value: '0', label: 'saisie manuelle nécessaire', suffix: '' },
-      { value: String(brand.pms.length), label: 'PMS connectés, plus serrures, paiement, Zapier et n8n', suffix: '' },
+      { prefix: '+', value: String(brand.pmsCompatibles.count), label: 'PMS compatibles, plus serrures, paiement, Zapier et n8n', suffix: '' },
       { value: '1', label: 'profil par client, tous canaux confondus', suffix: '' },
     ],
     journey: [

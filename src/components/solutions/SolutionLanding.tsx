@@ -46,7 +46,7 @@ export async function SolutionLanding({ slug, locale }: { slug: string; locale: 
 
       <section className="border-y border-line bg-white py-12">
         <Container className="grid gap-10 sm:grid-cols-3">
-          {s.stats.map((st) => <ProofStat key={st.label} value={`${st.value}${st.suffix ?? ''}`} label={st.label} />)}
+          {s.stats.map((st) => <ProofStat key={st.label} value={`${st.prefix ?? ''}${st.value}${st.suffix ?? ''}`} label={st.label} />)}
         </Container>
       </section>
 

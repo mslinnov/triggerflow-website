@@ -20,6 +20,8 @@
   --brand-light: #CCE2E1;
   --brand-accent: #FFCFA2;
   --brand-accent-light: #FFF4E8;
+  /* Menthe des visuels de pub (Kreative) : accent de titre sur fond vert foncé seulement */
+  --brand-mint: #8FD9C4;
 
   /* Surfaces derivees (teal-tinted) */
   --surface-primary: #FFFFFF;
@@ -188,6 +190,7 @@
   --color-brand-light: var(--brand-light);
   --color-brand-accent: var(--brand-accent);
   --color-brand-accent-light: var(--brand-accent-light);
+  --color-brand-mint: var(--brand-mint);
 
   /* Surface colors */
   --color-surface-primary: var(--surface-primary);

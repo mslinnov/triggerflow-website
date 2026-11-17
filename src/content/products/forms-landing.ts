@@ -72,7 +72,7 @@ export const formsLanding: DedicatedLandingContent & { seo: { title: { fr: strin
       eyebrow: { fr: 'Connectés', en: 'Connected' },
       title: { fr: 'Les réponses vont là où elles servent.', en: 'Answers go where they are useful.' },
       steps: [
-        { title: { fr: 'Dans votre PMS', en: 'Into your PMS' }, text: { fr: 'Email, téléphone, adresse, nationalité, pièce d’identité, heure d’arrivée : écrits automatiquement dans 9 PMS, dont Mews, Opera Cloud, Thaïs, Apaleo et Medialog.', en: 'Email, phone, address, nationality, ID, arrival time: written automatically to 9 PMS, including Mews, Opera Cloud, Thaïs, Apaleo and Medialog.' } },
+        { title: { fr: 'Dans votre PMS', en: 'Into your PMS' }, text: { fr: 'Email, téléphone, adresse, nationalité, pièce d’identité, heure d’arrivée : écrits automatiquement dans votre PMS : Mews, Opera Cloud, Thaïs, Apaleo, Medialog…', en: 'Email, phone, address, nationality, ID, arrival time: written automatically to your PMS: Mews, Opera Cloud, Thaïs, Apaleo, Medialog…' } },
         { title: { fr: 'Sur la fiche client', en: 'On the guest profile' }, text: { fr: 'Chaque réponse rattachée au client, et des tags posés selon ses choix.', en: 'Every answer linked to the guest, and tags set from their choices.' } },
         { title: { fr: 'Dans vos flows', en: 'In your flows' }, text: { fr: 'Formulaire rempli : le flow suivant démarre. Pas rempli : la relance part.', en: 'Form submitted: the next flow starts. Not submitted: the reminder goes out.' } },
         { title: { fr: 'Chez votre équipe', en: 'To your team' }, text: { fr: 'Une alerte email à chaque réponse, avec le client et la réservation.', en: 'An email alert for every answer, with the guest and booking.' } },

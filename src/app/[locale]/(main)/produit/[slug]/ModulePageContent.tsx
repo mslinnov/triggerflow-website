@@ -1814,7 +1814,7 @@ export default function ModulePageContent({ moduleSlug }: ModulePageContentProps
                   className="group text-center"
                 >
                   <div className="font-serif text-4xl font-bold text-brand-primary transition-colors md:text-5xl">
-                    <AnimatedStat value={stat.value} suffix={stat.suffix} />
+                    <AnimatedStat value={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
                   </div>
                   <p className="mt-1 text-sm text-text-muted">{stat.label}</p>
                 </motion.div>

@@ -89,7 +89,7 @@ export function IntegrationsShowcase() {
             <PMSCard key={pms.slug} pms={pms} badge={pms.comingSoon ? t('comingSoon') : t('native')} />
           ))}
 
-          {/* Carte « 12 PMS + Zapier et n8n » */}
+          {/* Carte « +20 PMS + Zapier et n8n » (integrationsShowcase.count, valeur de brand.pmsCompatibles) */}
           <motion.div
             variants={cardReveal}
             whileHover={{ y: -4, scale: 1.02 }}

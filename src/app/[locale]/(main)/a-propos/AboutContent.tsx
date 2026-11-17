@@ -27,7 +27,7 @@ export async function AboutContent() {
         <Container className="grid gap-10 sm:grid-cols-4">
           <ProofStat value={brand.foundingDate} label={t('facts.founded')} />
           <ProofStat value={brand.foundingCity} label={t('facts.city')} />
-          <ProofStat value={String(brand.pms.length)} label={t('facts.pms')} />
+          <ProofStat value={locale === 'en' ? brand.pmsCompatibles.en : brand.pmsCompatibles.fr} label={t('facts.pms')} />
           <ProofStat value={stat('messages', locale)} label={t('facts.messages')} />
         </Container>
       </section>

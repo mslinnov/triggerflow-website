@@ -127,7 +127,7 @@
     },
     "trustBadges": {
       "rgpd": "GDPR Compliant",
-      "pms": "12 PMS + Zapier & n8n",
+      "pms": "{pmsCompatibles} PMS + Zapier & n8n",
       "support": "Support 7 days a week"
     }
   },
@@ -541,7 +541,7 @@
     "steps": {
       "connect": {
         "title": "Connect your PMS",
-        "description": "Native integration with 12 PMS, including Mews, Opera Cloud, Thaïs and Medialog, plus smart locks, online payments and thousands of apps via Zapier and n8n. Your guest data syncs automatically."
+        "description": "{pmsCompatibles} compatible PMS, including Mews, Opera Cloud, Thaïs and Medialog, plus smart locks, online payments and thousands of apps via Zapier and n8n. Your guest data syncs automatically."
       },
       "create": {
         "title": "Create your automations",
@@ -707,8 +707,8 @@
   "integrationsShowcase": {
     "badge": "Integrations",
     "title": "Works with your PMS",
-    "subtitle": "12 PMS, smart locks, online payments and thousands of apps via Zapier and n8n",
-    "count": "12 PMS + Zapier & n8n",
+    "subtitle": "{pmsCompatibles} PMS, smart locks, online payments and thousands of apps via Zapier and n8n",
+    "count": "{pmsCompatibles} PMS + Zapier & n8n",
     "cta": "View all integrations",
     "comingSoon": "Coming soon",
     "native": "Native"
@@ -1281,7 +1281,7 @@
       "title": "Connect TriggerFlow to your tools",
       "subtitle": "Native integrations with leading hotel PMS, smart locks, payment solutions and review platforms. No development required.",
       "cta": "Can't find your tool?",
-      "count": "12 PMS + thousands of apps via Zapier & n8n"
+      "count": "{pmsCompatibles} PMS + thousands of apps via Zapier & n8n"
     },
     "badges": {
       "native": "Native",
@@ -1550,7 +1550,7 @@
     },
     "trustBadges": {
       "rgpd": "GDPR Compliant",
-      "pms": "12 PMS + Zapier & n8n",
+      "pms": "{pmsCompatibles} PMS + Zapier & n8n",
       "support": "Support 7 days a week"
     },
     "badges": {
@@ -2124,7 +2124,7 @@
         {
           "label": "Category",
           "title": "All PMS integrations",
-          "description": "Mews, Opera Cloud, Thaïs, Medialog and 8 more PMS connected natively, plus thousands of apps via Zapier and n8n.",
+          "description": "Mews, Opera Cloud, Thaïs, Medialog: {pmsCompatibles} compatible PMS, plus thousands of apps via Zapier and n8n.",
           "href": "/integrations"
         },
         {
@@ -2212,6 +2212,7 @@
     "banner": {
       "ariaLabel": "Cookie consent banner",
       "message": "We use cookies to measure site traffic and, if you agree, to measure how our ads perform. You can accept, decline or customise your choice at any time.",
+      "messageShort": "Cookies to measure traffic and, if you agree, our ads.",
       "accept": "Accept",
       "reject": "Decline",
       "customize": "Customize",
@@ -3442,7 +3443,7 @@
     },
     "featured": {
       "pmsEyebrow": "Integrations",
-      "pmsTitle": "Natively connected to {count} PMS",
+      "pmsTitle": "Compatible with {pmsCompatibles} PMS",
       "pmsCta": "See all integrations",
       "quoteEyebrow": "In their words",
       "quoteCta": "See customer stories",
@@ -3944,7 +3945,7 @@
     "facts": {
       "founded": "Founded",
       "city": "Headquarters",
-      "pms": "Natively connected PMS",
+      "pms": "Compatible PMS",
       "messages": "messages sent"
     },
     "storyEyebrow": "Our story",

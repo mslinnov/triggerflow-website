@@ -20,8 +20,8 @@ const stats = [
   },
   {
     icon: Plug,
-    value: String(brand.pms.length),
-    label: 'PMS + Zapier et n8n',
+    value: brand.pmsCompatibles.fr,
+    label: 'PMS compatibles + Zapier et n8n',
   },
   {
     icon: Send,

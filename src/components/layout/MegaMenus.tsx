@@ -7,7 +7,6 @@ import {
   FileText,
 } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
-import { brand } from '@/data/brand';
 import { clientLogos, homeTestimonials } from '@/data/clients';
 import { companyMenu, frOnlyKeys, platformMenu, productMenu, resourcesMenu, solutionsMenu, type NavItem } from '@/data/navigation';
 import { pmsPages } from '@/content/pms';
@@ -103,7 +102,7 @@ export function PlatformMenu({ onPick }: MenuProps) {
         <div className="flex h-full flex-col rounded-2xl border border-line bg-paper p-5">
           <ColumnTitle>{t('featured.pmsEyebrow')}</ColumnTitle>
           <p className="mt-2 text-[17px] font-semibold leading-snug tracking-[-0.01em] text-ink">
-            {t('featured.pmsTitle', { count: brand.pms.length })}
+            {t('featured.pmsTitle')}
           </p>
           <ul className="mt-4 grid grid-cols-4 gap-2">
             {pmsLogos.map((p) => (
