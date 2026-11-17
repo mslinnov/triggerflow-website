@@ -3,7 +3,7 @@ import {
   AlertTriangle, ArrowRightLeft, Bell, Bot, Briefcase, Check, Folder, Forward, Globe, Languages, Mail, MessageCircle, MessageSquareText,
   MessagesSquare, Phone, PhoneCall, Smartphone, Sparkles, StickyNote, UserPlus, UserCheck, Users, X, Filter, Zap, Star,
 } from 'lucide-react';
-import { Container, CtaBand, DsButton, Eyebrow, FaqList, PendingShot, ProductFrame, Section, SectionHeader } from '@/components/ds';
+import { Container, CtaBand, DsButton, Eyebrow, FaqList, PhoneShot, ProductFrame, Section, SectionHeader } from '@/components/ds';
 import { PricingReassurance } from '@/components/pricing/PricingReassurance';
 import { brand } from '@/data/brand';
 import { clientLogos } from '@/data/clients';
@@ -243,7 +243,7 @@ export function InboxLanding({ locale }: { locale: string }) {
                 );
               })}
             </ul>
-            <PendingShot shape="phone" label={l(c.everywhere.pending)} />
+            <PhoneShot src={c.everywhere.image.src} alt={l(c.everywhere.image.alt)} width={c.everywhere.image.width} height={c.everywhere.image.height} />
           </div>
           <figure className="mt-10 flex flex-col gap-2 rounded-2xl border border-line bg-paper px-6 py-5 sm:flex-row sm:items-center sm:gap-5">
             <span className="flex gap-0.5 text-peach" role="img" aria-label="5/5">{[0, 1, 2, 3, 4].map((i) => <Star key={i} aria-hidden className="h-4 w-4 fill-current" />)}</span>

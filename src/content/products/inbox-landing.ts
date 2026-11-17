@@ -143,7 +143,7 @@ export const inboxLanding = {
       { title: { fr: 'Notifications', en: 'Notifications' }, text: { fr: 'Par canal, pour tout le monde ou seulement pour ce qui vous est assigné.', en: 'Per channel, for everyone or only for what is assigned to you.' } },
       { title: { fr: 'Dans Thaïs', en: 'Inside Thaïs' }, text: { fr: 'La messagerie s’ouvre directement dans le PMS Thaïs.', en: 'The inbox opens right inside the Thaïs PMS.' } },
     ],
-    pending: { fr: 'Capture à venir · application mobile', en: 'Screenshot coming · mobile app' } as L,
+    image: { src: '/images/app/inbox-phone.webp', width: 390, height: 844, alt: { fr: 'Messagerie TriggerFlow sur téléphone : WhatsApp, e-mail, chat et appels', en: 'TriggerFlow inbox on a phone: WhatsApp, email, chat and calls' } as L },
   },
   quote: {
     text: { fr: 'Le support de l’équipe est extrêmement réactif. Confiance et disponibilité à 100 % !', en: 'The team’s support is extremely responsive. Trust and availability, 100%!' } as L,

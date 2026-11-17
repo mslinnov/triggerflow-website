@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { decorateBookingUrl } from '@/lib/attribution';
+import { classifyDemoLink } from '@/lib/demo-link';
 
 declare global {
   interface Window {
@@ -10,8 +11,10 @@ declare global {
 }
 
 /**
- * Tracks clicks on every "Book a demo" link (any <a> pointing to lemcal.com) and
- * sends a GA4 `book_demo_click` event plus a Meta `Lead` event. Implemented as a
+ * Tracks clicks on every "Book a demo" link (any <a> pointing to lemcal.com, or to
+ * the site's own `/demo` page that embeds the calendar) and sends a GA4
+ * `book_demo_click` event (with `destination`: `lemcal` or `demo_page`) plus a
+ * Meta `Lead` event. The booking itself is counted on `/merci-rdv` (`demo_booked`). Implemented as a
  * single delegated listener on the document so it captures ALL demo CTAs at once —
  * ButtonLink components, raw <a> tags, the sticky mobile CTA, and the markdown
  * links inside MDX articles — without touching any of the individual buttons.
@@ -31,19 +34,24 @@ export function DemoClickTracker() {
 
       // `link.href` resolves to the absolute URL of the anchor.
       const href = link.href;
-      if (!href || !href.includes('lemcal.com')) return;
-
-      if (typeof window === 'undefined') return;
+      if (!href || typeof window === 'undefined') return;
+      const destination = classifyDemoLink(href, window.location.origin);
+      if (!destination) return;
 
       // La source de la visite (UTM, et gclid avec accord marketing) suit le
       // visiteur jusqu'à lemcal : on sait d'où vient chaque rendez-vous. Le lien
       // est réécrit avant la navigation, qui part donc avec les paramètres.
-      const decorated = decorateBookingUrl(href);
-      if (decorated !== href) link.href = decorated;
+      // Vers /demo, rien à réécrire : la page garde la source et la passe au
+      // calendrier intégré (DemoCalendarFrame).
+      if (destination === 'lemcal') {
+        const decorated = decorateBookingUrl(href);
+        if (decorated !== href) link.href = decorated;
+      }
 
       // Analytics consent granted (gtag is defined).
       window.gtag?.('event', 'book_demo_click', {
         link_url: href,
+        destination,
         page_path: window.location.pathname,
       });
 

@@ -5,7 +5,7 @@ import {
   QrCode, Repeat2, ScanLine, Send, ShieldCheck, ShoppingBag, Smartphone, Sparkles, Star, Tablet, Tag, Upload, UserRound, Users, Wand2, X, Zap,
   type LucideIcon,
 } from 'lucide-react';
-import { Container, CtaBand, DsButton, Eyebrow, FaqList, PendingShot, ProductFrame, Section, SectionHeader } from '@/components/ds';
+import { Container, CtaBand, DsButton, Eyebrow, FaqList, PendingShot, PhoneShot, ProductFrame, Section, SectionHeader } from '@/components/ds';
 import { PricingReassurance } from '@/components/pricing/PricingReassurance';
 import { Link } from '@/i18n/navigation';
 import { brand } from '@/data/brand';
@@ -25,7 +25,7 @@ const ICONS = {
 } satisfies Record<string, LucideIcon>;
 export type IconName = keyof typeof ICONS;
 
-type Shot = { src: string; width: number; height: number; alt: L; label?: string; caption?: L };
+type Shot = { src: string; width: number; height: number; alt: L; label?: string; caption?: L; shape?: 'screen' | 'phone' };
 /** Capture pas encore disponible : encart gris qui dit ce qu'elle montrera. */
 type Pending = { pending: L; shape?: 'screen' | 'phone'; caption?: L };
 type Img = Shot | Pending;
@@ -67,6 +67,8 @@ function Frame({ img, lang, priority, className }: { img: Img; lang: 'fr' | 'en'
     <div className={className}>
       {'pending' in img ? (
         <PendingShot label={img.pending[lang]} shape={img.shape} />
+      ) : img.shape === 'phone' ? (
+        <PhoneShot src={img.src} alt={img.alt[lang]} width={img.width} height={img.height} />
       ) : (
         <ProductFrame label={img.label ?? 'app.trigger-flow.com'}>
           <Image src={img.src} alt={img.alt[lang]} width={img.width} height={img.height} priority={priority} sizes="(min-width: 1100px) 1100px, 100vw" className="h-auto w-full" />

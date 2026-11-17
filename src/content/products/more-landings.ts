@@ -157,7 +157,7 @@ export const campaignsLanding: Landing = {
     },
     {
       type: 'band',
-      image: { pending: { fr: 'Capture à venir · statistiques d’une campagne', en: 'Screenshot coming · campaign statistics' } },
+      image: { src: '/images/app/campaign-stats.webp', width: 1412, height: 840, alt: { fr: 'Statistiques d’une campagne : e-mails envoyés, ouverts, cliqués, réservations et chiffre d’affaires', en: 'Campaign statistics: emails sent, opened, clicked, bookings and revenue' } },
       eyebrow: { fr: 'Mesurer', en: 'Measure' },
       title: { fr: 'Ce que vos campagnes rapportent vraiment.', en: 'What your campaigns really bring in.' },
       items: [
@@ -326,7 +326,7 @@ export const voiceLanding: Landing = {
     },
     {
       type: 'band',
-      image: { pending: { fr: 'Capture à venir · QR code d’appel en chambre', en: 'Screenshot coming · in-room call QR code' }, shape: 'phone' },
+      image: { src: '/images/app/voice-call-phone.webp', width: 390, height: 844, shape: 'phone', alt: { fr: 'Page « Appeler la réception » ouverte après avoir scanné le QR code', en: '“Call reception” page opened after scanning the QR code' } },
       eyebrow: { fr: 'Liens publics', en: 'Public links' },
       title: { fr: 'Un QR code pour vous appeler, partout.', en: 'A QR code to call you, anywhere.' },
       items: [
@@ -407,7 +407,7 @@ export const housekeepingLanding: Landing = {
     },
     {
       type: 'band',
-      image: { pending: { fr: 'Capture à venir · application de l’équipe ménage', en: 'Screenshot coming · housekeeping team app' }, shape: 'phone' },
+      image: { src: '/images/app/housekeeping-phone.webp', width: 390, height: 844, shape: 'phone', alt: { fr: 'Application ménage sur téléphone : statut de chaque chambre', en: 'Housekeeping app on a phone: status of every room' } },
       eyebrow: { fr: 'Maintenance et objets trouvés', en: 'Maintenance and lost & found' },
       title: { fr: 'Plus rien ne se perd entre deux équipes.', en: 'Nothing gets lost between shifts.' },
       items: [

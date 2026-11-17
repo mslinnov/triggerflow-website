@@ -2,6 +2,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
 import { Check, ExternalLink } from 'lucide-react';
 import { Container, Eyebrow, LogoWall, TestimonialCard, TrustStrip } from '@/components/ds';
+import { DemoCalendarFrame } from '@/components/analytics/DemoCalendarFrame';
 import { brand } from '@/data/brand';
 import { clientLogos, homeClients, homeTestimonials } from '@/data/clients';
 import { pageAlternates } from '@/lib/seo';
@@ -58,12 +59,7 @@ export default async function DemoPage({ params }: PageProps) {
 
           <div>
             <div className="overflow-hidden rounded-2xl border border-line bg-white shadow-product">
-              <iframe
-                src={brand.demoUrl}
-                title={t('calendarTitle')}
-                loading="lazy"
-                className="block h-[820px] w-full"
-              />
+              <DemoCalendarFrame src={brand.demoUrl} title={t('calendarTitle')} className="block h-[820px] w-full" />
             </div>
             <a
               href={brand.demoUrl}

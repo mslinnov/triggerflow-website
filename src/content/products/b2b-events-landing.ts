@@ -58,7 +58,7 @@ export const b2bLanding: DedicatedLandingContent & Seo = {
     },
     {
       type: 'cards', tone: 'paper', cols: 3,
-      image: { pending: { fr: 'Capture à venir · fiche d’une affaire', en: 'Screenshot coming · a deal card' } },
+      image: { src: '/images/app/b2b-deal.webp', width: 1544, height: 641, alt: { fr: 'Fiche d’une affaire dans TriggerFlow : client, montant, date de l’événement, actions à faire et parcours', en: 'A deal page in TriggerFlow: client, amount, event date, to-dos and history' } },
       eyebrow: { fr: 'Pipeline', en: 'Pipeline' },
       title: { fr: 'Chaque demande devient une affaire suivie.', en: 'Every request becomes a tracked deal.' },
       items: [
