@@ -205,7 +205,7 @@ export const loyaltyLanding: Landing = {
     description: { fr: 'Un programme de fidélité à vos couleurs : points calculés depuis le PMS, niveaux, récompenses et espace membre. Pour un hôtel ou tout un groupe.', en: 'A loyalty program in your brand: points calculated from the PMS, tiers, rewards and member area. For one hotel or a whole group.' },
   },
   hero: {
-    image: { pending: { fr: 'Capture à venir · programme de fidélité', en: 'Screenshot coming · loyalty programme' } },
+    image: { src: '/images/app/loyalty-program.webp', width: 1545, height: 784, alt: { fr: 'Réglages du programme de fidélité avec l’aperçu de l’espace client : niveau, points et avantages', en: 'Loyalty programme settings with a preview of the guest space: tier, points and rewards' } },
     eyebrow: { fr: 'Fidélité', en: 'Loyalty' },
     title: { fr: 'Votre programme de fidélité, comme les grandes chaînes. À votre image.', en: 'Your own loyalty program, like the big chains. In your brand.' },
     subtitle: { fr: 'Les points sont calculés depuis votre PMS, les niveaux débloquent des avantages, et vos membres retrouvent tout dans leur espace : points, séjours, récompenses.', en: 'Points are calculated from your PMS, tiers unlock benefits, and members find everything in their area: points, stays, rewards.' },
@@ -445,7 +445,7 @@ export const keysLanding: Landing = {
     description: { fr: 'Vos clients récupèrent leur code de porte sur leur téléphone avant d’arriver, valable pendant leur séjour. Idéal pour les arrivées tardives et sans réception.', en: 'Guests get their door code on their phone before arriving, valid for their stay. Ideal for late arrivals and unstaffed properties.' },
   },
   hero: {
-    image: { pending: { fr: 'Capture à venir · clé digitale dans le parcours client', en: 'Screenshot coming · digital key in the guest journey' } },
+    image: { src: '/images/app/keys-phone.webp', width: 520, height: 1125, shape: 'phone', alt: { fr: 'Page de la clé digitale sur le téléphone du client : numéro de chambre et code d’accès', en: 'Digital key page on the guest’s phone: room number and access code' } },
     eyebrow: { fr: 'Clés', en: 'Keys' },
     title: { fr: 'La clé de la chambre, sur le téléphone du client.', en: 'The room key, on the guest’s phone.' },
     subtitle: { fr: 'Avant l’arrivée, le client ouvre un lien et récupère son code de porte, valable du check-in au check-out. Arrivées tardives, réception fermée, maisons d’hôtes : il entre sans attendre.', en: 'Before arrival, the guest opens a link and gets their door code, valid from check-in to check-out. Late arrivals, closed desk, guesthouses: they get in without waiting.' },
