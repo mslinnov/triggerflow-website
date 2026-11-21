@@ -6,10 +6,9 @@
  * Pictogrammes des offres : tracés de Lucide (licence ISC), déjà dans le projet.
  */
 
-import type { Pt } from '@/lib/how-it-works/geometry';
+import { getLayout, type Pt } from '@/lib/how-it-works/geometry';
 import { rng } from '@/lib/how-it-works/math';
 import { picto } from '@/lib/how-it-works/shapes';
-import { getScene } from '@/components/how-it-works/draw';
 import type { NomForme } from './histoire';
 
 /** Nombre de points de la nuée : ceux de l'ouverture (576 fiches gardées et 84 doublons). */
@@ -361,7 +360,7 @@ function boucle(): Forme {
 
 /** L'ouverture : les amas laissés par le dézoom des fiches. Le point 0 est Camille. */
 function amas(): Forme {
-  const { layout } = getScene();
+  const layout = getLayout();
   const pts = [...layout.clusters, ...layout.clusterDupes].slice(0, N);
   const out = forme(pts, { brut: true });
   // Le champ de fiches est fondu sur ses bords : les amas reprennent ce fondu pour que le relais ne se voie pas.

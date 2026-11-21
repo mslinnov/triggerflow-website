@@ -21,7 +21,6 @@ export const KEPT = 3 * COLS * ROWS;
 export const DUPES = 84;
 
 export const TOOL_X = [-1.08, -0.54, 0, 0.54, 1.08] as const;
-export const TOOL_LABEL_Y = -1.27;
 export const CLUSTER_Y = -0.93;
 export const CLUSTER_R = 0.225;
 
@@ -29,7 +28,6 @@ export const CLUSTER_R = 0.225;
 export const CAMILLE = { block: 0, col: 2, row: 6 } as const;
 
 const GRID_TOP = GRID_CY - ((ROWS - 1) * STEP) / 2;
-export const GRID_BOTTOM = GRID_TOP + (ROWS - 1) * STEP;
 
 /** Position d'une case. `spread` : 0 = blocs accolés, 1 = blocs écartés. */
 export function cellAt(block: number, col: number, row: number, spread: number): Pt {
@@ -114,4 +112,12 @@ export function buildLayout(seed = 12): Layout {
 export function projector(side: number): { u: number; x(v: number): number; y(v: number): number } {
   const u = UNIT * side;
   return { u, x: (v) => side / 2 + v * u, y: (v) => side / 2 + v * u };
+}
+
+let layout: Layout | null = null;
+
+/** La géométrie, calculée une seule fois pour toute la page. */
+export function getLayout(): Layout {
+  layout ??= buildLayout();
+  return layout;
 }

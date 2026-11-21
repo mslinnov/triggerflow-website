@@ -26,7 +26,7 @@ import { Titre, titreEntier, type LignesTitre } from './Titre';
 import { poserStyle, useOuvertureImperative } from './defilement';
 import { CENTRES, FICHE, OFFRE, RECUL, type Forme } from './formes';
 import { PAPIER, jourDe, poserJour, retirerJour, suivreOuvertureFixe, varsJour } from './jour';
-import { DEPART, ENTRY, histoire, montants, presence, segment, type Bloc, type Chiffres, type Histoire, type NomForme, type Place, type TextesRecit } from './histoire';
+import { DEPART, ENTRY, estEpingle, histoire, montants, poseEpingle, presence, segment, type Bloc, type Chiffres, type Histoire, type NomForme, type Place, type TextesRecit } from './histoire';
 import type { Cadre, Trou } from './Nuee';
 import type { EtatScene } from './Scene3D';
 import type { NomObjet } from './objets3d';
@@ -367,6 +367,8 @@ function Animee({ textes, chiffres, logos }: Props) {
   const { hero, story } = textes;
   const wide = useWide();
   const recit = useMemo(() => histoire(story, chiffres, wide, true), [story, chiffres, wide]);
+  /** Les blocs épinglés, dans l'ordre : chacun finit son fondu à mi-chemin de ses voisins. */
+  const blocsEpingles = useMemo(() => recit.blocs.filter((b) => estEpingle(b, wide)), [recit, wide]);
   const section = useRef<HTMLElement>(null);
   const stage = useRef<HTMLDivElement>(null);
   const holder = useRef<HTMLDivElement>(null);
@@ -552,20 +554,15 @@ function Animee({ textes, chiffres, logos }: Props) {
     return { cx, cy, r: Math.hypot(Math.max(cx, stageW - cx), Math.max(cy, stageH - cy)) / 0.84 + 2 };
   })();
   /** Un bloc épinglé dans la scène (téléphone, et l'appel à la démo quand la scène se calme) : il arrive, tient, repart. */
-  const pose = (b: Bloc, s: number) => {
-    const d = s - b.at;
-    const tenu = b.kind === 'cta' ? 0.16 : 0.2;
-    const hors = Math.max(0, Math.abs(d) - tenu);
-    const reste = b.kind === 'cta' && d > 0;
-    const opacity = reste ? 1 : 1 - clamp(hors / 0.12);
-    const glisse = reste ? 0 : -Math.sign(d) * (Math.min(Math.abs(d), tenu) * 70 + Math.pow(hors / 0.12, 2) * 46);
+  const pose = (i: number, s: number) => {
+    const b = blocsEpingles[i];
+    const { opacity, glisse } = poseEpingle(b, s, blocsEpingles[i - 1]?.at, blocsEpingles[i + 1]?.at);
     const el = epingles.current[b.id];
     poserStyle(el, 'opacity', String(opacity));
     poserStyle(el, 'visibility', unit && opacity > 0.01 ? 'visible' : 'hidden');
     poserStyle(el, 'transform', `translateY(${glisse}px)`);
     poserStyle(el, 'pointer-events', opacity > 0.6 ? 'auto' : 'none');
   };
-  const epingle = (b: Bloc) => (b.kind === 'calm' && !wide) || b.kind === 'cta';
 
   // À chaque défilement, sans rendu React : ouverture, fondu de la nuée, objets 3D, textes, blocs épinglés, rail.
   const ecrireTout = (s: number) => {
@@ -576,9 +573,9 @@ function Animee({ textes, chiffres, logos }: Props) {
     poserStyle(iris.current, 'visibility', j > 0 && j < 1 ? 'visible' : 'hidden');
     poserStyle(nuit.current, 'visibility', j < 1 ? 'visible' : 'hidden');
     poserStyle(calqueNuee.current, 'opacity', String(1 - 0.7 * poser3d(s)));
+    blocsEpingles.forEach((_, i) => pose(i, s));
     recit.blocs.forEach((b, j) => {
-      if (epingle(b)) pose(b, s);
-      else if (b.kind === 'calm') poserStyle(calmes.current[j], 'opacity', String(1 - clamp((Math.abs(s - b.at) - 0.2) / 0.13)));
+      if (b.kind === 'calm' && !estEpingle(b, wide)) poserStyle(calmes.current[j], 'opacity', String(1 - clamp((Math.abs(s - b.at) - 0.2) / 0.13)));
     });
     rail.current?.(s);
   };
@@ -654,7 +651,7 @@ function Animee({ textes, chiffres, logos }: Props) {
         </div>
 
         {/* Les textes épinglés : sur téléphone ils tiennent sous la nuée ; l'appel à la démo se pose sur la scène calmée. */}
-        {recit.blocs.filter(epingle).map((b) => (
+        {blocsEpingles.map((b) => (
           <div
             key={b.id}
             ref={(el) => {
@@ -686,7 +683,7 @@ function Animee({ textes, chiffres, logos }: Props) {
       {/* Les textes qui défilent : sur ordinateur ils passent à côté de la nuée (I), ou la traversent (J). */}
       <div className="absolute inset-x-0 top-0">
         {recit.blocs.map((b, j) => {
-          if (epingle(b)) return null;
+          if (estEpingle(b, wide)) return null;
           const cross = b.kind !== 'calm';
           const contour = cross;
           return (

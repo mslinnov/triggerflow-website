@@ -17,10 +17,6 @@ export const easeInOut = (t: number): number => {
   return c < 0.5 ? 4 * c * c * c : 1 - Math.pow(-2 * c + 2, 3) / 2;
 };
 
-/** Monte de 0 à 1 après `from`, tient, puis redescend à 0 avant `to`. */
-export const fade = (p: number, from: number, to: number, width = 0.02): number =>
-  clamp(Math.min((p - from) / width, (to - p) / width));
-
 /** Tirage pseudo-aléatoire reproductible (mulberry32). */
 export function rng(seed: number): () => number {
   let s = seed;

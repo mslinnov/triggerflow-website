@@ -1,12 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { clamp, fade, mixHex, rng, round } from './math';
-
-test('fade monte, tient, redescend', () => {
-  assert.equal(fade(0.5, 0.4, 0.6), 1);
-  assert.equal(fade(0.39, 0.4, 0.6), 0);
-  assert.ok(Math.abs(fade(0.41, 0.4, 0.6) - 0.5) < 1e-9);
-});
+import { clamp, mixHex, rng, round } from './math';
 
 test('clamp : NaN vaut la borne basse', () => assert.equal(clamp(NaN), 0));
 

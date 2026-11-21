@@ -85,7 +85,8 @@ Le mouvement raconte le séjour du client (réservation, avant l'arrivée, paiem
 
 - **Fond génératif** : une nuée de points dessinée sur un canvas 2D, qui prend la forme de chaque étape puis laisse la
   main à un objet 3D. Points verts `#18544C` sur papier (données brutes `#8CA8A2`), accents menthe `#26967C` ou pêche
-  `#E88446` ; sur la nuit, points clairs `#ECF6F3`. Réglages par défaut : ceux de `reglages.tsx` de la maquette.
+  `#E88446` ; sur la nuit, points clairs `#ECF6F3`. Réglages par défaut : ceux de la LP CRM hôtelier (`CALAGE` de
+  `src/components/landing/crm-hotelier/Nuee.tsx`, constantes de `histoire.ts`).
   Pas de pictogramme en points pour un sentiment (cœur, infini) : un objet qui a un sens dans le séjour.
 - **Objets 3D** (Three.js) : une seule toile WebGL, objets construits à leur première apparition et préparés en temps
   mort (`requestIdleCallback`), timeline GSAP **en pause**, pilotée par la position de défilement (`tl.progress`). Sur

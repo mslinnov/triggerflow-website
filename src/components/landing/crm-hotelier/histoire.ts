@@ -5,6 +5,8 @@
  * scène se calme sous l'appel à la démo.
  */
 
+import { clamp } from '@/lib/how-it-works/math';
+
 export type NomForme = 'amas' | 'planning' | 'enveloppe' | 'champ' | 'offres' | 'choix' | 'carte' | 'coeur' | 'boucle' | 'calme' | 'cadre';
 /** Où se tient la nuée : là où l'ouverture la laisse, d'un côté du texte, au centre, en lecture (H), ou posée en bas. */
 export type Place = 'ouverture' | 'gauche' | 'droite' | 'fond' | 'centre' | 'lecture' | 'bas';
@@ -176,4 +178,28 @@ export function presence(cles: readonly Cle[], nom: NomForme, s: number, entree 
   if (b.forme === nom) return Math.min(1, Math.max(0, (phase - entree) / (1 - entree)));
   if (a.forme === nom) return 1 - Math.min(1, Math.max(0, phase / sortie));
   return 0;
+}
+
+/** Épinglé dans la scène : les textes calmes sur téléphone (ils tiennent sous la nuée) et l'appel à la démo partout. */
+export const estEpingle = (b: Bloc, wide: boolean): boolean => (b.kind === 'calm' && !wide) || b.kind === 'cta';
+
+/** Durée du fondu d'un bloc épinglé, en écrans défilés. */
+const FONDU_EPINGLE = 0.12;
+
+/**
+ * Un bloc épinglé à la position `s` : il arrive par le bas, tient, repart par le haut ; l'appel à la démo reste.
+ * `avant` et `apres` : milieux des blocs épinglés voisins. Le fondu finit à mi-chemin du voisin, pour que deux textes
+ * posés au même endroit ne se superposent jamais (le PMS et la fiche, à 0,44 écran l'un de l'autre sur téléphone).
+ * Rend l'opacité et le glissement vertical, en pixels.
+ */
+export function poseEpingle(b: Pick<Bloc, 'at' | 'kind'>, s: number, avant = -Infinity, apres = Infinity): { opacity: number; glisse: number } {
+  const d = s - b.at;
+  const reste = b.kind === 'cta' && d > 0;
+  if (reste) return { opacity: 1, glisse: 0 };
+  const marge = (d > 0 ? apres - b.at : b.at - avant) / 2;
+  const tenu = Math.max(0, Math.min(b.kind === 'cta' ? 0.16 : 0.2, marge - FONDU_EPINGLE));
+  const hors = Math.max(0, Math.abs(d) - tenu);
+  const opacity = 1 - clamp(hors / FONDU_EPINGLE);
+  const glisse = -Math.sign(d) * (Math.min(Math.abs(d), tenu) * 70 + Math.pow(hors / FONDU_EPINGLE, 2) * 46);
+  return { opacity, glisse };
 }

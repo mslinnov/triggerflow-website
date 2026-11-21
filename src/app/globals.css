@@ -162,7 +162,7 @@
   --color-brand-mint: var(--brand-mint);
 
   /* ── Charte 2026 (docs/charte.md) : une seule couleur d'action, neutres chauds ── */
-  /* Copiée de new-version pour la scène de src/components/how-it-works (LP CRM hôtelier). */
+  /* Copiée de new-version pour la LP CRM hôtelier (src/components/landing/crm-hotelier). */
   --color-ink: #002B28;
   --color-ink-2: #3D4F4D;
   --color-ink-3: #5B6B69;

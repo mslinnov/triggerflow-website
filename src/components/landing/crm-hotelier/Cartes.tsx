@@ -8,11 +8,10 @@
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { motion, useMotionValueEvent, useTransform, type MotionStyle, type MotionValue } from 'framer-motion';
 import { CAMILLE, DEMO_FIRST, DEMO_LAST } from '@/data/how-it-works-demo';
-import { projector, type Pt } from '@/lib/how-it-works/geometry';
+import { getLayout, projector, type Pt } from '@/lib/how-it-works/geometry';
 import { cardFactor, introCamera, introTransform, nearCamille } from '@/lib/how-it-works/intro';
 import { clamp, mixHex, round } from '@/lib/how-it-works/math';
 import type { JourneyTime } from '@/lib/how-it-works/timeline';
-import { getScene } from '@/components/how-it-works/draw';
 
 const GREY = '#B2BDBA';
 const MID = '#6C7B78';
@@ -45,7 +44,7 @@ export function Cartes({ libelles, side, time }: CartesProps) {
   const camille = useRef<SVGPathElement>(null);
 
   const geometry = useMemo(() => {
-    const { layout } = getScene();
+    const layout = getLayout();
     const { x, y } = projector(side);
     const units = [...layout.clusters, ...layout.clusterDupes];
     // Arrondis : ces positions sont écrites dans le HTML servi, puis recalculées par le navigateur.
