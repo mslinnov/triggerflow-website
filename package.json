@@ -10,7 +10,7 @@
     "type-check": "tsc --noEmit",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
-    "test": "tsx --test src/components/ui/AnimatedStat.test.ts src/data/claims.test.ts src/lib/llms.test.ts src/lib/seo.test.ts src/data/pricing.test.ts src/lib/attribution.test.ts src/lib/formation-salon/auth.test.ts src/lib/ota-simulator.test.ts src/lib/lead-magnet-download.test.ts src/components/landing/LeadMagnetSuccess.test.ts src/data/calendrier-marketing.test.ts src/lib/calendrier-rappel.test.ts src/lib/calendrier-mjml.test.ts src/lib/calendrier-tracking.test.ts src/lib/calendrier-evenements.test.ts src/lib/document-views.test.ts src/lib/shared-pdf.test.ts src/lib/shared-pdf-arret.test.ts src/lib/visitor-ip.test.ts src/lib/leads-route.test.ts src/lib/landing-pages.test.ts src/components/landing/crm-hotelier/contenu.test.ts src/i18n/brand-values.test.ts src/lib/how-it-works/math.test.ts src/lib/how-it-works/timeline.test.ts src/lib/how-it-works/geometry.test.ts src/lib/how-it-works/shapes.test.ts src/lib/how-it-works/swarm.test.ts src/lib/how-it-works/trace.test.ts src/lib/how-it-works/intro.test.ts src/lib/how-it-works/messages.test.ts src/lib/how-it-works/overlay.test.ts src/lib/how-it-works/layout.test.ts src/components/how-it-works/draw.test.ts"
+    "test": "tsx --test src/components/ui/AnimatedStat.test.ts src/data/claims.test.ts src/lib/llms.test.ts src/lib/seo.test.ts src/data/pricing.test.ts src/lib/attribution.test.ts src/lib/formation-salon/auth.test.ts src/lib/ota-simulator.test.ts src/lib/lead-magnet-download.test.ts src/components/landing/LeadMagnetSuccess.test.ts src/data/calendrier-marketing.test.ts src/lib/calendrier-rappel.test.ts src/lib/calendrier-mjml.test.ts src/lib/calendrier-tracking.test.ts src/lib/calendrier-evenements.test.ts src/lib/document-views.test.ts src/lib/shared-pdf.test.ts src/lib/shared-pdf-arret.test.ts src/lib/visitor-ip.test.ts src/lib/leads-route.test.ts src/lib/landing-pages.test.ts src/components/landing/crm-hotelier/contenu.test.ts src/components/landing/crm-hotelier/recit.test.ts src/i18n/brand-values.test.ts src/lib/how-it-works/math.test.ts src/lib/how-it-works/timeline.test.ts src/lib/how-it-works/geometry.test.ts src/lib/how-it-works/shapes.test.ts src/lib/how-it-works/swarm.test.ts src/lib/how-it-works/trace.test.ts src/lib/how-it-works/intro.test.ts src/lib/how-it-works/messages.test.ts src/lib/how-it-works/overlay.test.ts src/lib/how-it-works/layout.test.ts src/components/how-it-works/draw.test.ts"
   },
   "dependencies": {
     "@opennextjs/cloudflare": "^1.16.1",
@@ -19,6 +19,7 @@
     "framer-motion": "^12.23.26",
     "github-slugger": "^2.0.0",
     "gray-matter": "^4.0.3",
+    "gsap": "^3.15.1",
     "lucide-react": "^0.562.0",
     "next": "^16.1.6",
     "next-intl": "^4.7.0",
@@ -30,6 +31,7 @@
     "remark-gfm": "^4.0.1",
     "replicate": "^1.4.0",
     "tailwind-merge": "^3.4.0",
+    "three": "^0.187.0",
     "tsx": "^4.21.0"
   },
   "devDependencies": {
@@ -37,6 +39,7 @@
     "@types/node": "^20.19.27",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/three": "^0.187.0",
     "eslint": "^9",
     "eslint-config-next": "^16.1.6",
     "tailwindcss": "^4",

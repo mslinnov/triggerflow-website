@@ -2952,6 +2952,81 @@
       "demo": "Réserver une démo",
       "callback": "Être rappelé"
     },
+    "story": {
+      "rail": [
+        "Réservation",
+        "Avant l’arrivée",
+        "Paiement",
+        "Avis",
+        "Retour"
+      ],
+      "railLabel": "Étapes du séjour",
+      "pms": {
+        "title": "Branché sur votre PMS, pas à côté",
+        "text": "Clients, réservations, dates de séjour, montants : tout remonte seul de votre PMS.",
+        "figureLabel": "PMS compatibles"
+      },
+      "sales": {
+        "title": "Entre la réservation et l’arrivée, votre hôtel vend sans vous",
+        "text": "Quelques jours avant l’arrivée, le client reçoit les options de votre hôtel et les paie en ligne.",
+        "figureLabel": "des offres envoyées 3 à 7 jours avant l’arrivée sont achetées (36 708 offres étudiées)"
+      },
+      "payment": {
+        "title": "Camille dit oui. C’est payé.",
+        "text": "72 € de plus sur le séjour."
+      },
+      "review": {
+        "title": "Plus d’avis positifs, moins de mauvaises surprises",
+        "text": "Après le départ, chaque client reçoit une courte enquête."
+      },
+      "return": {
+        "title": "Vos anciens clients reviennent réserver chez vous, pas sur Booking",
+        "text": "TriggerFlow repère les clients à relancer à partir de leurs séjours passés, puis leur écrit avec un lien vers votre moteur de réservation.",
+        "short": "TriggerFlow repère les clients à relancer, puis leur écrit avec un lien vers votre moteur de réservation.",
+        "figureLabel": "des messages WhatsApp envoyés par TriggerFlow sont lus"
+      },
+      "middle": {
+        "title": "Voyez ces scénarios sur les données de votre hôtel",
+        "text": "Une démo à partir de votre PMS."
+      },
+      "message": {
+        "title": "Le bon message, trois jours avant.",
+        "when": "J-3",
+        "time": "10:00",
+        "from": "Votre hôtel",
+        "subject": "Camille, votre séjour approche",
+        "body": "Votre chambre vous attend vendredi. Envie du petit-déjeuner en chambre pour vos deux matins ?",
+        "offer": "Petit-déjeuner en chambre",
+        "price": "72 €",
+        "button": "Ajouter à mon séjour"
+      },
+      "offers": [
+        "Surclassement",
+        "Parking",
+        "Petit-déjeuner"
+      ],
+      "chosen": "Petit-déjeuner en chambre, 72 €",
+      "capture": {
+        "alt": "La fiche d’un client dans TriggerFlow : son arrivée, le SMS de bienvenue et les e-mails reçus avant",
+        "caption": "La fiche client dans TriggerFlow, sur un compte de démonstration."
+      },
+      "captureMobile": {
+        "alt": "Le SMS de bienvenue envoyé le jour de l’arrivée, tel qu’il apparaît dans la fiche client de TriggerFlow",
+        "caption": "Dans la fiche, chaque message envoyé, à son heure. Compte de démonstration."
+      },
+      "card": {
+        "kind": "Réservation",
+        "camilleStay": "2 nuits · en couple",
+        "stays": [
+          "1 nuit · affaires",
+          "3 nuits · en famille",
+          "2 nuits · en couple",
+          "4 nuits · en famille",
+          "1 nuit · seul",
+          "2 nuits · affaires"
+        ]
+      }
+    },
     "pms": {
       "gridLabel": "{pmsCompatibles} PMS compatibles, dont",
       "footnote": "Et d'autres en cours d'intégration. Pour vos autres outils : Zapier et n8n. Votre PMS n'est pas dans la liste ? Dites-le-nous pendant la démo."

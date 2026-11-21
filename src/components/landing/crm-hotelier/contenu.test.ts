@@ -4,6 +4,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import fr from '../../../../messages/fr.json';
 import { brand } from '../../../data/brand';
+import { companyStats } from '../../../data/company-stats';
 import { clientLogos, homeClients } from '../../../data/clients';
 import { getDisplayPlans, getEntryPrice, type PricingPhase } from '../../../data/pricing';
 import { applyBrandValues, withBrandValues } from '../../../i18n/brand-values';
@@ -57,6 +58,14 @@ test('crm-hotelier : chaque lien de démo est suivi par emplacement, aucun lien 
   assert.ok(DEMO.startsWith('https://app.lemcal.com/@trigger-flow/demo?'));
 });
 
+test('crm-hotelier : chaque emplacement de démo a son bouton sur la page', () => {
+  const all = sources().map(([, source]) => source).join('\n');
+  for (const placement of PLACEMENTS) {
+    const motif = new RegExp(`demoHref\\('${placement}'\\)|placement="${placement}"`);
+    assert.match(all, motif, `aucun bouton de démo « ${placement} »`);
+  }
+});
+
 test('crm-hotelier : l’action secondaire mène au formulaire de rappel de la page', () => {
   const all = sources().map(([, source]) => source).join('\n');
   assert.match(all, /id=\{RAPPEL\}|id="rappel"/);
@@ -90,6 +99,9 @@ test('crm-hotelier : tout chiffre affiché vient du dépôt, avec son unité, au
   assert.match(fr.pricing.faq.items.trial.answer, /14 jours d'essai/);
   assert.match(fr.pricing.faq.items.commitment.answer, /préavis de 30 jours/);
   assert.match(getCaseStudyBySlug('groupe-noemys')?.type ?? '', /15 établissements/);
+  // L'étude des ventes additionnelles, citée sous le taux d'achat des offres.
+  assert.match(companyStats.upsellAccepted.source, /envoyées 3 à 7 jours avant/);
+  assert.match(companyStats.upsellAccepted.source, /36 708 envois/);
 
   const phases: PricingPhase[] = ['announce', 'new'];
   const prix = phases.flatMap((phase) => [getEntryPrice(phase), ...getDisplayPlans(phase).map((plan) => plan.price)]);
@@ -102,6 +114,17 @@ test('crm-hotelier : tout chiffre affiché vient du dépôt, avec son unité, au
     '14 jours',
     '30 jours',
     '15 établissements',
+    '3 à 7 jours',
+    '36 708 offres',
+    // Les jalons du séjour de Camille, l'exemple du récit (message de J-3 à 10:00, petit-déjeuner à 72 €), et les
+    // séjours des fiches de démonstration de l'ouverture.
+    'J-3',
+    '10:00',
+    '72 €',
+    '1 nuit',
+    '2 nuits',
+    '3 nuits',
+    '4 nuits',
     ...prix.map((value) => `${value} €`),
   ];
   const motif = new RegExp(permis.map((phrase) => phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|'), 'g');

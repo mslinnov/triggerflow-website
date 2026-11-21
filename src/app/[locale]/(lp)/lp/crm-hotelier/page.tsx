@@ -2,8 +2,14 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Bas } from '@/components/landing/crm-hotelier/Bas';
-import { EnTete, type TextesEnTete } from '@/components/landing/crm-hotelier/EnTete';
+import type { TextesEnTete } from '@/components/landing/crm-hotelier/EnTete';
+import type { TextesImmersion } from '@/components/landing/crm-hotelier/Immersion';
+import type { Logo } from '@/components/landing/crm-hotelier/Logos';
+import { PageRecit } from '@/components/landing/crm-hotelier/Page';
 import { LANGUES, estLangue, metadonnees } from '@/components/landing/crm-hotelier/seo';
+import { brand } from '@/data/brand';
+import { clientLogos, homeClients } from '@/data/clients';
+import { stat } from '@/data/company-stats';
 import { pageAlternates } from '@/lib/seo';
 
 /**
@@ -36,12 +42,18 @@ export default async function Page({ params }: PageProps) {
   if (!estLangue(locale)) notFound();
   setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: 'lpCrmHotelier' });
+  const textes: TextesImmersion = { hero: t.raw('hero') as TextesImmersion['hero'], story: t.raw('story') as TextesImmersion['story'] };
+  const chiffres = { pms: brand.pmsCompatibles[locale], whatsapp: stat('whatsappRead', locale), upsell: stat('upsellAccepted', locale) };
+  // Les vrais clients du héros, sur une ligne : huit au plus.
+  const logos: Logo[] = homeClients
+    .flatMap((name) => {
+      const logo = clientLogos[name];
+      return logo ? [{ alt: name, ...logo }] : [];
+    })
+    .slice(0, 8);
   return (
-    <>
-      <EnTete textes={t.raw('header') as TextesEnTete} />
-      <main>
-        <Bas locale={locale} />
-      </main>
-    </>
+    <PageRecit entete={t.raw('header') as TextesEnTete} textes={textes} chiffres={chiffres} logos={logos}>
+      <Bas locale={locale} />
+    </PageRecit>
   );
 }

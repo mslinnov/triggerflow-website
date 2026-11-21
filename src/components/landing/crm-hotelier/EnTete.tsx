@@ -34,12 +34,13 @@ export function EnTete({ textes, sombre = false, fond, papier }: EnTeteProps) {
       style={sombre && fond && papier ? { backgroundColor: `color-mix(in oklab, ${fond} calc(var(--nuit, 1) * 100%), ${papier})` } : undefined}
     >
       <div className="mx-auto flex h-full max-w-[1240px] items-center gap-4 px-4 lg:gap-6 lg:px-8">
-        {/* La nuit, le logo passe en clair : son pictogramme vert foncé y disparaissait. */}
+        {/* La nuit, le logo passe en clair : son pictogramme vert foncé y disparaissait. Largeur et hauteur du fichier
+            (292 × 62) : la hauteur posée par CSS les change toutes les deux, sans déformer ni avertir. */}
         <Image
           src="/images/logo.webp"
           alt="TriggerFlow"
-          width={140}
-          height={32}
+          width={292}
+          height={62}
           className="h-7 w-auto transition-[filter] duration-300 lg:h-8"
           style={sombre ? { filter: 'brightness(calc(1 - var(--nuit, 1))) invert(var(--nuit, 1))' } : undefined}
           priority
