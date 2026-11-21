@@ -2933,6 +2933,119 @@
       "copyright": "© {year} TriggerFlow. Tous droits réservés."
     }
   },
+  "lpCrmHotelier": {
+    "metadata": {
+      "title": "CRM hôtelier connecté à votre PMS",
+      "description": "Le CRM hôtelier connecté à votre PMS : plus de réservations en direct, plus de ventes par séjour et plus d'avis positifs, sans ressaisie. Plan gratuit pour démarrer."
+    },
+    "header": {
+      "pricing": "Tarifs",
+      "callback": "Être rappelé",
+      "demo": "Réserver une démo"
+    },
+    "hero": {
+      "line1": "Le CRM hôtelier",
+      "line2": "connecté",
+      "line3": "à",
+      "line4": "votre PMS.",
+      "sub": "Chaque réservation de votre PMS complète la fiche du client, et TriggerFlow lui envoie le bon message au bon moment.",
+      "demo": "Réserver une démo",
+      "callback": "Être rappelé"
+    },
+    "pms": {
+      "gridLabel": "{pmsCompatibles} PMS compatibles, dont",
+      "footnote": "Et d'autres en cours d'intégration. Pour vos autres outils : Zapier et n8n. Votre PMS n'est pas dans la liste ? Dites-le-nous pendant la démo."
+    },
+    "testimonials": {
+      "title": "Des hôtels indépendants aux groupes"
+    },
+    "plans": {
+      "sectionTitle": "Commencez gratuitement, passez à la suite quand vous êtes prêt",
+      "popularLabel": "Le plus choisi",
+      "perMonthLabel": "mois",
+      "notes": [
+        "Sans engagement, préavis de 30 jours.",
+        "14 jours d'essai sur les plans payants."
+      ],
+      "ctaLabel": "Réserver une démo"
+    },
+    "faq": {
+      "sectionTitle": "Les questions des hôteliers avant de démarrer",
+      "items": [
+        {
+          "question": "J'ai déjà un PMS, pourquoi un CRM ?",
+          "answer": "Votre PMS gère les réservations, les chambres et la facturation. TriggerFlow se sert de ces données pour parler à vos clients : messages avant, pendant et après le séjour, offres, enquêtes, campagnes de retour. Vous gardez votre PMS, TriggerFlow s'y connecte."
+        },
+        {
+          "question": "Mon PMS est-il compatible ?",
+          "answer": "TriggerFlow est compatible avec {pmsCompatibles} PMS, dont {pmsList}, et d'autres sont en cours d'intégration. Si le vôtre n'y figure pas, dites-le-nous pendant la démo."
+        },
+        {
+          "question": "Combien de temps pour démarrer ?",
+          "answer": "En moyenne, nos clients sont opérationnels en moins de 48 h. Notre équipe branche votre PMS et configure avec vous vos premiers scénarios."
+        },
+        {
+          "question": "Combien ça coûte ?",
+          "answer": "Le plan Découverte est gratuit. Les plans payants commencent à {entryPrice} € par mois, sans engagement, avec 14 jours d'essai."
+        },
+        {
+          "question": "Faut-il des compétences techniques ?",
+          "answer": "Non. Les scénarios se créent et se modifient depuis l'interface, sans code. Textes, délais et conditions se changent en quelques clics."
+        },
+        {
+          "question": "Et le RGPD ?",
+          "answer": "TriggerFlow est conforme au RGPD. Chaque message marketing porte un lien de désinscription, pris en compte automatiquement pour les envois suivants."
+        },
+        {
+          "question": "J'ai plusieurs hôtels, est-ce adapté ?",
+          "answer": "Oui. Un groupe gère tous ses établissements depuis un seul compte, avec une vue consolidée. Le groupe Noemys utilise TriggerFlow sur ses 15 établissements."
+        },
+        {
+          "question": "Qui m'accompagne ?",
+          "answer": "Notre équipe, basée à Toulouse, vous accompagne à la mise en place puis au quotidien. Le support répond 7j/7."
+        }
+      ]
+    },
+    "final": {
+      "title": "Voyez ce que TriggerFlow ferait pour votre hôtel",
+      "subtitle": "Une démo à partir de votre situation : votre PMS, vos séjours, vos priorités. Vous préférez qu'on vous appelle ? Laissez votre numéro.",
+      "ctaLabel": "Réserver une démo",
+      "benefits": [
+        "Plan gratuit pour démarrer",
+        "Mise en place en moins de 48 h",
+        "Support 7j/7",
+        "Équipe basée à Toulouse"
+      ],
+      "callback": {
+        "title": "Être rappelé",
+        "subtitle": "Un conseiller vous appelle au moment qui vous arrange.",
+        "slots": [
+          "Dès que possible",
+          "Le matin",
+          "L'après-midi"
+        ],
+        "labels": {
+          "firstName": "Prénom",
+          "hotelName": "Hôtel",
+          "phone": "Téléphone",
+          "email": "E-mail",
+          "slot": "Quand vous appeler ?",
+          "submit": "Être rappelé",
+          "successTitle": "C'est noté.",
+          "successBody": "Nous vous appelons au créneau choisi.",
+          "error": "L'envoi a échoué. Réessayez, ou réservez directement une démo.",
+          "invalidPhone": "Ce numéro ne semble pas valide. Vérifiez-le, avec l'indicatif s'il n'est pas français.",
+          "privacy": "Vos coordonnées servent à vous rappeler au sujet de TriggerFlow. Aucune revente à des tiers.",
+          "privacyLink": "Politique de confidentialité"
+        }
+      }
+    },
+    "footer": {
+      "legal": "Mentions légales",
+      "privacy": "Politique de confidentialité",
+      "terms": "CGV"
+    }
+  },
   "equiphotel": {
     "meta": {
       "title": "Equip'Hotel 2026 : TriggerFlow au stand H006, Pavillon 7.3",
