@@ -1,9 +1,11 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
+import gsap from 'gsap';
 import fr from '../../../../messages/fr.json';
 import { poserStyle } from './defilement';
 import { DEPART, estEpingle, histoire, poseEpingle, presence, segment, type NomForme, type TextesRecit } from './histoire';
 import { jourDe } from './jour';
+import { avancer } from './objets3d';
 
 const TEXTES = fr.lpCrmHotelier.story as TextesRecit;
 const CHIFFRES = { pms: '+20', whatsapp: '84 %', upsell: '5 %' };
@@ -97,4 +99,23 @@ test('récit : un texte épinglé loin de ses voisins garde sa tenue de 0,2 écr
   assert.ok(poseEpingle(b, 5.321).opacity < 0.001);
   assert.ok(poseEpingle(b, 5.1).glisse < 0 && poseEpingle(b, 4.9).glisse > 0, 'il arrive par le bas et repart par le haut');
   assert.deepEqual(poseEpingle({ at: 5, kind: 'cta' }, 9), { opacity: 1, glisse: 0 }, 'l’appel à la démo reste');
+});
+
+test('objets 3D : avancer pose la timeline et rendort le ticker de GSAP', async () => {
+  const cible = { x: 0 };
+  const tl = gsap.timeline({ paused: true }).to(cible, { x: 1, duration: 1, ease: 'none' });
+  let images = 0;
+  const compter = () => {
+    images++;
+  };
+  gsap.ticker.add(compter);
+  try {
+    avancer(tl, 0.5);
+    assert.equal(cible.x, 0.5);
+    await new Promise((fin) => setTimeout(fin, 80));
+    assert.equal(images, 0, 'le défilement pose l’avancement : le ticker ne doit pas tourner entre deux images');
+  } finally {
+    gsap.ticker.remove(compter);
+    gsap.ticker.sleep();
+  }
 });

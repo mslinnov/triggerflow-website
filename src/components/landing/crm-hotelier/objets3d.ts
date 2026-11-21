@@ -159,7 +159,7 @@ function planning(a: Atelier): Objet {
   return {
     racine,
     appliquer(e, px, py) {
-      tl.progress(e.avance);
+      avancer(tl, e.avance);
       camille.emissiveIntensity = 0.5 + 0.6 * clamp((e.avance - 0.5) / 0.15);
       poser(racine, pivot, a, e, v, px, py);
     },
@@ -494,7 +494,7 @@ function enveloppe(a: Atelier, b: Boite, { message: m }: TextesObjets): Objet {
     racine,
     ombre: true,
     appliquer(e, px, py) {
-      tl.progress(e.avance);
+      avancer(tl, e.avance);
       rabat.rotation.x = -Math.PI * 1.06 * v.ouvre;
       // Rabat fermé, la lettre et l'intérieur sont cachés : on ne les voit pas à travers le papier pendant le fondu d'arrivée.
       lettre.visible = dos.visible = v.ouvre > 0.01;
@@ -572,7 +572,7 @@ function offres(a: Atelier): Objet {
   return {
     racine,
     appliquer(e, px, py) {
-      tl.progress(e.avance);
+      avancer(tl, e.avance);
       const d = e.detail;
       jetons.forEach((j, g) => {
         const choisi = g === 2;
@@ -704,7 +704,7 @@ function carte(a: Atelier, b: Boite, t: TextesObjets): Objet {
   return {
     racine,
     appliquer(e, px, py) {
-      tl.progress(e.avance);
+      avancer(tl, e.avance);
       faces.emissiveIntensity = 1.1 * e.detail;
       bande.offset.set(v.reflet, 0.5);
       poser(racine, pivot, a, e, v, px, py);
@@ -746,7 +746,7 @@ function etoiles(a: Atelier, b: Boite): Objet {
   return {
     racine,
     appliquer(e, px, py) {
-      tl.progress(e.avance);
+      avancer(tl, e.avance);
       items.forEach(({ mesh, m }, i) => {
         const k = clamp((e.avance - 0.22 - i * 0.07) / 0.1);
         const bosse = Math.sin(k * Math.PI);
@@ -789,7 +789,7 @@ function ruban(a: Atelier): Objet {
   return {
     racine,
     appliquer(e, px, py) {
-      tl.progress(e.avance);
+      avancer(tl, e.avance);
       geo.setDrawRange(0, Math.floor((total * v.trace) / 6) * 6);
       // Le point suit le tracé, puis fait le tour : Camille revient.
       courbe.getPointAt((Math.min(v.trace, 1) * 0.999 + Math.max(0, e.avance - 0.4) * 1.6) % 1, ici);
@@ -800,13 +800,21 @@ function ruban(a: Atelier): Objet {
   };
 }
 
+/**
+ * Pose l'avancement d'une timeline en pause. Le défilement fait ce travail à chaque image : le ticker de GSAP, que
+ * `progress` réveille à chaque appel (`totalTime` appelle `_wake`), tournerait sinon pour rien tant qu'un objet est là.
+ */
+export function avancer(tl: gsap.core.Timeline, p: number) {
+  tl.progress(p);
+  gsap.ticker.sleep();
+}
+
 export function construire(nom: NomObjet, boite: Boite, aniso: number, textes: TextesObjets): { objet: Objet; atelier: Atelier } {
   const a = new Atelier(aniso);
   const objet = { planning: () => planning(a), enveloppe: () => enveloppe(a, boite, textes), offres: () => offres(a), carte: () => carte(a, boite, textes), etoiles: () => etoiles(a, boite), ruban: () => ruban(a) }[
     nom
   ]();
-  // Les timelines sont en pause et le défilement pose leur avancement : le ticker de GSAP, réveillé par leur création,
-  // tournerait pour rien à chaque image.
+  // Le ticker de GSAP, réveillé par la création des timelines, tournerait pour rien : voir `avancer`.
   gsap.ticker.sleep();
   return { objet, atelier: a };
 }
