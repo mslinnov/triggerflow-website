@@ -1,5 +1,5 @@
 /*
- * Le récit du séjour de Camille : dans l'ordre, les formes que prend la nuée, la place qu'elle occupe à l'écran, et
+ * Le récit du séjour de Sophie : dans l'ordre, les formes que prend la nuée, la place qu'elle occupe à l'écran, et
  * les textes. Tout est en « écrans défilés » depuis le haut de la section. Réglages figés sur la version validée le
  * 21/11 : la nuée part du côté opposé au texte, la caméra entre dans l'enveloppe pour lire le message (moment H), la
  * scène se calme sous l'appel à la démo.
@@ -40,7 +40,7 @@ export interface TextesRecit {
   chosen: string;
   capture: { alt: string; caption: string };
   captureMobile: { alt: string; caption: string };
-  card: { kind: string; camilleStay: string; stays: readonly string[] };
+  card: { kind: string; sophieStay: string; stays: readonly string[] };
 }
 
 /** Le texte coupé autour de ses montants (« 72 € » en français, « €72 » en anglais) : rangs impairs = montants. */
@@ -126,7 +126,7 @@ export function histoire(t: TextesRecit, c: Chiffres, wide = true, trois = false
   tenir(0.38);
   const h = { debut, lu0, lu1: s, fin: s + M };
 
-  // 3. Les offres : trois, puis celle que Camille choisit.
+  // 3. Les offres : trois, puis celle que Sophie choisit.
   vers('offres', face('right'));
   blocs.push({ id: 'ventes', kind: 'calm', side: 'right', title: t.sales.title, text: t.sales.text, chiffre: [c.upsell, t.sales.figureLabel], at: s + 0.24, forme: 'offres' });
   tenir(0.26);

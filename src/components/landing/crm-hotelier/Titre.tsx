@@ -1,7 +1,7 @@
 import type { CSSProperties, RefObject } from 'react';
 import { GAP_H } from './moteur';
 
-/** Le titre de la pub en quatre morceaux : la carte de Camille apparaît entre « connecté » et « à votre PMS. ». */
+/** Le titre de la pub en quatre morceaux : la carte de Sophie apparaît entre « connecté » et « à votre PMS. ». */
 export interface LignesTitre {
   line1: string;
   line2: string;

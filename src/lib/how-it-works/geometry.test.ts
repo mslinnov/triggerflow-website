@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { CAMILLE, CLUSTER_R, CLUSTER_Y, STEP, TOOL_X, buildLayout, cellAt } from './geometry';
+import { SOPHIE, CLUSTER_R, CLUSTER_Y, STEP, TOOL_X, buildLayout, cellAt } from './geometry';
 
 const L = buildLayout();
 const cellKey = ([x, y]: readonly [number, number]) => `${x.toFixed(4)},${y.toFixed(4)}`;
@@ -20,8 +20,8 @@ test('blocs : la gauche et la droite s’écartent de 0,132, le milieu ne bouge 
   L.blocks.forEach((q, i) => assert.equal(q[1], L.grid[i][1]));
 });
 
-test('case de Camille', () => {
-  const [x, y] = cellAt(CAMILLE.block, CAMILLE.col, CAMILLE.row, 1);
+test('case de Sophie', () => {
+  const [x, y] = cellAt(SOPHIE.block, SOPHIE.col, SOPHIE.row, 1);
   assert.ok(Math.abs(x + 1.155) < 1e-9 && Math.abs(y - 0.001) < 1e-9);
 });
 

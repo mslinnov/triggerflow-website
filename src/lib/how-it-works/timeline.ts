@@ -1,6 +1,6 @@
 import { clamp } from './math';
 
-/** Part du défilement consacrée à l'ouverture (la fiche de Camille, puis le dézoom). */
+/** Part du défilement consacrée à l'ouverture (la fiche de Sophie, puis le dézoom). */
 export const INTRO_SHARE = 0.17;
 
 /**

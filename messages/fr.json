@@ -2972,7 +2972,7 @@
         "figureLabel": "des offres envoyées 3 à 7 jours avant l’arrivée sont achetées (36 708 offres étudiées)"
       },
       "payment": {
-        "title": "Camille dit oui. C’est payé.",
+        "title": "Sophie dit oui. C’est payé.",
         "text": "72 € de plus sur le séjour.",
         "badge": "Payé"
       },
@@ -2995,9 +2995,9 @@
         "when": "J-3",
         "time": "10:00",
         "from": "Votre hôtel",
-        "subject": "Camille, votre séjour approche",
+        "subject": "Sophie, votre séjour approche",
         "body": "Votre chambre vous attend vendredi. Envie du petit-déjeuner en chambre pour vos deux matins ?",
-        "greeting": "Bonjour Camille,",
+        "greeting": "Bonjour Sophie,",
         "short": [
           "Votre chambre vous attend vendredi.",
           "Envie du petit-déjeuner en chambre ?"
@@ -3022,7 +3022,7 @@
       },
       "card": {
         "kind": "Réservation",
-        "camilleStay": "2 nuits · en couple",
+        "sophieStay": "2 nuits · en couple",
         "stays": [
           "1 nuit · affaires",
           "3 nuits · en famille",

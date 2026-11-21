@@ -1,13 +1,13 @@
 'use client';
 
-/* Les fiches de l'ouverture (la carte de Camille, puis le dézoom), sur la nuit du héros. */
+/* Les fiches de l'ouverture (la carte de Sophie, puis le dézoom), sur la nuit du héros. */
 
 import { useState } from 'react';
 import { useMotionValueEvent, type MotionValue } from 'framer-motion';
 import type { JourneyTime } from '@/lib/how-it-works/timeline';
 import { Cartes, type LibellesCartes } from './Cartes';
 
-/** Fiches blanches (pas de crème), pastilles de la couleur des points, celle de Camille en menthe. */
+/** Fiches blanches (pas de crème), pastilles de la couleur des points, celle de Sophie en menthe. */
 const HABILLAGE =
   '[&_.fill-paper]:fill-white [&_svg>g>g:nth-of-type(2)]:[stroke:#7FA09B] [&_svg>g>path]:[stroke:#8FD9C4] [&_.stroke-line]:[stroke:transparent]';
 

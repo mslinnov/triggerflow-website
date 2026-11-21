@@ -151,7 +151,7 @@ export default function Nuee({ cles, formes, recit, cadreDe, rayon, trous, onFra
       plan[i] = h < 0.34 ? 0 : h < 0.85 ? 1 : 2;
       graine[i] = i * 2.3999632297;
     }
-    // Du fond vers l'avant ; Camille (le point 0) en dernier.
+    // Du fond vers l'avant ; Sophie (le point 0) en dernier.
     const ordre = Array.from({ length: N }, (_, i) => i).sort((a, b) => (a === 0 ? 1 : b === 0 ? -1 : plan[a] - plan[b]));
     const pointeur = { x: 0, y: 0, tx: 0, ty: 0, force: 0, cible: 0 };
     const fin = window.matchMedia('(pointer: fine)').matches;
@@ -255,7 +255,7 @@ export default function Nuee({ cles, formes, recit, cadreDe, rayon, trous, onFra
       const teinte = (t: Teinte | null) => (t ? TEINTES[t] : null);
       const ta = teinte(a.forme.teinte);
       const tb = teinte(b.forme.teinte);
-      const camille = TEINTES.menthe;
+      const sophie = TEINTES.menthe;
 
       pointeur.force += (pointeur.cible * 1 - pointeur.force) * 0.08;
       pointeur.x += (pointeur.tx - pointeur.x) * 0.16;
@@ -336,9 +336,9 @@ export default function Nuee({ cles, formes, recit, cadreDe, rayon, trous, onFra
           cg = lerp(cg, tb[1], accB);
           cb2 = lerp(cb2, tb[2], accB);
         }
-        if (j === 0 && camille) {
-          // Camille : le point menthe de l'ouverture reste repérable dans toute la nuée.
-          [cr, cg, cb2] = camille;
+        if (j === 0 && sophie) {
+          // Sophie : le point menthe de l'ouverture reste repérable dans toute la nuée.
+          [cr, cg, cb2] = sophie;
           rad *= 1 + 0.4 * frais;
         }
         ctx.globalAlpha = Math.min(1, alpha);

@@ -24,8 +24,8 @@ export const TOOL_X = [-1.08, -0.54, 0, 0.54, 1.08] as const;
 export const CLUSTER_Y = -0.93;
 export const CLUSTER_R = 0.225;
 
-/** La case de Camille, dans le bloc des couples. */
-export const CAMILLE = { block: 0, col: 2, row: 6 } as const;
+/** La case de Sophie, dans le bloc des couples. */
+export const SOPHIE = { block: 0, col: 2, row: 6 } as const;
 
 const GRID_TOP = GRID_CY - ((ROWS - 1) * STEP) / 2;
 
@@ -35,7 +35,7 @@ export function cellAt(block: number, col: number, row: number, spread: number):
 }
 
 export interface Layout {
-  /** Points gardés dans les amas : le point i est dans l'amas i % 5. Le point 0 est Camille. */
+  /** Points gardés dans les amas : le point i est dans l'amas i % 5. Le point 0 est Sophie. */
   clusters: Pt[];
   /** Doublons dans les amas, même règle. */
   clusterDupes: Pt[];

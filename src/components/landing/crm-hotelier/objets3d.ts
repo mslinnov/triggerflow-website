@@ -18,7 +18,7 @@ export interface EtatObjet {
   presence: number;
   /** 0 à 1 : de l'arrivée de l'objet à son départ. */
   avance: number;
-  /** 0 à 1, propre à l'objet : le choix de Camille (offres), le paiement (carte). */
+  /** 0 à 1, propre à l'objet : le choix de Sophie (offres), le paiement (carte). */
   detail: number;
   /** La caméra de la nuée : centre en pixels de la scène, et pixels par unité de forme. */
   cadre: { cx: number; cy: number; u: number };
@@ -119,16 +119,16 @@ function planning(a: Atelier): Objet {
   const fond = new THREE.Mesh(extrusion(a, rectArrondi(2.42, bas - HAUT + 0.1, 0.05), 0.02, 0), verre(a, { color: '#052E2A', roughness: 0.55 }, 0.85));
   fond.position.set(-0.04, y((HAUT + bas) / 2 - 0.03), -0.05);
   pivot.add(fond);
-  // Les autres séjours : un vert soutenu (plus de pastel), Camille reste la seule lumière.
+  // Les autres séjours : un vert soutenu (plus de pastel), Sophie reste la seule lumière.
   const pale = verre(a, { color: '#2F8476', roughness: 0.42, envMapIntensity: 0.35 });
-  const camille = verre(a, { color: MENTHE, emissive: MENTHE, emissiveIntensity: 0.5 });
+  const sophie = verre(a, { color: MENTHE, emissive: MENTHE, emissiveIntensity: 0.5 });
   const barres: THREE.Mesh[] = [];
   let elle: THREE.Mesh | null = null;
   SEJOURS.forEach((chambre, r) =>
     chambre.forEach(([x, w], k) => {
       const long = w - 0.07;
       const lui = r === 1 && k === 2;
-      const m = new THREE.Mesh(extrusion(a, rectArrondi(long, 0.075, 0.03), 0.04, 0.008, 6), lui ? camille : pale);
+      const m = new THREE.Mesh(extrusion(a, rectArrondi(long, 0.075, 0.03), 0.04, 0.008, 6), lui ? sophie : pale);
       m.position.set(x + 0.018 + long / 2, y(HAUT + r * RANG + 0.041), 0);
       pivot.add(m);
       barres.push(m);
@@ -152,7 +152,7 @@ function planning(a: Atelier): Objet {
   if (elle) {
     const p = (elle as THREE.Mesh).position;
     tl.to(p, { z: 0.16, duration: 0.15, ease: 'power2.out' }, 0.5);
-    // La réservation de Camille coule vers sa fiche.
+    // La réservation de Sophie coule vers sa fiche.
     tl.to(p, { y: y(FICHE.y + 0.12), x: 0, duration: 0.3, ease: 'power2.in' }, 0.7);
   }
   tl.to(v, { z: -0.5, duration: 0.2, ease: 'power2.in' }, 0.8);
@@ -160,7 +160,7 @@ function planning(a: Atelier): Objet {
     racine,
     appliquer(e, px, py) {
       avancer(tl, e.avance);
-      camille.emissiveIntensity = 0.5 + 0.6 * clamp((e.avance - 0.5) / 0.15);
+      sophie.emissiveIntensity = 0.5 + 0.6 * clamp((e.avance - 0.5) / 0.15);
       poser(racine, pivot, a, e, v, px, py);
     },
     liberer: () => tl.kill(),
@@ -307,11 +307,11 @@ function enveloppe(a: Atelier, b: Boite, { message: m }: TextesObjets): Objet {
     ctx.lineTo(cx, cy);
     ctx.lineTo(bdx, bgy);
     ctx.stroke();
-    // L'adresse de Camille, discrète, sur le rabat du bas.
+    // L'adresse de Sophie, discrète, sur le rabat du bas.
     ctx.fillStyle = 'rgba(4,32,30,0.55)';
     ctx.font = `500 ${Math.round(h * 0.052)}px system-ui, sans-serif`;
     ctx.textAlign = 'center';
-    ctx.fillText('Camille Rousseau', w / 2, h * 0.8);
+    ctx.fillText('Sophie', w / 2, h * 0.8);
     ctx.fillStyle = 'rgba(4,32,30,0.3)';
     ctx.fillRect(w * 0.38, h * 0.84, w * 0.24, h * 0.018);
   });
@@ -338,7 +338,7 @@ function enveloppe(a: Atelier, b: Boite, { message: m }: TextesObjets): Objet {
     corps.add(m);
   }
 
-  /** La lettre : blanche, l'en-tête de l'hôtel, « Bonjour Camille », l'offre en pêche. */
+  /** La lettre : blanche, l'en-tête de l'hôtel, « Bonjour Sophie », l'offre en pêche. */
   const LW = W * 0.88;
   const LH = H * 0.9;
   const lw = 1024;
@@ -509,7 +509,7 @@ function enveloppe(a: Atelier, b: Boite, { message: m }: TextesObjets): Objet {
   };
 }
 
-/* ---------- 3. Ventes : trois jetons de verre ; celui que Camille choisit avance et s'allume ---------- */
+/* ---------- 3. Ventes : trois jetons de verre ; celui que Sophie choisit avance et s'allume ---------- */
 
 function offres(a: Atelier): Objet {
   const racine = new THREE.Group();
@@ -653,7 +653,7 @@ function carte(a: Atelier, b: Boite, t: TextesObjets): Objet {
     ctx.fillText('••••  ••••  ••••  4821', W * 0.085, H * 0.72);
     ctx.globalAlpha = 0.7;
     ctx.font = `500 ${Math.round(H * 0.052)}px ${MONO}`;
-    ctx.fillText('CAMILLE ROUSSEAU', W * 0.085, H * 0.87);
+    ctx.fillText('SOPHIE', W * 0.085, H * 0.87);
     ctx.textAlign = 'right';
     ctx.fillText('12/28', W * 0.915, H * 0.87);
   });
@@ -762,7 +762,7 @@ function etoiles(a: Atelier, b: Boite): Objet {
   };
 }
 
-/* ---------- 6. Retour : un ruban en boucle, que le point de Camille parcourt ---------- */
+/* ---------- 6. Retour : un ruban en boucle, que le point de Sophie parcourt ---------- */
 
 function ruban(a: Atelier): Objet {
   const racine = new THREE.Group();
@@ -791,7 +791,7 @@ function ruban(a: Atelier): Objet {
     appliquer(e, px, py) {
       avancer(tl, e.avance);
       geo.setDrawRange(0, Math.floor((total * v.trace) / 6) * 6);
-      // Le point suit le tracé, puis fait le tour : Camille revient.
+      // Le point suit le tracé, puis fait le tour : Sophie revient.
       courbe.getPointAt((Math.min(v.trace, 1) * 0.999 + Math.max(0, e.avance - 0.4) * 1.6) % 1, ici);
       point.position.copy(ici);
       poser(racine, pivot, a, e, v, px, py);

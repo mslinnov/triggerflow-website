@@ -297,7 +297,7 @@ function offres(): Forme {
   return forme(dessins.flatMap((d, i) => semer(d, PAR_OFFRE, 21 + i)), { relief: 0.5 });
 }
 
-/** Camille choisit le petit-déjeuner : il grandit et s'allume, les deux autres reculent. Mêmes points, même ordre. */
+/** Sophie choisit le petit-déjeuner : il grandit et s'allume, les deux autres reculent. Mêmes points, même ordre. */
 function choix(base: Forme): Forme {
   const pts = base.pts.map(([x, y], i): Pt => {
     const g = Math.min(2, Math.floor(i / PAR_OFFRE));
@@ -358,7 +358,7 @@ function boucle(): Forme {
 
 /* ---------- Les autres ---------- */
 
-/** L'ouverture : les amas laissés par le dézoom des fiches. Le point 0 est Camille. */
+/** L'ouverture : les amas laissés par le dézoom des fiches. Le point 0 est Sophie. */
 function amas(): Forme {
   const layout = getLayout();
   const pts = [...layout.clusters, ...layout.clusterDupes].slice(0, N);

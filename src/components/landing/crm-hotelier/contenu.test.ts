@@ -62,11 +62,28 @@ test('crm-hotelier : aucun reste de français dans la page anglaise', () => {
 
 test('crm-hotelier : les textes dessinés dans les objets 3D viennent des messages', () => {
   const source = readFileSync(join(DOSSIER, 'objets3d.ts'), 'utf8');
-  // Restent écrits dans le code : le nom de Camille et les chiffres de sa carte bancaire, les mêmes dans toutes les langues.
-  const permis = new Set(['Camille Rousseau', 'CAMILLE ROUSSEAU', '••••  ••••  ••••  4821', '12/28', 'H']);
+  // Restent écrits dans le code : le prénom de Sophie et les chiffres de sa carte bancaire, les mêmes dans toutes les langues.
+  const permis = new Set(['Sophie', 'SOPHIE', '••••  ••••  ••••  4821', '12/28', 'H']);
   for (const [, , texte] of [...source.matchAll(/fillText\((['"`])(.*?)\1/g)]) {
     assert.ok(permis.has(texte), `texte écrit en dur dans objets3d.ts : « ${texte} »`);
   }
+});
+
+test('crm-hotelier : la cliente du récit est Sophie, comme sur la capture de la fiche (plus aucune Camille)', () => {
+  const sources = [
+    ...readdirSync(DOSSIER).filter((f) => /\.tsx?$/.test(f) && !f.endsWith('.test.ts')).map((f) => join(DOSSIER, f)),
+    join(ROOT, 'src/data/how-it-works-demo.ts'),
+    ...readdirSync(join(ROOT, 'src/lib/how-it-works')).map((f) => join(ROOT, 'src/lib/how-it-works', f)),
+  ];
+  for (const f of sources) assert.doesNotMatch(readFileSync(f, 'utf8'), /camille/i, f);
+  for (const locale of ['fr', 'en'] as const) {
+    const t = { fr, en }[locale].lpCrmHotelier;
+    assert.doesNotMatch(JSON.stringify(t), /camille/i, locale);
+    for (const texte of [t.story.message.greeting, t.story.message.subject, t.story.payment.title]) assert.match(texte, /Sophie/, `${locale} : « ${texte} »`);
+  }
+  const objets = readFileSync(join(DOSSIER, 'objets3d.ts'), 'utf8');
+  assert.match(objets, /fillText\('Sophie'/, 'adresse de l’enveloppe');
+  assert.match(objets, /fillText\('SOPHIE'/, 'nom sur la carte bancaire');
 });
 
 test('crm-hotelier : les montants du récit sont repérés dans les deux écritures (72 € et €72)', () => {
@@ -163,7 +180,7 @@ test('crm-hotelier : tout chiffre affiché vient du dépôt, avec son unité, au
     '3 to 7 days',
     '36 708 offres',
     '36,708 offers',
-    // Les jalons du séjour de Camille, l'exemple du récit (message de J-3 à 10:00, petit-déjeuner à 72 €), et les
+    // Les jalons du séjour de Sophie, l'exemple du récit (message de J-3 à 10:00, petit-déjeuner à 72 €), et les
     // séjours des fiches de démonstration de l'ouverture.
     'J-3',
     '10:00',

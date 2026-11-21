@@ -1,7 +1,7 @@
 'use client';
 
 /*
- * Le défilement hors de React : l'ouverture du héros (le titre s'écarte sur la carte de Camille, puis on plonge
+ * Le défilement hors de React : l'ouverture du héros (le titre s'écarte sur la carte de Sophie, puis on plonge
  * dedans) en écrivain impératif. Les styles sont posés par refs à chaque défilement au lieu de
  * passer par un rendu de toute la scène.
  */

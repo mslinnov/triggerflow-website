@@ -2,7 +2,7 @@ import { UNIT, type Pt } from './geometry';
 import { clamp, lerp, round, smooth } from './math';
 
 /**
- * L'ouverture : la fiche de Camille en grand, puis on dézoome.
+ * L'ouverture : la fiche de Sophie en grand, puis on dézoome.
  * Comme les repères d'une carte, les fiches rétrécissent avec le zoom jusqu'à devenir des points, puis les
  * points gardent leur taille pendant que l'espace continue de se resserrer : ils finissent en amas.
  */
@@ -35,11 +35,11 @@ export interface IntroCamera {
   cardOpacity: number;
   /** La fiche se replie sur sa pastille. */
   cardScale: number;
-  /** Où se trouve le point de Camille à l'écran. */
+  /** Où se trouve le point de Sophie à l'écran. */
   anchor: Pt;
 }
 
-/** `home` : place finale du point de Camille ; `start` : place de sa pastille sur la fiche en grand. En pixels. */
+/** `home` : place finale du point de Sophie ; `start` : place de sa pastille sur la fiche en grand. En pixels. */
 export function introCamera(q: number, side: number, home: Pt, start: Pt): IntroCamera {
   const tau = smooth(clamp((q - 0.2) / 0.7));
   const radius = dotRadius(side);
@@ -57,14 +57,14 @@ export function introCamera(q: number, side: number, home: Pt, start: Pt): Intro
   };
 }
 
-/** Transformation SVG du champ : un zoom autour du point de Camille, qui reste sous l'ancre. */
+/** Transformation SVG du champ : un zoom autour du point de Sophie, qui reste sous l'ancre. */
 export function introTransform(cam: IntroCamera, home: Pt): string {
   const zoom = round(cam.zoom, 4);
   return `translate(${round(cam.anchor[0] - home[0] * zoom)} ${round(cam.anchor[1] - home[1] * zoom)}) scale(${zoom})`;
 }
 
-/** Indices des points assez proches de Camille (le point 0) pour être vus en fiche pendant le dézoom. */
-export function nearCamille(points: readonly Pt[], radius = 0.5): number[] {
+/** Indices des points assez proches de Sophie (le point 0) pour être vus en fiche pendant le dézoom. */
+export function nearSophie(points: readonly Pt[], radius = 0.5): number[] {
   const [cx, cy] = points[0];
   return points.flatMap(([x, y], i) => (Math.hypot(x - cx, y - cy) < radius ? [i] : []));
 }

@@ -2,7 +2,7 @@
  * Clients fictifs des fiches de la page « Comment ça marche ». Aucun ne correspond à un vrai client.
  * Les combinaisons prénom + nom se répètent volontairement peu : 20 × 20.
  */
-export const CAMILLE = { first: 'Camille', last: 'Rousseau' } as const;
+export const SOPHIE = { first: 'Sophie', last: '' } as const;
 
 export const DEMO_FIRST: readonly string[] = [
   'Julien', 'Sofia', 'Marc', 'Léa', 'Thomas', 'Inès', 'Paul', 'Nora', 'Hugo', 'Clara',

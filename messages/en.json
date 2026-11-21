@@ -2964,7 +2964,7 @@
         "figureLabel": "of offers sent 3 to 7 days before arrival are bought (36,708 offers analysed)"
       },
       "payment": {
-        "title": "Camille says yes. It's paid.",
+        "title": "Sophie says yes. It's paid.",
         "text": "€72 more on this stay.",
         "badge": "Paid"
       },
@@ -2987,9 +2987,9 @@
         "when": "Tue",
         "time": "10:00",
         "from": "Your hotel",
-        "subject": "Camille, your stay is coming up",
+        "subject": "Sophie, your stay is coming up",
         "body": "Your room will be ready on Friday. How about breakfast in your room on both mornings?",
-        "greeting": "Hello Camille,",
+        "greeting": "Hello Sophie,",
         "short": [
           "Your room will be ready on Friday.",
           "How about breakfast in your room?"
@@ -3014,7 +3014,7 @@
       },
       "card": {
         "kind": "Booking",
-        "camilleStay": "2 nights · couple",
+        "sophieStay": "2 nights · couple",
         "stays": [
           "1 night · business",
           "3 nights · family",

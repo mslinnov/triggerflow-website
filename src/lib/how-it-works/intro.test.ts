@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { dotRadius, introCamera, introTransform, nearCamille } from './intro';
+import { dotRadius, introCamera, introTransform, nearSophie } from './intro';
 
 test('rayon d’un point', () => {
   assert.ok(Math.abs(dotRadius(445) - 2.643) < 0.01);
@@ -30,13 +30,13 @@ test('le dézoom ne revient jamais en arrière', () => {
   }
 });
 
-test('le zoom se fait autour du point de Camille : il reste sous l’ancre', () => {
+test('le zoom se fait autour du point de Sophie : il reste sous l’ancre', () => {
   const cam = { tau: 0.5, zoom: 2, radius: 3, cardOpacity: 1, cardScale: 1, anchor: [50, 60] as const };
   assert.equal(introTransform(cam, [10, 20]), 'translate(30 20) scale(2)');
 });
 
-test('seules les fiches proches de Camille sont dessinées', () => {
-  assert.deepEqual(nearCamille([[0, 0], [0.4, 0], [0.6, 0], [0, -0.49]]), [0, 1, 3]);
+test('seules les fiches proches de Sophie sont dessinées', () => {
+  assert.deepEqual(nearSophie([[0, 0], [0.4, 0], [0.6, 0], [0, -0.49]]), [0, 1, 3]);
 });
 
 test('la transformation est arrondie : même texte côté serveur et côté navigateur', () => {

@@ -2,7 +2,7 @@
 
 /*
  * Socle du récit : hauteur de l'en-tête, horloge des fiches de l'ouverture, interpolation par morceaux, et les
- * proportions du trou du titre où apparaît la carte de Camille.
+ * proportions du trou du titre où apparaît la carte de Sophie.
  */
 
 import { useEffect, useState, type RefObject } from 'react';
@@ -12,7 +12,7 @@ import { lerp } from '@/lib/how-it-works/math';
 export const HEADER = 61;
 
 export const timeOf = (p: number): JourneyTime => toJourneyTime(p * (1 - INTRO_SHARE) + INTRO_SHARE);
-/** La carte de Camille en grand : le départ des fiches. */
+/** La carte de Sophie en grand : le départ des fiches. */
 export const CARD = -0.205;
 
 export type Keys = readonly (readonly [number, number])[];
@@ -55,7 +55,7 @@ export function offsetIn(element: HTMLElement, stage: HTMLElement): [number, num
   return [x, y];
 }
 
-/** Part du visuel montrée dans le trou du titre : la carte de Camille, au centre de la scène. */
+/** Part du visuel montrée dans le trou du titre : la carte de Sophie, au centre de la scène. */
 export const CROP = 0.62;
 /** Le trou : sa hauteur en em du titre, et sa largeur rapportée à sa hauteur. */
 export const GAP_H = 0.8;

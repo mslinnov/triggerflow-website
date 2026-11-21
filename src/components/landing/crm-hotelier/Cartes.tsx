@@ -1,25 +1,25 @@
 'use client';
 
 /*
- * Les fiches de l'ouverture (reprises de how-it-works/IntroCards, libellés passés par la page) : la fiche de Camille en
+ * Les fiches de l'ouverture (reprises de how-it-works/IntroCards, libellés passés par la page) : la fiche de Sophie en
  * grand, puis le dézoom où chaque fiche se replie sur sa pastille.
  */
 
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { motion, useMotionValueEvent, useTransform, type MotionStyle, type MotionValue } from 'framer-motion';
-import { CAMILLE, DEMO_FIRST, DEMO_LAST } from '@/data/how-it-works-demo';
+import { SOPHIE, DEMO_FIRST, DEMO_LAST } from '@/data/how-it-works-demo';
 import { getLayout, projector, type Pt } from '@/lib/how-it-works/geometry';
-import { cardFactor, introCamera, introTransform, nearCamille } from '@/lib/how-it-works/intro';
+import { cardFactor, introCamera, introTransform, nearSophie } from '@/lib/how-it-works/intro';
 import { clamp, mixHex, round } from '@/lib/how-it-works/math';
 import type { JourneyTime } from '@/lib/how-it-works/timeline';
 
 const GREY = '#B2BDBA';
 const MID = '#6C7B78';
 
-/** Libellés des fiches (lpCrmHotelier.story.card) : le type de fiche, le séjour de Camille, six séjours pour les autres. */
+/** Libellés des fiches (lpCrmHotelier.story.card) : le type de fiche, le séjour de Sophie, six séjours pour les autres. */
 export interface LibellesCartes {
   kind: string;
-  camilleStay: string;
+  sophieStay: string;
   stays: readonly string[];
 }
 
@@ -31,7 +31,7 @@ interface CartesProps {
 }
 
 /**
- * L'ouverture : la fiche de Camille en grand, puis un dézoom. D'autres fiches entrent dans le champ,
+ * L'ouverture : la fiche de Sophie en grand, puis un dézoom. D'autres fiches entrent dans le champ,
  * rétrécissent, et chacune se replie sur sa pastille : un point, une fiche.
  * Le zoom, l'opacité et l'épaisseur sont mis à jour directement à chaque changement de défilement,
  * sans repasser par React.
@@ -41,7 +41,7 @@ export function Cartes({ libelles, side, time }: CartesProps) {
   const bodies = useRef<SVGGElement>(null);
   const initials = useRef<SVGGElement>(null);
   const dots = useRef<SVGGElement>(null);
-  const camille = useRef<SVGPathElement>(null);
+  const sophie = useRef<SVGPathElement>(null);
 
   const geometry = useMemo(() => {
     const layout = getLayout();
@@ -50,15 +50,15 @@ export function Cartes({ libelles, side, time }: CartesProps) {
     // Arrondis : ces positions sont écrites dans le HTML servi, puis recalculées par le navigateur.
     const points: Pt[] = units.map(([ux, uy]) => [round(x(ux)), round(y(uy))]);
     const factor = cardFactor(side);
-    // La fiche de Camille, large de 300 px, est centrée ; sa pastille est à 44 px de son bord gauche.
+    // La fiche de Sophie, large de 300 px, est centrée ; sa pastille est à 44 px de son bord gauche.
     const start: Pt = [round(side / 2 - 106 * factor), round(y(-0.02))];
     const home = points[0];
-    return { points, home, start, near: nearCamille(units), base: factor / introCamera(0, side, home, start).zoom };
+    return { points, home, start, near: nearSophie(units), base: factor / introCamera(0, side, home, start).zoom };
   }, [side]);
   const { points, home, start, near, base } = geometry;
 
   const camera = useCallback((q: number) => introCamera(q, side, home, start), [side, home, start]);
-  const camilleColor = (tau: number) => mixHex(MID, GREY, clamp((tau - 0.55) / 0.4));
+  const sophieColor = (tau: number) => mixHex(MID, GREY, clamp((tau - 0.55) / 0.4));
 
   const apply = useCallback(() => {
     const cam = camera(time.get().q);
@@ -66,8 +66,8 @@ export function Cartes({ libelles, side, time }: CartesProps) {
     bodies.current?.setAttribute('opacity', String(cam.cardOpacity));
     initials.current?.setAttribute('opacity', String(cam.cardOpacity));
     dots.current?.setAttribute('stroke-width', String(2 * cam.radius));
-    camille.current?.setAttribute('stroke-width', String(2 * cam.radius));
-    camille.current?.setAttribute('stroke', camilleColor(cam.tau));
+    sophie.current?.setAttribute('stroke-width', String(2 * cam.radius));
+    sophie.current?.setAttribute('stroke', sophieColor(cam.tau));
   }, [camera, home, time]);
 
   useEffect(apply, [apply]);
@@ -78,7 +78,7 @@ export function Cartes({ libelles, side, time }: CartesProps) {
 
   const who = (i: number) =>
     i === 0
-      ? { first: CAMILLE.first, last: CAMILLE.last, stay: libelles.camilleStay }
+      ? { first: SOPHIE.first, last: SOPHIE.last, stay: libelles.sophieStay }
       : { first: DEMO_FIRST[(i * 7) % 20], last: DEMO_LAST[(i * 13) % 20], stay: libelles.stays[(i * 5) % libelles.stays.length] };
   const place = (i: number) => `translate(${points[i][0]} ${points[i][1]})`;
   const initial = camera(time.get().q);
@@ -101,7 +101,7 @@ export function Cartes({ libelles, side, time }: CartesProps) {
                   <g className="[transform:scale(var(--card-scale))]">
                     <rect x="-44" y="-52" width="300" height="104" rx="16" className="fill-paper stroke-line" />
                     <text x="42" y="-20.5" className="fill-ink-3 font-mono text-[10px] uppercase tracking-[0.06em]">{libelles.kind}</text>
-                    <text x="42" y="5.5" className="fill-ink text-[19px] font-semibold">{`${first} ${last}`}</text>
+                    <text x="42" y="5.5" className="fill-ink text-[19px] font-semibold">{last ? `${first} ${last}` : first}</text>
                     <text x="42" y="28" className="fill-ink-2 text-[14px]">{stay}</text>
                   </g>
                 </g>
@@ -114,10 +114,10 @@ export function Cartes({ libelles, side, time }: CartesProps) {
             ))}
           </g>
           <path
-            ref={camille}
+            ref={sophie}
             d={`M${home[0]} ${home[1]}h0.001`}
             vectorEffect="non-scaling-stroke"
-            stroke={camilleColor(initial.tau)}
+            stroke={sophieColor(initial.tau)}
             strokeWidth={round(2 * initial.radius, 3)}
           />
           <g ref={initials} opacity={round(initial.cardOpacity, 3)}>
@@ -126,7 +126,7 @@ export function Cartes({ libelles, side, time }: CartesProps) {
               return (
                 <g key={i} transform={place(i)}>
                   <g className="[transform:scale(var(--card-scale))]">
-                    <text y="5.3" textAnchor="middle" className="fill-white text-[15px] font-semibold">{`${first[0]}${last[0]}`}</text>
+                    <text y="5.3" textAnchor="middle" className="fill-white text-[15px] font-semibold">{`${first[0]}${last.charAt(0)}`}</text>
                   </g>
                 </g>
               );

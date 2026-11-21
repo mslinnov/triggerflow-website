@@ -1,9 +1,9 @@
 'use client';
 
 /*
- * Le récit de la page : l'ouverture (le titre s'écarte sur la carte de Camille, on plonge dedans, les fiches
+ * Le récit de la page : l'ouverture (le titre s'écarte sur la carte de Sophie, on plonge dedans, les fiches
  * deviennent des points), puis une seule nuée couvre la scène. La caméra la pose à côté de chaque texte, entre dans
- * l'enveloppe pour lire le message de Camille, et un objet 3D accompagne chaque étape. La version fixe (animations
+ * l'enveloppe pour lire le message de Sophie, et un objet 3D accompagne chaque étape. La version fixe (animations
  * réduites, écran trop court) pose les mêmes textes sur le papier, avec une forme dessinée par étape.
  */
 
@@ -54,7 +54,7 @@ interface Props {
   logos: readonly Logo[];
 }
 
-/** L'horloge du champ de fiches : la carte de Camille pendant l'ouverture, puis le dézoom jusqu'aux points. */
+/** L'horloge du champ de fiches : la carte de Sophie pendant l'ouverture, puis le dézoom jusqu'aux points. */
 const FICHES: Keys = [
   [0, CARD],
   [ENTRY, CARD],
@@ -185,7 +185,7 @@ function Texte({ bloc, wide, hero }: { bloc: Bloc; wide: boolean; hero: TextesHe
 }
 
 /**
- * Le message que Camille reçoit avant son arrivée : la caméra vient le lire (H). La forme reprend les gabarits
+ * Le message que Sophie reçoit avant son arrivée : la caméra vient le lire (H). La forme reprend les gabarits
  * d'e-mail de TriggerFlow (src/data/calendrier-mjml/) : fond gris, corps blanc, nom de l'hôtel centré sur un filet,
  * texte centré, bouton pilule en capitales. Au-dessus, la ligne de la boîte de réception.
  */
@@ -547,7 +547,7 @@ function Animee({ textes, chiffres, logos }: Props) {
   };
 
   const panneau = hautPanneau(stageH);
-  // L'iris part du centre de la carte de Camille et couvre toute la scène à l'échelle 1 (partie pleine : 84 % du rayon).
+  // L'iris part du centre de la carte de Sophie et couvre toute la scène à l'échelle 1 (partie pleine : 84 % du rayon).
   const iriz = (() => {
     const cx = stageW / 2;
     const cy = wide ? stageH / 2 : 2 + side / 2;
@@ -593,7 +593,7 @@ function Animee({ textes, chiffres, logos }: Props) {
       style={{ height: `calc(${recit.ecrans * 100}svh + 100svh - ${HEADER}px + ${queue * 100}svh)`, backgroundColor: 'var(--fd)' }}
     >
       <div ref={stage} className="pointer-events-none sticky top-[61px] z-20 h-[calc(100svh_-_61px)] overflow-hidden" style={{ backgroundColor: PAPIER }}>
-        {/* La nuit de l'ouverture ; pendant le dézoom, un iris de papier s'ouvre depuis la carte de Camille (échelle posée
+        {/* La nuit de l'ouverture ; pendant le dézoom, un iris de papier s'ouvre depuis la carte de Sophie (échelle posée
             par `ecrire`, sur le compositeur). Un fondu enchaîné passait par un gris sale à mi-chemin. */}
         <div ref={nuit} aria-hidden className="absolute inset-0" style={{ backgroundColor: NUIT.couleur, backgroundImage: NUIT.image }} />
         <div
@@ -615,7 +615,7 @@ function Animee({ textes, chiffres, logos }: Props) {
         </div>
         {scene3d && formes && stageW > 0 && <Scene3D etat={etat3d} reveil={reveil3d} boites={boitesDe(formes)} textes={story} />}
 
-        {/* Les offres : libellés courts, sans prix ; seul le choix de Camille porte le sien. */}
+        {/* Les offres : libellés courts, sans prix ; seul le choix de Sophie porte le sien. */}
         {[...story.offers, story.chosen].map((label, i) => (
           <p
             key={label}
@@ -669,7 +669,7 @@ function Animee({ textes, chiffres, logos }: Props) {
 
         {!wide && <Rail recit={recit} label={story.railLabel} poserRef={rail} aller={aller} wide={false} />}
 
-        {/* L'ouverture : le titre s'écarte sur la carte de Camille, puis on plonge dedans. */}
+        {/* L'ouverture : le titre s'écarte sur la carte de Sophie, puis on plonge dedans. */}
         <div ref={bloc} className="pointer-events-auto absolute inset-0 z-30 flex flex-col items-center justify-center px-4 text-center">
           <Titre lignes={hero} gap={gap} className={cn(CLAIR, 'font-normal tracking-[-0.035em] lg:font-light', 'text-[10.8vw] leading-[1.04] sm:text-[60px] lg:text-[min(6vw,92px)] lg:leading-[1.02]')} />
           <p className={cn(CORPS, 'mx-auto mt-6 max-w-[34ch] text-pretty text-[17px] leading-[1.45] lg:mt-8 lg:max-w-[50ch] lg:text-[21px]')}>{hero.sub}</p>

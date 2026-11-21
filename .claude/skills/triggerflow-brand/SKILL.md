@@ -32,7 +32,7 @@ capture mise en scène) ; un titre et deux boutons ne justifient pas le vert.
 
 - Après le passage au clair, la page ne repasse jamais à une **bande sombre pleine largeur**. Le seul retour au vert
   est le panneau d'appel final, posé dans la page claire comme un objet.
-- Passage du sombre au clair : un **iris de papier** qui s'ouvre depuis le sujet (la carte de Camille), pendant un
+- Passage du sombre au clair : un **iris de papier** qui s'ouvre depuis le sujet (la carte de Sophie), pendant un
   mouvement qui le justifie (le dézoom de l'ouverture). Pas de fondu enchaîné : le mélange du vert nuit et du papier
   passe par un gris sale. Le passage finit avant l'arrivée du premier texte ; l'en-tête bascule d'un coup avec une
   transition CSS de 300 ms.
