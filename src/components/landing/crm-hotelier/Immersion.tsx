@@ -26,7 +26,7 @@ import { Titre, titreEntier, type LignesTitre } from './Titre';
 import { poserStyle, useOuvertureImperative } from './defilement';
 import { CENTRES, FICHE, OFFRE, RECUL, type Forme } from './formes';
 import { PAPIER, jourDe, poserJour, retirerJour, suivreOuvertureFixe, varsJour } from './jour';
-import { DEPART, ENTRY, histoire, presence, segment, type Bloc, type Chiffres, type Histoire, type NomForme, type Place, type TextesRecit } from './histoire';
+import { DEPART, ENTRY, histoire, montants, presence, segment, type Bloc, type Chiffres, type Histoire, type NomForme, type Place, type TextesRecit } from './histoire';
 import type { Cadre, Trou } from './Nuee';
 import type { EtatScene } from './Scene3D';
 import type { NomObjet } from './objets3d';
@@ -109,7 +109,7 @@ function Actions({ hero, placement, center }: { hero: TextesHero; placement: Pla
 
 /** Les montants en pêche et en condensé : la couleur de l'argent. */
 function Montants({ text }: { text: string }) {
-  const parts = text.split(/(\d+\s€)/);
+  const parts = montants(text);
   return (
     <>
       {parts.map((part, i) =>
@@ -616,7 +616,7 @@ function Animee({ textes, chiffres, logos }: Props) {
         <div ref={calqueNuee} className="absolute inset-0">
           {formes && <Nuee cles={recit.cles} formes={formes} recit={instant} cadreDe={cadreDe} rayon={dotRadius(side)} trous={trous} onFrame={surImage} />}
         </div>
-        {scene3d && formes && stageW > 0 && <Scene3D etat={etat3d} reveil={reveil3d} boites={boitesDe(formes)} />}
+        {scene3d && formes && stageW > 0 && <Scene3D etat={etat3d} reveil={reveil3d} boites={boitesDe(formes)} textes={story} />}
 
         {/* Les offres : libellés courts, sans prix ; seul le choix de Camille porte le sien. */}
         {[...story.offers, story.chosen].map((label, i) => (

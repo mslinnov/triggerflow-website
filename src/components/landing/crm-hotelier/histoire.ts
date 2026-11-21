@@ -27,17 +27,22 @@ export interface TextesRecit {
   railLabel: string;
   pms: TexteEtape & { figureLabel: string };
   sales: TexteEtape & { figureLabel: string };
-  payment: TexteEtape;
+  /** `badge` : le mot de la carte bancaire 3D, devant le montant (« ✓ Payé · 72 € »). */
+  payment: TexteEtape & { badge: string };
   review: TexteEtape;
   return: TexteEtape & { short: string; figureLabel: string };
   middle: TexteEtape;
-  message: { title: string; when: string; time: string; from: string; subject: string; body: string; offer: string; price: string; button: string };
+  /** `greeting` et `short` : la lettre de l'enveloppe 3D, plus courte que le message lu. */
+  message: { title: string; when: string; time: string; from: string; subject: string; body: string; greeting: string; short: readonly string[]; offer: string; price: string; button: string };
   offers: readonly string[];
   chosen: string;
   capture: { alt: string; caption: string };
   captureMobile: { alt: string; caption: string };
   card: { kind: string; camilleStay: string; stays: readonly string[] };
 }
+
+/** Le texte coupé autour de ses montants (« 72 € » en français, « €72 » en anglais) : rangs impairs = montants. */
+export const montants = (text: string): string[] => text.split(/(\d+\s€|€\d+)/);
 
 export interface Bloc {
   id: 'pms' | 'fiche' | 'ventes' | 'paiement' | 'avis' | 'retour' | 'cta';

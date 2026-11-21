@@ -4,7 +4,7 @@ import { brand } from '@/data/brand';
 export const CHEMIN = '/lp/crm-hotelier';
 
 /** Langues servies par la page. */
-export const LANGUES = ['fr'] as const;
+export const LANGUES = ['fr', 'en'] as const;
 export type Langue = (typeof LANGUES)[number];
 
 export const estLangue = (locale: string): locale is Langue => (LANGUES as readonly string[]).includes(locale);

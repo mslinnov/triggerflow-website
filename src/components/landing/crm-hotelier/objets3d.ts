@@ -6,9 +6,12 @@
 import * as THREE from 'three';
 import gsap from 'gsap';
 import { CENTRES, FICHE, FLECHE, HAUT, LIT, OFFRE, PARKING, RANG, RECUL, SEJOURS, TASSE } from './formes';
+import type { TextesRecit } from './histoire';
 
 export type NomObjet = 'planning' | 'enveloppe' | 'offres' | 'carte' | 'etoiles' | 'ruban';
 export type Boite = { x0: number; y0: number; x1: number; y1: number };
+/** Les textes dessinés sur les objets (la lettre de l'enveloppe, la carte payée), dans la langue de la page. */
+export type TextesObjets = Pick<TextesRecit, 'message' | 'payment'>;
 
 export interface EtatObjet {
   /** 0 à 1 : l'objet est là (il arrive quand la nuée a fini sa forme, repart quand elle se défait). */
@@ -223,7 +226,7 @@ const matPapier = (a: Atelier, o: THREE.MeshPhysicalMaterialParameters, base = 1
 /** Toile → forme : x de -W/2 à W/2 vers 0..w, y de H/2 à -H/2 vers 0..h. */
 const versToile = (W: number, H: number, w: number, h: number) => (x: number, y: number) => [(x / W + 0.5) * w, (0.5 - y / H) * h] as const;
 
-function enveloppe(a: Atelier, b: Boite): Objet {
+function enveloppe(a: Atelier, b: Boite, { message: m }: TextesObjets): Objet {
   const racine = new THREE.Group();
   const pivot = new THREE.Group();
   const corps = new THREE.Group();
@@ -352,29 +355,28 @@ function enveloppe(a: Atelier, b: Boite): Objet {
           ctx.fillRect(0, 0, w, h * 0.15);
           ctx.fillStyle = '#EEF6F4';
           ctx.font = `600 ${Math.round(h * 0.062)}px system-ui, sans-serif`;
-          ctx.fillText('Votre hôtel', w * 0.07, h * 0.097);
+          ctx.fillText(m.from, w * 0.07, h * 0.097);
           ctx.fillStyle = 'rgba(238,246,244,0.7)';
           ctx.textAlign = 'right';
           ctx.font = `500 ${Math.round(h * 0.045)}px system-ui, sans-serif`;
-          ctx.fillText('J-3', w * 0.93, h * 0.095);
+          ctx.fillText(m.when, w * 0.93, h * 0.095);
           ctx.textAlign = 'left';
           ctx.fillStyle = '#10201E';
           ctx.font = `600 ${Math.round(h * 0.085)}px system-ui, sans-serif`;
-          ctx.fillText('Bonjour Camille,', w * 0.07, h * 0.31);
+          ctx.fillText(m.greeting, w * 0.07, h * 0.31);
           ctx.fillStyle = '#3C4D4A';
           ctx.font = `400 ${Math.round(h * 0.054)}px system-ui, sans-serif`;
-          ctx.fillText('Votre chambre vous attend vendredi.', w * 0.07, h * 0.43);
-          ctx.fillText('Envie du petit-déjeuner en chambre ?', w * 0.07, h * 0.51);
+          m.short.slice(0, 2).forEach((ligne, i) => ctx.fillText(ligne, w * 0.07, h * (0.43 + i * 0.08)));
           ctx.fillStyle = '#FFE6CF';
           ctx.beginPath();
           ctx.roundRect(w * 0.07, h * 0.6, w * 0.86, h * 0.14, h * 0.03);
           ctx.fill();
           ctx.fillStyle = '#10201E';
           ctx.font = `500 ${Math.round(h * 0.052)}px system-ui, sans-serif`;
-          ctx.fillText('Petit-déjeuner en chambre', w * 0.11, h * 0.687);
+          ctx.fillText(m.offer, w * 0.11, h * 0.687);
           ctx.textAlign = 'right';
           ctx.font = `600 ${Math.round(h * 0.056)}px system-ui, sans-serif`;
-          ctx.fillText('72 €', w * 0.89, h * 0.688);
+          ctx.fillText(m.price, w * 0.89, h * 0.688);
           ctx.textAlign = 'center';
           ctx.fillStyle = '#10201E';
           ctx.beginPath();
@@ -382,7 +384,7 @@ function enveloppe(a: Atelier, b: Boite): Objet {
           ctx.fill();
           ctx.fillStyle = '#FFFFFF';
           ctx.font = `600 ${Math.round(h * 0.042)}px system-ui, sans-serif`;
-          ctx.fillText('AJOUTER À MON SÉJOUR', w / 2, h * 0.868);
+          ctx.fillText(m.button.toLocaleUpperCase(), w / 2, h * 0.868);
         }),
         LW,
         LH,
@@ -593,7 +595,8 @@ function offres(a: Atelier): Objet {
 
 /* ---------- 4. Paiement : la carte ; la puce et « Payé » s'allument ---------- */
 
-function carte(a: Atelier, b: Boite): Objet {
+function carte(a: Atelier, b: Boite, t: TextesObjets): Objet {
+  const paye = `✓ ${t.payment.badge} · ${t.message.price}`;
   const racine = new THREE.Group();
   const pivot = new THREE.Group();
   racine.add(pivot);
@@ -663,7 +666,7 @@ function carte(a: Atelier, b: Boite): Objet {
     ctx.fillStyle = MENTHE;
     ctx.font = `500 ${Math.round(H * 0.07)}px ${MONO}`;
     ctx.textAlign = 'right';
-    ctx.fillText('✓ Payé · 72 €', W * 0.915, H * 0.47);
+    ctx.fillText(paye, W * 0.915, H * 0.47);
   });
   const faces = verre(a, {
     map: a.tex(face, L, Ht),
@@ -797,9 +800,9 @@ function ruban(a: Atelier): Objet {
   };
 }
 
-export function construire(nom: NomObjet, boite: Boite, aniso: number): { objet: Objet; atelier: Atelier } {
+export function construire(nom: NomObjet, boite: Boite, aniso: number, textes: TextesObjets): { objet: Objet; atelier: Atelier } {
   const a = new Atelier(aniso);
-  const objet = { planning: () => planning(a), enveloppe: () => enveloppe(a, boite), offres: () => offres(a), carte: () => carte(a, boite), etoiles: () => etoiles(a, boite), ruban: () => ruban(a) }[
+  const objet = { planning: () => planning(a), enveloppe: () => enveloppe(a, boite, textes), offres: () => offres(a), carte: () => carte(a, boite, textes), etoiles: () => etoiles(a, boite), ruban: () => ruban(a) }[
     nom
   ]();
   // Les timelines sont en pause et le défilement pose leur avancement : le ticker de GSAP, réveillé par leur création,

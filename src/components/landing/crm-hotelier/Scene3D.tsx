@@ -9,15 +9,25 @@
 import { useEffect, useRef, type RefObject } from 'react';
 import * as THREE from 'three';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
-import { construire, type Boite, type EtatObjet, type NomObjet, type Objet } from './objets3d';
+import { construire, type Boite, type EtatObjet, type NomObjet, type Objet, type TextesObjets } from './objets3d';
 
 export type EtatScene = Partial<Record<NomObjet, EtatObjet>>;
 
 /**
  * `etat` : l'état de chaque objet, écrit par le défilement sans rendu React. `reveil` : la scène y range la relance
- * de sa boucle, que le défilement appelle après chaque nouvel état.
+ * de sa boucle, que le défilement appelle après chaque nouvel état. `textes` : ce que la lettre et la carte affichent.
  */
-export default function Scene3D({ etat, reveil, boites }: { etat: RefObject<EtatScene>; reveil: RefObject<(() => void) | null>; boites: Record<NomObjet, Boite> }) {
+export default function Scene3D({
+  etat,
+  reveil,
+  boites,
+  textes,
+}: {
+  etat: RefObject<EtatScene>;
+  reveil: RefObject<(() => void) | null>;
+  boites: Record<NomObjet, Boite>;
+  textes: TextesObjets;
+}) {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -61,7 +71,7 @@ export default function Scene3D({ etat, reveil, boites }: { etat: RefObject<Etat
     const batir = (n: NomObjet) => {
       let o = objets.get(n);
       if (!o) {
-        o = construire(n, boites[n], aniso);
+        o = construire(n, boites[n], aniso, textes);
         objets.set(n, o);
         scene.add(o.objet.racine);
       }
@@ -168,7 +178,7 @@ export default function Scene3D({ etat, reveil, boites }: { etat: RefObject<Etat
       pmrem.dispose();
       renderer.dispose();
     };
-    // `boites` vient des formes, chargées une fois.
+    // `boites` vient des formes, chargées une fois ; `textes`, de la page, ne change pas.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

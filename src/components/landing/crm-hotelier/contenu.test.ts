@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { test } from 'node:test';
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import en from '../../../../messages/en.json';
 import fr from '../../../../messages/fr.json';
 import { brand } from '../../../data/brand';
 import { companyStats } from '../../../data/company-stats';
@@ -12,11 +13,12 @@ import { getCaseStudyBySlug } from '../../../lib/case-studies';
 import { landingPageValues } from '../../../lib/landing-pages';
 import { DEMO, PLACEMENTS, SOURCE_RAPPEL, demoHref } from './liens';
 import { ETUDES } from './etudes';
+import { montants } from './histoire';
 import { LANGUES, metadonnees } from './seo';
 
 const ROOT = join(__dirname, '../../../..');
 const DOSSIER = __dirname;
-const MESSAGES = { fr } as const;
+const MESSAGES = { fr, en } as const;
 
 /** Les sources des composants de la page (tests exclus). */
 function sources(): Array<[string, string]> {
@@ -39,9 +41,45 @@ function textes(locale: keyof typeof MESSAGES): string[] {
   return out;
 }
 
-test('crm-hotelier : la promesse de la pub mot pour mot dans le titre du héros', () => {
-  const { line1, line2, line3, line4 } = fr.lpCrmHotelier.hero;
-  assert.equal([line1, line2, line3, line4].join(' '), 'Le CRM hôtelier connecté à votre PMS.');
+test('crm-hotelier : la promesse de la pub mot pour mot dans le titre du héros, et sa version anglaise', () => {
+  const titre = ({ line1, line2, line3, line4 }: typeof fr.lpCrmHotelier.hero) => [line1, line2, line3, line4].join(' ');
+  assert.equal(titre(fr.lpCrmHotelier.hero), 'Le CRM hôtelier connecté à votre PMS.');
+  assert.equal(titre(en.lpCrmHotelier.hero), 'The hotel CRM connected to your PMS.');
+});
+
+test('crm-hotelier : servie en français et en anglais, mêmes clés et mêmes listes dans les deux langues', () => {
+  assert.deepEqual([...LANGUES], ['fr', 'en']);
+  const forme = (node: unknown): unknown =>
+    Array.isArray(node) ? node.map(forme) : node && typeof node === 'object' ? Object.fromEntries(Object.entries(node).map(([k, v]) => [k, forme(v)])) : typeof node;
+  assert.deepEqual(forme(en.lpCrmHotelier), forme(fr.lpCrmHotelier));
+});
+
+test('crm-hotelier : aucun reste de français dans la page anglaise', () => {
+  for (const texte of textes('en')) {
+    assert.doesNotMatch(texte, /[éèêàâùûçœ«»]|\b(le|la|les|des|du|votre|vos|nuit|nuits|jours)\b/i, `français dans « ${texte} »`);
+  }
+});
+
+test('crm-hotelier : les textes dessinés dans les objets 3D viennent des messages', () => {
+  const source = readFileSync(join(DOSSIER, 'objets3d.ts'), 'utf8');
+  // Restent écrits dans le code : le nom de Camille et les chiffres de sa carte bancaire, les mêmes dans toutes les langues.
+  const permis = new Set(['Camille Rousseau', 'CAMILLE ROUSSEAU', '••••  ••••  ••••  4821', '12/28', 'H']);
+  for (const [, , texte] of [...source.matchAll(/fillText\((['"`])(.*?)\1/g)]) {
+    assert.ok(permis.has(texte), `texte écrit en dur dans objets3d.ts : « ${texte} »`);
+  }
+});
+
+test('crm-hotelier : les montants du récit sont repérés dans les deux écritures (72 € et €72)', () => {
+  assert.deepEqual(montants(fr.lpCrmHotelier.story.payment.text), ['', '72 €', ' de plus sur le séjour.']);
+  assert.deepEqual(montants(en.lpCrmHotelier.story.payment.text).filter((_, i) => i % 2), ['€72']);
+});
+
+test('crm-hotelier : chaque cas client a sa citation et sa fonction en anglais', () => {
+  for (const etude of ETUDES) {
+    assert.ok(etude.en.quote.length > 20, `citation anglaise absente : ${etude.slug}`);
+    assert.ok(etude.en.contactRole && etude.en.location, `fonction ou lieu anglais absent : ${etude.slug}`);
+    assert.doesNotMatch(etude.en.quote, /[éèêàâùûç«»]/, `citation en français : ${etude.slug}`);
+  }
 });
 
 test('crm-hotelier : chaque lien de démo est suivi par emplacement, aucun lien lemcal écrit à la main', () => {
@@ -98,6 +136,8 @@ test('crm-hotelier : tout chiffre affiché vient du dépôt, avec son unité, au
   // Les sources hors code, vérifiées ici pour qu'un changement là-bas casse ce test plutôt que la page.
   assert.match(fr.pricing.faq.items.trial.answer, /14 jours d'essai/);
   assert.match(fr.pricing.faq.items.commitment.answer, /préavis de 30 jours/);
+  assert.match(en.pricing.faq.items.trial.answer, /14-day free trial/);
+  assert.match(en.pricing.faq.items.commitment.answer, /30 days notice/);
   assert.match(getCaseStudyBySlug('groupe-noemys')?.type ?? '', /15 établissements/);
   // L'étude des ventes additionnelles, citée sous le taux d'achat des offres.
   assert.match(companyStats.upsellAccepted.source, /envoyées 3 à 7 jours avant/);
@@ -110,22 +150,35 @@ test('crm-hotelier : tout chiffre affiché vient du dépôt, avec son unité, au
     brand.pmsCompatibles.fr,
     brand.pmsCompatibles.en,
     `${brand.setupHours} h`,
+    `${brand.setupHours} hours`,
     `${brand.supportDays}j/${brand.supportDays}`,
+    `${brand.supportDays} days a week`,
     '14 jours',
+    '14-day',
     '30 jours',
+    '30 days',
     '15 établissements',
+    '15 properties',
     '3 à 7 jours',
+    '3 to 7 days',
     '36 708 offres',
+    '36,708 offers',
     // Les jalons du séjour de Camille, l'exemple du récit (message de J-3 à 10:00, petit-déjeuner à 72 €), et les
     // séjours des fiches de démonstration de l'ouverture.
     'J-3',
     '10:00',
     '72 €',
+    '€72',
     '1 nuit',
     '2 nuits',
     '3 nuits',
     '4 nuits',
+    '1 night',
+    '2 nights',
+    '3 nights',
+    '4 nights',
     ...prix.map((value) => `${value} €`),
+    ...prix.map((value) => `€${value}`),
   ];
   const motif = new RegExp(permis.map((phrase) => phrase.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|'), 'g');
   for (const locale of Object.keys(MESSAGES) as Array<keyof typeof MESSAGES>) {

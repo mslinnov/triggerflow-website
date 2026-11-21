@@ -39,6 +39,11 @@ function extrait(quote: string, max: number): string {
 
 type Lang = 'fr' | 'en';
 
+/** Une citation entre les guillemets de la langue. */
+const citer = (quote: string, lang: Lang) => (lang === 'fr' ? `« ${quote} »` : `“${quote}”`);
+/** Un prix comme on l'écrit dans la langue : « 29 € », « €29 ». */
+const prix = (price: string, lang: Lang) => (lang === 'fr' ? `${price}\u00a0€` : `€${price}`);
+
 function Pms({ titre, note }: { titre: string; note: string }) {
   return (
     <section id="pms" className="pt-16 lg:pt-24">
@@ -60,7 +65,8 @@ function Pms({ titre, note }: { titre: string; note: string }) {
 function Temoignages({ titre, lang }: { titre: string; lang: Lang }) {
   const studies = ETUDES.flatMap((entry) => {
     const study = getCaseStudyBySlug(entry.slug);
-    return study ? [{ ...study, image: entry.image }] : [];
+    // La page anglaise lit la traduction de la citation, de la fonction et du lieu (etudes.ts).
+    return study ? [{ ...study, ...(lang === 'en' ? entry.en : {}), image: entry.image }] : [];
   });
   // Une personne déjà montrée dans un cas client n'a pas de seconde citation (décision du 15/11/2026).
   const shown = new Set(studies.map((study) => study.contactName));
@@ -74,7 +80,7 @@ function Temoignages({ titre, lang }: { titre: string; lang: Lang }) {
           <figure className="mt-10 grid items-center gap-7 lg:mt-16 lg:grid-cols-[1.25fr_1fr] lg:gap-16">
             <Image src={premier.image} alt={`${premier.name}, ${premier.location}`} width={800} height={450} sizes="(min-width: 1024px) 56vw, 100vw" className="aspect-[16/10] w-full rounded-[16px] object-cover" />
             <div>
-              <blockquote className="text-pretty text-[23px] font-normal leading-[1.28] tracking-[-0.02em] text-ink lg:text-[32px] lg:leading-[1.22]">« {extrait(premier.quote, 120)} »</blockquote>
+              <blockquote className="text-pretty text-[23px] font-normal leading-[1.28] tracking-[-0.02em] text-ink lg:text-[32px] lg:leading-[1.22]">{citer(extrait(premier.quote, 120), lang)}</blockquote>
               <figcaption className="mt-6 text-[15px] leading-[1.45]">
                 <span className="block font-medium text-ink">{premier.contactName}</span>
                 <span className="text-ink-3">
@@ -90,7 +96,7 @@ function Temoignages({ titre, lang }: { titre: string; lang: Lang }) {
               <figure key={study.slug} className="grid w-[86%] shrink-0 snap-start grid-cols-[88px_1fr] items-start gap-4 sm:w-auto sm:grid-cols-[104px_1fr] sm:gap-5 lg:grid-cols-[168px_1fr] lg:gap-7">
                 <Image src={study.image} alt={`${study.name}, ${study.location}`} width={800} height={450} sizes="168px" className="aspect-square w-full rounded-[16px] object-cover" />
                 <div>
-                  <blockquote className="text-pretty text-[17px] leading-[1.4] text-ink lg:text-[20px]">« {extrait(study.quote, 130)} »</blockquote>
+                  <blockquote className="text-pretty text-[17px] leading-[1.4] text-ink lg:text-[20px]">{citer(extrait(study.quote, 130), lang)}</blockquote>
                   <figcaption className="mt-4 text-[14.5px] leading-[1.45]">
                     <span className="block font-medium text-ink">{study.contactName}</span>
                     <span className="text-ink-3">
@@ -109,7 +115,7 @@ function Temoignages({ titre, lang }: { titre: string; lang: Lang }) {
           >
             {home.map((item) => (
               <li key={item.name} className="flex w-[82%] shrink-0 snap-start flex-col justify-between gap-5 border-t border-ink/15 pt-5 lg:w-auto">
-                <blockquote className="text-pretty text-[16px] leading-[1.5] text-ink-2">« {extrait(item.quote[lang], 150)} »</blockquote>
+                <blockquote className="text-pretty text-[16px] leading-[1.5] text-ink-2">{citer(extrait(item.quote[lang], 150), lang)}</blockquote>
                 <p className="text-[14.5px] leading-[1.45]">
                   <span className="block font-medium text-ink">{item.name}</span>
                   <span className="text-ink-3">
@@ -161,7 +167,7 @@ async function Plans({ textes, locale, lang }: { textes: TextesPlans; locale: st
                 {plan.popular && <span className="rounded-full bg-mint px-2.5 py-0.5 text-[12.5px] font-medium">{textes.popularLabel}</span>}
               </h3>
               <p className="mt-5 flex items-baseline gap-2 text-ink">
-                <span className={cn(CONDENSE, 'text-[58px] font-light leading-none tracking-[-0.015em] lg:text-[68px]')}>{plan.price}&nbsp;€</span>
+                <span className={cn(CONDENSE, 'text-[58px] font-light leading-none tracking-[-0.015em] lg:text-[68px]')}>{prix(plan.price, lang)}</span>
                 {plan.price !== '0' && <span className="text-[14.5px] text-ink-3">/ {textes.perMonthLabel}</span>}
               </p>
               {plan.upcomingPrice && <p className="mt-2 text-[13px] text-ink-3">{t('upcoming', { price: plan.upcomingPrice })}</p>}

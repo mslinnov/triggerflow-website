@@ -2925,6 +2925,200 @@
       "copyright": "© {year} TriggerFlow. All rights reserved."
     }
   },
+  "lpCrmHotelier": {
+    "metadata": {
+      "title": "Hotel CRM connected to your PMS",
+      "description": "The hotel CRM that connects to your PMS: more direct bookings, more revenue per stay and more positive reviews, with no double entry. Free plan to get started."
+    },
+    "header": {
+      "pricing": "Pricing",
+      "callback": "Request a call",
+      "demo": "Book a demo"
+    },
+    "hero": {
+      "line1": "The hotel CRM",
+      "line2": "connected",
+      "line3": "to",
+      "line4": "your PMS.",
+      "sub": "Every booking in your PMS fills in the guest profile, and TriggerFlow sends each guest the right message at the right time.",
+      "demo": "Book a demo",
+      "callback": "Request a call"
+    },
+    "story": {
+      "rail": [
+        "Booking",
+        "Pre-arrival",
+        "Payment",
+        "Review",
+        "Rebooking"
+      ],
+      "railLabel": "Guest journey",
+      "pms": {
+        "title": "Plugged into your PMS, not bolted on",
+        "text": "Guests, bookings, stay dates, spend: it all syncs from your PMS, with nothing to retype.",
+        "figureLabel": "compatible PMS"
+      },
+      "sales": {
+        "title": "Between booking and arrival, your hotel sells without you",
+        "text": "A few days before arrival, guests receive your hotel's extras and pay for them online.",
+        "figureLabel": "of offers sent 3 to 7 days before arrival are bought (36,708 offers analysed)"
+      },
+      "payment": {
+        "title": "Camille says yes. It's paid.",
+        "text": "€72 more on this stay.",
+        "badge": "Paid"
+      },
+      "review": {
+        "title": "More positive reviews, fewer nasty surprises",
+        "text": "After check-out, every guest gets a short survey."
+      },
+      "return": {
+        "title": "Past guests come back and book direct, not through Booking.com",
+        "text": "TriggerFlow spots which guests to win back from their past stays, then emails them a link to your booking engine.",
+        "short": "TriggerFlow spots which guests to win back, then emails them a link to your booking engine.",
+        "figureLabel": "of WhatsApp messages sent by TriggerFlow are read"
+      },
+      "middle": {
+        "title": "See these scenarios run on your own hotel's data",
+        "text": "A demo built from your PMS."
+      },
+      "message": {
+        "title": "The right message, three days before arrival.",
+        "when": "Tue",
+        "time": "10:00",
+        "from": "Your hotel",
+        "subject": "Camille, your stay is coming up",
+        "body": "Your room will be ready on Friday. How about breakfast in your room on both mornings?",
+        "greeting": "Hello Camille,",
+        "short": [
+          "Your room will be ready on Friday.",
+          "How about breakfast in your room?"
+        ],
+        "offer": "In-room breakfast",
+        "price": "€72",
+        "button": "Add to my stay"
+      },
+      "offers": [
+        "Room upgrade",
+        "Parking",
+        "Breakfast"
+      ],
+      "chosen": "In-room breakfast, €72",
+      "capture": {
+        "alt": "A guest profile in TriggerFlow: their arrival, the welcome SMS and the emails sent beforehand",
+        "caption": "The guest profile in TriggerFlow, on a demo account."
+      },
+      "captureMobile": {
+        "alt": "The welcome SMS sent on arrival day, as it appears in the TriggerFlow guest profile",
+        "caption": "Every message sent, at the time it went out, in the guest profile. Demo account."
+      },
+      "card": {
+        "kind": "Booking",
+        "camilleStay": "2 nights · couple",
+        "stays": [
+          "1 night · business",
+          "3 nights · family",
+          "2 nights · couple",
+          "4 nights · family",
+          "1 night · solo",
+          "2 nights · business"
+        ]
+      }
+    },
+    "pms": {
+      "gridLabel": "{pmsCompatibles} compatible PMS, including",
+      "footnote": "More are being integrated. For your other tools: Zapier and n8n. Don't see your PMS? Tell us during the demo."
+    },
+    "testimonials": {
+      "title": "From independent hotels to groups"
+    },
+    "plans": {
+      "sectionTitle": "Start for free, move up when you're ready",
+      "popularLabel": "Most popular",
+      "perMonthLabel": "month",
+      "notes": [
+        "No commitment, 30 days' notice.",
+        "14-day free trial on paid plans."
+      ],
+      "ctaLabel": "Book a demo"
+    },
+    "faq": {
+      "sectionTitle": "What hoteliers ask before getting started",
+      "items": [
+        {
+          "question": "I already have a PMS. Why would I need a CRM?",
+          "answer": "Your PMS runs bookings, rooms and billing. TriggerFlow uses that data to talk to your guests: messages before, during and after the stay, offers, surveys, win-back campaigns. You keep your PMS; TriggerFlow connects to it."
+        },
+        {
+          "question": "Is my PMS compatible?",
+          "answer": "TriggerFlow works with {pmsCompatibles} PMS, including {pmsList}, and more are being integrated. If yours isn't listed, tell us during the demo."
+        },
+        {
+          "question": "How long does it take to get started?",
+          "answer": "On average, our clients are up and running in under 48 hours. Our team connects your PMS and sets up your first scenarios with you."
+        },
+        {
+          "question": "How much does it cost?",
+          "answer": "The Discovery plan is free. Paid plans start at €{entryPrice} per month, with no commitment and a 14-day free trial."
+        },
+        {
+          "question": "Do I need technical skills?",
+          "answer": "No. Scenarios are built and edited in the interface, with no code. Wording, timing and conditions change in a few clicks."
+        },
+        {
+          "question": "What about GDPR?",
+          "answer": "TriggerFlow is GDPR compliant. Every marketing message includes an unsubscribe link, applied automatically to all future sends."
+        },
+        {
+          "question": "I run several hotels. Does it work for a group?",
+          "answer": "Yes. A group manages all its properties from a single account, with a consolidated view. Groupe Noemys uses TriggerFlow across its 15 properties."
+        },
+        {
+          "question": "Who helps us get set up?",
+          "answer": "Our team, based in Toulouse, France, walks you through setup and stays with you day to day. Support is available 7 days a week."
+        }
+      ]
+    },
+    "final": {
+      "title": "See what TriggerFlow would do for your hotel",
+      "subtitle": "A demo built around your situation: your PMS, your stays, your priorities. Prefer a call? Leave your number.",
+      "ctaLabel": "Book a demo",
+      "benefits": [
+        "Free plan to get started",
+        "Set up in under 48 hours",
+        "Support 7 days a week",
+        "Team based in Toulouse, France"
+      ],
+      "callback": {
+        "title": "Request a call",
+        "subtitle": "One of our team calls you at a time that suits you.",
+        "slots": [
+          "As soon as possible",
+          "In the morning",
+          "In the afternoon"
+        ],
+        "labels": {
+          "firstName": "First name",
+          "hotelName": "Hotel",
+          "phone": "Phone",
+          "email": "Email",
+          "slot": "When should we call?",
+          "submit": "Call me back",
+          "successTitle": "Got it.",
+          "successBody": "We'll call you in the slot you chose.",
+          "error": "Something went wrong. Try again, or book a demo directly.",
+          "invalidPhone": "This number doesn't look right. Check it, and add the country code if it isn't a French number.",
+          "privacy": "Your details are only used to call you back about TriggerFlow. Never sold on.",
+          "privacyLink": "Privacy policy"
+        }
+      }
+    },
+    "footer": {
+      "legal": "Legal notice",
+      "privacy": "Privacy policy",
+      "terms": "Terms of sale"
+    }
+  },
   "priceChange": {
     "banner": "Our prices change on January 1, 2027. Subscribe before December 31 and keep today's price for life.",
     "bannerShort": "Prices rise Jan 1: lock in today's price for life",

@@ -2973,7 +2973,8 @@
       },
       "payment": {
         "title": "Camille dit oui. C’est payé.",
-        "text": "72 € de plus sur le séjour."
+        "text": "72 € de plus sur le séjour.",
+        "badge": "Payé"
       },
       "review": {
         "title": "Plus d’avis positifs, moins de mauvaises surprises",
@@ -2996,6 +2997,11 @@
         "from": "Votre hôtel",
         "subject": "Camille, votre séjour approche",
         "body": "Votre chambre vous attend vendredi. Envie du petit-déjeuner en chambre pour vos deux matins ?",
+        "greeting": "Bonjour Camille,",
+        "short": [
+          "Votre chambre vous attend vendredi.",
+          "Envie du petit-déjeuner en chambre ?"
+        ],
         "offer": "Petit-déjeuner en chambre",
         "price": "72 €",
         "button": "Ajouter à mon séjour"
