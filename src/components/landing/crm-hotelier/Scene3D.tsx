@@ -9,7 +9,7 @@
 import { useEffect, useRef, type RefObject } from 'react';
 import * as THREE from 'three';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
-import { construire, type Boite, type EtatObjet, type NomObjet, type Objet, type TextesObjets } from './objets3d';
+import { construire, fermerRendu, type Boite, type EtatObjet, type NomObjet, type Objet, type TextesObjets } from './objets3d';
 
 export type EtatScene = Partial<Record<NomObjet, EtatObjet>>;
 
@@ -28,11 +28,15 @@ export default function Scene3D({
   boites: Record<NomObjet, Boite>;
   textes: TextesObjets;
 }) {
-  const ref = useRef<HTMLCanvasElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const canvas = ref.current;
-    if (!canvas) return;
+    const cadre = ref.current;
+    if (!cadre) return;
+    // Une toile par montage : le démontage perd son contexte (`fermerRendu`), un remontage (mode strict) ne peut la reprendre.
+    const canvas = document.createElement('canvas');
+    canvas.className = 'block h-full w-full';
+    cadre.append(canvas);
     const fin = window.matchMedia('(pointer: fine)').matches;
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, fin ? 2 : 1.5));
@@ -176,11 +180,13 @@ export default function Scene3D({
       }
       env.dispose();
       pmrem.dispose();
-      renderer.dispose();
+      // Sans la perte forcée, chaque montage (navigation dans le site, double montage du mode strict) garde un contexte.
+      fermerRendu(renderer);
+      canvas.remove();
     };
     // `boites` vient des formes, chargées une fois ; `textes`, de la page, ne change pas.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return <canvas ref={ref} aria-hidden className="pointer-events-none absolute inset-0 h-full w-full" />;
+  return <div ref={ref} aria-hidden className="pointer-events-none absolute inset-0 h-full w-full" />;
 }

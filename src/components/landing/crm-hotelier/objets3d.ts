@@ -806,7 +806,26 @@ function ruban(a: Atelier): Objet {
  */
 export function avancer(tl: gsap.core.Timeline, p: number) {
   tl.progress(p);
+  endormirTicker();
+}
+
+/**
+ * Le ticker de GSAP est commun à toute la page : on ne l'endort que s'il ne sert à rien d'autre, c'est-à-dire aucune
+ * animation en cours hors des timelines en pause du récit et aucun écouteur ajouté par un autre code (GSAP n'a que le
+ * sien, celui de sa timeline globale). C'est la condition de sa propre mise en veille (`autoSleep`), que les appels à
+ * `progress` empêchent d'arriver. Liste d'écouteurs illisible (autre version de GSAP) : on le laisse tourner.
+ */
+function endormirTicker() {
+  const ecouteurs = (gsap.ticker as unknown as { _listeners?: readonly unknown[] })._listeners;
+  if (!ecouteurs || ecouteurs.length > 1) return;
+  if (gsap.globalTimeline.getChildren(false, true, true).some((a) => !a.paused())) return;
   gsap.ticker.sleep();
+}
+
+/** Le démontage de la scène : le rendu libère ses ressources puis rend son contexte WebGL, que le navigateur limite. */
+export function fermerRendu(renderer: { dispose(): void; forceContextLoss(): void }) {
+  renderer.dispose();
+  renderer.forceContextLoss();
 }
 
 export function construire(nom: NomObjet, boite: Boite, aniso: number, textes: TextesObjets): { objet: Objet; atelier: Atelier } {
@@ -814,7 +833,7 @@ export function construire(nom: NomObjet, boite: Boite, aniso: number, textes: T
   const objet = { planning: () => planning(a), enveloppe: () => enveloppe(a, boite, textes), offres: () => offres(a), carte: () => carte(a, boite, textes), etoiles: () => etoiles(a, boite), ruban: () => ruban(a) }[
     nom
   ]();
-  // Le ticker de GSAP, réveillé par la création des timelines, tournerait pour rien : voir `avancer`.
-  gsap.ticker.sleep();
+  // Le ticker de GSAP, réveillé par la création des timelines, tournerait pour rien : voir `endormirTicker`.
+  endormirTicker();
   return { objet, atelier: a };
 }

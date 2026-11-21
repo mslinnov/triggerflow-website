@@ -5,7 +5,8 @@ import fr from '../../../../messages/fr.json';
 import { poserStyle } from './defilement';
 import { DEPART, estEpingle, histoire, poseEpingle, presence, segment, type NomForme, type TextesRecit } from './histoire';
 import { jourDe } from './jour';
-import { avancer } from './objets3d';
+import { avancer, fermerRendu } from './objets3d';
+import { QUEUE, rideau, versions } from './versions';
 
 const TEXTES = fr.lpCrmHotelier.story as TextesRecit;
 const CHIFFRES = { pms: '+20', whatsapp: '84 %', upsell: '5 %' };
@@ -101,21 +102,74 @@ test('récit : un texte épinglé loin de ses voisins garde sa tenue de 0,2 écr
   assert.deepEqual(poseEpingle({ at: 5, kind: 'cta' }, 9), { opacity: 1, glisse: 0 }, 'l’appel à la démo reste');
 });
 
+/** Images que le ticker de GSAP a jouées pendant `ms` (son compteur : un écouteur l'empêcherait de s'endormir). */
+async function images(ms = 80): Promise<number> {
+  const debut = gsap.ticker.frame;
+  await new Promise((fin) => setTimeout(fin, ms));
+  return gsap.ticker.frame - debut;
+}
+
 test('objets 3D : avancer pose la timeline et rendort le ticker de GSAP', async () => {
   const cible = { x: 0 };
   const tl = gsap.timeline({ paused: true }).to(cible, { x: 1, duration: 1, ease: 'none' });
-  let images = 0;
-  const compter = () => {
-    images++;
-  };
-  gsap.ticker.add(compter);
   try {
     avancer(tl, 0.5);
     assert.equal(cible.x, 0.5);
-    await new Promise((fin) => setTimeout(fin, 80));
-    assert.equal(images, 0, 'le défilement pose l’avancement : le ticker ne doit pas tourner entre deux images');
+    assert.equal(await images(), 0, 'le défilement pose l’avancement : le ticker ne doit pas tourner entre deux images');
   } finally {
-    gsap.ticker.remove(compter);
+    tl.kill();
     gsap.ticker.sleep();
   }
+});
+
+test('objets 3D : avancer laisse tourner le ticker quand une autre animation de la page est en cours', async () => {
+  const tl = gsap.timeline({ paused: true }).to({ x: 0 }, { x: 1, duration: 1 });
+  const autre = gsap.to({ y: 0 }, { y: 1, duration: 5 });
+  try {
+    avancer(tl, 0.5);
+    assert.ok((await images()) > 0, 'une animation en cours ailleurs a besoin du ticker');
+  } finally {
+    autre.kill();
+    tl.kill();
+    gsap.ticker.sleep();
+  }
+});
+
+test('objets 3D : avancer laisse tourner le ticker quand un autre code l’écoute', async () => {
+  const tl = gsap.timeline({ paused: true }).to({ x: 0 }, { x: 1, duration: 1 });
+  let appels = 0;
+  const ecoute = () => {
+    appels++;
+  };
+  gsap.ticker.add(ecoute);
+  try {
+    avancer(tl, 0.5);
+    await images();
+    assert.ok(appels > 0, 'un écouteur ajouté par un autre code doit continuer d’être appelé');
+  } finally {
+    gsap.ticker.remove(ecoute);
+    tl.kill();
+    gsap.ticker.sleep();
+  }
+});
+
+test('scène 3D : le démontage libère le rendu puis rend son contexte WebGL', () => {
+  const appels: string[] = [];
+  fermerRendu({ dispose: () => appels.push('dispose'), forceContextLoss: () => appels.push('perte') });
+  assert.deepEqual(appels, ['dispose', 'perte']);
+});
+
+test('version fixe : avant l’hydratation, les deux versions sont servies et le CSS choisit selon prefers-reduced-motion', () => {
+  const v = versions(null);
+  assert.deepEqual(v.animee?.split(' '), ['motion-reduce:hidden']);
+  assert.deepEqual(v.fixe?.split(' ').sort(), ['hidden', 'motion-reduce:block']);
+  assert.deepEqual(versions(true), { animee: null, fixe: '' });
+  assert.deepEqual(versions(false), { animee: '', fixe: null });
+});
+
+test('rideau : avant l’hydratation, la tenue de la version animée sous motion-safe, recul de QUEUE', () => {
+  const anime = rideau(false).split(' ');
+  assert.ok(anime.includes(`-mt-[${QUEUE * 100}svh]`));
+  assert.deepEqual(rideau(null).split(' '), anime.map((c) => `motion-safe:${c}`));
+  assert.equal(rideau(true), '');
 });

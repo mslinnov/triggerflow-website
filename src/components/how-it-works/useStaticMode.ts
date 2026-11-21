@@ -29,16 +29,16 @@ function subscribe(onChange: () => void): () => void {
   };
 }
 
-
 /**
  * Vrai quand il faut montrer la version fixe : le visiteur a demandé moins d'animations, ou l'écran est
- * trop court pour la scène (téléphone couché). Faux côté serveur : la page servie est la version animée.
+ * trop court pour la scène (téléphone couché). Nul au serveur et pendant l'hydratation : la page sert alors
+ * les deux versions et laisse le CSS choisir (`prefers-reduced-motion`), sans saut quand React tranche.
  */
-export function useStaticMode(header = HEADER): boolean {
+export function useStaticMode(header = HEADER): boolean | null {
   const tooShort = trackerFor(header);
-  return useSyncExternalStore(
+  return useSyncExternalStore<boolean | null>(
     subscribe,
     () => window.matchMedia(REDUCED).matches || tooShort(window.innerWidth, window.innerHeight),
-    () => false,
+    () => null,
   );
 }

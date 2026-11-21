@@ -9,11 +9,12 @@ import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { useMotionValueEvent, useScroll } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { EnTete, type TextesEnTete } from './EnTete';
-import { Immersion, NUIT, QUEUE, useFixe, type TextesImmersion } from './Immersion';
+import { Immersion, NUIT, useFixe, type TextesImmersion } from './Immersion';
 import type { Chiffres } from './histoire';
 import { PAPIER } from './jour';
 import type { Logo } from './Logos';
 import { HEADER } from './moteur';
+import { rideau } from './versions';
 
 interface PageRecitProps {
   entete: TextesEnTete;
@@ -41,11 +42,7 @@ export function PageRecit({ entete, textes, chiffres, logos, children }: PageRec
       <main>
         <Immersion textes={textes} chiffres={chiffres} logos={logos} />
         {/* Version animée : le bas de page remonte en rideau sur la fin du récit ; version fixe : coupe nette. */}
-        <div
-          ref={clair}
-          className={cn('relative z-[45] bg-white', !fixe && 'overflow-hidden rounded-t-[28px] shadow-[0_-30px_80px_-30px_rgba(0,40,36,0.22)] lg:rounded-t-[40px]')}
-          style={fixe ? undefined : { marginTop: `-${QUEUE * 100}svh` }}
-        >
+        <div ref={clair} className={cn('relative z-[45] bg-white', rideau(fixe))}>
           {children}
         </div>
       </main>

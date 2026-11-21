@@ -21,7 +21,9 @@ import { useSide } from '@/components/how-it-works/useSide';
 import { useStaticMode } from '@/components/how-it-works/useStaticMode';
 import { RAPPEL, demoHref, type Placement } from './liens';
 import { CARD, HEADER, at, timeOf, useWide, type Keys } from './moteur';
+import Figee from './Figee';
 import { Logos, type Logo } from './Logos';
+import { QUEUE, versions } from './versions';
 import { Titre, titreEntier, type LignesTitre } from './Titre';
 import { poserStyle, useOuvertureImperative } from './defilement';
 import { CENTRES, FICHE, OFFRE, RECUL, type Forme } from './formes';
@@ -33,7 +35,6 @@ import type { NomObjet } from './objets3d';
 
 const Nuee = dynamic(() => import('./Nuee'), { ssr: false });
 const Fiches = dynamic(() => import('./Fiches'), { ssr: false });
-const Figee = dynamic(() => import('./Figee'), { ssr: false });
 const Scene3D = dynamic(() => import('./Scene3D'), { ssr: false });
 
 /** Les textes du héros (lpCrmHotelier.hero). */
@@ -54,6 +55,11 @@ interface Props {
   logos: readonly Logo[];
 }
 
+interface PropsVersion extends Props {
+  /** Classe de la section : avant l'hydratation, le CSS montre la version que demande le visiteur (`versions.ts`). */
+  classe: string;
+}
+
 /** L'horloge du champ de fiches : la carte de Sophie pendant l'ouverture, puis le dézoom jusqu'aux points. */
 const FICHES: Keys = [
   [0, CARD],
@@ -62,8 +68,6 @@ const FICHES: Keys = [
   [DEPART + 20, 1],
 ];
 const BOITE = { x0: -1.1, y0: -1.1, x1: 1.1, y1: 1.1 };
-/** Part de la hauteur d'écran que le rideau clair remonte sur la scène encore épinglée. */
-const QUEUE = 0.72;
 
 /** La nuit de l'ouverture, seul moment sombre du récit. */
 const NUIT = { couleur: '#002B28', image: 'radial-gradient(88% 72% at 50% 46%, #0B4640 0%, #002B28 56%, #00201E 100%)' };
@@ -139,7 +143,8 @@ function DeuxTemps({ title }: { title: string }) {
 const LEGENDE = cn(CORPS, 'text-balance text-[14.5px] leading-[1.4] lg:text-[15px]');
 
 /** Une composition par étape : PMS et ventes posent le chiffre sous le texte, l'avis est une phrase forte, le retour ouvre sur son chiffre. */
-function Texte({ bloc, wide, hero }: { bloc: Bloc; wide: boolean; hero: TextesHero }) {
+/** `wide` nul : largeur laissée au CSS (`lg`, le seuil de `useWide`), les deux textes sont servis. */
+function Texte({ bloc, wide, hero }: { bloc: Bloc; wide: boolean | null; hero: TextesHero }) {
   const cross = bloc.kind !== 'calm';
   const enTete = bloc.id === 'retour' ? bloc.chiffre : undefined;
   const taille =
@@ -162,7 +167,18 @@ function Texte({ bloc, wide, hero }: { bloc: Bloc; wide: boolean; hero: TextesHe
         <DeuxTemps title={bloc.title} />
       </h2>
       <p className={cn(CORPS, 'mt-4 text-pretty text-[16px] leading-[1.45] lg:mt-5', cross ? 'mx-auto max-w-[30ch] lg:text-[19px]' : 'max-w-[44ch] lg:text-[19px]')}>
-        <Montants text={lie(wide ? bloc.text : (bloc.bref ?? bloc.text))} />
+        {wide === null && bloc.bref ? (
+          <>
+            <span className="lg:hidden">
+              <Montants text={lie(bloc.bref)} />
+            </span>
+            <span className="hidden lg:inline">
+              <Montants text={lie(bloc.text)} />
+            </span>
+          </>
+        ) : (
+          <Montants text={lie(wide ? bloc.text : (bloc.bref ?? bloc.text))} />
+        )}
       </p>
       {bloc.chiffre && !enTete && (
         <p className="mt-6 flex items-end gap-4 lg:mt-9 lg:gap-6">
@@ -363,10 +379,15 @@ function useScene3DPrete(): boolean {
   return prete;
 }
 
-function Animee({ textes, chiffres, logos }: Props) {
+function Animee({ textes, chiffres, logos, classe }: PropsVersion) {
   const { hero, story } = textes;
   const wide = useWide();
   const recit = useMemo(() => histoire(story, chiffres, wide, true), [story, chiffres, wide]);
+  /** Hauteur de la section aux deux largeurs : `wide` est faux au serveur, le CSS prend la bonne sans attendre. */
+  const hauteurs = useMemo(() => {
+    const h = (wideH: boolean) => `calc(${histoire(story, chiffres, wideH, true).ecrans * 100}svh + 100svh - ${HEADER}px + ${QUEUE * 100}svh)`;
+    return { '--h-recit': h(false), '--h-recit-lg': h(true) };
+  }, [story, chiffres]);
   /** Les blocs épinglés, dans l'ordre : chacun finit son fondu à mi-chemin de ses voisins. */
   const blocsEpingles = useMemo(() => recit.blocs.filter((b) => estEpingle(b, wide)), [recit, wide]);
   const section = useRef<HTMLElement>(null);
@@ -587,11 +608,7 @@ function Animee({ textes, chiffres, logos }: Props) {
   });
 
   return (
-    <section
-      ref={section}
-      className="relative"
-      style={{ height: `calc(${recit.ecrans * 100}svh + 100svh - ${HEADER}px + ${queue * 100}svh)`, backgroundColor: 'var(--fd)' }}
-    >
+    <section ref={section} className={cn('relative h-(--h-recit) lg:h-(--h-recit-lg)', classe)} style={{ ...hauteurs, backgroundColor: 'var(--fd)' }}>
       <div ref={stage} className="pointer-events-none sticky top-[61px] z-20 h-[calc(100svh_-_61px)] overflow-hidden" style={{ backgroundColor: PAPIER }}>
         {/* La nuit de l'ouverture ; pendant le dézoom, un iris de papier s'ouvre depuis la carte de Sophie (échelle posée
             par `ecrire`, sur le compositeur). Un fondu enchaîné passait par un gris sale à mi-chemin. */}
@@ -723,14 +740,14 @@ function Animee({ textes, chiffres, logos }: Props) {
   );
 }
 
-function Fixe({ textes, chiffres, logos }: Props) {
+/** `inerte` : servie avant l'hydratation à côté de la version animée, elle ne touche pas encore à l'en-tête. */
+function Fixe({ textes, chiffres, logos, classe, inerte }: PropsVersion & { inerte: boolean }) {
   const { hero, story } = textes;
   const recit = useMemo(() => histoire(story, chiffres), [story, chiffres]);
-  const wide = useWide();
   const ouverture = useRef<HTMLDivElement>(null);
-  useEffect(() => (ouverture.current ? suivreOuvertureFixe(ouverture.current) : undefined), []);
+  useEffect(() => (!inerte && ouverture.current ? suivreOuvertureFixe(ouverture.current) : undefined), [inerte]);
   return (
-    <section style={{ backgroundColor: NUIT.couleur }}>
+    <section className={classe || undefined} style={{ backgroundColor: NUIT.couleur }}>
       <div ref={ouverture} className="mx-auto max-w-[1240px] px-4 pt-12 lg:px-8 lg:pt-20">
         <h1 className={cn(CLAIR, 'max-w-[14ch] text-[42px] font-normal leading-[1.04] tracking-[-0.035em] lg:text-[92px] lg:font-light lg:leading-[1.02]')}>{titreEntier(hero)}</h1>
         <p className={cn(CORPS, 'mt-6 max-w-[50ch] text-[17px] leading-[1.45] lg:text-[21px]')}>{hero.sub}</p>
@@ -743,7 +760,7 @@ function Fixe({ textes, chiffres, logos }: Props) {
           {recit.blocs.map((b) => (
             <li key={b.id} className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
               <div className={cn(b.side === 'right' && 'lg:order-2', b.kind !== 'calm' && 'lg:col-span-2 lg:mx-auto lg:max-w-[560px] lg:text-center')}>
-                <Texte bloc={{ ...b, kind: b.kind === 'cross' ? 'calm' : b.kind }} wide={wide} hero={hero} />
+                <Texte bloc={{ ...b, kind: b.kind === 'cross' ? 'calm' : b.kind }} wide={null} hero={hero} />
               </div>
               {b.kind === 'calm' && <Figee forme={b.id === 'ventes' ? 'choix' : b.forme} />}
               {b.id === 'pms' && (
@@ -760,13 +777,21 @@ function Fixe({ textes, chiffres, logos }: Props) {
   );
 }
 
-/** Vrai quand la page montre la version fixe : animations réduites ou écran trop court. */
-export function useFixe(): boolean {
+/** Vrai quand la page montre la version fixe (animations réduites ou écran trop court), nul avant l'hydratation. */
+export function useFixe(): boolean | null {
   return useStaticMode(HEADER);
 }
 
 export function Immersion(props: Props) {
-  return useFixe() ? <Fixe {...props} /> : <Animee {...props} />;
+  const fixe = useFixe();
+  const v = versions(fixe);
+  // Deux places fixes : la version gardée après l'hydratation reste montée.
+  return (
+    <>
+      {v.animee !== null && <Animee {...props} classe={v.animee} />}
+      {v.fixe !== null && <Fixe {...props} classe={v.fixe} inerte={fixe === null} />}
+    </>
+  );
 }
 
-export { NUIT, QUEUE };
+export { NUIT };
