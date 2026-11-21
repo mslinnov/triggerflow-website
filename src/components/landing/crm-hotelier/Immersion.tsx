@@ -12,7 +12,7 @@ import Image from 'next/image';
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState, type RefObject } from 'react';
 import { useMotionValue, useMotionValueEvent, useScroll, type MotionValue } from 'framer-motion';
 import { dotRadius } from '@/lib/how-it-works/intro';
-import { clamp, easeInOut, lerp } from '@/lib/how-it-works/math';
+import { clamp, easeInOut, lerp, smooth } from '@/lib/how-it-works/math';
 import type { JourneyTime } from '@/lib/how-it-works/timeline';
 import { cn } from '@/lib/utils';
 import { ButtonLink } from '@/components/ui';
@@ -543,7 +543,6 @@ function Animee({ textes, chiffres, logos, classe }: PropsVersion) {
     const ca = cadreDe(ka.place, ka.forme);
     const cb = cadreDe(kb.place, kb.forme);
     const cadre = { cx: lerp(ca.cx, cb.cx, e), cy: lerp(ca.cy, cb.cy, e), u: lerp(ca.u, cb.u, e) };
-    const lisse = (v: number) => v * v * (3 - 2 * v);
     for (const nom of TOUS_3D) {
       const noms = FORMES_3D[nom];
       const i = cles.findIndex((c, n) => n > 0 && noms.includes(c.forme));
@@ -552,7 +551,7 @@ function Animee({ textes, chiffres, logos, classe }: PropsVersion) {
       if (j < 0) j = cles.length - 1;
       const debut = cles[i - 1].s + 0.82 * (cles[i].s - cles[i - 1].s);
       const fin = cles[j - 1].s + 0.3 * (cles[j].s - cles[j - 1].s);
-      const p = s < cles[i].s ? lisse(clamp((s - debut) / (cles[i].s - debut))) : s > cles[j - 1].s ? 1 - lisse(clamp((s - cles[j - 1].s) / Math.max(1e-6, fin - cles[j - 1].s))) : 1;
+      const p = s < cles[i].s ? smooth((s - debut) / (cles[i].s - debut)) : s > cles[j - 1].s ? 1 - smooth((s - cles[j - 1].s) / Math.max(1e-6, fin - cles[j - 1].s)) : 1;
       let detail = 0;
       if (nom === 'carte') detail = clamp((s - recit.blocs.find((b) => b.id === 'paiement')!.at + 0.04) / 0.1);
       if (nom === 'offres') {

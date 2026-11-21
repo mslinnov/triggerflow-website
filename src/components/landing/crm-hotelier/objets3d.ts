@@ -7,6 +7,7 @@ import * as THREE from 'three';
 import gsap from 'gsap';
 import { CENTRES, FICHE, FLECHE, HAUT, LIT, OFFRE, PARKING, RANG, RECUL, SEJOURS, TASSE } from './formes';
 import type { TextesRecit } from './histoire';
+import { clamp, lerp } from '@/lib/how-it-works/math';
 
 export type NomObjet = 'planning' | 'enveloppe' | 'offres' | 'carte' | 'etoiles' | 'ruban';
 export type Boite = { x0: number; y0: number; x1: number; y1: number };
@@ -36,8 +37,6 @@ const MENTHE = '#8FD9C4';
 const PECHE = '#FFCFA2';
 const CLAIR = '#EEF6F4';
 const MONO = '"IBM Plex Mono", ui-monospace, monospace';
-const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
-const clamp = (v: number) => Math.min(1, Math.max(0, v));
 
 /** Ce que chaque objet garde pour se libérer, et ses matériaux pour le fondu. */
 class Atelier {

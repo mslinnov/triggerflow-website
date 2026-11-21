@@ -1,14 +1,14 @@
 /**
- * Taille de la scène. Ces valeurs reprennent les classes CSS de `HowItWorksAnimated.tsx` : elles servent
- * seulement à savoir, avant d'afficher la scène, si l'écran est assez grand pour elle.
+ * Taille de la scène. Ces valeurs reprennent les classes CSS de la scène de la LP CRM hôtelier (Immersion) : elles
+ * servent seulement à savoir, avant d'afficher la scène, si l'écran est assez grand pour elle.
  */
 
 /** En dessous de ce côté, le visuel n'est plus lisible : on montre la version fixe. */
 export const MIN_SIDE = 240;
 
 /**
- * Hauteur par défaut de l'en-tête fixe du site, comme le `pt-[100px]` de `(main)/layout.tsx`. Une page à
- * l'en-tête différent la passe à la scène (`header` de HowItWorksStory).
+ * Hauteur par défaut de l'en-tête fixe du site (`pt-[100px]`). La LP CRM hôtelier passe la sienne
+ * (`HEADER` de moteur.ts).
  */
 export const HEADER = 100;
 /** Bande de la ligne de séjour, sous le visuel. */

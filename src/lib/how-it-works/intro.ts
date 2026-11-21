@@ -8,7 +8,7 @@ import { clamp, lerp, round, smooth } from './math';
  */
 
 /** L'espace se resserre SPREAD fois plus que les fiches : au départ elles ne se chevauchent pas. */
-export const SPREAD = 7.5;
+const SPREAD = 7.5;
 
 /** Rayon d'un point pour un visuel d'au moins 445 px de côté (taille validée sur le prototype). */
 const BASE_RADIUS = 2.6434;
@@ -25,7 +25,7 @@ export function cardFactor(side: number): number {
   return side > 440 ? 1.25 : 1;
 }
 
-export interface IntroCamera {
+interface IntroCamera {
   /** Avancement lissé du dézoom, de 0 à 1. */
   tau: number;
   /** Échelle de l'espace : de plusieurs dizaines à 1. */

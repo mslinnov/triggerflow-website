@@ -1,7 +1,7 @@
 'use client';
 
 /*
- * Les fiches de l'ouverture (reprises de how-it-works/IntroCards, libellés passés par la page) : la fiche de Sophie en
+ * Les fiches de l'ouverture (libellés passés par la page) : la fiche de Sophie en
  * grand, puis le dézoom où chaque fiche se replie sur sa pastille.
  */
 

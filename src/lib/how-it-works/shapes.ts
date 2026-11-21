@@ -30,7 +30,7 @@
  */
 import type { Pt } from './geometry';
 
-export type PictoName = 'mail' | 'card' | 'chat' | 'heart' | 'plane' | 'loop';
+type PictoName = 'mail' | 'card' | 'chat' | 'heart' | 'plane' | 'loop';
 
 const DATA: Record<PictoName, readonly number[]> = {
   mail: [

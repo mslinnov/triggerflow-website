@@ -4,7 +4,7 @@
  * variables CSS posées hors de React (textes, en-tête, rail) et par `teintes(j)` pour la nuée.
  */
 
-import { clamp } from '@/lib/how-it-works/math';
+import { smooth } from '@/lib/how-it-works/math';
 import { DEPART } from './histoire';
 
 type Rgb = readonly [number, number, number];
@@ -26,13 +26,12 @@ const VARS: Record<string, [Rgb, number, Rgb, number]> = {
 };
 
 const mix = (a: Rgb, b: Rgb, t: number) => a.map((v, i) => Math.round(v + (b[i] - v) * t));
-const lisse = (v: number) => v * v * (3 - 2 * v);
 
 /**
  * Le jour à l'instant `s` du récit : nuit jusqu'au dézoom, papier dès le premier pas du séjour. Le passage tient
  * pendant le dézoom et finit avant que le premier texte du récit (PMS) ne commence son fondu.
  */
-export const jourDe = (s: number) => lisse(clamp((s - (DEPART - 0.08)) / 0.3));
+export const jourDe = (s: number) => smooth((s - (DEPART - 0.08)) / 0.3);
 
 export function varsJour(j: number): Record<string, string> {
   const out: Record<string, string> = { '--nuit': String(1 - j) };

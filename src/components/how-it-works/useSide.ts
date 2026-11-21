@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type RefObject } from 'react';
 
 /** Côté du visuel avant la première mesure (rendu serveur) : celui d'un téléphone de 390 × 680. */
-export const DEFAULT_SIDE = 368;
+const DEFAULT_SIDE = 368;
 
 /** Mesure la largeur d'un bloc carré et la suit quand la fenêtre change. */
 export function useSide(): [RefObject<HTMLDivElement | null>, number] {

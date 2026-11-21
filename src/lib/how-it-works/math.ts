@@ -1,4 +1,4 @@
-/** Outils de calcul du parcours « Comment ça marche ». Aucune dépendance. */
+/** Outils de calcul du récit de la LP CRM hôtelier. Aucune dépendance. */
 
 /** Borne `v` entre `lo` et `hi`. Une valeur non numérique vaut `lo`. */
 export const clamp = (v: number, lo = 0, hi = 1): number => (v > lo ? (v < hi ? v : hi) : lo);

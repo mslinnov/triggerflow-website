@@ -1,5 +1,5 @@
 /**
- * Clients fictifs des fiches de la page « Comment ça marche ». Aucun ne correspond à un vrai client.
+ * Clients fictifs des fiches du récit de la LP CRM hôtelier. Aucun ne correspond à un vrai client.
  * Les combinaisons prénom + nom se répètent volontairement peu : 20 × 20.
  */
 export const SOPHIE = { first: 'Sophie', last: '' } as const;
