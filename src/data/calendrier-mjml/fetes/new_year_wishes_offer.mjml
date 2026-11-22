@@ -1,0 +1,115 @@
+<mjml><mj-head><!-- VISIBILITY_STYLES --><mj-style>
+      /* Desktop-first : les clients qui ne supportent pas @media
+         (Outlook Web, Nouveau Outlook) gardent le comportement desktop. */
+      .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+        display: block;
+        width: auto;
+        max-height: none;
+        overflow: visible;
+        line-height: inherit;
+      }
+      .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+        display: none;
+        width: 0;
+        max-height: 0;
+        overflow: hidden;
+        line-height: 0;
+      }
+      /* Mobile : afficher mobile-only, masquer desktop-only */
+      @media only screen and (max-width:599px) {
+        .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+        .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+          display: block !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+      }
+      /* Desktop explicit (pour spécificité) */
+      @media only screen and (min-width:600px) {
+        .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+          display: block !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+        .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+      }
+      /* Fallback : vrais appareils mobiles (Outlook mobile peut avoir un viewport &gt;600px) */
+      @media only screen and (max-device-width:599px) {
+        .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+          display: block !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+        .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+      }
+    </mj-style><!--[if mso | IE]>
+      <style type="text/css">
+        .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+          display: block !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+        .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+        table.desktop-only, table.desktop-only-outlook, table[class*="desktop-only"],
+        tr.desktop-only, tr.desktop-only-outlook, tr[class*="desktop-only"],
+        td.desktop-only, td.desktop-only-outlook, td[class*="desktop-only"] {
+          display: table !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+        table.mobile-only, table.mobile-only-outlook, table[class*="mobile-only"],
+        tr.mobile-only, tr.mobile-only-outlook, tr[class*="mobile-only"],
+        td.mobile-only, td.mobile-only-outlook, td[class*="mobile-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+      </style>
+    <![endif]--><mj-attributes><mj-all padding="0">
+            </mj-all></mj-attributes><mj-font name="Playfair Display" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,500&display=swap"></mj-font><mj-style>@media only screen and (max-width:479px){.h1 div{font-size:46px!important;line-height:48px!important;}}</mj-style><mj-preview>Nos vœux, et une offre pour vos séjours de janvier.</mj-preview></mj-head><mj-body background-color="#FFFFFF" width="600px"><mj-section padding="0"><mj-column><mj-image css-class="tf-logo" src="https://api.trigger-flow.com/images/email-library/temps-forts/fetes-logo-prune.png" alt="{{facility_name}}" align="left" width="130px" padding="28px 40px 10px 40px"></mj-image><mj-text css-class="h1" font-family="'Playfair Display', Georgia, serif" font-size="62px" line-height="64px" font-weight="700" letter-spacing="-1px" color="#4A2C5C" padding="20px 40px 0 40px"><div>Bonne année</div></mj-text><mj-text font-family="'Playfair Display', Georgia, serif" font-size="21px" line-height="30px" font-style="italic" color="#25202B" padding="8px 40px 26px 40px"><p style="margin:0;">et une attention pour janvier</p></mj-text><mj-image src="https://api.trigger-flow.com/images/email-library/temps-forts/fetes-janvier-600.jpg" alt="Une chambre au calme, en janvier" padding="0"></mj-image><mj-text font-family="Georgia, 'Times New Roman', serif" font-size="18px" line-height="29px" color="#25202B" padding="36px 40px 2px 40px"><p style="margin:0 0 29px 0;">Bonjour {{firstname}},</p><p style="margin:0 0 29px 0;">Toute l'équipe vous présente ses meilleurs vœux. Que cette nouvelle année vous apporte du temps pour vous et des raisons de voyager.</p><p style="margin:0 0 29px 0;">Janvier est un mois calme chez nous. C'est le bon moment pour revenir, alors voici une attention pour nos clients fidèles.</p></mj-text></mj-column></mj-section><mj-section padding="20px 40px 12px 40px"><mj-column background-color="#F7F4F8" border="2px solid #4A2C5C"><mj-text font-family="Arial, Helvetica, sans-serif" font-size="12px" letter-spacing="2px" font-weight="bold" color="#25202B" padding="26px 28px 0 28px"><p style="margin:0;text-transform:uppercase;">Votre attention de janvier</p></mj-text><mj-text font-family="'Playfair Display', Georgia, serif" font-size="30px" line-height="36px" font-weight="700" color="#4A2C5C" padding="8px 28px 10px 28px"><p style="margin:0;">[[Votre offre|Un dîner offert pour deux nuits réservées]]</p></mj-text><mj-text font-family="Arial, Helvetica, sans-serif" font-size="15px" line-height="24px" color="#25202B" padding="0 28px 26px 28px"><p style="margin:0;">Pour tout séjour en [[Mois de l'offre|janvier]], en réservant directement chez nous.<br/>Code à indiquer : <strong style="background-color:#F0B27A;padding:2px 8px;letter-spacing:2px;">[[Code promo|BIENVENUE]]</strong><br/><span style="color:#C2410C;font-weight:bold;">Offre valable jusqu'au [[Date limite|31 janvier]].</span></p></mj-text></mj-column></mj-section><mj-section padding="0"><mj-column><mj-button href="{{booking_page_url}}" align="left" background-color="#4A2C5C" color="#FFFFFF" border-radius="3px" font-family="Arial, Helvetica, sans-serif" font-size="17px" font-weight="bold" inner-padding="16px 34px" padding="14px 40px 42px 40px">Profiter de l'offre</mj-button></mj-column></mj-section><mj-section padding="0"><mj-column><mj-text align="left" font-family="Arial, Helvetica, sans-serif" font-size="12px" line-height="19px" color="#6D6474" padding="26px 36px 34px 36px"><p style="margin:0;">{{facility_name}}, {{facility_address}}, {{facility_zip_code}} {{facility_city}}<br/>Vous recevez ce message parce que vous avez déjà échangé avec nous. <a href="{{unsubscribe_link}}" style="color:#4A2C5C;text-decoration:underline;">Se désinscrire</a></p></mj-text></mj-column></mj-section></mj-body></mjml>
