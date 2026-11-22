@@ -1,9 +1,10 @@
 /* Page « Campagnes e-mail des fêtes » : direction A, « Le calendrier qui défile ». Classes préfixées cf-. */
 .cf{
-  --nuit:#002B28; --nuit-2:#0B4640; --nuit-3:#00201E;
+  /* Nuit et pêche = jetons de marque (globals.css) ; les nuances propres à la page restent ici. */
+  --nuit:var(--brand-dark); --nuit-2:#0B4640; --nuit-3:#00201E;
   --papier:#F5F1EA; --menthe-pale:#F2F7F6;
   --titre:#0C2A26; --corps:#344E4A; --vert:#257A6C; --menthe:#86C5B9;
-  --peche:#FFCFA2; --filet:rgba(12,42,38,.14);
+  --peche:var(--brand-accent); --filet:rgba(12,42,38,.14);
   --sombre-titre:#EEF6F4; --sombre-corps:rgba(204,226,225,.82);
   --ease:cubic-bezier(.16,1,.3,1);
   font-family:var(--font-sans),system-ui,sans-serif;color:var(--corps);background:#fff;line-height:1.55;overflow-x:clip;
