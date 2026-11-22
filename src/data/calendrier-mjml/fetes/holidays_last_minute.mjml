@@ -1,0 +1,115 @@
+<mjml><mj-head><!-- VISIBILITY_STYLES --><mj-style>
+      /* Desktop-first : les clients qui ne supportent pas @media
+         (Outlook Web, Nouveau Outlook) gardent le comportement desktop. */
+      .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+        display: block;
+        width: auto;
+        max-height: none;
+        overflow: visible;
+        line-height: inherit;
+      }
+      .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+        display: none;
+        width: 0;
+        max-height: 0;
+        overflow: hidden;
+        line-height: 0;
+      }
+      /* Mobile : afficher mobile-only, masquer desktop-only */
+      @media only screen and (max-width:599px) {
+        .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+        .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+          display: block !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+      }
+      /* Desktop explicit (pour spécificité) */
+      @media only screen and (min-width:600px) {
+        .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+          display: block !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+        .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+      }
+      /* Fallback : vrais appareils mobiles (Outlook mobile peut avoir un viewport &gt;600px) */
+      @media only screen and (max-device-width:599px) {
+        .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+          display: block !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+        .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+      }
+    </mj-style><!--[if mso | IE]>
+      <style type="text/css">
+        .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+          display: block !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+        .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+        table.desktop-only, table.desktop-only-outlook, table[class*="desktop-only"],
+        tr.desktop-only, tr.desktop-only-outlook, tr[class*="desktop-only"],
+        td.desktop-only, td.desktop-only-outlook, td[class*="desktop-only"] {
+          display: table !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+        table.mobile-only, table.mobile-only-outlook, table[class*="mobile-only"],
+        tr.mobile-only, tr.mobile-only-outlook, tr[class*="mobile-only"],
+        td.mobile-only, td.mobile-only-outlook, td[class*="mobile-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+      </style>
+    <![endif]--><mj-attributes><mj-all padding="0">
+            </mj-all></mj-attributes><mj-font name="Figtree" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;800&display=swap"></mj-font><mj-style>@media only screen and (max-width:479px){.h1 div{font-size:34px!important;line-height:37px!important;}}</mj-style><mj-preview>Des chambres libres pour les nuits des fêtes, jusqu'au dernier soir.</mj-preview></mj-head><mj-body background-color="#FFFFFF" width="600px"><mj-section padding="0"><mj-column><mj-image css-class="tf-logo" src="https://api.trigger-flow.com/images/email-library/temps-forts/fetes-logo-ardoise.png" alt="{{facility_name}}" align="left" width="150px" padding="30px 40px 34px 40px"></mj-image><mj-text css-class="h1" font-family="Figtree, Arial, sans-serif" font-size="37px" line-height="42px" font-weight="800" letter-spacing="-1px" color="#1E3A34" padding="0 40px"><div>Dernières chambres des fêtes</div></mj-text><mj-text font-family="Figtree, Arial, sans-serif" font-size="15px" line-height="22px" color="#5E6A68" padding="26px 40px 6px 40px"><p style="margin:0;">Chambres encore libres :</p></mj-text><mj-table padding="0 40px" cellpadding="0" cellspacing="0"><tr><td style="border-bottom:1px solid #C2481F;padding:12px 0;font-family:Figtree, Arial, sans-serif;font-size:22px;line-height:28px;font-weight:800;color:#1E3A34;">[[Première nuit libre|26 décembre]]</td></tr><tr><td style="border-bottom:1px solid #C2481F;padding:12px 0;font-family:Figtree, Arial, sans-serif;font-size:22px;line-height:28px;font-weight:800;color:#1E3A34;">[[Deuxième nuit libre|27 décembre]]</td></tr><tr><td style="border-bottom:1px solid #C2481F;padding:12px 0;font-family:Figtree, Arial, sans-serif;font-size:22px;line-height:28px;font-weight:800;color:#1E3A34;">[[Troisième nuit libre|28 décembre]]</td></tr><tr><td style="border-bottom:1px solid #C2481F;padding:12px 0;font-family:Figtree, Arial, sans-serif;font-size:22px;line-height:28px;font-weight:800;color:#1E3A34;">[[Quatrième nuit libre|29 décembre]]</td></tr><tr><td style="border-bottom:1px solid #C2481F;padding:12px 0;font-family:Figtree, Arial, sans-serif;font-size:22px;line-height:28px;font-weight:800;color:#1E3A34;">[[Cinquième nuit libre|30 décembre]]</td></tr></mj-table><mj-image src="https://api.trigger-flow.com/images/email-library/temps-forts/fetes-holidays_last_minute-600.jpg" alt="Une chambre prête, rideaux ouverts sur le soir" padding="34px 0 0 0"></mj-image><mj-text font-family="Figtree, Arial, sans-serif" font-size="18px" line-height="28px" color="#1F2A28" padding="34px 40px 0 40px"><p style="margin:0 0 16px 0;">Pas de plan pour les fêtes ? Il reste des chambres sur ces nuits, à partir de [[Prix de la chambre|140 €]], petit-déjeuner compris.</p><p style="margin:0;">Pas de compte à rebours : la seule échéance, c'est la date de votre nuit. Réservez jusqu'à [[Heure limite de réservation|17 h]] pour dormir chez nous le soir même.</p></mj-text><mj-button href="{{booking_page_url}}" align="left" background-color="#C2481F" color="#FFFFFF" border-radius="4px" font-family="Figtree, Arial, sans-serif" font-size="17px" font-weight="800" inner-padding="16px 34px" padding="30px 40px 0 40px">Réserver</mj-button><mj-text font-family="Figtree, Arial, sans-serif" font-size="16px" line-height="24px" color="#1F2A28" padding="18px 40px 0 40px"><p style="margin:0;">Ou appelez-nous au [[Téléphone de l'hôtel|00 00 00 00 00]].</p></mj-text></mj-column></mj-section><mj-section padding="0"><mj-column><mj-text align="left" font-family="Arial, Helvetica, sans-serif" font-size="12px" line-height="19px" color="#5E6A68" padding="26px 36px 34px 36px"><p style="margin:0;">{{facility_name}}, {{facility_address}}, {{facility_zip_code}} {{facility_city}}<br/>Vous recevez ce message parce que vous avez déjà échangé avec nous. <a href="{{unsubscribe_link}}" style="color:#1E3A34;text-decoration:underline;">Se désinscrire</a></p></mj-text></mj-column></mj-section></mj-body></mjml>

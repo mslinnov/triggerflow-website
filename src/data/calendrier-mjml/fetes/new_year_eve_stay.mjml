@@ -1,0 +1,115 @@
+<mjml><mj-head><!-- VISIBILITY_STYLES --><mj-style>
+      /* Desktop-first : les clients qui ne supportent pas @media
+         (Outlook Web, Nouveau Outlook) gardent le comportement desktop. */
+      .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+        display: block;
+        width: auto;
+        max-height: none;
+        overflow: visible;
+        line-height: inherit;
+      }
+      .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+        display: none;
+        width: 0;
+        max-height: 0;
+        overflow: hidden;
+        line-height: 0;
+      }
+      /* Mobile : afficher mobile-only, masquer desktop-only */
+      @media only screen and (max-width:599px) {
+        .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+        .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+          display: block !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+      }
+      /* Desktop explicit (pour spécificité) */
+      @media only screen and (min-width:600px) {
+        .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+          display: block !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+        .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+      }
+      /* Fallback : vrais appareils mobiles (Outlook mobile peut avoir un viewport &gt;600px) */
+      @media only screen and (max-device-width:599px) {
+        .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+          display: block !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+        .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+      }
+    </mj-style><!--[if mso | IE]>
+      <style type="text/css">
+        .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+          display: block !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+        .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+        table.desktop-only, table.desktop-only-outlook, table[class*="desktop-only"],
+        tr.desktop-only, tr.desktop-only-outlook, tr[class*="desktop-only"],
+        td.desktop-only, td.desktop-only-outlook, td[class*="desktop-only"] {
+          display: table !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+        table.mobile-only, table.mobile-only-outlook, table[class*="mobile-only"],
+        tr.mobile-only, tr.mobile-only-outlook, tr[class*="mobile-only"],
+        td.mobile-only, td.mobile-only-outlook, td[class*="mobile-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+      </style>
+    <![endif]--><mj-attributes><mj-all padding="0">
+            </mj-all></mj-attributes><mj-font name="Newsreader" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap"></mj-font><mj-style>@media only screen and (max-width:479px){.h1 div{font-size:46px!important;line-height:48px!important;}.lead div{font-size:22px!important;line-height:33px!important;}}</mj-style><mj-preview>Le dîner, la nuit, le brunch du lendemain. Un seul séjour.</mj-preview></mj-head><mj-body background-color="#2B1119" width="600px"><mj-section padding="0"><mj-column><mj-image css-class="tf-logo" src="https://api.trigger-flow.com/images/email-library/temps-forts/fetes-logo-blanc.png" alt="{{facility_name}}" align="left" width="150px" padding="30px 40px 22px 40px"></mj-image><mj-image src="https://api.trigger-flow.com/images/email-library/temps-forts/fetes-new_year_eve_stay-600.jpg" alt="Des coupes de champagne servies pour le dîner" padding="0"></mj-image><mj-text css-class="h1" font-family="Newsreader, Georgia, serif" font-size="58px" line-height="58px" letter-spacing="-1px" color="#F3ECE4" padding="46px 40px 0 40px"><div>La Saint-Sylvestre chez nous</div></mj-text><mj-text css-class="lead" font-family="Newsreader, Georgia, serif" font-size="25px" line-height="37px" font-style="italic" color="#F3ECE4" padding="26px 40px 0 40px"><div>On dîne à [[Heure du dîner|20 h]]. On trinque à minuit. On dort ici, sans reprendre la route. Le lendemain, le brunch est servi jusqu'à [[Heure de fin du brunch|12 h]].</div></mj-text><mj-text font-family="Newsreader, Georgia, serif" font-size="18px" line-height="29px" color="#D9CCC6" padding="24px 40px 0 40px"><p style="margin:0;">Le dîner de la Saint-Sylvestre, la chambre pour la nuit et le brunch du lendemain, réunis dans un seul séjour. Vous arrivez, nous nous occupons du reste.</p></mj-text><mj-text font-family="Newsreader, Georgia, serif" font-size="22px" line-height="30px" color="#F3ECE4" padding="30px 40px 0 40px"><p style="margin:0;">À partir de [[Prix du séjour pour deux|289 €]] pour deux.</p></mj-text><mj-button href="{{booking_page_url}}" align="left" background-color="#D9B27C" color="#2B1119" border-radius="2px" font-family="Arial, Helvetica, sans-serif" font-size="16px" font-weight="bold" inner-padding="16px 34px" padding="26px 40px 0 40px">Réserver ma nuit</mj-button></mj-column></mj-section><mj-section padding="0"><mj-column><mj-text align="left" font-family="Arial, Helvetica, sans-serif" font-size="12px" line-height="19px" color="#B7A39F" padding="26px 36px 34px 36px"><p style="margin:0;">{{facility_name}}, {{facility_address}}, {{facility_zip_code}} {{facility_city}}<br/>Vous recevez ce message parce que vous avez déjà échangé avec nous. <a href="{{unsubscribe_link}}" style="color:#F3ECE4;text-decoration:underline;">Se désinscrire</a></p></mj-text></mj-column></mj-section></mj-body></mjml>
