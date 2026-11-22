@@ -68,7 +68,16 @@ export function CampagnesSteps({ etapes, labels }: CampagnesStepsProps) {
     };
 
     const suivre = (debut: string, fin: string) =>
-      steps.forEach((s, i) => ScrollTrigger.create({ trigger: s, start: debut, end: fin, onToggle: (self) => self.isActive && activer(i) }));
+      steps.forEach((s, i) =>
+        ScrollTrigger.create({
+          trigger: s,
+          start: debut,
+          end: fin,
+          onToggle: (self) => self.isActive && activer(i),
+          // Remonté au-dessus de la première étape : retour à la première, plutôt que de garder la dernière lue.
+          onLeaveBack: i === 0 ? () => activer(0) : undefined,
+        }),
+      );
 
     mm.add('(min-width: 900px)', () => {
       activer(0);
@@ -81,6 +90,7 @@ export function CampagnesSteps({ etapes, labels }: CampagnesStepsProps) {
           start: 'top 60%',
           end: 'bottom 60%',
           onToggle: (self) => (self.isActive ? activer(i) : s.classList.remove('on')),
+          onLeaveBack: i === 0 ? () => activer(0) : undefined,
         }),
       );
     });

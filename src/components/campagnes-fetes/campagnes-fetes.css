@@ -175,7 +175,7 @@
 }
 
 /* modale « Copier le modèle » */
-.cf-dialog{border:0;padding:0;border-radius:20px;width:min(560px,calc(100vw - 32px));max-height:calc(100dvh - 32px);box-shadow:0 40px 80px -20px rgba(0,43,40,.5);color:var(--corps);background:#fff}
+.cf-dialog{margin:auto;border:0;padding:0;border-radius:20px;width:min(560px,calc(100vw - 32px));max-height:calc(100dvh - 32px);box-shadow:0 40px 80px -20px rgba(0,43,40,.5);color:var(--corps);background:#fff}
 .cf-dialog::backdrop{background:rgba(0,32,30,.55)}
 .cf-dialog-in{padding:24px;display:grid;gap:16px}
 .cf-dialog h2{font-size:24px;line-height:1.15;letter-spacing:-.02em}
