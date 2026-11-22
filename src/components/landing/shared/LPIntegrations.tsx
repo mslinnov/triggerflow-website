@@ -27,6 +27,9 @@ const PMS_LOGOS: Record<ConnectedPms, { src: string; width: number; height: numb
 /** Pour les tests : chemin du logo de chaque PMS connecté. */
 export const pmsLogoSources = Object.values(PMS_LOGOS).map((logo) => logo.src);
 
+/** Les logos des PMS connectés, dans l'ordre de la grille (aussi pour la page d'atterrissage CRM hôtelier). */
+export const pmsLogos = Object.entries(PMS_LOGOS).map(([alt, logo]) => ({ alt, ...logo }));
+
 export interface LPIntegrationsProps {
   eyebrow?: string;
   title: string;

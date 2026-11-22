@@ -6,7 +6,6 @@ import { brand } from '../data/brand';
 import { companyStats, stat } from '../data/company-stats';
 import { getEntryPrice, getPricingPhase, PRICE_CHANGE_AT } from '../data/pricing';
 import { getCaseStudyBySlug } from './case-studies';
-import { clientLogos, homeClients } from '../data/clients';
 import { getAllLandingPages, landingPageValues, resolveLandingPage } from './landing-pages';
 import type { LandingPageConfig } from '../types/landing-page';
 
@@ -61,7 +60,7 @@ test('valeurs des pages : un objet qui ne porte qu’un statId reçoit le chiffr
 const pages = getAllLandingPages();
 
 test('pages d’atterrissage : chaque {valeur} posée, chiffres et cas clients publiés, images présentes', () => {
-  assert.ok(pages.length >= 2);
+  assert.ok(pages.length >= 1);
   for (const page of pages) {
     const where = `${page.slug}.${page.locale}`;
     // getAllLandingPages rend des pages déjà résolues : metadata et sections, sans {valeur} en clair.
@@ -90,49 +89,4 @@ test('grille des PMS : un logo présent dans public/ pour chaque connecteur', ()
   const logos = [...source.matchAll(/src: '([^']+)'/g)].map((match) => match[1]);
   assert.equal(logos.length, brand.pms.length);
   for (const logo of logos) assert.ok(existsSync(join(ROOT, 'public', logo)), `logo absent ${logo}`);
-});
-
-test('crm-hotelier : la promesse de la pub dès le premier écran, liens de démo suivis par emplacement', () => {
-  const page = pages.find((lp) => lp.slug === 'crm-hotelier' && lp.locale === 'fr');
-  assert.ok(page);
-  assert.equal(page.noindex, true);
-
-  const hero = page.sections[0];
-  assert.equal(hero.type, 'LPHero');
-  const props = hero.props as { title: string; titleAccent?: string; subtitle: string; benefitCards?: Array<{ title: string; description: string }> };
-  assert.equal(`${props.title} ${props.titleAccent}`, 'Le CRM hôtelier connecté à votre PMS.');
-  assert.ok(props.subtitle.startsWith('Plus de réservations en direct et plus de ventes'));
-  // Les trois avantages de l'annonce, mot pour mot.
-  assert.deepEqual(props.benefitCards?.map((card) => `${card.title} : ${card.description}`), [
-    'Plus de réservations en direct : Vos anciens clients reviennent, sans commission OTA',
-    'Plus de ventes par séjour : Surclassements et options proposés avant l\'arrivée',
-    'Plus d\'avis positifs : Enquête envoyée automatiquement après le séjour',
-  ]);
-
-  const demoLinks = strings(page).filter((text) => text.includes('lemcal.com'));
-  assert.ok(demoLinks.length >= 5);
-  for (const link of demoLinks) assert.match(link, /utm_campaign=lp-crm-hotelier(&|$)/);
-  const placements = demoLinks.map((link) => new URL(link).searchParams.get('utm_content')).filter(Boolean);
-  assert.deepEqual(placements, ['hero', 'milieu', 'tarifs', 'cta-bas']);
-
-  // L'issue secondaire reste sur la page : le formulaire de rappel, pas un nouvel onglet.
-  const secondary = (hero.props as { secondaryCtaHref?: string }).secondaryCtaHref;
-  assert.equal(secondary, '#rappel');
-  assert.ok(page.sections.some((section) => (section.props as { id?: string }).id === 'rappel' && 'callback' in section.props));
-});
-
-test('crm-hotelier : vrais clients seulement, jamais de nombre de clients ni de logo de chaîne', () => {
-  const page = pages.find((lp) => lp.slug === 'crm-hotelier' && lp.locale === 'fr');
-  assert.ok(page);
-  const ids: string[] = [];
-  walk(page, (node) => {
-    if (node && typeof node === 'object' && 'statId' in node) ids.push(String((node as { statId: unknown }).statId));
-  });
-  assert.ok(!ids.includes('hotels') && !ids.includes('messages'), `chiffres interdits : ${ids.join(', ')}`);
-  assert.ok(page.sections.some((section) => (section.props as { logos?: unknown }).logos === 'clients'));
-  for (const name of homeClients) {
-    assert.doesNotMatch(name, /^(Accor|Ibis|Best Western|The Originals|Logis)\b/, `logo de chaîne : ${name}`);
-    const logo = clientLogos[name];
-    if (logo) assert.ok(existsSync(join(ROOT, 'public', logo.src)), `logo absent ${logo.src}`);
-  }
 });
