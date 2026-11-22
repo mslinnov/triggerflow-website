@@ -144,14 +144,7 @@ export default async function CampagnesEmailFetesPage({ params }: PageProps) {
       <PageMotion />
 
       <FetesHero
-        campagnes={CAMPAGNES_FETES.map((c, i) => ({
-          code: c.code,
-          nom: c.nom,
-          periode: c.periode,
-          periodeCourte: c.periodeCourte,
-          objet: c.objet,
-          previewUrl: etapes[i].previewUrl,
-        }))}
+        campagnes={CAMPAGNES_FETES.map((c, i) => ({ ...c, previewUrl: etapes[i].previewUrl }))}
         labels={{
           title: t.rich('hero.title', { nw: (chunks) => <span className="whitespace-nowrap">{chunks}</span> }),
           titleEm: t('hero.titleEm'),

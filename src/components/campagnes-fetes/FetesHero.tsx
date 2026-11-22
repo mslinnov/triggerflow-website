@@ -1,14 +1,10 @@
 import type { ReactNode } from 'react';
 import { MailPreview } from '@/components/campagnes-fetes/MailPreview';
+import type { CampagneFete } from '@/data/campagnes-fetes';
 
-export interface FetesHeroCampagne {
-  code: string;
-  nom: string;
-  periode: string;
-  periodeCourte: string;
-  objet: string;
+export type FetesHeroCampagne = Pick<CampagneFete, 'code' | 'nom' | 'periode' | 'periodeCourte' | 'objet'> & {
   previewUrl: string | null;
-}
+};
 
 export interface FetesHeroLabels {
   title: ReactNode;
