@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { BreadcrumbListJsonLd, FaqJsonLd } from '@/components/seo';
 import { CampagnesSteps, type EtapeCampagne, type EtapesLabels } from '@/components/campagnes-fetes/CampagnesSteps';
-import { MailPreview } from '@/components/campagnes-fetes/MailPreview';
+import { FetesHero } from '@/components/campagnes-fetes/FetesHero';
 import { PageMotion } from '@/components/campagnes-fetes/PageMotion';
 import '@/components/campagnes-fetes/campagnes-fetes.css';
 import { brand } from '@/data/brand';
@@ -110,8 +110,6 @@ export default async function CampagnesEmailFetesPage({ params }: PageProps) {
   const faq = t.raw('faq.items') as FaqItem[];
   const bandeRows = t.raw('bande.rows') as { audience: string; campaign: string }[];
   const facons = t.raw('facons.items') as { who: string; title: string; text: string; cta: string; kind: 'button' | 'link' | 'demo' }[];
-  // Éventail du héros : trois campagnes réparties sur la période.
-  const eventail = [0, 2, 5].map((i) => ({ campagne: CAMPAGNES_FETES[i], etape: etapes[i] }));
 
   const webPage = {
     '@context': 'https://schema.org',
@@ -145,40 +143,26 @@ export default async function CampagnesEmailFetesPage({ params }: PageProps) {
       />
       <PageMotion />
 
-      <header className="cf-sombre cf-hero">
-        <div className="cf-wrap">
-          <div className="cf-hero-g">
-            <div>
-              <h1>
-                {t('hero.title')} <em>{t('hero.titleEm')}</em>
-              </h1>
-              <p className="cf-sous">
-                {t('hero.subtitle')}
-              </p>
-              <div className="cf-actions">
-                <a className="cf-btn cf-btn-peche" href="#campagnes">
-                  {t('hero.seeAll')}
-                </a>
-                <a className="cf-lien" href={demoPage} target="_blank" rel="noopener noreferrer">
-                  {t('hero.demo')}
-                </a>
-              </div>
-            </div>
-            <div className="cf-eventail" aria-hidden="true">
-              {eventail.map(({ campagne, etape }) => (
-                <div className="cf-carte-h" key={campagne.code}>
-                  <MailPreview
-                    src={etape.previewUrl}
-                    title={labels.previewTitle.replace('{name}', campagne.nom)}
-                    fallback={{ title: labels.fallbackTitle, objet: campagne.objet, periode: campagne.periode }}
-                  />
-                  <span className="cf-tag-h">{campagne.periodeCourte}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </header>
+      <FetesHero
+        campagnes={CAMPAGNES_FETES.map((c, i) => ({
+          code: c.code,
+          nom: c.nom,
+          periode: c.periode,
+          periodeCourte: c.periodeCourte,
+          objet: c.objet,
+          previewUrl: etapes[i].previewUrl,
+        }))}
+        labels={{
+          title: t.rich('hero.title', { nw: (chunks) => <span className="whitespace-nowrap">{chunks}</span> }),
+          titleEm: t('hero.titleEm'),
+          subtitle: t('hero.subtitle'),
+          seeAll: t('hero.seeAll'),
+          demo: t('hero.demo'),
+          previewTitle: labels.previewTitle,
+          fallbackTitle: labels.fallbackTitle,
+        }}
+        demoUrl={demoPage}
+      />
 
       <section className="cf-sept" id="campagnes">
         <div className="cf-wrap">

@@ -5,10 +5,9 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 /**
- * Mouvement de la page, sans rendu : montée des cartes du héros, léger décalage de l'éventail au défilement,
- * révélations au scroll, flux de la bande démo. Seulement si le visiteur n'a pas demandé de réduire les
- * animations ; sans JavaScript, tout reste visible. Le héros n'est jamais masqué : le titre (LCP) ne bouge pas et
- * les cartes ne font que glisser, sans fondu, pour ne pas disparaître entre le rendu serveur et l'hydratation.
+ * Mouvement de la page, sans rendu : révélations au scroll et flux de la bande démo. Seulement si le visiteur
+ * n'a pas demandé de réduire les animations ; sans JavaScript, tout reste visible. Le haut de page ne bouge pas :
+ * le titre (LCP) et la planche des 7 sont visibles dès le rendu serveur.
  * Les ScrollTrigger sont défaits au démontage.
  */
 export function PageMotion() {
@@ -20,16 +19,6 @@ export function PageMotion() {
     const mm = gsap.matchMedia();
 
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-      gsap.from(all('.cf-carte-h'), { y: 48, duration: 1, stagger: 0.12, ease: 'power3.out' });
-
-      all('.cf-carte-h').forEach((carte, k) =>
-        gsap.to(carte, {
-          yPercent: [-14, -6, -20][k] ?? -10,
-          ease: 'none',
-          scrollTrigger: { trigger: '.cf-hero', start: 'top top', end: 'bottom top', scrub: true },
-        }),
-      );
-
       all('[data-rv]').forEach((el) =>
         gsap.from(el, { y: 28, autoAlpha: 0, duration: 0.7, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true } }),
       );
