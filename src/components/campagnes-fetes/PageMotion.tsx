@@ -5,9 +5,11 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 /**
- * Mouvement de la page, sans rendu : entrée du héros, léger décalage de l'éventail au défilement,
+ * Mouvement de la page, sans rendu : montée des cartes du héros, léger décalage de l'éventail au défilement,
  * révélations au scroll, flux de la bande démo. Seulement si le visiteur n'a pas demandé de réduire les
- * animations ; sans JavaScript, tout reste visible. Les ScrollTrigger sont défaits au démontage.
+ * animations ; sans JavaScript, tout reste visible. Le héros n'est jamais masqué : le titre (LCP) ne bouge pas et
+ * les cartes ne font que glisser, sans fondu, pour ne pas disparaître entre le rendu serveur et l'hydratation.
+ * Les ScrollTrigger sont défaits au démontage.
  */
 export function PageMotion() {
   useLayoutEffect(() => {
@@ -18,10 +20,7 @@ export function PageMotion() {
     const mm = gsap.matchMedia();
 
     mm.add('(prefers-reduced-motion: no-preference)', () => {
-      gsap
-        .timeline({ defaults: { ease: 'power3.out' } })
-        .from(all('[data-h]'), { y: 28, autoAlpha: 0, duration: 0.8, stagger: 0.09 })
-        .from(all('.cf-carte-h'), { y: 80, autoAlpha: 0, duration: 1, stagger: 0.12 }, 0.15);
+      gsap.from(all('.cf-carte-h'), { y: 48, duration: 1, stagger: 0.12, ease: 'power3.out' });
 
       all('.cf-carte-h').forEach((carte, k) =>
         gsap.to(carte, {

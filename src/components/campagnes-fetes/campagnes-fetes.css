@@ -28,9 +28,10 @@
 .cf :focus-visible{outline:2px solid var(--vert);outline-offset:3px;border-radius:6px}
 .cf-sombre :focus-visible{outline-color:var(--peche)}
 
-/* aperçu d'e-mail : 600 px natifs mis à l'échelle (--s posé par MailPreview) */
+/* aperçu d'e-mail : 600 px natifs mis à l'échelle (--s posé par MailPreview) ; hauteur tirée du cadre dès le
+   premier rendu, sans attendre le script (cadre de taille fixe : rien ne bouge autour) */
 .cf-mail{position:relative;overflow:hidden;background:#fff;width:100%;height:100%;--s:.6}
-.cf-mail-if{position:absolute;top:0;left:0;width:600px;border:0;background:#fff;transform:scale(var(--s));transform-origin:0 0;pointer-events:none}
+.cf-mail-if{position:absolute;top:0;left:0;width:600px;height:calc(100% / var(--s));border:0;background:#fff;transform:scale(var(--s));transform-origin:0 0;pointer-events:none}
 .cf-mail-fb{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:10px;padding:8%;background:var(--menthe-pale);color:var(--titre)}
 .cf-mail-fb small{font-size:13px;font-weight:500;color:var(--vert)}
 .cf-mail-fb strong{font-size:clamp(16px,1.6vw,22px);line-height:1.2;font-weight:500;letter-spacing:-.02em}

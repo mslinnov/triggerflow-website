@@ -19,12 +19,10 @@ export function MailPreview({ src, title, fallback }: MailPreviewProps) {
   useEffect(() => {
     const el = frameRef.current;
     if (!el || !src) return;
-    const iframe = el.querySelector('iframe');
+    // La hauteur de l'iframe suit --s en CSS (campagnes-fetes.css) : seule l'échelle est posée ici.
     const observer = new ResizeObserver(() => {
       const scale = el.clientWidth / 600;
-      if (!scale || !iframe) return;
-      el.style.setProperty('--s', String(scale));
-      iframe.style.height = `${Math.ceil(el.clientHeight / scale)}px`;
+      if (scale) el.style.setProperty('--s', String(scale));
     });
     observer.observe(el);
     return () => observer.disconnect();

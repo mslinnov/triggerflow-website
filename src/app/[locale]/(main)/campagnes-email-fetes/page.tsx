@@ -149,13 +149,13 @@ export default async function CampagnesEmailFetesPage({ params }: PageProps) {
         <div className="cf-wrap">
           <div className="cf-hero-g">
             <div>
-              <h1 data-h>
+              <h1>
                 {t('hero.title')} <em>{t('hero.titleEm')}</em>
               </h1>
-              <p className="cf-sous" data-h>
+              <p className="cf-sous">
                 {t('hero.subtitle')}
               </p>
-              <div className="cf-actions" data-h>
+              <div className="cf-actions">
                 <a className="cf-btn cf-btn-peche" href="#campagnes">
                   {t('hero.seeAll')}
                 </a>

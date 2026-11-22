@@ -77,3 +77,17 @@ test('aucun chiffre inventé : seulement des dates du calendrier', () => {
     [],
   );
 });
+
+const composant = (fichier: string) => readFileSync(join(__dirname, '..', 'components', 'campagnes-fetes', fichier), 'utf8');
+
+test('héros visible dès le rendu serveur : ni fondu GSAP sur le titre et les cartes, ni masquage en CSS', () => {
+  const motion = composant('PageMotion.tsx');
+  const heroTweens = motion.match(/\.(from|fromTo|set)\(all\('(\.cf-hero[^']*|\[data-h\]|h1|\.cf-sous|\.cf-actions|\.cf-carte-h)'\)[^;]*/g) ?? [];
+  assert.deepEqual(heroTweens.filter((tween) => /autoAlpha|opacity|visibility/.test(tween)), []);
+  const css = composant('campagnes-fetes.css');
+  assert.deepEqual(css.match(/[^}]*\.cf-(hero|carte-h|sous|actions)[^{]*\{[^}]*(opacity:\s*0[;}]|visibility:\s*hidden)/g) ?? [], []);
+});
+
+test('aperçus d’e-mail : hauteur de l’iframe tirée de son cadre en CSS, sans attendre le script', () => {
+  assert.match(composant('campagnes-fetes.css'), /\.cf-mail-if\{[^}]*height:calc\(100% \/ var\(--s\)\)/);
+});
