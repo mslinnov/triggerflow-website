@@ -26,6 +26,7 @@ import {
   type MjmlTheme,
   type TempsFortCode,
 } from '@/data/calendrier-marketing';
+import { FETES_CODES, FETES_STYLE } from '@/data/campagnes-fetes';
 
 export const MJML_DIR = path.join(process.cwd(), 'src', 'data', 'calendrier-mjml');
 
@@ -231,22 +232,24 @@ export function auditMjmlDir(baseDir: string = MJML_DIR): string[] {
 
   for (const entry of fs.readdirSync(baseDir, { withFileTypes: true })) {
     if (entry.isFile() && isTemplateFile(entry.name)) issues.push(`${entry.name} : hors d'un dossier de thème`);
-    if (entry.isDirectory() && !entry.name.startsWith('__') && !(MJML_THEMES as readonly string[]).includes(entry.name)) {
+    if (entry.isDirectory() && !entry.name.startsWith('__') && ![...MJML_THEMES, FETES_STYLE].includes(entry.name)) {
       issues.push(`${entry.name}/ : thème inconnu`);
     }
   }
 
-  for (const theme of MJML_THEMES) {
+  // Dossier « fetes » : modèles de la page des campagnes des fêtes (src/data/campagnes-fetes.ts), codes à eux.
+  for (const theme of [...MJML_THEMES, FETES_STYLE]) {
     const dir = path.join(baseDir, theme);
     if (!fs.existsSync(dir)) continue;
+    const knownCodes: readonly string[] = theme === FETES_STYLE ? FETES_CODES : TEMPS_FORT_CODES;
     const files = fs.readdirSync(dir).filter(isTemplateFile);
     for (const code of new Set(files.map(codeOf))) {
       const where = `${theme}/${code}`;
-      if (!(TEMPS_FORT_CODES as readonly string[]).includes(code)) {
+      if (!knownCodes.includes(code)) {
         issues.push(`${where} : code inconnu`);
         continue;
       }
-      const template = loadMjmlTemplate(code as TempsFortCode, theme, baseDir);
+      const template = loadMjmlTemplate(code as TempsFortCode, theme as MjmlTheme, baseDir);
       if (!template) {
         issues.push(`${where} : il manque un des trois fichiers (.mjml, .html, .json)`);
         continue;

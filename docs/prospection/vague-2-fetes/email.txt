@@ -1,0 +1,25 @@
+Sept e-mails des fêtes, chacun à sa date.
+
+Bonjour, les e-mails de fin d'année s'écrivent souvent la veille de l'envoi. Nous les avons préparés pour vous, dans l'ordre où ils partent :
+
+- fin nov. : Bons cadeaux de Noël. Le bon arrive par e-mail, prêt à offrir sous le sapin.
+- déb. déc. : Séjour cocooning. Se poser avant les fêtes, pour les couples et les habitués.
+- déb. déc. : Tables de Noël et du réveillon. Les menus du restaurant, à réserver tôt.
+- mi-déc. : Le 31 chez nous. Dîner, chambre et brunch du 1er : rien à conduire.
+- 18-26 déc. : Dernières chambres des fêtes. Les nuits libres entre Noël et le Nouvel An.
+- 20 déc. : Carte de vœux. Un merci sincère, sans offre.
+- déb. janv. : Vœux et offre de janvier. Une raison de revenir en janvier ou février.
+
+Chacun a son aperçu, son objet et sa période d'envoi. Copiez-le en HTML ou en MJML pour votre outil d'envoi, ou, si vous êtes sur TriggerFlow, créez-le à vos couleurs sans rien réécrire.
+
+Voir le calendrier des fêtes :
+https://www.trigger-flow.com/fr/campagnes-email-fetes?utm_source=brevo&utm_medium=email&utm_campaign=vague-2-fetes&utm_content=lien
+
+Et pour qu'ils partent seuls vers les bons clients, ceux qui ont fêté le 31 chez vous l'an dernier par exemple, je vous le montre en une courte démo :
+https://app.lemcal.com/@trigger-flow/demo?utm_source=brevo&utm_medium=email&utm_campaign=vague-2-fetes&utm_content=demo
+
+Belles fêtes de fin d'année,
+
+Mounir, TriggerFlow
+
+Vous ne souhaitez plus recevoir nos e-mails ? Se désinscrire : {{ unsubscribe }}

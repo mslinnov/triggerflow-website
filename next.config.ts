@@ -98,6 +98,11 @@ const nextConfig: NextConfig = {
         destination: '/fr/calendrier-marketing',
         permanent: false,
       },
+      {
+        source: '/en/campagnes-email-fetes',
+        destination: '/fr/campagnes-email-fetes',
+        permanent: false,
+      },
 
       // ── Slugs légaux : anciens chemins WP → slugs réels (FR sur les 2 locales) ──
       {
