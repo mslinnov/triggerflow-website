@@ -1,0 +1,115 @@
+<mjml><mj-head><!-- VISIBILITY_STYLES --><mj-style>
+      /* Desktop-first : les clients qui ne supportent pas @media
+         (Outlook Web, Nouveau Outlook) gardent le comportement desktop. */
+      .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+        display: block;
+        width: auto;
+        max-height: none;
+        overflow: visible;
+        line-height: inherit;
+      }
+      .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+        display: none;
+        width: 0;
+        max-height: 0;
+        overflow: hidden;
+        line-height: 0;
+      }
+      /* Mobile : afficher mobile-only, masquer desktop-only */
+      @media only screen and (max-width:599px) {
+        .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+        .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+          display: block !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+      }
+      /* Desktop explicit (pour spécificité) */
+      @media only screen and (min-width:600px) {
+        .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+          display: block !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+        .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+      }
+      /* Fallback : vrais appareils mobiles (Outlook mobile peut avoir un viewport &gt;600px) */
+      @media only screen and (max-device-width:599px) {
+        .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+          display: block !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+        .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+      }
+    </mj-style><!--[if mso | IE]>
+      <style type="text/css">
+        .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+          display: block !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+        .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+        table.desktop-only, table.desktop-only-outlook, table[class*="desktop-only"],
+        tr.desktop-only, tr.desktop-only-outlook, tr[class*="desktop-only"],
+        td.desktop-only, td.desktop-only-outlook, td[class*="desktop-only"] {
+          display: table !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+        table.mobile-only, table.mobile-only-outlook, table[class*="mobile-only"],
+        tr.mobile-only, tr.mobile-only-outlook, tr[class*="mobile-only"],
+        td.mobile-only, td.mobile-only-outlook, td[class*="mobile-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+      </style>
+    <![endif]--><mj-attributes><mj-all padding="0">
+            </mj-all></mj-attributes><mj-font name="Archivo" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;700;900&display=swap"></mj-font><mj-style>@media only screen and (max-width:479px){.h1 div{font-size:34px!important;line-height:37px!important;}.voucher td.col{display:block!important;width:100%!important;box-sizing:border-box!important;}.voucher td.talon{border-left:0!important;border-top:2px dashed #1F4A38!important;}}</mj-style><mj-preview>Le bon cadeau arrive par e-mail, prêt à offrir.</mj-preview></mj-head><mj-body background-color="#A82A2F" width="600px"><mj-section padding="0"><mj-column><mj-image css-class="tf-logo" src="https://api.trigger-flow.com/images/email-library/temps-forts/fetes-logo-blanc.png" alt="{{facility_name}}" align="left" width="150px" padding="30px 36px 8px 36px"></mj-image><mj-text css-class="h1" font-family="Archivo, Arial, sans-serif" font-size="44px" line-height="46px" font-weight="900" letter-spacing="-1px" color="#FFFFFF" padding="18px 36px 26px 36px"><div>Offrez une nuit chez nous pour Noël</div></mj-text></mj-column></mj-section><mj-section padding="0 20px 6px 20px"><mj-column background-color="#FFFDF8" border-radius="10px"><mj-image src="https://api.trigger-flow.com/images/email-library/temps-forts/fetes-bon-600.jpg" alt="Un lit dressé avec soin" border-radius="10px 10px 0 0" padding="0"></mj-image><mj-table css-class="voucher" padding="0" cellpadding="0" cellspacing="0"><tr><td class="col" width="380" valign="top" style="padding:26px 24px 28px 28px;"><div style="font-family:Archivo, Arial, sans-serif;font-size:12px;letter-spacing:2px;font-weight:bold;text-transform:uppercase;color:#1F4A38;">Bon cadeau</div><div style="font-family:Archivo, Arial, sans-serif;font-size:30px;line-height:33px;font-weight:900;padding:8px 0 20px 0;color:#1D2B25;">Une nuit chez nous, à offrir</div><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td width="96" style="font-family:Archivo, Arial, sans-serif;font-size:14px;color:#1D2B25;padding-bottom:4px;">Pour</td><td style="border-bottom:1px solid #1F4A38;height:26px;">&nbsp;</td></tr><tr><td colspan="2" style="height:12px;"></td></tr><tr><td width="96" style="font-family:Archivo, Arial, sans-serif;font-size:14px;color:#1D2B25;padding-bottom:4px;">De la part de</td><td style="border-bottom:1px solid #1F4A38;height:26px;">&nbsp;</td></tr></table><div style="font-family:Archivo, Arial, sans-serif;font-size:14px;color:#1D2B25;padding-top:22px;">Montant du bon</div><div style="font-family:Archivo, Arial, sans-serif;font-size:46px;line-height:50px;font-weight:900;color:#1F4A38;">[[Montant du bon|150 €]]</div></td><td class="col talon" width="180" valign="top" style="padding:26px 20px 28px 22px;border-left:2px dashed #1F4A38;"><div style="font-family:Archivo, Arial, sans-serif;font-size:12px;letter-spacing:2px;font-weight:bold;text-transform:uppercase;color:#1F4A38;">Talon</div><div style="font-family:Archivo, Arial, sans-serif;font-size:13px;color:#1D2B25;padding-top:14px;">Bon n°</div><div style="font-family:'Courier New', monospace;font-size:19px;font-weight:bold;color:#1F4A38;">[[Numéro du bon|NOEL-0000]]</div><div style="font-family:Archivo, Arial, sans-serif;font-size:13px;color:#1D2B25;padding-top:16px;">Valable jusqu'au</div><div style="font-family:Archivo, Arial, sans-serif;font-size:15px;font-weight:bold;color:#1D2B25;">[[Date limite de validité|31 mars]]</div><div style="font-family:Archivo, Arial, sans-serif;font-size:13px;color:#1D2B25;line-height:18px;padding-top:16px;">À présenter à la réservation.</div></td></tr></mj-table></mj-column></mj-section><mj-section padding="0"><mj-column><mj-text font-family="Archivo, Arial, sans-serif" font-size="18px" line-height="26px" color="#FFFFFF" padding="30px 36px 14px 36px"><p style="margin:0;"><strong style="font-weight:900;">Il arrive par e-mail.</strong> Prêt à offrir, sans emballage ni file d'attente.</p></mj-text><mj-text font-family="Archivo, Arial, sans-serif" font-size="18px" line-height="26px" color="#FFFFFF" padding="0 36px 14px 36px"><p style="margin:0;"><strong style="font-weight:900;">Vous le transmettez.</strong> Imprimé ou sur téléphone, comme vous préférez.</p></mj-text><mj-text font-family="Archivo, Arial, sans-serif" font-size="18px" line-height="26px" color="#FFFFFF" padding="0 36px 28px 36px"><p style="margin:0;"><strong style="font-weight:900;">Votre proche réserve en direct.</strong> Il choisit ses dates, nous gardons la chambre.</p></mj-text><mj-button href="[[Lien de votre boutique de bons cadeaux|{{website_url}}]]" align="left" background-color="#E8B04A" color="#1F4A38" border-radius="4px" font-family="Archivo, Arial, sans-serif" font-size="18px" font-weight="900" inner-padding="16px 34px" padding="14px 36px 6px 36px">Offrir ce bon</mj-button></mj-column></mj-section><mj-section padding="0"><mj-column><mj-text align="left" font-family="Arial, Helvetica, sans-serif" font-size="12px" line-height="19px" color="#F3D3D4" padding="26px 36px 34px 36px"><p style="margin:0;">{{facility_name}}, {{facility_address}}, {{facility_zip_code}} {{facility_city}}<br/>Vous recevez ce message parce que vous avez déjà échangé avec nous. <a href="{{unsubscribe_link}}" style="color:#FFFFFF;text-decoration:underline;">Se désinscrire</a></p></mj-text></mj-column></mj-section></mj-body></mjml>

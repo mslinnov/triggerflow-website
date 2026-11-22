@@ -5,8 +5,10 @@ import {
   isMjmlTheme,
   TEMPS_FORT_CODES,
   templateFileName,
+  type MjmlTheme,
   type TempsFortCode,
 } from '@/data/calendrier-marketing';
+import { FETES_STYLE, isFeteCode } from '@/data/campagnes-fetes';
 import { loadMjmlTemplate, previewFor, signTemplate } from '@/lib/calendrier-mjml';
 
 /**
@@ -31,15 +33,18 @@ const PREVIEW_CSP =
 
 export async function GET(request: Request, { params }: { params: Promise<{ code: string; format: string }> }) {
   const { code, format } = await params;
-  if (!(TEMPS_FORT_CODES as readonly string[]).includes(code) || !(FORMATS as readonly string[]).includes(format)) {
+  // Codes du calendrier et des campagnes des fêtes (/fr/campagnes-email-fetes) : mêmes dossiers d'export.
+  if (!((TEMPS_FORT_CODES as readonly string[]).includes(code) || isFeteCode(code)) || !(FORMATS as readonly string[]).includes(format)) {
     return new NextResponse('Not found', { status: 404 });
   }
 
   const query = new URL(request.url).searchParams;
   const theme = query.get('theme') ?? DEFAULT_MJML_THEME;
-  if (!isMjmlTheme(theme)) return new NextResponse('Not found', { status: 404 });
+  // « fetes » : style des campagnes des fêtes, réservé à leurs codes (hors des thèmes du calendrier).
+  const feteStyle = theme === FETES_STYLE && isFeteCode(code);
+  if (!isMjmlTheme(theme) && !feteStyle) return new NextResponse('Not found', { status: 404 });
 
-  const template = loadMjmlTemplate(code as TempsFortCode, theme);
+  const template = loadMjmlTemplate(code as TempsFortCode, theme as MjmlTheme);
   if (!template) return new NextResponse('Not found', { status: 404 });
 
   // Cinq minutes : un modèle corrigé puis redéployé n'est pas servi longtemps dans sa version périmée.
@@ -52,7 +57,7 @@ export async function GET(request: Request, { params }: { params: Promise<{ code
         return new NextResponse(text, { headers: { ...headers, 'Content-Type': 'text/plain; charset=utf-8' } });
       }
       // Type neutre : Safari ajouterait « .txt » à un fichier text/plain nommé .mjml.
-      const filename = templateFileName(code as TempsFortCode, theme, format as 'mjml' | 'html');
+      const filename = templateFileName(code as TempsFortCode, theme as MjmlTheme, format as 'mjml' | 'html');
       return new NextResponse(text, {
         headers: { ...headers, 'Content-Type': 'application/octet-stream', 'Content-Disposition': `attachment; filename="${filename}"` },
       });

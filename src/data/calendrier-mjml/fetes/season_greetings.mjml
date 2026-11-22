@@ -1,0 +1,115 @@
+<mjml><mj-head><!-- VISIBILITY_STYLES --><mj-style>
+      /* Desktop-first : les clients qui ne supportent pas @media
+         (Outlook Web, Nouveau Outlook) gardent le comportement desktop. */
+      .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+        display: block;
+        width: auto;
+        max-height: none;
+        overflow: visible;
+        line-height: inherit;
+      }
+      .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+        display: none;
+        width: 0;
+        max-height: 0;
+        overflow: hidden;
+        line-height: 0;
+      }
+      /* Mobile : afficher mobile-only, masquer desktop-only */
+      @media only screen and (max-width:599px) {
+        .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+        .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+          display: block !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+      }
+      /* Desktop explicit (pour spécificité) */
+      @media only screen and (min-width:600px) {
+        .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+          display: block !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+        .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+      }
+      /* Fallback : vrais appareils mobiles (Outlook mobile peut avoir un viewport &gt;600px) */
+      @media only screen and (max-device-width:599px) {
+        .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+          display: block !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+        .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+      }
+    </mj-style><!--[if mso | IE]>
+      <style type="text/css">
+        .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+          display: block !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+        .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+        table.desktop-only, table.desktop-only-outlook, table[class*="desktop-only"],
+        tr.desktop-only, tr.desktop-only-outlook, tr[class*="desktop-only"],
+        td.desktop-only, td.desktop-only-outlook, td[class*="desktop-only"] {
+          display: table !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+        table.mobile-only, table.mobile-only-outlook, table[class*="mobile-only"],
+        tr.mobile-only, tr.mobile-only-outlook, tr[class*="mobile-only"],
+        td.mobile-only, td.mobile-only-outlook, td[class*="mobile-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+      </style>
+    <![endif]--><mj-attributes><mj-all padding="0">
+            </mj-all></mj-attributes><mj-font name="EB Garamond" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap"></mj-font><mj-style>@media only screen and (max-width:479px){.h1 div{font-size:76px!important;line-height:76px!important;}}</mj-style><mj-preview>Un mot de toute l'équipe, pour vous remercier.</mj-preview></mj-head><mj-body background-color="#F4F6F3" width="600px"><mj-section padding="0"><mj-column><mj-image css-class="tf-logo" src="https://api.trigger-flow.com/images/email-library/temps-forts/fetes-logo-ardoise.png" alt="{{facility_name}}" align="left" width="150px" padding="36px 48px 0 48px"></mj-image><mj-text css-class="h1" font-family="'EB Garamond', Georgia, serif" font-size="112px" line-height="104px" font-style="italic" letter-spacing="-2px" color="#1F4A3C" padding="56px 48px 0 48px"><div>Merci.</div></mj-text><mj-text font-family="'EB Garamond', Georgia, serif" font-size="21px" line-height="32px" color="#1F2623" padding="42px 48px 0 48px"><p style="margin:0;">Bonjour {{firstname}},<br/><br/>Cette année, vous avez poussé la porte de l'hôtel, parfois pour une nuit, parfois pour un week-end, parfois pour un dîner. À chaque fois, vous nous avez fait confiance. Nous ne l'oublions&nbsp;pas.<br/><br/>Merci à ceux qui nous retrouvent comme à la maison, et à ceux qui sont venus pour la première fois. Vos retours et vos mots laissés à la réception nous aident à faire mieux.<br/><br/>À la réception, en cuisine, aux étages, nous vous souhaitons de belles fêtes et une année douce.<br/><br/>Un mot pour nous ? Répondez simplement à ce message. Nous lisons tout.</p></mj-text><mj-text font-family="'EB Garamond', Georgia, serif" font-size="21px" line-height="30px" color="#1F2623" padding="34px 48px 0 48px"><p style="margin:0;">Avec toute notre reconnaissance,</p></mj-text><mj-text font-family="'EB Garamond', Georgia, serif" font-size="46px" line-height="52px" font-style="italic" color="#A0533A" padding="6px 48px 0 48px"><p style="margin:0;">[[Prénom du directeur|Claire]]</p></mj-text><mj-text font-family="Arial, Helvetica, sans-serif" font-size="14px" line-height="21px" color="#4F5A56" padding="4px 48px 52px 48px"><p style="margin:0;">[[Fonction|Directrice]] et toute l'équipe de {{facility_name}}</p></mj-text><mj-image src="https://api.trigger-flow.com/images/email-library/temps-forts/fetes-season_greetings-600.jpg" alt="La forêt enneigée, vue depuis une chambre" padding="0"></mj-image></mj-column></mj-section><mj-section padding="0"><mj-column><mj-text align="left" font-family="Arial, Helvetica, sans-serif" font-size="12px" line-height="19px" color="#4F5A56" padding="26px 36px 34px 36px"><p style="margin:0;">{{facility_name}}, {{facility_address}}, {{facility_zip_code}} {{facility_city}}<br/>Vous recevez ce message parce que vous avez déjà échangé avec nous. <a href="{{unsubscribe_link}}" style="color:#1F4A3C;text-decoration:underline;">Se désinscrire</a></p></mj-text></mj-column></mj-section></mj-body></mjml>

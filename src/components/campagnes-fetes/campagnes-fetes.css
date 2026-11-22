@@ -1,0 +1,193 @@
+/* Page « Campagnes e-mail des fêtes » : direction A, « Le calendrier qui défile ». Classes préfixées cf-. */
+.cf{
+  --nuit:#002B28; --nuit-2:#0B4640; --nuit-3:#00201E;
+  --papier:#F5F1EA; --menthe-pale:#F2F7F6;
+  --titre:#0C2A26; --corps:#344E4A; --vert:#257A6C; --menthe:#86C5B9;
+  --peche:#FFCFA2; --filet:rgba(12,42,38,.14);
+  --sombre-titre:#EEF6F4; --sombre-corps:rgba(204,226,225,.82);
+  --ease:cubic-bezier(.16,1,.3,1);
+  font-family:var(--font-sans),system-ui,sans-serif;color:var(--corps);background:#fff;line-height:1.55;overflow-x:clip;
+}
+.cf *{box-sizing:border-box}
+.cf h1,.cf h2,.cf h3,.cf p,.cf ul{margin:0}
+.cf h1,.cf h2,.cf h3{font-weight:500;color:var(--titre);text-wrap:balance}
+.cf em{font-style:normal;color:var(--vert)}
+.cf-wrap{max-width:1240px;margin:0 auto;padding:0 16px}
+@media(min-width:900px){.cf-wrap{padding:0 32px}}
+.cf-titre-s{font-size:29px;line-height:1.1;letter-spacing:-.03em}
+@media(min-width:900px){.cf-titre-s{font-size:46px;line-height:1.06}}
+
+/* boutons */
+.cf-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:14px 24px;font:500 16px/1 var(--font-sans),system-ui,sans-serif;text-decoration:none;cursor:pointer;white-space:nowrap;transition:transform .2s var(--ease),box-shadow .2s}
+.cf-btn:active{transform:scale(.98)}
+.cf-btn-peche{background:var(--peche);color:var(--nuit)}
+.cf-btn-peche:hover{transform:translateY(-2px);box-shadow:0 10px 24px -8px rgba(178,84,28,.45)}
+.cf-lien{background:none;border:0;padding:6px 0;font:500 16px/1.2 var(--font-sans),system-ui,sans-serif;color:var(--titre);text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:1px;cursor:pointer}
+.cf-lien:hover{text-decoration-thickness:2px}
+@media(max-width:899px){.cf-lien{min-height:44px;display:inline-flex;align-items:center}}
+.cf :focus-visible{outline:2px solid var(--vert);outline-offset:3px;border-radius:6px}
+.cf-sombre :focus-visible{outline-color:var(--peche)}
+
+/* aperçu d'e-mail : 600 px natifs mis à l'échelle (--s posé par MailPreview) ; hauteur tirée du cadre dès le
+   premier rendu, sans attendre le script (cadre de taille fixe : rien ne bouge autour) */
+.cf-mail{position:relative;overflow:hidden;background:#fff;width:100%;height:100%;--s:.6}
+.cf-mail-if{position:absolute;top:0;left:0;width:600px;height:calc(100% / var(--s));border:0;background:#fff;transform:scale(var(--s));transform-origin:0 0;pointer-events:none}
+.cf-mail-fb{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:10px;padding:8%;background:var(--menthe-pale);color:var(--titre)}
+.cf-mail-fb small{font-size:13px;font-weight:500;color:var(--vert)}
+.cf-mail-fb strong{font-size:clamp(16px,1.6vw,22px);line-height:1.2;font-weight:500;letter-spacing:-.02em}
+.cf-mail-fb span{font-size:13px;color:var(--corps)}
+
+/* héros (moment sombre 1) */
+.cf-sombre{background:radial-gradient(120% 90% at 70% 10%,var(--nuit-2) 0%,var(--nuit) 50%,var(--nuit-3) 100%);color:var(--sombre-corps)}
+.cf-hero{position:relative;overflow:hidden;padding:24px 0 56px}
+.cf-hero-g{display:grid;gap:32px;align-items:center}
+.cf-hero h1{color:var(--sombre-titre);font-size:clamp(38px,11vw,48px);line-height:1.04;letter-spacing:-.035em}
+.cf-hero h1 em{color:var(--menthe);display:block}
+.cf-sous{margin-top:20px;font-size:18px;max-width:46ch}
+.cf-actions{margin-top:28px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px}
+.cf-hero .cf-lien{color:var(--sombre-titre);text-decoration-color:rgba(255,255,255,.3)}
+.cf-eventail{position:relative;height:340px;margin-top:8px}
+.cf-carte-h{position:absolute;width:44%;max-width:230px;aspect-ratio:3/4;border-radius:16px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.08);background:#fff;will-change:transform}
+.cf-tag-h{position:absolute;left:12px;bottom:12px;z-index:3;padding:6px 12px;border-radius:999px;background:var(--peche);color:var(--nuit);font-size:13px;font-weight:500}
+.cf-carte-h:nth-child(1){left:2%;top:34px;transform:rotate(-8deg)}
+.cf-carte-h:nth-child(2){left:28%;top:0;z-index:2;transform:rotate(1deg)}
+.cf-carte-h:nth-child(3){right:2%;top:46px;transform:rotate(9deg)}
+@media(min-width:900px){
+  .cf-hero{padding:56px 0 96px}
+  .cf-hero-g{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:40px;min-height:calc(100dvh - 240px)}
+  .cf-hero h1{font-size:clamp(56px,5.8vw,86px);line-height:1.02}
+  .cf-sous{font-size:20px}
+  .cf-eventail{height:560px}
+  .cf-carte-h{width:300px;max-width:none}
+  .cf-carte-h:nth-child(1){left:0;top:90px}
+  .cf-carte-h:nth-child(2){left:150px}
+  .cf-carte-h:nth-child(3){right:0;top:110px;left:auto}
+}
+
+/* les 7 (papier) */
+.cf-sept{background:var(--papier);padding:64px 0;scroll-margin-top:64px}
+.cf-sept-tete{max-width:640px}
+.cf-sept-tete p{margin-top:16px;font-size:18px}
+.cf-sept-g{margin-top:40px;position:relative}
+.cf-steps{position:relative;padding-left:28px}
+.cf-rail{position:absolute;left:5px;top:12px;bottom:12px;width:2px;background:var(--filet);border-radius:2px}
+.cf-rail-fill{position:absolute;inset:0;background:var(--vert);transform-origin:top;border-radius:2px}
+.cf-step{position:relative;padding:8px 0 44px;scroll-margin-top:96px}
+.cf-dot{position:absolute;left:-28px;top:12px;width:12px;height:12px;border-radius:50%;background:var(--papier);box-shadow:inset 0 0 0 2px var(--filet);transition:background .3s,box-shadow .3s}
+.cf-step.passe .cf-dot,.cf-step.on .cf-dot{background:var(--vert);box-shadow:none}
+.cf-periode{display:inline-block;padding:5px 12px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px var(--filet);font-size:14px;font-weight:500;color:var(--vert)}
+.cf-step h3{margin-top:14px;font-size:27px;line-height:1.1;letter-spacing:-.03em}
+.cf-objet{margin-top:14px;font-size:17px;color:var(--titre)}
+.cf-objet b{font-weight:500;color:var(--corps);margin-right:6px}
+.cf-pourquoi{margin-top:12px;font-size:16px;max-width:52ch}
+.cf-acts{margin-top:20px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px}
+.cf-step-mail{margin:20px 0 18px;height:360px;border-radius:16px;overflow:hidden;box-shadow:0 18px 40px -22px rgba(0,43,40,.45),0 0 0 1px var(--filet)}
+.cf-stage{display:none}
+@media(min-width:900px){
+  .cf-sept{padding:112px 0}
+  .cf-sept-tete p{font-size:19px}
+  .cf-sept-g{display:grid;grid-template-columns:minmax(0,1fr) 460px;gap:96px;margin-top:72px;align-items:start}
+  .cf-steps{padding-left:48px}
+  .cf-rail{left:7px}
+  .cf-dot{left:-48px}
+  .cf-step{min-height:62vh;display:flex;align-items:center;padding:0}
+  .cf-step-in{opacity:.32;transition:opacity .5s var(--ease)}
+  .cf-step.on .cf-step-in{opacity:1}
+  .cf-step h3{font-size:36px}
+  .cf-step-mail{display:none}
+  .cf-stage{display:block;position:sticky;top:128px;height:min(72vh,720px)}
+  .cf-win{position:absolute;inset:0;display:flex;flex-direction:column;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 40px 80px -36px rgba(0,43,40,.5),0 0 0 1px var(--filet);opacity:0;transform:translateY(18px) scale(.985);transition:opacity .55s var(--ease),transform .55s var(--ease);pointer-events:none}
+  .cf-win.on{opacity:1;transform:none;pointer-events:auto}
+  .cf-win-tete{padding:14px 18px;border-bottom:1px solid var(--filet);background:#fff;display:grid;gap:2px;flex:none}
+  .cf-win-tete .de{font-size:13px;color:#5a6f6b}
+  .cf-win-tete .obj{font-size:16px;font-weight:500;color:var(--titre);line-height:1.3}
+  .cf-win .cf-mail{flex:1;height:auto;min-height:0}
+  .cf-stage-lien{display:none;position:absolute;left:0;right:0;bottom:-44px;text-align:center}
+  .cf-stage-lien.on{display:block}
+}
+/* sans JavaScript (ou mouvement réduit) : tout le texte reste lisible */
+.cf-nojs .cf-step-in{opacity:1}
+
+/* bande démo (menthe pâle) */
+.cf-bande{background:var(--menthe-pale);padding:64px 0}
+.cf-bande-g{display:grid;gap:40px;align-items:center}
+.cf-bande p{margin:16px 0 28px;font-size:18px;max-width:46ch}
+.cf-flux{display:grid;gap:14px}
+.cf-flux-l{display:grid;grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr);align-items:center;gap:8px}
+.cf-aud,.cf-chip{border-radius:12px;padding:14px;font-size:15px;line-height:1.3;font-weight:500}
+.cf-aud{background:#fff;box-shadow:inset 0 0 0 1px var(--filet);color:var(--titre)}
+.cf-chip{background:var(--nuit);color:var(--sombre-titre)}
+.cf-chip small{display:block;margin-top:4px;font-size:13px;font-weight:400;color:var(--menthe)}
+.cf-fil{height:2px;background:var(--vert);transform-origin:left;border-radius:2px;display:block}
+@media(min-width:900px){
+  .cf-bande{padding:112px 0}
+  .cf-bande-g{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:96px}
+  .cf-flux-l{grid-template-columns:minmax(0,1fr) 72px minmax(0,1fr);gap:12px}
+  .cf-aud,.cf-chip{padding:18px 20px;font-size:16px}
+}
+
+/* trois façons (blanc) */
+.cf-facons{background:#fff;padding:64px 0}
+.cf-facons-liste{margin-top:32px}
+.cf-facon{display:grid;gap:10px;padding:28px 0;border-top:1px solid var(--filet)}
+.cf-facon:last-child{border-bottom:1px solid var(--filet)}
+.cf-qui{font-size:15px;font-weight:500;color:var(--vert)}
+.cf-facon h3{font-size:26px;line-height:1.12;letter-spacing:-.03em}
+.cf-facon p{font-size:16px;max-width:52ch}
+.cf-facon .cf-acts{margin-top:16px}
+@media(min-width:900px){
+  .cf-facons{padding:112px 0}
+  .cf-facons-liste{margin-top:56px}
+  .cf-facon{grid-template-columns:280px minmax(0,1fr) minmax(0,.9fr);gap:40px;padding:40px 0;align-items:start}
+  .cf-qui{padding-top:10px}
+  .cf-facon h3{font-size:38px}
+  .cf-facon .cf-acts{margin-top:0;padding-top:6px}
+}
+
+/* FAQ (papier) */
+.cf-faq{background:var(--papier);padding:64px 0}
+.cf-faq-g{display:grid;gap:28px}
+.cf details{border-top:1px solid var(--filet)}
+.cf details:last-child{border-bottom:1px solid var(--filet)}
+.cf summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:20px 0;font-size:18px;font-weight:500;color:var(--titre);min-height:44px}
+.cf summary::-webkit-details-marker{display:none}
+.cf summary::after{content:"+";flex:none;font-size:26px;font-weight:400;color:var(--vert);transition:transform .3s var(--ease);line-height:1}
+.cf details[open] summary::after{transform:rotate(45deg)}
+.cf details p{padding:0 40px 22px 0;font-size:16px;max-width:60ch}
+@media(min-width:900px){
+  .cf-faq{padding:112px 0}
+  .cf-faq-g{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:96px}
+  .cf summary{font-size:20px}
+}
+
+/* appel final (moment sombre 2) */
+.cf-final{background:#fff;padding:16px 0 56px}
+.cf-panneau{border-radius:28px;padding:40px 24px;display:grid;gap:28px;box-shadow:0 0 0 8px #fff,0 0 0 9px var(--filet)}
+.cf-panneau h2{color:var(--sombre-titre);font-size:30px;line-height:1.1;letter-spacing:-.03em}
+.cf-panneau h2 em{color:var(--menthe)}
+.cf-panneau p{margin-top:16px;font-size:17px;max-width:44ch}
+.cf-panneau .cf-actions{margin-top:0}
+.cf-panneau .cf-lien{color:var(--sombre-titre);text-decoration-color:rgba(255,255,255,.3)}
+@media(min-width:900px){
+  .cf-final{padding:32px 0 96px}
+  .cf-panneau{border-radius:40px;padding:80px 72px;grid-template-columns:minmax(0,1.3fr) auto;align-items:end;gap:56px}
+  .cf-panneau h2{font-size:52px;line-height:1.04}
+  .cf-panneau p{font-size:19px}
+}
+
+/* modale « Copier le modèle » */
+.cf-dialog{margin:auto;border:0;padding:0;border-radius:20px;width:min(560px,calc(100vw - 32px));max-height:calc(100dvh - 32px);box-shadow:0 40px 80px -20px rgba(0,43,40,.5);color:var(--corps);background:#fff}
+.cf-dialog::backdrop{background:rgba(0,32,30,.55)}
+.cf-dialog-in{padding:24px;display:grid;gap:16px}
+.cf-dialog h2{font-size:24px;line-height:1.15;letter-spacing:-.02em}
+.cf-onglets{display:flex;gap:4px;padding:4px;border-radius:999px;background:var(--menthe-pale);width:fit-content}
+.cf-onglet{border:0;background:none;border-radius:999px;padding:10px 18px;min-height:44px;font:500 15px/1 var(--font-sans),system-ui,sans-serif;color:var(--titre);cursor:pointer}
+.cf-onglet[aria-selected="true"]{background:#fff;box-shadow:inset 0 0 0 1px var(--filet);color:var(--vert)}
+.cf-dialog-note{font-size:15px}
+
+@media(prefers-reduced-motion:reduce){
+  .cf *,.cf *::before,.cf *::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+}
+.cf-dialog-tete{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+.cf-pied{background:#fff;padding:0 0 40px}
+.cf-pied .cf-wrap{display:flex;flex-wrap:wrap;gap:8px 32px}
