@@ -13,6 +13,7 @@ import { brand } from '@/data/brand';
 import { CALENDAR, CAMPAIGNS, calendarDemoUrl, monthYear, TEMPS_FORTS, upcomingCampaigns } from '@/data/calendrier-marketing';
 import { toPlainText } from '@/lib/calendrier';
 import { getPricingPhase } from '@/data/pricing';
+import { Link } from '@/i18n/navigation';
 import { pageAlternates } from '@/lib/seo';
 
 const PATH = '/calendrier-marketing';
@@ -183,6 +184,11 @@ export default async function CalendrierMarketingPage({ params }: PageProps) {
         <Container className="text-center">
           <h2 className="font-serif text-3xl font-bold tracking-tight md:text-4xl">{t('finalCta.title')}</h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-white/80">{t('finalCta.subtitle')}</p>
+          <p className="mt-4">
+            <Link href="/campagnes-email-fetes" className="font-medium text-brand-accent underline underline-offset-4 hover:text-white">
+              {t('finalCta.fetes')}
+            </Link>
+          </p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <ButtonLink href={calendarDemoUrl('page')} target="_blank" rel="noopener noreferrer" variant="accent" size="lg">
               {t('finalCta.demo')}

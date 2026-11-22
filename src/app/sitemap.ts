@@ -302,6 +302,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   });
 
+  // ─── Campagnes e-mail des fêtes (FR uniquement) ───
+  sitemapEntries.push({
+    url: `${baseUrl}/fr/campagnes-email-fetes`,
+    lastModified,
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  });
+
   // ─── Landing pages (exclude noindex) ─────────────────────────
   const landingPages = getAllLandingPages().filter((lp) => !lp.noindex);
   for (const lp of landingPages) {

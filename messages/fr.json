@@ -3369,7 +3369,8 @@
       "title": "Envoyez ces e-mails sans y penser",
       "subtitle": "TriggerFlow cible les bons clients dans votre PMS, programme chaque envoi à votre charte et relance ceux qui n'ont pas cliqué.",
       "demo": "Réserver une démo",
-      "login": "Déjà client : se connecter"
+      "login": "Déjà client : se connecter",
+      "fetes": "Pour les fêtes : les 7 campagnes de Noël à janvier, prêtes à envoyer"
     },
     "activatePage": {
       "metaTitle": "{title} : modèle d'e-mail pour hôtel",
@@ -3423,6 +3424,139 @@
     "unavailable": {
       "title": "Document momentanément indisponible",
       "text": "Réessayez dans quelques minutes."
+    }
+  },
+  "campagnesFetes": {
+    "meta": {
+      "title": "Campagnes e-mail des fêtes pour hôtels : 7 modèles prêts à envoyer",
+      "description": "Sept campagnes e-mail écrites pour les hôtels, des bons cadeaux de Noël aux vœux de janvier : à copier en HTML ou MJML, ou à activer dans TriggerFlow.",
+      "breadcrumbHome": "Accueil",
+      "breadcrumbPage": "Campagnes e-mail des fêtes"
+    },
+    "hero": {
+      "title": "Vos campagnes des fêtes,",
+      "titleEm": "prêtes à envoyer",
+      "subtitle": "Sept e-mails écrits pour les hôtels, des bons cadeaux de Noël aux vœux de janvier.",
+      "seeAll": "Voir les 7 campagnes",
+      "demo": "Réserver une démo"
+    },
+    "sept": {
+      "title": "Une campagne pour chaque moment",
+      "titleEm": "des fêtes",
+      "intro": "Dans l'ordre où les envoyer. Remplacez les champs grisés (prix, dates, lien de réservation) et l'e-mail est prêt.",
+      "subject": "Objet",
+      "from": "De : Votre hôtel",
+      "activate": "Activer dans TriggerFlow",
+      "copy": "Copier le modèle",
+      "seeFull": "Voir l'e-mail en entier",
+      "previewTitle": "Aperçu de l'e-mail : {name}",
+      "previewLabel": "Aperçu de l'e-mail",
+      "fallbackTitle": "Aperçu bientôt disponible",
+      "fallbackText": "Le modèle de cette campagne arrive. Activez-le dans TriggerFlow pour le voir à la charte de votre hôtel."
+    },
+    "modal": {
+      "title": "Copier le modèle",
+      "tabsLabel": "Format du modèle",
+      "html": "HTML",
+      "mjml": "MJML",
+      "noteHtml": "Le HTML se colle dans la plupart des outils d'e-mailing.",
+      "noteMjml": "Le MJML sert aux outils et aux équipes qui travaillent en MJML.",
+      "copyHtml": "Copier le HTML",
+      "copyMjml": "Copier le MJML",
+      "download": "Télécharger",
+      "downloadHtml": "Télécharger le HTML",
+      "downloadMjml": "Télécharger le MJML",
+      "copied": "Copié dans le presse-papier",
+      "copiedShort": "Copié",
+      "copyFallback": "La copie automatique est bloquée par votre navigateur : le texte est sélectionné ci-dessous, copiez-le avec Ctrl+C ou Cmd+C.",
+      "copyError": "Copie impossible, réessayez.",
+      "close": "Fermer"
+    },
+    "bande": {
+      "title": "Le bon e-mail,",
+      "titleEm": "au bon client",
+      "text": "Dans TriggerFlow, chaque campagne part aux clients qu'elle concerne : ceux venus l'an dernier pour les fêtes, les habitués du restaurant, les entreprises. Sans export ni fichier à préparer.",
+      "demo": "Réserver une démo",
+      "sent": "Envoyé",
+      "rows": [
+        {
+          "audience": "Venus l'an dernier pour les fêtes",
+          "campaign": "Dernières chambres des fêtes"
+        },
+        {
+          "audience": "Habitués du restaurant",
+          "campaign": "Tables de Noël et du réveillon"
+        },
+        {
+          "audience": "Entreprises",
+          "campaign": "Bons cadeaux de Noël"
+        }
+      ]
+    },
+    "facons": {
+      "title": "Trois façons",
+      "titleEm": "de s'en servir",
+      "items": [
+        {
+          "who": "Vous êtes client TriggerFlow",
+          "title": "Activer dans TriggerFlow",
+          "text": "Le modèle est créé dans votre compte, avec votre logo et vos couleurs. Vous le retouchez, ou l'assistant IA l'adapte à votre hôtel.",
+          "cta": "Voir les campagnes",
+          "kind": "button"
+        },
+        {
+          "who": "Vous utilisez un autre outil",
+          "title": "Copier le HTML ou le MJML",
+          "text": "Collez-le dans votre outil d'envoi, remplacez les champs grisés, c'est prêt.",
+          "cta": "Copier le modèle",
+          "kind": "link"
+        },
+        {
+          "who": "Vous découvrez TriggerFlow",
+          "title": "Voir comment ça marche",
+          "text": "Une démo pour voir ces campagnes partir au bon moment, aux bons clients, depuis votre PMS.",
+          "cta": "Réserver une démo",
+          "kind": "demo"
+        }
+      ]
+    },
+    "faq": {
+      "title": "Questions",
+      "titleEm": "fréquentes",
+      "items": [
+        {
+          "question": "Quand envoyer les campagnes des fêtes ?",
+          "answer": "Les bons cadeaux dès la fin novembre, les tables du réveillon et le cocooning début décembre, les dernières chambres entre le 18 et le 26, la carte de vœux vers le 20, l'offre de janvier la première semaine de l'année."
+        },
+        {
+          "question": "Les modèles sont-ils gratuits ?",
+          "answer": "Oui. Vous pouvez copier le HTML ou le MJML sans compte. L'activation se fait dans un compte TriggerFlow."
+        },
+        {
+          "question": "Fonctionnent-ils avec mon outil d'envoi ?",
+          "answer": "Le HTML se colle dans la plupart des outils d'e-mailing. Le MJML sert aux outils et aux équipes qui travaillent en MJML."
+        },
+        {
+          "question": "Que deviennent les champs grisés ?",
+          "answer": "Ce sont les informations propres à votre hôtel : prix, dates, lien de réservation, prénom du directeur. Remplacez-les avant l'envoi."
+        },
+        {
+          "question": "Puis-je les adapter à mon hôtel ?",
+          "answer": "Dans TriggerFlow, le modèle prend votre logo et vos couleurs à l'activation. L'assistant IA peut ensuite réécrire le texte pour votre établissement."
+        }
+      ]
+    },
+    "finalCta": {
+      "title": "Envoyez vos campagnes des fêtes",
+      "titleEm": "depuis TriggerFlow",
+      "text": "Le CRM et le marketing automation des hôtels indépendants, branchés sur votre PMS.",
+      "demo": "Réserver une démo",
+      "callback": "Être rappelé"
+    },
+    "related": {
+      "label": "Pour aller plus loin",
+      "calendar": "Calendrier marketing hôtelier",
+      "guide": "Guide du marketing automation hôtelier"
     }
   }
 }
