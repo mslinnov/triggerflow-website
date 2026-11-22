@@ -1,0 +1,26 @@
+Bonjour,
+
+Décembre arrive vite, et les e-mails des fêtes s'écrivent souvent la veille de l'envoi. Nous avons donc préparé les 7 campagnes qui comptent pour un hôtel en fin d'année :
+
+- Bons cadeaux de Noël, fin novembre
+- Séjour cocooning, début décembre
+- Tables de Noël et du réveillon, début décembre
+- Le 31 chez nous, mi-décembre
+- Dernières chambres entre Noël et le Nouvel An, du 18 au 26 décembre
+- Carte de vœux, vers le 20 décembre
+- Vœux et offre de janvier, première semaine de janvier
+
+Chaque modèle est en ligne avec son aperçu, sa période d'envoi et son objet. Vous pouvez le copier en HTML ou en MJML pour votre outil d'envoi, ou, si vous utilisez TriggerFlow, le créer en un clic à vos couleurs.
+
+Voir les 7 campagnes :
+https://www.trigger-flow.com/fr/campagnes-email-fetes?utm_source=brevo&utm_medium=email&utm_campaign=vague-2-fetes&utm_content=lien
+
+Et si vous voulez qu'elles partent au bon moment vers les bons clients (ceux qui ont fêté le 31 chez vous l'an dernier, par exemple), je vous le montre en une courte démo :
+https://app.lemcal.com/@trigger-flow/demo?utm_source=brevo&utm_medium=email&utm_campaign=vague-2-fetes&utm_content=demo
+
+Belles fêtes de fin d'année,
+
+Mounir
+TriggerFlow
+
+Vous ne souhaitez plus recevoir nos e-mails ? Se désinscrire : {{ unsubscribe }}
