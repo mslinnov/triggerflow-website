@@ -84,7 +84,7 @@ export function calendarStatForClick(
 
 /**
  * Champ `page` des statistiques : la landing des fêtes, reconnue à son adresse (toutes
- * langues) ; null ailleurs. Écarté côté serveur tant que FETES_EVENTS_ENABLED est coupé.
+ * langues) ; null ailleurs. Filtré côté serveur par FETES_EVENTS_ENABLED.
  */
 export function calendarPageFor(pathname: string): typeof FETES_PAGE | null {
   return pathname.split('/').includes(FETES_PAGE) ? FETES_PAGE : null;
@@ -95,7 +95,7 @@ const FETES_CLICKS: Record<string, 'see_all' | 'card_click'> = { see_all: 'see_a
 /**
  * Clic de la landing des fêtes : lien marqué `data-fetes-event` (« Voir les 7 » = `see_all`,
  * carte du haut = `card_click`), temps fort facultatif. Compté dans GA4 (`fetes_<type>`) et
- * dans les statistiques de l'app (écarté côté serveur tant que FETES_EVENTS_ENABLED est coupé).
+ * dans les statistiques de l'app (filtré côté serveur par FETES_EVENTS_ENABLED).
  */
 export function fetesClickFor(link: {
   dataset: { fetesEvent?: string; tempsFort?: string };

@@ -235,14 +235,15 @@ test('route : limite par IP visiteur, les autres visiteurs passent', async () =>
   assert.equal(relayed.length, EVENTS_LIMIT.limit + 1);
 });
 
-// Landing des fêtes : contrat préparé avec l'app (theme « fetes », codes des fêtes, page), coupé par FETES_EVENTS_ENABLED.
+// Landing des fêtes : contrat de l'app (theme « fetes », codes des fêtes, page), filtré par FETES_EVENTS_ENABLED.
 const feteCopy = { type: 'copy', visit_id: VISIT, temps_fort: 'christmas_gift_voucher', theme: 'fetes', format: 'html', page: FETES_PAGE };
 
-test('fêtes : écartées tant que l’interrupteur est coupé (l’app refuserait le lot entier)', () => {
-  assert.equal(FETES_EVENTS_ENABLED, false);
-  assert.equal(sanitizeCalendarEvent(feteCopy), null);
-  assert.equal(sanitizeCalendarEvent({ type: 'page_view', visit_id: VISIT, page: FETES_PAGE }), null);
-  assert.deepEqual(parseCalendarEventsBody({ events: [feteCopy, copy] }).map((e) => e.temps_fort), ['valentines_day']);
+test('fêtes : interrupteur ouvert par défaut (app livrée), écartées s’il est recoupé', () => {
+  assert.equal(FETES_EVENTS_ENABLED, true);
+  assert.deepEqual(parseCalendarEventsBody({ events: [feteCopy, copy] }).map((e) => e.temps_fort), ['christmas_gift_voucher', 'valentines_day']);
+  assert.equal(sanitizeCalendarEvent(feteCopy, { fetes: false }), null);
+  assert.equal(sanitizeCalendarEvent({ type: 'see_all', visit_id: VISIT, page: FETES_PAGE }, { fetes: false }), null);
+  assert.equal(sanitizeCalendarEvent({ type: 'page_view', visit_id: VISIT, page: FETES_PAGE }, { fetes: false }), null);
 });
 
 test('fêtes : interrupteur ouvert, payload du contrat (theme fetes, code de fête, page)', () => {
@@ -264,7 +265,7 @@ test('fêtes : interrupteur ouvert, payload du contrat (theme fetes, code de fê
   assert.equal(sanitizeCalendarEvent({ ...feteCopy, temps_fort: 'inconnu' }, { fetes: true }), null);
   // see_all et card_click (contrat de l'app) : seulement sur la page des fêtes.
   const seeAll = { type: 'see_all', visit_id: VISIT, page: FETES_PAGE };
-  assert.equal(sanitizeCalendarEvent(seeAll), null);
+  assert.equal(sanitizeCalendarEvent(seeAll, { fetes: false }), null);
   assert.equal(sanitizeCalendarEvent(seeAll, { fetes: true })?.type, 'see_all');
   assert.equal(sanitizeCalendarEvent({ ...seeAll, type: 'card_click', temps_fort: 'new_year_wishes_offer' }, { fetes: true })?.temps_fort, 'new_year_wishes_offer');
   assert.equal(sanitizeCalendarEvent({ ...seeAll, page: undefined }, { fetes: true }), null);

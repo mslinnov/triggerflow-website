@@ -29,13 +29,12 @@ export const CALENDAR_EVENT_TYPES = [
 export type CalendarEventType = (typeof CALENDAR_EVENT_TYPES)[number];
 
 /**
- * INTERRUPTEUR des statistiques de la landing des fêtes (/fr/campagnes-email-fetes).
- * Coupé tant que l'app n'accepte pas leur contrat : theme « fetes », temps_fort = un code
- * des fêtes et `page` = FETES_PAGE (sinon elle refuserait le lot entier, 422). Une fois
- * l'app livrée, passer à `true` suffit : le navigateur envoie déjà ces champs
- * (calendarPageFor, calendrier-tracking.ts).
+ * INTERRUPTEUR des statistiques de la landing des fêtes (/fr/campagnes-email-fetes), ouvert depuis
+ * que l'app accepte leur contrat (c-af0da1a5) : theme « fetes », temps_fort = un code des fêtes,
+ * `page` = FETES_PAGE, types see_all et card_click. Le recouper (`false`) écarte de nouveau ces
+ * événements avant l'envoi, sans toucher au calendrier marketing.
  */
-export const FETES_EVENTS_ENABLED = false;
+export const FETES_EVENTS_ENABLED = true;
 
 /** Valeur du champ `page` des événements de la landing des fêtes. */
 export const FETES_PAGE = 'campagnes-email-fetes';
