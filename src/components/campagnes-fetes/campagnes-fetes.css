@@ -38,19 +38,47 @@
 .cf-mail-fb strong{font-size:clamp(16px,1.6vw,22px);line-height:1.2;font-weight:500;letter-spacing:-.02em}
 .cf-mail-fb span{font-size:13px;color:var(--corps)}
 
+/* défilement vers les ancres (« Voir les 7 », cartes du haut) : la cible s'arrête sous l'en-tête fixe
+   (bandeau + barre : 100 px sur téléphone, 116 px dès md), glissement doux sauf mouvement réduit */
+.cf-sept,.cf-step{scroll-margin-top:112px}
+@media(min-width:768px){.cf-sept,.cf-step{scroll-margin-top:132px}}
+@media(prefers-reduced-motion:no-preference){html:has(.cf){scroll-behavior:smooth}}
+
+/* haut de page en éventail (dès 1024 px ; rail horizontal en dessous) : 7 cartes égales empilées dans une
+   seule case de grille, décalées de 11 % chacune, inclinées et posées sur un arc ; celle du milieu devant.
+   Survol ou clavier : la carte se redresse, monte et passe devant, sa légende apparaît. */
+@media(min-width:1024px){
+  .cf-eventail{display:grid;align-items:start;padding-bottom:48px}
+  .cf-eventail>li{--d:0;grid-area:1/1;width:31%;margin-left:calc((var(--d) + 3) * 10.3%);z-index:calc(10 - var(--d) * var(--d));
+    transform:translateY(calc(var(--d) * var(--d) * 5px)) rotate(calc(var(--d) * 3deg));transform-origin:50% 100%;
+    transition:transform .45s var(--ease)}
+  .cf-eventail>li:nth-child(1){--d:-3}
+  .cf-eventail>li:nth-child(2){--d:-2}
+  .cf-eventail>li:nth-child(3){--d:-1}
+  .cf-eventail>li:nth-child(5){--d:1}
+  .cf-eventail>li:nth-child(6){--d:2}
+  .cf-eventail>li:nth-child(7){--d:3}
+  .cf-eventail>li:hover,.cf-eventail>li:focus-within{z-index:20;transform:translateY(-14px) rotate(0)}
+  .cf-eventail-legende{opacity:0;transition:opacity .25s var(--ease)}
+  .cf-eventail>li:nth-child(4) .cf-eventail-legende,
+  .cf-eventail>li:hover .cf-eventail-legende,.cf-eventail>li:focus-within .cf-eventail-legende{opacity:1}
+  .cf-eventail:has(>li:hover,>li:focus-within)>li:nth-child(4):not(:hover,:focus-within) .cf-eventail-legende{opacity:0}
+}
+@media(min-width:1024px) and (prefers-reduced-motion:reduce){.cf-eventail>li,.cf-eventail-legende{transition:none}}
+
 /* moments sombres (panneau démo) */
 .cf-sombre{background:radial-gradient(120% 90% at 70% 10%,var(--nuit-2) 0%,var(--nuit) 50%,var(--nuit-3) 100%);color:var(--sombre-corps)}
 .cf-actions{margin-top:28px;display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px}
 
 /* les 7 (papier) */
-.cf-sept{background:var(--papier);padding:64px 0;scroll-margin-top:64px}
+.cf-sept{background:var(--papier);padding:64px 0}
 .cf-sept-tete{max-width:640px}
 .cf-sept-tete p{margin-top:16px;font-size:18px}
 .cf-sept-g{margin-top:40px;position:relative}
 .cf-steps{position:relative;padding-left:28px}
 .cf-rail{position:absolute;left:5px;top:12px;bottom:12px;width:2px;background:var(--filet);border-radius:2px}
 .cf-rail-fill{position:absolute;inset:0;background:var(--vert);transform-origin:top;border-radius:2px}
-.cf-step{position:relative;padding:8px 0 44px;scroll-margin-top:96px}
+.cf-step{position:relative;padding:8px 0 44px}
 .cf-dot{position:absolute;left:-28px;top:12px;width:12px;height:12px;border-radius:50%;background:var(--papier);box-shadow:inset 0 0 0 2px var(--filet);transition:background .3s,box-shadow .3s}
 .cf-step.passe .cf-dot,.cf-step.on .cf-dot{background:var(--vert);box-shadow:none}
 .cf-periode{display:inline-block;padding:5px 12px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px var(--filet);font-size:14px;font-weight:500;color:var(--vert)}

@@ -12,6 +12,7 @@
  * Logique pure, testée sans réseau dans calendrier-evenements.test.ts.
  */
 import { MJML_THEMES, TEMPS_FORT_CODES } from '@/data/calendrier-marketing';
+import { FETES_CODES, FETES_STYLE } from '@/data/campagnes-fetes';
 import { salonFlyerBaseUrl } from './calendrier-rappel';
 
 export const CALENDAR_EVENT_TYPES = [
@@ -25,6 +26,18 @@ export const CALENDAR_EVENT_TYPES = [
 ] as const;
 export type CalendarEventType = (typeof CALENDAR_EVENT_TYPES)[number];
 
+/**
+ * INTERRUPTEUR des statistiques de la landing des fêtes (/fr/campagnes-email-fetes).
+ * Coupé tant que l'app n'accepte pas leur contrat : theme « fetes », temps_fort = un code
+ * des fêtes et `page` = FETES_PAGE (sinon elle refuserait le lot entier, 422). Une fois
+ * l'app livrée, passer à `true` suffit : le navigateur envoie déjà ces champs
+ * (calendarPageFor, calendrier-tracking.ts).
+ */
+export const FETES_EVENTS_ENABLED = false;
+
+/** Valeur du champ `page` des événements de la landing des fêtes. */
+export const FETES_PAGE = 'campagnes-email-fetes';
+
 /** Événement tel que l'app l'accepte. */
 export interface AppCalendarEvent {
   type: CalendarEventType;
@@ -36,6 +49,8 @@ export interface AppCalendarEvent {
   utm_medium: string | null;
   utm_campaign: string | null;
   occurred_at?: string;
+  /** Landing des fêtes seulement (absent ailleurs, comme avant le contrat). */
+  page?: typeof FETES_PAGE;
 }
 
 /** Taille maximale d'un lot, côté app. */
@@ -75,14 +90,20 @@ function occurredAt(value: unknown): string | undefined {
 }
 
 /** Un événement reçu du navigateur, ramené au contrat de l'app ; null s'il sort des listes. */
-export function sanitizeCalendarEvent(raw: unknown): AppCalendarEvent | null {
+export function sanitizeCalendarEvent(
+  raw: unknown,
+  { fetes = FETES_EVENTS_ENABLED }: { fetes?: boolean } = {},
+): AppCalendarEvent | null {
   if (!raw || typeof raw !== 'object') return null;
   const data = raw as Record<string, unknown>;
   if (!oneOf(CALENDAR_EVENT_TYPES, data.type)) return null;
   if (typeof data.visit_id !== 'string' || !VISIT_ID.test(data.visit_id)) return null;
 
-  const tempsFort = optionalOf(TEMPS_FORT_CODES, data.temps_fort);
-  const theme = optionalOf(MJML_THEMES, data.theme);
+  // Landing des fêtes : écartée tant que l'interrupteur est coupé ; ses codes et son thème ne valent que pour elle.
+  const page = optionalOf([FETES_PAGE], data.page);
+  if (page === undefined || (page && !fetes)) return null;
+  const tempsFort = optionalOf(page ? [...TEMPS_FORT_CODES, ...FETES_CODES] : TEMPS_FORT_CODES, data.temps_fort);
+  const theme = optionalOf(page ? [...MJML_THEMES, FETES_STYLE] : MJML_THEMES, data.theme);
   const format = optionalOf(['mjml', 'html'], data.format) as AppCalendarEvent['format'] | undefined;
   if (tempsFort === undefined || theme === undefined || format === undefined) return null;
   if (data.type === 'theme_change' && !theme) return null;
@@ -97,6 +118,7 @@ export function sanitizeCalendarEvent(raw: unknown): AppCalendarEvent | null {
     utm_medium: utmValue(data.utm_medium),
     utm_campaign: utmValue(data.utm_campaign),
   };
+  if (page) event.page = FETES_PAGE;
   const when = occurredAt(data.occurred_at);
   return when ? { ...event, occurred_at: when } : event;
 }
@@ -107,7 +129,7 @@ export function parseCalendarEventsBody(body: unknown): AppCalendarEvent[] {
   if (!Array.isArray(events)) return [];
   return events
     .slice(0, MAX_EVENTS_PER_BATCH)
-    .map(sanitizeCalendarEvent)
+    .map((event) => sanitizeCalendarEvent(event))
     .filter((event): event is AppCalendarEvent => event !== null);
 }
 

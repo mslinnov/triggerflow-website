@@ -5,6 +5,8 @@ import { MJML_THEMES } from '../data/calendrier-marketing';
 import { POST } from '../app/api/calendrier/evenements/route';
 import {
   calendarEventsUrl,
+  FETES_EVENTS_ENABLED,
+  FETES_PAGE,
   EVENTS_LIMIT,
   isBotUserAgent,
   MAX_BODY_BYTES,
@@ -231,4 +233,35 @@ test('route : limite par IP visiteur, les autres visiteurs passent', async () =>
   assert.equal(relayed.length, EVENTS_LIMIT.limit);
   await POST(request({ events: [copy] }, { ip: '198.51.100.8' }));
   assert.equal(relayed.length, EVENTS_LIMIT.limit + 1);
+});
+
+// Landing des fêtes : contrat préparé avec l'app (theme « fetes », codes des fêtes, page), coupé par FETES_EVENTS_ENABLED.
+const feteCopy = { type: 'copy', visit_id: VISIT, temps_fort: 'christmas_gift_voucher', theme: 'fetes', format: 'html', page: FETES_PAGE };
+
+test('fêtes : écartées tant que l’interrupteur est coupé (l’app refuserait le lot entier)', () => {
+  assert.equal(FETES_EVENTS_ENABLED, false);
+  assert.equal(sanitizeCalendarEvent(feteCopy), null);
+  assert.equal(sanitizeCalendarEvent({ type: 'page_view', visit_id: VISIT, page: FETES_PAGE }), null);
+  assert.deepEqual(parseCalendarEventsBody({ events: [feteCopy, copy] }).map((e) => e.temps_fort), ['valentines_day']);
+});
+
+test('fêtes : interrupteur ouvert, payload du contrat (theme fetes, code de fête, page)', () => {
+  assert.deepEqual(sanitizeCalendarEvent(feteCopy, { fetes: true }), {
+    type: 'copy',
+    visit_id: VISIT,
+    temps_fort: 'christmas_gift_voucher',
+    theme: 'fetes',
+    format: 'html',
+    utm_source: null,
+    utm_medium: null,
+    utm_campaign: null,
+    page: FETES_PAGE,
+  });
+  assert.equal(sanitizeCalendarEvent({ type: 'page_view', visit_id: VISIT, page: FETES_PAGE }, { fetes: true })?.page, FETES_PAGE);
+  // Codes et thème des fêtes réservés à la page des fêtes ; page inconnue toujours écartée.
+  assert.equal(sanitizeCalendarEvent({ ...feteCopy, page: undefined }, { fetes: true }), null);
+  assert.equal(sanitizeCalendarEvent({ ...feteCopy, page: 'ailleurs' }, { fetes: true }), null);
+  assert.equal(sanitizeCalendarEvent({ ...feteCopy, temps_fort: 'inconnu' }, { fetes: true }), null);
+  // Le calendrier marketing ne change pas : pas de champ page.
+  assert.equal('page' in (sanitizeCalendarEvent(copy, { fetes: true }) ?? {}), false);
 });

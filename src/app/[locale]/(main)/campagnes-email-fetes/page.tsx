@@ -6,6 +6,7 @@ import { CampagnesSteps, type EtapeCampagne, type EtapesLabels } from '@/compone
 import { FetesHero } from '@/components/campagnes-fetes/FetesHero';
 import { PageMotion } from '@/components/campagnes-fetes/PageMotion';
 import '@/components/campagnes-fetes/campagnes-fetes.css';
+import { CalendarStatsTracker } from '@/components/calendrier/CalendarStatsTracker';
 import { brand } from '@/data/brand';
 import { CAMPAGNES_FETES, feteActivateUrl, feteDemoUrl, feteFileUrl, fetePreviewUrl } from '@/data/campagnes-fetes';
 import { hasFeteTemplate } from '@/lib/campagnes-fetes';
@@ -142,6 +143,7 @@ export default async function CampagnesEmailFetesPage({ params }: PageProps) {
         ]}
       />
       <PageMotion />
+      <CalendarStatsTracker />
 
       <FetesHero
         campagnes={CAMPAGNES_FETES.map((c, i) => ({ ...c, previewUrl: etapes[i].previewUrl }))}

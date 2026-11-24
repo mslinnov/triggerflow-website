@@ -7,7 +7,7 @@
  * Rien ici ne doit casser la page ni un bouton : tout échec est avalé.
  */
 import { getAttribution } from './attribution';
-import { utmValue } from './calendrier-evenements';
+import { FETES_PAGE, utmValue } from './calendrier-evenements';
 
 export interface CalendarEvents {
   calendar_copy: { temps_fort: string; format: 'text' | 'mjml' | 'html'; theme?: string };
@@ -71,6 +71,28 @@ export function calendarStatForClick(
   if (link.href.includes('lemcal.com')) return { type: 'demo_click', temps_fort };
   if (link.dataset.calendarStat === 'client_click') return { type: 'client_click', temps_fort };
   return null;
+}
+
+/**
+ * Champ `page` des statistiques : la landing des fêtes, reconnue à son adresse (toutes
+ * langues) ; null ailleurs. Écarté côté serveur tant que FETES_EVENTS_ENABLED est coupé.
+ */
+export function calendarPageFor(pathname: string): typeof FETES_PAGE | null {
+  return pathname.split('/').includes(FETES_PAGE) ? FETES_PAGE : null;
+}
+
+const FETES_GA_EVENTS: Record<string, string> = { see_all: 'fetes_see_all', card: 'fetes_card_click' };
+
+/**
+ * Clic de la landing des fêtes compté dans GA4 seulement (l'app n'a pas ces types) :
+ * lien marqué `data-fetes-event` (« Voir les 7 », cartes du haut), temps fort facultatif.
+ */
+export function fetesGaEventForClick(link: {
+  dataset: { fetesEvent?: string; tempsFort?: string };
+}): { name: string; params: { temps_fort?: string } } | null {
+  const name = link.dataset.fetesEvent ? FETES_GA_EVENTS[link.dataset.fetesEvent] : undefined;
+  if (!name) return null;
+  return { name, params: link.dataset.tempsFort ? { temps_fort: link.dataset.tempsFort } : {} };
 }
 
 /** UUID v4, y compris hors contexte sécurisé (crypto.randomUUID absent). */
@@ -199,6 +221,7 @@ export function recordCalendarStat(stat: CalendarStat): void {
       temps_fort: stat.temps_fort ?? null,
       theme: stat.theme ?? null,
       format: stat.format ?? null,
+      ...(calendarPageFor(window.location.pathname) ? { page: FETES_PAGE } : {}),
       occurred_at: new Date().toISOString(),
     });
   } catch {

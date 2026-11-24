@@ -26,7 +26,8 @@ import {
   type MjmlTheme,
   type TempsFortCode,
 } from '@/data/calendrier-marketing';
-import { FETES_CODES, FETES_STYLE } from '@/data/campagnes-fetes';
+import { FETES_CODES, FETES_STYLE, isFeteCode } from '@/data/campagnes-fetes';
+import { FETES_LOGOS, feteLogoDataUri } from '@/data/fetes-logos';
 
 export const MJML_DIR = path.join(process.cwd(), 'src', 'data', 'calendrier-mjml');
 
@@ -188,12 +189,24 @@ function insertBeforeLast(source: string, closing: string, insert: string): stri
   return index === -1 ? source + insert : source.slice(0, index) + insert + source.slice(index);
 }
 
-/** Aperçu d'un modèle, calculé une fois par thème et code (voir templateCache). La signature y figure. */
+/** Zone « Votre logo » des modèles des fêtes (image hébergée par l'app). */
+const FETE_LOGO_SRC = /src="https:\/\/api\.trigger-flow\.com\/images\/email-library\/temps-forts\/fetes-logo-[a-z]+\.png"/g;
+
+/**
+ * Aperçu d'un modèle, calculé une fois par thème et code (voir templateCache). La signature y figure.
+ * Modèles des fêtes : l'aperçu montre un hôtel fictif (logo et nom, src/data/fetes-logos.ts) ; le
+ * fichier copié ou téléchargé (signTemplate seul) garde « Votre logo » et `{{facility_name}}`.
+ */
 export function previewFor(template: MjmlTemplate, variables: Record<string, string>): string {
   const key = `${template.theme}|${template.code}`;
   const cached = cacheEnabled() ? previewCache.get(key) : undefined;
   if (cached !== undefined) return cached;
-  const html = toPreviewHtml(signTemplate(template).html, variables);
+  const signed = signTemplate(template).html;
+  // « fetes » est hors des thèmes du calendrier : la route le passe tel quel pour les codes des fêtes.
+  const logo = (template.theme as string) === FETES_STYLE && isFeteCode(template.code) ? FETES_LOGOS[template.code] : null;
+  const html = logo
+    ? toPreviewHtml(signed.replace(FETE_LOGO_SRC, `src="${feteLogoDataUri(logo)}"`), { ...variables, facility_name: logo.nom })
+    : toPreviewHtml(signed, variables);
   if (cacheEnabled()) previewCache.set(key, html);
   return html;
 }
