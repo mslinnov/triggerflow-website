@@ -28,6 +28,8 @@ import {
   toPreviewHtml,
 } from './calendrier-mjml';
 import { emailToPlainText } from './calendrier';
+import { FETES_CODES } from '../data/campagnes-fetes';
+import { FETES_LOGOS } from '../data/fetes-logos';
 
 const FIXTURES = path.join(MJML_DIR, '__fixtures__');
 const VALID = path.join(FIXTURES, 'valide');
@@ -210,4 +212,23 @@ test('« Télécharger » : le fichier de « Copier » (signé, UTM), en pièce 
     }
   }
   assert.equal(count, 120);
+});
+
+test('fêtes : l’aperçu montre le logo et le nom d’un hôtel fictif, le fichier copié garde « Votre logo »', async () => {
+  for (const code of FETES_CODES) {
+    const logo = FETES_LOGOS[code];
+    const preview = await (await fetchTemplateFile(`/api/calendrier/modele/${code}/apercu?theme=fetes`)).text();
+    assert.match(preview, /src="data:image\/svg\+xml;charset=utf-8,/, code);
+    assert.doesNotMatch(preview, /fetes-logo-/, code);
+    assert.ok(preview.includes(`alt="${logo.nom}"`), code);
+    for (const format of ['html', 'mjml'] as const) {
+      const file = await (await fetchTemplateFile(`/api/calendrier/modele/${code}/${format}?theme=fetes`)).text();
+      assert.match(file, /fetes-logo-(ardoise|prune)\.png/, `${code} ${format}`);
+      assert.doesNotMatch(file, /data:image\/svg/, `${code} ${format}`);
+    }
+  }
+  assert.equal(new Set(FETES_CODES.map((code) => FETES_LOGOS[code].nom)).size, FETES_CODES.length);
+  // Le calendrier marketing garde son aperçu (même route, autre thème).
+  const calendrier = await (await fetchTemplateFile('/api/calendrier/modele/new_year_eve/apercu?theme=moderne')).text();
+  assert.doesNotMatch(calendrier, /data:image\/svg/);
 });

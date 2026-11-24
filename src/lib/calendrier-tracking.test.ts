@@ -1,6 +1,15 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { calendarStatFor, calendarStatForClick, createStatsQueue, loadOrCreateVisit, trackCalendarEvent, uuidV4 } from './calendrier-tracking';
+import {
+  calendarPageFor,
+  calendarStatFor,
+  calendarStatForClick,
+  createStatsQueue,
+  fetesClickFor,
+  loadOrCreateVisit,
+  trackCalendarEvent,
+  uuidV4,
+} from './calendrier-tracking';
 
 test('suivi du calendrier : un événement GA4 par action, paramètres absents retirés, rien sans consentement', () => {
   const calls: unknown[][] = [];
@@ -148,4 +157,24 @@ test('file : lots de 20 au plus, envoi différé ; sortie de page par sendBeacon
     for (let i = 0; i < 25; i++) d.queue.push({ type: 'copy' });
     d.queue.flush();
   });
+});
+
+test('landing des fêtes : champ page tiré de l’adresse (FR et EN), absent ailleurs', () => {
+  assert.equal(calendarPageFor('/fr/campagnes-email-fetes'), 'campagnes-email-fetes');
+  assert.equal(calendarPageFor('/en/campagnes-email-fetes/'), 'campagnes-email-fetes');
+  assert.equal(calendarPageFor('/fr/calendrier-marketing'), null);
+  assert.equal(calendarPageFor('/fr/calendrier-marketing/new_year_eve'), null);
+});
+
+test('landing des fêtes : clics « Voir les 7 » et carte du haut traduits pour GA4 et l’app, autres liens ignorés', () => {
+  assert.deepEqual(fetesClickFor({ dataset: { fetesEvent: 'see_all' } }), {
+    ga: { name: 'fetes_see_all', params: {} },
+    stat: { type: 'see_all', temps_fort: null },
+  });
+  assert.deepEqual(fetesClickFor({ dataset: { fetesEvent: 'card_click', tempsFort: 'new_year_eve' } }), {
+    ga: { name: 'fetes_card_click', params: { temps_fort: 'new_year_eve' } },
+    stat: { type: 'card_click', temps_fort: 'new_year_eve' },
+  });
+  assert.equal(fetesClickFor({ dataset: { fetesEvent: 'autre' } }), null);
+  assert.equal(fetesClickFor({ dataset: {} }), null);
 });

@@ -7,7 +7,7 @@
  * Rien ici ne doit casser la page ni un bouton : tout échec est avalé.
  */
 import { getAttribution } from './attribution';
-import { utmValue } from './calendrier-evenements';
+import { FETES_PAGE, utmValue } from './calendrier-evenements';
 
 export interface CalendarEvents {
   calendar_copy: { temps_fort: string; format: 'text' | 'mjml' | 'html'; theme?: string };
@@ -15,7 +15,16 @@ export interface CalendarEvents {
   calendar_activate: { temps_fort: string; destination: 'page' | 'app'; theme?: string };
 }
 
-export type CalendarStatType = 'page_view' | 'copy' | 'download' | 'activate_click' | 'client_click' | 'demo_click' | 'theme_change';
+export type CalendarStatType =
+  | 'page_view'
+  | 'copy'
+  | 'download'
+  | 'activate_click'
+  | 'client_click'
+  | 'demo_click'
+  | 'theme_change'
+  | 'see_all'
+  | 'card_click';
 
 /** Une action, sans le contexte de la visite. `page_view` avec temps fort = ouverture d'un temps fort. */
 export interface CalendarStat {
@@ -71,6 +80,30 @@ export function calendarStatForClick(
   if (link.href.includes('lemcal.com')) return { type: 'demo_click', temps_fort };
   if (link.dataset.calendarStat === 'client_click') return { type: 'client_click', temps_fort };
   return null;
+}
+
+/**
+ * Champ `page` des statistiques : la landing des fêtes, reconnue à son adresse (toutes
+ * langues) ; null ailleurs. Filtré côté serveur par FETES_EVENTS_ENABLED.
+ */
+export function calendarPageFor(pathname: string): typeof FETES_PAGE | null {
+  return pathname.split('/').includes(FETES_PAGE) ? FETES_PAGE : null;
+}
+
+const FETES_CLICKS: Record<string, 'see_all' | 'card_click'> = { see_all: 'see_all', card_click: 'card_click' };
+
+/**
+ * Clic de la landing des fêtes : lien marqué `data-fetes-event` (« Voir les 7 » = `see_all`,
+ * carte du haut = `card_click`), temps fort facultatif. Compté dans GA4 (`fetes_<type>`) et
+ * dans les statistiques de l'app (filtré côté serveur par FETES_EVENTS_ENABLED).
+ */
+export function fetesClickFor(link: {
+  dataset: { fetesEvent?: string; tempsFort?: string };
+}): { ga: { name: string; params: { temps_fort?: string } }; stat: CalendarStat } | null {
+  const type = link.dataset.fetesEvent ? FETES_CLICKS[link.dataset.fetesEvent] : undefined;
+  if (!type) return null;
+  const temps_fort = link.dataset.tempsFort ?? null;
+  return { ga: { name: `fetes_${type}`, params: temps_fort ? { temps_fort } : {} }, stat: { type, temps_fort } };
 }
 
 /** UUID v4, y compris hors contexte sécurisé (crypto.randomUUID absent). */
@@ -199,6 +232,7 @@ export function recordCalendarStat(stat: CalendarStat): void {
       temps_fort: stat.temps_fort ?? null,
       theme: stat.theme ?? null,
       format: stat.format ?? null,
+      ...(calendarPageFor(window.location.pathname) ? { page: FETES_PAGE } : {}),
       occurred_at: new Date().toISOString(),
     });
   } catch {

@@ -5,6 +5,8 @@ import { MJML_THEMES } from '../data/calendrier-marketing';
 import { POST } from '../app/api/calendrier/evenements/route';
 import {
   calendarEventsUrl,
+  FETES_EVENTS_ENABLED,
+  FETES_PAGE,
   EVENTS_LIMIT,
   isBotUserAgent,
   MAX_BODY_BYTES,
@@ -231,4 +233,43 @@ test('route : limite par IP visiteur, les autres visiteurs passent', async () =>
   assert.equal(relayed.length, EVENTS_LIMIT.limit);
   await POST(request({ events: [copy] }, { ip: '198.51.100.8' }));
   assert.equal(relayed.length, EVENTS_LIMIT.limit + 1);
+});
+
+// Landing des fêtes : contrat de l'app (theme « fetes », codes des fêtes, page), filtré par FETES_EVENTS_ENABLED.
+const feteCopy = { type: 'copy', visit_id: VISIT, temps_fort: 'christmas_gift_voucher', theme: 'fetes', format: 'html', page: FETES_PAGE };
+
+test('fêtes : interrupteur ouvert par défaut (app livrée), écartées s’il est recoupé', () => {
+  assert.equal(FETES_EVENTS_ENABLED, true);
+  assert.deepEqual(parseCalendarEventsBody({ events: [feteCopy, copy] }).map((e) => e.temps_fort), ['christmas_gift_voucher', 'valentines_day']);
+  assert.equal(sanitizeCalendarEvent(feteCopy, { fetes: false }), null);
+  assert.equal(sanitizeCalendarEvent({ type: 'see_all', visit_id: VISIT, page: FETES_PAGE }, { fetes: false }), null);
+  assert.equal(sanitizeCalendarEvent({ type: 'page_view', visit_id: VISIT, page: FETES_PAGE }, { fetes: false }), null);
+});
+
+test('fêtes : interrupteur ouvert, payload du contrat (theme fetes, code de fête, page)', () => {
+  assert.deepEqual(sanitizeCalendarEvent(feteCopy, { fetes: true }), {
+    type: 'copy',
+    visit_id: VISIT,
+    temps_fort: 'christmas_gift_voucher',
+    theme: 'fetes',
+    format: 'html',
+    utm_source: null,
+    utm_medium: null,
+    utm_campaign: null,
+    page: FETES_PAGE,
+  });
+  assert.equal(sanitizeCalendarEvent({ type: 'page_view', visit_id: VISIT, page: FETES_PAGE }, { fetes: true })?.page, FETES_PAGE);
+  // Codes et thème des fêtes réservés à la page des fêtes ; page inconnue toujours écartée.
+  assert.equal(sanitizeCalendarEvent({ ...feteCopy, page: undefined }, { fetes: true }), null);
+  assert.equal(sanitizeCalendarEvent({ ...feteCopy, page: 'ailleurs' }, { fetes: true }), null);
+  assert.equal(sanitizeCalendarEvent({ ...feteCopy, temps_fort: 'inconnu' }, { fetes: true }), null);
+  // see_all et card_click (contrat de l'app) : seulement sur la page des fêtes.
+  const seeAll = { type: 'see_all', visit_id: VISIT, page: FETES_PAGE };
+  assert.equal(sanitizeCalendarEvent(seeAll, { fetes: false }), null);
+  assert.equal(sanitizeCalendarEvent(seeAll, { fetes: true })?.type, 'see_all');
+  assert.equal(sanitizeCalendarEvent({ ...seeAll, type: 'card_click', temps_fort: 'new_year_wishes_offer' }, { fetes: true })?.temps_fort, 'new_year_wishes_offer');
+  assert.equal(sanitizeCalendarEvent({ ...seeAll, page: undefined }, { fetes: true }), null);
+  assert.equal(sanitizeCalendarEvent({ ...seeAll, type: 'card_click', page: undefined }, { fetes: true }), null);
+  // Le calendrier marketing ne change pas : pas de champ page.
+  assert.equal('page' in (sanitizeCalendarEvent(copy, { fetes: true }) ?? {}), false);
 });

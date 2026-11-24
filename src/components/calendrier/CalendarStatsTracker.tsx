@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { calendarStatForClick, recordCalendarStat } from '@/lib/calendrier-tracking';
+import { calendarStatForClick, fetesClickFor, recordCalendarStat } from '@/lib/calendrier-tracking';
 
 interface CalendarStatsTrackerProps {
   /** Page « Activer » : son temps fort, porté par la vue de page et les clics. */
@@ -13,7 +13,7 @@ interface CalendarStatsTrackerProps {
  * page « Activer »), puis, par un seul écouteur délégué, les clics vers la démo
  * (liens lemcal) et les liens « Déjà client » marqués `data-calendar-stat="client_click"`
  * (voir calendarStatForClick). Copier, télécharger, activer et thèmes sont comptés par
- * leurs boutons.
+ * leurs boutons. Sur la landing des fêtes, les liens `data-fetes-event` (see_all, card_click) partent aussi à GA4 et à l’app.
  */
 export function CalendarStatsTracker({ tempsFort }: CalendarStatsTrackerProps) {
   useEffect(() => {
@@ -23,6 +23,11 @@ export function CalendarStatsTracker({ tempsFort }: CalendarStatsTrackerProps) {
       const link = event.target instanceof Element ? event.target.closest('a') : null;
       const stat = link?.href ? calendarStatForClick(link, tempsFort ?? null) : null;
       if (stat) recordCalendarStat(stat);
+      const fetes = link ? fetesClickFor(link) : null;
+      if (fetes) {
+        window.gtag?.('event', fetes.ga.name, fetes.ga.params);
+        recordCalendarStat(fetes.stat);
+      }
     };
     document.addEventListener('click', handleClick, { capture: true });
     return () => document.removeEventListener('click', handleClick, { capture: true });
