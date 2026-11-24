@@ -1105,7 +1105,9 @@
         "dedicatedDomain": "Domaine dédié"
       },
       "example": "Exemple :",
-      "moreInfo": "En savoir plus : {feature}"
+      "moreInfo": "En savoir plus : {feature}",
+      "included": "Compris",
+      "notIncluded": "Non compris"
     },
     "faq": {
       "title": "Questions fréquentes sur nos tarifs",

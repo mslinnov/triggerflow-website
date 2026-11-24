@@ -1097,7 +1097,9 @@
         "dedicatedDomain": "Dedicated domain"
       },
       "example": "Example:",
-      "moreInfo": "Learn more: {feature}"
+      "moreInfo": "Learn more: {feature}",
+      "included": "Included",
+      "notIncluded": "Not included"
     },
     "faq": {
       "title": "Frequently asked questions about pricing",

@@ -45,9 +45,9 @@ export function FeatureTooltip({ label, what, example, exampleLabel }: FeatureTo
     );
   }, []);
 
+  // Placée avant l'affichage : une position restée d'une ouverture précédente n'est jamais peinte.
   useLayoutEffect(() => {
     if (open) place();
-    else setPlacement(null);
   }, [open, place]);
 
   useEffect(() => {
