@@ -14,6 +14,8 @@ export interface Plan {
   /** Prix au 1er janvier 2027. */
   nextPrice: string;
   popular: boolean;
+  /** E-mails compris par mois : cartes et première ligne du tableau (quota `email_quantity` de l'app). */
+  emailsPerMonth: number;
   /** Repris dans le JSON-LD, où les traductions next-intl ne sont pas disponibles. */
   name: { fr: string; en: string };
   description: { fr: string; en: string };
@@ -25,10 +27,11 @@ export const PLANS: Plan[] = [
     price: '0',
     nextPrice: '0',
     popular: false,
+    emailsPerMonth: 1000,
     name: { fr: 'Découverte', en: 'Discovery' },
     description: {
-      fr: 'Gratuit, sans carte bancaire : testez vos premiers scénarios clients.',
-      en: 'Free, no credit card: try your first guest scenarios.',
+      fr: 'Gratuit, sans carte bancaire : lancez votre premier scénario automatique et voyez vos clients réagir.',
+      en: 'Free, no credit card: launch your first automated scenario and watch your guests respond.',
     },
   },
   {
@@ -36,10 +39,11 @@ export const PLANS: Plan[] = [
     price: '69',
     nextPrice: '99',
     popular: false,
+    emailsPerMonth: 5000,
     name: { fr: 'Communication', en: 'Communication' },
     description: {
-      fr: 'Segments et messages automatisés avant, pendant et après le séjour.',
-      en: 'Segments and automated messages before, during and after the stay.',
+      fr: 'Parlez à chaque client au bon moment : avant l’arrivée, pendant le séjour et après le départ, sans y penser.',
+      en: 'Talk to every guest at the right moment: before arrival, during the stay and after check-out, without lifting a finger.',
     },
   },
   {
@@ -47,10 +51,11 @@ export const PLANS: Plan[] = [
     price: '149',
     nextPrice: '179',
     popular: true,
+    emailsPerMonth: 15000,
     name: { fr: 'Conversion', en: 'Conversion' },
     description: {
-      fr: 'Ventes additionnelles, enquêtes de satisfaction et collecte d’avis.',
-      en: 'Upselling, satisfaction surveys and review collection.',
+      fr: 'Faites réagir vos clients et vendez plus : offres avant l’arrivée, enquêtes, avis, et un message suivant adapté à leur réaction.',
+      en: 'Get guests to respond and sell more: pre-arrival offers, surveys, reviews, and a next message that fits how they reacted.',
     },
   },
   {
@@ -58,10 +63,11 @@ export const PLANS: Plan[] = [
     price: '249',
     nextPrice: '299',
     popular: false,
-    name: { fr: 'All Inclusive', en: 'All Inclusive' },
+    emailsPerMonth: 50000,
+    name: { fr: 'Illimités', en: 'Unlimited' },
     description: {
-      fr: 'Tous les modules inclus, sans limites, avec account manager dédié.',
-      en: 'Every module included, no limits, with a dedicated account manager.',
+      fr: 'Tout TriggerFlow, sans plafond : tous les modules inclus et un account manager dédié à vos établissements.',
+      en: 'All of TriggerFlow, no caps: every module included and a dedicated account manager for your properties.',
     },
   },
 ];
@@ -140,4 +146,28 @@ export function getEntryPrice(phase: PricingPhase): string {
     .map((plan) => Number(plan.price))
     .filter((price) => price > 0);
   return String(Math.min(...paid));
+}
+
+/**
+ * Cas client anonyme du bloc « Ce que ça rapporte » (chiffres donnés par Mounir le 24/11) :
+ * une campagne, 7 à 9 réservations, environ 1 700 € de chiffre d'affaires au total.
+ */
+export const ROI_CASE = { rooms: 33, bookingsMin: 7, bookingsMax: 9, revenue: 1700 } as const;
+
+/** Panier moyen du cas : chiffre d'affaires de la campagne divisé par le milieu de la fourchette. */
+export function getRoiAverageBasket(): number {
+  return ROI_CASE.revenue / ((ROI_CASE.bookingsMin + ROI_CASE.bookingsMax) / 2);
+}
+
+/** Réservations au panier moyen du cas qui remboursent un mois d'abonnement. */
+export function getPaybackBookings(price: string): number {
+  return Math.max(1, Math.ceil(Number(price) / getRoiAverageBasket()));
+}
+
+/**
+ * Bloc « Ce que ça rapporte » : masqué tant que Mounir ne l'a pas validé.
+ * `PRICING_ROI_PREVIEW=1 npm run dev` pour le voir ; jamais posée en production (absente de deploy.yml).
+ */
+export function isRoiPreviewEnabled(env: Record<string, string | undefined> = process.env): boolean {
+  return env.PRICING_ROI_PREVIEW === '1';
 }
