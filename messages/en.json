@@ -630,7 +630,7 @@
         "features": "10 flows, 15000 emails, Forms, Sales"
       },
       "allInclusive": {
-        "name": "All Inclusive",
+        "name": "Unlimited",
         "description": "All modules included, no limits",
         "features": "Unlimited, All modules included"
       }
@@ -910,23 +910,23 @@
       "discovery": {
         "name": "Discovery",
         "trial": "No credit card required",
-        "description": "Discover TriggerFlow for free and test your first guest scenarios."
+        "description": "Free, no credit card: launch your first automated scenario and watch your guests respond."
       },
       "communication": {
         "name": "Communication",
         "trial": "14-day free trial",
-        "description": "Create your segments and automate your messages before, during and after stay."
+        "description": "Talk to every guest at the right moment: before arrival, during the stay and after check-out, without lifting a finger."
       },
       "conversion": {
         "name": "Conversion",
         "badge": "Most popular",
         "trial": "14-day free trial",
-        "description": "With more interaction, boost your ancillary sales and collect guest feedback."
+        "description": "Get guests to respond and sell more: pre-arrival offers, surveys, reviews, and a next message that fits how they reacted."
       },
       "allInclusive": {
-        "name": "All Inclusive",
+        "name": "Unlimited",
         "trial": "14-day free trial",
-        "description": "All add-on modules included, no limits"
+        "description": "All of TriggerFlow, no caps: every module included and a dedicated account manager for your properties."
       }
     },
     "cta": {
@@ -1010,7 +1010,7 @@
       "features": {
         "segments": "Client segments",
         "flows": "Flows (automations)",
-        "emails": "Emails/month",
+        "emails": "Emails included per month",
         "sms": "SMS (From €0.06/sms)",
         "stats": "Statistics and analytics",
         "hub": "Message hub",
@@ -1020,23 +1020,80 @@
         "salesCatalog": "Sales and catalog module",
         "groupPortal": "Hotel group portal",
         "conditions": "Conditions on client interactions",
-        "addonsIncluded": "Add-on modules included"
+        "addonsIncluded": "Add-on modules included",
+        "sendingDomain": "Dedicated sending domain",
+        "abTests": "Newsletter A/B tests",
+        "templateLibrary": "Ready-to-use template library"
       },
       "tooltips": {
-        "emails": "Number of emails included per month in your plan. Beyond that, additional email packs are available.",
-        "sms": "Send automatic or manual SMS to your guests. Usage-based billing from €0.06/SMS.",
-        "whatsapp": "Communicate with your guests via WhatsApp Business for a higher read rate.",
-        "hub": "Centralize all your communication channels (email, SMS, WhatsApp) in a single interface.",
-        "segments": "Create guest groups based on their characteristics and behaviors for targeted actions.",
-        "flows": "Automate message sequences triggered by events (arrival, departure, birthday...).",
-        "conditions": "Add advanced conditions in your flows based on guest interactions (opens, clicks, replies...).",
-        "marketing": "Create and send targeted newsletters and marketing campaigns to your guest segments.",
-        "forms": "Create custom forms: pre-checkin, satisfaction surveys, stay preferences and more.",
-        "salesCatalog": "Offer additional services and products to your guests (spa, restaurant, upgrades...).",
-        "stats": "Hotel BI dashboards: occupancy rates, RevPAR, ADR, open rates, conversions and generated revenue.",
-        "groupPortal": "Dedicated interface to manage multiple properties from a single account with consolidated view.",
-        "addonsIncluded": "The All Inclusive plan includes all add-on modules (Reviews, AI Agent, Payments, Loyalty, Guest App) at no extra cost."
-      }
+        "emails": {
+          "what": "Emails sent each month, automated scenarios and newsletters included. Extra packs are available beyond that.",
+          "example": "3 emails per stay (confirmation, day before arrival, day after check-out) for 300 stays a month makes 900 emails: the Discovery plan is enough."
+        },
+        "sms": {
+          "what": "Automated or manual text messages, paid per send, from €0.06 per SMS.",
+          "example": "The day before arrival, a text reminds the guest of check-in time and the car park code."
+        },
+        "whatsapp": {
+          "what": "Your automated messages and your replies also go through WhatsApp.",
+          "example": "An international guest gets the confirmation on WhatsApp and replies in the same thread to ask for a cot."
+        },
+        "hub": {
+          "what": "Guest replies (email, SMS, WhatsApp) land in one inbox shared by the whole team.",
+          "example": "The front desk sees the parking question and the answer a colleague sent yesterday in the same thread."
+        },
+        "segments": {
+          "what": "Guest groups built from your PMS data, kept up to date automatically.",
+          "example": "“Guests who stayed twice or more”, “Families with children”, “Direct bookings this month”."
+        },
+        "flows": {
+          "what": "A scenario that sends the right message at the right time, triggered by the stay. The number counts scenarios running at the same time.",
+          "example": "3 days before arrival, a welcome email with the breakfast offer."
+        },
+        "conditions": {
+          "what": "The next message depends on what the guest did with the previous one.",
+          "example": "They did not open the pre-arrival email: they get a WhatsApp. They clicked the spa offer: they get the treatment booking."
+        },
+        "marketing": {
+          "what": "Newsletters and campaigns sent to your segments, on top of automated messages.",
+          "example": "In January, a “Valentine’s weekend” campaign sent to couples who stayed before."
+        },
+        "sendingDomain": {
+          "what": "The address your newsletters and campaigns come from. A dedicated subdomain in your name lands better in the inbox and protects your main address.",
+          "example": "Your campaigns go out from news.your-hotel.com, set up and warmed up gradually by TriggerFlow; contact@your-hotel.com stays safe."
+        },
+        "abTests": {
+          "what": "Two versions of the same email, each sent to part of your guests: you see which one gets more clicks and keep the best.",
+          "example": "Subject line “Your room is waiting” versus “Breakfast on us for your return”."
+        },
+        "templateLibrary": {
+          "what": "Ready-to-send email templates, switched on in one click, with your logo and colours, editable with AI.",
+          "example": "For the festive season, 7 classic templates and 3 exclusive ones (spare room for the neighbourhood, letter to Santa, same dates next year)."
+        },
+        "forms": {
+          "what": "Forms sent to your guests; the number counts those active at the same time.",
+          "example": "Online pre-check-in before arrival (time, cot, number plate) and a satisfaction survey at check-out."
+        },
+        "salesCatalog": {
+          "what": "Your services for sale inside your messages: the guest picks and books before arriving.",
+          "example": "The pre-arrival email offers breakfast, an upgrade or a late check-out."
+        },
+        "stats": {
+          "what": "Results of your sends and your activity in dashboards: occupancy, RevPAR, ADR, opens, sales.",
+          "example": "The open rate of the welcome email, or revenue from the breakfast offer."
+        },
+        "groupPortal": {
+          "what": "One account to run several properties, with a consolidated view.",
+          "example": "The head of a 5-hotel group compares reviews and upsell revenue across properties."
+        },
+        "addonsIncluded": {
+          "what": "Optional modules (Reviews, AI Agent, Payments, Loyalty, Guest App) are all included at no extra cost.",
+          "example": "An Unlimited hotel turns on the AI Agent and loyalty without a new invoice."
+        }
+      },
+      "unlimited": "unlimited",
+      "example": "Example:",
+      "moreInfo": "Learn more: {feature}"
     },
     "faq": {
       "title": "Frequently asked questions about pricing",
@@ -1067,6 +1124,23 @@
       "title": "Managing multiple properties?",
       "description": "Benefit from preferential rates and dedicated support to deploy TriggerFlow at scale.",
       "cta": "Request a group quote"
+    },
+    "emailsPerMonth": "{count, number} emails per month",
+    "roi": {
+      "eyebrow": "What it brings in",
+      "title": "One campaign pays for the plan,",
+      "titleAccent": "several times over",
+      "caseLabel": "Customer case",
+      "caseBody": "A {rooms}-room hotel sends a campaign to its past guests.",
+      "bookings": "{min} to {max}",
+      "bookingsLabel": "bookings per campaign",
+      "revenue": "€{amount}",
+      "revenueLabel": "in revenue, on average",
+      "disclaimer": "Average result of one customer, not a promise: your figures depend on your hotel and your guests.",
+      "paybackTitle": "How many bookings pay for the month?",
+      "paybackIntro": "At this case’s average basket, about €{basket} per booking:",
+      "planPrice": "€{price} per month",
+      "bookingsUnit": "{count, plural, one {booking} other {bookings}}"
     }
   },
   "contact": {

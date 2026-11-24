@@ -1,6 +1,14 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync, readdirSync } from 'node:fs';
+import { join } from 'node:path';
+import fr from '../../messages/fr.json';
+import en from '../../messages/en.json';
 import {
+  PLANS,
+  getRoiAverageBasket,
+  getPaybackBookings,
+  isRoiPreviewEnabled,
   getPricingPhase,
   getDisplayPlans,
   getDisplayAddons,
@@ -63,4 +71,59 @@ test('PRICING_NOW permet de simuler une date', () => {
   } finally {
     delete process.env.PRICING_NOW;
   }
+});
+
+test('volume d’e-mails compris par offre : 1 000, 5 000, 15 000, 50 000', () => {
+  assert.deepEqual(
+    PLANS.map((p) => [p.key, p.emailsPerMonth]),
+    [['discovery', 1000], ['communication', 5000], ['conversion', 15000], ['allInclusive', 50000]],
+  );
+});
+
+test('l’offre à 249 € s’appelle Illimités (Unlimited en anglais)', () => {
+  const top = PLANS.find((p) => p.key === 'allInclusive');
+  assert.deepEqual(top?.name, { fr: 'Illimités', en: 'Unlimited' });
+  assert.equal(fr.pricing.plans.allInclusive.name, 'Illimités');
+  assert.equal(en.pricing.plans.allInclusive.name, 'Unlimited');
+});
+
+test('plus aucun « All Inclusive » lu par le public (messages, prix, blog, LP)', () => {
+  const files = [
+    'messages/fr.json',
+    'messages/en.json',
+    'src/data/pricing.ts',
+    'src/components/landing/thais/ThaisFAQ.tsx',
+    ...readdirSync('content/blog', { recursive: true })
+      .map(String)
+      .filter((f) => f.endsWith('.mdx'))
+      .map((f) => join('content/blog', f)),
+  ];
+  const left = files.filter((f) => readFileSync(f, 'utf8').includes('All Inclusive'));
+  assert.deepEqual(left, []);
+});
+
+test('accroches des cartes = descriptions du JSON-LD, sans tiret cadratin', () => {
+  for (const plan of PLANS) {
+    assert.equal(fr.pricing.plans[plan.key].description, plan.description.fr, `${plan.key} fr`);
+    assert.equal(en.pricing.plans[plan.key].description, plan.description.en, `${plan.key} en`);
+    assert.ok(!plan.description.fr.includes('—') && !plan.description.en.includes('—'));
+  }
+});
+
+test('ce que ça rapporte : réservations qui remboursent le mois, dans les deux phases', () => {
+  assert.equal(getRoiAverageBasket(), 212.5);
+  const payback = (phase: 'announce' | 'new') =>
+    getDisplayPlans(phase)
+      .filter((p) => Number(p.price) > 0)
+      .map((p) => [p.key, getPaybackBookings(p.price)]);
+  const expected = [['communication', 1], ['conversion', 1], ['allInclusive', 2]];
+  assert.deepEqual(payback('announce'), expected);
+  assert.deepEqual(payback('new'), expected);
+  assert.equal(getPaybackBookings('213'), 2);
+});
+
+test('bloc rentabilité : masqué sauf PRICING_ROI_PREVIEW=1', () => {
+  assert.equal(isRoiPreviewEnabled({}), false);
+  assert.equal(isRoiPreviewEnabled({ PRICING_ROI_PREVIEW: 'true' }), false);
+  assert.equal(isRoiPreviewEnabled({ PRICING_ROI_PREVIEW: '1' }), true);
 });
