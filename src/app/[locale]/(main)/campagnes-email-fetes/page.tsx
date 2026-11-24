@@ -8,7 +8,7 @@ import { PageMotion } from '@/components/campagnes-fetes/PageMotion';
 import '@/components/campagnes-fetes/campagnes-fetes.css';
 import { CalendarStatsTracker } from '@/components/calendrier/CalendarStatsTracker';
 import { brand } from '@/data/brand';
-import { CAMPAGNES_FETES, feteActivateUrl, feteDemoUrl, feteFileUrl, fetePreviewUrl } from '@/data/campagnes-fetes';
+import { CAMPAGNES_FETES, CAMPAGNES_FETES_EXCLUSIVES, type CampagneFete, feteActivateUrl, feteDemoUrl, feteFileUrl, fetePreviewUrl } from '@/data/campagnes-fetes';
 import { hasFeteTemplate } from '@/lib/campagnes-fetes';
 import { Link } from '@/i18n/navigation';
 import { pageAlternates } from '@/lib/seo';
@@ -60,7 +60,7 @@ export default async function CampagnesEmailFetesPage({ params }: PageProps) {
   const t = await getTranslations('campagnesFetes');
   const demoPage = feteDemoUrl('page');
 
-  const etapes: EtapeCampagne[] = CAMPAGNES_FETES.map((c) => ({
+  const versEtape = (c: CampagneFete): EtapeCampagne => ({
     code: c.code,
     nom: c.nom,
     periode: c.periode,
@@ -77,7 +77,9 @@ export default async function CampagnesEmailFetesPage({ params }: PageProps) {
       mjmlUrl: feteFileUrl(c, 'mjml'),
       mjmlDownloadUrl: feteFileUrl(c, 'mjml', true),
     },
-  }));
+  });
+  const etapes = CAMPAGNES_FETES.map(versEtape);
+  const exclusives = CAMPAGNES_FETES_EXCLUSIVES.map(versEtape);
 
   const labels: EtapesLabels = {
     subject: t('sept.subject'),
@@ -123,7 +125,7 @@ export default async function CampagnesEmailFetesPage({ params }: PageProps) {
     publisher: { '@type': 'Organization', name: brand.name, url: brand.url },
     mainEntity: {
       '@type': 'ItemList',
-      itemListElement: CAMPAGNES_FETES.map((c, i) => ({
+      itemListElement: [...CAMPAGNES_FETES, ...CAMPAGNES_FETES_EXCLUSIVES].map((c, i) => ({
         '@type': 'ListItem',
         position: i + 1,
         name: c.nom,
@@ -168,6 +170,18 @@ export default async function CampagnesEmailFetesPage({ params }: PageProps) {
             <p>{t('sept.intro')}</p>
           </div>
           <CampagnesSteps etapes={etapes} labels={labels} />
+        </div>
+      </section>
+
+      <section className="cf-sept cf-excl" id="exclusifs">
+        <div className="cf-wrap">
+          <div className="cf-sept-tete" data-rv>
+            <h2 className="cf-titre-s">
+              {t('exclusifs.title')} <em>{t('exclusifs.titleEm')}</em>
+            </h2>
+            <p>{t('exclusifs.intro')}</p>
+          </div>
+          <CampagnesSteps etapes={exclusives} labels={labels} badge={t('exclusifs.badge')} />
         </div>
       </section>
 

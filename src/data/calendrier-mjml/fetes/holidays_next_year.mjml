@@ -1,0 +1,115 @@
+<mjml><mj-head><!-- VISIBILITY_STYLES --><mj-style>
+      /* Desktop-first : les clients qui ne supportent pas @media
+         (Outlook Web, Nouveau Outlook) gardent le comportement desktop. */
+      .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+        display: block;
+        width: auto;
+        max-height: none;
+        overflow: visible;
+        line-height: inherit;
+      }
+      .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+        display: none;
+        width: 0;
+        max-height: 0;
+        overflow: hidden;
+        line-height: 0;
+      }
+      /* Mobile : afficher mobile-only, masquer desktop-only */
+      @media only screen and (max-width:599px) {
+        .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+        .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+          display: block !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+      }
+      /* Desktop explicit (pour spécificité) */
+      @media only screen and (min-width:600px) {
+        .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+          display: block !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+        .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+      }
+      /* Fallback : vrais appareils mobiles (Outlook mobile peut avoir un viewport &gt;600px) */
+      @media only screen and (max-device-width:599px) {
+        .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+          display: block !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+        .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+      }
+    </mj-style><!--[if mso | IE]>
+      <style type="text/css">
+        .desktop-only, .desktop-only-outlook, [class*="desktop-only"] {
+          display: block !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+        .mobile-only, .mobile-only-outlook, [class*="mobile-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+        table.desktop-only, table.desktop-only-outlook, table[class*="desktop-only"],
+        tr.desktop-only, tr.desktop-only-outlook, tr[class*="desktop-only"],
+        td.desktop-only, td.desktop-only-outlook, td[class*="desktop-only"] {
+          display: table !important;
+          width: auto !important;
+          max-height: none !important;
+          overflow: visible !important;
+          line-height: inherit !important;
+          mso-hide: none !important;
+        }
+        table.mobile-only, table.mobile-only-outlook, table[class*="mobile-only"],
+        tr.mobile-only, tr.mobile-only-outlook, tr[class*="mobile-only"],
+        td.mobile-only, td.mobile-only-outlook, td[class*="mobile-only"] {
+          display: none !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          overflow: hidden !important;
+          line-height: 0 !important;
+          mso-hide: all !important;
+        }
+      </style>
+    <![endif]--><mj-attributes><mj-all padding="0">
+            </mj-all></mj-attributes><mj-font name="DM Serif Display" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap"></mj-font><mj-style>@media only screen and (max-width:479px){.h1 div{font-size:38px!important;line-height:42px!important;}.ticket td{display:block!important;width:100%!important;text-align:left!important;}}</mj-style><mj-preview>Gardez dès aujourd'hui votre chambre des fêtes pour l'an prochain.</mj-preview></mj-head><mj-body background-color="#F5F3EF" width="600px"><mj-section padding="0"><mj-column><mj-image css-class="tf-logo" src="https://api.trigger-flow.com/images/email-library/temps-forts/fetes-logo-ardoise.png" alt="{{facility_name}}" align="left" width="150px" padding="30px 40px 26px 40px"></mj-image><mj-text font-family="Arial, Helvetica, sans-serif" font-size="13px" line-height="18px" letter-spacing="2px" font-weight="bold" color="#A65A32" padding="0 40px 0 40px"><div style="text-transform:uppercase;">Merci pour ces fêtes</div></mj-text><mj-text css-class="h1" font-family="'DM Serif Display', Georgia, serif" font-size="48px" line-height="52px" color="#1F3550" padding="12px 40px 0 40px"><div>Même chambre, mêmes dates, l'an prochain ?</div></mj-text><mj-text font-family="Georgia, 'Times New Roman', serif" font-size="19px" line-height="30px" color="#1E2633" padding="22px 40px 30px 40px"><p style="margin:0;">Vous avez passé les fêtes chez nous. Si l'envie vous prend de revenir, nous pouvons vous garder la même chambre, aux mêmes dates, dès maintenant.</p></mj-text><mj-image src="https://api.trigger-flow.com/images/email-library/temps-forts/winter-room-600.jpg" alt="Une chambre d'hiver, prête pour vos prochaines fêtes" padding="0"></mj-image></mj-column></mj-section><mj-section padding="0 40px 0 40px"><mj-column background-color="#FFFFFF" border="2px solid #A65A32" border-radius="8px" padding="22px 26px 18px 26px"><mj-text font-family="'DM Serif Display', Georgia, serif" font-size="24px" line-height="30px" color="#1F3550" padding="0 0 6px 0"><div>Réservation anticipée</div></mj-text><mj-table css-class="ticket" padding="0" cellpadding="0" cellspacing="0"><tr><td width="150" valign="top" style="border-bottom:1px dashed #A65A32;padding:12px 0;font-family:Arial, Helvetica, sans-serif;font-size:13px;line-height:22px;letter-spacing:1px;color:#5C6470;text-transform:uppercase;">Vos dates</td><td valign="top" align="right" style="border-bottom:1px dashed #A65A32;padding:12px 0;font-family:Georgia, 'Times New Roman', serif;font-size:18px;line-height:24px;color:#1F3550;">[[Vos dates de l'an prochain|du 23 au 27 décembre]]</td></tr><tr><td width="150" valign="top" style="border-bottom:1px dashed #A65A32;padding:12px 0;font-family:Arial, Helvetica, sans-serif;font-size:13px;line-height:22px;letter-spacing:1px;color:#5C6470;text-transform:uppercase;">Votre tarif</td><td valign="top" align="right" style="border-bottom:1px dashed #A65A32;padding:12px 0;font-family:Georgia, 'Times New Roman', serif;font-size:18px;line-height:24px;color:#1F3550;">[[Tarif garanti|celui de cette année]]</td></tr><tr><td width="150" valign="top" style="border-bottom:1px dashed #A65A32;padding:12px 0;font-family:Arial, Helvetica, sans-serif;font-size:13px;line-height:22px;letter-spacing:1px;color:#5C6470;text-transform:uppercase;">Acompte</td><td valign="top" align="right" style="border-bottom:1px dashed #A65A32;padding:12px 0;font-family:Georgia, 'Times New Roman', serif;font-size:18px;line-height:24px;color:#1F3550;">[[Montant de l'acompte|30 %]]</td></tr><tr><td width="150" valign="top" style="border-bottom:1px dashed #A65A32;padding:12px 0;font-family:Arial, Helvetica, sans-serif;font-size:13px;line-height:22px;letter-spacing:1px;color:#5C6470;text-transform:uppercase;">Annulation</td><td valign="top" align="right" style="border-bottom:1px dashed #A65A32;padding:12px 0;font-family:Georgia, 'Times New Roman', serif;font-size:18px;line-height:24px;color:#1F3550;">[[Conditions d'annulation|gratuite jusqu'au 1er novembre]]</td></tr></mj-table></mj-column></mj-section><mj-section padding="0"><mj-column><mj-text font-family="Georgia, 'Times New Roman', serif" font-size="17px" line-height="27px" color="#1E2633" padding="28px 40px 0 40px"><p style="margin:0;">Un acompte aujourd'hui, et la chambre est à vous. Les dates des fêtes partent vite : vous passez avant tout le monde.</p></mj-text><mj-button href="{{booking_page_url}}" align="left" background-color="#1F3550" color="#FFFFFF" border-radius="3px" font-family="Arial, Helvetica, sans-serif" font-size="16px" font-weight="bold" inner-padding="16px 34px" padding="26px 40px 0 40px">Garder ma chambre</mj-button><mj-text font-family="Arial, Helvetica, sans-serif" font-size="14px" line-height="22px" color="#5C6470" padding="18px 40px 0 40px"><p style="margin:0;">Offre valable jusqu'au [[Date limite de l'offre|15 janvier]].</p></mj-text></mj-column></mj-section><mj-section padding="0"><mj-column><mj-text align="left" font-family="Arial, Helvetica, sans-serif" font-size="12px" line-height="19px" color="#5C6470" padding="26px 36px 34px 36px"><p style="margin:0;">{{facility_name}}, {{facility_address}}, {{facility_zip_code}} {{facility_city}}<br/>Vous recevez ce message parce que vous avez déjà échangé avec nous. <a href="{{unsubscribe_link}}" style="color:#1F3550;text-decoration:underline;">Se désinscrire</a></p></mj-text></mj-column></mj-section></mj-body></mjml>

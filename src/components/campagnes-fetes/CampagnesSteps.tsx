@@ -33,13 +33,15 @@ export interface EtapesLabels {
 interface CampagnesStepsProps {
   etapes: EtapeCampagne[];
   labels: EtapesLabels;
+  /** Étiquette posée sur chaque étape (modèles exclusifs à la page). */
+  badge?: string;
 }
 
 /**
- * Les 7 campagnes sur un rail : l'étape lue passe en tête, l'aperçu collant de droite change avec elle
+ * Les campagnes sur un rail (les 7, puis les 3 exclusifs dans une seconde instance) : l'étape lue passe en tête, l'aperçu collant de droite change avec elle
  * (ordinateur) ou chaque étape porte le sien (téléphone). Le défilement agit sur le DOM sans rendu React.
  */
-export function CampagnesSteps({ etapes, labels }: CampagnesStepsProps) {
+export function CampagnesSteps({ etapes, labels, badge }: CampagnesStepsProps) {
   const rootRef = useRef<HTMLDivElement>(null);
   const [ouverte, setOuverte] = useState<ModaleCampagne | null>(null);
 
@@ -126,6 +128,7 @@ export function CampagnesSteps({ etapes, labels }: CampagnesStepsProps) {
               <div className="cf-step-mail">
                 <MailPreview src={e.previewUrl} title={labels.previewTitle.replace('{name}', e.nom)} fallback={fallback(e)} />
               </div>
+              {badge && <span className="cf-excl-badge">{badge}</span>}
               <span className="cf-periode">{e.periode}</span>
               <h3>{e.nom}</h3>
               <p className="cf-objet">

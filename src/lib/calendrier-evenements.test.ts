@@ -263,6 +263,11 @@ test('fêtes : interrupteur ouvert, payload du contrat (theme fetes, code de fê
   assert.equal(sanitizeCalendarEvent({ ...feteCopy, page: undefined }, { fetes: true }), null);
   assert.equal(sanitizeCalendarEvent({ ...feteCopy, page: 'ailleurs' }, { fetes: true }), null);
   assert.equal(sanitizeCalendarEvent({ ...feteCopy, temps_fort: 'inconnu' }, { fetes: true }), null);
+  // Les 3 modèles exclusifs à la page partent avec leur code (connus du catalogue de l'app), jamais hors de la page.
+  for (const code of ['holidays_family_room', 'holidays_next_year', 'christmas_wishlist']) {
+    assert.equal(sanitizeCalendarEvent({ ...feteCopy, temps_fort: code }, { fetes: true })?.temps_fort, code);
+    assert.equal(sanitizeCalendarEvent({ ...feteCopy, temps_fort: code, theme: 'moderne', page: undefined }, { fetes: true }), null);
+  }
   // see_all et card_click (contrat de l'app) : seulement sur la page des fêtes.
   const seeAll = { type: 'see_all', visit_id: VISIT, page: FETES_PAGE };
   assert.equal(sanitizeCalendarEvent(seeAll, { fetes: false }), null);

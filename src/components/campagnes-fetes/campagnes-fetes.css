@@ -80,6 +80,9 @@
 .cf-dot{position:absolute;left:-28px;top:12px;width:12px;height:12px;border-radius:50%;background:var(--papier);box-shadow:inset 0 0 0 2px var(--filet);transition:background .3s,box-shadow .3s}
 .cf-step.passe .cf-dot,.cf-step.on .cf-dot{background:var(--vert);box-shadow:none}
 .cf-periode{display:inline-block;padding:5px 12px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1px var(--filet);font-size:14px;font-weight:500;color:var(--vert)}
+/* Section des 3 modèles exclusifs : fond blanc entre le papier des 7 et la bande menthe. */
+.cf-excl{background:#fff}
+.cf-excl-badge{display:inline-block;margin:0 8px 8px 0;padding:5px 12px;border-radius:999px;background:var(--vert);font-size:14px;font-weight:500;color:#fff}
 .cf-step h3{margin-top:14px;font-size:27px;line-height:1.1;letter-spacing:-.03em}
 .cf-objet{margin-top:14px;font-size:17px;color:var(--titre)}
 .cf-objet b{font-weight:500;color:var(--corps);margin-right:6px}

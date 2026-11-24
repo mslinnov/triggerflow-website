@@ -12,7 +12,7 @@
  * Logique pure, testée sans réseau dans calendrier-evenements.test.ts.
  */
 import { MJML_THEMES, TEMPS_FORT_CODES } from '@/data/calendrier-marketing';
-import { FETES_CODES, FETES_STYLE } from '@/data/campagnes-fetes';
+import { FETES_STYLE, TOUS_FETES_CODES } from '@/data/campagnes-fetes';
 import { salonFlyerBaseUrl } from './calendrier-rappel';
 
 export const CALENDAR_EVENT_TYPES = [
@@ -107,7 +107,7 @@ export function sanitizeCalendarEvent(
   const page = optionalOf([FETES_PAGE], data.page);
   if (page === undefined || (page && !fetes)) return null;
   if (!page && FETES_ONLY_TYPES.includes(data.type)) return null;
-  const tempsFort = optionalOf(page ? [...TEMPS_FORT_CODES, ...FETES_CODES] : TEMPS_FORT_CODES, data.temps_fort);
+  const tempsFort = optionalOf(page ? [...TEMPS_FORT_CODES, ...TOUS_FETES_CODES] : TEMPS_FORT_CODES, data.temps_fort);
   const theme = optionalOf(page ? [...MJML_THEMES, FETES_STYLE] : MJML_THEMES, data.theme);
   const format = optionalOf(['mjml', 'html'], data.format) as AppCalendarEvent['format'] | undefined;
   if (tempsFort === undefined || theme === undefined || format === undefined) return null;
