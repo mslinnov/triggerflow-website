@@ -23,6 +23,8 @@ export const CALENDAR_EVENT_TYPES = [
   'client_click',
   'demo_click',
   'theme_change',
+  'see_all',
+  'card_click',
 ] as const;
 export type CalendarEventType = (typeof CALENDAR_EVENT_TYPES)[number];
 
@@ -37,6 +39,9 @@ export const FETES_EVENTS_ENABLED = false;
 
 /** Valeur du champ `page` des événements de la landing des fêtes. */
 export const FETES_PAGE = 'campagnes-email-fetes';
+
+/** Types propres à la landing des fêtes (« Voir les 7 », carte du haut) : sans `page`, écartés. */
+const FETES_ONLY_TYPES: readonly string[] = ['see_all', 'card_click'];
 
 /** Événement tel que l'app l'accepte. */
 export interface AppCalendarEvent {
@@ -102,6 +107,7 @@ export function sanitizeCalendarEvent(
   // Landing des fêtes : écartée tant que l'interrupteur est coupé ; ses codes et son thème ne valent que pour elle.
   const page = optionalOf([FETES_PAGE], data.page);
   if (page === undefined || (page && !fetes)) return null;
+  if (!page && FETES_ONLY_TYPES.includes(data.type)) return null;
   const tempsFort = optionalOf(page ? [...TEMPS_FORT_CODES, ...FETES_CODES] : TEMPS_FORT_CODES, data.temps_fort);
   const theme = optionalOf(page ? [...MJML_THEMES, FETES_STYLE] : MJML_THEMES, data.theme);
   const format = optionalOf(['mjml', 'html'], data.format) as AppCalendarEvent['format'] | undefined;

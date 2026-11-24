@@ -15,7 +15,16 @@ export interface CalendarEvents {
   calendar_activate: { temps_fort: string; destination: 'page' | 'app'; theme?: string };
 }
 
-export type CalendarStatType = 'page_view' | 'copy' | 'download' | 'activate_click' | 'client_click' | 'demo_click' | 'theme_change';
+export type CalendarStatType =
+  | 'page_view'
+  | 'copy'
+  | 'download'
+  | 'activate_click'
+  | 'client_click'
+  | 'demo_click'
+  | 'theme_change'
+  | 'see_all'
+  | 'card_click';
 
 /** Une action, sans le contexte de la visite. `page_view` avec temps fort = ouverture d'un temps fort. */
 export interface CalendarStat {
@@ -81,18 +90,20 @@ export function calendarPageFor(pathname: string): typeof FETES_PAGE | null {
   return pathname.split('/').includes(FETES_PAGE) ? FETES_PAGE : null;
 }
 
-const FETES_GA_EVENTS: Record<string, string> = { see_all: 'fetes_see_all', card: 'fetes_card_click' };
+const FETES_CLICKS: Record<string, 'see_all' | 'card_click'> = { see_all: 'see_all', card_click: 'card_click' };
 
 /**
- * Clic de la landing des fêtes compté dans GA4 seulement (l'app n'a pas ces types) :
- * lien marqué `data-fetes-event` (« Voir les 7 », cartes du haut), temps fort facultatif.
+ * Clic de la landing des fêtes : lien marqué `data-fetes-event` (« Voir les 7 » = `see_all`,
+ * carte du haut = `card_click`), temps fort facultatif. Compté dans GA4 (`fetes_<type>`) et
+ * dans les statistiques de l'app (écarté côté serveur tant que FETES_EVENTS_ENABLED est coupé).
  */
-export function fetesGaEventForClick(link: {
+export function fetesClickFor(link: {
   dataset: { fetesEvent?: string; tempsFort?: string };
-}): { name: string; params: { temps_fort?: string } } | null {
-  const name = link.dataset.fetesEvent ? FETES_GA_EVENTS[link.dataset.fetesEvent] : undefined;
-  if (!name) return null;
-  return { name, params: link.dataset.tempsFort ? { temps_fort: link.dataset.tempsFort } : {} };
+}): { ga: { name: string; params: { temps_fort?: string } }; stat: CalendarStat } | null {
+  const type = link.dataset.fetesEvent ? FETES_CLICKS[link.dataset.fetesEvent] : undefined;
+  if (!type) return null;
+  const temps_fort = link.dataset.tempsFort ?? null;
+  return { ga: { name: `fetes_${type}`, params: temps_fort ? { temps_fort } : {} }, stat: { type, temps_fort } };
 }
 
 /** UUID v4, y compris hors contexte sécurisé (crypto.randomUUID absent). */

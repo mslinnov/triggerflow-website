@@ -27,7 +27,7 @@ interface FetesHeroProps {
  * Haut de page des fêtes : texte à gauche, les 7 e-mails en éventail à droite (cartes égales qui se
  * chevauchent ; la carte survolée ou au clavier passe devant, avec sa légende : `.cf-eventail` dans
  * campagnes-fetes.css). Sur téléphone, un rail qui défile à l'horizontale. Chaque carte mène à sa
- * campagne plus bas (#code) ; « Voir les 7 » et les cartes sont comptés dans GA4 (`data-fetes-event`,
+ * campagne plus bas (#code) ; « Voir les 7 » et les cartes sont comptés dans GA4 et l’app (`data-fetes-event`,
  * CalendarStatsTracker).
  * Fond papier : la section des 7 qui suit est aussi sur papier, un filet les sépare. Espacements par gap :
  * la feuille de la page remet à zéro les marges des h1 et p (`.cf p{margin:0}`, hors couche Tailwind).
@@ -55,7 +55,7 @@ export function FetesHero({ campagnes, labels, demoUrl }: FetesHeroProps) {
             <li key={c.code} className="w-[62vw] max-w-[260px] shrink-0 snap-start lg:w-auto lg:max-w-none">
               <a
                 href={`#${c.code}`}
-                data-fetes-event="card"
+                data-fetes-event="card_click"
                 data-temps-fort={c.code}
                 className="flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-[0_18px_40px_-24px_rgba(0,43,40,0.45),0_0_0_1px_rgba(12,42,38,0.08)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--vert)]"
               >

@@ -5,7 +5,7 @@ import {
   calendarStatFor,
   calendarStatForClick,
   createStatsQueue,
-  fetesGaEventForClick,
+  fetesClickFor,
   loadOrCreateVisit,
   trackCalendarEvent,
   uuidV4,
@@ -166,12 +166,15 @@ test('landing des fêtes : champ page tiré de l’adresse (FR et EN), absent ai
   assert.equal(calendarPageFor('/fr/calendrier-marketing/new_year_eve'), null);
 });
 
-test('landing des fêtes : clics « Voir les 7 » et carte du haut traduits pour GA4, autres liens ignorés', () => {
-  assert.deepEqual(fetesGaEventForClick({ dataset: { fetesEvent: 'see_all' } }), { name: 'fetes_see_all', params: {} });
-  assert.deepEqual(fetesGaEventForClick({ dataset: { fetesEvent: 'card', tempsFort: 'new_year_eve' } }), {
-    name: 'fetes_card_click',
-    params: { temps_fort: 'new_year_eve' },
+test('landing des fêtes : clics « Voir les 7 » et carte du haut traduits pour GA4 et l’app, autres liens ignorés', () => {
+  assert.deepEqual(fetesClickFor({ dataset: { fetesEvent: 'see_all' } }), {
+    ga: { name: 'fetes_see_all', params: {} },
+    stat: { type: 'see_all', temps_fort: null },
   });
-  assert.equal(fetesGaEventForClick({ dataset: { fetesEvent: 'autre' } }), null);
-  assert.equal(fetesGaEventForClick({ dataset: {} }), null);
+  assert.deepEqual(fetesClickFor({ dataset: { fetesEvent: 'card_click', tempsFort: 'new_year_eve' } }), {
+    ga: { name: 'fetes_card_click', params: { temps_fort: 'new_year_eve' } },
+    stat: { type: 'card_click', temps_fort: 'new_year_eve' },
+  });
+  assert.equal(fetesClickFor({ dataset: { fetesEvent: 'autre' } }), null);
+  assert.equal(fetesClickFor({ dataset: {} }), null);
 });

@@ -38,10 +38,8 @@
 .cf-mail-fb strong{font-size:clamp(16px,1.6vw,22px);line-height:1.2;font-weight:500;letter-spacing:-.02em}
 .cf-mail-fb span{font-size:13px;color:var(--corps)}
 
-/* défilement vers les ancres (« Voir les 7 », cartes du haut) : la cible s'arrête sous l'en-tête fixe
-   (bandeau + barre : 100 px sur téléphone, 116 px dès md), glissement doux sauf mouvement réduit */
-.cf-sept,.cf-step{scroll-margin-top:112px}
-@media(min-width:768px){.cf-sept,.cf-step{scroll-margin-top:132px}}
+/* défilement vers les ancres (« Voir les 7 », cartes du haut) : la cible s'arrête sous l'en-tête fixe grâce au
+   scroll-padding-top de html (globals.css, bandeau compris) ; ici, seulement le glissement doux sauf mouvement réduit */
 @media(prefers-reduced-motion:no-preference){html:has(.cf){scroll-behavior:smooth}}
 
 /* haut de page en éventail (dès 1024 px ; rail horizontal en dessous) : 7 cartes égales empilées dans une

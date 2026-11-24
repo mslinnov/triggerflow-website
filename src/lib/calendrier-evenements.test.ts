@@ -262,6 +262,13 @@ test('fêtes : interrupteur ouvert, payload du contrat (theme fetes, code de fê
   assert.equal(sanitizeCalendarEvent({ ...feteCopy, page: undefined }, { fetes: true }), null);
   assert.equal(sanitizeCalendarEvent({ ...feteCopy, page: 'ailleurs' }, { fetes: true }), null);
   assert.equal(sanitizeCalendarEvent({ ...feteCopy, temps_fort: 'inconnu' }, { fetes: true }), null);
+  // see_all et card_click (contrat de l'app) : seulement sur la page des fêtes.
+  const seeAll = { type: 'see_all', visit_id: VISIT, page: FETES_PAGE };
+  assert.equal(sanitizeCalendarEvent(seeAll), null);
+  assert.equal(sanitizeCalendarEvent(seeAll, { fetes: true })?.type, 'see_all');
+  assert.equal(sanitizeCalendarEvent({ ...seeAll, type: 'card_click', temps_fort: 'new_year_wishes_offer' }, { fetes: true })?.temps_fort, 'new_year_wishes_offer');
+  assert.equal(sanitizeCalendarEvent({ ...seeAll, page: undefined }, { fetes: true }), null);
+  assert.equal(sanitizeCalendarEvent({ ...seeAll, type: 'card_click', page: undefined }, { fetes: true }), null);
   // Le calendrier marketing ne change pas : pas de champ page.
   assert.equal('page' in (sanitizeCalendarEvent(copy, { fetes: true }) ?? {}), false);
 });
