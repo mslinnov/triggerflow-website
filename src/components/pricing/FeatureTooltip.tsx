@@ -88,6 +88,10 @@ export function FeatureTooltip({ label, what, example, exampleLabel }: FeatureTo
         onPointerDown={(event) => {
           pointerType.current = event.pointerType;
         }}
+        // Un toucher devenu défilement ne finit pas en clic : le prochain focus clavier doit encore ouvrir.
+        onPointerCancel={() => {
+          pointerType.current = null;
+        }}
         onPointerEnter={(event) => {
           if (event.pointerType === 'mouse') setOpen(true);
         }}
@@ -98,10 +102,15 @@ export function FeatureTooltip({ label, what, example, exampleLabel }: FeatureTo
           // Focus venu du clavier : le toucher et la souris passent par le clic.
           if (pointerType.current === null) setOpen(true);
         }}
-        onBlur={() => setOpen(false)}
+        onBlur={() => {
+          pointerType.current = null;
+          setOpen(false);
+        }}
         onClick={() => {
-          if (pointerType.current === 'mouse') setOpen(true);
-          else setOpen((value) => !value);
+          // Toucher : bascule. Souris et clavier (Entrée, Espace, lecteur d'écran) : ouvre, sans refermer
+          // la bulle que le survol ou le focus vient d'ouvrir ; Échap et la sortie du focus la referment.
+          if (pointerType.current === 'touch' || pointerType.current === 'pen') setOpen((value) => !value);
+          else setOpen(true);
           pointerType.current = null;
         }}
         className={cn(
