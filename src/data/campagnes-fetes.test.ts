@@ -3,9 +3,13 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { test } from 'node:test';
 import { brand } from './brand';
+import { hasFeteTemplate } from '../lib/campagnes-fetes';
 import {
   CAMPAGNES_FETES,
+  CAMPAGNES_FETES_EXCLUSIVES,
   FETES_CODES,
+  FETES_EXCLUSIFS_CODES,
+  TOUS_FETES_CODES,
   FETES_STYLE,
   feteActivateUrl,
   feteDemoUrl,
@@ -24,7 +28,7 @@ function strings(value: unknown): string[] {
   return [];
 }
 
-const texts = [...CAMPAGNES_FETES.flatMap((c) => [c.nom, c.periode, c.periodeCourte, c.objet, c.pourquoi]), ...strings(messages.campagnesFetes)];
+const texts = [...[...CAMPAGNES_FETES, ...CAMPAGNES_FETES_EXCLUSIVES].flatMap((c) => [c.nom, c.periode, c.periodeCourte, c.objet, c.pourquoi]), ...strings(messages.campagnesFetes)];
 
 test('7 campagnes, codes uniques, dans l’ordre d’envoi', () => {
   assert.equal(CAMPAGNES_FETES.length, 7);
@@ -37,8 +41,24 @@ test('7 campagnes, codes uniques, dans l’ordre d’envoi', () => {
   assert.ok(!isFeteCode('valentines_day'));
 });
 
+test('3 modèles exclusifs : codes à part des 7, marqués exclusifs, reconnus par la route et exportés', () => {
+  assert.deepEqual(
+    CAMPAGNES_FETES_EXCLUSIVES.map((c) => c.code).sort(),
+    [...FETES_EXCLUSIFS_CODES].sort(),
+  );
+  assert.deepEqual([...TOUS_FETES_CODES], [...FETES_CODES, ...FETES_EXCLUSIFS_CODES]);
+  assert.equal(new Set(TOUS_FETES_CODES).size, 10);
+  assert.ok(CAMPAGNES_FETES_EXCLUSIVES.every((c) => c.exclusif && c.style === FETES_STYLE && isFeteCode(c.code)));
+  assert.ok(CAMPAGNES_FETES.every((c) => !c.exclusif));
+  // Les trois fichiers (mjml, html, json) exportés par l'app : sans eux, ni aperçu ni « Copier le modèle ».
+  assert.deepEqual(
+    CAMPAGNES_FETES_EXCLUSIVES.filter((c) => !hasFeteTemplate(c)).map((c) => c.code),
+    [],
+  );
+});
+
 test('lien d’activation : écran « Créer à partir du modèle » de l’app, type et style fetes, UTM du site', () => {
-  for (const c of CAMPAGNES_FETES) {
+  for (const c of [...CAMPAGNES_FETES, ...CAMPAGNES_FETES_EXCLUSIVES]) {
     const url = new URL(feteActivateUrl(c));
     assert.equal(`${url.origin}${url.pathname}`, 'https://app.trigger-flow.com/email-templates/library/activate');
     assert.equal(url.searchParams.get('type'), c.code);
@@ -68,8 +88,9 @@ test('aucun tiret cadratin ni demi-cadratin dans les textes', () => {
 });
 
 test('aucun chiffre inventé : seulement des dates du calendrier', () => {
-  // Jours cités par la maquette validée : 18 au 26 décembre, 20, 24, 31, 1er janvier. Rien d'autre (pas de %, d'€, de durée).
-  const allowed = new Set(['1', '7', '18', '20', '24', '26', '31']);
+  // Jours cités par la maquette validée : 18 au 26 décembre, 20, 24, 31, 1er janvier, et le nombre de modèles (7, 3).
+  // Rien d'autre (pas de %, d'€, de durée).
+  const allowed = new Set(['1', '3', '7', '18', '20', '24', '26', '31']);
   const found = texts.flatMap((text) => text.match(/\d+/g) ?? []).filter((n) => !allowed.has(n));
   assert.deepEqual(found, []);
   assert.deepEqual(

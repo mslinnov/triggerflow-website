@@ -3454,6 +3454,12 @@
       "fallbackTitle": "Aperçu bientôt disponible",
       "fallbackText": "Le modèle de cette campagne arrive. Activez-le dans TriggerFlow pour le voir à la charte de votre hôtel."
     },
+    "exclusifs": {
+      "title": "3 modèles exclusifs,",
+      "titleEm": "seulement sur cette page",
+      "intro": "Trois idées que vous ne trouverez pas ailleurs : la famille que vos voisins reçoivent, la lettre au Père Noël que vos fidèles font suivre, et les fêtes de l'an prochain réservées avant de partir.",
+      "badge": "Exclusif à cette page"
+    },
     "modal": {
       "title": "Copier le modèle",
       "tabsLabel": "Format du modèle",

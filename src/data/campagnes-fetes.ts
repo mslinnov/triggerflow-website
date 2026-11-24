@@ -1,5 +1,5 @@
 /**
- * Campagnes e-mail des fêtes (/fr/campagnes-email-fetes) : les 7 modèles dans l'ordre d'envoi.
+ * Campagnes e-mail des fêtes (/fr/campagnes-email-fetes) : les 7 modèles dans l'ordre d'envoi, puis 3 exclusifs à la page.
  *
  * Les fichiers de chaque campagne (`.html`, `.mjml`, `.json`) vivent dans src/data/calendrier-mjml/fetes/<code>.*,
  * exportés par l'app comme ceux du calendrier marketing.
@@ -18,7 +18,16 @@ export const FETES_CODES = [
   'season_greetings',
   'new_year_wishes_offer',
 ] as const;
-export type FeteCode = (typeof FETES_CODES)[number];
+
+/**
+ * Les 3 modèles exclusifs à la page (section #exclusifs) : hors du héros et de la page « Créer » de l'app
+ * (« Fêtes (7) »), mais connus du catalogue de l'app (activation, statistiques).
+ */
+export const FETES_EXCLUSIFS_CODES = ['holidays_family_room', 'holidays_next_year', 'christmas_wishlist'] as const;
+
+/** Tous les codes de la page : les 7, puis les 3 exclusifs. */
+export const TOUS_FETES_CODES = [...FETES_CODES, ...FETES_EXCLUSIFS_CODES] as const;
+export type FeteCode = (typeof TOUS_FETES_CODES)[number];
 
 /**
  * Style des 7 campagnes : « fetes », style de la bibliothèque des modèles sur mesure de l'app. C'est aussi le nom
@@ -36,6 +45,8 @@ export interface CampagneFete {
   objet: string;
   pourquoi: string;
   style: FeteStyle;
+  /** Modèle exclusif à la page (section #exclusifs), absent du héros. */
+  exclusif?: true;
 }
 
 export const CAMPAGNES_FETES: readonly CampagneFete[] = [
@@ -107,8 +118,45 @@ export const CAMPAGNES_FETES: readonly CampagneFete[] = [
   },
 ];
 
+/** Les 3 modèles exclusifs, dans l'ordre d'envoi. Aucun chiffre promis : seulement des dates de calendrier. */
+export const CAMPAGNES_FETES_EXCLUSIVES: readonly CampagneFete[] = [
+  {
+    code: 'holidays_family_room',
+    nom: "La chambre d'amis du quartier",
+    periode: 'Début décembre',
+    periodeCourte: 'Début décembre',
+    objet: 'Votre famille arrive pour Noël ?',
+    pourquoi:
+      'Pour les habitants de votre ville qui reçoivent leur famille : le canapé ne suffira pas. Ils réservent pour leurs parents, ou transfèrent le message à ceux qui viennent.',
+    style: FETES_STYLE,
+    exclusif: true,
+  },
+  {
+    code: 'christmas_wishlist',
+    nom: 'Votre liste au Père Noël',
+    periode: 'Mi-décembre',
+    periodeCourte: 'Mi-décembre',
+    objet: 'Glissez une nuit chez nous dans votre liste au Père Noël',
+    pourquoi:
+      "Une lettre au Père Noël que vos fidèles transfèrent à qui cherche leur cadeau. L'acheteur du bon cadeau est un nouveau contact pour votre fichier.",
+    style: FETES_STYLE,
+    exclusif: true,
+  },
+  {
+    code: 'holidays_next_year',
+    nom: "Mêmes dates, l'an prochain",
+    periode: 'Juste après leur départ',
+    periodeCourte: 'Après le départ',
+    objet: "Même chambre, mêmes dates, l'an prochain ?",
+    pourquoi:
+      'À vos clients des fêtes, quelques jours après leur départ, quand le séjour est encore frais : ils gardent leur chambre pour les fêtes suivantes.',
+    style: FETES_STYLE,
+    exclusif: true,
+  },
+];
+
 export function isFeteCode(value: unknown): value is FeteCode {
-  return typeof value === 'string' && (FETES_CODES as readonly string[]).includes(value);
+  return typeof value === 'string' && (TOUS_FETES_CODES as readonly string[]).includes(value);
 }
 
 const UTM = 'utm_source=site&utm_medium=campagnes-fetes&utm_campaign=campagnes-fetes';

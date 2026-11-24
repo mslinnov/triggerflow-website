@@ -28,6 +28,9 @@ export const FETES_LOGOS: Record<FeteCode, FeteLogo> = {
   holidays_last_minute: { nom: 'Hôtel Arcadie', avant: 'Hôtel', nomCourt: 'Arcadie', monogramme: 'A', couleur: '#1E3A34', famille: 'sans' },
   season_greetings: { nom: 'Le Clos des Aubépines', avant: 'Le clos des', nomCourt: 'Aubépines', monogramme: 'CA', couleur: '#1F4A3C', famille: 'serif' },
   new_year_wishes_offer: { nom: 'Hôtel Beaurivage', avant: 'Hôtel', nomCourt: 'Beaurivage', monogramme: 'B', couleur: '#4A2C5C', famille: 'serif' },
+  holidays_family_room: { nom: 'Hôtel du Mail', avant: 'Hôtel du', nomCourt: 'Mail', monogramme: 'M', couleur: '#6B2D2A', famille: 'serif' },
+  christmas_wishlist: { nom: 'Maison Castelnau', avant: 'Maison', nomCourt: 'Castelnau', monogramme: 'C', couleur: '#8E1F2F', famille: 'serif' },
+  holidays_next_year: { nom: 'Hôtel des Tilleuls', avant: 'Hôtel des', nomCourt: 'Tilleuls', monogramme: 'T', couleur: '#1F3550', famille: 'serif' },
 };
 
 const FONTS = {

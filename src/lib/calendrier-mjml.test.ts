@@ -28,7 +28,7 @@ import {
   toPreviewHtml,
 } from './calendrier-mjml';
 import { emailToPlainText } from './calendrier';
-import { FETES_CODES } from '../data/campagnes-fetes';
+import { TOUS_FETES_CODES } from '../data/campagnes-fetes';
 import { FETES_LOGOS } from '../data/fetes-logos';
 
 const FIXTURES = path.join(MJML_DIR, '__fixtures__');
@@ -215,7 +215,7 @@ test('« Télécharger » : le fichier de « Copier » (signé, UTM), en pièce 
 });
 
 test('fêtes : l’aperçu montre le logo et le nom d’un hôtel fictif, le fichier copié garde « Votre logo »', async () => {
-  for (const code of FETES_CODES) {
+  for (const code of TOUS_FETES_CODES) {
     const logo = FETES_LOGOS[code];
     const preview = await (await fetchTemplateFile(`/api/calendrier/modele/${code}/apercu?theme=fetes`)).text();
     assert.match(preview, /src="data:image\/svg\+xml;charset=utf-8,/, code);
@@ -227,7 +227,7 @@ test('fêtes : l’aperçu montre le logo et le nom d’un hôtel fictif, le fic
       assert.doesNotMatch(file, /data:image\/svg/, `${code} ${format}`);
     }
   }
-  assert.equal(new Set(FETES_CODES.map((code) => FETES_LOGOS[code].nom)).size, FETES_CODES.length);
+  assert.equal(new Set(TOUS_FETES_CODES.map((code) => FETES_LOGOS[code].nom)).size, TOUS_FETES_CODES.length);
   // Le calendrier marketing garde son aperçu (même route, autre thème).
   const calendrier = await (await fetchTemplateFile('/api/calendrier/modele/new_year_eve/apercu?theme=moderne')).text();
   assert.doesNotMatch(calendrier, /data:image\/svg/);

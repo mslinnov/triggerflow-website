@@ -26,7 +26,7 @@ import {
   type MjmlTheme,
   type TempsFortCode,
 } from '@/data/calendrier-marketing';
-import { FETES_CODES, FETES_STYLE, isFeteCode } from '@/data/campagnes-fetes';
+import { FETES_STYLE, TOUS_FETES_CODES, isFeteCode } from '@/data/campagnes-fetes';
 import { FETES_LOGOS, feteLogoDataUri } from '@/data/fetes-logos';
 
 export const MJML_DIR = path.join(process.cwd(), 'src', 'data', 'calendrier-mjml');
@@ -254,7 +254,7 @@ export function auditMjmlDir(baseDir: string = MJML_DIR): string[] {
   for (const theme of [...MJML_THEMES, FETES_STYLE]) {
     const dir = path.join(baseDir, theme);
     if (!fs.existsSync(dir)) continue;
-    const knownCodes: readonly string[] = theme === FETES_STYLE ? FETES_CODES : TEMPS_FORT_CODES;
+    const knownCodes: readonly string[] = theme === FETES_STYLE ? TOUS_FETES_CODES : TEMPS_FORT_CODES;
     const files = fs.readdirSync(dir).filter(isTemplateFile);
     for (const code of new Set(files.map(codeOf))) {
       const where = `${theme}/${code}`;
