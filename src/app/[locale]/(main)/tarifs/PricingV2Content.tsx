@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { motion, useReducedMotion, AnimatePresence } from 'framer-motion';
 import {
@@ -19,10 +19,12 @@ import { COMPARISON_GROUPS, type ComparisonGroupKey, type FeatureValue } from '@
 
 /* ─── Data ──────────────────────────────────────────────────── */
 
-/** Lignes et valeurs du tableau : `@/data/pricing-comparison` ; ici, l'icône de chaque groupe. */
 /** Téléphone : libellé sur toute la largeur, puis les 4 valeurs ; ordinateur : libellé à gauche. */
 const TABLE_GRID = 'grid-cols-4 md:grid-cols-[240px_repeat(4,1fr)] lg:grid-cols-[300px_repeat(4,1fr)]';
 
+const DEMO_URL = 'https://app.lemcal.com/@trigger-flow/demo';
+
+/** Lignes et valeurs du tableau : `@/data/pricing-comparison` ; ici, l'icône de chaque groupe. */
 const groupIcons: Record<ComparisonGroupKey, typeof MessageSquare> = {
   communication: MessageSquare,
   automation: Workflow,
@@ -138,7 +140,8 @@ export function PricingV2Content({ plans, addons, announcing, showRoi }: Pricing
   const tChange = useTranslations('priceChange');
   const prefersReducedMotion = useReducedMotion();
   const [activeMobilePlan, setActiveMobilePlan] = useState(2); // Default to "Conversion" (popular)
-  const number = new Intl.NumberFormat(useLocale());
+  const locale = useLocale();
+  const number = useMemo(() => new Intl.NumberFormat(locale), [locale]);
 
   const formatValue = (value: Exclude<FeatureValue, boolean>) =>
     typeof value === 'number' ? number.format(value) : t(`comparison.values.${value}`);
@@ -262,7 +265,7 @@ export function PricingV2Content({ plans, addons, announcing, showRoi }: Pricing
 
                     <div className="mt-5">
                       <ButtonLink
-                        href="https://app.lemcal.com/@trigger-flow/demo"
+                        href={DEMO_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         variant={plan.popular ? 'primary' : 'secondary'}
@@ -361,7 +364,7 @@ export function PricingV2Content({ plans, addons, announcing, showRoi }: Pricing
 
                 <div className="mt-5">
                   <ButtonLink
-                    href="https://app.lemcal.com/@trigger-flow/demo"
+                    href={DEMO_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     variant={plan.popular ? 'primary' : 'secondary'}
@@ -541,7 +544,7 @@ export function PricingV2Content({ plans, addons, announcing, showRoi }: Pricing
                     plan.popular && 'bg-brand-primary/[0.03]'
                   )}>
                     <ButtonLink
-                      href="https://app.lemcal.com/@trigger-flow/demo"
+                      href={DEMO_URL}
                       target="_blank"
                       rel="noopener noreferrer"
                       variant={plan.popular ? 'primary' : 'secondary'}
@@ -646,7 +649,7 @@ export function PricingV2Content({ plans, addons, announcing, showRoi }: Pricing
                     {/* Right: CTA */}
                     <div className="shrink-0">
                       <ButtonLink
-                        href="https://app.lemcal.com/@trigger-flow/demo"
+                        href={DEMO_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         variant="secondary"
