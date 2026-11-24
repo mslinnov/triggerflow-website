@@ -31,7 +31,8 @@ test('première ligne : e-mails compris par mois, lus dans PLANS', () => {
 test('lignes ajoutées et décisions du 24/11', () => {
   const marketing = COMPARISON_GROUPS.find((g) => g.key === 'marketing')!.features.map((f) => f.key);
   assert.ok(marketing.includes('sendingDomain'), 'domaine d’envoi dans Marketing & ventes');
-  assert.deepEqual(getFeature('sendingDomain').values, [false, true, true, true]);
+  // Tranché par Mounir le 24/11 : 69 € domaine de l'hôtel, dès 149 € domaine dédié chauffé par TriggerFlow.
+  assert.deepEqual(getFeature('sendingDomain').values, [false, 'ownDomain', 'dedicatedDomain', 'dedicatedDomain']);
   assert.deepEqual(getFeature('marketing').values, [false, true, true, true]);
   // Tests A/B : même droit que les conditions sur les interactions (AbTestGuard de l'app).
   assert.deepEqual(getFeature('abTests').values, getFeature('conditions').values);
@@ -40,7 +41,7 @@ test('lignes ajoutées et décisions du 24/11', () => {
 
 test('aucune valeur écrite en dur dans une langue : « illimité » passe par la traduction', () => {
   const texts = features.flatMap((f) => f.values).filter((v) => typeof v === 'string');
-  assert.deepEqual([...new Set(texts)], ['unlimited']);
-  assert.equal(fr.pricing.comparison.unlimited, 'illimités');
-  assert.equal(en.pricing.comparison.unlimited, 'unlimited');
+  assert.deepEqual([...new Set(texts)].sort(), ['dedicatedDomain', 'ownDomain', 'unlimited']);
+  assert.deepEqual(fr.pricing.comparison.values, { unlimited: 'illimités', ownDomain: 'Votre domaine', dedicatedDomain: 'Domaine dédié' });
+  assert.deepEqual(en.pricing.comparison.values, { unlimited: 'unlimited', ownDomain: 'Your domain', dedicatedDomain: 'Dedicated domain' });
 });

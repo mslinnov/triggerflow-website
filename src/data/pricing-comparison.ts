@@ -8,8 +8,8 @@
  */
 import { PLANS } from './pricing';
 
-/** `true` / `false` : coche ou croix ; nombre : quota ; `'unlimited'` : traduit à l'affichage. */
-export type FeatureValue = boolean | number | 'unlimited';
+/** `true` / `false` : coche ou croix ; nombre : quota ; texte : clé de `pricing.comparison.values`. */
+export type FeatureValue = boolean | number | 'unlimited' | 'ownDomain' | 'dedicatedDomain';
 
 export type ComparisonGroupKey = 'communication' | 'automation' | 'marketing' | 'tools';
 
@@ -45,8 +45,8 @@ export const COMPARISON_GROUPS: ComparisonGroup[] = [
     key: 'marketing',
     features: [
       { key: 'marketing', values: [false, true, true, true] },
-      // Sous-domaine marketing monté et chauffé par TriggerFlow dès la première offre payante.
-      { key: 'sendingDomain', values: [false, true, true, true] },
+      // Tranché par Mounir le 24/11 : 69 € domaine de l'hôtel, dès 149 € domaine dédié chauffé par TriggerFlow.
+      { key: 'sendingDomain', values: [false, 'ownDomain', 'dedicatedDomain', 'dedicatedDomain'] },
       // Même droit que les conditions sur les interactions (AbTestGuard de l'app).
       { key: 'abTests', values: [false, false, true, true] },
       { key: 'templateLibrary', values: [true, true, true, true] },

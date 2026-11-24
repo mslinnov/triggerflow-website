@@ -1021,7 +1021,7 @@
         "groupPortal": "Hotel group portal",
         "conditions": "Conditions on client interactions",
         "addonsIncluded": "Add-on modules included",
-        "sendingDomain": "Dedicated sending domain",
+        "sendingDomain": "Sending domain",
         "abTests": "Newsletter A/B tests",
         "templateLibrary": "Ready-to-use template library"
       },
@@ -1059,8 +1059,8 @@
           "example": "In January, a “Valentine’s weekend” campaign sent to couples who stayed before."
         },
         "sendingDomain": {
-          "what": "The address your newsletters and campaigns come from. A dedicated subdomain in your name lands better in the inbox and protects your main address.",
-          "example": "Your campaigns go out from news.your-hotel.com, set up and warmed up gradually by TriggerFlow; contact@your-hotel.com stays safe."
+          "what": "The address your newsletters and campaigns come from. In your name, it builds trust; a dedicated domain also protects your main address.",
+          "example": "On Communication, your campaigns go out from your own domain (contact@your-hotel.com). From Conversion, they go out from news.your-hotel.com, set up and warmed up gradually by TriggerFlow: your main address stays safe."
         },
         "abTests": {
           "what": "Two versions of the same email, each sent to part of your guests: you see which one gets more clicks and keep the best.",
@@ -1091,7 +1091,11 @@
           "example": "An Unlimited hotel turns on the AI Agent and loyalty without a new invoice."
         }
       },
-      "unlimited": "unlimited",
+      "values": {
+        "unlimited": "unlimited",
+        "ownDomain": "Your domain",
+        "dedicatedDomain": "Dedicated domain"
+      },
       "example": "Example:",
       "moreInfo": "Learn more: {feature}"
     },

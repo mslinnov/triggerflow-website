@@ -1029,7 +1029,7 @@
         "groupPortal": "Portail groupe hôtelier",
         "conditions": "Conditions sur les interactions clients",
         "addonsIncluded": "Modules complémentaires inclus",
-        "sendingDomain": "Domaine d’envoi dédié",
+        "sendingDomain": "Domaine d’envoi",
         "abTests": "Tests A/B des newsletters",
         "templateLibrary": "Bibliothèque de modèles prêts à l’emploi"
       },
@@ -1067,8 +1067,8 @@
           "example": "En janvier, une campagne « week-end de la Saint-Valentin » envoyée aux couples déjà venus."
         },
         "sendingDomain": {
-          "what": "L’adresse d’où partent vos newsletters et campagnes. Un sous-domaine dédié, à votre nom, arrive mieux en boîte de réception et protège votre adresse principale.",
-          "example": "Vos campagnes partent de news.votre-hotel.fr, monté et chauffé petit à petit par TriggerFlow ; contact@votre-hotel.fr reste à l’abri."
+          "what": "L’adresse d’où partent vos newsletters et campagnes. À votre nom, elle inspire confiance ; un domaine dédié protège en plus votre adresse principale.",
+          "example": "En Communication, vos campagnes partent de votre domaine (contact@votre-hotel.fr). Dès Conversion, elles partent de news.votre-hotel.fr, monté et chauffé petit à petit par TriggerFlow : votre adresse principale reste à l’abri."
         },
         "abTests": {
           "what": "Deux versions d’un même e-mail, envoyées chacune à une partie de vos clients : vous voyez laquelle fait le plus cliquer et vous gardez la meilleure.",
@@ -1099,7 +1099,11 @@
           "example": "Un hôtel en Illimités active l’Agent IA et la fidélité sans changer de facture."
         }
       },
-      "unlimited": "illimités",
+      "values": {
+        "unlimited": "illimités",
+        "ownDomain": "Votre domaine",
+        "dedicatedDomain": "Domaine dédié"
+      },
       "example": "Exemple :",
       "moreInfo": "En savoir plus : {feature}"
     },
