@@ -630,7 +630,7 @@
         "features": "10 flows, 15000 emails, Formulaires, Ventes"
       },
       "allInclusive": {
-        "name": "All Inclusive",
+        "name": "Illimités",
         "description": "Tous les modules inclus, sans limites",
         "features": "Illimité, Tous les modules inclus"
       }
@@ -910,23 +910,23 @@
       "discovery": {
         "name": "Découverte",
         "trial": "Aucune carte requise",
-        "description": "Découvrez TriggerFlow gratuitement et testez vos premiers scénarios clients."
+        "description": "Gratuit, sans carte bancaire : lancez votre premier scénario automatique et voyez vos clients réagir."
       },
       "communication": {
         "name": "Communication",
         "trial": "Essai gratuit 14 jours",
-        "description": "Créez vos segments et automatisez vos messages avant, pendant et après séjour."
+        "description": "Parlez à chaque client au bon moment : avant l’arrivée, pendant le séjour et après le départ, sans y penser."
       },
       "conversion": {
         "name": "Conversion",
         "badge": "Le plus populaire",
         "trial": "Essai gratuit 14 jours",
-        "description": "Avec plus d'interaction, renforcez vos ventes annexes et collectez les retours clients."
+        "description": "Faites réagir vos clients et vendez plus : offres avant l’arrivée, enquêtes, avis, et un message suivant adapté à leur réaction."
       },
       "allInclusive": {
-        "name": "All Inclusive",
+        "name": "Illimités",
         "trial": "Essai gratuit 14 jours",
-        "description": "Tous les modules inclus, sans limites",
+        "description": "Tout TriggerFlow, sans plafond : tous les modules inclus et un account manager dédié à vos établissements.",
         "features": [
           "Workflows illimités",
           "Emails illimités",
@@ -1018,7 +1018,7 @@
       "features": {
         "segments": "Segments clients",
         "flows": "Flows (automatisations)",
-        "emails": "E-mails/mois",
+        "emails": "E-mails compris par mois",
         "sms": "SMS (À partir de 0,06€/sms)",
         "stats": "Statistiques et analyses",
         "hub": "Hub de messagerie",
@@ -1028,23 +1028,86 @@
         "salesCatalog": "Module vente et catalogue",
         "groupPortal": "Portail groupe hôtelier",
         "conditions": "Conditions sur les interactions clients",
-        "addonsIncluded": "Modules complémentaires inclus"
+        "addonsIncluded": "Modules complémentaires inclus",
+        "sendingDomain": "Domaine d’envoi",
+        "abTests": "Tests A/B des newsletters",
+        "templateLibrary": "Bibliothèque de modèles prêts à l’emploi"
       },
       "tooltips": {
-        "emails": "Nombre d'emails inclus par mois dans votre forfait. Au-delà, des packs d'emails supplémentaires sont disponibles.",
-        "sms": "Envoyez des SMS automatiques ou manuels à vos clients. Facturation à l'usage à partir de 0,06€/SMS.",
-        "whatsapp": "Communiquez avec vos clients via WhatsApp Business pour un taux de lecture supérieur.",
-        "hub": "Centralisez tous vos canaux de communication (email, SMS, WhatsApp) dans une seule interface.",
-        "segments": "Créez des groupes de clients basés sur leurs caractéristiques et comportements pour des actions ciblées.",
-        "flows": "Automatisez des séquences de messages déclenchées par des événements (arrivée, départ, anniversaire...).",
-        "conditions": "Ajoutez des conditions avancées dans vos flows basées sur les interactions clients (ouverture, clic, réponse...).",
-        "marketing": "Créez et envoyez des newsletters et campagnes marketing ciblées à vos segments clients.",
-        "forms": "Créez des formulaires personnalisés : pré-checkin, enquête de satisfaction, préférences séjour et plus encore.",
-        "salesCatalog": "Proposez des services et produits additionnels à vos clients (spa, restaurant, surclassement...).",
-        "stats": "Tableaux de bord BI hôteliers : taux d'occupation, RevPAR, ADR, taux d'ouverture, conversions et revenus générés.",
-        "groupPortal": "Interface dédiée pour gérer plusieurs établissements depuis un seul compte avec vue consolidée.",
-        "addonsIncluded": "Le plan All Inclusive inclut tous les modules complémentaires (Avis, Agent IA, Paiements, Fidélité, Guest App) sans surcoût."
-      }
+        "emails": {
+          "what": "Les e-mails envoyés chaque mois, scénarios automatiques et newsletters compris. Au-delà, des packs s’ajoutent.",
+          "example": "3 e-mails par séjour (confirmation, veille de l’arrivée, lendemain du départ) pour 300 séjours par mois, cela fait 900 e-mails : l’offre Découverte suffit."
+        },
+        "sms": {
+          "what": "Des SMS automatiques ou envoyés à la main, payés à l’envoi, à partir de 0,06 € le SMS.",
+          "example": "La veille de l’arrivée, un SMS rappelle l’heure d’arrivée possible et le code du parking."
+        },
+        "whatsapp": {
+          "what": "Vos messages automatiques et vos réponses passent aussi par WhatsApp.",
+          "example": "Un client étranger reçoit sa confirmation sur WhatsApp et répond dans le même fil pour demander un lit bébé."
+        },
+        "hub": {
+          "what": "Les réponses de vos clients (e-mail, SMS, WhatsApp) arrivent dans une seule boîte, partagée par l’équipe.",
+          "example": "La réception voit dans le même fil la question sur le parking et la réponse envoyée la veille par un collègue."
+        },
+        "segments": {
+          "what": "Des groupes de clients construits à partir des données de votre PMS, mis à jour tout seuls.",
+          "example": "« Clients venus 2 fois ou plus », « Familles avec enfants », « Réservations directes du mois »."
+        },
+        "flows": {
+          "what": "Un scénario qui envoie le bon message au bon moment, déclenché par le séjour. Le chiffre compte les scénarios actifs en même temps.",
+          "example": "3 jours avant l’arrivée, un e-mail de bienvenue avec l’offre petit-déjeuner."
+        },
+        "conditions": {
+          "what": "Le message suivant dépend de ce que le client a fait avec le précédent.",
+          "example": "Il n’a pas ouvert l’e-mail de pré-arrivée : il reçoit un WhatsApp. Il a cliqué sur l’offre spa : il reçoit la réservation du soin."
+        },
+        "marketing": {
+          "what": "Des newsletters et campagnes envoyées à vos segments, en plus des messages automatiques.",
+          "example": "En janvier, une campagne « week-end de la Saint-Valentin » envoyée aux couples déjà venus."
+        },
+        "sendingDomain": {
+          "what": "L’adresse d’où partent vos newsletters et campagnes. À votre nom, elle inspire confiance ; un domaine dédié protège en plus votre adresse principale.",
+          "example": "En Communication, vos campagnes partent de votre domaine (contact@votre-hotel.fr). Dès Conversion, elles partent de news.votre-hotel.fr, monté et chauffé petit à petit par TriggerFlow : votre adresse principale reste à l’abri."
+        },
+        "abTests": {
+          "what": "Deux versions d’un même e-mail, envoyées chacune à une partie de vos clients : vous voyez laquelle fait le plus cliquer et vous gardez la meilleure.",
+          "example": "Objet « Votre chambre vous attend » contre « Un petit-déjeuner offert pour votre retour »."
+        },
+        "templateLibrary": {
+          "what": "Des modèles d’e-mails prêts à envoyer, activables en un clic, avec votre logo et vos couleurs, retouchables par l’IA.",
+          "example": "Pour les fêtes, 7 modèles classiques et 3 exclusifs (chambre d’amis du quartier, liste au Père Noël, mêmes dates l’an prochain)."
+        },
+        "forms": {
+          "what": "Des formulaires envoyés à vos clients ; le chiffre compte ceux actifs en même temps.",
+          "example": "Un pré-enregistrement avant l’arrivée (heure, lit bébé, plaque du véhicule) et une enquête de satisfaction au départ."
+        },
+        "salesCatalog": {
+          "what": "Vos services en vente dans vos messages : le client choisit et réserve avant d’arriver.",
+          "example": "L’e-mail de pré-arrivée propose le petit-déjeuner, un surclassement ou un départ tardif."
+        },
+        "stats": {
+          "what": "Les résultats de vos envois et de votre activité dans des tableaux de bord : occupation, RevPAR, prix moyen, ouvertures, ventes.",
+          "example": "Le taux d’ouverture de l’e-mail de bienvenue, ou le chiffre d’affaires venu de l’offre petit-déjeuner."
+        },
+        "groupPortal": {
+          "what": "Un seul compte pour piloter plusieurs établissements, avec une vue d’ensemble.",
+          "example": "Le directeur d’un groupe de 5 hôtels compare les avis et les ventes additionnelles de chaque établissement."
+        },
+        "addonsIncluded": {
+          "what": "Les modules en option (Avis, Agent IA, Paiements, Fidélité, Guest App) sont tous compris, sans supplément.",
+          "example": "Un hôtel en Illimités active l’Agent IA et la fidélité sans changer de facture."
+        }
+      },
+      "values": {
+        "unlimited": "illimités",
+        "ownDomain": "Votre domaine",
+        "dedicatedDomain": "Domaine dédié"
+      },
+      "example": "Exemple :",
+      "moreInfo": "En savoir plus : {feature}",
+      "included": "Compris",
+      "notIncluded": "Non compris"
     },
     "faq": {
       "title": "Questions fréquentes sur nos tarifs",
@@ -1075,6 +1138,23 @@
       "title": "Vous gérez plusieurs établissements ?",
       "description": "Bénéficiez de tarifs préférentiels et d'un accompagnement dédié pour déployer TriggerFlow à grande échelle.",
       "cta": "Demander un devis groupe"
+    },
+    "emailsPerMonth": "{count, number} e-mails par mois",
+    "roi": {
+      "eyebrow": "Ce que ça rapporte",
+      "title": "Une campagne paie l’abonnement,",
+      "titleAccent": "plusieurs fois",
+      "caseLabel": "Cas client",
+      "caseBody": "Un hôtel de {rooms} chambres envoie une campagne à ses anciens clients.",
+      "bookings": "{min} à {max}",
+      "bookingsLabel": "réservations par campagne",
+      "revenue": "{amount} €",
+      "revenueLabel": "de chiffre d’affaires, en moyenne",
+      "disclaimer": "Résultat moyen d’un client, pas une promesse : vos chiffres dépendent de votre hôtel et de vos clients.",
+      "paybackTitle": "Combien de réservations remboursent le mois ?",
+      "paybackIntro": "Au panier moyen de ce cas, environ {basket} € par réservation :",
+      "planPrice": "{price} € par mois",
+      "bookingsUnit": "{count, plural, one {réservation} other {réservations}}"
     }
   },
   "contact": {

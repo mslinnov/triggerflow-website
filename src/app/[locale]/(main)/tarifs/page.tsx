@@ -1,8 +1,16 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
+import { IBM_Plex_Sans_Condensed } from 'next/font/google';
 import { PricingV2Content } from './PricingV2Content';
 import { BreadcrumbListJsonLd, PricingJsonLd } from '@/components/seo';
-import { getPricingPhase, getDisplayPlans, getDisplayAddons, getEntryPrice } from '@/data/pricing';
+import {
+  getPricingPhase, getDisplayPlans, getDisplayAddons, getEntryPrice, isRoiPreviewEnabled,
+} from '@/data/pricing';
+
+/** Chiffres du bloc « Ce que ça rapporte » ; téléchargée seulement si le bloc est affiché. */
+const plexCondensed = IBM_Plex_Sans_Condensed({
+  variable: '--font-plex-condensed', subsets: ['latin'], weight: ['500'], display: 'swap', preload: false,
+});
 
 const baseUrl = 'https://www.trigger-flow.com';
 
@@ -33,9 +41,10 @@ export default async function PricingPage({ params }: PageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
   const phase = getPricingPhase();
+  const showRoi = isRoiPreviewEnabled();
 
   return (
-    <>
+    <div className={showRoi ? plexCondensed.variable : undefined}>
       <BreadcrumbListJsonLd
         items={[
           { name: 'TriggerFlow', url: `${baseUrl}/${locale}` },
@@ -47,7 +56,8 @@ export default async function PricingPage({ params }: PageProps) {
         plans={getDisplayPlans(phase)}
         addons={getDisplayAddons(phase)}
         announcing={phase === 'announce'}
+        showRoi={showRoi}
       />
-    </>
+    </div>
   );
 }

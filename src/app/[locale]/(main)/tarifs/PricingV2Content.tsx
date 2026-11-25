@@ -1,60 +1,36 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
-import { useTranslations } from 'next-intl';
+import { useMemo, useState } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
 import { motion, useReducedMotion, AnimatePresence } from 'framer-motion';
 import {
   Check, X, Mail, ChevronDown, Star, Heart, Smartphone, Bot, CreditCard,
   ArrowRight, Sparkles, MessageSquare, Workflow, BarChart3,
-  ShoppingBag, ChevronLeft, ChevronRight, HelpCircle,
+  ShoppingBag,
 } from 'lucide-react';
 import { Container, ButtonLink, Badge } from '@/components/ui';
 import { cn } from '@/lib/utils';
 import { fadeInUp, staggerContainer, staggerItem, defaultViewport } from '@/lib/animations';
 import type { AddonKey, DisplayAddon, DisplayPlan } from '@/data/pricing';
 import { UpcomingPrice } from '@/components/pricing/UpcomingPrice';
+import { FeatureTooltip } from '@/components/pricing/FeatureTooltip';
+import { RoiBlock } from '@/components/pricing/RoiBlock';
+import { COMPARISON_GROUPS, type ComparisonGroupKey, type FeatureValue } from '@/data/pricing-comparison';
 
 /* ─── Data ──────────────────────────────────────────────────── */
 
-const featureGroups = [
-  {
-    key: 'communication',
-    icon: MessageSquare,
-    features: [
-      { key: 'emails', values: ['1 000', '5 000', '15 000', '50 000'] },
-      { key: 'sms', values: [true, true, true, true] },
-      { key: 'whatsapp', values: [false, true, true, true] },
-      { key: 'hub', values: [false, true, true, true] },
-    ],
-  },
-  {
-    key: 'automation',
-    icon: Workflow,
-    features: [
-      { key: 'segments', values: ['5', '10', '45', 'illimités'] },
-      { key: 'flows', values: ['1', '5', '10', 'illimités'] },
-      { key: 'conditions', values: [false, false, true, true] },
-    ],
-  },
-  {
-    key: 'marketing',
-    icon: ShoppingBag,
-    features: [
-      { key: 'marketing', values: [false, false, true, true] },
-      { key: 'forms', values: [false, false, '5', 'illimités'] },
-      { key: 'salesCatalog', values: [false, false, true, true] },
-    ],
-  },
-  {
-    key: 'tools',
-    icon: BarChart3,
-    features: [
-      { key: 'stats', values: [true, true, true, true] },
-      { key: 'groupPortal', values: [false, false, true, true] },
-      { key: 'addonsIncluded', values: [false, false, false, true] },
-    ],
-  },
-];
+/** Téléphone : libellé sur toute la largeur, puis les 4 valeurs ; ordinateur : libellé à gauche. */
+const TABLE_GRID = 'grid-cols-4 md:grid-cols-[240px_repeat(4,1fr)] lg:grid-cols-[300px_repeat(4,1fr)]';
+
+const DEMO_URL = 'https://app.lemcal.com/@trigger-flow/demo';
+
+/** Lignes et valeurs du tableau : `@/data/pricing-comparison` ; ici, l'icône de chaque groupe. */
+const groupIcons: Record<ComparisonGroupKey, typeof MessageSquare> = {
+  communication: MessageSquare,
+  automation: Workflow,
+  marketing: ShoppingBag,
+  tools: BarChart3,
+};
 
 /** Prix dans `@/data/pricing` ; ici, seulement l'habillage de chaque module. */
 const addonStyles: Record<AddonKey, { icon: typeof Star; color: keyof typeof addonColors }> = {
@@ -155,33 +131,20 @@ interface PricingV2ContentProps {
   addons: DisplayAddon[];
   /** Période d'annonce de la hausse du 1er janvier 2027. */
   announcing: boolean;
+  /** Bloc « Ce que ça rapporte », derrière `PRICING_ROI_PREVIEW`. */
+  showRoi: boolean;
 }
 
-export function PricingV2Content({ plans, addons, announcing }: PricingV2ContentProps) {
+export function PricingV2Content({ plans, addons, announcing, showRoi }: PricingV2ContentProps) {
   const t = useTranslations('pricing');
   const tChange = useTranslations('priceChange');
   const prefersReducedMotion = useReducedMotion();
   const [activeMobilePlan, setActiveMobilePlan] = useState(2); // Default to "Conversion" (popular)
-  const tableScrollRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(false);
+  const locale = useLocale();
+  const number = useMemo(() => new Intl.NumberFormat(locale), [locale]);
 
-  // Track horizontal scroll state for mobile table hints
-  useEffect(() => {
-    const el = tableScrollRef.current;
-    if (!el) return;
-    const checkScroll = () => {
-      setCanScrollLeft(el.scrollLeft > 4);
-      setCanScrollRight(el.scrollLeft < el.scrollWidth - el.clientWidth - 4);
-    };
-    checkScroll();
-    el.addEventListener('scroll', checkScroll, { passive: true });
-    window.addEventListener('resize', checkScroll);
-    return () => {
-      el.removeEventListener('scroll', checkScroll);
-      window.removeEventListener('resize', checkScroll);
-    };
-  }, []);
+  const formatValue = (value: Exclude<FeatureValue, boolean>) =>
+    typeof value === 'number' ? number.format(value) : t(`comparison.values.${value}`);
 
   return (
     <main className="bg-white">
@@ -285,6 +248,13 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
                     )}>
                       {t(`plans.${plan.key}.trial`)}
                     </p>
+                    <p className={cn(
+                      'mt-3 inline-flex items-center gap-1.5 self-start rounded-full px-2.5 py-1 text-xs font-medium',
+                      plan.popular ? 'bg-brand-primary/10 text-brand-primary' : 'bg-white/10 text-white/80'
+                    )}>
+                      <Mail className="h-3.5 w-3.5" aria-hidden="true" />
+                      {t('emailsPerMonth', { count: plan.emailsPerMonth })}
+                    </p>
 
                     <p className={cn(
                       'mt-4 text-sm leading-relaxed',
@@ -295,7 +265,7 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
 
                     <div className="mt-5">
                       <ButtonLink
-                        href="https://app.lemcal.com/@trigger-flow/demo"
+                        href={DEMO_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         variant={plan.popular ? 'primary' : 'secondary'}
@@ -377,6 +347,13 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
                 )}>
                   {t(`plans.${plan.key}.trial`)}
                 </p>
+                <p className={cn(
+                  'mt-3 inline-flex items-center gap-1.5 self-start rounded-full px-2.5 py-1 text-xs font-medium',
+                  plan.popular ? 'bg-brand-primary/10 text-brand-primary' : 'bg-white/10 text-white/80'
+                )}>
+                  <Mail className="h-3.5 w-3.5" aria-hidden="true" />
+                  {t('emailsPerMonth', { count: plan.emailsPerMonth })}
+                </p>
 
                 <p className={cn(
                   'mt-4 text-sm leading-relaxed flex-1',
@@ -387,7 +364,7 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
 
                 <div className="mt-5">
                   <ButtonLink
-                    href="https://app.lemcal.com/@trigger-flow/demo"
+                    href={DEMO_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     variant={plan.popular ? 'primary' : 'secondary'}
@@ -426,185 +403,170 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
             </p>
           </motion.div>
 
-          {/* Table wrapper with scroll indicators */}
+          {/* Pas de défilement horizontal : sur téléphone, le libellé passe au-dessus des 4 valeurs. */}
           <motion.div
             initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={defaultViewport}
-            className="relative"
           >
-            {/* Scroll hint arrows for mobile */}
-            {canScrollLeft && (
-              <button
-                onClick={() => tableScrollRef.current?.scrollBy({ left: -200, behavior: 'smooth' })}
-                className="absolute left-0 top-1/2 -translate-y-1/2 z-30 flex h-8 w-8 items-center justify-center rounded-full bg-white shadow-lg border border-zinc-200 md:hidden"
-              >
-                <ChevronLeft className="h-4 w-4 text-zinc-600" />
-              </button>
-            )}
-            {canScrollRight && (
-              <button
-                onClick={() => tableScrollRef.current?.scrollBy({ left: 200, behavior: 'smooth' })}
-                className="absolute right-0 top-1/2 -translate-y-1/2 z-30 flex h-8 w-8 items-center justify-center rounded-full bg-white shadow-lg border border-zinc-200 md:hidden"
-              >
-                <ChevronRight className="h-4 w-4 text-zinc-600" />
-              </button>
-            )}
-
-            {/* Fade edges on mobile to hint scroll */}
-            <div className="absolute left-0 top-0 bottom-0 w-4 bg-gradient-to-r from-white to-transparent z-20 pointer-events-none md:hidden" style={{ opacity: canScrollLeft ? 1 : 0 }} />
-            <div className="absolute right-0 top-0 bottom-0 w-4 bg-gradient-to-l from-white to-transparent z-20 pointer-events-none md:hidden" style={{ opacity: canScrollRight ? 1 : 0 }} />
-
-            <div
-              ref={tableScrollRef}
-              className="overflow-x-auto scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0"
-            >
-              <div className="min-w-[820px]">
-                {/* Sticky plan headers - account for fixed nav height */}
-                <div className={cn(
-                  'sticky z-20 bg-white/95 backdrop-blur-md rounded-t-2xl border border-zinc-200 border-b-0',
-                  // Le bandeau d'annonce ajoute 36px au header fixe.
-                  announcing ? 'top-[108px]' : 'top-[72px]'
-                )}>
-                  <div className="grid grid-cols-[240px_repeat(4,1fr)]">
-                    <div className="py-4 px-5" />
-                    {plans.map((plan) => (
-                      <div
-                        key={plan.key}
-                        className={cn(
-                          'relative py-4 px-4 text-center',
-                          plan.popular && 'bg-brand-primary/[0.04]'
-                        )}
-                      >
-                        {plan.popular && (
-                          <span className="absolute -top-3 left-1/2 -translate-x-1/2 whitespace-nowrap inline-flex items-center gap-1 rounded-full bg-brand-primary px-2.5 py-0.5 text-[10px] font-semibold text-white">
-                            {t('comparison.popular')}
-                          </span>
-                        )}
-                        <div className={cn(
-                          'text-sm font-bold',
-                          plan.popular ? 'text-brand-primary' : 'text-brand-dark'
-                        )}>
-                          {t(`plans.${plan.key}.name`)}
-                        </div>
-                        <div className={cn(
-                          'text-lg font-bold mt-0.5',
-                          plan.popular ? 'text-brand-primary' : 'text-brand-dark'
-                        )}>
-                          {plan.price}€<span className="text-xs font-normal text-zinc-400">/{t('perMonth')}</span>
-                        </div>
-                        <UpcomingPrice price={plan.upcomingPrice} className="text-zinc-500 font-normal" />
-                      </div>
-                    ))}
+            {/* En-tête collant (noms et prix) sous le header fixe ; le bandeau d'annonce ajoute h-9. */}
+            <div className={cn(
+              'sticky z-20 bg-white/95 backdrop-blur-md rounded-t-2xl border border-zinc-200 border-b-0',
+              announcing ? 'top-[100px] md:top-[116px]' : 'top-16 md:top-20'
+            )}>
+              <div className={cn('grid', TABLE_GRID)}>
+                <div className="hidden md:block py-4 px-5" />
+                {plans.map((plan) => (
+                  <div
+                    key={plan.key}
+                    className={cn(
+                      'relative py-3 px-1 md:py-4 md:px-4 text-center',
+                      plan.popular && 'bg-brand-primary/[0.04]'
+                    )}
+                  >
+                    {/* Dans le flux : en position absolue, elle passait sous le header quand l'en-tête colle. */}
+                    <span className={cn(
+                      'mb-1 hidden md:inline-flex whitespace-nowrap rounded-full bg-brand-primary px-2.5 py-0.5 text-[10px] font-semibold text-white',
+                      !plan.popular && 'invisible'
+                    )} aria-hidden={!plan.popular}>
+                      {t('comparison.popular')}
+                    </span>
+                    <div className={cn(
+                      'text-[11px] md:text-sm font-bold',
+                      plan.popular ? 'text-brand-primary' : 'text-brand-dark'
+                    )}>
+                      {t(`plans.${plan.key}.name`)}
+                    </div>
+                    <div className={cn(
+                      'text-base md:text-lg font-bold mt-0.5',
+                      plan.popular ? 'text-brand-primary' : 'text-brand-dark'
+                    )}>
+                      {plan.price}€<span className="text-[10px] md:text-xs font-normal text-zinc-400">/{t('perMonth')}</span>
+                    </div>
+                    {/* Sur téléphone, le prix 2027 reste sur la carte de l'offre : l'en-tête collant garde 2 lignes. */}
+                    <UpcomingPrice price={plan.upcomingPrice} className="hidden md:block text-zinc-500 font-normal" />
                   </div>
-                </div>
+                ))}
+              </div>
+            </div>
 
-                {/* Feature groups */}
-                <div className="border border-zinc-200 rounded-b-2xl overflow-hidden">
-                  {featureGroups.map((group, groupIdx) => (
-                    <div key={group.key}>
-                      {/* Group header */}
-                      <div className={cn(
-                        'grid grid-cols-[240px_repeat(4,1fr)]',
-                        groupIdx > 0 ? 'border-t-2 border-zinc-200' : ''
-                      )}>
-                        <div className="py-3 px-5 bg-zinc-50 flex items-center gap-2.5">
-                          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-brand-primary/10">
-                            <group.icon className="h-4 w-4 text-brand-primary" />
-                          </div>
-                          <span className="text-xs font-bold uppercase tracking-wider text-zinc-500">
-                            {t(`comparison.categories.${group.key}`)}
-                          </span>
+            {/* Feature groups */}
+            <div className="border border-zinc-200 rounded-b-2xl overflow-hidden">
+              {COMPARISON_GROUPS.map((group, groupIdx) => {
+                const GroupIcon = groupIcons[group.key];
+                return (
+                  <div key={group.key}>
+                    {/* Group header */}
+                    <div className={cn(
+                      'grid', TABLE_GRID,
+                      groupIdx > 0 ? 'border-t-2 border-zinc-200' : ''
+                    )}>
+                      <div className="col-span-4 md:col-span-1 py-3 px-4 md:px-5 bg-zinc-50 flex items-center gap-2.5">
+                        <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-brand-primary/10">
+                          <GroupIcon className="h-4 w-4 text-brand-primary" aria-hidden="true" />
                         </div>
-                        {plans.map((plan) => (
-                          <div
-                            key={plan.key}
-                            className={cn(
-                              'py-3 px-4 bg-zinc-50',
-                              plan.popular && 'bg-brand-primary/[0.04]'
-                            )}
-                          />
-                        ))}
+                        <span className="text-xs font-bold uppercase tracking-wider text-zinc-500">
+                          {t(`comparison.categories.${group.key}`)}
+                        </span>
                       </div>
+                      {plans.map((plan) => (
+                        <div
+                          key={plan.key}
+                          className={cn(
+                            'hidden md:block py-3 px-4 bg-zinc-50',
+                            plan.popular && 'bg-brand-primary/[0.04]'
+                          )}
+                        />
+                      ))}
+                    </div>
 
-                      {/* Features */}
-                      {group.features.map((feature, featureIdx) => (
+                    {/* Features */}
+                    {group.features.map((feature, featureIdx) => {
+                      const label = t(`comparison.features.${feature.key}`);
+                      return (
                         <div
                           key={feature.key}
                           className={cn(
-                            'grid grid-cols-[240px_repeat(4,1fr)] transition-colors hover:bg-zinc-50/80',
+                            'grid transition-colors hover:bg-zinc-50/80', TABLE_GRID,
                             featureIdx < group.features.length - 1 && 'border-b border-zinc-100'
                           )}
                         >
-                          <div className="py-3.5 px-5 text-sm text-zinc-600 pl-14 flex items-center justify-between">
-                            <span>{t(`comparison.features.${feature.key}`)}</span>
-                            <FeatureTooltip text={t(`comparison.tooltips.${feature.key}`)} />
+                          <div className="col-span-4 md:col-span-1 pt-3 pb-1 px-4 md:py-3.5 md:pr-5 md:pl-14 text-sm text-zinc-600 flex items-center justify-between gap-2">
+                            <span>{label}</span>
+                            <FeatureTooltip
+                              label={t('comparison.moreInfo', { feature: label })}
+                              what={t(`comparison.tooltips.${feature.key}.what`)}
+                              example={t(`comparison.tooltips.${feature.key}.example`)}
+                              exampleLabel={t('comparison.example')}
+                            />
                           </div>
                           {feature.values.map((value, i) => (
                             <div
-                              key={i}
+                              key={plans[i]?.key ?? i}
                               className={cn(
-                                'py-3.5 px-4 flex items-center justify-center',
+                                'py-2 px-1 md:py-3.5 md:px-4 flex items-center justify-center text-center',
                                 plans[i]?.popular && 'bg-brand-primary/[0.03]'
                               )}
                             >
                               {typeof value === 'boolean' ? (
                                 value ? (
                                   <div className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-primary/10">
-                                    <Check className="h-3.5 w-3.5 text-brand-primary" />
+                                    <Check className="h-3.5 w-3.5 text-brand-primary" aria-label={t('comparison.included')} />
                                   </div>
                                 ) : (
                                   <div className="flex h-6 w-6 items-center justify-center rounded-full bg-red-50">
-                                    <X className="h-3.5 w-3.5 text-red-400" />
+                                    <X className="h-3.5 w-3.5 text-red-400" aria-label={t('comparison.notIncluded')} />
                                   </div>
                                 )
                               ) : (
                                 <span className={cn(
-                                  'text-sm font-semibold',
+                                  'text-xs md:text-sm font-semibold',
                                   plans[i]?.popular ? 'text-brand-primary' : 'text-brand-dark'
                                 )}>
-                                  {value}
+                                  {formatValue(value)}
                                 </span>
                               )}
                             </div>
                           ))}
                         </div>
-                      ))}
-                    </div>
-                  ))}
-
-                  {/* CTA row */}
-                  <div className="grid grid-cols-[240px_repeat(4,1fr)] border-t-2 border-zinc-200 bg-zinc-50/50">
-                    <div className="py-5 px-5" />
-                    {plans.map((plan) => (
-                      <div key={plan.key} className={cn(
-                        'py-5 px-4 flex items-center justify-center',
-                        plan.popular && 'bg-brand-primary/[0.03]'
-                      )}>
-                        <ButtonLink
-                          href="https://app.lemcal.com/@trigger-flow/demo"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          variant={plan.popular ? 'primary' : 'secondary'}
-                          size="sm"
-                          className={cn(
-                            'justify-center',
-                            plan.popular
-                              ? 'shadow-lg shadow-brand-primary/20'
-                              : 'border-zinc-200 hover:border-brand-primary'
-                          )}
-                        >
-                          {t('cta.demo')}
-                        </ButtonLink>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
-                </div>
+                );
+              })}
+
+              {/* CTA row : sur téléphone, le bouton est déjà sur la carte de l'offre. */}
+              <div className={cn('hidden md:grid border-t-2 border-zinc-200 bg-zinc-50/50', TABLE_GRID)}>
+                <div className="py-5 px-5" />
+                {plans.map((plan) => (
+                  <div key={plan.key} className={cn(
+                    'py-5 px-4 flex items-center justify-center',
+                    plan.popular && 'bg-brand-primary/[0.03]'
+                  )}>
+                    <ButtonLink
+                      href={DEMO_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      variant={plan.popular ? 'primary' : 'secondary'}
+                      size="sm"
+                      className={cn(
+                        'justify-center',
+                        plan.popular
+                          ? 'shadow-lg shadow-brand-primary/20'
+                          : 'border-zinc-200 hover:border-brand-primary'
+                      )}
+                    >
+                      {t('cta.demo')}
+                    </ButtonLink>
+                  </div>
+                ))}
               </div>
             </div>
           </motion.div>
         </Container>
       </section>
+
+      {showRoi && <RoiBlock plans={plans} />}
 
       {/* ─── Add-on Modules ───────────────────────────────── */}
       <section className="py-16 md:py-24 bg-zinc-50/60">
@@ -687,7 +649,7 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
                     {/* Right: CTA */}
                     <div className="shrink-0">
                       <ButtonLink
-                        href="https://app.lemcal.com/@trigger-flow/demo"
+                        href={DEMO_URL}
                         target="_blank"
                         rel="noopener noreferrer"
                         variant="secondary"
@@ -790,41 +752,6 @@ export function PricingV2Content({ plans, addons, announcing }: PricingV2Content
         </Container>
       </section>
     </main>
-  );
-}
-
-/* ─── Feature Tooltip ───────────────────────────────────────── */
-
-function FeatureTooltip({ text }: { text: string }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className="relative inline-flex shrink-0">
-      <button
-        type="button"
-        onMouseEnter={() => setIsOpen(true)}
-        onMouseLeave={() => setIsOpen(false)}
-        onClick={() => setIsOpen((o) => !o)}
-        className="text-zinc-300 hover:text-zinc-500 transition-colors"
-        aria-label="Plus d'informations"
-      >
-        <HelpCircle className="h-3.5 w-3.5" />
-      </button>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 4 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 4 }}
-            transition={{ duration: 0.15 }}
-            className="absolute right-0 bottom-full mb-2 z-[100] w-56 rounded-lg bg-brand-dark px-3 py-2 text-xs text-white/90 leading-relaxed shadow-xl pointer-events-none"
-          >
-            {text}
-            <div className="absolute right-1.5 top-full w-0 h-0 border-l-[5px] border-l-transparent border-r-[5px] border-r-transparent border-t-[5px] border-t-brand-dark" />
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
   );
 }
 
