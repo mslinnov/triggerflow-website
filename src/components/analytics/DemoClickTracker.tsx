@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
-import { decorateBookingUrl } from '@/lib/attribution';
+import { decorateActivateUrl, decorateBookingUrl } from '@/lib/attribution';
 
 declare global {
   interface Window {
@@ -31,7 +31,15 @@ export function DemoClickTracker() {
 
       // `link.href` resolves to the absolute URL of the anchor.
       const href = link.href;
-      if (!href || !href.includes('lemcal.com')) return;
+      if (!href) return;
+
+      // Bouton « Activer » d'un modèle : la campagne de la visite suit jusqu'à l'app.
+      const activate = decorateActivateUrl(href);
+      if (activate !== href) {
+        link.href = activate;
+        return;
+      }
+      if (!href.includes('lemcal.com')) return;
 
       if (typeof window === 'undefined') return;
 
