@@ -111,6 +111,26 @@ export function decorateBookingUrl(href: string): string {
   }
 }
 
+const ACTIVATE_URL = 'https://app.trigger-flow.com/email-templates/library/activate';
+const ACTIVATE_KEYS = ['utm_source', 'utm_medium', 'utm_campaign'] as const;
+
+/**
+ * Bouton « Activer » d'un modèle (écran d'activation de l'app) : la source, le support et la
+ * campagne de la visite (le mail de relance) remplacent ceux du lien, pour que l'app trace
+ * l'activation par campagne. L'utm_content reste le code du modèle ; jamais de gclid vers l'app.
+ */
+export function decorateActivateUrl(href: string): string {
+  if (!href.startsWith(`${ACTIVATE_URL}?`)) return href;
+  const attribution = getAttribution();
+  if (!attribution || !ACTIVATE_KEYS.some((key) => attribution[key])) return href;
+  const url = new URL(href);
+  for (const key of ACTIVATE_KEYS) {
+    const value = attribution[key];
+    if (value) url.searchParams.set(key, value);
+  }
+  return url.toString();
+}
+
 /** Pour les tests : repart d'une page neuve. */
 export function resetAttributionForTests(): void {
   memory = null;

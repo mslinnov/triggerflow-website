@@ -26,6 +26,7 @@ test('événement : ramené au contrat de l’app, champs absents à null, UTM b
       ...copy,
       utm_source: ' flyer ',
       utm_medium: 'x'.repeat(150),
+      utm_content: ' lien-1 ',
       occurred_at: '2026-11-02T09:30:00+01:00',
       ip: '1.2.3.4',
       user_agent: 'Mozilla',
@@ -40,6 +41,7 @@ test('événement : ramené au contrat de l’app, champs absents à null, UTM b
       utm_source: 'flyer',
       utm_medium: 'x'.repeat(100),
       utm_campaign: null,
+      utm_content: 'lien-1',
       occurred_at: '2026-11-02T08:30:00.000Z',
     },
   );
@@ -53,6 +55,7 @@ test('événement : ramené au contrat de l’app, champs absents à null, UTM b
     utm_source: null,
     utm_medium: null,
     utm_campaign: null,
+    utm_content: null,
   });
 });
 
@@ -185,7 +188,7 @@ test('route : lot filtré relayé à l’app avec le jeton, sans IP ni user agen
   const sent = relayed[0].body as { events: Record<string, unknown>[] };
   assert.deepEqual(sent.events.map((e) => e.type), ['copy', 'page_view']);
   for (const event of sent.events) {
-    assert.deepEqual(Object.keys(event).sort(), ['format', 'temps_fort', 'theme', 'type', 'utm_campaign', 'utm_medium', 'utm_source', 'visit_id']);
+    assert.deepEqual(Object.keys(event).sort(), ['format', 'temps_fort', 'theme', 'type', 'utm_campaign', 'utm_content', 'utm_medium', 'utm_source', 'visit_id']);
   }
   // L'app saturée (429) ou en panne : le visiteur n'en sait rien.
   appStatus = 429;
@@ -256,6 +259,7 @@ test('fêtes : interrupteur ouvert, payload du contrat (theme fetes, code de fê
     utm_source: null,
     utm_medium: null,
     utm_campaign: null,
+    utm_content: null,
     page: FETES_PAGE,
   });
   assert.equal(sanitizeCalendarEvent({ type: 'page_view', visit_id: VISIT, page: FETES_PAGE }, { fetes: true })?.page, FETES_PAGE);

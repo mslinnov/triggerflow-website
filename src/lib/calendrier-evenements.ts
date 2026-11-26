@@ -52,6 +52,7 @@ export interface AppCalendarEvent {
   utm_source: string | null;
   utm_medium: string | null;
   utm_campaign: string | null;
+  utm_content: string | null;
   occurred_at?: string;
   /** Landing des fêtes seulement (absent ailleurs, comme avant le contrat). */
   page?: typeof FETES_PAGE;
@@ -122,6 +123,7 @@ export function sanitizeCalendarEvent(
     utm_source: utmValue(data.utm_source),
     utm_medium: utmValue(data.utm_medium),
     utm_campaign: utmValue(data.utm_campaign),
+    utm_content: utmValue(data.utm_content),
   };
   if (page) event.page = FETES_PAGE;
   const when = occurredAt(data.occurred_at);

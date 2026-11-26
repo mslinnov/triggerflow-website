@@ -40,13 +40,14 @@ export interface CalendarVisit {
   utm_source: string | null;
   utm_medium: string | null;
   utm_campaign: string | null;
+  utm_content: string | null;
 }
 
 const ENDPOINT = '/api/calendrier/evenements';
 const VISIT_KEY = 'tf_calendrier_visite';
 const MAX_BATCH = 20;
 const FLUSH_DELAY_MS = 2000;
-const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign'] as const;
+const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'] as const;
 
 export function trackCalendarEvent<E extends keyof CalendarEvents>(event: E, params: CalendarEvents[E]): void {
   // Paramètres absents retirés : GA4 ne reçoit pas de `theme` vide.
