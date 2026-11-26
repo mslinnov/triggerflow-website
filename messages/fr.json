@@ -876,7 +876,9 @@
       "terms": "CGV",
       "termsOfUse": "CGU",
       "privacy": "Politique de confidentialité",
-      "dpa": "Accord de sous-traitance (DPA)"
+      "dpa": "Accord de sous-traitance (DPA)",
+      "appPrivacy": "Confidentialité de l'application mobile",
+      "accountDeletion": "Suppression de compte"
     },
     "newsletter": {
       "title": "Newsletter",

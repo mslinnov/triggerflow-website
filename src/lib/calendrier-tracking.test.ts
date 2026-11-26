@@ -58,7 +58,7 @@ test('visite : UUID v4 et UTM d’arrivée figés le temps de l’onglet ; stock
   const storage = { getItem: (k: string) => store.get(k) ?? null, setItem: (k: string, v: string) => void store.set(k, v) };
   const first = loadOrCreateVisit(storage, '?utm_source=flyer&utm_medium=qr&utm_campaign=equiphotel-2026&utm_content=stand');
   assert.match(first.visit_id, /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/);
-  assert.deepEqual({ ...first, visit_id: 'x' }, { visit_id: 'x', utm_source: 'flyer', utm_medium: 'qr', utm_campaign: 'equiphotel-2026' });
+  assert.deepEqual({ ...first, visit_id: 'x' }, { visit_id: 'x', utm_source: 'flyer', utm_medium: 'qr', utm_campaign: 'equiphotel-2026', utm_content: 'stand' });
   // Page suivante de la visite, sans UTM dans l'URL : même visite, mêmes UTM d'arrivée.
   assert.deepEqual(loadOrCreateVisit(storage, ''), first);
   // Sans UTM dans l'URL : ceux de l'attribution connue, sinon rien.

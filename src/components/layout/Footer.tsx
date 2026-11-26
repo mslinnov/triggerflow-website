@@ -49,6 +49,8 @@ const legalLinks = [
   { href: '/cgu', labelKey: 'legal.termsOfUse' },
   { href: '/politique-confidentialite', labelKey: 'legal.privacy' },
   { href: '/dpa', labelKey: 'legal.dpa' },
+  { href: '/app-mobile-confidentialite', labelKey: 'legal.appPrivacy' },
+  { href: '/suppression-compte', labelKey: 'legal.accountDeletion' },
 ] as const;
 
 export function Footer() {
