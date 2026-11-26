@@ -876,7 +876,9 @@
       "terms": "Terms of Sale",
       "termsOfUse": "Terms of Use",
       "privacy": "Privacy Policy",
-      "dpa": "Data Processing Agreement (DPA)"
+      "dpa": "Data Processing Agreement (DPA)",
+      "appPrivacy": "Mobile App Privacy",
+      "accountDeletion": "Account Deletion"
     },
     "newsletter": {
       "title": "Newsletter",
